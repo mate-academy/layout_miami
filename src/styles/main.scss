@@ -21,7 +21,8 @@ body {
   ol {
     list-style: decimal;
   }
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 1em;
   }
   &_big {
@@ -40,7 +41,8 @@ body {
   }
 }
 
-.input, .textarea {
+.input,
+.textarea {
   text-align: center;
   line-height: normal;
   height: 52px;
@@ -56,6 +58,7 @@ body {
 }
 
 .textarea {
+  box-sizing: border-box;
   height: 100px;
   padding: 20px;
 }
@@ -71,21 +74,25 @@ body {
   color: #fff;
   font-weight: 500;
   width: 100%;
+  border: none;
   &_inline {
     display: inline-block;
     padding: 0 60px;
     width: auto;
   }
+  &:hover {
+    cursor: pointer;
+    background: #00aaaf;
+  }
 }
+
 .container {
   margin: 0 auto;
   width: 940px;
-  height: 100%;
 }
 
-
 .hero {
-
+  background-image: url(../images/hero.jpg);
   background-size: cover;
   background-position: 50% 100%;
   background-repeat: no-repeat;
@@ -144,11 +151,12 @@ body {
   background: #fff;
   position: relative;
   z-index: 2;
-  box-shadow: 0 0 10px rgba(#000, .5);
+  box-shadow: 0 0 10px rgba(#000, 0.5);
 }
 
 .footer {
   height: 540px;
+  background-image: url(../images/footer.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -197,13 +205,13 @@ body {
 
   &__right {
     float: right;
-    width: 33%
+    width: 33%;
   }
 
   &__title {
     position: absolute;
+    top: -1.3em;
     left: 50%;
-    top: -.5em;
     transform: translate(-50%,0);
     font-size: 48px;
     font-weight: 100;
@@ -214,18 +222,18 @@ body {
     .icon {
       position: absolute;
       bottom: 0;
-      margin-top: -11px;
       left: 50%;
       transform: translate(-50%, 0);
     }
 
-    &::after, &::before {
+    &::after,
+    &::before {
       content: "";
       width: calc(50% - 20px);
       position: absolute;
       height: 2px;
       background: #00aaef;
-      bottom: 0;
+      bottom: 10px;
     }
     &::before {
       left: 0;
@@ -236,9 +244,7 @@ body {
   }
 }
 
-.container .best{
-  // display: flex;
-  // flex-direction: row;
+.best {
   &__moto {
     float: left;
     width: 33%;
@@ -256,6 +262,9 @@ body {
   &__text {
     float: right;
     width: 66%;
+    p {
+      margin-left: 45px;
+    }
   }
 }
 
@@ -272,9 +281,9 @@ body {
   &__photos {
     display: flex;
     margin-bottom: 12px;
-    width:100%;
   }
   &__photo {
+    display: block;
     height: 260px;
     background-size: cover;
     background-position: 50% 50%;
@@ -284,25 +293,14 @@ body {
       margin-right: 20px;
     }
   }
-
-  &_mod-right &__photo {
-    &:first-child {
-      flex: 2;
-    }
-  }
-
-  &_mod-left &__photo {
-    &:last-child {
-      flex: 2;
-    }
-  }
 }
 
 .testis {
   display: flex;
   justify-content: space-between;
-  .t{
+  .t {
     text-align: center;
+    padding: 0 2%;
     &__photo {
       height: 150px;
       width: 150px;
@@ -311,6 +309,48 @@ body {
       background-position: 50% 50%;
       background-repeat: no-repeat;
       margin: 0 auto;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 50px;
+        top: 50%;
+        margin-top: -15px;
+        width: 20px;
+        height: 20px;
+        background-image: url(../images/quote.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+      }
+    }
+
+    &__name {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+    }
+
+    &__position {
+      font-style: italic;
+      font-size: 16px;
+      color: #696973;
+      margin-top: 5px;
+
+    }
+
+    &__description {
+      line-height: 1.37;
+      font-size: 16px;
+      text-align: center;
+      color: #000;
+      margin-top: 25px;
     }
   }
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
