@@ -1,10 +1,14 @@
 .section {
   padding: 130px 0;
-  height: 500px;
   position: relative;
 
-  &:nth-child(odd) {
-    background: #eee;
+  &:nth-child(even) {
+    background-color: #eee;
+  }
+
+  &__button {
+    text-align: center;
+    margin-top: 30px;
   }
 
   &__left {
@@ -20,12 +24,43 @@
   &__title {
     position: absolute;
     left: 50%;
-    top: -.5em;
+    top: -0.5em;
     transform: translate(-50%, 0);
     font-size: 48px;
     font-weight: 300;
     color: #000;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    line-height: 1;
+
+    &::before {
+      content: "";
+      width: calc(50% - 20px);
+      position: absolute;
+      height: 3px;
+      background: #00aaef;
+      bottom: 0;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      width: calc(50% - 20px);
+      position: absolute;
+      height: 3px;
+      background: #00aaef;
+      bottom: 0;
+      right: 0;
+    }
+
+    img {
+      position: absolute;
+      bottom: 0;
+      height: 16px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      margin-bottom: -13px;
+    }
   }
 }
 
@@ -33,9 +68,113 @@
   &__motto {
     float: left;
     width: 33%;
+    font-size: 48px;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    span {
+      color: #00aaef;
+    }
   }
 
   &__text {
     float: right;
+    width: 66%;
+  }
+}
+
+.apart {
+  margin-bottom: 30px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 16px;
+
+    span {
+      color: #00aaef;
+      font-weight: 400;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  &__photo {
+    height: 260px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    flex: 1;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+
+  &--mod-right &__photo {
+    &:first-child {
+      flex: 2;
+    }
+  }
+
+  &--mod-left &__photo {
+    &:last-child {
+      flex: 2;
+    }
+  }
+}
+
+.testis-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testis-item {
+  text-align: center;
+  padding: 0 2%;
+
+  &__photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      content: url(../images/quotes.png);
+      position: absolute;
+      height: 30px;
+      width: 40px;
+      top: 35%;
+      left: -25px;
+    }
+  }
+
+  &__name {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    line-height: 22px;
+  }
+
+  &__position {
+    font-style: italic;
+    font-size: 16px;
+    color: #696973;
+    line-height: 22px;
+  }
+
+  &__descr {
+    line-height: 22px;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    margin-top: 40px;
   }
 }
