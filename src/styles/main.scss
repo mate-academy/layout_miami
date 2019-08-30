@@ -245,8 +245,14 @@ body {
   color: #393939;
   text-transform: uppercase;
   width: 100%;
-  border: none;
+  border: 1px solid #eee;
   resize: none;
+  outline: none;
+  transition: border 0.3s;
+
+  &:focus {
+    border: 1px solid #00aaef;
+  }
 
   &::placeholder {
     font-size: 14px;
@@ -351,10 +357,6 @@ body {
   &__photos {
     display: flex;
     margin-bottom: 12px;
-
-    @media only screen and (max-width: 600px) {
-      flex-direction: column;
-    }
   }
 
   &__photo {
@@ -364,14 +366,34 @@ body {
     display: flex;
     justify-content: center;
 
+    @media only screen and (max-width: 900px) {
+      height: 200px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      height: 150px;
+    }
+
+    @media only screen and (max-width: 500px) {
+      height: 130px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      height: 110px;
+    }
+
+    @media only screen and (max-width: 350px) {
+      height: 90px;
+    }
+
     &:first-child {
       margin-right: 20px;
-
-      @media only screen and (max-width: 600px) {
-        margin-right: 0;
-        margin-bottom: 20px;
-      }
     }
+  }
+
+  &__photo-image {
+    width: auto;
+    height: 100%;
   }
 
   &__title {
@@ -380,34 +402,22 @@ body {
     font-weight: 500;
     margin: 0 0 30px;
 
-    @media only screen and (max-width: 600px) {
-      text-align: center;
-      margin: 0 0 60px;
-    }
-
-    span {
+    a {
       color: #0af;
       font-weight: 400;
+      text-decoration: none;
     }
   }
 
   &--mod-right &__photo {
     &:first-child {
       flex: 2;
-
-      @media only screen and (max-width: 800px) {
-        flex: 1;
-      }
     }
   }
 
   &--mod-left &__photo {
     &:last-child {
       flex: 2;
-
-      @media only screen and (max-width: 800px) {
-        flex: 1;
-      }
     }
   }
 }
@@ -534,9 +544,14 @@ body {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  position: relative;
 
   &:hover {
     background: darken(#00aaef, 7%);
+  }
+
+  &:active {
+    top: 2px;
   }
 
   &--inline {
