@@ -1,7 +1,3 @@
-@import "utils";
-@import "fonts";
-@import "typography";
-
 * {
   box-sizing: border-box;
 }
@@ -15,17 +11,40 @@ body {
 
 .hero {
   height: 100vh;
-  min-height: 500px;
+  min-height: 600px;
   background: url("../images/hero.jpg") 50% 100% / cover no-repeat;
+  position: relative;
+
+  &:before {
+    @media only screen and (max-width: 800px) {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(#000, 0.4);
+    }
+  }
 }
 
 .container {
   min-width: 320px;
   max-width: 1260px;
   margin: 0 auto;
+  padding: 0 150px;
+
+  @media only screen and (max-width: 1024px) {
+    padding: 0 50px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 20px;
+  }
 
   &--hero {
-    padding: 70px 150px 50px;
+    padding-top: 70px;
+    padding-bottom: 50px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,26 +52,43 @@ body {
   }
 
   &--best {
-    padding: 120px 150px 170px;
+    padding-top: 120px;
+    padding-bottom: 170px;
     display: flex;
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
   }
 
   &--gallery {
-    padding: 110px 150px;
+    padding-top: 110px;
+    padding-bottom: 110px;
   }
 
   &--consultation {
-    padding: 150px;
+    padding-top: 150px;
+    padding-bottom: 150px;
     display: flex;
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
   }
 
   &--testimonials {
-    padding: 110px 150px 90px;
+    padding-top: 110px;
+    padding-bottom: 90px;
   }
 
   &--contact {
-    padding: 150px 150px 100px;
+    padding-top: 150px;
+    padding-bottom: 100px;
     display: flex;
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -69,6 +105,10 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
+
+    @media only screen and (max-width: 400px) {
+      font-size: 36px;
+    }
 
     &:before,
     &:after {
@@ -110,8 +150,31 @@ body {
   align-items: center;
   justify-content: space-between;
 
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+
   &__logo {
     order: 2;
+
+    @media only screen and (max-width: 480px) {
+      order: 1;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__call {
+    order: 3;
+    border-bottom: 1px dashed #606060;
+  }
+
+  &__phone {
+    order: 1;
+
+    @media only screen and (max-width: 480px) {
+      order: 2;
+      margin-bottom: 20px;
+    }
   }
 
   &__call,
@@ -125,15 +188,6 @@ body {
     &:hover {
       color: rgba(#fff, 0.5);
     }
-  }
-
-  &__call {
-    order: 3;
-    border-bottom: 1px dashed #606060;
-  }
-
-  &__phone {
-    order: 1;
   }
 }
 
@@ -155,6 +209,20 @@ body {
   justify-content: space-between;
   text-transform: uppercase;
   font-size: 16px;
+  position: relative;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    @media only screen and (max-width: 800px) {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
 
   &__link {
     text-decoration: none;
@@ -164,12 +232,6 @@ body {
     &:hover {
       color: rgba(#fff, 0.5);
     }
-  }
-}
-
-.appart {
-  &__photo {
-    background: url("../images/");
   }
 }
 
@@ -210,6 +272,25 @@ body {
     line-height: 60px;
     font-weight: 300;
     text-transform: uppercase;
+
+    @media only screen and (max-width: 900px) {
+      flex: 0 1 50%;
+      max-width: 50%;
+      padding-right: 45px;
+    }
+
+    @media only screen and (max-width: 700px) {
+      flex: 0 1 100%;
+      max-width: 100%;
+      padding-right: 0;
+      padding-left: 20px;
+      margin-bottom: 50px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      font-size: 36px;
+      line-height: 45px;
+    }
   }
 
   &__motto-text {
@@ -228,6 +309,18 @@ body {
     padding-left: 95px;
     font-size: 16px;
     line-height: 24px;
+
+    @media only screen and (max-width: 900px) {
+      flex: 0 1 50%;
+      max-width: 50%;
+      padding-left: 0;
+    }
+
+    @media only screen and (max-width: 700px) {
+      flex: 0 1 100%;
+      max-width: 100%;
+      padding-left: 20px;
+    }
 
     &--strong {
       font-weight: 500;
@@ -258,6 +351,10 @@ body {
   &__photos {
     display: flex;
     margin-bottom: 12px;
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 
   &__photo {
@@ -269,6 +366,11 @@ body {
 
     &:first-child {
       margin-right: 20px;
+
+      @media only screen and (max-width: 600px) {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
     }
   }
 
@@ -278,21 +380,34 @@ body {
     font-weight: 500;
     margin: 0 0 30px;
 
+    @media only screen and (max-width: 600px) {
+      text-align: center;
+      margin: 0 0 60px;
+    }
+
     span {
       color: #0af;
       font-weight: 400;
     }
   }
 
-  &--mod-left &__photo {
-    &:last-child {
-      flex: 2;
-    }
-  }
-
   &--mod-right &__photo {
     &:first-child {
       flex: 2;
+
+      @media only screen and (max-width: 800px) {
+        flex: 1;
+      }
+    }
+  }
+
+  &--mod-left &__photo {
+    &:last-child {
+      flex: 2;
+
+      @media only screen and (max-width: 800px) {
+        flex: 1;
+      }
     }
   }
 }
@@ -313,10 +428,29 @@ body {
   &__form {
     flex: 0 1 50%;
     max-width: 50%;
+
+    @media only screen and (max-width: 700px) {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
   }
 
   &__form {
     padding-left: 100px;
+
+    @media only screen and (max-width: 950px) {
+      padding-left: 40px;
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding-left: 0;
+    }
+  }
+
+  &__info {
+    @media only screen and (max-width: 700px) {
+      margin-bottom: 60px;
+    }
   }
 }
 
@@ -329,15 +463,32 @@ body {
   &__form {
     flex: 0 1 50%;
     max-width: 50%;
+
+    @media only screen and (max-width: 700px) {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
   }
 
   &__info {
     font-size: 24px;
     line-height: 32px;
+
+    @media only screen and (max-width: 700px) {
+      margin-bottom: 60px;
+    }
   }
 
   &__form {
     padding-left: 100px;
+
+    @media only screen and (max-width: 950px) {
+      padding-left: 40px;
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding-left: 0;
+    }
   }
 
   &__info-email-link {
@@ -399,6 +550,12 @@ body {
 .testis {
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 }
 
 .t {
@@ -407,6 +564,21 @@ body {
   line-height: 22px;
   flex: 1;
   padding: 0 25px;
+
+  @media only screen and (max-width: 800px) {
+    padding: 0 15px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    padding: 0;
+    max-width: 400px;
+  }
+
+  &:not(:last-child) {
+    @media only screen and (max-width: 700px) {
+      margin-bottom: 60px;
+    }
+  }
 
   &__photo {
     height: 150px;
