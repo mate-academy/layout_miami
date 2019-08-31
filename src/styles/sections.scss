@@ -2,6 +2,32 @@
   position: relative;
   width: 100%;
 
+  &__title {
+    position: relative;
+    top: -20px;
+    font-size: 48px;
+    font-weight: 300;
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    text-transform: uppercase;
+    border-bottom: 2px solid #00aaef;
+    margin-bottom: 60px;
+
+    &::after {
+      content: "";
+      background-image: url(../images/under_heading.png);
+      background-color: #eee;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      bottom: -12px;
+      left: calc(50% - 18px);
+      width: 36px;
+      height: 16px;
+    }
+  }
+
   &__flex {
     display: flex;
     justify-content: space-between;
@@ -13,7 +39,7 @@
 
   &__right {
     line-height: 24px;
-    width: 300px;
+    width: 380px;
     margin-left: 70px;
   }
 }
@@ -28,7 +54,7 @@
 
 .about-us {
   display: grid;
-  grid-template-columns: 290px, 560px;
+  grid-template-columns: 290px 560px;
   grid-template-rows: 1fr;
   grid-column-gap: 10%;
   padding: 135px 5% 170px;
@@ -56,32 +82,6 @@
     line-height: 24px;
     width: 410px;
     margin-bottom: 45px;
-  }
-}
-
-.section__title {
-  position: relative;
-  top: -20px;
-  font-size: 48px;
-  font-weight: 300;
-  display: flex;
-  width: fit-content;
-  margin: 0 auto;
-  text-transform: uppercase;
-  border-bottom: 2px solid #00aaef;
-  margin-bottom: 60px;
-
-  &::after {
-    content: "";
-    background-image: url(../images/under_heading.png);
-    background-color: #eee;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: -12px;
-    left: calc(50% - 18px);
-    width: 36px;
-    height: 16px;
   }
 }
 
@@ -155,6 +155,7 @@
   border: 1px solid #00aaef;
   cursor: pointer;
   transition: all 0.3s;
+  box-sizing: border-box;
 
   &:hover {
     color: #1cabec;
@@ -169,7 +170,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    width: 190px;
+    width: 188px;
     margin: 0 auto;
   }
 }
@@ -178,8 +179,14 @@
   padding-bottom: 145px;
 }
 
+.left__heading {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: normal;
+}
+
 .form {
-  width: 300px;
+  width: 100%;
 }
 
 .input {
@@ -191,9 +198,19 @@
   font-weight: 500;
   font-family: "Ubuntu", sans-serif;
   color: #393939;
+  background-color: #eee;
+  border: none;
 
   &:last-child {
     margin-bottom: 8px;
+  }
+
+  &::placeholder {
+    text-transform: uppercase;
+  }
+
+  &:active {
+    border: 1px solid #00aaef;
   }
 }
 
@@ -208,6 +225,12 @@
   font-family: "Ubuntu", sans-serif;
   margin-bottom: 8px;
   color: #393939;
+  background-color: #eee;
+  border: none;
+
+  &::placeholder {
+    text-transform: uppercase;
+  }
 }
 
 .testimonials {
@@ -257,12 +280,69 @@
 
   &__left {
     font-size: 24px;
+    line-height: 30px;
   }
 }
 
 .email {
   text-decoration: none;
   color: #000;
+}
+
+@media (max-width: 1023px) {
+  .about-us,
+  .section__flex {
+    display: block;
+    text-align: center;
+  }
+
+  .about-us__left-container {
+    margin-bottom: 40px;
+  }
+
+  .company-description {
+    &__intro {
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+    }
+
+    &__list {
+      text-align: left;
+      display: block;
+      margin-left: auto;
+      width: 90%;
+
+      li {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  .section__flex {
+    display: block;
+    text-align: center;
+
+  }
+
+  .section {
+    &__left {
+      margin-bottom: 50px;
+    }
+
+    &__right {
+      margin: 0 auto;
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+  }
+
+  .contact-us {
+    margin-bottom: 400px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -284,21 +364,6 @@
 }
 
 @media (max-width: 639px) {
-  .about-us,
-  .section__flex {
-    display: block;
-    text-align: center;
-  }
-  .section {
-    &__left {
-      margin-bottom: 50px;
-    }
-
-    &__right {
-      margin: 0 auto;
-    }
-  }
-
   .testimonials-wraper {
     display: block;
   }
@@ -307,26 +372,13 @@
     margin: 0 auto 50px;
   }
 
-  .company-description {
-    &__intro {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    &__list {
-      text-align: left;
-      display: block;
-      margin-left: auto;
-      width: 90%;
-
-      li {
-        margin: 0;
-        padding: 0;
-      }
-    }
+  .form {
+    width: 100%;
+    margin: 0 auto;
   }
 
-  .contact-us {
-    margin-bottom: 400px;
+  .section__right {
+    width: 90%;
+    margin: 0 auto;
   }
 }
