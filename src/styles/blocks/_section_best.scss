@@ -5,7 +5,11 @@
     line-height: 60px;
     color: #000;
     text-transform: uppercase;
-    text-align: left;
+    text-align: center;
+
+    @include for-tablet {
+      text-align: left;
+    }
   }
 
   &__text {
@@ -15,10 +19,15 @@
 
       li {
         position: relative;
+        margin-left: 20px;
+
+        @include for-tablet {
+          margin-left: unset;
+        }
 
         &::before {
           position: absolute;
-          left: -25px;
+          left: -20px;
           counter-increment: numb;
           content: counter(numb) ".";
         }
@@ -29,6 +38,11 @@
 
 .container--best {
   display: grid;
-  grid-template-columns: 33% 66%;
-  grid-gap: 90px;
+  grid-gap: 30px;
+  grid-template-columns: 1fr;
+
+  @include for-tablet {
+    grid-gap: 90px;
+    grid-template-columns: 33% 66%;
+  }
 }
