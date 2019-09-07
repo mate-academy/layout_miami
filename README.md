@@ -16,4 +16,4 @@ Also, author use `SASS`, you can use it too or `SCSS` as usually.
 
 **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+- [DEMO LINK](https://vladyslav223.github.io/layout_miami/)
