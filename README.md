@@ -13,4 +13,4 @@ Follow this [video guide](https://www.loom.com/share/802c2f6196004416964ed6069bb
 
 **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+- [DEMO LINK](https://KseniiaMazan.github.io/layout_miami/)
