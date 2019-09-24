@@ -13,4 +13,4 @@ Follow this [video guide](https://www.youtube.com/watch?v=sq184jq9DV8&feature=yo
 
 **Result**
 
-- [UPDATE DEMO LINK](https://<your_account>.github.io/<repo_name>/)
+- [UPDATE DEMO LINK](https://kosbelozyorov.github.io/layout_miami/)
