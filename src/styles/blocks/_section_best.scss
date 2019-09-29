@@ -1,0 +1,48 @@
+.best {
+  &__title {
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 60px;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include for-tablet {
+      text-align: left;
+    }
+  }
+
+  &__text {
+    ul {
+      counter-reset: numb;
+      list-style: none;
+
+      li {
+        position: relative;
+        margin-left: 20px;
+
+        @include for-tablet {
+          margin-left: unset;
+        }
+
+        &::before {
+          position: absolute;
+          left: -20px;
+          counter-increment: numb;
+          content: counter(numb) ".";
+        }
+      }
+    }
+  }
+}
+
+.container--best {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr;
+
+  @include for-tablet {
+    grid-gap: 90px;
+    grid-template-columns: 33% 66%;
+  }
+}
