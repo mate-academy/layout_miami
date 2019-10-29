@@ -1,0 +1,85 @@
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-gap: 14px 65px;
+  justify-content: center;
+  justify-items: center;
+  padding: 100px 0;
+  position: relative;
+  background-color: $c-gray;
+
+  &__title-w-decor {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &__person {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  &__position {
+    font-weight: normal;
+    font-style: italic;
+    color: #666670;
+  }
+
+  &__citation {
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: url("../images/quotes.svg") no-repeat center;
+      position: absolute;
+      top: -37px;
+      left: -30px;
+    }
+  }
+}
+
+$mobile-grid: (
+  2: "image1",
+  3: "image2",
+  4: "image3",
+  5: "name1",
+  6: "name2",
+  7: "name3",
+  8: "citation1",
+  9: "citation2",
+  10: "citation3");
+
+@media screen and (max-width: 999px) {
+  .testimonials {
+    grid-template-columns: 200px;
+    grid-template-areas: "image1"
+      "name1"
+      "citation1"
+      "image2"
+      "name2"
+      "citation2"
+      "image3"
+      "name3"
+      "citation3";
+  }
+
+  @each $element, $area in $mobile-grid {
+    .testimonials > :nth-child(#{$element}) {
+      grid-area: #{$area};
+    }
+  }
+}
