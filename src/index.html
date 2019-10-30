@@ -28,26 +28,26 @@
           <ul class="nav__list">
             <li class="nav__item nav__item--active">Home</li>
             <li class="nav__item">
-              <a href="#" class="nav__link">About Us</a>
+              <a href=".aboutUs" class="go-to nav__link">About Us</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">gallery</a>
+              <a href=".galleryTop" class="go-to nav__link">gallery</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">consultation</a>
+              <a href=".consultationTop" class="go-to nav__link">consultation</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">testimonials</a>
+              <a href=".testimonialsTop" class="go-to nav__link">testimonials</a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">Contacts</a>
+              <a href=".contactTop" class="go-to nav__link">Contacts</a>
             </li>
           </ul>
         </nav>
       </header>
 
       <main>
-        <section class="section">
+        <section class="section aboutUs">
           <div class="container info">
             <h1 class="info__title">
               Miami <strong>best</strong><br> Real estate<br> <a href="#" class="info__title--link">here</a>
@@ -70,6 +70,7 @@
           </div>
         </section>
         <section class="section">
+          <span class="anchor galleryTop"></span>
           <h2 class="heading section__heading">Gallery <span class="heading__crown"></span></h2>
           <div class="gallery">
             <article class="photos">
@@ -95,6 +96,7 @@
         </section>
 
         <section class="section">
+          <span class="anchor consultationTop"></span>
           <h2 class="heading section__heading">Consultation <span class="heading__crown"></span></h2>
           <div class="container consultation">
             <div class="consultation__text">
@@ -125,6 +127,7 @@
         </section>
 
         <section class="section">
+          <span class="anchor testimonialsTop"></span>
           <h2 class="heading section__heading">Testimonials <span class="heading__crown"></span></h2>
 
           <div class="testimonials">
@@ -159,6 +162,7 @@
         </section>
 
         <section class="section">
+          <span class="anchor contactTop"></span>
           <h2 class="heading section__heading">CONTACT US <span class="heading__crown"></span></h2>
 
           <div class="contact">
@@ -194,6 +198,17 @@
           <img src="images/logo.png" alt="Miami" class="logo__img">
         </div>
       </footer>
-      <script type="text/javascript" src="scripts/main.js"></script>
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+      <script type="text/javascript">
+          $(document).ready(function(){
+              $(".go-to").on("click", function (event) {
+                  event.preventDefault();
+                  var id  = $(this).attr('href'),
+                      top = $(id).offset().top;
+                  $('body,html').animate({scrollTop: top}, 1500);
+              });
+          });
+      </script>
     </body>
   </html>
