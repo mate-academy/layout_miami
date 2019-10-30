@@ -1,0 +1,60 @@
+@import "utils";
+
+.section {
+  position: relative;
+  background-color: $c-gray;
+}
+
+.section:nth-child(even) {
+  background-color: white;
+}
+
+.section__heading {
+  position: absolute;
+  top: -0.5em;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 48px;
+  text-transform: uppercase;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    height: 2px;
+    width: 50% - 24/2;
+    background-color: $main-color;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  .heading__crown {
+    position: absolute;
+    display: block;
+    width: 23px;
+    height: 16px;
+    background-image: url(../images/crown.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: -20px;
+    left: calc(50% - 13px);
+
+  }
+
+  @media screen and (max-width: $break-point) {
+    & {
+      position: relative;
+      top: 0;
+      font-size: 30px;
+    }
+  }
+}
