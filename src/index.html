@@ -13,24 +13,24 @@
     <header class="header">
       <div class="header__top">
         <div  class="logo header__logo"></div>
-        <div class="header__phone">+1 234 555-55-55</div>
+        <div class="header__phone"><a class="header__link header__link--phone" href="tel:+1 234 555-55-55">+1 234 555-55-55</a></div>
         <div class="header__action"><a href="#" class="header__link">Call to order</a></div>
       </div>
 
-      <nav class="nav header__nav">
+      <nav id="nav" class="nav header__nav">
         <ul class="nav__list">
           <li class="nav__item nav__item--active">Home</li>
-          <li class="nav__item"><a href="#" class="nav__link">About Us</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Gallery</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Consultation</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Testimonials</a></li>
-          <li class="nav__item"><a href="#" class="nav__link">Contacts</a></li>
+          <li class="nav__item"><a href="#info" class="nav__link">About Us</a></li>
+          <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
+          <li class="nav__item"><a href="#consultation" class="nav__link">Consultation</a></li>
+          <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">Contacts</a></li>
         </ul>
       </nav>
     </header>
 
   <main>
-    <section class="section">
+    <section class="section" id="info">
       <div class="info">
         <h1 class="info__heading">Miami <strong>best</strong>  Real estate <a href="#" class="link">here</a></h1>
         <div class="info__text">
@@ -42,6 +42,7 @@
     </section>
 
     <section class="section">
+    <span class="anchor" id="gallery"></span>
       <h2 class="heading section__heading">Gallery<span class="heading__crown"></span></h2>
       <div class="gallery">
         <div class="photos photos__wide--left">
@@ -67,6 +68,7 @@
     </section>
 
     <section class="section">
+      <span class="anchor" id="consultation"></span>
       <h2 class="heading section__heading">Consultation<span class="heading__crown"></span></h2>
       <div class="consultation">
         <div class="consultation__text">
@@ -83,6 +85,7 @@
     </section>
 
     <section class="section ">
+      <span class="anchor" id="testimonials"></span>
       <h2 class="heading section__heading">Testimonials<span class="heading__crown"></span></h2>
       <div class="testimonials section__content">
         <div class="person">
@@ -107,10 +110,14 @@
     </section>
 
     <section class="section">
+      <span class="anchor" id="contact"></span>
       <h2 class="heading section__heading">Contact us<span class="heading__crown"></span></h2>
-      <div class="contact">
+      <address class="contact">
         <div class="contact__text">
-          <p><a href="mailto:Hello@miami.com" class="link">Hello@miami.com</a><br>+1 234 555-55-55</p>
+          <p>
+            <a href="mailto:Hello@miami.com" class="link">Hello@miami.com</a><br>
+            <a href="tel:+1 234 555-55-55" class="link">+1 234 555-55-55</a>
+          </p>
           <p>400 first ave. n. suite 700 Minneapolis, MN 55401</p>
         </div>
         <form class="form contact__form">
@@ -119,15 +126,26 @@
           <label><textarea name="message" placeholder="Message" class="input input__textarea form__input"></textarea></label>
           <button class="button form__button">Write to us</button>
         </form>
-      </div>
+      </address>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="logo footer__logo">
-
     </div>
   </footer>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#nav").on("click","a", function (event) {
+          event.preventDefault();
+          var id  = $(this).attr('href'),
+            top = $(id).offset().top;
+          $('body,html').animate({scrollTop: top}, 500);
+        });
+      });
+    </script>
   </body>
 </html>
