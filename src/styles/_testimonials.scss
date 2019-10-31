@@ -1,0 +1,82 @@
+@import "./utils/vars";
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 65px;
+  justify-content: center;
+  color: $c-black;
+  text-align: center;
+
+  @media (max-width: 999px) {
+    grid-template-columns: repeat(2, 200px);
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 200px;
+  }
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  line-height: 24px;
+
+  @media screen and (max-width: 999px) {
+    &:last-child {
+      position: relative;
+      left: calc(100% - 65px);
+    }
+  }
+
+  @media screen and(max-width: 400px) {
+    &:last-child {
+      position: static;
+    }
+  }
+
+  &__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    margin-bottom: 12px;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__position {
+    font-style: italic;
+    color: #696973;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 40px;
+      height: 33px;
+      background-image: url(../images/quotes.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      bottom: calc(100% - 4px);
+      right: calc(100% - 4px);
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .contact-us {
+    &__button {
+      padding: 11px 70px;
+    }
+  }
+}
