@@ -1,0 +1,85 @@
+@import "vars";
+@import "mixins";
+
+.person {
+  @include flex-column-center;
+
+  &__photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    margin-top: 12px;
+    font-weight: bold;
+  }
+
+  &__position {
+    font-style: italic;
+    color: #696973;
+  }
+
+  &__text {
+    margin-top: 10px;
+    width: 80%;
+    text-align: center;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 40px;
+      width: 33px;
+      background-image: url(../images/quotes.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      left: -15px;
+      top: -40px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .person {
+    @include flex-column-center;
+    width: 226px;
+
+    &__name,
+    &__position,
+    &__text {
+      font-size: $mainFontSizeBig;
+    }
+
+    &__text {
+      margin-top: 16px;
+
+      &::before {
+        left: -30px;
+        top: -40px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .person {
+    width: 270px;
+
+    &__name,
+    &__position,
+    &__text {
+      font-size: $mainFontSizeBig;
+    }
+
+    &__text {
+
+      &::before {
+        left: -20px;
+        top: -40px;
+      }
+    }
+  }
+}
