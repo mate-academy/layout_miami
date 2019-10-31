@@ -1,7 +1,163 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "header";
+@import "section";
+@import "footer";
+
+body,
+p,
+ul,
+button,
+input,
+textarea,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 
 body {
-  background: $c-gray;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.logo {
+  width: $logo-width;
+  height: $logo-height;
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and(max-width: 944px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.heading {
+  position: absolute;
+  font-weight: 300;
+  font-size: 48px;
+  text-transform: uppercase;
+  line-height: 1;
+  width: max-content;
+  margin: auto;
+
+  &::before {
+    left: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(100% + 5px);
+    height: 2px;
+    width: calc(50% - 20px);
+    background-color: $main-bg-color;
+  }
+  &::after {
+    right: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(100% + 5px);
+    height: 2px;
+    width: calc(50% - 20px);
+    background-color: $main-bg-color;
+  }
+  &__crown {
+    display: block;
+    width: 23px;
+    height: 16px;
+    background-image: url("../images/crown.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: calc(100% + 4px);
+  }
+
+  @media screen and(max-width: 944px) {
+    font-size: 38px;
+  }
+}
+
+.form {
+  width: 383px;
+  &__input {
+    display: block;
+    width: 100%;
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #393939;
+    padding: 24px;
+    background-color: #eee;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height: 1;
+    outline: none;
+    margin-bottom: 7px;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+
+  &__textarea {
+    height: 166px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 54px;
+  }
+
+  @media screen and(max-width: 944px) {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+
+.button {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: $main-bg-color;
+  cursor: pointer;
+  transition: background-color, 0.3s;
+
+  &:hover {
+    background-color: $hover-btn-bg-color;
+  }
+}
+
+.anchor {
+  position: absolute;
+  top: -50px;
 }
