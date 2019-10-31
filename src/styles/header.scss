@@ -4,17 +4,22 @@
 .header {
   font-weight: 500;
   @include background("../images/header.jpg");
-  height: 765px;
+  height: 100vh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 0 calc(#{$mob-padding-lr} * 2);
+
   &__top {
     @include logo-position;
     top: 35px;
     display: flex;
   }
+
   &__number,
   &__link {
+    height: fit-content;
     position: relative;
     top: 47px;
     white-space: nowrap;
@@ -22,13 +27,22 @@
 
   &__number {
     margin: 0 82px;
+    text-decoration: none;
+    color: $c-white;
+    transition: color $transition;
+
+    &:hover {
+      color: $c-active;
+    }
   }
+
   &__link {
     color: $c-white;
     text-decoration: none;
     border-bottom: 1px dashed $c-white;
     text-transform: uppercase;
     transition: color $transition;
+
     &:hover {
       color: $c-active;
     }
@@ -44,19 +58,23 @@
     margin: 0 auto 32px;
     text-transform: uppercase;
   }
+
   &__link {
     color: $c-white;
     text-decoration: none;
     transition: color $transition;
+
     &:hover {
       color: $c-active;
     }
+
     &--active {
       color: $c-black;
       background-color: #d5c5aa;
       border-radius: 10px;
       padding: 7px 20px;
       transition: color $transition;
+
       &:hover {
         color: $c-link-hover;
       }
@@ -67,6 +85,7 @@
 @media (max-width: $to-mobile-view) {
   .header {
     justify-content: space-between;
+
     &__top {
       position: static;
       flex-direction: column;
