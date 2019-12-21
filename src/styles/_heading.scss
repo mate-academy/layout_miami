@@ -1,0 +1,60 @@
+@import "vars";
+
+.heading {
+  font-weight: 300;
+  font-size: $headingFontSizeSmall;
+  line-height: 1;
+  text-transform: uppercase;
+  position: relative;
+  width: max-content;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    top: calc(100% + 1px);
+    width: calc(50% - 10px);
+    background-color: $decorColor;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  &__crown {
+    background-image: url(../images/crown.svg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 1px);
+    width: 12px;
+    height: 9px;
+    margin: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: $headingFontSizeBig;
+
+    &::before,
+    &::after {
+      top: calc(100% + 5px);
+      width: calc(50% - 20px);
+    }
+
+    &__crown {
+      top: calc(100% + 4px);
+      width: 20px;
+      height: 13px;
+    }
+  }
+}
