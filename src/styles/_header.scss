@@ -1,0 +1,82 @@
+@import "vars";
+@import "mixins";
+
+.header {
+  height: 100vh;
+  background-image: url(../images/header.jpg);
+  @include bg-center-cover;
+  position: relative;
+
+  &__top {
+    position: absolute;
+    top: 35px;
+    left: $posLeftLogo;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include flex-column-center;
+  }
+
+  &__logo,
+  &__phone {
+    margin-bottom: 10px;
+  }
+
+  &__phone {
+    color: white;
+    font-size: $mainFontSizeBig;
+    text-decoration: none;
+    transition: color $transition-duration, border-color $transition-duration;
+
+    &:hover {
+      color: $active-color;
+      border-color: $active-color;
+      cursor: pointer;
+    }
+  }
+
+  &__call-link {
+    color: white;
+    font-size: $mainFontSizeBig;
+    text-decoration: none;
+    border-bottom: 1px dashed #fff;
+    transition: color $transition-duration, border-color $transition-duration;
+
+    &:hover {
+      color: $active-color;
+      border-color: $active-color;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    position: relative;
+
+    &__top {
+      position: absolute;
+      top: 35px;
+      left: calc(50% - #{$logoWidth / 2});
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    &__phone {
+      margin: 0 82px;
+    }
+
+    &__phone,
+    &__call-link {
+      position: relative;
+      top: 47px;
+    }
+  }
+}
