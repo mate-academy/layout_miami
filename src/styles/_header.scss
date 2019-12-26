@@ -1,0 +1,137 @@
+.header {
+  height: 100vh;
+  @include position;
+  flex-direction: column;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("../images/header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+  }
+
+  &__top {
+    width: 100%;
+    @include position;
+    margin-top: 20px;
+  }
+
+  &__logo {
+    width: $header-logo-width;
+    height: 76px;
+    margin-left: calc(50% - #{$header-logo-width / 2});
+  }
+
+  .top__link {
+    @include header-text;
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  &__order {
+    border-bottom: 1px dashed;
+  }
+
+  &__navbar {
+    width: 100%;
+  }
+
+  .navbar__link-list {
+    @include position;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    margin: 16px auto;
+  }
+
+  .navbar__link a {
+    @include header-text;
+  }
+
+  .navbar__link--active {
+    background: $background-color;
+    border-radius: 10px;
+    padding: 7px 20px;
+
+    a {
+      color: #000;
+    }
+  }
+
+  .top__link:hover,
+  .navbar__link:hover a {
+    color: $background-color;
+  }
+
+  .navbar__link--active:hover a {
+    color: #000;
+  }
+
+  &--toggle {
+    display: none;
+    background-image: url("../images/bars.svg");
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 30px / 2);
+    cursor: pointer;
+  }
+
+  .toggle__input {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $tablet-screen-breakpoint) {
+  .header {
+    &__top {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__logo {
+      margin-left: 0;
+    }
+
+    .top__link {
+      margin-top: 15px;
+    }
+
+    &--toggle {
+      display: block;
+      transition-duration: 1s;
+    }
+
+    .navbar__link-list {
+      transform: translate(-100%, 0%);
+      opacity: 0;
+      transition-duration: 0.7s;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 250px;
+      margin-bottom: 70px;
+    }
+
+    &__navbar input:checked ~ .navbar__link-list {
+      transform: translate(0%, 0%);
+      transition-duration: 0.7s;
+      opacity: 1;
+    }
+
+    &__navbar input:checked ~ &--toggle {
+      background-image: url("../images/times.svg");
+      transition-duration: 1s;
+    }
+  }
+}
