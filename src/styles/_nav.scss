@@ -4,6 +4,14 @@
   position: static;
   @include flex(space-between, center, nowrap);
 
+  &__item {
+    margin-bottom: 23px;
+
+    &:last-of-type {
+      margin-bottom: 38px;
+    }
+  }
+
   &__link {
     display: inline-block;
     color: $main-light;
@@ -16,7 +24,6 @@
     letter-spacing: 2px;
     transition: 0.2s ease-in-out;
     padding-bottom: 8px;
-    margin-bottom: 24px;
 
     &::before {
       content: "";
@@ -59,6 +66,14 @@
       z-index: 0;
     }
   }
+
+  &__toggle--inside {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    display: flex;
+
+  }
 }
 
 .nav-bar__hamburger {
@@ -92,41 +107,54 @@
 
 }
 
-@media (max-width: 1023px) {
-  .nav-bar__list {
-    display: block;
-    opacity: 0;
-    background: $accent;
-    padding: 24px 21px 52px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transform: translateX(-101%);
-    transition: transform 0.5s ease-in-out;
-  }
+.nav-bar__list {
+  display: block;
+  opacity: 0;
+  background: $accent;
+  padding: 24px 21px 52px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transform: translateX(-101%);
+  transition: transform 0.5s ease-in-out;
+}
 
-  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger {
-    //background: transparent;
-  }
+.nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger {
+  background: transparent;
+}
 
-  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger:before {
-    //transform: rotate(45deg) translate(-50%, -50%);
-    //transform-origin: -8px 24px;
-    //width: 18px;
-  }
+.nav-bar__input:checked ~ .nav-bar__list {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1;
+}
 
-  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger:after {
-    //transform: rotate(-45deg) translate(-50%, -50%);
-    //transform-origin: 4px -18px;
-    //width: 18px;
-  }
+.hero__logo.nav-bar__logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
 
-  .nav-bar__input:checked ~ .nav-bar__list {
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 1;
+.nav-bar__text {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $main-light;
+  text-decoration: none;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
   }
+}
+
+.nav-bar__btn {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $main-light;
 }
