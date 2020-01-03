@@ -1,0 +1,132 @@
+@import "utils";
+
+.nav-bar {
+  position: static;
+  @include flex(space-between, center, nowrap);
+
+  &__link {
+    display: inline-block;
+    color: $main-light;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition: 0.2s ease-in-out;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+
+    &::before {
+      content: "";
+      opacity: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background: $main-light;
+      position: absolute;
+      bottom: 0;
+      @include hover (opacity, 0.3);
+    }
+
+    &--active::before,
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__toggle {
+    display: none;
+    width: 18px;
+    height: 18px;
+    transform: rotate(0);
+
+    @media (max-width: 1023px) {
+      display: block;
+    }
+
+    &__input {
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+  }
+}
+
+.nav-bar__hamburger {
+  width: 18px;
+  height: 2px;
+  display: block;
+  background: $main-light;
+  border-radius: 2px;
+  transform: translateY(8px);
+  position: relative;
+  z-index: 1000;
+
+  &::after,
+  &::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background: $main-light;
+    border-radius: 2px;
+    position: absolute;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  &::before {
+    top: -6px;
+  }
+
+  &::after {
+    top: 6px;
+  }
+
+}
+
+@media (max-width: 1023px) {
+  .nav-bar__list {
+    display: block;
+    opacity: 0;
+    background: $accent;
+    padding: 24px 21px 52px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: translateX(-101%);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger {
+    //background: transparent;
+  }
+
+  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger:before {
+    //transform: rotate(45deg) translate(-50%, -50%);
+    //transform-origin: -8px 24px;
+    //width: 18px;
+  }
+
+  .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger:after {
+    //transform: rotate(-45deg) translate(-50%, -50%);
+    //transform-origin: 4px -18px;
+    //width: 18px;
+  }
+
+  .nav-bar__input:checked ~ .nav-bar__list {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+  }
+}

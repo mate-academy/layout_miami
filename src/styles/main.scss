@@ -1,7 +1,133 @@
 @import "utils";
 @import "fonts";
-@import "typography";
+@import "reset";
+@import "logo";
+@import "contact";
+@import "about";
+@import "gallery";
+@import "testimonials";
+@import "consultation";
+@import "form";
+@import "nav";
+@import "btn";
 
-body {
+.body {
   background: $c-gray;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 400;
+  color: $main-text-dark;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+  height: 568px;
+}
+
+.hero {
+  padding: 24px 20px 80px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include bg-cover(url(../images/header.jpg));
+
+  &__phone {
+    font-size: 0;
+    @include bg-cover(url(../images/phone.svg));
+    width: 18px;
+    height: 18px;
+  }
+
+  &__logo {
+    width: 73px;
+  }
+
+  &__logo-img {
+    width: 100%;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  &__menu {
+    @include flex(space-between, center, nowrap);
+    padding: 0 3px;
+  }
+}
+
+.main-title {
+  font-size: 46px;
+  line-height: 40px;
+  letter-spacing: -1px;
+  color: $main-light;
+  text-align: left;
+  position: relative;
+  padding-top: 16px;
+  margin: 0;
+
+  &::before {
+    content: "";
+    background: $main-light;
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    border-radius: 8px;
+    left: 0;
+    top: -2px;
+  }
+}
+
+.title {
+  font-size: 36px;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: -1.5px;
+  position: relative;
+  color: $main-dark;
+  margin: 0;
+  margin-bottom: 53px;
+
+  &:after {
+    @include bg-cover(url(../images/crown.svg));
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 16px;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.subtitle {
+  margin: 0;
+  margin-bottom: 4px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  color: $accent;
+}
+
+.footer {
+  @include flex (center, flex-end, nowrap);
+  @include bg-cover(url(../images/footer.jpg));
+  height: 206px;
+  padding: 24px;
+}
+
+.small-screen {
+  @media(min-width: 768px) {
+    display: none;
+  }
 }
