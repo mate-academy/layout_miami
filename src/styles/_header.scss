@@ -1,0 +1,152 @@
+.header {
+  height: 100vh;
+  padding: 24px 20px 0;
+  background: url("../images/header.jpg") no-repeat 50% 40%;
+  background-size: cover;
+  color: #fff;
+
+  &__wrapper {
+    @include section-content__size;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    position: relative;
+    margin-bottom: 95px;
+    animation: titleAppearence 1s ease-in-out forwards;
+  }
+
+  &__title::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 35px;
+    top: -16px;
+    left: 0;
+    background-color: #fff;
+  }
+
+  @keyframes titleAppearence {
+    from {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+.call-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 55vh;
+
+  &__item {
+    position: relative;
+    animation: callAppearence 1s ease-out forwards;
+  }
+
+  &__item:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes callAppearence {
+    from {
+      transform: translateY(-300px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  &__item:not(:nth-child(2))::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -8px;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.2s;
+  }
+
+  &__item:not(:nth-child(2)):hover::after {
+    width: 100%;
+  }
+
+  &__link {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+.navigation {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    animation: navAppearence 0.5s ease-in-out forwards;
+
+    &:nth-child(2) {
+      animation-delay: 0.09s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    &:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    &:nth-child(5) {
+      animation-delay: 0.18s;
+    }
+
+    &:nth-child(6) {
+      animation-delay: 0.21s;
+    }
+
+    @keyframes navAppearence {
+      from {
+        transform: translateY(100px);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__link {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: color 0.2s;
+
+    &--active {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: $border-radius;
+      line-height: 32px;
+      display: inline-block;
+      text-align: center;
+      padding: 0 24px;
+    }
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: $accent-color-dark;
+  }
+}
