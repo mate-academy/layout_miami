@@ -1,7 +1,6 @@
 .header {
   height: 700px;
-  width: 100%;
-  background-image: url("../images/header.jpg");
+  background: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
   font-weight: bold;
@@ -39,13 +38,14 @@
   &__caption {
     color: #fff;
     font-size: 60px;
-    line-height: 60px;
-    width: 328px;
+    line-height: 1;
+    max-width: 328px;
     text-transform: none;
     position: absolute;
     letter-spacing: -1.5px;
     left: 10.5%;
     bottom: 165px;
+    animation: appear 1.5s ease-in-out forwards;
 
     &::before {
       width: 35px;
@@ -80,7 +80,29 @@
   }
 }
 
-@media screen and (max-width: $small-screen) {
+@keyframes appear {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toggle {
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 670px) {
 
   .header {
     height: 568px;
@@ -119,11 +141,6 @@
       cursor: pointer;
     }
 
-    .header .nav {
-      width: 100%;
-      align-items: flex-start;
-    }
-  
     .header .nav__item {
       height: auto;
       margin-left: 0;
@@ -148,6 +165,7 @@
       flex-direction: column;
       align-items: flex-start;
       background-color: $blue-color;
+      animation: toggle 0.5s ease-in-out;
     }
   }
 }
