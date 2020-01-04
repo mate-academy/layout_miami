@@ -1,11 +1,11 @@
 .header {
   height: 700px;
-  background-image: url(../images/header.jpg);
+  background-image: url(../images/Layer_header.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
 
   &__nav {
     position: absolute;
@@ -14,33 +14,36 @@
     right: 0;
   }
 
-  &__top {
-    position: absolute;
-    height: 76px;
-    top: 24px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    margin: 0 120px;
-
-  }
-
   &__logo {
+    position: absolute;
     width: 115px;
     height: 76px;
     object-fit: contain;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
   }
 
   &__phone {
+    position: absolute;
     font-size: 12px;
+    line-height: 16px;
     letter-spacing: 2px;
+    color: white;
+    top: 56px;
+    left: 120px;
+  }
+
+  &__action {
+    position: absolute;
+    top: 56px;
+    right: 120px;
   }
 
   &__link {
     font-size: 12px;
+    line-height: 16px;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
@@ -52,10 +55,65 @@
       position: absolute;
       display: block;
       width: 111px;
+      top: 24px;
       right: 2px;
       height: 1px;
       background-color: white;
     }
+  }
+
+  &__contact-toggler {
+    display: none;
+  }
+
+  &__contact-toggler-label {
+    position: absolute;
+    top: 39px;
+    left: 23px;
+    z-index: 3;
+
+    &::before {
+      content: "";
+      display: none;
+      width: 18px;
+      height: 18px;
+      background-image: url(../images/Vector.png);
+    }
+  }
+
+  &__contact-toggler:checked ~ &__contact-toggler-label::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/nav_close.png);
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-toggler-label {
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    z-index: 3;
+
+    &::before {
+      content: "";
+      display: none;
+      width: 18px;
+      height: 12px;
+      background-image: url(../images/nav_open.png);
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/nav_close.png);
   }
 
   &__title {
@@ -83,11 +141,120 @@
 }
 
 @media (max-width: $small-screen-breakpoint) {
-  .header__title {
-    top: 214px;
-  }
+  .header {
+    height: 568px;
 
-  .header__top {
-    margin: 0 20px;
+    &__title {
+      top: 407px;
+      left: 20px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+
+    &__contact-toggler-label::before {
+      display: block;
+    }
+
+    &__nav-toggler-label::before {
+      display: block;
+    }
+
+    &__contact-toggler:not(:checked) ~ .header__action {
+      display: none;
+    }
+
+    &__contact-toggler:checked ~ .header__action {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-blue;
+
+      & .header__link {
+        position: absolute;
+        top: 152px;
+        left: 20px;
+        z-index: 3;
+      }
+    }
+
+    &__contact-toggler:checked ~ &__nav-toggler:checked ~ &__action {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-blue;
+
+      & .header__link {
+        position: absolute;
+        top: 492px;
+        left: 20px;
+        z-index: 3;
+      }
+    }
+
+    &__contact-toggler:checked ~ .header__title {
+      z-index: -1;
+    }
+
+    &__contact-toggler:not(:checked) ~ .header__phone {
+      display: none;
+    }
+
+    &__contact-toggler:checked ~ .header__phone {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-blue;
+
+      & span {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        z-index: 3;
+      }
+    }
+
+    &__contact-toggler:checked ~ .&__nav-toggler:checked ~ .&__phone {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $color-blue;
+
+      & span {
+        position: absolute;
+        top: 460px;
+        left: 20px;
+        z-index: 3;
+      }
+    }
+
+    &__nav-toggler:not(:checked) ~ .nav {
+      display: none;
+    }
+
+    &__nav-toggler:checked ~ .nav {
+      top: 0;
+      bottom: 0;
+      font-size: 22px;
+      line-height: 22px;
+      background-color: $color-blue;
+
+      & .nav__list {
+        flex-direction: column;
+        padding: 120px 0 0 21px;
+
+        & .nav__item {
+          padding: 16px 0;
+        }
+
+        & .nav__item_active {
+          background-color: transparent;
+        }
+      }
+    }
   }
 }
