@@ -21,10 +21,6 @@
     }
   }
 
-  &__toggler {
-    display: none;
-  }
-
   &__phone {
     font-weight: 500;
     font-size: 16px;
@@ -63,17 +59,25 @@
 }
 
 .nav {
-  &__toggler {
+
+  &__item_call,
+  &__item_phone {
+    display: none;
+  }
+
+  &__toggler,
+  &__toggler-label {
     display: none;
 
     &-label::before {
       content: "";
       display: block;
+      position: absolute;
+      top: 5%;
       width: 20px;
       height: 20px;
       background: url(../images/menu.png) no-repeat center;
     }
-
   }
 
   &__list {
@@ -93,6 +97,10 @@
     text-decoration: none;
     transition: background-color, ease-in-out, 0.5s;
 
+    &-phone {
+      display: none;
+    }
+
     &_active,
     &:hover {
       background-color: #d5c5aa;
@@ -102,10 +110,10 @@
 
 @media screen and (max-width: 956px) {
   .header {
-    height: 70vh;
 
     &__top {
       justify-content: space-between;
+      padding-left: 33%;
       align-items: flex-start;
       width: 100%;
 
@@ -114,7 +122,7 @@
       }
     }
 
-    &__toggler {
+    &__nav {
       display: block;
     }
 
@@ -137,36 +145,37 @@
   }
 
   .nav {
+
     &__list {
-      display: none;
+      flex-direction: column;
+      padding-left: 50px;
+      background-color: $dark-blue;
+      padding-top: 80px;
+      padding-bottom: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
 
-      &-toggler {
-        background-color: $dark-blue;
-        padding-top: 80px;
+      &::after {
+        content: "";
+        display: block;
+        width: 73px;
+        height: 50px;
+        background-image: url(../images/logo.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 20%;
-
-        &::after {
-          content: "";
-          display: block;
-          width: 73px;
-          height: 50px;
-          background-image: url(../images/logo.png);
-          background-repeat: no-repeat;
-          background-size: cover;
-          top: 5%;
-          left: 50%;
-          transform: translateX(-50%);
-          position: absolute;
-          z-index: 2;
-        }
+        z-index: 2;
       }
     }
 
-    &__toggler:not(:checked) ~ .nav__list-toggler {
+    &__toggler:not(:checked) ~ .nav__list {
       display: none;
     }
 
@@ -186,25 +195,31 @@
       background-color: transparent;
     }
 
-    
-
     &__item_phone {
+      display: block;
       color: #fff;
-      margin-top: 40px;
+      margin-top: 20px;
       padding-left: 20px;
     }
 
     &__link_phone {
       display: inline-block;
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        height: 2px;
+        background-color: #fff;
+      }
     }
 
-    &__link_phone::after {
-      content: "";
+    &__toggler-label {
       display: block;
-      width: 100%;
-      margin-top: 5px;
-      height: 2px;
-      background-color: #fff;
+    }
+
+    &__item_call {
+      display: block;
     }
   }
 }
