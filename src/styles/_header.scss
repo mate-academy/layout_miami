@@ -1,3 +1,6 @@
+@import "./utils/vars";
+@import "./utils/mixins";
+
 .header {
   background: url(../images/photos/header.png) no-repeat center;
   background-size: cover;
@@ -6,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 35px 160px;
+  padding: 35px 10%;
 
   &__top {
     display: flex;
@@ -18,6 +21,10 @@
     }
   }
 
+  &__toggler {
+    display: none;
+  }
+
   &__phone {
     font-weight: 500;
     font-size: 16px;
@@ -27,6 +34,11 @@
   &__action {
 
     position: relative;
+    
+    &:hover {
+      text-shadow: 2px 4px 20px #fff;
+    }
+
     &::after {
       content: "";
       display: block;
@@ -40,19 +52,34 @@
   &__action-link {
 
     @extend .header__phone;
-    //padding-bottom: 4px;
-    //border-bottom: dashed;
     text-decoration: none;
     text-transform: uppercase;
     position: relative;
   }
+
+  &__phone-icon {
+    display: none;
+  }
 }
 
 .nav {
+  &__toggler {
+    display: none;
+
+    &-label::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(../images/menu.png) no-repeat center;
+    }
+
+  }
 
   &__list {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     list-style: none;
   }
@@ -69,6 +96,115 @@
     &_active,
     &:hover {
       background-color: #d5c5aa;
+    }
+  }
+}
+
+@media screen and (max-width: 956px) {
+  .header {
+    height: 70vh;
+
+    &__top {
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+
+      & *:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+
+    &__toggler {
+      display: block;
+    }
+
+    &__phone,
+    &__action-link {
+      display: none;
+    }
+
+    &__action::after {
+      display: none;
+    }
+
+    &__phone-icon {
+      display: block;
+    }
+
+    &__action {
+      display: none;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: none;
+
+      &-toggler {
+        background-color: $dark-blue;
+        padding-top: 80px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 20%;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 73px;
+          height: 50px;
+          background-image: url(../images/logo.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          top: 5%;
+          left: 50%;
+          transform: translateX(-50%);
+          position: absolute;
+          z-index: 2;
+        }
+      }
+    }
+
+    &__toggler:not(:checked) ~ .nav__list-toggler {
+      display: none;
+    }
+
+    &__toggler:checked ~ .nav__toggler-label::before {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 5%;
+      z-index: 3;
+      width: 20px;
+      height: 20px;
+      background: url(../images/cross.png) no-repeat center;
+    }
+
+    &__link_active,
+    &__link:hover {
+      background-color: transparent;
+    }
+
+    
+
+    &__item_phone {
+      color: #fff;
+      margin-top: 40px;
+      padding-left: 20px;
+    }
+
+    &__link_phone {
+      display: inline-block;
+    }
+
+    &__link_phone::after {
+      content: "";
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      height: 2px;
+      background-color: #fff;
     }
   }
 }
