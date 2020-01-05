@@ -4,7 +4,7 @@
   justify-content: space-between;
   flex-direction: column;
   padding: 24px calc(50% - 470px) 48px;
-  background-image: url(/images/Header_optimized.jpg);
+  background-image: url(../images/header.jpg);
   background-size: cover;
   color: $c-white;
 
@@ -54,19 +54,96 @@
       border-radius: 2px;
     }
   }
+
+  &__phone-img,
+  &__nav-toggler,
+  &__nav-toggler-label {
+    display: none;
+  }
+
+  &__nav-toggler-label::before {
+    content: "";
+    background-image: url(../images/open.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 12.5%;
+    cursor: pointer;
+  }
+
+  &__nav-toggler:checked ~ &__title {
+    display: none;
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    opacity: 0;
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::after {
+    content: "";
+    background-image: url(../images/close.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 12.5%;
+    cursor: pointer;
+  }
 }
 
 @media screen and (max-width: 899px) {
+
   .header {
-    align-items: center;
-    height: 450px;
-  }
+    height: 560px;
 
-  .header__top {
-    flex-direction: column;
-  }
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      top: 0;
+      left: 20px;
+      margin-bottom: 32px;
+    }
 
-  .header__title {
-    opacity: 0;
+    &__logo {
+      width: 73px;
+      height: 48px;
+      z-index: 1;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__link,
+    &__phone {
+      display: none;
+    }
+
+    &__phone-img {
+      display: inline-block;
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      object-fit: contain;
+      top: 32px;
+      left: 23px;
+      cursor: pointer;
+    }
+
+    &__nav-toggler-label {
+      display: inline-block;
+      position: absolute;
+      right: 23px;
+      top: 32px;
+      padding: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    &__nav-toggler:not(:checked) ~ .nav {
+      display: none;
+    }
   }
 }
