@@ -5,7 +5,8 @@ const menuSlide = () => {
   const header = document.querySelector('.header');
 
   burger.addEventListener('click', () => {
-    header.classList.toggle('header--open');
+    header.classList.toggle('header--opened');
+    header.classList.toggle('header--closed');
     burger.classList.toggle('toogle');
   });
 };
