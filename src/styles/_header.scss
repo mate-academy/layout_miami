@@ -1,16 +1,36 @@
 .header {
   height: 100vh;
   padding: 24px 20px 0;
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
   background-size: cover;
   background-attachment: fixed;
   color: #fff;
+  transition: background-image 1.5s;
 
   &--closed {
-    background: url("../images/header.png") no-repeat 50% 40%;
+    background-image: url("../images/header.png");
   }
 
   &--opened {
-    background-color: $accent-color-light;
+    background-image: url("../images/header-col.png");
+  }
+
+  @keyframes navDisAppearence {
+    to {
+      transform: translateX(-300px);
+    }
+  }
+
+  @keyframes navAppearence {
+    from {
+      transform: translateX(-300px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+    }
   }
 
   &__wrapper {
@@ -341,29 +361,12 @@
   
     &--opened .call-list__item:nth-child(2),
     &--opened .call-list__item:nth-child(4) {
-      animation: call-itemAppearence 0.6s ease-in-out forwards;
+      animation: navAppearence 0.6s ease-in-out forwards;
     }
   
     &--closed .call-list__item:nth-child(2),
     &--closed .call-list__item:nth-child(4) {
-      animation: call-itemDisAppearence 0.6s ease-in-out forwards;
-    }
-  
-    @keyframes call-itemDisAppearence {
-      to {
-        transform: translateX(-300px);
-      }
-    }
-  
-    @keyframes call-itemAppearence {
-      from {
-        transform: translateX(-300px);
-        opacity: 0;
-      }
-  
-      to {
-        transform: translateX(0);
-      }
+      animation: navDisAppearence 0.6s ease-in-out forwards;
     }
   }
 
