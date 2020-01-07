@@ -19,8 +19,26 @@
     &__phone-icon {
       display: block;
     }
-    &__hamburg-icon {
-      display: block;
+    &__hamburg-icon::before {
+      content: "";
+      background-image: url(../images/hamburg.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 12px;
+      width: 18px;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      z-index: 4;
+    }
+    &__hamburg-icon::after {
+      display: none;
+      content: "";
+      background-image: url(../images/closeX.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 16px;
+      width: 16px;
       cursor: pointer;
       position: absolute;
       right: 0;
@@ -47,6 +65,12 @@
   }
   input.togglerMenu:checked ~ .mobile-nav {
     display: flex;
+  }
+  input.togglerMenu:checked ~ .header__hamburg-icon::before {
+    display: none;
+  }
+  input.togglerMenu:checked ~ .header__hamburg-icon::after {
+    display: block;
   }
   .info {
     margin: 0;
