@@ -8,6 +8,7 @@ window.onload = function() {
   const handset = document.getElementsByClassName('header__contact-mob')[0];
   const navMobile = document.getElementsByClassName('nav_mobile')[0];
   const headerTitle = document.getElementsByClassName('header__title')[0];
+  const activLink = document.getElementsByClassName('nav__link');
 
   menuBtn.addEventListener('click', function() {
     gamb.classList.toggle('open');
@@ -24,6 +25,15 @@ window.onload = function() {
     headerTitle.classList.remove('opacity');
     navMobile.classList.remove('block');
   };
+
+  for (let i = 0; i < activLink.length; i++) {
+    activLink[i].addEventListener('click', function() {
+      for (let c = 0; c < activLink.length; c++) {
+        activLink[c].classList.remove('nav__link--active');
+      }
+      this.classList.toggle('nav__link--active');
+    });
+  }
 
   /* global jQuery */
   /* eslint no-undef: "error" */
