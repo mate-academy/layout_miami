@@ -4,6 +4,34 @@
   position: static;
   @include flex(space-between, center, nowrap);
 
+  &--desktop {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: block;
+    opacity: 0;
+    background: $accent;
+    padding: 24px 21px 52px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: translateX(-101%);
+    transition: transform 0.5s ease-in-out;
+
+    &--desktop {
+      @include flex(space-between, center, nowrap);
+    }
+  }
+
   &__item {
     margin-bottom: 23px;
 
@@ -14,6 +42,7 @@
 
   &__link {
     display: inline-block;
+    white-space: nowrap;
     color: $main-light;
     text-transform: uppercase;
     text-decoration: none;
@@ -35,44 +64,65 @@
       position: absolute;
       bottom: 0;
       @include hover (opacity, 0.3);
+      @media (min-width: 768px) {
+        display: none;
+      }
     }
 
     &--active::before,
     &:hover::before {
       opacity: 1;
     }
-  }
 
-  &__input {
-    display: none;
+    &--desktop {
+      display: block;
+      text-transform: uppercase;
+      color: $main-light;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 32px;
+      border-radius: 8px;
+      letter-spacing: 2px;
+
+      @media (min-width: 768px) {
+        padding: 0 20px;
+      }
+
+      @media (min-width: 1024px) {
+        padding: 0 24px;
+      }
+    }
+
+    &--active,
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
   }
 
   &__toggle {
-    display: none;
-    width: 18px;
-    height: 18px;
-    transform: rotate(0);
-
-    @media (max-width: 1023px) {
-      display: block;
-    }
-
-    &__input {
-      display: block;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-  }
-
-  &__toggle--inside {
     position: absolute;
     top: 40px;
     right: 24px;
     display: flex;
+    width: 18px;
+    height: 18px;
+  }
 
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  &__input:checked ~ .nav-bar__list {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
   }
 }
 
@@ -82,57 +132,25 @@
   display: block;
   background: $main-light;
   border-radius: 2px;
-  transform: translateY(8px);
   position: relative;
-  z-index: 1000;
-
-  &::after,
-  &::before {
-    content: "";
-    width: 18px;
-    height: 2px;
-    background: $main-light;
-    border-radius: 2px;
-    position: absolute;
-    transition: transform 0.4s ease-in-out;
-  }
-
-  &::before {
-    top: -6px;
-  }
-
-  &::after {
-    top: 6px;
-  }
-
-}
-
-.nav-bar__list {
-  display: block;
-  opacity: 0;
-  background: $accent;
-  padding: 24px 21px 52px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  transform: translateX(-101%);
-  transition: transform 0.5s ease-in-out;
+  z-index: 100;
+  box-shadow: 0 6px 0 0 rgba(225,255,255,1), 0 12px 0 0 rgba(255,255,255,1);
 }
 
 .nav-bar__input:checked ~ .nav-bar__toggle .nav-bar__hamburger {
-  background: transparent;
+  height: 18px;
+  box-shadow: none;
+  background-color: transparent;
+  @include bg-contain(url(../images/close.svg));
+
+  &::before,
+  &::after {
+    content: none;
+  }
+
 }
 
-.nav-bar__input:checked ~ .nav-bar__list {
-  opacity: 1;
-  transform: translateY(0);
-  z-index: 1;
-}
-
-.hero__logo.nav-bar__logo {
+.header__logo.nav-bar__logo {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -155,6 +173,21 @@
 
 .nav-bar__btn {
   display: inline-block;
-  padding-bottom: 8px;
-  border-bottom: 1px solid $main-light;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    transform: translateX(-50%);
+    background: $main-light;
+    @include hover(width, 0.3s);
+  }
+
+  &:hover::after {
+    width: 0;
+  }
 }
