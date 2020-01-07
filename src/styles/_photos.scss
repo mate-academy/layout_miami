@@ -1,27 +1,34 @@
 .photos {
   display: flex;
   justify-content: space-between;
+  transition: $hover-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &__img {
+    height: 256px;
     width: calc(50% - 10px);
-    height: 260px;
     object-fit: cover;
     object-position: center;
+    border-radius: 8px;
+  }
+
+  &__img-large {
+    width: calc(67% - 10px);
+  }
+
+  &__img-small {
+    width: calc(33% - 10px);
   }
 }
 
-.photos__img1 {
-  width: calc(67% - 10px);
-}
-
-.photos__img2 {
-  width: calc(33% - 10px);
-}
-
-.photos__img5 {
-  width: calc(33% - 10px);
-}
-
-.photos__img6 {
-  width: calc(67% - 10px);
+@media screen and (max-width: $small-screen-breakpoint) {
+  .photos {
+    &__img-large,
+    &__img-small {
+      width: calc(50% - 10px);
+    }
+  }
 }

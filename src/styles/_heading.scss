@@ -1,39 +1,33 @@
 .heading {
-  font-size: 48px;
-  line-height: 1;
-  position: absolute;
+  font-size: $font-size-large;
+  letter-spacing: -1.5px;
   text-transform: uppercase;
-  font-weight: 300;
-  width: max-content;
-
-  &::before,
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 2px;
-    top: calc(100% + 5px);
-    width: calc(50% - 20px);
-    background-color: $highlight-color;
-  }
-
-  &::before {
-    left: 0;
-  }
-
-  &::after {
-    right: 0;
-  }
+  position: relative;
+  text-align: center;
+  margin-bottom: 50px;
+  animation: heading-animation 2s ease-in-out;
 
   &__crown {
-    display: block;
     position: absolute;
-    left: 0;
-    right: 0;
+    background-image: url("../images/crown.svg");
     width: 20px;
     height: 13px;
-    margin: auto;
-    top: calc(100% + 4px);
-    background-image: url("../images/crown.svg");
+    top: 55px;
+    left: 50%;
+  }
+}
+
+@keyframes heading-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .heading {
+    font-size: $font-size-heading-mobile;
   }
 }
