@@ -17,6 +17,14 @@ window.onload = function() {
     navMobile.classList.toggle('block');
   });
 
+  window.onresize = function() {
+    gamb.classList.remove('open');
+    backgroundHeader.classList.remove('mobile_background');
+    handset.classList.remove('opacity');
+    headerTitle.classList.remove('opacity');
+    navMobile.classList.remove('block');
+  };
+
   /* global jQuery */
   /* eslint no-undef: "error" */
 
