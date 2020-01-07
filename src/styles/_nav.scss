@@ -1,3 +1,6 @@
+@import "vars";
+@import "mixins";
+
 @keyframes menu {
   from {
     margin-top: -100%;
@@ -9,46 +12,114 @@
 }
 
 .nav {
-  &__list {
-    list-style: none;
-    background-color: #0075ff;
-    height: 490px;
-    padding: 35px 21px;
-    animation: menu 500ms ease-in-out;
+
+  &__toggle {
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    z-index: 1;
+    width: 18px;
+    height: 12px;
+
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
   }
 
-  &__link {
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    font-size: 22px;
-    line-height: 22px;
-    text-transform: uppercase;
-    transition: color 300ms ease-in-out;
-    cursor: pointer;
+  &__list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 120px 20px 0;
+    height: 100vh;
+    background-color: $blue-color;
+    list-style: none;
+    animation: menu $animation-duration $ease-function;
+  }
+
+  &__item {
+    display: block;
     margin-bottom: 32px;
   }
 
-  &__link:hover {
-    color: #9fadc2;
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    color: $white-color;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: color $transition-duration $ease-function;
+    cursor: pointer;
   }
 
+  &__link:hover {
+    color: $lightgrey-color;
+  }
+
+  &--closed &__list {
+    display: none;
+  }
+
+  &--closed &__toggle::before,
+  &--closed &__toggle::after {
+    @include pseudo-element;
+    top: 0;
+    right: 0;
+
+    width: 18px;
+    height: 2px;
+
+    background-color: $white-color;
+    box-shadow: 0 5px 0 0 $white-color, 0 10px 0 0 $white-color;
+  }
+
+  &--opened &__toggle {
+    &::before,
+    &::after {
+      @include pseudo-element;
+      top: 5px;
+      left: -2px;
+      z-index: 1;
+
+      width: 22px;
+      height: 2px;
+
+      background-color: $white-color;
+      transition: transform $transition-duration $ease-function;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+      box-shadow: none;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
 }
 
-@media (min-width: 640px) {
+@media (min-width: $medium-screen-width) {
   .nav {
     &__list {
       position: absolute;
-      left: 400px;
-      bottom: 40px;
+      left: 430px;
+      top: calc(100vh - 280px);
+
+      padding: 0;
+      height: 300px;
+      width: 120px;
+
       background-color: transparent;
       animation: none;
-      height: auto;
-      padding: 0;
     }
 
     &__item {
       border-radius: 8px;
+      margin-bottom: 0;
       padding: 8px 24px;
       &--active {
         background-color: #464755;
@@ -57,20 +128,31 @@
 
     &__link {
       font-size: 12px;
-      line-height: 16px;
-      margin-bottom: 0;
+      line-height: 28px;
+    }
+
+    &--closed &__list {
+      display: block;
+    }
+
+    &--closed &__toggle,
+    &--opened &__toggle {
+      display: none;
     }
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: $big-screen-width) {
   .nav {
-    &__list {
-      display: flex;
+    &--closed &__list,
+    &--opened &__list {
+      @include flex-space-between;
       flex-wrap: wrap;
-      justify-content: space-between;
+      top: calc(100vh - 72px);
       left: 120px;
       right: 120px;
+      width: auto;
+      height: 32px;
     }
   }
 }

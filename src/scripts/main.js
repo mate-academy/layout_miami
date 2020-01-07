@@ -1,16 +1,45 @@
 'use strict';
 
-const headerMain = document.querySelector('.header');
-const headerToggle = document.querySelector('.header__toggle');
+const ESC_KEYCODE = 27;
+const ENTER_KEYCODE = 13;
 
-headerMain.classList.remove('header--nojs');
+const navMain = document.querySelector('.nav');
+const navToggle = document.querySelector('.nav__toggle');
+const header = document.querySelector('.header');
 
-headerToggle.addEventListener('click', function() {
-  if (headerMain.classList.contains('header--closed')) {
-    headerMain.classList.remove('header--closed');
-    headerMain.classList.add('header--opened');
+const onToggleEscPress = function(evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closeMenu();
+  }
+};
+
+const openMenu = function() {
+  navMain.classList.remove('nav--closed');
+  navMain.classList.add('nav--opened');
+  header.classList.add('header--hidden');
+  document.addEventListener('keydown', onToggleEscPress);
+};
+
+const closeMenu = function() {
+  navMain.classList.add('nav--closed');
+  navMain.classList.remove('nav--opened');
+  header.classList.remove('header--hidden');
+  document.removeEventListener('keydown', onToggleEscPress);
+};
+
+navToggle.addEventListener('click', function() {
+  if (navMain.classList.contains('nav--closed')) {
+    openMenu();
   } else {
-    headerMain.classList.add('header--closed');
-    headerMain.classList.remove('header--opened');
+    closeMenu();
+  }
+});
+
+navToggle.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE
+    && navMain.classList.contains('nav--closed')) {
+    closeMenu();
+  } else {
+    openMenu();
   }
 });
