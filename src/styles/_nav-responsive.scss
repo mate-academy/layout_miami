@@ -1,0 +1,92 @@
+.toggler-label {
+  display: none;
+  position: absolute;
+  top: 36px;
+  right: 23px;
+  transition: 0.4s;
+  font-size: 48px;
+  cursor: pointer;
+
+  &:hover {
+    color: #9fadc2;
+  }
+}
+
+.toggler-label::before {
+  content: "=";
+}
+
+.toggler:checked ~ .toggler-label::before {
+  content: "x";
+}
+
+.toggler {
+  display: none;
+}
+
+.nav-responsive {
+
+  &__logo {
+    display: none;
+    top: 24px;
+    left: calc(50% - #{$logo-small-width / 2});
+    width: $logo-small-width;
+    height: $logo-small-height;
+  }
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__phone {
+    @include header-font-style;
+    margin-top: 48px;
+    margin-bottom: 16px;
+
+    display: block;
+  }
+
+  &__action {
+    display: block;
+  }
+}
+
+@media (max-width: $small-screen-brackepoint) {
+
+  .nav-responsive {
+    &__logo {
+      display: block;
+    }
+
+    &__list {
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      height: 700px;
+      top: 0;
+      left: -150%;
+      @include header-font-style;
+      padding: 120px 20px;
+      transition: 0.7s ease-in-out;
+      background: rgba(0, 117, 255, 1);
+
+      &:visited {
+        color: #fff;
+      }
+
+      &:hover {
+        color: $active-color;
+      }
+    }
+  }
+
+  .toggler-label {
+    display: block;
+    color: #fff;
+    z-index: 1;
+  }
+
+  .toggler:checked ~ .nav-responsive__list {
+    left: 0;
+  }
+}
