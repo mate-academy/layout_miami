@@ -1,0 +1,157 @@
+.nav {
+  text-transform: uppercase;
+  max-width: 1020px;
+  position: relative;
+  margin: 0 auto;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    padding: 8px 0;
+    list-style-type: none;
+    // @include header-font-style;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &_active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 8px 24px;
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    @include header-font-style;
+    transition: color 300ms ease-in-out;
+
+    &:visited {
+      color: #fff;
+    }
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+  &__logo {
+
+    display: none;
+  }
+
+  &__phone {
+    @include header-font-style;
+
+    display: none;
+  }
+
+  &__action {
+    display: none;
+  }
+}
+
+.show-menu-btn {
+  position: absolute;
+  top: 36px;
+  right: 23px;
+}
+
+.show-menu-btn,
+.hide-menu-btn {
+  transition: 0.4s;
+  font-size: 24px;
+  cursor: pointer;
+
+  display: none;
+
+  &:hover {
+    color: #9fadc2;
+  }
+}
+
+#toggler {
+  position: absolute;
+  visibility: hidden;
+  z-index: -1111;
+}
+
+@media (max-width: $small-screen-brackepoint) {
+  .nav {
+    &__logo {
+      display: block;
+      top: 24px;
+      left: calc(50% - #{73px / 2});
+      width: 73px;
+      height: 48px;
+    }
+
+    &__phone {
+      @include header-font-style;
+      display: block;
+    }
+
+    &__action {
+      display: block;
+    }
+
+    .show-menu-btn,
+    .hide-menu-btn {
+      display: block;
+    }
+
+    .hide-menu-btn {
+      position: absolute;
+      top: 36px;
+      right: 23px;
+      color: #fff;
+      transition: 0.4s;
+      font-size: 24px;
+      cursor: pointer;
+
+      &:hover {
+        color: #9fadc2;
+      }
+    }
+
+    &__list {
+
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      height: 700px;
+      top: -644px;
+      right: 20%;
+      padding: 120px 20px;
+      transition: 0.7s;
+      background: rgba(0, 117, 255, 0.5);
+    }
+
+    &__item,
+    &__link {
+      box-sizing: border-box;
+      width: 100%;
+      display: block;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      padding: 12px 0;
+
+    }
+
+    &__item {
+      &_active {
+        background-color: rgba(255, 255, 255, 0);
+      }
+    }
+  }
+
+  #toggler:checked ~ .nav__list {
+    right: 0;
+  }
+}
