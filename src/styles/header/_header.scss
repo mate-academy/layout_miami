@@ -1,20 +1,14 @@
 @import "var";
+@import "../utils/mixins";
 
 .header {
   height: 100vh;
-  margin-bottom: 104px;
-  background-image: url("../images/header.jpg");
+  background-image: url("../images/header2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
-  &__nav {
-    position: absolute;
-    bottom: 48px;
-    left: 0;
-    right: 0;
-  }
+  z-index: 2;
 
   &__top {
     position: flex;
@@ -37,12 +31,65 @@
 
   &__phone {
     margin: o 82px;
+    position: relative;
+    transition: transform 0.3s;
+
+    &::after {
+      @include menu-icon;
+      height: 18px;
+      background-image: url("../../images/phone.svg");
+    }
+  }
+
+  &__action {
+    position: relative;
+    transition: transform 0.3s;
+
+    &::after {
+      @include menu-icon;
+      height: 12px;
+      background-image: url("../../images/action.svg");
+    }
   }
 
   &__link {
     color: white;
     text-transform: uppercase;
     border-bottom: 1px solid white;
+  }
+
+  &__name {
+    position: absolute;
+    width: 328px;
+    bottom: 165px;
+    left: 120px;
+    transition: transform 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      background-color: $color-white;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    transition: font-size 0.3s,
+      line-height 0.3s;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
   }
 }
 
@@ -54,15 +101,60 @@
   }
 }
 
-@media screen and (max-width: 380px) {
-  .header__top {
-    flex-direction: column;
-    align-items: center;
+@media screen and (max-width: 768px) {
+  .header {
+    &__top {
+      justify-content: center;
+    }
+
+    &__phone {
+      transform: translateX(-350px);
+
+      &::after {
+        display: block;
+        transform: translate(380px, 5px);
+      }
+    }
+
+    &__action {
+      transform: translateX(360px);
+
+      &::after {
+        display: block;
+        transform: translate(-300px, 8px);
+      }
+    }
+
+    &__name {
+      transform: translate(-100px, 85px);
+    }
+
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+
+  }
+
+  .logo {
+    &__img {
+      transform: scale(0.65);
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
   }
 
   .header__phone,
   .header__logo {
     margin-bottom: 10px;
   }
-
 }
