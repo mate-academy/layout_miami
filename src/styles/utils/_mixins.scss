@@ -1,5 +1,7 @@
+@import "vars";
+
 @mixin section-content__size {
-  max-width: 1017px;
+  max-width: $content-width;
   margin: 0 auto;
 }
 
@@ -9,27 +11,33 @@
 
 @mixin section-title {
   font-weight: bold;
-  font-size: 48px;
+  font-size: $font-size-lg;
   letter-spacing: -1.5px;
   text-align: center;
   position: relative;
-}
 
-@mixin section-title__after {
-  content: "";
-  position: absolute;
-  bottom: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 23px;
-  height: 16px;
-  background: url("../../images/crown.svg") no-repeat center;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 23px;
+    height: 16px;
+    background: url("../../images/crown.svg") no-repeat center;
+  }
+
+  @media (max-width: 790px) {
+    & {
+      font-size: $font-size-mob-lg;
+    }
+  }
 }
 
 @mixin form-input {
   padding: 17px;
   width: 100%;
-  font-size: 14px;
+  font-size: $font-size-mdxs;
   color: #b9c1ce;
   background-color: $input-bg;
   border-radius: $border-radius;
@@ -38,16 +46,21 @@
   outline: none;
   margin-bottom: 16px;
   resize: none;
-}
 
-@mixin form-input__active {
-  background-color: transparent;
-  border: 1px solid #b9c1ce;
+  &:active,
+  &:focus {
+    background-color: transparent;
+    border: 1px solid #b9c1ce;
+  }
+
+  &::placeholder {
+    color: $input-text-color;
+  }
 }
 
 @mixin form-button {
   width: 100%;
-  font-size: 16px;
+  font-size: $font-size-sm;
   color: #fff;
   font-weight: bold;
   background-color: $accent-color-light;
@@ -59,9 +72,10 @@
   line-height: 56px;
   margin: 16px 0;
   cursor: pointer;
-}
 
-@mixin form-button__active {
-  background-color: #0067df;
-  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  &:active,
+  &:hover {
+    background-color: #0067df;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  }
 }
