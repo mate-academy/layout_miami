@@ -1,7 +1,9 @@
 .header {
-  height: 700px;
+  height: 100vh;
   background: url("../../images/header.png") no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: 50% 100%;
+  background-attachment: fixed;
 
   &-contact {
     display: flex;
@@ -32,6 +34,18 @@
         width: 0;
       }
     }
+
+    &__phone--icon {
+      display: none;
+    }
+
+    &__bars--icon {
+      display: none;
+    }
+
+    &__close--icon {
+      display: none;
+    }
   }
 
   &-title {
@@ -60,7 +74,7 @@
   }
 
   .nav {
-    margin-top: 105px;
+    margin-top: 155px;
 
     &__item--active {
       background: rgba(255, 255, 255, 0.1);
@@ -86,6 +100,61 @@
       &:hover {
         color: $c-grayish;
       }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    .nav,
+    &-contact__phone,
+    &-contact__order {
+      display: none;
+    }
+
+    &-contact__phone--icon,
+    &-contact__bars--icon {
+      display: block;
+      cursor: pointer;
+    }
+
+    &-title {
+      margin-top: 370px;
+      margin-left: 50px;
+
+      &__text {
+        font-size: 50px;
+      }
+    }
+
+    .nav {
+      margin-top: 40px;
+
+      &__list {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-left: 20px;
+      }
+
+      &__item {
+        margin-top: 30px;
+      }
+
+      &__link {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .header--mobile {
+    background: $c-blue;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    &-title {
+      width: 100%;
     }
   }
 }
