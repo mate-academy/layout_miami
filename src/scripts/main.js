@@ -6,7 +6,7 @@ window.onload = function() {
   // console.log(menuBtn);
   const backgroundHeader = document.getElementsByClassName('header')[0];
   const handset = document.getElementsByClassName('header__contact-mob')[0];
-  const navMobile = document.getElementsByClassName('nav_mobile')[0];
+  const navMobile = document.getElementsByClassName('navMobile')[0];
   const headerTitle = document.getElementsByClassName('header__title')[0];
   const activLink = document.getElementsByClassName('nav__link');
 
@@ -34,19 +34,4 @@ window.onload = function() {
       this.classList.toggle('nav__link--active');
     });
   }
-
-  /* global jQuery */
-  /* eslint no-undef: "error" */
-
-  jQuery('.nav__link, .nav_mobile__link').on('click', function() {
-    const navLink = jQuery(this).attr('href');
-
-    if (navLink.length > 1) {
-      if (jQuery('div').is(navLink)) {
-        const blockTop = jQuery(navLink).offset().top;
-
-        jQuery('html, body').animate({ scrollTop: blockTop }, 400);
-      }
-    }
-  });
 };
