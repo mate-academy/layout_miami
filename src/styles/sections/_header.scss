@@ -4,12 +4,26 @@
   background-size: cover;
   background-position: 50% 100%;
   background-attachment: fixed;
+  position: relative;
 
   &-contact {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding-top: 24px;
+
+    &__phone {
+
+      &_link {
+        @include header-style;
+      }
+
+      &--on {
+        position: absolute;
+        bottom: 55px;
+        left: 22px;
+      }
+    }
 
     &__img {
       width: 115px;
@@ -18,6 +32,16 @@
 
     &__order {
       position: relative;
+
+      &_link {
+        @include header-style;
+      }
+
+      &--on {
+        position: absolute;
+        bottom: 25px;
+        left: 22px;
+      }
 
       &::after {
         content: "";
@@ -35,24 +59,37 @@
       }
     }
 
-    &__phone--icon {
+    &__phone-icon,
+    &__bars-icon,
+    &__close-icon {
       display: none;
     }
 
-    &__bars--icon {
+    &__phone-icon--off {
+      opacity: 0;
+    }
+
+    &__bars-icon--off {
       display: none;
     }
 
-    &__close--icon {
-      display: none;
+    &__close-icon--on {
+      display: block;
+      cursor: pointer;
     }
+
   }
 
   &-title {
     width: 328px;
     height: 121px;
-    margin-top: 300px;
-    margin-left: 120px;
+    position: absolute;
+    left: 100px;
+    bottom: 170px;
+
+    &--off {
+      display: none;
+    }
 
     &__text {
       font: bold 60px roboto, sans-serif;
@@ -74,7 +111,15 @@
   }
 
   .nav {
-    margin-top: 155px;
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    right: 0;
+
+    &--on {
+      display: block;
+      margin-top: 55px;
+    }
 
     &__item--active {
       background: rgba(255, 255, 255, 0.1);
@@ -91,15 +136,7 @@
     }
 
     &__link {
-      font: bold 12px roboto, sans-serif;
-      text-decoration: none;
-      text-transform: uppercase;
-      color: $c-white;
-      letter-spacing: 2px;
-
-      &:hover {
-        color: $c-grayish;
-      }
+      @include header-style;
     }
   }
 }
@@ -112,15 +149,19 @@
       display: none;
     }
 
-    &-contact__phone--icon,
-    &-contact__bars--icon {
+    &-contact__order_link,
+    &-contact__phone_link {
+      font: normal 10px roboto, sans-serif;
+    }
+
+    &-contact__phone-icon,
+    &-contact__bars-icon {
       display: block;
       cursor: pointer;
     }
 
     &-title {
-      margin-top: 370px;
-      margin-left: 50px;
+      left: 45px;
 
       &__text {
         font-size: 50px;
@@ -128,8 +169,6 @@
     }
 
     .nav {
-      margin-top: 40px;
-
       &__list {
         align-items: flex-start;
         flex-direction: column;
@@ -137,7 +176,7 @@
       }
 
       &__item {
-        margin-top: 30px;
+        margin-top: 20px;
       }
 
       &__link {
@@ -148,6 +187,7 @@
 
   .header--mobile {
     background: $c-blue;
+    position: relative;
   }
 }
 
@@ -155,19 +195,10 @@
   .header {
     &-title {
       width: 70%;
+      bottom: 110px;
 
       &__text {
         font-size: 40px;
-      }
-    }
-  }
-}
-
-@media (max-width: 320px) {
-  .header {
-    &-title {
-      &__text {
-        font-size: 30px;
       }
     }
   }
