@@ -33,23 +33,11 @@
     margin: o 82px;
     position: relative;
     transition: transform 0.3s;
-
-    &::after {
-      @include menu-icon;
-      height: 18px;
-      background-image: url("../../images/phone.svg");
-    }
   }
 
   &__action {
     position: relative;
     transition: transform 0.3s;
-
-    &::after {
-      @include menu-icon;
-      height: 12px;
-      background-image: url("../../images/action.svg");
-    }
   }
 
   &__link {
@@ -60,7 +48,6 @@
 
   &__name {
     position: absolute;
-    width: 328px;
     bottom: 165px;
     left: 120px;
     transition: transform 0.3s;
@@ -94,35 +81,50 @@
 }
 
 .logo {
+  position: relative;
+
+  &::before {
+    @include menu-icon;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -18px;
+    height: 18px;
+    background-image: url("../../images/phone.svg");
+  }
+
+  &::after {
+    @include menu-icon;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+    height: 12px;
+    background-image: url("../../images/action.svg");
+  }
 
   &__img {
     height: $header-logo-height;
     width: $header-logo-width;
+
+    &::after {
+      @include menu-icon;
+      height: 18px;
+      background-image: url("../../images/phone.svg");
+    }
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 770px) {
   .header {
     &__top {
       justify-content: center;
     }
 
     &__phone {
-      transform: translateX(-350px);
-
-      &::after {
-        display: block;
-        transform: translate(380px, 5px);
-      }
+      display: none;
     }
 
     &__action {
-      transform: translateX(360px);
-
-      &::after {
-        display: block;
-        transform: translate(-300px, 8px);
-      }
+      display: none;
     }
 
     &__name {
@@ -138,23 +140,13 @@
   }
 
   .logo {
+    &::before,
+    &::after {
+      display: block;
+    }
+
     &__img {
       transform: scale(0.65);
     }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    &__title {
-      font-size: 46px;
-      line-height: 40px;
-      letter-spacing: -1px;
-    }
-  }
-
-  .header__phone,
-  .header__logo {
-    margin-bottom: 10px;
   }
 }

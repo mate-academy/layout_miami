@@ -1,6 +1,6 @@
 .contact {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(413px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-items: end;
 
   &__info {
@@ -16,6 +16,8 @@
   }
 
   &__link {
+    display: inline-block;
+    padding-bottom: 24px;
     color: $text-color;
     cursor: pointer;
 
@@ -25,14 +27,29 @@
   }
 
   &__form {
-    width: 413px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .contact {
+    justify-items: center;
   }
 }
 
 @media screen and (max-width: 480px) {
   .contact {
+
+    &__info {
+      grid-template-rows: (repeat(2, 1fr));
+      grid-template-columns: 1fr;
+    }
+
     &__form {
-      width: 320px;
+      justify-items: start;
+      align-self: flex-start;
+      width: 90%;
+      margin-right: 20px;
     }
   }
 }
