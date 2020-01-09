@@ -9,6 +9,8 @@
   height: 700px;
   margin-bottom: 104px;
   overflow: hidden;
+  max-width: 100%;
+  position: relative;
 
   &__wrapper {
     max-width: 1260px;
@@ -26,17 +28,24 @@
 
   &__phone {
     color: #fff;
+    &:hover {
+      transform: scale(0.5%);
+    }
   }
 
   &__logo {
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url("../images/logo.png") no-repeat center;
     background-size: cover;
     height: 76px;
     width: 115px;
   }
 
   &__action {
+    color: #fff;
+    text-decoration: none;
     position: relative;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -73,8 +82,9 @@
     }
   }
 
-  &-phone__img,
-  .toggler-menu {
+  &__phone-img,
+  .mobile-nav,
+  input.toggler-menu {
     display: none;
   }
 }
@@ -83,37 +93,39 @@
   .header {
     padding: 24px 20px 0;
     height: 568px;
-    &__nav {
-      display: none;
-    }
-    &__logo {
-      width: 73px;
-      height: 48px;
+    margin-bottom: 64px;
+    transition-duration: 0.5s;
+    &__wrapper {
+      max-width: 90%;
     }
     &__title {
       font-size: 46px;
       line-height: 40px;
     }
+  }
+}
+@media screen and (max-width: 750px) {
+  .header {
+    &__logo {
+      width: 73px;
+      height: 48px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
     &__phone,
     &__action {
       display: none;
     }
 
-    &-phone__img,
-    .toggler-menu {
+    &__phone-img,
+    .sandwich-img,
+    .sandwich-img::before {
       display: block;
-      cursor: pointer;
     }
-
-    &__hamburg-icon {
-      position: absolute;
-      right: 0;
-      z-index: 3;
-    }
-
-    &-phone__img {
-      height: 24px;
-      width: 24px;
-    }
+  }
+  .mobile-nav {
+    display: block;
   }
 }
