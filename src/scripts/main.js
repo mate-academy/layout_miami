@@ -4,8 +4,6 @@ const navBarDesktop = document.querySelector('.nav-bar__list--desktop');
 const navBar = document.querySelector('.nav-bar__list');
 
 const handlerClick = function(e) {
-  e.preventDefault();
-
   if (e.target.tagName !== 'A') {
     return;
   }
