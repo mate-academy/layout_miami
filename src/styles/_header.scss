@@ -1,0 +1,144 @@
+.header {
+  height: 700px;
+  background-image: url(../images/headerNew.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &__wraper {
+    max-width: 1020px;
+    height: 100%;
+    position: relative;
+
+    color: #fff;
+
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    top: 24px;
+    animation: fade-in-down-anim 1s ease-in-out;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 56px;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 56px;
+    left: 0;
+
+    @include header-font-style;
+
+    animation: fade-in-down-anim 1s ease-in-out;
+  }
+
+  &__phone_responsive {
+    display: none;
+    widows: 18px;
+    height: 18px;
+
+    position: absolute;
+    top: 39px;
+    left: 23px;
+    cursor: pointer;
+
+    &:hover {
+      color: #9fadc2;
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 56px;
+    right: 0;
+
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    animation: fade-in-down-anim 1s ease-in-out;
+  }
+
+  &__link {
+    @include header-font-style;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #fff;
+
+    transition: color 300ms ease-in-out, border-color 300ms ease-in-out;
+
+    &:visited {
+      color: #fff;
+    }
+
+    &:hover {
+      color: $active-color;
+      border-color: $active-color;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    left: 0;
+    bottom: 165px;
+
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 500;
+
+    animation: fade-in-left-anim 1s ease-in-out;
+
+    &::before {
+      content: "";
+      width: 35px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      bottom: 140px;
+    }
+  }
+}
+
+@media (max-width: $small-screen-brackepoint) {
+  .header {
+    &__logo {
+      display: block;
+      top: 24px;
+      left: calc(50% - #{$logo-small-width / 2});
+      width: $logo-small-width;
+      height: $logo-small-height;
+    }
+
+    &__phone_responsive {
+      display: block;
+    }
+
+    &__phone {
+      display: none;
+    }
+
+    &__action {
+      display: none;
+    }
+
+    &__title {
+      position: absolute;
+      left: 0;
+      top: 407px;
+
+      font-size: 46px;
+      line-height: 40px;
+      font-weight: 500;
+
+      padding-left: 20px;
+
+      &::before {
+        content: "";
+        left: 20px;
+      }
+    }
+  }
+}
