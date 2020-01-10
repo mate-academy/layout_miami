@@ -17,6 +17,8 @@
 12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
 13. Replace `<your_account>` with your Github username in the 
   [DEMO LINK](https://ronyshchenko.github.io/layout_miami/)
+   - [DEMO LINK](https://ronyshchenko.github.io/layout_product-cards/) <br>
+    - [TEST REPORT LINK](https://ronyshchenko.github.io/layout_product-cards/report/html_report/)
 14. Copy `DEMO LINK` to the PR description
 
 > To update you PR repeat steps 7-11
