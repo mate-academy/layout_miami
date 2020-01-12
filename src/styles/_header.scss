@@ -2,10 +2,12 @@
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
-  height: 700px;
+  background-attachment: fixed;
+  height: 100vh;
+  max-height: 800px;
+  padding-top: 24px;
   color: white;
   font-weight: bold;
-  padding: 24px 0;
   margin-bottom: 104px;
   position: relative;
   overflow: hidden;
@@ -32,6 +34,13 @@
     height: 76px;
     background-size: cover;
     background-image: url("../images/logo.png");
+    animation: headerTop 1.2s ease-in-out forwards;
+
+  }
+
+  &__phone,
+  &__link {
+    animation: headerTop 1.5s ease-in-out backwards;
   }
 
   &__link::after {
@@ -50,6 +59,7 @@
     letter-spacing: -1.5px;
     font-size: 60px;
     max-width: 328px;
+    animation: headerTitle 1s ease-in-out forwards;
 
     &::before {
       content: "";
@@ -66,6 +76,8 @@
 }
 
 .nav {
+  padding-bottom: 24px;
+
   &__list {
     display: flex;
     justify-content: space-between;
@@ -84,5 +96,120 @@
 
   &__item--active {
     background: rgba(255,255,255,0.1);
+  }
+}
+
+@keyframes headerTitle {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes headerTop {
+  from {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@for $i from 1 to 7 {
+  .nav__item:nth-child(#{$i}) {
+    animation: headerNav#{$i} 2s 1s ease-in-out backwards;
+  }
+}
+@keyframes headerNav1 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-5px);
+  }
+
+  to {
+    transform: translateY( 0 );
+  }
+}
+
+@keyframes headerNav2 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-15px);
+  }
+
+  to {
+    transform: translateY( 0 );
+  }
+}
+
+@keyframes headerNav3 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-25px);
+  }
+
+  to {
+    transform: translateY( 0 );
+  }
+}
+
+@keyframes headerNav4 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-25px);
+  }
+
+  to {
+    transform: translateY( 0 );
+  }
+}
+
+@keyframes headerNav5 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-15px);
+  }
+
+  to {
+    transform: translateY( 0 );
+  }
+}
+
+@keyframes headerNav6 {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-5px);
+  }
+
+  to {
+    transform: translateY( 0 );
   }
 }
