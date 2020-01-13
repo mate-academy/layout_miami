@@ -1,7 +1,251 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "header";
+@import "nav";
+@import "variables";
+@import "section";
+@import "gallery";
+@import "consultation";
+@import "form";
+@import "input";
+@import "testimonials";
+@import "contact";
+@import "footer";
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: $c-gray;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  background: $white-color;
+  color: #3e3e3e;
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: #000;
+}
+
+.container {
+  width: 1260px;
+  margin: 0 auto;
+}
+
+.main {
+  width: 1180px;
+  padding: 0 40px 40px;
+  margin: 0 auto;
+}
+
+a {
+  color: $specific-color;
+  text-decoration: none;
+
+}
+
+.section {
+  margin-top: 152px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 501px) and (max-width: 1260px) {
+  .main {
+    width: calc(100% - 80px);
+  }
+
+  .header__nav {
+    .nav__list {
+      margin-right: 60px;
+    }
+  }
+
+  .contact {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .testimonials {
+    grid-template-columns: repeat(2, 240px);
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav,
+  .info,
+  .consultation,
+  .testimonials,
+  .contact {
+    flex-direction: column;
+  }
+
+  .heading {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .header {
+    height: 480px;
+
+    &.menu_collapsed {
+      background: $specific-color;
+    }
+
+    &__top {
+      .header__phone {
+        background: url("../images/phone.png") no-repeat;
+        width: 18px;
+        height: 18px;
+
+        &_number {
+          display: none;
+        }
+        &.background-none {
+          background: none;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      .header__action {
+        input + label {
+          display: inline-block;
+          padding: 0;
+          background: url("../images/menu_choose.png") no-repeat;
+          width: 18px;
+          height: 12px;
+        }
+
+        input:checked + label {
+          background: url("../images/menu_hide.png") no-repeat;
+          width: 18px;
+          height: 16px;
+          display: inline-block;
+        }
+
+        a {
+          display: none;
+        }
+      }
+    }
+
+    &__title {
+      width: 253px;
+      font-size: 44px;
+      margin: 190px 0 0 20px;
+    }
+  }
+
+  .main {
+    width: calc(100% - 40px);
+    padding: 0 20px;
+  }
+
+  .info {
+    height: auto;
+  }
+
+  .info__heading {
+    margin-top: 25px;
+  }
+
+  .section {
+    margin-top: 40px;
+  }
+
+  .info__heading-text {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .info__text {
+    margin-top: 5px;
+  }
+
+  .gallery .photos__img {
+    height: 131px;
+    width: calc(50% - 5px);
+  }
+
+  .gallery {
+    .photos {
+
+      .width--70 {
+        width: calc(50% - 5px);
+      }
+
+      .width--30 {
+        width: calc(50% - 5px);
+      }
+    }
+
+    &__view_all {
+      width: 100%;
+      margin-top: 32px;
+
+      &_btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .consultation {
+    margin-top: 30px;
+
+    &__text {
+      width: auto;
+    }
+
+    &__form {
+      width: auto;
+    }
+  }
+
+  .testimonials {
+    margin-top: -5px;
+    grid-template-columns: 240px;
+
+    .person {
+      &__photo {
+        margin-top: 35px;
+      }
+    }
+  }
+
+  .contact {
+    margin-top: 30px;
+
+    &__form {
+      width: auto;
+    }
+
+  }
+
+  .form {
+    margin-top: 32px;
+
+    &__button {
+      margin-top: 10px;
+    }
+  }
+
+  .footer {
+    margin-top: 65px;
+  }
 }
