@@ -1,0 +1,143 @@
+@import "var";
+@import "../utils/mixins";
+
+.header {
+  height: 100vh;
+  background-image: url("../images/header3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 2;
+
+  &__wraper {
+    margin: 0 auto;
+    max-width: 1250px;
+    position: relative;
+    height: 100vh;
+  }
+
+  &__top {
+    position: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+
+    color: white;
+    transition: background-color 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      background-color: rgba(255,255,255, 0.1);
+    }
+  }
+
+  &__phone {
+    margin: o 82px;
+    transition: transform 0.3s;
+  }
+
+  &__phone-icon-number {
+    @include menu-icon;
+    top: 40px;
+    left: 20px;
+    height: 18px;
+    background-image: url("../../images/phone.svg");
+  }
+
+  &__action {
+    transition: transform 0.3s;
+  }
+
+  &__link {
+    color: white;
+    text-transform: uppercase;
+    border-bottom: 1px solid white;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+
+    display: block;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $color-white;
+
+    transition: font-size 0.3s,
+      transform 0.3s,
+      line-height 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      background-color: $color-white;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+  }
+}
+
+.logo {
+  margin-top: 24px;
+
+  &__img {
+    height: $header-logo-height;
+    width: $header-logo-width;
+    z-index: 8;
+
+    &::after {
+      @include menu-icon;
+      height: 18px;
+      background-image: url("../../images/phone.svg");
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .header {
+    &__phone {
+      display: none;
+    }
+
+    &__phone-icon-number {
+      display: block;
+    }
+
+    &__action {
+      display: none;
+    }
+
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      transform: translate(-60px, 85px);
+    }
+
+  }
+
+  .logo {
+    &::before {
+      display: block;
+    }
+
+    &__img {
+      transform: scale(0.65);
+    }
+  }
+}
