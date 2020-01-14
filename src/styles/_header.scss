@@ -1,4 +1,7 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: url("../images/header.png");
   background-size: 100% 100%;
   background-position: bottom;
@@ -22,18 +25,15 @@
     margin: 0 30px;
   }
 
-  &__phone {
-    color: $link-color;
-  }
-
-  &__action {
-    position: relative;
-  }
-
   &__link {
     color: $link-color;
     transition: color $hover-duration;
     padding: 10px 0;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
   }
 
   &__link::after {
@@ -48,15 +48,13 @@
   }
 
   &__title {
-    position: absolute;
-    bottom: 30%;
+    margin: 50px 30px 0;
     text-transform: none;
     letter-spacing: -1.5px;
     font-size: 56px;
     line-height: 60px;
     width: 328px;
     color: $link-color;
-    margin: 0 30px;
   }
 }
 
@@ -66,10 +64,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-self: center;
-    position: absolute;
-    bottom: 7.75%;
-    left: 120px;
-    right: 120px;
+    margin: 0 30px 5%;
   }
 
   &__link {
@@ -101,22 +96,20 @@
 @media (max-width: 600px) {
   .header {
     &__title {
-      font-size: 35px;
+      font-size: 45px;
       width: auto;
       color: $link-color;
-      margin: 0 auto;
-      bottom: 40%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translateX(-50%);
+      text-align: center;
+      align-self: center;
+      margin: 0 0 20%;
+      justify-content: center;
     }
 
     &__logo {
       margin: 0 auto;
     }
 
-    &__phone,
-    &__action {
+    &__link_none {
       display: none;
     }
   }
@@ -132,23 +125,21 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .header {
+    background-size: cover;
+  }
+}
+
 @media (max-width: 914px) {
   .header {
     background-size: cover;
   }
   .nav {
-    left: 0;
-    bottom: 0;
 
     &__link {
       padding: 20px 70px;
       display: block;
-    }
-
-    &__item {
-      text-align: center;
-      margin: 0 auto;
-      width: 250px;
     }
 
     &__item:last-child {
@@ -161,20 +152,28 @@
 
     &__list {
       flex-direction: column;
+      justify-content: start;
       display: none;
-      align-self: center;
-      background-color: $btn-bg;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to bottom right, #4b0082, #00f, #4b0082);
       height: 100vh;
       width: 100vw;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    }
+
+    &__item_mobile-top {
+      padding-top: 120px;
     }
 
     &__toggler-label,
     &__toggler {
       position: absolute;
-      bottom: 0;
+      bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
@@ -182,6 +181,7 @@
 
     &__toggler:checked + &__toggler-label::after {
       content: "x";
+      font-size: 32px;
     }
 
     &__toggler-label {
@@ -190,6 +190,7 @@
 
     &__toggler:checked ~ &__list {
       display: flex;
+      margin: 0;
     }
   }
 }
