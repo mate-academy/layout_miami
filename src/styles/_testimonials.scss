@@ -25,11 +25,35 @@
   justify-content: space-between;
 
   &__card {
-    width: 240px;
+    max-width: 240px;
     text-align: center;
+    padding-top: 15px;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      top: 0;
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      right: 0;
+      bottom: -500px;
+      width: 0;
+      height: 0;
+      background-color: rgba(182, 215, 255, 0.2);
+      border-radius: 30px;
+      z-index: -1;
+      transition: width 0.4s, height 0.4s;
+    }
+    &:hover::after {
+      width: 110%;
+      height: 110%;
+    }
   }
 
   &__photo {
+    width: 150px;
+    border-radius: 75px;
     margin-bottom: 28px;
   }
 

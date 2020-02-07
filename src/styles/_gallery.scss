@@ -21,8 +21,23 @@
   }
 
   &__link {
+    display: inline-block;
     color: #0075ff;
     font-weight: bold;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      background: #0075ff;
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 
   &__photos {
@@ -48,6 +63,12 @@
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   &__city-name {
@@ -67,6 +88,7 @@
     color: #0075ff;
     background-color: #fff;
     cursor: pointer;
+    transition: all, 0.3s ease-in-out;
 
     &:hover {
       color: #fff;
