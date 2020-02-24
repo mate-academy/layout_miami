@@ -1,0 +1,63 @@
+@import "vars";
+@import "mixins";
+
+.gallery {
+
+  &__photos {
+    @include flex-space-between;
+    margin-bottom: 16px;
+  }
+
+  &__img {
+    width: calc(50% - 10px);
+    height: 121px;
+
+    object-fit: cover;
+    object-position: center;
+    @include border-radius;
+  }
+
+  &__description {
+    margin-bottom: 32px;
+    line-height: 27px;
+    font-weight: $font-weight-normal;
+
+    color: $main-text-color;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $blue-color;
+
+    font-weight: $font-weight-bold;
+  }
+
+  &__button {
+    width: 280px;
+  }
+}
+
+@media (min-width: $medium-screen-width) {
+  .gallery {
+
+    &__img {
+      height: 256px;
+    }
+
+    &__photos--wide-left &__img:first-child {
+      width: calc(67% - 10px);
+    }
+
+    &__photos--wide-left &__img:last-child {
+      width: calc(33% - 10px);
+    }
+
+    &__photos--wide-right &__img:first-child {
+      width: calc(33% - 10px);
+    }
+
+    &__photos--wide-right &__img:last-child {
+      width: calc(67% - 10px);
+    }
+  }
+}
