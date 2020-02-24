@@ -1,0 +1,265 @@
+.header {
+  height: 100vh;
+  width: auto;
+  background: url(../images/header-new.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: $color-white;
+  margin-bottom: 104px;
+  padding: 0 10%;
+
+  &__wrapper {
+    max-width: 1050px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+  }
+
+  &__toggler-label {
+    display: none;
+    position: absolute;
+    top: 110px;
+    right: 24px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &-phone__img {
+    display: none;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-weight: bold;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-white;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 8px;
+    transition: color $hover-duration;
+
+    &:hover {
+      color: $color-hover;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color-white;
+    }
+  }
+
+  &__name {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 60px;
+    color: $color-white;
+    position: absolute;
+    bottom: 165px;
+    padding-top: 18px;
+    animation: coming 1s linear;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      width: 35px;
+      border-radius: 2px;
+    }
+  }
+}
+
+#toggler {
+  opacity: 0;
+}
+
+@media screen and (max-width: $medium-screen-breakpoint) {
+  .header {
+    padding: 5% 5% 0;
+
+    &__name {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .header {
+    padding: 0;
+
+    &__top {
+      padding: 0;
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+    }
+
+    &-phone__img {
+      display: block;
+      position: absolute;
+      left: 20px;
+    }
+
+    &__logo {
+      z-index: 10;
+    }
+
+    &-phone__number,
+    &__link {
+      display: none;
+    }
+
+    &__toggler-label {
+      display: block;
+
+      & > span,
+      & > span::before,
+      & > span::after {
+        width: 100%;
+        height: 2px;
+        background-color: $color-white;
+        transition: transform $hover-duration;
+        position: absolute;
+      }
+
+      & > span::before {
+        content: "";
+        top: -8px;
+      }
+
+      & > span::after {
+        content: "";
+        top: 8px;
+      }
+    }
+  }
+
+  #toggler:checked ~ .header__toggler-label > span {
+    transform: rotate(45deg);
+  }
+
+  #toggler:checked ~ .header__toggler-label > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #toggler:checked ~ .header__toggler-label > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #toggler:checked ~ .nav__list {
+    visibility: visible;
+  }
+}
+
+@keyframes coming {
+  from {
+    transform: translateX(-300px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  color: $color-white;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding-top: 120px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    list-style: none;
+
+    &_phone,
+    &_call {
+      display: none;
+    }
+  }
+
+  &__link {
+    padding: 8px 24px;
+    color: $color-white;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: color $hover-duration, background-color $hover-duration;
+
+    &_active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &:hover {
+      color: $color-hover;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav {
+    position: relative;
+
+    &__list {
+      visibility: hidden;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      background: $color-blue;
+      transition: transform $hover-duration;
+    }
+
+    &__item {
+      display: block;
+      padding: 12px 24px;
+      font-size: 22px;
+      line-height: 22px;
+      text-transform: uppercase;
+      transition: transform $hover-duration;
+
+      &_phone,
+      &_call {
+        display: block;
+      }
+
+      &:hover {
+        background: $color-active;
+      }
+    }
+  }
+}
