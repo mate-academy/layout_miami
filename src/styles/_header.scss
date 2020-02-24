@@ -1,0 +1,124 @@
+.header {
+  height: 100vh;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 24px 20px 38px;
+  font-size: 12px;
+
+  &__wrapper {
+    max-width: 1260px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    letter-spacing: 2px;
+    margin-bottom: 38px;
+  }
+
+  &__title {
+    margin-bottom: 53px;
+    font-size: 60px;
+    letter-spacing: -1.5px;
+    font-weight: bold;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 35px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+  }
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 2px;
+
+  &__item:nth-child(2),
+  &__item:nth-child(4) {
+    display: none;
+  }
+
+  &__link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      background: #fff;
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.hamburger-block {
+  position: absolute;
+  top: 68px;
+  right: 40px;
+  &__item {
+    width: 18px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+  &__item:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    &__wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    &-opened {
+      .mobile-nav {
+        transform: translateY(0);
+      }
+    }
+
+    &__title {
+      margin-bottom: 120px;
+    }
+  }
+  .top-header {
+    margin-bottom: 0;
+    &__item:nth-child(2),
+    &__item:nth-child(4) {
+      display: inline-block;
+      margin: 0 23px;
+    }
+
+    &__item:nth-child(1),
+    &__item:nth-child(5) {
+      display: none;
+    }
+  }
+}
