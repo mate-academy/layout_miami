@@ -1,7 +1,192 @@
 @import "utils";
 @import "fonts";
-@import "typography";
+@import "reset";
+@import "logo";
+@import "contact";
+@import "about";
+@import "gallery";
+@import "testimonials";
+@import "consultation";
+@import "form";
+@import "nav";
+@import "btn";
 
-body {
-  background: $c-gray;
+html {
+  scroll-behavior: smooth;
+}
+
+.body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 400;
+  color: $main-text-dark;
+}
+
+.flex-container {
+  display: block;
+
+  @media (min-width: 768px) {
+    @include flex(space-between, flex-start, nowrap);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 768px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+
+  @media (min-width: 1261px) {
+    max-width: 1200px;
+    padding: 0;
+  }
+}
+
+.header {
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+  max-height: 568px;
+  padding: 24px 0 80px;
+  @include bg-cover(url(../images/header_optimized.jpg));
+
+  @media (min-width: 768px) {
+    max-height: 700px;
+    padding: 24px 0 48px;
+    margin-bottom: 104px;
+  }
+
+  &--desktop {
+    display: none;
+
+    @media (min-width: 768px) {
+      @include flex(space-between, center, nowrap);
+    }
+  }
+
+  &--mobile {
+    @include flex(space-between, center, nowrap);
+    padding: 0 3px;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__phone {
+    font-size: 0;
+    @include bg-cover(url(../images/phone.svg));
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: 768px) {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $main-light;
+      width: initial;
+      height: initial;
+      background-image: none;
+      text-decoration: none;
+    }
+  }
+}
+
+.main-title {
+  font-size: 46px;
+  line-height: 40px;
+  letter-spacing: -1px;
+  color: $main-light;
+  text-align: left;
+  position: relative;
+  padding-top: 16px;
+  margin: 0;
+  margin-top: 320px;
+
+  &::before {
+    content: "";
+    background: $main-light;
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    border-radius: 8px;
+    left: 0;
+    top: -2px;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 86px;
+    margin-top: 296px;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+  }
+
+  @media (max-height: 700px) and (min-width: 560px) and (max-width: 1024px) {
+    font-size: 46px;
+    line-height: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+.title {
+  font-size: 36px;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: -1.5px;
+  position: relative;
+  color: $main-dark;
+  margin: 0;
+  margin-bottom: 53px;
+
+  &:after {
+    @include bg-contain(url(../images/crown.svg));
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 16px;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: 90px;
+  }
+}
+
+.subtitle {
+  margin: 0;
+  margin-bottom: 4px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  color: $accent;
+}
+
+.footer {
+  @include flex (center, flex-end, nowrap);
+  @include bg-cover(url(../images/footer_optimized.jpg));
+  height: 206px;
+  padding: 24px;
+
+  @media(min-width: 768px) {
+    height: 359px;
+    padding-bottom: 40px;
+  }
 }
