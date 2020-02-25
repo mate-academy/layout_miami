@@ -18,3 +18,14 @@ function topFunction() {
 }
 
 topFunction();
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  const navLink = document.querySelectorAll('.nav__link');
+
+  nav.classList.toggle('nav-sticky', window.scrollY > 770);
+
+  navLink.forEach(link => {
+    link.classList.toggle('nav__link-sticky', window.scrollY > 770);
+  });
+});
