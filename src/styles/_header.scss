@@ -1,0 +1,151 @@
+@import "utils";
+
+.header {
+  height: 700px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 24px calc(50% - 470px) 48px;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  color: $c-white;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 32px;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $c-white;
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      height: 0;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      border: 1px solid $c-white;
+    }
+  }
+
+  &__title {
+    position: relative;
+    top: 100px;
+    font-weight: bold;
+    font-size: 60px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      height: 2px;
+      width: 35px;
+      background: $c-white;
+      border-radius: 2px;
+    }
+  }
+
+  &__phone-img,
+  &__nav-toggler,
+  &__nav-toggler-label {
+    display: none;
+  }
+
+  &__nav-toggler-label::before {
+    content: "";
+    background-image: url(../images/open.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 50px;
+    cursor: pointer;
+  }
+
+  &__nav-toggler:checked ~ &__title {
+    display: none;
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    opacity: 0;
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::after {
+    content: "";
+    background-image: url(../images/close.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 50px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 999px) {
+
+  .header {
+    height: 560px;
+
+    &__title {
+      font-size: 46px;
+      line-height: 50px;
+      top: 200px;
+      margin-left: 10%;
+      margin-bottom: 30px;
+    }
+
+    &__logo {
+      width: 73px;
+      height: 48px;
+      z-index: 1;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__link,
+    &__phone {
+      display: none;
+    }
+
+    &__phone-img {
+      display: inline-block;
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      object-fit: contain;
+      margin-top: 15px;
+      margin-left: 10%;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    &__nav-toggler-label {
+      display: inline-block;
+      position: absolute;
+      right: 23px;
+      top: 32px;
+      padding: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    &__nav-toggler:checked ~ .nav {
+      opacity: 1;
+    }
+  }
+}
