@@ -20,3 +20,16 @@ burgerIcon.onclick = function(e) {
     headerPhone.classList.remove('move');
   }
 };
+
+const buttonSubmitForm = document.querySelectorAll('.consultation__form-link');
+
+buttonSubmitForm.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const form = e.target.closest('.consultation__form');
+    const inputs = form.querySelectorAll('input');
+
+    inputs.forEach(inputItem => {
+      inputItem.value = '';
+    });
+  });
+});
