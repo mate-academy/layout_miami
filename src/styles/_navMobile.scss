@@ -1,0 +1,120 @@
+@import "_utils";
+
+#nav-icon {
+  width: 18px;
+  height: 12px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+#nav-icon span:nth-child(1) {
+  top: 0;
+  transform-origin: left center;
+}
+
+#nav-icon span:nth-child(2) {
+  top: 4px;
+  transform-origin: left center;
+}
+
+#nav-icon span:nth-child(3) {
+  top: 8px;
+  transform-origin: left center;
+}
+
+#nav-icon.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 1px;
+}
+
+#nav-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+#nav-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 12px;
+  left: 1px;
+}
+
+.navMobile {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 120px;
+  z-index: 5;
+
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item:last-child {
+    margin-bottom: 48px;
+  }
+
+  &__link {
+    @include reset-link;
+    display: block;
+    color: #fff;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition: color 300ms linear;
+    margin-bottom: 32px;
+
+    &:hover {
+      color: $nav-color-hover-text;
+    }
+  }
+
+  &__contact {
+    @include reset-link;
+    @include header-link;
+    margin-bottom: 8px;
+    display: block;
+
+    &:hover {
+      color: $nav-color-hover-text;
+    }
+  }
+
+  &__contact_underline {
+    position: relative;
+    display: inline;
+    padding: 8px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.mobile_background {
+  background-color: #0075ff;
+  background-image: none;
+  // transition: all 300ms linear;
+}
