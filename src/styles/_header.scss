@@ -1,0 +1,267 @@
+@import "./utils/vars";
+@import "./utils/mixins";
+
+.header {
+  background: url(../images/photos/header.png) no-repeat center;
+  background-size: cover;
+  width: auto;
+  height: 100vh;
+  padding: 35px 10%;
+  box-sizing: border-box;
+  
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    & div:nth-child(-n+2) {
+      margin-right: 83px;
+    }
+  }
+
+  &__phone {
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  &__action {
+
+    position: relative;
+    
+    &:hover {
+      text-shadow: 2px 4px 20px #fff;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      border-bottom: 2px #fff dashed;
+    }
+  }
+
+  &__action-link {
+
+    @extend .header__phone;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    padding-right: 0;
+  }
+
+  &__phone-icon {
+    display: none;
+  }
+}
+
+.nav {
+
+  &__item_call,
+  &__item_phone {
+    display: none;
+  }
+
+  &__toggler,
+  &__toggler-label {
+    display: none;
+
+    &-label::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 5%;
+      width: 20px;
+      height: 20px;
+      background: url(../images/menu.png) no-repeat center;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+    color: #fff;
+    padding: 4px 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color, ease-in-out, 0.5s;
+
+    &-phone {
+      display: none;
+    }
+
+    &_active,
+    &:hover {
+      background-color: #d5c5aa;
+    }
+  }
+}
+
+@media screen and (max-width: 956px) {
+  .header {
+
+    &__top {
+      justify-content: center;
+      margin-left: 0;
+      align-items: flex-start;
+      width: 100%;
+
+      & div:nth-child(n) {
+        margin: 0;
+      }
+    }
+
+    &__nav {
+      display: block;
+    }
+
+    &__phone,
+    &__action-link {
+      display: none;
+    }
+
+    &__action::after {
+      display: none;
+    }
+
+    &__phone-icon {
+      display: block;
+      position: absolute;
+      right: 10%;
+    }
+
+    &__action {
+      display: none;
+    }
+  }
+
+  .nav {
+    margin: 0;
+
+    &__list {
+      flex-direction: column;
+      padding-left: 50px;
+      background-color: $dark-blue;
+      padding-top: 120px;
+      padding-bottom: 40px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      animation-name: anim_menu;
+      animation-duration: 1s;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 73px;
+        height: 50px;
+        background-image: url(../images/logo.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        z-index: 2;
+      }
+    }
+
+    &__toggler:not(:checked) ~ .nav__list {
+      display: none;
+    }
+
+    &__toggler:checked ~ .nav__toggler-label::before {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 5%;
+      z-index: 3;
+      width: 20px;
+      height: 20px;
+      background: url(../images/cross.png) no-repeat center;
+      animation-name: anim_cross;
+      animation-duration: 1s;
+    }
+
+    &__link_active,
+    &__link:hover {
+      background-color: transparent;
+    }
+
+    &__item_phone {
+      display: block;
+      color: #fff;
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    &__link_phone {
+      display: inline-block;
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        height: 2px;
+        background-color: #fff;
+      }
+    }
+
+    &__toggler-label {
+      display: block;
+    }
+
+    &__item_call {
+      display: block;
+    }
+  }
+}
+
+@keyframes anim_menu {
+  from {
+    top: 0;
+    bottom: 0;
+    left: -100%;
+  }
+
+  to {
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@keyframes anim_cross {
+  from {
+    right: 105%;
+  }
+
+  to {
+    right: 5%;
+  }
+}
