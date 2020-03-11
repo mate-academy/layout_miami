@@ -1,0 +1,50 @@
+@import "var";
+
+.nav {
+  color: white;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 8px 24px;
+    // margin: 0 52px;
+
+    &-active {
+      background-color: rgba(159, 173, 194, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: white;
+    transition: color $hover-duration;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label::before {
+    content: "=";
+  }
+
+  &__toggler:checked + .nav__toggler-label::before {
+    content: "x";
+  }
+}
+
+@media screen and (max-width: $screen-break-point) {
+  .nav__list {
+    display: grid;
+  }
+}
