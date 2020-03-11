@@ -1,0 +1,132 @@
+@import "utils/vars";
+
+.nav {
+
+  display: flex;
+  position: absolute;
+  top: 620px;
+  left: 0;
+  right: 0;
+  margin: 0 120px;
+  transition: color 0.2s;
+
+  &__toggler {
+    display: none;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 40px;
+    left: 280px;
+    background-image: url(../images/cross.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 1102px) {
+      display: block;
+    }
+  }
+
+  &__visible {
+    display: none;
+
+    &:checked ~ .nav {
+      top: 0;
+    }
+  }
+
+  @media screen and (max-width: 1102px) {
+    width: 320px;
+    height: 568px;
+    background-color: $nav-blue;
+    flex-direction: column;
+    top: -568px;
+    left: 0;
+    margin: 0;
+    transition: top 1s;
+
+    &:after {
+      content: url($logo-url);
+      width: 73px;
+      height: 48px;
+      position: absolute;
+      top: 24px;
+      left: 124px;
+    }
+
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    list-style: none;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1102px) {
+      flex-direction: column;
+      margin: 104px 0 0 21px;
+      align-items: flex-start;
+
+    }
+
+  }
+
+  &__item {
+    padding: 8px 24px;
+    color: $header-color;
+    @media screen and (max-width: 1102px) {
+      padding: 16px 0;
+      font-size: 22px;
+      line-height: 22px;
+      font-weight: bold;
+    }
+    &--active {
+      background-color: rgba( 255, 255, 255, $alpha: 0.1);
+      border-radius: 8px;
+      color: $header-color;
+    }
+  }
+
+  &__link {
+    color: $header-color;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    &--call {
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 1102px) {
+      font-size: 22px;
+      font-weight: bold;
+
+      &--call {
+        font-size: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid white;
+
+      }
+    }
+
+    &:hover {
+      color: $header-hover-color;
+    }
+
+  }
+
+  &__phone {
+    padding: 8px 0;
+    margin: 16px 0 0;
+  }
+
+  &__menu {
+    display: none;
+
+    @media screen and (max-width: 1102px) {
+      display: block;
+      font-size: 12px;
+    }
+  }
+}
