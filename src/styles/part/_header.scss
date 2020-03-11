@@ -1,0 +1,212 @@
+.header {
+  background: url(../../images/header.jpg) no-repeat 50% 50%;
+  background-size: cover;
+  height: 700px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+  display: flex;
+  z-index: 1;
+  position: sticky;
+  top: -608px;
+  @media (max-width: $mobileBreakpoint) {
+    top: 0;
+    height: 560px;
+    max-height: 100vh;
+    padding-top: 25px;
+    position: relative;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    @media (max-width: $mobileBreakpoint) {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+  }
+  &__phone {
+    color: #fff;
+    letter-spacing: 2px;
+    @media (max-width: $mobileBreakpoint) {
+      font-size: 0;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      transition: all 0.3s;
+      background: url(../../images/mdi_call.svg) no-repeat 50% 50%;
+    }
+  }
+
+  &__action {
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #fff;
+    @media (max-width: $mobileBreakpoint) {
+      display: block;
+      position: absolute;
+      bottom: 25px;
+      z-index: -1;
+      left: -150px;
+      transition: left 0.3s;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 9;
+    @media (max-width: $mobileBreakpoint) {
+      margin: auto;
+      max-width: 100px;
+    }
+    img {
+      max-width: $logo-width;
+      height: auto;
+      display: block;
+      @media (max-width: $mobileBreakpoint) {
+        max-width: $logo-width-min;
+      }
+    }
+  }
+
+  &__main {
+    flex-grow: 2;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 85px;
+    @media (max-width: $tabletBreakpoint) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .promo-text {
+    color: #fff;
+    max-width: 350px;
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 600;
+    padding-top: 15px;
+    position: relative;
+    @media (max-width: $tabletBreakpoint) {
+      font-size: 52px;
+    }
+    @media (max-width: $mobileBreakpoint) {
+      font-size: 46px;
+    }
+    &::before {
+      content: " ";
+      background: #fff;
+      border-radius: 2px;
+      height: 2px;
+      width: 35px;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__nav {
+    @media (max-width: $mobileBreakpoint) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0075ff;
+      overflow: hidden;
+      transform: translateX(-100%);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .menu-btn {
+    position: absolute;
+    top: 42px;
+    right: 22px;
+    z-index: 2;
+    width: 20px;
+    text-align: center;
+    height: 20px;
+    display: none;
+    @media (max-width: $mobileBreakpoint) {
+      display: block;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      top: -25%;
+      left: -25%;
+      display: block;
+    }
+    .menu-line {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: absolute;
+      border-radius: 2px;
+      transition: transform 0.3s;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 8px;
+      }
+      &:nth-child(3) {
+        top: 16px;
+      }
+    }
+  }
+
+  &.menu-open {
+    max-height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    .header__nav {
+      transform: translateX(0);
+    }
+    .menu-btn {
+      span {
+        &:nth-child(1) {
+          transform: rotate(135deg);
+          top: 10px;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+          left: -60px;
+        }
+        &:nth-child(3) {
+          transform: rotate(-135deg);
+          top: 10px;
+        }
+      }
+    }
+    .header__phone {
+      font-size: 12px;
+      background: none;
+      position: absolute;
+      bottom: 42px;
+      z-index: 1;
+      left: 20px;
+      width: 150px;
+    }
+    .header__action {
+      left: 20px;
+      z-index: 2;
+    }
+  }
+}
