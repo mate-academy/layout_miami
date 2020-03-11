@@ -8,7 +8,7 @@
 
   @media (max-width: $mobile-screen-breakpoints) {
     & {
-      height: 568px;
+      height: 100vh;
     }
   }
 
@@ -17,34 +17,33 @@
     max-width: 1020px;
     height: 100%;
     margin: 0 auto;
-
-    @media (max-width: $mobile-screen-breakpoints) {
-      & {
-        width: 95%;
-      }
-    }
   }
 
   &__nav {
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: 48px;
-    width: 100%;
   }
 
   &__top {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 24px;
     color: $c-white;
     font-size: $header-font-size;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 2px;
 
-    @media (max-width: $mobile-screen-breakpoints) {
+    @media (max-width: $desktop-screen-breakpoints) {
       & {
-        padding: 24px 3px 0;
+        left: 23px;
+        right: 23px;
       }
     }
   }
@@ -62,6 +61,21 @@
     height: 76px;
     background-image: url(../images/logo.png);
     cursor: pointer;
+    z-index: 1;
+  }
+
+  &__toggle-icon {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu-icon.svg);
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        display: inline-block;
+        z-index: 1;
+      }
+    }
   }
 
   &__action {
@@ -103,6 +117,12 @@
     color: $c-white;
     font-weight: 700;
 
+    @media (max-width: $desktop-screen-breakpoints) {
+      & {
+        left: 20px;
+      }
+    }
+
     @media (max-width: $tablet-screen-breakpoints) {
       & {
         font-size: 55px;
@@ -130,6 +150,7 @@
       background-color: $c-white;
     }
   }
+
   &__phone-icon {
     display: none;
     width: 18px;
@@ -141,14 +162,17 @@
     }
   }
 
-  &__menu-icon {
+  &__toggle-button {
     display: none;
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/menu-icon.svg);
 
     @media (max-width: $mobile-screen-breakpoints) {
-      display: block;
+      &:checked + .nav {
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
     }
   }
 }
