@@ -17,7 +17,7 @@
 12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
 13. Replace `<your_account>` with your Github username in the
   - [DEMO LINK](https://Andreas-Just.github.io/layout_miami/)
-  - [PULL REQUEST](https://github.com/mate-academy/layout_miami/pull/320)
+  - [PULL REQUEST](https://github.com/mate-academy/layout_miami/pull/112)
 14. Copy `DEMO LINK` to the PR description
 
 > To update you PR repeat steps 7-11
