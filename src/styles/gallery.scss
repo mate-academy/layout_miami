@@ -1,10 +1,71 @@
 @import "./vars.scss";
 
 .gallery {
-  display: flex;
+  margin-bottom: 152px;
 
   &__heading {
     @extend %heading2-styles;
     margin: 0 auto;
+    position: relative;
+    text-align: center;
+    margin-bottom: 61px;
+
+    &::before {
+      content: url(../images/crown.svg);
+      position: absolute;
+      width: 23px;
+      height: 16px;
+      top: 50%;
+      left: calc(50% - 11.5px);
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 256px;
+    grid-column-gap: 20px;
+  }
+
+  .item {
+
+    &__size--2-1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &__size--1-2 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    &__photo {
+      display: block;
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__caption {
+    margin: 24px 0 40px;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto ;
+    @extend %button-styles;
+    width: 188px;
+    height: 56px;
+    border: 2px solid #0075ff;
+    color: #0075ff;
+    transition: color, background-color, $hover-duration ease-in-out;
+
+    &:hover {
+      color: #fff;
+      background-color: #0075ff;
+      cursor: pointer;
+    }
   }
 }
