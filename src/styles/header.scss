@@ -1,0 +1,122 @@
+@import "utils";
+
+.header {
+  position: relative;
+  height: $headerHeight;
+  font-size: 12px;
+  line-height: 133%;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__inner {
+    display: grid;
+    grid-template-rows: $topLineBoxHeight auto $navBoxHeight;
+    max-width: $maxWidth - ($innerIdent * 2);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 $innerIdent;
+  }
+
+  &__top-line {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    align-items: center;
+    height: $topLineHeight;
+    padding: $topLineInner 0;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    height: $topLineHeight;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      position: relative;
+      height: 48px;
+      z-index: 20;
+    }
+  }
+
+  &__link {
+    @include hover(border-color, $headerColor);
+    padding: 8px 0;
+    color: $headerColor;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    span {
+      @media screen and (max-width: $maxTabletWidth) {
+        display: none;
+      }
+    }
+  }
+
+  &__phone {
+    @media screen and (max-width: $maxTabletWidth) {
+      display: block;
+      width: 18px;
+      background-image: url(../images/phone.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__call-to-action {
+    @media screen and (max-width: $maxTabletWidth) {
+      display: none;
+    }
+  }
+
+  &__nav-button {
+    display: none;
+    height: 18px;
+    width: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    border: 0;
+  }
+
+  &__nav-open {
+    background-image: url(../images/menu.svg);
+
+    @media screen and (max-width: $maxTabletWidth) {
+      display: block;
+    }
+  }
+
+  &__nav-close {
+    position: relative;
+    display: none;
+    background-image: url(../images/close.svg);
+    z-index: 20;
+  }
+
+  &__site-name {
+    align-self: end;
+    max-width: 340px;
+    margin: 40px 0;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $headerColor;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 35px;
+      margin-bottom: 16px;
+      background-color: $headerColor;
+      border-radius: 50%;
+    }
+  }
+}

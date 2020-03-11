@@ -1,0 +1,87 @@
+@import "utils";
+
+.nav {
+  padding: $navFontSize 0;
+  font-size: $navFontSize;
+  color: $headerColor;
+  text-transform: uppercase;
+  align-self: center;
+
+  @media screen and (max-width: $maxTabletWidth) {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $activeColor;
+    padding: 120px 21px;
+    z-index: 10;
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      grid-auto-flow: row;
+      row-gap: 32px;
+    }
+  }
+
+  &__item {
+    padding: $navYItemPadding 0;
+    border-radius: 8px;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      padding: 0;
+    }
+  }
+
+  &__item--active {
+    position: relative;
+    padding: $navYItemPadding $navXItemPadding;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      padding: 0;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 22px;
+      color: $headerColor;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: $headerColor;
+      opacity: 0.1;
+
+      @media screen and (max-width: $maxTabletWidth) {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    @include hover(color, $headerHoverColor);
+    color: $headerColor;
+    text-decoration: none;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 22px;
+      color: $headerColor;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
