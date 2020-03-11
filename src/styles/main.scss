@@ -2,6 +2,121 @@
 @import "fonts";
 @import "typography";
 
+$primary-color: #0075ff;
+$secondary-color: #b9c1ce;
+
 body {
+  font-family: "Roboto", sans-serif;
   background: $c-gray;
+  margin: 0 auto;
+}
+
+.header {
+  display: grid;
+  grid-template-areas: "call logo menu"
+    "title title title";
+  justify-items: center;
+  align-items: center;
+  padding: 20px 0;
+  //max-width: 360px;
+  height: 568px;
+  background: url(./../images/header.jpg);
+  background-position-x: center;
+  background-size: cover;
+
+  .header__call {
+    grid-area: call;
+    background: url(../images/call.png) no-repeat;
+    width: 18px;
+    height: 18px;
+
+    .header__call-number {
+      display: none;
+    }
+  }
+
+  .header__logo {
+    grid-area: logo;
+    background: url(../images/logoMob.svg) no-repeat;
+    width: 73px;
+    height: 48px;
+  }
+
+  .header__nav-btn--open {
+    grid-area: menu;
+    background: url(../images/Vector.svg) no-repeat;
+    width: 18px;
+    height: 12px;
+  }
+
+  .header__title {
+    position: relative;
+    grid-area: title;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    margin: 335px 35px 80px 20px;
+
+  }
+  .header__title::before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    bottom: 88px;
+    left: 2px;
+    background: #fff;
+    border-radius: 5px;
+  }
+}
+
+.header__nav {
+  //display: grid;
+  display: none;
+  height: 568px;
+  background: $primary-color;
+  color: #fff;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  .nav-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    justify-items: end;
+
+    .header__logo {
+      background: url(../images/logoMob.svg) no-repeat;
+      width: 73px;
+      height: 48px;
+    }
+
+    .header__nav-btn--close {
+      background: url(../images/closeBtn.png);
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .header__nav-list {
+    padding: 0;
+
+    .header__nav-item {
+      list-style: none;
+      font-weight: bold;
+      font-size: 22px;
+      margin-left: 0;
+      margin-bottom: 32px;
+    }
+  }
+
+  .phone-num,
+  .call-to-order {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 25px;
+  }
 }
