@@ -1,22 +1,36 @@
 @import "utils";
 
 .button {
-  @include hover(background-color, $colorOnDark);
-  @include hover(color, $activeColor);
   display: grid;
   justify-content: center;
   align-content: center;
   height: $buttonHeight;
+  min-width: 188px;
   box-sizing: border-box;
-
-  color: $colorOnDark;
-  background: $activeColor;
-  box-shadow: 0 6px 23px $shadowColor;
-  border: 2px solid $activeColor;
   border-radius: 8px;
+  font-weight: 700;
 
   &:hover {
     text-decoration: none;
-    box-shadow: none;
+  }
+
+  &--light {
+    @include hover(background-color, $activeColor);
+    @include hover(color, $white);
+    color: $activeColor;
+    background-color: $white;
+    border: 2px solid $activeColor;
+  }
+
+  &--colored {
+    @include hover(background-color, $activeColorHover);
+    color: $white;
+    background-color: $activeColor;
+    box-shadow: 0 6px 23px $shadowColor;
+    border: 2px solid $activeColor;
+
+    &:hover {
+      box-shadow: 0 13px 27px $shadowHoverColor;
+    }
   }
 }
