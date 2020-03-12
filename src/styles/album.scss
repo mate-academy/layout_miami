@@ -1,14 +1,15 @@
 @import "utils";
 
 .album {
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  row-gap: 24px;
+
+  @media screen and (max-width: $maxMobileWidth) {
+    row-gap: 16px;
+  }
 
   &__info {
-    margin-top: 24px;
-    @media screen and (max-width: $maxMobileWidth) {
-      margin-top: 16px;
-    }
+    order: 2;
   }
 
   &__header {
@@ -22,6 +23,7 @@
   }
 
   &__images {
+    order: 1;
     display: grid;
     column-gap: 20px;
     grid-template-columns: 1fr 1fr;
@@ -35,6 +37,8 @@
     }
 
     &--one-two {
+      grid-template-columns: 1fr 2fr;
+
       @media screen and (max-width: $maxMobileWidth) {
         grid-template-columns: 1fr 1fr;
       }
