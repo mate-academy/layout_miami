@@ -4,13 +4,26 @@
   color: black;
   text-transform: uppercase;
 
+  @media (max-width: $small-screen-breakpoint) {
+    display: none;
+    background-color: $c-blue;
+  }
+
   &__list {
     display: flex;
     justify-content: center;
     list-style: none;
+
+    @media (max-width: $small-screen-breakpoint) {
+      flex-direction: column;
+      text-transform: uppercase;
+      margin-left: auto;
+      padding-top: 300px;
+    }
   }
 
   &__item {
+    display: flex;
     padding: 7px 20px;
     margin: 0 22.5px;
     border-radius: 8px;
@@ -19,8 +32,18 @@
     line-height: 16px;
     letter-spacing: 2px;
 
+    @media (max-width: $small-screen-breakpoint) {
+      font-size: 22px;
+      line-height: 22px;
+      font-weight: 700;
+    }
+
     &_active {
       background: rgba(255, 255, 255, 0.1);
+
+      @media (max-width: $small-screen-breakpoint) {
+        background: none;
+      }
     }
   }
 
@@ -32,12 +55,5 @@
     &:hover {
       color: $active-color;
     }
-  }
-}
-
-@media (min-width: 400px) and (max-width: $small-screen-breakpoint) {
-  .nav__list {
-    flex-direction: column;
-    align-items: center;
   }
 }

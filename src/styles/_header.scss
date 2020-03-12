@@ -18,17 +18,57 @@
 
   &__top {
     padding: 56px 120px 0;
-    top: 35px;
     display: flex;
     justify-content: space-between;
     color: white;
   }
 
+  &__toggle_button {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url("../images/toggler.png");
+
+    @media (max-width: $small-screen-breakpoint) {
+      display: inline-block;
+      z-index: 1;
+    }
+  }
+
+  &__phone_button {
+    display: none;
+    width: 18px;
+    height: 18px;
+    background-image: url("../images/phone.svg");
+
+    @media (max-width: $small-screen-breakpoint) {
+      display: block;
+    }
+  }
+
+  &__toggle-button {
+    display: none;
+
+    @media (max-width: $small-screen-breakpoint) {
+      &:checked + .nav {
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
   &__phone,
-  &__action {
+  &__action, {
     position: relative;
     top: 56px;
     letter-spacing: 2px;
+
+    @media screen and (max-width: $small-screen-breakpoint) {
+      display: none;
+    }
   }
 
   &__link {
@@ -66,14 +106,6 @@
       top: -16px;
       left: 0;
       border-radius: 2px;
-    }
-  }
-}
-
-@media screen and (max-width: $small-screen-breakpoint) {
-  .header {
-    &__top {
-      flex-direction: column;
     }
   }
 }
