@@ -1,7 +1,11 @@
 @import "./vars.scss";
 
 .testimonials {
-  margin-bottom: $section-margin-bottom;
+  margin-bottom: $desktop-section-margin-bottom;
+
+  @media screen and (max-width: $media-size-mobile) {
+    margin-bottom: $mobile-section-margin-bottom;
+  }
 
   &__heading {
     margin: 0 auto;
@@ -11,6 +15,17 @@
 
     &::before {
       @extend %crown-psevdo-elem-h2;
+    }
+  }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+
+    @media screen and (max-width: $media-size-mobile) {
+      grid-template-columns: 1fr;
+      grid-row-gap: 48px;
     }
   }
 
@@ -45,11 +60,5 @@
       color: #3e3e3e;
       margin: 4px 0 0;
     }
-  }
-
-  &__wrap {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
   }
 }

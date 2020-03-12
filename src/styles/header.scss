@@ -1,4 +1,5 @@
 @import "./vars.scss";
+@import "./toggle.scss";
 
 .header {
   height: 700px;
@@ -7,6 +8,11 @@
   background-size: cover;
   background-position: center;
   position: relative;
+
+  @media screen and (max-width: $media-size-mobile) {
+    padding: 40px 20px;
+    height: 100vh;
+  }
 
   &__top {
     display: flex;
@@ -17,15 +23,45 @@
 
   &__logo {
     margin-top: -32px;
+    z-index: 2;
+
+    @media screen and (max-width: $media-size-mobile) {
+      margin-top: -24px;
+    }
 
     .logo__img {
-      width: $desctop-logo-width;
-      height: $desctop-logo-height;
+      width: $desktop-logo-width;
+      height: $desktop-logo-height;
+
+      @media screen and (max-width: $media-size-mobile) {
+        width: $mobile-logo-width;
+        height: $mobile-logo-height;
+      }
     }
   }
 
   &__link-phone {
     color: white;
+  }
+
+  &__tel {
+    @media screen and (max-width: $media-size-mobile) {
+      display: none;
+    }
+  }
+
+  &__phone-icon {
+    display: none;
+    cursor: pointer;
+    @media screen and (max-width: $media-size-mobile) {
+      display: block;
+    }
+  }
+
+  &__action {
+    @media screen and (max-width: $media-size-mobile) {
+      display: none;
+    }
   }
 
   &__link-order {
@@ -34,6 +70,15 @@
     border-bottom: 1px solid #fff;
     color: white;
   }
+
+  &__toggle {
+    display: none;
+
+    @media screen and (max-width: $media-size-mobile) {
+      display: block;
+    }
+  }
+
   &__heading {
     font-size: 60px;
     line-height: 60px;
@@ -41,6 +86,13 @@
     color: #fff;
     position: absolute;
     bottom: 165px;
+
+    @media screen and (max-width: $media-size-mobile) {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      bottom: 80px;
+    }
 
     &::before {
       content: "";

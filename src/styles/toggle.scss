@@ -1,0 +1,93 @@
+@import "./vars.scss";
+
+.toggle {
+  &__mobile {
+    display: none;
+  }
+
+  &__menu {
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+  }
+
+  &__btn {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    color: white;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__contact {
+    margin-top: 16px;
+  }
+
+  &__menu:checked ~ .toggle__mobile {
+    display: block;
+    padding: 120px 20px 52px;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0075ff;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s, transform 0.5s;
+  }
+
+  &__span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 4px;
+    transition-duration: 0.5s;
+  }
+
+  &__span::before {
+    content: "";
+    top: -8px;
+    @extend %toggle-span-style;
+  }
+
+  &__span::after {
+    content: "";
+    top: 8px;
+    @extend %toggle-span-style;
+  }
+
+  &__menu:checked ~ .toggle__btn > .toggle__span {
+    transform: rotate(45deg);
+  }
+
+  &__menu:checked ~ .toggle__btn > .toggle__span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  &__menu:checked ~ .toggle__btn > .toggle__span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  .contact__info {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+}
