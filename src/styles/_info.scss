@@ -2,17 +2,34 @@
   display: flex;
   justify-content: space-between;
 
-  &__title {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 48px;
-    letter-spacing: -1.5px;
-    color: #000;
+  &__title--info {
+    @include title;
     margin: 0;
   }
 
   &__text {
     max-width: 500px;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breackpoint) {
+  .info {
+    flex-direction: column;
+    justify-content: center;
+    &__title--info {
+      font-size: 36px;
+      line-height: 36px;
+      margin-top: 64px;
+      margin-bottom: 48px;
+    }
+    &__content,
+    .sub-title,
+    .info__title--info {
+      text-align: center;
+    }
   }
 }
