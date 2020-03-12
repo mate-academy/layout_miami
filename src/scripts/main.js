@@ -7,12 +7,14 @@ const body = document.body;
 
 burger.addEventListener('click', mobileMenuToggle);
 
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].addEventListener('click', mobileMenuToggle);
-}
-
 function mobileMenuToggle() {
   burger.classList.toggle('burger--clicked');
   mobileMenu.classList.toggle('nav--visisble');
   body.classList.toggle('has-modal');
+
+  if (burger.classList.contains('burger--clicked')) {
+    for (let i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', mobileMenuToggle);
+    }
+  }
 }
