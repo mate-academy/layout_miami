@@ -1,0 +1,113 @@
+@import "utils/vars";
+@import "utils/mixins";
+
+.gallery {
+  &__title {
+    @include content-titles;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        margin-bottom: 53px;
+      }
+    }
+  }
+}
+
+.photos {
+  $gap: 20px;
+
+  &__img {
+    width: calc(50% - #{$gap / 2});
+    height: 256px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        height: 131px;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+
+    &--wide-left {
+      .photos__img:first-child {
+        width: calc(67% - #{$gap / 2});
+
+        @media (max-width: $mobile-screen-breakpoints) {
+          & {
+            width: calc(50% - #{$gap / 2});
+          }
+        }
+      }
+
+      .photos__img:last-child {
+        width: calc(33% - #{$gap / 2});
+
+        @media (max-width: $mobile-screen-breakpoints) {
+          & {
+            width: calc(50% - #{$gap / 2});
+          }
+        }
+      }
+    }
+
+    &--wide-right {
+      .photos__img:first-child {
+        width: calc(33% - #{$gap / 2});
+
+        @media (max-width: $mobile-screen-breakpoints) {
+          & {
+            width: calc(50% - #{$gap / 2});
+          }
+        }
+      }
+
+      .photos__img:last-child {
+        width: calc(67% - #{$gap / 2});
+
+        @media (max-width: $mobile-screen-breakpoints) {
+          & {
+            width: calc(50% - #{$gap / 2});
+          }
+        }
+      }
+    }
+  }
+
+  &__caption {
+    margin: 24px 0 40px;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        margin: 16px 0 32px;
+      }
+    }
+  }
+
+  &__link {
+    color: #0075ff;
+  }
+}
+
+.button {
+  display: block;
+  width: 188px;
+  height: 56px;
+  margin: 0 auto;
+  border: 2px solid #0075ff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #0075ff;
+  cursor: pointer;
+  transition: $hover-duration;
+
+  &:hover {
+    color: #fff;
+    background-color: #0075ff;
+  }
+}
