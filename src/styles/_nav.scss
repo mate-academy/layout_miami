@@ -1,4 +1,5 @@
 .nav {
+
   &__list {
     display: flex;
     justify-content: center;
@@ -12,5 +13,113 @@
       background-color: rgba(255, 255, 255, 0.1 );
       border-radius: 8px;
     }
+  }
+}
+
+.menu__toggle {
+  visibility: hidden;
+}
+
+@media (max-width: 1300px) {
+  .nav {
+    position: relative;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    visibility: hidden;
+    top: -1000%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    list-style: none;
+    background-color: #0075ff;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.3s;
+  }
+
+  .menu__toggle {
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+  }
+
+  .menu__span,
+  .menu__span::before,
+  .menu__span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    transition-duration: 0.3s;
+  }
+
+  .menu__span::before {
+    content: "";
+    top: -8px;
+  }
+
+  .menu__span::after {
+    content: "";
+    top: 8px;
+  }
+
+  .menu__toggle:checked ~ .menu__btn > .menu__span {
+    transform: rotate(45deg);
+  }
+
+  .menu__toggle:checked ~ .menu__btn > .menu__span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  .menu__toggle:checked ~ .menu__btn > .menu__span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  .menu__toggle:checked ~ .nav__list {
+    visibility: visible;
+    top: 40px;
+  }
+
+  .menu__btn {
+    display: block;
+    position: absolute;
+    right: 10%;
+    top: 130px;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .header__nav {
+    position: relative;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 12px 24px;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.3s;
+  }
+
+  .nav__link:hover {
+    background-color: #334563;
+  }
+
+  .nav__link:active {
+    background-color: #152032;
+    color: #fbcb27;
   }
 }
