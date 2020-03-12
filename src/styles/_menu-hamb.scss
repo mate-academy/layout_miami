@@ -1,0 +1,55 @@
+@import "variables";
+
+.menu__span,
+.menu__span::before,
+.menu__span::after {
+  display: block;
+  position: absolute;
+
+  width: 18px;
+  height: 2px;
+
+  background-color: white;
+
+  transition-duration: 0.3s;
+
+  border-radius: 2px;
+}
+
+.menu__span {
+  position: absolute;
+  display: block;
+  top: 45px;
+  right: 25px;
+
+  &::before {
+    content: "";
+    top: -4px;
+  }
+  &::after {
+    content: "";
+    top: 4px;
+  }
+}
+
+.nav__toggler {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.nav__toggler:checked ~ .menu-hamb > .menu__span {
+  transform: rotate(45deg);
+
+}
+
+.nav__toggler:checked ~ .menu-hamb > .menu__span::before {
+  transform: rotate(0);
+  top: 0;
+}
+
+.nav__toggler:checked ~ .menu-hamb > .menu__span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
