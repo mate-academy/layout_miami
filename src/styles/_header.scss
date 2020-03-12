@@ -30,6 +30,7 @@
   }
 
   &__logo {
+    display: block;
     @include logo-style;
   }
 
@@ -46,6 +47,7 @@
     color: white;
     letter-spacing: -1.5px;
     line-height: 1;
+    width: 328px;
 
     @media screen and (max-width: $media-size-medium) {
       font-size: 48px;
@@ -80,16 +82,130 @@
     }
 
     @media screen and (max-width: $media-size-small) {
-      opacity: 0;
+      display: none;
     }
   }
 
-  &__phone {
+  &__phone-number {
+    display: block;
+
     @media screen and (max-width: $media-size-small) {
-      &::after {
-        content: "";
-      }
+      display: none;
     }
+  }
+
+  &__phone-link {
+    @include phone-link-style;
+  }
+
+  &__phone-icon {
+    display: none;
+    padding-left: 5px;
+    cursor: pointer;
+    @media screen and (max-width: $media-size-small) {
+      display: block;
+    }
+  }
+
+  &__label {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
+    z-index: 3;
+    @media screen and (max-width: $media-size-small) {
+      display: block;
+    }
+  }
+
+  &__menu {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background-color: $primary-color;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__menu-container {
+    margin-top: 120px;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__menu-logo-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__menu-logo {
+    @include logo-style;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+  }
+
+  &__menu-number {
+    position: absolute;
+    bottom: 70px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  &__menu-action-container {
+    position: absolute;
+    display: inline;
+    bottom: 35px;
+
+  }
+
+  &__menu-action {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    border-radius: 1px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: $nav-active-color;
+    }
+  }
+
+  &__menu-link {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 32px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+
+    &:last-child {
+      margin-bottom: 48px;
+    }
+
+    &:hover {
+      color: $nav-active-color;
+    }
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__toggle:checked + &__menu {
+    display: block;
+    position: fixed;
   }
 
 }
