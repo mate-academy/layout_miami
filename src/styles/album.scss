@@ -28,8 +28,13 @@
   &__images {
     order: 1;
     display: grid;
-    column-gap: 20px;
+    column-gap: $minColumnGap;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: $albumPreviewMaxHeight;
+
+    @media screen and (max-width: $maxMobileWidth) {
+      grid-template-rows: 1fr;
+    }
 
     &--two-one {
       grid-template-columns: 2fr 1fr;
@@ -50,14 +55,9 @@
 
   &__image-link {
     display: block;
-    height: 256px;
-    border-radius: 8px;
+    height: 100%;
+    border-radius: $borderRadius;
     overflow: hidden;
-
-    @media screen and (max-width: $maxMobileWidth) {
-      height: calc((100vw - 60px) / 2);
-      width: calc((100vw - 60px) / 2);
-    }
   }
 
   &__image {
