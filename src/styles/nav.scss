@@ -2,11 +2,29 @@
 @import "mixins";
 @import "container";
 
-// .nav {
-//   &__list {
-//     display: none;
-//   }
-// }
+.nav {
+  &__list {
+    display: none;
+    position: absolute;
+  }
+  &__toggler {
+    display: none;
+    &:checked + &-label::before {
+      content: "x";
+    }
+    &:checked ~ .nav__list {
+      display: block;
+    }
+    &-label {
+      display: block;
+      padding: 5px;
+      color: $header-font-color;
+      &:before {
+        content: "=";
+      }
+    }
+  }
+}
 // .nav {
 //   text-transform: uppercase;
 //   margin-top: 85px;
