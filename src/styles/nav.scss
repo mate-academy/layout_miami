@@ -4,7 +4,90 @@
   color: #fff;
   text-transform: uppercase;
 
+  &__logo {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - #{$logo-width-mini /2});
+    z-index: 2;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    z-index: -1;
+  }
+
+  &__phone-img {
+    position: absolute;
+    top: 39px;
+    left: 23px;
+    z-index: -1;
+  }
+
+  &__menu:hover {
+    cursor: pointer;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 56px;
+    left: 120px;
+  }
+
+  &__action {
+    position: absolute;
+    top: 56px;
+    right: 120px;
+
+    &--link {
+      text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+      transition: $hover-direction;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+
+      &:hover {
+        color: $c-nav-link-hover;
+        border-color: $c-nav-link-hover;
+      }
+    }
+  }
+
+  &__center {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+
+    &--item {
+      margin: 0;
+    }
+  }
+
+  &__center::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 0;
+    height: 2px;
+    background-color: #fff;
+    width: 35px;
+  }
+
   &__list {
+    position: absolute;
+    bottom: 48px;
+    left: 120px;
+    right: 120px;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
@@ -23,6 +106,8 @@
   }
 
   &__link {
+    white-space: nowrap;
+    display: flex;
     color: #fff;
     text-decoration: none;
     transition: color $hover-direction ease-out;
@@ -34,5 +119,109 @@
 
   &__link:hover {
     color: $c-nav-link-hover;
+  }
+}
+
+@media screen and (max-width: $small-screen-width) {
+  .nav {
+    position: absolute;
+    flex-direction: column;
+
+    &__action,
+    &__phone {
+      position: absolute;
+      z-index: -1;
+    }
+
+    &__logo {
+      position: absolute;
+      top: 24px;
+      left: calc(50% - #{$logo-width-mini /2});
+      z-index: 3;
+    }
+
+    &__center {
+      bottom: 80px;
+      left: 20px;
+      font-weight: bold;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+
+    &__list {
+      padding: 104px 0 0 24px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      background-color: #0075ff;
+      box-sizing: border-box;
+    }
+
+    &__menu {
+      width: 18px;
+      height: 12px;
+      background-image: url("../images/menu.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 3;
+    }
+
+    &__phone-img {
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/phone.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1;
+    }
+
+    &__item--active {
+      background: transparent;
+    }
+
+    &__link {
+      padding: 16px 0;
+    }
+
+    &__item {
+      padding: 0;
+    }
+
+    &__input:checked ~ &__list {
+      display: flex;
+    }
+
+    &__input:checked ~ &__center {
+      z-index: -1;
+    }
+
+    &__input:checked ~ &__phone {
+      position: absolute;
+      top: 460px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    &__input:checked ~ &__action {
+      position: absolute;
+      top: 492px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    &__input:checked + &__menu {
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/x.png");
+    }
   }
 }
