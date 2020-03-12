@@ -3,11 +3,12 @@
   font-size: 12px;
   color: #fff;
   text-transform: uppercase;
+  position: relative;
 
   &__togler-label {
     display: none;
     position: absolute;
-    bottom: 439px;
+    bottom: 420px;
     left: 78vw;
 
     padding: 20px;
@@ -17,19 +18,22 @@
     background-size: 18px 12px;
 
     transition: background-image 0.3s;
-
   }
 
   &__list {
     display: flex;
     justify-content: space-between;
-
-    // @media screen and (max-width: 640px) {
-    //   display: none;
-    // }
   }
 
   &__item {
+
+    &:nth-last-child(-n+2) {
+      display: none;
+    }
+
+    &:nth-last-child(-n+1) {
+      display: none;
+    }
 
     &-active {
       position: relative;
@@ -58,20 +62,49 @@
 .nav__togler {
   display: none;
 
+  &:checked ~ .nav__item {
+    font-size: 22px;
+    line-height: 1;
+    margin-top: 30px;
+  }
+
   &:checked + .nav__togler-label {
     background-image: url("../images/cross.svg");
   }
+
+  // &:checked ~ .nav__item:nth-last-child(-n+2) {
+  //   display: block;
+  // }
+
+  // &:checked ~ .nav__item:nth-last-child(-n+1) {
+  //   display: block;
+  // }
 }
 
 @media screen and (max-width: 640px) {
   .nav__togler-label {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 5;
+    width: 18px;
+    height: 12px;
   }
+
   .nav__list {
     display: none;
   }
 
   .nav__togler:checked ~ .nav__list {
+    position: fixed;
+    bottom: 103px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     display: flex;
+    flex-direction: column;
+    background-color: blue;
   }
 }
