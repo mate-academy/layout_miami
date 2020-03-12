@@ -1,0 +1,95 @@
+@import "utils/vars";
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+
+  & > div:not(:last-child) {
+    padding-bottom: 40px;
+  }
+
+  &__heading {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    margin-bottom: $main-logo-height;
+
+    & h1 {
+      position: relative;
+      margin: 0;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - #{$main-logo-width / 2});
+    width: $main-logo-width;
+    height: $main-logo-height;
+    background-image: url("../images/crown.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $c-main-link;
+    transition: color $hover-direction ease-out;
+  }
+
+  & a:hover {
+    color: $c-nav-link-hover;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+
+    &--View {
+      display: flex;
+      justify-content: center;
+      padding: 21px 65px;
+      width: 188px;
+      white-space: nowrap;
+      border: 2px solid $c-main-link;
+      box-sizing: border-box;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 14px;
+      transition: border-color $hover-direction ease-out;
+    }
+
+    &--View:hover {
+      border-color: $c-nav-link-hover;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-width) {
+  .gallery {
+
+    & > div:not(:last-child) {
+      padding-bottom: $small-pad-bot-gallery;
+    }
+
+    &__heading {
+      font-size: 36px;
+      line-height: 36px;
+      margin-bottom: $main-logo-height + $small-pad-bot-gallery;
+    }
+
+    &__link {
+      &--View {
+        width: 100%;
+      }
+    }
+  }
+}
