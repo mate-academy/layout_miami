@@ -12,4 +12,6 @@ sandwich.addEventListener('click', function() {
 closeIcon.addEventListener('click', function() {
   navigation.classList.remove('showin');
   navigation.classList.add('showout');
+
+  setTimeout(() => navigation.classList.remove('showout'), 1000);
 });
