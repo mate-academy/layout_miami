@@ -15,56 +15,62 @@
 
   &__top {
     position: relative;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
     color: white;
+    // width: calc(100% - 300px);
   }
 
   &__logo {
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    right: 50%;
+    margin: 25px auto;
   }
 
   &__phone {
-    position: absolute;
-    top: 56px;
-    left: 120px;
-    display: flex;
+    // display: flex;
+    margin-top: 50px;
+    text-align: center;
     letter-spacing: 2px;
     white-space: nowrap;
+    font-family: $roboto-font;
   }
 
   &__action {
-    position: absolute;
-    top: 56px;
-    right: 120px;
+    margin-top: 53px;
     white-space: nowrap;
-  }
-
-  &__link {
-    display: flex;
-
     position: relative;
     color: white;
     text-decoration: none;
     letter-spacing: 2px;
-    border-bottom: 1px solid;
-    transition: color 0.3s;
+    // border-bottom: 1px solid;
     text-transform: uppercase;
     font-family: $roboto-font;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
-    align-items: center;
+    text-align: center;
 
+    &:before {
+      position: absolute;
+      content: "";
+      height: 2px;
+      width: 115px;
+      top: 20px;
+      background-color: white;
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    transition: color $hover-duration;
     &:hover {
       color: $active-color;
     }
-
   }
+
   &__article {
     position: absolute;
     font-style: normal;
@@ -86,19 +92,5 @@
       left: 0;
       border-radius: 2px;
     }
-  }
-}
-
-@media screen and (max-width: $screen-break-point) {
-  .header__top {
-    flex-direction: row;
-  }
-
-  .header__link {
-    display: none;
-  }
-
-  .header__link::after {
-    display: flex;
   }
 }
