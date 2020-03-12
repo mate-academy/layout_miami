@@ -2,6 +2,11 @@
 
 .nav {
   text-transform: uppercase;
+
+  @media screen and (max-width: 550px) and (min-width: 320px) {
+    display: none;
+    background-color: #0075ff;
+  }
   
   &__list {
     display: flex;
@@ -11,18 +16,24 @@
 
     @media screen and (max-width: 800px) {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      position: relative;
+      top: 100px;
     }
   }
 
   &__item {
     padding: 8px 24px;
     color: white;
-  }
 
-  &_active {
-    background-color: rgba(#fff, 0.1);
-    border-radius: 8px;
+    &_active {
+      background-color: rgba(#fff, 0.1);
+      border-radius: 8px;
+    
+      @media screen and (max-width: 550px) and (min-width: 320px) {
+        background-color: transparent;
+      }
+    }
   }
 
   &__link {
@@ -33,34 +44,5 @@
     &:hover {
       color: $hover-color;
     }
-  }
-}
-
-// @media screen and (max-width: 800px) {
-//   .nav__list {
-//     flex-direction: column;
-//     align-items: center;
-//   }
-// }
-
-@media screen and (max-width: 550px) and (min-width: 320px) {
- 
-
-  .nav__list {
-    visibility: hidden;
-    background-color: #0075ff;
-    position: fixed;
-    z-index: 3;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-  }
-  
-    
-
-  .nav__item_active {
-    background-color: transparent;
   }
 }
