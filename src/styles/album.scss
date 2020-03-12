@@ -1,0 +1,63 @@
+@import "utils";
+
+.album {
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__info {
+    margin-top: 24px;
+    @media screen and (max-width: $maxMobileWidth) {
+      margin-top: 16px;
+    }
+  }
+
+  &__header {
+    display: inline;
+  }
+
+  &__descr {
+    &::before {
+      content: " / ";
+    }
+  }
+
+  &__images {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+
+    &--two-one {
+      grid-template-columns: 2fr 1fr;
+
+      @media screen and (max-width: $maxMobileWidth) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &--one-two {
+      @media screen and (max-width: $maxMobileWidth) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__image-link {
+    display: block;
+    height: 256px;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @media screen and (max-width: $maxMobileWidth) {
+      height: calc((100vw - 60px) / 2);
+      width: calc((100vw - 60px) / 2);
+    }
+  }
+
+  &__image {
+    @include hover(transform, scale(1.2));
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

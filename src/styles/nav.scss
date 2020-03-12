@@ -3,17 +3,17 @@
 .nav {
   padding: $navFontSize 0;
   font-size: $navFontSize;
-  color: $headerColor;
-  text-transform: uppercase;
+  color: $colorOnDark;
+  box-sizing: border-box;
   align-self: center;
+  text-transform: uppercase;
 
   @media screen and (max-width: $maxTabletWidth) {
-    display: none;
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: -$headerHeightMobile;
     left: 0;
     right: 0;
+    height: $headerHeightMobile;
     background-color: $activeColor;
     padding: 120px 21px;
     z-index: 10;
@@ -48,7 +48,7 @@
       font-weight: bold;
       font-size: 22px;
       line-height: 22px;
-      color: $headerColor;
+      color: $colorOnDark;
     }
 
     &::before {
@@ -59,7 +59,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      background: $headerColor;
+      background: $colorOnDark;
       opacity: 0.1;
 
       @media screen and (max-width: $maxTabletWidth) {
@@ -70,14 +70,14 @@
 
   &__link {
     @include hover(color, $headerHoverColor);
-    color: $headerColor;
+    color: $colorOnDark;
     text-decoration: none;
 
     @media screen and (max-width: $maxTabletWidth) {
       font-weight: bold;
       font-size: 22px;
       line-height: 22px;
-      color: $headerColor;
+      color: $colorOnDark;
     }
 
     &:hover {
@@ -102,6 +102,16 @@
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: $headerColor;
+    color: $colorOnDark;
+  }
+
+  &__show {
+    transform: translateY($headerHeightMobile);
+    transition: transform 1s;
+  }
+
+  &__hide {
+    transform: translateY(-$headerHeightMobile);
+    transition: transform 1s;
   }
 }
