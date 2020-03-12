@@ -6,39 +6,59 @@
   padding: 24px 120px 48px;
   display: grid;
   grid-template-rows: 76px auto 32px;
+  grid-template-columns: 1fr 1fr 1fr;
   background: url(../images/header.jpg) no-repeat center;
   background-size: cover;
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
-  letter-spacing: 2px;
   color: #fff;
 
+  &__phone {
+    justify-self: start;
+    align-self: center;
+    letter-spacing: 2px;
+  }
+
   &__logo {
-    background: url(../images/logo.png) no-repeat center;
-    background-size: cover;
+    justify-self: center;
+    align-self: center;
     width: 115px;
     height: 76px;
   }
 
   &__top {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
   }
 
+  &__action {
+    align-self: center;
+    justify-self: end;
+    position: relative;
+  }
+
   &__link {
+    padding-bottom: 8px;
     color: #fff;
     text-decoration: none;
-    transition: color $hover-duration;
+    text-transform: uppercase;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #fff;
+    transition: all $hover-duration;
 
     &:hover {
-      color: $header-link-hover;
+      color: $header-hover;
+      border-color: $header-hover;
     }
   }
 
   &__title {
+    grid-column: 1 / -1;
     position: relative;
     align-self: end;
     margin-bottom: 85px;
@@ -56,5 +76,58 @@
       height: 2px;
       background-color: #fff;
     }
+  }
+
+  &__nav {
+    grid-column: 1 / -1;
+  }
+
+  @media screen and (max-width: 870px) {
+    height: 568px;
+    grid-template-rows: 48px auto;
+    padding: 24px 24px 80px;
+
+    &__title {
+      margin-bottom: 0;
+      font-size: 48px;
+      letter-spacing: -1px;
+    }
+
+    &__top {
+      grid-column: 1 / -2;
+    }
+
+    &__phone {
+      height: 18px;
+      width: 18px;
+
+      &-num {
+        display: none;
+      }
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        background: url(../images/phone.png) no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__action {
+      display: none;
+    }
+
+    &__nav {
+      grid-row: 1 / 2;
+      grid-column: -2 / -1;
+    }
+
   }
 }
