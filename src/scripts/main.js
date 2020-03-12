@@ -14,7 +14,13 @@ function mobileMenuToggle() {
 
   if (burger.classList.contains('burger--clicked')) {
     for (let i = 0; i < navLinks.length; i++) {
-      navLinks[i].addEventListener('click', mobileMenuToggle);
+      navLinks[i].addEventListener('click', mobileMenuRemove);
     }
   }
+}
+
+function mobileMenuRemove() {
+  burger.classList.remove('burger--clicked');
+  mobileMenu.classList.remove('nav--visisble');
+  body.classList.remove('has-modal');
 }
