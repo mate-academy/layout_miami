@@ -2,12 +2,10 @@
   &__title {
     @include title-text-style;
     text-align: center;
-    margin-top: 152px;
   }
 
   &__title-decoration {
-    display: block;
-    margin: 7px auto 38px;
+    @include title-decoration-style;
   }
 
   &__photos {
@@ -18,27 +16,18 @@
   }
 
   &__photos--size-2-1 {
+    @include gallery-image-layout;
     grid-template-columns: 2fr 1fr;
-
-    @media screen and (max-width: $media-size-medium) {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   &__photos--size-1-1 {
+    @include gallery-image-layout;
     grid-template-columns: 1fr 1fr;
-
-    @media screen and (max-width: $media-size-medium) {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   &__photos--size-1-2 {
+    @include gallery-image-layout;
     grid-template-columns: 1fr 2fr;
-
-    @media screen and (max-width: $media-size-medium) {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   &__photo {
@@ -72,6 +61,10 @@
     padding: 21px 65px;
     text-decoration: none;
     transition: background-color $hover-duration, color $hover-duration;
+
+    @media screen and (max-width: $media-size-small) {
+      display: block;
+    }
 
     &:hover {
       background-color: $primary-color;

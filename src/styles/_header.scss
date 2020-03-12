@@ -8,6 +8,10 @@
   letter-spacing: 2px;
   font-size: $nav-font-size;
 
+  @media screen and (max-width: $media-size-small) {
+    height: 100vh;
+  }
+
   &__nav {
     @include main-container;
     position: absolute;
@@ -26,12 +30,7 @@
   }
 
   &__logo {
-    width: $logo-width;
-    height: $logo-heigth;
-    background-image: url(../images/logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    @include logo-style;
   }
 
   &__text-container {
@@ -47,6 +46,14 @@
     color: white;
     letter-spacing: -1.5px;
     line-height: 1;
+
+    @media screen and (max-width: $media-size-medium) {
+      font-size: 48px;
+    }
+
+    @media screen and (max-width: $media-size-small) {
+      bottom: 80px;
+    }
 
     &:before {
       content: " ";
@@ -70,6 +77,18 @@
 
     &:hover {
       color: $nav-active-color;
+    }
+
+    @media screen and (max-width: $media-size-small) {
+      opacity: 0;
+    }
+  }
+
+  &__phone {
+    @media screen and (max-width: $media-size-small) {
+      &::after {
+        content: "";
+      }
     }
   }
 
