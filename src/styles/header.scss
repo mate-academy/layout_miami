@@ -14,6 +14,7 @@
   background-position: 50% 50%;
 
   &__container {
+    position: relative;
     z-index: 1;
 
     max-width: $container-width;
@@ -25,6 +26,9 @@
     justify-content: space-between;
 
     background: transparent;
+
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -44,6 +48,26 @@
     padding-bottom: 8px;
     @include link-hover(color, $color-hover);
 
+    @media (max-width: 790px) {
+      display: none;
+    }
+
+  }
+
+  &__telephone {
+    display: none;
+
+    @media (max-width: 790px) {
+      display: block;
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @media (max-width: 790px) {
+      display: block;
+    }
   }
 
   &__logo {
@@ -55,6 +79,13 @@
     position: relative;
     padding-bottom: 8px;
     transition: all 0.3s linear;
+
+    @media (max-width: 790px) {
+      display: none;
+
+      bottom: 0;
+      left: 0;
+    }
 
     &::after {
       position: absolute;
@@ -83,6 +114,7 @@
 
 .header-lower {
   margin-bottom: 48px;
+  transition: transform 1s linear;
   
   &__title {
     position: relative;
@@ -102,6 +134,11 @@
       top: -16px;
       left: 2px;
     }
+
+    @media (max-width: 790px) {
+      font-size: 46px;
+      line-height: 40px;
+    }
   }
 }
 
@@ -116,6 +153,15 @@
 
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 790px) {
+      position: absolute;
+      display: block;
+      font-size: 22px;
+
+      top: 120px;
+      left: 21px;
+    }
   }
 
   &__item {
@@ -123,6 +169,10 @@
 
     &:last-of-type {
       margin-right: -24px;
+    }
+
+    @media (max-width: 790px) {
+      margin-bottom: 32px;
     }
   }
 
@@ -139,6 +189,27 @@
     &.active {
       background-color: rgba($main-color, 0.1);
       border-radius: 8px;
+
+      @media (max-width: 790px) {
+        background-color: transparent;
+        border-radius: 0;
+      }
     }
+  }
+
+  @media (max-width: 790px) {
+    position: absolute;
+    display: block;
+    z-index: -1;
+
+    transition: transform 0.5s linear;
+    transform: translateY(-100%);
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: $color-accent;
   }
 }
