@@ -12,19 +12,43 @@
   color: $main-font-color;
   letter-spacing: 2px;
 
+  @media (max-width: $small-screen-breackpoint) {
+    & {
+      height: 560px;
+    }
+  }
+
   &__container {
     position: relative;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 48px;
   }
 
   &__top {
+    position: absolute;
     display: flex;
     justify-content: space-between;
-    margin-top: 24px;
     align-items: center;
+    right: 0;
+    left: 0;
+    top: 24px;
+
+    @media (max-width: $small-screen-breackpoint) {
+      & {
+        right: 23px;
+        left: 23px;
+      }
+    }
   }
 
   &__phone,
@@ -32,8 +56,38 @@
     color: $main-font-color;
   }
 
+  @media (max-width: $small-screen-breackpoint) {
+    &__phone {
+      display: none;
+    }
+  }
+
+  &__btn {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/mdi_menu.svg);
+
+    @media (max-width: $small-screen-breackpoint) {
+      & {
+        display: inline-block;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+    @media (max-width: $small-screen-breackpoint) {
+      & {
+        display: none;
+      }
+    }
+  }
+
   &__link {
     position: relative;
+    padding: 8px 0;
     text-decoration: none;
     transition: color $hover-transition;
     text-transform: uppercase;
@@ -50,7 +104,7 @@
 
       position: absolute;
       left: 0;
-      bottom: -8px;
+      bottom: 0;
       background-color: $main-font-color;
     }
   }
@@ -64,6 +118,15 @@
     line-height: 60px;
     letter-spacing: -1.5px;
 
+    @media (max-width: $small-screen-breackpoint) {
+      & {
+        top: 407px;
+        letter-spacing: -1px;
+        font-size: 46px;
+        line-height: 40px;
+      }
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -74,10 +137,29 @@
       background-color: $main-font-color;
     }
   }
-}
 
-@media screen and (max-width: $small-screen-breackpoint) {
-  .header__top {
-    flex-direction: column;
+  &__phone-pic {
+    display: none;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/phone-pic.svg);
+
+    @media (max-width: $small-screen-breackpoint) {
+      display: block;
+    }
+  }
+
+  &__toggler-btn {
+    display: none;
+
+    @media (max-width: $small-screen-breackpoint) {
+      &:checked + .nav {
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
   }
 }
