@@ -1,5 +1,7 @@
 .main {
   background: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .section {
@@ -92,7 +94,7 @@
     justify-content: space-between;
   }
 
-  &__img {
+  &__imgs-img {
     height: 256px;
     object-fit: cover;
     object-position: center;
@@ -105,39 +107,19 @@
     }
   }
 
-  &__imgs-left {
-    .gallery__img {
-      &:first-child {
-        width: calc(67% - #{$gutter-width});
-        @media (max-width: $mobileBreakpoint) {
-          width: calc(50% - #{$gutter-width});
-        }
-      }
-      &:last-child {
-        width: calc(33% - #{$gutter-width});
-        @media (max-width: $mobileBreakpoint) {
-          width: calc(50% - #{$gutter-width});
-        }
-      }
+  &__imgs-rigth &__imgs-img:last-child,
+  &__imgs-left &__imgs-img:first-child {
+    width: calc(67% - #{$gutter-width});
+    @media (max-width: $mobileBreakpoint) {
+      width: calc(50% - #{$gutter-width});
     }
   }
-
-  &__imgs-rigth {
-    .gallery__img {
-      &:first-child {
-        width: calc(33% - #{$gutter-width});
-        @media (max-width: $mobileBreakpoint) {
-          width: calc(50% - #{$gutter-width});
-        }
-      }
-      &:last-child {
-        width: calc(67% - #{$gutter-width});
-        @media (max-width: $mobileBreakpoint) {
-          width: calc(50% - #{$gutter-width});
-        }
-      }
+  &__imgs-rigth &__imgs-img:first-child,
+  &__imgs-left &__imgs-img:last-child {
+    width: calc(33% - #{$gutter-width});
+    @media (max-width: $mobileBreakpoint) {
+      width: calc(50% - #{$gutter-width});
     }
-
   }
 
   &__info {
