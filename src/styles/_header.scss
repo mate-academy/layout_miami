@@ -2,7 +2,7 @@
 
 .header {
   height: 700px;
-  background-image: url(/images/header2.jpg);
+  background-image: url("/images/header2.jpg");
   background-size: cover;
   background-position: center;
 
@@ -37,7 +37,7 @@
 
     transition: color $hover-transition;
 
-    &:after {
+    &--lined:after {
       content: "";
       position: absolute;
       left: 0;
@@ -79,25 +79,67 @@
     bottom: 48px;
     width: 100%;
   }
+
+  &__toggle_button {
+    position: relative;
+    display: none;
+    background-image: url("/images/Vector.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 12px;
+
+  }
+
+  &__phone_button {
+    display: none;
+    background-image: url("/images/phone.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+  }
+
+  &__toggler {
+    display: none;
+
+    @media (max-width: $small-screan-breakpoint) {
+      &:checked + .nav {
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
 }
 
-@media screen and (max-width: $small-screan-breakpoint ) {
+@media screen and (max-width: $small-screan-breakpoint) {
   .header {
-    padding: 20px;
-    height: 500px;
+    height: 568px;
 
-    &__info {
-      flex-direction: column;
-    }
-    &__phone,
     &__link {
       display: none;
     }
 
+    &__toggle_button {
+      display: block;
+      margin-right: 30px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
     &__title {
+      margin-left: 20px;
       font-size: 46px;
       line-height: 40px;
       bottom: 80px;
+    }
+
+    &__phone_button {
+      display: block;
+      margin-left: 30px;
     }
   }
 
