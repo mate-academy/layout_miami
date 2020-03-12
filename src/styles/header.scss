@@ -1,13 +1,15 @@
 @import "utils";
 
 .header {
-  position: relative;
+  position: sticky;
+  top: 60px - $headerHeight;
   height: $headerHeight;
   font-size: 12px;
   line-height: 133%;
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
+  z-index: 1;
 
   @media screen and (max-width: $maxTabletWidth) {
     height: $headerHeightMobile;
@@ -20,6 +22,10 @@
     height: 100%;
     margin: 0 auto;
     padding: 0 $innerIdent;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      padding: 0 $innerIdentMobile;
+    }
   }
 
   &__top-line {
@@ -108,6 +114,7 @@
   }
 
   &__site-name {
+    grid-row: auto;
     align-self: end;
     max-width: 340px;
     margin: 40px 0;
@@ -118,7 +125,9 @@
     color: $white;
 
     @media screen and (max-width: $maxTabletWidth) {
+      grid-row: span 2;
       max-width: 280px;
+      margin-bottom: 80px;
       font-size: 46px;
       line-height: 40px;
       letter-spacing: -1px;
