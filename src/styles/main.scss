@@ -10,6 +10,10 @@ body {
   background: #fff;
   margin: 0 auto;
   max-width: 360px;
+
+  @media (min-width: 361px) {
+    max-width: 100%;
+  }
 }
 // impotant we use only in this case because class
 // non-visible do only one thing and not to dublicate classes
@@ -24,7 +28,6 @@ body {
   justify-items: center;
   align-items: center;
   padding: 20px 0;
-  max-width: 360px;
   height: 568px;
   background: url(./../images/header.jpg);
   background-position-x: center;
@@ -134,19 +137,19 @@ body {
 .content {
   padding: 64px 20px;
 
-  &__title {
+  .content__title {
     font-weight: bold;
     line-height: 36px;
     font-size: 36px;
     color: #000;
   }
 
-  &__title-link {
+  .content__title-link {
     color: $primary-color;
     text-decoration: none;
   }
 
-  &__second-title {
+  .content__second-title {
     color: $primary-color;
     font-weight: bold;
     font-size: 24px;
@@ -160,6 +163,23 @@ body {
 
   .content__text--bold {
     font-weight: bold;
+  }
+}
+
+@media (min-width: 361px) {
+  .content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    .title-wrapper {
+      max-width: 330px;
+    }
+
+    .text-wrapper {
+      max-width: 500px;
+    }
   }
 }
 
@@ -179,11 +199,13 @@ body {
   .foto1 {
     grid-area: 2 / 1 / 3 / 2;
     background: url(../images/photos/1.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto2 {
     grid-area: 2 / 2 / 3 / 3;
     background: url(../images/photos/2.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto-title1 {
@@ -192,11 +214,13 @@ body {
   .foto3 {
     grid-area: 4 / 1 / 5 / 2;
     background: url(../images/photos/3.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto4 {
     grid-area: 4 / 2 / 5 / 3;
     background: url(../images/photos/4.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto-title2 {
@@ -206,11 +230,13 @@ body {
   .foto5 {
     grid-area: 6 / 1 / 7 / 2;
     background: url(../images/photos/5.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto6 {
     grid-area: auto;
     background: url(../images/photos/6.jpg) no-repeat;
+    background-size: cover;
   }
 
   .foto-title3 {
@@ -223,6 +249,11 @@ body {
     border-radius: 5px;
     background-size: cover;
     background-position-x: center;
+    transition: transform 1s;
+  }
+
+  .foto-wrapper:hover {
+    transform: scale(1.05);
   }
 
   .foto-title {
@@ -239,11 +270,79 @@ body {
 .viev-all {
   background: #fff;
   color: $primary-color;
+  transition: color 1s, background-color 1s;
 }
 
 .viev-all:hover {
-  background: $primary-color;
+  background-color: $primary-color;
   color: #fff;
+}
+
+@media (min-width: 361px) {
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: flex-start;
+    margin: 0 auto;
+    max-width: 1000px;
+    grid-column-gap: 40px;
+
+    &__title {
+      grid-area: 1 / 1 / 2 / 5;
+    }
+
+    .foto-wrapper {
+      width: 100%;
+      height: 256px;
+    }
+
+    .foto1 {
+      grid-area: 2 / 1 / 3 / 4;
+      background: url(../images/photos/1.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    .foto2 {
+      grid-area: 2 / 4 /3 / 5;
+      background: url(../images/photos/2.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    .foto-title1 {
+      grid-area: 3 / 1 / 4 / 5;
+    }
+
+    .foto3 {
+      grid-area: 4 / 1 / 5 / 3;
+      background: url(../images/photos/3.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    .foto4 {
+      grid-area: 4 / 3 / 5 / 5;
+      background: url(../images/photos/4.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    .foto-title2 {
+      grid-area: 5 / 1 / 6 / 5;
+    }
+
+    .foto5 {
+      grid-area: 6 / 1 / 7 / 2;
+      background: url(../images/photos/5.jpg) no-repeat;
+      background-size: cover;
+    }
+
+    .foto6 {
+      grid-area: 6 / 2 / 7 / 5;
+      background: url(../images/photos/6.jpg) no-repeat;
+      background-size: cover;
+    }
+    .foto-title3 {
+      grid-area: 7 / 1 / 8 / 5;
+    }
+  }
 }
 
 .consultation {
@@ -276,7 +375,6 @@ body {
     outline: none;
     border: 1px solid #fff;
     margin-bottom: 16px;
-
   }
 
   .input::placeholder {
@@ -286,6 +384,12 @@ body {
   &__btn {
     background: $primary-color;
     color: #fff;
+    transition: color 1s, background-color 1s;
+  }
+
+  &__btn:hover {
+    background-color: #fff;
+    color: $primary-color;
   }
 }
 
@@ -301,6 +405,25 @@ body {
   padding: 20px 116px;
 }
 
+@media (min-width: 361px) {
+  .consultation {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 30px auto;
+
+    .consultation__wrapper--left,
+    .consultation__wrapper--right {
+      max-width: 415px;
+    }
+  }
+
+  .btn {
+    max-width: 200px;
+    padding: 10px 50px;
+  }
+}
+
 .testimonials {
   display: flex;
   flex-direction: column;
@@ -310,6 +433,7 @@ body {
     font-weight: bold;
     font-size: 36px;
     text-align: center;
+    margin-bottom: 100px;
   }
 
   .block {
@@ -322,7 +446,6 @@ body {
     width: 153px;
     height: 153px;
     border-radius: 50%;
-
   }
 
   .block1__img {
@@ -347,7 +470,14 @@ body {
     color: rgb(159, 173, 194);
     font-size: 14px;
   }
+}
 
+@media (min-width: 361px) {
+  .testimonials-wrapper {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 }
 
 .contacts {
@@ -392,17 +522,41 @@ body {
   }
 }
 
+@media (min-width: 361px) {
+  .contacts {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .wrapper-all {
+    display: flex;
+    justify-content: space-between;
+
+    .contact-info-wrapper-left,
+    .contact-info-wrapper-right {
+      max-width: 152px;
+    }
+  }
+}
+
 .footer {
   display: flex;
   justify-content: center;
   background: url(../images/footer.jpg);
   background-size: cover;
-  height: 206px;
+  height: 100%;
 
   .footer__logo {
     background: url(../images/logoMob.svg) no-repeat;
     width: 77px;
     height: 50px;
     margin-top: 120px;
+  }
+}
+
+@media (min-width: 361px) {
+  .footer {
+    height: 400px;
   }
 }
