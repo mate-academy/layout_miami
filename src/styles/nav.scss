@@ -3,9 +3,20 @@
 .nav {
   height: $navHeight;
 
+  &__hidden-menu {
+    position: absolute;
+    width: 100vw;
+    height: 700px;
+    z-index: 2;
+    background-color: blue;
+    display: none;
+  }
+
   &__list {
+    position: relative;
     display: flex;
     list-style-type: none;
+    z-index: 3;
   }
 
   &__list :first-child {
@@ -19,9 +30,9 @@
   &__link {
     text-decoration: none;
     color: white;
-    padding: ($navHeight - $lineHeightDefault)/2 24px;
+    padding: ($navHeight - $lineHeightDefault)/2 0;
     line-height: $navHeight;
-    transition: color 0.3s;
+    transition: color $hoverDuration;
   }
 
   &__link:hover {
@@ -29,7 +40,44 @@
   }
 
   &__is-active {
+    width: 89px;
+    height: 32px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    text-align: center;
+  }
+
+  &__menu-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $smallScreenBreakPoint) {
+  .nav {
+
+    &__list {
+      display: none;
+    }
+
+    &__is-active {
+      text-align: unset;
+      background: unset;
+    }
+
+    &__menu-button:checked + &__hidden-menu {
+      display: block;
+      top: -$mobileMenuTopGap;
+      left: -$mobileMenuLeftGap;
+    }
+
+    &__menu-button:checked ~ &__list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__item {
+      flex-direction: column;
+      margin: 0 0 32px;
+    }
   }
 }
