@@ -20,8 +20,7 @@
   &__link {
     color: white;
     text-decoration: none;
-    font-size: 12px;
-    line-height: 16px;
+    @include headerLinkFontSize;
     letter-spacing: 2px;
     transition: color $hoverDuration;
     display: inline-block;
@@ -38,8 +37,7 @@
   &__toggler-label {
     position: absolute;
     right: 80px;
-    bottom: 503px;
-    /*bottom: 653px*/
+    bottom: 435px;
     display: none;
     color: white;
     z-index: 1;
@@ -83,10 +81,13 @@
     }
     &__toggler:checked ~ .nav__list {
       background-color: $mainStylesColor;
-      position: relative;
+      position: fixed;
       width: 100%;
-      height: 400px;
-      padding-top: 300px;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 368px;
+      padding-top: 200px;
       animation: move 0.5s;
       .mobile-menu-link,
       .mobile-menu-tel {
@@ -108,7 +109,7 @@
 
 @keyframes move {
   0% {
-    transform: translateY(600px);
+    transform: translateY($mobileMenuHeight);
   }
 
   100% {
