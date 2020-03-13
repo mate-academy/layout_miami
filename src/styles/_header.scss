@@ -1,4 +1,5 @@
 .header {
+  overflow: hidden;
   position: relative;
   background-image: url("../images/header.jpg");
   background-size: cover;
@@ -6,6 +7,30 @@
   height: 700px;
   padding: 56px 120px 48px;
   box-sizing: border-box;
+
+  &__toggle {
+    visibility: hidden;
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 19px;
+    z-index: 5;
+
+    &:checked + .mobile-nav {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:checked ~ .logo::after {
+      content: url(../images/crest.png);
+    }
+
+    &:checked ~ .logo::before {
+      display: none;
+    }
+
+  }
 
   &__nav {
     position: absolute;
@@ -32,7 +57,7 @@
     text-transform: uppercase;
   }
 
-  &__link {
+  &__order-link {
     color: #fff;
     text-decoration: none;
     font-family: Roboto, sans-serif;
@@ -72,13 +97,27 @@
 
 @media screen and (max-width: $small-screen-breakpoint) {
   .header {
+    height: $small-screen-height;
     padding: 39px 20px 0;
+
+    &__toggle {
+      visibility: visible;
+    }
+
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
     &__phone {
       display: none;
     }
 
-    &__link {
+    &__order-link {
       display: none;
+    }
+
+    &__title {
+      bottom: 80px;
     }
   }
 }

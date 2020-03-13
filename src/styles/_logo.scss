@@ -2,6 +2,7 @@
   position: absolute;
   width: $logo-width;
   height: $logo-height;
+  z-index: 3;
   background-image: url("../images/logo.png");
   left: 50%;
   top: 24px;
@@ -9,4 +10,24 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .logo {
+    &::before {
+      content: url(../images/phone.png);
+      position: absolute;
+      // padding-left: -100px;
+      top: 15px;
+      left: -83px;
+    }
+
+    &::after {
+      content: url(../images/hamburger.png);
+      position: absolute;
+      // padding-left: -100px;
+      top: 15px;
+      left: calc(#{$logo-width} - 18px + 82px);
+    }
+  }
 }
