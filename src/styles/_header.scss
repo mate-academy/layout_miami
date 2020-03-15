@@ -5,9 +5,15 @@
   background-image: url("../images/header.png");
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: sticky;
+  top: -690px;
   font-weight: 500;
   line-height: 1;
+  z-index: 1;
+
+  @media (max-width: $small-screen-breakpoint) {
+    position: static;
+  }
 
   &__container {
     position: relative;
@@ -29,6 +35,7 @@
     align-items: center;
     color: white;
     padding-top: 56px;
+    letter-spacing: 2px;
 
     @media (max-width: $small-screen-breakpoint) {
       padding: 56px 45px;
@@ -43,18 +50,20 @@
 
     @media (max-width: $small-screen-breakpoint) {
       display: inline-block;
+      position: absolute;
+      top: 95px;
+      transform: translateY(-50%);
+      right: 45px;
       z-index: 2;
     }
   }
 
-  &__phone_button {
-    display: none;
-    width: 18px;
-    height: 18px;
-    background-image: url("../images/phone.svg");
-
+  &__phone {
     @media (max-width: $small-screen-breakpoint) {
-      display: block;
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/phone.svg");
+      font-size: 0;
     }
   }
 
@@ -62,7 +71,7 @@
     display: none;
 
     @media (max-width: $small-screen-breakpoint) {
-      &:checked + .nav {
+      &:checked ~ .nav {
         display: block;
         position: fixed;
         top: 0;
@@ -71,22 +80,10 @@
         right: 0;
         z-index: 1;
 
-        .mobile_phone,
-        .mobile_action {
-          display: inline-block;
-          margin-top: 20px;
-          margin-left: 50px;
-          font-size: 12px;
-          line-height: 16px;
-          font-style: normal;
-          letter-spacing: 2px;
-        }
-        .mobile_action {
-          color: white;
-          text-decoration: none;
-          border-bottom: 1px white solid;
-          text-transform: uppercase;
-          padding: 8px 0;
+        &:checked + .header__toggler-label {
+          width: 16px;
+          height: 16px;
+          background-image: url("../images/close.svg");
         }
       }
     }
@@ -97,10 +94,7 @@
     cursor: pointer;
   }
 
-  &__phone,
-  &__action, {
-    letter-spacing: 2px;
-
+  &__action {
     @media screen and (max-width: $small-screen-breakpoint) {
       display: none;
     }
