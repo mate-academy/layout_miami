@@ -1,19 +1,101 @@
 @import "variables";
 
 .nav {
-  height: $navHeight;
+  position: relative;
 
   &__hidden-menu {
     position: absolute;
-    width: 100vw;
-    height: 700px;
+    width: 100%;
+    height: 568px;
     z-index: 2;
     background-color: blue;
     display: none;
   }
 
+  &__label-menu-button:after {
+    content: url("../images/menu-button.png");
+    height: 12px;
+    width: 18px;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    margin-left: 120px;
+  }
+
+  &__label-phone {
+    position: absolute;
+    display: none;
+  }
+
+  &__phone-button {
+    display: none;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - 57.5px);
+    margin-right: 120px;
+  }
+
+  &__call {
+    position: absolute;
+    top: 56px;
+    right: 0;
+    margin-right: 120px;
+  }
+
+  &__call-link {
+    text-decoration: none;
+    color: white;
+    padding: 8px 0;
+    border-bottom: 1px solid #fff;
+    line-height: $lineHeightCallLink;
+    transition: color $hoverDuration;
+  }
+
+  &__call-link:hover {
+    color: #9fadc2;
+  }
+
+  &__label-menu-button {
+    display: none;
+    position: absolute;
+    z-index: 3;
+  }
+
+  &__title {
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    font-weight: bold;
+    text-transform: none;
+    position: absolute;
+    top: 398px;
+    left: 0;
+    margin-left: $marginHeader;
+    padding-top: 16px;
+  }
+
+  &__title:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    top: 0;
+  }
+
   &__list {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 620px;
+    margin-left: $marginHeader;
     display: flex;
     list-style-type: none;
     z-index: 3;
@@ -55,8 +137,49 @@
 @media screen and (max-width: $smallScreenBreakPoint) {
   .nav {
 
+    &__phone {
+      display: none;
+    }
+
+    &__label-phone {
+      display: inline-block;
+      top: 39px;
+      left: 0;
+      margin-left: 23px;
+    }
+
+    &__call {
+      display: none;
+    }
+
+    &__logo {
+      z-index: 3;
+      left: calc(50% - 38.5px);
+    }
+
+    &__label-menu-button {
+      display: inline-block;
+      top: 42px;
+      right: 0;
+      margin-right: 23px;
+    }
+
+    &__title {
+      left: 0;
+      top: 407px;
+      margin-left: 20px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+
     &__list {
       display: none;
+    }
+
+    &__item {
+      margin: 0 0 24px;
+      font-size: 22px;
     }
 
     &__is-active {
@@ -66,18 +189,40 @@
 
     &__menu-button:checked + &__hidden-menu {
       display: block;
-      top: -$mobileMenuTopGap;
-      left: -$mobileMenuLeftGap;
     }
 
     &__menu-button:checked ~ &__list {
+      top: 120px;
+      left: 0;
+      margin-left: 21px;
       display: flex;
       flex-direction: column;
     }
 
-    &__item {
-      flex-direction: column;
-      margin: 0 0 32px;
+    &__menu-button:checked ~ &__phone {
+      top: 460px;
+      left: 0;
+      margin-left: 20px;
+      display: block;
+      z-index: 3;
+      letter-spacing: 2px;
+    }
+
+    &__menu-button:checked ~ &__call {
+      top: 492px;
+      left: 0;
+      margin-left: 20px;
+      right: unset;
+      margin-right: 0;
+      display: block;
+      z-index: 3;
+      letter-spacing: 2px;
+    }
+
+    &__menu-button:checked ~ &__label-menu-button {
+      content: url("../images/cross.png");
+      width: 16px;
+      height: 16px;
     }
   }
 }
