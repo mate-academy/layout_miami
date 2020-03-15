@@ -1,5 +1,15 @@
 @import "utils/vars";
 
+.gallery {
+  &__button {
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        width: 280px;
+      }
+    }
+  }
+}
+
 .photos {
   $gap: 20px;
 
@@ -9,6 +19,13 @@
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
+    transition: transform $hover-duration;
+
+    &:hover {
+      -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      transform: scale(1.03);
+    }
 
     @media (max-width: $mobile-screen-breakpoints) {
       & {
@@ -78,5 +95,10 @@
 
   &__link {
     color: $c-blue;
+    transition: opacity $hover-duration;
+
+    &:hover {
+      opacity: $hover-opasity;
+    }
   }
 }
