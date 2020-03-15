@@ -24,22 +24,18 @@
   }
 
   &__top {
-    position: absolute;
-    top: 24px;
-    left: 0;
-    right: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: white;
+    padding-top: 56px;
 
     @media (max-width: $small-screen-breakpoint) {
-      top: 43px;
-      left: 43px;
-      right: 43px;
+      padding: 56px 45px;
     }
   }
 
-  &__toggle_button {
+  &__toggler-label {
     display: none;
     width: 18px;
     height: 12px;
@@ -47,7 +43,7 @@
 
     @media (max-width: $small-screen-breakpoint) {
       display: inline-block;
-      z-index: 1;
+      z-index: 2;
     }
   }
 
@@ -68,23 +64,41 @@
     @media (max-width: $small-screen-breakpoint) {
       &:checked + .nav {
         display: block;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 1;
+
+        .mobile_phone,
+        .mobile_action {
+          display: inline-block;
+          margin-top: 20px;
+          margin-left: 50px;
+          font-size: 12px;
+          line-height: 16px;
+          font-style: normal;
+          letter-spacing: 2px;
+        }
+        .mobile_action {
+          color: white;
+          text-decoration: none;
+          border-bottom: 1px white solid;
+          text-transform: uppercase;
+          padding: 8px 0;
+        }
       }
     }
   }
 
   &__phone_button:hover,
-  &__toggle_button:hover {
+  &__toggler-label:hover {
     cursor: pointer;
   }
 
   &__phone,
   &__action, {
-    position: relative;
-    top: 56px;
     letter-spacing: 2px;
 
     @media screen and (max-width: $small-screen-breakpoint) {
