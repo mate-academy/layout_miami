@@ -1,51 +1,236 @@
 @import "_vars";
 
 .nav {
+  color: #fff;
   text-transform: uppercase;
 
+  &__logo {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - (73px / 2));
+    z-index: 2;
+    transition-duration: 0.5s;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    z-index: -1;
+    cursor: pointer;
+  }
+
+  &__phone-img {
+    position: absolute;
+    top: 39px;
+    left: 23px;
+    z-index: -1;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 56px;
+    left: 120px;
+    text-decoration: none;
+    color: $header-text-color;
+  }
+
+  &__phone:focus {
+    outline: none;
+    background: rgba(80, 180, 219, 0.5);
+  }
+
+  &__action {
+    position: absolute;
+    top: 56px;
+    right: 120px;
+
+    &--link {
+      text-decoration: none;
+      color: $header-text-color;
+      text-transform: uppercase;
+      transition: $hover-transition;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $header-text-color;
+
+      &:hover {
+        color: $color-hover;
+        border-color: $color-hover;
+      }
+
+      &:focus {
+        outline: none;
+        background: rgba(80, 180, 219, 0.5);
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    transition-duration: 0.5s;
+  }
+
+  &__title::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 0;
+    height: 2px;
+    background-color: $header-text-color;
+    width: 35px;
+  }
+
   &__list {
+    position: absolute;
+    bottom: 48px;
+    left: 120px;
+    right: 120px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    list-style: none;
   }
 
   &__item--active {
-    background-color: rgba(255,255,255,0.1);
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
   }
 
   &__link {
-    padding: 8px 24px;
-    font-size: $header-fontSize;
+    display: flex;
     color: $header-text-color;
-    letter-spacing: 2px;
-    font-weight: 700;
-
+    text-decoration: none;
     transition: color $hover-transition;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 8px 24px;
+  }
 
-    &:hover {
-      color: $color-hover;
-    }
+  &__link:hover {
+    color: $color-hover;
+  }
+
+  &__link:focus {
+    outline: none;
+    background: rgba(80, 180, 219, 0.5);
   }
 }
 
-@media screen and (max-width: $small-screan-breakpoint ) {
+@media screen and (max-width: $small-screan-breakpoint) {
   .nav {
-    display: none;
-    background-color: $link-color;
+    &__action,
+    &__phone {
+      visibility: hidden;
+      position: absolute;
+      top: -3000%;
+      z-index: -1;
+      transition-duration: 0.3s;
+    }
+
+    &__logo {
+      position: absolute;
+      top: 24px;
+      left: calc(50% - (73px / 2));
+      z-index: 3;
+      transition-duration: 0.5s;
+    }
+
+    &__title {
+      bottom: 80px;
+      left: 20px;
+      font-size: 46px;
+      transition-duration: 0.5s;
+    }
 
     &__list {
+      visibility: hidden;
+      padding: 104px 0 0 24px;
+      top: -3000%;
+      left: 0;
+      width: 100%;
+      height: 568px;
+
+      display: flex;
       flex-direction: column;
-      text-transform: uppercase;
-      padding: 120px 0 0 21px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      background-color: $link-color;
+      box-sizing: border-box;
+
+      z-index: 2;
+      transition-duration: 0.3s;
+    }
+
+    &__menu {
+      width: 18px;
+      height: 12px;
+      background-image: url("../images/Vector.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 3;
+    }
+
+    &__phone-img {
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/phone.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1;
+    }
+
+    &__item--active {
+      background: none;
+    }
+
+    &__link {
+      padding: 16px 0;
     }
 
     &__item {
-      margin-bottom: 20px;
-    }
-    &__link {
       padding: 0;
-      font-weight: bold;
-      font-size: 22px;
+    }
+
+    &__input:checked ~ &__list {
+      top: 0;
+      visibility: visible;
+
+    }
+
+    &__input:checked ~ &__phone {
+      visibility: visible;
+      position: absolute;
+      top: 460px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    &__input:checked ~ &__action {
+      visibility: visible;
+      position: absolute;
+      top: 490px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    &__input:checked + &__menu {
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/x.png");
     }
   }
 }
