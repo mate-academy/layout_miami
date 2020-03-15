@@ -1,24 +1,11 @@
+@import "order";
+
 .nav {
-  padding: 0 12vw;
   font-size: 12px;
+  letter-spacing: 2;
   color: #fff;
   text-transform: uppercase;
   position: relative;
-
-  &__togler-label {
-    display: none;
-    position: absolute;
-    bottom: 420px;
-    left: 78vw;
-
-    padding: 20px;
-    font-size: 4rem;
-    background-image: url("../images/humberger.svg");
-    background-repeat: no-repeat;
-    background-size: 18px 12px;
-
-    transition: background-image 0.3s;
-  }
 
   &__list {
     display: flex;
@@ -39,6 +26,7 @@
       position: relative;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 8px;
+      line-height: 28px;
     }
   }
 
@@ -53,58 +41,106 @@
 
     @include hover(color, $activeColor);
 
-    @media screen and (max-width: 900px) {
+    @media screen and (min-width: 641px) and (max-width: 900px) {
       padding: 8px 14px;
+    }
+
+    @media screen and (max-width: 640px) {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      padding: 12px 0 22px 20px;
     }
   }
 }
 
-.nav__togler {
-  display: none;
+@media screen and (max-width: 640px) {
+  .hidden__menu {
+    height: 570px;
+    width: 112%;
 
-  &:checked ~ .nav__item {
-    font-size: 22px;
-    line-height: 1;
-    margin-top: 30px;
+    position: absolute;
+    bottom: -57px;
+    right: 112%;
+
+    display: block;
+
+    background-color: blue;
+    // padding-left: $paddingLeftHidenMenu;
+    padding-top: 100px;
+    margin: 0;
+    box-sizing: border-box;
+    transition: right 1s;
   }
 
-  &:checked + .nav__togler-label {
-    background-image: url("../images/cross.svg");
+  .nav__item:nth-last-child(-n+2) {
+    display: block;
   }
 
-  // &:checked ~ .nav__item:nth-last-child(-n+2) {
-  //   display: block;
+  .nav__item:nth-last-child(-n+1) {
+    display: block;
+  }
+
+  // .nav__item:nth-last-child(-n+1) .nav__link {
+  //   font-size: 12px;
+  //   line-height: 16px;
   // }
 
-  // &:checked ~ .nav__item:nth-last-child(-n+1) {
-  //   display: block;
-  // }
+  .nav__item:nth-last-child(-n+2) .nav__link {
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: 21px;
+    padding: 22px 0 8px;
+    display: inline-block;
+  }
+
+  .nav__toggle:checked ~ .hidden__menu {
+    // right: -$paddingLeftHidenMenu;
+    right: -6%;
+  }
 }
 
-@media screen and (max-width: 640px) {
-  .nav__togler-label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    z-index: 5;
-    width: 18px;
-    height: 12px;
+.nav__toggle {
+  display: none;
+}
+
+.nav__toggle-label {
+  display: none;
+  color: #fff;
+  padding: 5px;
+  position: absolute;
+  right: 34px;
+  bottom: 453px;
+  cursor: pointer;
+  z-index: 3;
+  width: 18px;
+  height: 12px;
+
+  span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    margin: 2px 0 0;
+    position: relative;
+    transition: all 0.2s;
   }
 
-  .nav__list {
-    display: none;
+  @media screen and (max-width: 640px) {
+    display: block;
   }
+}
 
-  .nav__togler:checked ~ .nav__list {
-    position: fixed;
-    bottom: 103px;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: blue;
-  }
+.nav__toggle:checked ~ .nav__toggle-label .first {
+  transform: rotate(45deg);
+  top: 4px;
+}
+
+.nav__toggle:checked ~ .nav__toggle-label .second {
+  opacity: 0;
+}
+
+.nav__toggle:checked ~ .nav__toggle-label .third {
+  transform: rotate(-45deg);
+  top: -4px;
 }
