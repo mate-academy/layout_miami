@@ -1,14 +1,13 @@
-@import "utils";
-
 .header {
   height: 700px;
+  min-width: 320px;
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
+  color: $mainColor;
 
   &__container {
     position: relative;
-    color: $mainColor;
     height: 100%;
   }
 
@@ -22,19 +21,49 @@
     text-transform: uppercase;
     font-size: 12px;
     line-height: 16px;
-    //
-    //@media screen and (max-width: 780px) {
-    //
-    //}
+
+    .phone__link {
+      display: block;
+      text-decoration: none;
+      color: white;
+    }
+
+    .phone__link-number {
+
+      @media screen and (max-width: 700px) {
+        display: none;
+      }
+    }
+
+    .phone__link-icon {
+      display: block;
+      width: 18px;
+      height: 18px;
+
+      background-image: url(../images/phone-icon.svg);
+      @media screen and (min-width: 700px) {
+        display: none;
+      }
+
+    }
+
   }
 
-  &__link {
+  &__logo {
     display: block;
-    position: relative;
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 16px;
-    color: $mainColor;
+    background: no-repeat url("../images/logo.png");
+    background-size: contain;
+    width: 73px;
+    height: 48px;
+
+    @media screen and (min-width: 700px) {
+      width: 115px;
+      height: 76px;
+    }
+  }
+
+  &__action {
+    display: none;
 
     &::after {
       display: block;
@@ -46,43 +75,46 @@
       left: 1px;
       bottom: -8px;
     }
-  }
 
-  .logo {
-    cursor: pointer;
-    text-decoration: none;
-    height: 76px;
-    width: 115px;
-    background-image: url("../images/logo.png");
-    background-size: cover;
-    background-position: center;
-  }
-
-  &__heading {
-    position: absolute;
-    margin: 315px 0 85px;
-    width: 328px;
-
-    font-weight: bold;
-    font-size: 60px;
-    line-height: 60px;
-    letter-spacing: -1.5px;
-
-    &::after {
+    @media screen and (min-width: 700px) {
       display: block;
-      position: absolute;
-      content: "";
-      height: 0;
-      border: 1px solid $mainColor;
-      border-radius: 2px;
-      width: 33px;
-      left: -1px;
-      top: -16px;
+      position: relative;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 16px;
+      color: $mainColor;
     }
   }
+}
 
-  .phone__link {
-    text-decoration: none;
-    color: white;
+.header__heading {
+  position: absolute;
+  margin: 315px 0 85px;
+  width: 328px;
+
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -1.5px;
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 0;
+    border: 1px solid $mainColor;
+    border-radius: 2px;
+    width: 33px;
+    left: -1px;
+    top: -16px;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 280px;
+    height: 81px;
+    font-size: 44px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    bottom: 80px;
   }
 }
