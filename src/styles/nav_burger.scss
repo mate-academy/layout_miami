@@ -1,32 +1,45 @@
+@import "utils";
+@import "animation-nav";
+
 #toggle {
   width: 18px;
-  height: 12px;
+  height: 16px;
   background: no-repeat url("../images/sandwich.svg");
-  background-size: auto;
+  background-size: contain;
 
   @media screen and (min-width: 700px) {
     display: none;
   }
 }
 
+#toggle:checked ~ .nav {
+  animation: showIn 0.6s ease-in-out forwards;
+}
+
 @media screen and (max-width: 700px) {
   #nav_menu {
-    position: relative;
     display: flex;
+    position: relative;
     flex-direction: column;
   }
 
   .nav {
-    position: absolute;
+    position: fixed;
+
+    height: 700px;
     top: 0;
     z-index: 1;
 
     background-color: $activeColor;
     margin-left: -20px;
-    height: 100%;
+
     font-size: 22px;
     line-height: 22px;
     font-weight: bold;
+
+    .nav-close:checked ~ .nav {
+      animation: showOut 0.5s ease-in-out forwards;
+    }
 
     &__link {
       font-size: 22px;
@@ -40,12 +53,14 @@
 
     .nav-close {
       position: absolute;
-      right: 20px;
+      right: 40px;
       top: 45px;
       display: block;
-      background-color: #f2f2f2;
+      background-image: url("../images/cross.png");
+      background-size: contain;
+      background-repeat: no-repeat;
       width: 18px;
-      height: 12px;
+      height: 16px;
     }
 
     .phone__link {
