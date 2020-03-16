@@ -1,0 +1,144 @@
+@import "order";
+
+.nav {
+  font-size: 12px;
+  letter-spacing: 2;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 640px) {
+      padding-top: 108px;
+    }
+  }
+
+  &__item {
+
+    &:nth-last-child(-n+2) {
+      display: none;
+    }
+
+    &:nth-last-child(-n+1) {
+      display: none;
+    }
+
+    &-active {
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      line-height: 28px;
+    }
+  }
+
+  &__link {
+    padding: 8px 24px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    white-space: nowrap;
+
+    @include hover(color, $activeColor);
+
+    @media screen and (min-width: 641px) and (max-width: 900px) {
+      padding: 8px 14px;
+    }
+
+    @media screen and (max-width: 640px) {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      padding: 12px 22px 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hidden__menu {
+    height: $hightHeaderMob;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    display: block;
+
+    background-color: blue;
+    box-sizing: border-box;
+    transform: translateX(-120%);
+    transition: transform 0.5s;
+  }
+
+  .nav__item:nth-last-child(-n+2) {
+    display: block;
+  }
+
+  .nav__item:nth-last-child(-n+1) {
+    display: block;
+  }
+
+  .nav__item:nth-last-child(-n+2) .nav__link {
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: 21px;
+    padding: 22px 0 8px;
+    display: inline-block;
+  }
+
+  .nav__toggle:checked ~ .hidden__menu {
+    transform: translateX(0);
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}
+
+.nav__toggle {
+  display: none;
+}
+
+.nav__toggle-label {
+  display: none;
+  color: #fff;
+  padding: 5px;
+  position: absolute;
+  right: 18px;
+  bottom: $topHumburger;
+  cursor: pointer;
+  z-index: 3;
+  width: 18px;
+  height: $hightHumburger;
+
+  span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    margin: 2px 0 0;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  @media screen and (max-width: 640px) {
+    display: block;
+  }
+}
+
+.nav__toggle:checked ~ .nav__toggle-label .first {
+  transform: rotate(45deg);
+  top: 4px;
+}
+
+.nav__toggle:checked ~ .nav__toggle-label .second {
+  opacity: 0;
+}
+
+.nav__toggle:checked ~ .nav__toggle-label .third {
+  transform: rotate(-45deg);
+  top: -4px;
+}
