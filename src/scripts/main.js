@@ -43,3 +43,14 @@ function isPartiallyVisible(el) {
 
   return ((topTo + height >= 0) && (height + window.innerHeight >= bottom));
 }
+
+const hendelForm = document.querySelectorAll('.form');
+
+const forms = Object.values(hendelForm);
+
+forms.map(item => {
+  // eslint-disable-next-line no-shadow
+  item.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+});
