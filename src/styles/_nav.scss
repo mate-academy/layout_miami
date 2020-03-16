@@ -1,52 +1,138 @@
-.nav {
-  text-transform: uppercase;
-  width: 100%;
+@import "utils/vars";
 
-  &__list {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
+.nav {
+  max-width: 1102px;
+  display: flex;
+  position: absolute;
+  top: 620px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: color 0.2s;
+  z-index: 1;
+
+  &__toggler {
+    display: none;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 55px;
+    right: 45px;
+    background-image: url(../images/cross.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 1102px) {
+      display: block;
+    }
+  }
+
+  &__visible {
+    display: none;
+
+    &:checked ~ .nav {
+      top: 0;
+    }
+  }
+
+  @media screen and (max-width: 1102px) {
+    position: fixed;
+    width: 100%;
+    height: 568px;
+    background-color: $nav-blue;
+    flex-direction: column;
+    top: -568px;
+    left: 0;
+    margin: 0;
+    transition: top 1s;
+
+    &:after {
+      content: "";
+      background-image: url($logo-url);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 73px;
+      height: 48px;
+      position: absolute;
+      top: 24px;
+      left: calc(50% - 36px);
+    }
 
   }
 
-  &__elem {
+  &__list {
+    width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    list-style: none;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1102px) {
+      flex-direction: column;
+      margin: 104px 0 0 21px;
+      align-items: flex-start;
+
+    }
+
+  }
+
+  &__item {
     padding: 8px 24px;
-    margin: 0 36px;
-    color: white;
-
-    &--active {
+    color: $header-color;
+    @media screen and (max-width: 1102px) {
+      padding: 16px 0;
+      font-size: 22px;
+      line-height: 22px;
       font-weight: bold;
-      font-size: 12px;
-      line-height: 16px;
-      display: flex;
-      align-items: center;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: white;
-      background: rgba(255,255,255,0.1);
+    }
+    &--active {
+      background-color: rgba( 255, 255, 255, $alpha: 0.1);
       border-radius: 8px;
-
+      color: $header-color;
     }
   }
 
   &__link {
-    color: white;
+    color: $header-color;
     text-decoration: none;
-    font-style: normal;
-    font-weight: bold;
     font-size: 12px;
-    line-height: 16px;
-    transition: color 0.3s;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    &--call {
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 1102px) {
+      font-size: 22px;
+      font-weight: bold;
+
+      &--call {
+        font-size: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid white;
+
+      }
+    }
 
     &:hover {
-      color: #9fadc2;
+      color: $header-hover-color;
     }
+
   }
-  @media screen and (max-width: 320px) {
-    &__list {
-      flex-direction: column;
-      align-items: center;
-      width: 700px;
+
+  &__phone {
+    padding: 8px 0;
+    margin: 16px 0 0;
+  }
+
+  &__menu {
+    display: none;
+
+    @media screen and (max-width: 1102px) {
+      display: block;
+      font-size: 12px;
     }
   }
 }
