@@ -1,6 +1,4 @@
 .photos {
-  display: flex;
-  justify-content: space-between;
   $gap: 20px;
   &__img {
     width: 131px;
@@ -9,9 +7,26 @@
     object-position: center;
     border-radius: 8px;
   }
-  @media only screen and (min-width: 481px) and (max-width: 1024px) {
+  @media screen and (min-width: 481px) {
     &__img {
       width: calc(50% - #{$gap} / 2);
+      height: 256px;
+    }
+  }
+  @media screen and (min-width: 769px) {
+    &--wide_left &__img:first-child {
+      width: calc(67% - #{$gap} / 2);
+    }
+    &--wide_left &__img:last-child {
+      width: calc(33% - #{$gap} / 2);
+    }
+  }
+  @media screen and (min-width: 769px) {
+    &--wide_right &__img:first-child {
+      width: calc(33% - #{$gap} / 2);
+    }
+    &--wide_right &__img:last-child {
+      width: calc(67% - #{$gap} / 2);
     }
   }
 }
