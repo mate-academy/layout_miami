@@ -20,6 +20,8 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 24px;
+    position: relative;
+    z-index: 2;
   }
 
   &__link {
@@ -54,6 +56,10 @@
     }
   }
 
+  &__phone {
+    display: none;
+  }
+
   &__title {
     position: relative;
     font-weight: bold;
@@ -83,5 +89,53 @@
     bottom: 40px;
     right: 15px;
     left: 15px;
+  }
+
+  @media (max-width: 750px) {
+    .nav {
+      display: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: $active-color;
+      height: 100vh;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .header__sandwich {
+      display: block;
+    }
+
+    &__action {
+      display: none;
+    }
+    &__link {
+      display: none;
+    }
+    &__phone {
+      display: block;
+    }
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
+  }
+
+  .active-nav {
+    display: block;
+  }
+}
+
+.header__sandwich {
+  cursor: pointer;
+  display: none;
+
+  &--open {
+    display: block;
+  }
+
+  &--close {
+    display: none;
   }
 }
