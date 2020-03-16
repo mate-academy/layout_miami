@@ -1,19 +1,27 @@
 @import "utils";
 @import "animation-nav";
 
-#toggle {
+.toggle__btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   display: block;
   width: 18px;
   height: 16px;
   background: no-repeat url("../images/sandwich.svg");
   background-size: contain;
+  z-index: 3;
 
   @media screen and (min-width: 700px) {
     display: none;
   }
 }
 
-#toggle:checked .nav {
+.nav__btn:checked + .toggle__btn {
+  background-image: url("../images/cross.png");
+}
+
+.nav__btn:checked ~ .nav {
   animation: showIn 0.6s ease-in-out forwards;
 }
 
@@ -25,10 +33,9 @@
   }
 
   .nav {
-    position: fixed;
-
-    height: 700px;
-    top: 0;
+    height: 100%;
+    top: -24px;
+    padding-bottom: 24px;
     z-index: 1;
 
     background-color: $activeColor;
@@ -38,31 +45,16 @@
     line-height: 22px;
     font-weight: bold;
 
-    .nav__close:checked ~ .nav {
-      animation: showOut 0.5s ease-in-out forwards;
-    }
+    animation: showOut 0.5s ease-in-out forwards;
 
     &__link {
       font-size: 22px;
       line-height: 22px;
-      padding: 24px;
+      padding: 20px;
     }
 
     &__logo {
       margin: 24px auto;
-    }
-
-    #nav__close {
-      position: absolute;
-      display: block;
-      right: 40px;
-      top: 45px;
-
-      background-image: url("../images/cross.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 18px;
-      height: 16px;
     }
 
     .phone__link {
@@ -100,113 +92,6 @@
   }
 }
 
-@media screen and (min-width: 700px) {
-  #nav__close {
-    display: none;
-  }
+.nav__btn {
+  display: none;
 }
-
-//body {
-//  overflow-x: hidden;
-//}
-//
-//.nav__container {
-//  display: block;
-//  position: absolute;
-//  top: 50px;
-//  right: 50px;
-//
-//  z-index: 1;
-//
-//  -webkit-user-select: none;
-//  user-select: none;
-//}
-//
-//.nav__container input {
-//  display: block;
-//  width: 40px;
-//  height: 32px;
-//  position: absolute;
-//  top: -7px;
-//  left: -5px;
-//
-//  cursor: pointer;
-//
-//  opacity: 0; /* hide this */
-//  z-index: 2; /* and place it over the hamburger */
-//
-//  -webkit-touch-callout: none;
-//
-//
-//#menuToggle input:checked ~ span {
-//  opacity: 1;
-//  transform: rotate(45deg) translate(-2px, -1px);
-//  background: #232323;
-//}
-//
-///*
-//
-//
-// * But let's hide the middle one.
-// */
-//#menuToggle input:checked ~ span:nth-last-child(3) {
-//  opacity: 0;
-//  transform: rotate(0deg) scale(0.2, 0.2);
-//}
-//
-///*
-// * Ohyeah and the last one should go the other direction
-// */
-//#menuToggle input:checked ~ span:nth-last-child(2)
-//{
-//  opacity: 1;
-//  transform: rotate(-45deg) translate(0, -1px);
-//}
-//
-///*
-// * Make this absolute positioned
-// * at the top left of the screen
-// */
-//#menu
-//{
-//  position: absolute;
-//  width: 300px;
-//  margin: -100px 0 0 0;
-//  padding: 50px;
-//  padding-top: 125px;
-//  right: -100px;
-//
-//  background: #ededed;
-//  list-style-type: none;
-//  -webkit-font-smoothing: antialiased;
-//  /* to stop flickering of text in safari */
-//
-//  transform-origin: 0% 0%;
-//  transform: translate(100%, 0);
-//
-//  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-//}
-//
-//#menu li
-//{
-//  padding: 10px 0;
-//  font-size: 22px;
-//}
-//
-///*
-// * And let's fade it in from the left
-// */
-//#menuToggle input:checked ~ ul
-//{
-//  transform: none;
-//  opacity: 1;
-//}
-//
-//@media screen and (max-width: 768px) {
-//  #menu {
-//    transform: none;
-//    opacity: 0;
-//
-//    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-//  }
-//}
