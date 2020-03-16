@@ -10,7 +10,10 @@ const form = document.querySelector('.consultation__form');
 const inputName = document.querySelector('.input__name');
 const inputPhone = document.querySelector('.input__phone');
 const inputEmail = document.querySelector('.input__email');
-
+const formContact = document.querySelector('.contact__form');
+const inputContactName = document.querySelector('.input__contact-name');
+const inputContactMessage = document.querySelector('.input__contact-message');
+const inputContactEmail = document.querySelector('.input__contact-email');
 const onToggleEscPress = function(evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closeMenu();
@@ -53,4 +56,11 @@ form.addEventListener('submit', function(evt) {
   inputName.value = '';
   inputEmail.value = '';
   inputPhone.value = '';
+});
+
+formContact.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+  inputContactName.value = '';
+  inputContactEmail.value = '';
+  inputContactMessage.value = '';
 });
