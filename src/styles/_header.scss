@@ -1,9 +1,8 @@
 .header {
-  height: 700px;
+  height: $header-desktop-height;
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
   font-size: 12px;
   font-weight: bold;
   line-height: 16px;
@@ -20,13 +19,8 @@
     align-items: center;
   }
 
-  &__phone-link {
-    color: white;
-  }
-
-  .logo__image {
-    height: 76px;
-    margin: 15%;
+  &__logo {
+    margin: 2%;
   }
 
   &__action {
@@ -34,50 +28,45 @@
     padding-bottom: 0.5em;
 
     ::after {
-      content: " ";
-      border-bottom: 1px solid white;
+      content: "";
       position: absolute;
       bottom: 0;
       left: 1px;
       right: 1px;
+      border-bottom: 1px solid white;
       transition: 0.3s;
     }
 
     :hover::after {
-      border-bottom: 1px solid #9fadc2;
-    }
-
-    :hover {
-      color: #9fadc2;
+      border-bottom: 1px solid $hover-gray;
     }
   }
 
-  &__link {
+  &__link,
+  &__phone-link {
     color: white;
     text-decoration: none;
-    transition: 0.3s;
+
+    @include hover (color, $hover-gray);
   }
+}
 
-  &__heading {
+.heading__text {
+  position: relative;
+  margin: 10% 10% 0;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 60px;
+  text-transform: capitalize;
+  color: white;
 
-    ::before {
-      content: " ";
-      position: absolute;
-      top: -15%;
-      left: 0;
-      border-top: 2px solid white;
-      border-radius: 2px;
-      width: 2.5rem;
-    }
-
-    .heading__text {
-      position: relative;
-      margin: 10% 10% 0;
-      font-weight: bold;
-      font-size: 60px;
-      line-height: 60px;
-      text-transform: capitalize;
-      color: white;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 0;
+    border-top: 2px solid white;
+    border-radius: 2px;
+    width: 2.5rem;
   }
 }
