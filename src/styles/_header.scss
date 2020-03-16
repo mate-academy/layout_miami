@@ -8,28 +8,54 @@
   padding: 56px 120px 48px;
   box-sizing: border-box;
 
+  &__phone-img {
+    display: none;
+    background-image: url(../images/phone.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 39px;
+    left: 22px;
+  }
+
+  &__hamburger {
+    z-index: 2;
+    display: none;
+    background-image: url(../images/hamburger.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 18px;
+    height: 12px;
+    position: absolute;
+    top: 42px;
+    right: 22px;
+  }
+  
   &__toggle {
     visibility: hidden;
     opacity: 0;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    right: 19px;
+    right: 16px;
     z-index: 5;
 
-    &:checked + .mobile-nav {
+    &:checked ~ .mobile-nav {
       visibility: visible;
       opacity: 1;
     }
 
-    &:checked ~ .logo::after {
-      content: url(../images/crest.png);
+    &:checked ~ .header__hamburger {
+      background-image: url(../images/crest.png);
     }
 
-    &:checked ~ .logo::before {
+    &:checked ~ .header__phone-img {
       visibility: hidden;
     }
-
   }
 
   &__nav {
@@ -99,6 +125,11 @@
   .header {
     height: $small-screen-height;
     padding: 39px 20px 0;
+
+    &__hamburger,
+    &__phone-img {
+      display: block;
+    }
 
     &__toggle {
       visibility: visible;
