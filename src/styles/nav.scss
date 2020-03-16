@@ -1,0 +1,109 @@
+@import "utils/vars";
+@import "utils/mixins";
+
+.nav {
+  @media (max-width: $mobile-screen-breakpoints) {
+    & {
+      display: none;
+      background-color: $c-blue;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        flex-direction: column;
+        margin-top: 125px;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        margin-bottom: 11px;
+      }
+    }
+
+    &--active {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      &:hover {
+        cursor: default;
+      }
+
+      @media (max-width: $mobile-screen-breakpoints) {
+        & {
+          background-color: $c-blue;
+        }
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $mobile-screen-breakpoints) {
+        & {
+          display: block;
+        }
+      }
+    }
+
+    &--gap {
+      margin-top: 38px;
+    }
+  }
+
+  &__link {
+    padding: 8px 24px;
+    font-size: $header-font-size;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: color $hover-duration;
+
+    &--decor {
+      position: relative;
+      @include header-decor-line;
+    }
+
+    @media (max-width: $desktop-screen-breakpoints) {
+      & {
+        padding: 7px 20px;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    @media (max-width: $tablet-screen-breakpoints) {
+      & {
+        padding: 5px 13px;
+        letter-spacing: 1px;
+      }
+    }
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        font-size: 22px;
+        padding: 5px 21px;
+      }
+
+      &--decor {
+        margin-left: 21px;
+        padding: 5px 0 8px;
+      }
+    }
+
+    &:hover {
+      color: $c-active;
+    }
+
+    &--mobile {
+      font-size: 12px;
+    }
+  }
+}

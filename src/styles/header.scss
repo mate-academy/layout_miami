@@ -1,0 +1,192 @@
+@import "utils/vars";
+@import "utils/mixins";
+
+.header {
+  position: sticky;
+  top: -640px;
+  height: 700px;
+  padding: 24px 20px 0;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+
+  @media (max-width: $mobile-screen-breakpoints) {
+    & {
+      position: static;
+      height: 100vh;
+    }
+  }
+
+  &__container {
+    position: relative;
+    max-width: 1020px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+  }
+
+  &__top {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $c-white;
+    font-size: $header-font-size;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  &__phone {
+    transition: color $hover-duration;
+    &:hover {
+      color: $c-active;
+    }
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        font-size: 0;
+        background-image: url(../images/phone-icon.svg);
+      }
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__logo img {
+    width: 115px;
+    height: auto;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        width: 73px;
+      }
+    }
+  }
+
+  &__toggle-icon {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu-icon.svg);
+    cursor: pointer;
+    transition: background-image 0.2s;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        display: block;
+        position: absolute;
+        top: 26px;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__action {
+    position: relative;
+    padding: 8px 0;
+    transition: color $hover-duration;
+
+    @include header-decor-line;
+
+    &:hover {
+      color: $c-active;
+    }
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 414px;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $c-white;
+    font-weight: 700;
+
+    @media (max-width: $tablet-screen-breakpoints) {
+      & {
+        font-size: 55px;
+        line-height: 50px;
+      }
+    }
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      & {
+        top: 407px;
+        letter-spacing: -1px;
+        font-size: 46px;
+        line-height: 40px;
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $c-white;
+    }
+  }
+
+  &__toggle-button {
+    display: none;
+
+    @media (max-width: $mobile-screen-breakpoints) {
+      &:checked ~ .nav {
+        display: block;
+        top: 0;
+        bottom: 0;
+        margin: -24px -20px 0;
+
+        & .nav__list {
+          position: absolute;
+          animation: 0.5s anim-menu;
+
+          @keyframes anim-menu {
+            from {
+              left: -200px;
+            }
+            to {
+              left: 0;
+            }
+          }
+        }
+      }
+
+      &:checked + .header__toggle-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/menu-close-icon.svg);
+      }
+    }
+  }
+}
