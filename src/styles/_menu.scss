@@ -1,0 +1,134 @@
+@import "./utils/vars";
+@import "./logo";
+
+.menu {
+
+  &__btn,
+  &__logo,
+  &__footer {
+    display: none;
+  }
+
+  &__logo {
+    align-self: center;
+    justify-self: center;
+    width: 73px;
+    height: 48px;
+  }
+
+  &__btn {
+    position: relative;
+    padding: 8px 0;
+    width: 18px;
+    height: 2px;
+    outline: none;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  &__span::before {
+    content: "";
+    top: -5px;
+  }
+
+  &__span::after {
+    content: "";
+    bottom: -5px;
+  }
+
+  &__span,
+  &__span::before,
+  &__span::after {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: $hover-duration;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  &__toggle {
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+
+    &:checked ~ .menu__btn > .menu__span {
+      transform: rotate(45deg);
+    }
+    &:checked ~ .menu__btn > .menu__span::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    &:checked ~ .menu__btn > .menu__span::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+    &:checked ~ .menu__list {
+      visibility: visible;
+      top: 0;
+    }
+  }
+
+  &__action {
+    margin-top: 16px;
+  }
+
+  &__phone,
+  &__link {
+    padding-bottom: 8px;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition-duration: $hover-duration;
+
+  }
+
+  &__phone {
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__link {
+    border-bottom: 1px solid #fff;
+
+    &:hover {
+      color: $secondary-color;
+      border-color: $secondary-color;
+    }
+  }
+
+  @media screen and (max-width: $device-width) {
+    justify-self: end;
+    align-self: center;
+
+    &__list {
+      display: grid;
+      grid-template-rows: 48px auto auto;
+      grid-row-gap: 48px;
+      position: absolute;
+      visibility: hidden;
+      padding: 24px 21px 54px;
+      box-sizing: border-box;
+      top: -100%;
+      width: 100%;
+      height: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: $prime-color;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+      transition-duration: 0.6s;
+    }
+
+    &__btn,
+    &__logo,
+    &__footer {
+      display: block;
+    }
+  }
+}
