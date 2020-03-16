@@ -1,0 +1,135 @@
+@import "utils/vars";
+@import "utils/mixins";
+@import "utils";
+@import "fonts";
+@import "typography";
+
+.gallery {
+  width: $mobile-content-width;
+  margin: 0 auto;
+
+  @media (min-width: 700px) {
+    width: 90%;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: $desktop-content-width;
+  }
+
+  &__title {
+    width: 120px;
+    margin: 0 auto 53px;
+
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+
+    text-align: center;
+    color: #000;
+    letter-spacing: -1.5px;
+
+    @media (min-width: 700px) {
+      width: 143px;
+      margin: 0 auto 61px;
+
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__list {
+    @include reset-list;
+    margin: 0 auto 32px;
+
+    @media (min-width: $desktop-width) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__item {
+    width: $mobile-content-width;
+    margin: 0 auto;
+
+    &--outer {
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 700px) {
+      width: 90%;
+    }
+
+    @media (min-width: $desktop-width) {
+      width: $desktop-content-width;
+    }
+  }
+
+  &__images {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 131px 131px;
+    grid-template-rows: 131px 54px;
+    gap: 20px 16px;
+
+    @media (min-width: 700px) {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    @media (min-width: $desktop-width) {
+      grid-template-rows: 256px 27px;
+    }
+
+    &--equal {
+      @media (min-width: 700px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &--smaller {
+      @media (min-width: 700px) {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+  }
+
+  &__image {
+    width: 131px;
+    height: 131px;
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+
+    @media (min-width: 700px) {
+      width: 100%;
+      height: 256px;
+    }
+  }
+
+  &__caption {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  &__link {
+    font-weight: 700;
+
+    text-decoration: none;
+    color: $c-blue;
+    outline: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: blue;
+    }
+  }
+
+  &--outer {
+    margin-bottom: 64px;
+
+    @media (min-width: 700px) {
+      margin-bottom: 152px;
+    }
+  }
+}
