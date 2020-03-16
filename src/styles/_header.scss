@@ -1,0 +1,158 @@
+@import "vars";
+
+.header {
+  height: 765px;
+  background-image: url("../images/header.png");
+  background-size: cover;
+  background-position: center;
+  position: sticky;
+  top: -690px;
+  font-weight: 500;
+  line-height: 1;
+  z-index: 1;
+
+  @media (max-width: $small-screen-breakpoint) {
+    position: static;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 960px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding-top: 56px;
+    letter-spacing: 2px;
+
+    @media (max-width: $small-screen-breakpoint) {
+      padding: 56px 45px;
+    }
+  }
+
+  &__toggler-label {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url("../images/toggler.png");
+
+    @media (max-width: $small-screen-breakpoint) {
+      display: inline-block;
+      position: absolute;
+      top: 95px;
+      transform: translateY(-50%);
+      right: 45px;
+      z-index: 2;
+    }
+  }
+
+  &__phone {
+    @media (max-width: $small-screen-breakpoint) {
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/phone.svg");
+      font-size: 0;
+    }
+  }
+
+  &__toggler {
+    display: none;
+
+    @media (max-width: $small-screen-breakpoint) {
+      &:checked ~ .nav {
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+
+        animation: 0.6s surf-nav;
+
+        @keyframes surf-nav {
+          from {
+            left: -300px;
+          }
+          to {
+            left: 0;
+          }
+        }
+      }
+
+      &:checked + .header__toggler-label {
+        width: 16px;
+        height: 16px;
+        background-image: url("../images/close.svg");
+      }
+    }
+  }
+
+  &__phone_button:hover,
+  &__toggler-label:hover {
+    cursor: pointer;
+  }
+
+  &__action {
+    outline: none;
+
+    &:focus {
+      box-shadow: 0 0 1px 1px $focus-border-color;
+      border-radius: 2px;
+    }
+
+    @media screen and (max-width: $small-screen-breakpoint) {
+      display: none;
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    transition: color $hover-duration;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+  &__title {
+    font-size: 60px;
+    line-height: 60px;
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    color: white;
+
+    @media screen and (max-width: $small-screen-breakpoint) {
+      font-size: 46px;
+      left: 20px;
+      top: 407px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 35px;
+      background-color: white;
+      top: -16px;
+      left: 0;
+      border-radius: 2px;
+    }
+  }
+}
