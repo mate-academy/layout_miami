@@ -45,12 +45,17 @@ function isPartiallyVisible(el) {
 }
 
 const hendelForm = document.querySelectorAll('.form');
+const collectionsInputs = document.querySelectorAll('.form__input');
 
 const forms = Object.values(hendelForm);
+const inputs = Object.values(collectionsInputs);
 
 forms.map(item => {
   // eslint-disable-next-line no-shadow
   item.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    // eslint-disable-next-line
+    inputs.map(input => input.value = '');
   });
 });
