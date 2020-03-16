@@ -5,6 +5,29 @@
 $primary-color: #0075ff;
 $secondary-color: #b9c1ce;
 
+@mixin header-call {
+  grid-area: call;
+  background: url(../images/call.png) no-repeat;
+  width: 18px;
+  height: 18px;
+}
+
+@mixin header-title {
+  position: relative;
+  grid-area: title;
+  font-size: 46px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #fff;
+}
+
+@mixin call-to-order {
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 25px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #fff;
@@ -34,10 +57,7 @@ body {
   background-size: cover;
 
   .header__call {
-    grid-area: call;
-    background: url(../images/call.png) no-repeat;
-    width: 18px;
-    height: 18px;
+    @include header-call;
 
     .header__call-number {
       display: none;
@@ -59,15 +79,10 @@ body {
   }
 
   .header__title {
-    position: relative;
-    grid-area: title;
-    font-size: 46px;
-    line-height: 40px;
-    font-weight: bold;
-    color: #fff;
+    @include header-title;
     margin: 335px 35px 80px 20px;
-
   }
+
   .header__title::before {
     content: "";
     position: absolute;
@@ -95,7 +110,7 @@ body {
 
   .nav-wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     align-items: center;
     justify-items: end;
 
@@ -109,8 +124,8 @@ body {
       background: url(../images/closeBtn.png);
       width: 15px;
       height: 15px;
+      margin-right: 23px;
     }
-
   }
 
   .header__nav-list {
@@ -122,46 +137,156 @@ body {
       font-size: 22px;
       margin-left: 0;
       margin-bottom: 32px;
+
+      .header__nav-link {
+        color: #fff;
+        text-decoration: none;
+      }
     }
   }
 
   .phone-num,
   .call-to-order {
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: 2px;
-    line-height: 25px;
+    @include call-to-order;
+  }
+}
+
+.header-desktop {
+  display: flex;
+  padding: 20px 0;
+  flex-direction: column;
+  justify-content: center;
+  background: url(./../images/header.jpg);
+  background-position-x: center;
+  background-size: cover;
+
+  &__wrapper {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+
+    .header-desctop__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .header__logo {
+        grid-area: logo;
+        background: url(../images/logoMob.svg) no-repeat;
+        background-size: cover;
+        width: 115px;
+        height: 76px;
+      }
+
+      .phone-num,
+      .call-to-order {
+        @include call-to-order;
+      }
+    }
+
+    .header__title {
+      @include header-title;
+      font-size: 60px;
+      line-height: 60px;
+      margin: 335px 0 80px;
+    }
+
+    .header__title::before {
+      content: "";
+      position: absolute;
+      width: 31px;
+      height: 3px;
+      bottom: 127px;
+      left: 2px;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .header__nav-list {
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+      text-transform: uppercase;
+      list-style: none;
+      padding: 0;
+      font-size: 12px;
+      font-weight: bold;
+
+      .header__nav-item {
+        padding: 8px 24px;
+        transition: color 1s;
+
+        &--active {
+          background-color: rgb(87, 86, 86);
+          border-radius: 8px;
+          color: #fff;
+        }
+
+        .header__nav-link {
+          color: #fff;
+          text-decoration: none;
+          letter-spacing: 2px;
+
+          &:hover {
+            cursor: pointer;
+            color: rgb(151, 149, 149);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 361px) {
+  .header,
+  .header__nav {
+    display: none;
+  }
+
+  .header-desktop {
+    display: flex;
+  }
+}
+
+@media (max-width: 361px) {
+  .header,
+  .header__nav {
+    display: grid;
+  }
+
+  .header-desktop {
+    display: none;
   }
 }
 
 .content {
   padding: 64px 20px;
 
-  .content__title {
+  &__title {
     font-weight: bold;
     line-height: 36px;
     font-size: 36px;
     color: #000;
   }
 
-  .content__title-link {
+  &__title-link {
     color: $primary-color;
     text-decoration: none;
   }
 
-  .content__second-title {
+  &__second-title {
     color: $primary-color;
     font-weight: bold;
     font-size: 24px;
     line-height: 30px;
   }
 
-  .content__text {
+  &__text {
     font-size: 16px;
     line-height: 27px;
   }
 
-  .content__text--bold {
+  &__text--bold {
     font-weight: bold;
   }
 }
@@ -284,7 +409,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     justify-items: flex-start;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1100px;
     grid-column-gap: 40px;
 
     &__title {
@@ -429,7 +554,7 @@ body {
   flex-direction: column;
   padding: 20px;
 
-  .testimonials__title {
+  &__title {
     font-weight: bold;
     font-size: 36px;
     text-align: center;
@@ -483,19 +608,19 @@ body {
 .contacts {
   padding: 20px;
 
-  .contacts__title {
+  &__title {
     font-weight: bold;
     font-size: 36px;
     text-align: center;
   }
 
-  .contacts__contact {
+  &__contact {
     color: rgb(159, 173, 194);
     font-size: 14px;
     margin-bottom: 0;
   }
 
-  .contacts__info {
+  &__info {
     font-size: 16px;
   }
 
@@ -547,11 +672,11 @@ body {
   background-size: cover;
   height: 100%;
 
-  .footer__logo {
+  &__logo {
     background: url(../images/logoMob.svg) no-repeat;
+    height: 80%;
+    background-position-y: bottom;
     width: 77px;
-    height: 50px;
-    margin-top: 120px;
   }
 }
 
