@@ -1,19 +1,18 @@
+@import "mixins";
+
 .contact {
   &__heading {
-    position: relative;
-    width: max-content;
-    margin: 0 auto;
-    letter-spacing: -1.5px;
-    font-size: 36px;
-    font-weight: bold;
-    &::after {
-      content: "";
-      display: block;
-      background-image: url("../images/crown.svg");
-      width: 25px;
-      height: 13px;
-      margin: 0 auto;
-      background-repeat: no-repeat;
+    @include crownHeadings;
+  }
+  &__section--form {
+    margin-top: 32px;
+  }
+  &__field {
+    @include inputs;
+    &--textarea {
+      box-sizing: border-box;
+      height: 144px;
+      padding-top: 17px;
     }
   }
   &__capture {
@@ -22,7 +21,11 @@
     color: #9fadc2;
   }
   &__section {
-    margin-top: 30px;
+    margin-top: 16px;
+    &--email {
+      // position: relative;
+      // bottom: 90px;
+    }
   }
   &__data {
     font-size: 16px;
@@ -41,17 +44,20 @@
     }
     &__section--phone {
       grid-area: phone;
+      margin: 0;
     }
     &__section--email {
       grid-area: email;
+      position: relative;
+      bottom: 90px;
     }
     &__section--address {
       grid-area: address;
-      margin-left: 104px;
-      margin-right: 107px;
+      margin: 0 104px 0 107px;
     }
     &__section--form {
       grid-area: form;
+      margin-top: 0;
     }
   }
 }

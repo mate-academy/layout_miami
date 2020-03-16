@@ -1,27 +1,16 @@
 @import "vars";
+@import "mixins";
 
 .consultation {
   &__heading {
-    font-weight: bold;
-    font-size: 36px;
-    letter-spacing: -1.5px;
-    color: #000;
-    width: max-content;
-    margin: 0 auto;
-    &::after {
-      content: "";
-      display: block;
-      background-image: url(../images/crown.svg);
-      width: 25px;
-      height: 13px;
-      margin: 0 auto;
-      background-repeat: no-repeat;
-    }
+    @include crownHeadings;
   }
-  &__forms {
+  &__form {
+    margin-top: 32px;
+  }
+  &__group-forms {
     display: flex;
     flex-direction: column;
-    margin-top: 32px;
   }
   &__capture {
     font-weight: bold;
@@ -33,30 +22,14 @@
     line-height: 27px;
   }
   &__field {
-    width: 100%;
-    height: 48px;
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid #fff;
-    background-color: #f7f8ff;
-    text-indent: 17px;
-    box-sizing: border-box;
-    padding-top: 17px;
-    &:first-child ~ & {
-      margin-top: 16px;
-    }
-    &::placeholder {
-      font-size: 14px;
-      line-height: 14px;
-      color: #b9c1ce;
-    }
+    @include inputs;
+
   }
   @media screen and (min-width: 769px) {
     &__wrapper {
       margin-top: 70px;
       display: grid;
-      grid-gap: 0 94px;
-      grid-template-areas: "capture forms" "text forms";
+      grid-template-areas: "capture form" "text form";
     }
     &__capture {
       grid-area: capture;
@@ -64,13 +37,14 @@
     }
     &__text {
       grid-area: text;
+      max-width: 412px;
+      position: relative;
+      bottom: 30px;
     }
-    &__forms {
-      grid-area: forms;
+    &__form {
+      grid-area: form;
       margin: 0;
+      max-width: 412px;
     }
-  }
-  &__button {
-    width: 100%;
   }
 }
