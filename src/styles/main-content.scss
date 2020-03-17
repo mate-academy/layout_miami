@@ -133,13 +133,14 @@
         box-sizing: border-box;
         border-radius: 8px;
         margin: auto;
-        transition: color 300ms, background-color 300ms;
+        transition: color $hover-time, background-color $hover-time;
+        cursor: pointer;
 
         &:hover {
           outline: none;
           border: #eee;
           color: white;
-          background: linear-gradient(45deg,$text-blue-color, #99d6c7);
+          background-color: $text-blue-color;
         }
 
         @media screen and (max-width: $mobile-width) {
@@ -268,29 +269,32 @@
     }
 
     &__wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr 2fr;
+      display: flex;
+      flex-direction: row;
       justify-content: space-between;
-      column-gap: 5px;
 
       @media screen and (max-width: $mobile-width) {
-        grid-template-columns: 1fr;
-        justify-content: center;
-        // justify-items: center;
-
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: calc(50% - 207px);
+        padding-right: calc(50% - 207px);
+        max-width: 413px;
       }
 
-      .phone-email,
-      address {
-        max-width: 152px;
+      .phone-email-address {
+        width: 152px;
         margin-right: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+
+        @media screen and (max-width: $mobile-width) {
+          // width: 413px;
+        }
       }
 
       .address {
-
-        @media screen and (max-width: $mobile-width) {
-          margin-top: 24px;
-        }
+        margin-top: 24px;
+        
       }
 
       .contact-info {
@@ -318,24 +322,37 @@
       }
 
       .contact__form {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+
+        @media screen and (max-width: $mobile-width) {
+          max-width: 413px;
+
+        }
 
         .form {
-
+          display: block;
+          
           @media screen and (max-width: $mobile-width) {
-            justify-self: center;
+            margin-left: 0;
+            width: calc(100% - 20px);
           }
 
           &-input {
             @include form-input;
+            float: right;
           }
 
           &-textarea {
             height: 144px;
             box-sizing: border-box;
+            float: right;
           }
 
           &-btn {
             @include form-btn;
+            float: right;
           }
         }
       }
