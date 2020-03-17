@@ -1,0 +1,50 @@
+@import "vars";
+@import "mixins";
+
+.consultation {
+  &__heading {
+    @include crownHeadings;
+  }
+  &__form {
+    margin-top: 32px;
+  }
+  &__group-forms {
+    display: flex;
+    flex-direction: column;
+  }
+  &__capture {
+    font-weight: bold;
+    font-size: 24px;
+    color: $primary-blue-color;
+    margin: 48px 0 16px;
+  }
+  &__text {
+    line-height: 27px;
+  }
+  &__field {
+    @include inputs;
+
+  }
+  @media screen and (min-width: 769px) {
+    &__wrapper {
+      margin-top: 70px;
+      display: grid;
+      grid-template-areas: "capture form" "text form";
+    }
+    &__capture {
+      grid-area: capture;
+      margin: 0;
+    }
+    &__text {
+      grid-area: text;
+      max-width: 412px;
+      position: relative;
+      bottom: 30px;
+    }
+    &__form {
+      grid-area: form;
+      margin: 0;
+      max-width: 412px;
+    }
+  }
+}
