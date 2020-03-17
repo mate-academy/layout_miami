@@ -29,6 +29,10 @@
     text-decoration: none;
     transform: translateX(34px);
     transition: $transition-hover;
+
+    &--bottom {
+      display: none;
+    }
   }
 
   &__phone {
@@ -67,5 +71,44 @@
 
   &__nav {
     margin: rem(92) rem(100) rem(52);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .header {
+
+    &__logo {
+      left: 0;
+      width: map_get($width, logo-mobile);
+    }
+
+    &__title {
+      margin: 57vh rem(20) 0;
+      font-size: rem(45);
+      line-height: 0.95;
+
+      &:before {
+        top: rem(-15);
+      }
+    }
+
+    &__phone--top {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: rem(35);
+
+      &:before {
+        @include before(20px,20px);
+        bottom: rem(15);
+        left: rem(18);
+        visibility: visible;
+        background-image: $icon-phone;
+      }
+    }
+
+    &__call--top {
+      display: none;
+    }
   }
 }
