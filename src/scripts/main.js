@@ -1,13 +1,14 @@
 'use strict';
 
 const consultationForm = document.querySelector('.consultation__form');
-
-consultationForm.addEventListener('submit', (ev) => {
-  ev.preventDefault();
-});
-
 const contactForm = document.querySelector('.contact__form');
 
-contactForm.addEventListener('submit', (ev) => {
-  ev.preventDefault();
-});
+const addOnSubmit = (element) => {
+  return element.addEventListener('submit', ev => {
+    ev.preventDefault();
+    ev.target.reset();
+  });
+};
+
+addOnSubmit(consultationForm);
+addOnSubmit(contactForm);
