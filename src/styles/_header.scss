@@ -1,0 +1,153 @@
+.header {
+  position: relative;
+  height: 100vh;
+  background: center url(../images/header.png) no-repeat;
+  background-size: cover;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: $c-white;
+
+  &__wrapper {
+    height: 100%;
+  }
+
+  &__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  &__phone-icon {
+    width: 20px;
+    height: 20px;
+    background: center url(../images/phone-icon.png) no-repeat;
+    background-size: contain;
+    display: none;
+  }
+
+  &__burger {
+    background: center url(../images/burger.png);
+    background-size: contain;
+    width: 22px;
+    height: 15px;
+    display: none;
+  }
+
+  &__logo {
+    width: $width-logo;
+    height: $height-logo;
+  }
+
+  &__link {
+    color: $c-white;
+    position: relative;
+
+    &::after {
+      @include underline(0);
+    }
+
+    &:focus,
+    &:active {
+      color: #ccc;
+    }
+  }
+
+  &__link:hover {
+    
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &__heading {
+    position: absolute;
+    bottom: 165px;
+    left: 0;
+    max-width: 328px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-transform: none;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 48px;
+  }
+
+  &__mobile-nav {
+    bottom: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform: translateX(-100%);
+  }
+
+  &__mobile-nav--active {
+    transform: translateX(0%);
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .header {
+    &__phone-icon,
+    &__burger {
+      display: block;
+    }
+
+    &__phone,
+    &__nav,
+    &__link {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .header {
+    &__heading {
+      bottom: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: $little) {
+  .header {
+    &__heading {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      max-width: 260px;
+    }
+
+    &__phone-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__burger {
+      width: 18px;
+      height: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: $micro) {
+  .header {
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
+  }
+}
