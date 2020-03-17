@@ -1,0 +1,223 @@
+@import "../styles/utils/vars";
+@import "nav";
+
+.header {
+  height: 700px;
+  background-image: url(../images/upd/header-new.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-width: 320px;
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    position: absolute;
+    top: 24px;
+    display: flex;
+    justify-content: space-between;
+    left: 120px;
+    right: 120px;
+    color: white;
+
+    @media screen and (max-width: 400px) {
+      left: 100px;
+      right: 100px;
+    }
+
+  }
+
+  &__phone {
+    margin-top: 32px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      transition: color $hover-time;
+  
+      &:hover {
+        color: $hover-color;
+      }
+    }
+
+    @media screen and (max-width: $mobile-width) {
+      display: none;
+    }
+  }
+
+  &__phone-small-screen {
+    display: none;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/small-screen-phone.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 15px;
+
+    @media screen and (max-width: $mobile-width) {
+      display: block;
+    }
+  }
+
+  &__logo {
+    width: 115px;
+    height: 76px;
+    background-image: url(../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    z-index: 99;
+
+    @media screen and (max-width: $mobile-width) {
+      width: 73px;
+      height: 48px;
+    }
+  }
+
+  &__action {
+    margin-top: 32px;
+
+    .header__link {
+      color: white;
+      text-decoration: none;
+      padding-bottom: 8px;
+      border-bottom: 1px solid white;
+      transition: color $hover-time, border-bottom $hover-time;
+
+      &:hover {
+        color: $hover-color;
+        border-bottom: 1px solid $hover-color;
+      }
+
+      @media screen and (max-width: $mobile-width) {
+        display: none;
+      }
+    }
+
+    .cross {
+      position: relative;
+      top: 16px;
+      display: none;
+
+      & img {
+        width: 13px;
+        height: 13px;
+
+        @media screen and (max-width: $mobile-width) {
+          display: block;
+          position: absolute;
+          bottom: 15px;
+          z-index: 3;
+        }
+      }
+    }
+
+    .hamburger {
+      position: relative;
+      top: -28px;
+
+      &__check {
+        opacity: 0;
+      }
+
+      &-logo {
+        cursor: pointer;
+
+        & span {
+          display: none;
+    
+          @media screen and (max-width: $mobile-width) {
+            display: block;
+            width: 25px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            
+            background: #cdcdcd;
+            border-radius: 3px;
+            
+            z-index: 1;
+            transform-origin: 4px 0;
+            
+            // transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1), 
+            //background 0.5s cubic-bezier(0.77,0.2,0.05,1), opacity 0.55s ease;
+      
+            &:first-child {
+              transform-origin: 0% 0%;
+            }
+      
+            &:nth-last-child(2) {
+              transform-origin: 0% 100%;
+            }
+
+            // .hamburger__check:checked ~ span {
+            //   opacity: 1;
+            //   transform: rotate(45deg) translate(-2px, -1px);
+            //   background: #232323;
+            // }
+            
+            // /*
+            // * But let's hide the middle one.
+            // */
+            // .hamburger__check:checked ~ span:nth-last-child(3) {
+            //   opacity: 0;
+            //   transform: rotate(0deg) scale(0.2, 0.2);
+            // }
+            
+            // /*
+            // * Ohyeah and the last one should go the other direction
+            // */
+            // .hamburger__check:checked ~ span:nth-last-child(2) {
+            //   opacity: 1;
+            //   transform: rotate(-45deg) translate(0, -1px);
+            // }
+          } //end of media
+        } //end of hamburger-logo span
+      } // end of HAMBURGER-LOGO
+    } // end of HAMBURGER
+  } //end of action
+  .hamburger-checkbox {
+    display: none;
+
+    @media screen and (max-width: $mobile-width) {
+      &:checked + .nav {
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    letter-spacing: -1.5px;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+
+    &::before {
+      content: "";
+      width: 35px;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+      top: -16px;
+    }
+
+    @media screen and (max-width: $mobile-width) {
+      bottom: 80px;
+      left: 20px;
+    }
+  }
+}

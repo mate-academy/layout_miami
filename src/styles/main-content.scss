@@ -1,0 +1,362 @@
+@import "../styles/utils/vars";
+
+.container {
+  padding: 104px 120px 48px;
+
+  @media screen and (max-width: $mobile-width) {
+    padding: 64px 21px 64px 20px;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: $mobile-width) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__section-header {
+      @include header-section-text-style;
+
+      & a {
+        text-decoration: none;
+        color: $text-blue-color;
+      }
+
+      @media screen and (max-width: $mobile-width) {
+        font-size: 36px;
+        line-height: 36px;
+        margin-bottom: 48px;
+      }
+    }
+
+    .article {
+      width: 50%;
+
+      @media screen and (max-width: $mobile-width) {
+        width: 100%;
+      }
+
+      &__header {
+        font-size: 24px;
+        line-height: 30px;
+        color: $text-blue-color;
+        padding-bottom: 16px;
+      }
+
+      &__text {
+        font-size: 16px;
+        line-height: 27px;
+        color: #3e3e3e;
+      }
+    }
+  } //end of INFO
+
+  .gallery {
+    
+    &__header {
+      @include headers-look;
+    } //end of GALLERY HEADER
+
+    .photo {
+      display: flex;
+      justify-content: space-between;
+
+      &__img {
+        height: 256px;
+        width: calc(50% - 10px);
+        border-radius: 8px;
+        object-fit: cover;
+        object-position: center;
+
+        @media screen and (max-width: 400px) {
+          height: 131px;
+          width: 131px;
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        &_wide-left {
+          .photo__img {
+            &:first-child {
+              width: calc(67% - 10px);
+            }
+  
+            &:last-child {
+              width: calc(33% - 10px);
+            }
+          }
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        &_wide-right {
+          .photo__img {
+            &:first-child {
+              width: calc(33% - 10px);
+            }
+    
+            &:last-child {
+              width: calc(67% - 10px);
+            }
+          }
+        }
+      }
+    }
+
+    .photo__caption {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 27px;
+      color: #3e3e3e;
+      padding: 24px 0 40px;
+
+      .link {
+        text-decoration: none;
+        color: $text-blue-color;
+      }
+    }
+
+    .btn-wrapper {
+      display: flex;
+      justify-content: center;
+
+      .photo__btn {
+        height: 56px;
+        width: 188px;
+        color: $text-blue-color;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 14px;
+        border: 2px solid $text-blue-color;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin: auto;
+        transition: color $hover-time, background-color $hover-time;
+        cursor: pointer;
+
+        &:hover {
+          outline: none;
+          border: #eee;
+          color: white;
+          background-color: $text-blue-color;
+        }
+
+        @media screen and (max-width: $mobile-width) {
+          width: 100%;
+          max-width: 413px;
+          margin-bottom: 48px; // if under btn will be no space
+        }
+      }
+    }
+  } //end of GALLERY
+
+  .consultation {
+    
+    &__header {
+      @include headers-look;
+    }
+
+    &__main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      justify-content: end;
+  
+      @media screen and (max-width: $mobile-width) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 32px;
+      }
+
+      .left,
+      .right {
+        max-width: 413px;
+
+        &__header {
+          font-size: 24px;
+          line-height: 30px;
+          color: $text-blue-color;
+          padding-bottom: 16px;
+        }
+  
+        &__text {
+          font-size: 16px;
+          line-height: 27px;
+          color: #3e3e3e;
+        }
+      } //end of LEFT
+    } //end of MAIN-CONTENT
+
+    &__form {
+      
+      justify-self: self-end;
+      
+      @media screen and (max-width: $mobile-width) {
+        width: 100%;
+        justify-self: center;
+      }
+    }
+
+    &__form-input {
+      @include form-input;
+    }
+
+    &__form-btn {
+      @include form-btn;
+    }
+  } //end of CONSULTATION
+
+  .testimonials {
+
+    &__header {
+      @include headers-look;
+    }
+
+    .feedbacks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+
+      @media screen and (max-width: $mobile-width) {
+        grid-template-columns: 1fr;
+        // row-gap: 48px;
+      }
+
+      &__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:not(:last-child) {
+          @media screen and (max-width: $mobile-width) {
+            padding-bottom: 48px;
+          }
+        }
+      }
+
+      &__name {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 30px;
+        text-align: center;
+        color: $text-blue-color;
+      }
+
+      &__position {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 27px;
+        text-align: center;
+        color: #9fadc2;
+      }
+
+      &__feedback {
+        max-width: 280px;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: center;
+        color: #3e3e3e;
+      }
+    } //end of feedbacks
+  } //end of TESTIMONIALS
+
+  .contact {
+
+    &__header {
+      @include headers-look;
+    }
+
+    &__wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @media screen and (max-width: $mobile-width) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: calc(50% - 207px);
+        padding-right: calc(50% - 207px);
+        max-width: 413px;
+      }
+
+      .phone-email-address {
+        width: 152px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+
+        @media screen and (max-width: $mobile-width) {
+          // width: 413px;
+        }
+      }
+
+      .address {
+        margin-top: 24px;
+        
+      }
+
+      .contact-info {
+        font-size: 14px;
+        line-height: 27px;
+        color: #9fadc2;
+
+        & + a {
+          font-size: 16px;
+          line-height: 27px;
+          color: #3e3e3e;
+          text-decoration: none;
+        }
+
+        & + p {
+          font-size: 16px;
+          line-height: 27px;
+          color: #3e3e3e;
+          max-width: 152px;
+        }
+
+        &_email {
+          margin-top: 24px;
+        }
+      }
+
+      .contact__form {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+
+        @media screen and (max-width: $mobile-width) {
+          max-width: 413px;
+
+        }
+
+        .form {
+          display: block;
+          
+          @media screen and (max-width: $mobile-width) {
+            margin-left: 0;
+            width: calc(100% - 20px);
+          }
+
+          &-input {
+            @include form-input;
+            float: right;
+          }
+
+          &-textarea {
+            height: 144px;
+            box-sizing: border-box;
+            float: right;
+            resize: none;
+          }
+
+          &-btn {
+            @include form-btn;
+            float: right;
+          }
+        }
+      }
+    } // end of WRAP
+  } //end of contact
+} //end of CONTAINER
