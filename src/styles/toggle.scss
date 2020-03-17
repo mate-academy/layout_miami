@@ -1,0 +1,83 @@
+.menu__toggle {
+  opacity: 0;
+  position: absolute;
+  top: -100%;
+}
+
+.menu__span,
+.menu__span::before,
+.menu__span::after {
+  display: block;
+  position: absolute;
+
+  width: 100%;
+  height: 4px;
+
+  background-color: white;
+
+  transition-duration: 0.3s;
+}
+
+.menu__span::before {
+  content: "";
+  top: -8px;
+}
+
+.menu__span::after {
+  content: "";
+  top: 8px;
+}
+
+.menu__toggle:checked ~ .menu__btn > .menu__span {
+  transform: rotate(45deg);
+}
+
+.menu__toggle:checked ~ .menu__btn > .menu__span::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+.menu__toggle:checked ~ .menu__btn > .menu__span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.menu__toggle:checked ~ .nav__mobile {
+  display: block;
+  width: 100%;
+  height: 580px;
+  background-color: #1940ce;
+  padding-top: 120px;
+  padding-bottom: 39px;
+  transform: translate(0, 25%);
+  animation: anim 1s;
+}
+
+@keyframes anim {
+  from {
+    opacity: 0;
+    background-color: lightblue;
+  }
+  to {
+    opacity: 1;
+    background-color: #1940ce;
+  }
+}
+
+.menu__btn {
+  display: none;
+  position: absolute;
+  width: 25px;
+  height: 14px;
+
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .menu__btn {
+    display: block;
+    top: 41px;
+    right: 23px;
+  }
+}
