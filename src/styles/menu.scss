@@ -1,110 +1,142 @@
-// .menu__toggle {
-//   opacity: 0;
-//   position: absolute;
-//   top: 50;
-// }
+@import "variable";
 
-// .menu__toggle:checked ~ .menu__btn > .menu__span {
-//   transform: rotate(45deg);
-// }
-// .menu__toggle:checked ~ .menu__btn > .menu__span::before {
-//   top: 0;
-//   transform: rotate(0);
-// }
-// .menu__toggle:checked ~ .menu__btn > .menu__span::after {
-//   top: 0;
-//   transform: rotate(90deg);
-// }
-// .menu__toggle:checked ~ .nav__list, &__phone {
-//   visibility: visible;
-//   top: 40px;
-// }
+.header {
+  &__burger,
+  &__span,
+  &__toggler {
+    display: none;
+  }
 
-// .menu__btn {
-//   display: block;
-//   position: absolute;
-//   top: -50px;
-//   right: 10px;
-//   // margin: 20px auto 0;
+  &__toggler {
+    z-index: 3;
+  }
 
-//   width: 40px;
-//   height: 30px;
+  &__burger {
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    z-index: 2;
+    background-color: #0075ff;
+    left: 0;
+  }
 
-//   cursor: pointer;
-//   z-index: 1;
-// }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    margin: 120px 0 0 46px;
+  }
 
-// .menu__span,
-// .menu__span::before,
-// .menu__span::after {
-//   display: block;
-//   position: absolute;
+  &__span {
+    position: absolute;
+    background-color: #fff;
+    right: 24px;
+    width: 40px;
+    height: 4px;
+    top: 20px;
+    z-index: 3;
+    margin-top: 40px;
+  }
 
-//   width: 100%;
-//   height: 4px;
+  &__span::before,
+  &__span::after {
+    content: "";
+    background-color: #fff;
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    top: 10px;
+    z-index: 5;
+    margin-top: 10px;
+  }
 
-//   background-color: #253757;
-
-//   transition-duration: .3s;
-// }
-// .menu__span::before {
-//   content: '';
-//   top: -8px;
-// }
-// .menu__span::after {
-//   content: '';
-//   top: 8px;
-// }
-
-// .header__nav {
-//   position: relative;
-// }
-
-// .nav__list {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   position: absolute;
-//   visibility: hidden;
-//   margin: 0 auto;
-//   top: -1000%;
-//   left: 50%;
-//   transform: translate(-50%, 0);
-
-//   width: 300px;
+  &__span::before {
+    top: 0;
+  }
   
-//   padding: 20px 0;
-
-//   list-style: none;
-
-//   background-color: #fcc304;
-//   border-radius: 20px;
-//   box-shadow: 2px 0px 6px rgba(0, 0, 0, .3);
-
-//   transition-duration: .3s;
-// }
-
-// .nav__link {
-//   display: block;
-//   padding: 12px 24px;
-
-//   color: #fff;
-//   border-radius: 15px;
-
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 20px;
-//   font-weight: 600;
-
-//   text-decoration: none;
-
-//   transition-duration: .3s;
-// }
-// .nav__link:hover {
-//   background-color: #334563;
+  &__span::after {
+    bottom: 0;
+  }
   
-// }
+  &__link-menu {
+    display: block;
+    margin-bottom: 32px;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-// .nav__link:active {
-//   background-color: #152032;
-//   color: #fbcb27;
-// }
+    transition: 1s;
+  }
+
+  &__link-menu:hover {
+    color: #9fadc2;
+  }
+
+  &__menu__nav {
+    margin-bottom: 46px;
+  }
+
+  &__info-menu {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+
+  &__info-link {
+    display: block;
+    margin-bottom: 16px;
+
+    transition: color 1s;
+  }
+
+  &__info-link:hover {
+    color: #9fadc2;
+  }
+
+  &__info-link:last-child {
+    height: 24px;
+    width: 115px;
+    border-bottom: 1px solid;
+  }
+
+  &__toggler-label {
+    display: none;
+    font-size: 55px;
+    width: 20px;
+    height: 20px;
+    z-index: 3;
+  }
+}
+
+.header__toggler:checked ~ .header__toggler-label {
+  .header {
+    &__span::before {
+      top: 10px;
+      transform: rotate(45deg);
+    }
+
+    &__span::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.header__toggler:checked ~ .header__burger {
+  display: block;
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    &__span,
+    &__toggler-label {
+      display: block;
+    }
+  }
+}
