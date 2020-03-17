@@ -1,0 +1,75 @@
+@import "utils";
+
+.album {
+  display: grid;
+  row-gap: 24px;
+
+  @media screen and (max-width: $maxMobileWidth) {
+    row-gap: 16px;
+  }
+
+  &__info {
+    order: 2;
+  }
+
+  &__header {
+    display: inline;
+  }
+
+  &__address {
+    display: inline;
+    font-style: normal;
+
+    &::before {
+      content: " / ";
+    }
+  }
+
+  &__images {
+    order: 1;
+    display: grid;
+    column-gap: $minColumnGap;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: $albumPreviewMaxHeight;
+
+    @media screen and (max-width: $maxMobileWidth) {
+      grid-template-rows: 1fr;
+    }
+
+    &--two-one {
+      grid-template-columns: 2fr 1fr;
+
+      @media screen and (max-width: $maxMobileWidth) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &--one-two {
+      grid-template-columns: 1fr 2fr;
+
+      @media screen and (max-width: $maxMobileWidth) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__image-link {
+    display: block;
+    height: 100%;
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    &:hover,
+    &:focus {
+      @include shadow;
+    }
+  }
+
+  &__image {
+    @include hover(transform, scale(1.2));
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

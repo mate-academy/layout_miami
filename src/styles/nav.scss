@@ -1,0 +1,114 @@
+@import "utils";
+
+.nav {
+  position: sticky;
+  top: 0;
+  padding: $navFontSize 0;
+  font-size: $navFontSize;
+  color: $white;
+  box-sizing: border-box;
+  align-self: center;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+
+  @media screen and (max-width: $maxTabletWidth) {
+    position: absolute;
+    top: -$headerHeightMobile;
+    left: 0;
+    right: 0;
+    height: $headerHeightMobile;
+    background-color: $activeColor;
+    padding: 120px 21px;
+    z-index: 10;
+  }
+
+  &--show {
+    @media screen and (max-width: $maxTabletWidth) {
+      transform: translateY($headerHeightMobile);
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      grid-auto-flow: row;
+      row-gap: 32px;
+    }
+  }
+
+  &__item {
+    padding: $navYItemPadding 0;
+    border-radius: $borderRadius;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      padding: 0;
+    }
+  }
+
+  &__item--active {
+    position: relative;
+    padding: $navYItemPadding $navXItemPadding;
+    border-radius: $borderRadius;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    @media screen and (max-width: $maxTabletWidth) {
+      background: none;
+    }
+
+    @media screen and (max-width: $maxTabletWidth) {
+      padding: 0;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 100%;
+      color: $white;
+    }
+  }
+
+  &__link {
+    @include hover(color, $gray3);
+    color: $white;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $gray3;
+    }
+
+    @media screen and (max-width: $maxTabletWidth) {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 100%;
+      color: $white;
+
+      &:hover,
+      &:focus {
+        color: $yellow;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__addition {
+    display: none;
+
+    @media screen and (max-width: $maxTabletWidth) {
+      display: block;
+      margin-top: 16px;
+    }
+  }
+
+  &__addition-link {
+    display: block;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $white;
+  }
+}

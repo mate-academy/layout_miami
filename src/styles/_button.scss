@@ -1,0 +1,47 @@
+@import "utils";
+
+.button {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: $buttonHeight;
+  min-width: $buttonMinWidth;
+  box-sizing: border-box;
+  border-radius: $borderRadius;
+  font-weight: 700;
+  outline: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &--light {
+    @include hover(color, $white);
+    @include hover(background-color, $activeColor);
+    color: $activeColor;
+    background-color: $white;
+    border: 2px solid $activeColor;
+
+    &:hover,
+    &:focus {
+      @include shadowLight;
+      color: $white;
+      background-color: $activeColor;
+    }
+  }
+
+  &--colored {
+    @include hover(background-color, $activeColorHover);
+    @include shadowLight;
+    color: $white;
+    background-color: $activeColor;
+    border: 2px solid $activeColor;
+
+    &:hover,
+    &:focus {
+      @include shadow;
+      background-color: $activeColorHover;
+      box-shadow: 0 13px 27px $shadowHoverColor;
+    }
+  }
+}
