@@ -1,0 +1,149 @@
+
+.header {
+  @extend %body-content;
+  max-width: 1260px;
+  height: 700px;
+  padding: $padding-t-b $padding-r-l;
+  padding-bottom: $padding-t-b - 8px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $main-header-color;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+
+  &__background {
+    img {
+      box-sizing: border-box;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 700px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__phone {
+    a {
+      color: $main-header-color;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &:last-child {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__logo {
+    width: 115px;
+    height: 76px;
+    left: 50%;
+    z-index: 3;
+
+    > img {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__action {
+    height: 24px;
+    border-bottom: 1px solid  $main-header-color;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    color: $main-header-color;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__line {
+    display: flex;
+    width: 35px;
+    height: 2px;
+    background: $main-header-color;
+    border-radius: 2px;
+    margin-top: $padding-r-l * 2;
+  }
+
+  &__title {
+    display: flex;
+    max-width: 328px;
+    max-height: 124px;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    margin-top: -$padding-t-b;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  .header {
+    height: 568px;
+
+    &__background {
+      img {
+        height: 568px;
+      }
+    }
+
+    &__action {
+      visibility: hidden;
+    }
+
+    &__phone {
+
+      & a:first-child {
+        display: none;
+      }
+
+      & a:last-child {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+  .header {
+    padding: 0 20px 80px;
+
+    &__logo {
+
+      //display: block;
+      width: 73px;
+      height: 48px;
+    }
+
+    &__line {
+      margin-top: $padding-r-l * 2;
+    }
+
+    &__title {
+      max-width: 253px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      padding-right: 0;
+    }
+  }
+}
