@@ -4,13 +4,6 @@
 
 $primary-color: #0075ff;
 
-@mixin header-call {
-  grid-area: call;
-  background: url(../images/call.png) no-repeat;
-  width: 18px;
-  height: 18px;
-}
-
 @mixin header-title {
   position: relative;
   grid-area: title;
@@ -18,17 +11,6 @@ $primary-color: #0075ff;
   line-height: 40px;
   font-weight: bold;
   color: #fff;
-}
-
-@mixin call-to-order {
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 2px;
-  line-height: 25px;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgb(250, 248, 248);
 }
 
 body {
@@ -59,12 +41,12 @@ body {
   background-position-x: center;
   background-size: cover;
 
-  .header__call {
-    @include header-call;
-
-    .header__call-number {
-      display: none;
-    }
+  .header__call-icon {
+    cursor: pointer;
+    grid-area: call;
+    background: url(../images/call.png) no-repeat;
+    width: 18px;
+    height: 18px;
   }
 
   .header__logo {
@@ -147,10 +129,20 @@ body {
       }
     }
   }
+  .call-to-order {
+    width: 115px;
+  }
 
   .phone-num,
   .call-to-order {
-    @include call-to-order;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(250, 248, 248);
   }
 
   .phone-num {
@@ -185,9 +177,20 @@ body {
         height: 76px;
       }
 
+      .call-to-order {
+        width: 115px;
+      }
+
       .phone-num,
       .call-to-order {
-        @include call-to-order;
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 25px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgb(250, 248, 248);
       }
 
       .phone-num {
@@ -305,6 +308,7 @@ body {
     line-height: 36px;
     font-size: 36px;
     color: #000;
+    margin-right: 20px;
   }
 
   &__title-link {
@@ -333,7 +337,7 @@ body {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .content {
     display: flex;
     justify-content: space-between;
@@ -536,7 +540,7 @@ body {
 
   .viev-all {
     cursor: pointer;
-    max-width: 200px;
+    max-width: 280px;
   }
 
   &__title {
@@ -544,6 +548,14 @@ body {
     font-size: 36px;
     text-align: center;
     margin: 30px;
+  }
+
+  .consultation__wrapper--left {
+    margin-right: 20px;
+  }
+
+  .consultation__wrapper--right {
+    max-width: 280px;
   }
 
   &__question {
@@ -592,7 +604,7 @@ body {
   border: 2px solid rgb(0, 117, 255);
   font-weight: bold;
   font-size: 16px;
-  padding: 20px 116px;
+  padding: 13px 116px;
 }
 
 @media (min-width: 700px) {
@@ -604,13 +616,14 @@ body {
     margin: 30px auto;
 
     .consultation__wrapper--left,
-    .consultation__wrapper--right {
+    .consultation__wrapper--right
+     {
       max-width: 415px;
     }
   }
 
   .btn {
-    width: 98%;
+    //width: 98%;
     padding: 10px 50px;
     margin: 0;
   }
@@ -699,6 +712,14 @@ body {
     margin-bottom: 0;
   }
 
+.contact-info-wrapper-left {
+  margin-right: 20px;
+}
+
+.contact-info-wrapper-right {
+  margin-bottom: 20px;
+}
+
   &__info {
     font-size: 16px;
     color: rgb(62, 62, 62);
@@ -707,11 +728,12 @@ body {
   }
 
   .feedback {
-    margin-top: 30px;
+    max-width: 280px;
 
     .message {
       color: rgb(185, 193, 206);
       font-size: 14px;
+      resize: none;
     }
   }
 
@@ -737,13 +759,18 @@ body {
 @media (min-width: 900px) {
   .contacts {
     padding: 20px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
   .wrapper-all {
     display: flex;
     justify-content: space-between;
+
+    .feedback {
+      margin-top: 30px;
+      max-width: 415px;
+    }
 
     .contact-info-wrapper-left,
     .contact-info-wrapper-right {
