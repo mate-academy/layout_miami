@@ -11,16 +11,52 @@
   white-space: nowrap;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+
+  @media (max-width: 767px) {
+    justify-content: space-between;
+  }
 
   &__top {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 80%;
+    max-width: 1260px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @media (max-width: 1600px) {
+      margin: 0 10%;
+    }
+
+    @media (max-width: 767px) {
+      margin-top: 24px;
+
+      .header__action {
+        width: 18px;
+        height: 21px;
+        padding: 0;
+
+        ::after {
+          display: none;
+        }
+      }
+    }
   }
 
   &__logo {
     margin: 2%;
+    z-index: 2;
+    align-self: center;
+
+    .logo__image {
+      @media (max-width: 767px) {
+        height: 78px;
+      }
+    }
   }
 
   &__action {
@@ -42,23 +78,54 @@
     }
   }
 
-  &__link,
+  &__link {
+    color: white;
+    text-decoration: none;
+
+    @include hover (color, $hover-gray);
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
   &__phone-link {
     color: white;
     text-decoration: none;
 
     @include hover (color, $hover-gray);
+
+    @media (max-width: 767px) {
+      content: url(../images/telephone.png);
+    }
   }
 }
 
 .heading__text {
   position: relative;
-  margin: 10% 10% 0;
+  margin: 10% auto 0;
   font-weight: bold;
   font-size: 60px;
   line-height: 60px;
   text-transform: capitalize;
   color: white;
+  max-width: 1260px;
+
+  @media (max-width: 1600px) {
+    margin: 10% 10% 0;
+  }
+
+  @media (max-width: 767px) {
+    width: fit-content;
+    margin: 25% auto 0;
+  }
+
+  @media (max-width: 415px) {
+    margin: 30% auto;
+    margin-bottom: 70%;
+    font-size: 46px;
+    line-height: 40px;
+  }
 
   &::before {
     content: "";

@@ -1,0 +1,83 @@
+.nav__toggle {
+  display: none;
+}
+
+@media (max-width: 415px) {
+  .nav {
+    position: absolute;
+    top: -100%;
+    height: 700px;
+    background-color: $main-blue-color;
+    transition: 0.3s;
+
+    &__list {
+      justify-content: space-evenly;
+      text-align: left;
+      font-size: 22px;
+      position: absolute;
+      top: 10%;
+      bottom: 20%;
+    }
+  }
+
+  .nav__toggle {
+    display: block;
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    visibility: hidden;
+  }
+
+  .nav__btn {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 35px;
+    height: 40px;
+  }
+
+  .nav__span,
+  .nav__span::before,
+  .nav__span::after {
+    display: block;
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    z-index: 2;
+    transition: 0.3s;
+  }
+  .nav__span::before {
+    content: "";
+    top: -8px;
+    right: 0;
+  }
+
+  .nav__span::after {
+    content: "";
+    top: 8px;
+    right: 0;
+  }
+
+  .nav__toggle:checked ~ .nav__btn > .nav__span {
+    transform: rotate(45deg);
+  }
+  .nav__toggle:checked ~ .nav__btn > .nav__span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  .nav__toggle:checked ~ .nav__btn > .nav__span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .nav__toggle:checked ~ .nav__list {
+    visibility: visible;
+    top: 40px;
+  }
+
+  .nav__toggle:checked ~ .nav {
+    top: 0;
+  }
+}

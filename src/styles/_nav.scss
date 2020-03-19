@@ -1,9 +1,19 @@
 .nav {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
   &__list {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 1%;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1260px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   &__item-active {
@@ -18,5 +28,52 @@
     text-decoration: none;
 
     @include hover (color, $hover-gray);
+  }
+
+  &__action {
+    position: absolute;
+    bottom: 5%;
+    left: 6%;
+    font-size: 12px;
+    line-height: 16px;
+
+    &-link {
+      color: white;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
+    ::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 1px;
+      right: 1px;
+      border-bottom: 1px solid white;
+      transition: 0.3s;
+    }
+
+    :hover::after {
+      border-bottom: 1px solid $hover-gray;
+    }
+  }
+
+  &__phone {
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    font-size: 12px;
+    line-height: 16px;
+
+    &-link {
+      color: white;
+    }
+  }
+
+  @media (min-width: 416px) {
+    .nav__action,
+    .nav__phone {
+      display: none;
+    }
   }
 }
