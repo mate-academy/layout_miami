@@ -2,6 +2,30 @@
 
 .nav {
 
+  &__input,
+  &__label {
+    display: none;
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 750px) {
+    &__label {
+      display: inline-block;
+      position: absolute;
+      top: 48px;
+      right: 30px;
+      z-index: 3;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    &__label {
+      top: 40px;
+      right: 20px;
+      z-index: 3;
+    }
+  }
+
   &__list {
     display: flex;
     justify-content: space-between;
@@ -32,5 +56,59 @@
       outline: none;
       color: $hover-color;
     }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  
+  .nav {
+    
+    &__icon-times.fas {
+      display: none;
+    }
+
+    &__list {
+      display: none;
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      top: -30px;
+      padding-top: 165px;
+      padding-left: 30px;
+      flex-direction: column;
+      background-color: blue;
+      width: 100vw;
+      height: 100vh;
+      font-size: 22px;
+    }
+
+    &__item {
+      font-size: 22px;
+   
+      &-active {
+        padding: 8px 3px;
+        border-radius: 8px;
+        background-color: transparent;
+        color: #fff;
+      }
+    }
+      
+    &__link {
+      padding: 16px 3px;
+      display: block;
+      font-size: 22px;
+    }
+  }
+
+  #checkbox-menu:checked + label .fas.fa-bars {
+    display: none;
+  }
+  
+  #checkbox-menu:checked + label .fas.fa-times {
+    display: block;
+  }
+
+  #checkbox-menu:checked ~ .nav__list {
+    display: block;
   }
 }
