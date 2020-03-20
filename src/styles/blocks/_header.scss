@@ -1,4 +1,7 @@
 .header {
+  @extend %flex-column;
+  align-items: flex-end;
+  position: relative;
   width: map_get($width, full);
   height: 100vh;
   background-image: $bgHeader;
@@ -8,6 +11,7 @@
   &__top {
     @extend %flex-row;
     justify-content: space-around;
+    align-self: stretch;
     color: map_get($colors, bg-white);
     font-weight: 400;
     text-transform: uppercase;
@@ -35,7 +39,7 @@
     }
   }
 
-  &__phone {
+  &__phone--top {
     order: -1;
     transform: translateX(-31px);
   }
@@ -52,9 +56,14 @@
     opacity: 0.5;
   }
 
+  &__toggle {
+    display: none;
+  }
+
   &__title {
     position: relative;
-    margin: 44vh rem(125) 0;
+    align-self: stretch;
+    margin: 44vh rem(125) 0 rem(100);
     color: map_get($colors, bg-white);
     font-size: rem(59);
     font-weight: bold;
@@ -70,6 +79,7 @@
   }
 
   &__nav {
+    align-self: stretch;
     margin: rem(92) rem(100) rem(52);
   }
 }
@@ -80,6 +90,7 @@
     &__logo {
       left: 0;
       width: map_get($width, logo-mobile);
+      z-index: 10;
     }
 
     &__phone--top {
@@ -100,6 +111,73 @@
     &__call--top {
       display: none;
     }
+
+    &__phone--bottom,
+    &__call--bottom {
+      display: block;
+      transform: translateX(20px);
+      margin-top: rem(24);
+    }
+
+    &__hamburger {
+      position: relative;
+      display: block;
+      top: rem(-40);
+      right: rem(22);
+      width: rem(20);
+      height: rem(2);
+      margin-bottom: rem(4);
+      background-color: map_get($colors, bg-white);
+      border-radius: rem(2);
+      z-index: 10;
+      transform-origin: rem(4) 0;
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1),
+        background 0.5s cubic-bezier(0.77,0.2,0.05,1),
+        opacity 0.55s ease;
+
+      &:first-child {
+        transform-origin: 0 0;
+      }
+
+      &:nth-last-child(2) {
+        transform-origin: 0 100%;
+      }
+    }
+
+    &__toggle {
+      position: absolute;
+      display: block;
+      top: rem(34);
+      right: rem(11);
+      width: rem(40);
+      height: rem(30);
+      cursor: pointer;
+      opacity: 0;
+      z-index: 20;
+      background-color: map_get($colors, bg-white);
+
+      &:checked ~ .header__hamburger {
+        opacity: 1;
+        transform: rotate(45deg) translate(2.5px, 0);
+      }
+
+      &:checked ~ .header__hamburger:nth-of-type(2) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      &:checked ~ .header__hamburger:nth-of-type(3) {
+        transform: rotate(-45deg) translate(1px, -1px);
+      }
+
+      &:checked ~ .nav {
+        transform: none;
+      }
+    }
+
+    &__nav {
+      margin: 0;
+    }
   }
 }
 
@@ -107,7 +185,7 @@
   .header {
 
     &__title {
-      margin: 57vh rem(20) 0;
+      margin: 54vh rem(20) 0;
       font-size: rem(45);
       line-height: 0.95;
 
