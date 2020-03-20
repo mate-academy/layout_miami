@@ -1,0 +1,86 @@
+@import "../utils/extends";
+@import "../utils/mixins";
+@import "../utils/vars";
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    align-items: stretch;
+    height: 256px;
+    &:first-of-type {
+      margin-top: 61px;
+    }
+  }
+  &__image {
+    border-radius: 8px;
+    height: 100%;
+
+    &:nth-of-type(even) {
+      margin-left: 20px;
+    }
+  }
+
+  &__container:first-of-type &__image:first-of-type {
+    @include gallery-image("../../images/photos/1.jpg", 2);
+  }
+  &__container:first-of-type &__image:last-of-type {
+    @include gallery-image("../../images/photos/2.jpg", 1);
+  }
+  &__container:nth-of-type(2) &__image:first-of-type {
+    @include gallery-image("../../images/photos/3.jpg", 1);
+  }
+  &__container:nth-of-type(2) &__image:last-of-type {
+    @include gallery-image("../../images/photos/4.jpg", 1);
+  }
+  &__container:nth-of-type(3) &__image:first-of-type {
+    @include gallery-image("../../images/photos/5.jpg", 1);
+  }
+  &__container:nth-of-type(3) &__image:last-of-type {
+    @include gallery-image("../../images/photos/6.jpg", 2);
+  }
+
+  &__text {
+    margin: 24px 0 40px;
+  }
+
+  &__link {
+    color: $link-color;
+    font-weight: bold;
+  }
+
+  &__button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    border: 2px solid $link-color;
+    border-radius: 8px;
+    padding: 21px 66px;
+    line-height: 11px;
+    color: $link-color;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .gallery {
+    &__container {
+      height: 131px;
+    }
+
+    &__container:first-of-type &__image:first-of-type {
+      flex-grow: 1;
+    }
+
+    &__container:nth-of-type(3) &__image:last-of-type {
+      flex-grow: 1;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}
