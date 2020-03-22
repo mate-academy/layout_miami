@@ -1,9 +1,10 @@
 /**
  * Full page
  */
+/*eslint-disable */
 (function () {
 	'use strict';
-	
+
 	/**
 	 * Full scroll main function
 	 */
@@ -13,13 +14,13 @@
 		 * @type {Object}
 		 */
 		var main = document.getElementById(params.mainElement);
-		
+
 		/**
 		 * Sections divclass
 		 * @type {Array}
 		 */
 		var sections = main.getElementsByTagName('section');
-		
+
 		/**
 		 * Full page scroll configurations
 		 * @type {Object}
@@ -73,20 +74,20 @@
 	 * Build dots navigation
 	 * @return {Object} this (fullScroll)
 	 */
-	fullScroll.prototype.buildDots = function () {		
+	fullScroll.prototype.buildDots = function () {
 		this.ul = document.createElement('ul');
-		
+
 		this.ul.className = this.updateClass(1, 'dots', this.ul.className);
 		this.ul.className = this.updateClass(1, this.defaults.dotsPosition == 'right' ? 'dots-right' : 'dots-left', this.ul.className);
 
 		var _self = this;
-		var sections = this.defaults.sections;		
+		var sections = this.defaults.sections;
 
 		for (var i = 0; i < sections.length; i++) {
 			var li = document.createElement('li');
 			var a = document.createElement('a');
-		
-			a.setAttribute('href', '#' + i);			
+
+			a.setAttribute('href', '#' + i);
 			li.appendChild(a);
 			_self.ul.appendChild(li);
 		}
@@ -105,7 +106,7 @@
 	 * @return {Object} this(fullScroll)
 	 */
 	fullScroll.prototype.addEvents = function () {
-		
+
 		if (document.addEventListener) {
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
@@ -122,15 +123,15 @@
 					document.body.style = "overflow: scroll;";
 					document.documentElement.style = "overflow: scroll;";
 				}
-			}			
+			}
 
 		} else {
 			document.attachEvent('onmousewheel', this.mouseWheelAndKey, false);
 			document.attachEvent('onkeyup', this.mouseWheelAndKey, false);
 		}
-		
+
 		return this;
-	};	
+	};
 
 	/**
 	 * Build public functions
@@ -142,12 +143,12 @@
 		var _self = this;
 
 		this.mouseWheelAndKey = function (event) {
-			if (event.deltaY > 0 || event.keyCode == 40) {	
+			if (event.deltaY > 0 || event.keyCode == 40) {
 				_self.defaults.currentPosition ++;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);				
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			} else if (event.deltaY < 0 || event.keyCode == 38) {
 				_self.defaults.currentPosition --;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);	
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
 			_self.removeEvents();
 		};
@@ -163,10 +164,10 @@
 				if (mTouchEnd > mTouchStart) {
 					_self.defaults.currentPosition --;
 				} else {
-					_self.defaults.currentPosition ++;					
+					_self.defaults.currentPosition ++;
 				}
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
-			}			
+			}
 		};
 
 		this.hashChange = function (event) {
@@ -180,8 +181,8 @@
 					} else {
 						_self.defaults.currentPosition = anchor;
 						_self.animateScroll();
-					}					
-				}				
+					}
+				}
 			}
 		};
 
@@ -233,7 +234,7 @@
 		};
 
 		this.registerIeTags = function () {
-			document.createElement('section'); 
+			document.createElement('section');
 		};
 
 		this.updateClass = function (type, newClass, currentClass) {
