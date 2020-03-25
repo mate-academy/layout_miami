@@ -1,0 +1,189 @@
+.header {
+  @extend %flex-column;
+  align-items: flex-end;
+  position: relative;
+  width: map_get($width, full);
+  height: 100vh;
+  background-image: $bgHeader;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+
+  &__top {
+    @extend %flex-row;
+    justify-content: space-around;
+    align-self: stretch;
+    color: map_get($colors, bg-white);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    position: relative;
+    left: rem(-6);
+    width: map_get($width, logo);
+    margin-top: rem(25);
+  }
+
+  &__phone,
+  &__call {
+    @extend %font-header;
+    position: relative;
+    margin-top: rem(60);
+    color: map_get($colors, bg-white);
+    text-decoration: none;
+    transform: translateX(34px);
+    transition: $transition-hover;
+
+    &--bottom {
+      display: none;
+    }
+  }
+
+  &__phone--top {
+    order: -1;
+    transform: translateX(-31px);
+  }
+
+  &__call::before {
+    @include before(97%, 1px);
+    background-color: map_get($colors, bg-white);
+    left: 0;
+    top: rem(20);
+  }
+
+  &__phone:hover,
+  &__call:hover {
+    opacity: 0.5;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__title {
+    @extend %indent-reset;
+    position: absolute;
+    bottom: 23.5%;
+    left: 9.6%;
+    color: map_get($colors, bg-white);
+    font-size: rem(59);
+    font-weight: bold;
+    line-height: 1.1;
+    text-transform: capitalize;
+  }
+
+  &__title::before {
+    @include before(35px, 2px);
+    background-color: map_get($colors, bg-white);
+    left: 0;
+    top: rem(-15);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .header {
+    &__logo {
+      left: 0;
+      width: map_get($width, logo-mobile);
+      z-index: 10;
+    }
+
+    &__phone--top {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: rem(35);
+
+      &:before {
+        @include before(20px, 20px);
+        bottom: rem(15);
+        left: rem(18);
+        visibility: visible;
+        background-image: $icon-phone;
+      }
+    }
+
+    &__call--top {
+      display: none;
+    }
+
+    &__phone--bottom,
+    &__call--bottom {
+      display: block;
+      transform: translateX(20px);
+      margin-top: rem(24);
+    }
+
+    &__hamburger {
+      position: relative;
+      display: block;
+      top: rem(-40);
+      right: rem(22);
+      width: rem(20);
+      height: rem(2);
+      margin-bottom: rem(4);
+      background-color: map_get($colors, bg-white);
+      border-radius: rem(2);
+      z-index: 10;
+      transform-origin: rem(4) 0;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        opacity 0.55s ease;
+
+      &:first-child {
+        transform-origin: 0 0;
+      }
+
+      &:nth-last-child(2) {
+        transform-origin: 0 100%;
+      }
+    }
+
+    &__toggle {
+      position: absolute;
+      display: block;
+      top: rem(34);
+      right: rem(11);
+      width: rem(40);
+      height: rem(30);
+      cursor: pointer;
+      opacity: 0;
+      z-index: 20;
+      background-color: map_get($colors, bg-white);
+
+      &:checked ~ .header__hamburger {
+        opacity: 1;
+        transform: rotate(45deg) translate(2.5px, 0);
+      }
+
+      &:checked ~ .header__hamburger:nth-of-type(2) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      &:checked ~ .header__hamburger:nth-of-type(3) {
+        transform: rotate(-45deg) translate(1px, -1px);
+      }
+
+      &:checked ~ .nav {
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .header {
+    &__title {
+      bottom: 14%;
+      left: 5.9%;
+      font-size: rem(45);
+      line-height: 0.95;
+
+      &:before {
+        top: rem(-15);
+      }
+    }
+  }
+}
