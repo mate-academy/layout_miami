@@ -1,0 +1,171 @@
+.header {
+  height: 700px;
+  background: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  position: relative;
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 24px;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    @include hover(color, $active-color);
+  }
+
+  &__phone-img {
+    display: none;
+  }
+
+  &__caption {
+    color: #fff;
+    font-size: 60px;
+    line-height: 1;
+    max-width: 328px;
+    text-transform: none;
+    position: absolute;
+    letter-spacing: -1.5px;
+    left: 10.5%;
+    bottom: 165px;
+    animation: appear 1.5s ease-in-out forwards;
+
+    &::before {
+      width: 35px;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+      top: -16px;
+      border-radius: 2px;
+      content: "";
+    }
+  }
+
+  &__nav-toggler-label {
+    display: none;
+    padding: 20px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 18px;
+    font-weight: bold;
+  }
+
+  &__nav-toggler-label::before {
+    content: "\2630";
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    content: "x";
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toggle {
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 670px) {
+
+  .header {
+    height: 568px;
+
+    &__top {
+      padding: 0;
+    }
+
+    &__caption {
+      width: 79%;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      bottom: 80px;
+    }
+
+    &__logo {
+      position: absolute;
+      top: 24px;
+      z-index: 1;
+    }
+
+    &__phone,
+    &__link {
+      display: none;
+    }
+
+    &__phone-img {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      position: absolute;
+      top: 39px;
+      left: 23px;
+      cursor: pointer;
+    }
+
+    .header .nav__item {
+      height: auto;
+      margin-left: 0;
+    }
+  
+    .header__nav-toggler-label {
+      display: inline-block;
+      position: absolute;
+      right: 23px;
+      padding: 0;
+      top: 32px;
+      z-index: 1;
+      cursor: pointer;
+    }
+  
+    .header__nav-toggler:not(:checked) ~ .nav {
+      display: none;
+    }
+  
+    .nav__list {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: $blue-color;
+      animation: toggle 0.5s ease-in-out;
+    }
+  }
+}
