@@ -2,11 +2,17 @@
   @extend %header__typography;
   display: flex;
   flex-direction: column;
-  padding: 56px 120px;
-  height: calc(100vh - 112px);
+  padding: 56px 120px 48px;
+  height: calc(100vh - 104px);
 
   background: url("../images/header.png") no-repeat center;
   background-size: cover;
+
+  @include desktop(padding, 47px 50px 30px);
+  @include desktop(height, calc(100vh - 77px));
+
+  @include mobile(padding, 39px 23px 80px);
+  @include mobile(height, calc(100vh - 119px));
 
   &__top {
     display: flex;
@@ -23,6 +29,7 @@
     
     @include mobile(font-size, 46px);
     @include mobile(line-height, 40px);
+    @include mobile(margin-bottom, 0);
 
     &::before {
       content: "";
@@ -41,6 +48,7 @@
     text-decoration: none;
     @include hover(color, #9fadc2);
     @extend %header__typography;
+    @include mobile(display, none);
 
     &::before {
       content: "";
@@ -62,7 +70,24 @@
   &__phone {
     margin: 0;
     height: max-content;
-    content: "hello";
+    @include mobile(display, none);
+  }
+
+  &__burger {
+    display: none;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    @include mobile(display, block);
+
+  }
+
+  &__logo--tel {
+    display: none;
+    height: 18px;
+    width: 18px;
+    @include mobile(display, block);
+
   }
 }
 
@@ -70,7 +95,9 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    padding: 0;
   
+    @include mobile(display, none);
   }
 
   &__item {

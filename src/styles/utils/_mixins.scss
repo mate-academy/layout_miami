@@ -13,7 +13,13 @@
 }
 
 @mixin mobile($_property, $_toValue) {
-  @include media(">phone", "<tablet") {
+  @include media("<=tablet") {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin desktop($_property, $_toValue) {
+  @include media(">=tablet", "<=desktop") {
     #{$_property}: $_toValue;
   }
 }
