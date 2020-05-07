@@ -5,8 +5,11 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex: 0 1 1260px;
+  flex: 1 1 360px;
   justify-content: space-between;
+
+  position: sticky;
+  top: -620px;
 
   margin-bottom: 104px;
   padding: 24px 120px 48px;
@@ -61,11 +64,98 @@
     color: $header-text-color;
     letter-spacing: 2px;
   }
-
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.phone-for-small,
+.small-menu,
+.small-menu-label {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .header {
+    height: 568px;
+    padding: 24px 23px 80px 20px;
+    h1 {
+      font-weight: bold;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+
+      margin: 335px 0 80px;
+    }
+  }
+
+  .small-menu,
+  .small-menu__wrapper {
+    position: absolute;
+    left: calc(83% - 9px);
+    top: -520px;
+    width: 18px;
+    height: 12px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .small-menu {
+    visibility: hidden;
+    width: 20px;
+    height: 20px;
+  }
+
+  .phone-for-small,
+  .small-menu__wrapper {
+    display: block;
+    position: relative;
+
+  }
+
+  .small-menu__wrapper::after {
+    content: url(/images/vector-2.png);
+
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+
+    height: 12px;
+    width: 18px;
+  }
+
+  .small-menu:checked ~ .small-menu__wrapper::after {
+    content: url(/images/vector-3.png);
+
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+
+    height: 12px;
+    width: 18px;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone-number,
+  .header__call-link,
+  .nav {
+    display: none;
+  }
+
+  .small-menu:checked ~ .nav {
+    display: block;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 108px);
+    justify-items: center;
+  }
 }
