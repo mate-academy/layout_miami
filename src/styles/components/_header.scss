@@ -1,0 +1,180 @@
+.promo {
+  background: center / cover no-repeat url(../images/header.jpg);
+  width: 100%;
+  max-height: 100vh;
+  height: 700px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 0 auto;
+
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 16px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone-btn,
+  &__burger-btn {
+    display: none;
+  }
+
+  &__title {
+    position: relative;
+    text-transform: none;
+    padding: 1rem 0;
+    margin: 60px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 2px;
+      width: 35px;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.nav {
+  transform: translate(0);
+  transition: transform 0.3s;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 8px 24px;
+    color: white;
+    @include hover(color, #9fadc2);
+
+    &--active {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__top,
+  &__bottom {
+    display: none;
+  }
+}
+
+.logo {
+  margin: 24px 0;
+  max-width: 115px;
+}
+
+.call {
+  color: white;
+  border-bottom: 1px solid white;
+  padding: 8px 0;
+  @include hover(color, #9fadc2);
+}
+
+@media (max-width: $large-resolution) {
+  .header {
+    &__phone-number,
+    &__call {
+      display: none;
+    }
+
+    &__phone-btn,
+    &__burger-btn {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: no-repeat center;
+    }
+
+    &__phone-btn {
+      background-image: url(../../images/phone.svg);
+    }
+
+    &__burger-btn {
+      background-image: url(../../images/burger.svg);
+    }
+  }
+
+  .nav {
+    position: fixed;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    
+    margin-bottom: 0;
+    padding: 0 2rem;
+
+    background-color: $primary-clr;
+    transform: translateX(100%);
+
+    &__list {
+      flex-direction: column;
+    }
+
+    &__link {
+      font-size: 22px;
+      line-height: 22px;
+      padding: 16px 0;
+
+      &--active {
+        background: none;
+        border: none;
+      }
+    }
+
+    &__top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+
+    &__logo {
+      grid-column-start: 2;
+    }
+
+    &__times {
+      justify-self: end;
+      width: 40px;
+      height: 40px;
+      background: no-repeat center url(../../images/times.svg);
+    }
+
+    &__bottom {
+      display: block;
+    }
+
+    &__phone-number {
+      display: block;
+      margin: 2rem 0 1rem;
+    }
+  }
+
+  .logo {
+    width: 73px;
+  }
+}
