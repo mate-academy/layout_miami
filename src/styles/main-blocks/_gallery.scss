@@ -1,0 +1,79 @@
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gl-block {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 0;
+
+  &__slide {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    max-height: 256px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  &__name {
+    @include fonts-style(normal, 16px, 27px, $c-min-tittle);
+    margin: 24px 0 0;
+  }
+
+  &__button {
+    margin-top: 40px;
+    border: 2px solid $c-own;
+    width: 188px;
+    height: 56px;
+  }
+
+  $slide-pos: (
+    left: 0,
+    center: 1,
+    right: 2,
+  );
+
+  @each $pos, $num in $slide-pos {
+
+    &__slide--#{$pos} {
+      & > :first-child {
+        width: calc( #{60-$num*10}% - 10px);
+      }
+
+      & > :last-child {
+        width: calc(#{40+$num*10}% - 10px);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .gl-block {
+
+    $slide-pos: (
+      left: 0,
+      center: 1,
+      right: 2,
+    );
+
+    @each $pos, $num in $slide-pos {
+
+      &__slide--#{$pos} {
+        & > :first-child {
+          width: calc(50% - 10px);
+        }
+
+        & > :last-child {
+          width: calc(50% - 10px);
+        }
+      }
+    }
+  }
+}

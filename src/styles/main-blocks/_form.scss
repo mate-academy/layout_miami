@@ -1,0 +1,103 @@
+
+@mixin item ($hg) {
+  padding: 17px;
+  margin-bottom: 16px;
+  width: 413px;
+  height: $hg;
+
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+
+  &__margin {
+    margin: 90px 0 0;
+  }
+
+  &__report {
+    max-width: 420px;
+    min-width: 190px;
+  }
+
+  &__mini-tittle {
+    @include fonts-style(normal, 14px, 27px, #9FADC2);
+  }
+
+  &__mini-text {
+    @include fonts-style(normal, 16px, 27px, $c-min-tittle);
+    margin: 0 0 24px;
+  }
+
+  &__mini {
+    display: flex;
+  }
+}
+
+// Actually:
+
+.form-app {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  &__item {
+    @include fonts-style(normal, 14px, 14px, $c-min-tittle );
+    @include item(48px);
+  }
+
+  &__item-txt {
+    @include fonts-style(normal, 14px, 14px, $c-min-tittle );
+    @include item(144px);
+  }
+
+  &__button {
+    color: #fff;
+    width: 413px;
+    height: 56px;
+
+    background: $c-own;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    border-radius: 8px;
+  }
+
+  &__item-txt::placeholder,
+  &__item::placeholder {
+    @include fonts-style(normal, 14px, 14px, #B9C1CE );
+  }
+}
+
+@media only screen and (max-width: 420px) {
+
+  .form-app {
+    width: 100%;
+
+    &__item-txt,
+    &__button,
+    &__item {
+      width: calc(100%);
+    }
+
+  }
+}
+
+@media only screen and (max-width: 920px) {
+
+  .form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &__report {
+      max-width: 600px;
+      margin: 0;
+    }
+
+    &__mini {
+      flex-direction: column;
+    }
+  }
+}
