@@ -1,5 +1,15 @@
 .nav {
 
+  &__mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $accent-color;
+  }
+  
   &__header {
     padding-bottom: 24px;
   }
@@ -8,11 +18,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &--mobile {
+      display: block;
+      height: 100%;
+      padding: 120px 20px 52px;
+    }
   }
 
   &__item {
     padding: 4px 24px;
     border-radius: 8px;
+
+    &--mobile {
+      padding: 0;
+      margin-bottom: 32px;
+    }
+
+    &:last-child {
+      margin-bottom: 48px;
+    }
 
     &--active {
       background: rgba(255, 255, 255, 0.1);
@@ -30,55 +55,40 @@
     text-transform: uppercase;
     text-decoration: none;
 
+    &--mobile {
+      font-size: 22px;
+      line-height: 22px;
+    }
+
     &:active,
     &:visited,
     &:link {
       color: $main-color;
     }
-
     @include hover(color, $hover-color);
   }
-
 }
 
 @media screen and (max-width: 1024px) {
   .nav {
-
+    
     &__item {
-      padding-left: 12px;
       padding-right: 12px;
+      padding-left: 12px;
     }
   }
 }
 
 @media screen and (max-width: 768px) {
   .nav {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 120px 20px 52px;
-    background: $accent-color;
 
-    &__list {
-      flex-direction: column;
-      align-items: flex-start;
+    &__header {
+      display: none;
     }
 
     &__item {
-      padding: 0;
-      margin-bottom: 32px;
-
-      &--active {
-        background: none;
-      }
-    }
-
-    &__link {
-      font-size: 22px;
-      line-height: 22px;
+      padding-right: 0;
+      padding-left: 0;
     }
   }
 }
