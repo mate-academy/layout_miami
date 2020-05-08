@@ -1,24 +1,25 @@
 .header {
-  @extend %header__typography;
   display: flex;
   flex-direction: column;
-  padding: 56px 120px 48px;
-  height: calc(100vh - 104px);
-
+  padding: $header--padding-l;
+  height: calc(100vh - #{$header--height-corr-l});
   background: url("../images/header.png") no-repeat center;
   background-size: cover;
+  @extend %header__typography;
 
-  @include desktop(padding, 47px 50px 30px);
-  @include desktop(height, calc(100vh - 77px));
+  @include desktop(padding, $header--padding-m);
+  @include desktop(height, calc(100vh - #{$header--height-corr-m}));
 
-  @include mobile(padding, 39px 23px 80px);
-  @include mobile(height, calc(100vh - 119px));
+  @include mobile(padding, $header--padding-s);
+  @include mobile(height, calc(100vh - #{$header--height-corr-s}));
 
   &__top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: auto;
+    @include max-width;
   }
 
   &__title {
@@ -26,6 +27,7 @@
     text-transform: none;
     letter-spacing: -1.5px;
     margin-bottom: 85px;
+    @include max-width;
     @include desktop(margin-bottom, 40px);
     @include mobile(font-size, 46px);
     @include mobile(line-height, 40px);
@@ -81,6 +83,7 @@
     display: none;
     height: 18px;
     width: 18px;
+    margin: 0 3px;
     cursor: pointer;
     @include mobile(display, block);
 
@@ -90,6 +93,7 @@
     display: none;
     height: 18px;
     width: 18px;
+    margin: 0 3px;
     @include mobile(display, block);
 
   }
@@ -100,7 +104,8 @@
     display: flex;
     justify-content: space-between;
     padding: 0;
-  
+    
+    @include max-width;
     @include mobile(display, none);
   }
 
