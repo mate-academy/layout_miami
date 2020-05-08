@@ -5,138 +5,89 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex: 1 1 360px;
   justify-content: space-between;
 
   position: sticky;
-  top: -620px;
+  top: (100px - $header-big-height);
 
   margin-bottom: 104px;
   padding: 24px 120px 48px;
-  height: 700px;
+  height: $header-big-height;
 
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
+  @extend %general-text-style;
   color: $header-text-color;
-  letter-spacing: 2px;
 
   background: url(/images/panorama.png) no-repeat;
   background-size: cover;
 
+  &__top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__call-link {
+    border-bottom: 1px $header-text-color solid;
+  }
+
+  &__call-link,
+  &__call-link-number {
     text-transform: uppercase;
     color: $header-text-color;
     padding-bottom: 8px;
     text-decoration: none;
-    border-bottom: 1px $header-text-color solid;
-  }
+    transition: 3s;
 
-  h1 {
-    font-weight: bold;
-    font-size: 60px;
-    line-height: 60px;
-    letter-spacing: -1.5px;
-
-    margin-top: 342px;
-    margin-bottom: 93;
-    position: relative;
-
-    &::after {
-      content: "";
-      background-color: $header-text-color ;
-
-      position: absolute;
-      top: -16px;
-      left: 0;
-
-      height: 2px;
-      width: 35px;
-      border-radius: 2px;
+    &:hover {
+      color: $header-link-hover-color;
     }
 
+    &:active {
+      color: $header-link-active-color;
+    }
   }
 
   .phone-number {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
+    @extend %general-text-style;
     color: $header-text-color;
-    letter-spacing: 2px;
+
   }
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.phone-for-small,
-.small-menu,
-.small-menu-label {
+.phone-for-mobile,
+.mobile-menu,
+.mobile-menu__wrapper {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
   .header {
-    height: 568px;
+    height: $header-small-height;
     padding: 24px 23px 80px 20px;
     h1 {
       z-index: 1;
-      font-weight: bold;
       font-size: 46px;
       line-height: 40px;
       letter-spacing: -1px;
 
       margin: 335px 0 80px;
     }
+    &__top-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      align-items: center;
+    }
   }
 
-  .small-menu {
-    visibility: hidden;
-    width: 20px;
-    height: 20px;
-  }
-
-  .phone-for-small,
-  .small-menu__wrapper {
+  .phone-for-mobile {
     display: block;
     position: relative;
-
   }
 
-  .small-menu__wrapper::after {
-    content: url(/images/vector-2.png);
-
-    position: absolute;
-    right: -1px;
-    bottom: -1px;
-
-    height: 12px;
-    width: 18px;
-  }
-
-  .small-menu:checked ~ .small-menu__wrapper::after {
-    content: url(/images/vector-3.png);
-    z-index: 100;
-    position: absolute;
-    right: -1px;
-    bottom: -1px;
-
-    height: 12px;
-    width: 18px;
-  }
-
-  .phone-number,
+  .header__call-link-number,
   .header__call-link,
   .nav {
     display: none;
-  }
-
-  .row {
-    display: grid;
-    grid-template-columns: repeat(3, 108px);
-    justify-items: center;
   }
 }
