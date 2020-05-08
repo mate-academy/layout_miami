@@ -1,4 +1,5 @@
 .header {
+  max-width: 5000px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -6,12 +7,9 @@
 
   height: 100vh;
   padding: 24px 120px;
-  color: $main-color;
 
-  background: url(../images/header.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  color: $main-color;
+  background: center / cover no-repeat url(../images/header.jpg);
 
   &__top {
     display: flex;
@@ -22,13 +20,16 @@
   }
 
   &__tel {
+    @extend %font-spacing;
     color: $main-color;
     font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
+
+    @include link-state;
+    @include hover(color, $hover-color);
+
+    
 
     &--mobile {
       margin-bottom: 16px;
@@ -58,8 +59,15 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 24px 60px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
+    height: 600px;
     margin-bottom: 32px;
     padding: 20px 20px 0;
 
@@ -125,18 +133,18 @@
   }
 
   &__order {
-
     border-bottom: 1px solid $main-color;
   }
 
   &__link {
+    @extend %font-spacing;
     font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
     color: $main-color;
+
+    @include link-state;
+    @include hover(color, $hover-color);
   }
 }
 
