@@ -1,12 +1,107 @@
 @use "../utils";
 
 .promo {
-  padding: 0 24px;
+  padding: 0 20px;
   height: 100%;
 
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
+
+  &__menu-toggler {
+    position: relative;
+    
+    
+    &::after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 12px;
+      
+      transform: translate(50%, -50%);
+      cursor: pointer;
+      background-image: url("../images/burger.png");
+      transition: background-image 0.3s;
+    }
+
+    @media (min-width: 721px) {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-top: 24px;
+  }
+
+  &__link-img {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url("../images/call.png");
+    transform: translateX(-100%);
+
+    @media (min-width: 721px) {
+      display: none;
+    }
+  }
+  
+  &__mobile-logo {
+    width: 73px;
+    height: 48px;
+    z-index: 1;
+
+    @media (min-width: 721px) {
+      display: none;
+    }
+  }
+
+  &__toggle-nav {
+    width: 100%;
+
+    @media (max-width: 720px) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      bottom: 0;
+      padding: 100px 0 58px 20px;
+      width: 100%;
+
+      transition: right 0.3s, background-color 0.3s;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  &__toggler {
+    display: none;
+    z-index: 3;
+    
+    &:checked ~ .promo__toggle-nav {
+      background-color: $hover-primary;
+      right: 0;
+    }
+
+    &:checked ~ .promo__menu-toggler {
+      z-index: 2;
+    }
+
+    &:checked ~ .promo__menu-toggler::after {
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/close.png");
+      background-position: center;
+
+    }
+  }
 
   &--next-block {
     margin-bottom: 104px;
@@ -18,11 +113,20 @@
     align-items: center;
 
     padding-top: 24px;
+
+    @media (max-width: 720px) {
+      flex-direction: column;
+      align-items: end;
+    }
   }
 
   &__logo {
     width: 115px;
     height: 76px;
+
+    @media (max-width: 720px) {
+      display: none;
+    }
   }
 
   &__contact {
@@ -43,6 +147,11 @@
     &--underline {
       border-bottom: 1px solid #fff;
     }
+
+    @media (max-width: 720px) {
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
   }
 
   &__title {
@@ -51,12 +160,18 @@
 
     max-width: 32%;
 
-    font-family: Roboto, sans-serif;
     font-size: 60px;
     font-weight: bold;
     color: $menu-color;
     letter-spacing: -1.5px;
     text-transform: capitalize;
+    
+    @media (max-width: 720px) {
+      font-size: 46px;
+      letter-spacing: -1px;
+      min-width: 253px;
+      bottom: 80px;
+    }
 
     &::before {
       position: absolute;
@@ -75,5 +190,9 @@
     left: 0;
     bottom: 48px;
     right: 0;
+
+    @media (max-width: 720px) {
+      position: static;
+    }
   }
 }

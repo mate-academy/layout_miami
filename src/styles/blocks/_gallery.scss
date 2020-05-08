@@ -24,23 +24,26 @@
 
   &__images {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 256px;
     width: 100%;
     column-gap: 20px;
 
     margin-bottom: 20px;
 
+    
     &--ratio-1 {
       @include images-ratio($main-size: 2, $secondary-size: 1);
     }
-
+    
     &--ratio-2 {
       @include images-ratio($main-size: 1, $secondary-size: 1);
     }
-
+    
     &--ratio-3 {
       @include images-ratio($main-size: 1, $secondary-size: 2);
+    }
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 131px;
     }
   }
   
@@ -49,6 +52,10 @@
     height: 256px;
     object-fit: cover;
     border-radius: 8px;
+
+    @media (max-width: 720px) {
+      height: 131px;
+    }
   }
 
   &__location,
@@ -67,5 +74,9 @@
 
   &__button {
     padding: 20px 62px;
+    
+    @media (max-width: 720px) {
+      width: 100%;
+    }
   }
 }
