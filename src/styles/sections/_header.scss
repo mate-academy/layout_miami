@@ -1,0 +1,267 @@
+%header-text {
+  font-weight: bold;
+  font-size: 12px;
+  color: $second-color;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 16px;
+}
+
+.header {
+  background: url("../images/header.jpg") center center/cover no-repeat;
+  padding: 24px 20px 56px;
+  position: relative;
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__tel {
+    @extend %header-text;
+    padding: 8px 24px;
+
+    transition: color $transition-time;
+
+    @include hover($main-color);
+  }
+
+  &__tel-icon {
+    display: none;
+    width: 30px;
+
+    img {
+      width: 100%;
+    }
+  }
+  
+  &__logo {
+    display: block;
+    width: 115px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__call {
+    @extend %header-text;
+    padding: 8px 24px;
+    position: relative;
+
+    transition: color $transition-time;
+
+    @include hover($main-color);
+    
+    &::after {
+      content: "";
+      display: block;
+      width: calc(100% - 48px);
+      height: 1px;
+
+      position: absolute;
+      bottom: 0;
+
+      background-color: $second-color;
+      border-radius: 5px;
+    }
+  }
+
+  &__burger {
+    width: 30px;
+    height: 20px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div {
+      width: 100%;
+      height: 2px;
+      background-color: $second-color;
+      border-radius: 2px;
+
+      transition: transform $transition-time;
+    }
+  }
+
+  &__title {
+    margin-top: 314px;
+    position: relative;
+
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    color: $second-color;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+
+      position: absolute;
+      top: -16px;
+      
+      background-color: $second-color;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 85px;
+  }
+
+  &__link {
+    @extend %header-text;
+    display: block;
+    padding: 8px 24px;
+
+    transition: color 0.3s;
+
+    @include hover($main-color_light);
+
+    &--active {
+      background-color: rgba($color: $second-color, $alpha: 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: $screen_large) {
+    &__tel {
+      position: absolute;
+      left: 0;
+      top: 452px;
+
+      transform: translateX(-100%);
+      opacity: 0;
+
+      transition: transform $transition-time ease-in-out;
+    }
+
+    &__tel-icon {
+      display: block;
+
+      transition: visibility $transition-time,
+        opacity $transition-time ease-out;
+    }
+
+    &__burger {
+      display: flex;
+    }
+
+    &__call {
+      position: absolute;
+      left: 0;
+      top: 486px;
+      transform: translateX(-100%);
+      opacity: 0;
+
+      transition: transform $transition-time ease-out;
+    }
+
+    &__title {
+      margin-top: 335px;
+
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+
+      transition: opacity $transition-time ease-in;
+    }
+
+    &__nav {
+      width: 100%;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+
+      transform: translateX(-100%);
+      opacity: 0.5;
+
+      transition: transform $transition-time ease-out;
+    }
+
+    &__list {
+      margin: 0;
+      flex-direction: column;
+    }
+
+    &__list-item:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    &__link {
+      width: 100%;
+
+      font-size: 22px;
+      line-height: 1;
+
+      &--active {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @media (max-width: $screen_small) {
+    &__tel-icon {
+      width: 18px;
+    }
+
+    &__logo {
+      width: 73px;
+    }
+
+    &__burger {
+      width: 18px;
+      height: 12px;
+    }
+  }
+}
+
+.header--active {
+  background: $mark-color;
+
+  .header {
+    &__tel-icon {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &__burger {
+      height: 18px;
+
+      div {
+        &:first-child {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          visibility: hidden;
+        }
+        
+        &:last-child {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+
+    &__tel,
+    &__call,
+    &__nav {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    &__title {
+      visibility: hidden;
+      opacity: 0;
+
+      transition: all 0s;
+    }
+  }
+}
