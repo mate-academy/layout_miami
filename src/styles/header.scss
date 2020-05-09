@@ -1,21 +1,26 @@
 @import "variables.scss";
 
 .header {
-  position: relative;
-  margin: auto;
-  height: 700px;
-  background-image: url(../images/panorama-2117310.jpg);
+  height: 100vh;
+  width: 100%;
+  background: url(../images/panorama-2117310.jpg);
   background-size: cover;
   background-position: center ;
   background-attachment: fixed;
   color: $header-color;
   font-size: $header-font-s;
-  max-width: 1440px;
+
+  &--wrapper {
+    position: relative;
+    margin: 0 auto;
+    height: 100vh;
+    max-width: 1040px;
+  }
 
   &__title {
     position: absolute;
-    top: 400px;
     left: 200px;
+    bottom: 165px;
     width: $title__w;
     height: $title__h;
     font-size: $title__font-s;
@@ -57,16 +62,12 @@
   }
 
   &__top {
-    padding-top: 25px;
+    padding: 20px 100px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     max-width: 1440px;
-  }
-
-  &__phone {
-    padding-left: 120px;
   }
 
   &__logo {
@@ -78,10 +79,6 @@
   .logo {
     width: $logo-width;
     height: $logo-height;
-  }
-
-  &__action {
-    padding-right: 120px;
   }
 
   &__link {
@@ -99,4 +96,54 @@
     }
   }
 
+}
+
+@media screen and(max-width: $large-screen) {
+  .header {
+    position: relative;
+
+    &__link,
+    &__phone,
+    &__action {
+      display: none;
+    }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      margin: 0;
+    }
+
+    &__title {
+      position: absolute;
+      left: 10px;
+      right: 0;
+      width: 260px;
+      font-size: 46px;
+
+    }
+  }
+}
+
+@media screen and(max-width: $small-screen) {
+  .header {
+    &__link,
+    &__phone,
+    &__action {
+      display: none;
+    }
+
+    .logo {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
