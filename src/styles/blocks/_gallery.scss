@@ -1,5 +1,4 @@
 @import "../utils";
-@import "./normalize";
 
 .gallery {
   display: flex;
@@ -27,23 +26,19 @@
     width: 100%;
     column-gap: 20px;
 
+    @include images-ratio($main-size: 1, $secondary-size: 1);
+
     margin-bottom: 20px;
 
-    
-    &--ratio-1 {
-      @include images-ratio($main-size: 2, $secondary-size: 1);
-    }
-    
-    &--ratio-2 {
-      @include images-ratio($main-size: 1, $secondary-size: 1);
-    }
-    
-    &--ratio-3 {
-      @include images-ratio($main-size: 1, $secondary-size: 2);
-    }
-    @media (max-width: 720px) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 131px;
+    @media (min-width: 720px) {
+
+      &--left-img-dominate {
+        @include images-ratio($main-size: 2, $secondary-size: 1);
+      }
+      
+      &--right-img-dominate {
+        @include images-ratio($main-size: 1, $secondary-size: 2);
+      }
     }
   }
   
@@ -67,7 +62,7 @@
 
   &__link-coordinates {
     text-decoration: none;
-    color: $text-color-blue;
+    color: $primary-color;
 
     @include hover($_property: "color", $_toValue: $hover-primary);
   }
