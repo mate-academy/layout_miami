@@ -1,0 +1,67 @@
+@import "variables";
+
+%burger-menu {
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+
+%action {
+  top: 0;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+}
+@media screen and (max-width: $small-screen) {
+  .menu-icon {
+    display: block;
+  }
+}
+
+.menu-icon {
+  height: 26px;
+  width: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-icon-line {
+  position: relative;
+  @extend %burger-menu;
+
+  &::after {
+    content: "";
+    top: 10px;
+    @extend %burger-menu;
+    transition: transform 0.2s ease-in 0.2s, top 0.2s linear 0.2s;
+  }
+
+  &::before {
+    content: "";
+    top: -10px;
+    @extend %burger-menu;
+    transition: transform 0.2s ease-in 0.2s, top 0.2s linear 0.2s;
+  }
+
+  &.menu-icon-active {
+    background-color: transparent;
+  }
+
+  &.menu-icon-active::before {
+    transform: rotate(45deg);
+    @extend %action;
+  }
+
+  &.menu-icon-active::after {
+    transform: rotate(-45deg);
+    @extend %action;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .menu-icon {
+    display: none;
+  }
+}
