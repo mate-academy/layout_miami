@@ -16,34 +16,41 @@
   &__container {
     position: relative;
 
-    display: grid;
-    flex-direction: column;
-    grid-auto-rows: 16px auto 32px;
-
     max-width: 1260px;
     padding: 56px 120px;
-    min-height: 700px;
+    height: 700px;
     margin: 0 auto;
   }
 
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    color: $header-color;
+  &__link--icon {
+    position: absolute;
+
+    display: none;
+
+    width: 18px;
+    height: 18px;
+    top: 39px;
+    left: 23px;
+    background: url(../images/tel.svg) center no-repeat;
   }
 
   &__link--telephone {
+    position: absolute;
+
     color: inherit;
   }
 
   &__logo {
     position: absolute;
-    top: 35px;
+    top: 11px;
     left: calc(50% - #{$logo-width/2});
   }
 
   &__link--call-back {
-    position: relative;
+    position: absolute;
+    top: 56px;
+    right: 120px;
+
     color: inherit;
   }
 
@@ -61,14 +68,12 @@
   &__capture {
     position: relative;
 
-    align-self: end;
-
-    width: 395px;
-    margin-bottom: 80px;
+    max-width: 395px;
+    margin: 358px 0 80px;
 
     font-size: 60px;
     line-height: 60px;
-    letter-spacing: normal;
+    letter-spacing: -1.5px;
     color: inherit;
   }
 
@@ -84,13 +89,99 @@
     border-radius: 2px;
   }
 
+  &__toggler {
+    position: absolute;
+    top: 36px;
+    right: 23px;
+
+    display: none;
+  }
+
+  &__toggler--label {
+    // position: relative;
+
+    width: 18px;
+    height: 18px;
+  }
+
+  &__toggler--label::after {
+    content: url(../images/burger.png);
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: 0;
+    // background: url(../images/burger.png) center no-repeat;
+  }
+
   @media screen and (max-width: $small-scree-breakpoint) {
     &__container {
       padding: 56px 20px;
+
+      height: 576px;
     }
 
-    &__top {
+    &__logo {
+      left: calc(50% - #{$small-logo-width/2});
+    }
+
+    &__link--telephone,
+    &__link--call-back {
+      position: absolute;
+    }
+
+    &__link--telephone {
+      top: 448px;
+
+      transform: translateX(-300%);
+    }
+
+    &__link--call-back {
+      top: 480px;
+      left: 20px;
+
+      transform: translateX(-300%);
+    }
+
+    &__capture {
+      margin-top: 330px;
+
+      max-width: 295px;
+
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      color: inherit;
+    }
+
+    &__link--icon,
+    &__toggler--label {
+      display: block;
+    }
+
+    &__nav {
+      margin-top: 48px;
+      transform: translateX(-300%);
+    }
+
+    // &__toggler:checked ~ &__container {
+    //   background-color: $color-main-section;
+    // }
+
+    &__toggler:checked ~ &__nav,
+    &__toggler:checked ~ &__link--telephone,
+    &__toggler:checked ~ &__link--call-back {
+      transform: translateX(0);
+    }
+
+    &__toggler:checked ~ &__link--icon,
+    &__toggler:checked ~ &__capture {
       display: none;
+    }
+
+    &__toggler:checked + &__toggler--label::after {
+      content: url(../images/x.png);
     }
   }
 }
