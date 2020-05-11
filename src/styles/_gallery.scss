@@ -9,11 +9,13 @@ $gap: 20px;
   }
 
   &__picture {
+    @include hover(transform, scale(0.97));
+    transform: scale(1);
     height: 256px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
-
+    overflow: hidden;
     @media screen and (max-width: 1024px) {
       height: 130px;
     }
@@ -28,40 +30,15 @@ $gap: 20px;
     justify-content: space-between;
 
     &--wide-even {
-      .gallery__picture {
-        width: calc(50% - #{$gap/2});
-      }
+      @include gallery-pics(50%);
     }
 
     &--wide-left {
-      .gallery__picture:first-child {
-        width: calc(66.6% - #{$gap/2});
-
-        @media screen and (max-width: 500px) {
-          width: calc(50% - #{$gap/2});
-        }
-      }
-      .gallery__picture:last-child {
-        width: calc(33.3% - #{$gap/2});
-        @media screen and (max-width: 500px) {
-          width: calc(50% - #{$gap/2});
-        }
-      }
+      @include gallery-pics(66.6%);
     }
 
     &--wide-right {
-      .gallery__picture:first-child {
-        width: calc(33.3% - #{$gap/2});
-        @media screen and (max-width: 500px) {
-          width: calc(50% - #{$gap/2});
-        }
-      }
-      .gallery__picture:last-child {
-        width: calc(66.6% - #{$gap/2});
-        @media screen and (max-width: 500px) {
-          width: calc(50% - #{$gap/2});
-        }
-      }
+      @include gallery-pics(33.3%);
     }
     
   }

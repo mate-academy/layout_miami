@@ -1,0 +1,102 @@
+.nav-mobile {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  display: none;
+
+  height: 550px;
+  width: 100%;
+
+  background-color: $highlight-color;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    height: 450px;
+    margin: 10px 5px;
+  }
+
+  &__item {
+    padding: 15px 20px;
+  }
+
+  &__link {
+    @extend %link;
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  &__call,
+  &__phone {
+    @extend %link;
+    padding: 0 20px;
+  }
+
+  &__call::after {
+    content: "";
+
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+
+    height: 1px;
+    width: 111px;
+
+    background-color: $basic-color;
+  }
+}
+
+.menu-mobile,
+.menu-mobile__toggler {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+
+  .menu-mobile {
+    position: absolute;
+    top: 55px;
+    right: 35px;
+    z-index: 2;
+
+    display: block;
+
+    &::after {
+      content: url(../images/burger.svg);
+
+      position: absolute;
+      right: -1px;
+      bottom: -1px;
+
+      height: 12px;
+      width: 18px;
+    }
+
+    &__toggler {
+      position: absolute;
+      top: 35px;
+      right: 20px;
+      z-index: 2;
+      opacity: 0;
+
+      display: block;
+      width: 40px;
+      height: 40px;
+      
+      cursor: pointer;
+
+      &:checked ~ .nav-mobile {
+        display: block;
+      }
+
+      &:checked ~ .menu-mobile::after {
+        content: url(../images/cross.svg);
+        z-index: 3;
+      }
+    }
+  }
+}
