@@ -1,0 +1,266 @@
+@import "utils";
+
+.head {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.header {
+  height: 100vh;
+  width: 100%;
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @extend %main-text;
+
+  &__title {
+    width: 54vh;
+    margin-top: 40vh;
+  }
+
+  &__title-text {
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    text-transform: none;
+    font-weight: bold;
+    position: relative;
+  }
+
+  &__title-text::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 2px;
+    width: 35px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 800px) {
+    .header {
+      padding: 24px 20px;
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  
+  &__call-link {
+    text-decoration: none;
+    color: $main-color;
+    
+    
+    border-bottom: 1px solid $main-color;
+    padding: 8px 5px;
+  }
+
+  &__call-link-wrap {
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  &__call-link:hover {
+    color: $hover-color;
+    border-bottom: none;
+    transition: color 0.5s;
+  }
+
+  &__call-link:active {
+    color: $main-color;
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  &__phone {
+    text-decoration: none;
+    color: $main-color;
+    position: relative;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  &__phone-icon {
+    display: none;
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__phone-icon:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+  }
+
+  &__phone:hover {
+    color: $hover-color;
+    transition: color 0.5s;
+  }
+
+  &__phone:active {
+    color: $main-color;
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  &__picture {
+    z-index: 2;
+
+    @media (max-width: 800px) {
+      width: 73px;
+      height: 48px;
+    }
+  }
+}
+
+.navigation {
+  margin-bottom: 50px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    list-style: none;
+    
+    padding-left: 0;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+    padding: 8px 24px;
+    border-radius: 5px;
+    white-space: pre;
+  }
+
+  &__link:hover {
+    color: $hover-color;
+    transition: color 0.5s;
+  }
+
+  &__link:active {
+    background-color: rgba(255,255,255,0.3);
+    color: $main-color;
+  }
+}
+
+.mobile-navigation {
+  display: none;
+
+  @media (max-width: 800px) {
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: $semi-color;
+    z-index: 1;
+
+    padding-top: 130px;
+    padding-left: 0;
+    list-style: none;
+    transition: all 0.5s;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler:checked ~ &__list {
+    right: 0;
+  }
+
+  &__toggler-btn {
+    position: relative;
+    cursor: pointer;
+    display: none;
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__toggler-btn::before {
+    content: url(../images/burger.png);
+    height: 20px;
+    width: 20px;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  &__toggler:checked ~ &__toggler-btn::before {
+    content: url(../images/close.png);
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+    padding: 8px 24px;
+    border-radius: 5px;
+    white-space: pre;
+
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  &__link--phone {
+    @extend %main-text;
+  }
+
+  &__link--call {
+    @extend %main-text;
+    position: relative;
+  }
+
+  &__link--call::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 115px;
+    background-color: #fff;
+    left: 22px;
+    bottom: -2px;
+  }
+
+  &__link:hover {
+    color: $hover-color;
+    transition: color 0.5s;
+  }
+
+  &__link:active {
+    background-color: rgba(255,255,255,0.3);
+    color: $main-color;
+  }
+}
