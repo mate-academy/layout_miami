@@ -4,26 +4,24 @@
   
   &__list {
     display: flex;
-    justify-content: center;
     list-style: none;
+    justify-content: space-between;
 
     @media (max-width: $small-screen-breakpoint) {
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
       display: none;
     }
   }
-  &-mobile {
-    display: none;
-  }
+
   &__item {
     padding: 7px 20px;
-    margin: 0 22.5px;
+    margin-bottom: 24px;
     border-radius: 10px;
     font-size: 12px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
     &_active {
       border-radius: 8px;
       background-color: rgba(255, 255, 255, 0.1);
@@ -36,9 +34,91 @@
     letter-spacing: 2px;
     transition: color $hover-duration;
     &:hover {
-      color: $hover-color;
+      color: $highlight-hover-color;
     }
   
   }
 
+}
+
+.nav-mobile {
+  color: white;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  max-width: 425px;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow-y: auto;
+
+  margin-bottom: 0;
+  padding: 24px 2rem;
+
+  background-color: $highlight-color;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+
+  &__link {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    padding: 16px 0;
+  }
+
+  &__list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__logo {
+    grid-column-start: 2;
+  }
+
+  &__times {
+    justify-self: end;
+    width: 40px;
+    height: 40px;
+    background: no-repeat center url(../images/times.svg);
+  }
+
+  &__bottom {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  &__phone-number {
+    display: block;
+    margin: 2rem 0 1rem;
+  }
+
+  &__call {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 555px;
+      width: 113px;
+      height: 1px;
+      background-color: white;
+      border-radius: 1px;
+    }
+  }
 }
