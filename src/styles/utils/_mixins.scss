@@ -4,3 +4,29 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin active($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:active {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin mobile($_property, $_toValue) {
+  @include media("<=tablet") {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin desktop($_property, $_toValue) {
+  @include media(">=tablet", "<=desktop") {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin max-width {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}

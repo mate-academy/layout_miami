@@ -1,0 +1,180 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: $header--padding-l;
+  height: calc(100vh - #{$header--height-corr-l});
+  background: url("../images/header.png") no-repeat center;
+  background-size: cover;
+  @extend %header__typography;
+  overflow: auto;
+
+  @include desktop(padding, $header--padding-m);
+  @include desktop(height, calc(100vh - #{$header--height-corr-m}));
+
+  @include mobile(padding, $header--padding-s);
+  @include mobile(height, calc(100vh - #{$header--height-corr-s}));
+
+  .mobile-bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 0;
+    background: $special-blue;
+    @include mobile(height, calc(100vh));
+    z-index: 2;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-bottom: auto;
+    @include max-width;
+  }
+
+  &__title {
+    position: relative;
+    text-transform: none;
+    letter-spacing: -1.5px;
+    margin-bottom: 85px;
+    z-index: 1;
+    @include max-width;
+    @include desktop(margin-bottom, 40px);
+    @include mobile(font-size, 46px);
+    @include mobile(line-height, 40px);
+    @include mobile(margin-bottom, 0);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $special-white;
+    }
+  }
+
+  &__call-to-order {
+    position: relative;
+    height: 20px;
+    text-decoration: none;
+    @include hover(color, #9fadc2);
+    @extend %header__typography;
+    @include mobile(display, none);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      height: 1px;
+      width: 111px;
+      background-color: $special-white;
+    }
+
+    &--mobile {
+      position: absolute;
+      display: flex;
+      z-index: 3;
+      top: 470px;
+    }
+  }
+
+  &__logo {
+    width: 115px;
+    position: relative;
+    top: -32px;
+    @include mobile(width, 73px);
+    z-index: 3;
+  }
+
+  &__phone {
+    margin: 0;
+    height: max-content;
+    text-decoration: none;
+    @extend %header__typography;
+    @include hover(color, #9fadc2);
+    @include mobile(display, none);
+
+    &--mobile {
+      position: absolute;
+      display: flex;
+      z-index: 3;
+      top: 430px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    height: 12px;
+    outline: none;
+    margin: 0 3px;
+    padding: 0;
+    cursor: pointer;
+    @include mobile(display, block);
+    z-index: 3;
+  }
+
+  &__logo--tel {
+    display: none;
+    height: 18px;
+    width: 18px;
+    margin: 0 3px;
+    @include mobile(display, block);
+    @include hover(opacity, 0.7);
+  }
+}
+
+.nav {
+  @include max-width;
+  z-index: 3;
+  &__container {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    @include mobile(display, none);
+    @include mobile(position, absolute);
+    
+    &--mobile-show {
+      @extend .nav__container;
+      display: flex;
+      flex-direction: column;
+      top: 100px;
+      left: 20px;
+
+      & .nav__item--link-mobile {
+        // @extend .nav__item--link;
+        font-size: 22px;
+        line-height: 40px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  &__item {
+    @extend %header__typography;
+
+    &--link {
+      padding: 8px 24px;
+      @extend %header__typography;
+      @include hover(color, #9fadc2);
+      @include active(background, #ffffff0f);
+      @include active(border-radius, 8px);
+      @include active(color, $special-white);
+    }
+  }
+}
+
+.active {
+  padding: 8px 24px;
+  background: #ffffff0f;
+  border-radius: 8px;
+  color: $special-white;
+}
