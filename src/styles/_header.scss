@@ -1,0 +1,190 @@
+.header {
+  position: relative;
+
+  height: 700px;
+  padding: 24px 120px 48px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-image: url("../images/header.png");
+  background-size: cover;
+  background-position: center;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone-icon {
+    height: 18px;
+    width: 18px;
+    display: none;
+    cursor: pointer;
+
+    background-image: url(../images/Phone.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__phone,
+  &__action {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__action {
+    border-bottom: 1px solid #fff;
+    padding: 8px 0;
+  }
+
+  &__phone-link,
+  &__link {
+    color: #fff;
+
+    transition: opacity 250ms;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__burger {
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    z-index: 2;
+  }
+
+  &__toggler {
+    display: none;
+
+    &:checked ~ .nav {
+      transform: translateX(-100%);
+    }
+
+    &:checked + .header__burger::before {
+      content: "\2715";
+    }
+  }
+
+  &__logo {
+    height: $logo-height;
+    width: $logo-width;
+
+    background-image: url(../images/logo.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 165px;
+
+    & h1 {
+      height: 139px;
+      margin: 0;
+
+      font-weight: bold;
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -1.5px;
+      color: white;
+
+      &:before {
+        content: "";
+        display: block;
+
+        height: 2px;
+        width: 35px;
+        margin-bottom: 16px;
+
+        border-radius: 2px;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@media (max-width: $small-screen-pointer) {
+  .header {
+    padding: 24px 20px 80px;
+
+    &__top {
+      width: calc(50% + #{$logo-width} * 0.63 / 2);
+    }
+
+    &__logo {
+      width: $logo-width * 0.6;
+      height: $logo-height * 0.6;
+      z-index: 2;
+    }
+
+    &__title {
+      bottom: 80px;
+      font-size: 46px;
+    }
+
+    &__phone,
+    &__action {
+      display: none;
+    }
+
+    &__burger {
+      display: block;
+
+      &::before {
+        content: "\2630";
+        height: 12px;
+        width: 18px;
+        color: white;
+        font-size: 24px;
+      }
+    }
+
+    &__phone-icon {
+      display: block;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      right: 0;
+      height: 700px;
+      box-sizing: border-box;
+
+      padding: 120px 0;
+      transition: 0.3s;
+
+      background-color: $active-color;
+
+      > .nav__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        height: 100%;
+
+        font-size: 22px;
+        line-height: 1;
+        font-weight: bold;
+      }
+    }
+  }
+}
