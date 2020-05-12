@@ -1,0 +1,79 @@
+@import "../utils";
+
+.gallery {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__row {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 60px;
+  }
+
+  &__place {
+    width: 100%;
+  }
+
+  &__images {
+    display: grid;
+    width: 100%;
+    column-gap: 20px;
+
+    @include images-ratio($main-size: 1, $secondary-size: 1);
+
+    margin-bottom: 20px;
+
+    @media (min-width: 720px) {
+
+      &--left-img-dominate {
+        @include images-ratio($main-size: 2, $secondary-size: 1);
+      }
+      
+      &--right-img-dominate {
+        @include images-ratio($main-size: 1, $secondary-size: 2);
+      }
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 256px;
+    object-fit: cover;
+    border-radius: 8px;
+
+    @media (max-width: 720px) {
+      height: 131px;
+    }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__location,
+  &__link-coordinates {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__link-coordinates {
+    text-decoration: none;
+    color: $primary-color;
+
+    @include hover($_property: "color", $_toValue: $hover-primary);
+  }
+
+  &__button {
+    padding: 20px 62px;
+    
+    @media (max-width: 720px) {
+      width: 100%;
+    }
+  }
+}
