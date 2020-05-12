@@ -1,0 +1,128 @@
+.menu {
+  opacity: 0;
+  z-index: 2;
+
+  &__checkbox {
+    position: absolute;
+  }
+
+  &__btn > span,
+  &__btn > span::before,
+  &__btn > span::after {
+    position: absolute;
+  
+    width: 18px;
+    height: 2px;
+  
+    background-color: #fff;
+  
+    transition-duration: $hover-duration;
+  }
+  &__btn > span::before {
+    content: "";
+    top: -8px;
+  }
+
+  &__btn > span::after {
+    content: "";
+    top: 8px;
+  }
+  
+  &__box {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    padding: 120px 20px 0;
+  
+    list-style: none;
+    background-color: $blue-color;
+    transition-duration: $hover-duration;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+  }
+  
+  #menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+  }
+  
+  &__btn {
+    position: absolute;
+    right: 20px;
+  
+    width: 18px;
+    height: 12px;
+  
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  &__item {
+    display: block;
+    margin-bottom: 32px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: $bold;
+        
+    color: #fff;
+    text-decoration: none;
+    transition-duration: background-color $hover-duration;
+
+    &_contact {
+      margin-bottom: 48px;
+    }
+
+    &_number {
+      margin-bottom: 16px;
+      font-weight: $bold;
+      font-size: 12px;
+      line-height: 16px;
+
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    &_action {
+      padding-top: 0;
+      padding-bottom: 8px;
+      width: 115px;
+
+      font-weight: $bold;
+      font-size: 12px;
+      line-height: 16px;
+
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &__item:nth-child(6) {
+    margin-bottom: 48px;
+  }
+
+  &__item:hover {
+    background-color: #fff;
+    color: $blue-color;
+  }
+}
+
+@media screen and (max-width: $adaptive-breakpoint) {
+  .menu {
+    opacity: 100;
+  }
+}
