@@ -1,0 +1,102 @@
+﻿.navigation {
+  &__close-button {
+    @extend %none-button;
+
+    display: none;
+
+    position: absolute;
+    top: 40px;
+    right: 24px;
+
+    &::before {
+      content: "";
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background-image: url("../../images/cross.svg");
+    }
+  }
+
+  &__list {
+    font-size: 22px;
+    line-height: 22px;
+
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    padding: 16px 0;
+  }
+
+  &__link {
+    color: #fff;
+  }
+
+  &__phone-number {
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    color: #fff;
+
+    display: inline-block;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .navigation {
+    &__close-button {
+      display: none;
+    }
+
+    &__list {
+      font-size: 12px;
+      line-height: 16px;
+
+      display: flex;
+      justify-content: space-between;
+      order: 2;
+
+      margin-bottom: 0;
+    }
+
+    &__item {
+      padding: 8px 24px;
+
+      &:not(.navigation__item--active) {
+        .navigation__link {
+          @include hover(color, #9fadc2);
+        }
+      }
+
+      &--active {
+        border-radius: 8px;
+
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    &__contacts-wrapper {
+      display: flex;
+      justify-content: space-between;
+      order: 1;
+    }
+
+    &__phone-number {
+      margin-bottom: 0;
+    }
+
+    &__call {
+      display: inline-block;
+
+      padding-bottom: 8px;
+      border-bottom: 1px solid;
+    }
+  }
+}
