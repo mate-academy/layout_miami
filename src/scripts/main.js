@@ -5,12 +5,12 @@ const closeMenu = document.querySelector('.nav-toggle__close');
 const menu = document.querySelector('.nav-toggle');
 const clickListener = document.querySelector('.click-listener');
 
+burger.onclick = classToggle;
+
 function classToggle() {
   clickListener.classList.toggle('click-listener--active');
   menu.classList.toggle('nav-toggle--active');
 };
-
-burger.onclick = classToggle;
 
 menu.addEventListener('click', function(e) {
   if (e.target === closeMenu
