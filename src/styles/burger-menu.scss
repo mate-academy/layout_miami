@@ -1,15 +1,20 @@
 @import "variables";
 
 %burger-menu {
+  position: absolute;
+  display: block;
+  left: 0;
+
   width: 24px;
   height: 3px;
   background-color: white;
-  left: 0;
-  position: absolute;
-  display: block;
 }
 
-%action {
+%forline {
+  transition: transform 0.2s ease-in 0.2s, top 0.2s linear 0.2s;
+}
+
+%foractive {
   top: 0;
   transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
 }
@@ -36,14 +41,14 @@
     content: "";
     top: 10px;
     @extend %burger-menu;
-    transition: transform 0.2s ease-in 0.2s, top 0.2s linear 0.2s;
+    @extend %forline;
   }
 
   &::before {
     content: "";
     top: -10px;
     @extend %burger-menu;
-    transition: transform 0.2s ease-in 0.2s, top 0.2s linear 0.2s;
+    @extend %forline;
   }
 
   &.menu-icon-active {
@@ -52,11 +57,11 @@
 
   &.menu-icon-active::before {
     transform: rotate(45deg);
-    @extend %action;
+    @extend %foractive;
   }
 
   &.menu-icon-active::after {
     transform: rotate(-45deg);
-    @extend %action;
+    @extend %foractive;
   }
 }
