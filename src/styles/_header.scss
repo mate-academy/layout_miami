@@ -1,15 +1,20 @@
 .header {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
   height: 100vh;
-  padding: 24px 120px;
-  overflow-y: hidden;
 
   color: $main-color;
   background: center / cover no-repeat url(../images/header.jpg);
+
+  &__container {
+    max-width: 1260px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 64px 120px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__top {
     display: flex;
@@ -25,11 +30,14 @@
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 0.2s ease;
 
-    @include link-state;
-    @include hover(color, $hover-color);
-
-    
+    &:visited,
+    &:active,
+    &:focus,
+    &:hover {
+      color: $hover-color;
+    }
 
     &--mobile {
       margin-bottom: 16px;
@@ -61,14 +69,21 @@
 
 @media screen and (max-width: 1024px) {
   .header {
-    padding: 24px 60px;
+
+    &__container {
+      padding: 24px 60px 0;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .header {
+    height: 700px;
     margin-bottom: 32px;
-    padding: 20px 20px 0;
+
+    &__container {
+      padding: 24px 20px 0;
+    }
 
     &__tel {
       display: none;
@@ -84,12 +99,6 @@
       line-height: 40px;
       letter-spacing: -1px;
     }
-  }
-}
-
-@media screen and (max-width: 572px) {
-  .header {
-    height: 600px;
   }
 }
 
@@ -139,6 +148,7 @@
 
   &__order {
     border-bottom: 1px solid $main-color;
+    transition: border-color 0.2s ease;
   }
 
   &__link {
@@ -146,10 +156,16 @@
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
+    
     color: $main-color;
+    transition: color 0.2s ease;
 
-    @include link-state;
-    @include hover(color, $hover-color);
+    &:visited,
+    &:active,
+    &:focus,
+    &:hover {
+      color: $hover-color;
+    }
 
     &--mobile {
       padding-bottom: 2px;
