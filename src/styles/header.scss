@@ -1,0 +1,246 @@
+@import "variables.scss";
+
+.header {
+  height: 100vh;
+  width: 100%;
+  background: url(../images/panorama-2117310.jpg) center center/cover no-repeat fixed;
+  color: $header-color;
+  font-size: $header-font-s;
+  overflow: hidden;
+
+  &__wrapper {
+    position: relative;
+    margin: 0 auto;
+    height: 100vh;
+    max-width: 1040px;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 165px;
+
+    display: flex;
+    align-items: center;
+
+    width: $title__w;
+    height: $title__h;
+    font-size: $title__font-s;
+    line-height: $title__line-h;
+    letter-spacing: -1.5px;
+    font-weight: bold;
+
+    animation: title 1s 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -8px;
+      height: 2px;
+      width: 35px;
+      background-color: $header-color;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -7px;
+      height: 2px;
+      width: 35px;
+      background-color: $header-color;
+      transform: rotate(90deg);
+      transform-origin: left;
+    }
+
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 30px 0;
+    margin: 0 auto;
+    max-width: 1440px;
+
+    animation: appearence 1.2s ease-in 1;
+  }
+
+  &__logo {
+    margin-left: 55px;
+    background: url(../images/logo.png) center center/cover no-repeat;
+  }
+
+  .logo {
+    width: $logo-width-xl;
+    height: $logo-height-xl;
+  }
+
+  &__link {
+    width: 113px;
+    padding-bottom: 8px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $header-color;
+    border-bottom: 1px solid;
+
+    transition: color $hover__duration;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+}
+
+@keyframes appearence {
+  from {
+    transform: translateY(-250px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes title {
+  from {
+    transform: translateX(-200px) skew(50deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and(min-width: 800px) {
+  .mob__header {
+    display: none;
+  }
+}
+
+@media screen and(max-width: $large-screen), (max-width: $small-screen) {
+  .header {
+    position: relative;
+
+    &__link,
+    &__phone,
+    &__action,
+    &__top,
+    &__logo {
+      display: none;
+    }
+
+    &__title {
+      position: absolute;
+      left: 5%;
+      max-width: 260px;
+      font-size: 46px;
+
+    }
+  }
+
+  .mob {
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 24px 25px;
+      max-width: 700px;
+
+      animation: appearence 1.1s ease-out 1 ;
+    }
+
+    &__phone {
+      height: 24px;
+      width: 24px;
+      background: url(../images/Vector.png) center center/contain no-repeat;
+    }
+
+    &__logo {
+      height: $logo-height-xs;
+      width: $logo-width-xs;
+      background: url(../images/logo-small.png) center center/contain no-repeat;
+    }
+
+    &__slide {
+      transform: translateX(-100%);
+    }
+
+    &__nav {
+      display: block;
+      position: absolute;
+      right: -430px;
+      bottom: 0;
+
+      max-width: 431px;
+      width: 110%;
+      height: 100%;
+
+      background: $blue;
+      filter: saturate(0.5);
+      transition: transform 1s ease-in-out;
+      z-index: 5;
+
+      @media screen and (min-width: 320px) {
+        & {
+          width: 120%;
+        }
+      }
+
+      &__top {
+        margin: 20px auto;
+        height: $logo-height-xs;
+        background: url(../images/logo-small.png) center center/contain no-repeat;
+      }
+    }
+
+    &__list {
+      display: grid;
+      gap: 15px 0;
+
+      margin-left: 35px;
+      height: 70%;
+      width: 100%;
+
+      text-transform: uppercase;
+      list-style: none;
+    }
+
+    &__item {
+      margin-left: 35px;
+    }
+
+    &__link {
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      z-index: 15;
+    }
+
+    &__box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      margin-left: 50px;
+      max-height: 50px;
+      height: 100%;
+      max-width: 200px;
+      width: 100%;
+    }
+
+  }
+}

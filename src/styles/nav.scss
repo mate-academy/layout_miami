@@ -1,0 +1,80 @@
+@import "variables";
+
+.nav {
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+
+    list-style: none;
+  }
+
+  &__item {
+    padding: 8px;
+    margin: 15px auto;
+
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 12px;
+
+    transition: $hover__duration;
+    animation: navItemAppearence 1.5s ease-in;
+
+    &:nth-child(2) {
+      animation-delay: 0.09s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    &:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    &:nth-child(5) {
+      animation-delay: 0.18s;
+    }
+
+    &:nth-child(6) {
+      animation-delay: 0.21s;
+    }
+  }
+
+  &__link {
+    color: $nav-color;
+    text-decoration: none;
+    transition: color $hover__duration;
+
+    &_active {
+      padding: 5px 24px;
+      color: $nav-color;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  
+  &__link:hover {
+    color: $active-color;
+  }
+}
+
+@keyframes navItemAppearence {
+  from {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width:$small-screen), (max-width: $large-screen) {
+  .nav,
+  &__list {
+    display: none;
+  }
+}
