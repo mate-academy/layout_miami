@@ -5,3 +5,9 @@ function burger() {
 
   elem.classList.toggle('header--active');
 }
+
+function onSubmit() {
+  console.log('hello');
+  event.preventDefault();
+  console.log('submit');
+}
