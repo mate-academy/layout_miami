@@ -6,12 +6,28 @@
   background: url("../images/header.png") no-repeat center;
   background-size: cover;
   @extend %header__typography;
+  overflow: auto;
 
   @include desktop(padding, $header--padding-m);
   @include desktop(height, calc(100vh - #{$header--height-corr-m}));
 
   @include mobile(padding, $header--padding-s);
   @include mobile(height, calc(100vh - #{$header--height-corr-s}));
+
+  .mobile-bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 0;
+    background: $special-blue;
+    @include mobile(height, calc(100vh));
+    z-index: 2;
+    // &--show {
+
+    // }
+  }
 
   &__top {
     display: flex;
@@ -28,6 +44,7 @@
     text-transform: none;
     letter-spacing: -1.5px;
     margin-bottom: 85px;
+    z-index: 1;
     @include max-width;
     @include desktop(margin-bottom, 40px);
     @include mobile(font-size, 46px);
@@ -61,6 +78,13 @@
       width: 111px;
       background-color: $special-white;
     }
+
+    &--mobile {
+      position: absolute;
+      display: flex;
+      z-index: 3;
+      top: 470px;
+    }
   }
 
   &__logo {
@@ -68,6 +92,7 @@
     position: relative;
     top: -32px;
     @include mobile(width, 73px);
+    z-index: 3;
   }
 
   &__phone {
@@ -78,15 +103,25 @@
     @include hover(color, #9fadc2);
 
     @include mobile(display, none);
+
+    &--mobile {
+      position: absolute;
+      display: flex;
+      z-index: 3;
+      top: 430px;
+    }
+
   }
 
   &__burger {
     display: none;
-    height: 18px;
-    width: 18px;
+    height: 12px;
+    outline: none;
     margin: 0 3px;
+    padding: 0;
     cursor: pointer;
     @include mobile(display, block);
+    z-index: 3;
 
   }
 
@@ -96,13 +131,13 @@
     width: 18px;
     margin: 0 3px;
     @include mobile(display, block);
-
+    @include hover(opacity, 0.7);
   }
 }
 
 .nav {
   @include max-width;
-
+  z-index: 3;
   &__container {
 
     display: flex;
@@ -110,13 +145,28 @@
     padding: 0;
     margin-left: 0;
     margin-right: 0;
-    // @include max-width;
     @include mobile(display, none);
+    @include mobile(position, absolute);
+    
+    &--mobile-show {
+      @extend .nav__container;
+      display: flex;
+      flex-direction: column;
+      top: 100px;
+      left: 20px;
+
+      & .nav__item--link-mobile {
+        // @extend .nav__item--link;
+        font-size: 22px;
+        line-height: 40px;
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
 
   &__item {
     @extend %header__typography;
-    // padding: 8px 24px;
 
     &--link {
       padding: 8px 24px;
