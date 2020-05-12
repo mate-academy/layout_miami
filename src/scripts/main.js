@@ -9,3 +9,6 @@ var $hamburger = $(".hamburger");
     $(".header__call-to-order").toggleClass("header__call-to-order--mobile");
     $(".header__phone").toggleClass("header__phone--mobile");
   });
+
+  $("textarea").attr("placeholder", "Message");
+  $(textarea).attr("required");
