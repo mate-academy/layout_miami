@@ -1,11 +1,21 @@
 .burger__nav {
-  display: none;
-  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100vh;
+  transition: left 0.35s ease;
 }
 
-.header__burger:focus .burger__nav,
-.header__burger:active .burger__nav,
-.header__burger:hover .burger__nav {
+.burger__closed {
+  position: absolute;
+  right: 0%;
+}
+
+.burger__menu:hover ~ .burger__nav,
+.burger__menu:active ~ .burger__nav,
+.burger__menu:focus ~ .burger__nav {
   position: absolute;
   left: 0;
   top: 0;
@@ -18,6 +28,18 @@
   background-color: $accent-text;
   transition: all 2s linear;
   opacity: 1;
+}
+
+.header__burger:hover .burger__closed {
+  visibility: visible;
+  display: absolute;
+  z-index: 5;
+}
+
+.burger__closed:checked .burger__nav {
+  display: none;
+  position: relative;
+  margin-left: 250px;
 }
 
 .burger__link {
