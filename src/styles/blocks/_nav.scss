@@ -1,0 +1,44 @@
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 85px;
+  }
+
+  &__link {
+    @extend %header-text;
+    display: block;
+    padding: 8px 24px;
+
+    transition: color 0.3s;
+
+    @include hover($main-color_light);
+
+    &--active {
+      background-color: rgba($color: $second-color, $alpha: 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: $screen_large) {
+    &__list {
+      margin: 0;
+      flex-direction: column;
+    }
+
+    &__list-item:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    &__link {
+      width: 100%;
+
+      font-size: 22px;
+      line-height: 1;
+
+      &--active {
+        background-color: transparent;
+      }
+    }
+  }
+}
