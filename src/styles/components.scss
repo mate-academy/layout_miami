@@ -1,0 +1,234 @@
+@import "utils";
+
+// navigation ↓↓
+.navigation {
+  margin-bottom: 50px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    list-style: none;
+    
+    padding-left: 0;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+    padding: 8px 24px;
+    border-radius: 5px;
+    transition: color 0.5s;
+    white-space: pre;
+
+    &--ative {
+      background-color: rgba(255,255,255,0.3);
+    }
+  }
+
+  &__link:hover {
+    color: $hover-color;
+  }
+
+  &__link:active {
+    background-color: rgba(255,255,255,0.3);
+    color: $main-color;
+  }
+}
+
+// mobile navigation ↓↓
+.mobile-navigation {
+  display: none;
+
+  @media (max-width: 800px) {
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: $semi-color;
+    z-index: 1;
+
+    padding-top: 130px;
+    padding-left: 0;
+    list-style: none;
+    transition: color 0.5s, left 0.5s;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler:checked ~ &__list {
+    left: 0;
+  }
+
+  &__toggler-btn {
+    cursor: pointer;
+    display: none;
+    position: relative;
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__toggler-btn::before {
+    content: url(../images/burger.png);
+    height: 20px;
+    width: 20px;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  &__toggler:checked ~ &__toggler-btn::before {
+    font-size: 20px;
+    content: "X";
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+  
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+    padding: 8px 24px;
+    border-radius: 5px;
+    white-space: pre;
+
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    transition: color 0.5s;
+  }
+
+  &__link--phone {
+    @extend %main-text;
+  }
+
+  &__link--call {
+    @extend %main-text;
+    position: relative;
+  }
+
+  &__link--call::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 115px;
+    background-color: #fff;
+    left: 22px;
+    bottom: -2px;
+  }
+
+  &__link:hover {
+    color: $hover-color;
+  }
+
+  &__link:active {
+    background-color: rgba(255,255,255,0.3);
+    color: $main-color;
+  }
+}
+
+// buttons ↓↓
+.btn {
+  padding: 21px 0;
+  border-radius: 8px;
+
+  color: $main-color;
+  background-color: $semi-color;
+  box-shadow: 0 6px 23px #0075ff75;
+  border: none;
+
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 18px 30px #0075ff75;
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
+
+  &--semi {
+    width: 188px;
+    padding: 21px 0;
+    border-radius: 8px;
+
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+  
+    border: 2px solid $semi-color;
+    color: $semi-color;
+    background-color: $main-color;
+
+    transition: all 0.5s;
+  
+    &:hover {
+      background-color: $semi-color;
+      color: $main-color;
+      cursor: pointer;
+      box-shadow: 0 6px 23px #0075ff75;
+    }
+  }
+}
+
+// form ↓↓
+.form {
+  &__input {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px 0 16px 16px;
+
+    background: #f5f6ff;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: #4e4c4c;
+
+    transition: border 0.5s;
+    box-sizing: border-box;
+
+    font-weight: 700;
+  }
+
+  &__input:hover {
+    border: 2px solid $semi-color;
+  }
+
+  &__input:focus {
+    box-shadow: 0 6px 23px #0075ff75;
+    outline: none;
+  }
+
+  &__button {
+    width: 100%;
+  }
+}

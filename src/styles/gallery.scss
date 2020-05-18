@@ -1,0 +1,91 @@
+@import "utils";
+
+.gallery {
+  text-align: center;
+  padding-top: 50px;
+
+  &__title {
+    @extend %big-text;
+    margin-bottom: 61px;
+    position: relative;
+  }
+
+  &__title::after {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 49%;
+    width: 25px;
+    height: 25px;
+    background: no-repeat url(../images/crown.svg);
+  }
+
+  &__section {
+    margin-bottom: 24px;
+  }
+
+  &__photos {
+    height: 100%;
+    max-height: 256px;
+    width: 100%;
+
+    display: flex;
+  }
+
+  &__img-wrapper {
+    flex: 1 1 50%;
+    border-radius: 8px;
+    overflow: hidden;
+
+    margin-bottom: 24px;
+    
+    transition: transform 0.5s;
+  }
+
+  &__img-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 23px #0075ff75;
+  }
+
+  &__img-wrapper--large {
+    @media (min-width:800px) {
+      flex-basis: 66.6%;
+    }
+  }
+
+  &__img-wrapper--small {
+    @media (min-width:800px) {
+      flex-basis: 33.3%;
+    }
+  }
+
+  &__img-wrapper:first-child {
+    margin-right: 20px;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    @extend %comon-text;
+    text-align: left;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $semi-color;
+    font-weight: bold;
+    transition: color 0.5s;
+  }
+
+  &__link:hover {
+    color: #87b1e2;
+  }
+
+  &__link:visited {
+    color: #03346d;
+  }
+}
