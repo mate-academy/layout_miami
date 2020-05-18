@@ -1,0 +1,90 @@
+.mobile {
+  &__nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    transform: translateX(100%);
+    width: 100%;
+    height: 100%;
+
+    background-color: #0075ff;
+    transition: transform 1.5s cubic-bezier( 0.6, -0.28, 0.45, 1.3);
+    z-index: 1;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__toggle:checked ~ &__nav {
+    transform: translateX(-20px);
+  }
+
+  &__toggle-label {
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 23px;
+    font-size: 18px;
+    z-index: 2;
+
+    &::after {
+      content: "\2630";
+    }
+  }
+
+  &__toggle:checked + &__toggle-label::after {
+    content: "\2716";
+  }
+
+  &__handset {
+    display: none;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 55px;
+    background: url(../images/Vector.png) no-repeat center;
+    background-size: cover;
+  }
+
+  &__action {
+    position: absolute;
+    left: 24px;
+    bottom: 50px;
+  }
+
+  &__phone {
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.33rem;
+  }
+
+  &__link {
+    padding: 8px 0;
+    border-bottom: 1px solid;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.33rem;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .mobile {
+
+    &__nav {
+      display: block;
+    }
+
+    &__handset {
+      display: block;
+      cursor: pointer;
+    }
+
+    &__toggle-label {
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
