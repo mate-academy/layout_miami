@@ -1,0 +1,128 @@
+@import "utils";
+
+.header {
+  z-index: 1;
+
+  margin-bottom: 50px;
+  background: center / cover no-repeat url(../images/header.jpg);
+
+  @media screen and (max-width:960px) {
+    height: 100vh;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+    min-height: 650px;
+
+    @media screen and (max-width:960px) {
+      min-height: 400px;
+    }
+  }
+
+  &__extra-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 25px;
+
+    @media screen and (max-width:960px) {
+      padding: 30px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    height: 100%;
+  }
+
+  &__link {
+    @extend %link;
+    position: relative;
+
+    line-height: 18px;
+
+    &--active {
+      outline: none;
+      line-height: 30px;
+
+      @media screen and (max-width: 960px) {
+        visibility: hidden;
+        width: 18px;
+        line-height: 18px;
+      }
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        height: 1px;
+        width: 100%;
+
+        background-color: $basic-color;
+      }
+    }
+
+    &--tel {
+      @media screen and (max-width: 960px) {
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        
+        width: 20px;
+        
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+
+          width: 18px;
+          height: 18px;
+
+          background: url(../images/phone.svg) no-repeat;
+        }
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+
+    margin: 30px 25px;
+
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: $basic-color;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      top: -15px;
+
+      height: 2px;
+      width: 35px;
+      border-radius: 2px;
+      background-color: $basic-color;
+    }
+
+    @media screen and (max-width:960px) {
+      font-size: 46px;
+      line-height: 40px;
+    }
+  }
+}

@@ -4,3 +4,18 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin gallery-pics($_first-pic-width-percent) {
+  .gallery__picture:first-child {
+    width: calc(#{$_first-pic-width-percent} - #{$gallery-pic-gap/2});
+    @media screen and (max-width: 500px) {
+      width: calc(50% - #{$gallery-pic-gap/2});
+    }
+  }
+  .gallery__picture:last-child {
+    width: calc((#{100% - $_first-pic-width-percent}) - #{$gallery-pic-gap/2});
+    @media screen and (max-width: 500px) {
+      width: calc(50% - #{$gallery-pic-gap/2});
+    }
+  }
+}
