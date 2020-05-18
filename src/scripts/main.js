@@ -7,3 +7,16 @@ function empty(some) {
 };
 
 empty(textArea);
+
+function onSubmit() {
+  event.preventDefault();
+
+  document.querySelector('#order-user-name').value = '';
+  document.querySelector('#order-user-phone').value = '';
+  document.querySelector('#order-user-mail').value = '';
+  document.querySelector('#feedback-user-name').value = '';
+  document.querySelector('#feedback-user-mail').value = '';
+  document.querySelector('#feedback-user-text').value = '';
+}
+
+window.onload(onSubmit());
