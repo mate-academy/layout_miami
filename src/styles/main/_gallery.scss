@@ -1,0 +1,89 @@
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0 0;
+  }
+
+  &__placing {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    max-height: 256px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  &__tittle {
+    @include fonts-style(normal, 16px, 27px, $c-min-tittle);
+    margin: 24px 0 40px;
+    width: 100%;
+  }
+
+  &__button {
+    background: white;
+    margin-top: 40px;
+    border: 2px solid $own_color;
+    width: 188px;
+    height: 56px;
+    transition: color $long-transit,
+      background $long-transit,
+      box-shadow $long-transit;
+
+    &:hover {
+      color: white;
+      background: $own_color;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+  }
+}
+
+$placing-pos: (
+  left: 0,
+  center: 1,
+  right: 2,
+);
+
+@each $pos, $num in $placing-pos {
+
+  .gallery--#{$pos} {
+    & > :first-child {
+      width: calc( #{60-$num*10}% - 10px);
+    }
+
+    & > :last-child {
+      width: calc(#{40+$num*10}% - 10px);
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) {
+
+  $placing-pos: (
+    left: 0,
+    center: 1,
+    right: 2,
+  );
+
+  @each $pos, $num in $placing-pos {
+
+    .gallery--#{$pos} {
+      & > :first-child {
+        width: calc(50% - 10px);
+      }
+
+      & > :last-child {
+        width: calc(50% - 10px);
+      }
+    }
+  }
+}
