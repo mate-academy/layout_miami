@@ -1,0 +1,133 @@
+.nav {
+  color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__list {
+    list-style: none;
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    padding: 8px 0;
+    
+    border-radius: 8px;
+
+    transition: background-color 0.25s ease-in-out;
+    
+    &:hover {
+      color: #9fadc2;
+    }
+    &--active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__link {
+    padding: 8px clamp(10px, 2vw, 24px);
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+
+    transition: color 0.25s ease-in-out;
+  }
+
+  &__checkbox,
+  &__burger {
+    display: none;
+  }
+
+  @media screen and (max-width: 1024px) {
+    &__item {
+      padding: 8px clamp(9px, 1%, 24px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__item {
+      padding: 16px 20px;
+    }
+
+    &__list {
+      font-size: 22px;
+      line-height: 1;
+      text-transform: uppercase;
+      
+      flex-direction: column;
+      justify-content: center;
+      background-color: #0075ff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 101vw;
+
+      transition: left 0.5s ease-in-out;
+    }
+
+    &__burger {
+      display: block;
+      box-sizing: border-box;
+      width: 70px;
+      height: 50px;
+  
+      position: absolute;
+      top: 20px;
+      right: 0;
+      z-index: 1;
+    }
+  
+    &__burger-line {
+      width: 18px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      right: 24px;
+
+      transition: transform 0.5s ease-in-out,
+        opacity 0.5s ease-in-out;
+      
+      &:first-child {
+        top: 20px;
+      }
+      
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 25px;
+      }
+      
+      &:last-child {
+        top: 30px;
+      }
+    }
+  
+    &__checkbox:checked ~ &__burger > &__burger-line {
+      transform: scale(1.5);
+
+      &:first-child,
+      &:last-child {
+        opacity: 0;
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &__checkbox:checked ~ & > &__list {
+      left: 0;
+    }
+
+    &__checkbox:checked ~ .promo__top > .promo__phone,
+    &__checkbox:checked ~ .promo__top > .promo__action {
+      left: 20px;
+    }
+  }
+}
