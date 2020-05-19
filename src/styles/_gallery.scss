@@ -1,5 +1,4 @@
 .gallery {
-  align-self: start;
   position: relative;
   left: 50%;
   transform: translate(-50%);
@@ -8,12 +7,21 @@
     border-radius: 10px;
     object-fit: cover;
     object-position: center;
-    @media screen and (max-width:800px) {
-      height: 7em;
-    }
+    width: 49%;
     &:hover {
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
     }
+    &--big {
+      width: 62%;
+    }
+    &--small {
+      width: 36%;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__name {
@@ -31,37 +39,6 @@
     position: relative;
     top: 30px;
     right: 80px;
-  }
-
-  &__middle {
-    display: flex;
-    justify-content: space-around;
-    .gallery__photo {
-      width: 49%;
-      @media screen and (max-width:700px) {
-        width: 48%;
-      }
-    }
-  }
-
-  &__box {
-    display: flex;
-    justify-content: space-around;
-    .gallery__photo {
-      &:first-child {
-        width: 66%;
-        @media screen and (max-width:700px) {
-          width: 48%;
-        }
-      }
-
-      &:last-child {
-        width: 32%;
-        @media screen and (max-width:700px) {
-          width: 48%;
-        }
-      }
-    }
   }
 
   &__location {
@@ -87,29 +64,20 @@
     color: $accent-text;
     cursor: pointer;
     background-color: #fff;
-    @media screen and (max-width:800px) {
-      width: 100%;
-    }
     &:hover {
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
     }
   }
+}
 
-  &__small {
-    display: flex;
-    justify-content: space-around;
-    .gallery__photo:first-child {
-      width: 32%;
-      @media screen and (max-width:700px) {
-        width: 48%;
-      }
+@media screen and (max-width:800px) {
+  .gallery {
+    &__photo {
+      width: 48%;
+      height: 8em;
     }
-    .gallery__photo:last-child {
-      width: 66%;
-      @media screen and (max-width:700px) {
-        width: 48%;
-      }
+    &__button {
+      width: 100%;
     }
   }
-
 }
