@@ -1,0 +1,118 @@
+@import "configuration";
+
+.nav {
+  color: black;
+  text-transform: uppercase;
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+  &__item {
+    margin: 0 26px;
+    white-space: nowrap;
+
+    &_active {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+  }
+  &__link {
+    color: white;
+    text-decoration: none;
+    @include headerLinkFontSize;
+    letter-spacing: 2px;
+    transition: color $hoverDuration;
+    display: inline-block;
+    padding: 8px 24px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $headerHoverColor;
+    }
+  }
+  &__toggler {
+    opacity: 0;
+  }
+  &__toggler-label {
+    position: absolute;
+    right: 80px;
+    bottom: 435px;
+    display: none;
+    color: white;
+    z-index: 1;
+  }
+  &__toggler-label::before {
+    content: "";
+    background-image: url(../images/menu.svg);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  &__toggler:checked + .nav__toggler-label::before {
+    content: "";
+    background-image: url(../images/menu_close.svg);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+}
+
+.mobile-menu-link,
+.mobile-menu-tel {
+  display: none;
+}
+
+@media screen and (max-width: $mobileScreenSize) {
+  .nav {
+    &__list {
+      display: none;
+    }
+    &__link {
+      font-size: 20px;
+    }
+    &__toggler-label,
+    &__toggler:checked ~ .nav__list {
+      display: inline-block;
+    }
+    &__toggler:checked ~ .nav__list {
+      background-color: $mainStylesColor;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 368px;
+      padding-top: 200px;
+      animation: move 0.5s;
+      .mobile-menu-link,
+      .mobile-menu-tel {
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 25px;
+      }
+      .mobile-menu-link {
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px white solid;
+        text-transform: uppercase;
+        padding: 8px 0;
+        margin-left: 50px;
+      }
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateY($mobileMenuHeight);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

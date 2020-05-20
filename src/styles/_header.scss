@@ -1,0 +1,123 @@
+@import "configuration";
+
+.header {
+  height: 700px;
+  background-image: url(../images/header1.jpg);
+  background-size: cover;
+  background-position: center;
+  font-weight: bold;
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  &__line {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    width: 35px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    bottom: 166px;
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 40px;
+    font-size: 60px;
+    line-height: 60px;
+    color: white;
+  }
+
+  &__article {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    width: 1020px;
+    color: white;
+    bottom: 165px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    position: relative;
+    top: 24px;
+    display: flex;
+    justify-content: space-between;
+    width: 1020px;
+    color: white;
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px white solid;
+    padding-bottom: 8px;
+    display: inline-block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    @include headerLinkFontSize;
+  }
+
+  &__phone {
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: white;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      @include headerLinkFontSize;
+    }
+
+    &-icon {
+      background-image: url(./images/phone.svg);
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      opacity: 0;
+    }
+  }
+
+  &__action {
+    white-space: nowrap;
+  }
+
+  &__phone,
+  &__action {
+    position: relative;
+    top: 32px;
+  }
+}
+
+@media screen and (max-width: $mobileScreenSize) {
+  .header {
+    height: $mobileMenuHeight;
+    &__article {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    &__link {
+      display: none;
+    }
+
+    &__phone::before {
+      content: "";
+      background-image: url(../images/phone.svg);
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      line-height: 20px;
+      margin-left: 80px;
+    }
+  }
+}
