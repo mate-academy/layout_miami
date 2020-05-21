@@ -1,0 +1,146 @@
+﻿.page-header {
+  background-image: url("../../images/header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  position: relative;
+
+  &__phone {
+    &::before {
+      content: "";
+
+      width: 18px;
+      height: 18px;
+
+      background-image: url("../../images/phone.svg");
+
+      position: absolute;
+      top: 39px;
+      left: 23px;
+    }
+  }
+
+  &__logo {
+    width: $logo-mobile;
+    height: 48px;
+
+    position: absolute;
+    top: 24px;
+    @include center($logo-mobile);
+    z-index: 2;
+  }
+
+  &__open-button {
+    @extend %none-button;
+
+    position: absolute;
+    top: 42px;
+    right: 23px;
+
+    &::before {
+      content: "";
+
+      display: block;
+
+      width: 18px;
+      height: 12px;
+
+      background-image: url("../../images/menu.svg");
+    }
+  }
+
+  &__maine-header {
+    position: absolute;
+    left: 20px;
+    bottom: 80px;
+
+    &::before {
+      content: "";
+
+      width: 35px;
+      height: 2px;
+      border-radius: 8px;
+
+      background-color: #fff;
+
+      position: absolute;
+      top: -16px;
+    }
+  }
+
+  &__navigation {
+    padding: 104px 20px 52px;
+
+    background-color: $c-blue;
+
+    position: relative;
+    z-index: 1;
+
+    &--js {
+      @include animation(js, 0s, 0, -100%);
+
+      .navigation__close-button {
+        display: block;
+      }
+    }
+
+    &--opened {
+      @include animation(menu-open, 1s, -100%, 0);
+    }
+
+    &--closed {
+      @include animation(menu-close, 1s, 0, -100%);
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-header {
+    &__phone {
+      &::before {
+        display: none;
+      }
+    }
+
+    &__logo {
+      width: $logo-desktop;
+      height: 76px;
+
+      @include center($logo-desktop);
+    }
+
+    &__open-button {
+      display: none;
+    }
+
+    &__maine-header {
+      left: 120px;
+      bottom: 165px;
+
+      &::before {
+        border-radius: 2px;
+      }
+    }
+
+    &__navigation {
+      height: 588px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 56px 120px;
+
+      background-color: transparent;
+
+      animation: none;
+
+      &--js {
+        .navigation__close-button {
+          display: none;
+        }
+      }
+    }
+  }
+}
