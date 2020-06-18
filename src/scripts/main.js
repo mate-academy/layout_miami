@@ -9,7 +9,9 @@ function empty(some) {
 empty(textArea);
 
 function onSubmit() {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+  }
 
   document.querySelector('#order-user-name').value = '';
   document.querySelector('#order-user-phone').value = '';
@@ -19,4 +21,5 @@ function onSubmit() {
   document.querySelector('#feedback-user-text').value = '';
 }
 
-window.onload(onSubmit());
+// window.onload(onSubmit());
+onSubmit();
