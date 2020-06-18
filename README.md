@@ -8,6 +8,10 @@ Landing page for estate agency
 * CSS
 * SASS/SCSS
 
+## Methodology
+
+* BEM
+
 ## Demo links
 
 - [DEMO LINK](https://velzepooz.github.io/layout_miami/)
