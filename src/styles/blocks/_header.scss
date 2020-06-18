@@ -1,52 +1,77 @@
-﻿.page-header {
+﻿.header {
+  position: relative;
   background-image: url("../../images/header.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  position: relative;
-
   &__phone {
-    &::before {
-      content: "";
+    @include hover(opacity, 0.7);
+    position: absolute;
+    top: 39px;
+    left: 23px;
 
+    @media (min-width: $desktop-width) {
+      display: none;
+    }
+
+    &::before {
+      display: block;
+      content: "";
       width: 18px;
       height: 18px;
-
       background-image: url("../../images/phone.svg");
-
-      position: absolute;
-      top: 39px;
-      left: 23px;
     }
   }
 
   &__logo {
-    width: $logo-mobile;
-    height: 48px;
-
+    @include center($mobile-header-logo-width);
+    z-index: 2;
     position: absolute;
     top: 24px;
-    @include center($logo-mobile);
-    z-index: 2;
+    width: $mobile-header-logo-width;
+    height: 48px;
+
+    @media (min-width: $desktop-width) {
+      @include center($desktop-logo-width);
+      width: $desktop-logo-width;
+      height: 76px;
+    }
   }
 
-  &__open-button {
-    @extend %none-button;
-
+  &__menu-button {
+    @include hover(opacity, 0.7);
+    z-index: 2;
     position: absolute;
-    top: 42px;
+    top: 44px;
     right: 23px;
+    width: 18px;
+    height: 2px;
+    outline: none;
+    cursor: pointer;
+
+    @media (min-width: $desktop-width) {
+      display: none;
+    }
 
     &::before {
+      position: absolute;
+      top: -5px;
+      left: 0;
       content: "";
-
-      display: block;
-
       width: 18px;
-      height: 12px;
+      height: 2px;
+      background-color: #fff;
+    }
 
-      background-image: url("../../images/menu.svg");
+    &::after {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      content: "";
+      width: 18px;
+      height: 2px;
+      background-color: #fff;
     }
   }
 
@@ -54,93 +79,117 @@
     position: absolute;
     left: 20px;
     bottom: 80px;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    @media (min-width: $desktop-width) {
+      left: 120px;
+      bottom: 165px;
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -1.5px;
+    }
 
     &::before {
+      position: absolute;
+      top: -16px;
       content: "";
-
       width: 35px;
       height: 2px;
       border-radius: 8px;
-
       background-color: #fff;
 
-      position: absolute;
-      top: -16px;
-    }
-  }
-
-  &__navigation {
-    padding: 104px 20px 52px;
-
-    background-color: $c-blue;
-
-    position: relative;
-    z-index: 1;
-
-    &--js {
-      @include animation(js, 0s, 0, -100%);
-
-      .navigation__close-button {
-        display: block;
-      }
-    }
-
-    &--opened {
-      @include animation(menu-open, 1s, -100%, 0);
-    }
-
-    &--closed {
-      @include animation(menu-close, 1s, 0, -100%);
-    }
-  }
-}
-
-@media (min-width: $desktop-width) {
-  .page-header {
-    &__phone {
-      &::before {
-        display: none;
-      }
-    }
-
-    &__logo {
-      width: $logo-desktop;
-      height: 76px;
-
-      @include center($logo-desktop);
-    }
-
-    &__open-button {
-      display: none;
-    }
-
-    &__maine-header {
-      left: 120px;
-      bottom: 165px;
-
-      &::before {
+      @media (min-width: $desktop-width) {
         border-radius: 2px;
       }
     }
+  }
 
-    &__navigation {
-      height: 588px;
+  &--nojs {
+    .header__menu-button {
+      display: none;
+    }
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .header__navigation {
+      transform: none;
+    }
+  }
 
-      padding: 56px 120px;
+  &--menu-open {
+    .header__menu-button {
+      @include animation(
+        open-button,
+        background-color,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
 
-      background-color: transparent;
-
-      animation: none;
-
-      &--js {
-        .navigation__close-button {
-          display: none;
-        }
+      &::before {
+        @include animation(
+          open-upper-button,
+          transform,
+          rotate(0) translateY(0),
+          rotate(45deg) translateY(7px)
+        );
       }
+
+      &::after {
+        @include animation(
+          open-lower-button,
+          transform,
+          rotate(0) translateY(0),
+          rotate(-45deg) translateY(-7px)
+        );
+      }
+    }
+
+    .header__navigation {
+      @include animation(
+        open-menu,
+        transform,
+        translateX(-100%),
+        translateX(0)
+      );
+    }
+  }
+
+  &--menu-close {
+    .header__menu-button {
+      @include animation(
+        close-button,
+        background-color,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 1)
+      );
+
+      &::before {
+        @include animation(
+          close-upper-button,
+          transform,
+          rotate(45deg) translateY(7px),
+          rotate(0) translateY(0)
+        );
+      }
+
+      &::after {
+        @include animation(
+          close-lower-button,
+          transform,
+          rotate(-45deg) translateY(-7px),
+          rotate(0) translateY(0)
+        );
+      }
+    }
+
+    .header__navigation {
+      @include animation(
+        close-menu,
+        transform,
+        translateX(0),
+        translateX(-100%)
+      );
     }
   }
 }

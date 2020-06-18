@@ -1,24 +1,24 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
-  }
-}
-
 @mixin center($width) {
   left: calc(50% - #{$width / 2});
 }
 
-@mixin animation($name, $duration, $from, $to) {
-  animation: $name $duration linear forwards;
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin animation($name, $property, $from-value, $to-value) {
+  animation: $name 0.3s linear forwards;
 
   @keyframes #{$name} {
     from {
-      transform: translateX($from);
+      #{$property}: $from-value;
     }
 
     to {
-      transform: translateX($to);
+      #{$property}: $to-value;
     }
   }
 }

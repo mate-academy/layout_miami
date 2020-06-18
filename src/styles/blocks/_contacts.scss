@@ -1,24 +1,49 @@
 ﻿.contacts {
   padding: $mobile-padding;
 
-  &__header {
-    @extend %h2-crown;
+  @media (min-width: $desktop-width) {
+    padding: $desktop-padding;
   }
 
-  &__contact-wrapper {
+  &__header {
+    @extend %h2;
+  }
+
+  &__wrapper {
+    @media (min-width: $desktop-width) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__contacts-wrapper {
     margin-bottom: 32px;
+
+    @media (min-width: $desktop-width) {
+      display: flex;
+      justify-content: space-between;
+      width: 413px;
+      margin-bottom: 0;
+    }
   }
 
   &__contact-header {
+    @extend %h3;
     margin-bottom: 8px;
   }
 
-  &__contact {
-    @include hover(color, $c-blue);
+  &__contact-link {
+    @include hover(color, $decorative-color);
     margin-bottom: 24px;
     color: #3e3e3e;
 
-    &--street {
+    &--email {
+      @media (min-width: $desktop-width) {
+        margin-bottom: 0;
+      }
+    }
+
+    &--address {
       margin-bottom: 0;
     }
   }
@@ -26,57 +51,8 @@
   &__form {
     display: flex;
     flex-direction: column;
-  }
 
-  &__input {
-    @extend %input-style;
-  }
-
-  &__textarea {
-    @include hover(box-shadow, 0 13px 27px rgba(0, 83, 181, 0.46));
-    height: 144px;
-    margin-bottom: 16px;
-    padding: 17px;
-
-    box-sizing: border-box;
-
-    background-color: #f7f8ff;
-    border: 1px solid #fff;
-    border-radius: 8px;
-  }
-
-  &__button {
-    @extend %button-style;
-  }
-}
-
-@media (min-width: $desktop-width) {
-  .contacts {
-    padding: $desktop-padding;
-
-    &__wrapper {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &__contact-wrapper {
-      display: flex;
-
-      width: 413px;
-      margin-bottom: 0;
-    }
-
-    &__phone-email-wrapper {
-      margin-right: 108px;
-    }
-
-    &__contact {
-      &--phone-email {
-        margin-bottom: 0;
-      }
-    }
-
-    &__textarea {
+    @media (min-width: $desktop-width) {
       width: 413px;
     }
   }

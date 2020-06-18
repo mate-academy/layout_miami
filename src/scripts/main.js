@@ -1,17 +1,31 @@
 'use strict';
 
-const menu = document.querySelector('.page-header__navigation');
-const openButton = document.querySelector('.page-header__open-button');
-const closeButton = document.querySelector('.navigation__close-button');
+let isFirstClick = true;
+const header = document.querySelector('.header');
+const menuButton = document.querySelector('.header__menu-button');
+const menuItems = document.querySelectorAll('.navigation__link');
 
-menu.classList.add('page-header__navigation--js');
+header.classList.remove('header--nojs');
 
-openButton.addEventListener('click', () => {
-  menu.classList.remove('page-header__navigation--closed');
-  menu.classList.add('page-header__navigation--opened');
+menuButton.addEventListener('click', () => {
+  if (isFirstClick) {
+    header.classList.add('header--menu-open');
+    isFirstClick = false;
+  } else {
+    header.classList.toggle('header--menu-open');
+    header.classList.toggle('header--menu-close');
+  }
 });
 
-closeButton.addEventListener('click', () => {
-  menu.classList.remove('page-header__navigation--opened');
-  menu.classList.add('page-header__navigation--closed');
-});
+for (const item of menuItems) {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const id = item.getAttribute('href');
+
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  });
+}

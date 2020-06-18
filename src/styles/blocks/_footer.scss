@@ -1,33 +1,29 @@
-﻿.page-footer {
-  height: 206px;
-
+﻿.footer {
+  z-index: -1;
+  position: sticky;
+  bottom: 0;
+  min-height: 206px;
   background-image: url("../../images/footer.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  position: relative;
+  @media (min-width: $desktop-width) {
+    min-height: 359px;
+  }
 
   &__logo {
-    width: $logo-mobile;
-    height: 50px;
-
+    @include center($mobile-footer-logo-width);
     position: absolute;
     bottom: 24px;
-    @include center($logo-mobile);
-  }
-}
+    width: $mobile-footer-logo-width;
+    height: 50px;
 
-@media (min-width: $desktop-width) {
-  .page-footer {
-    height: 359px;
-
-    &__logo {
-      width: $logo-desktop;
-      height: 76px;
-
+    @media (min-width: $desktop-width) {
+      @include center($desktop-logo-width);
       bottom: 40px;
-      @include center($logo-desktop);
+      width: $desktop-logo-width;
+      height: 76px;
     }
   }
 }
