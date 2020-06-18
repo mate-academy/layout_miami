@@ -14,7 +14,7 @@
 
 
 ## How to run project locally:
-1. **Clone** the forked one.
+1. `git clone` or download project via Git.
 2. Run `npm install` (or just `npm i`)
 3. Run `npm start`.
 
