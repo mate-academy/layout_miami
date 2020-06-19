@@ -4,5 +4,7 @@
 
 Project about Real Estate company.
 
+Adaptive mobile design.
+
 Technologies used - HTML5, CSS3, JS, SASS.
 Implemented BEM methodology.
