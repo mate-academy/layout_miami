@@ -1,4 +1,4 @@
-# HTML, CSS, SCSS, BEM
+# HTML, CSS
 -----------------
 
 * ## [DEMO LINK](https://olyspring1.github.io/layout_miami/)
