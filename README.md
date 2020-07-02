@@ -3,6 +3,8 @@
 - [DEMO](https://nazmeln.github.io/layout_miami/)
 
 Technologies:
-- HTML
-- CSS/(SASS)
-- Vanilla JavaScript (ES5, ES6)
+- HTML5
+- CSS3/(SASS)
+- BEM methodology
+- Vanilla JavaScript (ES5, ES6)/DOM
+
