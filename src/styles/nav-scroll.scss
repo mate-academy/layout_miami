@@ -1,0 +1,87 @@
+@import "utils";
+
+.nav-scroll {
+  display: none;
+
+  height: 568px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  padding: 120px 0 60px 21px;
+  box-sizing: border-box;
+
+  &__call-link,
+  &__phone-number {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    display: block;
+    text-transform: uppercase;
+    color: $header-text-color;
+  }
+
+  &__list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    display: inline-block;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-bottom: 32px;
+
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $header-text-color;
+  }
+}
+
+@media screen and (max-width: 960px) {
+
+  .mobile-menu {
+    visibility: hidden;
+    width: 20px;
+    height: 20px;
+    &__wrapper {
+      display: block;
+      position: relative;
+      &::after {
+        content: url(../images/Vector-2.png);
+
+        position: absolute;
+
+        bottom: -6px;
+        right: -9px;
+        height: 12px;
+        width: 18px;
+      }
+    }
+  }
+  .mobile-menu:checked ~ .nav-scroll {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    background-color: $highlight-color;
+  }
+
+  .mobile-menu:checked ~ .mobile-menu__wrapper::after {
+    content: url(../images/Vector-3.png);
+    z-index: 3;
+    position: absolute;
+
+    height: 12px;
+    width: 18px;
+  }
+}

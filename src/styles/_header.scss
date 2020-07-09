@@ -1,0 +1,101 @@
+@import "./utils/_vars.scss";
+@import "fonts";
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+
+  position: sticky;
+  top: (124px - $header-big-height);
+
+  margin-bottom: 104px;
+  padding: 24px 120px 48px;
+  height: $header-big-height;
+
+  @extend %general-text-style;
+  color: $header-text-color;
+
+  background: url(../images/panorama.png) no-repeat center;
+  background-size: cover;
+
+  &__top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1360px;
+  }
+
+  &__call-link {
+    border-bottom: 1px $header-text-color solid;
+  }
+
+  &__call-link,
+  &__call-link-number {
+    text-transform: uppercase;
+    color: $header-text-color;
+    padding-bottom: 8px;
+    text-decoration: none;
+    transition: 1.5s;
+
+    &:hover {
+      color: $header-link-hover-color;
+    }
+
+    &:active {
+      color: $header-link-active-color;
+    }
+  }
+
+  .phone-number {
+    @extend %general-text-style;
+    color: $header-text-color;
+
+  }
+}
+
+.phone-for-mobile,
+.mobile-menu,
+.mobile-menu__wrapper {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .header {
+    height: $header-small-height;
+    padding: 24px 23px 80px 20px;
+    h1 {
+      z-index: 1;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+
+      margin: 335px 0 80px;
+    }
+    &__top-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      align-items: center;
+    }
+  }
+
+  .phone-for-mobile {
+    display: block;
+    position: relative;
+  }
+
+  .header__call-link-number,
+  .header__call-link,
+  .nav {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .header {
+    padding-left: calc(50% - 680px);
+  }
+}
