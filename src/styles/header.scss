@@ -1,4 +1,159 @@
-.header__top {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.header {
+  position: relative;
+  height: 100vh;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $wite-color;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__phone-icon {
+    display: none;
+    background: url(../images/phone__icon.svg);
+    width: 18px;
+    height: 18px;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__label-for-menu {
+    display: none;
+    height: 20px;
+    width: 20px;
+    background: url(../images/open-menu.svg) no-repeat center;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $wite-color;
+    color: $wite-color;
+  }
+
+  &__description {
+    position: absolute;
+    bottom: 165px;
+    width: 328px;
+    height: 121px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+  }
+
+  &__description::before {
+    content: "";
+    width: 35px;
+    height: 2px;
+    background-color: $wite-color;
+    position: absolute;
+    bottom: 137px;
+    border-radius: 2px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 48px;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 16px;
+  height: 32px;
+
+}
+
+.nav__link {
+  color: $wite-color;
+  padding: 8px 24px;
+  margin-left: 76px;
+  transition: color 0.5s;
+
+  @media (max-width:1250px) {
+    margin: 0;
+  }
+}
+
+.nav__link:hover {
+  color: $active-color;
+}
+
+.nav__link--is-active {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: $wite-color;
+  margin-left: 0;
+}
+
+@media (max-width: $mobile-size-breackpoint) {
+
+  .header {
+    &__container-for-content {
+      padding: 0 20px;
+    }
+
+    &__top {
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    &__label-for-menu {
+      display: block;
+      order: 3;
+    }
+
+    &__phone-icon {
+      display: block;
+    }
+
+    &__phone,
+    &__link,
+    &__nav {
+      display: none;
+    }
+
+    &__description {
+      position: absolute;
+      bottom: 80px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      padding: 0;
+
+      &::before {
+        position: absolute;
+        bottom: 127px;
+      }
+    }
+  }
+
+}
+
+.header__checkbox:checked {
+  &__phone,
+  &__link,
+  &__nav {
+    display: block;
+  }
+
 }
