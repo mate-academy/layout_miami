@@ -1,0 +1,42 @@
+.photos {
+  $blockName: &;
+  display: flex;
+  justify-content: space-between;
+
+  &__img {
+    height: 256px;
+    width: calc(50% - 10px);
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+
+    @media screen and (max-width: 755px) {
+      min-width: 131px;
+      height: 131px;
+    }
+  }
+
+  &__wide_left {
+    #{$blockName}__img {
+      &:first-child {
+        width: calc(67% - 10px);
+      }
+
+      &:last-child {
+        width: calc(33% - 10px);
+      }
+    }
+  }
+
+  &__wide_right {
+    #{$blockName}__img {
+      &:first-child {
+        width: calc(33% - 10px);
+      }
+
+      &:last-child {
+        width: calc(67% - 10px);
+      }
+    }
+  }
+}
