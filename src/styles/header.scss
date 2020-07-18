@@ -1,5 +1,4 @@
 .header {
-  position: relative;
   height: 100vh;
 
   display: flex;
@@ -26,25 +25,26 @@
     position: relative;
     top: $logo-height / 2;
 
-    color: $header-color;
+    @media (max-width: 375px) {
+      top: $logo-mobile-height / 2;
+    }
   }
 
   &__action:before {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-
-    width: 100%;
-    height: 0;
-
-    border: 1px solid $header-color;
+    @extend %underscore;
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 
   &__link {
     font-size: $header-font;
     letter-spacing: $header-letter-spacing;
     color: $header-color;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 
   &__caption {
@@ -68,9 +68,32 @@
       background-color: $header-color;
       border-radius: 2px;
     }
+
+    @media (max-width: 640px) {
+      bottom: 80px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
   }
 
   &__nav {
     align-self: end;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
+
+  &__symbol {
+    display: none;
+
+    @media (max-width: 640px) {
+      display: block;
+    }
+  }
+
 }
