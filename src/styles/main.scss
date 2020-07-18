@@ -1,7 +1,50 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "reset";
+@import "header";
+@import "footer";
+@import "about-us";
+@import "gallery";
+@import "consultation";
+@import "testimonials";
+@import "contact-us";
 
-body {
-  background: $c-gray;
+@each $pageName, $marginBottom in $pageTitles {
+  .#{$pageName}__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: $titleMarginTop;
+    margin-bottom: $marginBottom;
+
+    &--icon {
+      width: 23px;
+      height: 16px;
+      background-image: url(/images/crown.svg);
+      background-position: center;
+      background-size: contain;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main {
+  background-color: #fff;
+  padding: 0 $globalPadding;
+
+  @media (max-width: 1080px) {
+    & {
+      padding: 0 $globalPaddingSmall;
+    }
+  }
+
+  @media (min-width: 1540px) {
+    & {
+      padding: 0 calc((100vw - 1400px) / 2);
+    }
+  }
 }
