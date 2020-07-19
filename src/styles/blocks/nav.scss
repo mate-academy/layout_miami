@@ -1,0 +1,60 @@
+@import "blocks/burger-menu";
+
+.nav {
+  height: $navLinkHeight;
+  display: grid;
+  align-content: center;
+  padding: $navPaddingY 0;
+  transition: linear 0.7s;
+
+  @media (max-width: $mobileWidthPoint) {
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $mobileWidthPoint) {
+      display: none;
+    }
+  }
+
+  &__item {
+    height: $navLinkHeight;
+  }
+
+  &__link {
+    padding: 8px 25px;
+    @extend %link;
+    @include hover(color, #9fadc2);
+
+    &--active {
+      background: rgba(#fff, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &--burger-menu {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: #0075ff;
+
+    & .nav__list {
+      display: block;
+      position: absolute;
+      top: 48px + $topLogoHeightMobile + $topPaddingY;
+    }
+
+    & .nav__item {
+      padding: 16px 21px;
+    }
+
+    & .nav__link {
+      font-size: 22px;
+      padding-left: 0;
+    }
+  }
+}
