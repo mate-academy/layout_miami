@@ -1,0 +1,134 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  background-image: url(..\images\header.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: $headerHeight;
+
+  color: $mainColor;
+
+  @extend %header;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    position: relative;
+    height: 100%;
+    width: $containerWidth;
+    padding: $containerPaddingY $containerPaddingX 48px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    text-transform: uppercase;
+  }
+
+  &__phone {
+
+    @include hover(color, $navLinkHoverColor);
+
+    @media (max-width: $breakPoint) {
+      display: none;
+    }
+  }
+
+  &__phone-icon {
+    display: none;
+
+    @extend %mobileVector;
+
+    &::before {
+      content: url(../images/phone.png);
+    }
+
+    @media (max-width: $breakPoint) {
+      display: block;
+    }
+  }
+
+  &__logo {
+    margin-top: -($logoHeight/2);
+  }
+
+  &__action {
+
+    @media (max-width: $breakPoint) {
+      display: none;
+    }
+
+    &-link {
+      position: relative;
+
+      @include hover(color, $navLinkHoverColor);
+
+      &::after {
+        content: "";
+        width: 111px;
+        height: 1px;
+        background-color: $mainColor;
+        display: block;
+        position: absolute;
+        bottom: -8px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+
+    width: $headerTitleWidth;
+    height: $headerTitleHeight;
+
+    position: absolute;
+    bottom: 23%;
+
+    @media (max-width: $breakPoint) {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+
+      width: 253px;
+      height: 81px;
+    }
+
+    &::before {
+      content: "";
+      width: 35px;
+      height: 2px;
+      background-color: $mainColor;
+      display: block;
+      position: absolute;
+      top: -16px;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    display: none;
+
+    @extend %mobileVector;
+
+    cursor: pointer;
+    
+    &::before {
+      content: url(../images/dashes.png);
+    }
+
+    @media (max-width: $breakPoint) {
+      display: block;
+    }
+  }
+}
