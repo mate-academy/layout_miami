@@ -1,0 +1,96 @@
+.hidden {
+  overflow: hidden;
+
+  &__list {
+    width: 100%;
+    height: 100vh;
+    background-color: $highlight-color;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 2px;
+    transform: translate(100%);
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    z-index: 2;
+    visibility: hidden;
+    transition: transform $header-menu-appearing-duration,
+      visibility $header-menu-appearing-duration;
+  }
+
+  &__menu[type="checkbox"] {
+    display: none;
+  }
+
+  &__item {
+    margin: 32px 0 0 16px;
+    z-index: 2;
+  }
+  
+  &__item--is-active {
+    margin-top: 120px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 32px;
+    z-index: 2;
+  }
+
+  &__phone-number {
+    margin: 48px 0 0 21px;
+    font-size: $header-font-size;
+  }
+
+  &__action {
+    margin: 16px 0 0 21px;
+    font-size: $header-font-size;
+    position: relative;
+  }
+
+  &__action::after {
+    content: "";
+    border: 1px solid #fff;
+    display: block;
+    width: 113px;
+    position: absolute;
+    bottom: -50%;
+
+  }
+}
+
+label.hidden__menu {
+  background-image: url(../images/menu.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  width: 18px;
+  height: 12px;
+  position: absolute;
+  right: 12.5%;
+  top: 10%;
+  bottom: 25%;
+  display: none;
+}
+
+input.hidden__menu:checked ~ .hidden__menu {
+  background-image: url(../images/close.png);
+  height: 16px;
+  width: 16px;
+  background-size: contain;
+}
+
+@media screen and (max-width: $average-screen-breakpoint) {
+
+  input.hidden__menu:checked ~ .hidden__list {
+    transform: translate(0%);
+    visibility: visible;
+ 
+  }
+
+  label.hidden__menu {
+    display: block;
+  }
+}
