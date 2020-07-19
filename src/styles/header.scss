@@ -1,0 +1,78 @@
+.header {
+  position: relative;
+  height: 700px;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: $firstBreakPoint) {
+    height: 100vh;
+  }
+
+  &__top {
+    @include headerPosition;
+    top: $headerTopIndent;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__heading {
+    @include headerPosition;
+    bottom: 165px;
+
+    color: $headerColor;
+    font-weight: bold;
+    font-size: $mainHeadingFontSize;
+    line-height: $mainHeadingFontSize;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -16px;
+
+      width: 36px;
+      $contentHeight: 2px;
+      height: $contentHeight;
+
+      background-color: $headerColor;
+      border-radius: $contentHeight / 2;
+    }
+
+    @media (max-width: $secondBreakPoint) {
+      bottom: 80px;
+      font-size: $mainHeadingFontSizeSmall;
+      line-height: $mainHeadingFontSizeSmall;
+    }
+  }
+
+  &__nav {
+    @include headerPosition;
+    bottom: 48px;
+  }
+
+  &__icon {
+    @include iconHeaderAppear;
+  }
+
+  &__img--phone {
+    vertical-align: middle;
+  }
+
+  &__link {
+    @extend %headerLinks;
+    @include hover(color, $activeColor);
+
+    &--action {
+      @extend %headerLinkActionStyle;
+    }
+
+    &--number {
+      @media (max-width: $secondBreakPoint) {
+        display: none;
+      }
+    }
+  }
+}
