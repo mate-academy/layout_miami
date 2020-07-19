@@ -20,7 +20,7 @@
 
   &__top {
     position: absolute;
-    top: $headerContentTop;
+    margin-top: $headerContentTop;
     left: 0;
     right: 0;
     display: flex;
@@ -31,7 +31,7 @@
   &__phone {
     font-size: 16px;
 
-    @media (max-width: $lScreenSize) {
+    @media (max-width: $notebookScreenSize) {
       font-size: 12px;
       line-height: 16px;
     }
@@ -59,7 +59,7 @@
     font-size: 16px;
     line-height: 21px;
 
-    @media (max-width: $lScreenSize) {
+    @media (max-width: $notebookScreenSize) {
       font-size: 12px;
       line-height: 16px;
     }
@@ -73,11 +73,8 @@
     font-weight: 900;
     color: $headerTextColor;
     text-transform: uppercase;
+    @extend %headerActionBrdr;
     @include hover(color, $headerHoverText);
-
-    &::after {
-      @extend %headerActionAfter;
-    }
   }
 
   &__title {
@@ -104,6 +101,11 @@
     
     @media (max-width: $mScreenSize) {
       bottom: 15%;
+    }
+
+    @media (max-width: $sScreenSize) {
+      font-size: 46px;
+      line-height: 40px;
     }
   }
 
@@ -151,7 +153,7 @@
   &__hamburger-toggler-close {
     position: absolute;
     right: 10vw;
-    top: 50px;
+    top: 40px;
     
     #{$blockName}__hamburger-icon {
       transform: rotate(45deg);
