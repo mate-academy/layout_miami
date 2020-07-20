@@ -18,14 +18,17 @@
     position: absolute;
     bottom: 165px;
 
-    &--line {
-      border: 1px solid #fff;
-      border-radius: 2px;
-      width: 35px;
-    }
+    &__item {
 
-    &--text {
-      margin-top: 16px;
+      &--line {
+        border: 1px solid #fff;
+        border-radius: 2px;
+        width: 35px;
+      }
+
+      &--text {
+        margin-top: 16px;
+      }
     }
   }
 
@@ -43,7 +46,7 @@
       width: 100%;
       height: 100%;
       left: -100%;
-      background-color: #0075ff;
+      background-color: $blueText;
       z-index: 1;
       transition: all 0.5s;
     }
@@ -73,20 +76,25 @@
   &__logo {
     @extend %logoSize;
     z-index: 1;
-  }
-
-  &__call {
-    padding-bottom: 8px;
-    border-bottom: 1px solid white;
+    transition: all 1s;
 
     &:hover {
-      border-bottom: 1px solid #9fadc2;
+      filter: drop-shadow(0 0 10px #fff);
     }
   }
 
-  &--item {
+  &__item {
     @include hover(color, #9fadc2);
     transition: all 0.5s;
+
+    &--call {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+
+      &:hover {
+        border-bottom: 1px solid #9fadc2;
+      }
+    }
   }
 
   @media (max-width: 1080px) {
@@ -104,13 +112,6 @@
         width: 73px;
       }
 
-      &__number--icon {
-        height: 18px;
-        width: 18px;
-        margin-left: 3px;
-        background-image: url(/images/call.png);
-      }
-
       &__burger {
         display: block;
         position: relative;
@@ -123,7 +124,7 @@
       &__burger:before,
       &__burger:after {
         content: "";
-        background-color: white;
+        background-color: #fff;
         position: absolute;
         width: 100%;
         height: 1px;
@@ -157,26 +158,36 @@
         bottom: 5.5px;
       }
 
-      &__call {
-        position: absolute;
-        bottom: -444px;
-        left: -100%;
-        z-index: 1;
-      }
+      &__item {
 
-      &__call.active {
-        left: 0;
-      }
+        &--number_icon {
+          height: 18px;
+          width: 18px;
+          margin-left: 3px;
+          background-image: url(/images/call.png);
+        }
 
-      &__number {
-        position: absolute;
-        bottom: -404px;
-        left: -100%;
-        z-index: 1;
-      }
+        &--call {
+          position: absolute;
+          bottom: -444px;
+          left: -100%;
+          z-index: 1;
+        }
 
-      &__number.active {
-        left: 0;
+        &--call.active {
+          left: 0;
+        }
+
+        &--number {
+          position: absolute;
+          bottom: -404px;
+          left: -100%;
+          z-index: 1;
+        }
+
+        &--number.active {
+          left: 0;
+        }
       }
     }
   }
@@ -241,7 +252,12 @@
         &--active {
           color: #fff;
           padding: 0;
-          background: rgba(255, 255, 255, 0);
+          background: none;
+        }
+
+        &:hover {
+          color: #fff;
+          text-shadow: 0 0 0.5em #000;
         }
       }
     }
