@@ -2,6 +2,10 @@
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 120px;
+
+  @media (max-width: $tabletsWidth) {
+    padding: 0 20px;
+  }
 }
 
 .header {
@@ -9,7 +13,11 @@
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 762px;
+
+  @media (max-width: $tabletsWidth) {
+    height: 100vh;
+  }
 
   &__top {
     display: flex;
@@ -21,6 +29,21 @@
   &__number {
     @extend %headerText;
     @include hover(color, $headerHoveredColor);
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
+  }
+
+  &__number-icon{
+    display: none;
+
+    @media (max-width: $tabletsWidth) {
+      background-image: url("../images/phone_icon.svg");
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
   }
 
   &__logo {
@@ -29,9 +52,15 @@
     background-repeat: no-repeat;
     width: 115px;
     height: 76px;
+    z-index: 2;
+
+    @media (max-width: $tabletsWidth) {
+      width: 73px;
+      height: 48px;
+    }
   }
 
-  &__order {
+  &__order-call {
     border-bottom: 1px solid #fff;
     padding: 8px 0;
     transition: 0.5s;
@@ -41,11 +70,21 @@
       color: $headerHoveredColor;
       border-bottom: 1px solid $headerHoveredColor;
     }
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
+
   }
 
   &__title-wrapper {
     position: absolute;
     bottom: 165px;
+
+    @media (max-width: $tabletsWidth) {
+      bottom: 80px;
+      left: 20px;
+    }
   }
 
   &__title {
@@ -65,9 +104,115 @@
       background-color: #fff;
       border-radius: 2px;
     }
+
+    @media (max-width: $tabletsWidth) {
+      font-size: 46px;
+      letter-spacing: -1px;
+    }
   }
 
   &__nav {
     margin-top: 580px;
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
   }
 }
+
+// Mobile menu start
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  height: 100vh;
+  width: 100vw;
+  background-color: $toolbarBackgraund;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 120px 0 52px 21px;
+  z-index: 1;
+  transition: left 1s;
+
+  @media (min-width: $tabletsWidth) {
+    display: none;
+  }
+
+  &__menu {
+    margin-bottom: 48px;
+  }
+
+  &__number {
+    @extend %headerText;
+    @include hover(color, $headerHoveredColor);
+    margin-bottom: 16px;
+  }
+
+  &__order-call {
+    display: block;
+    @extend %headerText;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 8px;
+    transition: 0.5s;
+
+    &:hover {
+      color: $headerHoveredColor;
+      border-bottom: 1px solid $headerHoveredColor;
+    }
+  }
+}
+
+.mobile-menu {
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    @extend %headerText;
+    font-size: 22px;
+    line-height: 22px;
+    @include hover(color, $headerHoveredColor)
+  }
+}
+
+.header {
+
+  &__input {
+    display: none;
+  }
+
+  &__toggle-toolbar {
+    display: none;
+    background-image: url("../images/open-menu_label.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    cursor: pointer;
+
+    @media (max-width: $tabletsWidth) {
+      display: block;
+    }
+  }
+
+  &__input:checked + &__toggle-toolbar {
+    background-image: url("../images/close-menu_label.svg");
+  }
+
+  &__input:checked ~ .toolbar {
+    left: 0;
+  }
+}
+
+// Mobile menu end
