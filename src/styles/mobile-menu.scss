@@ -1,6 +1,42 @@
 .mobile-menu {
-  display: none;
-  width: 100%;
+  padding-top: 120px;
+  position: absolute;
+  padding-left: 21px;
+  right: 0;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: $decorationColor;
+
+  z-index: 1;
+
+  transition: left 1s;
+
+  &__link {
+    display: block;
+    padding: 10px 10px 10px 0;
+    margin-bottom: 12px;
+    color: $headerCololor;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__phone,
+  &__tell {
+    margin-top: 26px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $headerCololor;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
 
   &__checkbox {
     display: none;
@@ -9,10 +45,26 @@
   &__label {
     display: none;
     background-image: url(../images/mobilemenu.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 12px;
     width: 18px;
     cursor: pointer;
+    z-index: 2;
   }
+
+  &__checkbox:checked ~ & {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__checkbox:checked + &__label {
+    background-image: url(../images/mobile-cross.svg);
+  }
+
 }
 
 @media screen and (max-width: $smallScreenSize) {
