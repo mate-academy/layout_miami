@@ -10,6 +10,7 @@
   color: $headerMainColor;
   @include headerSmallFont;
   font-weight: bold;
+  letter-spacing: 2px;
   overflow: hidden;
 
   &__top {
@@ -25,8 +26,8 @@
   &__phone {
     &--icon {
       display: none;
-      height: 24px;
-      width: 24px;
+      height: 18px;
+      width: 18px;
       background-image: url("../images/phone.svg");
       background-position: center;
       background-repeat: no-repeat;
@@ -47,8 +48,12 @@
     &::after {
       position: absolute;
       content: "";
+      box-sizing: border-box;
       width: 100%;
+      height: 1px;
+      background-color: $headerMainColor;
       border: 1px solid $headerMainColor;
+      border-radius: 1px;
       left: 0;
       top: calc(100% + 8px);
     }
@@ -75,6 +80,25 @@
 
   &__nav {
     margin-top: 85px;
+  }
+
+  &__toggler {
+    display: none;
+
+    &-label {
+      z-index: 2;
+      display: none;
+      width: 18px;
+      height: 12px;
+      background-image: url(../images/nav.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    &:checked + &-label {
+      background-image: url(../images/cross.svg);
+    }
   }
 }
 
@@ -104,6 +128,17 @@
       line-height: 40px;
       letter-spacing: -1px;
       margin-top: 335px;
+    }
+
+    &__toggler {
+
+      &:checked ~ .mobile-menu {
+        left: 0;
+      }
+
+      &-label {
+        display: block;
+      }
     }
   }
 }
