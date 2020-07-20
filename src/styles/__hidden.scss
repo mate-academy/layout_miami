@@ -53,8 +53,8 @@
     position: relative;
   }
 
-  &__phone-number,
-  &__action {
+  &__phone-number > :first-child,
+  &__action > :first-child {
     font-size: $header-font-size;
     color: #fff;
     transition: color $hover-duration;
@@ -63,6 +63,13 @@
       color: $active-color;
     }
   }
+
+  &__link:focus,
+  &__phone-number > :first-child:focus,
+  &__action > :first-child:focus {
+    box-shadow: 0 0 0 2px;
+  }
+  
 
   &__action::after {
     content: "";
@@ -103,6 +110,7 @@
   .hidden__toggle:checked ~ .hidden__list {
     transform: translate(0%);
     visibility: visible;
+
   }
 
   .hidden__menu {
