@@ -1,51 +1,48 @@
 .gallery {
   background-color: #fff;
 
-  .wrapper {
-    margin: 0 auto;
-    padding: 100px 20px 50px;
-    max-width: 1020px;
+  &__wrapper {
+    @extend %wrapper;
   }
 
   &__title {
-    display: block;
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 48px;
-    letter-spacing: -1.5px;
-
-    &:after {
-      content: url("../images/crown.svg");
-      position: relative;
-      bottom: 20px;
-    }
+    @extend %title;
   }
 
   &__image-box {
     display: flex;
     flex-direction: row;
     justify-content: stretch;
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 
     & :first-child {
       margin-right: 20px;
     }
   }
 
+  @media (min-width: $switchToMobileWidth) {
+    @for $i from 1 through 3 {
+      &__image-box--#{$i} {
+        & :first-child {
+          flex-basis: 0;
+          flex-grow: 5 - $i;
+        }
+
+        & :last-child {
+          flex-basis: 0;
+          flex-grow: 1 + $i;
+        }
+      }
+    }
+  }
+
   &__image {
     object-fit: cover;
     overflow: hidden;
-    flex-grow: 1;
     max-height: 256px;
     border-radius: 8px;
-
-    @media (max-width: 800px) {
-      & {
-        flex-basis: 50%;
-        height: calc(50vw - 30px);
-      }
-    }
+    flex-basis: 50%;
+    height: calc(50vw - 30px);
   }
 
   &__place-address {
@@ -55,29 +52,63 @@
 
     &--highlighted {
       font-weight: 500;
-      color: #0075ff;
+      color: $miamiBlue;
     }
+  }
+
+  &__expand {
+    position: relative;
+  }
+
+  &__cat {
+    position: absolute;
+    top: -$formWidth / 2;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: $formWidth / 2;
+    margin: 0 auto;
+    transition-delay: 0.1s;
+    visibility: hidden;
   }
 
   &__button {
     width: 190px;
     height: 56px;
-    border: 2px solid #0075ff;
-    margin: 50px auto;
+    border: 2px solid $miamiBlue;
+    margin: 30px auto;
     text-align: center;
     line-height: 56px;
     border-radius: 8px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: $miamiBlue;
+    transition: 0.5s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+
+    @media (max-width: $switchToMobileWidth) {
+      max-width: $formWidth;
+      width: 100%;
+    }
   }
 
   &__toggler {
-    display: none;
-  }
+    position: absolute;
+    visibility: hidden;
 
-  &__switch {
-    text-align: center;
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #0075ff;
+    &:checked + .gallery__button {
+      color: white;
+      background-color: $miamiBlue;
+      margin-top: $formWidth / 1.5;
+    }
+
+    &:checked ~ .gallery__cat {
+      top: -$formWidth / 2;
+      visibility: visible;
+    }
   }
 }
