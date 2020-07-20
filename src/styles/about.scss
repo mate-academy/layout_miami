@@ -6,7 +6,7 @@
     justify-content: space-between;
     margin-top: 104px;
 
-    @media (max-width: $mediumScreens) {
+    @media (max-width: $laptopScreens) {
       flex-wrap: wrap;
       margin-top: 70px;
     }
@@ -15,13 +15,31 @@
   &__examples {
     @include largeFontStyle;
 
-    @media (max-width: $mediumScreens) {
+    @media (max-width: $laptopScreens) {
       margin-top: 30px;
     }
     
 
     &_blue {
+      position: relative;
       color: $blueColor;
+      transition: all 2s;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 0;
+        background-color: $blueColor;
+        bottom: 0;
+        left: 0;
+        transition: width $transitionTime;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+      
     }
   }
 
@@ -29,7 +47,7 @@
     max-width: 500px;
     @include smallFontStyle;
 
-    @media (max-width: $mediumScreens) {
+    @media (max-width: $laptopScreens) {
       margin-top: 30px;
     }
 
