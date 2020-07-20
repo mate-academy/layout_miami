@@ -8,35 +8,42 @@
   @media (max-width: $mobileScreen) {
     &__button {
       $iconTranslate: 5px;
-      cursor: pointer;
 
       position: relative;
+      cursor: pointer;
       z-index: 3;
 
       display: flex;
       justify-content: center;
       align-items: center;
-      @include iconMenuBurger;
+      width: 18px;
+      height: 18px;
 
-      background-color: $colorBasic;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-
+      > span {
+        position: relative;
+        z-index: 3;
         @include iconMenuBurger;
 
         background-color: $colorBasic;
-        transition: transform 200ms;
-      }
 
-      &::before {
-        transform: translateY(-#{$iconTranslate});
-      }
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
 
-      &::after {
-        transform: translateY($iconTranslate);
+          @include iconMenuBurger;
+
+          background-color: $colorBasic;
+          transition: transform 300ms;
+        }
+
+        &::before {
+          transform: translateY(-#{$iconTranslate});
+        }
+
+        &::after {
+          transform: translateY($iconTranslate);
+        }
       }
     }
 
@@ -55,7 +62,7 @@
       transition: opacity 1s;
     }
 
-    &__toggle:checked ~ &__button {
+    &__toggle:checked ~ &__button > span {
       $iconRotate: 45deg;
       height: 0;
 
