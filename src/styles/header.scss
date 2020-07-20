@@ -1,103 +1,96 @@
 .header {
+  position: relative;
   display: flex;
-  justify-content: center;
-  padding: 24px 0 56px;
+  flex-direction: column;
+  justify-content: space-between;
   height: 700px;
-  color: #fff;
   background-image: url(../images/header.jpg);
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  background-position: center;
 
   &__top {
+    margin-top: 56px;
     display: flex;
     justify-content: space-between;
-    align-items: start;
-    font-size: 12px;
-  }
-
-  &__phone,
-  &__action {
-    position: relative;
-    top: 32px;
-  }
-
-  &__action {
-    position: relative;
-
-    &::before {
-      display: block;
-      position: absolute;
-      top: calc(100% + 8px);
-      content: "";
-      height: 2px;
-      width: 100%;
-      background: #fff;
-    }
+    text-transform: uppercase;
   }
 
   &__logo {
-    margin-bottom: 314px;
+    position: absolute;
+    left: calc(50% - 115px / 2);
+    top: 24px;
+  }
+
+  &__action {
+    border-bottom: 1px solid;
+    margin-bottom: -9px;
+    padding-bottom: 8px;
+
+    &-burger {
+      border-bottom: 1px solid;
+      margin-bottom: -9px;
+      padding-bottom: 8px;
+    }
   }
 
   &__heading {
-
-    font-size: 60px;
-    line-height: 60px;
-    letter-spacing: -1.5px;
-    margin-bottom: 85px;
+    position: absolute;
+    top: 414px;
 
     &::before {
-      display: block;
       position: absolute;
       top: -16px;
+      display: block;
       content: "";
-      height: 2px;
-      width: 35px;
       background: #fff;
+      width: 11%;
+      height: 2px;
+    }
+  }
+
+  &__link {
+    letter-spacing: 2px;
+    color: #fff;
+    transition: opacity 0.3s;
+
+    & span {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 
   @media (max-width: 999px) {
-    &__logo {
-      margin-bottom: 100px;
+    height: 600px;
+
+    &__top {
+      justify-content: center;
     }
 
-    &__heading {
-      margin-bottom: 120px;
-      font-size: 46px;
+    &__link span {
+      position: absolute;
+      left: 10vw;
+      top: 40px;
+      display: inline-block;
+      transform: scale(3);
     }
 
-    .nav__list {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .nav__item {
-      padding-bottom: 20px;
-    }
-
-    .container-content {
-      width: 100%;
-    }
-
-    &__phone,
     &__action {
-      visibility: hidden;
+      position: absolute;
+      left: 10vw;
+      bottom: 100px;
+      margin-bottom: 30px;
+      display: none;
     }
 
-    .phone__symbol {
-      visibility: visible;
-      font-size: 30px;
-    }
-
-  }
-
-  @media (max-width: 378px) {
-    &__heading {
-      margin-bottom: 60px;
+    &__top &__link {
+      position: absolute;
+      left: 10vw;
+      bottom: 100px;
+      display: none;
     }
   }
 
