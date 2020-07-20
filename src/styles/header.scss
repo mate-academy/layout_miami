@@ -1,0 +1,130 @@
+.header {
+  display: flex;
+  justify-content: center;
+  min-height: $headerHeight;
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @media (max-width: 767px) {
+    min-height: 100vh;
+  }
+
+  &__nav {
+    margin-top: 85px;
+  }
+
+  &__top {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $logoHeight;
+    color: white;
+  }
+
+  &__phone {
+
+    &-number {
+      @extend %headerText;
+      text-decoration: none;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    &-img {
+      @media (max-width: 766px) {
+        display: flex;
+        box-sizing: content-box;
+        background-image: url(../images/phone.png);
+        background-size: contain;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+  }
+
+  &__logo {
+    width: $logoWidth;
+    height: $logoHeight;
+
+    @media (max-width: 767px) {
+      width: $miniLogoWidth;
+      height: $miniLogoHeight;
+    }
+  }
+
+  &__link {
+    @extend %headerText;
+    position: relative;
+    text-decoration: none;
+    transition: color $hoverDuration;
+
+    &::before {
+      position: absolute;
+      top: 24px;
+      right: 0;
+      content: "";
+      width: 111px;
+      height: 0;
+      border: 1px solid #fff;
+    }
+
+    &:hover {
+      color: $activeColor;
+    }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    display: none;
+    text-decoration: none;
+    background-image: url(../images/mobile-menu.png);
+    width: 18px;
+    height: 12px;
+
+    @media (max-width: 767px) {
+      display: flex;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin-top: 314px;
+    font-weight: bold;
+    font-size: $mainTitle;
+    line-height: $mainTitle;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @media (max-width: 1024px) {
+      font-size: $mainTitle - 14px;
+      line-height: 40px;
+    }
+
+    @media (max-width: 767px) {
+      margin-top: 60vh;
+    }
+  }
+
+  &__title::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+}
+
+#toggle {
+  display: none;
+}
