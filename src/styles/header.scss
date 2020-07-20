@@ -1,0 +1,183 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: $header-height;
+  width: 100%;
+  position: relative;
+  padding: $header-vertical-padding $page-padding;
+  color: $white;
+  max-width: $full-screen;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: $mobile-width) {
+    flex-direction: column;
+    height: 580px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: $header-vertical-padding;
+    left: 0;
+    right: 0;
+
+    @media (max-width: $mobile-width) {
+      box-sizing: border-box;
+      top: 0;
+      bottom: 0;
+      background-color: blue;
+    }
+  }
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  
+    @media (max-width: $mobile-width) {
+      width: 100%;
+    }
+
+    &-phone {
+      line-height: $top-height;
+      letter-spacing: $header-letter-spacing;
+      font-size: $top-font-size;
+
+      @media (max-width: $mobile-width) {
+        position: relative;
+        top: $vector-size/2;
+        color: transparent;
+        height: $vector-size;
+        width: $vector-size;
+        background: no-repeat, url("../images/Phone.png"), center center;
+      }
+    }
+
+    &-link {
+      display: block;
+      position: relative;
+      line-height: $top-height;
+      color: $white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: $top-font-size;
+      letter-spacing: $header-letter-spacing;
+
+      &:hover {
+        @include hover (color, $active-color);
+      }
+      
+      @media (max-width: $mobile-width) {
+        display: none;
+      }
+    }
+
+    &-link::after {
+      display: block;
+      content: "";
+      background-color: $white;
+      width: 100%;
+      border-bottom: $thin-border solid $white;
+      position: absolute;
+      bottom: 24px;
+    }
+
+    &-action {
+
+      @media (max-width: $mobile-width) {
+        opacity: 0;
+        width: 18px;
+      }
+    }
+  }
+
+  &__checkbox,
+  &__label {
+    display: none;
+  }
+
+  @media (max-width: $mobile-width) {
+    &__checkbox:not(:checked) + &__label {
+      position: absolute;
+      top: $mobile-header-padding + $logo-mobile-height/2
+        -$vector-size/2;
+      display: block;
+      height: $vector-size/3*2;
+      width: $vector-size;
+      background: no-repeat, url("../images/Vector.png");
+      background-size: cover;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    &__checkbox:checked + &__label {
+      display: block;
+      position: absolute;
+      top: $mobile-header-padding+$logo-mobile-height/2
+        -$vector-size/2;
+      background: no-repeat, url("../images/x.png");
+      background-size: cover;
+      cursor: pointer;
+      height: $label-size;
+      width: $label-size;
+      z-index: 2;
+    }
+
+    &__checkbox:checked ~ &__top {
+      justify-content: center;
+    }
+
+    &__checkbox:checked ~ &__top :first-child {
+      display: inline-block;
+      position: absolute;
+      background-image: none;
+      background-color: blue;
+      color: $white;
+      top: 460px;
+      right: 0;
+      width: auto;
+      line-height: 12px;
+      z-index: 2;
+    }
+
+    &__checkbox:checked ~ &__top :nth-child(3) {
+      position: absolute;
+      display: block;
+      opacity: 1;
+      width: 100%;
+      left: 0;
+      top: $top-font-size+$mobile-item-padding/2;
+      z-index: 2;
+    }
+
+    &__checkbox:checked ~ &__top :nth-child(3) ::after {
+      top: $top-font-size + 8px;
+      width: 9em;
+      z-index: 2;
+    }
+
+    &__checkbox:not(:checked) ~ &__nav {
+      display: none;
+    }
+  }
+}
+
+@for $i from 100 through 1 {
+  @media (max-width: $min-width + ($mobile-width - $min-width)/100*$i) {
+    .header {
+      padding: $mobile-header-padding $page-padding - (100-($i));
+
+      &__checkbox:not(:checked) + &__label {
+        right: $page-padding - (100-($i));
+      }
+
+      &__checkbox:checked + &__label {
+        right: $page-padding - (100-($i));
+      }
+
+      &__checkbox:checked ~ &__top :first-child {
+        left: $page-padding - (100-($i));
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.section {
+  padding: 0 $page-padding $section-bottom-padding;
+  min-width: $min-width;
+
+  &__title {
+    font-size: $main-title-size;
+    justify-self: center;
+    align-self: start;
+    line-height: 1em;
+    position: relative;
+
+    @media (max-width: $mobile-width) {
+      font-size: $mobile-title-size;
+    }
+   
+    &::after {
+      content: "";
+      background: url("../images/title_logo.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: $main-title-size + $crown-padding;
+      height: $crown-height;
+      width: $crown-width;
+
+      @media (max-width: $mobile-width) {
+        top: $mobile-title-size + $crown-padding;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    height: 56px;
+     
+    &-press {
+      width: 188px;
+      border-radius: $main-radius;
+      border: $thick-border solid $important-color;
+      cursor: pointer;
+      line-height: $button-line;
+      background-color: $white;
+
+      @media (max-width: $mobile-width) {
+        width: 100%;
+      }
+    }
+
+    &-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: $important-color;
+    }
+  }
+
+  @for $i from 100 through 1 {
+    @media (max-width: $min-width + ($mobile-width - $min-width)/100*$i) {
+      padding: 0 $page-padding - (100-($i)) $m_section-padding-bottom;
+    }
+  }
+}
