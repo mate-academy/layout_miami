@@ -4,24 +4,29 @@
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 
-  @media (max-width: $firstBreakPoint) {
+  @media (max-width: $breakPoint) {
     height: 100vh;
   }
 
-  &__top {
-    @include headerPosition;
-    top: $headerTopIndent;
+  &__container {
+    max-width: $maxContentWidth;
+    margin: 0 auto;
+    padding: 0 $bodyPaddingY;
+  }
 
+  &__top {
+    padding-top: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   &__heading {
-    @include headerPosition;
-    bottom: 165px;
-
+    position: relative;
+    margin-top: 314px;
+    margin-bottom: 93px;
     color: $headerColor;
     font-weight: bold;
     font-size: $mainHeadingFontSize;
@@ -41,16 +46,11 @@
       border-radius: $contentHeight / 2;
     }
 
-    @media (max-width: $firstBreakPoint) {
-      bottom: 80px;
+    @media (max-width: $breakPoint) {
+      margin-top: 60vh;
       font-size: $mainHeadingFontSizeSmall;
       line-height: $mainHeadingFontSizeSmall;
     }
-  }
-
-  &__nav {
-    @include headerPosition;
-    bottom: 48px;
   }
 
   &__icon {
@@ -70,7 +70,7 @@
     }
 
     &--number {
-      @media (max-width: $secondBreakPoint) {
+      @media (max-width: $breakPoint) {
         display: none;
       }
     }
