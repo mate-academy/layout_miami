@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-position: center;
   padding: 24px 120px;
+  position: relative;
 
   &__content {
     display: flex;
@@ -14,8 +15,6 @@
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    position: relative;
-
   }
 
   &__top {
@@ -24,8 +23,22 @@
     align-items: center;
   }
 
+  &__mobile {
+    display: none;
+  }
+
   &__phone {
     @include headerFont;
+    &-icon {
+      width: 18px;
+      height: 18px;
+      background-image: url(../images/phone.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      padding-left: 3px;
+    }
   }
 
   &__link {
@@ -72,4 +85,42 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  &__mobile {
+    width: 73px;
+    height: 48px;
+  }
+}
+
+@media (max-width: $smallScreen) {
+  .header {
+    padding: 24px 64px;
+  }
+}
+
+@media (max-width: $tabletScreen) {
+  .header {
+    &__top {
+      display: none;
+    }
+    &__mobile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobileScreen) {
+  .header {
+    height: 100vh;
+    padding: 24px 20px;
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+  }
 }
