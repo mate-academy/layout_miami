@@ -1,0 +1,162 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 24px 0 48px;
+  background: url("../images/header.jpg") no-repeat center;
+  background-size: cover;
+  color: $mainColor;
+
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: $mobileDisplay) {
+      justify-content: center;
+    }
+  }
+
+  &__phone--icon {
+    display: none;
+    position: absolute;
+    top: 36px;
+    left: 7vw;
+    width: 24px;
+    height: 24px;
+    background: url("../images/call.svg") no-repeat center;
+    background-size: contain;
+    transition: 0.5s;
+
+    @media (max-width: $mobileDisplay) {
+      display: block;
+    }
+  }
+
+  &__phone {
+    @include fontHeaderLinks;
+
+    &--desktop {
+      @media (max-width: $mobileDisplay) {
+        display: none;
+      }
+    }
+  }
+
+  &__logo {
+    @media (max-width: $mobileDisplay) {
+      max-width: 73px;
+      max-height: 48px;
+      min-width: 73px;
+      min-height: 48px;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $mobileDisplay) {
+        display: block;
+        align-self: center;
+      }
+    }
+  }
+
+  &__action {
+    border-bottom: 1px solid $mainColor;
+    padding: 8px 0;
+
+    &:hover {
+      border-bottom-style: dashed;
+    }
+
+    &--desktop {
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      @media (max-width: $mobileDisplay) {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    @include fontHeaderLinks;
+    padding: 8px 0;
+  }
+
+  &__title {
+    @include fontTitleDesktop;
+    position: absolute;
+    bottom: 85px;
+    align-self: flex-start;
+    margin-bottom: 80px;
+    transition: 0.5s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background: $mainColor;
+    }
+
+    @media (max-width: $mobileDisplay) {
+      @include fontTitleMobile;
+      bottom: 0;
+      left: 7vw;
+    }
+  }
+
+  &__bottom {
+    @media (max-width: $mobileDisplay) {
+      position: fixed;
+      top: 0;
+      left: -200vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      width: 100vw;
+      padding: 24px 0 52px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #0075ff;
+      transition-duration: 0.8s;
+
+      .burger-menu__check:checked ~ & {
+        left: 0;
+      }
+    }
+  }
+
+  &__mobile-call {
+    display: none;
+
+    @media (max-width: $mobileDisplay) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 30px 7vw 0;
+
+      .burger-menu__check:checked ~ .header__bottom & {
+        display: flex;
+      }
+    }
+  }
+}
