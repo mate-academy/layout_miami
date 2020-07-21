@@ -1,0 +1,99 @@
+$headerColorText: #fff;
+$navHonerColor: rgb(49,49,67);
+$positionHeaderTitle: 165px;
+$positionNavLinks: 50px;
+
+@mixin logoSize {
+  width: 115px;
+  height: 76px;
+}
+@mixin headerFontStile {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: $headerColorText;
+}
+
+.background {
+  background-image: url(/images/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.logo {
+  @include logoSize;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @include headerFontStile;
+  text-align: center;
+  height: 100%;
+  & a {
+    color: $headerColorText;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+  }
+  &__content__title {
+    position: absolute;
+    bottom: 85px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: left;
+    &::before {
+      content: "";
+      display: block;
+      border: 2px solid $headerColorText;
+      width: 35px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__bot {
+    position: absolute;
+    width: calc(100% - 120px * 2);
+    bottom: 50px;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      padding: 8px 24px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+    &__item:hover {
+      color: #9fadc2;
+      background-color: $navHonerColor;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+
+  .nav__list {
+    display: block;
+    text-align: right;
+    line-height: 30px;
+  }
+  .header__content__title {
+
+    position: absolute;
+  }
+}
