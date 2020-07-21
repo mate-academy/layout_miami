@@ -1,0 +1,40 @@
+.people {
+  display: grid;
+  justify-content: space-between;
+  grid-template: auto / repeat(3, $peopleCardWidth);
+  margin-top: $marginSectionCaption;
+
+  &__card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: $peopleCardWidth;
+  }
+
+  &__photo {
+    width: $peopleCardPhotoSize;
+    height: $peopleCardPhotoSize;
+    border-radius: 50%;
+  }
+
+  &__name {
+    @include standardBlueCaption;
+    margin: 24px 0 0;
+  }
+
+  &__position {
+    @include greySmallText;
+    margin: 4px 0;
+  }
+
+  &__description {
+    margin: 0;
+    @include descriptionText;
+  }
+
+  @media (max-width: $padContentSize) {
+    justify-content: center;
+    grid-template: auto / $peopleCardWidth;
+    grid-row-gap: $peopleCardRowGap;
+  }
+}
