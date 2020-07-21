@@ -42,3 +42,10 @@ that's why this is better to add this style to those elements you really need (t
 - use either `kebab-case` or `snake_case` for class names
 - if you pushed some new changes, deploy them as well
 - check up this [link](https://docs.google.com/document/d/1iglPsTDmcbDEwCEga20cUFO0eu8IIgXeqy06PLb46jY/edit) to prepare your project for HR review
+- phones should be links like this: `<a href="tel:123-456-7890">123-456-7890</a>`
+- emails should be links like this: `<a href="mailto:someone@yoursite.com">Email Us</a>`
+- use ids for anchoring from your `nav` through site
+- forms should have attributes `method` and `action`
+- phone inputs in forms should have `type="tel"` so the HTML validation works
+- email inputs in forms should have `type="email"` so the HTML validation works
+- form have button with `type="submit"` ([check here why button](https://html.com/attributes/button-type/#Difference_between_ltbutton_typesubmitgt_and_ltinput_typesubmitgt))
