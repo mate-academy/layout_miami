@@ -12,7 +12,7 @@
     <header class="header">
       <div class="content content__header">
         <div class="header__top">
-          <a href="tel:+12345555555" class="header__phone">
+          <a href="tel:+12345555555">
             <span class="header__phone__number">+1 234 555-55-55</span>
             <img src="images/phone.svg"
               alt=""
@@ -34,32 +34,21 @@
           </label>
         </div>
         <input type="checkbox" id="menu__toggle">
-        <section class="content header__mobile-container">
-          <div class="menu__content">
-            <img class="logo header__logo"
-                 src="images/logo.png"
-                 alt="Logo of Agency">
-            <label class="header__menu" for="menu__toggle">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-            <ul class="nav__list">
-              <li class="nav__item nav__item_active"><a href="#" class="nav__link">Home</a></li>
-              <li class="nav__item"><a href="#about_us" class="nav__link">About us</a></li>
-              <li class="nav__item"><a href="#gallery" class="nav__link">Gallery</a></li>
-              <li class="nav__item"><a href="#consultation" class="nav__link">Consultation</a></li>
-              <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
-              <li class="nav__item"><a href="#contacts" class="nav__link">Contacts</a></li>
-            </ul>
-          </div>
-        </section>
+
         <h1 class="header__caption">
           Miami<br>
           Condo Kings
         </h1>
 
         <nav class="nav header__nav">
+          <img class="logo logo-mobile"
+               src="images/logo.png"
+               alt="Logo of Agency">
+          <label class="header__menu header__menu-opened" for="menu__toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
           <ul class="nav__list">
             <li class="nav__item nav__item_active"><a href="#" class="nav__link">Home</a></li>
             <li class="nav__item"><a href="#about_us" class="nav__link">About us</a></li>
@@ -68,6 +57,16 @@
             <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
             <li class="nav__item"><a href="#contacts" class="nav__link">Contacts</a></li>
           </ul>
+
+          <div class="nav__call">
+            <a href="tel:+12345555555">
+              <span class="nav__call__number">+1 234 555-55-55</span>
+            </a>
+            <a href="tel:+12345555555" class="nav__call__order">
+              Call to order
+            </a>
+          </div>
+
         </nav>
       </div>
     </header>
@@ -152,13 +151,20 @@
               early twentieth century, microforms, found a distant historical.
             </p>
           </div>
-          <form action="#" class="consultation__form">
+          <form name="consult"
+                action="#"
+                method="post"
+                class="consultation__form"
+          >
             <label for="consult-name">
               <input
                 type="text"
                 class="consultation__data data__inputs"
                 id="consult-name"
                 placeholder="Name"
+                maxlength="15"
+                pattern="[A-Za-zА-Яа-яЁё]{1-15}"
+                required
               >
             </label>
             <label for="consult-tel">
@@ -167,6 +173,8 @@
                 class="consultation__data data__inputs"
                 id="consult-tel"
                 placeholder="Phone"
+                pattern="+1-[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                required
               >
             </label>
             <label for="consult-email">
@@ -175,6 +183,8 @@
                 class="consultation__data data__inputs"
                 id="consult-email"
                 placeholder="Email"
+                maxlength="30"
+                required
               >
             </label>
             <label for="consult-btn">
@@ -276,13 +286,19 @@
               </div>
             </div>
           </div>
-          <form action="#" class="contacts__form">
+          <form name="contact"
+                action="#"
+                method="post"
+                class="contacts__form"
+          >
             <label for="contacts-tel">
               <input
                 class="contacts__data data__inputs"
                 placeholder="Name"
                 type="text"
                 id="contacts-tel"
+                maxlength="15"
+                required
               >
             </label>
             <label for="contacts-email">
@@ -291,17 +307,18 @@
                 placeholder="Email"
                 type="email"
                 id="contacts-email"
+                maxlength="30"
+                required
               >
             </label>
             <label for="contacts-message">
               <textarea class="contacts__message data__textarea"
                 placeholder="Message"
-                name=""
                 id="contacts-message"
                 cols="30"
                 rows="10"
+                required
               >
-
               </textarea>
             </label>
             <label for="contacts__btn">
