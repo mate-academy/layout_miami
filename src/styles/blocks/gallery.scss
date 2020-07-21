@@ -7,15 +7,57 @@ $smallImgPoint: $imgHeight * 2 + $imgGap;
     margin-bottom: 61px;
   }
 
-  &__img {
-    width: calc(50% - #{$imgGap / 2});
+  &__row {
+    display: flex;
     height: $imgHeight;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
 
     @media (max-width: $smallImgPoint) {
       height: 131px;
+    }
+
+    @media (min-width:$mobileWidthPoint) {
+      &--wide-left .gallery__img-box:first-child,
+      &--wide-right .gallery__img-box:last-child {
+        width: calc(67% - #{$imgGap / 2});
+      }
+
+      &--wide-right .gallery__img-box:first-child,
+      &--wide-left .gallery__img-box:last-child {
+        width: calc(33% - #{$imgGap / 2});
+      }
+    }
+  }
+
+  &__img-box {
+    overflow: hidden;
+    border-radius: 8px;
+    width: calc(100% - #{$imgGap / 2});
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    transition: all 0.3s;
+    width: 100%;
+    min-height: $imgHeight;
+    transform: scale(1);
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: $smallImgPoint) {
+      height: 131px;
+      min-height: auto;
     }
   }
 
@@ -28,29 +70,6 @@ $smallImgPoint: $imgHeight * 2 + $imgGap;
     color: $accentColor;
   }
 
-  &__row {
-    display: flex;
-    justify-content: space-between;
-
-    @media (min-width:$mobileWidthPoint) {
-      &--wide-left .gallery__img:first-child {
-        width: calc(67% - #{$imgGap / 2});
-      }
-
-      &--wide-left .gallery__img:last-child {
-        width: calc(33% - #{$imgGap / 2});
-      }
-
-      &--wide-right .gallery__img:first-child {
-        width: calc(33% - #{$imgGap / 2});
-      }
-
-      &--wide-right .gallery__img:last-child {
-        width: calc(67% - #{$imgGap / 2});
-      }
-    }
-  }
-
   &__button {
     @extend %button;
     color: $accentColor;
@@ -59,6 +78,8 @@ $smallImgPoint: $imgHeight * 2 + $imgGap;
 
     &:hover {
       box-shadow: 0 6px 23px rgba(0,117,255,0.46);
+      background-color: $accentColor;
+      color: #fff;
     }
 
     @media (max-width: $mobileWidthPoint) {
