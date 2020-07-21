@@ -1,5 +1,4 @@
 .header {
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,7 +7,7 @@
   background-size: cover;
   background-position: center;
   line-height: 1;
-  padding: 24px 120px 48px;
+  padding: 24px calc((100% - #{$contentWidth}) / 2) 48px;
 
   &__heading {
     color: white;
@@ -86,26 +85,19 @@
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: $widthSmall) {
   .header {
-    padding-bottom: 120px;
-
-    &__heading {
-      margin: 0;
-      bottom: 0;
-    }
-
-    &__nav-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
+    padding: 24px calc((100% - #{$contentWidthSmall}) / 2) 48px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: $mobil-width) {
   .header {
     padding: 24px 20px 80px;
+
+    &__nav-heading {
+      height: 0;
+    }
 
     &__heading {
       font-size: 46px;
