@@ -1,0 +1,106 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 10vw;
+
+  background: url("../images/header.jpg") no-repeat center;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 26px;
+
+    @include linkHeader;
+  }
+
+  &__link {
+    @include linkHeader($fontWight: bold);
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 3;
+    
+    @include logo;
+  }
+
+  &__order {
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid $colorBasic;
+  }
+
+  &__middle {
+    display: flex;
+    align-items: flex-end;
+    flex-grow: 1;
+  }
+
+  &__title {
+    position: relative;
+
+    margin-bottom: $titleMarginBottom;
+
+    @include title(60px);
+    color: $colorBasic;
+
+    &::before {
+      $heightLine: 2px;
+
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -10px;
+
+      width: 35px;
+      height: $heightLine;
+
+      background-color: $colorBasic;
+      border-radius: $heightLine / 2;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 1400px) {
+    @include containerPadding;
+  }
+
+  @media (max-width: $mobileScreen) {
+    padding: 0 7vw;
+
+    &__logo {
+      @include logo($widthLogo: 73px, $heightLogo: 48px);
+    }
+
+    &__link {
+      display: none;
+    }
+
+    .phone-icon {
+      width: $phoneIcon;
+      height: $phoneIcon;
+      background: url("../images/phone.svg") no-repeat center;
+    }
+
+    &__order {
+      border: none;
+    }
+
+    &__title {
+      margin-bottom: 80px;
+
+      @include title(
+        $titleSize: 46px,
+        $titleLineHeight: 40px,
+        $titleLetterSpacing: -1px
+      );
+    }
+  }
+}
