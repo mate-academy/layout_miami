@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   height: 100vh;
-  padding: 24px 0 48px;
+  padding: $headerTopPadding 0 48px;
   background: url("../images/header.jpg") no-repeat center;
   background-size: cover;
   color: $mainColor;
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transition: 0.5s;
+    transition: $transitionGlobal;
   }
 
   &__top {
@@ -27,30 +27,44 @@
     }
   }
 
-  &__phone--icon {
-    display: none;
-    position: absolute;
-    top: 36px;
-    left: 7vw;
-    width: 24px;
-    height: 24px;
-    background: url("../images/call.svg") no-repeat center;
-    background-size: contain;
-    transition: 0.5s;
-
-    @media (max-width: $mobileDisplay) {
-      display: block;
-    }
-  }
-
   &__phone {
     @include fontHeaderLinks;
 
     &--desktop {
+      display: block;
+
       @media (max-width: $mobileDisplay) {
         display: none;
       }
     }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $mobileDisplay) {
+        display: block;
+      }
+    }
+
+    &--icon {
+      @include img-square(24px);
+      display: none;
+      position: absolute;
+      top: 36px;
+      left: $mobileSidesPadding;
+      background: url("../images/call.svg") no-repeat center;
+      background-size: contain;
+      transition: $transitionGlobal;
+
+      @media (max-width: $mobileDisplay) {
+        display: block;
+
+        &:hover {
+          transform: rotate(20deg);
+        }
+      }
+    }
+
   }
 
   &__logo {
@@ -73,14 +87,14 @@
 
   &__action {
     border-bottom: 1px solid $mainColor;
-    padding: 8px 0;
+    padding: $linksPadding;
 
     &:hover {
       border-bottom-style: dashed;
     }
 
     &--desktop {
-      transition: transform 0.5s;
+      transition: $transitionGlobal;
 
       &:hover {
         transform: scale(1.1);
@@ -94,7 +108,7 @@
 
   &__link {
     @include fontHeaderLinks;
-    padding: 8px 0;
+    padding: $linksPadding;
   }
 
   &__title {
@@ -103,7 +117,7 @@
     bottom: 85px;
     align-self: flex-start;
     margin-bottom: 80px;
-    transition: 0.5s;
+    transition: $transitionGlobal;
 
     &::before {
       content: "";
@@ -118,7 +132,7 @@
     @media (max-width: $mobileDisplay) {
       @include fontTitleMobile;
       bottom: 0;
-      left: 7vw;
+      left: $mobileSidesPadding;
     }
   }
 
@@ -127,16 +141,17 @@
       position: fixed;
       top: 0;
       left: -200vw;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100vh;
       width: 100vw;
-      padding: 24px 0 52px;
+      padding: $headerTopPadding 0 52px;
       overflow-y: auto;
       overflow-x: hidden;
-      background: #0075ff;
-      transition-duration: 0.8s;
+      background: $mainHighlightColor;
+      transition: $transitionMobileMenu;
 
       .burger-menu__check:checked ~ & {
         left: 0;
@@ -152,7 +167,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 30px 7vw 0;
+      padding: $mobileNavContentPadding $mobileSidesPadding 0;
 
       .burger-menu__check:checked ~ .header__bottom & {
         display: flex;
