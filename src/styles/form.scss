@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__input,
+  &__button {
+    width: 100%;
+    outline: none;
+  }
+
+  &__input {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 14px;
+    border: 1px solid $global-white-color;
+    color: #b9c1ce;
+    background: #f7f8ff;
+    border-radius: 8px;
+
+    &:focus {
+      @include focusForm;
+    }
+  }
+
+  &__button {
+    @include hoverButton;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 14px;
+    margin-bottom: 20px;
+    padding: 21px;
+    border-radius: 8px;
+    margin-top: 16px;
+    color: $global-element-color;
+    background-color: $global-white-color;
+    transition: background-color $hover-duration;
+    border: 1px solid $global-element-color;
+  }
+
+  &__comment {
+    width: $comment-form-height;
+    height: $comment-form-width;
+    padding: 10px 15px;
+    background: #f7f8ff;
+    border: 1px solid $global-white-color;
+    outline: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+
+    
+    &:focus {
+      @include focusForm;
+    }
+
+    &::placeholder {
+      opacity: 1;
+      transition: opacity 9s ease;
+    }
+  }
+}
+
+@media (max-width: $maxWidth-media) {
+  .form {
+    &__input,
+    &__comment,
+    &__button {
+      width: 280px;
+    }
+  }
+}
