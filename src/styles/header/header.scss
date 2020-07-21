@@ -50,6 +50,7 @@
   &__logo {
     width: $logoWidth;
     height: $logoHeight;
+    z-index: 2;
 
     @media (max-width: 767px) {
       width: $miniLogoWidth;
@@ -81,14 +82,57 @@
     }
   }
 
-  &__mobile-menu {
+  &__burger-menu {
     display: none;
-    background-image: url(../images/mobile-menu.png);
-    width: 18px;
-    height: 12px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__mobile {
+    display: none;
+    &-menu {
+      display: none;
+      z-index: 2;
+      background-image: url(../images/mobile-menu.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 18px;
+      height: 12px;
+      transition: 0.5s;
+
+      @media (max-width: 767px) {
+        display: flex;
+      }
+    }
+
+    &:checked + .header__mobile-menu {
+      background-image: url(../images/menu-close.png);
+    }
+
+    &:not(:checked) ~ .burger-menu {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  &__123 {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    z-index: 2;
+
+    &:checked + &__123 {
+      z-index: 2;
     }
   }
 
@@ -120,8 +164,4 @@
     background-color: #fff;
     border-radius: 2px;
   }
-}
-
-#toggle {
-  display: none;
 }
