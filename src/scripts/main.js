@@ -1,7 +1,7 @@
 'use strict';
 
 const navState = document.querySelector('.mobile-header');
-const screenSize = window.matchMedia('(min-width: 641px)');
+const screenSize = window.matchMedia('(min-width: 769px)');
 const toggler = document.querySelectorAll('.toggler');
 
 screenSize.addEventListener('change', (e) => {

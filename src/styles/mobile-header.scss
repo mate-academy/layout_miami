@@ -7,7 +7,11 @@
   height: 100vh;
   padding: 24px 24px 0 21px;
 
-  background-color: $highlight-color;
+  animation: menu linear 0.8s forwards;
+
+  @media (min-width: 426px) {
+    padding: 24px 50px 56px;
+  }
 
   &__top {
     display: flex;
@@ -23,9 +27,19 @@
   }
 
   &__link {
-    font-size: $header-font;
+    font-size: $mobile-font;
     letter-spacing: $header-letter-spacing;
     color: $header-color;
+
+    transition: color linear $transition-time;
+
+    @media (max-width: 640px) {
+      font-size: $header-font;
+    }
+
+    &:hover {
+      color: $support-color;
+    }
   }
 
   &__action {
@@ -38,4 +52,25 @@
   }
 
   display: none;
+
+}
+
+@keyframes menu {
+  0% {
+    opacity: 0;
+    top: -100%;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+    background-color: $highlight-color;
+  }
+}
+
+@keyframes close {
+  100% {
+    opacity: 0;
+    top: -100%;
+  }
 }
