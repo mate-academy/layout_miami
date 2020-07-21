@@ -1,0 +1,55 @@
+.menu {
+
+  & input,
+  & label {
+    display: none;
+  }
+
+  @media (max-width: 999px) {
+    .bar1,
+    .bar2,
+    .bar3 {
+      width: 16px;
+      height: 1px;
+      background-color: #fff;
+      margin: 3px 0;
+      transition: 0.35s;
+    }
+
+    &__input:checked ~ .nav {
+      z-index: 1;
+      opacity: 1;
+      transition: 0.4s;
+    }
+
+    & &__label {
+      z-index: 2;
+      cursor: pointer;
+      display: block;
+      color: #fff;
+      transform: scale(2);
+      position: absolute;
+      right: 10vw;
+      top: 40px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    &__input:checked ~ &__label {
+      .bar1 {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+
+      .bar2 {
+        opacity: 0;
+      }
+
+      .bar3 {
+        transform: rotate(-45deg) translate(2px, -2px);
+      }
+    }
+  }
+}
