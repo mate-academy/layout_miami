@@ -1,0 +1,57 @@
+.testimonials {
+
+  &__contents {
+    display: grid;
+    grid-template-columns: repeat(3, 240px);
+    justify-content: space-between;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @for $i from 1 through 3 {
+        &--photo-#{$i} {
+          background-image: url(/images/people/#{$i}.png);
+          @extend %cardsPhoto;
+
+          @media (max-width: 260px) {
+            & {
+              height: 100px;
+              width: 100px;
+            }
+          }
+        }
+      }
+
+      &--name {
+        margin-top: 28px;
+      }
+      &--profession {
+        margin: 4px 0;
+      }
+      &--text {
+        text-align: center;
+      }
+    }
+
+  }
+
+  @media (max-width: 860px) {
+    &__title {
+      margin-top: 64px !important;
+      margin-bottom: 53px !important;
+    }
+
+    &__contents {
+      grid-template-columns: repeat(1, minmax(100px, 240px));
+      justify-content: center;
+      row-gap: 48px;
+    }
+
+    &__card {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
