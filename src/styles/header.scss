@@ -1,13 +1,19 @@
 .header {
-  position: relative;
+  display: flex;
+  justify-content: center;
   height: 700px;
   background-image: url(../images/header2.jpg);
   background-size: cover;
-  padding: 24px 120px 56px;
+  background-attachment: fixed;
+  padding: 24px 56px;
   letter-spacing: 2px;
 
-  @media screen and (max-width: 990px) {
-    padding: 24px 40px 56px;
+  @media (max-width: 640px) {
+    height: 100vh;
+  }
+
+  &-container {
+    margin: 0 auto;
   }
 
   &__top {
@@ -15,10 +21,24 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-    width: auto;
 
-    @media screen and (max-width: 755px) {
-      flex-direction: column;
+    // @media (max-width: 640px) {
+    //   flex-direction: column;
+    // }
+  }
+
+  &__link,
+  &__action {
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__symbol {
+    display: none;
+
+    @media (max-width: 640px) {
+      display: block;
     }
   }
 
@@ -27,6 +47,7 @@
     text-transform: uppercase;
     transition: color 0.5s;
     padding-bottom: 8px;
+    text-decoration: none;
 
     &:hover {
       color: #9fadc2;
@@ -45,16 +66,28 @@
     &:hover::after {
       background-color: #9fadc2;
     }
+
+    // @media (max-width: 640px) {
+    //   display: none;
+    // }
   }
 
   &__title {
-    display: block;
-    position: absolute;
-    bottom: 165px;
+    position: relative;
+    margin: 314px auto 0;
     letter-spacing: -1.5px;
     font-weight: bold;
     font-size: 60px;
     color: white;
+
+    @media (max-width: 640px) {
+      position: absolute;
+      bottom: 100px;
+      margin: 0;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
 
     &::before {
       content: "";
@@ -63,20 +96,23 @@
       height: 2px;
       border-radius: 1px;
       background-color: white;
+
+      @media (max-width: 640px) {
+        margin-bottom: 14px;
+      }
     }
   }
 
   &__nav {
-    display: block;
-    position: absolute;
-    width: auto;
-    margin: 0 120px;
-    bottom: 48px;
-    left: 0;
-    right: 0;
 
-    @media screen and (max-width: 990px) {
-      margin: 0 40px;
-    }
+    // @media screen and (max-width: 990px) {
+    //   margin: 0 40px;
+    // }
   }
 }
+
+// .symbol {
+//   @media screen and (max-width: 640px) {
+//     display: block;
+//   }
+// }
