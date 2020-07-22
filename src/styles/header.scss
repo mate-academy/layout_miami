@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transition: width $transitionGlobal;
+    transition: width $transitionMedium;
   }
 
   &__top {
@@ -29,9 +29,9 @@
 
   &__phone {
     @include fontHeaderLinks;
-    @include hover(transform, scale(1.1), $transitionGlobal);
 
     &--desktop {
+      @include hover(transform, scale(1.1), $transitionMedium);
       display: block;
 
       @media (max-width: $mobileDisplay) {
@@ -40,7 +40,12 @@
     }
 
     &--mobile {
+      @include hover(transform, rotate(20deg), $transitionMedium);
+
       display: none;
+      position: absolute;
+      top: 36px;
+      left: $mobileSidesPadding;
 
       @media (max-width: $mobileDisplay) {
         display: block;
@@ -49,18 +54,8 @@
 
     &--icon {
       @include img-square(24px);
-      @include hover(transform, rotate(20deg), $transitionGlobal);
-
-      display: none;
-      position: absolute;
-      top: 36px;
-      left: $mobileSidesPadding;
       background: url("../images/call.svg") no-repeat center;
       background-size: contain;
-
-      @media (max-width: $mobileDisplay) {
-        display: block;
-      }
     }
 
   }
@@ -84,14 +79,12 @@
   }
 
   &__action {
-    @include hover(border-bottom-style, dashed, $transitionGlobal);
+    @include hover(border-bottom-style, dashed, $transitionMedium);
 
     border-bottom: 1px solid $mainColor;
     padding: $linksPadding;
 
     &--desktop {
-      @include hover(transform, scale(1.1), $transitionGlobal);
-
       @media (max-width: $mobileDisplay) {
         display: none;
       }
@@ -109,7 +102,7 @@
     bottom: 85px;
     align-self: flex-start;
     margin-bottom: 80px;
-    transition: bottom $transitionGlobal;
+    transition: bottom $transitionMedium;
 
     &::before {
       content: "";
