@@ -29,14 +29,10 @@
 
   &__phone {
     @include fontHeaderLinks;
+    @include hover(transform, scale(1.1), $transitionGlobal);
 
     &--desktop {
       display: block;
-      transition: transform $transitionGlobal;
-
-      &:hover {
-        transform: scale(1.1);
-      }
 
       @media (max-width: $mobileDisplay) {
         display: none;
@@ -53,20 +49,17 @@
 
     &--icon {
       @include img-square(24px);
+      @include hover(transform, rotate(20deg), $transitionGlobal);
+
       display: none;
       position: absolute;
       top: 36px;
       left: $mobileSidesPadding;
       background: url("../images/call.svg") no-repeat center;
       background-size: contain;
-      transition: transform $transitionGlobal;
 
       @media (max-width: $mobileDisplay) {
         display: block;
-
-        &:hover {
-          transform: rotate(20deg);
-        }
       }
     }
 
@@ -91,19 +84,13 @@
   }
 
   &__action {
+    @include hover(border-bottom-style, dashed, $transitionGlobal);
+
     border-bottom: 1px solid $mainColor;
     padding: $linksPadding;
 
-    &:hover {
-      border-bottom-style: dashed;
-    }
-
     &--desktop {
-      transition: rtansform $transitionGlobal;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+      @include hover(transform, scale(1.1), $transitionGlobal);
 
       @media (max-width: $mobileDisplay) {
         display: none;
