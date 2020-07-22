@@ -9,6 +9,7 @@
 .header {
 
   &__menu {
+    cursor: pointer;
     display: none;
     flex-flow: column;
     justify-content: space-between;
@@ -41,38 +42,25 @@
     transform: translateY(3px) rotate(-45deg);
   }
 
-  & .header__top span:nth-last-child(2) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
-
   & .header__top span:nth-last-child(1) {
     transform: translateY(0) rotate(45deg);
   }
 
-  & .header__top img {
-    transform: translateX(600px);
+  & .header__top .header__menu span ~ span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
   }
 
-  & .header__top label {
+  & .header__top .header__menu {
     position: fixed;
     right: 20px;
     top: 40px;
   }
 }
 
-.nav__call {
-  display: none;
-}
-
 @media screen and (max-width: $padContentSize) {
   .header__menu {
     display: flex;
-    &-opened {
-      position: absolute;
-      top: 40px;
-      right: 24px;
-    }
   }
 
   .nav {
@@ -122,12 +110,11 @@
   }
 
   #menu__toggle:checked ~ {
-    & body {
-      overflow-y: hidden;
-    }
     & .nav {
-      top: 0;
-      right: 0;
+      display: flex;
+      opacity: 1;
+      bottom: 0;
+      left: 0;
     }
   }
 }
