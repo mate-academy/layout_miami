@@ -7,7 +7,10 @@
   height: 100vh;
   padding: 24px 24px 0 21px;
 
-  animation: menu linear 0.8s forwards;
+  background-color: $highlight-color;
+
+  transition: all 2s ease-in-out;
+  transform: translateY(-100%);
 
   @media (min-width: 426px) {
     padding: 24px 50px 56px;
@@ -51,26 +54,17 @@
     @extend  %underscore;
   }
 
-  display: none;
-
-}
-
-@keyframes menu {
-  0% {
-    opacity: 0;
-    top: -100%;
-  }
-
-  100% {
-    top: 0;
-    opacity: 1;
-    background-color: $highlight-color;
+  @media (min-width: 769px) {
+    display: none;
   }
 }
 
-@keyframes close {
-  100% {
-    opacity: 0;
-    top: -100%;
-  }
+.mobile-header-active {
+  transition: all 2s ease-in-out;
+  transform: translateY(0);
+}
+
+.mobile-header-inactive {
+  transition: all 2s ease-in-out;
+  transform: translateY(-100%);
 }
