@@ -4,18 +4,105 @@
   .header__call {
     display: none;
   }
-  
-  header {
-    &__top,
-    &__bottom {
-      padding: 0;
-    }
+
+  .header {
     &__top {
-      padding: 0;
+      padding: 24px;
     }
-      
+
+    &__logo {
+      z-index: 2;
+      width: 73px;
+      height: 48px;
+    }
+
     &__bottom {
+      padding: 0 24px;
+    }
+
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+    }
+
+    &__label {
+      display: block;
+    }
+
+    &__mini-number {
+      display: block;
+    }
+
+    &__container {
+      display: block;
+    }
+
+    .nav__check-menu:checked ~ &__top &__container &__burger-line_first {
+      display: none;
+    }
+  
+    .nav__check-menu:checked ~ &__top &__container &__burger-line_second {
+      transform: rotate(45deg);
+    }
+  
+    .nav__check-menu:checked ~ &__top &__container &__burger-line_third {
+      transform: rotate(-45deg);
+    }
+  
+    .nav__check-menu:checked ~ &__top &__container &__burger-line_fourth {
+      display: none;
+    }
+  }
+
+  .nav {
+    transition: visibility 2s;
+    &__check-menu:checked ~ .header__bottom & {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      background-color: #0075ff;
+    }
+
+    &__item {
+      margin-bottom: calc(32px - (32px - 22px) / 2);
+    }
+
+    &__list {
+      position: relative;
+      top: 120px;
+      flex-direction: column;
+    }
+
+    &__link {
+      letter-spacing: 2px;
+      font-size: 22px;
+      line-height: 32px;
+      padding: 0 21px;
+    }
+    
+    &__link_active {
+      background-color: #0075ff;
+      opacity: 1;
+    }
+
+    &__alter-bottom {
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 21px;
       padding: 0 20px;
+    }
+
+    &__alter-number {
+      display: flex;
+      margin-bottom: 16px;
+    }
+
+    &__alter-call {
+      display: inline-block;
     }
   }
 
@@ -119,6 +206,7 @@
 }
 
 @media (max-width: 600px) {
+
   .gallery {
     &__button {
       width: 100%;
