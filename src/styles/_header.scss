@@ -1,0 +1,125 @@
+.header {
+  position: relative;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 762px;
+  overflow: hidden;
+
+  @media (max-width: $tabletsWidth) {
+    height: 100vh;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  &__number {
+    @extend %headerText;
+    @include hover(color, $headerHoveredColor);
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
+  }
+
+  &__number-icon {
+    display: none;
+
+    @media (max-width: $tabletsWidth) {
+      background-image: url("../images/phone_icon.svg");
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__order-call {
+    border-bottom: 1px solid #fff;
+    padding: 8px 0;
+    transition: 0.5s;
+    @extend %headerText;
+
+    &:hover {
+      color: $headerHoveredColor;
+      border-bottom: 1px solid $headerHoveredColor;
+    }
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
+
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__toggle-toolbar {
+    display: none;
+    background-image: url("../images/open-menu_label.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    cursor: pointer;
+
+    @media (max-width: $tabletsWidth) {
+      display: block;
+    }
+  }
+
+  &__input:checked + &__toggle-toolbar {
+    background-image: url("../images/close-menu_label.svg");
+  }
+
+  &__input:checked ~ .toolbar {
+    left: 0;
+  }
+
+  &__title-wrapper {
+    position: absolute;
+    bottom: 165px;
+
+    @media (max-width: $tabletsWidth) {
+      bottom: 80px;
+      left: 10vw;
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    @media (max-width: $tabletsWidth) {
+      font-size: 46px;
+      letter-spacing: -1px;
+    }
+  }
+
+  &__nav {
+    margin-top: 580px;
+
+    @media (max-width: $tabletsWidth) {
+      display: none;
+    }
+  }
+}
