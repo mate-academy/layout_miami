@@ -1,0 +1,54 @@
+.about-us {
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $laptopScreens) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__examples {
+    margin-right: 15px;
+    @include largeFontStyle;
+
+    &_blue {
+      position: relative;
+      color: $blueColor;
+      transition: all 2s;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 0;
+        background-color: $blueColor;
+        bottom: 0;
+        left: 0;
+        transition: width $transitionTime;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__experience {
+    max-width: 500px;
+    @include smallFontStyle;
+
+    @media (max-width: $laptopScreens) {
+      margin-top: 30px;
+    }
+
+    &_subtitle {
+      @include subtitleFontStyle;
+    }
+
+    &_gray {
+      font-weight: 600;
+    }
+  }
+}

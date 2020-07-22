@@ -1,0 +1,120 @@
+.header {
+  height: 100vh;
+  position: relative;
+  padding: 24px 0 48px;
+
+  background: url("../images/header.jpg") center/cover;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+
+  &__container {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include headerFontStyle;
+  }
+
+  &__phone {
+    transition: color $transitionTime, transform $transitionTime;
+
+    @media (max-width: $laptopScreens) {
+      display: none;
+    }
+
+    &:hover {
+      color: $hoverColor;
+      transform: scale(1.1);
+    }
+
+    &-icon {
+      display: none;
+      background: url(../images/icons/phone_icon.svg) center/contain no-repeat;
+      width: 18px;
+      height: 18px;
+      
+      @media (max-width: $laptopScreens) {
+        display: inline;
+      }
+    }
+  }
+
+  &__action {
+    position: relative;
+    text-transform: uppercase;
+    transition: color $transitionTime, transform $transitionTime;
+
+    @media (max-width: $laptopScreens) {
+      display: none;
+    }
+
+    &-burger {
+      display: none;
+      background: url(../images/icons/burger_icon.png) center/contain no-repeat;
+      width: 18px;
+      height: 12px;
+      cursor: pointer;
+
+      @media (max-width: $laptopScreens) {
+        display: inline;
+      }
+    }
+
+    &:hover {
+      color: $hoverColor;
+      transform: scale(1.1);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background-color: white;
+      bottom: -8px;
+      left: 0;
+    }
+  }
+
+  &__title {
+    position: relative;
+    top: 120px;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+
+    @media (max-height: $smallScreens) {
+      top: 40px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 2px;
+      background-color: white;
+      bottom: 150px;
+      left: 3px;
+    }
+
+    @media (max-width: $laptopScreens) {
+      font-size: 70px;
+      line-height: 70px;
+      top: -60px;
+    }
+
+    @media (max-width: $smallScreens) {
+      font-size: 45px;
+      line-height: 45px;
+      top: -10px;
+    }
+  }
+}
