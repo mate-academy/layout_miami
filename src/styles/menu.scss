@@ -7,7 +7,7 @@
   right: -110%;
   background-color: #0075ff;
   width: 100vw;
-  height: 100vh;
+  height: 700px;
   margin: 0;
   padding-top: 24px;
   z-index: 1;
@@ -54,8 +54,25 @@
   @include item-active;
 }
 
-.header__menu--active {
+.header__toogler {
   display: none;
+}
+
+.header__toogler-label {
+  display: none;
+  cursor: pointer;
+  background-image: url(../images/menu.svg);
+  width: $small-menu-width;
+  height: $small-menu-height;
+  position: relative;
+  top: $small-menu-width;
+  z-index: 2;
+}
+
+.header__toogler:checked + .header__toogler-label {
+  background-image: url(../images/Vector.svg);
+  height: 16px;
+  width: 16px;
 }
 
 .menu__logo {
@@ -64,8 +81,12 @@
   height: $logo-small-height;
 }
 
-.header__menu--active:checked + .menu {
-  @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
+  .header__toogler:checked ~ .menu {
     left: 0;
+  }
+
+  .header__toogler-label {
+    display: flex;
   }
 }
