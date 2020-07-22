@@ -1,0 +1,83 @@
+.menu-burger {
+  &__toggle,
+  &__button,
+  &__nav {
+    display: none;
+  }
+
+  @media (max-width: $mobileScreen) {
+    &__button {
+      $iconTranslate: 5px;
+
+      position: relative;
+      cursor: pointer;
+      z-index: 3;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 18px;
+      height: 18px;
+
+      > span {
+        position: relative;
+        z-index: 3;
+        @include iconMenuBurger;
+
+        background-color: $colorBasic;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+
+          @include iconMenuBurger;
+
+          background-color: $colorBasic;
+          transition: transform 300ms;
+        }
+
+        &::before {
+          transform: translateY(-#{$iconTranslate});
+        }
+
+        &::after {
+          transform: translateY($iconTranslate);
+        }
+      }
+    }
+
+    &__nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+
+      width: 100%;
+      height: 100%;
+      padding-left: 20px;
+
+      background-color: $colorLink;
+      transition: opacity 1s;
+    }
+
+    &__toggle:checked ~ &__button > span {
+      $iconRotate: 45deg;
+      height: 0;
+
+      &::before {
+        transform: rotate(-#{$iconRotate});
+      }
+
+      &::after {
+        transform: rotate($iconRotate);
+      }
+    }
+
+    &__toggle:checked ~ &__nav {
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+}
