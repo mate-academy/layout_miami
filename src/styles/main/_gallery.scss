@@ -1,0 +1,67 @@
+.gallery {
+  margin-top: 152px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__heading {
+    @extend %h2-with-crown;
+  }
+
+  &__photos {
+    width: $page-width - $header-side-padding * 2;
+    margin-bottom: 40px;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 24px;
+  }
+
+  &__photo {
+    height: 256px;
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+
+    transition: transform 1000ms;
+
+    &_1,
+    &_6 {
+      width: 673px;
+    }
+
+    &_3,
+    &_4 {
+      width: 500px;
+    }
+
+    &_2,
+    &_5 {
+      width: 327px;
+    }
+
+    @for $i from 1 through 6 {
+      &_#{$i} {
+        background-image: url("/images/photos/#{$i}.jpg");
+      }
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 6px 2px #0075ff;
+    }
+  }
+
+  &__button {
+    width: 188px;
+    height: 56px;
+
+    box-shadow: none;
+    background-color: #fff;
+    border-color: #0075ff;
+    color: #0075ff;
+  }
+}
