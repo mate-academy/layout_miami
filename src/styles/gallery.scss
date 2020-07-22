@@ -11,22 +11,11 @@
     }
   }
 
-  &__photos {
-    display: grid;
-    grid-template-rows: repeat(3, 307px);
-    row-gap: 40px;
-    width: 100%;
-
-    @media (max-width: $breakPoint) {
-      row-gap: 32px;
-    }
-  }
-
   &__text {
-    margin: 24px 0 0;
+    margin: 24px 0 40px;
 
     @media (max-width: $breakPoint) {
-      margin: 16px 0 0;
+      margin: 16px 0 32px;
     }
   }
 
@@ -34,6 +23,8 @@
     display: grid;
     justify-items: stretch;
     column-gap: 20px;
+
+    overflow: hidden;
 
     &--1 {
       grid-template-columns: 2fr 1fr;
@@ -52,15 +43,27 @@
     }
   }
 
-  &__photo {
-    border-radius: 8px;
+  &__photos-box {
     height: 256px;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @media(max-width: 400px) {
+      height: 130px;
+    }
+  }
+
+  &__photo {
+    height: 100%;
     width: 100%;
     object-fit: cover;
+
+    @include hover(transform, scale(1.1));
   }
 
   &__button {
     width: 188px;
+    height: 56px;
     line-height: 56px;
 
     justify-self: center;
@@ -70,9 +73,20 @@
     background-color: $mainColor;
     box-shadow: none;
 
-    @extend %button;
+    margin-top: 16px;
+    border: 2px solid $mobMenuColor;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.33rem;
 
     @include hover(color, $mainColor);
+    @include hover(background-color, $hoverButtonColor);
+    @include hover(border, 1px solid $hoverButtonColor);
+    @include hover(box-shadow, 0 13px 27px rgba(0, 83, 181, 0.5));
 
     @media (max-width: $breakPoint) {
       width: 100%;

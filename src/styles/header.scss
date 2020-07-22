@@ -1,4 +1,7 @@
 .header {
+  position: relative;
+  overflow-x: hidden;
+
   display: flex;
   justify-content: center;
 
@@ -22,6 +25,7 @@
     height: 100%;
     width: $containerWidth;
     padding: $containerPaddingY $containerPaddingX 48px;
+
   }
 
   &__top {
@@ -56,6 +60,11 @@
 
   &__logo {
     margin-top: -($logoHeight/2);
+
+    @media (max-width: $breakPoint) {
+      right: 50%;
+      transform: translate(80%, 0);
+    }
   }
 
   &__action {
@@ -112,23 +121,69 @@
     }
   }
 
-  &__toggler {
-    display: none;
-  }
+  &__dash {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin-bottom: 6px;
+    position: relative;
 
-  &__toggler-label {
-    display: none;
+    background-color: $mainColor;
+    border-radius: 3px;
 
-    @extend %mobileVector;
+    z-index: 1;
 
-    cursor: pointer;
-    
-    &::before {
-      content: url(../images/dashes.png);
+    transform-origin: 4px 0;
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1),
+      background-color 0.5s cubic-bezier(0.77,0.2,0.05,1),
+      opacity 0.55s ease;
+
+    &:first-child {
+      transform-origin: 0% 0%;
     }
 
-    @media (max-width: $breakPoint) {
-      display: block;
+    &:last-child {
+      transform-origin: 0% 100%;
+    }
+  }
+
+  &__toggler {
+    display: block;
+
+    width: 24px;
+    height: 24px;
+
+    position: absolute;
+    top: 26px;
+    right: 20px;
+
+    cursor: pointer;
+
+    opacity: 0;
+    z-index: 2;
+
+    &:checked ~ .header__dashes-block .header__dash {
+      opacity: 1;
+      transform: rotate(45deg) translate(-6px, -15px);
+      background-color: $mainColor;
+
+      &:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      &:nth-last-child(2) {
+        transform: rotate(-45deg) translate(-2px, 9px);
+      }
+    }
+  }
+
+  &__dashes-block {
+    margin: 36px 20px 0 0;
+
+    @media (min-width: $breakPoint) {
+      display: none;
     }
   }
 }
