@@ -1,8 +1,10 @@
 # Miami landing page
+
 - Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A2)
 - Follow this [video guide](https://www.youtube.com/watch?v=sq184jq9DV8&feature=youtu.be) and write your own implementation.
 
 ## Instructions
+
 1. **Fork** the repo.
 2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
 3. Run `npm install` (or just `npm i`)
@@ -16,7 +18,7 @@
 11. `git push origin develop` - to send you code for PR
 12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
 13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
+    [DEMO LINK](https://ArtemiiKab.github.io/layout_miami/)
 14. Copy `DEMO LINK` to the PR description
 
 > To update you PR repeat steps 7-11
