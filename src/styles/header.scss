@@ -1,9 +1,10 @@
 .header {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 700px;
+  height: 100vh;
   color: #fff;
   background-image: url(../images/headerNew.jpg);
   background-repeat: no-repeat;
@@ -14,27 +15,47 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: $contentWidth;
     margin-top: 24px;
+    width: $contentWidth;
 
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 2px;
+
+    @media (max-width: $breakPoint) {
+      padding: 0 5vw;
+      width: 100%;
+    }
   }
   
-  &__order {
+  &__link {
     position: relative;
     color: #fff;
     text-transform: uppercase;
 
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      bottom: -8px;
-      height: 1px;
-      width: 100%;
-      background-color: #fff;
+    &--PC {
+      @media (max-width: $breakPoint) {
+        display: none;
+      }
+    }
+
+    &--mob {
+      @media (min-width: $breakPoint) {
+        display: none;
+      }
+    }
+  
+    &--underlined {
+      
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -8px;
+        height: 1px;
+        width: 100%;
+        background-color: #fff;
+      }
     }
 
     &:hover {
