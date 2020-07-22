@@ -1,6 +1,6 @@
 .header {
   background-image: url(/images/header.png);
-  height: 700px;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   padding-top: 24px;
@@ -8,25 +8,34 @@
   justify-content: space-between;
   @include headerText;
 
-  @media (max-width: 999px) {
-    & {
-      height: 568px;
-    }
-  }
-
   &__top {
     align-items: center;
     display: flex;
     justify-content: space-between;
   }
 
-  &__action {
-    padding: $clickableAreaVertical $clickableAreaHorizontal;
-    margin-right: -1 * $clickableAreaHorizontal;
+  &--icon {
+    display: none;
+    background-image: url(/images/burger.svg);
+    width: 18px;
+    height: 12px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 999px) {
+      display: block;
+    }
+  }
+
+  &__link {
+    @media (max-width: 999px) {
+      display: none;
+    }
 
     &--icon {
       display: none;
-      background-image: url(/images/burger.svg);
+      background-image: url(/images/phone.svg);
       width: 18px;
       height: 18px;
       background-size: cover;
@@ -36,26 +45,6 @@
       @media (max-width: 999px) {
         display: inherit;
       }
-    }
-  }
-
-  &__link {
-    @media (max-width: 999px) {
-      display: none;
-    }
-  }
-
-  &__phone--icon {
-    display: none;
-    background-image: url(/images/phone.svg);
-    width: 18px;
-    height: 18px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    @media (max-width: 999px) {
-      display: inherit;
     }
   }
 
@@ -94,7 +83,8 @@
         font-size: 46px;
         line-height: 40px;
         letter-spacing: -1px;
-        margin-top: 335px;
+        position: absolute;
+        bottom: 15vh;
       }
     }
 
@@ -108,5 +98,35 @@
 
   &__nav {
     margin-top: 85px;
+  }
+
+  &__label {
+    display: none;
+    z-index: 2;
+    width: 18px;
+    height: 12px;
+    cursor: pointer;
+    background-position: center;
+    background-image: url(/images/burger.svg);
+
+    @media (max-width: 999px) {
+      & {
+        display: block;
+      }
+    }
+  }
+
+  &__toggler {
+    display: none;
+    z-index: 2;
+
+    &:checked + .header__label {
+      background-image: url(/images/cross.svg);
+      z-index: 2;
+    }
+
+    &:checked ~ .mobile-menu {
+      left: 0;
+    }
   }
 }
