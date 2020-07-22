@@ -1,0 +1,70 @@
+.mobile-menu {
+  position: absolute;
+  padding-left: 21px;
+
+  &__list {
+    display: none;
+    flex-direction: column;
+    margin: 120px 0 50px;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    color: $headerMainColor;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__phone,
+  &__call {
+    display: none;
+    @include headerSmallFont;
+    color: $headerMainColor;
+    width: max-content;
+  }
+
+  &__call {
+    margin-top: 16px;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      border: 1px solid $headerMainColor;
+      left: 0;
+      top: calc(100% + 8px);
+    }
+  }
+}
+
+@media (max-width: $smallScreenBreakPoint) {
+  .mobile-menu {
+    z-index: 1;
+    width: 100%;
+    height: 570px;
+    background-color: $secondaryColor;
+    top: 0;
+    left: 100%;
+    transition: left 1s;
+
+    &__list {
+      display: flex;
+    }
+
+    &__phone,
+    &__call {
+      display: block;
+    }
+  }
+}
