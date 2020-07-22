@@ -7,6 +7,7 @@
   max-width: $max-width;
   height: $header-height;
   background-image: url(../images/header.jpg);
+
   margin: 0 auto;
   padding: $header-top-indent $side-indent $header-bottom-indent;
 
@@ -17,6 +18,13 @@
   color: $color-white;
   text-transform: uppercase;
 
+  @media screen and (max-width: $breakpoint-medium) {
+    height: $header-height-small;
+    background-size: cover;
+    background-position: center;
+    padding: $header-top-indent $side-indent-small $header-bottom-indent-small;
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -26,6 +34,16 @@
   &__logo {
     width: $logo-width-big;
     height: $logo-height-big;
+
+    @media screen and (max-width: $breakpoint-medium) {
+      left: calc(50% - #{$logo-width-small} / 2);
+      width: $logo-width-small;
+      height: $logo-height-small;
+    }
+
+    @media screen and (max-width: $breakpoint-small) {
+      position: absolute;
+    }
   }
 
   &__title {
@@ -50,13 +68,39 @@
     }
   }
 
-  &__action {
-    padding: 8px 0;
-    border-bottom: 1px solid $color-white;
-  }
-
   &__link {
     color: $color-white;
     text-decoration: none;
+    white-space: nowrap;
+
+    &--action {
+      padding: 8px 0;
+      border-bottom: 1px solid $color-white;
+    }
+
+    @media screen and (max-width: $breakpoint-small) {
+      visibility: hidden;
+
+      &--phone::before {
+        display: block;
+        position: relative;
+        visibility: visible;
+        top: calc(#{$logo-height-small} / 2 - #{$phone-icon-size} / 2);
+        content: url(../images/phone.svg);
+        width: $phone-icon-size;
+        height: $phone-icon-size;
+      }
+
+      &--action::before {
+        display: block;
+        position: relative;
+        visibility: visible;
+        top: $action-icon-height;
+        left: calc(100% - 18px);
+        content: url(../images/action.svg);
+        width: $action-icon-width;
+        height: $action-icon-height;
+      }
+    }
   }
 }
