@@ -9,7 +9,7 @@
   background-size: cover;
   background-position: center;
 
-  @include header-font();
+  @include header-font;
 
   color: $secondary-color;
   text-transform: uppercase;
@@ -40,10 +40,14 @@
     color: $secondary-color;
   }
 
+  &__logo-container {
+    z-index: 5;
+  }
+
   &__logo {
     @include logo-size;
-    
-    @media (max-width: 992px) {
+
+    @media (max-width: 768px) {
       width: 73px;
       height: 48px;
     }
@@ -53,7 +57,7 @@
     margin: 56px 110px;
 
     @media (max-width: 992px) {
-      display: none;
+      content: url(/images/phone.svg);
     }
   }
 
@@ -61,10 +65,6 @@
     position: relative;
     margin: 56px 110px;
     color: $secondary-color;
-
-    @media (max-width: 992px) {
-      display: none;
-    }
 
     &:hover {
       opacity: $header-hover-opacity;
@@ -77,9 +77,50 @@
       height: 0;
       background-color: $secondary-color;
 
-      border: 1px solid $secondary-color;
+      border-bottom: 1px solid $secondary-color;
       bottom: 2px;
       left: 10px;
+    }
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+
+  }
+
+  &__btn {
+    margin: 56px 110px;
+    transition: opacity, $basic-transition-time;
+    cursor: pointer;
+    z-index: 10;
+  
+    &:hover {
+      opacity: $header-hover-opacity;
+    }
+  
+    @media (min-width: 992px) {
+      display: none;
+    }
+  
+    &--line1 {
+      height: 2px;
+      width: 18px;
+      margin-bottom: 3px;
+      background-color: $secondary-color;
+    }
+  
+    &--line2 {
+      height: 2px;
+      width: 18px;
+      margin-bottom: 3px;
+      background-color: $secondary-color;
+    }
+  
+    &--line3 {
+      height: 2px;
+      width: 18px;
+      margin-bottom: 3px;
+      background-color: $secondary-color;
     }
   }
 }

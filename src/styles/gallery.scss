@@ -19,9 +19,17 @@
     grid-template-columns: 1fr 2fr;
   }
 
+  @media (max-width: 992px) {
+    &__photos--big-first,
+    &__photos--big-normal,
+    &__photos--big-second {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
   &__photo {
     height: $photo-height;
-    border-radius: 8px;
+    border-radius: $border-radius-basic;
     object-fit: cover;
     object-position: center;
     overflow: hidden;
@@ -49,7 +57,7 @@
     height: 56px;
 
     border: 2px solid $main-color;
-    border-radius: 8px;
+    border-radius: $border-radius-basic;
     outline: none;
 
     @include text-for-button;
@@ -59,6 +67,10 @@
     transition: transform 1s;
     &:active {
       transform: scale($button-scale);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
     }
   }
 

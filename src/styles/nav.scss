@@ -2,7 +2,7 @@
   &__list {
     position: absolute;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: $max-conten-width;
 
     @include flex-center;
     align-items: center;
@@ -14,10 +14,25 @@
     left: 0;
     right: 0;
 
+    transition: opacity, $basic-transition-time;
+
     @include header-font;
 
     @media (max-width: 992px) {
-      display: none;
+      height: $header-height;
+      padding: 170px 21px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      visibility: hidden;
+
+      background-color: $main-color;
+
+      @include mobile-nav-font;
+
+      z-index: 2;
+
     }
   }
 
@@ -37,32 +52,83 @@
       left: 0;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 768px) {
       font-size: 46px;
       line-height: 40px;
       letter-spacing: -1px;
+      visibility: visible;
+      display: relative;
+      margin: 350px 81px 80px;
+    }
+
+    @media (max-width: 992px) {
+      visibility: visible;
+      display: relative;
+      margin: 350px 100px 80px;
     }
   }
 
   &__link {
     color: $secondary-color;
-    padding: 20px;
   }
 
   &__item {
     position: relative;
     cursor: pointer;
-    transition: opacity, $basic-transition-time;
+    padding: 10px 16px;
 
     &:hover {
       opacity: $header-hover-opacity;
     }
 
     &--is-active {
-      padding: 10px 16px;
-
       background: $is-active-color;
       border-radius: 10px;
+      
+      @media (max-width: 992px) {
+        background-color: transparent;
+      }
     }
+  }
+
+  &__hidden {
+    display: none;
+
+    @media (max-width: 992px) {
+      display: initial;
+    }
+  }
+
+  &__actions {
+    padding: 48px 0 16px;
+    @include header-font;
+
+    &:last-child {
+      position: relative;
+      
+      &:after {
+        content: "";
+        position: absolute;
+        width: 111px;
+        height: 0;
+        background-color: $secondary-color;
+  
+        border: 1px solid $secondary-color;
+        bottom: 16px;
+        left: 16px;
+      }
+    }
+  }
+
+  &__toogler {
+    display: none;
+  }
+  
+  &__toogler:checked ~ &__list {
+    visibility: visible;
+  }
+  
+  &__toogler:checked ~ &__title {
+    visibility: hidden;
   }
 }
