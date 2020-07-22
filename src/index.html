@@ -11,9 +11,8 @@
   <body>
     <header class="header">
       <div class="header__top content-container">
-        <div class="header__phone">
-          +1 234 555-55-55
-        </div>
+        <a class="header__phone" href="tel:+12345555555">+1 234 555-55-55</a>
+
         <div class="header__phone-img"></div>
 
         <div class="header__logo logo">
@@ -32,12 +31,101 @@
           </a>
         </div>
 
+        <input
+          class="header__hamburger-menu"
+          id="hamburger-menu"
+          type="checkbox"
+        >
+
         <label
-          class="header__hamburger-toggler-open"
+          class="header__hamburger-toggler"
           for="hamburger-menu"
         >
           <span class="header__hamburger-icon"></span>
         </label>
+
+        <section class="header__mobile-menu">
+          <section class="mobile-menu content-container">
+            <div class="mobile-menu__logo logo">
+              <a class="logo__link" href="#">
+                <img
+                  class="logo__img"
+                  src="images/logo.png"
+                  alt="Logo"
+                >
+              </a>
+            </div>
+
+            <nav class="mobile-menu__mobile-nav mobile-nav">
+              <ul class="mobile-nav__list">
+                <li class="mobile-nav__item">
+                  <a
+                    href="#"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li class="mobile-nav__item">
+                  <a
+                    href="#aboutus"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    About us
+                  </a>
+                </li>
+                <li class="mobile-nav__item">
+                  <a
+                    href="#gallery"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    Gallery
+                  </a>
+                </li>
+                <li class="mobile-nav__item">
+                  <a
+                    href="#consultation"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    Consultation
+                  </a>
+                </li>
+                <li class="mobile-nav__item">
+                  <a
+                    href="#testimonials"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    Testimonials
+                  </a>
+                </li>
+                <li class="mobile-nav__item">
+                  <a
+                    href="#contacts"
+                    class="mobile-nav__link"
+                    onclick="(() => {document.querySelector(`#hamburger-menu`).checked = false;})()"
+                  >
+                    Contacts
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="mobile-menu__info">
+              <a class="mobile-menu__phone" href="tel: +12345555555">
+                +1 234 555-55-55
+              </a>
+
+              <a href="#" class="mobile-menu__action">
+                Call to order
+              </a>
+            </div>
+          </section>
+        </section>
       </div>
 
       <div class="header__title content-container">
@@ -80,78 +168,6 @@
           </li>
         </ul>
       </nav>
-
-      <input
-        class="header__hamburger-menu"
-        id="hamburger-menu"
-        type="checkbox"
-      >
-      <section class="header__mobile-menu">
-        <section class="mobile-menu content-container">
-          <label
-            class="header__hamburger-toggler-close"
-            for="hamburger-menu"
-          >
-            <span class="header__hamburger-icon"></span>
-          </label>
-
-          <div class="mobile-menu__logo logo">
-            <a class="logo__link" href="#">
-              <img
-                class="logo__img"
-                src="images/logo.png"
-                alt="Logo"
-              >
-            </a>
-          </div>
-
-          <nav class="mobile-menu__mobile-nav mobile-nav">
-            <ul class="mobile-nav__list">
-              <li class="mobile-nav__item">
-                <a href="#" class="mobile-nav__link">
-                  Home
-                </a>
-              </li>
-              <li class="mobile-nav__item">
-                <a href="#aboutus" class="mobile-nav__link">
-                  About us
-                </a>
-              </li>
-              <li class="mobile-nav__item">
-                <a href="#gallery" class="mobile-nav__link">
-                  Gallery
-                </a>
-              </li>
-              <li class="mobile-nav__item">
-                <a href="#consultation" class="mobile-nav__link">
-                  Consultation
-                </a>
-              </li>
-              <li class="mobile-nav__item">
-                <a href="#testimonials" class="mobile-nav__link">
-                  Testimonials
-                </a>
-              </li>
-              <li class="mobile-nav__item">
-                <a href="#contacts" class="mobile-nav__link">
-                  Contacts
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="mobile-menu__info">
-            <a class="mobile-menu__phone" href="tel: +12345555555">
-              +1 234 555-55-55
-            </a>
-
-            <a href="#" class="mobile-menu__action">
-              Call to order
-            </a>
-          </div>
-        </section>
-
-      </section>
     </header>
 
     <main class="main">
@@ -264,7 +280,11 @@
             </p>
           </div>
           <div class="consultation__form form">
-            <form action="#" class="form">
+            <form
+              action="#"
+              method="POST"
+              class="form"
+            >
               <label for="consultation-name"></label>
               <input
                 type="text"
@@ -272,28 +292,33 @@
                 id="consultation-name"
                 name="consultation-name"
                 placeholder="Name"
+                maxlength="40"
+                required
               >
 
               <label for="consultation-phone"></label>
               <input
-                type="text"
+                type="tel"
                 class="form__phone form__item"
                 id="consultation-phone"
                 name="consultation-phone"
                 placeholder="Phone"
+                pattern="+[0-9]{12,}"
+                required
               >
 
               <label for="consultation-email"></label>
               <input
-                type="text"
+                type="email"
                 class="form__email form__item"
                 id="consultation-email"
                 name="consultation-email"
                 placeholder="Email"
+                required
               >
 
               <button
-                type="button"
+                type="submit"
                 class="form__button button button--form-btn"
               >
                 Consultation
@@ -371,16 +396,16 @@
               <h4 class="contacts__phone-title subtitle-4">
                 Phone
               </h4>
-              <p class="contacts__phone-number paragraph-text">
+              <a class="contacts__phone-number paragraph-text" href="tel:+123455555555">
                 +1 234 5555-55-55
-              </p>
+              </a>
 
               <h4 class="contacts__email-title subtitle-4">
                 Email
               </h4>
-              <p class="contacts__email-address paragraph-text">
+              <a class="contacts__email-address paragraph-text" href="mailto:hello@miami.com">
                 hello@miami.com
-              </p>
+              </a>
             </div>
 
             <div class="contact__last-part">
@@ -399,7 +424,11 @@
             </div>
           </div>
           <div class="contacts__form">
-            <form action="#" class="form">
+            <form
+              action="#"
+              method="POST"
+              class="form"
+            >
               <label for="contacts-name"></label>
               <input
                 type="text"
@@ -407,15 +436,18 @@
                 id="contacts-name"
                 name="contacts-name"
                 placeholder="Name"
+                maxlength="40"
+                required
               >
 
               <label for="contacts-email"></label>
               <input
-                type="text"
+                type="email"
                 class="form__email form__item"
                 id="contacts-email"
                 name="contacts-email"
                 placeholder="Email"
+                required
               >
 
               <label for="contacts-message"></label>
@@ -425,10 +457,11 @@
                 name="contacts-message"
                 placeholder="Message"
                 rows="7"
+                required
              ></textarea>
 
               <button
-                type="button"
+                type="submit"
                 class="form__button button button--form-btn"
               >
                 Consultation
