@@ -1,0 +1,202 @@
+.header {
+  $blockName: &;
+
+  position: relative;
+  height: $headerHeight;
+  font-size: 12px;
+  line-height: 16px;
+  color: $headerTextColor;
+  letter-spacing: $headerLetterSpacing;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &::after {
+    content: "";
+    display: block;
+    height: $headerHeight;
+    background-color: rgba(128, 0, 128, 0.15);
+  }
+
+  &__top {
+    position: absolute;
+    margin-top: $headerContentTop;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone {
+    font-size: 16px;
+    color: $lightTextColor;
+
+    @media (max-width: $notebookScreenSize) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    @media (max-width: $mScreenSize) {
+      display: none;
+    }
+  }
+
+  &__phone-img {
+    display: none;
+
+    @media (max-width: $mScreenSize) {
+      display: block;
+      width: 18px;
+      height: 18px;
+      background-image: url(../images/phone.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+  }
+
+  &__action {
+    font-size: 16px;
+    line-height: 21px;
+
+    @media (max-width: $notebookScreenSize) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    @media (max-width: $mScreenSize) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-weight: 900;
+    color: $headerTextColor;
+    text-transform: uppercase;
+    @extend %headerActionBrdr;
+    @include hover(color, $headerHoverText);
+  }
+
+  &__title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 165px;
+    font-size: $headerTitleFontSize;
+    line-height: $headerTitleFontSize;
+    font-weight: 900;
+    text-transform: capitalize;
+    letter-spacing: $headingsLetterSpacing;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      display: block;
+      width: 35px;
+      height: 2px;
+      background-color: $headerTextColor;
+      border-radius: 2px;
+    }
+    
+    @media (max-width: $mScreenSize) {
+      bottom: 15%;
+    }
+
+    @media (max-width: $sScreenSize) {
+      font-size: 46px;
+      line-height: 40px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    display: block;
+
+    @media (max-width: $mScreenSize) {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    display: none;
+
+    @media (max-width: $mScreenSize) {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      display: block;
+      right: -100vw;
+      transition: right $defaultAnimTime;
+    }
+  }
+
+  &__hamburger-toggler {
+    display: none;
+
+    @media (max-width: $mScreenSize) {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      width: $hamburgerLineWidth;
+      height: $hamburgerLineHeight * 3 + $hamburgerLineGapY * 2;
+      cursor: pointer;
+    }
+  }
+
+  &__hamburger-icon,
+  &__hamburger-icon::before,
+  &__hamburger-icon::after {
+    position: relative;
+    display: block;
+    width: $hamburgerLineWidth;
+    height: $hamburgerLineHeight;
+    border-radius: 1px;
+    background-color: $bgColor;
+    transition: transform $defaultAnimTime;
+  }
+
+  &__hamburger-icon {
+
+    &::before {
+      content: "";
+      bottom: $hamburgerLineHeight + $hamburgerLineGapY;
+    }
+
+    &::after {
+      content: "";
+      top: $hamburgerLineGapY;
+    }
+  }
+
+  &__hamburger-menu {
+    display: none;
+  }
+
+  &__hamburger-menu:checked ~ &__mobile-menu {
+    @media (max-width: $mScreenSize) {
+      right: 0;
+    }
+  }
+
+  &__hamburger-menu:checked ~ &__hamburger-toggler &__hamburger-icon {
+    @media (max-width: $mScreenSize) {
+      position: fixed;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__hamburger-menu:checked ~ &__hamburger-toggler &__hamburger-icon::before {
+    top: 0;
+  }
+
+  &__hamburger-menu:checked ~ &__hamburger-toggler &__hamburger-icon::after {
+    transform: rotate(-90deg);
+    top: -($hamburgerLineHeight);
+  }
+}

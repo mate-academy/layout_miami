@@ -1,0 +1,68 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  background-color: $bgColor;
+  transition: width $defaultAnimTime;
+
+  @media (max-width: $mScreenSize) {
+    flex-direction: column;
+  }
+
+  &__title {
+    width: $infoTitleElemWidth;
+    padding-bottom: 50px;
+    $titleFontSize: 48px;
+    font-size: $titleFontSize;
+    line-height: $titleFontSize;
+    font-weight: bold;
+    letter-spacing: $headingsLetterSpacing;
+    color: $mainTextColor;
+
+    @media (max-width: $lScreenSize) {
+      width: $infoTitleElemlARGEWidth;
+    }
+
+    @media (max-width: $mScreenSize) {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    color: $secondaryTextColor;
+
+    &::after {
+      content: "";
+      bottom: -5px;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: $secondaryTextColor;
+      border-radius: 1px;
+      transition: width $defaultAnimTime;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__paragraph-text {
+    width: 100% - $infoTitleElemWidth;
+
+    @media (max-width: $mScreenSize) {
+      width: 100%;
+    }
+  }
+
+  &__paragraph-text > p {
+    margin-top: $paragraphTextGapY;
+    padding-bottom: $paragraphTextGapY;
+  }
+
+  &__paragraph-text > p:last-child {
+    padding-bottom: 0;
+  }
+}
