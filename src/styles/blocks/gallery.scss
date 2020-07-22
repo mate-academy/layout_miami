@@ -1,0 +1,89 @@
+$imgGap: 20px;
+$imgHeight: 256px;
+$smallImgPoint: $imgHeight * 2 + $imgGap;
+
+.gallery {
+  &__title {
+    margin-bottom: 61px;
+  }
+
+  &__row {
+    display: flex;
+    height: $imgHeight;
+
+    @media (max-width: $smallImgPoint) {
+      height: 131px;
+    }
+
+    @media (min-width:$mobileWidthPoint) {
+      &--wide-left .gallery__img-box:first-child,
+      &--wide-right .gallery__img-box:last-child {
+        width: calc(67% - #{$imgGap / 2});
+      }
+
+      &--wide-right .gallery__img-box:first-child,
+      &--wide-left .gallery__img-box:last-child {
+        width: calc(33% - #{$imgGap / 2});
+      }
+    }
+  }
+
+  &__img-box {
+    overflow: hidden;
+    border-radius: 8px;
+    width: calc(100% - #{$imgGap / 2});
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    transition: all 0.3s;
+    width: 100%;
+    min-height: $imgHeight;
+    transform: scale(1);
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: $smallImgPoint) {
+      height: 131px;
+      min-height: auto;
+    }
+  }
+
+  &__caption {
+    font-weight: bold;
+    padding: 24px 0 40px;
+  }
+
+  &__link {
+    color: $accentColor;
+  }
+
+  &__button {
+    @extend %button;
+    color: $accentColor;
+    margin: 0 auto;
+    background-color: transparent;
+
+    &:hover {
+      box-shadow: 0 6px 23px rgba(0,117,255,0.46);
+      background-color: $accentColor;
+      color: #fff;
+    }
+
+    @media (max-width: $mobileWidthPoint) {
+      width: 100%;
+    }
+  }
+}
