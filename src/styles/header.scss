@@ -1,0 +1,223 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: $header-height;
+  width: 100%;
+  position: relative;
+  padding: $header-vertical-padding $page-padding;
+  color: $white;
+  max-width: $full-screen;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: $mobile-width) {
+    flex-direction: column;
+    height: 580px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: $header-vertical-padding;
+    left: 0;
+    right: 0;
+
+    @media (max-width: $mobile-width) {
+      height: 300px;
+      left: 100%;
+      top: 0;
+      width: 100%;
+      box-sizing: border-box;
+      transition: transform 1s;
+    }
+  }
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  
+    @media (max-width: $mobile-width) {
+      width: 100%;
+    }
+
+    &-phone {
+      line-height: $top-height;
+      letter-spacing: $header-letter-spacing;
+
+      & a {
+        text-decoration: none;
+        font-size: $top-font-size;
+        letter-spacing: $header-letter-spacing;
+        color: $white;
+
+        @media (max-width: $mobile-width) {
+          opacity: 0;
+          position: absolute;
+          width: $vector-size*1.25;
+          font-size: $hidden-font-size;
+        }
+      }
+
+      @media (max-width: $mobile-width) {
+        position: relative;
+        top: $vector-size/2;
+        color: white;
+        height: $vector-size;
+        width: $vector-size;
+        background: no-repeat, url("../images/Phone.png"), center center;
+      }
+    }
+
+    &-link {
+      display: block;
+      position: relative;
+      line-height: $top-height;
+      color: $white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: $top-font-size;
+      letter-spacing: $header-letter-spacing;
+
+      &:hover {
+        @include hover (color, $active-color);
+      }
+      
+      @media (max-width: $mobile-width) {
+        display: none;
+        line-height: $small-text-line;
+      }
+    }
+
+    &-link::after {
+      display: block;
+      content: "";
+      background-color: $white;
+      width: 100%;
+      border-bottom: $thin-border solid $white;
+      position: absolute;
+      bottom: 24px;
+    }
+
+    &-action {
+
+      @media (max-width: $mobile-width) {
+        opacity: 0;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__checkbox,
+  &__label {
+    display: none;
+  }
+
+  &__bottom {
+
+    &-phone {
+      @media (min-width: $mobile-width) {
+        display: none;
+      }
+
+      & a {
+        color: $white;
+        text-decoration: none;
+        position: relative;
+        bottom: 120px;
+        letter-spacing: $header-letter-spacing;
+        font-size: $top-font-size;
+        line-height: 1.33em;
+        font-weight: 400;
+      }
+    }
+
+    &-action {
+      position: relative;
+      bottom: 104px;
+      line-height: 1.33em;
+
+      @media (min-width: $mobile-width) {
+        display: none;
+      }
+    }
+
+    &-link {
+      color: $white;
+      text-decoration: none;
+      letter-spacing: $header-letter-spacing;
+      font-size: $top-font-size;
+      line-height: $page-font-size;
+      font-weight: 400;
+      position: relative;
+      
+      &::after {
+        display: block;
+        content: "";
+        background-color: $white;
+        width: 100%;
+        border-bottom: $thin-border solid $white;
+        position: absolute;
+        top: 1.5*$small-text-line;
+      }
+    }
+  }
+
+  @media (max-width: $mobile-width) {
+    &__checkbox:not(:checked) + &__label {
+      position: absolute;
+      top: $mobile-header-padding + $logo-mobile-height/2
+        -$vector-size/2;
+      display: block;
+      height: $vector-size/3*2;
+      width: $vector-size;
+      background: no-repeat, url("../images/Vector.png");
+      background-size: cover;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    &__checkbox:checked + &__label {
+      display: block;
+      position: absolute;
+      top: $mobile-header-padding+$logo-mobile-height/2
+        -$vector-size/2;
+      background: no-repeat, url("../images/x.png");
+      background-size: cover;
+      cursor: pointer;
+      height: $label-size;
+      width: $label-size;
+      z-index: 2;
+    }
+
+    &__checkbox:checked ~ &__nav {
+      position: absolute;
+      transform: translateX(-100%);
+      z-index: 1;
+    }
+  }
+}
+
+@for $i from 100 through 1 {
+  @media (max-width: $min-width + ($mobile-width - $min-width)/100*$i) {
+    .header {
+      padding: $mobile-header-padding $page-padding - (100-($i));
+
+      &__checkbox:not(:checked) + &__label {
+        right: $page-padding - (100-($i));
+      }
+
+      &__checkbox:checked + &__label {
+        right: $page-padding - (100-($i));
+      }
+
+      &__bottom-phone a {
+        left: $page-padding - (100-($i));
+      }
+
+      &__bottom-action {
+        left: $page-padding - (100-($i));
+      }
+    }
+  }
+}
