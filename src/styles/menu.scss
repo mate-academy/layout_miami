@@ -1,16 +1,16 @@
 .menu {
-  display: flex;
+  display: none;
+  box-sizing: border-box;
   justify-content: space-between;
   flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: -110%;
+  position: absolute;
+  top: -24px;
+  left: -20px;
   background-color: #0075ff;
   width: 100vw;
   height: 700px;
-  margin: 0;
   padding-top: 24px;
-  z-index: 1;
+  z-index: -1;
 }
 
 .menu__list {
@@ -64,9 +64,9 @@
   background-image: url(../images/menu.svg);
   width: $small-menu-width;
   height: $small-menu-height;
-  position: fixed;
-  top: 40px;
-  left: calc(100% - 40px);
+  position: absolute;
+  top: 20px;
+  left: calc(100% - 20px);
   z-index: 2;
 }
 
@@ -83,8 +83,12 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .menu {
+    display: flex;
+  }
+  
   .header__toogler:checked ~ .menu {
-    left: 0;
+    z-index: 1;
   }
 
   .header__toogler-label {
