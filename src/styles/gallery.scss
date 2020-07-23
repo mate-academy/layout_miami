@@ -1,0 +1,93 @@
+.gallery {
+
+  &__images-row {
+    display: grid;
+    justify-items: stretch;
+    margin-top: $galleryRowMarginTop;
+    gap: 0 20px;
+    &--2-1 {
+      grid-template-columns: 2fr 1fr;
+    }
+    &--1-1 {
+      grid-template-columns: 1fr 1fr;
+    }
+    &--1-2 {
+      grid-template-columns: 1fr 2fr;
+    }
+    @media (max-width: $medScreenSize) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: $minScreenSize) {
+      margin-top: $galleryRowMarginTopMob;
+    }
+  }
+
+  &__photo {
+    display: block;
+    height: $galleryPhotoHeight;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 8px;
+    @media (max-width: $minScreenSize) {
+      height: $galleryPhotoHeightMob;
+    }
+  }
+
+  &__item-descr {
+    margin-top: $galleryDescrMarginTop;
+    color: $regularTextColor;
+    font-size: $reguralTextFontSize;
+    line-height: $reguralTextLineHeight;
+    @media (max-width: $minScreenSize) {
+      margin-top: $galleryDescrMarginTopMob;
+    }
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__hided {
+    height: 0;
+    overflow: hidden;
+    transition: height ($additionalPhotosCount * 0.5s) ease-in;
+  }
+
+  &__checkbox:checked + &__hided {
+    height: $additionalPhotosCount * (
+      $galleryRowMarginTop +
+      $galleryPhotoHeight +
+      $galleryDescrMarginTop +
+      $reguralTextLineHeight);
+    @media (max-width: $laptopScreenSize) {
+      height: $additionalPhotosCount * (
+        $galleryRowMarginTopMob +
+        $galleryPhotoHeightMob +
+        $galleryDescrMarginTopMob +
+        $reguralTextLineHeight);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    width: 190px;
+    padding: 20px 0;
+    margin: 40px auto 0;
+    color: $brightColor;
+    font-size: $reguralTextFontSize;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid $brightColor;
+    border-radius: 8px;
+    transition-duration: 0.6s;
+    outline: none;
+    cursor: pointer;
+    @media (max-width: $laptopScreenSize) {
+      width: 100%;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
