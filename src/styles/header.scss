@@ -15,24 +15,48 @@ $positionNavLinks: 50px;
 }
 
 .background {
-  background-image: url(/images/header.jpg);
+  background: url(/images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
 }
 
-.logo {
+.header__logo {
   @include logoSize;
+  background: url(/images/logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .header {
   position: relative;
-  display: flex;
-  flex-direction: column;
   @include headerFontStile;
-  text-align: center;
   height: 100%;
+  &__top__content {
+    padding: 10px;
+  }
+
+  &__mid {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .call {
+    position: relative;
+
+    &::after {
+      content: "";
+      border: 0.5px solid white;
+      width: 111px;
+      display: block;
+      position: absolute;
+      bottom: 2px;
+    }
+  }
+
   & a {
     color: $headerColorText;
   }
@@ -42,10 +66,11 @@ $positionNavLinks: 50px;
     justify-content: space-between;
     align-items: center;
     padding-top: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   &__content__title {
-    position: absolute;
-    bottom: 85px;
+    padding-bottom: 85px;
     font-weight: bold;
     font-size: 60px;
     line-height: 60px;
@@ -53,14 +78,14 @@ $positionNavLinks: 50px;
     &::before {
       content: "";
       display: block;
-      border: 2px solid $headerColorText;
+      border: 1px solid $headerColorText;
       width: 35px;
       margin-bottom: 16px;
     }
   }
 
   &__bot {
-    position: absolute;
+
     width: calc(100% - 120px * 2);
     bottom: 50px;
   }
@@ -85,15 +110,49 @@ $positionNavLinks: 50px;
   }
 }
 
+.menu__togler {
+  display: none;
+}
+
 @media (max-width: 960px) {
 
-  .nav__list {
+  .menu-icon {
     display: block;
-    text-align: right;
-    line-height: 30px;
+    background: url(/images/menu-icon.png);
+    width: 18px;
+    height: 12px;
+  }
+
+  .menu__togler:checked + .menu-icon {
+    background: url(/images/x-icon.png);
+
+  }
+
+  .call {
+    display: none;
+  }
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+  }
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 150px;
+    height: 50%;
+
+    font-size: 22px;
+    line-height: 22px;
+    &__item {
+      margin-bottom: 32px;
+    }
+
   }
   .header__content__title {
-
     position: absolute;
   }
 }
