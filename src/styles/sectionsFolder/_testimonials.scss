@@ -1,0 +1,48 @@
+.people {
+  display: grid;
+  justify-content: space-between;
+  grid-template: auto / repeat(3, $peopleCardWidth);
+  margin-top: $marginSectionCaption;
+
+  &__card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: $peopleCardWidth;
+    border-radius: 5%;
+    transition: box-shadow 0.3s, transform 0.3s;
+    &:hover {
+
+      box-shadow: 0 0 10px 6px rgba(0, 117, 255,0.8);
+      transform: scale(1.05);
+    }
+  }
+
+  &__photo {
+    width: $peopleCardPhotoSize;
+    height: $peopleCardPhotoSize;
+    border-radius: 50%;
+  }
+
+  &__name {
+    @include standardBlueCaption;
+    margin: 24px 0 0;
+  }
+
+  &__position {
+    @include greySmallText;
+    margin: 4px 0;
+  }
+
+  &__description {
+    margin: 0;
+    text-align: center;
+    @include descriptionText;
+  }
+
+  @media (max-width: $padContentSize) {
+    justify-content: center;
+    grid-template: auto / $peopleCardWidth;
+    grid-row-gap: $peopleCardRowGap;
+  }
+}

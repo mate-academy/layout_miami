@@ -1,0 +1,120 @@
+#menu__toggle {
+  display: contents;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.header {
+
+  &__menu {
+    cursor: pointer;
+    display: none;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 16px;
+    height: 16px;
+    z-index: 5;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      position: relative;
+      background: #fff;
+      border-radius: 3px;
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        opacity 0.55s ease;
+    }
+
+    span:nth-last-child(2) {
+      transform-origin: right;
+    }
+  }
+}
+
+#menu__toggle:checked ~ {
+  & .header__top span:nth-last-child(3) {
+    opacity: 1;
+    transform: translateY(3px) rotate(-45deg);
+  }
+
+  & .header__top span:nth-last-child(1) {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  & .header__top .header__menu span ~ span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  & .header__top .header__menu {
+    position: fixed;
+    right: 20px;
+    top: 40px;
+  }
+}
+
+@media screen and (max-width: $padContentSize) {
+  .header__menu {
+    display: flex;
+  }
+
+  .nav {
+    &__list {
+      height: 50%;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &__item {
+      padding: 0;
+
+      &_active {
+        width: auto;
+        height: auto;
+        background: none;
+      }
+    }
+
+    &__link {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    &__call {
+      display: flex;
+      flex-flow: column;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #eee;
+
+      &__order {
+        width: fit-content;
+        border-bottom: 1px solid;
+        margin-top: 16px;
+        padding-bottom: 8px;
+      }
+    }
+  }
+
+  #menu__toggle:checked ~ {
+    & .nav {
+      display: flex;
+      opacity: 1;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

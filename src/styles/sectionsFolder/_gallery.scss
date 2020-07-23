@@ -1,0 +1,96 @@
+.caption {
+  @include captionsText;
+  margin: 0 auto;
+  position: relative;
+  width: fit-content;
+
+  &:before {
+    @include captionCrown;
+  }
+}
+
+.gallery {
+  margin-top: (20px + $photoMargin);
+  display: grid;
+  grid-template-rows: repeat(3, 307px);
+  grid-row-gap: 40px;
+
+  @media screen and (max-width: $padContentSize) {
+    grid-template-rows: repeat(3, 201px);
+    grid-row-gap: 32px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: box-shadow 0.5s, transform 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1;
+      box-shadow: 0 0 10px 6px rgba(0, 117, 255,0.8);
+    }
+  }
+
+  &__description {
+    @include descriptionText;
+    margin: 24px 0 0;
+
+    &-blue {
+      color: $blueMainColor;
+    }
+  }
+
+  &__block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    height: 256px;
+
+    &--first {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--third {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @media screen and (max-width: $padContentSize) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 131px;
+      height: 131px;
+    }
+  }
+
+  &__btn {
+    @include btnText;
+    width: 188px;
+    height: 56px;
+    margin: 40px auto 0;
+    border: 2px solid #0075ff;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s, transform 0.1s;
+
+    &:hover {
+      color: #fff;
+      background: #0075ff;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+
+    &:active {
+      @include btnOnClick;
+    }
+
+    &:focus {
+      border: 2px solid #0075ff;
+    }
+
+    @media (max-width: $padContentSize) {
+      width: 100%;
+    }
+  }
+}
