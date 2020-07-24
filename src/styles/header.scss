@@ -1,0 +1,236 @@
+.header {
+  position: relative;
+  padding: 0 15px $headerBottomPadding;
+  color: $secondaryColor;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: url(../images/header.jpg);
+  background-position: center;
+  background-size: cover;
+
+  @media (max-width: 899px) {
+    padding-bottom: 0;
+  }
+
+  &__container {
+    @extend %contentContainer;
+    height: 700px - $headerBottomPadding;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 899px) {
+      height: 568px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+
+    @media (max-width: 899px) {
+      justify-content: center;
+    }
+  }
+
+  &__telephone {
+    display: block;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 899px) {
+      position: absolute;
+      bottom: 92px;
+      left: 20px;
+      visibility: hidden;
+
+      &::before {
+        visibility: visible;
+        content: "";
+        position: absolute;
+        top: -421px;
+        left: 23px;
+        display: block;
+        width: 18px;
+        height: 18px;
+        background: url(../images/phone.svg);
+      }
+    }
+  }
+
+  &__site-logo {
+    display: block;
+    width: 115px;
+    height: 76px;
+
+    @media (max-width: 899px) {
+      position: relative;
+      width: 73px;
+      height: 48px;
+      z-index: 1;
+    }
+  }
+
+  &__placeholder {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $secondaryColor;
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 899px) {
+      visibility: hidden;
+      position: absolute;
+      bottom: 52px;
+      left: 20px;
+      z-index: 1;
+    }
+  }
+
+  &__trigger {
+    display: none;
+
+    @media (max-width: 899px) {
+      position: absolute;
+      top: 42px;
+      right: 23px;
+      display: block;
+      height: 12px;
+      width: 18px;
+      background: url(../images/menu_button.svg) no-repeat;
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+
+  &__title-container {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    flex-grow: 1;
+    padding-bottom: 85px;
+
+    @media (max-width: 899px) {
+      flex-grow: 0;
+      padding-bottom: 80px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    font-weight: 900;
+    text-transform: capitalize;
+
+    @media (max-width: 899px) {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: 1px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      display: block;
+      height: 2px;
+      width: 35px;
+      background-color: $secondaryColor;
+    }
+  }
+
+  &__navbar {
+    display: block;
+
+    @media (max-width: 899px) {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $mainThemeColor;
+    }
+  }
+
+  &__checkbox {
+    display: none;
+
+    &:checked ~ .header__navbar {
+      display: block;
+    }
+
+    &:checked + .header__top > .header__trigger {
+      width: 16px;
+      height: 16px;
+      top: 40px;
+      right: 24px;
+      background: url(../images/cross.svg) no-repeat;
+    }
+
+    &:checked + .header__top > .header__telephone {
+      visibility: visible;
+      z-index: 1;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &:checked + .header__top > .header__placeholder {
+      visibility: visible;
+    }
+  }
+
+  &__navlist {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 899px) {
+      flex-direction: column;
+      padding: 120px 21px 0;
+    }
+  }
+
+  &__navlink {
+    display: inline-block;
+    width: 89px;
+    height: 32px;
+    text-align: center;
+    line-height: $navLineHeight;
+    border-radius: 8px;
+    transition: color 0.3s;
+
+    &--active {
+      background-color: rgba($color: $secondaryColor, $alpha: 0.1);
+
+      @media (max-width: 899px) {
+        background: inherit;
+      }
+    }
+
+    &:hover {
+      color: #9fadc2;
+    }
+
+    @media (max-width: 899px) {
+      width: auto;
+      height: auto;
+      padding-bottom: 32px;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+    }
+  }
+}
