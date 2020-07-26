@@ -1,0 +1,190 @@
+.menu {
+  &__checkbox {
+    position: absolute;
+    display: none;
+    top: calc(#{$header-top-indent + 32px});
+    @extend %burger-large;
+  }
+
+  &__label {
+    position: absolute;
+    display: block;
+    top: calc(#{$header-top-indent + $top-icon-large / 4 * 3});
+    @extend %burger-large;
+    height: calc(#{$top-icon-large - 6px});
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__line {
+    position: absolute;
+    top: calc(#{$header-top-indent + $top-icon-large / 8 * 9});
+    @extend %burger-large;
+    height: 2px;
+    border-radius: 1px;
+    background-color: $color-white;
+    z-index: 1;
+
+    &--first {
+      top: calc(#{$header-top-indent + $top-icon-large / 4 * 3});
+      @include display(display, none);
+    }
+
+    &--second {
+      @include transform(transform, rotate(45deg));
+    }
+
+    &--third {
+      @include transform(transform, rotate(-45deg));
+    }
+
+    &--fourth {
+      top: calc(#{$header-top-indent + $top-icon-large / 2 * 3});
+      @include display(display, none);
+    }
+  }
+
+  @media (max-width: $breakpoint-medium) {
+    &__checkbox:not(:checked) ~ div .header__link--phone {
+      display: block;
+      top: -116px;
+      margin-left: 24px;
+      z-index: 2;
+
+    }
+
+    &__checkbox:checked ~ div .header__link--phone {
+      display: block;
+      margin-left: 24px;
+      z-index: 2;
+
+    }
+
+    &__checkbox:not(:checked) ~ div .header__link--action {
+      display: block;
+      top: -84px;
+      left: $side-indent-large;
+      width: fit-content;
+      margin-left: 24px;
+      margin-bottom: 52px;
+      z-index: 2;
+    }
+
+    &__checkbox:checked ~ div .header__link--action {
+      display: block;
+      left: $side-indent-large;
+      width: fit-content;
+      margin-left: 24px;
+      z-index: 2;
+    }
+
+    &__checkbox:not(:checked) ~ .navigation {
+      position: absolute;
+      top: -$header-height-small;
+      display: flex;
+      flex-direction: column;
+      height: $header-height-small;
+      font-size: 22px;
+      padding-left: $side-indent-large;
+      padding-top: 120px;
+      padding-bottom: 156px;
+      margin-left: -$side-indent-large;
+      background-color: $color-blue;
+
+      & > :first-child .navigation__link--active {
+        background-color: transparent;
+      }
+    }
+
+    &__checkbox:checked ~ .navigation {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      height: $header-height-small;
+      font-size: 22px;
+      padding-left: $side-indent-large;
+      padding-top: 120px;
+      padding-bottom: 156px;
+      margin-left: -$side-indent-large;
+      background-color: $color-blue;
+
+      & > :first-child .navigation__link--active {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-small) {
+    &__checkbox {
+      right: $side-indent-small;
+      width: $top-icon-small;
+    }
+
+    &__label {
+      top: calc(#{$header-top-indent + $top-icon-small});
+      right: $side-indent-small;
+      width: $top-icon-small;
+      height: calc(#{$top-icon-small - 2px});
+    }
+
+    &__line {
+      top: calc(#{$header-top-indent + $top-icon-small / 5 * 7});
+      right: $side-indent-small;
+      width: $top-icon-small;
+
+      &--first {
+        top: calc(#{$header-top-indent + $top-icon-small / 5 * 7 - 6px});
+      }
+
+      &--fourth {
+        top: calc(#{$header-top-indent + $top-icon-small / 5 * 7 + 6px});
+      }
+    }
+
+    &__checkbox:not(:checked) ~ div .header__link--phone {
+      left: $side-indent-small;
+    }
+
+    &__checkbox:checked ~ div .header__link--phone {
+      left: $side-indent-small;
+    }
+
+    &__checkbox:not(:checked) ~ div .header__link--action {
+      left: $side-indent-small;
+    }
+
+    &__checkbox:checked ~ div .header__link--action {
+      left: $side-indent-small;
+    }
+
+    &__checkbox:not(:checked) ~ .navigation {
+      padding-top: 120px;
+      padding-bottom: 156px;
+      padding-left: $side-indent-small;
+      margin-left: -$side-indent-small;
+    }
+
+    &__checkbox:checked ~ .navigation {
+      top: -$header-height-small;
+      height: $header-height-small;
+      padding-top: 120px;
+      padding-bottom: 156px;
+      padding-left: $side-indent-small;
+      margin-left: -$side-indent-small;
+    }
+  }
+
+  @media (min-width: $breakpoint-medium + 1) {
+    &__checkbox {
+      display: none;
+    }
+
+    &__label {
+      display: none;
+    }
+
+    &__line {
+      display: none;
+    }
+  }
+}
