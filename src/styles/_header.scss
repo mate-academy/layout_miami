@@ -10,14 +10,34 @@
   background-size: cover;
   background-position: center;
 
-  &__top {
+  &__top--big {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+  &__top--small {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    @include big-logo;
+  }
+
+  &__logo--small {
+    @include small-logo;
+  }
+
   &__phone {
     @include header-text;
+  }
+
+  &__phone-icon {
+    background-image: url(../images/phone.png);
+    width: $phone-icon-size;
+    height: $phone-icon-size;
   }
 
   &__title {
@@ -54,6 +74,30 @@
 
     &:hover {
       color: $grey-color;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .header {
+    padding: 24px 23px 80px;
+
+    &__top--big {
+      display: none;
+    }
+
+    &__top--small {
+      display: flex;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__title {
+      bottom: 80px;
+      font-size: 46px;
+      line-height: 40px;
     }
   }
 }
