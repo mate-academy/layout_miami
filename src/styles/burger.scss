@@ -1,5 +1,6 @@
 .menu {
   display: none;
+  z-index: 4;
 
   &__box {
     visibility: hidden;
@@ -34,7 +35,7 @@
     font-size: 22px;
     line-height: 22px;
     width: 100%;
-    
+
     &:hover {
       color: $textColor;
       transition-duration: $hoverDuration;
@@ -45,17 +46,29 @@
       font-size: 12px;
       line-height: 16px;
     }
+
     &--number {
       margin-bottom: 16px;
       margin-top: 48px;
     }
+
     &--connection {
       padding-bottom: 8px;
       border-bottom: 1px solid;
       display: inline;
-      width: 111px;
     }
   }
+
+  &__logo {
+    display: none;
+    z-index: 10;
+    right: calc(50% - #{$smallLogoWidth} / 2);
+  }
+}
+
+.menu__logo-img {
+  width: $smallLogoWidth;
+  height: 48px;
 }
 
 .menu__btn {
@@ -63,7 +76,7 @@
   align-items: center;
   position: absolute;
   top: 42px;
-  right: 23px;
+  right: 0;
 
   width: 20px;
   height: 15px;
@@ -120,7 +133,7 @@
 }
 
 .menu__toggle {
-  opacity: 0;
+  display: none;
 
   &:checked ~ .menu__btn > span {
     transform: rotate(45deg);
@@ -133,10 +146,19 @@
     top: 0;
     transform: rotate(90deg);
   }
+  &:checked ~ .menu__btn {
+    position: fixed;
+    right: 10vw;
+  }
+
   &:checked ~ .menu__box {
     visibility: visible;
     right: 0;
+  }
+
+  &:checked ~ .menu__logo {
     display: block;
+    position: fixed;
   }
 }
 
