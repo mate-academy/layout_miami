@@ -1,0 +1,91 @@
+.gallery {
+  text-align: center;
+
+  &__container {
+    margin-top: 43px;
+  }
+
+  &__photos--big-first {
+    @include gallery-photos;
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  &__photos--normal {
+    @include gallery-photos;
+    grid-template-columns: 1fr 1fr;
+  }
+  &__photos--big-second {
+    @include gallery-photos;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  @media (max-width: 992px) {
+    &__photos--big-first,
+    &__photos--big-normal,
+    &__photos--big-second {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__photo {
+    height: $photo-height;
+    border-radius: $border-radius-basic;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+
+    @include photo-transition;
+
+    &:hover {
+      transform: scale($gallery-photo-scale);
+    }
+
+    @media (max-width: 600px) {
+      height: 156px;
+    }
+  }
+
+  &__description {
+    margin: 24px 0 40px;
+    @include text-basic;
+    text-align: left;
+
+    &--blue {
+      font-weight: 700;
+      color: $main-color;
+    }
+  }
+
+  &__btn {
+    width: 188px;
+    height: 56px;
+
+    border: 2px solid $main-color;
+    border-radius: $border-radius-basic;
+    outline: none;
+
+    @include text-for-button;
+    color: $main-color;
+
+    background-color: $secondary-color;
+
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      background-color: #eff7fa;
+    }
+
+    &:active {
+      transform: scale($button-scale);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__link {
+    color: $secondary-color;
+  }
+}
