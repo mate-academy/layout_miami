@@ -2,25 +2,45 @@
 
 function cardSlider(sliderSection) {
   const wrapper = document.querySelector(`${sliderSection} 
-  .cards-slider__slides-wrapper`);
+  .slider-section__slides-wrapper`);
 
   wrapper.style.marginLeft = '0';
 
   document.querySelector(`${sliderSection} 
   .slider-section__button--left`).onclick = () => {
-    if (parseInt(wrapper.style.marginLeft) === 0) {
-      wrapper.style.marginLeft = '-200%';
+    if (parseInt(wrapper.style.marginLeft) >= 0) {
+      if (document.documentElement.clientWidth <= 650) {
+        wrapper.style.marginLeft = '-1100%';
+      } else {
+        wrapper.style.marginLeft = '-200%';
+      };
     } else {
-      wrapper.style.marginLeft = parseInt(wrapper.style.marginLeft) + 100 + '%';
+      if (document.documentElement.clientWidth > 650
+        && parseInt(wrapper.style.marginLeft) < -200) {
+        wrapper.style.marginLeft = '-200%';
+      } else {
+        wrapper.style.marginLeft
+        = parseInt(wrapper.style.marginLeft) + 100 + '%';
+      };
     };
   };
 
   document.querySelector(`${sliderSection} 
   .slider-section__button--right`).onclick = () => {
-    if (parseInt(wrapper.style.marginLeft) === -200) {
-      wrapper.style.marginLeft = '0';
+    if (document.documentElement.clientWidth <= 650) {
+      if (parseInt(wrapper.style.marginLeft) <= -1100) {
+        wrapper.style.marginLeft = '0';
+      } else {
+        wrapper.style.marginLeft
+        = parseInt(wrapper.style.marginLeft) - 100 + '%';
+      };
     } else {
-      wrapper.style.marginLeft = parseInt(wrapper.style.marginLeft) - 100 + '%';
+      if (parseInt(wrapper.style.marginLeft) <= -200) {
+        wrapper.style.marginLeft = '0';
+      } else {
+        wrapper.style.marginLeft
+        = parseInt(wrapper.style.marginLeft) - 100 + '%';
+      };
     };
   };
 };
