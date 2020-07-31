@@ -1,7 +1,12 @@
 .open-menu {
-  width: 26px;
-  height: 26px;
-  position: relative;
+
+  &__label {
+    display: block;
+    width: 26px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+  }
 
   &__open-img {
     width: 100%;
@@ -11,34 +16,29 @@
   }
 
   &__close-img {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 24px;
     position: fixed;
-    top: 40px;
-    right: 28px;
     z-index: 10;
     opacity: 0;
   }
 
   &__checkbox {
-    width: 26px;
-    height: 26px;
-    position: fixed;
-    top: 38px;
-    right: 24px;
+    width: 0;
+    height: 0;
+    position: absolute;
     opacity: 0;
-    cursor: pointer;
     z-index: 15;
 
     &:checked ~ .mobile-nav {
       transform: translateX(-100%);
     }
 
-    &:checked ~ .open-menu__open-img {
+    &:checked ~ .open-menu__label .open-menu__open-img {
       opacity: 0;
     }
 
-    &:checked ~ .open-menu__close-img {
+    &:checked ~ .open-menu__label .open-menu__close-img {
       opacity: 1;
     }
   }
