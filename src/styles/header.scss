@@ -32,10 +32,11 @@ $positionNavLinks: 50px;
 
 .header {
   position: relative;
+  overflow: hidden;
   @include headerFontStile;
   height: 100%;
   &__top__content {
-    padding: 10px;
+    padding: 10px 0;
   }
 
   &__mid {
@@ -46,15 +47,7 @@ $positionNavLinks: 50px;
   }
   .call {
     position: relative;
-
-    &::after {
-      content: "";
-      border: 0.5px solid white;
-      width: 111px;
-      display: block;
-      position: absolute;
-      bottom: 2px;
-    }
+    border-bottom: 1px solid white;
   }
 
   & a {
@@ -85,9 +78,7 @@ $positionNavLinks: 50px;
   }
 
   &__bot {
-
     width: calc(100% - 120px * 2);
-    bottom: 50px;
   }
 }
 
@@ -108,51 +99,92 @@ $positionNavLinks: 50px;
       background-color: $navHonerColor;
     }
   }
+
+}
+
+.menuToggle input {
+  position: absolute;
+  display: none;
+  &:checked ~ ul {
+    transform: none;
+  }
 }
 
 .menu__togler {
   display: none;
 }
 
+.menu__span {
+  display: none;
+  width: 28px;
+  height: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1),
+    opacity 0.55s ease;
+}
+
+.hidden__menu {
+  position: absolute;
+  top: 0;
+  right: -0%;
+  width: 100%;
+  height: 100vh;
+  font-size: 22px;
+  line-height: 22px;
+  padding-top: 125px;
+  background: #0075ff;
+  list-style-type: none;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1);
+  & li:nth-child(n+7) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__item {
+    line-height: 50px;
+    padding: 20px 30px;
+    margin-left: 30px;
+  }
+}
+
 @media (max-width: 960px) {
+  .header__content__title {
+    font-size: 46px;
+    line-height: 40px;
+  }
 
-  .menu-icon {
+  .header__logo {
+    z-index: 1;
+    width: 73px;
+    height: 48px;
+  }
+
+  .header__top__phone-icon::after {
+    content: "";
     display: block;
-    background: url(/images/menu-icon.png);
     width: 18px;
-    height: 12px;
+    height: 18px;
+    background: url(/images/phone-icon.png);
+  }
+  .menu__span {
+    display: block;
   }
 
-  .menu__togler:checked + .menu-icon {
-    background: url(/images/x-icon.png);
-
-  }
-
-  .call {
+  .call,
+  .nav,
+  .phone-number {
     display: none;
   }
-  .nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-
+  .menuToggle input {
+    display: block;
+    opacity: 0;
   }
-  .nav__list {
-    display: flex;
-    flex-direction: column;
-    padding-top: 150px;
-    height: 50%;
 
-    font-size: 22px;
-    line-height: 22px;
-    &__item {
-      margin-bottom: 32px;
-    }
-
-  }
-  .header__content__title {
-    position: absolute;
-  }
 }
