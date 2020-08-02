@@ -1,0 +1,254 @@
+.promo-slider {
+  height: calc(150px + 30vw);
+  max-height: 480px;
+  padding: 40px 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  &__button {
+    height: 100%;
+    width: 32px;
+    position: relative;
+    border: 1px solid #b4bdc4;
+    overflow: hidden;
+    transition: 0.3s;
+    background: #fff url(../img/icons/arrow-dark.svg) no-repeat center;
+
+    &--left {
+      margin-right: 15px;
+    }
+
+    &--right {
+      margin-left: 15px;
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__labels-wrapper {
+    height: 100%;
+    width: 400%;
+    display: flex;
+  }
+
+  &__label {
+    height: 100%;
+    width: 25%;
+    cursor: pointer;
+  }
+
+  &__window {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__slides-wrapper {
+    height: 100%;
+    width: 400%;
+    display: flex;
+    transition: 1s;
+  }
+
+  &__points {
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__point {
+    width: 14px;
+    height: 4px;
+    background: #e2e6e9;
+    margin: 0 7px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  @for $i from 1 through 3 {
+    &__slide:nth-of-type(#{$i}) {
+      height: 100%;
+      width: 25%;
+      background: url(../img/promo-#{$i}.png) center;
+      background-size: cover;
+    }
+  }
+
+  &__radio {
+    visibility: hidden;
+    position: absolute;
+
+    &:nth-child(1):checked {
+      & ~ .promo-slider__points > .promo-slider__point:nth-of-type(1) {
+        background: #313237;
+      }
+    }
+
+    &:nth-child(2):checked {
+      & ~ .promo-slider__window > .promo-slider__slides-wrapper,
+      & ~ .promo-slider__button .promo-slider__labels-wrapper {
+        margin-left: -100%;
+      }
+
+      & ~ .promo-slider__points > .promo-slider__point:nth-of-type(2) {
+        background: #313237;
+      }
+    }
+
+    &:nth-child(3):checked {
+      & ~ .promo-slider__window > .promo-slider__slides-wrapper,
+      & ~ .promo-slider__button .promo-slider__labels-wrapper {
+        margin-left: -200%;
+      }
+
+      & ~ .promo-slider__points > .promo-slider__point:nth-of-type(3) {
+        background: #313237;
+      }
+    }
+  }
+
+  @media (max-width: 650px) {
+    display: block;
+    padding: 20px 0 0;
+
+    &__points {
+      display: none;
+    }
+
+    &__button {
+      height: calc(32px + 3vw);
+      width: calc(32px + 3vw);
+      position: absolute;
+      bottom: 15px;
+      border-radius: 50%;
+      opacity: 0.7;
+
+      &--left {
+        left: 30px;
+      }
+  
+      &--right {
+        right: 30px;
+      }
+    }
+  }
+}
+
+.category {
+  padding-top: 70px;
+
+  &__heading {
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  &__cards-wrapper {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__img-wrapper {
+    height: 370px;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: 1s;
+  }
+
+  &__card {
+    display: block;
+    width: 370px;
+    text-decoration: none;
+    color: #313237;
+
+    &:nth-of-type(1) > .category__img-wrapper {
+      background: #fcdbc1;
+    }
+
+    &:nth-of-type(2) > .category__img-wrapper {
+      background: #8d8d92;
+    }
+
+    &:nth-of-type(3) > .category__img-wrapper {
+      background: #973d5f;
+    }
+
+    &:hover > .category__img-wrapper {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+
+      & > .category__img {
+        transform: scale(0.95) translate(9px, 9px);
+      }
+    }
+  }
+
+  &__card-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 25px;
+  }
+
+  &__count {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #89939a;
+    margin-top: 5px;
+  }
+
+  @media (max-width: 1180px) {
+    &__cards-wrapper {
+      display: block;
+    }
+
+    &__card {
+      width: 100%;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    padding-top: 40px;
+
+    &__img {
+      width: 280px;
+    }
+
+    &__card {
+      margin-top: 40px;
+    }
+  }
+}
+
+.brand-new__slider-section {
+  padding-bottom: 80px;
+
+  @media (max-width: 450px) {
+    & .slider-section__heading {
+      width: 180px;
+    }
+  }
+}
