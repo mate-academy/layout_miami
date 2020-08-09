@@ -47,3 +47,4 @@ function cardSlider(sliderSection) {
 
 cardSlider('.hot-prices__slider-section');
 cardSlider('.brand-new__slider-section');
+cardSlider('.also-like__slider-section');
