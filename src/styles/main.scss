@@ -1,7 +1,157 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "catalog-page";
+@import "promo-page";
+@import "cross-page-blocks";
+@import "phone-card-page";
+@import "carts";
+
+@font-face {
+  src: url(../fonts/Mont-Regular.otf);
+  font-family: Mont;
+  font-weight: normal;
+}
+
+@font-face {
+  src: url(../fonts/Mont-Bold.otf);
+  font-family: Mont;
+  font-weight: bold;
+}
+
+@font-face {
+  src: url(../fonts/Mont-SemiBold.otf);
+  font-family: Mont;
+  font-weight: 500;
+}
+
+.page-separator {
+  height: 100px;
+  background-color: #ddd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: $c-gray;
+  font-family: Mont, sans-serif;
+  color: #313237;
+}
+
+.burger {
+  &__toggler {
+    height: 40px;
+    width: 40px;
+    opacity: 0.5;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    position: fixed;
+    top: 15px;
+    right: 30px;
+    z-index: 51;
+  
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__strip {
+    width: 25px;
+    height: 3px;
+    border-radius: 3px;
+    background: black;
+    transition: 0.5s;
+    transform-origin: 0;
+
+    &:nth-of-type(2) {
+      margin-top: 8px;
+    }
+  }
+
+  &__menu {
+    background: #f6f6f6;
+    padding-top: 25vw;
+    height: 130vh;
+    width: 100vw;
+    z-index: 50;
+    position: fixed;
+    left: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s;
+
+    & .particles-js-canvas-el {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__buttons {
+    height: 64px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  &__favourites {
+    width: 64px;
+    border: 1px solid #b4bdc4;
+    background: url(../img/icons/heart-active.svg) no-repeat center;
+  }
+
+  &__cart {
+    width: 64px;
+    border: 1px solid #b4bdc4;
+    background: url(../img/icons/cart.svg) no-repeat center;
+  }
+
+  &__link {
+    font-size: 35px;
+    padding: 20px 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #89939a;
+    font-weight: bold;
+  }
+
+  &__checkbox {
+    visibility: hidden;
+    position: absolute;
+  
+    &:checked ~ .burger__menu {
+      transform: translateX(-100%);
+    }
+  
+    &:checked ~ .burger__toggler {
+      transform: rotate(180deg);
+
+      & > .burger__strip:nth-of-type(1) {
+        transform: rotate(45deg);
+        margin-left: 7px;
+      }
+
+      & > .burger__strip:nth-of-type(2) {
+        transform: rotate(-45deg);
+        margin: 15px 0 0 7px;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    &__toggler,
+    &__menu {
+      display: flex;
+    }
+  }
 }
