@@ -1,0 +1,125 @@
+.mobile-menu {
+  $blockName: &;
+
+  &__list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    padding-top: 50px;
+    background-color: #0075ff;
+    z-index: 1;
+    transform: translateX(-100%);
+    transition-duration: 1s;
+  }
+
+  &__item:first-child {
+    padding-top: 70px;
+  }
+
+  &__link {
+    display: flex;
+    list-style: none;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 25px;
+    transition: color 0.5s;
+
+    &:hover {
+      color: #3b2e5a;
+    }
+
+    &-mod {
+      margin: 0;
+      list-style: none;
+      color: white;
+      font-size: 12px;
+      line-height: 16px;
+      align-items: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 25px;
+      transition: color 0.5s, border-bottom 0.5s;
+    }
+
+    &-mod:first-child {
+      margin-top: 48px;
+    }
+
+    &-mod:last-child {
+      padding: 0;
+      margin-left: 25px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid white;
+    }
+
+    &-mod:last-child:hover {
+      color: #3b2e5a;
+      border-bottom: 1px solid #3b2e5a;
+    }
+  }
+
+  &__toggler {
+    position: relative;
+    opacity: 0;
+    top: -1px;
+    right: 14px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  @media (min-width: 765px) {
+    display: none;
+  }
+
+  &__label,
+  &__label::before,
+  &__label::after {
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: white;
+    transition: 0.6s;
+    right: 0%;
+  }
+
+  &__label {
+    cursor: pointer;
+    top: 5%;
+    right: 7%;
+  }
+
+  &__label::before {
+    content: "";
+    transform: translateY(-6px);
+  }
+
+  &__label::after {
+    content: "";
+    transform: translateY(6px);
+  }
+
+  &__toggler:checked + #{$blockName}__label {
+    width: 0;
+    z-index: 2;
+  }
+
+  &__toggler:checked + #{$blockName}__label::before {
+    transform: rotate(45deg) translate(0);
+  }
+
+  &__toggler:checked + #{$blockName}__label::after {
+    transform: rotate(-45deg) translate(0);
+  }
+
+  &__toggler:checked ~ #{$blockName}__list {
+    transform: translateX(0%);
+  }
+}
