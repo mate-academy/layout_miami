@@ -1,0 +1,161 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: $headerTopPadding 0 48px;
+  background: url("../images/header.jpg") no-repeat center;
+  background-size: cover;
+  color: $mainColor;
+
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: width $transitionMedium;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: $mobileDisplay) {
+      justify-content: center;
+    }
+  }
+
+  &__phone {
+    @include fontHeaderLinks;
+
+    &--desktop {
+      display: block;
+
+      @media (max-width: $mobileDisplay) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      @include hover(transform, rotate(20deg), $transitionMedium);
+
+      display: none;
+      position: absolute;
+      top: 36px;
+      left: $mobileSidesPadding;
+
+      @media (max-width: $mobileDisplay) {
+        display: block;
+      }
+    }
+
+    &--icon {
+      @include img-square(24px);
+      background: url("../images/call.svg") no-repeat center;
+      background-size: contain;
+    }
+
+  }
+
+  &__logo {
+    @media (max-width: $mobileDisplay) {
+      max-width: 73px;
+      max-height: 48px;
+      min-width: 73px;
+      min-height: 48px;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $mobileDisplay) {
+        display: block;
+        align-self: center;
+      }
+    }
+  }
+
+  &__action {
+    @include hover(border-bottom-style, dashed, $transitionMedium);
+
+    border-bottom: 1px solid $mainColor;
+    padding: $linksPadding;
+
+    &--desktop {
+      @media (max-width: $mobileDisplay) {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    @include fontHeaderLinks;
+    padding: $linksPadding;
+  }
+
+  &__title {
+    @include fontTitleDesktop;
+    position: absolute;
+    bottom: 85px;
+    align-self: flex-start;
+    margin-bottom: 80px;
+    transition: bottom $transitionMedium;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background: $mainColor;
+    }
+
+    @media (max-width: $mobileDisplay) {
+      @include fontTitleMobile;
+      bottom: 0;
+      left: $mobileSidesPadding;
+    }
+  }
+
+  &__bottom {
+    @media (max-width: $mobileDisplay) {
+      position: fixed;
+      top: 0;
+      left: -200vw;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      width: 100vw;
+      padding: $headerTopPadding 0 52px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: $mainHighlightColor;
+      transition: left $transitionMobileMenu;
+
+      .burger-menu__check:checked ~ & {
+        left: 0;
+      }
+    }
+  }
+
+  &__mobile-call {
+    display: none;
+
+    @media (max-width: $mobileDisplay) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: $mobileNavContentPadding $mobileSidesPadding 0;
+
+      .burger-menu__check:checked ~ .header__bottom & {
+        display: flex;
+      }
+    }
+  }
+}

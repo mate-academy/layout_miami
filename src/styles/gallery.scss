@@ -1,0 +1,93 @@
+.gallery {
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 40px;
+  @include blockPaddings(64px);
+
+  @media (max-width: $mobileDisplay) {
+    grid-row-gap: 32px;
+  }
+
+  &__heading {
+    justify-self: center;
+    margin-bottom: 21px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 24px;
+
+    @media (max-width: $mobileDisplay) {
+      grid-row-gap: 16px;
+    }
+  }
+
+  &__img-row {
+    display: grid;
+    grid-column-gap: 20px;
+    justify-items: stretch;
+
+    &--1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--3 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @media (max-width: $mobileDisplay) {
+      &--1,
+      &--2,
+      &--3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__img-box {
+    height: 256px;
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    @media (max-width: $mobileDisplay) {
+      height: 131px;
+    }
+  }
+
+  &__photo {
+    @include imgHoverEffect;
+  }
+
+  &__view-all {
+    @include fontButton;
+    @include hover(transform, scale(1.05), $transitionQuick);
+
+    justify-self: center;
+    width: 188px;
+    height: $buttonHeight;
+    border: 2px solid $mainHighlightColor;
+    border-radius: $borderRadius;
+    outline: none;
+    color: $mainHighlightColor;
+    background: $mainColor;
+
+    @media (max-width: $mobileDisplay) {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    @include fontDescription;
+    margin: 0;
+  }
+
+  &__highlight {
+    font-weight: bold;
+    color: $mainHighlightColor;
+  }
+}

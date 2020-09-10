@@ -1,0 +1,49 @@
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $desktopMaxContentWidth;
+    transition: width $transitionMedium;
+
+    @media (max-width: $mediumDisplay) {
+      width: $mediumContentWidth;
+    }
+
+    @media (max-width: $mobileDisplay) {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-top: $mobileNavContentPadding;
+    }
+  }
+
+  &__item {
+    @media (max-width: $mobileDisplay) {
+      padding: $mobileLinksTopPadding 0;
+    }
+  }
+
+  &__link {
+    @include fontHeaderLinks;
+    @include hover(color, $navLinksHoverColor, $transitionMedium);
+
+    padding: $linksPadding;
+
+    @media (max-width: $mobileDisplay) {
+      @include fontHeaderLinksMobile;
+      padding: $mobileLinksTopPadding $mobileSidesPadding;
+    }
+
+    &--is-active {
+      background-color: hsla(0, 0%, 100%, 0.1);
+      border-radius: $borderRadius;
+      padding: 8px 24px;
+
+      @media (max-width: $mobileDisplay) {
+        background: none;
+        padding: $mobileLinksTopPadding $mobileSidesPadding;
+      }
+    }
+  }
+}
