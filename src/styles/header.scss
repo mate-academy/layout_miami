@@ -1,6 +1,6 @@
 .header {
   height: $header-height;
-  background-image: url('../images/header.jpg');
+  background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -14,21 +14,49 @@
 
     position: absolute;
     top: 24px;
-    left: calc( (100% - #{$container-width})/2);
+    @include left-space;
   }
 
   &__item {
-    font-family: "Roboto", sans-serif;
+   
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
-    font-weight: bold;
-    font-style: normal;
-    color:#fff;
+    color: $header-font-color;
     text-transform: uppercase;
 
-    &--link {  
-      border-bottom: 1px solid;
+    @include hover;
+
+    &--link::after {
+      content: "";
+      display: block;
+      height: 0px;
+      position: relative;
+      top: 8px;
+      left: 2px;
+      border: 1px solid $header-font-color;
+      width: 111px;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 414px;
+    @include left-space;
+
+    font-size: 60px;
+    line-height: 60px;
+    color: $header-font-color;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 0px;
+      position: relative;
+      bottom: 16px;
+      left: 2px;
+      border: 1px solid $header-font-color;
+      width: 35px;
     }
   }
 }
