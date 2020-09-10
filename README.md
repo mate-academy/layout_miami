@@ -16,4 +16,3 @@
 - CSS3
 - BEM
 - Sass
-- JavaScript
