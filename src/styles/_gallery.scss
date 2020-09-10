@@ -1,0 +1,87 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  &__title-text {
+    @extend %heading;
+  }
+
+  &__photos {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 24px;
+  }
+
+  &__photo {
+    width: calc(50% - 10px);
+    height: 256px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos-left {
+    .gallery__photo {
+      &:first-child {
+        width: calc(67% - 10px);
+      }
+      &:last-child {
+        width: calc(33% - 10px);
+      }
+    }
+  }
+
+  &__photos-right {
+    * {
+      &:first-child {
+        width: calc(33% - 10px);
+      }
+      &:last-child {
+        width: calc(67% - 10px);
+      }
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 27px;
+    color: $text-color;
+  }
+
+  &__link {
+    font-weight: bold;
+    color: $service-color;
+    transition: text-shadow 0.1s;
+
+    &:hover {
+      text-shadow: 0 0.5px #339fff;
+    }
+  }
+
+  &__button {
+    margin: 40px auto 0;
+    width: 188px;
+    height: 56px;
+    border: 2px solid $service-color;
+    background-color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    color: $service-color;
+    cursor: pointer;
+    transition: color 0.5s, background-color 0.5s;
+
+    &:hover {
+      color: white;
+      background-color: $service-color;
+    }
+
+    &:focus {
+      outline-color: $service-color;
+    }
+  }
+}
