@@ -1,0 +1,89 @@
+.header {
+  display: grid;
+  grid-template-columns: 120px repeat(3, 1fr) 120px;
+  grid-template-rows: 124px 425px 30px;
+  grid-template-areas: ". number logo call ."
+    ". title title title ."
+    ". . . . ."
+    ". nav nav nav .";
+
+  justify-items: center;
+  align-items: center;
+  height: 700px;
+
+  background: url(../images/header.jpg) no-repeat center/auto 100%;
+
+  &__number {
+    grid-area: number;
+    justify-self: start;
+
+    @extend %link;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  &__logo-link {
+    grid-area: logo;
+  }
+
+  &__logo-img {
+    width: 115px;
+    height: 76px;
+  }
+
+  &__call-link {
+    position: relative;
+
+    grid-area: call;
+    justify-self: end;
+
+    @extend %link;
+
+    &:hover {
+      color: $link-hover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+
+      width: 111px;
+
+      border: 1px solid #fff;
+    }
+  }
+
+  &__title {
+    position: relative;
+
+    grid-area: title;
+    justify-self: start;
+    align-self: end;
+
+    font-size: 60px;
+    line-height: 60px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+
+      width: 35px;
+      height: 2px;
+
+      background: #fff;
+      border-radius: 2px;
+    }
+  }
+
+  &__nav {
+    grid-area: nav;
+  }
+}
