@@ -1,3 +1,103 @@
+@import "nav";
+@import "./utils/mixins";
+@import "./utils/vars";
+
 .header {
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  height: 700px;
+  padding: 0 120px;
+
+  color: $white-text-color;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  background: url("../images/header.png") no-repeat center;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+
+    top: 24px;
+  }
+
+  &__phone {
+    text-decoration: inherit;
+    color: inherit;
+
+    @include hover(color, $hover-color);
+  }
+
+  &__logo {
+    width: 115px;
+    height: 76px;
+  }
+
+  &__call {
+    text-decoration: inherit;
+    color: inherit;
+
+    @include hover(color, $hover-color);
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 92%;
+      background-color: $white-text-color;
+      margin: 8px auto;
+    }
+  }
+
+  &__title {
+
+    font-size: 60px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -1.5px;
+
+    position: absolute;
+    bottom: 165px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+      background-color: $white-text-color;
+      position: relative;
+      bottom: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: $smaller-screen) {
+  .header {
+    &__top {
+      flex-direction: column;
+    }
+
+    &__logo {
+      order: -1;
+      margin-bottom: 10px;
+    }
+
+    &__phone {
+      margin-bottom: 5px;
+    }
+
+    &__title {
+      font-size: 50px;
+    }
+  }
 }
