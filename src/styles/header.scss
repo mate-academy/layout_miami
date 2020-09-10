@@ -1,0 +1,123 @@
+.header {
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-areas:
+    "phone logo call"
+    "slogan . ."
+    "navi navi navi";
+
+  height: 765px;
+
+  background-image: url(/images/header.jpg);
+  background-color: whitesmoke;
+  background-position: center;
+  background-size: cover;
+
+
+  &__nav {
+    grid-area: navi;
+    justify-self: center;
+    align-self: center;
+
+    width: 80%;
+
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__phone {
+    grid-area: phone;
+    justify-self: center;
+    align-self: center;
+
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__logo {
+    grid-area: logo;
+    justify-self: center;
+    align-self: center;
+
+    height: 76px;
+    width: 115px;
+  }
+
+  &__call {
+    grid-area: call;
+    justify-self: center;
+    align-self: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__slogan{
+    grid-area: slogan;
+    justify-self: center;
+    align-self: center;
+
+    position: relative;
+    min-width: 343px;
+
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 60px;
+    color: white;
+
+     &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+
+      height: 2px;
+      width: 35px;
+
+      background-color: white;
+      border-radius: 2px;
+      content: "";
+      }
+  }
+}
+
+@media screen and (max-width: 999px ) {
+  .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 568px;
+  background-size: auto;
+
+    & * {
+    margin-top: 10px;
+    }
+
+    &__nav {
+    display: none;
+    width: auto;
+    }
+
+    &__slogan {
+      transform: scale(0.67);
+      position: absolute;
+      top: 400px;
+      left: 20px;
+    }
+  }
+}
