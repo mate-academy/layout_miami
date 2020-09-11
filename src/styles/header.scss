@@ -1,9 +1,13 @@
 .header {
   position: relative;
-  height: 628px;
+  height: 700px;
   padding: 0 8%;
 
   color: white;
+
+  @media (max-width: 600px) {
+    height: 568px;
+  }
 
   &__nav {
     position: absolute;
@@ -24,12 +28,26 @@
     letter-spacing: 2px;
   }
 
+  &__phone-icon {
+    display: none;
+
+    @media (max-width: 600px) {
+      position: relative;
+      display: block;
+      top: 32px;
+      cursor: pointer;
+    }
+  }
+
   &__phone {
     position: relative;
     color: white;
     text-decoration: none;
-    top: 32px;
-    /*  right: 350px;*/
+    top: 22px;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
   &__link {
@@ -39,21 +57,32 @@
     padding-bottom: 8px;
     border-bottom: 1px solid;
     transition: color $hover-duration;
-    top: 32px;
+    top: 42px;
     /*left: 350px;*/
 
     &:hover {
       color: $hover-color;
     }
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
   &__title {
     position: absolute;
-    top: 296px;
+    top: 414px;
     font-weight: bold;
     font-size: 60px;
     line-height: 60px;
     letter-spacing: -1.5px;
+    transition: font-size 1s, top 1s;
+
+    @media (max-width: 600px) {
+      font-size: 46px;
+      line-height: 40px;
+      top: 389px;
+    }
 
     &::before {
       content: "";
@@ -65,5 +94,44 @@
       border-radius: 8px;
       display: block;
     }
+  }
+}
+
+.header__nav-toggler {
+  display: none;
+}
+
+.header__nav-toggler-label {
+  position: relative;
+  display: none;
+  padding: 20px;
+  color: #fff;
+  font-size: 30px;
+  line-height: 18px;
+  font-weight: bold;
+  top: 32px;
+}
+
+.header__nav-toggler-label::before {
+  content: "\2630";
+}
+
+.header__nav-toggler:checked ~ .header__nav-toggler-label::before {
+  content: "x";
+}
+
+@media (max-width: 600px) {
+  .header__nav-toggler-label {
+    display: inline-block;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    padding: 0;
+    top: 56px;
+  }
+
+  .header__nav-toggler:not(:checked) ~ .nav {
+    display: none;
   }
 }
