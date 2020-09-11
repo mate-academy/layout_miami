@@ -1,0 +1,47 @@
+.photos {
+  @include space-between;
+
+  scroll-behavior: smooth;
+  &__img {
+    height: $photos-image-height;
+    width: $photos-image-width;
+    
+    border-radius: $photos-image-radius;
+    cursor: pointer;
+    transition: transform $transition-time;
+    &--wide {
+      width: $photos-image-big-width;
+    }
+
+    &--small {
+      width: $photos-image-small-width;
+    }
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 13px 13px #9fadc2;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .photos {
+    &__img {
+      height: $photos-mobile-size;
+      width: $photos-mobile-size;
+      object-fit: cover;
+      border-radius: $photos-image-radius;
+      transition: transform 400ms;
+      &--wide {
+        width: $photos-mobile-size;
+      }
+    
+      &--small {
+        width: $photos-mobile-size;
+      }
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 13px 13px #9fadc2;
+      }
+    }
+  }
+}
