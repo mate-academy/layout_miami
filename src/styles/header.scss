@@ -26,6 +26,19 @@
     &:hover {
       transform: scale(1.2);
     }
+
+    &:last-child {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        border-radius: 8px;
+        background-color: #00acdc;
+        bottom: 0;
+      }
+    }
   }
 
   &__icon {
@@ -51,6 +64,8 @@
     font-weight: bold;
     white-space: pre;
 
+    transition: transform 0.5s;
+
     &::before {
       display: block;
       content: "";
@@ -62,16 +77,58 @@
       left: 2px;
     }
   }
+
+  &__burger {
+    background: url(../images/burger-menu.svg);
+    width: 18px;
+    height: 12px;
+    display: none;
+  }
+
+  &__checkbox {
+    display: none;
+    opacity: 0;
+  }
 }
 
 @media (max-width: $phone-view-small) {
   .header {
-    &__tel {
-      opacity: 0;
+    width: 100%;
+
+    &__tel,
+    &__btn {
+      display: none;
     }
 
     &__icon {
       opacity: 1;
+      transition: transform $hover-duration;
+
+      &:hover {
+        transform: scale(1.4);
+      }
+    }
+
+    &__logo {
+      margin: 0 auto;
+    }
+
+    &__burger {
+      display: block;
+      transition: transform $hover-duration;
+
+      &:hover {
+        transform: scale(1.4);
+      }
+    }
+
+    &__checkbox {
+      display: block;
+    }
+
+    &__title {
+      transform: scale(0.6);
+      left: 20px;
     }
   }
 }
