@@ -1,10 +1,18 @@
 .header {
-  height: 700px;
+  height: 100vh;
   padding: 24px $edge-space;
   position: relative;
 
   background: url("../images/header.png") center center/cover;
   color: #fff;
+
+  @media screen and (max-width: 980px) {
+    padding: 24px 5vw;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 80vh;
+  }
 
   &__top {
     display: flex;
@@ -16,12 +24,45 @@
 
   &__phone {
     @include link;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+
+    &--screen--small {
+      display: none;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+      }
+    }
   }
 
   &__action {
     @include link;
     padding-bottom: 8px;
     border-bottom: 1px solid;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  &__icon {
+    width: 18px;
+  }
+
+  &__menu {
+    width: 18px;
+    height: 12px;
+
+    &--screen--small {
+      display: none;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+      }
+    }
   }
 
   &__title {
@@ -33,6 +74,10 @@
     font-size: 60px;
     line-height: 60px;
     letter-spacing: -1.5px;
+
+    @media screen and (max-width: 700px) {
+      bottom: 80px;
+    }
 
     &::before {
       content: "";
@@ -51,5 +96,9 @@
     position: absolute;
     bottom: 56px;
     width: calc(100% - #{$edge-space} * 2);
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 }
