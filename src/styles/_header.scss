@@ -1,10 +1,11 @@
 .header {
-  width: 1260px;
   height: 700px;
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
+  letter-spacing: 2px;
+  align-items: center;
 
   &__top {
     display: flex;
@@ -12,13 +13,13 @@
     position: absolute;
     top: 24px;
     color: white;
-    width: 1012px;
 
     @media screen and (max-width: 999px) {
       & {
         flex-direction: column;
         gap: 20px;
         align-items: center;
+        width: 100%;
       }
     }
   }
@@ -31,26 +32,42 @@
     position: relative;
     color: white;
     border-bottom: 1px solid #fff;
-    transition: color 1s;
+    padding-bottom: 8px;
     top: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
     text-transform: uppercase;
 
-    &:hover {
-      color: #9fadc2;
-    }
+    @include hover(color, $gray-color);
   }
 
   &__title {
     position: absolute;
     top: 414px;
     left: 120px;
-    width: 350px;
     height: 121px;
     margin: 0;
     font-weight: bold;
     font-size: 60px;
     line-height: 60px;
     color: white;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 135px;
+      width: 35px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    @media screen and (max-width: 999px) {
+      & {
+        visibility: hidden;
+      }
+    }
   }
 
   &__nav {
