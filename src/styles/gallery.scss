@@ -10,21 +10,27 @@
     object-position: center;
     border-radius: 8px;
 
+    transition: transform 0.3s;
+
     &--big {
       width: calc(67% - 10px);
-
-      @media (max-width: 768px) {
-        width: calc(50% - 10px);
-        height: calc(50vh - 10px);
-      }
     }
 
     &--small {
       width: calc(33% - 10px);
+    }
 
-      @media (max-width: 768px) {
+    @media (max-width: 768px) {
+      &--small,
+      &--big,
+      & {
         width: calc(50% - 10px);
+        height: 40vw;
       }
+    }
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 
@@ -43,11 +49,6 @@
   &__place {
     margin-top: 24px;
 
-    span {
-      font-weight: 700;
-      color: $color-blue;
-    }
-
     @media (max-width: 768px) {
       margin-top: 16px;
     }
@@ -63,9 +64,11 @@
   }
 
   &__link {
+    font-weight: 700;
+    color: $color-blue;
     transition: color 0.3s;
     &:hover {
-      color: $color-blue;
+      color: $color-text;
     }
   }
 }
