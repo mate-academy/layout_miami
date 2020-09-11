@@ -6,8 +6,17 @@
   &__img {
     width: calc(50% - #{$gap / 2});
     height: 260px;
+    border-radius: 5px;
     object-fit: cover;
     object-position: center;
+    opacity: 0.9;
+    transition: 300ms;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 2px 2px;
+      opacity: 1;
+    }
   }
 
   &--wide_left {
@@ -30,6 +39,20 @@
 
       &:last-child {
         width: calc(67% - #{$gap / 2});
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .photos {
+    &--wide_right,
+    &--wide_left {
+      .photos__img {
+        &:first-child,
+        &:last-child {
+          width: calc(50% - #{$gap / 2});
+        }
       }
     }
   }
