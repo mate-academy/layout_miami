@@ -30,6 +30,11 @@
     border-bottom: 1px solid;
     @include hover(color, $active-color);
   }
+
+  &__phone {
+    text-decoration: none;
+  }
+  
   &__name {
     position: absolute;
     left: 10%;
@@ -52,6 +57,26 @@
     }
   }
 
+  &__nav-toggler-label {
+    display: none;
+    padding: 20px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 18px;
+    font-weight: bold;
+  }
+
+  &__nav-toggler-label::before {
+    content: "\2630";
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    content: "x";
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
 }
 @media (max-width: $small-screen-breakpoint) {
 
@@ -74,6 +99,27 @@
       position: absolute;
       top: 24px;
       z-index: 1;
+    }
+    .header__nav-toggler-label {
+      display: inline-block;
+      position: absolute;
+      right: 23px;
+      padding: 0;
+      top: 32px;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .header__nav-toggler:not(:checked) ~ .nav {
+      display: none;
+    }
+
+    .nav__list {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: $blue-color;
+      animation: toggle 0.5s ease-in-out;
     }
   }
 }
