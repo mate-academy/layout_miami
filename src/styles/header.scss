@@ -1,17 +1,20 @@
 .header {
   display: grid;
-  grid-template-columns: 120px repeat(3, 1fr) 120px;
+  grid-template-columns: minmax(20px, 120px) repeat(3, 1fr) minmax(20px, 120px);
   grid-template-rows: 124px 425px 30px;
   grid-template-areas: ". number logo call ."
     ". title title title ."
     ". . . . ."
     ". nav nav nav .";
-
   justify-items: center;
   align-items: center;
   height: 700px;
 
-  background: url(../images/header.jpg) no-repeat center/auto 100%;
+  background: url(../images/header.jpg) no-repeat center / cover;
+
+  @media (min-width: 1880px) {
+    background-size: 100%;
+  }
 
   &__number {
     grid-area: number;
@@ -41,10 +44,6 @@
 
     @extend %link;
 
-    &:hover {
-      color: $link-hover;
-    }
-
     &::after {
       content: "";
       position: absolute;
@@ -54,6 +53,14 @@
       width: 111px;
 
       border: 1px solid #fff;
+    }
+
+    &:hover {
+      color: $link-hover;
+
+      &::after {
+        border-color: $link-hover;
+      }
     }
   }
 
