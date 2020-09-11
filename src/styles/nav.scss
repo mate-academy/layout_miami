@@ -12,6 +12,7 @@
     margin: 0 22.5px;
     border-radius: 10px;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   &__link {
@@ -19,15 +20,21 @@
     text-decoration: none;
     transition: color 0.2s;
 
+    &:hover {
+      color: #d5c5aa;
+    }
+
     &_active {
       background-color: #d5c5aa;
       color: black;
       border-radius: 10px;
       padding: 7px 20px;
-    }
 
-    &:hover {
-      color: #d5c5aa;
+      transition: color 0.2s;
+
+      &:hover {
+        color: inherit;
+      }
     }
   }
 }
@@ -36,5 +43,49 @@
   .nav__list {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav {
+    &__list {
+      display: none;
+    }
+
+    &__toggler {
+      display: flex;
+      margin: 0 auto 20px;
+      position: relative;
+
+      &:checked ~ .nav__list {
+        display: flex;
+        left: 0;
+        background-color: rgb(44, 44, 241);
+        height: 765px;
+      }
+    }
+
+    &__item {
+      width: 100%;
+      padding: 7px 20px;
+      margin-left: 20px;
+      margin-bottom: 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 22px;
+    }
+
+    &__link {
+      &_active {
+        background-color: rgb(44, 44, 241);
+        color: #fff;
+        margin-left: -20px;
+
+        &:hover {
+          color: #d5c5aa;
+        }
+      }
+    }
   }
 }

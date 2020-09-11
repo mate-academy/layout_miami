@@ -15,22 +15,20 @@
   }
 
   &__top {
-    position: absolute;
-    top: 35px;
-
-    left: 44%;
     display: flex;
-    color: white;
-  }
+    justify-content: space-around;
 
-  &__phone {
-    margin: 50px 82px;
+    flex-direction: row;
+    padding-top: 35px;
+
+    color: white;
   }
 
   &__phone,
   &__action {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
   }
 
   &__link {
@@ -45,17 +43,45 @@
       transition: color 0.2s;
     }
   }
+
+  &__phone-toggler {
+    display: none;
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__burger {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 999px) {
+@media (max-width: 767px) {
   .header {
     &__top {
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
     }
-
     &__phone {
-      margin: 20px auto 10px;
+      display: none;
+    }
+
+    &__action {
+      display: none;
+    }
+
+    &__phone-toggler {
+      display: flex;
+      order: 1;
+    }
+
+    &__nav-toggler {
+      display: flex;
+      &:checked + .header__burger {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }
