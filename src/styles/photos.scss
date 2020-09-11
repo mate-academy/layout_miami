@@ -1,11 +1,10 @@
 .photos {
-  display: flex;
-  justify-content: space-between;
+  @include space-between;
   &__img {
     height: $photos-image-height;
     width: $photos-image-width;
     border-radius: $photos-image-radius;
-    transition: transform 400ms;
+    transition: transform $transition-time;
     &--wide {
       width: $photos-image-big-width;
     }
@@ -20,21 +19,19 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile-width) {
   .photos {
-    display: flex;
-    justify-content: space-between;
     &__img {
-      height: 131px;
-      width: 131px;
+      height: $photos-mobile-size;
+      width: $photos-mobile-size;
       border-radius: $photos-image-radius;
       transition: transform 400ms;
       &--wide {
-        width: 131px;
+        width: $photos-mobile-size;
       }
     
       &--small {
-        width: 131px;
+        width: $photos-mobile-size;
       }
       &:hover {
         transform: scale(1.05);
