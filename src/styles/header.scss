@@ -1,4 +1,6 @@
 .header {
+  position: relative;
+
   height: 100vh;
   background-image: url("../images/header.jpg");
   background-size: cover;
@@ -7,32 +9,44 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 
-  padding: 24px 0 56px;
+  padding: 24px 56px;
 
   @include boldFontStyle(16px, 16px);
 
-  &__phone-image {
-    display: none;
-  }
-
   &__top {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
   }
 
+  &__logo {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__phone-image {
+    height: 18px;
+    width: 18px;
+  }
+
   &__link {
-    color: #fff;
     text-transform: uppercase;
+    letter-spacing: 2px;
 
     padding: 8px 0;
-    margin: 0 82px;
 
     border-bottom: 1px solid transparent;
+    color: #fff;
 
     @include hover (border-color, #fff);
+
+    &--phone-image {
+      z-index: 1;
+      display: none;
+      cursor: pointer;
+    }
   }
 
   &__name {
@@ -51,8 +65,24 @@
     }
   }
 
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-toggler-label {
+    cursor: pointer;
+    display: none;
+    z-index: 1;
+
+    &::after {
+      content: "\2630";
+      color: #fff;
+    }
+  }
+
   @media (max-width: $tabletScreenBreakpoint) {
     height: 600px;
+    padding: 20px;
 
     &__top {
       flex-direction: column;
@@ -70,16 +100,44 @@
   }
 
   @media (max-width: $mobileScreenBreakpoint) {
+    &__nav-toggler-label {
+      display: block;
+    }
+
     &__top {
       flex-direction: row;
+      justify-content: space-between;
     }
 
-    &__phone {
+    &__link {
       display: none;
+      &--phone-image {
+        display: block;
+      }
     }
 
-    &__phone-image {
-      display: block;
+    &__logo {
+      height: 48px;
+      width: 73px;
+      margin: 0;
+    }
+
+    &__nav {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: $highlightColor;
+
+      padding-top: 120px;
+    }
+
+    &__nav-toggler:checked {
+      & ~ .nav {
+        display: block;
+      }
     }
   }
 }
