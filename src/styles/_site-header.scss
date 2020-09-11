@@ -1,0 +1,84 @@
+@import "utils/vars";
+
+.site-header {  // хедер 
+  height: 765px;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &__nav {   //навігація знизу
+    position: absolute;
+    bottom: 48px;
+
+    
+  }
+
+  &__top {//лого по центру + телефон і колтуордер
+    position: absolute;
+    left: calc(50% - #{$logo-width / 2});
+    display: flex;
+    /* align-content: space-between; */
+    
+  }
+
+  &__logo {
+    background-size: auto;
+    background-position: center;
+    margin-top: 24px;
+  }
+
+  &__phone {   /* телефон зліва */
+    right: 580px;
+    letter-spacing: 2px;
+    color: white;
+    
+  }
+
+  &__call-to {   /*  ордер справа */
+    left: 180px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid white;
+    /* &:after {
+      display: inline;
+      content: " ";
+      color: white;
+      background-color: white;
+
+    } */
+  }
+
+  &__phone,
+  &__call-to {
+    margin-top: 56px;
+    position: relative;
+  }
+
+  &__link {   /*  лінки телефона і ордера  */
+    color: white;
+    text-transform: uppercase;
+    transition: color $hover-duration;
+    &:hover {
+      color: $hover-color;
+      
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  .site-header {
+    &__top {
+      flex-direction: column;
+    }
+
+    &__phone {
+      right: 10px;
+    }
+
+    &__call-to {
+      left: -10px;
+    }
+  }
+}
