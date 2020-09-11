@@ -12,4 +12,5 @@ function openMenu() {
   burgerMenu.classList.toggle('burger-menu--open');
 
   menuIcon.classList.toggle('menu-icon--open');
+  menuIcon.classList.toggle('header__menu--screen--small');
 }

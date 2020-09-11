@@ -24,9 +24,31 @@
 
   &__phone {
     @include link;
+    position: relative;
+
+    padding-bottom: 8px;
+    transition: border 0.5s;
 
     @media screen and (max-width: 700px) {
       display: none;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      height: 1px;
+      width: 0;
+
+      border-radius: 1px;
+      background-color: #fff;
+      transition: width 0.5s, left 0.5s;
+    }
+
+    &:hover::before {
+      width: 100%;
+      left: 0;
     }
 
     &--screen--small {
@@ -43,8 +65,14 @@
     padding-bottom: 8px;
     border-bottom: 1px solid;
 
+    transition: color 0.5s;
+
     @media screen and (max-width: 700px) {
       display: none;
+    }
+
+    &:hover {
+      color: $hover-link-color;
     }
   }
 
