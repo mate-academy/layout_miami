@@ -6,18 +6,35 @@
 
   &__line-1 {
     @include icon-line;
-
+    transform-origin: bottom left;
     bottom: 2px;
   }
 
   &__line-2 {
     @include icon-line;
     bottom: calc(50% + 2px);
+    opacity: 1;
   }
 
   &__line-3 {
     @include icon-line;
+    transform-origin: top left;
     bottom: calc(100% + 2px);
   }
 
+  &--open {
+    & :nth-child(1) {
+      transform: rotate(-45deg);
+    }
+
+    & :nth-child(2) {
+      transition: opacity 0.1s 0.1s;
+      opacity: 0;
+
+    }
+
+    & :nth-child(3) {
+      transform: rotate(45deg);
+    }
+  }
 }
