@@ -1,9 +1,12 @@
 .header {
   height: 765px;
+
+  position: relative;
+
   background-image: url("../images/header.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
+
   font-weight: 400;
   line-height: 1;
 
@@ -16,44 +19,36 @@
 
   &__top {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 
-    flex-direction: row;
     padding-top: 35px;
 
-    color: white;
+    color: $text-color;
   }
 
   &__phone,
   &__action {
     display: flex;
     align-items: center;
+
     margin-bottom: 5px;
   }
 
   &__link {
-    color: white;
+    color: $text-color;
     text-decoration: none;
-    border-bottom: 1px dashed;
-    transition: color 0.2s;
     text-transform: uppercase;
 
+    border-bottom: 1px dashed;
+
+    transition: color $transition-duration;
+
     &:hover {
-      color: #d5c5aa;
-      transition: color 0.2s;
+      color: $header-link-color;
+
+      transition: color $transition-duration;
     }
-  }
-
-  &__phone-toggler {
-    display: none;
-  }
-
-  &__nav-toggler {
-    display: none;
-  }
-
-  &__burger {
-    display: none;
   }
 }
 
@@ -62,6 +57,7 @@
     &__top {
       flex-direction: row;
       align-items: center;
+      position: relative;
     }
     &__phone {
       display: none;
@@ -69,19 +65,6 @@
 
     &__action {
       display: none;
-    }
-
-    &__phone-toggler {
-      display: flex;
-      order: 1;
-    }
-
-    &__nav-toggler {
-      display: flex;
-      &:checked + .header__burger {
-        display: flex;
-        flex-direction: column;
-      }
     }
   }
 }
