@@ -1,32 +1,33 @@
+@import "utils/vars";
+
 .photos {
   display: flex;
   justify-content: space-between;
   column-gap: 20px;
 
   &__image {
-    width: calc(50% - 10px);  //photo-gap
+    width: calc(50% - 10px);
     height: 256px;
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
+    object-fit: cover;
+    object-position: center;
+    flex-grow: 1;
+    flex-shrink: 1;
 
-  &--wide-left {
-    > :first-child {
-      width: calc(67% - 10px);  //photo-gap
+    border-radius: $border-radius;
+
+    &--wide {
+      width: calc(67% - 10px);
     }
 
-    > :last-child {
+    &--short {
       width: calc(33% - 10px);
     }
   }
 
-  &--wide-right {
-    > :first-child {
-      width: calc(33% - 10px); //photo-gap
-    }
-
-    > :last-child {
-      width: calc(67% - 10px);
+  @media (max-width: 900px) {
+    &__image {
+      height: 40vw;
+      width: 50%;
     }
   }
 }

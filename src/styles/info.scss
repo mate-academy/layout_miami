@@ -1,34 +1,61 @@
+@import "utils/vars";
+
 .info {
   display: flex;
-  height: 610px;
-  padding: 104px 0;
-  column-gap: 192px;
+  justify-content: space-between;
 
   &__heading {
-    min-width: 330px;
+    flex-shrink: 1;
     @extend %heading;
   }
 
   &__link {
-    color: #0075ff;
-  }
+    color: $main-blue-color;
+    background: transparent;
 
-  &__subheading {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 30px;
-    color: #0075ff;
+    transition: text-shadow 0.5s;
+
+    &:visited {
+      color: #160077;
+    }
+
+    &:hover {
+      text-shadow: 0px 13px 27px $button-hover-color;
+    }
+
+    &:active {
+      color: $active-link-color;
+    }
   }
 
   &__text {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    color: #3e3e3e;
+    width: 50%;
 
+    color: $text-color;
 
-    & > :last-child {
+    & > p {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    & > p:last-child {
       font-weight: bold;
+    }
+  }
+
+  &__subheading {
+    @extend %subheading;
+  }
+
+  @media (max-width: 1024px) {
+    & {
+      flex-direction: column;
+    }
+
+    &__text {
+      width: 100%;
     }
   }
 }
