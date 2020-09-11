@@ -2,6 +2,7 @@
   position: relative;
   padding: 0 $page-padding;
   height: 700px;
+
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
@@ -16,6 +17,18 @@
     align-items: center;
   }
 
+  &__phone {
+    @media (max-width: $small-screen) {
+      display: none;
+    }
+
+    &_alternative {
+      @media (min-width: $small-screen) {
+        display: none;
+      }
+    }
+  }
+
   &__phone-img {
     cursor: pointer;
     transition: transform 0.2s;
@@ -24,12 +37,28 @@
       transform: scale(1.1);
     }
   }
+
+  &__logo {
+    margin: 0 auto;
+  }
     
   &__call-link {
     padding-bottom: 8px;
     border-bottom: 1px solid #fff;
     @extend %header-text;
     @extend %header-hover;
+
+    @media (max-width: $small-screen) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @media (max-width: $small-screen) {
+      display: flex;
+    }
   }
 
   &__title {
@@ -58,5 +87,23 @@
     bottom: 48px;
     left: $page-padding;
     right: $page-padding;
+  }
+}
+
+@media (max-width: $small-screen) {
+  .header {
+    padding: 0 20px;
+    height: 50vh;
+
+    &__top {
+      left: 20px;
+      right: 20px;
+    }
+
+    &__title {
+      bottom: 80px;
+      font-size: 46px;
+      line-height: 40px;
+    }
   }
 }
