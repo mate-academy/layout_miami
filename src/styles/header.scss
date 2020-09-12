@@ -1,14 +1,12 @@
 .header {
-  position: relative;
-  max-width: 1260px;
-  margin: 0 auto;
-  
+  height: 700px;
+
   font-weight: bold;
   letter-spacing: 2px;
   color: #fff;
 
   &__inner {
-    padding: 24px 120px;
+    padding: 24px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,19 +27,6 @@
       -webkit-animation-iteration-count: 1;
       animation-iteration-count: 1;
     }
-
-    &:last-child {
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 4px;
-        width: 100%;
-        border-radius: 8px;
-        background-color: #00acdc;
-        bottom: 0;
-      }
-    }
   }
 
   &__icon {
@@ -57,12 +42,20 @@
     height: 76px;
   }
 
+  &__burger {
+    background-image: url(../images/burger-menu.svg);
+    width: 18px;
+    height: 12px;
+    display: none;
+  }
+
   &__title {
     position: absolute;
-    left: 120px;
     top: 414px;
+
     width: 328px;
     height: 121px;
+
     font-size: 60px;
     font-weight: bold;
     white-space: pre;
@@ -70,8 +63,8 @@
     transition: transform 0.5s;
 
     &::before {
-      display: block;
       content: "";
+      display: block;
       height: 2px;
       width: 35px;
       background-color: #fff;
@@ -81,25 +74,26 @@
     }
   }
 
-  &__burger {
-    background: url(../images/burger-menu.svg);
-    width: 18px;
-    height: 12px;
-    display: none;
-  }
-
-  &__checkbox {
-    display: none;
-    opacity: 0;
+  &__navbar {
+    position: absolute;
+    top: 620px;
+    width: 1260px;
   }
 }
 
-@media (max-width: $phone-view-small) {
+@media (max-width: $screen-view-small) {
   .header {
-    width: 100%;
+    &__title {
+      transform: scale(0.6);
+      left: 10px;
+    }
+  }
+}
 
-    &__tel,
-    &__btn {
+@media (max-width: $phone-view) {
+  .header {
+    &__btn,
+    &__tel {
       display: none;
     }
 
@@ -109,31 +103,29 @@
       &:hover {
         -webkit-animation: swing 0.6s ease;
         animation: swing 0.6s ease;
-        -webkit-animation-iteration-count: 5;
-        animation-iteration-count: 5;
+        -webkit-animation-iteration-count: 2;
+        animation-iteration-count: 2;
       }
     }
 
     &__logo {
       margin: 0 auto;
+      width: 73px;
+      height: 48px;
     }
 
     &__burger {
       display: block;
       transition: transform $hover-duration;
-
+  
       &:hover {
         transform: scale(1.4);
       }
     }
-
+  
     &__checkbox {
       display: block;
-    }
-
-    &__title {
-      transform: scale(0.6);
-      left: 20px;
+      opacity: 1;
     }
   }
 }
