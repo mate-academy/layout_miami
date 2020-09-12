@@ -1,37 +1,228 @@
 .nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+
   width: 100%;
-  max-width: 1024px;
+  height: 100vh;
+
+  overflow: hidden;
 
   &__list {
-    display: flex;
-    justify-content: space-between;
+    display: inline-block;
+    margin: $toggle-top 25px 20px $toggle-left;
 
-    @media (max-width: 800px) {
-      flex-wrap: wrap;
+    pointer-events: none;
+    transition: $nav-transition-duration;
+  }
+  &__link {
+    position: relative;
+
+    display: block;
+    height: 7px;
+    float: left;
+    clear: both;
+
+    font-size: 22px;
+    color: transparent;
+    letter-spacing: -10.2px;
+    line-height: 22px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    transform: scaleY(0.2);
+    transition: $nav-transition-duration, opacity 1s, float 1s;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: #fff;
+      transform: translateY(-50%) scaleY(5);
+      transition: $nav-transition-duration;
     }
   }
 
   &__item {
-    margin-right: 10px;
-    background: rgba(255, 255, 255, 0);
-    border-radius: 8px;
-
-    &:last-child {
-      margin-right: 0;
+    &:nth-child(1) .nav__link {
+      letter-spacing: -12.3px;
     }
 
-    &--is-active {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0 24px;
+    &:nth-child(2) .nav__link {
+      letter-spacing: -10.8px;
+    }
+
+    &:nth-child(n + 4) .nav__link {
+      letter-spacing: -13px;
+      margin-top: -7px;
+      opacity: 0;
+    }
+
+    @for $i from 1 through $nav-items {
+      &:nth-child(#{$i}) .nav__link {
+        $delay: ($i - 1) * $nav-transition-delay;
+        transition-delay: $delay;
+        &::before {
+          transition-delay: $delay;
+        }
+      }
     }
   }
 
-  &__link {
-    @extend %link;
-    white-space: nowrap;
+  &__toggle-button {
+    position: absolute;
+
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: $toggle-top 0 0 $toggle-left;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+
+    transition: $nav-transition-duration + 0.1;
 
     &:hover {
-      color: $link-hover;
+      box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: #fff;
+      border-radius: 5px;
+      transition: $nav-transition-duration;
+    }
+
+    &::before {
+      transform: translateY(-50%) rotate(45deg) scale(0);
+    }
+
+    &::after {
+      transform: translateY(-50%) rotate(-45deg) scale(0);
+    }
+  }
+
+  &__toggle {
+    display: none;
+
+    &:focus {
+      & ~ .nav__toggle-label .nav__toggle-button {
+        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1),
+          inset 0 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &:checked {
+      & ~ .nav__toggle-label .nav__toggle-button {
+        box-shadow: 0 0 0 $shadow-radius $blue,
+          inset 0 0 0 20px $blue;
+
+        &:before {
+          transform: translateY(-50%) rotate(45deg) scale(1);
+        }
+
+        &:after {
+          transform: translateY(-50%) rotate(-45deg) scale(1);
+        }
+      }
+
+      &:focus ~ .toggle-container .button-toggle {
+        box-shadow: 0 0 0 $shadow-radius $trp,
+          inset 0 0 0 20px $trp,
+          0 0 0 8px $trp,
+          inset 0 0 0 20px $trp;
+      }
+
+      & ~ .nav__list {
+        pointer-events: auto;
+        transform: translate(-5vw, 100px);
+
+        .nav__link {
+          height: 50px;
+          margin-top: 0;
+
+          color: #fff;
+          line-height: 40px;
+          letter-spacing: 0;
+
+          opacity: 1;
+          transform: scaleY(1);
+          transition: $nav-transition-duration, opacity 0.1s, float 1s;
+
+          &::before {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 681px) {
+    %MYlink {
+      font-size: 12px;
+      line-height: 16px;
+      font-family: "Roboto", sans-serif;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    position: static;
+
+    max-width: 1024px;
+
+    &__toggle {
+      display: none;
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-between;
+
+      //   @media (max-width: 800px) {
+      //     flex-wrap: wrap;
+      //   }
+    }
+
+    &__link {
+      @extend %MYlink;
+      white-space: nowrap;
+
+      // &:hover {
+      //   color: $link-hover;
+      // }
+    }
+
+    &__item {
+      margin-right: 10px;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &--is-active {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0 24px;
+      }
     }
   }
 }
