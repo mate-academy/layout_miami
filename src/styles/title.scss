@@ -4,7 +4,7 @@
   font-size: 48px;
   line-height: 48px;
   font-family: "Roboto", sans-serif;
-  color: #000;
+  color: $title;
   text-align: center;
   letter-spacing: -1.5px;
 
@@ -13,24 +13,35 @@
     line-height: 36px;
   }
 
-  &::after {
-    content: url(../images/crown.svg);
-    position: absolute;
-    top: 28px;
-    left: 50%;
-
-    transform: translate(-50%);
-  }
-
   &__link {
-    color: #0075ff;
+    color: $blue;
+    line-height: 0;
+
+    &::after {
+      content: url(../images/crown.svg);
+      position: absolute;
+      top: 110%;
+      left: 50%;
+
+      width: 20px;
+      height: 16px;
+
+      transform: translate(-50%);
+      transition: transform 0.5s;
+    }
+
+    &:hover {
+      &::after {
+        transform: translate(-50%) rotate(180deg);
+      }
+    }
   }
 
   &--first {
     padding-bottom: 48px;
     text-align: left;
 
-    &::after {
+    & .title__link::after {
       display: none;
     }
   }
