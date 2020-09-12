@@ -1,44 +1,41 @@
-# Miami landing page
-
 [DEMO LINK](https://KirillLutsenko.github.io/layout_miami/)
 
+Styling framework:
 
-Styling framework :
+reset.scss - general parameters of page
 
-- reset.scss - general parameters of page
+variables.scss - variables for logo/media/transform & transition/hover/buttons/colors
 
-- variables.scss - variables for logo/media/transform & transition/hover/buttons/colors
+header.scss - position parameters for header & elements in header
 
-- header.scss - position parameters for header  & elements in header
+nav.scss - position parameters for navigation and items in this section
 
-- nav.scss - position parameters for navigation and items in this section
+logo.scss - parameters for logo(crown) in header & footer
 
-- logo.scss - parameters for logo(crown) in header & footer
+section.scss - basic parameters for each section(Gallery, Consultation, Testimonials, Contact Us)
 
-- section.scss - basic parameters for each section(Gallery, Consultation, Testimonials, Contact Us)
+info.scss - styling block in the section under the header
 
-- info.scss - styling block in the section under the header
+link.scss - general options for styling links
 
-- link.scss - general options for styling links
+heading.scss - styling section headers(Gallery, Consultation, Testimonials, Contact Us)
 
-- heading.scss - styling section headers(Gallery, Consultation, Testimonials, Contact Us)
+photos.scss - styling photos in the section "Gallery"
 
-- photos.scss - styling photos in the section "Gallery"
+gallery.scss - general parameters for "Gallery" section elements
 
-- gallery.scss - general parameters for "Gallery" section elements 
+button.scss - pframeters for button's in sections(Gallery, Consultation, Contact Us)
 
-- button.scss - pframeters for button's in sections(Gallery, Consultation, Contact Us)
+consultation.scss - positioning and general parameters for the elements of section "Consultation"
 
-- consultation.scss - positioning and general parameters for the elements of section "Consultation"
+form.scss - general form parameters(Contact Us, Consultation)
 
-- form.scss - general form parameters(Contact Us, Consultation)
+input.scss - inputs parameters(Contact Us, Consultation)
 
-- input.scss - inputs parameters(Contact Us, Consultation)
+testimonials.scss - positioning parameters for the elements of section "Testimonials"
 
-- testimonials.scss - positioning parameters for the elements of section "Testimonials"
+person.scss - parameters for person elements in section "Testimonials"
 
-- person.scss - parameters for person elements in section "Testimonials"
+contact.scss - general parameters for section "Contact Us"
 
-- contact.scss - general parameters for section "Contact Us"
-
-- footer.scss - parameters for footer.
+footer.scss - parameters for footer.
