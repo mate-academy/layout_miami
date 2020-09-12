@@ -1,0 +1,144 @@
+.header {
+  position: relative;
+  padding-top: 24px;
+  height: 100vh;
+  color: $lightColor;
+  background: $brightColor url("../images/header.jpg") center;
+  background-size: cover;
+  font-weight: 700;
+
+  &__top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $headerLinksFontSize;
+  }
+
+  &__item {
+    display: block;
+    padding: 8px 0;
+    color: $lightColor;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition-duration: 0.6s;
+    @media (max-width: $displayMiddle) {
+      padding: 16px 0;
+      font-size: 22px;
+    }
+
+    &--logo {
+      padding: 0;
+    }
+
+    &--underlined {
+      border-bottom: 1px solid $lightColor;
+    }
+
+    &--menu-button,
+    &--phone-icon {
+      display: none;
+      cursor: pointer;
+      @media (max-width: $displayMiddle) {
+        display: flex; //dont delete! it needs to show itself
+        width: $header-icon-side;
+        height: $header-icon-side;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &--phone-icon {
+      background-image: url("../images/phone.svg");
+    }
+
+    &--menu-button {
+      //flex property specified some higher
+      justify-content: center;
+      align-content: space-between;
+      background-image: url("../images/menu-opened.svg");
+    }
+
+    &--phone-text,
+    &--underlined {
+      @media (max-width: $displayMiddle) {
+        display: none;
+      }
+    }
+
+    &--active {
+      padding: 8px 24px;
+      background-color: $headerActiveColor;
+      border-radius: 8px;
+    }
+
+    &--menu-small-link {
+      padding: 8px 0;
+      font-size: 12px;
+    }
+    
+    &--small-underlined {
+      display: inline-block;
+      border-bottom: 1px solid $lightColor;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  //bottom container here
+  &__bottom-container {
+    position: absolute;
+    bottom: 0;
+    width: calc(100vw - #{$containerPaddingPC * 2});
+    @media (min-width: 1440px) {
+      width: 60vw;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 85px;
+    position: relative;
+    font-size: $headerTitleFontSize;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      display: block;
+      width: 35px;
+      height: 2px;
+      background-color: $lightColor;
+    }
+    @media (max-width: $displayMiddle) {
+      font-size: $headerTitleFontSizeMob;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__links-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 48px;
+    padding: 0;
+    list-style: none;
+    @media (max-width: $displayMiddle) {
+      display: none;
+    }
+  }
+}
+
+//input checkbox
+
+.header__menu-opener {
+  display: none;
+}
+
+.header__menu-opener:checked + .menu {
+  @media (max-width: $displayMiddle) {
+    left: 0;
+  }
+}

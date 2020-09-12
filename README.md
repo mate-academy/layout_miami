@@ -1,24 +1,45 @@
-# Miami landing page
-- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A2)
-- Follow this [video guide](https://www.youtube.com/watch?v=sq184jq9DV8&feature=youtu.be) and write your own implementation.
+# Miami Condo kings
+TAP **[PREVIEW LINK](https://andrii256.github.io/layout_miami/)** TO SEE DEMO
 
-## Instructions
-1. **Fork** the repo.
-2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
-3. Run `npm install` (or just `npm i`)
-4. Run `npm start`.
-5. Open one more terminal window for the next steps
-6. `git checkout -b develop` - to create new branch and switch on it
-7. Write you code in `src` folder
-8. Run `npm run lint` and fix code style errors.
-9. Run `npm run deploy` to deploy your solution to `gh-pages`
-10. `git add . && git commit -m 'solution'` to save your changes
-11. `git push origin develop` - to send you code for PR
-12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
-13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
-14. Copy `DEMO LINK` to the PR description
+## Technologies
 
-> To update you PR repeat steps 7-11
+ - HTML5
+ - CSS3
+ - Sass (SCSS)
+ - BEM
+ - Google page speed insights
+ - npm
+ - git
+ 
+*I deliberately did not use js to better understand css in all its possible possibilities
+## Code Description and Features
+This is main page of commercial site of estate business. There are 7 main blocks:
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+**Main screen**
+Is second hardes block because of its full screen mode. It was quite difficult to chose styles to it look equal nice on all screens.
+
+**Fast description and Testimonials**
+Simple FlexBox blocks.
+
+**Gallery**
+Hardest one block. I deliberately implement 'show more' button functionality using CSS. Button connected with `checkbox` using `label for=""` and when user touch button he change state of checkbox. And when checkbox state changes, then changes styles (height) of neiborgh block.
+
+**Consultaions form and Contact us form**
+Used correct semantic tags.
+
+**Footer**
+Implemented used parallax effect. It has fixed to viewport position and usuall hidden by other body elements. But when user scroll down there are empty space after Contact us form without no content and footer became to visible.
+
+## Links
+Figma design: [link](https://www.figma.com/file/OvRf74Z53zOm7SCupA5ssj/Miami-Condo-Kings?node-id=0:1)
+Page speed insights: [link](https://developers.google.com/speed/pagespeed/insights/?url=https://andrii256.github.io/layout_miami/)
+Demonstration: [link](https://andrii256.github.io/layout_miami/)
+
+## My Contacts
+Andrii Hrushetskyi
+Ukraine
+
+Phone: +380 68 4344 676 (telegram and viber available too)
+Email: [hrushetskyi.andrii@gmail.com](mailto:hrushetskyi.andrii@gmail.com)
+
+[Skype](https://join.skype.com/invite/g14s4nvGNzCx)  | [LinkedIn](https://www.linkedin.com/in/andrii256/)  | [GitHub](https://github.com/Andrii256)
