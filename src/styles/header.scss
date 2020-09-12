@@ -1,6 +1,8 @@
 .header {
   display: grid;
-  grid-template-columns: minmax(5vw, 10vw) repeat(3, 1fr) minmax(5vw, 10vw);
+  grid-template-columns: minmax(5vw, 1fr)
+    repeat(3, minmax(100px, 342px))
+    minmax(5vw, 1fr);
   grid-template-rows: 124px 1fr 80px;
   grid-template-areas: ". number logo call ."
     ". title title title ."
@@ -17,6 +19,8 @@
     justify-self: start;
 
     @extend %link;
+
+    z-index: 1;
 
     &:hover {
       color: $link-hover;
@@ -40,7 +44,6 @@
     justify-self: end;
 
     @extend %link;
-    // z-index: 1;
 
     &::after {
       content: "";
@@ -92,7 +95,7 @@
 
   @media (max-width: 680px) {
     &__number {
-      text-indent: -100%;
+      letter-spacing: -10px;
       white-space: nowrap;
       overflow: hidden;
 
@@ -101,6 +104,9 @@
         position: absolute;
         top: 40px;
         right: 10vw;
+
+        transform: scale(-1,1);
+        cursor: pointer;
       }
     }
 
@@ -119,6 +125,12 @@
   }
 
   @media (min-width: 681px) {
-    grid-template-rows: 124px 287px 80px;
+    grid-template-rows: 124px 340px 80px;
+
+    &__nav {
+      justify-self: stretch;
+      align-self: start;
+    }
+
   }
 }

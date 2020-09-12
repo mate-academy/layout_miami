@@ -1,227 +1,232 @@
 .nav {
-  position: absolute;
-  top: 0;
-  left: 0;
 
-  width: 100%;
-  height: 100vh;
-
-  overflow: hidden;
+  &__toggle {
+    display: none;
+  }
 
   &__list {
-    display: inline-block;
-    margin: $toggle-top 25px 20px $toggle-left;
+    display: flex;
+    justify-content: space-between;
 
-    pointer-events: none;
-    transition: $nav-transition-duration;
+    //   @media (max-width: 800px) {
+    //     flex-wrap: wrap;
+    //   }
   }
+
   &__link {
-    position: relative;
-
-    display: block;
-    height: 7px;
-    float: left;
-    clear: both;
-
-    font-size: 22px;
-    color: transparent;
-    letter-spacing: -10.2px;
-    line-height: 22px;
-    font-weight: 500;
+    @extend %link;
     white-space: nowrap;
-    text-transform: uppercase;
 
-    transform: scaleY(0.2);
-    transition: $nav-transition-duration, opacity 1s, float 1s;
-
-    &::before {
-      position: absolute;
-      content: "";
-      top: 50%;
-      left: 0;
-
-      width: 100%;
-      height: 2px;
-
-      background-color: #fff;
-      transform: translateY(-50%) scaleY(5);
-      transition: $nav-transition-duration;
+    &:hover {
+      color: $link-hover;
     }
   }
 
   &__item {
-    &:nth-child(1) .nav__link {
-      letter-spacing: -12.3px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+
+    &:last-child {
+      margin-right: 0;
     }
 
-    &:nth-child(2) .nav__link {
-      letter-spacing: -10.8px;
-    }
-
-    &:nth-child(n + 4) .nav__link {
-      letter-spacing: -13px;
-      margin-top: -7px;
-      opacity: 0;
-    }
-
-    @for $i from 1 through $nav-items {
-      &:nth-child(#{$i}) .nav__link {
-        $delay: ($i - 1) * $nav-transition-delay;
-        transition-delay: $delay;
-        &::before {
-          transition-delay: $delay;
-        }
-      }
+    &--is-active {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0 24px;
     }
   }
 
-  &__toggle-button {
+  @media (max-width: 680px) {
     position: absolute;
+    top: 0;
+    left: 0;
 
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: $toggle-top 0 0 $toggle-left;
+    width: 100%;
+    height: 100vh;
 
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
+    overflow: hidden;
 
-    transition: $nav-transition-duration + 0.1;
+    &__list {
+      display: inline-block;
+      margin: $toggle-top 25px 20px $toggle-left;
 
-    &:hover {
-      box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    &::before,
-    &::after {
-      position: absolute;
-      content: "";
-      top: 50%;
-      left: 0;
-
-      width: 100%;
-      height: 2px;
-
-      background-color: #fff;
-      border-radius: 5px;
+      pointer-events: none;
       transition: $nav-transition-duration;
     }
+    &__link {
+      position: relative;
 
-    &::before {
-      transform: translateY(-50%) rotate(45deg) scale(0);
-    }
+      display: block;
+      height: 7px;
+      float: left;
+      clear: both;
 
-    &::after {
-      transform: translateY(-50%) rotate(-45deg) scale(0);
-    }
-  }
+      font-size: 22px;
+      color: transparent;
+      letter-spacing: -10.2px;
+      line-height: 22px;
+      font-weight: 500;
+      white-space: nowrap;
+      text-transform: uppercase;
 
-  &__toggle {
-    display: none;
+      transform: scaleY(0.2);
+      transition: $nav-transition-duration, opacity 1s, float 1s;
 
-    &:focus {
-      & ~ .nav__toggle-label .nav__toggle-button {
-        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1),
-          inset 0 0 0 20px rgba(0, 0, 0, 0.1);
+      &::before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 0;
+
+        width: 100%;
+        height: 2px;
+
+        background-color: #fff;
+        transform: translateY(-50%) scaleY(5);
+        transition: $nav-transition-duration;
       }
     }
 
-    &:checked {
-      & ~ .nav__toggle-label .nav__toggle-button {
-        box-shadow: 0 0 0 $shadow-radius $blue,
-          inset 0 0 0 20px $blue;
-
-        &:before {
-          transform: translateY(-50%) rotate(45deg) scale(1);
-        }
-
-        &:after {
-          transform: translateY(-50%) rotate(-45deg) scale(1);
-        }
+    &__item {
+      &--is-active {
+        background: none;
+        padding: 0;
       }
 
-      &:focus ~ .toggle-container .button-toggle {
-        box-shadow: 0 0 0 $shadow-radius $trp,
-          inset 0 0 0 20px $trp,
-          0 0 0 8px $trp,
-          inset 0 0 0 20px $trp;
+      &:nth-child(1) .nav__link {
+        letter-spacing: -12.3px;
       }
 
-      & ~ .nav__list {
-        pointer-events: auto;
-        transform: translate(-5vw, 100px);
+      &:nth-child(2) .nav__link {
+        letter-spacing: -10.8px;
+      }
 
-        .nav__link {
-          height: 50px;
-          margin-top: 0;
+      &:nth-child(n + 4) .nav__link {
+        letter-spacing: -13px;
+        margin-top: -7px;
+        opacity: 0;
+      }
 
-          color: #fff;
-          line-height: 40px;
-          letter-spacing: 0;
-
-          opacity: 1;
-          transform: scaleY(1);
-          transition: $nav-transition-duration, opacity 0.1s, float 1s;
-
+      @for $i from 1 through $nav-items {
+        &:nth-child(#{$i}) .nav__link {
+          $delay: ($i - 1) * $nav-transition-delay;
+          transition-delay: $delay;
           &::before {
-            opacity: 0;
+            transition-delay: $delay;
           }
         }
       }
     }
-  }
 
-  @media (min-width: 681px) {
-    %MYlink {
-      font-size: 12px;
-      line-height: 16px;
-      font-family: "Roboto", sans-serif;
-      color: #fff;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    &__toggle-button {
+      position: absolute;
+
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: $toggle-top 0 0 $toggle-left;
+
+      background-color: transparent;
+      border: none;
+      border-radius: 50%;
+
+      transition: $nav-transition-duration + 0.1;
+      cursor: pointer;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 0;
+
+        width: 100%;
+        height: 2px;
+
+        background-color: #fff;
+        border-radius: 5px;
+        transition: $nav-transition-duration;
+      }
+
+      &::before {
+        transform: translateY(-50%) rotate(45deg) scale(0);
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(-45deg) scale(0);
+      }
     }
-
-    position: static;
-
-    max-width: 1024px;
 
     &__toggle {
       display: none;
-    }
 
-    &__list {
-      display: flex;
-      justify-content: space-between;
+      &:checked {
+        & ~ .nav__toggle-label .nav__toggle-button {
+          box-shadow: 0 0 0 $shadow-radius $blue,
+            inset 0 0 0 20px $blue;
 
-      //   @media (max-width: 800px) {
-      //     flex-wrap: wrap;
-      //   }
-    }
+          &:before {
+            transform: translateY(-50%) rotate(45deg) scale(1);
+          }
 
-    &__link {
-      @extend %MYlink;
-      white-space: nowrap;
+          &:after {
+            transform: translateY(-50%) rotate(-45deg) scale(1);
+          }
+        }
 
-      // &:hover {
-      //   color: $link-hover;
-      // }
-    }
+        & ~ .nav__list {
+          pointer-events: auto;
+          transform: translate(-5vw, 100px);
 
-    &__item {
-      margin-right: 10px;
-      background: rgba(255, 255, 255, 0);
-      border-radius: 8px;
+          &::after {
+            position: absolute;
+            content: "+1 234 555-55-55";
+            bottom: -40px;
+            left: 5vw;
 
-      &:last-child {
-        margin-right: 0;
-      }
+            font-size: 12px;
+            line-height: 16px;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 2px;
+            white-space: nowrap;
 
-      &--is-active {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0 24px;
+            transform: translate(-5vw);
+            cursor: pointer;
+          }
+
+          .nav__link {
+            height: 50px;
+            margin-top: 0;
+
+            color: #fff;
+            line-height: 40px;
+            letter-spacing: 0;
+
+            opacity: 1;
+            transform: scaleY(1);
+            transition: $nav-transition-duration, opacity 0.1s, float 1s;
+
+            &:hover {
+              color: $link-hover;
+            }
+
+            &::before {
+              opacity: 0;
+            }
+          }
+        }
+
+        & ~ .header__number {
+          &::after {
+            content: url(../images/phone.svg);
+            position: absolute;
+            bottom: -40px;
+            left: 10vw;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
