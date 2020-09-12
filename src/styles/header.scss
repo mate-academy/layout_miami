@@ -1,10 +1,10 @@
 .header {
-  height: 100vh;
   position: relative;
+  height: 100vh;
   max-width: 1020px;
+  overflow: hidden;
   margin: 0 auto;
   
-
   font-weight: bold;
   letter-spacing: 2px;
   color: #fff;
@@ -65,19 +65,21 @@
       background-color: #fff;
     }
   }
-  
-  &__checkbox {
-    padding: 20px;
-    cursor: pointer;
-    display: none;
-    opacity: 0;
-  }
 
   &__burger {
-    background: url(../images/burger-menu.svg);
+    background: url(../images/burger-menu.svg) no-repeat;
+    background-position: center;
     width: 18px;
     height: 12px;
+    padding: 10px;
     display: none;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+
+    &--active {
+      background: url(../images/cross.svg) no-repeat;
+    }
   }
 
   &__nav {
@@ -105,20 +107,21 @@
     }
 
     &__name {
-      left: 20px;
-      top: 150px;
+      left: 50px;
+      bottom: 150px;
     }
 
   }
 
   @media (max-width: 800px) {
-
     &__name {
+      left: 20px;
       font-size: 46px;
       line-height: 40px;
     }
 
-    &__phone {
+    &__phone,
+    &__action {
       display: none;
     }
 
@@ -126,26 +129,14 @@
       display: block;
     }
 
-    &__action {
-      display: none;
-    }
-
     &__burger {
       display: block;
+      position: static;
     }
     
-    &__checkbox {
-      display: block;
-    }
     &__logo {
       width: 73px;
       height: 48px;
     }
-   
-  
   }
-}
-
-.active {
-  display: block;
 }
