@@ -2,36 +2,50 @@
 
 .gallery {
 
-  &__label {
-    text-align: center;
-    font-size: 48px;
-    line-height: 48px;
-  }
-
-  &__crown {
-    width: 23px;
-    height: 16px;
-    display: block;
-    margin: 8px auto 0;
+  &__header {
+    margin: 0 auto;
   }
 
   &__row {
     margin-top: 40px;
   }
 
+  &_img-wr:first-child {
+    margin-right: 20px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+  
   &__img-big {
     @include img_of_gallery(673px);
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   &__img-middle {
     @include img_of_gallery(500px);
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   &__img-little {
     @include img_of_gallery(327px);
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
-  &__photos{
+  &__photos {
     height: 256px;
     display: flex;
     justify-content: space-between;
@@ -44,17 +58,55 @@
   &__link {
     color: $font-article-span;
     font-weight: bold;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $main-link-hover;
+    }
   }
 
   &__button {
     display: block;
-    width: 57px;
-    height: 14px;
-    padding: 21px 65px;
+    width: 188px;
+    height: 56px;
     margin: 40px auto;
+    padding: 19px 0;
+
+    text-align: center;
     color: $font-article-span;
     font-weight: bold;
+    line-height: 14px;
+  
+
     border: 2px solid $font-article-span;
     border-radius: 8px;
+
+    transition: color 0.5s;
+
+    &:hover {
+      color: $main-link-hover;
+      border-color: $main-link-hover;
+    }
   }
+
+  @media screen and (max-width: $small-screen) {
+    .gallery {
+      &_img-wr {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .gallery {
+
+    &__photos {
+      height: 131px;
+    } 
+      &__img {
+        min-width: 300px;
+      }
+    }
+  
 }
