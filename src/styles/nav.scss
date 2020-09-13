@@ -7,6 +7,26 @@
   &__list {
     display: flex;
     justify-content: space-between;
+
+    &::after {
+      position: absolute;
+      content: "+1 234 555-55-55";
+      bottom: -40px;
+      left: 5vw;
+
+      height: 7px;
+      clear: both;
+
+      font-size: $page-font-size - 4;
+      line-height: $page-font-size;
+      color: transparent;
+      letter-spacing: -8.2px;
+      font-weight: $middle-weight;
+      white-space: nowrap;
+
+      transform: scaleY(0.2);
+      transition: $nav-transition-duration, opacity 1s, float 1s;
+    }
   }
 
   &__link {
@@ -126,13 +146,8 @@
       border-radius: 50%;
 
       transition: $nav-transition-duration + 0.1;
-      cursor: pointer;
 
-      // &:hover {
-      //   color: $link-hover;
-      //   box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1),
-      //     inset 0 0 0 20px rgba(0, 0, 0, 0.1);
-      // }
+      cursor: pointer;
 
       &::before,
       &::after {
@@ -180,17 +195,8 @@
           transform: translate(-5vw, 100px);
 
           &::after {
-            position: absolute;
-            content: "+1 234 555-55-55";
-            bottom: -40px;
-            left: 5vw;
-
-            font-size: $page-font-size - 4;
-            line-height: $page-font-size;
             color: $contrast;
-            font-weight: $middle-weight;
             letter-spacing: 2px;
-            white-space: nowrap;
 
             transform: translate(-5vw);
           }
@@ -207,7 +213,9 @@
             transform: scaleY(1);
             transition: $nav-transition-duration, opacity 0.1s, float 1s;
 
-            @include hover(color, $link-hover);
+            &:hover {
+              color: $link-hover;
+            }
 
             &::before {
               opacity: 0;
