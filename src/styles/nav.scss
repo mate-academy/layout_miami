@@ -7,19 +7,13 @@
   &__list {
     display: flex;
     justify-content: space-between;
-
-    //   @media (max-width: 800px) {
-    //     flex-wrap: wrap;
-    //   }
   }
 
   &__link {
     @extend %link;
     white-space: nowrap;
 
-    &:hover {
-      color: $link-hover;
-    }
+    @include hover(color, $link-hover);
   }
 
   &__item {
@@ -62,11 +56,11 @@
       float: left;
       clear: both;
 
-      font-size: 22px;
+      font-size: $link-size-mobile;
       color: transparent;
       letter-spacing: -10.2px;
-      line-height: 22px;
-      font-weight: 500;
+      line-height: $link-size-mobile;
+      font-weight: $middle-weight;
       white-space: nowrap;
       text-transform: uppercase;
 
@@ -185,10 +179,10 @@
             bottom: -40px;
             left: 5vw;
 
-            font-size: 12px;
-            line-height: 16px;
+            font-size: $page-font-size - 4;
+            line-height: $page-font-size;
             color: $contrast;
-            font-weight: 500;
+            font-weight: $middle-weight;
             letter-spacing: 2px;
             white-space: nowrap;
 
@@ -208,9 +202,7 @@
             transform: scaleY(1);
             transition: $nav-transition-duration, opacity 0.1s, float 1s;
 
-            &:hover {
-              color: $link-hover;
-            }
+            @include hover(color, $link-hover);
 
             &::before {
               opacity: 0;
