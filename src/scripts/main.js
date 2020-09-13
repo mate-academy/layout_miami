@@ -38,3 +38,31 @@ burger.addEventListener('click', () => {
   nav.classList.toggle('menu');
   headerIcon.classList.toggle('menu');
 });
+
+navItem.forEach(element => {
+  element.addEventListener('click', () => {
+    burgerItem.forEach(item => {
+      item.classList.toggle('menu');
+    });
+
+    phone.forEach(item => {
+      item.classList.toggle('menu');
+    });
+
+    logo.classList.toggle('menu');
+    header.classList.toggle('menu');
+    list.classList.toggle('menu');
+
+    navItem.forEach(item => {
+      item.classList.toggle('menu');
+    });
+
+    active.classList.toggle('nav__item--is-active');
+
+    promo.classList.toggle('menu');
+
+    title.classList.toggle('menu');
+    nav.classList.toggle('menu');
+    headerIcon.classList.toggle('menu');
+  });
+});
