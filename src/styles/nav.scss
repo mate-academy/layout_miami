@@ -1,19 +1,41 @@
 .nav {
   color: white;
+  width: 1030px;
+  margin: auto;
+
+  @media screen and (max-width:1029px) {
+    width: auto;
+    margin: 0;
+  }
 
   &__list {
     display: flex;
-    margin-left: 123px;
+    margin: auto;
     font-weight: $weight-bold;
+    margin-top: 606px;
 
-    @media screen and (max-width:1130px) {
-      margin-left: 50px;
+    @media (max-width: 700px) {
+      position: relative;
+      left: 40px;
+      width: 150px;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    @media (max-width: 330px) {
+      padding: 0;
+      margin: 0;
     }
   }
 
   &__item {
     list-style-type: none;
     color: white;
+
+    @media (max-width: 700px) {
+      width: 150px;
+      margin-bottom: 10px;
+    }
   }
 
   &__link {
@@ -34,6 +56,7 @@
     }
 
     @media screen and (max-width: 850px) {
+      padding: 7px 15px;
       font-size: 14px;
     }
 
@@ -47,5 +70,40 @@
       background: #d5c5aa;
       color: black;
     }
+  }
+
+  &__toggler-label {
+    display: none;
+    color: #fff;
+
+    @media (max-width: 700px) {
+      position: relative;
+      top: -25px;
+      left: 50px;
+
+      display: inline-block;
+      padding: 15px;
+      border: 1px solid blue;
+    }
+
+    &::before {
+      content: "=";
+      width: 200px;
+      height: 50px;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+}
+
+.nav__toggler:checked ~ .nav__toggler-label::before {
+  content: "x";
+}
+
+@media (max-width: 700px) {
+  .nav__toggler:not(:checked) ~ .nav__list {
+    display: none;
   }
 }
