@@ -1,18 +1,28 @@
 .header {
+  position: relative;
   height: 700px;
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
-  position: relative;
+
   letter-spacing: 2px;
   align-items: center;
+
+  &__logo {
+    @media screen and (min-width:300px) and (max-width:500px) {
+      position: absolute;
+      top: 10%;
+      z-index: 2;
+    }
+  }
 
   &__top {
     display: flex;
     justify-content: space-around;
     position: absolute;
     top: 24px;
-    color: white;
+    width: 100%;
+    color: $main-background-color;
 
     @media screen and (max-width: 999px) {
       & {
@@ -27,20 +37,42 @@
   &__phone {
     position: relative;
     top: 32px;
+    color: $main-background-color;
+
+    @media screen and (min-width:300px) and (max-width:500px) {
+      opacity: 0;
+    }
   }
+  &__phone-icon {
+    position: absolute;
+    background-image: url(../images/telephone.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    left: -100%;
+    width: 30px;
+    height: 30px;
+
+    @media screen and (min-width:300px) and (max-width:500px) {
+      left: 50px;
+    }
+  }
+
   &__link {
     position: relative;
-    color: white;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 8px;
     top: 32px;
+    border-bottom: 1px solid $main-background-color;
+    padding-bottom: 8px;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
     text-transform: uppercase;
-
+    color: $main-background-color;
     @include hover(color, $gray-color);
+
+    @media screen and (min-width:300px) and (max-width:500px) {
+      visibility: hidden;
+    }
   }
 
   &__title {
@@ -52,21 +84,29 @@
     font-weight: bold;
     font-size: 60px;
     line-height: 60px;
-    color: white;
+    color: $main-background-color;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 135px;
       width: 35px;
       height: 2px;
-      background: #fff;
       border-radius: 2px;
+      background: $main-background-color;
     }
     @media screen and (max-width: 999px) {
       & {
         visibility: hidden;
       }
+    }
+    @media screen and (min-width:300px) and (max-width:500px) {
+      top: 75%;
+      left: 3%;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      visibility: visible;
     }
   }
 
@@ -75,6 +115,5 @@
     bottom: 49px;
     left: 0;
     right: 0;
-
   }
 }

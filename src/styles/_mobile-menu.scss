@@ -1,0 +1,100 @@
+.mobile-menu {
+  &__toggle {
+    opacity: 0;
+  }
+
+  &__phone-call {
+    display: none;
+    padding-left: 40px;
+    margin-bottom: -65px;
+    margin-top: 20px;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 1;
+
+    @media screen and (min-width:300px) and (max-width:500px) {
+      display: block;
+    }
+  }
+
+  &__phone {
+    color: white;
+  }
+
+  &__call {
+    display: block;
+    top: 32px;
+    padding: 19px 12px 10px;
+    border-bottom: 1px solid $main-background-color;
+    font-size: 9px;
+    line-height: 16px;
+    color: $main-background-color;
+    text-transform: uppercase;
+  }
+
+  @media screen and (min-width:300px) and (max-width:500px) {
+
+    &__toggle:checked ~ &__btn > &__span-checked {
+      transform: rotate(45deg);
+    }
+    &__toggle:checked ~ &__btn > &__span-checked::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    &__toggle:checked ~ &__btn > &__span-checked::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+    &__btn {
+      position: absolute;
+      right: 60px;
+      bottom: 593px;
+      z-index: 2;
+
+    }
+    &__btn > &__span,
+    &__btn > &__span::before,
+    &__btn > &__span::after {
+      display: block;
+      position: absolute;
+
+      width: 20px;
+      height: 2px;
+
+      background-color: $main-background-color;
+
+      transition-duration: 0.25s;
+    }
+    &__btn > span::before {
+      content: "";
+      top: -5px;
+    }
+    &__btn > span::after {
+      content: "";
+      top: 5px;
+    }
+
+    &__list {
+      position: fixed;
+      display: flex;
+      top: 0;
+      left: -100%;
+      align-items: flex-start;
+      gap: 28px;
+
+      width: 100%;
+      height: 100%;
+
+      font-weight: bold;
+      letter-spacing: 5px;
+
+      background-color: $main-color;
+      transition-duration: 0.25s;
+      visibility: hidden;
+    }
+    &__toggle:checked ~ &__list {
+      visibility: visible;
+      left: 0;
+    }
+  }
+}
