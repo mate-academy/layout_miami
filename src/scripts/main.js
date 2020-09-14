@@ -1,13 +1,13 @@
 'use strict';
 
-const burger = document.querySelector('.burger'); // element
+const burger = document.querySelector('.burger');
 const burgerItem = document.querySelectorAll('.burger__item');
-const phone = document.querySelectorAll('.header__phone'); // massive
-const logo = document.querySelector('.header__logo'); // element
-const header = document.querySelector('.header'); // element
-const list = document.querySelector('.nav__list'); // element
-const navItem = document.querySelectorAll('.nav__item'); // massive
-const promo = document.querySelector('.promo'); // element
+const phone = document.querySelectorAll('.header__phone');
+const logo = document.querySelector('.header__logo');
+const header = document.querySelector('.header__container');
+const list = document.querySelector('.nav__list');
+const navItem = document.querySelectorAll('.nav__item');
+const promo = document.querySelector('.header');
 const title = document.querySelector('.header__title');
 const nav = document.querySelector('.header__nav');
 const headerIcon = document.querySelector('.header__icon-img');
