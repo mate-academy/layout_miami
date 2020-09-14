@@ -13,7 +13,6 @@ function openMenu() {
   logo.classList.toggle('active');
 }
 
-navItem.forEach(element => 
-  { 
-    element.addEventListener('click',openMenu)
-  })
+navItem.forEach(element => {
+  element.addEventListener('click', openMenu);
+});
