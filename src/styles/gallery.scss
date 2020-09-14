@@ -1,6 +1,4 @@
 .gallery {
-  padding: 100px 7vw 50px;
-  min-width: 320px;
   display: grid;
   grid-template-columns: 41.5% 8.5% 8.5% 41.5%;
   grid-template-rows: 4.17% 2.83% 21.3% 7.5% 21.3% 7.5% 21.3% 7.5% 5.8%;
@@ -14,15 +12,17 @@
     "adress-3 adress-3 . ."
     "button button button button";
 
-  align-items: center;
-  background-color: white;
   min-height: 1200px;
+  align-items: center;
+  padding: 100px 7vw 50px;
+
+  background-color: $main_color;
 
   &__name {
     grid-area: gallery;
     justify-self: center;
     margin-bottom: 8px;
-    font-family: "Roboto", sans-serif;
+
     font-weight: bold;
     font-size: 48px;
     line-height: 48px;
@@ -30,114 +30,41 @@
 
   &__crown {
     grid-area: crown;
-    align-self: start;
-    justify-self: center;
-
     width: auto;
     height: 10px;
+    align-self: start;
+    justify-self: center;
   }
 
   &__foto-11 {
     grid-area: foto11;
-
-    width: 99%;
-    height: 256px;
-
-    object-fit: cover;
-    object-position: center;
-
-    border-radius: 8px;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
   &__foto-12 {
     grid-area: foto12;
     justify-self: end;
-
-    height: 256px;
-    width: 99%;
-
-    border-radius: 8px;
-
-    object-fit: cover;
-    object-position: center;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
+
   &__foto-23 {
     grid-area: foto23;
-
-    width: 99%;
-    height: 256px;
-
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
   &__foto-24 {
     grid-area: foto24;
     justify-self: end;
-
-    width: 99%;
-    height: 256px;
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
 
   &__foto-35 {
     grid-area: foto35;
-
-    width: 99%;
-    height: 256px;
-
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
 
   &__foto-36 {
     grid-area: foto36;
     justify-self: end;
-
-    width: 99%;
-    height: 256px;
-
-    border-radius: 8px;
-    object-fit: cover;
-    object-position: center;
-
-    transition: 300ms;
-
-    &:hover {
-      box-shadow: 1px 1px 5px 3px grey;
-    }
+    @include foto;
   }
 
   &__adress-1 {
@@ -153,13 +80,12 @@
   }
 
   &__link {
-    color: #0075ff;
-    font-family: "Roboto", sans-serif;
+    color: $alternative-color;
+
     font-weight: bold;
-    font-size: 16px;
     line-height: 26px;
 
-    transition: 300ms;
+    transition: $transition;
 
     &:hover {
       color: blue;
@@ -168,25 +94,23 @@
 
   &__button {
     grid-area: button;
-    justify-self: center;
 
     width: 188px;
     height: 56px;
+    justify-self: center;
 
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
     font-weight: bold;
-    font-size: 16px;
     line-height: 14px;
 
-    border: 2px solid #0075ff;
-    border-radius: 8px;
+    border: 2px solid $alternative-color;
+    border-radius: $radius;
 
-    color: #0075ff;
+    color: $alternative-color;
 
-    transition: 300ms;
+    transition: $transition;
+
     &:hover {
-      background-color: #0075ff;
+      background-color:$alternative-color;
       color: rgb(213,197,170);
     }
   }
@@ -195,8 +119,7 @@
 @media screen and (max-width: 999px ) {
 
   .gallery {
-    padding-left: 40px;
-    padding-right:40px;
+    padding: 0 7vw 50px;
 
     grid-template-areas: "gallery gallery gallery gallery"
       "crown crown crown crown"
@@ -211,11 +134,24 @@
     &__button {
       width: 86vw;
     }
+    &__foto-11,
+    &__foto-12,
+    &__foto-23,
+    &__foto-24,
+    &__foto-35,
+    &__foto-36 {
+      height: 190px;
+      width: 100%;
+
+      @include foto-fit;
+    }
+
+
   }
 
   .gallery__foto--mobile {
-    object-fit: cover;
-    object-position: center;
     width: 96%;
+
+    @include foto-fit;
   }
 }
