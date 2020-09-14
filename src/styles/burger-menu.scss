@@ -1,43 +1,44 @@
 .burger-menu {
-  visibility: hidden;
-  
-  #burger-menu__toggle {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  left: 100vw;
+  z-index: 1;
+
+  &__label {
     display: none;
-  }
-
-  &__button {
-    position: absolute;
-    top: 13px;
-    left: 7px;
-    width: 20px;
-    height: 20px;
-
     z-index: 2;
+    position: relative;
+    top: 15px;
+    left: 15px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(/images/burger.svg);
   }
+  
+  &__toggler {
+    display: none;
 
-  &__button > span,
-  span::before,
-  ::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 3px;
+    &:checked + .burger-menu__label {
+      background-image: url(/images/burger-x.svg);
+      z-index: 2;
+    }
 
-    background-color: white;
-
-    transition: transform $hover-duration;
+    &:checked ~ .burger-menu {
+      left: 0;
+    }
   }
 
   &__list {
     display: block;
-    position: absolute;
-    visibility: hidden;
-
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-
+    width: 100vw;
+    height: 100vh;
     background-color: $hover-color;
   }
 
@@ -47,11 +48,10 @@
     width: fit-content;
     padding: 15px 20px;
     margin: 0 auto;
-
     top: 150px;
+
     font-size: 24px;
     font-weight: 500;
-
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -65,37 +65,13 @@
       color: $active-color;
     }
   }
-
-  &__button > span::before {
-    content: "";
-    top: -8px;
-  }
-  &__button > span::after {
-    content: "";
-    top: 8px;
-  }
-
-  #burger-menu__toggle:checked ~ &__button > span {
-    background-color: transparent;
-  }
-  #burger-menu__toggle:checked ~ &__button > span::before {
-    top: 0;
-    transform: rotate(-45deg);
-  }
-  #burger-menu__toggle:checked ~ &__button > span::after {
-    top: 0;
-    transform: rotate(45deg);
-  }
-  #burger-menu__toggle:checked ~ &__list {
-    visibility: visible;
-    right: 0;
-    transition: $hover-duration;
-  }
 }
 
 @media (max-width: 1005px) {
   .burger-menu {
-    display: flex;
-    visibility: visible;
+    display: block;
+  }
+  .burger-menu__label {
+    display: block;
   }
 }
