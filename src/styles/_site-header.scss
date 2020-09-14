@@ -1,46 +1,43 @@
 @import "utils/vars";
 
-.site-header {  // хедер 
-  height: 765px;
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  height: 700px;
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
-  padding: 0 8%;
+  padding: 0 120px;
   
-
-  &__nav {   //навігація знизу
-    position: absolute;
-    bottom: 48px;
-
-  }
-
-  &__top {//лого по центру + телефон і колтуордер
-    display: flex;
-    justify-content: space-between;
-    padding-top: 24px;
-    
+  &__call-to {
+    left: calc(100% - (113px + 120px + 40px));
   }
 
   &__logo {
     background-size: auto;
     background-position: center;
     position: absolute;
-    left: calc(50% - 50px);
+    left: calc(50% - 115px / 2);
+    margin-top: 24px;
   }
 
   &__phone,
   &__call-to {
-    position: relative;
+    position: absolute;
     margin-top: 56px;
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
     letter-spacing: 2px;
-    
+  
   }
 
-  &__link {   /*  лінки телефона і ордера  */
+  &__phone-icon {
+    display: none;
+  }
+
+  &__link {
     color: white;
     text-transform: uppercase;
     padding-bottom: 8px;
@@ -50,46 +47,62 @@
       border-bottom: 1px solid $hover-color;
     }
   }
-}
 
-.header-title {
-  color: white;
-  font-weight: 700;
-  font-size: 60px;
-  line-height: 60px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -1.5px;
-  margin: auto;
-  position: absolute;
-  top: 414px;
+  &__title {
+    color: white;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    bottom: 165px;
+    letter-spacing: -1.5px;
+    position: absolute;
 
-  &:before {
-    content: "";
-    display: block;
-    position: relative;
-    height: 2px;
-    width: 35px;
-    bottom: 65px;
-    left: 35px;
-    background-color: white;
-  
+    &::before {
+      content: "";
+      display: block;
+      position: relative;
+      height: 2px;
+      width: 35px;
+      margin-bottom: 16px;
+      background-color: white;
+    
+    }
   }
 
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+
+  }
 }
 
-@media screen and (max-width: $medium-screen) {
+@media screen and (max-width: $mobile-screen) {
   .site-header {
+
     &__top {
       flex-direction: column;
     }
 
     &__phone {
-      right: 10px;
+      bottom: 160px;
+      left: 30px;
+      font-size: 12px;
+      line-height: 16px;
+      z-index: 1;
     }
 
     &__call-to {
-      left: -10px;
+      bottom: 140px;
+      left: 30px;
+      font-size: 12px;
+      line-height: 16px;
+      z-index: 1;
+    }
+
+    &__link:hover {
+      border-bottom: none;
     }
   }
 }

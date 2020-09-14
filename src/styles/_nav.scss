@@ -3,17 +3,14 @@
 .nav {
   color: white;
   text-transform: uppercase;
-  position: absolute;
-  bottom: 48px;
-  left: 0;
-  right: 0;
+  white-space: nowrap;
 
   &__list {
     display: flex;
     justify-content: center;
     
   }
-
+ 
   &__part {
     padding: 8px 24px;
     margin: 0 50px;
@@ -46,16 +43,54 @@
   }
 }
 
-@media screen and (max-width: $medium-screen) {
+@media (max-width: $medium-screen) {
   .nav__list {
-    flex-direction: column;
     align-items: center;
   }
 }
 
-@media screen and (max-width: $mobile-screen) {
+@media (max-width: $mobile-screen) {
   .nav__list {
-    overflow: hidden;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    top: -700px;
+    height: 700px;
+    padding-left: 0;
+    width: 100%;
+    background-color: $name-color;
+    align-items: flex-start;
+    animation: burger-menu 1s ease-out;
+  }
+
+  .nav__link {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+  
+  }
+
+  .nav__part {
+    margin-top: 32px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 24px;
     
+  }
+
+  .nav__part--active {
+    background-color: $name-color;
+  
+  }
+}
+
+@keyframes burger-menu {
+  from {
+    transform: translateX(320px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
