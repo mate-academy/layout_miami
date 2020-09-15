@@ -1,0 +1,97 @@
+@import "utils";
+@import "animation-nav";
+
+.toggle__btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 18px;
+  height: 16px;
+  background: no-repeat url("../images/sandwich.svg");
+  background-size: contain;
+  z-index: 3;
+
+  @media screen and (min-width: 700px) {
+    display: none;
+  }
+}
+
+.nav__btn:checked + .toggle__btn {
+  background-image: url("../images/cross.png");
+}
+
+.nav__btn:checked ~ .nav {
+  animation: showIn 0.6s ease-in-out forwards;
+}
+
+@media screen and (max-width: 700px) {
+  #nav_menu {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .nav {
+    height: 100%;
+    top: -24px;
+    padding-bottom: 24px;
+    z-index: 1;
+
+    background-color: $activeColor;
+    margin-left: -20px;
+
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+
+    animation: showOut 0.5s ease-in-out forwards;
+
+    &__link {
+      font-size: 22px;
+      line-height: 22px;
+      padding: 20px;
+    }
+
+    &__logo {
+      margin: 24px auto;
+    }
+
+    .phone__link {
+      margin-top: 28px;
+      padding-left: 24px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
+
+    .header__link {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      width: 115px;
+      margin-top: 16px;
+      padding-left: 24px;
+      font-size: 12px;
+      line-height: 16px;
+      color: $mainColor;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        height: 0;
+        border: 1px solid white;
+        width: 108px;
+        left: 25px;
+        bottom: -8px;
+      }
+    }
+  }
+}
+
+.nav__btn {
+  display: none;
+}
