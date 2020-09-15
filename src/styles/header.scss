@@ -1,5 +1,5 @@
 .header {
-  height: 765px;
+  height: 100vh;
 
   position: relative;
 
@@ -27,12 +27,21 @@
     color: $text-color;
   }
 
+  &__top--burger {
+    display: none;
+  }
+
   &__phone,
   &__action {
     display: flex;
     align-items: center;
 
     margin-bottom: 5px;
+  }
+
+  &__action--burger,
+  &__phone--burger {
+    display: none;
   }
 
   &__link {
@@ -50,26 +59,81 @@
       transition: color $transition-duration;
     }
   }
+
+  &__burger-toggler {
+    display: none;
+  }
+
+  &__burger-check {
+    display: none;
+  }
+
+  &__logo--burger {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
   .header {
-    &__top {
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
+    display: flex;
+    justify-content: space-around;
 
-    &__logo {
-      order: 1;
-    }
-
-    &__phone {
-      order: 2;
-    }
-
+    &__nav,
+    &__phone,
     &__action {
-      order: 3;
+      display: none;
+    }
+
+    &__logo--burger {
+      display: inline-block;
+      margin: 35px auto;
+    }
+
+    &__burger-toggler,
+    &__burger-check {
+      display: block;
+
+      margin-top: 70px;
+    }
+
+    &__phone--burger {
+      margin-top: 80px;
+    }
+
+    &__burger-toggler {
+      font-size: 32px;
+      color: #fff;
+
+      cursor: pointer;
+    }
+
+    &__link--burger {
+      border-bottom: none;
+    }
+
+    &__burger-check {
+      display: none;
+    }
+
+    &__phone--burger,
+    &__action--burger {
+      display: block;
+
+      margin-left: 40px;
+    }
+
+    &__burger-check:checked ~ &__nav {
+      display: block;
+      background: blue;
+      height: 100%;
+      bottom: 0;
+    }
+
+    &__burger-toggler-close {
+      display: inline-block;
+      position: relative;
+      margin-right: 20px;
+      margin-top: 50px;
     }
   }
 }
