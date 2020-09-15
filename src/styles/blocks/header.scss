@@ -1,5 +1,4 @@
 .header {
-  position: relative;
   height: 765px;
   background: url(../images/header.jpg) center / cover;
 
@@ -90,7 +89,7 @@
     transition: color $hover-duration;
     
     &:hover {
-      color: $active-color;
+      color: $c-color;
     }
   }
 
@@ -106,11 +105,12 @@
     &__nav-input {
       display: block;
       width: 0;
+      height: 0;
 
-      &:checked ~ .header__nav {
+      &:checked ~ .header__burder {
+        height: 100%;
         display: block;
-        transform: translateX(100%);
-        animation: menu 1s ease-out forwards;
+        background-color: $c-bg-burger;
       }
 
       &:checked + .header__nav-label {
@@ -123,18 +123,6 @@
     &__phone,
     &__action {
       display: none;
-    }
-  }
-
-  @keyframes menu {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  
-    to {
-      transform: translateX(0);
-      opacity: 1;
     }
   }
 }
