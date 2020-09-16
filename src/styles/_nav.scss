@@ -1,0 +1,113 @@
+@import "utils/vars";
+
+.nav {
+  color: white;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+ 
+  &__part {
+    padding: 8px 24px;
+    margin: 0 50px;
+    
+
+    &--active {
+      background-color: rgba(51, 52 ,70, 10%);
+      border-radius: 8px;
+      transition: color $hover-duration;
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    transition: color $hover-duration;
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/menu-icon.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+    position: absolute;
+    right: 23px;
+    bottom: 600px;
+    z-index: -1;
+    cursor: pointer;
+  }
+
+  &__toggler {
+    opacity: 0;
+  }
+  
+
+}
+
+@media (max-width: 650px) {
+  .nav__list {
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    top: -670px;
+    height: 730px;
+    width: 100%;
+    padding: 0;
+    background-color: $name-color;
+    align-items: flex-start;
+    animation: burger-menu 1s ease-out;
+    display: none;
+  }
+
+  .nav__toggler:checked ~ .nav__list {
+    display: flex;
+    visibility: visible;
+    
+  }
+
+  .nav__menu {
+    z-index: 1;
+  }
+  
+  @keyframes burger-menu {
+    from {
+      transform: translateX(320px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .nav__link {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+  
+  }
+
+  .nav__part {
+    margin-top: 32px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 24px;
+    
+  }
+
+  .nav__part--active {
+    background-color: $name-color;
+  
+  }
+}
