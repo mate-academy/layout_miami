@@ -8,7 +8,6 @@
   &__list {
     display: flex;
     justify-content: center;
-    
   }
  
   &__part {
@@ -34,33 +33,62 @@
       color: $hover-color;
     }
   }
-}
 
-@media (max-width: $big-screen) {
-  .nav__list {
-    display: flex;
-    justify-content: space-between;
+  &__menu {
+    background-image: url(../images/menu-icon.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+    position: absolute;
+    right: 23px;
+    bottom: 600px;
+    z-index: -1;
+    cursor: pointer;
   }
-}
 
-@media (max-width: $medium-screen) {
-  .nav__list {
-    align-items: center;
+  &__toggler {
+    opacity: 0;
   }
+  
+
 }
 
-@media (max-width: $mobile-screen) {
+@media (max-width: 650px) {
   .nav__list {
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    top: -700px;
-    height: 700px;
-    padding-left: 0;
+    top: -670px;
+    height: 730px;
     width: 100%;
+    padding: 0;
     background-color: $name-color;
     align-items: flex-start;
     animation: burger-menu 1s ease-out;
+    display: none;
+  }
+
+  .nav__toggler:checked ~ .nav__list {
+    display: flex;
+    visibility: visible;
+    
+  }
+
+  .nav__menu {
+    z-index: 1;
+  }
+  
+  @keyframes burger-menu {
+    from {
+      transform: translateX(320px);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateX(0);
+    }
   }
 
   .nav__link {
@@ -81,16 +109,5 @@
   .nav__part--active {
     background-color: $name-color;
   
-  }
-}
-
-@keyframes burger-menu {
-  from {
-    transform: translateX(320px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
   }
 }
