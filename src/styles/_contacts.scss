@@ -1,0 +1,62 @@
+.contacts {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    @include section-header;
+  }
+  &__data {
+    display: grid;
+    grid-template-columns: 150px 100px;
+    grid-template-rows: 100px;
+    column-gap: 110px;
+    grid-template-areas:  
+      "phone adress"
+      "email adress";
+  }
+  &__type {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 27px;
+    color: $light-text;
+    &:nth-child(1) {
+      grid-area: phone;
+    }
+    &:nth-child(2) {
+      grid-area: email;
+    }
+    &:nth-child(3) {
+      grid-area: adress;
+    }
+  }
+  &__info {
+    display: block;
+    color: initial;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 1361px) {
+    &__wrapper {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  
+  @media (max-width: 1000px) {
+    &__data {
+      column-gap: 30px;
+      margin-right: 50px;
+    }
+  }
+  @media (max-width: 750px) {
+    &__wrapper {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 400px) {
+    &__data {
+      display: block;
+    }
+  }
+}
