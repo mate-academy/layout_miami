@@ -1,12 +1,12 @@
 .header {
+  position: relative;
   height: 765px;
   background: url(../images/header.jpg) center / cover;
 
   &__phone-link {
-    position: absolute;
-    top: 39px;
-    left: 23px;
+    transform: translateY(39px) translateX(23px);
     display: none;
+    width: 18px;
     transition: opacity $hover-duration;
     z-index: 2;
     &:hover {
@@ -55,6 +55,7 @@
     font-size: 16px;
     line-height: 16px;
     color: white;
+    z-index: 2;
 
     @media (max-width: $small-screen) {
       top: 24px;
@@ -102,6 +103,11 @@
       display: block;
     }
 
+    &__phone,
+    &__action {
+      display: none;
+    }
+
     &__nav-input {
       display: block;
       width: 0;
@@ -114,15 +120,16 @@
       }
 
       &:checked + .header__nav-label {
+        position: fixed;
         &::after {
           background-image: url(../images/close.svg);
         }
       }
-    }
-    
-    &__phone,
-    &__action {
-      display: none;
+
+      &:checked ~ .header__phone-link,
+      &:checked ~ .header__top {
+        position: fixed;
+      }
     }
   }
 }
