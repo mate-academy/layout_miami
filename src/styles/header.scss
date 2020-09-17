@@ -7,6 +7,26 @@
   background: url("../images/header.png") no-repeat center;
   background-size: cover;
 
+  &__inner {
+    height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+
+  &__top {
+    padding-top: 24px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (min-width: 1200px) {
+      padding-top: 2vw;
+    }
+  }
+
   &__tel,
   &__action {
     padding: 7px 0;
@@ -20,7 +40,7 @@
 
   &__action,
   &__tel-desk-link {
-    @media (max-width: 944px) {
+    @media (max-width: 1199px) {
       display: none;
     }
   }
@@ -34,51 +54,19 @@
   &__tel-mob-link {
     height: 18px;
     width: 18px;
-    display: none;
+    display: block;
 
-    @media (max-width: 944px) {
-      display: block;
-    }
-  }
-
-  &__top {
-    position: absolute;
-    top: 24px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media screen and (min-width: 1400px) {
-      top: 2vw;
-    }
-  }
-
-  &__title-inner {
-    position: absolute;
-    left: 0;
-    bottom: 139px;
-
-    @media (max-width: 900px) {
-      bottom: 80px;
-    }
-
-    @media screen and (min-width: 1400px) {
-      bottom: 11.58vw;
+    @media (min-width: 1200px) {
+      display: none;
     }
   }
 
   &__title {
-    height: 139px;
+    padding-bottom: 80px;
     position: relative;
 
-    @media (max-width: 900px) {
-      height: 99px;
-    }
-
-    @media screen and (min-width: 1400px) {
-      height: 11.58vw;
+    @media screen and (min-width: 1200px) {
+      padding: 6.91vw 0 0;
     }
 
     &::before {
@@ -93,56 +81,60 @@
       background: $c-header;
       border-radius: 2px;
 
-      @media screen and (min-width: 1400px) {
-        height: 4px;
+      @media screen and (min-width: 1200px) {
+        width: 2.91vw;
+        height: 0.17vw;
+        top: 6.91vw;
+
+        border-radius: 0.17vw;
       }
     }
   }
 
   &__title-text {
     color: $c-header;
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    padding-top: 16px;
   }
 
   &__nav {
-    position: absolute;
-    bottom: 48px;
+    width: 100%;
+    height: 100%;
+    padding: 120px 21px 52px;
+
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0;
 
-    @media (max-width: 944px) {
-      width: 100%;
-      height: 100vh;
-      padding: 120px 21px 52px;
-      position: fixed;
-      top: 0;
-      left: 0;
+    background: blue;
 
-      background: blue;
+    transform: translateX(100%);
+    transition: transform 0.5s;
 
-      transform: translateX(100%);
-      transition: 0.3s linear;
-      z-index: 10;
+    z-index: 10;
+
+    @media (min-width: 1200px) {
+      height: 0;
+      padding: 0 0 4vw;
+
+      position: static;
+
+      background: transparent;
+      transform: translateX(0);
     }
   }
 
   &__nav--active {
-    @media (max-width: 944px) {
-      transform: translateX(0);
-    }
+    transform: translateX(0);
   }
 
   &__burger {
     width: 24px;
     height: 24px;
     position: relative;
-    display: none;
+    display: block;
 
-    @media (max-width: 900px) {
-      display: block;
+    @media (min-width: 1200px) {
+      display: none;
     }
   }
 }
