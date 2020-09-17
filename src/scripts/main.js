@@ -5,14 +5,14 @@ const burger = document.querySelector('.burger');
 const logo = document.querySelector('.logo');
 const navItem = document.querySelectorAll('.nav__item');
 
-burger.addEventListener('click', openMenu);
+burger.addEventListener('click', toggleMenu);
 
-function openMenu() {
+function toggleMenu() {
   nav.classList.toggle('active');
   burger.classList.toggle('active');
   logo.classList.toggle('active');
 }
 
 navItem.forEach(element => {
-  element.addEventListener('click', openMenu);
+  element.addEventListener('click', toggleMenu);
 });
