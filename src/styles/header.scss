@@ -1,0 +1,147 @@
+.header {
+  background-image: url("../images/header1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding-top: 24px;
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone {
+    color: $headerFontColor;
+    @include smallText;
+
+    &-icon {
+      display: none;
+    }
+  }
+
+  &__logo--img {
+    width: 115px;
+    height: 76px;
+  }
+
+  &__action {
+    position: relative;
+    color: white;
+    @include smallText;
+    text-transform: uppercase;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $headerFontColor;
+      top: 20px;
+      left: 0;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__menu {
+    background: url("../images/menu-icon.svg") no-repeat center;
+    display: none;
+    cursor: pointer;
+    width: 18px;
+    height: 12px;
+  }
+
+  
+  &__title {
+    position: absolute;
+    bottom: 165px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $headerFontColor;
+    
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      border-radius: 2px;
+      background: $headerFontColor;
+      height: 2px;
+      width: 35px;
+      left: 0;
+      top: -20px;
+    }
+  }
+
+}
+
+.header__nav {
+  margin-bottom: 48px;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.header__link {
+  @include smallText;
+  white-space: nowrap;
+  padding: 8px 24px;
+  color: $headerFontColor;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover {
+    color: $headerNavHoverColor;
+  }
+
+  &--active {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 820px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__phone-icon,
+  .header__menu {
+    display: flex;
+  }
+
+  .header__phone,
+  .header__action {
+    display: none;
+  }
+
+  .header__title {
+    bottom: 80px;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+  }
+
+  .header__logo--img {
+    width: 73px;
+    height: 48px;
+  }
+}
