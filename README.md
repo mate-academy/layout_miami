@@ -1,3 +1,5 @@
+The landing page for Hotel Network.
+
 1) Stack: HTML5, SASS, BEM;
 
 2) Fully rsponsive layout was made by using CSS Grid and Flexbox;
