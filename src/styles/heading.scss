@@ -1,27 +1,29 @@
 .heading {
-  display: inline-block;
-  font-size: 48px;
-  line-height: 48px;
+  font-size: $heading-size;
+  line-height: $heading-size;
   font-weight: 300;
-  white-space: nowrap;
   text-transform: uppercase;
+  width: max-content;
 
-  &::after,
-  &::before {
-    display: block;
-    width: 40%;
-    height: 2px;
-
+  &::before,
+  &::after {
     position: absolute;
-    top: 50px;
+    top: 100%;
+
+    display: block;
+    height: 2px;
+    width: calc(50% - 20px);
 
     content: "";
     background-color: $color-blue;
-    border-radius: 8px;
+  }
+
+  &::before {
+    left: 0;
   }
 
   &::after {
-    left: 60%;
+    right: 0;
   }
 
   &__crown {
@@ -31,16 +33,25 @@
     margin: auto;
   
     position: absolute;
-    top: 50px;
+    top: 100%;
     left: 0;
     right: 0;
 
     background: center / cover no-repeat url(../images/crown.svg);
   }
 
-  @media (max-width: 500px) {
-    & {
-      font-size: 40px;
+  @media (max-width: 600px) {
+    font-size: 30px;
+
+    &::before,
+    &::after {
+      top: 90%;
+    }
+
+    &__crown {
+      top: 90%;
+      width: 25px;
+      height: 15px;
     }
   }
 }
