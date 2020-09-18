@@ -1,0 +1,114 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: $generalyHeaderColor;
+  font-weight: bold;
+  position: relative;
+  
+  &__top {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    position: relative;
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+  }
+
+  &__number {
+    font-size: 12px;
+    line-height: 16px;
+    color: $generalyHeaderColor;
+    position: relative;
+
+    &--icon {
+      display: none;
+      height: $iconSize;
+      width: $iconSize;
+      background-image: url("../images/phone.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 115px;
+    height: 76px;
+    z-index: 2;
+  }
+
+  &__connection {
+    height: 25px;
+
+    &--is-active {
+      padding-bottom: 8px;
+      border-bottom: 1px solid;
+      color: $generalyHeaderColor;
+    }
+  }
+
+  &__title {
+
+    position: absolute;
+    top: 400px;
+    left: 0;
+    text-transform: none;
+    font-size: 60px;
+    line-height: 60px;
+    width: 328px;
+    letter-spacing: -1.5px;
+  
+    &::before {
+      position: absolute;
+      content: "";
+      width: 35px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $generalyHeaderColor;
+      top: -18px;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $smallBreakPoint) {
+  .header__logo {
+    position: absolute;
+    left: calc(50% - #{$smallLogoWidth} / 2);
+    width: 73px;
+    height: 48px;
+  }
+
+  .header__number {
+    display: none;
+
+    &--icon {
+      position: absolute;
+      top: 5vh;
+      display: block;
+    }
+  }
+
+  .header__connection--is-active {
+    display: none;
+  }
+
+  .header__title {
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    width: 253px;
+  }
+}
