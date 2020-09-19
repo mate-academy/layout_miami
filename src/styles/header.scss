@@ -1,0 +1,127 @@
+.header {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  background-image: url(../images/headerNew.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 24px 120px;
+  position: relative;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__mobile {
+    display: none;
+  }
+
+  &__phone {
+    @include headerFont;
+    &-icon {
+      width: 18px;
+      height: 18px;
+      background-image: url(../images/phone.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      padding-left: 3px;
+    }
+  }
+
+  &__link {
+    @include headerFont;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 3px;
+      width: 111px;
+      height: 1px;
+      background: $background;
+      border-radius: 50%;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    color: #fff;
+    position: absolute;
+    top: 410px;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background: $background;
+      border-radius: 2px;
+    }
+  }
+}
+
+.logo {
+  width: 115px;
+  height: 76px;
+  background-image: url(../images/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &__mobile {
+    width: 73px;
+    height: 48px;
+  }
+}
+
+@media (max-width: $smallScreen) {
+  .header {
+    padding: 24px 64px;
+  }
+}
+
+@media (max-width: $tabletScreen) {
+  .header {
+    &__top {
+      display: none;
+    }
+    &__mobile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__nav {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobileScreen) {
+  .header {
+    height: 100vh;
+    padding: 24px 20px;
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      top: 70%;
+    }
+  }
+}
