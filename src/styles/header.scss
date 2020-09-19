@@ -1,0 +1,149 @@
+.header {
+  height: $header-height;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: $global-white-color;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 100vh;
+    background-color: rgba(128,0,128,0.15);
+  }
+
+  &__call {
+    display: none;
+    position: $absolute;
+    top: 40px;
+    left: 30px;
+    height: $logo-phone-size;
+    width: $logo-phone-size;
+    cursor: $pointer;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__top {
+    @include fontStyle;
+    @include flex;
+    align-items: center;
+    position: $absolute;
+    top: $header-top;
+    left: $edge-padding;
+    right: $edge-padding;
+    letter-spacing: 3px;
+    text-transform: $text-uppercase;
+  }
+
+  &__phone-number {
+    color: $global-white-color;
+  }
+  
+  &__call-text {
+    text-decoration: none;
+    transition: opacity $hover-duration;
+    border-bottom: 1px solid $global-white-color;
+    padding-bottom: 8px;
+    color: $global-white-color;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__name-text {
+    position: $absolute;
+    bottom: 165px;
+    left: 10vw;
+    font-size: $header-heading-size;
+    line-height: $header-heading-size;
+    
+    &::after {
+      content: "";
+      position: $absolute;
+      height: 2px;
+      width: 35px;
+      top: -16px;
+      left: 0;
+      right: 0;
+      border-radius: 2px;
+      background-color: $global-white-color;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .header {
+    &__phone-number,
+    &__call-text {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: $maxWidth-media) {
+  .header {
+    &__phone,
+    &__action {
+      display: none;
+    }
+    
+    &__call {
+      display: block;
+    }
+
+    &__hamburger {
+      position: $absolute;
+      top: 50px;
+      right: 23px;
+      padding: 20px;
+      cursor: $pointer;
+      z-index: 5;
+      
+      &::after {
+        content: "";
+        position: $absolute;
+        background-image: $logo-hamburger-img;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        width: 18px;
+        height: 12px;
+      }
+    }
+
+    &__toggle:checked ~ {
+      .nav {
+        transform: translate(0);
+      }
+
+      .header__hamburger::after {
+        content: "";
+        background-image: $logo-hide-img;
+        position: $absolute;
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: $maxWidth-media-550) {
+  .header {
+    &__name-text {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      left: 20px;
+      bottom: 80px;
+    }
+  }
+}

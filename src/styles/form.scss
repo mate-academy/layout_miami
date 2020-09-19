@@ -1,0 +1,78 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: $form-width;
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__input,
+  &__button {
+    width: 100%;
+  }
+
+  &__input {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 14px;
+    border: 1px solid $global-white-color;
+    color: #000;
+    background: #f7f8ff;
+    border-radius: 8px;
+
+    &:focus {
+      @include focusForm;
+    }
+  }
+
+  &__button {
+    @include hoverButton;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 14px;
+    margin-bottom: 20px;
+    padding: 21px;
+    border-radius: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+    color: $global-element-color;
+    background-color: $global-white-color;
+    transition: background-color $hover-duration;
+    border: 1px solid $global-element-color;
+  }
+
+  &__comment {
+    width: $comment-form-height;
+    height: $comment-form-width;
+    padding: 10px 15px;
+    background: #f7f8ff;
+    border: 1px solid $global-white-color;
+    font-family: "Roboto", sans-serif;
+    outline: none;
+    border-radius: 8px;
+    font-size: 15px;
+    resize: none;
+    
+    &:focus {
+      @include focusForm;
+    }
+  }
+}
+
+@media (max-width: $maxWidth-media) {
+  .form {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 764px) {
+  .form {
+    width: 100%;
+
+    &__comment {
+      width: 100%;
+    }
+  }
+}
