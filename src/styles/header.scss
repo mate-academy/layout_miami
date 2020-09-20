@@ -60,6 +60,10 @@
     }
   }
 
+  &____burger-toggler--link {
+    cursor: pointer;
+  }
+
   &__burger-toggler {
     display: none;
   }
@@ -102,10 +106,6 @@
       cursor: pointer;
     }
 
-    &__link--burger {
-      border-bottom: none;
-    }
-
     &__burger-check {
       display: none;
     }
@@ -120,14 +120,7 @@
     &__burger-check:checked ~ &__nav {
       display: block;
 
-      position: fixed;
-      z-index: 2;
-
-      background: blue;
-
-      height: 100%;
-
-      bottom: 0;
+      animation: burger 1s ease-in-out forwards;
     }
 
     &__top--burger {
@@ -156,5 +149,42 @@
 
       text-align: center;
     }
+
+    &__link:active {
+      position: relative;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+
+    &__burger-toggler {
+      margin-top: 50px;
+    }
+
+    &__phone--burger {
+      margin-top: 60px;
+    }
+
+    &__burger-toggler-close {
+      margin-top: 13px;
+    }
+  }
+}
+
+@keyframes burger {
+  from {
+    bottom: -500px;
+  }
+
+  to {
+    position: fixed;
+    z-index: 2;
+
+    background: blue;
+
+    height: 100%;
+    bottom: 0;
   }
 }
