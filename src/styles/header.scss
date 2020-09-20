@@ -1,0 +1,150 @@
+.header {
+  position: relative;
+  height: 100vh;
+  background: url(../images/header.jpg) no-repeat;
+  background-size: cover;
+  color: $wite-color;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-weight: bold;
+    letter-spacing: $link-letter-spacing;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__phone-number {
+    color: inherit;
+  }
+
+  &__phone-icon {
+    display: none;
+    background: url(../images/phone__icon.svg);
+    width: 18px;
+    height: 18px;
+  }
+
+  &__menu-button {
+    display: none;
+  }
+
+  &__label-for-menu {
+    display: none;
+    height: 20px;
+    width: 20px;
+    background: url(../images/open-menu.svg) no-repeat center;
+  }
+
+  &__link {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $wite-color;
+    color: $wite-color;
+  }
+
+  &__description {
+    position: absolute;
+    bottom: 165px;
+    width: min-content;
+    height: 121px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+  }
+
+  &__description::before {
+    content: "";
+    width: 35px;
+    height: 2px;
+    background-color: $wite-color;
+    position: absolute;
+    bottom: 137px;
+    border-radius: 2px;
+  }
+}
+
+.nav {
+  position: absolute;
+  bottom: 48px;
+
+  @media (max-width:$size-for-content-with-distance) {
+    width: calc(100% - 240px);
+    display: grid;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    font-weight: bold;
+    letter-spacing: $link-letter-spacing;
+    text-transform: uppercase;
+    line-height: 16px;
+  }
+
+  &__link {
+    @media (min-width:$size-for-content-with-distance) {
+      margin-left: $distance-between-nav-for-big-screen;
+    }
+
+    padding: 8px 24px;
+    color: $wite-color;
+    transition: color 0.5s;
+    text-transform: uppercase;
+  }
+
+  &__link:hover {
+    color: $active-color;
+  }
+
+  &__link--is-active {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: $wite-color;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: $mobile-size-breackpoint) {
+
+  .header {
+    &__top {
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    &__label-for-menu {
+      display: block;
+      order: 3;
+    }
+
+    &__phone-icon {
+      display: block;
+    }
+
+    &__phone,
+    &__link,
+    &__nav {
+      display: none;
+    }
+
+    &__description {
+      position: absolute;
+      bottom: 80px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      padding: 0;
+
+      &::before {
+        position: absolute;
+        bottom: 127px;
+      }
+    }
+  }
+}
