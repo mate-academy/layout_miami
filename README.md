@@ -1,2 +1,2 @@
-##Miami landing page
-###[Demo] (https://nznmv.github.io/layout_miami/)
+# Miami landing page
+## [DEMO LINK](https://nznmv.github.io/layout_miami/)
