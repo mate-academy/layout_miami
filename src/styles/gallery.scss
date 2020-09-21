@@ -1,0 +1,121 @@
+.gallery {
+  background-color: #fff;
+
+  &__wrapper {
+    @extend %wrapper;
+  }
+
+  &__title {
+    @extend %title;
+  }
+
+  &__image-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    margin-bottom: 24px;
+
+    & :first-child {
+      margin-right: 20px;
+    }
+  }
+
+  @media (min-width: $switchToMobileWidth) {
+    @for $i from 1 through 3 {
+      &__image-box--#{$i} {
+        & :first-child {
+          flex-basis: 0;
+          flex-grow: 5 - $i;
+        }
+
+        & :last-child {
+          flex-basis: 0;
+          flex-grow: 1 + $i;
+        }
+      }
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    overflow: hidden;
+    max-height: 256px;
+    border-radius: 8px;
+    flex-basis: 50%;
+    height: calc(50vw - 30px);
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+
+    }
+  }
+
+  &__place-address {
+    font-size: 16px;
+    line-height: 27px;
+    padding-bottom: 40px;
+
+    &--highlighted {
+      font-weight: 500;
+      color: $miamiBlue;
+    }
+  }
+
+  &__expand {
+    position: relative;
+  }
+
+  &__cat {
+    position: absolute;
+    top: -$formWidth / 2;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: $formWidth / 2;
+    margin: 0 auto;
+    transition-delay: 0.1s;
+    visibility: hidden;
+  }
+
+  &__button {
+    width: 190px;
+    height: 56px;
+    border: 2px solid $miamiBlue;
+    margin: 30px auto;
+    text-align: center;
+    line-height: 56px;
+    border-radius: 8px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: $miamiBlue;
+    transition: 0.5s;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+
+    @media (max-width: $switchToMobileWidth) {
+      max-width: $formWidth;
+      width: 100%;
+    }
+  }
+
+  &__toggler {
+    position: absolute;
+    visibility: hidden;
+
+    &:checked + .gallery__button {
+      color: white;
+      background-color: $miamiBlue;
+      margin-top: $formWidth / 1.5;
+    }
+
+    &:checked ~ .gallery__cat {
+      top: -$formWidth / 2;
+      visibility: visible;
+    }
+  }
+}
