@@ -1,0 +1,52 @@
+.section {
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $paddingBottomSection;
+
+  &__title {
+    position: relative;
+    align-self: center;
+    margin-bottom: $titleMarginBottom;
+
+    @include title (4rem);
+
+    &::after {
+      $positionTitleIcon: 50%;
+      
+      content: "";
+      position: absolute;
+      left: $positionTitleIcon;
+      bottom: -#{$positionTitleIcon};
+      transform: translateX(-#{$positionTitleIcon}) translateY(0%);
+
+      width: 20px;
+      height: 13px;
+
+      background: url("../images/crown.svg") no-repeat center;
+    }
+  }
+
+  &:last-child {
+    padding-bottom: 88px;
+  }
+
+  @media (min-width: 1400px) {
+    @include containerPadding;
+
+    padding-bottom: $paddingBottomSection;
+  }
+
+  @media (max-width: $mobileScreen) {
+    padding: $paddingBlock 7vw;
+
+    &__title {
+      margin-bottom: 53px;
+      @include title (3rem);
+    }
+
+    &:last-child {
+      padding-bottom: 64px;
+    }
+  }
+}
