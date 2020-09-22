@@ -1,8 +1,8 @@
 'use strict';
 
-var form = document.querySelector('.form');
+const form = document.querySelector('.form');
 
-var contactForm = document.querySelector('.contact__form');
+const contactForm = document.querySelector('.contact__form');
 
 form.addEventListener('submit', event => {
   document.location.reload();
