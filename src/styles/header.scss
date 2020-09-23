@@ -1,4 +1,7 @@
 .header {
+  display: flex;
+  flex-direction: column;
+
   height: 100vh;
 
   position: relative;
@@ -11,10 +14,10 @@
   line-height: 1;
 
   &__nav {
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
   }
 
   &__top {
@@ -75,17 +78,23 @@
   &__logo--burger {
     display: none;
   }
+
+  &__phone-top--burger {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
   .header {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 
     &__nav,
     &__phone,
     &__action {
       display: none;
+      transition: background-color 0.5s;
     }
 
     &__burger-toggler,
@@ -93,15 +102,6 @@
       display: block;
 
       margin-top: 70px;
-    }
-
-    &__link--burger {
-      position: relative;
-      left: 20px;
-    }
-
-    &__phone--burger {
-      margin-top: 80px;
     }
 
     &__burger-toggler {
@@ -118,41 +118,54 @@
     &__phone--burger,
     &__action--burger {
       display: block;
+      margin-left: 43px;
+    }
 
-      margin-left: 40px;
+    &__phone-top--burger {
+      display: block;
+      margin-top: 80px;
     }
 
     &__burger-check:checked ~ &__nav {
       display: block;
 
-      animation: burger 1s ease-in-out forwards;
+      background-color: blue;
+
+      position: fixed;
+
+      z-index: 2;
+
+      height: 100%;
+      width: 100%;
+
+      bottom: 0;
+
+      transition: background-color 0.5s;
     }
 
     &__top--burger {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
+      display: grid;
+      grid-template-areas: ". logo__burger toggler__burger";
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
 
       padding-top: 35px;
     }
 
-    &__empty-div {
-      flex-grow: 1;
-      margin-left: 60px;
-    }
-
     &__logo--burger {
       display: block;
+      margin: 0 auto;
 
-      flex-grow: 1;
+      grid-area: logo__burger;
     }
 
     &__burger-toggler-close {
-      flex-grow: 1;
 
       margin-top: 33px;
 
       text-align: center;
+
+      grid-area: toggler__burger;
     }
 
     &__link:active {
@@ -175,21 +188,5 @@
     &__burger-toggler-close {
       margin-top: 13px;
     }
-  }
-}
-
-@keyframes burger {
-  from {
-    bottom: -500px;
-  }
-
-  to {
-    position: fixed;
-    z-index: 2;
-
-    background: blue;
-
-    height: 100%;
-    bottom: 0;
   }
 }
