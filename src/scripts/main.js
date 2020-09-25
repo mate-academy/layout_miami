@@ -13,6 +13,7 @@ const title = document.querySelector('.header__title');
 const nav = document.querySelector('.header__nav');
 const headerIcon = document.querySelector('.header__phone--icon');
 const active = document.querySelector('.nav__item_active');
+const form = document.querySelector('.content__form');
 
 burger.addEventListener('click', () => {
   burgerItem.forEach(item => {
@@ -70,4 +71,9 @@ navItem.forEach(element => {
     nav.classList.toggle('menu');
     headerIcon.classList.toggle('menu');
   });
+});
+
+form.addEventListener('submit', event => {
+  document.location.reload();
+  event.preventDefault();
 });
