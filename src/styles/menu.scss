@@ -1,0 +1,129 @@
+.menu {
+  display: none;
+  position: absolute;
+  width: 100%;
+
+  &__box {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    padding: 120px 21px;
+
+    height: 100vh;
+    width: 100%;
+
+    list-style: none;
+
+    background-color: $highlight-color;
+    transition-duration: $hover-duration;
+  }
+
+  &__toggle {
+    opacity: 0;
+
+    &:checked ~ .menu__btn > span {
+      transform: rotate(45deg);
+    }
+
+    &:checked ~ .menu__btn > span::before {
+      top: 0;
+      transform: rotate(0);
+    }
+
+    &:checked ~ .menu__btn > span::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    &:checked ~ .menu__box {
+      display: block;
+      right: 0;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 30px;
+    top: 5px;
+    right: 5px;
+    width: 18px;
+    height: 12px;
+
+    cursor: pointer;
+    z-index: 2;
+
+    &--dash,
+    &--dash::before,
+    &--dash::after {
+      display: block;
+      position: absolute;
+
+      width: 18px;
+      height: 2px;
+      
+      background-color: #fff;
+      transition-duration: 0.2s;
+    }
+
+    &--dash::before {
+      content: "";
+      top: -8px;
+    }
+
+    &--dash::after {
+      content: "";
+      top: 8px;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding-bottom: 32px;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: #fff;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    transition-duration: 0.2s;
+
+    &--phone {
+      margin-top: 16px;
+      padding-bottom: 16px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &--order {
+      display: inline-block;
+      padding-bottom: 8px;
+      font-size: 12px;
+      line-height: 16px;
+      border-bottom: 1px solid #fff;
+    }
+
+    &:hover {
+      font-size: 26px;
+    }
+  }
+}
+
+@media (max-width: $small-screen-breakpoint) {
+  .menu {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100vw;
+
+    &__box {
+      flex-direction: column;
+      width: 100vw;
+      z-index: 1;
+    }
+  }
+}
