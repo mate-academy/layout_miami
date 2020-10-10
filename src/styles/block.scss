@@ -1,0 +1,92 @@
+@import "vars.scss";
+
+.block {
+  display: grid;
+  grid-template-columns: 152px 152px 40%;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  &__caption {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 27px;
+
+    color: #9fadc2;
+  }
+
+  &__text {
+    max-width: 500px;
+    line-height: 27px;
+    font-size: 16px;
+
+    color: #3e3e3e;
+
+    & p:first-child {
+      margin: 0;
+      color: $blueColor;
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  &__link {
+    @extend .block__text;
+    text-decoration: none;
+  }
+
+  &__form {
+    display: flex;
+    flex-flow: column;
+  
+    &__item {
+      margin-bottom: 16px;
+    }
+  
+    &__input,
+    &__input-textarea,
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .block {
+    padding: 30px 5.5% 0;
+    width: 89%;
+    grid-template-columns: repeat(2, 44.5%);
+    grid-template-areas: "phone address" "form form";
+    justify-items: center;
+    gap: 20px;
+
+    &__info {
+      grid-area: phone;
+
+    }
+
+    &__address {
+      grid-area: address;
+    }
+
+    &__form {
+      width: 80%;
+      grid-area: form;
+    }
+  }
+}
+
+@media (max-width: $phone) {
+  .block {
+    padding: 30px 6% 0;
+    width: 86%;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-areas: "phone" "address" "form";
+    justify-items: start;
+    gap: 0;
+
+    &__form {
+      width: 100%;
+    }
+  }
+}
