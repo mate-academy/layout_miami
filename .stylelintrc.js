@@ -6,5 +6,5 @@ module.exports = {
   plugins: [
     "stylelint-scss"
   ],
-  rules: {}
+  rules: { "no-descending-specificity": null }
 };

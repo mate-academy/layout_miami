@@ -12,7 +12,7 @@ const promo = document.querySelector('.promo'); // element
 const title = document.querySelector('.header__title');
 const nav = document.querySelector('.header__nav');
 const headerIcon = document.querySelector('.header__phone--icon');
-const active = document.querySelector('.nav__item_active');
+const active = document.querySelector('.nav__item--active');
 const form = document.querySelector('.content__form');
 
 burger.addEventListener('click', () => {
@@ -36,7 +36,7 @@ burger.addEventListener('click', () => {
     item.classList.toggle('menu');
   });
 
-  active.classList.toggle('nav__item_active');
+  active.classList.toggle('nav__item--active');
 
   promo.classList.toggle('menu');
 
@@ -63,7 +63,7 @@ navItem.forEach(element => {
       item.classList.toggle('menu');
     });
 
-    active.classList.toggle('nav__item_active');
+    active.classList.toggle('nav__item--active');
 
     promo.classList.toggle('menu');
 
