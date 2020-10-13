@@ -1,6 +1,7 @@
 <h1>Miami Condo kings</h1>
 
 [TAP PREVIEW LINK TO SEE DEMO](https://zarva6596.github.io/layout_miami)
+[CODE](https://github.com/zarva6596/layout_miami/tree/develop)
 
 <h3>Technologies:</h3>
 
