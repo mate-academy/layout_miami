@@ -1,24 +1,31 @@
-# Miami landing page
-- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A2)
-- Follow this [video guide](https://www.youtube.com/watch?v=sq184jq9DV8&feature=youtu.be) and write your own implementation.
+<h1>Miami Condo kings</h1>
 
-## Instructions
-1. **Fork** the repo.
-2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
-3. Run `npm install` (or just `npm i`)
-4. Run `npm start`.
-5. Open one more terminal window for the next steps
-6. `git checkout -b develop` - to create new branch and switch on it
-7. Write you code in `src` folder
-8. Run `npm run lint` and fix code style errors.
-9. Run `npm run deploy` to deploy your solution to `gh-pages`
-10. `git add . && git commit -m 'solution'` to save your changes
-11. `git push origin develop` - to send you code for PR
-12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
-13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
-14. Copy `DEMO LINK` to the PR description
+[TAP PREVIEW LINK TO SEE DEMO](https://zarva6596.github.io/layout_miami)
+<br>
+[CODE](https://github.com/zarva6596/layout_miami/tree/develop)
 
-> To update you PR repeat steps 7-11
+<h3>Technologies:</h3>
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+HTML5<br>
+CSS3<br>
+Sass (SCSS)<br>
+BEM<bm>
+npm<bm>
+git<bm>
+
+<h3>Links:</h3>
+
+Figma design: [link](https://www.figma.com/file/OvRf74Z53zOm7SCupA5ssj/Miami-Condo-Kings?node-id=0:1)
+
+Demonstration: [link](https://zarva6596.github.io/layout_miami/)
+
+<h3>My Contacts<:/h3>
+<h2>Roman Zarvanskyi</h2>
+
+<h4>Ukraine</h4>
+
+Phone: +380 91 61 21 805 (telegram and viber available too)
+
+Email: roman.zarvanskyi@gmail.com
+
+[Skype](https://join.skype.com/invite/e2s7iHli9hYF) | [LinkedIn](https://www.linkedin.com/in/roman-zarvanskyi-1116bb1b7/) | [GitHub](https://github.com/zarva6596)
