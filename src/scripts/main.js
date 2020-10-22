@@ -7,7 +7,7 @@ const link = document.querySelectorAll('.header__link');
 const logo = document.querySelector('.header__logo'); // element
 const header = document.querySelector('.header'); // element
 const list = document.querySelector('.nav__list'); // element
-const navItem = document.querySelectorAll('.nav__item'); // massive
+const navItems = document.querySelectorAll('.nav__item'); // massive
 const promo = document.querySelector('.promo'); // element
 const title = document.querySelector('.header__title');
 const nav = document.querySelector('.header__nav');
@@ -32,7 +32,7 @@ burger.addEventListener('click', () => {
   header.classList.toggle('menu');
   list.classList.toggle('menu');
 
-  navItem.forEach(item => {
+  navItems.forEach(item => {
     item.classList.toggle('menu');
   });
 
@@ -45,7 +45,7 @@ burger.addEventListener('click', () => {
   headerIcon.classList.toggle('menu');
 });
 
-navItem.forEach(element => {
+navItems.forEach(element => {
   element.addEventListener('click', () => {
     burgerItem.forEach(item => {
       item.classList.toggle('menu');
@@ -59,11 +59,9 @@ navItem.forEach(element => {
     header.classList.toggle('menu');
     list.classList.toggle('menu');
 
-    navItem.forEach(item => {
+    navItems.forEach(item => {
       item.classList.toggle('menu');
     });
-
-    active.classList.toggle('nav__item--active');
 
     promo.classList.toggle('menu');
 
@@ -76,4 +74,18 @@ navItem.forEach(element => {
 form.addEventListener('submit', event => {
   document.location.reload();
   event.preventDefault();
+});
+
+list.addEventListener('click', ({ target }) => {
+  if (target.classList.contains('nav__item')
+    || target.classList.contains('nav__link')
+  ) {
+    navItems.forEach(item => {
+      if (item.classList.contains('nav__item--active')) {
+        item.classList.remove('nav__item--active');
+      }
+    });
+
+    target.closest('.nav__item').classList.add('nav__item--active');
+  }
 });
