@@ -1,0 +1,160 @@
+.header {
+  position: relative;
+  max-width: 1020px;
+  height: 100vh;
+  margin: 0 auto;
+  
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+
+  overflow: hidden;
+
+  &__top {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  &__action {
+    display: block;
+    position: relative;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #fff;
+    transition: color $hover-duration;
+  }
+  
+  &__phone {
+    padding: 5px;
+  }
+
+  &__phone,
+  &__action {
+    transition: transform $hover-duration ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__mobile-icon {
+    width: 18px;
+    height: 18px;
+    background: url(../images/phone.svg) no-repeat;
+    background-position: center;
+    color: #fff;
+    display: none;
+  }
+
+  &__name {
+    position: absolute;
+    bottom: 165px;
+
+    font-size: 60px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    &::before {
+      position: absolute;
+      top: -16px;
+      left: 2px;
+      display: block;
+      width: 35px;
+      height: 2px;
+      background-color: #fff;
+      content: "";
+    }
+  }
+
+  &__burger {
+    position: absolute;
+    z-index: 5;
+    width: 18px;
+    height: 12px;
+    padding: 10px;
+    display: none;
+    
+    background: url(../images/burger-menu.svg) no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &--active {
+      background: url(../images/cross.svg) no-repeat;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    max-width: 1020px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: $blue;
+  }
+
+  @media (max-width: 1100px) {
+    &__top {
+      justify-content: space-between;
+      padding: 0 50px;
+    }
+
+    &__name {
+      left: 50px;
+      bottom: 150px;
+    }
+
+  }
+
+  @media (max-width: 870px) {
+    &__name {
+      left: 50px;
+      bottom: 80px;
+      font-size: 46px;
+      line-height: 40px;
+    }
+
+    &__phone,
+    &__action {
+      display: none;
+    }
+
+    &__mobile-icon {
+      display: block;
+    }
+
+    &__burger {
+      position: static;
+      display: block;
+    }
+    
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__top {
+      padding-left: 23px;
+      padding-right: 23px;
+    }
+
+    &__name {
+      left: 20px;
+    }
+  }
+}
