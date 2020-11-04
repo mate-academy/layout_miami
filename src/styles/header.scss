@@ -1,0 +1,165 @@
+.header {
+  height: 100vh;
+  padding: 0 30px;
+
+  @include boldFontStyle(16px, 16px);
+
+  background: url("../images/header.jpg") center;
+  background-size: cover;
+
+  &__section {
+    height: 100%;
+    max-width: $maxContentWidth;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__phone-image {
+    height: 18px;
+    width: 18px;
+  }
+
+  &__link {
+    padding: 8px 0;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $defaultColor;
+
+    border-bottom: 1px solid transparent;
+
+    @include hover (border-color, $defaultColor);
+
+    &--phone-image {
+      position: absolute;
+      left: 20px;
+      z-index: 1;
+
+      display: none;
+
+      cursor: pointer;
+    }
+  }
+
+  &__name {
+    max-width: 350px;
+    margin-bottom: 90px;
+
+    @include boldFontStyle(60px, 60px);
+    color: $defaultColor;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+      margin-bottom: 16px;
+
+      background-color: $defaultColor;
+
+      transition: width, $quickTransitionDuration;
+    }
+
+    &:hover::before {
+      width: 170px;
+    }
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-toggler-label {
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+
+    display: none;
+    padding: 8px 0;
+
+    cursor: pointer;
+
+    &::after {
+      content: "\2630";
+
+      font-size: 18px;
+      color: $defaultColor;
+    }
+  }
+
+  @media (max-width: $tabletScreenBreakpoint) {
+    padding: 0 20px;
+
+    &__top {
+      justify-content: center;
+    }
+
+    &__name {
+      margin-bottom: 45px;
+      @include boldFontStyle(46px, 40px);
+    }
+
+    &__nav-toggler-label {
+      display: block;
+    }
+
+    &__link {
+      display: none;
+
+      &--phone-image {
+        display: block;
+      }
+    }
+
+    &__logo {
+      height: 48px;
+      width: 73px;
+
+      margin: 0;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      display: none;
+
+      background-color: $highlightColor;
+      opacity: 0;
+
+      transition: opacity 0.3s;
+    }
+
+    &__nav-toggler:checked {
+      & ~ .nav {
+        display: block;
+        opacity: 1;
+      }
+
+      & ~ .header__nav-toggler-label {
+        &::after {
+          content: "X";
+        }
+      }
+    }
+  }
+}
