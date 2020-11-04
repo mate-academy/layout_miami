@@ -1,0 +1,125 @@
+.header {
+  @include padding-global;
+
+  position: relative;
+
+  height: 100vh;
+
+  padding-top: 24px;
+  
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 934px) {
+      justify-content: center;
+      padding-top: 20px;
+    }
+  }
+
+  &__photo-link {
+    position: absolute;
+    top: 23px;
+    left: 23px;
+
+    display: none;
+
+    width: 18px;
+    height: 18px;
+
+    background-image: url(../images/phone.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: $hover-duration;
+
+    &:hover {
+      @include hover(1.2);
+    }
+
+    @media (max-width: 934px) {
+      display: block;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+
+    &--fixed {
+      position: fixed;
+      top: 20px;
+    }
+  }
+
+  &__nav-toggler {
+    position: fixed;
+    top: 23px;
+    right: 23px;
+    z-index: 2;
+  }
+
+  &__link {
+    @include link-global;
+
+    transition: $hover-duration;
+
+    &:hover {
+      color: $dimgrey;
+    }
+
+    @media (max-width: 934px) {
+      display: none;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 60%;
+  }
+
+  &__hr {
+    width: 35px;
+    height: 2px;
+
+    margin-bottom: 16px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  &__h1 {
+    color: white;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+
+    @media (max-width: 934px) {
+      &--active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  @media (max-width: 934px) {
+    position: sticky;
+    top: calc(-100% + 57px);
+    z-index: 1;
+  }
+}

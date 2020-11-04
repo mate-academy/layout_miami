@@ -1,6 +1,75 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin hover($scale) {
+  transform: scale($scale);
+}
+
+@mixin padding-global {
+  padding: 0 120px;
+
+  @media (max-width: 934px) {
+    padding: 0 60px;
   }
+
+  @media (max-width: 600px) {
+    padding: 0 20px;
+  }
+}
+
+@mixin ver-padding-global {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@mixin link-global {
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@mixin logo-size {
+  width: 115px;
+  height: 76px;
+}
+
+@mixin grid-columns-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(279px, 550px));
+  gap: 35px;
+  justify-content: space-between;
+}
+
+@mixin h2-font-size {
+  font-size: $font-size-xlarge;
+  line-height: $font-size-xlarge;
+
+  @media (max-width: 400px) {
+    font-size: $font-size-xlarge * 0.7;
+  }
+}
+
+@mixin h2 {
+  @include h2-font-size;
+
+  position: relative;
+
+  height: 48px;
+
+  margin-bottom: 61px;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@mixin crown {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 18px;
+  height: 14px;
+  background-image: url(../images/crown.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translate(-50%);
 }
