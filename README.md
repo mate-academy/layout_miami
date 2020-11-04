@@ -4,11 +4,10 @@ Used: HTML5, SASS, Flex-box, Grid, BEM
 
 Fully responsive for:
 
-Large screens 2560px
-Full HD 1920px
-The design 1600px
-Notebook 1280px
-Tablet 1024
+Large screens 2560px,
+Full HD 1920px,
+Notebook 1280px,
+Tablet 1024,
 Mobile (> 320px)
 
 [DEMO](https://oleksandrmykoliuk.github.io/layout_miami/)
