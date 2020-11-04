@@ -1,0 +1,114 @@
+@import "utils/vars";
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 700px;
+  padding: 35px 10%;
+
+  background: url(../images/header.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %header-fonts;
+  }
+
+  &__phone {
+    color: white;
+    transition: color 0.5s;
+
+    &:visited {
+      color: $visited-header-link-color;
+    }
+
+    &:hover {
+      color: $text-light-color;
+    }
+
+    &:active {
+      color: $color-blue;
+    }
+  }
+
+  &__logo {
+    @extend %logo;
+    margin-bottom: 20px;
+  }
+
+  &__order {
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+
+      background-color: white;
+      transition: background-color 0.5s;
+    }
+
+    &:hover::after {
+      content: "";
+      background-color: $text-light-color;
+    }
+  }
+
+  &__order-link {
+    display: inline-block;
+    padding: 8px 0;
+
+    text-transform: uppercase;
+    color: white;
+
+    transition: color 0.5s;
+
+    &:visited {
+      color: $visited-header-link-color;
+    }
+
+    &:hover {
+      color: $text-light-color;
+    }
+
+    &:active {
+      color: $color-blue;
+    }
+  }
+
+  &__heading {
+    position: relative;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    max-width: 328px;
+
+    @extend %main-heading;
+  }
+
+  @media (max-width: 1100px) {
+    &__top {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    &__heading {
+      max-width: 260px;
+      top: -5%;
+      font-size: 1.5em;
+      line-height: 2em;
+    }
+
+    &__phone {
+      order: 1;
+    }
+
+    &__order {
+      order: 2;
+    }
+  }
+}
