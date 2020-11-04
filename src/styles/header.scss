@@ -1,0 +1,160 @@
+.header {
+  height: 100vh;
+  padding: 24px $edge-space;
+  position: relative;
+
+  background: url("../images/header.png") center center/cover;
+  color: #fff;
+
+  @media screen and (max-width: 700px) {
+    height: 80vh;
+  }
+
+  &__burger-menu {
+    position: fixed;
+    bottom: 100%;
+    left: 0;
+
+    width: 100vw;
+    height: 120vh;
+
+    &--open {
+      bottom: 0;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 76px;
+
+    @media screen and (min-width: 2000px) {
+      justify-content: space-around;
+    }
+  }
+
+  &__phone {
+    @include link;
+    position: relative;
+
+    padding-bottom: 8px;
+    transition: border 0.5s;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      height: 1px;
+      width: 0;
+
+      border-radius: 1px;
+      background-color: #fff;
+      transition: width 0.5s, left 0.5s;
+    }
+
+    &:hover::before {
+      width: 100%;
+      left: 0;
+    }
+
+    &--screen--small {
+      display: none;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+      }
+    }
+  }
+
+  &__action {
+    @include link;
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+
+    transition: color 0.5s;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+
+    &:hover {
+      color: $hover-link-color;
+    }
+  }
+
+  &__icon {
+    width: 18px;
+  }
+
+  &__menu {
+    width: 18px;
+    height: 12px;
+
+    &--screen--small {
+      display: none;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    max-width: 330px;
+    position: absolute;
+    bottom: 165px;
+
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+
+    @media screen and (max-width: 700px) {
+      bottom: 80px;
+    }
+
+    @media screen and (max-width: 400px) {
+      font-size: 32px;
+    }
+
+    @media screen and (min-width: 2000px) {
+      bottom: 45vh;
+      max-width: 100%;
+      font-size: 120px;
+    }
+
+    @media screen and (max-height: 500px) {
+      font-size: 32px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+
+      width: 35px;
+      height: 2px;
+
+      border-radius: 2px;
+      background-color: #fff;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 56px;
+    width: calc(100% - #{$edge-space} * 2);
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
+}
