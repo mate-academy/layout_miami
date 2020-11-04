@@ -1,0 +1,178 @@
+@import "nav.scss";
+@import "mixins.scss";
+@import "vars.scss";
+@import "logo.scss";
+
+.header {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  height: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 24px 0;
+  flex-direction: column;
+  align-items: start;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  &__top {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    padding: 8px 0;
+    border-bottom: 1px solid $whiteColor;
+
+    transition: transform 0.2s;
+    
+    @include textDecor;
+
+    &:hover {
+      transform: scale(1.2);
+      border-bottom: 1px solid #9fadc2;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 20%);
+  }
+
+  &__phone {
+    padding: 8px 0;
+    transition: transform 0.2s;
+    border-bottom: 1px solid $whiteColor;
+    
+    @include textDecor;
+
+    &:hover {
+      transform: scale(1.2);
+      border-bottom: 1px solid #9fadc2;
+    }
+  }
+
+  &__phone--icon {
+    display: none;
+
+    width: 18px;
+    height: 18px;
+  }
+
+  &__bot {
+    width: 100%;
+  }
+
+  &__title {
+    margin-bottom: 60px;
+
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $whiteColor;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+      width: 35px;
+      height: 2px;
+      border-radius: 2px;
+
+      background-color: $whiteColor;
+    }
+  }
+
+  &__icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .header {
+    display: block;
+
+    &__phone {
+      display: none;
+    }
+
+    &__phone.menu {
+      display: flex;
+      position: absolute;
+      bottom: 92px;
+      left: 20px;
+    }
+
+    &__phone--icon {
+      display: block;
+    }
+
+    &__phone--icon.menu {
+      visibility: hidden;
+    }
+
+    &__link {
+      display: none;
+    }
+
+    &__link.menu {
+      display: flex;
+      position: absolute;
+      bottom: 50px;
+      left: 20px;
+    }
+
+    &__title {
+      position: absolute;
+      bottom: 0;
+
+      line-height: 60px;
+      margin-bottom: 56px;
+    }
+
+    &__title.menu {
+      display: none;
+    }
+
+    &__icon {
+      display: block;
+    }
+  }
+  
+  .logo {
+    width: 73px;
+    height: 48px;
+  }
+}
+
+@media screen and (max-height: 540px) {
+  .header {
+
+    &__phone.menu {
+      bottom: 60px;
+      left: 70%;
+    }
+
+    &__link.menu {
+      bottom: 15px;
+      left: 70%;
+      border-bottom: 0;
+    }
+
+    &__logo.menu {
+      display: none;
+    }
+  }
+}
