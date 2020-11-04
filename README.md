@@ -1,1 +1,4 @@
-- [DEMO LINK](https://KhrystynaYelyseyeva.github.io/layout_miami/)
+- Stack: HTML5, SASS, JS (for humburger buuton);
+- Fully responsive layout was by using CSS Flexbox (mobiels, tablets, laptops, hight screens);
+- Desigen of the landing page you can could find [here](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new)
+- Click the link to see [DEMO LINK](https://KhrystynaYelyseyeva.github.io/layout_miami/)
