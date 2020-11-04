@@ -1,0 +1,78 @@
+@import "utils";
+
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    text-align: center;
+    padding: 0.66vw 2vw;
+
+    @media (max-width: 1199px) {
+      text-align: left;
+      width: 100%;
+      padding: 8px 24px;
+      margin-right: 0;
+      margin-bottom: 32px;
+    }
+
+    &--active {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $c-header;
+
+    @include hover(color, #9fadc2);
+
+    @media (min-width: 1200px) {
+      font-size: 1vw;
+      line-height: 1vw;
+    }
+  }
+
+  &__close-burger {
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    position: absolute;
+    top: 40px;
+    right: 24px;
+
+    background: transparent;
+    z-index: 11;
+
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+
+  &__close-line {
+    display: block;
+    height: 2px;
+    width: 100%;
+
+    position: absolute;
+    top: 50%;
+
+    background: $c-header;
+
+    &:first-child {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    &:last-child {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
