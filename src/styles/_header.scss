@@ -1,0 +1,129 @@
+.header {
+  height: 100vh;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: white;
+
+  &__wrapper {
+    height: 100vh;
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__top {
+    position: relative;
+    @include space-between;
+    padding-top: 24px;
+  }
+
+  &__action {
+    position: relative;
+    padding-bottom: 8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+
+      left: 0;
+      bottom: 0;
+
+      background-color: $nav-color;
+    }
+  }
+
+  &__phone,
+  &__action {
+    text-transform: uppercase;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  &__title {
+    position: relative;
+    padding-top: 16px;
+    margin-top: 50vh;
+    font-weight: bold;
+    font-size: 3.75rem;
+    line-height: 3.75rem;
+    letter-spacing: -1.5px;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+
+      width: 35px;
+      height: 2px;
+      top: 0;
+
+      background-color: white;
+    }
+  }
+
+  &__nav {
+    display: block;
+    text-transform: uppercase;
+    margin-top: 5vh;
+  }
+}
+
+@media(max-width: 945px) {
+  .header {
+    &__wrapper {
+      padding: 0 24px;
+    }
+
+    &__logo {
+      z-index: 3;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__title {
+      font-size: 3rem;
+    }
+
+    &__phone {
+      height: $header-phone-size;
+      width: $header-phone-size;
+
+      font-size: 0;
+      background-image: url("../images/phone.svg");
+    }
+    
+    &__action {
+      display: none;
+    }
+
+  }
+}
+
+@media (max-height: 599px) {
+  .header {
+    &__title {
+      margin-top: 12vh;
+    }
+    &__nav {
+      padding-top: 5vh;
+    }
+  }
+}

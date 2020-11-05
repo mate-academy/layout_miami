@@ -1,0 +1,157 @@
+.burger-menu {
+  visibility: hidden;
+  position: relative;
+  #burger-menu__toggle {
+    display: none;
+  }
+
+  &__btn {
+    position: absolute;
+    width: 22px;
+    height: 18px;
+    top: 60px;
+    z-index: 2;
+    right: 7vw;
+    cursor: pointer;
+  }
+
+  &__btn > span,
+  span::before,
+  ::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s;
+  }
+
+  &__list {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    padding: 25% 24px;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    z-index: 1;
+    list-style: none;
+    background-color: $highlight-color;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &__item {
+    display: block;
+    position: relative;
+    top: 120px;
+    padding: 12px 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    &--phone,
+    &--action {
+      display: block;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      letter-spacing: 2px;
+    }
+
+    &--phone {
+      margin-top: 48px;
+    }
+
+    &--action {
+      position: relative;
+      text-transform: uppercase;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        max-width: 114px;
+        height: 1px;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__item:hover {
+    color: $hover-color;
+    text-decoration: underline;
+  }
+
+  &__btn > span::before {
+    content: "";
+    top: -8px;
+  }
+
+  &__btn > span::after {
+    content: "";
+    top: 8px;
+  }
+
+  #burger-menu__toggle:checked ~ &__btn > span {
+    transform: rotate(45deg);
+  }
+
+  #burger-menu__toggle:checked ~ &__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  #burger-menu__toggle:checked ~ &__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #burger-menu__toggle:checked ~ &__list {
+    visibility: visible;
+    right: 0;
+    transition: transform 0.3s;
+  }
+}
+
+@media (max-width: 945px) {
+  .burger-menu {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 945px) {
+  .burger-menu {
+    &__list {
+      display: none;
+    }
+  }
+}
+
+@media (max-height: 600px) {
+  .burger-menu {
+    &__item {
+      top: 20px;
+      font-size: 0.8rem;
+      &--phone {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (min-height: 700px) {
+  .burger-menu {
+    &__item {
+      top: 20vh;
+      text-align: center;
+
+      &--action:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
