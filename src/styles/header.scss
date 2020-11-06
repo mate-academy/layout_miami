@@ -1,0 +1,107 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  max-width: 1260px;
+  padding: 24px 120px 48px;
+
+  color: $white-text-color;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone {
+    text-decoration: inherit;
+    color: inherit;
+
+    @include hover(color, $hover-color);
+  }
+
+  &__call {
+    text-decoration: inherit;
+    color: inherit;
+
+    @include hover(color, $hover-color);
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 92%;
+      background-color: $white-text-color;
+      margin: 8px auto;
+    }
+  }
+
+  &__title {
+    font-size: 60px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -1.5px;
+
+    position: absolute;
+    bottom: 165px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+
+      background-color: $white-text-color;
+      position: relative;
+      bottom: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: $medium-screen) {
+  .header {
+    padding: 24px 80px 48px;
+    background: url("../images/header-min.png") no-repeat center;
+    background-size: cover;
+    height: 100vh;
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: $i-pad-screen) {
+  .header {
+    &__top {
+      flex-direction: column;
+    }
+
+    &__logo {
+      order: -1;
+      margin-bottom: 10px;
+    }
+
+    &__phone {
+      margin-bottom: 5px;
+    }
+
+    &__title {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-screen) {
+  .header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
