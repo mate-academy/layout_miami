@@ -1,0 +1,135 @@
+.header {
+  display: grid;
+  grid-template-columns: minmax(5vw, 1fr)
+    repeat(3, minmax(100px, 342px))
+    minmax(5vw, 1fr);
+  grid-template-rows: 124px 1fr 80px;
+  grid-template-areas: ". number logo call ."
+    ". title title title ."
+    ". . . . ."
+    ". nav nav nav .";
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+
+  background: url(../images/header.jpg) no-repeat center / cover;
+
+  &__number {
+    grid-area: number;
+    justify-self: start;
+
+    @extend %link;
+
+    z-index: 1;
+
+    @include hover(color, $link-hover);
+  }
+
+  &__logo-link {
+    grid-area: logo;
+    z-index: 1;
+  }
+
+  &__logo-img {
+    width: 115px;
+    height: 76px;
+  }
+
+  &__call-link {
+    position: relative;
+
+    grid-area: call;
+    justify-self: end;
+
+    @extend %link;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+
+      width: 111px;
+
+      border: 1px solid $contrast;
+    }
+
+    &:hover {
+      color: $link-hover;
+
+      &::after {
+        border-color: $link-hover;
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+
+    grid-area: title;
+    justify-self: start;
+    align-self: end;
+
+    @include font-size(60, 60, 600);
+    color: $contrast;
+    letter-spacing: -1.5px;
+    white-space: pre-line;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+
+      width: 35px;
+      height: 2px;
+
+      background: $contrast;
+      border-radius: 2px;
+    }
+  }
+
+  &__nav {
+    grid-area: nav;
+  }
+
+  @media (max-width: 680px) {
+    &__number {
+      letter-spacing: -10px;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &::before {
+        content: url(../images/phone.svg);
+        position: absolute;
+        top: 40px;
+        right: 10vw;
+
+        transform: scale(-1,1);
+        cursor: pointer;
+      }
+    }
+
+    &__logo-img {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__call-link {
+      display: none;
+    }
+
+    &__title {
+      @include font-size(46, 40, 600);
+    }
+  }
+
+  @media (min-width: 681px) {
+    grid-template-rows: 124px 1fr 80px 80px;
+
+    &__nav {
+      justify-self: stretch;
+      align-self: start;
+    }
+
+  }
+}
