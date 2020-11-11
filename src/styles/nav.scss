@@ -1,0 +1,95 @@
+.nav {
+  color: black;
+  text-transform: uppercase;
+  padding-top: 717px;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 1000px) {
+      position: absolute;
+      top: 120px;
+      left: 20px;
+
+      width: 150px;
+
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 450px) {
+      left: -20px;
+    }
+  }
+
+  &__item {
+    margin: 0 22px;
+    padding: 7px 20px;
+    border-radius: 10px;
+    list-style-type: none;
+
+    font-weight: $weight-bold;
+
+    &:nth-child(2) {
+      white-space: nowrap;
+    }
+
+    &--active {
+      background-color: #d5c5aa;
+    }
+
+    @media (max-width: 700px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+
+    transition: color 1s, background-color 1s;
+
+    &--color {
+      color: black;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: #d5c5aa;
+    }
+  }
+
+  &__toggler-label {
+    display: none;
+    color: #fff;
+
+    @media (max-width: 1000px) {
+      position: relative;
+      top: -660px;
+      left: 60px;
+
+      display: inline-block;
+      padding: 15px;
+    }
+
+    @media screen and (max-width: 450px) {
+      left: 20px;
+    }
+
+    &::before {
+      content: url("../images/mdi_menu.png");
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav__toggler:not(:checked) ~ .nav__list {
+    display: none;
+  }
+}
