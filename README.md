@@ -1,6 +1,6 @@
 [DEMO LINK](https://KirillLutsenko.github.io/layout_miami/)
 
-Styling framework:
+styling framework:
 
 reset.scss - general parameters of page
 
