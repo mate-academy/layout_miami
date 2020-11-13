@@ -1,0 +1,65 @@
+.contacts {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $content-top-indent-large;
+
+    @media (max-width: $breakpoint-medium) {
+      flex-direction: column;
+      margin-top: $content-top-indent-small;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, $contacts-column-width);
+    grid-column-gap: $contacts-row-gap;
+
+    @media (max-width: $breakpoint-medium) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__phone {
+    @extend %contacts;
+
+    @media (max-width: $breakpoint-medium) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__text {
+    @extend %contacts-text;
+
+    @media (max-width: $breakpoint-medium) {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    @extend %contacts-text;
+    color: $color-gray-text;
+  }
+
+  &__email {
+    @extend %contacts;
+    @extend %contacts-breakpoint;
+  }
+
+  &__address {
+    @extend %contacts;
+    @extend %contacts-breakpoint;
+  }
+
+  &__address-link {
+    color: inherit;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  &__button {
+    @extend %blue-button;
+  }
+}

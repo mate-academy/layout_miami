@@ -1,0 +1,39 @@
+.photos {
+  display: flex;
+  justify-content: space-between;
+
+  &__img {
+    width: calc(50% - #{$gallery-photo-gap / 2});
+    height: $gallery-photo-height;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+
+    @media (max-width: $breakpoint-medium) {
+      height: auto;
+    }
+
+    @media (max-width: $breakpoint-minimal) {
+      width: $gallery-photo-minimal;
+      height: $gallery-photo-minimal;
+    }
+  }
+
+  @media (min-width: $breakpoint-medium + 1px) {
+    &--wide-left &__img:first-child {
+      width: calc(67% - #{$gallery-photo-gap / 2});
+    }
+
+    &--wide-left &__img:last-child {
+      width: calc(33% - #{$gallery-photo-gap / 2});
+    }
+
+    &--wide-right &__img:first-child {
+      width: calc(33% - #{$gallery-photo-gap / 2});
+    }
+
+    &--wide-right &__img:last-child {
+      width: calc(67% - #{$gallery-photo-gap / 2});
+    }
+  }
+}

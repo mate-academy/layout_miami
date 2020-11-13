@@ -1,0 +1,134 @@
+.header {
+  width: 100vw;
+  height: $header-height-large;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content-container {
+    position: relative;
+    max-width: $max-width;
+    height: $header-height-large;
+
+    padding: 0 $side-indent-large;
+    margin: 0 auto;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-white;
+
+    @media (max-width: $breakpoint-small) {
+      padding: 0 $side-indent-small;
+    }
+
+    @media (max-width: $breakpoint-medium) {
+      height: $header-height-small;
+    }
+  }
+
+  &__logo {
+    top: $header-top-indent;
+    width: $logo-width-large;
+    height: $logo-height-large;
+  }
+
+  &__title {
+    position: absolute;
+    top: 414px;
+    left: $side-indent-large;
+    text-transform: none;
+
+    &::before {
+      position: relative;
+      display: block;
+      left: 0;
+      bottom: 16px;
+      content: "";
+      width: $title-line-width;
+      height: $title-line-height;
+      border-radius: calc(#{$title-line-height / 2});
+      background-color: $color-white;
+    }
+  }
+
+  &__phone-button {
+    position: absolute;
+    top: calc(#{$header-top-indent + $top-icon-large / 3 * 2});
+    width: $top-icon-large;
+    height: $top-icon-large;
+    z-index: 0;
+  }
+
+  &__link {
+    position: absolute;
+    top: calc(#{$header-top-indent + 32px - 8px});
+    padding: 8px 0;
+    color: inherit;
+
+    &--phone {
+      left: $side-indent-large;
+      @include headerTop
+        (
+          -116px, transform, translate(0, $header-height-small),
+          color, $color-gray
+        );
+    }
+
+    &--action {
+      right: $side-indent-large;
+      margin-right: 24px;
+      border-bottom: 1px solid $color-white;
+      @include headerTop
+        (
+          -84px, transform, translate(0, $header-height-small),
+          color, $color-gray
+        );
+    }
+  }
+
+  &__navigation {
+    position: relative;
+    top: calc(620px + 8px);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    &__logo {
+      width: $logo-width-small;
+      height: $logo-height-small;
+    }
+
+    &__title {
+      left: $side-indent-small;
+    }
+
+    &__phone-button {
+      top: calc(#{$header-top-indent + $top-icon-small});
+      width: $top-icon-small;
+      height: $top-icon-small;
+    }
+  }
+
+  @media (max-width: $breakpoint-medium) {
+    height: $header-height-small;
+
+    &__title {
+      top: 407px;
+    }
+
+    &__link {
+      display: none;
+    }
+  }
+
+  @media (min-width: $breakpoint-medium + 1) {
+    &__phone-button {
+      display: none;
+    }
+  }
+}

@@ -4,3 +4,53 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin hoverButton
+  (
+    $_propertyFirst, $_toValueFirst,
+    $_propertySecond, $_toValueSecond
+  ) {
+  transition: #{$_propertyFirst} 0.8s, #{$_propertySecond} 0.8s;
+  &:hover {
+    #{$_propertyFirst}: $_toValueFirst;
+    #{$_propertySecond}: $_toValueSecond;
+  }
+}
+
+@mixin transform($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  .menu__checkbox:checked ~ & {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin display($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  .menu__checkbox:checked ~ & {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin headerTop
+  (
+    $_topStart, $_propertyTranslate, $_toValueTranslate,
+    $_propertyHover, $_toValueHover
+  ) {
+  transition: #{$_propertyTranslate} 1s, #{$_propertyHover} 0.3s;
+  &:hover {
+    #{$_propertyHover}: $_toValueHover;
+  }
+
+  .menu__checkbox:checked ~ div & {
+    top: $_topStart;
+    #{$_propertyTranslate}: $_toValueTranslate;
+  }
+}
+
+@mixin translateNav($_topStart, $_property, $_toValue) {
+  transition: #{$_property} 1s;
+  .menu__checkbox:checked ~ & {
+    top: $_topStart;
+    #{$_property}: $_toValue;
+  }
+}
