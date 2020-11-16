@@ -1,0 +1,150 @@
+.header {
+  position: relative;
+
+  height: 700px;
+  padding: 0 7%;
+
+  color: $header-text-color;
+  @include font-header;
+
+  background: center / cover url(../images/header2.png);
+
+  @media (max-width: 600px) {
+    height: 568px;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__phone-icon {
+    display: none;
+
+    @media (max-width: 600px) {
+      position: relative;
+      display: block;
+      top: 27px;
+
+      cursor: pointer;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    top: 22px;
+
+    color: $header-text-color;
+    text-decoration: none;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__link {
+    position: relative;
+    top: 42px;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+
+    color: $header-text-color;
+    text-decoration: none;
+
+    transition: color $hover-duration;
+
+    &:hover {
+      color: $hover-color;
+    }
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 414px;
+
+    @include font-huge;
+
+    @media (max-width: 600px) {
+      top: 389px;
+
+      font-size: 46px;
+      line-height: 40px;
+    }
+
+    &::before {
+      content: "";
+      position: relative;
+
+      display: block;
+      width: 35px;
+      height: 2px;
+      margin-bottom: 16px;
+
+      background-color: $header-text-color;
+      border-radius: 8px;
+    }
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-toggler-label {
+    position: relative;
+    top: 22px;
+
+    display: none;
+    padding: 20px;
+
+    color: $header-text-color;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 18px;
+
+    &::before {
+      content: "\2630";
+    }
+
+    @media (max-width: 600px) {
+      position: absolute;
+      right: 20px;
+      top: 56px;
+      z-index: 1;
+
+      display: inline-block;
+      padding: 0;
+
+      cursor: pointer;
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-toggler-label::before {
+    content: "x";
+  }
+}
+
+@media (max-width: 600px) {
+  .header__nav-toggler:not(:checked) ~ .nav {
+    display: none;
+  }
+}
