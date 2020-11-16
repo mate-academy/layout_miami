@@ -1,0 +1,137 @@
+.header {
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  grid-template-areas: "phone logo call"
+    "slogan . ."
+    "navi navi navi";
+
+ height: 100vh;
+ 
+  background-image: url(/images/header.jpg);
+  background-position: center;
+  background-size: cover;
+  background-color: whitesmoke;
+
+  &__nav {
+    grid-area: navi;
+    justify-self: center;
+    align-self: center;
+
+    width: 100%;
+
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__phone {
+    grid-area: phone;
+    justify-self: center;
+    align-self: center;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-color;
+  }
+
+  &__mobile-phone {
+    display: none;
+    grid-area: phonealt;
+
+    width: 30px;
+    height: 30px;
+    padding-left: 23px;
+    padding-top: 10px;
+
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    justify-self: center;
+    align-self: center;
+
+    height: 76px;
+    width: 115px;
+  }
+
+  &__call {
+    grid-area: call;
+    justify-self: center;
+    align-self: center;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-color;
+  }
+
+  &__slogan {
+    grid-area: slogan;
+    justify-self: center;
+    align-self: end;
+
+    position: relative;
+    min-width: 343px;
+
+    font-weight: bold;
+    font-size: 60px;
+    color: $main-color;
+
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+
+      height: 2px;
+      width: 35px;
+
+      background-color: $main-color;
+      border-radius: 2px;
+      content: "";
+    }
+  }
+}
+
+@media screen and (max-width: 999px ) {
+  .header {
+    grid-template-areas: "phonealt logo nav-mobile"
+      ". . ."
+      "slogan slogan slogan";
+
+    width: 100vw;
+
+    & * {
+      margin-top: 10px;
+    }
+
+    &__nav {
+      display: none;
+      width: auto;
+    }
+    &__mobile-phone {
+      display: block;
+    }
+
+    &__call,
+    &__phone {
+      display: none;
+    }
+
+    &__slogan {
+      transform: scale(0.67);
+    }
+  }
+}

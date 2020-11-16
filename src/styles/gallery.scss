@@ -1,0 +1,154 @@
+.gallery {
+  display: grid;
+  grid-template-columns: 41.5% 8.5% 8.5% 41.5%;
+  grid-template-rows: 4.17% 2.83% 21.3% 7.5% 21.3% 7.5% 21.3% 7.5% 5.8%;
+  grid-template-areas: "gallery gallery gallery gallery"
+    "crown crown crown crown"
+    "foto11 foto11 foto11 foto12"
+    "adress-1 adress-1 . ."
+    "foto23 foto23 foto24 foto24"
+    "adress-2 adress-2 . ."
+    "foto35 foto36 foto36 foto36"
+    "adress-3 adress-3 . ."
+    "button button button button";
+
+  min-height: 1200px;
+  align-items: center;
+  padding: 100px 7vw 50px;
+
+  background-color: $main_color;
+
+  &__name {
+    grid-area: gallery;
+    justify-self: center;
+    margin-bottom: 8px;
+
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  &__crown {
+    grid-area: crown;
+    width: auto;
+    height: 10px;
+    align-self: start;
+    justify-self: center;
+  }
+
+  &__foto-11 {
+    grid-area: foto11;
+    @include foto;
+  }
+  &__foto-12 {
+    grid-area: foto12;
+    justify-self: end;
+    @include foto;
+  }
+
+  &__foto-23 {
+    grid-area: foto23;
+    @include foto;
+  }
+  &__foto-24 {
+    grid-area: foto24;
+    justify-self: end;
+    @include foto;
+  }
+
+  &__foto-35 {
+    grid-area: foto35;
+    @include foto;
+  }
+
+  &__foto-36 {
+    grid-area: foto36;
+    justify-self: end;
+    @include foto;
+  }
+
+  &__adress-1 {
+    grid-area: adress-1;
+  }
+
+  &__adress-2 {
+    grid-area: adress-2;
+  }
+
+  &__adress-3 {
+    grid-area: adress-3;
+  }
+
+  &__link {
+    color: $alternative-color;
+
+    font-weight: bold;
+    line-height: 26px;
+
+    transition: $transition;
+
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &__button {
+    grid-area: button;
+
+    width: 188px;
+    height: 56px;
+    justify-self: center;
+
+    font-weight: bold;
+    line-height: 14px;
+
+    border: 2px solid $alternative-color;
+    border-radius: $radius;
+
+    color: $alternative-color;
+
+    transition: $transition;
+
+    &:hover {
+      background-color: $alternative-color;
+      color: rgb(213,197,170);
+    }
+  }
+}
+
+@media screen and (max-width: 999px ) {
+  .gallery {
+    padding: 0 7vw 50px;
+
+    grid-template-areas: "gallery gallery gallery gallery"
+      "crown crown crown crown"
+      "foto11 foto11 foto12 foto12"
+      "adress-1 adress-1 adress-1 adress-1 "
+      "foto23 foto23 foto24 foto24"
+      "adress-2 adress-2 adress-2 adress-2 "
+      "foto35 foto35 foto36 foto36"
+      "adress-3 adress-3 adress-3 adress-3"
+      "button button button button";
+
+    &__button {
+      width: 86vw;
+    }
+    &__foto-11,
+    &__foto-12,
+    &__foto-23,
+    &__foto-24,
+    &__foto-35,
+    &__foto-36 {
+      height: 190px;
+      width: 100%;
+
+      @include foto-fit;
+    }
+  }
+
+  .gallery__foto--mobile {
+    width: 96%;
+
+    @include foto-fit;
+  }
+}
