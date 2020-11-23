@@ -1,0 +1,41 @@
+.photos {
+  @include space-around;
+
+  &__img {
+    @include normal-photo;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &--wide {
+      @include wide-photo;
+    }
+
+    &--small {
+      @include smaller-photo;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 13px 13px $hover-color;
+    }
+  }
+}
+
+@media (max-width: 756px) {
+  .photos {
+    &__img {
+      height: 160px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .photos {
+    justify-content: space-around;
+
+    &__img {
+      height: 131px;
+      width: 131px;
+    }
+  }
+}
