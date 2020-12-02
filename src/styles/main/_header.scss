@@ -1,8 +1,11 @@
 .header {
+  position: relative;
   background-image: url("/images/header_1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
+
+  overflow-x: hidden;
 
   &__content {
     display: flex;
@@ -11,6 +14,13 @@
 
     height: 700px;
     padding: 24px 0 48px;
+
+    overflow: hidden;
+
+    @include onMobile {
+      padding-bottom: 0;
+      height: 100vh;
+    }
   }
 
   &__top {
@@ -18,29 +28,39 @@
     justify-content: space-between;
     align-items: center;
 
+    height: 76px;
+
     font-size: 12px;
+    font-weight: 700;
     color: #fff;
     letter-spacing: 2px;
     line-height: 16px;
     text-transform: uppercase;
+
+    @include onMobile {
+      height: 48px;
+    }
   }
 
   &__phone {
     color: #fff;
     transition: color 0.5s;
 
+    padding: 8px 0;
+
     &:hover {
       color: #9fadc2;
+    }
+
+    @include onMobile {
+      display: none;
     }
   }
 
   &__call {
     position: relative;
 
-    display: flex;
-    align-items: center;
-
-    height: 76px;
+    padding: 8px 0;
 
     color: #fff;
     transition: color 0.5s;
@@ -48,7 +68,7 @@
     &::after {
       position: absolute;
       width: 100%;
-      bottom: 24px;
+      top: 34px;
       left: 0;
 
       border-bottom: 1px solid #fff;
@@ -58,17 +78,20 @@
     &:hover {
       color: #9fadc2;
     }
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &__title {
     position: relative;
 
-    display: block;
     margin-bottom: 85px;
     padding-top: 16px;
 
     font-size: 60px;
-    line-height: 60px;
+    line-height: 1;
     color: #fff;
     letter-spacing: -1.5px;
     font-weight: 700;
@@ -83,6 +106,34 @@
       border-radius: 1px;
 
       content: "";
+    }
+
+    @include onMobile {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 24px;
+    right: calc(50% - 115px / 2);
+    @include logoSize;
+
+    @include onMobile {
+      width: 73px;
+      height: 48px;
+      right: calc(50% - 73px / 2);
+    }
+
+  }
+
+  &__phone-icon {
+    display: none;
+
+    @include onMobile {
+      display: flex;
     }
   }
 }
