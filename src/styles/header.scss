@@ -1,59 +1,142 @@
 .header {
-  height: 765px;
-  background: url(../images/header.jpg);
+  height: 700px;
+  background: url(../images/header3.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
   font-weight: 400;
   line-height: 1;
+  transition-duration: 1s;
+
+  &__photo {
+    width: $header_logo_width;
+    height: $header_logo_height;
+    transition-duration: 1s;
+  }
+
+  &__content {
+    max-width: 940px;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 296px;
+  }
+
+  &__line {
+    width: 35px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: bold;
+    letter-spacing: -1.5px;
+    color: #fff;
+    margin-bottom: 80px;
+  }
 
   &__nav {
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
+    max-width: 980px;
+    width: 80%;
+    margin: 0 auto;
+    white-space: nowrap;
   }
 
   &__top {
     display: flex;
-    position: absolute;
-    top: 35px;
-    left: calc(50% - #{$header_logo_width} / 2);
+    justify-content: space-between;
+    max-width: 940px;
+    padding-top: 35px;
+    margin: 0 auto;
+    width: 80%;
+    align-items: center;
     color: #fff;
-  }
-
-  &__number {
-    margin: 0 82px;
-  }
-
-  &__number,
-  &__order {
-    position: relative;
-    top: 47px;
   }
 
   &__link {
     color: #fff;
     text-decoration: none;
-    border-bottom: 1px dashed;
-    transition: 0.5s;
     text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 12px;
+    transition-duration: 0.5s;
+
+    &--call {
+      padding-bottom: 8px;
+      border-bottom: 1px solid;
+    }
 
     &:hover {
-      color: $active_link_color;
+      color: #9fadc2;
     }
+
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 999;
+  }
+
+  &__phone {
+    position: relative;
+    z-index: 999;
+  }
+
+  &__icon {
+    display: none;
+  }
+
+  &__checked {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  &__hidden_nav {
+    display: none;
   }
 
 }
 
 @media screen and (max-width: 999px) {
   .header {
-    &__top {
-      flex-direction: column;
+    height: 570px;
+
+    &__order,
+    &__number {
+      display: none;
     }
 
-    &__number {
-      margin: -30px 0 10px;
+    &__icon,
+    &__phone {
+      display: block;
     }
+
+    &__photo {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__checked:checked + .header__hidden_nav {
+      display: block;
+    }
+
+    &__title {
+      font-size: 46px;
+      line-height: 40px;
+    }
+
   }
 }
