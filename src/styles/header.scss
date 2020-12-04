@@ -48,7 +48,7 @@
   &__logo {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 0);
   }
 
   &__phone {
@@ -113,12 +113,43 @@
       width: 35px;
       height: 2px;
       border-radius: 2px;
-      background-color: $whiteColor;
+      background-color: #fff;
     }
   }
 
   &__burger {
     display: none;
+  }
+
+  &__label {
+    display: none;
+    z-index: 2;
+    width: 20px;
+    height: 13px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/burger.svg");
+
+    @media (max-width: 768px) {
+      & {
+        display: block;
+      }
+    }
+  }
+
+  &__toggler {
+    display: none;
+    z-index: 2;
+
+    &:checked + .header__label {
+      background-image: url("/images/cross.svg");
+      z-index: 2;
+    }
+
+    &:checked ~ .burger {
+      right: 0;
+    }
   }
 }
 
@@ -134,10 +165,6 @@
       display: block;
     }
 
-    &__phone--icon.menu {
-      visibility: hidden;
-    }
-
     &__order {
       display: none;
     }
@@ -149,10 +176,6 @@
       margin-bottom: 56px;
     }
 
-    &__title.menu {
-      display: none;
-    }
-
     &__burger {
       display: block;
     }
@@ -161,21 +184,5 @@
   .logo {
     width: 73px;
     height: 48px;
-  }
-}
-
-@media (max-height: 540px) {
-  .header {
-
-    &__phone.menu {
-      bottom: 60px;
-      left: 70%;
-    }
-
-    &__link.menu {
-      bottom: 15px;
-      left: 70%;
-      border-bottom: 0;
-    }
   }
 }
