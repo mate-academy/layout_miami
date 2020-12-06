@@ -1,0 +1,172 @@
+.burger-menu {
+  position: relative;
+  visibility: hidden;
+  
+  #burger-menu__toggle {
+    display: none;
+  }
+ 
+  &__btn {
+    position: absolute;
+    top: 60px;
+    right: 7vw;
+ 
+    width: 22px;
+    height: 18px;
+ 
+    z-index: 2;
+    cursor: pointer;
+  }
+ 
+  &__btn > span,
+  span::before,
+  ::after {
+    position: absolute;
+ 
+    display: block;
+    width: 100%;
+    height: 2px;
+ 
+    background-color: white;
+    transition: transform 0.3s;
+  }
+ 
+  &__list {
+    position: absolute;
+    top: 0;
+    right: 0;
+ 
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    padding: 25% 24px;
+ 
+    list-style-type: none;
+    background-color: $blue-color;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+ 
+    visibility: hidden;
+    z-index: 1;
+  }
+ 
+  &__item {
+    position: relative;
+    top: 120px;
+ 
+    display: block;
+    padding: 12px 20px;
+ 
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    &--phone,
+    &--action {
+      display: block;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      letter-spacing: 2px;
+    }
+ 
+    &--phone {
+      margin-top: 48px;
+    }
+ 
+    &--action {
+      position: relative;
+      text-transform: uppercase;
+ 
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+ 
+        display: block;
+        max-width: 114px;
+        height: 1px;
+      }
+    }
+  }
+ 
+  &__item:hover {
+    color: $hover-color;
+  }
+ 
+  &__btn > span::before {
+    content: "";
+    top: -8px;
+  }
+ 
+  &__btn > span::after {
+    content: "";
+    top: 8px;
+  }
+ 
+  #burger-menu__toggle:checked ~ &__btn > span {
+    transform: rotate(45deg);
+  }
+ 
+  #burger-menu__toggle:checked ~ &__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+ 
+  #burger-menu__toggle:checked ~ &__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+ 
+  #burger-menu__toggle:checked ~ &__list {
+    visibility: visible;
+    right: 0;
+    transition: transform 0.3s;
+  }
+}
+ 
+@media (max-width: 808px) {
+  .burger-menu {
+    display: flex;
+ 
+    visibility: visible;
+  }
+}
+ 
+@media (min-width: 808px) {
+  .burger-menu {
+    &__list {
+      display: none;
+    }
+  }
+}
+ 
+@media (max-height: 600px) {
+  .burger-menu {
+    &__item {
+      top: 20px;
+ 
+      font-size: 0.8rem;
+      
+      &--phone {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+ 
+@media (min-height: 700px) {
+  .burger-menu {
+    &__item {
+      top: 20vh;
+      
+      text-align: center;
+ 
+      &--action:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
