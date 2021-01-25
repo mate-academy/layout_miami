@@ -1,6 +1,6 @@
 **Miami Page**
 
-[DEMO LINK](https://KirillLutsenko.github.io/layout_miami/)
+
 
 **Description**
 - Tech stack: HTML5, SASS, JS(hamburger button & submit)
