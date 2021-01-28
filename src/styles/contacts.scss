@@ -1,0 +1,112 @@
+.contacts {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-areas: "tit tit"
+    "inf frm";
+  grid-gap: 0 390px;
+
+  &__title {
+    position: relative;
+
+    grid-area: tit;
+    justify-self: center;
+    margin-bottom: 200px;
+
+    font-size: 48px;
+    font-weight: $fw-bold;
+    
+      
+    &:after {
+      position: absolute;
+      top: 68%;
+      left: 49%;
+
+      content: url(\images\small-logo.png);
+    }
+  }
+
+  &__info {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2,200px);
+    grid-template-rows: repeat(2, 80px);
+    grid-area: inf;
+  }
+
+  &__phone-type {
+    @extend %contacts;
+  }
+
+  &__email-type {
+    @extend %contacts;
+  }
+
+  &__address-type {
+    @extend %contacts;
+  }
+
+  &__link {
+    @extend %contacts-link;
+  }
+
+  &__address {
+    align-self: center;
+    width: 140px;
+    padding-top: 55px;
+  }
+
+  &__form {
+    display: grid;
+    grid-area: frm;
+    width: 413px;
+  }
+
+  &__form-input {
+    @extend %inputs;
+  }
+
+  &__form-button {
+    @extend %button;
+  }
+
+  &__form-input--big {
+    height: 150px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .contacts {
+    grid-gap: 0 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contacts {
+    display: grid;
+    grid-gap: 70px;
+    grid-template-areas: "tit"
+      "inf"
+      "frm";
+
+    &__title {
+      margin-bottom: 30px;
+    }
+
+    &__info {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 10px 1fr 20px;
+      justify-items: flex-start;
+    }
+
+    &__form {
+      display: grid;
+      width: 280px;
+    }
+
+    &__form-button {
+      width: 280px;
+    }
+  }
+}
