@@ -1,0 +1,70 @@
+.burger--input {
+  display: none;
+}
+
+.burger--input:checked ~ .nav {
+  position: relative;
+  top: -105px;
+  transform: translateX(-40%);
+  transition: transform 0.5s;
+
+  .nav__list {
+    display: grid;
+
+    position: absolute;
+    background-color: pink;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.burger--input:checked ~ .burger--label :nth-child(1) {
+  opacity: 0;
+}
+
+.burger--input:checked ~ .burger--label :nth-child(2) {
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.burger--input:checked ~ .burger--label :nth-child(3) {
+  transform: rotate(45deg);
+}
+
+.burger--input:checked ~ .burger--label :nth-child(4) {
+  opacity: 0;
+}
+
+.burger {
+  display: none;
+  width: 34px;
+  height: 2px;
+  background-color: #fff;
+  transition: transform 0.5s, opacity 0.5s;
+
+  @include tablet {
+    display: block;
+    margin-bottom: 5px;
+    padding: 1px;
+  }
+}
+
+.burger--label {
+  display: none;
+  padding: 5px;
+  width: min-content;
+  cursor: pointer;
+
+  @include tablet {
+    display: block;
+    position: absolute;
+    top: 42px;
+    right: 23px;
+  }
+}
+
+.nav {
+  @include tablet {
+    transform: translateX(-150%);
+  }
+}
