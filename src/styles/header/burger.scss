@@ -4,28 +4,59 @@
 
 .nav {
   @include tablet {
-    transform: translateX(-150%);
+    transform: translateX(-2000%);
   }
 }
 
 .burger--input:checked ~ .nav {
-  position: relative;
-  top: -105px;
-  transform: translateX(-40%);
-  transition: transform 0.5s;
+  @include tablet {
+    position: relative;
+    top: -105px;
+    transform: translateX(0%);
+    transition: transform 0.5s;
+    margin: 0;
 
-  .nav__list {
-    display: grid;
-
-    position: absolute;
-    background-color: pink;
     width: 100%;
     height: 100%;
+
+    .nav__list {
+      display: grid;
+      justify-content: center;
+      grid-template-rows: repeat(1, min-content);
+      align-items: center;
+      justify-items: center;
+      gap: 50px;
+
+      position: absolute;
+      left: 0 - $containerPadding;
+
+      padding-top: 30vh;
+      width: 100vw;
+      height: 100vh;
+      transition: background-color 1s, backdrop-filter 1s;
+
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(15px);
+      background-color: rgba(255,255,255,0.1);
+      @include tabletMini {
+        left: 0 - $containerPaddingMedium;
+      }
+
+      @include mobile {
+        left: 0 - $containerPaddingMini;
+      }
+    }
+
+    .nav__link {
+      padding: 0 15px;
+      width: 100%;
+    }
   }
 }
 
 .burger--input:checked ~ .burger--label :nth-child(1) {
   opacity: 0;
+
 }
 
 .burger--input:checked ~ .burger--label :nth-child(2) {
@@ -43,7 +74,7 @@
 
 .burger {
   display: none;
-  width: 34px;
+  width: $burgerWidth;
   height: 2px;
   background-color: #fff;
   transition: transform 0.5s, opacity 0.5s;
@@ -66,5 +97,6 @@
     position: absolute;
     top: 42px;
     right: 23px;
+    z-index: 1;
   }
 }
