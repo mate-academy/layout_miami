@@ -1,38 +1,26 @@
-@include phone {
-  .nav {
-    &__item {
-      display: block;
-    }
-  }
-}
-
-@include desktop {
-  .nav {
-    width: calc(100% - 240px);
-    position: absolute;
-    bottom: 48px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    &__header {
-      margin: 0 auto;
-    }
-
-    &__item {
-      @include flex-align(space-between, center);
-    }
-
-    &__list {
-      &--active {
-        padding: 8px 24px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-      }
-    }
-  }
-}
-
 .nav {
+  width: calc(100% - 240px);
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &__header {
+    margin: 0 auto;
+  }
+
+  &__item {
+    @include flex-align(space-between, center);
+  }
+
+  &__list {
+    &--active {
+      padding: 8px 24px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  }
+
   &__link {
     font-size: $fs-small;
     font-weight: $fw-bold;
@@ -45,6 +33,40 @@
 
     &:hover {
       color: $c-active;
+    }
+  }
+}
+
+@include phone {
+  .nav {
+    position: static;
+    transform: none;
+
+    &__header {
+      margin: 0;
+    }
+
+    &__item {
+      display: block;
+    }
+
+    &__list {
+      margin-bottom: 32px;
+
+      &--active {
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+      }
+    }
+
+    &__link {
+      font-size: 1.38rem;
+      line-height: 1.38rem;
+
+      &:hover {
+        color: $c-active;
+      }
     }
   }
 }
