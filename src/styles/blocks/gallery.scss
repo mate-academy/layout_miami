@@ -1,0 +1,113 @@
+.gallery {
+  @include take-width(240px);
+
+  &__section {
+    // margin-bottom: 152px;
+    margin: 0 auto 152px;
+  }
+
+  &__title {
+    position: relative;
+
+    font-size: $fs-large;
+    font-weight: $fw-bold;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    &:after {
+      @include absolute-left-transform;
+
+      content: "";
+
+      display: block;
+      width: 20px;
+      height: 13px;
+      background: url("../images/crown.svg") no-repeat center;
+    }
+  }
+
+  &__list {
+    @include flex-justify;
+    flex-wrap: wrap;
+
+    margin-top: 40px;
+  }
+
+  &__image {
+    display: inline-block;
+    width: calc(100% / 3 * 2 - 10px);
+    height: 265px;
+    border-radius: 8px;
+
+    &--right,
+    &--left {
+      width: calc(100% / 3 - 10px);
+    }
+
+    &--medium {
+      width: calc(100% / 2 - 10px);
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+
+    line-height: 27px;
+  }
+
+  &__modifier {
+    font-weight: $fw-bold;
+    color: $c-blue;
+  }
+
+  &__button {
+    display: block;
+    margin: 40px auto 0;
+    transition: color 0.5s, background-color $duration-s;
+
+    &:hover {
+      color: $c-white;
+      background-color: $c-blue;
+    }
+  }
+}
+
+@include phone {
+  .gallery {
+    @include take-width(40px);
+
+    &__section {
+      margin: 0 auto 64px;
+    }
+
+    &__title {
+      font-size: 2.25rem;
+    }
+
+    &__list {
+      margin-top: 32px;
+    }
+
+    &__image {
+      display: inline-block;
+      width: calc(100% / 2 - 10px);
+      height: 131px;
+      border-radius: 8px;
+    }
+
+    &__text {
+      margin-top: 16px;
+
+      line-height: 27px;
+    }
+
+    &__modifier {
+      font-weight: $fw-bold;
+      color: $c-blue;
+    }
+
+    &__button {
+      margin: 32px auto 0;
+    }
+  }
+}
