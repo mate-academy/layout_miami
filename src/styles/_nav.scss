@@ -28,10 +28,44 @@
       color: $active-color;
     }
   }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    display: none;
+    font-size: 35px;
+    color: #fff;
+  }
 }
 
 @media screen and (max-width: $small-screen-breakpoint) {
   .nav__list {
     @include centered-column;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s linear;
   }
+
+  .nav__toggler-label {
+    display: flex;
+    justify-content: center;
+  }
+  .nav__toggler:checked ~ .nav__list {
+    height: 230px;
+  }
+}
+
+.nav__toggler-label::before {
+  content: "==";
+}
+
+.nav__toggler:checked ~ .nav__toggler-label::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 40px;
+  height: 3px;
+  background-color: white;
 }
