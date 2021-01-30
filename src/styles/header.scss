@@ -1,3 +1,7 @@
+#burger-toggle {
+  display: none;
+}
+
 .header {
   background-image: url(../images/header1.png);
   height: 700px;
@@ -18,6 +22,7 @@
   &__logo-img {
     width: 115px;
     height: 76px;
+    top: 24px;
   }
   
   &__phone-icon {
@@ -59,12 +64,43 @@
   .header {
     height: 568px;
 
+    &__burger-container {
+      z-index: 1;
+    }
+
+    &__button-burger {
+      top: 45px;
+      right: 23px ;
+    }
+
+    &__button-burger,
+    &__button-burger::after,
+    &__button-burger::before {
+      display: block;
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background-color: #fff;
+      z-index: 1;
+    }
+
+    &__button-burger::before {
+      content: "";
+      top: 8px;
+    }
+
+    &__button-burger::after {
+      content: "";
+      top: -8px;
+    }
+
     &__call {
       display: none;
     }
 
     &__phone-icon {
       background: url(../images/phone.svg);
+      position: absolute;
       width: 18px;
       height: 18px;
       visibility: visible;
@@ -91,6 +127,56 @@
       font-size: 46px;
       line-height: 40px;
       letter-spacing: -1px;
+    }
+
+    #burger-toggle:checked ~ &__burger-container > &__button-burger {
+      transform: rotate(45deg);
+    }
+    
+    #burger-toggle:checked ~ &__burger-container > &__button-burger::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    
+    #burger-toggle:checked ~ &__burger-container > &__button-burger::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+    
+    #burger-toggle:checked ~ &__nav {
+      visibility: visible;
+      background-color: blue;
+    }
+    
+    #burger-toggle:checked ~ &__main-text {
+      display: none;
+    }
+    
+    #burger-toggle:checked ~ &__top > &__number {
+      display: block;
+      white-space: nowrap;
+      position: absolute;
+      left: 20px;
+      bottom: 92px;
+      letter-spacing: 2px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+    
+    #burger-toggle:checked ~ &__top > &__call {
+      display: block;
+      white-space: nowrap;
+      position: absolute;
+      left: 20px;
+      bottom: 52px;
+      letter-spacing: 2px;
+      font-size: 12px;
+      line-height: 16px;
+      padding-bottom: 8px;
+    }
+
+    #burger-toggle:checked ~ &__top > &__phone-icon {
+      display: none;
     }
   }
 }
