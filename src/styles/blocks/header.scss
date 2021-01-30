@@ -6,37 +6,40 @@
   background-size: cover;
 
   &__logo {
-    position: absolute;
+    @include absolute-left-transform;
     top: 24px;
-    left: 50%;
     z-index: 2;
-
-    transform: translateX(-50%);
   }
 
   &__title {
+    $width: 328px;
+
     position: absolute;
     bottom: 165px;
     left: 120px;
-    width: 328px;
-    font-size: 60px;
+
+    width: $width;
+
+    font-size: 3.75rem;
     font-weight: $fw-bold;
-    letter-spacing: -1.5px;
+    letter-spacing: $ls-mines-normal;
+
     color: $c-white;
 
     &::after {
       position: absolute;
-      content: "";
-      display: block;
       top: -16px;
       left: 0;
-      right: 328px - 32px;
+      content: "";
+      display: block;
+      right: $width - 32px;
 
       height: 2px;
       border-radius: 2px;
       background-color: $c-white;
     }
   }
+
   &__calling {
     display: none;
   }
@@ -48,12 +51,20 @@
     height: $h-header-small;
 
     &__title {
+      $width: 253px;
+
       bottom: 80px;
       left: 20px;
-      width: 253;
-      font-size: 46px;
-      line-height: 40px;
+
+      width: $width;
+
+      font-size: 2.88rem;
+      line-height: 2.5rem;
       letter-spacing: -1px;
+
+      &::after {
+        right: $width - 32px;
+      }
     }
 
     &__calling {
@@ -73,6 +84,7 @@
     }
 
     &__icon {
+      display: block;
       width: 24px;
       height: 24px;
     }
