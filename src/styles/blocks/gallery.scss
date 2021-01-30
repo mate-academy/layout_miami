@@ -1,29 +1,13 @@
 .gallery {
-  @include take-width(240px);
+  @include take-width($padding-desk-sum);
 
   &__section {
-    // margin-bottom: 152px;
-    margin: 0 auto 152px;
+    margin: 0 auto;
+    padding-bottom: 152px;
   }
 
   &__title {
-    position: relative;
-
-    font-size: $fs-large;
-    font-weight: $fw-bold;
-    letter-spacing: -1.5px;
-    text-align: center;
-
-    &:after {
-      @include absolute-left-transform;
-
-      content: "";
-
-      display: block;
-      width: 20px;
-      height: 13px;
-      background: url("../images/crown.svg") no-repeat center;
-    }
+    @include title;
   }
 
   &__list {
@@ -34,10 +18,13 @@
   }
 
   &__image {
-    display: inline-block;
+    display: block;
     width: calc(100% / 3 * 2 - 10px);
     height: 265px;
     border-radius: 8px;
+    object-fit: cover;
+
+    transition: transform $duration-s, box-shadow $duration-s;
 
     &--right,
     &--left {
@@ -46,6 +33,11 @@
 
     &--medium {
       width: calc(100% / 2 - 10px);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 13px -7px #000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     }
   }
 
@@ -74,14 +66,15 @@
 
 @include phone {
   .gallery {
-    @include take-width(40px);
+    @include take-width($padding-phone-sum);
 
     &__section {
-      margin: 0 auto 64px;
+      padding-bottom: 64px;
     }
 
     &__title {
       font-size: 2.25rem;
+      line-height: 2.25rem;
     }
 
     &__list {
@@ -89,16 +82,12 @@
     }
 
     &__image {
-      display: inline-block;
       width: calc(100% / 2 - 10px);
       height: 131px;
-      border-radius: 8px;
     }
 
     &__text {
       margin-top: 16px;
-
-      line-height: 27px;
     }
 
     &__modifier {
@@ -107,7 +96,8 @@
     }
 
     &__button {
-      margin: 32px auto 0;
+      margin-top: 32px;
+      width: 100%;
     }
   }
 }
