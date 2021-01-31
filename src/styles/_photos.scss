@@ -3,7 +3,7 @@
 
   &__img {
     width: calc(50% - #{$photos-gap / 2});
-    height: 260px;
+    height: $photos-height;
     object-fit: cover;
     object-position: center;
   }
@@ -36,7 +36,17 @@
 @media screen and (max-width: $phone-screen-breakpoint) {
   .photos {
     &__img {
-      height: 131px;
+      height: $photos-height / 2;
+    }
+
+    &__wide_left,
+    &__wide_right {
+      .photos__img {
+        &:first-child,
+        &:last-child {
+          width: calc(50% - #{$photos-gap / 2});
+        }
+      }
     }
   }
 }

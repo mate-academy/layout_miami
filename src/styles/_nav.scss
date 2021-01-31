@@ -2,6 +2,10 @@
   color: #000;
   text-transform: uppercase;
 
+  &__input {
+    display: none;
+  }
+
   &__list {
     display: flex;
     justify-content: center;
@@ -27,11 +31,47 @@
       color: $active-color;
     }
   }
+
+  &__toggle {
+    display: none;
+    background-image: url("../images/bars.svg");
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 30px / 2);
+    cursor: pointer;
+  }
 }
 
 @media screen and (max-width: $small-screen-breakpoint) {
-  .nav__list {
-    flex-direction: column;
-    align-items: center;
+  .nav {
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav {
+    &__toggle {
+      display: block;
+    }
+
+    &__list {
+      opacity: 0;
+      margin-bottom: 70px;
+    }
+
+    &__input:checked ~ .nav__toggle {
+      background-image: url("../images/times.svg");
+    }
+
+    &__input:checked ~ .nav__list {
+      opacity: 1;
+    }
   }
 }
