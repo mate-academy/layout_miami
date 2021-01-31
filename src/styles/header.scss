@@ -3,19 +3,21 @@
 }
 
 .header {
-  background-image: url(../images/header1.png);
+  position: relative;
   height: 700px;
+
+  background-image: url(../images/header1.png);
   background-size: cover;
   background-position: center;
-  position: relative;
 
   &__top {
-    padding-top: 25px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     justify-items: center;
     align-items: center;
-    color: white;
+    padding-top: 25px;
+
+    color: $text-color;
     text-transform: uppercase;
   }
 
@@ -25,6 +27,15 @@
     top: 24px;
   }
   
+  &__number > a {
+    color: $text-color;
+    transition: color 1s;
+  }
+
+  &__number > a:hover {
+    color: $minor-text-color;
+  }
+
   &__phone-icon {
     visibility: hidden;
     position: absolute;
@@ -32,45 +43,55 @@
 
   &__call {
     padding-bottom: 8px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid $border-color;
   }
   
   &__call-link {
-    color: white;
+    color: $text-color;
+    transition: color 1s;
   }
   
+  &__call-link:hover {
+    color: $minor-text-color;
+  }
+
   &__main-text {
-    text-transform: uppercase;
     position: absolute;
     left: 120px;
     bottom: 165px;
-    color: white;
+
+    text-transform: uppercase;
     font-size: 60px;
     line-height: 60px;
     letter-spacing: -1.5px;
+    color: $text-color;
   }
   
   &__main-text::before {
     content: "";
     position: absolute;
-    height: 2px;
     width: 35px;
+    height: 2px;
     top: -15px;
     background-color: white;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1024px) {
   .header {
     height: 568px;
 
     &__burger-container {
-      z-index: 1;
-    }
+      display: flex;
+      align-items: center;
+      position: absolute;
 
-    &__button-burger {
+      width: 26px;
+      height: 26px;
       top: 45px;
       right: 23px ;
+
+      z-index: 1;
     }
 
     &__button-burger,
@@ -78,10 +99,13 @@
     &__button-burger::before {
       display: block;
       position: absolute;
+
       width: 18px;
       height: 2px;
-      background-color: #fff;
-      z-index: 1;
+
+      transition: 1s;
+
+      background-color: $border-color;
     }
 
     &__button-burger::before {
@@ -101,11 +125,13 @@
     &__phone-icon {
       background: url(../images/phone.svg);
       position: absolute;
+
       width: 18px;
       height: 18px;
-      visibility: visible;
       top: 39px;
       left: 23px;
+
+      visibility: visible;
     }
 
     &__number {
@@ -113,9 +139,10 @@
     }
 
     &__logo-img {
+      position: absolute;
+
       width: 73px;
       height: 48px;
-      position: absolute;
       left: 0;
       right: 0;
       margin: auto;
@@ -124,59 +151,12 @@
     &__main-text {
       left: 20px;
       bottom: 80px;
+      
       font-size: 46px;
       line-height: 40px;
       letter-spacing: -1px;
     }
 
-    #burger-toggle:checked ~ &__burger-container > &__button-burger {
-      transform: rotate(45deg);
-    }
-    
-    #burger-toggle:checked ~ &__burger-container > &__button-burger::before {
-      top: 0;
-      transform: rotate(0);
-    }
-    
-    #burger-toggle:checked ~ &__burger-container > &__button-burger::after {
-      top: 0;
-      transform: rotate(90deg);
-    }
-    
-    #burger-toggle:checked ~ &__nav {
-      visibility: visible;
-      background-color: blue;
-    }
-    
-    #burger-toggle:checked ~ &__main-text {
-      display: none;
-    }
-    
-    #burger-toggle:checked ~ &__top > &__number {
-      display: block;
-      white-space: nowrap;
-      position: absolute;
-      left: 20px;
-      bottom: 92px;
-      letter-spacing: 2px;
-      font-size: 12px;
-      line-height: 16px;
-    }
-    
-    #burger-toggle:checked ~ &__top > &__call {
-      display: block;
-      white-space: nowrap;
-      position: absolute;
-      left: 20px;
-      bottom: 52px;
-      letter-spacing: 2px;
-      font-size: 12px;
-      line-height: 16px;
-      padding-bottom: 8px;
-    }
-
-    #burger-toggle:checked ~ &__top > &__phone-icon {
-      display: none;
-    }
+    @include burger;
   }
 }
