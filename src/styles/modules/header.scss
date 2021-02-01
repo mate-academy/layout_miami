@@ -6,14 +6,6 @@
   background-position: center;
   padding: 24px 0 48px;
 
-  @media screen and (max-width: 850px) {
-    padding: 24px 0 80px;
-  }
-
-  @media screen and (max-width: 400px) {
-    height: 600px;
-  }
-
   &__container {
     display: flex;
     flex-direction: column;
@@ -34,14 +26,6 @@
     font-size: 60px;
     margin-bottom: 85px;
     line-height: 60px;
-
-    @media screen and (max-width: 850px) {
-      margin-bottom: 0;
-    }
-
-    @media screen and (max-width: 650px) {
-      font-size: 46px;
-    }
 
     &::before {
       content: "";
@@ -64,17 +48,10 @@
     &:hover {
       transform: scale(1.1);
     }
-
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
   }
 
   &__phone-small {
     display: none;
-    @media screen and (max-width: 850px) {
-      display: block;
-    }
   }
 
   &__button {
@@ -99,16 +76,52 @@
       height: 1px;
       background-color: $c-white;
     }
-
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
   }
 
   &__button-menu {
     display: none;
-    @media screen and (max-width: 850px) {
+  }
+}
+
+@include sm {
+  .header {
+    height: 600px;
+  }
+}
+
+@include lg {
+  .header {
+    &__title {
+      font-size: 46px;
+    }
+  }
+}
+
+@include xxl {
+  .header {
+    padding: 24px 0 80px;
+
+    &__button {
+      display: none;
+      &:after {
+        display: none;
+      }
+    }
+
+    &__button-menu {
       display: block;
+    }
+
+    &__phone {
+      display: none;
+
+      &-small {
+        display: block;
+      }
+    }
+
+    &__title {
+      margin-bottom: 0;
     }
   }
 }

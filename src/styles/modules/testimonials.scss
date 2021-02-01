@@ -1,28 +1,14 @@
 .testimonials {
   padding: 75px 0;
 
-  @media screen and (max-width: 850px) {
-    padding: 32px 0;
-  }
-
   &__title {
     text-align: center;
     margin-bottom: 93px;
-
-    @media screen and (max-width: 850px) {
-      margin-bottom: 53px;
-    }
   }
 
   &__block {
     display: flex;
     justify-content: space-between;
-
-    @media screen and (max-width: 770px) {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   &__item {
@@ -30,16 +16,21 @@
     flex-direction: column;
     align-items: center;
     max-width: 240px;
-
-    @media screen and (max-width: 770px) {
-      margin-bottom: 48px;
-    }
   }
 
   &__image {
     width: 153px;
     height: 153px;
     margin-bottom: 28px;
+
+    border-radius: 50%;
+    transition: box-shadow 0.35s ease, transform 0.7s ease;
+
+    &:hover {
+      box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 
   &__photo {
@@ -59,5 +50,29 @@
 
   &__about {
     text-align: center;
+  }
+}
+
+@include xl {
+  .testimonials {
+    &__block {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__item {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+@include xxl {
+  .testimonials {
+    padding: 32px 0;
+
+    &__title {
+      margin-bottom: 53px;
+    }
   }
 }
