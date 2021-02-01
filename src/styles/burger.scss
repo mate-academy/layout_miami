@@ -1,0 +1,105 @@
+.phone__logo {
+  display: none;
+  position: absolute;
+  left: 23px;
+  top: 39px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.5);
+    color: $hover-color;
+  }
+}
+
+.burger__menu {
+  display: none;
+  width: 50px;
+  height: 18px;
+  position: absolute;
+  right: 23px;
+  box-shadow: none;
+  top: 42px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+  span {
+    display: block;
+    position: absolute;
+    width: calc(100% - 20px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3px;
+    background: #fff;
+
+    &::before , &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+    }
+
+    &:before {
+      top: -8px;
+    }
+
+    &:after {
+      bottom: -8px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &-line {
+    span::before , span::after {
+      transition-duration: 0.3s 0.3s;
+      transition-delay: 0.3s 0;
+    }
+    span:before {
+      transition-property: top transform;
+    }
+    span::after {
+      transition-property: bottom transform;
+    }
+  }
+  &.is-active {
+    span {
+      background: none;
+    }
+    span:before {
+      top: 0;
+      transition-delay: 0.3;
+      transform: rotate(45deg);
+    }
+    span::after {
+      bottom: 0;
+      transition-delay: 0.3;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media screen and (max-width:999px) {
+  .burger__menu {
+    display: block;
+  }
+  .phone__logo {
+    display: block;
+  }
+}
