@@ -6,10 +6,23 @@
     display: flex;
     justify-content: center;
     list-style: none;
+
+    transition: height 1s;
   }
 
   &__toggler {
-    visibility: hidden;
+    display: none;
+
+    &-label {
+      font-size: 35px;
+      color: #fff;
+      display: none;
+
+      &::before {
+        content: "≡";
+        font-size: 26px;
+      }
+    }
   }
 
   &__menu {
@@ -39,6 +52,11 @@
   }
 }
 
+.nav__toggler:checked ~ .nav__toggler-label::before {
+  content: "x";
+  font-size: 16px;
+}
+
 @media screen and (max-width: $small-screen-breakpoint) {
   .nav__list {
     flex-direction: column;
@@ -49,6 +67,36 @@
     margin-top: -116px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .nav {
+
+    &__list {
+      // display: none;
+      height: 0;
+      overflow: hidden;
+      transition: height ease-out 1s;
+    }
+
+    &__item {
+      display: block;
+    }
+
+    &__toggler-label {
+      display: block;
+    }
+
+    &__toggler:checked ~ .nav__list {
+      transition: height 1s linear;
+      // display: block;
+      height: 292px;
+    }
+  }
+}
+
+// &__toggler-label::before {
+//   content: "=";
+// }
 
 // @media screen and (max-width: 320px) {
 //   .nav {
