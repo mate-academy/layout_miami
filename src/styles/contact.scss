@@ -1,6 +1,13 @@
 .contact {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
+  @include form_position;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
 
   &__text {
     font-weight: normal;
@@ -11,11 +18,12 @@
   }
 
   &__value {
+    display: grid;
     padding-top: 8px;
-
     font-weight: normal;
     font-size: 16px;
     line-height: 27px;
+    max-width: 152px;
 
     color: $general-text-color;
   }
@@ -25,10 +33,8 @@
   }
 
   &__address {
-    max-width: 152px;
+    margin-left: 80px;
   }
-
-  @include form_position;
 
   &__form-text {
     width: 413px;
@@ -42,14 +48,18 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: $tablet-width) {
   .contact {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+    &__info {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
 
     &__form {
       flex-direction: column;
-      padding-top: 32px;
     }
 
     &__form-input,
@@ -63,12 +73,26 @@
     }
 
     &__address {
-      padding-top: 24px;
-      margin: auto;
+      margin: 0 auto auto;
     }
 
     &__btn {
       padding-top: 16px;
+    }
+  }
+  
+  @media screen and (max-width: $mobile-width) {
+    .contact {
+      grid-template-columns: 1fr;
+    
+      &__form {
+        padding-top: 32px;
+      }
+
+      &__address {
+        padding-top: 24px;
+        margin: auto;
+      }
     }
   }
 }

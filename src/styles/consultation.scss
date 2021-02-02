@@ -1,4 +1,6 @@
 .consultation {
+  @include form_position;
+  
   display: flex;
   justify-content: space-between;
 
@@ -8,29 +10,33 @@
     line-height: 27px;
 
     color: $general-text-color;
-
-    @include delete_margin;
+    
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__text--colored {
     font-weight: bold;
     font-size: 24px;
     line-height: 30px;
-
+    max-width: 240px;
     color: $main-color;
   }
 
-  &__text-normal {
+  &__text--normal {
     font-weight: normal;
+    max-width: 412px;
   }
-
-  @include form_position;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: $tablet-width) {
   .consultation {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 
     &__text {
       margin: auto;
@@ -40,9 +46,7 @@
       display: grid;
       flex-direction: column;
       gap: 16px;
-
-      padding-top: 32px;
-      margin: auto;
+      margin: 0 auto auto;
     }
     &__form-input {
       width: 280px;
@@ -50,6 +54,16 @@
 
     &__btn {
       padding-top: 16px;
+    }
+  }
+  @media screen and (max-width: $mobile-width) {
+    .consultation {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      &__text {
+        padding: 0 0 32px;
+      }
     }
   }
 }
