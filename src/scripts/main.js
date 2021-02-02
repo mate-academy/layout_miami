@@ -9,6 +9,9 @@ const header = document.querySelector('.header');
 // eslint-disable-next-line camelcase
 const header__menu = document.querySelector('.nav__list');
 
+// eslint-disable-next-line no-unused-vars
+const phone = document.querySelector('.phone__logo');
+
 burger.addEventListener('click', function(e) {
   e.preventDefault();
   this.classList.toggle('is-active');
@@ -19,4 +22,5 @@ burger.addEventListener('click', function(e) {
   e.preventDefault();
   header.classList.toggle('background');
   header__menu.classList.toggle('active');
+  phone.classList.toggle('active');
 });
