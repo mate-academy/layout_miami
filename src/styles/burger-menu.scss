@@ -2,10 +2,7 @@
   visibility: hidden;
   position: relative;
   
-  #burger-menu__toggle {
-    display: none;
-  }
-
+  
   &__btn {
     position: absolute;
     top: 60px;
@@ -18,8 +15,12 @@
     cursor: pointer;
   }
 
-  &__btn > span,
-  span::before,
+  &__toggle {
+    display: none;
+  }
+
+  &__icon,
+  ::before,
   ::after {
     position: absolute;
     
@@ -64,6 +65,7 @@
     
     text-decoration: none;
     text-transform: uppercase;
+
     &--phone,
     &--action {
       display: block;
@@ -96,38 +98,38 @@
   }
 
   &__item:hover {
-    color: $position-color;
+    color: $contacts-subtitle-color;
   }
 
-  &__btn > span::before {
+  &__btn > &__icon::before {
     top: -8px;
 
     content: "";
   }
 
-  &__btn > span::after {
+  &__btn > &__icon::after {
     top: 8px;
 
     content: "";
   }
 
-  #burger-menu__toggle:checked ~ &__btn > span {
+  &__toggle:checked ~ &__btn > &__icon {
     transform: rotate(45deg);
   }
 
-  #burger-menu__toggle:checked ~ &__btn > span::before {
+  &__toggle:checked ~ &__btn > &__icon::before {
     top: 0;
 
     transform: rotate(0);
   }
 
-  #burger-menu__toggle:checked ~ &__btn > span::after {
+  &__toggle:checked ~ &__btn > &__icon::after {
     top: 0;
 
     transform: rotate(90deg);
   }
 
-  #burger-menu__toggle:checked ~ &__list {
+  &__toggle:checked ~ &__list {
     right: 0;
 
     visibility: visible;
@@ -136,7 +138,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: $tablet-width-m) {
   .burger-menu {
     display: flex;
     visibility: visible;
