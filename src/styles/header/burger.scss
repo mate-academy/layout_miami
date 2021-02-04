@@ -1,49 +1,42 @@
-.burger--input {
-  display: none;
-}
-
-.burger--input:checked ~ .burger--label :nth-child(1) {
-  opacity: 0;
-}
-
-.burger--input:checked ~ .burger--label :nth-child(2) {
-  position: absolute;
-  transform: rotate(-45deg);
-}
-
-.burger--input:checked ~ .burger--label :nth-child(3) {
-  transform: rotate(45deg);
-}
-
-.burger--input:checked ~ .burger--label :nth-child(4) {
-  opacity: 0;
-}
-
 .burger {
-  display: none;
-  width: $burgerWidth;
-  height: 2px;
-  background-color: #fff;
-  transition: transform 0.5s, opacity 0.5s;
+  &__label {
+    display: none;
+    position: relative;
+    z-index: 2;
+    height: max-content;
+    cursor: pointer;
+    width: 48px;
 
-  @include tablet {
-    display: block;
-    margin-bottom: 5px;
-    padding: 1px;
+    @include tablet {
+      display: block;
+      position: absolute;
+      top: 55px;
+      right: 20px;
+    }
   }
-}
 
-.burger--label {
-  display: none;
-  padding: 5px;
-  width: min-content;
-  cursor: pointer;
+  &__line {
+    width: 18px;
+    height: 2px;
+    margin: 5px 0;
+    background-color: white;
 
-  @include tablet {
-    display: block;
-    position: absolute;
-    top: 42px;
-    right: 23px;
-    z-index: 1;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler:checked ~ &__label :nth-child(1) {
+    transform: rotate(-45deg) translate(-4px);
+  }
+
+  &__toggler:checked ~ &__label :nth-child(2) {
+    transform: rotate(45deg) translate(-5px);
+  }
+
+  &__toggler:checked ~ &__label :nth-child(3) {
+    opacity: 0;
   }
 }
