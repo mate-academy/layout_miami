@@ -1,4 +1,4 @@
-.phone__logo {
+.phone-logo {
   display: none;
 
   position: absolute;
@@ -21,7 +21,7 @@
   }
 }
 
-.burger__menu {
+.burger {
   display: none;
 
   width: 50px;
@@ -46,7 +46,8 @@
   &:hover {
     transform: scale(1.5);
   }
-  span {
+  
+  &__arrow {
     display: block;
     position: absolute;
     top: 50%;
@@ -83,41 +84,30 @@
     outline: none;
   }
 
-  &-line {
-    span::before,
-    span::after {
-      transition-duration: 0.3s 0.3s;
-      transition-delay: 0.3s 0.3s;
-    }
-    span:before {
-      transition-property: top transform;
-    }
-    span::after {
-      transition-property: bottom transform;
-    }
-  }
   &.is-active {
-    span {
-      background: none;
-    }
-    span:before {
-      top: 0;
-      transition-delay: 0.3;
-      transform: rotate(45deg);
-    }
-    span::after {
-      bottom: 0;
-      transition-delay: 0.3;
-      transform: rotate(-45deg);
+    .burger {
+      &__arrow {
+        background: none;
+      }
+      &__arrow:before {
+        top: 0;
+        transition-delay: 0.3;
+        transform: rotate(45deg);
+      }
+      &__arrow::after {
+        bottom: 0;
+        transition-delay: 0.3;
+        transform: rotate(-45deg);
+      }
     }
   }
 }
 
 @media screen and (max-width:999px) {
-  .burger__menu {
+  .burger {
     display: block;
   }
-  .phone__logo {
+  .phone-logo {
     display: block;
   }
 }
