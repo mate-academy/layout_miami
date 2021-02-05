@@ -25,23 +25,6 @@
     }
   }
 
-  &__toggler {
-    opacity: 0;
-
-    &:checked ~ .nav__toggler-label > span {
-      transform: rotate(45deg);
-    }
-
-    &:checked ~ .nav__toggler-label > span::before {
-      display: none;
-    }
-
-    &:checked ~ .nav__toggler-label > span::after {
-      top: 0;
-      transform: rotate(90deg);
-    }
-  }
-
   &__toggler-label {
     display: none;
     position: absolute;
@@ -53,9 +36,9 @@
     cursor: pointer;
     z-index: 1;
 
-    & > span,
-    & > span::before,
-    & > span::after {
+    & > .nav__toggler-icon,
+    & > .nav__toggler-icon::before,
+    & > .nav__toggler-icon::after {
       position: absolute;
       display: block;
       width: 100%;
@@ -64,19 +47,36 @@
       border-radius: 2px;
     }
 
-    & > span::before {
+    & > .nav__toggler-icon::before {
       content: "";
       top: -5px;
     }
 
-    & > span::after {
+    & > .nav__toggler-icon::after {
       content: "";
       top: 5px;
+    }
+
+    &__toggler {
+      opacity: 0;
+
+      &:checked ~ &-label > &-icon {
+        transform: rotate(45deg);
+      }
+
+      &:checked ~ &-label > &-icon::before {
+        display: none;
+      }
+
+      &:checked ~ &-label > &-icon::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
     }
   }
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: $medium-screen-breakpoint) {
   .nav {
     &__list {
       display: none;
