@@ -1,0 +1,144 @@
+.header {
+  height: 100vh;
+  padding: 0 $s-pad;
+
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__logo {
+    position: absolute;
+    width: $logo-w;
+    height: $logo-h;
+    left: calc(50% - #{$logo-w/2});
+  }
+
+  &__nav {
+    bottom: 48px;
+    position: absolute;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 150px;
+    margin: 0;
+
+    display: block;
+
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    &::before {
+      position: absolute;
+      top: -16px;
+      height: 2px;
+      width: 35px;
+
+      content: "";
+
+      background-color: #fff;
+      border-radius: 2px;
+    }
+  }
+
+  &__top {
+    position: relative;
+    top: 24px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__action {
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    top: 40px;
+    display: block;
+    transition: color $time, transform $time ease;
+
+    &:hover {
+      color: #9fadc2;
+      transform: scale(1.2);
+    }
+  }
+
+  &__phone--icon {
+    position: absolute;
+    top: $phone;
+    left: $phone;
+    width: $phone;
+    height: $phone;
+
+    display: none;
+    justify-content: flex-start;
+    z-index: 2;
+  }
+
+  &__action::after {
+    @include item-active;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    display: none;
+    cursor: pointer;
+    background-image: url(../images/2.svg);
+    width: $s-menu-w;
+    height: $s-menu-h;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 0 20px;
+    background-image: url(../images/header-320.jpg);
+
+    &__title {
+      bottom: 80px;
+    }
+
+    &__phone--num,
+    &__action {
+      display: none;
+    }
+
+    &__phone--img {
+      display: block;
+    }
+
+    &__toggler {
+      display: block;
+
+      &:checked + .header__toogler-label {
+        background-image: url(../images/3.png);
+        height: 16px;
+        width: 16px;
+        display: block;
+      }
+
+      &__toggler:checked ~ .header__menu {
+        transform: translateY(calc(100vh + 100px));
+      }
+    }
+  }
+}

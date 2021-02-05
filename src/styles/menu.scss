@@ -1,0 +1,68 @@
+.menu {
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  width: 100vw;
+  height: calc(100vh - 100px);
+  background-color: $c-accnt;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 21px;
+    padding: 0;
+  }
+
+  &__item {
+    display: block;
+    width: 60vw;
+    margin: 0 0 32px;
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  &__link {
+    display: block;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__footer {
+    margin-bottom: 46px;
+    margin-left: 20px;
+  }
+
+  &__phone,
+  &__action {
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__action::after {
+    @include item-active;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  &__toggler-label {
+    display: block;
+    z-index: 2;
+  }
+
+  &__toggler:checked ~ menu {
+    background-color: $c-accnt;
+  }
+}
