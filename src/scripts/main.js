@@ -14,8 +14,7 @@ const phone = document.querySelector('.phone__logo');
 
 burger.addEventListener('click', function(e) {
   e.preventDefault();
-  this.classList.toggle('is-active');
-  this.classList.toggle('background');
+  this.classList.toggle('burger--is-active');
 });
 
 burger.addEventListener('click', function(e) {
