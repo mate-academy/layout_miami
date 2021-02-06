@@ -1,0 +1,80 @@
+.nav {
+  color: #000;
+  text-transform: uppercase;
+
+  &__input {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    padding: 7px 20px;
+    margin: 0 22.5px;
+
+    &--active {
+      font-weight: 500;
+      background-color: $active-color;
+      border-radius: 10px;
+    }
+  }
+
+  &__link {
+    color: $main-text;
+    text-decoration: none;
+    transition: color $hover-duration;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    background-image: url("../images/bars.svg");
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 30px / 2);
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav {
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav {
+    &__toggle {
+      display: block;
+    }
+
+    &__list {
+      opacity: 0;
+      margin-bottom: 70px;
+      transform: translate(-100%, 0%);
+      transition-duration: 0.7s;
+    }
+
+    &__input:checked ~ .nav__toggle {
+      background-image: url("../images/times.svg");
+    }
+
+    &__input:checked ~ .nav__list {
+      opacity: 1;
+      transform: translate(0%, 0%);
+    }
+  }
+}

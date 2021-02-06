@@ -1,0 +1,56 @@
+.photos {
+  @include flex-section;
+
+  &__img {
+    width: calc(50% - #{$photos-gap / 2});
+    height: $photos-height;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: box-shadow 0.5s,
+      transform 0.5s;
+
+    &:hover {
+      box-shadow: 0 0 11px rgba(33,33,33, 0.3);
+      transform: scale(1.01);
+    }
+  }
+
+  &--left &__img {
+    &:first-child {
+      width: calc(67% - #{$photos-gap / 2});
+    }
+
+    &:last-child {
+      width: calc(33% - #{$photos-gap / 2});
+    }
+  }
+
+  &--right img {
+    &:first-child {
+      width: calc(33% - #{$photos-gap / 2});
+    }
+
+    &:last-child {
+      width: calc(67% - #{$photos-gap / 2});
+    }
+  }
+}
+
+@media screen and (max-width: $phone-screen-breakpoint) {
+  .photos {
+    &__img {
+      height: $photos-height / 2;
+    }
+
+    &--left,
+    &--right {
+      .photos__img {
+        &:first-child,
+        &:last-child {
+          width: calc(50% - #{$photos-gap / 2});
+        }
+      }
+    }
+  }
+}
