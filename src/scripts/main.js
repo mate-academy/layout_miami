@@ -20,8 +20,9 @@ burger.addEventListener('click', function(e) {
 burger.addEventListener('click', function(e) {
   e.preventDefault();
   header.classList.toggle('background');
-  header__menu.classList.toggle('active');
-  phone.classList.toggle('active');
+
+  header__menu.classList.toggle('nav__list--active');
+  phone.classList.toggle('nav__list--active');
 });
 
 // eslint-disable-next-line no-unused-vars
