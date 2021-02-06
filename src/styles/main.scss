@@ -10,8 +10,9 @@
 @import "footer";
 @import "testimonials";
 @import "contacts";
-@import "media";
 @import "__variables";
+@import "textarea";
+@import "modificators";
 
 html {
   font-family: Roboto, sans-serif;
@@ -27,4 +28,191 @@ body {
 
 ul {
   display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .header {
+    padding: 0;
+
+    &__navigation {
+      display: none;
+    }
+
+    &__logo {
+      width: 73px;
+    }
+
+    &__top {
+      display: none;
+
+      &-mobile {
+        display: flex;
+        padding: 24px 0;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+
+        z-index: 2;
+      }
+      &-phone {
+        height: 17px;
+        flex-basis: auto;
+      }
+
+      &-logo {
+        height: 48px;
+        flex-basis: auto;
+      }
+
+    }
+    &__text {
+      width: 100%;
+      padding-bottom: 80px;
+      padding-left: 20px;
+      align-self: center;
+
+      font-size: 55px;
+    }
+  }
+
+  .menu:checked ~ .header__list {
+    display: block;
+    position: fixed;
+    align-self: center;
+    padding: 96px 20px 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-color: $blue;
+
+    z-index: 1;
+
+    .header__listitem {
+      font-size: 22px;
+      padding: 16px 21px;
+    }
+
+    .header__listitem:nth-child(7) {
+      font-size: 12px;
+      padding: 48px 21px 0;
+      line-height: 16px;
+    }
+
+    .header__listitem:last-child {
+      text-align: left;
+      font-size: 12px;
+      line-height: 16px;
+      padding-top: 16px;
+      &::before {
+        content: "";
+        display: block;
+        position: relative;
+        height: 2px;
+        width: 90px;
+        top: 25px;
+
+        background-color: $light;
+      }
+    }
+  }
+
+  .menu:checked ~ article {
+    position: fixed;
+  }
+
+  .menu:checked ~ .header__top-mobile label .header__top-3 {
+    content: url(/images/cancel.svg);
+    width: 26px;
+  }
+
+  .gallery {
+
+    &__line {
+      padding: 10px 10px 0;
+      height: auto;
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+
+    .item-1,
+    .item-2,
+    .item-3,
+    .item-4,
+    .item-5,
+    .item-6 {
+      flex-basis: calc(50% - 10px);
+      height: 131px;
+    }
+
+    &__underline {
+      padding: 24px 20px;
+    }
+  }
+
+  .about {
+    flex-wrap: wrap;
+    &__right,
+    &__left {
+      flex-basis: auto;
+      margin: 48px 20px 0;
+      width: 100%;
+    }
+  }
+
+  .consultation {
+    padding: 20px;
+
+    &__table {
+      flex-basis: 100%;
+    }
+
+    &__text {
+      flex-basis: 100%;
+    }
+
+    &__form {
+      flex-basis: 100%;
+    }
+  }
+
+  .contacts {
+    padding: 0 20px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+      padding-bottom: 32px;
+      margin: auto;
+      width: 65%;
+    }
+
+    &__item {
+      flex-basis: 100%;
+    }
+  }
+
+  .testimonials {
+
+    &__container {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .footer {
+    height: 232px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header__text {
+    align-self: flex-end;
+  }
 }
