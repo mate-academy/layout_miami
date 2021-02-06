@@ -43,7 +43,7 @@
     }
   }
 
-  &__toggler:checked ~ .nav__toggler-label::before {
+  &__toggler:checked ~ &__toggler-label::before {
     content: "";
     position: absolute;
     top: -20px;
@@ -51,21 +51,32 @@
     height: 3px;
     background-color: white;
   }
+
+  &__toggler:checked ~ &__toggler-label::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    width: 40px;
+    height: 3px;
+    background-color: white;
+  }
 }
 
 @media screen and (max-width: $small-screen-breakpoint) {
-  .nav__list {
-    @include centered-column;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s linear;
-  }
+  .nav {
+    &__list {
+      @include centered-column;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s linear;
+    }
 
-  .nav__toggler-label {
-    display: flex;
-    justify-content: center;
-  }
-  .nav__toggler:checked ~ .nav__list {
-    height: 230px;
+    &__toggler-label {
+      display: flex;
+      justify-content: center;
+    }
+    &__toggler:checked ~ .nav__list {
+      height: 230px;
+    }
   }
 }
