@@ -1,20 +1,57 @@
 .gallery {
-  max-height: 985px;
-  max-width: 980px;
-  
-  &__notice {
-    @include basic-text;
-    font-weight: bold;
-    margin: 24px 0 40px;
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__img {
+    width: calc(50% - 10px);
+    height: 256px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+
+    transition: transform 0.3s;
+
+    &--wide {
+      width: calc(67% - 10px);
+    }
+
+    &--narrow {
+      width: calc(33% - 10px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  &--wide,
+  &--narrow,
+  & {
+    width: calc(50% - 10px);
+    height: 40vw;
   }
 
-  &___button {
+  &__button {
     margin: 0 auto;
-    border: 2px solid $c-accnt;
-    padding: 20px 60px;
-    background-color: #fff;
-    color: $c-accnt;
+    margin-top: 40px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
+
+  @media (max-width: 768px) {
+    margin-top: 32px;
+  }
+}
+
+&___button {
+  margin: 0 auto;
+  border: 2px solid $c-accnt;
+  padding: 20px 60px;
+  background-color: #fff;
+  color: $c-accnt;
 }
 
 @media screen and (max-width: 480px) {
@@ -23,7 +60,7 @@
       margin: 16px 0 24px;
     }
 
-    &___button {
+    &__button {
       width: 90%;
     }
   }

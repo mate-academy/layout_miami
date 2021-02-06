@@ -1,20 +1,24 @@
 .contact {
   display: flex;
+
   justify-content: space-between;
+  align-items: flex-start;
 
   &__block {
     padding-right: 20px;
     margin-bottom: 25px;
     max-width: 300px;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas: "phone address" "email address";
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
-    align-items: flex-start;
+    grid-auto-rows: 60px;
+    row-gap: 24px;
   }
 
   &__form {
-    display: block;
+
     max-width: $form-size;
   }
 
@@ -32,7 +36,7 @@
   &__link {
     margin: 0 0 8px;
 
-    display: block;
+    display: inline-block;
 
     font-weight: normal;
     color: #3e3e3e;
@@ -51,18 +55,26 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 759px) {
   .contact {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    row-gap: 32px;
 
-    &__block,
-    &__form {
-      align-self: start;
-    }
+    &__block {
+      grid-template-areas: "phone" "email" "address";
+      grid-auto-rows: auto;
 
-    &__form {
-      min-width: 100%;
+      &__phone {
+        grid-area: phone;
+      }
+
+      &__email {
+        grid-area: email;
+      }
+
+      &__address {
+        grid-area: address;
+      }
     }
   }
 }
