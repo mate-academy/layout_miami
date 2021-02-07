@@ -1,80 +1,80 @@
 .contact {
+  width: 100%;
   display: flex;
-
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: start;
 
-  &__block {
-    padding-right: 20px;
-    margin-bottom: 25px;
-    max-width: 300px;
-
-    display: grid;
-    grid-template-areas: "phone address" "email address";
-    grid-template-columns: repeat(2, 1fr);
+  &__connect {
+    width: 152px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    grid-auto-rows: 60px;
-    row-gap: 24px;
+    align-items: flex-start;
   }
 
-  &__form {
-
-    max-width: $form-size;
+  &__phone,
+  &__address {
+    width: 152px;
   }
 
-  &__item {
-    @include item;
-  }
-
-  &__item--area {
-    padding-top: 17px;
-    height: 144px;
-    resize: none;
+  &__address {
+    display: block;
+    width: 152px;
+    height: auto;
   }
 
   &__type,
   &__link {
     margin: 0 0 8px;
-
-    display: inline-block;
-
-    font-weight: normal;
-    color: #3e3e3e;
-
-    @include basic-text;
+    display: block;
   }
 
   &__type {
     color: #9fadc2;
-
     @include text;
+  }
 
-    & .email {
-      margin-top: 16px;
+  &__link {
+    color: #3e3e3e;
+    @include basic-text;
+  }
+
+  &__form {
+    margin-left: 194px;
+    width: $form-size;
+    display: block;
+  }
+
+  &__item {
+    @include item;
+
+    &--area {
+      padding-top: 17px;
+      height: 144px;
+      resize: none;
     }
   }
 }
 
-@media screen and (max-width: 759px) {
+@media screen and (max-width: 768px) {
   .contact {
-    grid-template-columns: 1fr;
-    row-gap: 32px;
+    flex-direction: column;
+    align-items: center;
 
-    &__block {
-      grid-template-areas: "phone" "email" "address";
-      grid-auto-rows: auto;
+    &__connect,
+    &__email,
+    &__form,
+    &__address {
+      align-self: start;
+    }
 
-      &__phone {
-        grid-area: phone;
-      }
+    &__form {
+      margin-left: 0;
+      max-width: 100%;
+    }
 
-      &__email {
-        grid-area: email;
-      }
-
-      &__address {
-        grid-area: address;
-      }
+    &__item {
+      padding-left: 0;
     }
   }
 }

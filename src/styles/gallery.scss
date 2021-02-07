@@ -1,9 +1,9 @@
 .gallery {
-  margin-top: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  &__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__img {
     width: calc(50% - 10px);
@@ -14,12 +14,33 @@
 
     transition: transform 0.3s;
 
+    &:hover {
+      transform: scale(1.05);
+    }
+
     &--wide {
       width: calc(67% - 10px);
     }
 
     &--narrow {
       width: calc(33% - 10px);
+    }
+  }
+
+  &__notice {
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 2px solid $c-accnt;
+    padding: 20px 60px;
+    background-color: #fff;
+    color: $c-accnt;
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }
@@ -33,35 +54,25 @@
   }
 
   &__button {
-    margin: 0 auto;
-    margin-top: 40px;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-
-  @media (max-width: 768px) {
     margin-top: 32px;
   }
-}
 
-&___button {
-  margin: 0 auto;
-  border: 2px solid $c-accnt;
-  padding: 20px 60px;
-  background-color: #fff;
-  color: $c-accnt;
-}
+  @media screen and (max-width: 480px) {
+    .gallery {
+      &__row {
+        justify-content: space-between;
+      }
+      &__img {
+        width: 131px;
+        height: 131px;
+      }
+      &__notice {
+        margin: 16px 0 24px;
+      }
 
-@media screen and (max-width: 480px) {
-  .gallery {
-    &___notice {
-      margin: 16px 0 24px;
-    }
-
-    &__button {
-      width: 90%;
+      &__button {
+        width: 90%;
+      }
     }
   }
 }
