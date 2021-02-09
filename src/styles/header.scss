@@ -1,0 +1,211 @@
+#burger-toggle {
+  display: none;
+}
+
+.header {
+  position: relative;
+  height: 700px;
+
+  background-image: url(../images/header1.png);
+  background-size: cover;
+  background-position: center;
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    align-items: center;
+    padding-top: 25px;
+
+    color: $text-color;
+    text-transform: uppercase;
+  }
+
+  &__logo-img {
+    width: 115px;
+    height: 76px;
+    top: 24px;
+  }
+  
+  &__number-text {
+    color: $text-color;
+    transition: color 1s;
+  }
+
+  &__number-text:hover {
+    color: $minor-text-color;
+  }
+
+  &__phone-icon {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &__call {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $border-color;
+  }
+  
+  &__call-link {
+    color: $text-color;
+    transition: color 1s;
+  }
+  
+  &__call-link:hover {
+    color: $minor-text-color;
+  }
+
+  &__main-text {
+    position: absolute;
+    left: 120px;
+    bottom: 165px;
+    max-width: 400px;
+
+    text-transform: uppercase;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: $text-color;
+  }
+  
+  &__main-text::before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    top: -15px;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: $tablet-width) {
+  .header {
+    height: 568px;
+
+    &__burger-container {
+      display: flex;
+      align-items: center;
+      position: absolute;
+
+      width: 26px;
+      height: 26px;
+      top: 39px;
+      right: 23px ;
+
+      z-index: 1;
+    }
+    &__button-burger,
+    &__button-burger::after,
+    &__button-burger::before {
+      display: block;
+      position: absolute;
+
+      width: 18px;
+      height: 2px;
+
+      transition: 1s;
+
+      background-color: $border-color;
+    }
+    
+
+    &__button-burger::before {
+      content: "";
+      top: 8px;
+    }
+
+    &__button-burger::after {
+      content: "";
+      top: -9px;
+    }
+
+    &__call {
+      display: none;
+    }
+
+    &__phone-icon {
+      background: url(../images/phone.svg);
+      position: absolute;
+
+      width: 18px;
+      height: 18px;
+      top: 39px;
+      left: 23px;
+
+      visibility: visible;
+    }
+
+    &__number {
+      display: none;
+    }
+
+    &__logo-img {
+      position: absolute;
+
+      width: 73px;
+      height: 48px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    &__main-text {
+      left: 20px;
+      bottom: 80px;
+      max-width: 320px;
+      font-size: 36px;
+      line-height: 36px;
+      letter-spacing: -1.5px;
+    }
+
+    #burger-toggle:checked ~ &__burger-container > &__button-burger {
+      transform: rotate(45deg);
+    }
+    
+    #burger-toggle:checked ~ &__burger-container > &__button-burger::before {
+      top: 0;
+      transform: rotate(0);
+    }
+    
+    #burger-toggle:checked ~ &__burger-container > &__button-burger::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+  
+    #burger-toggle:checked ~ &__nav {
+      visibility: visible;
+      background-color: blue;
+      transition: 1s;
+    }
+  
+    #burger-toggle:checked ~ &__main-text {
+      display: none;
+    }
+    
+    #burger-toggle:checked ~ &__top > &__number {
+      bottom: 92px;
+    }
+    
+    #burger-toggle:checked ~ &__top > &__call {
+      bottom: 52px;
+      padding-bottom: 8px;
+    }
+
+    
+    #burger-toggle:checked ~ &__top > &__number,
+    #burger-toggle:checked ~ &__top > &__call {
+      display: block;
+      position: absolute;
+      left: 20px;
+      
+      white-space: nowrap;
+      letter-spacing: 2px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  
+    #burger-toggle:checked ~ &__top > &__phone-icon {
+      display: none;
+    }
+  }
+}
