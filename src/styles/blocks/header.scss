@@ -1,0 +1,135 @@
+.header {
+  position: relative;
+  height: 765px;
+  background: url(../images/header.jpg) center / cover;
+
+  &__phone-link {
+    transform: translateY(39px) translateX(23px);
+    display: none;
+    width: 18px;
+    transition: opacity $hover-duration;
+    z-index: 2;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__nav-label {
+    position: absolute;
+    top: 42px;
+    right: 23px;
+    display: none;
+    z-index: 2;
+    cursor: pointer;
+    transition: opacity $hover-duration;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 12px;
+      background: url(../images/menu.svg) center / cover;
+    }
+  }
+
+  &__nav-input {
+    display: none;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    position: absolute;
+    top: 35px;
+    left: calc(50% - (#{$header-top-width} / 2));
+    display: flex;
+    font-size: 16px;
+    line-height: 16px;
+    color: white;
+    z-index: 2;
+
+    @media (max-width: $small-screen) {
+      top: 24px;
+      flex-direction: column;
+      align-items: center;
+      left: calc(50% - (#{$header-top-width-small} / 2));
+    }
+  }
+
+  &__phone {
+    margin-left: 82px;
+    margin-right: 82px;
+    transition: color $hover-duration;
+  }
+
+  &__phone,
+  &__action {
+    margin-top: 47px;
+    
+    @media (max-width: $small-screen) {
+      margin: 10px 0 0;
+    }
+  }
+
+  &__link-call {
+    border-bottom: 1px dashed;
+    text-transform: uppercase;
+  }
+
+  &__link-number,
+  &__link-call {
+    transition: color $hover-duration;
+    
+    &:hover {
+      color: $c-color;
+    }
+  }
+
+  @media (max-width: $small-screen) {
+    &__phone-link {
+      display: block;
+    }
+
+    &__nav-label {
+      display: block;
+    }
+
+    &__phone,
+    &__action {
+      display: none;
+    }
+
+    &__nav-input {
+      display: block;
+      width: 0;
+      height: 0;
+
+      &:checked ~ .header__burder {
+        height: 100%;
+        display: block;
+        background-color: $c-bg-burger;
+      }
+
+      &:checked + .header__nav-label {
+        position: fixed;
+        &::after {
+          background-image: url(../images/close.svg);
+        }
+      }
+
+      &:checked ~ .header__phone-link,
+      &:checked ~ .header__top {
+        position: fixed;
+      }
+    }
+  }
+}
