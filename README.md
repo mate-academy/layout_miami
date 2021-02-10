@@ -1,6 +1,6 @@
 # Miami landing page
 
-- Tech stack: HTML5, CSS3 (SASS), BEM methodology
+- Tech stack: HTML5, CSS3 (SCSS), BEM methodology
 - All buttons and links are interactive
 - Fully responsive design was made by using CSS Flexbox and Grid (large screens, laptops, tablets, mobiles)
 - You could check demo out [here](https://ztx25.github.io/layout_miami/)
