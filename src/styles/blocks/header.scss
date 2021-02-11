@@ -1,9 +1,6 @@
 .header {
   height: 700px;
-  background-image: url("../images/header.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  @include background-center("../images/header.jpg");
   color: $white;
   position: relative;
   font-size: $font-size-sm;
@@ -13,7 +10,7 @@
     height: 500px;
   }
 
-  .header__top {
+  &__top {
     @include absolute-center;
     top: 15px;
     @include flex-center;
@@ -21,15 +18,41 @@
 
   &__phone {
     color: $white;
+
+    &:hover {
+      animation: turn 0.3s infinite ease-in-out;
+    }
+
     @media (max-width: $breakpoint-md) {
       display: none;
     }
+  }
+
+  &__phone--active {
+    display: block;
+    z-index: 100;
   }
 
   &__phone--mobile {
     display: none;
     @media (max-width: $breakpoint-md) {
       display: block;
+    }
+  }
+
+  &__logo--active {
+    z-index: 100;
+  }
+
+  &__action {
+    transition: 0.3s;
+
+    &:hover {
+      transform: $skale;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
     }
   }
 
@@ -46,6 +69,7 @@
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1.5px;
+    text-transform: capitalize;
     @media (max-width: $breakpoint-md) {
       font-size: $fontSizeTitle;
       bottom: 70px;
@@ -62,21 +86,17 @@
   }
 }
 
-.logo {
-  display: block;
-  max-width: 115px;
-  transition: $transition;
-  cursor: pointer;
-
-  .logo__img {
-    width: 100%;
+@keyframes turn {
+  from {
+    transform: rotate(0deg);
   }
-
-  &:hover {
-    transform: scale(1.2);
+  33% {
+    transform: rotate(-5deg);
   }
-
-  @media (max-width: $breakpoint-md) {
-    max-width: 70px;
+  66% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(5deg);
   }
 }
