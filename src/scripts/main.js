@@ -12,3 +12,14 @@ burgerMenuWrap.onclick = function() {
   document.body.classList.toggle('body--disabled');
   document.querySelector('.nav').classList.toggle('nav--active');
 };
+
+const nav = document.querySelector('.nav__list');
+
+nav.onclick = function() {
+  burgerMenu.classList.remove('burger-menu--active');
+  burgerMenuWrap.classList.remove('burger-menu-wrapper--active');
+  headerLogo.classList.remove('header__logo--active');
+  document.body.classList.remove('body--disabled');
+  document.querySelector('.nav').classList.remove('nav--active');
+  document.querySelector('.mobile-nav').classList.remove('mobile-nav--active');
+};
