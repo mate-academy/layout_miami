@@ -1,0 +1,69 @@
+.menu {
+  position: absolute;
+  padding-left: 10vw;
+
+  &__list {
+    display: none;
+    flex-direction: column;
+    margin: 120px 0 50px;
+  }
+
+  &__call,
+  &__phone {
+    display: none;
+  }
+}
+
+@media (max-width: $breakPointMobile) {
+  .menu {
+    z-index: 1;
+    width: 100%;
+    height: $heightHeaderMobile;
+    background-color: $activeColor;
+    top: 0;
+    left: 100%;
+    transition: left 1s ease-in-out;
+
+    &__list {
+      display: flex;
+    }
+
+    &__item {
+      margin-bottom: 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__link {
+      color: $bodyColor;
+      @include headerFontMenu;
+    }
+
+    &__phone,
+    &__call {
+      display: inline-block;
+      color: $bodyColor;
+    }
+
+    &__call {
+      margin-top: 16px;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 111px;
+        border: 1px solid $bodyColor;
+        border-radius: 1px;
+        margin-top: 8px;
+      }
+
+      &:hover::after {
+        border-color: $linkActiveColor;
+      }
+    }
+  }
+}

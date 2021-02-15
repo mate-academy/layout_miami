@@ -1,0 +1,141 @@
+.header {
+  position: relative;
+  height: 700px;
+  padding: 24px 0 48px;
+  background-image: url("../images/headerNew.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $bodyColor;
+  overflow: hidden;
+  font-weight: bold;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    @include headerFont;
+  }
+
+  &__phone-icon {
+    background-image: url("../images/phone.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: $sizePhoneIcon;
+    width: $sizePhoneIcon;
+    display: none;
+  }
+
+  &__phone-number {
+    display: flex;
+    color: $bodyColor;
+  }
+
+  &__logo {
+    width: $widthLogo;
+    height: $heightLogo;
+    position: relative;
+    z-index: 2;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__call {
+    color: $bodyColor;
+    padding-right: 5px;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $bodyColor;
+      border-radius: 1px;
+      bottom: -8px;
+
+    }
+
+    &:hover::after {
+      background-color: $linkActiveColor;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin-top: 314px;
+    @include headerTitleFont;
+    z-index: 0;
+
+    &::before {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 35px;
+      border: 1px solid $bodyColor;
+      border-radius: 1px;
+      top: -16px;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  
+    &-label {
+      display: none;
+      background-image: url("../images/nav.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 12px;
+      width: 18px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    &:checked + &-label {
+      background-image: url("../images/cross.svg");
+    }
+  }
+}
+
+@media (max-width: $breakPointMobile) {
+  .header {
+    height: $heightHeaderMobile;
+
+    &__phone-number,
+    &__call,
+    &__nav {
+      display: none;
+    }
+
+    &__phone-icon {
+      display: block;
+    }
+
+    &__logo {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__title {
+      @include headerTitleFontMobile;
+      margin-top: 335px;
+    }
+
+    &__toggler {
+      &:checked ~ .menu {
+        left: 0;
+      }
+
+      &-label {
+        display: block;
+      }
+    }
+  }
+}
