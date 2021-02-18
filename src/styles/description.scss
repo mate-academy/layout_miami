@@ -1,7 +1,9 @@
 .description {
-  display: grid;
-  grid-template-columns: repeat(2, 510px);
+  display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1020px;
+  margin: auto;
 
   &__title {
     font-weight: 600;
@@ -10,6 +12,11 @@
     letter-spacing: -1.5px;
     color: #000;
     padding-top: 104px;
+    width: 50%;
+  }
+
+  &__article {
+    width: 50%;
   }
 
   &__title::after {
@@ -18,22 +25,37 @@
   }
 
   &__text-title {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 30px;
-    color: #0075ff;
+    @include small-title;
     padding-top: 104px;
   }
 
   &__text {
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 27px;
-    color: #3e3e3e;
+    @include text;
     padding-top: 16px;
   }
 }
 
 .bold_text {
   font-weight: bold;
+}
+
+@media screen and (max-width: 740px) {
+  .description {
+    max-width: 280px;
+    flex-direction: column;
+
+    &__title {
+      width: 100%;
+      font-size: 36px;
+      padding-top: 64px;
+    }
+
+    &__article {
+      width: 100%;
+    }
+
+    &__text-title {
+      padding-top: 48px;
+    }
+  }
 }
