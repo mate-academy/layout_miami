@@ -1,8 +1,8 @@
 .header {
+  height: 100vh;
   background-image: url(../images/header/oldMiami.png);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 
   &____wraper {
     position: relative;
@@ -10,9 +10,9 @@
 
   &__inner {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
   }
 
   &__logo {
@@ -23,16 +23,23 @@
 
   &__phone-pic {
     display: none;
+    margin-right: 80px;
     padding-left: 15px;
     align-self: center;
-    margin-right: 80px;
 
     @media (max-width: 768px) {
       display: block;
     }
   }
-  
+
   &__pic-big {
+
+    transform-origin: center 80%;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scaleY(0.6) scaleX(1.2);
+    }
 
     @media (max-width: 768px) {
       display: none;
@@ -42,6 +49,14 @@
 
   &__pic-small {
     display: none;
+
+    transform-origin: center 80%;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scaleY(0.6) scaleX(1.2);
+    }
+
     @media (max-width: 768px) {
       display: block;
     }
@@ -54,10 +69,35 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
-    color: $white;
 
     @media (max-width: 768px) {
       display: none;
+    }
+  }
+
+  &__color {
+    color: $white;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+
+    &::before {
+      content: attr(data-item);
+      transition: 0.5s;
+      color: hsl(18, 39%, 22%);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+      }
     }
   }
 
@@ -75,9 +115,30 @@
     @media (max-width: 768px) {
       opacity: 0;
     }
+  }
 
-    @media (max-width: 376px) {
-      // display: none;
+  &__transform-text {
+    position: relative;
+    transition: all 0.5s ease-in-out;
+
+    &::before {
+      content: attr(data-item);
+      transition: 0.5s;
+      color: hsl(18, 39%, 22%);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+      }
     }
   }
 
@@ -92,13 +153,22 @@
     letter-spacing: -1.5px;
     color: $white;
 
+    animation: blur 0.75s ease-out infinite;
+    text-shadow: 0 0 5px #fff, 0 0 7px #fff;
+
+    @keyframes blur {
+      from {
+        text-shadow: 0 0 10px #fff, 0 -10px 100px #7b96b8;
+      }
+    }
+
     &::before {
       content: "";
       display: block;
       width: 50px;
       height: 2px;
       border-radius: 8px;
-      background: hsl(0, 0%, 100%);
+      background: $white;
       margin-bottom: 16px;
     }
 
@@ -112,29 +182,5 @@
 
   &__nav {
     margin-bottom: 56px;
-  }
-}
-
-.wraper {
-  max-width: 1185px;
-  margin: 0 auto;
-}
-
-.nav {
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  &__list {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  &__link {
-    @include fontFamilyRoboto;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: $white;
   }
 }

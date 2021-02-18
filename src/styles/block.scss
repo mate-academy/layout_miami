@@ -1,0 +1,55 @@
+.block {
+  display: grid;
+  grid-template-columns: 152px 152px 40%;
+  justify-content: space-between;
+
+  &__title {
+    @include fontFamilyRobotoN;
+    font-size: 14px;
+    line-height: 27px;
+    color: #9fadc2;
+  }
+
+  &__text {
+    @include fontFamilyRobotoN;
+    max-width: 500px;
+    line-height: 27px;
+    font-size: 16px;
+    color: #3e3e3e;
+    text-decoration: none;
+
+    & p:first-child {
+      margin: 0;
+      color: #0075ff;
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    &:hover {
+      color: #0075ff;
+    }
+  }
+
+  &__link {
+    @extend .block__text;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 10px;
+    width: 95%;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-areas: "phone address""form form";
+    justify-items: center;
+    gap: 20px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 30px 6% 0;
+    width: 100%;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-areas: "phone""address""form";
+    justify-items: start;
+    gap: 0;
+  }
+}

@@ -30,3 +30,13 @@ document.querySelector('#end3').addEventListener('click', () => {
   check.setAttribute('disabled', 'disabled');
   check.removeAttribute('checked');
 });
+
+document.querySelector('#end4').addEventListener('click', () => {
+  check.setAttribute('disabled', 'disabled');
+  check.removeAttribute('checked');
+});
+
+document.querySelector('#end5').addEventListener('click', () => {
+  check.setAttribute('disabled', 'disabled');
+  check.removeAttribute('checked');
+});
