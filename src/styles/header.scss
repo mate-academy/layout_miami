@@ -1,0 +1,85 @@
+@import "typography";
+
+.header__container {
+  @include container(700px);
+}
+
+.header {
+  position: relative;
+  padding-top: 24px;
+  color: #fff;
+  background: url(../images/header.jpg) no-repeat center;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone {
+    @extend %header-texts;
+  }
+
+  &__logo-img {
+    width: 115px;
+    height: 76px;
+  }
+
+  &__call-me {
+    @extend %header-texts;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 23px;
+      width: 111px;
+      height: 2px;
+      background: #fff;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 165px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+      background: #fff;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 48px;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    @extend %header-texts;
+    padding: 8px 24px;
+    border-radius: 8px;
+
+    @include active(background, rgba(255, 255, 255, 0.2));
+
+    & a {
+      @include hover(color, #9fadc2);
+    }
+  }
+}
