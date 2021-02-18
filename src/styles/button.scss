@@ -1,18 +1,35 @@
 .button {
   @include font(16px, 700, 14px, 0);
   padding: 21px 65px;
-  color: $textBlueColor;
-  border: 2px solid $textBlueColor;
   border-radius: 8px;
   transition: color 0.3s, background-color 0.3s;
   cursor: pointer;
 
+  &--light {
+    color: $textBlueColor;
+    border: 2px solid $darkButtonColor;
+    background-color: $lightButtonColor;
+    
+    &:hover {
+      color: white;
+      background-color: $darkButtonColor;
+    }
+  }
+
+  &--dark {
+    color: white;
+    border: 2px solid $darkButtonColor;
+    background-color: $darkButtonColor;
+
+    &:hover {
+      background-color: $lightButtonColor;
+      color: $darkButtonColor;
+      border: 2px solid $darkButtonColor;
+    }
+  }
+
   &--shadowed {
     @extend %shadow;
   }
-
-  &:hover {
-    color: white;
-    background-color: $textBlueColor;
-  }
+  
 }
