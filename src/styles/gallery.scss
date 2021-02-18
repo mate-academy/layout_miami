@@ -2,14 +2,17 @@
 
   &__heading {
     @include content-heading;
+    @include content-heading-small;
   }
 
   &__images {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
 
   &__images-sec {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: $spaceBetweenImg;
@@ -17,8 +20,14 @@
 
   &__image {
     height: 256px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 8px;
     transition: transform 1s;
+
+    @media (max-width: $smallWidth) {
+      height: 40vw;
+    }
 
     &:hover {
       position: relative;
@@ -28,14 +37,22 @@
 
     &--big {
       width: calc(67% - 10px);
+
+      @media (max-width: $smallWidth) {
+        width: calc(50% - 10px);
+      }
     }
 
     &--small {
       width: calc(33% - 10px);
+
+      @media (max-width: $smallWidth) {
+        width: calc(50% - 10px);
+      }
     }
 
     &--middle {
-      width: 50%;
+      width: calc(50% - 10px);
     }
   }
 

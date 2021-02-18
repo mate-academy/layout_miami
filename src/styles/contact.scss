@@ -2,13 +2,19 @@
   &__content {
     display: flex;
     justify-content: space-between;
+    @include media-flex($smallWidth);
   }
 
   &__info {
     display: flex;
     justify-content: space-between;
     width: 413px;
-    line-height: 27px;
+    line-height: 1.7em;
+    @include content-width-small-screen;
+
+    @media (max-width: $smallWidth) {
+      flex-direction: column;
+    }
   }
 
   &__label {
@@ -19,21 +25,31 @@
   }
 
   &__phone {
-    width: 35%;
+    width: 40%;
+
+    &--number,
+    &--email {
+      font-family: $robotoFontFamily;
+      color: black;
+      text-decoration: none;
+    }
   }
 
   &__address {
-    width: 35%;
+    width: 40%;
   }
 
   &__heading {
     @include content-heading;
+    @include content-heading-small;
   }
 
   &__form {
     width: 413px;
     display: flex;
     flex-direction: column;
+
+    @include content-width-small-screen;
   }
 
   &__textarea {
