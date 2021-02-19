@@ -4,7 +4,7 @@
   @include onMobile {
     position: absolute;
     top: 42px;
-    left: 320px;
+    left: 360px;
     z-index: 1;
     display: inline-block;
     
@@ -29,14 +29,38 @@
       margin-bottom: 5px;
       background: #fff;
       border-radius: 1px;
+      transform-origin: 2px 0;
 
+      &:first-child {
+        transform-origin: 0% 0%;
+      }
+
+      &:nth-last-child(2) {
+        transform-origin: 0% 100%;
+      }
+    }
+
+    &__box:checked ~ &__span {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #fff;
+
+      &:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      &:nth-last-child(2) {
+        opacity: 1;
+        transform: rotate(-45deg) translate(0, -1px);
+      }
     }
 
     &__list {
       position: absolute;
-      left: -320px;
-      width: 360px;
-      height: 610px;
+      left: -360px;
+      width: 410px;
+      height: 587px;
       margin: -100px 0 0;
       padding-top: 150px;
       background-color: #0075ff;
@@ -74,7 +98,7 @@
     &__logo {
       position: absolute;
       top: 61px;
-      right: 40%;
+      right: 41%;
     }
   }
 
