@@ -1,18 +1,17 @@
 .section-one {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: calc(1260px - 240px);
-  padding: 104px 0 152px;
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 104px;
+  }
 
   &__heading {
     max-width: 328px;
   }
 
   &__title {
-    font-size: 48px;
-    line-height: 48px;
-    letter-spacing: -1.5px;
+    @extend .title;
 
     &--mobile {
       display: none;
@@ -21,7 +20,7 @@
 
   &__link {
     text-decoration: none;
-    color: #0075ff;
+    color: $blue;
   }
 
   &__info {
@@ -34,56 +33,57 @@
   &__subtitle {
     font-size: 24px;
     line-height: 30px;
-    color: #0075ff;
+    color: $blue;
     margin-bottom: 16px;
   }
 
   &__article {
     font-weight: 400;
   }
-}
 
-@media (max-width: 1100px) {
-  .section-one {
-    flex-direction: column;
-    align-items: center;
-    padding: 64px 0;
-    width: 100%;
+  @media (max-width: 1100px) {
+    & {
+      padding-bottom: 64px;
+      width: 100%;
 
-    &__heading {
-      max-width: 700px;
-    }
+      &__wrapper {
+        justify-content: center;
+      }
 
-    &__info {
-      max-width: 700px;
-    }
+      &__heading {
+        max-width: 700px;
+      }
 
-    &__title {
-      display: none;
+      &__info {
+        max-width: 700px;
+      }
 
-      &--mobile {
-        display: block;
-        font-size: 48px;
-        line-height: 48px;
-        letter-spacing: -1.5px;
-        margin-bottom: 48px;
+      &__title {
+        display: none;
+
+        &--mobile {
+          display: block;
+          font-size: 48px;
+          line-height: 48px;
+          letter-spacing: -1.5px;
+          margin-bottom: 48px;
+        }
       }
     }
   }
-}
 
-@media (max-width: 320px) {
-  .section-one {
-    align-items: flex-start;
-    min-width: calc($page-min-width - 40px);
+  @media (max-width: 320px) {
+    & {
+      align-items: flex-start;
 
-    &__title {
-      display: block;
-      font-size: 36px;
-      margin-bottom: 48px;
+      &__title {
+        display: block;
+        font-size: 36px;
+        margin-bottom: 48px;
 
-      &--mobile {
-        display: none;
+        &--mobile {
+          display: none;
+        }
       }
     }
   }

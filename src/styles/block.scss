@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: calc(1260px - 240px);
+  width: $max-content-width;
   padding-top: 56px;
   padding-bottom: 48px;
 
@@ -13,39 +13,33 @@
   }
 
   &__logo {
-    position: absolute;
-    left: calc(50% - #{$logo-width} / 2);
+    @include horisontical-logo-position;
     top: 24px;
     z-index: 2;
   }
 
   &__phone-number {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: inherit;
-    transition: color 300ms;
+    @include links-style;
 
     &:hover {
-      color: #9fadc2;
+      color: $hover-links-color;
     }
   }
 
   &__link {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: inherit;
+    @include links-style;
     padding-bottom: 8px;
-    border-bottom: 1px solid #fff;
-    transition: color 300ms;
+    border-bottom: 1px solid $white;
 
     &:hover {
-      color: #9fadc2;
+      color: $hover-links-color;
     }
   }
 
   &__title {
-    margin-top: 334px;
     position: relative;
+    margin-top: 334px;
+
     &::before {
       position: absolute;
       left: 0;
@@ -54,61 +48,61 @@
       height: 2px;
       width: 35px;
       border-radius: 2px;
-      background-color: white;
+      background-color: $white;
     }
   }
 
   &__nav {
     margin-top: 85px;
   }
-}
 
-@media (max-width: 990px) {
-  .block {
-    justify-content: space-between;
-    height: 569px;
+  @media (max-width: 990px) {
+    & {
+      justify-content: space-between;
+      height: $min-menu-and-header-height;
 
-    &__title {
-      margin: 0;
-      text-align: center;
-      font-size: 46px;
-      line-height: 40px;
+      &__title {
+        margin: 0;
+        text-align: center;
+        font-size: 46px;
+        line-height: 40px;
 
-      &::before {
-        display: none;
+        &::before {
+          display: none;
+        }
       }
-    }
 
-    &__nav {
-      margin: 0;
+      &__nav {
+        margin: 0;
+      }
     }
   }
-}
 
-@media (max-width: 550px) {
-  .block {
-    min-width: calc($page-min-width - 40px);
-    padding-top: 39px;
-    padding-bottom: 80px;
+  @media (max-width: 550px) {
+    & {
+      min-width: $min-content-width;
+      padding-top: 39px;
+      padding-bottom: 80px;
 
-    &__title {
-      text-align: start;
+      &__title {
+        text-align: start;
 
-      &::before {
-        display: block;
+        &::before {
+          display: block;
+        }
       }
-    }
 
-    &__nav {
-      display: none;
-    }
+      &__nav {
+        display: none;
+      }
 
-    &__phone-number {
-      display: none;
-    }
+      &__phone-number {
+        display: none;
+      }
 
-    &__link {
-      display: none;
+      &__link {
+        display: none;
+      }
     }
   }
 }
