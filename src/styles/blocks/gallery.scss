@@ -1,13 +1,12 @@
 .gallery {
-  display: flex;
-  justify-content: center;
+  @extend %mainAxisCentered;
   flex-direction: column;
 
   &__heading {
     position: relative;
     display: flex;
     justify-content: center;
-    margin: 152px 0 61px;
+    margin-bottom: 61px;
 
     &:after {
       position: absolute;
@@ -21,21 +20,22 @@
   &__row {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
   }
 
   &__image {
-    width: calc(50% - 20px);
+    width: 50%;
     height: 260px;
     border-radius: 8px;
     object-fit: cover;
     object-position: center;
 
     &--small {
-      width: calc(33% - 10px);
+      width: 33%;
     }
 
     &--big {
-      width: calc(66% - 10px);
+      width: 66% ;
     }
   }
 
@@ -44,18 +44,11 @@
   }
 
   &__link {
-    text-decoration: none;
-    color: $secondaryColor;
-    transition: color 0.3s;
-
-    &:hover {
-      color: $secondaryHoverColor;
-    }
+    @include link($secondaryColor);
+    @include hover(color, $secondaryHoverColor);
 
     &--view-all {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @extend %flexCentered;
       margin: 0 auto;
       width: 188px;
       height: 56px;
@@ -67,6 +60,19 @@
         background-color: $secondaryColor;
         color: $primaryColor;
       }
+    }
+  }
+}
+
+@media (max-width: $smallScreenBreakPoint) {
+  .gallery {
+    &__heading {
+      margin-bottom: 53px;
+    }
+
+    &__image {
+      height: 30vw;
+      width: calc(50% - 10px);
     }
   }
 }

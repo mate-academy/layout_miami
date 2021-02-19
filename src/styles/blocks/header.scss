@@ -2,23 +2,30 @@
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
-  padding: 24px 0 48px;
+
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
 
   &__top {
-    display: flex;
+    @extend %crossAxisCentered;
     justify-content: space-between;
-    align-items: center;
   }
 
   &__phone {
-    text-decoration: none;
-    color: $primaryColor;
+    @include link($primaryColor);
+    @include hover(color, $hoverColor);
+
+    &--mobile {
+      display: none;
+    }
   }
 
   &__link {
     position: relative;
-    text-decoration: none;
-    color: $primaryColor;
+    @include link($primaryColor);
+    @include hover(color, $hoverColor);
 
     &:after {
       position: absolute;
@@ -45,5 +52,43 @@
       background-color: $primaryColor;
       content: "";
     }
+  }
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media (max-width: $smallScreenBreakPoint) {
+  .header {
+    height: 100vh;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 80px ;
+      height: 100vh;
+    }
+
+    &__phone {
+      display: none;
+
+      &--mobile {
+        display: block;
+      }
+    }
+
+    &__title {
+      margin: 0;
+    }
+
+    &__link {
+      display: none;
+    }
+  }
+
+  .burger-menu {
+    display: block;
   }
 }
