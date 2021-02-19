@@ -1,19 +1,9 @@
 .gallery {
-  display: flex;
+  @include start-of-block;
   margin: 152px auto 0;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1020px;
 
   &__title {
-    line-height: 100%;
-    font-weight: 700;
-    font-size: 48px;
-    letter-spacing: -1.5px;
-    color: #000;
-    margin-bottom: 8px;
-    width: 100%;
-    text-align: center;
+    @include title-of-block;
   }
 
   &__crown {
@@ -24,68 +14,105 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex-basis: 100%;
     margin-top: 38px;
-    width: 100%;
+  }
+
+  &__photo-container-big {
+    height: 256px;
+    width: 673px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 1000ms;
+  }
+
+  &__photo-container-middle {
+    height: 256px;
+    width: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 1000ms;
+  }
+
+  &__photo-container-small {
+    height: 256px;
+    width: 327px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 1000ms;
   }
 
   &__photo {
-    border-radius: 8px;
-    height: 256px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
-  &__photo_big {
-    width: 673px;
-  }
-
-  &__photo_small {
-    width: 327px;
-  }
-
-  &__photo_middle {
-    width: 500px;
+  &__photo-container-small:hover,
+  &__photo-container-middle:hover,
+  &__photo-container-big:hover {
+    transform: scale(1.1);
   }
 
   &__info {
+    align-self: flex-start;
+    flex-basis: 100%;
+    margin-top: 24px;
     font-weight: 600;
     font-size: 16px;
     line-height: 27px;
-    color: #0075ff;
-    margin-top: 24px;
+    color: $colorBlue;
     text-decoration: none;
-    cursor: url("/images/Mice.png"), pointer;
-    width: 100%;
-    align-self: flex-start;
   }
 
   &_first-info::after {
-    content: " / North Miami Beach, FL 33162";
     font-weight: 500;
-    color: #3e3e3e;
+    color: $colorGray;
+    content: " / North Miami Beach, FL 33162";
   }
 
   &_second-info::after {
-    content: " / Miami Beach, FL 33139";
     font-weight: 500;
-    color: #3e3e3e;
+    color: $colorGray;
+    content: " / Miami Beach, FL 33139";
   }
 
   &_third-info::after {
-    content: " / Miami Beach, FL 33140";
     font-weight: 500;
-    color: #3e3e3e;
+    color: $colorGray;
+    content: " / Miami Beach, FL 33140";
   }
 
   &__button {
     width: 188px;
     height: 56px;
-    background-color: #fff;
-    border: 2px solid #0075ff;
-    border-radius: 8px;
-    color: #0075ff;
+    margin-top: 40px;
+    color: $colorBlue;
     font-size: 16px;
     font-weight: 700;
-    margin-top: 40px;
-    cursor: url("/images/Mice.png"), pointer;
+    background-color: $colorWhite;
+    border: 2px solid $colorBlue;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .gallery {
+    &__photo-container-big {
+      width: 400px;
+      margin: auto;
+    }
+
+    &__photo-container-middle {
+      width: 300px;
+      margin: auto;
+    }
+
+    &__photo-container-small {
+      width: 240px;
+      margin: auto;
+    }
   }
 }
 
@@ -102,9 +129,31 @@
       align-self: center;
     }
 
-    &__photo {
-      height: 131px;
-      width: 131px;
+    &__photo-container-big {
+      height: 130px;
+      width: 130px;
+    }
+
+    &__photo-container-big:first-child {
+      margin-right: 20px;
+    }
+
+    &__photo-container-middle {
+      height: 130px;
+      width: 130px;
+    }
+
+    &__photo-container-middle:first-child {
+      margin-right: 20px;
+    }
+
+    &__photo-container-small {
+      height: 130px;
+      width: 130px;
+    }
+
+    &__photo-container-small:first-child {
+      margin-right: 20px;
     }
 
     &__button {
