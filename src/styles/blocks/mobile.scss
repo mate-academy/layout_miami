@@ -2,10 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  transform: translateX(-100%);
+  transform: translateX(-$full-width);
   transition: all 0.5s ease-in-out;
-  contain: paint;
-  width: 100%;
+  width: $full-width;
   height: 100vh;
   padding: 24px 20px;
   background-color: $color-light-blue;
@@ -18,15 +17,14 @@
     position: fixed;
     top: 40px;
     right: 20px;
-    display: flex;
+    @include flex-column;
     justify-content: center;
-    flex-direction: column;
     width: 24px;
     height: 24px;
   }
 
   &__close-item {
-    width: 100%;
+    width: $full-width;
     height: 2px;
     background-color: $color-white;
 
@@ -50,8 +48,7 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     justify-content: space-between;
     margin-top: 48px;
     width: 182px;
@@ -59,26 +56,18 @@
   }
 
   &__link {
+    @include mobile-links;
     color: $color-white;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
   }
 
   &__phone {
     margin-top: 48px;
     margin-bottom: 16px;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2;
   }
 
   &__action-link {
+    @include text-small;
     color: $color-white;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    font-weight: 700;
 
     &::after {
       content: "";
@@ -94,7 +83,6 @@
 
 @media (max-width: 900px) {
   .mobile {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
 }
