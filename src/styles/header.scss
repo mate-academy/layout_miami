@@ -11,6 +11,7 @@
   &__top {
     display: flex;
     justify-content: space-between;
+    box-sizing: content-box;
     align-items: center;
     height: $logoHeight + 24px;
     padding-top: 24px;
@@ -31,17 +32,11 @@
     }
   }
 
-  &__menu {
+  &__logo {
     position: absolute;
-    visibility: hidden;
-    top: 42px;
-    right: 23px;
-    width: $menuWidth;
-    height: $menuHeight;
-
-    @media screen and (max-width: $mediaBreakpoint-1) {
-      visibility: visible;
-    }
+    left: 50%;
+    transform: translateX(-50%);
+    top: $logoPadding;
   }
 
   &__phone {
@@ -51,7 +46,24 @@
     }
   }
 
-  &__link {
+  &__button {
+    position: absolute;
+    visibility: hidden;
+    top: 42px;
+    right: 23px;
+    width: $menuWidth;
+    height: $menuHeight;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url("../images/menu.png");
+    background-size: 100%;
+
+    @media screen and (max-width: $mediaBreakpoint-1) {
+      visibility: visible;
+    }
+  }
+
+    &__link {
     text-decoration: none;
     color: inherit;
     transition: color $hoverDuration, background-color $hoverDuration;
@@ -79,19 +91,13 @@
   }
 
   &__title {
-    // padding: 0 $bigHorPadding;
     width: 340px;
     margin-bottom: 85px;
-
-    // @media screen and (max-width: $mediaBreakpoint-1) {
-    //   padding: 0 $smallHorPadding;
-    // }
   }
   
 
   &__nav {
     position: relative;
-    // padding: 0 $bigHorPadding;
   }
 
   @media screen and (max-width: $mediaBreakpoint-1) {
