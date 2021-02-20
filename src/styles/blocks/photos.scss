@@ -1,8 +1,23 @@
 .photos {
   &__wrapper {
-    display: flex;
-    width: 100%;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
     margin-bottom: 16px;
+    justify-items: stretch;
+
+    &:first-of-type {
+      @include onDesktop {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    &:last-of-type {
+      @include onDesktop {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
 
     @include onTablet {
       margin-bottom: 24px;
@@ -10,36 +25,20 @@
   }
 
   &__img {
-    display: block;
-    min-width: 131px;
-    min-height: 131px;
-    width: 50%;
-    max-height: auto;
-    border-radius: 8px;
     object-fit: cover;
+    border-radius: 8px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: box-shadow $duration, border-color $duration;
+    height: 131px;
 
     &:hover {
       border-color: $blueColor;
       box-shadow: 0 6px 23px rgba(0, 117, 255, 0.6);
     }
 
-    &:first-of-type {
-      margin-right: 20px;
-    }
-
-    &--big {
-      @include onDesktop {
-        width: calc(100% * 2 / 3);
-      }
-    }
-
-    &--small {
-      @include onDesktop {
-        width: calc(100% / 3);
-      }
+    @include onTablet {
+      height: auto;
     }
   }
 
@@ -49,14 +48,14 @@
     line-height: 27px;
     letter-spacing: 0;
     margin-bottom: 32px;
+  }
 
-    span {
-      font-weight: 700;
-      color: $blueColor;
-    }
+  &__place {
+    font-weight: 700;
+    color: $blueColor;
+  }
 
-    @include onTablet {
-      margin-bottom: 40px;
-    }
+  @include onTablet {
+    margin-bottom: 40px;
   }
 }

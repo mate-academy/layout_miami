@@ -1,13 +1,9 @@
 'use strict';
 
-const mobileNav = document.querySelector('.header__mobile');
-const openButton = document.querySelector('.action__icon');
-const closeButton = document.querySelector('.mobile__icon');
+const mobileMenu = document.querySelector('.js-header__menu');
+const menuToggler = document.querySelector('.js-menu-toggler');
 
-openButton.addEventListener('click', function() {
-  mobileNav.style.display = 'block';
-});
-
-closeButton.addEventListener('click', function() {
-  mobileNav.style.display = 'none';
+menuToggler.addEventListener('click', function() {
+  menuToggler.classList.toggle('menu-toggler--active');
+  mobileMenu.classList.toggle('header__menu--active');
 });
