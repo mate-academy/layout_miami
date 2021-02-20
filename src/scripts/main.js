@@ -1,7 +1,8 @@
 'use strict';
 
 const $ = window.$;
-$(document).ready(function() {  
+
+$(document).ready(function() {
   $('.header__button').click(function() {
     $('.burger').slideToggle();
     $('.burger__nav').slideToggle();
