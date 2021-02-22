@@ -4,21 +4,19 @@ const $ = window.$;
 
 $(document).ready(function() {
   $('.header__button').click(function() {
-    $('.burger').slideToggle();
-    $('.burger__nav').slideToggle();
+    slideBurger();
   });
-});
 
-$(document).ready(function() {
   $('.burger__button').click(function() {
-    $('.burger').slideToggle();
-    $('.burger__nav').slideToggle();
+    slideBurger();
+  });
+
+  $('.mobile-nav__item').click(function() {
+    slideBurger();
   });
 });
 
-$(document).ready(function() {
-  $('.mobile-nav__item').click(function() {
-    $('.burger').slideToggle();
-    $('.burger__nav').slideToggle();
-  });
-});
+function slideBurger() {
+  $('.burger').slideToggle();
+  $('.burger__nav').slideToggle();
+}
