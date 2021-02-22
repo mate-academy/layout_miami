@@ -4,8 +4,7 @@
   width: 100%;
 
   &__list {
-    display: grid;
-    justify-content: space-between;
+    @include grid_aligning($horizontal: space-between);
     grid-template-columns: repeat(6, auto);
     padding: 0 10px;
   }
@@ -19,16 +18,9 @@
     padding: 10px 20px;
     color: $color_white;
     border-radius: 6px;
-    transition: background-color $duration,
-      box-shadow $duration,
-      transform $duration;
-
-    &:hover {
-      box-shadow: 0 2px 5px $color-gray;
-      background-color: rgba(88, 88, 88, 0.1);
-      transform: scale(1.1);
-    }
-
+    @include hover (box-shadow, 0 2px 2px $color-gray);
+    @include hover (background-color, rgba(44, 44, 44, 0.6));
+    @include hover (transform, scale(1.1));
   }
 }
 

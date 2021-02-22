@@ -1,8 +1,7 @@
 .main {
   &__article {
-    display: grid;
+    @include grid_aligning ($horizontal: space-between);
     grid-template-columns: repeat(2, auto);
-    justify-content: space-between;
     gap: 50px;
     margin-top: 104px;
   }
@@ -16,11 +15,7 @@
 
   &__link {
     display: inline-block;
-    transition: transform $duration;
-
-    &:hover {
-      transform: scale(1.1);
-    }
+    @include hover (transform, scale(1.1));
   }
 
   &__article--title_h3 {
@@ -43,14 +38,9 @@
 
 .blue {
   color: $color_blue;
-  transition: transform $duration,
-    opacity $duration;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.02);
-    opacity: 0.7;
-  }
+  @include hover (opacity, 0.7);
+  @include hover (cursor, pointer);
+  @include hover (transform, scale(1.02));
 }
 
 @media (max-width: 800px) {
