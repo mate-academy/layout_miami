@@ -1,13 +1,9 @@
-@import "typography";
-
-.header__container {
-  @include container(700px);
-}
+@import "navigation";
 
 .header {
   position: relative;
   padding-top: 24px;
-  color: #fff;
+  color: $colorWhite;
   background: url(../images/header.jpg) no-repeat center;
   background-size: cover;
 
@@ -15,10 +11,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 296px;
   }
 
   &__phone {
     @extend %header-texts;
+    @include hover(color, $colorLightGray);
   }
 
   &__logo-img {
@@ -29,57 +27,25 @@
   &__call-me {
     @extend %header-texts;
     position: relative;
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 23px;
-      width: 111px;
-      height: 2px;
-      background: #fff;
-    }
+    padding: 8px 0;
+    border-bottom: 2px solid;
+    @include hover(color, $colorLightGray);
   }
 
   &__title {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 165px;
+    margin-bottom: 93px;
 
     &::before {
       content: "";
       display: block;
       width: 35px;
       height: 2px;
-      background: #fff;
+      background: $colorWhite;
       margin-bottom: 16px;
     }
   }
 
   &__nav {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 48px;
-  }
-}
-
-.nav {
-  &__list {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__item {
-    @extend %header-texts;
-    padding: 8px 24px;
-    border-radius: 8px;
-
-    @include active(background, rgba(255, 255, 255, 0.2));
-
-    & a {
-      @include hover(color, #9fadc2);
-    }
+    padding-bottom: 48px;
   }
 }
