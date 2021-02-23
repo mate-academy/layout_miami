@@ -2,38 +2,51 @@
 
 .header {
   position: relative;
+  height: 100vh;
   padding-top: 24px;
+  margin-bottom: 104px;
   color: $colorWhite;
   background: url(../images/header.jpg) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
 
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 296px;
+
+    &.mobile {
+      display: none;
+    }
   }
 
   &__phone {
     @extend %header-texts;
-    @include hover(color, $colorLightGray);
+    @include hover(transform, scale(1.1));
+
+    &--mobile {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+    }
   }
 
   &__logo-img {
     width: 115px;
     height: 76px;
+    @include hover(transform, scale(1.1));
   }
 
   &__call-me {
     @extend %header-texts;
-    position: relative;
     padding: 8px 0;
     border-bottom: 2px solid;
-    @include hover(color, $colorLightGray);
+    @include hover(transform, scale(1.1));
   }
 
   &__title {
-    margin-bottom: 93px;
+    position: absolute;
+    bottom: 25vh;
 
     &::before {
       content: "";
@@ -46,6 +59,41 @@
   }
 
   &__nav {
-    padding-bottom: 48px;
+    position: relative;
+    top: 75vh;
+  }
+}
+
+@media (max-width: 766px) {
+  .header {
+    margin-bottom: 64px;
+
+    &__top {
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: flex;
+      }
+    }
+
+    &__nav {
+      visibility: hidden;
+    }
+
+    &__phone {
+      margin-left: 23px;
+    }
+
+    &__logo-img {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__burger {
+      margin-right: 23px;
+    }
+
   }
 }
