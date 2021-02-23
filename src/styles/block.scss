@@ -1,0 +1,108 @@
+.block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: $max-content-width;
+  padding-top: 56px;
+  padding-bottom: 48px;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    @include horisontical-logo-position;
+    top: 24px;
+    z-index: 2;
+  }
+
+  &__phone-number {
+    @include links-style;
+
+    &:hover {
+      color: $hover-links-color;
+    }
+  }
+
+  &__link {
+    @include links-style;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $white;
+
+    &:hover {
+      color: $hover-links-color;
+    }
+  }
+
+  &__title {
+    font-family: $Roboto-font-family;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    position: relative;
+    margin-top: 334px;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: -16px;
+      content: "";
+      height: 2px;
+      width: 35px;
+      border-radius: 2px;
+      background-color: $white;
+    }
+  }
+
+  &__nav {
+    margin-top: 85px;
+  }
+
+  @media (max-width: 990px) {
+    justify-content: space-between;
+    height: $min-menu-and-header-height;
+
+    &__title {
+      margin: 0;
+      text-align: center;
+      font-size: 46px;
+      line-height: 40px;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__nav {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 550px) {
+    min-width: $min-content-width;
+    padding-top: 39px;
+    padding-bottom: 80px;
+
+    &__title {
+      text-align: start;
+
+      &::before {
+        display: block;
+      }
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__phone-number {
+      display: none;
+    }
+
+    &__link {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@import "block";
+@import "menu";
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: $page-paddings;
+  background: url("../images/header.jpg") no-repeat center;
+  background-size: cover;
+  color: $white;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  letter-spacing: 2px;
+
+  &__phone-logo {
+    position: absolute;
+    left: 4%;
+    top: 39px;
+    height: 18px;
+    width: 18px;
+    object-fit: contain;
+    display: none;
+  }
+
+  &__burger {
+    display: none;
+  }
+
+  &__burger-open {
+    position: absolute;
+    right: 4%;
+    top: 42px;
+    display: none;
+    height: 12px;
+    width: 18px;
+    object-fit: contain;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  &__burger-close {
+    position: absolute;
+    right: 4%;
+    top: 42px;
+    display: none;
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  @media (max-width: 550px) {
+    &__phone-logo {
+      display: block;
+    }
+
+    &__burger-open {
+      display: block;
+    }
+
+    &__burger:checked ~ &__menu {
+      display: flex;
+    }
+
+    &__burger:checked ~ &__burger-open {
+      z-index: 0;
+    }
+
+    &__burger:checked ~ &__burger-close {
+      display: block;
+      z-index: 3;
+    }
+  }
+}
