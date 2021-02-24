@@ -1,22 +1,21 @@
 .mobile-nav {
   display: none;
 
-  @media (max-width: 766px) {
-
+  @include mediaOnMobile {
     position: absolute;
     top: 42px;
     right: 30px;
     z-index: 1;
-    display: inline-block;
+    display: block;
 
-    &__burger {
+    &__check {
       position: absolute;
-      top: -10px;
-      left: -10px;
-      z-index: 2;
+      top: -2px;
+      left: -2px;
+      z-index: 20;
       display: block;
-      width: 40px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       opacity: 0;
       cursor: pointer;
     }
@@ -26,7 +25,7 @@
       z-index: 10;
       display: block;
       width: 25px;
-      height: 2px;
+      height: 3px;
       margin-bottom: 5px;
       background: $colorWhite;
       border-radius: 1px;
@@ -41,43 +40,42 @@
       }
     }
 
-    &__burger:checked ~ &__stick {
+    &__check:checked ~ &__stick {
       opacity: 1;
       background: $colorWhite;
-      transform: rotate(45deg) translate(-2px, -1px);
+      transform: rotate(45deg) translate(-1px, -1px);
 
       &:nth-last-child(3) {
         opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
+        transform: rotate(0deg);
       }
 
       &:nth-last-child(2) {
         opacity: 1;
-        transform: rotate(-45deg) translate(0, -1px);
+        transform: rotate(-45deg) translate(2px, -1px);
       }
     }
 
     &__list {
       position: absolute;
-      // left: -360px;
-      // width: 405px;
       width: 100vw;
       height: 82vh;
-      // margin: -100px 0 0;
       top: -42px;
       right: -30px;
       padding-top: 150px;
       background-color: $colorBlue;
       list-style: none;
       transform: none;
-      opacity: 0;
+      visibility: hidden;
       transition: opacity $animationDuration;
     }
 
     &__item {
-      padding-bottom: 32px;
-      padding-left: 61px;
+      width: 40%;
+      padding-bottom: 26px;
+      padding-left: 41px;
       list-style: none;
+      @include hover(transform, scale(1.05));
     }
 
     &__link {
@@ -87,62 +85,44 @@
       font-weight: bold;
       color: #fff;
       text-transform: uppercase;
-      transition: color $animationDuration ease;
+      // transition: color $animationDuration ease;
 
-      &:hover {
-        color: $colorGray;
-      }
+      // &:hover {
+      //   color: $colorGray;
+      // }
     }
 
-    &__burger:checked ~ &__list {
+    &__check:checked ~ &__list {
       transform: none;
-      opacity: 1;
+      visibility: visible;
     }
-
   }
 
-  &__top {
+  &__bottom {
     display: flex;
     flex-direction: column;
-    margin-top: 32px;
-    font-size: 12px;
+    padding-top: 32px;
+    padding-left: 41px;
     font-weight: 700;
-    color: $colorWhite;
     letter-spacing: 2px;
     line-height: 16px;
+    color: $colorWhite;
     text-transform: uppercase;
   }
 
   &__phone {
-    color: $colorWhite;
-    margin-top: 20px;
-    margin-left: 61px;
+    width: 170px;
+    font-size: 16px;
+    @include hover(transform, scale(1.05));
     margin-bottom: 16px;
-    transition: color $animationDuration;
-
-    &:hover {
-      color: $colorGray;
-    }
   }
 
   &__call {
-    position: relative;
-    margin-left: 61px;
-    margin-bottom: 8px;
-    color: $colorWhite;
-    transition: color $animationDuration;
+    padding: 8px 0;
+    width: 145px;
+    font-size: 16px;
+    border-bottom: 2px solid $colorWhite;
 
-    &::after {
-      position: absolute;
-      width: 111px;
-      top: 34px;
-      left: 0;
-      border-bottom: 1px solid $colorWhite;
-      content: "";
-    }
-
-    &:hover {
-      color: $colorGray;
-    }
+    @include hover(transform, scale(1.05));
   }
 }
