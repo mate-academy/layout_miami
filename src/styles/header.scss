@@ -1,31 +1,24 @@
 .header {
   position: relative;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
   background-image: url("../images/img/Header.png");
   background-repeat: no-repeat;
-  background-position: center;
-  height: 700px;
-  -moz-background-size: 100%; /* Firefox 3.6+ */
-  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%; /* Opera 9.6+ */
-  background-size: 100%; /* Современные браузеры */
+  background-size: cover;
+  background-position: bottom center;
 
-  @include onMobile {
-    background-size: cover;
-    width: auto;
-  }
+  overflow-x: hidden;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    height: 700px;
     padding: 24px 0 48px;
+
+    overflow: hidden;
 
     @include onMobile {
       padding-bottom: 0;
-      background-size: cover;
     }
   }
 
@@ -33,14 +26,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     height: 76px;
+
     font-size: 12px;
     font-weight: 700;
     color: $colorWhite;
     letter-spacing: 2px;
     line-height: 16px;
     text-transform: uppercase;
-    margin-bottom: 296px;
 
     @include onMobile {
       height: 48px;
@@ -49,7 +43,7 @@
 
   &__phone {
     color: $colorWhite;
-    transition: color $duration;
+    transition: color 0.5s;
 
     padding: 8px 0;
 
@@ -64,15 +58,18 @@
 
   &__call {
     position: relative;
+
     padding: 8px 0;
+
     color: $colorWhite;
-    transition: color $duration;
+    transition: color 0.5s;
 
     &::after {
       position: absolute;
       width: 100%;
       top: 34px;
       left: 0;
+
       border-bottom: 1px solid $colorWhite;
       content: "";
     }
@@ -88,8 +85,10 @@
 
   &__title {
     position: relative;
-    margin-bottom: 93px;
+
+    margin-bottom: 85px;
     padding-top: 16px;
+
     font-size: 60px;
     line-height: 1;
     color: $colorWhite;
@@ -100,6 +99,7 @@
       position: absolute;
       width: 35px;
       top: 0;
+
       color: $colorWhite;
       border-top: 2px solid $colorWhite;
       border-radius: 1px;
@@ -116,10 +116,9 @@
 
   &__logo {
     position: absolute;
-    width: 115px;
-    height: 76px;
     top: 24px;
     right: calc(50% - 115px / 2);
+    @include logoSize;
 
     @include onMobile {
       width: 73px;
@@ -136,18 +135,4 @@
       display: flex;
     }
   }
-}
-
-.container-header {
-  width: 1020px;
-  margin: 0 auto;
-}
-
-.header__logo-mob {
-  position: absolute;
-  height: 56px;
-  width: 85px;
-  top: 20%;
-  right: 440%;
-  z-index: 99;
 }
