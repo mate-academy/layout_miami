@@ -1,8 +1,9 @@
 .call {
+  @include take-width(240px);
+
   display: grid;
   grid-template-areas: "title title" "wrapper form";
   justify-content: space-between;
-  @include take-width(240px);
 
   &__section {
     margin: 0 auto;
@@ -10,10 +11,9 @@
 
   &__title {
     grid-area: title;
+    margin-bottom: 72px;
 
     position: relative;
-
-    margin-bottom: 72px;
 
     font-size: $fs-large;
     font-weight: $fw-bold;
@@ -28,6 +28,7 @@
       display: block;
       width: 20px;
       height: 13px;
+
       background: url("../images/crown.svg") no-repeat center;
     }
   }
@@ -63,30 +64,43 @@
   &__type {
     font-size: $fs-not-normal;
     line-height: 1.67rem;
+
     color: $c-active;
   }
 
-  &__info {
+  &__link {
     line-height: 1.67rem;
-    color: c-text;
+
+    color: $c-text;
+
+    text-decoration: none;
+    transition: color $d-half;
+
+    &:hover {
+      color: blueviolet;
+    }
+
+    &:active {
+      color: $c-blue;
+    }
   }
 
   &__form {
     grid-area: form;
-
     max-width: 413px;
   }
 
-  &__input,
-  &__textarea {
+  &__input {
     margin-bottom: 16px;
   }
 
   &__button {
     margin: 16px 0 72px;
     width: 100%;
+
     background-color: $c-blue;
     color: $c-white;
+
     transition: background-color $duration-s;
 
     &:hover {
@@ -97,8 +111,9 @@
 
 @include phone {
   .call {
-    display: block;
     @include take-width(40px);
+
+    display: block;
 
     &__section {
       margin: 0 auto;
@@ -120,8 +135,8 @@
     }
 
     &__list {
-      width: 153px;
       margin-bottom: 24px;
+      width: 153px;
     }
 
     &__form {
