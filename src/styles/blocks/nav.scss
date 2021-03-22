@@ -1,0 +1,74 @@
+.nav {
+  @include absolute-left-transform;
+  
+  bottom: 48px;
+
+  width: calc(100% - #{$padding-desk-sum});
+
+  &__item {
+    @include flex-align(space-between, center);
+  }
+
+  &__list {
+    &--active {
+      padding: 8px 24px;
+
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    font-size: $fs-small;
+    font-weight: $fw-bold;
+    line-height: 1rem;
+    letter-spacing: 2px;
+
+    color: $c-white;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: url("../images/cursor.svg"), default;
+
+    &:hover {
+      color: $c-active;
+    }
+  }
+}
+
+@include phone {
+  .nav {
+    position: static;
+
+    transform: none;
+
+    &__item {
+      display: block;
+    }
+
+    &__list {
+      margin-bottom: 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &--active {
+        padding: 0;
+        
+        background-color: transparent;
+        border-radius: 0;
+      }
+    }
+
+    &__link {
+      font-size: 1.38rem;
+      line-height: 1.38rem;
+
+      &:hover {
+        color: $c-active;
+      }
+    }
+  }
+}

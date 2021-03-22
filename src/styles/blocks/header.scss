@@ -1,0 +1,92 @@
+.header {
+  position: relative;
+
+  height: $h-header-full;
+  background: url("../images/Layerheader.jpg") no-repeat center;
+  background-size: cover;
+
+  &__logo {
+    @include absolute-left-transform;
+    top: 24px;
+    z-index: 2;
+  }
+
+  &__title {
+    $width: 328px;
+
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+
+    width: $width;
+
+    font-size: 3.75rem;
+    font-weight: $fw-bold;
+    letter-spacing: $ls-minus-normal;
+
+    color: $c-white;
+
+    &::after {
+      position: absolute;
+      top: -16px;
+      left: 0;
+      content: "";
+      display: block;
+      right: $width - 32px;
+
+      height: 2px;
+      border-radius: 2px;
+      background-color: $c-white;
+    }
+  }
+
+  &__calling {
+    display: none;
+  }
+}
+
+// Phone area;
+@include phone {
+  .header {
+    height: $h-header-small;
+
+    &__title {
+      $width: 253px;
+
+      bottom: 80px;
+      left: 20px;
+
+      width: $width;
+
+      font-size: 2.88rem;
+      line-height: 2.5rem;
+      letter-spacing: -1px;
+
+      &::after {
+        right: $width - 32px;
+      }
+    }
+
+    &__calling {
+      position: absolute;
+      top: 36px;
+      left: 20px;
+
+      display: block;
+
+      fill: $c-white;
+      transition: transform 250ms;
+
+      &:hover {
+        transform: scale(1.2);
+        fill: $c-active;
+      }
+    }
+
+    &__icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

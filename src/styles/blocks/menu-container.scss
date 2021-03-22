@@ -1,0 +1,31 @@
+@include phone {
+  .menu-container {
+    @include absolute-left-transform(0, -100%);
+    top: 0;
+
+    height: $h-header-small;
+    background: radial-gradient(
+      circle,
+      rgba(238, 174, 202, 1) 0%,
+      rgba(148, 187, 233, 1) 100%
+    );
+    padding: 120px 20px 60px;
+    z-index: 1;
+
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    width: 100%;
+    overflow: auto;
+
+    transition: transform 500ms linear;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      pointer-events: initial;
+    }
+  }
+}

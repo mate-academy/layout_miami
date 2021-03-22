@@ -1,0 +1,110 @@
+.gallery {
+  @include take-width($padding-desk-sum);
+
+  &__section {
+    margin: 0 auto;
+    padding-bottom: 152px;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__list {
+    @include flex-justify;
+
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  &__image {
+    display: block;
+    width: calc(100% / 3 * 2 - 10px);
+    height: 265px;
+
+    border-radius: 8px;
+    object-fit: cover;
+
+    transition: transform $duration-s, box-shadow $duration-s;
+
+    &--right,
+    &--left {
+      width: calc(100% / 3 - 10px);
+    }
+
+    &--medium {
+      width: calc(100% / 2 - 10px);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 13px -7px #000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+
+    line-height: 27px;
+  }
+
+  &__modifier {
+    font-weight: $fw-bold;
+    
+    color: $c-blue;
+  }
+
+  &__button {
+    display: block;
+    margin: 40px auto 0;
+
+    transition: color $d-half, background-color $duration-s;
+
+    &:hover {
+      color: $c-white;
+      background-color: $c-blue;
+    }
+  }
+}
+
+@include phone {
+
+  .gallery {
+
+    @include take-width($padding-phone-sum);
+
+    &__section {
+      padding-bottom: 64px;
+    }
+
+    &__title {
+      font-size: 2.25rem;
+      line-height: 2.25rem;
+    }
+
+    &__list {
+      margin-top: 32px;
+    }
+
+    &__image {
+      width: calc(100% / 2 - 10px);
+      height: 131px;
+
+      cursor: pointer;
+    }
+
+    &__text {
+      margin-top: 16px;
+    }
+
+    &__modifier {
+      font-weight: $fw-bold;
+      color: $c-blue;
+    }
+
+    &__button {
+      margin-top: 32px;
+      width: 100%;
+    }
+  }
+}

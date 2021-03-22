@@ -1,0 +1,151 @@
+.call {
+  @include take-width(240px);
+
+  display: grid;
+  grid-template-areas: "title title" "wrapper form";
+  justify-content: space-between;
+
+  &__section {
+    margin: 0 auto;
+  }
+
+  &__title {
+    grid-area: title;
+    margin-bottom: 72px;
+
+    position: relative;
+
+    font-size: $fs-large;
+    font-weight: $fw-bold;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    &:after {
+      @include absolute-left-transform;
+
+      content: "";
+
+      display: block;
+      width: 20px;
+      height: 13px;
+
+      background: url("../images/crown.svg") no-repeat center;
+    }
+  }
+
+  &__wrapper {
+    grid-area: wrapper;
+    width: 413px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-areas: "phone address" "email address";
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__list {
+    width: 153px;
+
+    &:nth-child(1) {
+      grid-area: phone;
+    }
+    &:nth-child(2) {
+      grid-area: email;
+      align-self: end;
+    }
+
+    &:nth-child(3) {
+      grid-area: address;
+    }
+  }
+
+  &__type {
+    font-size: $fs-not-normal;
+    line-height: 1.67rem;
+
+    color: $c-active;
+  }
+
+  &__link {
+    line-height: 1.67rem;
+
+    color: $c-text;
+
+    text-decoration: none;
+    transition: color $d-half;
+
+    &:hover {
+      color: blueviolet;
+    }
+
+    &:active {
+      color: $c-blue;
+    }
+  }
+
+  &__form {
+    grid-area: form;
+    max-width: 413px;
+  }
+
+  &__input {
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    margin: 16px 0 72px;
+    width: 100%;
+
+    background-color: $c-blue;
+    color: $c-white;
+
+    transition: background-color $duration-s;
+
+    &:hover {
+      background-color: rgba($c-blue, $alpha: 0.7);
+    }
+  }
+}
+
+@include phone {
+  .call {
+    @include take-width(40px);
+
+    display: block;
+
+    &__section {
+      margin: 0 auto;
+    }
+
+    &__title {
+      margin: 64px 0;
+
+      font-size: 1.5rem;
+    }
+
+    &__wrapper {
+      grid-area: wrapper;
+      width: 250px;
+    }
+
+    &__item {
+      display: block;
+    }
+
+    &__list {
+      margin-bottom: 24px;
+      width: 153px;
+    }
+
+    &__form {
+      max-width: 100%;
+    }
+
+    &__button {
+      margin: 16px 0 64px;
+      width: 100%;
+    }
+  }
+}

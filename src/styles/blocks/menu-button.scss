@@ -1,0 +1,56 @@
+.menu-button {
+  position: absolute;
+  top: 36px;
+  right: 20px;
+
+  display: inline-flex;
+  padding: 0;
+
+  outline: none;
+  border: none;
+  fill: $c-white;
+  background-color: transparent;
+  
+  transition: transform 500ms;
+  z-index: 2;
+
+  &:hover {
+    transform: scale(1.1);
+    fill: $c-active;
+  }
+
+  &:active {
+    fill: yellow;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .is-open &__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__icon--cross {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &.is-open .menu-button__icon--cross {
+    transition: opacity 0.3s linear 0.5s;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.is-open .menu-button__icon--menu {
+    visibility: hidden;
+  }
+}
+
+@include desktop {
+  .menu-button {
+    display: none;
+  }
+}

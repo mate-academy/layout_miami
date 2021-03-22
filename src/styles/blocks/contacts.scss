@@ -1,0 +1,68 @@
+.contacts {
+  @include absolute-left-transform;
+  @include flex-justify(space-between);
+  @include take-width($padding-desk-sum);
+
+  top: 56px;
+
+  font-size: $fs-small;
+  font-weight: $fw-bold;
+  letter-spacing: $ls-two;
+  line-height: 1rem;
+
+  color: $c-white;
+
+  text-transform: uppercase;
+
+  &__link {
+    position: relative;
+
+    color: currentColor;
+
+    text-decoration: none;
+
+    &--modifier::after {
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+
+      display: block;
+      content: "";
+      height: 1px;
+
+      border-radius: 1px;
+      background-color: currentColor;
+    }
+
+    &:hover {
+      color: $c-active;
+    }
+  }
+}
+
+@include phone {
+
+  .contacts {
+
+    @include take-width(40px);
+
+    position: static;
+
+    display: block;
+
+    transform: none;
+
+    &__header {
+      margin-top: 48px;
+    }
+
+    &__list {
+      margin-top: 16px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
