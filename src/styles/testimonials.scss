@@ -1,0 +1,55 @@
+.testimonials {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0 250px;
+  grid-template-rows: 150px 330px;
+  grid-template-areas: ". title title title ."
+    ". left mid right .";
+
+  &__title {
+    @extend %titles;
+    grid-area: title;
+
+    &::after {
+      position: absolute;
+      top: 68%;
+      left: 49%;
+      
+      content: url(\images\small-logo.png);
+    }
+  }
+
+  &__peoples-left {
+    grid-area: left;
+  }
+  
+  &__peoples-mid {
+    grid-area: mid;
+  }
+
+  &__peoples-right {
+    grid-area: right;
+  }
+}
+
+@media (max-width: $notebook-width) {
+  .testimonials {
+    grid-gap: 0 50px;
+  }
+}
+
+@media (max-width: $tablet-width-m) {
+  .testimonials {
+    grid-gap: 48px;
+    justify-items: center;
+    grid-template-areas: "title"
+      "left"
+      "mid"
+      "right";
+
+    &__title {
+      margin-bottom: 30px;
+    }
+  }
+}

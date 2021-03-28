@@ -1,0 +1,138 @@
+.header {
+  height: 700px;
+  width: 100%;
+  padding: 0 60px;
+  
+  text-transform: uppercase;
+  color: $header-color;
+
+  background: no-repeat url(\images\header.png);
+  background-size: cover;
+  background-position: center;
+  
+
+  &__wrapper {
+    display: grid;
+    max-width: 1600px;
+    grid-template-rows: 140px 3fr 1fr;
+    margin: 0 auto;
+  }
+
+  &__top {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__phone {
+    justify-self: start;
+
+    @include phone-header;
+  }
+
+  &__action {
+    justify-self: end;
+    padding-bottom: 8px;
+    
+    @include phone-header;
+    
+    border-bottom: 1px solid $header-color;
+    
+    transition: color border-color 500ms;
+
+    &:hover {
+      border-color: $hover-color-header;
+    }
+  }
+
+  &__title {
+    position: relative;
+    
+    align-items: flex-end;
+    margin: 300px 0 60px;
+    width: 397px;
+
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 700;
+
+    &::before {
+      position: absolute;
+      top: -16px;
+      left: -3px;
+
+      height: 2px;
+      width: 35px;
+
+      content: "";
+
+      border-radius: 2px;
+      background-color: $header-color;
+    }
+  }
+
+  &__logo {
+    justify-self: center;
+    width: 115px;
+    height: 76px;
+
+    background: no-repeat url(\images\logo.png);
+    background-size: contain;
+  }
+}
+
+@media (max-width: $tablet-width-m) {
+  .header {
+    display: grid;
+    padding: 0;
+
+    &__wrapper {
+      margin: 0 15px;
+    }
+
+    &__phone {
+      position: relative;
+     
+      width: 20px;
+      
+      visibility: hidden;
+      
+
+      &::before {
+        position: absolute;
+        top: 22px;
+        left: 19px;
+
+        align-self: center;
+
+        visibility: visible;
+        
+        content: url(\images\phone.png);
+      }
+    }
+    &__action {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $tablet-width-s) {
+  .header {
+    
+    &__title {
+      width: 303px;
+
+      font-size: 46px;
+      line-height: 40px;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .header {
+    
+    &__title {
+      width: 240px;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.consultation {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0 390px;
+  grid-template-areas: "title title"
+    "text form";
+    
+  &__info {
+    line-height: $lh-text;
+  }
+
+  &__title {
+    @extend %titles;
+    grid-area: title;
+      
+    &:after {
+      position: absolute;
+      top: 68%;
+      left: 49%;
+      
+      content: url(\images\small-logo.png);
+    }
+  }
+
+  &__text {
+    grid-area: text;
+    align-self: flex-start;
+    width: 410px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+
+    @extend %subtitles;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 413px;
+    grid-area: form;
+  }
+
+  &__form-input {
+    @extend %inputs;
+  }
+}
+
+@media (max-width: $notebook-width) {
+  .consultation {
+    grid-gap: 0 50px;
+  }
+}
+
+@media (max-width: $tablet-width-m) {
+  .consultation {
+    display: grid;
+    grid-gap: 32px;
+    justify-content: center;
+    justify-items: center;
+    grid-template-areas: "title"
+      "text"
+      "form";
+
+    &__title {
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      width: 280px;
+    }
+
+    &__form {
+      width: 280px;
+    }
+    &__form-button {
+      margin-bottom: 60px;
+      width: 280px;
+    }
+  }
+}

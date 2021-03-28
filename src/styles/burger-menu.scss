@@ -1,0 +1,177 @@
+.burger-menu {
+  visibility: hidden;
+  position: relative;
+  
+  
+  &__btn {
+    position: absolute;
+    top: 60px;
+    right: 7vw;
+    z-index: 2;
+    
+    width: 22px;
+    height: 18px;
+    
+    cursor: pointer;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__icon,
+  ::before,
+  ::after {
+    position: absolute;
+    
+    display: block;
+    width: 100%;
+    height: 2px;
+
+    background-color: $header-color;
+
+    transition: transform 300ms;
+  }
+
+  &__list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    display: block;
+    width: 100vw;
+    height: 700px;
+    padding: 15% 24px;
+    
+    visibility: hidden;
+    
+    list-style: none;
+
+    background-color: $subtitles-color;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &__item {
+    position: relative;
+    top: 120px;
+
+    display: block;
+    padding: 12px 60px;
+
+    font-size: 1.25rem;
+    font-weight: $fw-bold;
+    color: $header-color;
+    
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &--phone,
+    &--action {
+      display: block;
+
+      font-size: 0.75rem;
+      line-height: 1rem;
+      letter-spacing: 2px;
+    }
+
+    &--phone {
+      margin-top: 48px;
+    }
+
+    &--action {
+      position: relative;
+      
+      text-transform: uppercase;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+
+        display: block;
+        max-width: 114px;
+        height: 1px;
+
+        content: "";
+      }
+    }
+  }
+
+  &__item:hover {
+    color: $contacts-subtitle-color;
+  }
+
+  &__btn > &__icon::before {
+    top: -8px;
+
+    content: "";
+  }
+
+  &__btn > &__icon::after {
+    top: 8px;
+
+    content: "";
+  }
+
+  &__toggle:checked ~ &__btn > &__icon {
+    transform: rotate(45deg);
+  }
+
+  &__toggle:checked ~ &__btn > &__icon::before {
+    top: 0;
+
+    transform: rotate(0);
+  }
+
+  &__toggle:checked ~ &__btn > &__icon::after {
+    top: 0;
+
+    transform: rotate(90deg);
+  }
+
+  &__toggle:checked ~ &__list {
+    right: 0;
+
+    visibility: visible;
+
+    transition: transform 300ms;
+  }
+}
+
+@media (max-width: $tablet-width-m) {
+  .burger-menu {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+@media (max-height: $burger-menu-max-height) {
+  .burger-menu {
+
+    &__item {
+      top: 20px;
+      font-size: 0.8rem;
+
+      &--phone {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (min-height: $burger-menu-min-height) {
+  .burger-menu {
+    &__item {
+      top: 20vh;
+
+      text-align: center;
+
+      &--action:after {
+
+        left: 50%;
+
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
