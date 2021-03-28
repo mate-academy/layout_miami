@@ -1,0 +1,94 @@
+.mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-$full-width);
+  transition: all 0.5s ease-in-out;
+  width: $full-width;
+  height: 100vh;
+  padding: 24px 20px;
+  background-color: $color-light-blue;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__close {
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    @include flex-column;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  &__close-item {
+    width: $full-width;
+    height: 2px;
+    background-color: $color-white;
+
+    &--top {
+      transform: rotate(-45deg) translateX(-1px);
+    }
+  
+    &--bottom {
+      transform: rotate(45deg) translateX(-1px);
+    }
+  }
+
+  &__logo {
+    width: 73px;
+    height: 48px;
+    margin: 0 auto;
+    background: url(../images/logo.png);
+    background-size: contain;
+    background-position: center ;
+    background-repeat: no-repeat;
+  }
+
+  &__list {
+    @include flex-column;
+    justify-content: space-between;
+    margin-top: 48px;
+    width: 182px;
+    height: 340px;
+  }
+
+  &__link {
+    @include mobile-links;
+    color: $color-white;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-grey;
+    }
+  }
+
+  &__phone {
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  &__action-link {
+    @include text-small;
+    color: $color-white;
+
+    &::after {
+      content: "";
+      display: block;
+      position: relative;
+      top: 8px;
+      width: 114px;
+      height: 1px;
+      background-color: $color-white;
+    }
+  }
+}
+
+@media (max-width: $breackpoint-big) {
+  .mobile {
+    @include flex-column;
+  }
+}
