@@ -1,0 +1,102 @@
+.header {
+  height: 700px;
+  @include background-center("../images/header.jpg");
+  color: $white;
+  position: relative;
+  font-size: $font-size-sm;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  @media (max-width: $breakpoint-md) {
+    height: 500px;
+  }
+  &__nav {
+    @include absolute-center;
+    bottom: 45px;
+    padding: 0;
+    @media (max-width: $breakpoint-md) {
+      top: 120px;
+      bottom: 0;
+    }
+  }
+
+  &__top {
+    @include absolute-center;
+    top: 15px;
+    @include flex-center;
+  }
+
+  &__phone {
+    color: $white;
+
+    &:hover {
+      animation: turn 0.3s infinite ease-in-out;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__phone--mobile {
+    display: none;
+    @media (max-width: $breakpoint-md) {
+      display: block;
+    }
+  }
+
+  &__action {
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: $scale;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__link {
+    color: $white;
+    padding: 8px 0;
+    border-bottom: 1px solid $white;
+  }
+
+  &__title {
+    @include absolute-center;
+    bottom: 165px;
+    font-weight: $fontWeightBold;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    text-transform: capitalize;
+    @media (max-width: $breakpoint-md) {
+      font-size: $fontSizeTitle;
+      bottom: 70px;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+      background: $white;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@keyframes turn {
+  from {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(-5deg);
+  }
+  66% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}

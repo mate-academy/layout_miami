@@ -1,0 +1,78 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__img {
+    @include embed-proportional(0);
+    height: 260px;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    flex-basis: 49%;
+    transition: height $transition,
+      flex-basis $transition,
+      border-color $duration,
+      box-shadow $duration;
+
+    &:hover {
+      border-color: $blue;
+      box-shadow: 0 0 10px 0 $black;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      height: 180px;
+    }
+    @media (max-width: $breakpoint-sm) {
+      height: 131px;
+    }
+  }
+
+  &__img--one-thirds {
+    flex-basis: 33%;
+    @media (max-width: $breakpoint-md) {
+      flex-basis: 49%;
+    }
+  }
+
+  &__img--two-thirds {
+    flex-basis: 65%;
+    @media (max-width: $breakpoint-md) {
+      flex-basis: 49%;
+    }
+  }
+
+  &__text {
+    flex-basis: 100%;
+    text-transform: capitalize;
+    margin: 20px 0 40px;
+    @media (max-width: $breakpoint-md) {
+      margin: 16px 0 32px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: $blue;
+    font-weight: $fontWeightBold;
+    @include underline($blue, 1px);
+  }
+
+  &__btn {
+    margin: 0 auto;
+    text-transform: capitalize;
+    font-weight: $fontWeightBold;
+    color: $blue;
+    padding: 18px 65px;
+    border: 2px solid $blue;
+    border-radius: $border-radius;
+    transition: background $transition,
+      color $transition,
+      box-shadow $transition;
+
+    &:hover {
+      background: $blue;
+      color: $white;
+      box-shadow: 0 0 10px 0 $black;
+    }
+  }
+}
