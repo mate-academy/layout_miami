@@ -1,0 +1,55 @@
+.block {
+  display: grid;
+  grid-template-columns: 152px 152px 40%;
+  justify-content: space-between;
+
+  &__title {
+    @include fontFamilyRobotoNormal;
+    font-size: 14px;
+    line-height: 27px;
+    color: $lightBlue;
+  }
+
+  &__text {
+    @include fontFamilyRobotoNormal;
+    max-width: 500px;
+    line-height: 27px;
+    font-size: 16px;
+    color: $darkGray;
+    text-decoration: none;
+
+    & p:first-child {
+      margin: 0;
+      color: $blue;
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  &__link {
+    @extend .block__text;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 10px;
+    width: 95%;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-areas: "phone address" "form form";
+    justify-items: center;
+    gap: 20px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 30px 6% 0;
+    width: 100%;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-areas: "phone""address" "form";
+    justify-items: start;
+    gap: 0;
+  }
+}
