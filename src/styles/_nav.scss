@@ -1,0 +1,91 @@
+.nav {
+  color: #fff;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    transition: height 1s;
+  }
+
+  &__toggler {
+    display: none;
+
+    &-label {
+      font-size: 35px;
+      color: #fff;
+      display: none;
+
+      &::before {
+        content: "≡";
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__item {
+    padding: 8px 24px;
+    margin: 0 38px;
+
+    &--active {
+      background-color: rgba(100%, 100%, 100%, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: color $hover-duration;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+}
+
+.nav__toggler:checked ~ .nav__toggler-label::before {
+  content: "x";
+  font-size: 16px;
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__logo {
+    margin-top: -116px;
+  }
+}
+
+@media screen and (max-width: $iphone-5-screen-breakpoint) {
+  .nav {
+
+    &__list {
+      overflow: hidden;
+      visibility: hidden;
+      transition: transform ease-out 1s;
+      transform: translateY(292px);
+    }
+
+    &__item {
+      display: block;
+    }
+
+    &__toggler-label {
+      display: block;
+    }
+
+    &__toggler:checked ~ .nav__list {
+      transition: transform 1s linear;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+}
