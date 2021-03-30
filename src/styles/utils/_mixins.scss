@@ -1,6 +1,92 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $duration;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin container {
+  max-width: $containerWidth + 2 * $containerPadding;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@mixin image-hover {
+  &:hover {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.2);
+  }
+}
+
+@mixin form-element-hover {
+  &:hover {
+    background-color: $whiteColor;
+    border-color: $blueColor;
+  }
+}
+
+@mixin form-element-focus {
+  &:focus {
+    border-color: transparent;
+    background-color: $whiteColor;
+    box-shadow: 0 0 2px 2px $blueColor;
+  }
+}
+
+@mixin common-link-style {
+  font-family: $robotoFontFamily;
+  font-size: 12px;
+  color: $whiteColor;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: $duration;
+}
+
+@mixin content-heading {
+  margin-top: 152px;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+@mixin content-width-small-screen {
+  @media (max-width: $smallWidth) {
+    & {
+      width: 95%;
+    }
+  }
+}
+
+@mixin content-heading-small {
+  @media (max-width: 600px) {
+    & {
+      margin-top: 100px;
+      font-size: 36px;
+    }
+  }
+}
+
+@mixin common-form-element($height, $bg-color, $color) {
+  width: 100%;
+  height: $height;
+  padding: 17px;
+  margin-bottom: 16px;
+  background-color: $bg-color;
+  border-radius: 8px;
+  font-family: $robotoFontFamily;
+  color: $color;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: color $duration, background-color $duration, border $duration;
+}
+
+@mixin media-flex($width) {
+  @media (max-width: $width) {
+    & {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }

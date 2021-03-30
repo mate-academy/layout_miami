@@ -1,0 +1,91 @@
+.gallery {
+
+  &__heading {
+    @include content-heading;
+    @include content-heading-small;
+  }
+
+  &__images {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__images-sec {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: $spaceBetweenImg;
+  }
+
+  &__image {
+    height: 256px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    transition: transform $duration;
+
+    @media (max-width: $smallWidth) {
+      height: 40vw;
+    }
+
+    &:hover {
+      position: relative;
+      z-index: 2;
+      transform: scale(1.05);
+    }
+
+    &--big {
+      width: calc(67% - 10px);
+
+      @media (max-width: $smallWidth) {
+        width: calc(50% - 10px);
+      }
+    }
+
+    &--small {
+      width: calc(33% - 10px);
+
+      @media (max-width: $smallWidth) {
+        width: calc(50% - 10px);
+      }
+    }
+
+    &--middle {
+      width: calc(50% - 10px);
+    }
+  }
+
+  &__images-description {
+    margin-top: 24px;
+    margin-bottom: 2 * $spaceBetweenImg;
+    font-size: 16px;
+
+    &--name {
+      color: $blueColor;
+      font-weight: 700;
+    }
+  }
+
+  &__button {
+    display: block;
+    width: 190px;
+    margin: 0 auto;
+    padding: 21px 0;
+    color: $blueColor;
+    background-color: $whiteColor;
+    border: 2px solid $blueColor;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: color $duration, background-color $duration, border $duration;
+
+    &:hover {
+      color: $whiteColor;
+      background-color: $blueColor;
+      border: 2px solid transparent;
+    }
+  }
+}
