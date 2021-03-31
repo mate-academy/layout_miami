@@ -1,0 +1,34 @@
+.photos {
+  @include side-positioned;
+  $gap: 20px;
+
+  &__img {
+    width: calc(67% - #{$gap/2});
+    height: 256px;
+
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1s;
+
+    &:hover {
+      transform: $scale-effect;
+    }
+
+    
+    &--twin {
+      width: calc(50% - #{$gap/2});
+    }
+    &--right,
+    &--left {
+      width: calc(33% - #{$gap/2});
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  .photos__img {
+    border-radius: 8px;
+    width: calc(50% - 10px);
+    height: 131px;
+  }
+}

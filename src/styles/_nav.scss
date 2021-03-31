@@ -1,0 +1,82 @@
+.nav {
+  color: black;
+  text-transform: uppercase;
+  
+
+  &__list {
+    @include centered;
+    list-style: none;
+    
+  }
+
+  &__item {
+    padding: 7px 20px;
+    margin: 0 22.5px;
+    border-radius: 10px;
+    
+    &--active {
+      background-color: $active-color;
+    }
+  }
+
+  &__link {
+    color: $main-color;
+    text-decoration: none;
+    transition: $hover-duration;
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    display: none;
+    font-size: 35px;
+    color: #fff;
+
+    &::before {
+      content: "==";
+    }
+  }
+
+  &__toggler:checked ~ &__toggler-label::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 3px;
+    background-color: white;
+  }
+
+  &__toggler:checked ~ &__toggler-label::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    width: 40px;
+    height: 3px;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav {
+    &__list {
+      @include centered-column;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s linear;
+    }
+
+    &__toggler-label {
+      display: flex;
+      justify-content: center;
+    }
+    &__toggler:checked ~ .nav__list {
+      height: 230px;
+    }
+  }
+}
