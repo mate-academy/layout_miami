@@ -1,0 +1,125 @@
+@import "variables";
+
+.nav {
+  color: #000;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__item {
+    padding: 7px 20px;
+    margin: 0 22.5px;
+    list-style: none;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      background-color: $active-color;
+      border-radius: 10px;
+      color: #000;
+      transition-duration: background-color $transition-duration;
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: $active-color;
+      border-radius: 10px;
+
+      & a:nth-child(1) {
+        color: #000;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $link-color;
+    text-transform: uppercase;
+
+    transition-duration: color $transition-duration;
+
+    &:hover {
+      display: inline-block;
+    
+      color: #000;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .nav {
+    position: relative;
+
+    &__list {
+      opacity: 0;
+    }
+
+    &__button {
+      display: block;
+      width: 40px;
+      height: 6px;
+      position: absolute;
+      bottom: -15%;
+      left: calc(50% - 20px);
+
+      background-color: $active-color;
+      border-radius: 4px;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 6px;
+        position: absolute;
+
+        background-color: $active-color;
+        border-radius: 4px;
+        transition: $transition-duration;
+      }
+
+      &::before {
+        transform: translateY(-10px);
+      }
+
+      &::after {
+        transform: translateY(10px);
+      }
+    }
+
+    &__toggle {
+
+      &:checked ~ label > .nav__button {
+        background-color: transparent;
+      }
+
+      &:checked ~ .nav__list {
+        opacity: 1;
+        transition: opacity $transition-duration;
+      }
+  
+      &:checked ~ label > .nav__button::after {
+        transform: rotate(45deg);
+        transition: transform $transition-duration;
+      }
+  
+      &:checked ~ label > .nav__button::before {
+        transform: rotate(-45deg);
+        transition: transform $transition-duration;
+      }
+    }
+  }
+}
