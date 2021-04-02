@@ -1,0 +1,38 @@
+.header__toggler {
+  display: none;
+}
+
+.header__toggler-label {
+  position: relative;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.header__toggler-label::before {
+  content: url(/images/menu.svg);
+  display: none;
+}
+
+.header__toggler:checked ~ .header__toggler-label::before {
+  content: url(/images/disabled-menu.svg);
+}
+
+.header__toggler:checked ~ .menu {
+  display: flex;
+  animation: animation-1 0.5s ease-in-out;
+}
+
+@keyframes animation-1 {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media(max-width:1080px) {
+  .header__toggler-label::before {
+    display: block;
+  }
+}
