@@ -1,6 +1,8 @@
+
 .logo {
   @include grid_aligning($horizontal: space-between, $vertical: center);
   grid-template-columns: repeat(3, auto);
+  position: relative;
 
   &__phone {
     position: relative;
@@ -74,18 +76,53 @@
     }
   }
 
+  &__burger--wrapper {
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    bottom: -15px;
+  }
+
   &__burger {
-    background: url("../images/burger_menu_closed.svg") no-repeat center;
-    height: 30px;
-    width: 30px;
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    z-index: 3;
+    height: 3px;
+    width: 40px;
     cursor: pointer;
-    visibility: hidden;
-    transition: transform $duration;
+    background-color: #fff;
+    transition: transform $duration,
+      opacity $duration,
+      background-color 1s;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
+      opacity: 0.8;
     }
 
+    &::before {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 40px;
+      background-color: #fff;
+      top: 15px;
+      transition: transform $duration,
+        background-color 1s;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 40px;
+      background-color: #fff;
+      bottom: 15px;
+      transition: transform $duration,
+        background-color 1s;
+    }
   }
 
   &__menu_checkbox {
@@ -98,8 +135,18 @@
   }
 
   &__menu_checkbox:checked ~ .logo__burger {
-    background: url("../images/burger_menu_open.svg") no-repeat center;
-    z-index: 2;
+    transform: rotate(-45deg);
+    background-color: #fff;
+  }
+
+  &__menu_checkbox:checked ~ .logo__burger::before {
+    transform: rotate(90deg) translate(-15px, 0);
+    background-color: #fff;
+  }
+
+  &__menu_checkbox:checked ~ .logo__burger::after {
+    transform: translate(0, 15px);
+    background-color: #fff;
   }
 }
 
@@ -117,7 +164,13 @@
   }
 
   .logo__burger {
-    visibility: visible;
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo__burger {
+    right: 30px;
   }
 }
 
