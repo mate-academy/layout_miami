@@ -1,0 +1,95 @@
+@import "navigation";
+
+.header {
+  position: relative;
+  height: 100vh;
+  padding-top: 24px;
+  margin-bottom: 104px;
+  color: $colorWhite;
+  background: url(../images/header.jpg) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.mobile {
+      display: none;
+    }
+  }
+
+  &__phone {
+    @extend %header-texts;
+    @include hover(transform, scale(1.1));
+    z-index: 99;
+  }
+
+  &__logo-img {
+    position: relative;
+    width: 115px;
+    height: 76px;
+    @include hover(transform, scale(1.1));
+    z-index: 100;
+  }
+
+  &__call-me {
+    @extend %header-texts;
+    padding: 8px 0;
+    border-bottom: 2px solid;
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 25vh;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 2px;
+      background: $colorWhite;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__nav {
+    position: relative;
+    top: 75vh;
+  }
+}
+
+@include mediaOnMobile {
+  .header {
+    margin-bottom: 64px;
+
+    &__top {
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: flex;
+      }
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__phone {
+      margin-left: 23px;
+    }
+
+    &__logo-img {
+      width: 73px;
+      height: 48px;
+    }
+
+    &__burger {
+      margin-right: 23px;
+    }
+  }
+}

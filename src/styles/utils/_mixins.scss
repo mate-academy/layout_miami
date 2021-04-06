@@ -1,6 +1,77 @@
+@mixin container {
+  box-sizing: border-box;
+  max-width: 1050px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@mixin mediaOnMobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin titles(
+  $_fontSize,
+  $_fontWeight,
+  $_lineHeight,
+  $_letterSpacing,
+  $_fontColor
+) {
+  font-size: $_fontSize;
+  font-weight: $_fontWeight;
+  line-height: $_lineHeight;
+  letter-spacing: $_letterSpacing;
+  color: $_fontColor;
+}
+
+@mixin titles-decoration($_bottomGap) {
+  margin-bottom: $_bottomGap;
+  text-align: center;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 13px;
+    margin: 0 auto;
+    margin-top: 8px;
+    background: url(../images/titles_shape.svg);
+  }
+}
+
+@mixin subtitles($_bottomGap) {
+  margin-bottom: $_bottomGap;
+  letter-spacing: normal;
+}
+
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $animationDuration;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin active($_property, $_toValue) {
+  transition: #{$_property} $animationDuration;
+  &:active {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin button-dimentions($_width, $_height) {
+  width: $_width;
+  height: $_height;
+}
+
+@mixin hovered-button($_property-1, $_toValue-1, $_property-2, $_toValue-2) {
+  transition: #{$_property-1} $animationDuration,
+    #{$_property-2} $animationDuration;
+
+  &:hover {
+    #{$_property-1}: $_toValue-1;
+    #{$_property-2}: $_toValue-2;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
   }
 }
