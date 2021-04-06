@@ -1,6 +1,5 @@
 # Miami landing page
-- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A1)
-- Follow this [video guide](https://www.youtube.com/watch?v=sq184jq9DV8&feature=youtu.be) and write your own implementation.
+- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
 
 ## Instructions
 1. **Fork** the repo.
