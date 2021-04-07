@@ -1,0 +1,181 @@
+
+.logo {
+  @include grid_aligning($horizontal: space-between, $vertical: center);
+  grid-template-columns: repeat(3, auto);
+  position: relative;
+
+  &__phone {
+    position: relative;
+    transition: transform $duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link--number {
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    transition: box-shadow $duration;
+
+    &:hover {
+      box-shadow: 0 1px 3px #9dd9db;
+    }
+  }
+
+  &__img--phone {
+    background: url("../images/phone.svg") no-repeat center;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    visibility: hidden;
+  }
+
+  &__img--link {
+    z-index: 2;
+  }
+
+  &__img {
+    transition: transform $duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    color: $color_white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
+  &--order {
+    border-bottom: 1px solid $color_white;
+    margin-right: 10px;
+    padding: 5px 5px 8px;
+    transition: box-shadow $duration,
+      border-radius $duration;
+
+    &:hover {
+      border-radius: 10px;
+      box-shadow: 0 1px 3px #9dd9db;
+    }
+  }
+
+  &__order--wrapper {
+    transition: transform $duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__burger--wrapper {
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    bottom: -15px;
+  }
+
+  &__burger {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    z-index: 3;
+    height: 3px;
+    width: 40px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: transform $duration,
+      opacity $duration,
+      background-color 1s;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 40px;
+      background-color: #fff;
+      top: 15px;
+      transition: transform $duration,
+        background-color 1s;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 40px;
+      background-color: #fff;
+      bottom: 15px;
+      transition: transform $duration,
+        background-color 1s;
+    }
+  }
+
+  &__menu_checkbox {
+    display: none;
+  }
+
+  &__menu_checkbox:checked ~ .mobile {
+    transition: transform 1s;
+    transform: translate(0);
+  }
+
+  &__menu_checkbox:checked ~ .logo__burger {
+    transform: rotate(-45deg);
+    background-color: #fff;
+  }
+
+  &__menu_checkbox:checked ~ .logo__burger::before {
+    transform: rotate(90deg) translate(-15px, 0);
+    background-color: #fff;
+  }
+
+  &__menu_checkbox:checked ~ .logo__burger::after {
+    transform: translate(0, 15px);
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 800px) {
+  .logo__link--number {
+    display: none;
+  }
+
+  .logo__img--phone {
+    visibility: visible;
+  }
+
+  .logo__order--wrapper {
+    display: none;
+  }
+
+  .logo__burger {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo__burger {
+    right: 30px;
+  }
+}
+
+@media (min-width: 801px) {
+  .mobile {
+    display: none;
+  }
+}
