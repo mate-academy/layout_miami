@@ -1,0 +1,201 @@
+$headerColorText: #fff;
+$navHonerColor: rgb(49,49,67);
+$positionHeaderTitle: 165px;
+$positionNavLinks: 50px;
+
+@mixin logoSize {
+  width: 115px;
+  height: 76px;
+}
+@mixin headerFontStile {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: $headerColorText;
+}
+
+.background {
+  background: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.header__logo {
+  @include logoSize;
+  background: url(../images/logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+  @include headerFontStile;
+  height: 100%;
+  &__top__content {
+    padding: 10px 0;
+  }
+
+  &__mid {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .call {
+    position: relative;
+    border-bottom: 1px solid white;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      opacity: 30%;
+    }
+  }
+  .phone-number {
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      opacity: 30%;
+    }
+  }
+
+  & a {
+    color: $headerColorText;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  &__content__title {
+    padding-bottom: 85px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: left;
+
+    &::before {
+      content: "";
+      display: block;
+      border: 1px solid $headerColorText;
+      width: 35px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__bot {
+    width: calc(100% - 120px * 2);
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      padding: 8px 24px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all 1s ease-out;
+    }
+    &__item:hover {
+      color: #9fadc2;
+      background-color: $navHonerColor;
+    }
+  }
+
+}
+
+.menuToggle input {
+  position: absolute;
+  display: none;
+  &:checked ~ ul {
+    transform: none;
+  }
+}
+
+.menu__togler {
+  display: none;
+}
+
+.menu__span {
+  display: none;
+  width: 28px;
+  height: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1),
+    opacity 0.55s ease;
+}
+
+.hidden__menu {
+  position: absolute;
+  top: 0;
+  right: -0%;
+  width: 100%;
+  height: 100vh;
+  font-size: 22px;
+  line-height: 22px;
+  padding-top: 125px;
+  background: #0075ff;
+  list-style-type: none;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1);
+  & li:nth-child(n+7) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__item {
+    line-height: 50px;
+    padding: 20px 30px;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 960px) {
+  .header__content__title {
+    font-size: 46px;
+    line-height: 40px;
+  }
+
+  .header__logo {
+    z-index: 1;
+    width: 73px;
+    height: 48px;
+  }
+
+  .header__top__phone-icon::after {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url(../images/phone-icon.png);
+  }
+  .menu__span {
+    display: block;
+  }
+
+  .call,
+  .nav,
+  .phone-number {
+    display: none;
+  }
+  .menuToggle input {
+    display: block;
+    opacity: 0;
+  }
+
+}
