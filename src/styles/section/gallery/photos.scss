@@ -1,0 +1,61 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.photos {
+  $gap: 20px;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__img {
+    width: calc(50% - #{$gap / 2});
+    height: 260px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__wide__left {
+    padding-top: 83px;
+
+    .photos__img {
+      &:first-child {
+        width: calc(67% - #{$gap / 2});
+      }
+
+      &:last-child {
+        width: calc(33% - #{$gap / 2});
+      }
+    }
+  }
+
+  @include photosDesctop;
+}
+
+@media screen and (max-width: $small-screen-breakpoint) {
+  .photos {
+    position: relative;
+    right: 0;
+    &__img {
+      width: calc(50% - 20px / 2);
+      height: 130px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &__wide__left {
+      margin-top: 20px;
+
+      .photos__img {
+        &:first-child {
+          width: calc(50% - 20px / 2);
+        }
+
+        &:last-child {
+          width: calc(50% - 20px / 2);
+        }
+      }
+    }
+    @include photosMobile;
+  }
+}

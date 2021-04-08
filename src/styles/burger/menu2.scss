@@ -1,0 +1,149 @@
+@import "../utils/vars";
+
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: none;
+
+  height: 50px;
+
+  padding: 24px 35px;
+
+  color: white;
+
+  &__call__img {
+    position: absolute;
+    top: 20px;
+    padding: 20px;
+  }
+
+  &__call__link {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__line {
+    position: absolute;
+    top: 24px;
+    right: 10px;
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.5s;
+  }
+}
+
+#toggle {
+  display: none;
+}
+
+.second,
+.third {
+  top: 34px;
+}
+
+.fourth {
+  top: 44px;
+}
+
+.nav--mobile {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding-left: 20px;
+
+  transform: translateY(-100%);
+
+  background-color: blue;
+  font-size: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.nav__logo {
+  position: absolute;
+  left: calc(50% - 73px / 2);
+
+  width: 73px;
+  height: 48px;
+
+  margin-top: 24px;
+}
+
+.nav__link--mobile {
+  position: relative;
+  display: block;
+  top: 90px;
+  bottom: 0;
+  padding: 16px 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+.nav__phone {
+  position: absolute;
+  bottom: 140px;
+
+  font-size: 12px;
+  color: white;
+}
+
+.nav__action {
+  position: absolute;
+  bottom: 110px;
+
+  font-size: 12px;
+  color: white;
+}
+
+#toggle:checked ~ .nav--mobile {
+  transform: translate(0);
+}
+
+#toggle:checked ~ .first {
+  display: none;
+}
+
+#toggle:checked ~ .second {
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+#toggle:checked ~ .third {
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+
+#toggle:checked ~ .fourth {
+  display: none;
+}
+
+@media (max-width: $small-screen-breakpoint) {
+  .menu {
+    display: block;
+  }
+}
+
+@media screen and (min-width: $small-screen-breakpoint) {
+  .menu__call__link {
+    display: none;
+  }
+}

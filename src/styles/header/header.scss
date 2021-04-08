@@ -1,0 +1,101 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+//noinspection ALL
+.header {
+  position: relative;
+
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 2px;
+
+  width: 100%;
+  height: 100vh;
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content {
+    position: relative;
+
+    width: 98vw;
+    height: 100vh;
+    @include onMobile {
+      height: 100vh;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @include onMobile {
+      font-size: 40px;
+      padding-left: 20px;
+    }
+    position: absolute;
+    bottom: 160px;
+    font-size: 60px;
+    line-height: 60px;
+    color: white;
+
+    &::before {
+      content: "";
+      display: block;
+      border: 1px solid #fff;
+      width: 35px;
+      margin-bottom: 16px;
+      @include onMobile {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 24px 0;
+
+    color: white;
+  }
+
+  &__phone {
+    color: white;
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__logo {
+    @include onMobile {
+      position: absolute;
+      left: calc(50% - 73px / 2);
+
+      width: 73px;
+      height: 48px;
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    text-transform: uppercase;
+    transition: color $hover-duration;
+    @include onMobile {
+      display: none;
+    }
+
+    &:hover {
+      color: $active-color;
+    }
+  }
+}
