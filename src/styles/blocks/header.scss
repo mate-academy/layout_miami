@@ -1,0 +1,166 @@
+.header {
+  position: relative;
+  height: 100vh;
+  padding: 25px 20px 80px;
+  background-image: url(../images/header.png);
+  @extend %background-cover;
+
+  &__burger-checkbox {
+    display: none;
+  }
+
+  &__content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* #region header__menu-icons */
+  &__menu-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  &__burger-label-icon {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: $icon-size;
+    height: $burger-icon-height;
+    background-image: url(../images/Icon-Burger-menu.svg);
+    @extend %background-cover;
+    cursor: pointer;
+    @extend %size-transiton;
+  }
+  
+  &__burger-label-icon:hover {
+    background-image: url(../images/Icon-Burger-Hover.svg);
+  }
+  
+  &__burger-checkbox:checked + &__content-wrapper &__burger-label-icon {
+    @include square($icon-size);
+    background-image: url(../images/Icon-Burger-Close.svg);
+    background-size: contain;
+  }
+  
+  &__link-logo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+  }
+  
+  &__logo {
+    width: $logo-width;
+    height: $logo-height;
+    @extend %size-transiton;
+  }
+  
+  &__phone-icon {
+    position: relative;
+    display: flex;
+    @include square($icon-size);
+    background-image: url(../images/Icon-Phone-call.svg);
+    @extend %background-cover;
+    cursor: pointer;
+    @extend %size-transiton;
+  }
+  
+  &__phone-icon::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    white-space: nowrap;
+    right: $icon-size + 20px;
+    display: block;
+    transform: translateY(-400%);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0;
+    transition: transform 0.8s, opacity 0.8s;
+    transition-timing-function: linear;
+  }
+  
+  @media (min-width: $scale-S) {
+    &__phone-icon:hover::before {
+      transform: translateY(0%);
+      transition: transform 0.4s linear, opacity 0.6s linear;
+      opacity: 1;
+    }
+  }
+  
+  @each $size, $multiplier in $size-list {
+    @media (min-width: #{$size}) {
+      &__burger-label-icon {
+        width: $icon-size * pow($scale-factor, $multiplier);
+        height: $burger-icon-height * pow($scale-factor, $multiplier);
+      }
+    
+      &__burger-checkbox:checked + &__content-wrapper &__burger-label-icon {
+        @include square($icon-size * pow($scale-factor, $multiplier));
+      }
+    
+      &__logo {
+        width: $logo-width * pow($scale-factor, $multiplier);
+        height: $logo-height * pow($scale-factor, $multiplier);
+      }
+    
+      &__phone-icon {
+        @include square($icon-size * pow($scale-factor, $multiplier));
+      }
+  
+      &__phone-icon::before {
+        right: $icon-size * pow($scale-factor, $multiplier) + 20px;
+      }
+    }
+  }
+  
+  @each $size, $shift in $shift-list {
+    @media (min-width: #{$size}) {
+      &__phone-icon:hover::before {
+        transform: translateY(#{$shift});
+      }
+    }
+  }
+  /* #endregion */
+
+  /* #region header__title */
+  &__title-wrapper {
+    position: absolute;
+    bottom: 80px;
+  }
+
+  &__title {
+    position: relative;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+    transition: font 0.3s, letter-spacing 0.3s;
+    transition-timing-function: linear;
+  }
+
+  &__title:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    height: 2px;
+    width: 40px;
+    background-color: #fff;
+    border-radius: 1px;
+  }
+
+  @each $size, $font-size, $letter-spacing in $title-size {
+    @media (min-width: #{$size}) {
+      &__title {
+        font-size: $font-size;
+        line-height: $font-size;
+        letter-spacing: $letter-spacing;
+      }
+    }
+  }
+  /* #endregion */
+}
