@@ -1,0 +1,107 @@
+.header {
+  position: relative;
+
+  &__wrapper {
+    height: 100vh;
+    background-image: url("../images/header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 24px 120px 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 500px) {
+      & {
+        padding: 24px 20px 80px;
+      }
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__hamburger {
+    height: 32px;
+    width: 32px;
+    background-image: url("../images/burger.svg");
+    background-size: cover;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("../images/burger-hover.svg");
+    }
+  }
+  
+  &__logo {
+    height: 80px;
+    width: 138px;
+    background-image: url("../images/logo.svg");
+    z-index: 1;
+  }
+
+  &__phone {
+    height: 32px;
+    width: 32px;
+    background-image: url("../images/phone.svg");
+    background-repeat: no-repeat;
+    position: relative;
+
+    @media (min-width: 1000px) {
+      &:hover::before {
+        content: "+1 234 555-55-55";
+        color: #fff;
+        position: absolute;
+        top: 5px;
+        left: -150px;
+        animation: displayPhoneNumber 0.5s forwards;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+
+        @keyframes displayPhoneNumber {
+          from {
+            transform: translateY(-150px);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: #fff;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+    position: relative;
+
+    @media (max-width: 500px) {
+      & {
+        font-size: 46px;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 5px;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 1px;
+    }
+  }
+}
+
+.displayNone {
+  display: none;
+}
