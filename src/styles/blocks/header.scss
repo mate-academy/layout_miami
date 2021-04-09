@@ -55,15 +55,21 @@
     grid-area: phone;
     justify-self: end;
     align-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__tel-value {
+    overflow: hidden;
+
+    cursor: default;
 
     &:before {
       content: "+1 234 55-55-55";
-      position: absolute;
-      top: -300%;
-      right: 20px;
-      transform: translateY(-50%);
+      position: relative;
+      right: -100%;
 
-      width: max-content;
       padding-right: 20px;
 
       color: white;
@@ -74,13 +80,6 @@
       transition-duration: 0.3s;
       transition-timing-function: ease-out;
     }
-
-    &:hover:before {
-      @media (min-width: $breakPointTablet) {
-        top: 50%;
-      }
-    }
-
   }
 
   &__tel {
@@ -90,6 +89,12 @@
     @media (min-width: $breakPointTablet) {
       width: 24px;
       height: 24px;
+    }
+
+    &:hover ~ &-value:before {
+      @media (min-width: $breakPointTablet) {
+        right: 0;
+      }
     }
   }
 
