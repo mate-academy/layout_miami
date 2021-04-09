@@ -1,0 +1,32 @@
+.main {
+  padding: 65px 20px;
+  transition: padding 0.3s;
+  transition-timing-function: linear;
+
+  @each $size, $padding-top, $padding-bottom in $list-main-paddings {
+    @media (min-width: #{$size}) {
+      & {
+        padding-top: $padding-top;
+        padding-bottom: $padding-bottom;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    @include max-width-content(1020px);
+  }
+
+  &__section {
+    margin-bottom: 65px;
+    transition: margin 0.3s;
+    transition-timing-function: linear;
+  }
+
+  @each $size, $margin-bottom in $list-section-margin {
+    @media (min-width: #{$size}) {
+      &__section {
+        margin-bottom: $margin-bottom;
+      }
+    }
+  }
+}

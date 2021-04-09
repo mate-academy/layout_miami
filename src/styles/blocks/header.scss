@@ -1,25 +1,35 @@
 .header {
   position: relative;
   height: 100vh;
-  padding: 25px 20px 80px;
+  padding: 0 20px;
   background-image: url(../images/header.png);
   @extend %background-cover;
+  transition: padding 0.3s;
+  transition-timing-function: linear;
 
   &__burger-checkbox {
     display: none;
   }
 
   &__content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+    @include max-width-content(1020px);
   }
 
   /* #region header__menu-icons */
   &__menu-icons {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    padding: 25px 5px;
+    margin: 0 -5px;
+  }
+
+  &__burger-checkbox:checked + &__content-wrapper &__menu-icons {
+    background-color: $blue-color;
+    transition-delay: 1s;
   }
 
   &__burger-label-icon {
@@ -130,7 +140,13 @@
   /* #region header__title */
   &__title-wrapper {
     position: absolute;
-    bottom: 80px;
+    bottom: 40px;
+  }
+
+  @media (min-height: 500px) {
+    &__title-wrapper {
+      bottom: 80px;
+    }
   }
 
   &__title {

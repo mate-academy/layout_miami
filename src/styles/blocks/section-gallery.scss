@@ -1,0 +1,77 @@
+.section-gallery {
+
+  &__photos {
+    margin-bottom: 32px;
+  }
+
+  @each $size, $margin in $gallery-photos-margin {
+    @media (min-width: #{$size}) {
+      &__photos {
+        margin-bottom: $margin;
+      }
+    }
+  }
+
+  &__photos-wrapper {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 131px;
+    gap: 20px;
+  }
+
+  @media (min-width: $scale-S) {
+    &__photos-wrapper--proportions_2-1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &__photos-wrapper--proportions_1-1 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__photos-wrapper--proportions_1-2 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    &__button-view-all {
+      width: 154px;
+      margin: 0 auto;
+    }
+  }
+
+  @each $size, $image-height in $image-height-list {
+    @media (min-width: #{$size}) {
+      &__photos-wrapper {
+        grid-template-rows: $image-height;
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  &__photos-label {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__location {
+    font-weight: bold;
+    color: $blue-color;
+  }
+
+  @each $size, $margin in $photos-label-margin {
+    @media (min-width: #{$size}) {
+      &__photos-label {
+        margin-top: $margin;
+      }
+    }
+  }
+}
