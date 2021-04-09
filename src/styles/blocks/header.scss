@@ -1,0 +1,139 @@
+.header {
+  height: 100vh;
+  padding: 25px 0 80px;
+
+  @include backgroundImage("../images/header_2.png");
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__icon-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "menuToggle logo phone";
+  }
+
+  &__nav-toggle {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 12px;
+
+    grid-area: menuToggle;
+    justify-self: start;
+    align-self: center;
+
+    @include backgroundImage("../images/toggle_on.svg");
+    transition: background 50ms linear;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("../images/toggle_hover.svg");
+    }
+
+    @media (min-width: $breakPointTablet) {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+
+    grid-area: logo;
+    justify-self: center;
+  }
+
+  &__tel-wrapper {
+    position: relative;
+
+    grid-area: phone;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__tel-value {
+    overflow: hidden;
+
+    cursor: default;
+
+    &:before {
+      content: "+1 234 55-55-55";
+      position: relative;
+      right: -100%;
+
+      padding-right: 20px;
+
+      color: white;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
+    }
+  }
+
+  &__tel {
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: $breakPointTablet) {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover ~ &-value:before {
+      @media (min-width: $breakPointTablet) {
+        right: 0;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    color: white;
+
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 40px;
+
+    &:before {
+      content: "";
+
+      position: relative;
+      left: 0;
+      top: -24px;
+
+      display: block;
+      width: 40px;
+      height: 2px;
+      color: white;
+
+      background-color: white;
+    }
+
+    @media (min-width: 1000px) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+}
