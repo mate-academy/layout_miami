@@ -48,7 +48,7 @@
   }
 
   &__call-label {
-    display: block;
+    // display: block;
     position: relative;
     padding: 10px;
     background: url(../images/phone-logo.svg) no-repeat center center;
@@ -57,11 +57,13 @@
     cursor: pointer;
   }
 
-  // &__toggler--call:checked + &__call-label::before {
-  //   position: absolute;
+  // &__number {
+  //   visibility: hidden;
   //   width: 138px;
   //   right: 20px;
-  //   content: "+1 234 555-55-55";
+  //   position: absolute;
+  //   top: 0;
+  //   right: 20px;
   //   color: #fff;
   //   align-items: center;
   //   letter-spacing: 2px;
@@ -70,14 +72,39 @@
   //   font-weight: bold;
   //   font-size: 12px;
   //   line-height: 20px;
-
-  //   @media (max-width: 600px) {
-  //     & {
-  //       right: -35px;
-  //       font-size: 6px;
-  //     }
-  //   }
   // }
+
+  &__toggler--call:checked + &__call-label::before {
+    // visibility: visible;
+    position: absolute;
+    top: 0;
+    width: 138px;
+    right: 20px;
+    content: "+1 234 555-55-55";
+    color: #fff;
+    align-items: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+
+    @media (max-width: 450px) {
+      & {
+        width: 80px;
+        right: 20px;
+        font-size: 6px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      & {
+        top: -20px;
+        right: 0;
+      }
+    }
+  }
 
   &__toggler--menu {
     position: absolute;
