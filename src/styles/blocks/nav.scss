@@ -1,0 +1,62 @@
+.nav {
+  &__list {
+    width: 100%;
+    display: grid;
+    row-gap: 32px;
+    margin-bottom: 48px;
+
+    @include onTablet {
+      grid-template-columns: repeat(3, auto);
+      justify-content: stretch;
+      align-items: center;
+      justify-items: center;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(6, auto);
+    }
+  }
+
+  &__item {
+    transition: background-color $duration, border-radius $duration;
+
+    @include onTablet {
+      &--active {
+        border-radius: 8px;
+        background-color: rgba($whiteColor, 0.1);
+      }
+    }
+  }
+
+  &__link {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $whiteColor;
+    transition: text-shadow $duration;
+    font-size: 22px;
+    line-height: 22px;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 16px;
+      display: block;
+      padding: 8px 24px;
+      border-radius: 8px;
+      transition: background-color $duration;
+    }
+  }
+}
+
+.nav__item:hover {
+  cursor: pointer;
+  .nav__link {
+    text-shadow: 2px 1px 2px $blackColor;
+  }
+
+  @include onTablet {
+    .nav__link[href] {
+      background-color: rgba($blueColor, 0.6);
+    }
+  }
+}

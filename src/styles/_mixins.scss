@@ -1,0 +1,158 @@
+@mixin onMobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -1.5px;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url("../images/crown-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 23px;
+    height: 16px;
+    bottom: -16px;
+  }
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin mainText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  color: $textColor;
+}
+
+@mixin blueText {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: $blueColor;
+}
+
+@mixin input {
+  font-family: inherit;
+  background: $lightBlue;
+  height: 48px;
+  border-radius: 8px;
+  padding: 17px;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 16px;
+  transition: box-shadow $duration;
+
+  &:nth-of-type(3) {
+    margin-bottom: 32px;
+  }
+
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0;
+    color: $lightGrey;
+  }
+
+  &--textarea {
+    min-height: 144px;
+    resize: none;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  }
+}
+
+@mixin blueBtn {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0;
+  text-align: center;
+  color: $whiteColor;
+  height: 56px;
+  border-radius: 8px;
+  padding: 19px;
+  background-color: $blueColor;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  transition: color $duration, background-color $duration;
+
+  &:hover {
+    color: $blueColor;
+    background-color: $whiteColor;
+  }
+}
+
+@mixin greyText {
+  color: $greyColor;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0;
+}
+
+@mixin whiteLink {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: $whiteColor;
+  transition: text-shadow $duration, border-color $duration;
+
+  &:hover {
+    text-shadow: 2px 2px 1px $blackColor;
+    border-color: $blackColor;
+  }
+}
+
+@mixin bottomBorder {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $whiteColor;
+}
+
+@mixin titleMargin {
+  margin-bottom: 64px;
+
+  @include onTablet {
+    margin-bottom: 100px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 152px;
+  }
+}

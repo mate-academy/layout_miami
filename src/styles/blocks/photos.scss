@@ -1,0 +1,61 @@
+.photos {
+  &__wrapper {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    margin-bottom: 16px;
+    justify-items: stretch;
+
+    &:first-of-type {
+      @include onDesktop {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    &:last-of-type {
+      @include onDesktop {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    @include onTablet {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: box-shadow $duration, border-color $duration;
+    height: 131px;
+
+    &:hover {
+      border-color: $blueColor;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.6);
+    }
+
+    @include onTablet {
+      height: auto;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0;
+    margin-bottom: 32px;
+  }
+
+  &__place {
+    font-weight: 700;
+    color: $blueColor;
+  }
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}
