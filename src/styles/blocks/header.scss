@@ -1,0 +1,206 @@
+.header {
+  &__background {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    margin: auto;
+    filter: saturate(120%);
+    background-image: url("../images/header.jpg");
+    background-size: cover;
+    background-position: top;
+
+    &-image-red-filter {
+      background-color: rgba($color: #ff0080, $alpha: 0.1);
+      height: 100vh;
+    }
+  }
+
+  &__nav {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 152px;
+    position: absolute;
+    left: -100%;
+    z-index: 2;
+    overflow-y: auto;
+    background: #0075ff;
+    transition: left 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+    &.animate {
+      left: 0;
+    }
+  }
+
+  &__container {
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+
+    @media (min-width: 280px) {
+      width: calc(100% - 40px);
+    }
+
+    @media (min-width: 768px) {
+      width: calc(100% - 240px);
+    }
+
+    @media (min-width: 1024px) {
+      width: calc(100% - 240px);
+    }
+  }
+
+  &__top {
+    width: 100%;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__burger {
+    width: 32px;
+    padding: 16px 0;
+    position: relative;
+    z-index: 2;
+
+    &-icon {
+      display: flex;
+      width: 100%;
+      height: 3px;
+
+      background-color: #fff;
+      border-radius: 2px;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 100%;
+        height: 3px;
+
+        background-color: #fff;
+        border-radius: 2px;
+
+        position: absolute;
+        left: 0;
+        z-index: 1;
+      }
+
+      &:before {
+        top: 8px;
+      }
+
+      &:after {
+        top: -8px;
+      }
+    }
+
+    & &-icon.active {
+      background: rgba(255, 255, 255, 0);
+
+      &:before {
+        content: "";
+        top: 0;
+        transform: rotate(45deg) translateX(-5px);
+        transition: top 300ms,
+          transform 300ms 300ms
+          cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+
+      &:after {
+        content: "";
+        bottom: 0;
+        transform: rotate(-45deg) translateX(-5px);
+        transition: bottom 300ms,
+          transform 300ms 300ms
+          cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media (min-width: 280px) {
+      width: 82px;
+      height: 48px;
+    }
+
+    @media (min-width: 768px) {
+      width: 136px;
+      height: 80px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 136px;
+      height: 80px;
+    }
+  }
+
+  &__phone {
+    width: 32px;
+    height: 32px;
+    padding: 16px;
+    position: relative;
+
+    background-image: url("../images/photos/Icon-Phone-call.png");
+    background-size: cover;
+
+    &-number {
+      width: 176px;
+      height: 32px;
+      display: none;
+      position: absolute;
+      top: 9px;
+      right: 16px;
+      text-transform: uppercase;
+    }
+
+    &:hover &-number {
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    padding-bottom: 80px;
+
+    @media (min-width: 280px) {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
