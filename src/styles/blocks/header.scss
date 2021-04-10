@@ -1,0 +1,211 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: $header-height;
+  background-image: url(../images/header.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    height: 128px;
+    align-items: center;
+    padding: 0 124px;
+  }
+
+  &__cancel {
+    position: absolute;
+    top: 54px;
+    left: 125px;
+    width: 22px;
+    height: 22px;
+    background-image: url(../images/cancel.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__nav-list {
+    position: absolute;
+    visibility: hidden;
+    height: 700px;
+    width: 100%;
+    background-color: $blue-color;
+    z-index: 1;
+  }
+
+  &__list {
+    padding: 0;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $white-color;
+    list-style: none;
+    margin: 152px 0 0 120px;
+  }
+
+  &__item {
+    position: relative;
+    width: max-content;
+
+    &:hover {
+      cursor: pointer;
+
+      &::after {
+        @extend %underline;
+        width: 100%;
+      }
+    }
+
+    &:nth-child(-n + 5) {
+      margin-bottom: 32px;
+    }
+
+    &:nth-child(6) {
+      margin-bottom: 48px;
+    }
+
+    &:nth-child(7) {
+      margin-bottom: 16px;
+    }
+
+    &:last-child {
+      position: relative;
+      padding-bottom: 8px;
+
+      &::after {
+        @extend %underline;
+        width: 111px;
+      }
+    }
+
+    &--size_small {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  &__nav {
+    width: 24px;
+    height: 16px;
+    background-image: url(../images/burger.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition-duration: 1s;
+
+    &:hover {
+      cursor: pointer;
+      background-image: url(../images/burger2.png);
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+    width: 132px;
+    height: 76px;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/phone.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      align-items: center;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        right: 44px;
+        content: "+1 234 555-55-55";
+        width: max-content;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $white-color;
+        animation: visible 0.3s;
+      }
+    }
+
+    &:not(:hover) {
+      align-items: center;
+
+      &::before {
+        opacity: 0;
+        position: absolute;
+        right: 44px;
+        content: "+1 234 555-55-55";
+        width: max-content;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $white-color;
+        animation: notVisible 0.3s;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    color: $white-color;
+    margin: 0 0 80px 120px;
+    padding-top: 24px;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background: $white-color;
+      border-radius: 2px;
+    }
+  }
+}
+
+@keyframes visible {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes notVisible {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
