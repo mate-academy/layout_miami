@@ -1,4 +1,99 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%bg-property {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+%section-title {
+  position: relative;
+
+  margin-bottom: 53px;
+
+  text-align: center;
+  @include font(36px, bold, 36px);
+  letter-spacing: -1.5px;
+
+  @include desktop-screen {
+    margin-bottom: 93px;
+
+    @include font(48px, bold, 48px);
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: calc(100% + 5px);
+    left: calc(50% - 23px / 2);
+
+    height: 16px;
+    width: 23px;
+
+    background-image: url(../images/crown.svg);
+    @extend %bg-property;
+  }
+}
+
+%button-style {
+  display: block;
+  height: 56px;
+
+  @include font(16px, bold, 14px);
+  border: 2px solid $main-color;
+  border-radius: 8px;
+
+  cursor: pointer;
+  outline: none;
+
+  transition: all 0.4s;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: #005ecc;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    border: none;
+
+    transform: scaleX(0.94);
+  }
+
+  &:active {
+    position: relative;
+
+    background: #005ecc;
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+
+    transform: scaleX(1.05);
+  }
+}
+
+%form-style {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  padding-left: 17px;
+
+  font-family: Roboto, sans-serif;
+  @include font(14px, normal, 14px);
+
+  background: #f7f8ff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+
+  outline: none;
+
+  transition: all 0.4s;
+
+  &::placeholder {
+    color: #8f99a8;
+  }
+
+  &:hover {
+    border: 2px solid #ccd0e0;
+  }
+
+  &:focus,
+  &:active {
+    border: 2px solid $main-color;
+  }
 }

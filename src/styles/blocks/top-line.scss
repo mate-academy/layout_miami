@@ -1,0 +1,109 @@
+@import "nav";
+
+.top-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3px;
+
+  @include desktop-screen {
+    padding: 0 4px;
+  }
+
+  &__nav-toggler {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__nav-toggler-label {
+    z-index: 2;
+    height: 12px;
+    width: 18px;
+
+    background-image: url(../images/menu.svg);
+    @extend %bg-property;
+
+    transition: background-image 0.4s, transform 0.8s;
+
+    cursor: pointer;
+
+    @include desktop-screen {
+      height: 16px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__logo {
+    z-index: 1;
+
+    height: 45px;
+    width: 78px;
+
+    @include desktop-screen {
+      height: 76px;
+      width: 130px;
+    }
+  }
+
+  &__tel {
+    position: relative;
+
+    height: 18px;
+    width: 18px;
+
+    background-image: url(../images/phone.svg);
+    @extend %bg-property;
+
+    @include desktop-screen {
+      height: 24px;
+      width: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        top: 4px;
+        right: calc(100% + 20px);
+
+        width: max-content;
+
+        @include font(12px, bold, 16px);
+        letter-spacing: 2px;
+        color: #fff;
+        opacity: 0;
+
+        transition: opacity 0.4s;
+      }
+
+      &:hover::before,
+      &:focus::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__nav-toggler:checked + .top-line__nav-toggler-label {
+    background-image: url(../images/exit.svg);
+    transform: rotateY(360deg);
+  }
+
+  &__nav-toggler:checked ~ .nav {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__nav-toggler:checked ~ .top-line__tel {
+    visibility: hidden;
+  }
+}
