@@ -1,0 +1,82 @@
+.nav {
+  height: 100vh;
+  width: 100vw;
+  padding: 120px 20px 0;
+
+  background-color: $main-color;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: visibility 0.4s, opacity 0.4s;
+
+  @include desktop-screen {
+    padding: 152px 120px 0;
+  }
+
+  @media (max-height: 520px) {
+    height: 200vh;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    position: relative;
+
+    @include font(22px, bold, 22px);
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: #fff;
+
+      opacity: 0;
+
+      transition: opacity 0.4s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__item:last-child {
+    margin-top: 80px;
+
+    & .nav__link {
+      @include font(12px, bold, 16px);
+
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        top: -32px;
+        left: 0;
+
+        width: max-content;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
