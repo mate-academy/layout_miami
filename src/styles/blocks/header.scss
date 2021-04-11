@@ -1,0 +1,245 @@
+/* #region header */
+.header {
+  position: relative;//Для позиционирования заголовка
+  display: flex;
+  height: $heightHeader;
+
+  background-image: url("../images/header.png");
+  @extend %imageCenterPosition;
+  background-size: cover;
+
+  &__elements {
+    position: relative;//Для возможности позиционирования логотипа
+
+    display: flex;
+    height: $heightlogo;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25.5px 120px 0;
+  }
+
+  //отступы в мобильном режиме для блока с элементами header
+  @media (max-width: $sizeMobile + 200) {
+    &__elements {
+      margin: 25.5px 20px 0;
+      //горизонтальные отступы 20, а не 24, так как дальше сделал padding:4px;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;//выравнивание по центру
+    transform: translateX(-50%);//выравнивание по центру
+
+    height: $heightlogo;
+    width: 130px;
+    z-index: 2;//Чтобы зафиксировать поверх всплывающего меню
+  }
+
+  @media (max-width: $sizeMobile) {
+    &__logo {
+      height: 45px;
+      width: 77px;
+    }
+  }
+
+  &__toggler-lable {//Кнопка открытия меню
+    padding: 4px;//Увеличение кликабельной зоны
+    height: 20px;
+    width: 28px;
+
+    background-image: url("../images/icon-menu.svg");
+    @extend %imageCenterPosition;
+    z-index: 2;//Для фиксации поверх всплывающего меню
+    cursor: pointer;
+    transition: 150ms;
+  }
+
+  //Изменение размеров иконки меню в mobile-режиме
+  @media (max-width: $sizeMobile) {
+    &__toggler-lable {
+      height: 16px;
+      width: 22px;
+    }
+  }
+
+  //При наведении на иконку меню:
+  &__toggler-lable:hover {
+    background-image: url("../images/icon-menu-hover.svg");
+  }
+
+  //При нажатой кнопке иконка меню:
+  &__toggler:checked + &__elements &__toggler-lable {
+    background-image: url("../images/Icon-Close.svg");
+  }
+
+  &__wrapper-phone-icon {
+    display: flex;
+    align-items: center;
+    padding: 4px;//Увеличение кликабельной зоны
+    cursor: pointer;
+  }
+
+  &__href-phone-number {
+    margin-right: 20px;//Отступ номера от icon-phone
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+
+    list-style: none;
+    opacity: 0;//Задал через прозрачность, чтобы сделать плавное появление
+
+    transition: 1.5s;
+    pointer-events: none;//Почему-то курсор остаётся..
+  }
+
+  //Отображение номера телефона при наведении
+  &__wrapper-phone-icon:hover &__href-phone-number {
+    opacity: 1;
+    transition: 500ms;
+  }
+
+  &__phone-icon {
+    height: 24px;
+    width: 24px;
+  }
+
+  @media (max-width: $sizeMobile) {
+    &__phone-icon {
+      height: 18px;
+      width: 18px;
+    }
+
+    &__href-phone-number {
+      display: none;//согласно дизайну, скрываем номер в mobile-режиме
+    }
+  }
+
+  &__wrapper-h1 {
+    position: absolute;
+    left: 120px;
+    bottom: 80px;
+
+    display: flex;
+    height: 185px;//Высота блока с текстом, включая декративную полоску
+    padding-top: 24px;
+  }
+
+  //Уменьшение шрифта и позиционирования заголовка при mobile-режиме
+  @media (max-width: $sizeMobile + 200) {
+    &__wrapper-h1 {
+      left: 20px;
+      height: 105px;//Высота блока с текстом, включая декративную полоску
+      letter-spacing: -1px;
+    }
+
+    &__h1 {
+      font-size: 46px;
+      line-height: 40px;
+    }
+  }
+
+  &__h1::before {//Декоративная полоска над Miami
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    height: 2px;
+    width: 40px;
+
+    content: "";
+    background-color: #fff;
+  }
+
+  &__nav {
+    position: absolute;
+    left: -100%;//Скрываем за пределы экрана, для плавного появления
+    right: 0;
+    top: 0;
+
+    height: $heightHeader;
+    visibility: hidden;
+
+    transition: 500ms;
+  }
+
+  &__toggler { //скрытый input
+    display: none;
+  }
+
+  //Когда нажата кнопка меню задать видимость и цвет блоку nav
+  &__toggler:checked ~ &__nav {
+    left: 0;
+    visibility: visible;
+    background-color: $blue;
+  }
+}
+/* #endregion */
+
+/* #region nav */
+.nav {
+  display: flex;
+  justify-content: start;
+
+  &__list {
+    padding: 0;
+    margin: 152px 120px 0;
+  }
+
+  @media (max-width: $sizeMobile) {
+    &__list {
+      margin-left: 20px;
+      //Уменьшение отступа для основных ссылок в mobile-режиме.
+    }
+  }
+
+  &__item {
+    list-style: none;
+    margin-bottom: 32px;//Отступ для секции с ссылками
+  }
+
+  &__item-call {
+    list-style: none;
+    margin-bottom: 16px;//Отступ для секции с телефоном
+  }
+
+  //Постоянное подчеркивание последней ссылки, согласно дизайну
+  &__link-call--border-bottom {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #fff;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    @extend %linkTextDecoration;
+
+    /* Отступ для нижнего подчеркивания ссылки */
+    padding-bottom: 8px;
+    border-bottom: 1px solid $blue;//Сразу задаю цвет, для плавного появления.
+
+    transition: 500ms;
+  }
+
+  &__link:hover {
+    border-color: #fff;
+  }
+
+  &__section-call {
+    padding-top: 16px;// Дополнительный отступ для секции с телефоном
+  }
+
+  &__link-call {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    @extend %linkTextDecoration;
+  }
+}
+/* #endregion */
