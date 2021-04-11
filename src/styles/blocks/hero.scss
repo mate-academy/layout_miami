@@ -1,0 +1,110 @@
+.hero {
+  position: relative;
+  background: url(../images/header.jpg) no-repeat 50%;
+  height: 100vh;
+  padding: 25px 0 80px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    width: calc(100% - 40px);
+  }
+
+  &__navigation {
+    width: 0;
+    height: 0;
+  }
+
+  &__label-icon {
+    display: none;
+  }
+  
+  &__logo {
+    position: relative;
+    background: url(../images/logo.png) no-repeat center;
+    @include logo-size-mobile;
+    z-index: 1;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3px;
+    height: 77px;
+  }
+
+  &__heading {
+    position: relative;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 40px;
+    color: #fff;
+
+    &::before {
+      position: absolute;
+      top: -24px;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+  }
+}
+
+.hero__label-icon + .hero__label::before {
+  content: url(../images/burger.png);
+  width: 16px;
+}
+
+.hero__label:hover::before {
+  content: url(../images/burger-hover.png);
+}
+
+.hero__label-icon:checked + .hero__label::before {
+  content: url(../images/Vector.svg);
+  position: absolute;
+  width: 24px;
+  z-index: 2;
+}
+
+.hero__label-icon:checked ~ .nav {
+  visibility: visible;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  padding: 120px 20px;
+  z-index: 1;
+  background-color: $main-color;
+  transition-duration: 0.3s;
+}
+
+@media (min-width: 980px) {
+  .hero {
+    &__logo {
+      @include logo-size-screen;
+    }
+
+    &__header {
+      padding: 0;
+    }
+
+    &__heading {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  .hero__label-icon:checked ~ .nav .nav__item {
+    margin-left: 120px;
+  }
+}
