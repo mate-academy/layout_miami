@@ -1,9 +1,10 @@
 .main {
   padding: 65px 20px;
-  transition: padding 0.3s;
-  transition-timing-function: linear;
 
-  @each $size, $padding-top, $padding-bottom in $list-main-paddings {
+  transition-property: padding;
+  @include transition-linear(0.3s);
+
+  @each $size, $padding-top, $padding-bottom in $main-paddings {
     @media (min-width: #{$size}) {
       & {
         padding-top: $padding-top;
@@ -18,11 +19,12 @@
 
   &__section {
     margin-bottom: 65px;
-    transition: margin 0.3s;
-    transition-timing-function: linear;
+
+    transition-property: margin;
+    @include transition-linear(0.3s);
   }
 
-  @each $size, $margin-bottom in $list-section-margin {
+  @each $size, $margin-bottom in $section-margins {
     @media (min-width: #{$size}) {
       &__section {
         margin-bottom: $margin-bottom;
@@ -31,6 +33,6 @@
   }
 
   &__section:last-child {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }

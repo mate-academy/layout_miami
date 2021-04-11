@@ -4,7 +4,7 @@
     margin-bottom: 32px;
   }
 
-  @each $size, $margin in $gallery-photos-margin {
+  @each $size, $margin in $photo-gallery-margin {
     @media (min-width: #{$size}) {
       &__photos {
         margin-bottom: $margin;
@@ -21,15 +21,15 @@
   }
 
   @media (min-width: $scale-S) {
-    &__photos-wrapper--proportions_2-1 {
+    &__photos-wrapper--proportions_2-by-1 {
       grid-template-columns: 2fr 1fr;
     }
 
-    &__photos-wrapper--proportions_1-1 {
+    &__photos-wrapper--proportions_1-by-1 {
       grid-template-columns: 1fr 1fr;
     }
 
-    &__photos-wrapper--proportions_1-2 {
+    &__photos-wrapper--proportions_1-by-2 {
       grid-template-columns: 1fr 2fr;
     }
 
@@ -39,7 +39,7 @@
     }
   }
 
-  @each $size, $image-height in $image-height-list {
+  @each $size, $image-height in $image-height {
     @media (min-width: #{$size}) {
       &__photos-wrapper {
         grid-template-rows: $image-height;
@@ -53,13 +53,14 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+
     border-radius: 8px;
   }
 
   &__photos-label {
     margin-top: 16px;
-    font-size: 16px;
-    line-height: 27px;
+
+    @include font(16px, 27px, normal);
   }
 
   &__location {

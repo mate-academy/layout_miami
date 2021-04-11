@@ -2,10 +2,9 @@
   position: relative;
   height: 100vh;
   padding: 0 20px;
+
   background-image: url(../images/header.png);
   @extend %background-cover;
-  transition: padding 0.3s;
-  transition-timing-function: linear;
 
   &__burger-checkbox {
     display: none;
@@ -22,7 +21,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style: none;
     padding: 25px 5px;
     margin: 0 -5px;
   }
@@ -38,8 +36,10 @@
     display: block;
     width: $icon-size;
     height: $burger-icon-height;
+
     background-image: url(../images/Icon-Burger-menu.svg);
     @extend %background-cover;
+
     cursor: pointer;
     @extend %size-transiton;
   }
@@ -50,8 +50,8 @@
   
   &__burger-checkbox:checked + &__content-wrapper &__burger-label-icon {
     @include square($icon-size);
+
     background-image: url(../images/Icon-Burger-Close.svg);
-    background-size: contain;
   }
   
   &__link-logo {
@@ -63,6 +63,7 @@
   &__logo {
     width: $logo-width;
     height: $logo-height;
+
     @extend %size-transiton;
   }
   
@@ -70,8 +71,10 @@
     position: relative;
     display: flex;
     @include square($icon-size);
+
     background-image: url(../images/Icon-Phone-call.svg);
     @extend %background-cover;
+
     cursor: pointer;
     @extend %size-transiton;
   }
@@ -79,30 +82,30 @@
   &__phone-icon::before {
     content: "+1 234 555-55-55";
     position: absolute;
-    white-space: nowrap;
     right: $icon-size + 20px;
     display: block;
     transform: translateY(-400%);
-    font-size: 12px;
-    line-height: 16px;
+
+    white-space: nowrap;
+    @include font(12px, 16px, bold);
     letter-spacing: 2px;
-    font-weight: bold;
     color: #fff;
-    text-decoration: none;
+
     opacity: 0;
-    transition: transform 0.8s, opacity 0.8s;
-    transition-timing-function: linear;
+    transition-property: transform, opacity;
+    @include transition-linear(0.8s);
   }
   
   @media (min-width: $scale-S) {
     &__phone-icon:hover::before {
       transform: translateY(0%);
-      transition: transform 0.4s linear, opacity 0.6s linear;
+
       opacity: 1;
+      transition: transform 0.4s linear, opacity 0.6s linear;
     }
   }
   
-  @each $size, $multiplier in $size-list {
+  @each $size, $multiplier in $icons-scale {
     @media (min-width: #{$size}) {
       &__burger-label-icon {
         width: $icon-size * pow($scale-factor, $multiplier);
@@ -128,7 +131,7 @@
     }
   }
   
-  @each $size, $shift in $shift-list {
+  @each $size, $shift in $phone-shift {
     @media (min-width: #{$size}) {
       &__phone-icon:hover::before {
         transform: translateY(#{$shift});
@@ -151,12 +154,13 @@
 
   &__title {
     position: relative;
-    font-size: 46px;
-    line-height: 40px;
+
+    @include font(46px, 40px, bold);
     letter-spacing: -1px;
     color: #fff;
-    transition: font 0.3s, letter-spacing 0.3s;
-    transition-timing-function: linear;
+
+    transition-property: font, letter-spacing;
+    @include transition-linear(0.3s);
   }
 
   &__title:before {
@@ -165,7 +169,9 @@
     top: -24px;
     height: 2px;
     width: 40px;
+
     background-color: #fff;
+    
     border-radius: 1px;
   }
 
