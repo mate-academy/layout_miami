@@ -1,0 +1,150 @@
+.navigation {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.47) 0%,
+    rgba(255,255,255,0) 95%);
+  cursor: pointer;
+  z-index: 1;
+
+  &__bar {
+    transition: all 0.5s ease-in;
+  }
+
+  &__toggler {
+    display: none;
+  }
+  
+  &__toggler-label {
+    &:hover {
+      content: url(/images/icons/Icon-Burger-menu-hover.svg);
+      cursor: pointer;
+
+      @media (max-width: 810px) {
+        content: url(/images/icons/Icon-Burger-menu-hover--s.svg);
+      }
+    }
+
+    &::before {
+      content: url(/images/icons/Icon-Burger-menu.svg);
+
+      @media (max-width: 810px) {
+        content: url(/images/icons/Icon-Burger-menu--s.svg);
+      }
+    }
+  }
+
+  &__toggler:checked + &__toggler-label::before {
+    content: url(/images/icons/Icon-Close.svg);
+
+    @media (max-width: 810px) {
+      content: url(/images/icons/Icon-Close--s.svg);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+  }
+  
+  &__item {
+    padding: 15px 0;
+    list-style: none;
+    letter-spacing: 2px;
+  }
+
+  &__link {
+    font-size: 22px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.6s ease-in;
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &__item:last-child &__link {
+    display: inline-block;
+    font-size: 12px;
+    padding-top: 18px;
+    border-bottom: 1px solid #fff;
+    line-height: 30px;
+  }
+
+  &__toggler:checked ~ &__list {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    padding-top: 150px;
+    padding-left: 120px;
+    z-index: -1;
+    background-color: $main-color;
+    transition: background-color 0.5s ease-in;
+  }
+
+  @media (max-width: 810px) {
+    &__toggler:checked ~ &__list {
+      padding-top: 120px;
+      padding-left: 20px;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    display: grid;
+    justify-self: center;
+    width: 136px;
+
+    @media (max-width: 810px) {
+      width: 78px;
+    }
+  }
+
+  &__tel {
+    position: relative;
+    justify-self: end;
+    cursor: pointer;
+    z-index: -2;
+
+    @media (max-width: 810px) {
+      content: url(/images/icons/Icon-Phone-call--s.svg);
+    }
+
+    &::before {
+      content: "+1 234 55-55-55";
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: max-content;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    &:hover::before {
+      right: 50px;
+      opacity: 100%;
+    }
+  }
+}
