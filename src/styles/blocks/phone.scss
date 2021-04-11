@@ -1,0 +1,29 @@
+.phone {
+  display: flex;
+  position: relative;
+  align-items: baseline;
+
+  &::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    width: max-content;
+    right: calc(32px + 16px);
+
+    @include font(bold, 12px, inherit, $main-color);
+    letter-spacing: 2px;
+    opacity: 0;
+    visibility: hidden;
+    
+    transition: $hover-durations;
+
+    @media (max-width: $small-screen-breakpoint) {
+      display: none;
+    }
+  }
+
+  &:hover::before {
+    visibility: visible;
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}
