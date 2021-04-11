@@ -1,0 +1,88 @@
+.gallery {
+  @extend %conteiner;
+ 
+  &__title {
+    @extend %title;
+  }
+  
+  &__grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 131px;
+    gap: 20px;
+    margin-bottom: 18px;
+  
+    @media (min-width: 780px) {
+      grid-template-rows: 256px;
+      margin-bottom: 24px;
+      
+      $ratios: 
+        "2to1" "2fr 1fr",
+        "1to1" "1fr 1fr",
+        "1to2" "1fr 2fr";
+
+      @each $name, $value in $ratios {
+        &--#{$name} {
+          grid-template-columns: #{$value};
+        }
+      }
+    }
+  }
+
+  &__img-description {
+    @include font(16, 27, bold);
+
+    margin-bottom: 32px;
+
+    @media (min-width: 780px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__img-description-name {
+    color: $c-blue;
+  }
+  
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $b-radius;
+  }
+  
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 56px;
+    
+    background-color: $c-gray;
+    border: 2px solid $c-blue;
+    border-radius: $b-radius;
+
+    @include font(16, 14, bold);
+    color: $c-blue;
+
+    transition: background-color $animation-duration,
+      box-shadow $animation-duration,
+      color $animation-duration;
+
+    &:hover {
+      background-color: $c-botton;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      color: $c-white;
+    }
+    
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+
+    @media (min-width: 780px) {
+      width: 154px;
+    }
+  }
+}

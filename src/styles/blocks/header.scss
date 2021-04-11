@@ -1,0 +1,118 @@
+.header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  padding: 24px 0 80px;
+
+  background-image: url("../../src/images/header.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__top {
+    @extend %conteiner;
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-icon {
+    height: $icon-size;
+    width: $icon-size;
+
+    background-image: url("../../src/images/Icon-Burger-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    transition: background-image $animation-duration linear;
+
+    &:hover {
+      background-image: url("../../src/images/Icon-Burger-menu-hover.svg");
+    }
+  }
+
+  &__main-logo {
+    height: 46px;
+    width: 80px;
+
+    background-image: url("../../src/images/Logo_Miami.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media (min-width: 620px) {
+      height: 80px;
+      width: 136px;
+    }
+  }
+  
+  &__call-icon {
+    height: $icon-size;
+    width: $icon-size;
+
+    background-image: url("../../src/images/Icon-Phone-call.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &::before {
+      opacity: 0;
+      content: "+1 234 555-55-55";
+
+      position: absolute;
+      top: 64px;
+      right: 20px;
+
+      @include font (12, 16, bold, 2);
+      text-transform: uppercase;
+      color: $c-white;
+
+      @media (min-width: 620px) {
+        top: 34px;
+        right: 64px;
+      }
+
+      transition: opacity $animation-duration;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 100;
+      }
+    }
+  }
+
+  &__bottom {
+    @extend %conteiner;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 80px;
+    padding: 0;
+ 
+    @include font (46, 40, 700, -1);
+    color: $c-white;
+
+    @media (min-width: 620px) {
+      @include font (80, 80, 700, -1.5);
+    }
+
+    &::before {
+      content: "";
+  
+      position: absolute;
+      left: 0;
+      top: -24px;
+      display: block;
+      width: 40px;
+      height: 2px;
+      color: white;
+  
+      background-color: white;
+    }
+  }
+}
