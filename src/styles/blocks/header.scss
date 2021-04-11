@@ -1,0 +1,126 @@
+.header {
+  height: 100vh;
+  padding: 25px 0 80px;
+  @include background("../images/header-figma.png");
+
+  &__container {
+    @include wrapper;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__burger {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 16px;
+    justify-self: start;
+    @include background("../images/burger.svg");
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../images/burger_hover.svg);
+    }
+
+    @media (min-width: $breakPoint) {
+      width: 25px;
+      height: 21px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+    width: 78px;
+    height: 45px;
+    @include background("../images/miami_logo.svg");
+
+    @media (min-width: $breakPoint) {
+      width: 130px;
+      height: 75px;
+    }
+  }
+  
+  &__phone-wrapper {
+    position: relative;
+    justify-self: end;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 55-55-55";
+      position: relative;
+      bottom: 5px;
+      width: max-content;
+      padding-right: 15px;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+      opacity: 0;
+      transition: opacity 1s;
+      display: none;
+
+      @media (min-width: $breakPoint) {
+        display: inline-block;
+      }
+    }
+
+    &:hover::before {
+      @media (min-width: $breakPoint) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phone {
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: $breakPoint) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 40px;
+    color: white;
+
+    &:before {
+      content: "";
+      position: relative;
+      left: 0;
+      top: -24px;
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    @media (min-width: $breakPoint) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
