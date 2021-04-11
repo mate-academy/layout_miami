@@ -1,0 +1,122 @@
+.nav {
+  width: 100%;
+  height: 128px;
+  z-index: 2;
+  transition: 500ms;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    @extend %container;
+  }
+
+  &__hamburger {
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    padding: 4px 4px 8px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 2px;
+    background-color: $header-text-color;
+    border-radius: 2px;
+    margin-top: 4px;
+    margin-left: -4px;
+    transition: 400ms all;
+
+  }
+
+  &__nav__hamburger_active {
+
+    .nav__line:first-child {
+      transform: translateY(9px) rotate(45deg);
+      width: 100%;
+    }
+
+    .nav__line:nth-child(2) {
+      display: none;
+    }
+
+    .nav__line:last-child {
+      transform: translateY(3px) rotate(-45deg);
+      width: 100%;
+    }
+  }
+
+  &__full {
+    position: fixed;
+    left: -100%;
+    top: 128px;
+    width: 100%;
+    height: 110vh;
+    background-color: $second-color;
+    z-index: 1;
+    visibility: hidden;
+    transition: left 500ms;
+  }
+
+  &__list {
+    margin: 72px auto;
+    padding: 0;
+    max-width: 1020px;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 42px;
+    letter-spacing: 2px;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    margin-top: 32px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $header-text-color;
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: $header-text-color;
+    }
+  }
+
+  &__phone {
+    margin-top: 43px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 25px;
+    color: $header-text-color;
+  }
+
+  &__phone a {
+    display: inline-block;
+    text-decoration: none;
+    color: $header-text-color;
+    border-bottom: 1px solid $header-text-color;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  &_active {
+    background-color: $second-color;
+    position: fixed;
+  }
+
+  &_active &__full {
+    left: 0;
+    visibility: visible;
+  }
+
+  &_active .telephone {
+    visibility: hidden;
+  }
+}
