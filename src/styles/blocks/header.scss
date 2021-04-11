@@ -1,0 +1,143 @@
+.header {
+  height: 100vh;
+  padding: 25px 0 80px;
+
+  @include backgroundImage("../images/header-background1.png");
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1500px;
+    width: calc(100% - 2 * 20px);
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  &__icon-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "toggler logo phone";
+  }
+
+  &__nav-toggler {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 12px;
+
+    grid-area: toggler;
+    justify-self: start;
+    align-self: center;
+    @include backgroundImage("../images/toggler.png");
+    cursor: pointer;
+    transition-property: background-image 300ms;
+    // transition: 300ms;
+
+    &:hover {
+      // transition: 300ms;
+      background-image: url(../images/toggler-hover.png);
+    }
+
+    @media (min-width: $deviceChangerPhones) {
+      height: 16px;
+      width: 24px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+
+    grid-area: logo;
+    justify-self: center;
+  }
+
+  &__tel-wrapper {
+    position: relative;
+
+    grid-area: phone;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__tel-value {
+    overflow: hidden;
+
+    cursor: default;
+
+    &:before {
+      content: "+1 234 55-55-55";
+      position: relative;
+
+      right: -100%;
+      padding-right: 20px;
+
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
+      
+    }
+  }
+
+  &__tel {
+    width: 18px;
+    height: 18px;
+  
+    @media (min-width: $deviceChangerPhones) {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover ~ &-value:before {
+      @media (min-width: $deviceChangerPhones) {
+        right: 0;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 40px;
+  
+    &:before {
+      content: "";
+
+      position: relative;
+
+      top: -24px;
+      left: 0;
+
+      display: block;
+      height: 2px;
+      width: 40px;
+
+      color: #fff;
+      background-color: #fff;
+    }
+    @media (min-width: $deviceChangerPhones) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+}
