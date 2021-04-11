@@ -1,0 +1,84 @@
+.gallery {
+  @extend %mainAxisCentered;
+  flex-direction: column;
+
+  &__heading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 61px;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      content: url(../images/crown.svg);
+      width: 23px;
+      height: 16px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__image {
+    width: 50%;
+    height: 260px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+    @include hover (transform, scale(1.1));
+
+    &:hover {
+      border: 2px solid $secondaryColor;
+      cursor: pointer;
+    }
+
+    &--small {
+      width: 33%;
+    }
+
+    &--big {
+      width: 66% ;
+    }
+  }
+
+  &__place {
+    margin: 24px 0 40px;
+  }
+
+  &__link {
+    @include link($secondaryColor);
+    @include hover(color, $secondaryHoverColor);
+
+    &--view-all {
+      @extend %flexCentered;
+      margin: 0 auto;
+      width: 188px;
+      height: 56px;
+      border: 2px solid $secondaryColor;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: $secondaryColor;
+        color: $primaryColor;
+      }
+    }
+  }
+}
+
+@media (max-width: $smallScreenBreakPoint) {
+  .gallery {
+    &__heading {
+      margin-bottom: 53px;
+    }
+
+    &__image {
+      height: 30vw;
+      width: calc(50% - 10px);
+    }
+  }
+}
