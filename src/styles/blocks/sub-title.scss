@@ -1,0 +1,42 @@
+.sub-title {
+  position: relative;
+  margin-bottom: 53px;
+
+  text-align: center;
+  @include font(36px, 36px, bold);
+  letter-spacing: -1.5px;
+
+  transition-property: font, margin;
+  @include transition-linear(0.3s);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translate(-50%, 100%);
+    display: block;
+    width: 23px;
+    height: 16px;
+    
+    background-image: url(../images/Icon-King.svg);
+    @extend %background-cover;
+  }
+
+  @each $size, $font-size in $sub-title-size {
+    @media (min-width: #{$size}) {
+      & {
+        font-size: $font-size;
+        line-height: $font-size;
+      }
+    }
+  }
+
+  @each $size, $margin in $sub-title-margin {
+    @media (min-width: #{$size}) {
+      & {
+        margin-bottom: $margin;
+      }
+    }
+  }
+}

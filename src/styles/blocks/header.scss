@@ -1,0 +1,194 @@
+.header {
+  position: relative;
+  height: 100vh;
+  padding: 0 20px;
+
+  background-image: url(../images/header-low.png);
+  @extend %background-cover;
+
+  @media (min-width: 800px) {
+    & {
+      background-image: url(../images/header.png);
+    }
+  }
+
+  &__burger-checkbox {
+    display: none;
+  }
+
+  &__content-wrapper {
+    @include max-width-content(1020px);
+  }
+
+  /* #region header__menu-icons */
+  &__menu-icons {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5px;
+    margin: 0 -5px;
+  }
+
+  &__burger-checkbox:checked + &__content-wrapper &__menu-icons {
+    background-color: $blue-color;
+    transition-delay: 1s;
+  }
+
+  &__burger-label-icon {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: $icon-size;
+    height: $burger-icon-height;
+
+    background-image: url(../images/Icon-Burger-menu.svg);
+    @extend %background-cover;
+
+    cursor: pointer;
+    @extend %size-transiton;
+  }
+  
+  &__burger-label-icon:hover {
+    background-image: url(../images/Icon-Burger-Hover.svg);
+  }
+  
+  &__burger-checkbox:checked + &__content-wrapper &__burger-label-icon {
+    @include square($icon-size);
+
+    background-image: url(../images/Icon-Burger-Close.svg);
+  }
+  
+  &__link-logo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+  }
+  
+  &__logo {
+    width: $logo-width;
+    height: $logo-height;
+
+    @extend %size-transiton;
+  }
+  
+  &__phone-icon {
+    position: relative;
+    display: flex;
+    @include square($icon-size);
+
+    background-image: url(../images/Icon-Phone-call.svg);
+    @extend %background-cover;
+
+    cursor: pointer;
+    @extend %size-transiton;
+  }
+  
+  &__phone-icon::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    right: $icon-size + 20px;
+    display: block;
+    transform: translateY(-400%);
+
+    white-space: nowrap;
+    @include font(12px, 16px, bold);
+    letter-spacing: 2px;
+    color: #fff;
+
+    opacity: 0;
+    transition-property: transform, opacity;
+    @include transition-linear(0.8s);
+  }
+  
+  @media (min-width: $scale-S) {
+    &__phone-icon:hover::before {
+      transform: translateY(0%);
+
+      opacity: 1;
+      transition: transform 0.4s linear, opacity 0.6s linear;
+    }
+  }
+  
+  @each $size, $multiplier in $icons-scale {
+    @media (min-width: #{$size}) {
+      &__burger-label-icon {
+        width: $icon-size * pow($scale-factor, $multiplier);
+        height: $burger-icon-height * pow($scale-factor, $multiplier);
+      }
+    
+      &__burger-checkbox:checked + &__content-wrapper &__burger-label-icon {
+        @include square($icon-size * pow($scale-factor, $multiplier));
+      }
+    
+      &__logo {
+        width: $logo-width * pow($scale-factor, $multiplier);
+        height: $logo-height * pow($scale-factor, $multiplier);
+      }
+    
+      &__phone-icon {
+        @include square($icon-size * pow($scale-factor, $multiplier));
+      }
+  
+      &__phone-icon::before {
+        right: $icon-size * pow($scale-factor, $multiplier) + 20px;
+      }
+    }
+  }
+  
+  @each $size, $shift in $phone-shift {
+    @media (min-width: #{$size}) {
+      &__phone-icon:hover::before {
+        transform: translateY(#{$shift});
+      }
+    }
+  }
+  /* #endregion */
+
+  /* #region header__title */
+  &__title-wrapper {
+    position: absolute;
+    bottom: 40px;
+  }
+
+  @media (min-height: 500px) {
+    &__title-wrapper {
+      bottom: 80px;
+    }
+  }
+
+  &__title {
+    position: relative;
+
+    @include font(46px, 40px, bold);
+    letter-spacing: -1px;
+    color: #fff;
+
+    transition-property: font, letter-spacing;
+    @include transition-linear(0.3s);
+  }
+
+  &__title:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    height: 2px;
+    width: 40px;
+
+    background-color: #fff;
+    
+    border-radius: 1px;
+  }
+
+  @each $size, $font-size, $letter-spacing in $title-size {
+    @media (min-width: #{$size}) {
+      &__title {
+        font-size: $font-size;
+        line-height: $font-size;
+        letter-spacing: $letter-spacing;
+      }
+    }
+  }
+  /* #endregion */
+}

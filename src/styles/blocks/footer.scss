@@ -1,0 +1,41 @@
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 200px;
+
+  background-image: url(../images/footer-low.png);
+  @extend %background-cover;
+
+  transition-property: min-height;
+  @include transition-linear(0.3s);
+
+  @media (min-width: 800px) {
+    & {
+      background-image: url(../images/footer.png);
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    bottom: 25px;
+    width: 25%;
+    max-width: 115px;
+  }
+
+  @each $size, $min-height in $footer-size {
+    @media (min-width: #{$size}) {
+      & {
+        min-height: $min-height;
+      }
+    }
+  }
+
+  @each $size, $bottom in $footer-logo-position {
+    @media (min-width: #{$size}) {
+      &__logo {
+        bottom: $bottom;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.section-about-us {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 48px;
+
+    @include font(36px, 36px, bold);
+
+    transition-property: font;
+    @include transition-linear(0.3s);
+  }
+
+  @each $size, $font-size in $sub-title-size {
+    @media (min-width: #{$size}) {
+      &__title {
+        font-size: $font-size;
+        line-height: $font-size;
+      }
+    }
+  }
+
+  &__article {
+    max-width: 700px;
+  }
+
+  &__article-title {
+    margin-bottom: 16px;
+
+    @include font(24px, 30px, bold);
+    color: $blue-color;
+  }
+
+  &__paragraph {
+    margin-bottom: 20px;
+
+    @include font(16px, 27px, normal);
+    color: #3e3e3e;
+  }
+
+  &__paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  &__paragraph--bold {
+    font-weight: bold;
+  }
+
+  @media (min-width: 950px) {
+    & {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__article {
+      max-width: 500px;
+    }
+  }
+
+  &__blue-highlighter {
+    color: $blue-color;
+  }
+}

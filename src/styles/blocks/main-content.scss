@@ -1,0 +1,38 @@
+.main {
+  padding: 65px 20px;
+
+  transition-property: padding;
+  @include transition-linear(0.3s);
+
+  @each $size, $padding-top, $padding-bottom in $main-paddings {
+    @media (min-width: #{$size}) {
+      & {
+        padding-top: $padding-top;
+        padding-bottom: $padding-bottom;
+      }
+    }
+  }
+
+  &__content-wrapper {
+    @include max-width-content(1020px);
+  }
+
+  &__section {
+    margin-bottom: 65px;
+
+    transition-property: margin;
+    @include transition-linear(0.3s);
+  }
+
+  @each $size, $margin-bottom in $section-margins {
+    @media (min-width: #{$size}) {
+      &__section {
+        margin-bottom: $margin-bottom;
+      }
+    }
+  }
+
+  &__section:last-child {
+    margin-bottom: 0;
+  }
+}
