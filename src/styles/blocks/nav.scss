@@ -1,0 +1,106 @@
+.nav {
+  grid-area: left;
+  align-self: center;
+
+  &__toggler-label {
+    position: relative;
+    padding: 20px;
+    margin: -20px;
+    z-index: 2;
+
+    &::before {
+      content: url(../images/menu.svg);
+
+      @media (max-width: 360px) {
+        content: url(../images/menu-small.svg);
+      }
+    }
+
+    &:hover {
+      content: url(../images/menu-hover.svg);
+  
+      @media (max-width: 360px) {
+        content: url(../images/menu-hover-small.svg);
+      }
+    }
+  }
+
+  &__toggler {
+    display: none;
+
+    &:checked + .nav__toggler-label::before {
+      content: url(../images/exit-icon.svg);
+  
+      @media (max-width: 360px) {
+        content: url(../images/exit-small.svg);
+      }
+    }
+
+    &:checked ~ .nav__toggler-label:hover {
+      content: url(../images/exit-icon.svg);
+
+      @media (max-width: 360px) {
+        content: url(../images/exit-small.svg);
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    z-index: 1;
+    background-color: #0075ff;
+    transition-duration: 1s;
+  }
+
+  &__toggler:checked ~ .nav__menu {
+    height: 100vh;
+  }
+
+  &__list {
+    margin-bottom: 48px;
+    letter-spacing: 2px;
+  }
+
+  &__item {
+    position: relative;
+    width: min-content;
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #f2f2f2;
+    text-decoration: none;
+
+    &:hover::after {
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #f2f2f2;
+    }
+  }
+
+  &__container {
+    width: 1020px;
+
+    @media (max-width: 320px) {
+      margin-left: 20px;
+    }
+  }
+}
