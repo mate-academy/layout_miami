@@ -3,6 +3,7 @@
   position: relative;//Для позиционирования заголовка
   display: flex;
   height: $heightHeader;
+  justify-content: center;
 
   background-image: url("../images/header.png");
   @extend %imageCenterPosition;
@@ -14,17 +15,23 @@
     display: flex;
     height: $heightlogo;
     width: 100%;
+    max-width: $maxWidht - 248;
     justify-content: space-between;
     align-items: center;
-    margin: 25.5px 120px 0;
+    margin: $marginTop 120px 0;
   }
 
   //отступы в мобильном режиме для блока с элементами header
-  @media (max-width: $sizeMobile + 200) {
+  @media (max-width: $sizeMobile) {
     &__elements {
       margin: 25.5px 20px 0;
       //горизонтальные отступы 20, а не 24, так как дальше сделал padding:4px;
     }
+  }
+
+  &__logo-link {
+    display: block;
+    height: $heightlogo;
   }
 
   &__logo {
@@ -38,6 +45,10 @@
   }
 
   @media (max-width: $sizeMobile) {
+    &__logo-link {
+      height: 45px;
+    }
+
     &__logo {
       height: 45px;
       width: 77px;
@@ -129,15 +140,27 @@
     padding-top: 24px;
   }
 
+  @media (min-width: $maxWidht) {
+    &__wrapper-h1 {
+      left: 50%;
+      transform: translateX(-535px);
+    }
+  }
+
   //Уменьшение шрифта и позиционирования заголовка при mobile-режиме
   @media (max-width: $sizeMobile + 200) {
     &__wrapper-h1 {
-      left: 20px;
       height: 105px;//Высота блока с текстом, включая декративную полоску
       letter-spacing: -1px;
     }
 
-    &__h1 {
+    @media (max-width: $sizeMobile) {
+      &__wrapper-h1 {
+        left: 20px;
+      }
+    }
+
+    &__title {
       font-size: 46px;
       line-height: 40px;
     }

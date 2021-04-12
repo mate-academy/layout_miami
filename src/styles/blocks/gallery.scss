@@ -1,0 +1,128 @@
+/* #region gallery */
+.gallery {
+  margin-bottom: $marginBetweenArticle;
+
+  &__title-2 {
+    @extend %h2Style;
+    margin-bottom: $spaceAfterH2;
+  }
+  
+  &__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content 1fr min-content 1fr min-content;
+    gap: 16px 20px;
+    grid-template-areas: "photo-1 photo-2"
+      "marina-palms marina-palms"
+      "photo-3 photo-4"
+      "edition edition"
+      "photo-5 photo-6"
+      "faena faena";
+  }
+
+  @media (min-width: $sizeMobile + 150) {
+    margin-bottom: $marginBetweenArticle + 88;
+
+    &__photos {
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      grid-template-rows: 1fr min-content 1fr min-content 1fr min-content;
+      grid-template-areas: "photo-1 photo-1 photo-1 photo-2"
+        "marina-palms marina-palms marina-palms marina-palms"
+        "photo-3 photo-3 photo-4 photo-4"
+        "edition edition edition edition"
+        "photo-5 photo-6 photo-6 photo-6"
+        "faena faena faena faena";
+    }
+
+    &__photo-1,
+    &__photo-2,
+    &__photo-3,
+    &__photo-4,
+    &__photo-5,
+    &__photo-6 {
+      height: 256px;
+      border-radius: 8px;
+    }
+  }
+
+  &__photo-1 {
+    @extend %fotoStyle;
+    grid-area: photo-1;
+  }
+
+  &__photo-2 {
+    @extend %fotoStyle;
+    grid-area: photo-2;
+  }
+
+  &__photo-captions-1 {
+    grid-area: marina-palms;
+  }
+
+  &__photo-3 {
+    @extend %fotoStyle;
+    grid-area: photo-3;
+  }
+
+  &__photo-4 {
+    @extend %fotoStyle;
+    grid-area: photo-4;
+  }
+
+  &__photo-captions-2 {
+    grid-area: edition;
+  }
+
+  &__photo-5 {
+    @extend %fotoStyle;
+    grid-area: photo-5;
+  }
+
+  &__photo-6 {
+    @extend %fotoStyle;
+    grid-area: photo-6;
+  }
+
+  &__photo-captions-3 {
+    grid-area: faena;
+  }
+
+  &__captions-link {
+    font-weight: bold;
+    color: $blue;
+    text-decoration: none;
+  }
+
+  &__button {
+    margin-top: $marginBetweenArticle / 2;
+    height: 56px;
+    width: 100%;
+
+    outline: none;
+
+    @include textHeight(16px, 14px,bold, $blue);
+    background-color: #fff;
+    border: 2px solid $blue;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: 0.3s;
+  }
+
+  &__button:hover {
+    background: $colorButton;
+    border-color: $colorButton;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    color: #fff;
+  }
+
+  @media (min-width: $sizeMobile + 1px) {
+    &__button {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      width: 153px;
+    }
+  }
+}
+
+/* #endregion */
