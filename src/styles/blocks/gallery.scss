@@ -1,0 +1,85 @@
+
+$photoOrder: (
+  1: 1,
+  2: 3,
+  3: 5
+);
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: calc(100vw - 240px);
+  @media (max-width: 768px) {
+    justify-content: space-evenly;
+  }
+  &__title {
+    position: relative;
+    margin-bottom: 21px;
+    width: 100%;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -50%;
+      transform: translate(-50%, -100%);
+      width: 23px;
+      height: 16px;
+      background-image: url("../images/icons/Icon-Corona-virus.svg");
+    }
+  }
+  &__photo {
+    margin: 40px 0 24px;
+    max-width: 1000px;
+    max-height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center bottom;
+    @media (min-width: 768px) {
+      @each $k, $order in $photoOrder {
+        &:nth-of-type(#{$order}) {
+          width: calc(100% - 25% * #{$k} - 20px);
+        }
+        &:nth-of-type(#{$order + 1}) {
+          width: calc(25% * #{$k});
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      width: 131px;
+      height: 131px;
+    }
+  }
+  &__photo-label {
+    width: 100vw;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 400;
+    color: #3e3e3e;
+  }
+  &__location {
+    font-weight: 700;
+    color: #0075ff;
+  }
+  &__view-all-button {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 154px;
+    height: 56px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: #0075ff;
+    white-space: nowrap;
+    border: 2px solid #0075ff;
+    border-radius: 8px;
+    transition: all 250ms;
+    &:hover {
+      color: #fff;
+      background-color: #0075ff;
+    }
+  }
+}

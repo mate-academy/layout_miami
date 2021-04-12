@@ -1,0 +1,152 @@
+
+@mixin iconsSet {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: left;
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.nav-menu {
+  position: relative;
+  width: 162px;
+  @media (max-width: 768px) {
+    width: 18px;
+  }
+  &__label {
+    @include iconsSet;
+    position: relative;
+    display: block;
+    // padding: 10px;
+    z-index: 2;
+    // opacity: 100%;
+    background-image: url("../images/icons/Icon-Burger-menu.svg");
+    transition: width 250ms;
+    &:hover {
+      width: 0;
+    }
+    &::before {
+      @include iconsSet;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      background-image: url("../images/icons/Icon-Close.svg");
+      transition: transform 400ms ease;
+    }
+    &::after {
+      @include iconsSet;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("../images/icons/Icon-Burger-menu-hover.svg");
+      transition: opacity 0 0 300ms;
+    }
+  }
+  &__wallpaper {
+    position: absolute;
+    top: -54px;
+    left: -124px;
+    height: 100vh;
+    width: 0;
+    background-color: #0075ff;
+    transition: width, 400ms;
+    z-index: 1;
+  }
+  &__menu {
+    position: absolute;
+    padding-top: 77px;
+    z-index: 2;
+    visibility: hidden;
+  }
+  &__checkbox {
+    position: absolute;
+    visibility: hidden;
+    &:checked + .nav-menu__menu {
+      visibility: hidden;
+    }
+    &:checked ~ .nav-menu__wallpaper {
+      width: 100vw;
+    }
+    &:checked ~ .nav-menu__menu {
+      visibility: visible;
+    }
+    &:checked ~ .nav-menu__label {
+      background-image: none;
+    }
+    &:checked ~ .nav-menu__label::before {
+      opacity: 100%;
+      transform: rotate(90deg);
+    }
+    &:checked ~ .nav-menu__label::after {
+      background-image: none;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 56vh;
+    text-transform: uppercase;
+    list-style: none;
+  }
+  &__item {
+    flex-grow: 4;
+    white-space: nowrap;
+    &:nth-child(6) {
+      flex-grow: 6;
+    }
+    &:nth-child(7) {
+      flex-grow: 2;
+    }
+    &:last-child {
+      flex-grow: 1;
+    }
+  }
+  &__link {
+    position: relative;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    color: #fff;
+    text-decoration: none;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 1.15px;
+      width: 0;
+      background-color: #fff;
+      transition: width, 200ms;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+  &__number,
+  &__number-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__number-label {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 25%;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+    }
+  }
+}
