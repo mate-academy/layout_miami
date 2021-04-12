@@ -1,0 +1,277 @@
+.header {
+  height: 100vh;
+  position: relative;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  padding: 25px 0 80px ;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    @include container;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 5;
+
+    @media (max-width: 767px) {
+      width: 80px;
+      height: 45px;
+    }
+  }
+
+  &__phone-logo {
+    @media (max-width: 767px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 80px;
+    color: $color3;
+    letter-spacing: -1.5px;
+
+    @media (max-width: 767px) {
+      font-size: 46px;
+      line-height: 46px;
+      letter-spacing: -1px;
+    }
+  }
+
+  &__title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -24px;
+    width: 40px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: $color3;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__burger {
+    position: relative;
+    cursor: pointer;
+    width: 24px;
+    height: 18px;
+    z-index: 5;
+
+    @media (max-width: 767px) {
+      width: 18px;
+      height: 12px;
+    }
+  }
+
+  &__burger-icon {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 100%;
+    height: 2px;
+    background-color: $color3;
+    border-radius: 2px;
+
+    @media (max-width: 767px) {
+      top: 5px;
+    }
+  }
+
+  &__burger::before,
+  &__burger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color3;
+    border-radius: 2px;
+  }
+
+  &__burger::before {
+    top: 0;
+  }
+  
+  &__burger::after {
+    bottom: 0;
+  }
+
+  &__burger:hover::before {
+    width: 75%;
+    transition: 0.5s;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &__burger:hover::after {
+    width: 50%;
+    transition: 0.5s;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  &__burger-icon.active {
+    transform: rotate(45deg);
+    transition: transform 0.5s;
+  }
+
+  &__burger.active::before {
+    width: 100%;
+    top: 8px;
+    transform: rotate(45deg);
+    transition: transform 0.5s;
+
+    @media (max-width: 767px) {
+      top: 5px;
+    }
+  }
+
+  &__burger.active::after {
+    width: 100%;
+    top: 8px;
+    transform: rotate(134deg);
+    transition: transform 0.5s;
+
+    @media (max-width: 767px) {
+      top: 5px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      top: -100px;
+      right: 40px;
+      visibility: visible;
+      width: max-content;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $color3;
+      transition: top 0.8s;
+
+      @media (max-width: 767px) {
+        visibility: hidden;
+      }
+    }
+
+    &:hover::before {
+      top: 5px;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    padding: 152px 0;
+    background-color: $color1;
+    transition: left 0.5s ease-in;
+  }
+
+  &__menu.animate {
+    left: 0;
+  }
+
+  &__nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__list {
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    text-decoration: none;
+    color: $color3;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    visibility: hidden;
+    height: 1px;
+    width: 100%;
+    background-color: $color3;
+  }
+
+  &__link:hover::after {
+    visibility: visible;
+  }
+
+  &__number,
+  &__order {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+    text-decoration: none;
+    color: $color3;
+    padding-bottom: 8px;
+  }
+
+  &__number {
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  &__order {
+    text-transform: uppercase;
+  }
+
+  &__number::after,
+  &__order::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $color3;
+    visibility: hidden;
+  }
+
+  &__number:hover::after,
+  &__order:hover::after {
+    visibility: visible;
+  }
+}
