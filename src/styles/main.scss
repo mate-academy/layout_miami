@@ -1,7 +1,192 @@
+@import "reset";
 @import "utils";
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+.page {
+  position: relative;
+  display: block;
+  height: 100vh;
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+  display: block;
+  position: absolute;
+  font-size: 80px;
+  line-height: 80px;
+  letter-spacing: -1.5px;
+  font-weight: bold;
+  left: 120px;
+  bottom: 80px;
+  padding-top: 24px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 2px;
+    width: 40px;
+    border-radius: 1px;
+    background-color: #fff;
+  }
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $heightHeader;
+  padding: 0 124px;
+ 
+  &__logo {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    width: $widthLogo;
+    height: $heightLogo;
+    z-index: 2;
+  }
+}
+
+.phone {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  margin: 0 124px;
+  transform: translateY(-50%);
+  padding: 8px;
+
+  &__number {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    opacity: 0;
+    transition: 500ms;
+  }
+
+  &:hover .phone__number {
+    opacity: 100%;
+    transition: 500ms;
+    transform: rotate(360deg);
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+.burger {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 0;
+  margin: 0 124px;
+  transform: translateY(-50%);
+  padding: 8px;
+  width: 24px;
+  height: 16px;
+  cursor: pointer;
+  background: url(../images/burger.svg) no-repeat center;
+  background-size: contain;
+
+  &:not(.burger--active):hover {
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+    background: url(../images/burgerhover.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--active {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    background: url(../images/close.svg) no-repeat center;
+    background-size: contain;
+    z-index: 2;
+  }
+}
+
+.nav {
+  position: absolute;
+  background-color: #0075ff;
+  text-transform: uppercase;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.burger--active + .nav {
+  display: block;
+}
+
+.nav__list {
+  padding-top: 152px;
+  padding-left: 120px;
+  list-style-type: none;
+}
+
+.nav__item {
+  margin: 32px 0;
+
+  &-number {
+    margin: 16px 0 8px;
+  }
+}
+
+.nav__phone {
+  margin: 48px 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 22px;
+  color: #fff;
+
+  &-number {
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+
+    &--phone {
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      color: #fff;
+    }
+  }
+}
+
+.border {
+  top: 0;
+  border: 1px solid #fff;
+  width: 113px;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
 }
