@@ -1,4 +1,6 @@
 
+$galleryWidth: 1020px;
+
 $photoOrder: (
   1: 1,
   2: 3,
@@ -9,7 +11,8 @@ $photoOrder: (
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: calc(100vw - 240px);
+  margin: 0 auto;
+  max-width: $galleryWidth;
   @media (max-width: 768px) {
     justify-content: space-evenly;
   }
@@ -33,18 +36,17 @@ $photoOrder: (
   }
   &__photo {
     margin: 40px 0 24px;
-    max-width: 1000px;
-    max-height: 300px;
+    height: 266px;
     border-radius: 8px;
     object-fit: cover;
     object-position: center bottom;
     @media (min-width: 768px) {
       @each $k, $order in $photoOrder {
         &:nth-of-type(#{$order}) {
-          width: calc(100% - 25% * #{$k} - 20px);
+          width: calc(100% - 25% * #{$k} - 10px);
         }
         &:nth-of-type(#{$order + 1}) {
-          width: calc(25% * #{$k});
+          width: calc(25% * #{$k} - 10px);
         }
       }
     }
