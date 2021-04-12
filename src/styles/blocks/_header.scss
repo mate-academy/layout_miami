@@ -1,13 +1,17 @@
 .header {
   height: 100vh;
-  background: url("../images/header.jpg");
+  background-image: url("../images/header.jpg");
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   color: $white;
+  transition: background-position 4s;
+
   &--active {
     background: $blue;
   }
+
   &__container {
     padding-top: 24px;
   }
@@ -18,25 +22,74 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 48px;
-  // margin-bottom: 309px;
+
   &__logo {
     width: 82px;
     height: 48px;
+    transition-duration: 0.4s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @media (min-width: 768px) {
+      width: 136px;
+      height: 80px;
+    }
   }
 
   &__btn {
     width: 24px;
     height: 24px;
-    background-image: url("../images/icons/Icon-burger-menu.svg");
     background-repeat: no-repeat;
     background-size: cover;
 
+    &--menu {
+      background-image: url("../images/icons/Icon-burger-menu.svg");
+
+      &:hover {
+        background-image: url("../images/icons/Icon-burger-menu-hover.svg");
+        transform: scale(1.2);
+      }
+    }
+
     &--active {
       background-image: url("../images/icons/Icon-Close.svg");
+
+      &:hover {
+        background-image: url("../images/icons/Icon-Close.svg");
+      }
     }
 
     &--phone {
+      position: relative;
       background-image: url("../images/icons/phone.svg");
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:hover::before {
+        content: "+1 234555-55-55";
+        position: absolute;
+        bottom: -40px;
+        right: -50px;
+        width: 200px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        transition: transform;
+
+        @media (min-width: 768px) {
+          content: "+1 234 555-55-55";
+          bottom: -35px;
+          right: -40px;
+          width: 250px;
+          padding: 40px;
+        }
+      }
     }
 
     &--hidden {
@@ -46,19 +99,54 @@
     &:focus {
       outline: none;
     }
+
+    @media (min-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
 
 .header-baner {
   &__title {
+    position: relative;
     font-weight: bold;
     font-size: 46px;
     line-height: 40px;
     letter-spacing: -1px;
     padding-top: calc(309px - 48px);
 
+    @media (min-width: 375px) {
+      padding-top: calc(100vh - 309px - 48px);
+    }
+
+    @media (min-width: 768px) {
+      padding-top: calc(100vh - 329px - 48px - 136px);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 100px;
+      width: 40px;
+      height: 2px;
+      background-color: $white;
+      border-radius: 8px;
+
+      @media (min-width: 768px) {
+        bottom: 175px;
+        border-radius: 2px;
+      }
+    }
+
     &--none {
       display: none;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
     }
   }
 }
