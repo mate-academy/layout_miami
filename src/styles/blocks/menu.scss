@@ -1,0 +1,112 @@
+.menu {
+
+  &__body {
+    padding-top: 170px;
+    margin-left: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #0075ff;
+    z-index: 1;
+    opacity: 1;
+    overflow: hidden;
+    transition: 0.5s;
+
+    &--active {
+      margin: 0;
+      pointer-events: none;
+    }
+    
+    & ul {
+      margin: 0;
+      padding: 0;
+      pointer-events: visible;
+      list-style: none;
+      color: #fff;
+    }
+  }
+
+  &__icon {
+    padding: 15px;
+    margin-left: -15px;
+    cursor: pointer;
+    z-index: 50;
+
+    &-line {
+      position: relative;
+      display: block;
+      height: 3px;
+      width: 24px;
+      border-radius: 2px;
+      background-color: #fff;
+      z-index: 50;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        width: 100%;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #fff;
+
+        transition: 0.5s;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        width: 100%;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #fff;
+
+        transition: 0.5s;
+      }
+    }
+
+    &:hover &-line::after {
+      width: 50%;
+    }
+
+    &:hover &-line::before {
+      width: 75%;
+    }
+
+    &--active {
+      padding: 15px;
+      margin-left: -15px;
+      cursor: pointer;
+
+      .menu__icon {
+
+        &-line--active {
+          height: 0;
+
+          &::after {
+            transform: rotate(45deg);
+            top: 0;
+          }
+      
+          &::before {
+            transform: rotate(-45deg);
+            top: 0;
+          }
+
+          &:hover::after {
+            width: 100%;
+            transform: rotate(225deg);
+          }
+      
+          &:hover::before {
+            width: 100%;
+            transform: rotate(315deg);
+          }
+        }
+      }
+    }
+  }
+}
