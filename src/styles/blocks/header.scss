@@ -1,0 +1,136 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__toggler {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  &__curtain {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 568px;
+    transition-duration: 1s;
+  }
+
+  &__toggler:checked ~ &__wrapper &__head .nav .nav__menu {
+    content: url(../images/burgerChecked.svg);
+  }
+
+  &__toggler:checked ~ &__wrapper &__head .nav .nav__list,
+  &__toggler:checked ~ &__wrapper &__head .nav .nav__info {
+    visibility: visible;
+  }
+
+  &__wrapper {
+    width: 1000px;
+    height: 568px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__toggler:checked ~ &__curtain {
+    visibility: visible;
+    background-color: #0075ff;
+  }
+
+  &__head {
+    padding: 25px 23px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu {
+    visibility: hidden;
+    width: 18px;
+    height: 12px;
+  }
+
+  &__logo {
+    z-index: 1;
+    width: 78px;
+    height: 45px;
+  }
+
+  &__phone {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/phone.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__phone::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    right: 40px;
+    visibility: hidden;
+
+    width: 130px;
+    color: #fff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__foot {
+    padding-bottom: 80px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__rectangle {
+    margin-bottom: 24px;
+    width: 40px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  &__name {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 46px;
+    line-height: 40px;
+  }
+
+  &__toggler:checked ~ &__wrapper &__foot,
+  &__toggler:checked ~ &__wrapper &__phone {
+    visibility: hidden;
+  }
+
+  @media (min-width: 640px) {
+    &__phone:hover::before {
+      visibility: visible;
+    }
+
+    &__head {
+      padding: 25px 0 0;
+    }
+
+    &__foot {
+      padding-left: 0;
+    }
+  }
+}

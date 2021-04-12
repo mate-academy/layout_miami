@@ -1,0 +1,135 @@
+.gallery {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 5px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  &__crown {
+    width: 23px;
+    height: 16px;
+    background-image: url(../images/crown.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__section {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 131px);
+    column-gap: 20px;
+  }
+
+  .img {
+    min-width: 131px;
+    min-height: 131px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 8px;
+  }
+
+  $images:
+    "1" url(../images/photos/1.jpg),
+    "2" url(../images/photos/2.jpg),
+    "3" url(../images/photos/3.jpg),
+    "4" url(../images/photos/4.jpg),
+    "5" url(../images/photos/5.jpg),
+    "6" url(../images/photos/6.jpg);
+
+  @each $num, $photo in $images {
+    &__img--#{$num} {
+      background-image: $photo;
+    }
+  }
+
+  &__paragraph {
+    margin-top: 16px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__colortext {
+    color: #0075ff;
+  }
+
+  &__view {
+    margin-top: 32px;
+    padding: 21px 97px;
+
+    text-decoration: none;
+    color: #0075ff;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 14px;
+
+    border: 2px solid #0075ff;
+    border-radius: 8px;
+  }
+
+  &__view:hover,
+  &__view:focus {
+    color: #fff;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    background: #005ecc;
+    border-color: #005ecc;
+  }
+
+  &__view:focus {
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+
+  @media (min-width: 640px) {
+    & {
+      margin-top: 152px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    &__section {
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    .section1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .section2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section3 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .img {
+      height: 256px;
+    }
+
+    &__paragraph {
+      margin-top: 24px;
+      margin-right: 49%;
+    }
+
+    &__view {
+      margin-top: 40px;
+      padding: 21px 48px;
+    }
+  }
+}
