@@ -7,8 +7,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
-  padding: 24px 120px 80px;
-
+  padding: 24px calc((100% - 1020px) / 2) 80px;
+  @media (max-width: 320px) {
+    padding: 24px 20px 80px;
+  }
   &__nav {
     display: flex;
     align-items: center;
@@ -55,14 +57,24 @@
         transform: scaleX(1);
       }
     }
-
+    &-logo {
+      @media (max-width: 320px) {
+        width: 78px;
+        height: 45px;
+      }
+    }
     &-contact {
       display: block;
       font-weight: bold;
       width: max-content;
       transition: 0.7s;
+
       &--number {
         padding: 16px 0;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: $white;
       }
       &--title {
         padding-bottom: 8px;
@@ -80,8 +92,18 @@
       cursor: pointer;
       // transition: 1s;
       background-image: url(/images/burger.svg);
+      @media (max-width: 320px) {
+        background-image: url(/images/burger320.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
       &:hover {
         background-image: url(/images/hover.svg);
+        @media (max-width: 320px) {
+          background-image: url(/images/burger320.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+        }
       }
     }
 
@@ -104,6 +126,12 @@
         height: 22px;
       }
     }
+    &-img {
+      @media (max-width: 320px) {
+        width: 18px;
+        height: 18px;
+      }
+    }
   }
 
   &__logo {
@@ -113,6 +141,13 @@
     color: $white;
     width: 442px;
     letter-spacing: -1.5px;
+    @media (max-width: 320px) {
+      font-weight: bold;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+      width: 260px;
+    }
   }
 
   &__logo::before {
@@ -130,6 +165,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
 
     &--number {
       transition: 1s;
@@ -149,6 +185,10 @@
     &:hover &--number {
       opacity: 1;
       visibility: visible;
+      @media (max-width: 320px) {
+        color: transparent;
+        opacity: 0;
+      }
     }
   }
 }
