@@ -1,0 +1,113 @@
+.menu {
+  &__button {
+    position: absolute;
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__line,
+  &__line::before,
+  &__line::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition-duration: 0.25s;
+  }
+
+  &__line::before {
+    content: "";
+    top: -6px;
+  }
+
+  &__line:hover::before {
+    width: 80%;
+  }
+
+  &__line::after {
+    content: "";
+    top: 6px;
+  }
+
+  &__line:hover:after {
+    width: 30%;
+  }
+
+  &__box {
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 700px;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #0075ff;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.25s;
+    z-index: 1;
+  }
+
+  &__item {
+    display: block;
+    width: max-content;
+    padding: 12px 24px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition-duration: 0.25s;
+  }
+
+  &__item--extra {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
+  &__item::after {
+    content: "";
+    position: relative;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    transition-duration: 0.1s;
+  }
+
+  &__item:hover::after {
+    background-color: #fff;
+  }
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+
+#menu__toggle:checked ~ .menu__button > span {
+  transform: rotate(45deg);
+}
+
+#menu__toggle:checked ~ .menu__button > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+#menu__toggle:checked ~ .menu__button > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  left: 0;
+}
