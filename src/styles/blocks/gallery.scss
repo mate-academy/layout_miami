@@ -1,0 +1,100 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 150px;
+
+  &__title {
+    font-family: Roboto, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  &__logo {
+    height: 19px;
+    width: 23px;
+    margin: 0 auto 61px;
+    background-image: url(../images/crown.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__foto-block {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__foto {
+    min-height: 131px;
+    min-width: 131px;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @media (min-width: 768px) {
+      height: 256px;
+    }
+
+    @for $j from 1 through 6 {
+      &--#{$j} {
+        background-image: url(../images/photos/#{$j}.jpg);
+        flex-grow: 1;
+      }
+    }
+
+    &--1,
+    &--6 {
+      flex-grow: 2;
+    }
+
+    &-limit {
+      font-family: Roboto, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 27px;
+      padding: 24px 0 40px;
+    }
+
+    &-limit span {
+      color: $informationColor;
+    }
+  }
+
+  &__button {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    line-height: 56px;
+    font-size: 16px;
+    height: 56px;
+    color: $informationColor;
+    border: 1px solid $informationColor;
+    border-radius: 8px;
+    transition: 0.5s linear;
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: $informationColor;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+
+    @media (min-width: 768px) {
+      width: 154px;
+      margin: 0 auto;
+    }
+  }
+}
