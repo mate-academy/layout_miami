@@ -1,47 +1,74 @@
 .header {
-  display: flex;
-  flex-direction: column;
   position: relative;
-
   height: 100vh;
-  background: url("./images/header.png") no-repeat center center;
+  background: url("../images/header.png") no-repeat center center;
   background-size: cover;
 
-  &__menu-burger {
-    margin: 56px auto auto 124px;
+  &-top {
+    padding: 25.5px;
+    margin-left: 120px;
+    margin-right: 120px;
     display: flex;
-    position: absolute;
-    border-radius: 2px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__menu-burger {
+      width: 24px;
+      height: 16px;
+      cursor: pointer;
+      z-index: 1;
+      background-image: url(/images/Vector.svg);
+      background-size: contain;
+
+      &:hover {
+        background-image: url(/images/Vector-hover.svg);
+        background-size: contain;
+      }
+
+      &--active {
+        background-image: url(/images/close.svg);
+        background-size: contain;
+        transition: 0.5s all linear;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &__logo {
+      display: flex;
+      z-index: 1;
+    }
+
+    &__telephone {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      background-image: url(/images/telephone.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      &:hover::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        animation: phone 0.5s forwards;
+        transition: content 0.5s;
+        color: #fff;
+
+        @keyframes phone {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-150px);
+          }
+        }
+      }
+    }
   }
-
-  &__telephone {
-    margin: 52px 124px auto auto;
-    display: flex;
-    position: absolute;
-    align-self: flex-end;
-
-  }
-
-  &__logo {
-    display: flex;
-    justify-content: center;
-    margin-top: 25.5px;
-
-  }
-
-  &__rectangle {
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    margin: 433px auto auto 152px;
-    border-radius: 2px;
-  }
-
   &__title {
-    position: absolute;
     width: 442px;
     height: 161px;
-    margin: 459px auto auto 152px;
+    margin: 400px auto auto 152px;
 
     font-style: normal;
     font-weight: bold;
