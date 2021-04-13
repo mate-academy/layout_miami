@@ -1,0 +1,188 @@
+.header {
+  height: 100vh;
+
+  background-image: url("/images/header.jpg");
+  background-size: cover;
+  background-position: center center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 880px;
+    height: 100%;
+    
+    margin: 0 auto;
+    padding: 25px $paddingS 80px;
+
+    @media (min-width: $viewScreeWidthS) {
+      padding: 25px $paddingL 80px;
+    }
+
+    font-weight: 700;
+    color: $colorWhite;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav-button {
+    display: block;
+    @include elementSize(24px, 24px);
+    z-index: 1;
+    background-image: url("/images/Icon-Burger-menu.svg");
+    background-size: cover;
+    cursor: pointer;
+    transition: background-image 0.5s linear;
+
+    @media (min-width: $viewScreeWidthL) {
+      @include elementSize(32px, 32px);
+    }
+
+    &:hover {
+      background-image: url("/images/Icon-Burger-menu-hover.svg");
+    }
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-burger {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $colorBlue;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s left;
+  }
+
+  &__nav-toggler:checked ~ &__nav-button {
+    background-image: url("/images/Icon-Close.svg");
+  }
+
+  &__nav-toggler:checked ~ &__nav-burger {
+    left: 0;
+    transition: 0.5s left;
+  }
+
+  &__nav-content {
+    max-width: $viewScreeWidthL;
+    padding: 120px $paddingS 0;
+    margin: 0 auto;
+
+    @media (min-width: $viewScreeWidthS) {
+      padding: 120px $paddingL 0;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  &__nav-link {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    line-height: 54px;
+    text-decoration: none;
+    color: $colorWhite;
+    
+    &:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 100%;
+      height: 1px;
+      background-color: $colorWhite;
+    }
+  }
+
+  &__nav-phone {
+    font-size: 12px;
+    line-height: 32px;
+  }
+
+  &__nav-line {
+    width: 123px;
+    height: 1px;
+    background-color: $colorWhite;
+  }
+
+  &__logo {
+    @include elementSize(82px, 48px);
+    z-index: 1;
+    background-image: url("/images/Logo_Miami.svg");
+    background-size: cover;
+
+    @media (min-width: $viewScreeWidthL) {
+      @include elementSize(136px, 80px);
+    }
+  }
+
+  &__phone-link {
+    color: $colorWhite;
+  }
+
+  &__phone {
+    position: relative;
+    @include elementSize(24px, 24px);
+    background-image: url("/images/Icon-Phone-call.svg");
+    background-size: cover;
+
+    @media (min-width: $viewScreeWidthL) {
+      @include elementSize(32px, 32px);
+    }
+
+    &::before {
+      display: none;
+      content: "+1 234 555-55-55";
+      position: absolute;
+      right: 52px;
+      width: 128px;
+
+      @include setFontProperties(12px, 700, 32px, $colorWhite);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      opacity: 0;
+
+      transition: opacity 0.5s linear;
+
+      @media (min-width: $viewScreeWidthL) {
+        display: inline;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &__line {
+    @include elementSize(40px, 2px);
+    margin-bottom: 24px;
+    background-color: $colorWhite;
+  }
+
+  &__text {
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+
+    @media (min-width: $viewScreeWidthL) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
