@@ -7,6 +7,7 @@ $gap-main: 20px;
   position: relative;
   margin-bottom: 93px;
   font-size: 48px;
+  line-height: 48px;
   font-weight: 700;
 
   &::after {
@@ -28,10 +29,17 @@ $gap-main: 20px;
   font-weight: 700;
 }
 
+.headline-4 {
+  font-size: 14px;
+  line-height: 27px;
+  font-weight: 400;
+  color: #9fadc2;
+}
+
 .main {
   padding: 105px 20px 85px;
   max-width: $width-main;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .section-about-us {
@@ -42,7 +50,8 @@ $gap-main: 20px;
     font-size: 48px;
     font-weight: 700;
 
-    & > span {
+    & > a {
+      text-decoration: none;
       color: #0075ff;
     }
   }
@@ -132,7 +141,8 @@ $gap-main: 20px;
     font-weight: 400;
     line-height: 27px;
 
-    & > span {
+    & > a {
+      text-decoration: none;
       color: #0075ff;
       font-weight: 700;
     }
@@ -151,6 +161,7 @@ $gap-main: 20px;
       margin-top: 40px;
       border: 2px solid #0075ff;
       border-radius: 8px;
+      text-decoration: none;
 
       color: #0075ff;
       font-size: 16px;
@@ -161,7 +172,15 @@ $gap-main: 20px;
       &:hover {
         color: #fff;
         background: #005ecc;
+        border: 2px solid #005ecc;
         box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      }
+
+      &:focus {
+        color: #fff;
+        background: #005ecc;
+        border: 2px solid #005ecc;
+        box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
       }
     }
   }
@@ -174,6 +193,7 @@ $gap-main: 20px;
   &-people {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
   }
 
   &-photo {
@@ -184,15 +204,15 @@ $gap-main: 20px;
     margin-bottom: 28px;
   }
 
-  .headline-3 {
-    margin: 0 auto;
-  }
-
   &-person {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 240px;
+
+    & > .headline-3 {
+      text-align: center;
+    }
   }
 
   &-position {
@@ -218,25 +238,162 @@ $gap-main: 20px;
     justify-content: space-between;
   }
 
-  &-p {
-    margin-bottom: 4px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #9fadc2;
-  }
-
   &-link {
     display: block;
-    margin-bottom: 24px;
     font-size: 16px;
     font-weight: 400;
     line-height: 27px;
     color: #3e3e3e;
     text-decoration: none;
   }
+  
+  &-phone {
+    transition: 0.3s;
+    padding: 8px;
+    margin-bottom: 10px;
 
-  &-freedback {
+    &:hover {
+      box-shadow: 0 0 0 2px #ccd0e0;
+      border-radius: 5px;
+    }
+  }
+
+  &-email {
+    padding: 8px;
+    margin-bottom: 10px;
+
+    &:hover {
+      box-shadow: 0 0 0 2px #ccd0e0;
+      border-radius: 5px;
+    }
+  }
+
+  &-adress {
+    height: max-content;
+    padding: 8px;
+    margin-bottom: 30px;
+
+    &:hover {
+      box-shadow: 0 0 0 2px #ccd0e0;
+      border-radius: 5px;
+    }
+  }
+  &-feedback {
     display: flex;
-    
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+}
+
+.feedback-input {
+  height: 48px;
+  max-width: 415px;
+  margin-bottom: 16px;
+  padding: 10px;
+  background: #f7f8ff;
+  border: 2px solid #f7f8ff;
+  border-radius: 8px;
+
+  &:hover {
+    border: 2px solid #ccd0e0;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid #0075ff;
+  }
+
+  &:last-of-type {
+    height: 144px;
+  }
+}
+
+.submit-btn {
+  width: 415px;
+  height: 48px;
+  margin-top: 53px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;
+  border: 0;
+  cursor: pointer;
+  background: #0075ff;
+  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  border-radius: 8px;
+
+  &:hover {
+    background: #005ecc;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+
+  &:focus {
+    background: #005ecc;
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+@media (max-width: 920px) {
+  .section-about-us {
+    flex-direction: column;
+
+    &-h2 {
+      margin-bottom: 48px;
+    }
+
+    &-description {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .header-headline-h1 {
+    font-size: 46px;
+    line-height: 40px;
+  }
+
+  .section-about-us-h2 {
+    font-size: 36px;
+    width: 100%;
+  }
+
+  .headline-3 {
+    word-wrap: break-word;
+    width: 100%;
+  }
+
+  .section-gallery-photo {
+    & > img {
+      width: calc(50% - 10px);
+      height: 130px;
+    }
+  }
+
+  .section-testimonials-people {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-testimonials-person {
+    text-align: center;
+    margin-bottom: 50px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .section-contact-info {
+    flex-direction: column;
+  }
+
+  .feedback-input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .submit-btn {
+    width: 100%;
   }
 }

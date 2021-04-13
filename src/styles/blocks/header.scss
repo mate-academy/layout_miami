@@ -1,6 +1,5 @@
 .header {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   height: 100vh;
 
@@ -11,18 +10,19 @@
   background-size: cover;
 
   &-page {
-    
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     max-width: 1020px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &-headline {
     position: relative;
     margin-top: auto;
     margin-bottom: 80px;
-    color: #fff;
-    font-size: 40px;
-    line-height: 80px;
-    font-weight: 700;
 
     &::before {
       position: absolute;
@@ -33,11 +33,19 @@
       border-radius: 2px;
       background-color: #fff;
     }
+
+    &-h1 {
+      color: #fff;
+      font-size: 80px;
+      line-height: 80px;
+      font-weight: 700;
+    }
   }
 
 }
 
 .nav {
+  $self:&;
 
   &__menu {
     display: flex;
@@ -69,6 +77,7 @@
   }
 
   &__link-contact {
+    position: relative;
     width: 18px;
     height: 18px;
     background-image: url(../images/phone.svg);
@@ -79,6 +88,7 @@
   &__number-phone {
     position: absolute;
     top: -56px;
+    margin-left: -120px;
     padding-right: 20px;
     color: #fff;
 
@@ -106,36 +116,50 @@
 
   &__toggler {
     display: none;
+    &-label {
+      width: 21px;
+      height: 21px;
+      z-index: 2;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url(../images/icon-burger-menu.svg);
 
-    &-label ~ &:checked {
+      &:hover {
+        background-image: url(../images/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &:checked ~ &-label {
       background-image: url(../images/icon-burger-menu-active.svg);
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
     }
+
+    &:checked ~ #{$self}__menu-full {
+      transform: translateY(0);
+    }
   }
 
-  &__toggler-label {
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/icon-burger-menu.svg);
-
-    &:hover {
-      background-image: url(../images/icon-burger-menu-hover.svg);
-    }
+  &__menu-container {
+    max-width: 1020px;
+    width: 100%;
+    margin: 150px auto;
+    padding: 0 20px;
   }
 
   &__menu-full {
     position: absolute;
-    padding: 150px calc((1020px - 100vh) / 2);
-    height: 700px;
+    height: 100vh;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
-
+    transform: translateY(-100%);
     background-color: #0075ff;
   }
+
 }
 
 .ul-menu-full {
