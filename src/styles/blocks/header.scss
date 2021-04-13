@@ -1,40 +1,82 @@
 .header {
-  position: relative;
   height: 100vh;
-  min-height: 480px;
+  padding: 25px 0 80px;
   background-image: url(../images/new-header.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
-  &__logo-image {
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translate(-50%, 0);
-
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 100%;
+    max-width: 1100px;
   }
 
-  &__phone-icon {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    top: 52px;
-    right: 124px;
-    color: $whiteColor;
-    text-decoration: none;
-    &::before {
-      content: "+1 2 3 + 56465465465456";
-    }
+  &__pannel {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    justify-items: center;
+    align-items: center;
   }
 
   &__burger-icon {
-    position: absolute;
+    position: relative;
+    justify-self: start;
     width: 32px;
     height: 32px;
-    top: 56px;
-    left: 124px;
-    color: $whiteColor;
+    background-image: url(../images/Icon-Burger-menu.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 1;
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+  
+  &__logo-image {
+    position: relative;
+    width: 130px;
+    height: 76px;
+    background-image: url(../images/Logo_Miami.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  &__phone-wrapper {
+    position: relative;
+    justify-self: end;
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      display: none;
+      top: -5px;
+      padding-right: 20px;
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $whiteColor;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+    &:hover::before {
+      opacity: 1;
+      display: inline;
+    }
+  }
+
+  &__phone-icon {
+    width: 32px;
+    height: 32px;
   }
 
   &__title {
@@ -46,11 +88,12 @@
     font-size: 80px;
     letter-spacing: -1.5px;
     line-height: 80px;
-    margin: 0;
     color: $whiteColor;
-    ::before {
+    z-index: 0;
+    &::before {
       content: "";
-      position: absolute;
+      position: relative;
+      display: block;
       background-color: $whiteColor;
       left: 0;
       top: -24px;
@@ -59,26 +102,54 @@
       border-radius: 2px;
     }
   }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__checkbox {
+    display: none;
+
+    &:checked ~ .nav {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:checked ~ .header__pannel > .header__burger-icon {
+      background-image: url(../images/Icon-Close.svg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 32px;
+      transition-duration: 0.3s;
+      &:hover {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
   .header {
     &__logo-image {
       width: 78.6px;
+      height: 45.4px;
     }
 
     &__phone-icon {
-      right: 23px;
-      top: 39px;
-      width: 24px; // -25%
+      width: 24px;
       height: 24px;
+      margin-right: 23px;
     }
 
     &__burger-icon {
-      left: 23px;
-      top: 42px;
-      width: 24px; // -25%
+      width: 24px;
       height: 24px;
+      margin-left: 23px;
     }
 
     &__title {
