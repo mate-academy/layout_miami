@@ -2,6 +2,159 @@
 @import "fonts";
 @import "typography";
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+h1 {
+  margin: 0;
+}
+
 body {
+  margin: 0;
   background: $c-gray;
+}
+
+.header {
+  min-height: 100vh;
+  padding: 24px 0 80px;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__burger {
+    
+  }
+
+  &__toggle {
+    display: none;
+    
+    &:checked ~ .header__toggle-label {
+      position: relative;
+      z-index: 2;
+      background-image: url(../images/icons/Icon-Close.svg);
+      background-position: center;
+      width: 32px;
+      height: 32px;
+    }
+    &:checked ~ .header__menu-list {
+      visibility: visible;
+      top: 0;
+    }
+  }
+
+  &__toggle-label {
+    display: block;
+    background-image: url(../images/icons/Icon-Burger-menu.svg);
+    background-position: center;
+    width: 32px;
+    height: 32px;
+     &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+      }
+  }
+  &__menu-list {
+    position: absolute;
+    top: -1000%;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+    transition-duration: .3s;
+    margin: 0;
+    padding-top: 145px;
+  }
+
+  &__item {
+  list-style: none;
+  }
+  
+  &__link {
+    display: block;
+    padding: 22px 0;
+
+  color: #fff;
+  border-radius: 15px;
+
+  font-weight: 700;
+  font-size: 22px;
+
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition-duration: .3s;
+  }
+
+  &__menu-list-bottom {
+    margin-top: 45px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__logo {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__call { 
+    position: relative;
+    background-image: url(../images/icons/Icon-Phone-call.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 32px;
+    width: 32px;
+
+    &:hover .header__number {
+      visibility: visible;
+    }
+  }
+
+  &__number {
+    visibility: hidden;
+    position: absolute;
+  }
+
+	&__title {
+    font-size: 80px;
+    font-weight: 700;
+    color: #fff;
+    -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: white;
+    &::before {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 4%;
+      border-radius: 1px;
+      background-color: #000;
+    }
+  }
+}
+.container {
+  //можно через mixin
+  min-width: 320px;
+  width: 1024px;
+  margin: 0 auto;
+  
 }
