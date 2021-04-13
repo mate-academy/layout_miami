@@ -16,11 +16,5 @@ toggler.addEventListener('click', () => {
 });
 
 toggler.addEventListener('click', () => {
-  // title.classList.add('title--active');
-  // title.classList.remove('title--active');
   navigation.classList.toggle('header__nav--active');
 });
-
-
-
-
