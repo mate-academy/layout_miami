@@ -1,178 +1,202 @@
-// #region background 
+// #region header
 .header {
-  position: relative;
-}
-
-// .header__background {
-
-// }
-
-.header__image {
   width: 100%;
   height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-}
-// #endregion
-.header__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-.header__menu {
-  width: 83%;
-  position: absolute;
-  top: 25.5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  &__navigation-checkbox {
+    display: none;
+  }
 
-.nav {
-  left: -50%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  width: 100%;
-  // height: 100%;
-  z-index: 1;
-  transition: transform 0.5s;
-  // background-color: blue;
+  &__menu {
+    width: 83%;
+    margin: 0 auto;
+  }
 
   &__list {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
-    padding-left: 23px ;
-    position: absolute;
-    top: 77px;
+    align-items: center;
     list-style: none;
+    height: 100px;
   }
 
-  // &__link {
-
-  // }
-
-  &__input {
-    text-transform: uppercase;
-    font-family: Roboto, sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-decoration: none;
-    line-height: 22px;
-    color: white;
-  }
-}
-
-.call {
-  font-family: roboto, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #fff;
-}
-
-.call__number {
-  padding: 16px 0;
-}
-
-.call__order {
-  position: relative;
-
-}
-
-.call__order::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  right: 0;
-  left: 0;
-  background-color: #fff;
-  height: 1px;
-
-}
-
-.header__toggler {
-  display: none;
-
-  &-label {
-    padding: 20px;
+  &__burger-icon {
+    position: relative;
+    display: flex;
     width: 24px;
     height: 16px;
     background-image: url(../images/burger-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
-    transition: background-image 0.3s;
+    background-size: cover;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
 
     &:hover {
       background-image: url(../images/burger-icon-hover.svg);
     }
   }
 
-  &:checked + .header__toggler-label {
+  &__navigation-checkbox:checked + &__menu &__burger-icon {
     background-image: url(../images/cencel-icon.svg);
   }
 
-  &:checked ~ .nav {
-    display: block;
-    position: absolute;
-    transform: translateX(50%);
-  }
-}
-
-.header__logo {
-  background-image: url(../images/miami-logo.svg);
-  height: 76px;
-  width: 130px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 2;
-}
-
-.header__phone {
-  display: flex;
-  align-items: center;
-
-  &-label {
-    padding: 20px;
-    background-image: url(../images/phone.svg);
-    height: 24px;
-    width: 24px;
+  &__logo {
+    position: relative;
+    display: flex;
+    background-image: url(../images/miami-logo.svg);
+    width: 130px;
+    height: 76px;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    background-image: url(../images/phone.svg);
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     cursor: pointer;
-    z-index: 0;
 
     &::before {
+      display: none;
+      content: "+1 234 555-55-55";
       position: absolute;
-      right: 63px;
       top: 50%;
       transform: translateY(-50%);
-      align-items: center;
-      content: "+1 234 555-55-55";
-      width: 98px;
+      right: 15px;
+      width: 120px;
+      text-decoration: none;
+      color: white;
       font-size: 12px;
       font-weight: 700;
-      color: white;
       font-family: Roboto, sans-serif;
-      z-index: 0;
-      display: none;
+    }
+
+    &:hover {
+      &::before {
+        display: block;
+      }
     }
   }
 
-  &-checkbox {
-    display: none;
+  &__title {
+    position: absolute;
+    bottom: 80px;
+    &-text {
+      position: relative;
+      font-size: 46px;
+      color: #fff;
+    }
 
-    &:checked + .header__phone-label::before {
-      display: block;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      height: 2px;
+      width: 40px;
+      background-color: #fff;
+
     }
   }
 }
+// #endregion
+// #region navigation
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: blue;
+  transform: translateY(-100%);
+  opacity: 0;
+  z-index: 0;
+  transition: transform 0.5s;
+
+  &__container {
+    max-width: 83%;
+    margin: 0 auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 150px;
+  }
+
+  // &__item {
+
+  // }
+
+  &__link {
+    position: relative;
+    margin-bottom: 32px;
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border-bottom: 1px solid white;
+      display: none;
+    }
+
+    &:hover {
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  &__bussines-card {
+    display: block;
+    margin-top: 48px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__phone-number {
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    display: inline-block;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: -8px;
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+.header__navigation-checkbox:checked ~ .nav {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+// #endregion
