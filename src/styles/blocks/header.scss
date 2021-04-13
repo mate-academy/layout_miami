@@ -3,18 +3,18 @@
   position: relative;
 }
 
-.header__background {
-  width: 100%;
-}
+// .header__background {
+
+// }
 
 .header__image {
   width: 100%;
   height: 100vh;
   object-fit: cover;
   object-position: center;
+  z-index: 1;
 }
 // #endregion
-// #region navigation
 .header__container {
   display: flex;
   flex-direction: column;
@@ -32,23 +32,32 @@
 }
 
 .nav {
+  left: -50%;
   margin: 0;
   padding: 0;
   position: fixed;
-  right: -50%;
+  width: 100%;
+  // height: 100%;
   z-index: 1;
+  transition: transform 0.5s;
+  // background-color: blue;
 
   &__list {
-    width: 83%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    padding-left: 23px ;
     position: absolute;
     top: 77px;
     list-style: none;
   }
 
-  &__link {
-    width: 200px;
-    margin-bottom: 32px;
-  }
+  // &__link {
+
+  // }
 
   &__input {
     text-transform: uppercase;
@@ -61,11 +70,37 @@
   }
 }
 
+.call {
+  font-family: roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+}
+
+.call__number {
+  padding: 16px 0;
+}
+
+.call__order {
+  position: relative;
+
+}
+
+.call__order::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  left: 0;
+  background-color: #fff;
+  height: 1px;
+
+}
+
 .header__toggler {
   display: none;
 
   &-label {
-    position: relative;
     padding: 20px;
     width: 24px;
     height: 16px;
@@ -79,22 +114,18 @@
     &:hover {
       background-image: url(../images/burger-icon-hover.svg);
     }
+  }
 
-    &:checked ~ .nav {
-      display: block;
-      right: 0;
-      width: 100%;
-      position: absolute;
-      background-color: blue;
-    }
+  &:checked + .header__toggler-label {
+    background-image: url(../images/cencel-icon.svg);
+  }
 
-    &:checked + .menu__toggler-label {
-      background-image: url(../images/cencel-icon.svg);
-    }
+  &:checked ~ .nav {
+    display: block;
+    position: absolute;
+    transform: translateX(50%);
   }
 }
-
-// #endregion
 
 .header__logo {
   background-image: url(../images/miami-logo.svg);
