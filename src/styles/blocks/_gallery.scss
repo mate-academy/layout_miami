@@ -1,7 +1,5 @@
 .gallery {
-  display: grid;
-  justify-content: center;
-  justify-items: center;
+  text-align: center;
   margin-bottom: 64px;
 
   @media (min-width: 768px) {
@@ -16,7 +14,7 @@
     &::after {
       content: "";
       position: absolute;
-      right: 42%;
+      right: 47%;
       display: block;
       width: 24px;
       height: 24px;
@@ -26,6 +24,10 @@
     @media (min-width: 768px) {
       margin-bottom: calc(37px + 24px + 5px);
       font-size: 48px;
+
+      &::after {
+        right: 49%;
+      }
     }
   }
 
@@ -34,10 +36,22 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      margin-bottom: 32px;
+      padding-bottom: 16px;
+
+      &--resize-right {
+        @media (min-width: 1024px) {
+          grid-template-columns: 2fr 1fr;
+        }
+      }
+
+      &--resize-left {
+        @media (min-width: 1024px) {
+          grid-template-columns: 1fr 2fr;
+        }
+      }
 
       @media (min-width: 768px) {
-        margin-bottom: 40px;
+        padding-bottom: 24px;
       }
     }
 
@@ -45,28 +59,28 @@
       margin: 0;
       margin-bottom: 27px;
       line-height: 27px;
+      text-align: left;
       color: $black;
 
       &-name {
         font-weight: 700;
         color: $blue;
       }
-
-      @media (min-width: 768px) {
-        margin-bottom: 40px;
-      }
     }
   }
 
   &__image {
     height: 131px;
-    margin-bottom: 16px;
     border-radius: 8px;
     object-fit: cover;
+    cursor: pointer;
+
+    @media (min-width: 412px) {
+      width: 100%;
+    }
 
     @media (min-width: 768px) {
       height: 256px;
-      margin-bottom: 24px;
     }
   }
 
