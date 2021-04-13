@@ -1,1 +1,106 @@
-/*  ---  */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    @extend %title;
+    margin-bottom: 5px;
+
+    @media (max-width: $break-point-for-table) {
+      font-size: 36px;
+    }
+  }
+  &__crown {
+    width: 20px;
+    height: 13px;
+    background-image: url(/images/icons/crown.svg);
+    background-size: cover;
+    margin-bottom: 40px;
+
+    @media (max-width: $break-point-for-table) {
+      margin-bottom: 32px;
+    }
+
+  }
+
+  &__wrapper {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 24px;
+
+    @media (max-width: $break-point-for-table) {
+      margin-bottom: 16px;
+    }
+
+    &--proportion-2_1 {
+      grid-template-columns: 2fr 1fr;
+    }
+    &--proportion-1_1 {
+      grid-template-columns: 1fr 1fr;
+    }
+    &--proportion-1_2 {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @media (max-width: $break-point-for-table) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+  }
+
+  &__discription {
+    align-self: flex-start;
+    margin-bottom: 40px;
+
+    @media (max-width: $break-point-for-table) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+    color: $main-color;
+    text-decoration: none;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 256px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s border-color linear;
+    border: 2px solid transparent;
+    &:hover {
+      border-color: $main-color;
+    }
+    @media (max-width: $break-point-for-table) {
+      height: 131px;
+    }
+  }
+
+  &__button {
+    padding: 21px 48px;
+    color: $main-color;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+
+    border: 2px solid $main-color;
+    border-radius: 8px;
+
+    @media (max-width: $break-point-for-table) {
+      width: 100%;
+    }
+    transition: 0.2s linear;
+    transition-property: color, background-color, box-shadow;
+    &:hover {
+      color: #fff;
+      background-color: $main-color;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+}

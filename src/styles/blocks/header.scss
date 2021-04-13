@@ -1,22 +1,23 @@
 .header {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  padding: 0 $main-padding;
+  color: #fff;
 
-  height: 700px;
-  
-  @include block-paddings-big;
-
-  background-image: url(../images/header.jpg);
-  background-position: center;
-  background-size: cover;
-
-  @media (min-width: 100px) and (max-width: 576px) {
-    @include block-paddings-small;
+  &__wrapper {
+    margin: 0 auto;
+    max-width: $max-width-content;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  @media (min-width: 577px) and (max-width: 768px) {
-    padding-left: 40px;
-    padding-right: 40px;
+  background-image: url(/images/header.jpg);
+  background-size: cover;
+  background-position: top center;
+
+  @media (max-width: $break-point-for-table) {
+    padding: 0 23px;
   }
 
   &__top {
@@ -24,236 +25,110 @@
     justify-content: space-between;
     align-items: center;
 
-    height: 128px;
+    padding: 24px 0;
+    gap: 60px;
 
-    @media (min-width: 100px) and (max-width: 576px) {
-      height: 80px;
+  }
+  &__menu {
+    position: relative;
+    background-image: url(/images/icons/menu-icon.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    outline: none;
+    z-index: 2;
+    transition: 0.3s transform linear;
+    @include square-container (24px);
+    @media (max-width: $break-point-for-table) {
+      @include square-container (18px);
+
+    }
+
+    &:hover {
+      background-image: url(/images/icons/menu-icon-hover.svg);
+      cursor: pointer;
+    }
+
+    &--active {
+      background-image: url(/images/icons/menu-close.svg);
+      transform: rotateX(180deg);
+
+      &:hover {
+        background-image: url(/images/icons/menu-close.svg);
+
+      }
     }
   }
 
-  &__text-container {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
+  &__logo {
+    position: relative;
+    object-fit: fill;
+    @media (max-width: $break-point-for-table) {
+      height: 48px;
+      width: 80px;
+    }
+    z-index: 2;
   }
 
-  &__text {
-    width: 442px;
-    padding-bottom: 80px;
-    font-family: "Roboto", sans-serif;
-    font-size: 80px;
-    line-height: 80px;
+  &__phone {
+    display: block;
+    position: relative;
+    background-size: cover;
+    background-image: url(/images/icons/phone-icon.svg);
+    @include square-container (24px);
+
     color: #fff;
-    letter-spacing: -1.5px;
+    text-decoration: none;
+    align-items: center;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
 
-    @media (min-width: 100px) and (max-width: 350px) {
-      font-size: 40px;
-      line-height: 40px;
-      padding-bottom: 40px;
+    @media (max-width: $break-point-for-table) {
+      @include square-container (18px);
     }
 
-    @media (min-width: 351px) and (max-width: 400px) {
-      font-size: 50px;
-      line-height: 50px;
-      padding-bottom: 50px;
+    &::before {
+      position: absolute;
+      left: -130px;
+      top: 3px;
+      content: "+1 234 555-55-55";
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s linear;
     }
 
-    @media (min-width: 400px) and (max-width: 576px) {
-      font-size: 50px;
-      line-height: 50px;
-      padding-bottom: 50px;
-    }
+    &:hover::before {
+      opacity: 1;
 
-    @media (min-width: 450px) and (max-width: 576px) {
-      font-size: 60px;
-      line-height: 60px;
-      padding-bottom: 60px;
+      @media  (max-width: 460px) {
+        opacity: 0;
+      }
     }
+  }
 
-    @media (min-width: 577px) and (max-width: 768px) {
-      padding-bottom: 40px;
-    }
+  &__title {
+
+    padding-bottom: 80px;
+    font-weight: bold;
+    font-size: 80px;
 
     &::before {
       content: "";
       display: block;
       width: 40px;
       height: 2px;
-      background: #fff;
+      margin-bottom: 24px;
+      background-color: #fff;
       border-radius: 2px;
-      margin-bottom: 24px;
-    }
-  }
-}
-
-.nav,
-.logo,
-.phone {
-  width: 33.33%;
-}
-
-.nav {
-  &__icon {
-    background-image: url(../images/icons/menu-icon.svg);
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-    width: 24px;
-    height: 16px;
-
-    transition: background-image 400ms;
-
-    @media (min-width: 100px) and (max-width: 576px) {
-      width: 18px;
-      height: 16px;
     }
 
-    &:hover {
-      background-image: url(../images/icons/menu-icon-hover.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      cursor: pointer;
-      width: 24px;
-      height: 16px;
-
-      @media (min-width: 100px) and (max-width: 576px) {
-        width: 18px;
-        height: 16px;
-      }
-    }
-  }
-
-  &__menu {
-    display: none;
-    align-items: flex-start;
-
-    position: absolute;
-    width: 100%;
-    height: 700px;
-    left: 0;
-    top: 0;
-    padding-left: 80px;
-
-    background-color: #0075ff;
-
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 22px;
-    color: #fff;
-
-    transition: background-color 400ms;
-
-    @media (min-width: 100px) and (max-width: 576px) {
-      padding-left: 20px;
+    @media (max-width: $break-point-for-table) {
+      font-size: 46px;
+      line-height: 40px;
     }
 
-  }
-
-  &__items {
-    padding-top: 152px;
-  }
-
-  &__item {
-
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    transition: display, padding-bottom, border-bottom, 400ms;
-
-    &:hover {
-      display: inline-block;
-      border-bottom: 2px solid #fff;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-      cursor: pointer;
-    }
-
-    &--phone {
-      font-size: 12px;
-      padding: 16px 0 0;
-      margin-bottom: 0;
-
-      &:hover {
-        border-bottom: 1px solid #fff;
-        width: 100px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-        cursor: pointer;
-      }
-    }
-
-    &--text {
-      font-size: 12px;
-      text-transform: uppercase;
-      padding-top: 16px;
-      
-      &:hover {
-        width: 90px;
-        border-bottom: 1px solid #fff;
-        margin-bottom: 0;
-        padding-bottom: 0;
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-.logo {
-  width: 136px;
-  height: 80px;
-  position: relative;
-  z-index: 1;
-
-  @media (min-width: 100px) and (max-width: 576px) {
-    width: 82px;
-    height: 48px;
-  }
-
-}
-
-.phone {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  &__number {
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    color: #fff;
-    padding-right: 16px;
-    opacity: 0;
-
-    @media (min-width: 100px) and (max-width: 450px) {
-      position: absolute;
-      top: 70px;
-      right: 0;
-    }
-  }
-
-  &__icon {
-    width: 24px;
-    height: 24px;
-    background-image: url(../images/icons/phone-icon.svg);
-    background-size: cover;
-
-    transition: opacity 400ms;
-
-    @media (min-width: 100px) and (max-width: 576px) {
-      width: 18px;
-      height: 18px;
-    }
-
-    @media (min-width: 577px) and (max-width: 768px) {
-      width: 22px;
-      height: 22px;
-    }
-
-    &:hover {
-      opacity: 0.8;
-      background-repeat: no-repeat;
-      cursor: pointer;
-    }
   }
 }
