@@ -1,47 +1,86 @@
 .nav {
-  display: flex;
-  height: 170px;
-  justify-content: space-between;
-  align-items: center;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: #0075ff;
+  opacity: 0;
+  transition: 1s;
 
-  &__logo {
-    padding: 20px;
-    z-index: 2;
-
-    &-img {
-      max-height: 80px;
-
-      @include breakpoint($mobile-bp) {
-        max-height: 50px;
-      }
-    }
+  &--active {
+    visibility: visible;
+    opacity: 1;
+    transition: 1s;
   }
 
-  &__phone {
-    display: flex;
-    position: relative;
-    margin-right: -20px;
-    padding: 20px;
-    transition-duration: 2s;
-    transition-property: color;
+  &__container {
+    max-width: 1260px;
+    padding: 0 120px;
+    margin: 0 auto;
 
-    &:after {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      width: 130px;
-      height: 16px;
-      right: 55px;
-      content: "+1 234 555-55-55";
-      color: #fff;
-      transition: 4s;
+    @include breakpoint($tablet-bp) {
+      padding: 0 60px;
     }
 
-    &:hover:after {
-      visibility: visible;
-      display: inline-block;
-      transition: 1s;
-      opacity: 1;
+    @include breakpoint($mobile-bp) {
+      padding: 0 20px;
+    }
+
+  }
+
+  &__list {
+    width: max-content;
+    padding: 170px 0;
+    list-style: none;
+  }
+
+  &__link a {
+    display: block;
+    padding-bottom: 32px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  &__link {
+    position: relative;
+
+    &:hover::after {
+      position: absolute;
+      content: "";
+      height: 1px;
+      width: 100%;
+      top: 30px;
+      left: 0;
+      background-color: #fff;
+    }
+
+    &-phone a {
+      padding-top: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+  
+    &-phone {
+      position: relative;
+    }
+
+    &-phone:last-child::after {
+      position: absolute;
+      content: "";
+      height: 2px;
+      width: 60%;
+      bottom: -4px;
+      left: 0;
+      background-color: #fff;
     }
   }
 }

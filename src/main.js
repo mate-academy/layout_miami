@@ -1,12 +1,12 @@
 'use strict';
 
-const menuBody = document.querySelector('.menu__body');
-const menuIcon = document.querySelector('.menu__icon');
-const menuIconLine = document.querySelector('.menu__icon-line');
+const nav = document.querySelector('.nav');
+const burger = document.querySelector('.head__burger');
+const burgerLine = document.querySelector('.head__burger-line');
 const toggler = document.querySelector('#toggler');
 
 toggler.addEventListener('click', () => {
-  menuBody.classList.toggle('menu__body--active');
-  menuIcon.classList.toggle('menu__icon--active');
-  menuIconLine.classList.toggle('menu__icon-line--active');
+  nav.classList.toggle('nav--active');
+  burger.classList.toggle('head__burger--active');
+  burgerLine.classList.toggle('head__burger-line--active');
 });
