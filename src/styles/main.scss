@@ -8,6 +8,7 @@
 
 html {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -16,7 +17,6 @@ body {
 }
 
 .header {
-  position: relative;
   display: flex;
   justify-content: center;
   padding: 25px 120px 80px;
@@ -36,7 +36,6 @@ body {
   }
 
   &__upper {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,6 +43,8 @@ body {
 }
 
 .nav {
+  z-index: 1;
+
   &__icon {
     display: block;
     box-sizing: content-box;
@@ -65,15 +66,19 @@ body {
   }
 
   &__list {
-    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 150px 120px;
+    margin: 0;
     display: none;
     flex-direction: column;
     gap: 32px;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     list-style: none;
     background-color: #0075ff;
+    transition-duration: 0.5s;
   }
 
   &__link {
@@ -85,7 +90,12 @@ body {
   }
 }
 
+.logo {
+  z-index: 2;
+}
+
 .phone {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   font-family: "Roboto", sans-serif;
@@ -128,4 +138,43 @@ body {
     background-color: #fff;
     border-radius: 2px;
   }
+}
+
+.about {
+  &__content {
+    padding: 104px 120px 150px;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    width: 100%;
+  }
+
+  &__small-title {
+    margin: 0;
+    color: #0075ff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    color: #3e3e3e, 100%;
+    line-height: 27px;
+  }
+
+  &__link {
+    color: #0075ff;
+    text-decoration: none;
+  }
+}
+
+.gallery {
+  height: 100vh;
 }
