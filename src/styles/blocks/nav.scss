@@ -1,20 +1,21 @@
 .nav {
-  display: none;
-
-  transition: display $animation-duration;
-
   &--active {
-    display: flex;
+    top: 0;
+    opacity: 100%;
   }
-  
+
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   height: 100%;
   width: 100%;
   padding: 24px 0 80px;
 
   background-color: $c-blue;
+  opacity: 0;
+
+  transition: top $animation-duration ease-out,
+    opacity $animation-duration;
 
   &__wraper {
     @extend %conteiner;
@@ -75,19 +76,18 @@
 
   &__item {
     position: relative;
+    
+    padding-bottom: 8px;
 
-    margin-bottom: 32px;
+    margin-bottom: 23px;
     width: max-content;
 
+    border-bottom: 1px solid $c-blue;
+
+    transition: border-bottom $animation-duration;
+
     &:hover {
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -8px;
-        width: 100%;
-        border-bottom: 1px solid $c-white;
-      }
+      border-bottom: 1px solid $c-white;
     }
   }
 
@@ -98,6 +98,7 @@
   }
   
   &__tel {
+    display: block;
     margin-bottom: 16px;
 
     @include font (12, 16, bold, 2);
