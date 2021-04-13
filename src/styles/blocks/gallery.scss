@@ -16,6 +16,13 @@
 
   &__link {
     color: $c-blue;
+    transition-duration: $duration;
+    transition-timing-function: ease-in;
+
+    &:hover {
+      font-size: 16.5px;
+      color: $c-blue-hover;
+    }
   }
 
   &__box {
@@ -72,11 +79,16 @@
   }
 
   &__photo {
-    display: flex;
-    width: 100%;
-    height: 100%;
+    @extend %img;
     object-fit: cover;
     border-radius: 8px;
+    transition-duration: $duration;
+    transition-timing-function: ease-in;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
   }
 
   &__wrap {
@@ -107,9 +119,10 @@
     border: 2px solid $c-blue;
     border-radius: 8px;
     color: $c-blue;
-    background-color: #fff;
+    background-color: $c-white;
 
-    transition-duration: 0.4s;
+    transition-duration: $duration;
+    transition-timing-function: ease-in;
 
     @media (min-width: 600px) {
       width: 154px;
@@ -117,9 +130,9 @@
   }
 
   &__button:hover {
-    color: #fff;
-    background: #005ecc;
-    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    color: $c-white;
+    background: $c-blue-hover;
+    box-shadow: $hover-shadow;
     border: transparent;
     width: 271px;
 
@@ -129,9 +142,9 @@
   }
 
   &__button:active {
-    color: #fff;
-    background: #005ecc;
-    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    color: $c-white;
+    background: $c-blue-hover;
+    box-shadow: $active-shadow;
     border: transparent;
     width: 287px;
 

@@ -1,7 +1,225 @@
 .header {
+  box-sizing: border-box;
+  position: relative;
   height: 100vh;
-  background-image: url(../images/header.jpg);
+  background-image: url(../images/header2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 0 20px 80px;
+
+  display: grid;
+  justify-content: center;
+  justify-items: start;
+  grid-template-rows: 46px 1fr 81px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "top"
+    "empty"
+    "title";
+
+  @media (min-width: 1020px) {
+    grid-template-rows: 77px 1fr 161px;
+    grid-template-columns: 1004px;
+  }
+
+  &__top {
+    position: relative;
+    display: grid;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 18px 1fr 18px;
+    padding: 25px 3px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 24px 1fr 24px;
+    }
+  }
+
+  &__logo-wrap {
+    display: flex;
+    height: 46px;
+    z-index: 1;
+
+    @media (min-width: 500px) {
+      height: 60px;
+    }
+
+    @media (min-width: 600px) {
+      height: 70px;
+    }
+
+    @media (min-width: 700px) {
+      height: 76px;
+    }
+  }
+
+  &__logo {
+    @extend %img;
+    object-fit: contain;
+    z-index: 0;
+  }
+
+  &__phone {
+    display: flex;
+    position: relative;
+
+    @media (min-width: 600px) {
+      &::before {
+        position: absolute;
+        width: 128px;
+        color: $c-white;
+        font-size: 12px;
+        content: "+ 1 234 555-55-55";
+        right: -15px;
+        top: 4px;
+        visibility: hidden;
+      }
+
+      &:hover {
+        &::before {
+          right: 10px;
+          visibility: visible;
+          transition-duration: 0.6s;
+          transition-timing-function: linear;
+        }
+      }
+    }
+  }
+
+  &__title-wrap {
+    grid-area: title;
+    position: relative;
+    z-index: 0;
+
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: $c-white;
+      height: 2px;
+      left: 0;
+      width: 40px;
+      top: -24px;
+    }
+  }
+
+  &__title {
+    z-index: 0;
+    color: $c-white;
+    font-size: 46px;
+    line-height: 40px;
+
+    @media (min-width: 1020px) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    z-index: 2;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/burger1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-image: url(../images/burger-hover1.svg);
+    }
+  }
+
+  &__toggler:checked ~ &__toggler-label {
+    background-image: url(../images/cross1.svg);
+  }
+
+  &__nav {
+    position: absolute;
+    display: flex;
+    opacity: 0;
+    background-color: $c-blue;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    transition-duration: 0.7s;
+    transition-timing-function: linear;
+  }
+
+  &__link {
+    position: relative;
+    color: $c-white;
+    font-size: 20px;
+
+    &:after {
+      position: absolute;
+      content: "";
+      height: 1px;
+      background-color: $c-white;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transition-duration: $duration;
+      transition-timing-function: ease-in;
+    }
+
+    &:hover:after {
+      opacity: 100%;
+    }
+  }
+
+  &__link-phone {
+    color: $c-white;
+    font-size: 12px;
+
+    &--text {
+      position: relative;
+      font-size: 15px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        height: 1px;
+        background-color: $c-white;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &__item {
+    padding-bottom: 28px;
+
+    &--phone {
+      padding: 38px 0 10px;
+    }
+  }
+
+  &__list {
+    z-index: 2;
+    position: absolute;
+    opacity: 0;
+    top: 120px;
+    left: 0;
+    transition-duration: 0.7s;
+    transition-timing-function: linear;
+
+    @media (min-width: 1020px) {
+      top: 152px;
+    }
+  }
+
+  &__toggler:checked ~ &__nav {
+    opacity: 100%;
+  }
+
+  &__toggler:checked ~ &__list {
+    opacity: 100%;
+  }
 }
