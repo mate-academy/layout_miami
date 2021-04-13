@@ -1,13 +1,13 @@
 .header {
   position: relative;
   height: 100vh;
-  padding: 48px 120px;
+  padding: 24px 120px;
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
-
-  &--active {
-    background: #0075ff;
+  
+  @media (max-width: 768px) {
+    padding: 24px 20px;
   }
 
   &__wrapper {
@@ -31,10 +31,26 @@
 
     &--active {
       background-image: url(../images/close-icon.svg);
+      z-index: 2;
     }
 
     &--active:hover {
       background-image: url(../images/close-icon.svg);
+    }
+  }
+
+  &__nav {
+    transform: translateY(-150%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.7s;
+
+    &--active {
+      transform: translateY(0%);
+      z-index: 1;
     }
   }
 
@@ -43,6 +59,10 @@
     width: 136px;
     text-align: center;
     line-height: 76px;
+  }
+
+  &__menu--active ~ .header__logo-box {
+    z-index: 2;
   }
 
   &__logo-image {
@@ -82,7 +102,6 @@
       opacity: 1;
     }
   }
-
   &__main-heading {
     position: absolute;
     bottom: 80px;
@@ -92,19 +111,26 @@
     letter-spacing: -1.5px;
     text-align: left;
     color: #fff;
-  }
 
-  &__nav {
-    visibility: hidden;
-    position: absolute;
-    top: 152px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @media (max-width: 768px) {
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
 
-    &--active {
-      visibility: visible;
-      z-index: 1;
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: 185px;
+      height: 2px;
+      width: 40px;
+      background-color: #fff;
+      border-radius: 1px;
+
+      @media (max-width: 768px) {
+        bottom: 105px;
+      }
     }
   }
 }
