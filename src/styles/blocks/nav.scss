@@ -5,11 +5,11 @@
   transition: 500ms;
 
   &__container {
+    @extend %container;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 24px;
-    @extend %container;
+    padding-top: 24px;
   }
 
   &__hamburger {
@@ -17,6 +17,7 @@
     width: 32px;
     height: 32px;
     padding: 4px 4px 8px;
+    cursor: pointer;
   }
 
   &__line {
@@ -49,14 +50,14 @@
 
   &__full {
     position: fixed;
-    left: -100%;
+    left: 0;
     top: 128px;
-    width: 100%;
-    height: 110vh;
+    width: 0%;
+    overflow: hidden;
+    height: calc(100vh - 128px);
     background-color: $second-color;
     z-index: 1;
-    visibility: hidden;
-    transition: left 500ms;
+    transition: 300ms;
   }
 
   &__list {
@@ -112,8 +113,7 @@
   }
 
   &_active &__full {
-    left: 0;
-    visibility: visible;
+    width: 100%;
   }
 
   &_active .telephone {
