@@ -139,7 +139,7 @@
     font-size: 13px;
   }
 
-  span {
+  &__link {
     color: $color1;
   }
 }
@@ -234,7 +234,7 @@
   grid-template-rows: 365px;
   column-gap: 150px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 280px;
   }
 
@@ -243,7 +243,15 @@
     flex-direction: column;
     align-items: center;
 
-    @media (max-width: 1000px) {
+    &:nth-child(1) {
+      padding-right: 45px;
+
+      @media (max-width: 1200px) {
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 1200px) {
       &:nth-child(2) {
         padding-bottom: 48px;
       }
@@ -254,6 +262,12 @@
     width: 150px;
     height: 150px;
     margin-bottom: 28px;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__name {
@@ -430,6 +444,8 @@
 
   &__textarea {
     height: 144px;
+    resize: vertical;
+    padding-top: 17px;
     @include formStyles;
 
     &:hover {
@@ -438,6 +454,10 @@
 
     &:focus {
       @include formFocus;
+    }
+
+    &::placeholder {
+      @include formPlaceholder;
     }
   }
 
