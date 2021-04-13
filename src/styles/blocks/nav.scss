@@ -1,18 +1,131 @@
 @import "utils";
 
-.nav-checkbox {
-  display: none;
+.nav {
+  visibility: hidden;
+  height: 100vh;
+  opacity: 1;
+  background-color: $main-color;
+  transition: opacity, visibility 1s, 1s linear, linear;
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    padding: 25px 124px 80px;
+    height: 100%;
+  }
+
+  &__list {
+    padding: 0;
+  }
+
+  &__item {
+    margin-bottom: 2px;
+  }
+
+  &__link {
+    display: block;
+    padding: 16px 0;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: white;
+
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: relative;
+      bottom: -8px;
+
+      display: block;
+      height: 1px;
+
+      transition: 0.3s linear;
+    }
+
+    &:hover::after {
+      background-color: white;
+    }
+  }
+
+  &__phone {
+    display: block;
+    margin-top: 33px;
+    width: 100%;
+
+    &-value {
+      display: block;
+  
+      margin-bottom: 16px;
+  
+      color: white;
+  
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+  
+      cursor: pointer;
+    }
+  
+    &-title {
+      display: inline-block;
+      width: max-content;
+  
+      color: white;
+  
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+  
+      cursor: pointer;
+  
+      &:after {
+        content: "";
+  
+        position: relative;
+        bottom: -8px;
+  
+        display: block;
+        width: 111px;
+        height: 1px;
+        margin: 0 auto;
+  
+        background-color: white;
+      }
+    }
+  }
 }
 
-nav {
+.nav-checkbox {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
+  top: 50px;
+  width: 25px;
+  height: 25px;
 
-  z-index: 1;
+  z-index: 2;
 
-  background-color: #0075ff;
+  opacity: 0;
+
+  &:checked ~ .nav {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:checked ~ .header__top > .header__nav-toogler {
+    width: 21.23px;
+    height: 21.23px;
+
+    @include bg-image;
+    background-image: url(../toggler.svg);
+
+    transition: 0.1s linear;
+  }
 }
