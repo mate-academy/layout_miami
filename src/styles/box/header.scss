@@ -77,7 +77,9 @@
     }
     
     &:checked ~ .nav {
-      display: block;
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
     }
   }
 
@@ -102,16 +104,45 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-  }
 
-  &-link {
-    padding: 15px;
-  }
+    &:hover > * {
+      visibility: visible;
+      opacity: 1;
 
-  &__phone-link:hover::before {
-    content: "+1 234 555-55-55";
-    position: relative;
-    left: -20px;
+      transition-delay: 0s;
+    }
+
+    &-link {
+      position: relative;
+      left: -148px;
+
+      width: 128px;
+      height: 16px;
+      display: flex;
+      visibility: hidden;
+      opacity: 0;
+
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+
+      transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+
+      transition-delay: 3s;
+
+      @media (max-width: 623px) {
+        left: -100px;
+        top: 30px;
+      }
+
+      @media (max-width: 468px) {
+        left: -90px;
+        top: -25px;
+        font-size: 10px;
+      }
+    }
   }
 
   &__body {
