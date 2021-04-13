@@ -34,12 +34,45 @@
   &__content {
     display: flex;
     flex-direction: column;
+
+    @media (min-width: 500px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
   }
 
   &__info {
+    display: flex;
     flex-direction: column;
     line-height: 27px;
     margin-bottom: calc(32px - 24px);
+
+    @media (min-width: 1080px) {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+
+    &-wrapper {
+      margin-right: 57px;
+
+      @media (min-width: 1152px) {
+        margin-right: 107px;
+      }
+    }
+
+    &-section {
+      &:hover {
+        color: $blue;
+        cursor: pointer;
+      }
+    }
   }
 
   &__label {
@@ -52,5 +85,69 @@
   &__form {
     display: flex;
     flex-direction: column;
+  }
+
+  &__field {
+    padding: 17px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 413px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000;
+    background-color: #f7f8ff;
+    cursor: pointer;
+
+    &--textarea {
+      height: 144px;
+    }
+
+    &::placeholder {
+      color: #8f99a8;
+    }
+
+    &:hover {
+      border: 2px solid #ccd0e0;
+    }
+
+    &:focus {
+      color: #000;
+      border-radius: 8px;
+      border: 2px solid blue;
+      outline: none;
+    }
+  }
+
+  &__button {
+    padding: 21px 0;
+    width: 100%;
+    max-width: 413px;
+    border: 2px solid $blue;
+    border-radius: 8px;
+    font-weight: 700;
+    line-height: 14px;
+    color: $white;
+    background-color: $blue;
+    transition: color 0.6s, background-color 0.6s, border 0.6s, box-shadow 0.6s;
+
+    &:hover {
+      background-color: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @media (min-width: 768px) {
+      width: 413px;
+    }
   }
 }
