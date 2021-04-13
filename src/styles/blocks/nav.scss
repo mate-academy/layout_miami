@@ -1,0 +1,125 @@
+.nav {
+  &--active {
+    top: 0;
+    opacity: 100%;
+  }
+
+  position: absolute;
+  top: -100%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 24px 0 80px;
+
+  background-color: $c-blue;
+  opacity: 0;
+
+  transition: top $animation-duration ease-out,
+    opacity $animation-duration;
+
+  &__wraper {
+    @extend %conteiner;
+
+    width: 100%;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &__menu-icon {
+    height: $icon-size;
+    width: $icon-size;
+
+    background-image: url("../../src/images/Icon-Close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    transition: transform $animation-duration linear;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__main-logo {
+    height: 46px;
+    width: 80px;
+
+    background-image: url("../../src/images/Logo_Miami.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media (min-width: 620px) {
+      height: 80px;
+      width: 136px;
+    }
+  }
+
+  &__call-icon {
+    height: $icon-size;
+    width: $icon-size;
+  }
+
+  &__list {
+    margin-bottom: 48px;
+    padding: 0;
+  
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    
+    padding-bottom: 8px;
+
+    margin-bottom: 23px;
+    width: max-content;
+
+    border-bottom: 1px solid $c-blue;
+
+    transition: border-bottom $animation-duration;
+
+    &:hover {
+      border-bottom: 1px solid $c-white;
+    }
+  }
+
+  &__link {
+    @include font (22, 22, bold, 2);
+    text-transform: uppercase;
+    color: $c-white;
+  }
+  
+  &__tel {
+    display: block;
+    margin-bottom: 16px;
+
+    @include font (12, 16, bold, 2);
+    text-transform: uppercase;
+    color: $c-white;
+  }
+
+  &__tel-link {
+    position: relative;
+    
+    @include font (12, 16, bold, 2);
+    text-transform: uppercase;
+    color: $c-white;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      border-bottom: 1px solid $c-white;
+    }
+  }
+}
