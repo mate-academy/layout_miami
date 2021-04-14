@@ -11,12 +11,13 @@
 
   top: -100%;
   transition-duration: 0.5s;
+  transition-timing-function: ease-in;
 
   padding-left: 20px;
 
   background-color: #0075ff;
 
-  @media (min-width: 1260px) {
+  @media (min-width: 768px) {
     padding-left: 120px;
     width: calc(100% - 120px);
   }
@@ -24,6 +25,7 @@
   &__active {
     top: 0;
     transition-duration: 0.5s;
+    transition-timing-function: ease-out;
   }
 
   &__list {
@@ -35,24 +37,32 @@
   }
 
   &__link {
+    position: relative;
     display: inline-block;
+
     font-family: Roboto, Arial, sans-serif;
-
-    cursor: default;
-
     text-decoration: none;
     color: #fff;
     font-weight: 700;
     font-size: 22px;
     letter-spacing: 2px;
 
-    padding-bottom: 32px;
-    
+    padding-bottom: 7px;
+    padding-top: 24px;
+    transition-duration: 0.5s;
+
+    border-bottom: 1px solid #0075ff;
   }
 
-  &__phone-link {
-    cursor: default;
+  &__link:hover {
+    border-bottom: 1px solid #fff;
+    transition-duration: 0.5s;
+  }
 
+  
+  &__phone-link1,
+  &__phone-link2 {
+    position: relative;
     font-family: Roboto, Arial, sans-serif;
     text-decoration: none;
     color: #fff;
@@ -61,6 +71,16 @@
     line-height: 16px;
     letter-spacing: 2px;
 
-    padding-bottom: 16px;
+    padding-top: 16px;
+  }
+
+  &__phone-link2:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: #fff;
+    height: 1px;
+    width: 112px;
+    bottom: -8px;
   }
 }
