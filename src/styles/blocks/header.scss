@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    max-width: 880px;
+    max-width: $contentMaxWidth;
     height: 100%;
     
     margin: 0 auto;
@@ -74,7 +74,7 @@
   }
 
   &__nav-content {
-    max-width: $viewScreeWidthL;
+    max-width: $contentMaxWidth;
     padding: 120px $paddingS 0;
     margin: 0 auto;
 
@@ -89,12 +89,10 @@
   }
 
   &__nav-link {
-    position: relative;
     display: inline-block;
-    font-size: 22px;
-    line-height: 54px;
-    text-decoration: none;
-    color: $colorWhite;
+    position: relative;
+
+    @include setFontProperties(22px, 700, 54px, $colorWhite);
     
     &:hover::after {
       content: "";
@@ -107,14 +105,20 @@
     }
   }
 
+  &__nav-phone-link {
+    display: block;
+    width: 150px;
+    color: $colorWhite;
+  }
+
   &__nav-phone {
+    display: block;
     font-size: 12px;
     line-height: 32px;
   }
 
   &__nav-line {
-    width: 123px;
-    height: 1px;
+    @include elementSize(113px, 1px);
     background-color: $colorWhite;
   }
 
@@ -145,11 +149,11 @@
 
     &::before {
       display: none;
-      content: "+1 234 555-55-55";
       position: absolute;
-      right: 52px;
-      width: 128px;
+      right: 20px;
+      @include elementSize(150px, 32px);
 
+      content: "+1 234 555-55-55";
       @include setFontProperties(12px, 700, 32px, $colorWhite);
       letter-spacing: 2px;
       text-transform: uppercase;
