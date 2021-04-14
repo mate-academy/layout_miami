@@ -22,11 +22,23 @@ $(document).ready(function() {
 
   const phone = $('.header__phone-box');
   const phoneNumber = $('.header__number');
+  const mobileSide = $('.first-view__side-phone');
 
   const togglePhone = () => {
-    phoneNumber.toggleClass('header__number--toggler');
+    const screenWidth = Number($(window).width());
+    if (screenWidth >= 500) {
+      phoneNumber.toggleClass('header__number--toggler');
+    } 
   };
+
+  const toggleMobSide = () => {
+    const screenWidth = Number($(window).width());
+    if (screenWidth < 500) {
+      mobileSide.toggleClass('first-view__side-phone--show');
+    }
+  }
 
   phone.mouseover(togglePhone);
   phone.mouseout(togglePhone);
+  phone.click(toggleMobSide);
 });
