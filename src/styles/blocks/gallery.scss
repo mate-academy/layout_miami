@@ -1,0 +1,61 @@
+.gallery {
+  display: grid;
+  gap: 32px;
+
+  @each $name, $first-column, $second-column in $grid-templates {
+    &__item-photos_template-columns-#{$name} {
+      @extend %gallerry-item;
+      grid-template-columns: $first-column $second-column;
+    }
+  }
+
+  &__item-photo {
+    min-height: 130px;
+    min-width: 130px;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    @include smooth-transition(height, transform);
+    transform-origin: bottom;
+
+    @media (min-width: 700px) {
+      height: 256px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__item-link {
+    font-weight: 700;
+    color: $main-color;
+  }
+
+  &__item-adress {
+    display: inline;
+  }
+
+  &__view-all-button {
+    width: 100%;
+    height: 56px;
+    border: solid $main-color 1px;
+    border-radius: 8px;
+    color: $main-color;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    outline: none;
+    margin: 0 auto;
+    @include smooth-transition(width, color, background-color);
+
+    @media (min-width: 600px) {
+      width: 154px;
+    }
+  }
+
+  &__view-all-button:hover {
+    background-color: $button-hover-color;
+    color: #fff;
+  }
+}
