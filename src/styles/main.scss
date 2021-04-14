@@ -7,6 +7,13 @@
 @import "block/gallery.scss";
 @import "block/footer.scss";
 
+%tel-link {
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,6 +22,7 @@ html {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -42,7 +50,6 @@ body {
   &__top {
     display: flex;
     justify-content: space-between;
-    //position: relative;
     height: 130px;
     &__burger {
       &__label {
@@ -51,6 +58,7 @@ body {
         background-position: center;
         width: 32px;
         height: 32px;
+        cursor: pointer;
         &:hover {
           background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
         }
@@ -64,9 +72,9 @@ body {
         width: 100vw;
         min-height: 100vh;
         background-color: blue;
-        transition-duration: 0.3s;
         margin: 0;
         padding-top: 145px;
+        transition-duration: 0.8s;
       }
       &__toggle {
         display: none;
@@ -77,6 +85,7 @@ body {
           background-position: center;
           width: 32px;
           height: 32px;
+          transition-duration: 1s;
         }
         &:checked ~ .header__top__burger__menu-list {
           visibility: visible;
@@ -91,26 +100,33 @@ body {
       width: 136px;
       height: 80px;
     }
-
+    &__tel {
+      position: absolute;
+      top: 10px;
+      right: 48px;
+      width: 100px;
+      visibility: hidden;
+      //что б не сразу пропадал номер
+      transition-duration: 0.5s;
+      &--link {
+        @extend %tel-link;
+      }
+    }
     &__call {
+      position: relative;
       height: 32px;
-      width: 32px;
-      padding-top: 8px;
-      background-image: url(../images/icons/Icon-Phone-call.svg);
-      background-repeat: no-repeat;
-      background-position: right;
-      &:hover::before {
-        content: "+1 234 555-55-55";
-        position: absolute;
-        right: 0;
-        margin-right: 48px;
-        color: #fff;
-        font-size: 12px;
-        //что б не сразу пропадал номер
-        transition-duration: 0.5s;
+      &:hover .header__top__call__tel {
+        visibility: visible;
+      }
+      &__img {
+        width: 32px;
+        height: 32px;
+        background-image: url(../images/icons/Icon-Phone-call.svg);
+        cursor: pointer;
       }
     }
   }
+ 
   &__title {
     font-size: 80px;
     font-weight: 700;
@@ -121,32 +137,60 @@ body {
       content: "";
       display: block;
       height: 2px;
-      width: 4%;
+      width: 40px;
       border-radius: 1px;
-      background-color: #000;
+      background-color: #fff;
     }
   }
-
+  //ссылки в list-menu
   &__item {
-    list-style: none;
+    padding-bottom: 15px;
   }
-
   &__link {
-    display: block;
-    padding: 22px 0;
+    position: relative;
+    padding: 8px 0;
     color: #fff;
     border-radius: 15px;
     font-weight: 700;
     font-size: 22px;
     text-decoration: none;
     text-transform: uppercase;
-    transition-duration: 0.3s;
+    
+    &:hover::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      border-radius: 0.5px;
+      background-color: #fff;
+    }
   }
-
-  &__menu-list-bottom {
-    margin-top: 45px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
+  &__item-bottom {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    //filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding-top: 30px;
+    &__tel {
+      display: block;
+      padding: 8px 0;
+      @extend %tel-link;
+    }
+    &__call-to-order {
+      position: relative;
+      padding-bottom: 8px;
+      @extend %tel-link;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        border-radius: 0.5px;
+        background-color: #fff;
+      }
+    }
   }
 }
