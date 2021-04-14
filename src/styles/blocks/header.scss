@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+
+  position: relative;
   background-image: url(/images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,11 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    margin: 0 auto;
+    width: 80%;
     &-burger {
       width: 24px;
       height: 16px;
-      position: relative;
       color: $white;
       font-weight: bold;
       font-size: 22px;
@@ -28,12 +30,19 @@
     }
     &-checkbox {
       display: none;
+      width: 22px;
+      height: 22px;
     }
     &-menu {
-      padding-top: 72px;
-      max-height: 0;
+      padding-top: 10%;
       font-size: 0;
       transition: 1s all;
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      @media (max-width: 320px) {
+        padding-top: 120px;
+      }
     }
 
     &-link {
@@ -43,6 +52,7 @@
       color: $white;
       text-decoration: none;
       transition: 0.7s;
+      padding-left: 12.5%;
       &::after {
         content: "";
         position: relative;
@@ -58,6 +68,7 @@
       }
     }
     &-logo {
+      z-index: 10;
       @media (max-width: 320px) {
         width: 78px;
         height: 45px;
@@ -68,7 +79,7 @@
       font-weight: bold;
       width: max-content;
       transition: 0.7s;
-
+      margin-left: 12.5%;
       &--number {
         padding: 16px 0;
         text-decoration: none;
@@ -84,18 +95,20 @@
 
     &-label {
       display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: sticky;
+      top: 10%;
+      left: 12.5%;
+      width: 24px;
+      height: 16px;
       cursor: pointer;
-      // transition: 1s;
       background-image: url(/images/burger.svg);
+      background-repeat: no-repeat;
+      background-position: center;
       @media (max-width: 320px) {
         background-image: url(/images/burger320.svg);
         background-repeat: no-repeat;
         background-position: center;
+        top: 6%;
       }
       &:hover {
         background-image: url(/images/hover.svg);
@@ -108,6 +121,14 @@
     }
 
     &-checkbox:checked {
+      & ~ .header__nav-menu {
+        top: 0%;
+        left: 0%;
+        background-color: #0075ff;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
       & ~ .header__nav-menu .header__nav-link {
         font-size: 22px;
       }
@@ -124,8 +145,10 @@
         background-size: cover;
         background-position: center;
         height: 22px;
+        z-index: 10;
       }
     }
+
     &-img {
       @media (max-width: 320px) {
         width: 18px;
@@ -139,8 +162,9 @@
     font-size: 80px;
     line-height: 80px;
     color: $white;
-    width: 442px;
+    max-width: 442px;
     letter-spacing: -1.5px;
+    margin-left: 10%;
     @media (max-width: 320px) {
       font-weight: bold;
       font-size: 46px;
