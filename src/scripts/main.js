@@ -4,6 +4,7 @@ const $ = window.$;
 
 $(document).ready(function() {
   const menu = $('.header__menu');
+  const navigation = $('.navigation');
 
   const toggleMenuButton = () => {
     if (menu.hasClass('header__menu--active')) {
@@ -15,10 +16,12 @@ $(document).ready(function() {
     }
   };
 
-  menu.click(function() {
-    $('.navigation').toggleClass('navigation--down');
+  const upDownMenu = () => {
+    navigation.toggleClass('navigation--down');
     toggleMenuButton();
-  });
+  };
+
+  menu.click(upDownMenu);
 
   const phone = $('.header__phone-box');
   const phoneNumber = $('.header__number');
@@ -26,17 +29,19 @@ $(document).ready(function() {
 
   const togglePhone = () => {
     const screenWidth = Number($(window).width());
+
     if (screenWidth >= 500) {
       phoneNumber.toggleClass('header__number--toggler');
-    } 
+    }
   };
 
   const toggleMobSide = () => {
     const screenWidth = Number($(window).width());
+
     if (screenWidth < 500) {
       mobileSide.toggleClass('first-view__side-phone--show');
     }
-  }
+  };
 
   phone.mouseover(togglePhone);
   phone.mouseout(togglePhone);
