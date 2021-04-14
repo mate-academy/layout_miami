@@ -1,0 +1,141 @@
+.sidebar {
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 170px;
+  background-color: $mainColor;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+
+  @media (max-width: $tabletWidth) {
+    padding-top: 100px;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__list {
+    margin: 0 auto;
+    max-width: 1200px;
+    list-style: none;
+    @extend %sectionPaddings;
+  }
+
+  &__item {
+    padding: 15px 0;
+    list-style: none;
+    letter-spacing: 2px;
+  }
+
+  &__link {
+    font-size: 22px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.6s ease-in;
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &__item:last-child &__link {
+    display: inline-block;
+    font-size: 12px;
+    padding-top: 18px;
+    border-bottom: 1px solid #fff;
+    line-height: 30px;
+  }
+}
+
+// .sidebar--active + .navigation__toggler-label::before {
+//   content: url(/images/icons/Icon-Close.svg);
+
+//   @media (max-width: $tabletWidth) {
+//     content: url(/images/icons/Icon-Close--s.svg);
+//   }
+// }
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  cursor: pointer;
+  z-index: 1;
+
+  &__bar {
+    transition: all 0.5s ease-in;
+    width: 24px;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__toggler-label {
+    position: relative;
+    z-index: 2;
+
+    &:hover {
+      content: url(/images/icons/Icon-Burger-menu-hover.svg);
+      cursor: pointer;
+
+      @media (max-width: $tabletWidth) {
+        content: url(/images/icons/Icon-Burger-menu-hover--s.svg);
+      }
+    }
+
+    &::before {
+      content: url(/images/icons/Icon-Burger-menu.svg);
+
+      @media (max-width: $tabletWidth) {
+        content: url(/images/icons/Icon-Burger-menu--s.svg);
+      }
+    }
+  }
+
+  &__logo {
+    justify-self: center;
+    width: 136px;
+    z-index: 2;
+
+    @media (max-width: $tabletWidth) {
+      width: 78px;
+    }
+  }
+
+  &__tel {
+    position: relative;
+    justify-self: end;
+    cursor: pointer;
+    z-index: 0;
+
+    @media (max-width: $tabletWidth) {
+      content: url(/images/icons/Icon-Phone-call--s.svg);
+    }
+
+    &::before {
+      content: "+1 234 55-55-55";
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: max-content;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    &:hover::before {
+      right: 50px;
+      opacity: 100%;
+    }
+  }
+}
