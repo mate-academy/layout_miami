@@ -2,24 +2,26 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-
+  min-height: 700px;
   padding: 0;
 
   background-image: url(../images/header.jpg);
   background-position: center;
   background-size: cover;
 
-  &-page {
+  &__page {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 700px;
     max-width: 1020px;
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
+    
   }
 
-  &-headline {
+  &__headline {
     position: relative;
     margin-top: auto;
     margin-bottom: 80px;
@@ -33,20 +35,16 @@
       border-radius: 2px;
       background-color: #fff;
     }
-
-    &-h1 {
-      color: #fff;
-      font-size: 80px;
-      line-height: 80px;
-      font-weight: 700;
-    }
   }
-
+  &__title {
+    color: #fff;
+    font-size: 80px;
+    line-height: 80px;
+    font-weight: 700;
+  }
 }
 
 .nav {
-  $self:&;
-
   &__menu {
     display: flex;
     justify-content: space-between;
@@ -137,9 +135,6 @@
       background-size: cover;
     }
 
-    &:checked ~ #{$self}__menu-full {
-      transform: translateY(0);
-    }
   }
 
   &__menu-container {
@@ -151,24 +146,30 @@
 
   &__menu-full {
     position: absolute;
+    min-height: 700px;
     height: 100vh;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
-    transform: translateY(-100%);
+    transform: translateY(-300%);
+    transition: 1s;
     background-color: #0075ff;
   }
 
 }
 
-.ul-menu-full {
+.nav__menu-full--active {
+  transform: translateY(0%);
+}
+
+.fullscreen-menu {
   display: flex;
   flex-direction: column;
   padding: 0;
 }
 
-.menu-full-item {
+.fullscreen-menu-item {
   padding-bottom: 32px;
   list-style: none;
   text-transform: uppercase;
@@ -178,7 +179,7 @@
   }
 }
 
-.menu-full-link {
+.fullscreen-menu-link {
   font-size: 22px;
   color: #fff;
   text-decoration: none;
@@ -189,7 +190,7 @@
   }
 }
 
-.menu-full-contact-p {
+.fullscreen-menu-contact {
   margin: 48px 0 16px;
   font-size: 12px;
   color: #fff;
