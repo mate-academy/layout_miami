@@ -3,6 +3,7 @@
 @import "typography";
 
 @import "header.scss";
+@import "gallery.scss";
 
 * {
   font-family: Roboto, sans-serif;
@@ -13,6 +14,12 @@
 body {
   margin: 0;
   background: $c-gray;
+
+  @media (max-width: 360px) {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 .main {
@@ -20,21 +27,71 @@ body {
   font-size: 16px;
   line-height: 21px;
   color: rgba(62, 62, 62, 1);
+  height: 60vh;
 
   &__text-about {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    padding: 95px 20px 80px;
+    height: 90vh;
+    gap: 50px;
+
+    @media (max-width: 935px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 390px) {
+      gap: 5px;
+    }
   }
 }
 
 .text-about {
-  &--title {
-    display: flex;
+  width: 100%;
+  justify-content: center;
+  & :nth-child(n) {
+    gap: 20px;
   }
 
-  &--paragraf {
+  &__title {
+    display: flex;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+    color: #000;
+
+    @media (max-width: 390px) {
+      font-size: 36px;
+    }
+  }
+
+  .title__span {
+    color: rgba(0, 117, 255, 1);
+  }
+
+  &__paragraf {
     display: flex;
     flex-direction: column;
+    height: max-content;
+    max-width: 500px;
+
+    @media (max-width: 924px) {
+      max-width: 700px;
+    }
   }
+}
+
+.paragraf {
+  margin: 1px;
+}
+
+.title {
+  margin: 1px;
+}
+
+.paragraf__title {
+  color: rgba(0, 117, 255, 1);
+}
+
+.paragraf__span {
+  font-weight: 700;
 }
