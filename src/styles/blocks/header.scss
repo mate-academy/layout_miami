@@ -6,18 +6,24 @@
 
   &-top {
     padding: 25.5px;
-    margin-left: 120px;
-    margin-right: 120px;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
+    @media (min-width: 768px) {
+      & {
+        margin-left: 120px;
+        margin-right: 120px;
+      }
+    }
+
     &__menu-burger {
       width: 24px;
       height: 16px;
       cursor: pointer;
-      z-index: 1;
+      z-index: 2;
       background-image: url(/images/Vector.svg);
       background-size: contain;
 
@@ -65,20 +71,34 @@
       }
     }
   }
-  &__title {
-    width: 442px;
-    height: 161px;
-    margin: 400px auto auto 152px;
 
+  &__title {
+    position: absolute;
+    margin: 75% 20px;
     font-style: normal;
     font-weight: bold;
     font-size: 80px;
     line-height: 80px;
-
-    display: flex;
-    align-items: center;
-    letter-spacing: -1.5px;
-
     color: #fff;
+
+    @media (min-width: 768px) {
+      & {
+
+        margin: 400px auto 80px 152px;
+      }
+    }
+    &:before {
+      content: "";
+
+      position: relative;
+      left: 0;
+      top: -24px;
+
+      display: block;
+      width: 40px;
+      height: 2px;
+      color: white;
+      background-color: white;
+    }
   }
 }
