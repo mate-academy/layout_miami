@@ -49,3 +49,8 @@ that's why this is better to add this style to those elements you really need (t
 - phone inputs in forms should have `type="tel"` so the HTML validation works
 - email inputs in forms should have `type="email"` so the HTML validation works
 - form have button with `type="submit"` ([check here why button](https://html.com/attributes/button-type/#Difference_between_ltbutton_typesubmitgt_and_ltinput_typesubmitgt))
+- logos in the footer and header should be clickable
+- you can implement smooth scroll by using 'scroll-behavior' css property
+- blue text indicates links, they should be clickable
+- you can add light hover effect to the pictures (for example you can use border/transform(scale)/box-shadow css properties)
+- contact info also should be clickable
