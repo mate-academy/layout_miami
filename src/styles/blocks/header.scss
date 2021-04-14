@@ -149,7 +149,8 @@
   &__nav {
     position: absolute;
     display: flex;
-    opacity: 1%;
+    // opacity: 1%;
+    visibility: hidden;
     background-color: $c-blue;
     top: 0;
     width: 100vw;
@@ -157,6 +158,14 @@
     z-index: 3;  //z-index
     transition-duration: 0.7s;
     transition-timing-function: linear;
+    transition-property: visibility;
+  }
+
+  
+  &__toggler:checked ~ &__nav {
+    // opacity: 100%;
+    visibility: visible;
+    z-index: 5;
   }
 
   &__link {
@@ -222,11 +231,6 @@
     @media (min-width: 1020px) {
       top: 152px;
     }
-  }
-
-  &__toggler:checked ~ &__nav {
-    opacity: 100%;
-    z-index: 5;
   }
 
   &__toggler:checked ~ &__list {
