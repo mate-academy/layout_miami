@@ -1,45 +1,165 @@
 .header {
+  position: relative;
   height: 100vh;
-  padding: $header-top-padding
-    $header-side-paddings
-    $header-bottom-padding;
+  padding: 0 20px;
 
   background-image: url("../images/header.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
+  transition: padding 0.2s linear;
+
+  @media (min-width: 750px) {
+    padding: 0 60px;
+  }
+
+  @media (min-width: 900px) {
+    padding: 0 120px;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
   &__content-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  &__icons {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24.9px 5px 0;
+    margin: 0 -5px;
+
+    @media (min-width: 900px) {
+      padding-top: 25.5px;
+    }
+  }
+
+  &__toggler:checked + &__content-wrapper &__icons {
+    background-color: $color-blue;
+    transition-delay: 0.8s;
+  }
+
+  &__menu-icon {
+    position: relative;
+    display: block;
+    z-index: 1;
+
+    width: $icon-width;
+    height: 12px;
+
+    background-image: url("../images/icons/small-burger-menu.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: width 0.3s linear,
+      height 0.3s linear,
+      background-image 0.1s linear;
+
+    @media (min-width: 900px) {
+      width: 24px;
+      height: 16px;
+      background-image: url("../images/icons/big-burger-menu.svg");
+    }
+  }
+
+  &__menu-icon:hover {
+    background-image: url("../images/icons/small-burger-menu-hover.svg");
+
+    @media (min-width: 900px) {
+      background-image: url("../images/icons/big-burger-menu-hover.svg");
+    }
+  }
+
+  &__toggler:checked + &__content-wrapper &__menu-icon {
+    background-image: url("../images/icons/small-close.svg");
+
+    @media (min-width: 900px) {
+      background-image: url("../images/icons/big-close.svg");
+    }
+  }
+
+  &__logo-link {
     position: relative;
     display: flex;
-    height: 100%;
+    z-index: 1;
   }
 
   &__logo {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 78.6px;
+    height: 45.46px;
+
+    transition: width 0.2s linear, height 0.2s linear;
+    cursor: default;
+
+    @media (min-width: 900px) {
+      width: 130.35px;
+      height: 75.77px;
+    }
   }
 
   &__phone-icon {
-    box-sizing: content-box;
-    position: absolute;
-    top: $icon-phone-top;
-    right: $icon-side-shift;
-    width: 18px;
-    height: 18px;
-    padding: $icon-padding;
-    margin-right: -$icon-padding;
+    position: relative;
+    display: flex;
+    width: $icon-width;
+    height: $icon-width;
 
     background-image: url("../images/icons/small-phone.svg");
-    background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: default;
+
+    transition: width 0.2s linear, height 0.2s linear;
+
+    @media (min-width: 900px) {
+      width: 24px;
+      height: 24px;
+      background-image: url("../images/icons/big-phone.svg");
+    }
+  }
+
+  &__phone-icon::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    right: $icon-width + 20px;
+    display: block;
+    transform: translateX(30%);
+    white-space: nowrap;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+
+    opacity: 0;
+    transition: transform 0.3s linear, opacity 0.2s linear;
+  }
+
+  &__phone-icon:hover::before {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: transform 0.2s linear, opacity 0.4s linear;
+  }
+
+  &__toggler:checked + &__content-wrapper &__phone-icon {
+    visibility: hidden;
+  }
+
+  &__title-wrapper {
+    position: absolute;
+    bottom: 80px;
   }
 
   &__title {
     position: relative;
-    align-self: flex-end;
 
     font-weight: 700;
     font-size: 46px;
@@ -47,6 +167,8 @@
     color: #fff;
     letter-spacing: -1px;
     cursor: default;
+
+    transition: font-size 0.2s linear, letter-spacing 0.2s linear;
 
     &::before {
       content: "";
@@ -57,6 +179,12 @@
 
       background-color: #fff;
       border-radius: 1px;
+    }
+
+    @media (min-width: 900px) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
     }
   }
 }
