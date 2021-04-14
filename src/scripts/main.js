@@ -1,10 +1,17 @@
 'use strict';
 
-const title = document.querySelector('.title');
-const toggler = document.querySelector('#toggler');
+const header = document.querySelector('.header__container');
+const title = document.querySelector('.header__title');
+const phone = document.querySelector('.header__phone');
+const toggler = document.querySelector('.header__toggler');
+const nav = document.querySelector('.nav');
 
 toggler.addEventListener('click', () => {
   // title.classList.add('title--active');
   // title.classList.remove('title--active');
-  title.classList.toggle('title--active');
+  header.classList.toggle('header__container--active');
+  title.classList.toggle('header__title--active');
+  phone.classList.toggle('header__phone--active');
+  toggler.classList.toggle('header__toggler--active');
+  nav.classList.toggle('nav--active');
 });
