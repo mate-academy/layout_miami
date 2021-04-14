@@ -8,7 +8,7 @@
   height: 100vh;
   padding: 24px 20px 80px;
 
-  @media (min-width: 1025px) {
+  @media (min-width: 768px) {
     padding: 24px 120px 80px;
   }
 
@@ -20,55 +20,81 @@
 
   &__menu-label {
     justify-self: start;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 12px;
     background-image: url(../images/menu-static.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    cursor: pointer;
+    transition-duration: 400ms;
 
-    @media (min-width: 1025px) {
-      width: 32px;
-      height: 32px;
+    @media (min-width: 768px) {
+      width: 24px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
     }
   }
 
   &__logo {
     justify-self: center;
-
+    z-index: 1;
     &-image {
       height: 48px;
       width: 82px;
 
-      @media (min-width: 1025px) {
+      @media (min-width: 768px) {
         height: 80px;
-        width: 146px;
+        width: 136px;
       }
     }
   }
 
   &__phone-link {
+    position: relative;
     justify-self: end;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     background-image: url(../images/phone.svg);
     background-repeat: no-repeat;
     background-size: contain;
 
-    @media (min-width: 1025px) {
-      width: 32px;
-      height: 32px;
+    &::before {
+      position: absolute;
+      opacity: 0;
+      transition-duration: 0ms;
+      left: -176px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+      content: "+1 234 555-55-55";
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        transition-duration: 500ms;
+      }
+    }
+
+    @media (min-width: 768px) {
+      width: 24px;
+      height: 24px;
     }
   }
 
   &__title {
-    font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-size: 46px;
     line-height: 40px;
     letter-spacing: -1px;
     color: #fff;
 
-    @media (min-width: 1025px) {
+    @media (min-width: 768px) {
       font-size: 80px;
       line-height: 80px;
       letter-spacing: -1.5px;
@@ -84,7 +110,7 @@
       background: #fff;
       border-radius: 2px;
 
-      @media (min-width: 1025px) {
+      @media (min-width: 768px) {
         bottom: 265px;
       }
     }
