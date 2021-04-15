@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: minmax(280px, 1fr);
   grid-template-rows: auto;
-  gap: 32px;
+  row-gap: 32px;
 
   grid-template-areas: "top"
     "block"
@@ -11,8 +11,8 @@
 
   @media (min-width: 768px) {
     padding: 60px 0;
-    grid-template-columns: 2fr 1fr;
-    gap: 70px;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 70px;
 
     grid-template-areas: "top top"
       "block form";
@@ -38,10 +38,15 @@
     grid-area: block;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 
   &__tag {
-    min-width: 250px;
     font-size: 14px;
     line-height: 17px;
     color: $c-lightgray;
@@ -56,67 +61,12 @@
     font-weight: 400;
     line-height: 27px;
   }
-}
 
-.form {
-  grid-area: form;
-  display: flex;
-  flex-direction: column;
-  max-width: 413px;
+  &__form {
+    grid-area: form;
 
-  &__input {
-    margin-top: 8px;
-    padding: 17px;
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    height: 48px;
-    background-color: #f6f8ff;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    outline: none;
-
-    &--textarea {
-      height: 144px;
-      resize: none;
-    }
-
-    &:hover {
-      border: 2px solid #ccd0e0;
-    }
-
-    &:focus {
-      border: 2px solid $c-blue;
-    }
-  }
-
-  &__button {
-    margin-top: 32px;
-    display: block;
-    height: 56px;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 14px;
-    color: #fff;
-    background-color: $c-blue;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
-    border-radius: 8px;
-    transition-duration: 400ms;
-
-    &:hover {
-      color: #fff;
-      cursor: pointer;
-      background: #005ecc;
-      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
-    }
-
-    &:active {
-      color: #fff;
-      background: #005ecc;
-      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    @media (min-width: 768px) {
+      justify-self: end;
     }
   }
 }
