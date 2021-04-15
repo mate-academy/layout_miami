@@ -52,6 +52,7 @@ body {
     &:hover {
       background-image: url(../images/icons/menu-hover.svg);
       background-size: 100%;
+      cursor: pointer;
     }
 
     @media (max-width: 1020px) {
@@ -75,6 +76,7 @@ body {
   }
 
   &__phone {
+    position: relative;
     height: 32px;
     width: 32px;
     background-image: url(../images/icons/phone-call.svg);
@@ -82,13 +84,34 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
+    &:hover::before {
+      position: absolute;
+      right: 48px;
+      top: 8px;
+      display: block;
+      height: 16px;
+      width: 128px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      content: "+1 234 555-55-55";
+    }
+
     @media (max-width: 1020px) {
       height: 24px;
       width: 24px;
+      &:hover::before {
+        content: none;
+      }
     }
-  }
 
+  }
   &__nav {
+    position: relative;
+    left: -100%;
     margin-top: 48px;
     margin-bottom: 48px;
     visibility: hidden;
@@ -123,6 +146,8 @@ body {
   }
 
   &__number {
+    position: relative;
+    left: -100%;
     display: inline-block;
     font-weight: bold;
     font-size: 12px;
@@ -131,7 +156,7 @@ body {
     text-transform: uppercase;
     color: #fff;
 
-    visibility: hidden;
+    // visibility: hidden;
   }
 
   &__call {
@@ -189,10 +214,16 @@ body {
 
     &:checked ~ .header > .header__wrapper > .header__nav {
       visibility: visible;
+      transition: left;
+      transition-duration: 0.5s;
+      left: 0;
     }
 
     &:checked ~ .header > .header__wrapper > .header__number {
       visibility: visible;
+      transition: left;
+      transition-duration: 0.5s;
+      left: 0;
     }
 
     &:checked ~ .header > .header__wrapper > .header__title {
@@ -426,6 +457,9 @@ body {
 
     @media (max-width: 1020px) {
       margin-bottom: 48px;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -522,6 +556,7 @@ body {
   }
 
   &__input {
+    padding: 0 17px;
     height: 48px;
     margin-bottom: 16px;
     background: #f7f8ff;
@@ -542,6 +577,10 @@ body {
 
     &:hover {
       border: 2px solid #ccd0e0;
+    }
+
+    &::placeholder {
+      content: "Message";
     }
   }
 
