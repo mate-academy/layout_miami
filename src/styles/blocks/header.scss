@@ -5,15 +5,14 @@
   background-position: center;
 
   &__content-wrapper {
-    // position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 24px 120px 80px;
     max-width: 1260px;
-    margin: 0 auto;
     height: 100%;
-
+    margin: 0 auto;
+    
     @media (max-width: 768px) {
       padding: 24px 20px 80px;
     }
@@ -23,7 +22,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
   }
 
   &__menu {
@@ -35,6 +33,7 @@
     background-repeat: no-repeat;
     cursor: pointer;
     transition: 0.3s ease;
+    z-index: 1;
 
     &:hover {
       background-image: url(../images/menu-hover.svg);
@@ -42,26 +41,11 @@
 
     &--active {
       background-image: url(../images/close-icon.svg);
-      z-index: 2;
-    }
-
-    &--active:hover {
-      background-image: url(../images/close-icon.svg);
-    }
-  }
-
-  &__nav {
-    transform: translateY(-150%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: transform 0.3s;
-
-    &--active {
-      transform: translateY(0%);
       z-index: 1;
+
+      &:hover {
+        background-image: url(../images/close-icon.svg);
+      }
     }
   }
 
@@ -70,10 +54,7 @@
     width: 136px;
     text-align: center;
     line-height: 76px;
-  }
-
-  &__menu--active ~ .header__logo-box {
-    z-index: 2;
+    z-index: 1;
   }
 
   &__logo-image {
@@ -83,28 +64,27 @@
   }
 
   &__phone-call {
+    position: relative;
     height: 32px;
     width: 32px;
     background-image: url(../images/phone-call.svg);
     background-size: 24px 24px;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
     cursor: pointer;
 
     &::before {
       content: "+1 234 555-55-55";
-      position: relative;
-      display: inline-block;
+      position: absolute;
       height: 16px;
       width: 128px;
 
-      right: 148px;
+      right: 52px;
       top: 8px;
 
       color: #fff;
       font-size: 12px;
       font-weight: 700;
-      line-height: 16px;
       letter-spacing: 2px;
       opacity: 0;
       transition: 0.3s ease;
