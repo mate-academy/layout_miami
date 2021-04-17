@@ -7,8 +7,6 @@ const toggler = document.querySelector('.header__toggler');
 const nav = document.querySelector('.nav');
 
 toggler.addEventListener('click', () => {
-  // title.classList.add('title--active');
-  // title.classList.remove('title--active');
   header.classList.toggle('header__container--active');
   title.classList.toggle('header__title--active');
   phone.classList.toggle('header__phone--active');

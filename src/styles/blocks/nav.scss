@@ -1,7 +1,7 @@
 .nav {
   display: none;
   padding-left: 120px;
-  margin-top: 78px;
+  padding-top: 78px;
 
   @media (max-width: 900px) {
     padding-left: 20px;
@@ -16,11 +16,8 @@
     list-style: none;
   }
 
-  &__item {
-    margin-bottom: 32px;
-  }
-
   &__link {
+    position: relative;
     text-decoration: none;
     font-weight: bold;
     font-size: 22px;
@@ -29,8 +26,25 @@
     text-transform: uppercase;
     color: #fff;
 
-    &:hover {
-      text-decoration-style: solid;
+    &::after {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      content: "";
+      height: 1px;
+      width: 0;
+      background: #fff;
+      transition: width 0.8s;
+    }
+  }
+
+  
+  &__item {
+    margin-bottom: 32px;
+
+    
+    &:hover .nav__link::after {
+      width: 100%;
     }
   }
 
