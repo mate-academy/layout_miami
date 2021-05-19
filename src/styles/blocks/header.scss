@@ -1,0 +1,145 @@
+.header {
+  height: 100vh;
+  padding: 25px 0 80px;
+  @include background("../images/header.jpg");
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__content {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__burger {
+    width: 18px;
+    height: 16px;
+    position: relative;
+    justify-self: start;
+    z-index: 2;
+    cursor: pointer;
+    @include background("../images/header/Icon-Burger-menu-closeed.png");
+
+    &:hover {
+      background-image: url(../images/header/Icon-Burger-menu-hover.png);
+    }
+
+    @media (min-width: $breakPoint) {
+      width: 25px;
+      height: 21px;
+    }
+  }
+
+  &__logo {
+    width: 78px;
+    height: 45px;
+    position: relative;
+    z-index: 1;
+    @include background("../images/header/Logo_Miami.png");
+
+    @media (min-width: $breakPoint) {
+      width: 130px;
+      height: 75px;
+    }
+  }
+
+  &__phone-container {
+    position: relative;
+    justify-self: end;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 55-55-55";
+      position: relative;
+      bottom: 5px;
+      width: max-content;
+      padding-right: 15px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+      color: white;
+      visibility: hidden;
+      display: none;
+
+      @media (min-width: $breakPoint) {
+        display: inline-block;
+      }
+    }
+
+    &:hover::before {
+      @media (min-width: $breakPoint) {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__phone {
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: $breakPoint) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 40px;
+    color: white;
+
+    &:before {
+      content: "";
+      position: relative;
+      left: 0;
+      top: -24px;
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    @media (min-width: $breakPoint) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__input {
+    display: none;
+  
+    &:checked ~ .nav {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    &:checked ~ .header__content > .header__burger {
+      width: 16px;
+      height: 16px;
+      background-image: url(../images/header/Icon-Close.png);
+  
+      @media (min-width: $breakPoint) {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  }
+}
