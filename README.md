@@ -7,4 +7,4 @@
 
 ## Description
 landing page for real estate company
-- [DEMO LINK](https://burunduk003.github.io/layout_miami/)
+- [DEMO LINK](https://ihor-karpyn.github.io/layout_miami/)
