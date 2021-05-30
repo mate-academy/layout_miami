@@ -1,0 +1,125 @@
+.header {
+  height: 100vh;
+  padding: 25px 0 80px;
+  @include background("../images/header-figma.png");
+
+  &__wrapper {
+    @include wrapper;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    justify-items: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &__burger {
+    @include background("../images/burger.svg");
+    width: 18px;
+    height: 16px;
+    position: relative;
+    z-index: 5;
+    justify-self: baseline;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../images/burger_hover.svg);
+    }
+
+    @media (min-width: 800px) {
+      width: 25px;
+      height: 21px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+    width: 78px;
+    height: 45px;
+    @include background("../images/miami_logo.svg");
+
+    @media (min-width: 800px) {
+      width: 130px;
+      height: 75px;
+    }
+  }
+  
+  &__phone-wrapper {
+    position: relative;
+    justify-self: end;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 55-55-55";
+      position: relative;
+      bottom: 5px;
+      width: max-content;
+      padding-right: 15px;
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: none;
+
+      @media (min-width: 800px) {
+        display: inline-block;
+      }
+    }
+
+    &:hover::before {
+      @media (min-width: 800px) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phone {
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: 800px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    line-height: 40px;
+    margin: 0;
+    font-size: 46px;
+    color: #fff;
+
+    &:before {
+      position: relative;
+      left: 0;
+      top: -24px;
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    @media (min-width: 800px) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
