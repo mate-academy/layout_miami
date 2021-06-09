@@ -2,6 +2,99 @@
 @import "fonts";
 @import "typography";
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+}
+
 body {
-  background: $c-gray;
+  margin: 0;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 700px;
+  padding: 48px 120px 80px;
+
+  background: url(../images/header.png) center no-repeat;
+  background-size: cover;
+
+  &__header-content {
+    margin: 0 auto;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 136px;
+    height: 80px;
+    z-index: 1;
+  }
+
+  &__title {
+    display: block;
+    margin: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 24px;
+      width: 40px;
+      height: 2px;
+
+      background: $c-white;
+      border-radius: 2px;
+    }
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.call {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  gap: 16px;
+
+  &__phone-number {
+    transform: scale(0%);
+    transition: transform 0.3s;
+
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: $c-white;
+  }
+
+  &__phone {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    background: url(../images/phone.svg) center no-repeat;
+
+    &:hover + .call__phone-number {
+      transform: scale(100%);
+    }
+  }
 }
