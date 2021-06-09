@@ -1,0 +1,65 @@
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  max-width: $content-max-width;
+  height: 100%;
+
+  &__checkbox {
+    display: none;
+
+    &:checked + label {
+      background: url(../images/cross.svg) center no-repeat;
+      background-size: contain;
+    }
+
+    &:checked ~ nav {
+      transform: scale(1);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    display: block;
+    @include icon-sizing (32px);
+    z-index: 1;
+
+    background: url(../images/menu.svg) center no-repeat;
+    background-size: contain;
+
+    &:hover {
+      cursor: pointer;
+
+      background: url(../images/menu_hover.svg) center no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: -$header-padding-top;
+    left: -$header-padding-left;
+    right: -$header-padding-left;
+    height: $header-height;
+  }
+
+  &__call {
+    margin-bottom: auto;
+  }
+
+  &__title {
+    display: block;
+    margin: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 24px;
+      width: 40px;
+      height: 2px;
+
+      background: $c-white;
+      border-radius: 2px;
+    }
+  }
+}
