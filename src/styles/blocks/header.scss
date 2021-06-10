@@ -5,9 +5,10 @@
   background-color: $color-blue;
   background-size: cover;
   height: 100vh;
+  width: 100%;
 
   &__container {
-    position: relative;
+    // position: relative;
     height: 100%;
     @extend %container;
   }
@@ -44,6 +45,7 @@
     top: 0;
     left: 0;
     z-index: 1;
+    transition: transform 0.5s;
     transform: translateX(-100%);
   }
 
@@ -71,6 +73,10 @@
     }
   }
 
+  &__phone-link {
+    text-decoration: none;
+  }
+
   &__phone-btn {
     width: 18px;
     height: 18px;
@@ -78,6 +84,7 @@
     background-image: url(../images/phone.svg);
     background-repeat: no-repeat;
     background-size: contain;
+
     @include respond(tab-port) {
       width: 20px;
       height: 20px;
@@ -86,6 +93,23 @@
     @include respond(tablet) {
       width: 22px;
       height: 22px;
+  
+      &::after {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        left: -120px;
+        display: block;
+        width: 100px;
+        font-size: 12px;
+        color: $color-white;
+        transform: translateY(-50%) rotate(180deg) scale(0);
+        transition: transform 0.5s;
+      }
+
+      &:hover::after {
+        transform: translateY(-50%) rotate(360deg) scale(1);
+      }
     }
   
     @include respond(desktop) {
