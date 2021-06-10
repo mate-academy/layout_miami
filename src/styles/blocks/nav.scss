@@ -2,21 +2,27 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @extend %header-padding-left;
 
   background-color: $c-light-blue;
 
-  transform: scale(0);
   transition: transform 0.3s;
+  transform: scale(0);
 
   &__list {
     display: flex;
     flex-direction: column;
-    padding-left: $header-padding-left;
+    padding: 0;
+
     list-style: none;
   }
 
   &__item {
     margin: 11px 0;
+
+    &:last-child {
+      margin-top: -16px;
+    }
   }
 
   &__link {
@@ -32,5 +38,14 @@
     color: $c-white;
 
     @include hover(border-bottom, 1px solid $c-white);
+
+    &--call {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  &__phone-number {
+    @extend %phone-number;
   }
 }
