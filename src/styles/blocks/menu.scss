@@ -1,0 +1,122 @@
+.menu {
+  max-width: 1260px;
+
+  &__button {
+    position: absolute;
+    z-index: 2;
+
+    width: 24px;
+    height: 16px;
+    padding-top: 10px;
+
+    cursor: pointer;
+  }
+
+  &__line,
+  &__line::before,
+  &__line::after {
+    position: absolute;
+
+    display: block;
+    width: 100%;
+    height: 2px;
+
+    background: #fff;
+    border-radius: 2px;
+    transition-duration: 0.25s;
+  }
+
+  &__line::before {
+    content: "";
+    top: -6px;
+  }
+
+  &__line::after {
+    content: "";
+    top: 6px;
+  }
+
+  &__box {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 1;
+
+    display: block;
+    visibility: hidden;
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+    padding: 80px 0;
+
+    list-style: none;
+    background-color: $colorLightBlue;
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.25s;
+  }
+
+  &__list {
+    max-width: 1000px;
+    margin: 0 auto;
+    list-style: none;
+  }
+
+  &__item {
+    display: block;
+    width: max-content;
+    padding: 12px 24px;
+
+    font-style: normal;
+    letter-spacing: 2px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition-duration: 0.25s;
+  }
+
+  &__item--extra {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
+  &__item::after {
+    content: "";
+    position: relative;
+    bottom: -8px;
+
+    display: block;
+    height: 1px;
+    transition-duration: 0.1s;
+  }
+
+  &__item:hover::after {
+    background-color: #fff;
+  }
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+
+#menu__toggle:checked ~ .menu__button > span {
+  transform: rotate(45deg);
+}
+
+#menu__toggle:checked ~ .menu__button > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+#menu__toggle:checked ~ .menu__button > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  left: 0;
+}
