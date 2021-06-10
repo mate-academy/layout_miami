@@ -1,0 +1,89 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__menu {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+
+    &-label {
+      &::after {
+        content: url(../images/menu.svg);
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      &:hover::after {
+        content: url(../images/menu_hover.svg);
+      }
+    }
+
+    &__list {
+      display: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      letter-spacing: 2px;
+    }
+
+    &:checked ~ .nav__list {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #0075ff;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    &:checked + .nav__menu-label {
+      content: url(../images/cross.svg);
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      z-index: 2;
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+    width: 80px;
+  }
+
+  &__phone {
+    width: 24px;
+    cursor: pointer;
+  }
+
+  &__item {
+    padding-left: 20px;
+
+    &:last-child::after {
+      position: absolute;
+      width: 150px;
+      height: 2px;
+      border-radius: 8px;
+      content: "";
+      display: block;
+      background-color: white;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+}
