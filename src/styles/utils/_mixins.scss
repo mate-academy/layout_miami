@@ -6,10 +6,15 @@
 }
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == tab-height {
+    @media only screen and (min-height: 900px) {
+      @content;
+    }//600px
+  }
   @if $breakpoint == tab-port {
     @media only screen and (min-width: 600px) {
       @content;
-    }//900px
+    }//600px
   }
 
   @if $breakpoint == tablet {
@@ -28,5 +33,28 @@
     @media only screen and (min-width: 112.5em) {
       @content;
     }//1800
+  }
+}
+
+@mixin icon-size($width, $height) {
+  width: $width;
+  height: $height;
+
+  @include respond(tab-port) {
+    width: $width + 2px;
+    height: $height + 2px;
+  }
+
+  @include respond(tablet) {
+    width: $width + 4px;
+    height: $height + 4px;
+  }
+  @include respond(desktop) {
+    width: $width + 6px;
+    height: $height + 6px;
+  }
+  @include respond(tab-height) {
+    width: $width + 26px;
+    height: $height + 26px;
   }
 }
