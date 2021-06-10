@@ -1,0 +1,104 @@
+.header {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background: url(../images/header.jpg) no-repeat;
+  background-size: cover;
+  padding: 25px 20px 80px;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1020px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &__menu-icon {
+    display: block;
+    z-index: 1;
+    width: 30px;
+    height: 20px;
+    background: url(../images/menu.svg) no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    transition-duration: 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+  }
+
+  &__title {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      background-color: $h1-color;
+      top: -24px;
+      content: "";
+      height: 2px;
+      width: 40px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $h1-color;
+    text-align: center;
+
+    &::before {
+      position: absolute;
+      content: "+1 234 555-55-55";
+      align-self: center;
+      right: 0;
+      width: 130px;
+      opacity: 0;
+      margin-right: 44px;
+      transition-duration: 0.3s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    &__phone {
+      &::before {
+        width: 130px;
+        margin-right: 28px;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    &__title {
+      font-size: 46px;
+      line-height: 50px;
+    }
+  }
+}
