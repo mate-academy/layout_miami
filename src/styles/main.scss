@@ -13,6 +13,7 @@ html {
   font-family: Roboto, sans-serif;
   font-weight: 700;
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -20,41 +21,189 @@ body {
   margin: 0;
 }
 
+.lock {
+  overflow: hidden;
+}
+
 .header {
+  position: relative;
   display: flex;
   background: url(../images/header.jpg) no-repeat center;
   background-size: cover;
   justify-content: center;
-  height: 700px;
+  height: 100vh;
   padding: 25px 23px 80px;
+  min-width: 320px;
 
-  &__info {
-    font-size: 46px;
-    min-width: 274px;
-    line-height: 40px;
-    letter-spacing: -1px;
-    color: white;
-  }
-
-  &__button {
+  &__burger {
     background: url(../images/menu.svg) no-repeat center;
     height: 12px;
+    z-index: 2;
     width: 18px;
     background-size: contain;
     border: none;
+    transition: background 0.5s linear;
+
+    &:hover {
+      background: url(../images/menu_hover.svg) no-repeat center;
+      background-size: contain;
+    }
+
+    &--active {
+      background: url(../images/icon-close.svg) no-repeat center;
+      background-size: cover;
+      height: 12px;
+      width: 18px;
+
+      &:hover {
+        background: url(../images/icon-close.svg) no-repeat center;
+      
+      }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #0075ff;
+    transition: left 0.3s ease;
+    z-index: 1;
+
+    &--active {
+      left: 0;
+    }
+
+  }
+
+  &__list {
+    display: flex;
+    padding-top: 120px;
+    flex-direction: column;
+    list-style-type: none;
+    width: 1020px;
+  }
+
+  
+
+  &__link {
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &--size {
+      font-size: 16px;
+    }
+
+    &:hover::before {
+      position: absolute;
+      content: "";
+      height: 1px;
+      width: 100%;
+      left: 0;
+      bottom: -8px;
+      background-color: #fff;
+      border-radius: 10%;
+    }
+  }
+  &__linke {
+    padding-top: 32px;
+
+    
+
+    &:nth-child(6) {
+      padding-top: 48px;
+    }
+
+    
   }
 
   &__logo {
     background-size: contain;
+    z-index: 2;
     width: 79px;
     height: 45px;
   }
 
   &__phone {
+    position: relative;
     background: url(../images/phone.svg) no-repeat center;
     background-size: contain;
     height: 18px;
     width: 18px;
+
+  }
+
+  &__info {
+    position: relative;
+    font-size: 46px;
+    z-index: 0;
+    min-width: 274px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: white;
+
+    &::after {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      content: "";
+      height: 2px;
+      width: 40px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+  }
+
+  @media (min-width: 750px) {
+    &__burger {
+      height: 16px;
+      width: 24px;
+     
+    }
+
+    &__logo {
+      height: 76px;
+      width: 130px;
+    }
+
+    &__phone {
+      height: 24px;
+      width: 24px;
+
+      &::before {
+        position: absolute;
+        content: "+1 234 555-55-55";
+        color: #fff;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        top: -100px;
+        left: -148px;
+        transition: top 1s linear ;
+      }
+
+      &:hover:before {
+        top: -15px;
+      }
+    }
+
+    &__info {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
   }
 
 }
@@ -63,7 +212,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 1120px;
+  width: 1020px;
 }
 
 .header__top {
@@ -71,6 +220,10 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.cursor {
+  cursor: pointer;
 }
 
 .nav {
@@ -81,4 +234,33 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 40px;
+  height: 360px;
+  width: 100%;
+  background: url(../images/footer.jpg) no-repeat center;
+  background-size: cover;
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    width: 1020;
+  }
+
+  &__logo {
+    height: 75px;
+    width: 130px;
+  }
+
+}
+
+.main {
+  height: 10000px;
+  width: 100%;
+  background-color: coral;
 }
