@@ -1,0 +1,78 @@
+.header {
+  position: relative;
+  background: url(../images/header.jpg) center/cover no-repeat;
+  height: 100vh;
+  background-color: #0075ff;
+
+  &__container {
+    height: 100%;
+    padding: 25px 20px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__toggler {
+    display: none;
+  }
+
+  &__menu-toggler {
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  &__menu-toggler::after {
+    content: url(../images/menu.svg);
+  }
+
+  &__menu-toggler:hover::after {
+    content: url(../images/menu_hover.svg);
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: translateX(-100%);
+  }
+
+  &__toggler:checked + &__menu-toggler::after {
+    content: url(../images/cross.svg);
+  }
+
+  &__toggler:checked ~ &__nav {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    z-index: 1;
+    width: 78px;
+  }
+
+  &__phone-btn {
+    width: 18px;
+    height: 18px;
+    background: url(../images/phone.svg) center/contain no-repeat;
+    cursor: pointer;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 80px;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -12px;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+    }
+  }
+}
