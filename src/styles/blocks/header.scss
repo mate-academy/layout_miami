@@ -1,0 +1,105 @@
+.header {
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+
+  &__nav-toggler {
+    display: none;
+  }
+  
+  &__nav-icon {
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 30px;
+    height: 20px;
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  
+  &__nav-toggler:checked ~ &__nav-icon {
+    background-image: url(../images/cross.svg);
+    transform: rotate(180deg);
+  }
+  
+  &__nav-toggler:checked ~ .nav {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  &__container {
+    @extend %container;
+    height: 100vh;
+    padding: 25.5px 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__wrapper {
+    padding-top: 22.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %h1;
+    position: relative;
+    max-width: 450px;
+    color: #fff;
+    transition: font-size 1s;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      top: -24px;
+      background: #fff;
+      border-radius: 2px;
+      transition: top 1s;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 300px;
+      font-size: 2.88rem;
+      &::before {
+        top: 0;
+      }
+    }
+  }
+
+  &__phone {
+    position: relative;
+    &:before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      left: -150px;
+      transform: translateY(50%);
+      top: -75px;
+      width: 150px;
+      color: #fff;
+      opacity: 0;
+      transition: top 0.3s, opacity 0.3s;
+    }
+
+    &:hover:before {
+      top: 0;
+      opacity: 1;
+    }
+  }
+}
