@@ -1,7 +1,12 @@
-@import "utils";
-@import "fonts";
-@import "typography";
-@import "./header.scss";
+@import "./variebles";
+@import "./utils";
+@import "./fonts";
+@import "./typography";
+@import "./box/cursor.scss";
+@import "./box/header.scss";
+@import "./box/nav.scss";
+
+@import "./box/footer.scss";
 
 *,
 *::after,
@@ -17,7 +22,6 @@ html {
 }
 
 body {
-  background: $c-gray;
   margin: 0;
 }
 
@@ -25,249 +29,82 @@ body {
   overflow: hidden;
 }
 
-.header {
-  position: relative;
-  display: flex;
-  background: url(../images/header.jpg) no-repeat center;
-  background-size: cover;
-  justify-content: center;
-  height: 100vh;
-  padding: 25px 23px 80px;
-  min-width: 320px;
-
-  &__burger {
-    background: url(../images/menu.svg) no-repeat center;
-    height: 12px;
-    z-index: 2;
-    width: 18px;
-    background-size: contain;
-    border: none;
-    transition: transform 0.2s linear;
-
-    &:hover {
-      background: url(../images/menu_hover.svg) no-repeat center;
-      background-size: contain;
-    }
-
-    &--active {
-      background: url(../images/icon-close.svg) no-repeat center;
-      background-size: cover;
-      height: 12px;
-      width: 18px;
-      transform: rotate(180deg);
-      transition: transform 0.5s linear;
-      &:hover {
-        background: url(../images/icon-close.svg) no-repeat center;
-      }
-    }
-  }
-
-  &__menu {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: #0075ff;
-    transition: left 0.3s ease;
-    z-index: 1;
-
-    &--active {
-      left: 0;
-    }
-  }
-
-  &__list {
-    display: flex;
-    padding-top: 120px;
-    flex-direction: column;
-    list-style-type: none;
-    width: 1020px;
-    @media (max-height: 550px) {
-      & {
-        display: grid;
-        grid-template-columns: repeat(3 ,min(200px));
-        align-items: center;
-        justify-content: center;
-
-      }
-    }
-  }
-
-  &__link {
-    position: relative;
-    margin-bottom: 10px;
-    font-size: 22px;
-    line-height: 22px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-     
-
-    &--size {
-      font-size: 16px;
-    }
-
-    &:hover::before {
-      position: absolute;
-      content: "";
-      height: 1px;
-      width: 100%;
-      left: 0;
-      bottom: -8px;
-      background-color: #fff;
-      border-radius: 10%;
-    }
-  }
-
-  &__linke {
-    padding-top: 32px;
-
-    &:nth-child(6) {
-      padding-top: 48px;
-    }
-    @media (max-height: 550px) {
-      &:nth-child(n) {
-        padding-top: 20px;
-      }
-    }
-  }
-
-  &__logo {
-    background-size: contain;
-    z-index: 2;
-    width: 79px;
-    height: 45px;
-  }
-
-  &__phone {
-    position: relative;
-    background: url(../images/phone.svg) no-repeat center;
-    background-size: contain;
-    height: 18px;
-    width: 18px;
-  }
-
-  &__info {
-    position: relative;
-    font-size: 46px;
-    z-index: 0;
-    min-width: 274px;
-    line-height: 40px;
-    letter-spacing: -1px;
-    color: white;
-
-    &::after {
-      position: absolute;
-      top: -24px;
-      left: 0;
-      content: "";
-      height: 2px;
-      width: 40px;
-      background-color: #fff;
-      border-radius: 8px;
-    }
-  }
-
-  @media (min-width: 550px) {
-    &__burger {
-      height: 24px;
-      width: 24px;
-    }
-
-    &__logo {
-      height: 76px;
-      width: 130px;
-    }
-
-    &__phone {
-      height: 24px;
-      width: 24px;
-
-      &::before {
-        position: absolute;
-        content: "+1 234 555-55-55";
-        color: #fff;
-        width: 150px;
-        height: 50px;
-        line-height: 50px;
-        top: -100px;
-        left: -148px;
-        transition: top 0.5s linear ;
-      }
-
-      &:hover:before {
-        top: -15px;
-      }
-    }
-
-    &__info {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
-    }
-  }
-
-}
-
-.header__content {
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 1020px;
-}
-
-.header__top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cursor {
-  cursor: pointer;
-}
-
-.nav {
-  margin: 0;
-  padding: 25px 23px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer {
-  display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 40px;
-  height: 360px;
-  width: 100%;
-  background: url(../images/footer.jpg) no-repeat center;
-  background-size: cover;
+  min-width: 320px;
+  padding: 64px 20px;
 
-  &__link {
+  &__content {
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
+  &__inform {
     display: flex;
+    flex-direction: column;
+    padding-bottom: 64px;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    padding-bottom: 48px;
+
+    & :last-child {
+      color: $color--page--blue;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 27px;
+    font-weight: 400;
+    color: $color--page;
+    & :first-child {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 30px;
+      color: $color--page--blue;
+      padding-bottom: 8px;
+    }
+
+    & :last-child {
+      font-weight: 700;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 1020;
+    max-width: 1020px;
+    :first-child {
+      color: black;
+      ::before {
+        content: "";
+        background: url(../images/crown.svg);
+      }
+    }
   }
 
-  &__logo {
-    height: 75px;
-    width: 130px;
+  @media (min-width: 738px) {
+    &__inform {
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 1020px;
+      padding-bottom: 104px;
+    }
+
+    &__title {
+      width: 300px;
+    }
+
+    &__text {
+      width: 357px;
+    }
   }
-
-}
-
-.main {
-  height: 10000px;
-  width: 100%;
-  background-color: coral;
 }
