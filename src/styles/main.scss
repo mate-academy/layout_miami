@@ -42,12 +42,11 @@ body {
     width: 18px;
     background-size: contain;
     border: none;
-    transition: background 0.5s linear, transform 0.2s linear;
+    transition: transform 0.2s linear;
 
     &:hover {
       background: url(../images/menu_hover.svg) no-repeat center;
       background-size: contain;
-      
     }
 
     &--active {
@@ -79,7 +78,6 @@ body {
     &--active {
       left: 0;
     }
-
   }
 
   &__list {
@@ -88,9 +86,16 @@ body {
     flex-direction: column;
     list-style-type: none;
     width: 1020px;
-  }
+    @media (max-height: 550px) {
+      & {
+        display: grid;
+        grid-template-columns: repeat(3 ,min(200px));
+        align-items: center;
+        justify-content: center;
 
-  
+      }
+    }
+  }
 
   &__link {
     position: relative;
@@ -102,6 +107,7 @@ body {
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
+     
 
     &--size {
       font-size: 16px;
@@ -118,16 +124,18 @@ body {
       border-radius: 10%;
     }
   }
+
   &__linke {
     padding-top: 32px;
-
-    
 
     &:nth-child(6) {
       padding-top: 48px;
     }
-
-    
+    @media (max-height: 550px) {
+      &:nth-child(n) {
+        padding-top: 20px;
+      }
+    }
   }
 
   &__logo {
@@ -143,7 +151,6 @@ body {
     background-size: contain;
     height: 18px;
     width: 18px;
-
   }
 
   &__info {
@@ -167,7 +174,7 @@ body {
     }
   }
 
-  @media (min-width: 750px) {
+  @media (min-width: 550px) {
     &__burger {
       height: 24px;
       width: 24px;
@@ -191,7 +198,7 @@ body {
         line-height: 50px;
         top: -100px;
         left: -148px;
-        transition: top 1s linear ;
+        transition: top 0.5s linear ;
       }
 
       &:hover:before {
