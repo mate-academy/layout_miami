@@ -1,0 +1,143 @@
+.gallery {
+  max-width: 1020px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  &__title {
+    position: relative;
+    @extend %title;
+    font-size: 48px;
+    line-height: 48px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    margin-bottom: 40px;
+  }
+
+  &__title::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: calc(50% - 11px);
+    right: 50%;
+    width: 23px;
+    height: 16px;
+    background: url(../images/crown.svg) no-repeat;
+  }
+
+  &__button {
+    width: 150px;
+    height: 56px;
+    margin-top: 32px;
+    background-color: #fff;
+    border: 2px solid $c-style;
+    box-sizing: border-box;
+    border-radius: 8px;
+    @extend %title;
+    font-size: 16px;
+    line-height: 14px;
+    text-align: center;
+    color: $c-style;
+
+    &:hover,
+    &:focus {
+      transition: text-color 0.5s, background-color 0.5s, box-shadow 0.5s;
+      &:hover {
+        color: #fff;
+        background-color: #005ecc;
+        box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      }
+      &:focus {
+        box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+      }
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-rows: 256px;
+    gap: 24px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+
+    &--1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--3 {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__text {
+    @extend %title;
+    font-size: 16px;
+    line-height: 27px;
+    color: $c-style;
+    margin-bottom: 40px;
+  }
+
+  &__text::after {
+    font-weight: normal;
+    color: $c-text;
+  }
+
+  &__text--1::after {
+    content: "/ North Miami Beach, FL 33162";
+  }
+
+  &__text--2::after {
+    content: "/ Miami Beach, FL 33139";
+  }
+
+  &__text--3::after {
+    content: "/ Miami Beach, FL 33140";
+  }
+}
+
+@media (max-width: 800px) {
+
+  .gallery__title {
+    font-size: 36px;
+    line-height: 36px;
+  }
+  .gallery__row {
+    &--1 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--3 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .gallery__button {
+    width: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery__row {
+    grid-template-rows: 131px;
+    gap: 19px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+}
