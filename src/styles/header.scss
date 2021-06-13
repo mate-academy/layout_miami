@@ -1,0 +1,118 @@
+@import url("./utils/_extends.scss");
+@import url("./utils/_mixins.scss");
+
+.page {
+  &__body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.icon {
+  @include create-obj($icon-size, $icon-size);
+  @include onDesktop {
+    @include create-obj($big-icon-size, $big-icon-size);
+  }
+}
+
+.logo {
+  @include create-obj(79px, 45px);
+  background-image: url("../images/logo.png");
+  @extend %bg;
+  @include onDesktop {
+    @include create-obj(130px, 76px);
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background-image: url("../images/header.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__container {
+    height: 100vh;
+    max-width: 1024px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include onDesktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    padding: 80px 20px;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    &::before {
+      position: relative;
+      display: block;
+      content: "";
+      @include create-obj(40px, 2px);
+      bottom: 24px;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  &__menu {
+    @extend %bg;
+    background-image: url("../images/menu.svg");
+    transition-duration: 0.3s;
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+      transition-duration: 0.3s;
+    }
+  }
+
+  &__phone {
+    @extend %bg;
+    background-image: url("../images/phone.svg");
+
+    @include onDesktop {
+      &::before {
+        transform: translate(-100%, 50%);
+        padding-right: 20px;
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition-duration: 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 23px;
+  }
+}
