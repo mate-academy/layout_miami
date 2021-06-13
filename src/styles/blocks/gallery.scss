@@ -1,0 +1,142 @@
+@mixin gallery($col) {
+  grid-template-columns: $col;
+}
+
+%gallery {
+  display: grid;
+  grid-template-rows: 256px;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1020px;
+  width: 100%;
+  cursor: default;
+
+  &__picture {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.5);
+      box-shadow: 0 8px 8px blue;
+      z-index: 1;
+    }
+  }
+  &__row-1,
+  &__row-2,
+  &__row-3 {
+    @extend %gallery;
+  }
+
+  &__row-1 {
+    margin-top: 59px;
+    @include gallery(2fr 1fr);
+  }
+
+  &__row-2 {
+    @include gallery(1fr 1fr);
+  }
+
+  &__row-3 {
+    @include gallery(1fr 2fr);
+  }
+
+  &__caption {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__location {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__tittle {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+    color: $blue;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 56px;
+    margin-top: 32px;
+    text-align: center;
+    text-decoration: none;
+    color: $blue;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: bold;
+    border: 2px solid $blue;
+    border-radius: 8px;
+    transition: 0.5s, border 0.5s, color 0.5s;
+
+    &:hover {
+      color: #fff;
+      background: $dark-blue;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      border: 2px solid $dark-blue;
+    }
+
+    &:active {
+      color: #fff;
+      background: $dark-blue;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .gallery {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gallery(1fr 1fr);
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .gallery {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gallery(1fr 1fr);
+      grid-template-rows: 131px;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    &__row-1 {
+      margin-top: 32px;
+    }
+
+    &__caption {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .gallery {
+    &__view-all {
+      width: 100%;
+    }
+  }
+}
