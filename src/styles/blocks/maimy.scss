@@ -23,8 +23,8 @@
   justify-content: space-between;
   position: relative;
 
-  @media only screen and (min-width: 1000px) {
-    padding: 24px 120px 80px;
+  @media only screen and (min-width: 900px) {
+    padding: 48px 120px 80px;
   }
 
   &__nav-toggler {
@@ -41,7 +41,12 @@
     height: 20px;
     background: url(../images/menu.svg) no-repeat center;
     cursor: pointer;
-    transition-duration: 3s;
+    transition: transform 3s;
+    @media only screen and (min-width: 900px) {
+      width: 36px;
+      height: 36px;
+      background: url(../images/menu_big.svg) no-repeat center;
+    }
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
@@ -125,6 +130,10 @@
 .header__logo {
   width: 82px;
   z-index: 10;
+  @media only screen and (min-width: 900px) {
+    width: 136px;
+    height: 80px;
+  }
 }
 
 .header__phone-call {
@@ -132,6 +141,35 @@
   width: 16px;
   height: 16px;
   background: url("../../images/phone.svg") no-repeat center;
+  position: relative;
+
+  @media only screen and (min-width: 900px) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header__textNumberToCall {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+  color: white;
+  &::before {
+    position: absolute;
+    content: "+1 332 323 323";
+    letter-spacing: 2px;
+    width: 176px;
+    height: 32px;
+    right: 100%;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .header__text {
@@ -149,6 +187,10 @@
     content: " ";
     position: absolute;
     background-color: white;
+  }
+  @media only screen and (min-width: 900px) {
+    font-size: 80px;
+    line-height: 80px;
   }
 }
 /* #endregion*/
@@ -291,18 +333,25 @@
 
   &__button {
     text-decoration: none;
+    font-weight: 500;
     width: 280px;
     height: 56px;
     border: 2px solid #0075ff;
+    background-color: #0075ff;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    transition: background-color 0.2s linear;
+    &:hover {
+      background-color: white;
+      color: #0075ff;
+    }
   }
 
   &__button--color {
-    color: #0075ff;
+    color: white;
   }
 
   &__excerpt--color {
@@ -506,6 +555,7 @@
 
   &__button {
     text-decoration: none;
+    font-weight: 500;
     width: 280px;
     height: 56px;
     border: 2px solid #0075ff;
@@ -514,6 +564,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: white;
+      color: #0075ff;
+    }
+
     &--color {
       color: white;
     }
