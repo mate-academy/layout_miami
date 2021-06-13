@@ -3,30 +3,106 @@
 @import "typography";
 
 @import "blocks/header.scss";
+@import "blocks/menu.scss";
 @import "blocks/content.scss";
 @import "blocks/gallery.scss";
 @import "blocks/testimonials.scss";
 @import "blocks/contacts.scss";
 @import "blocks/footer.scss";
+@import "blocks/form.scss";
 
-*,
+/**,
 *::after,
 *::before {
   box-sizing: border-box;
-}
+}*/
 
-body {
-  background: $c-gray;
-  margin: 0;
-}
-
-html {
+.page {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+    &__body {
+      background: $c-gray;
+      margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+  }
+
+  &__section-title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: #000;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+  }
+
+    &::after {
+      content: " ";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: 4px auto 0;
+      background-image: url(/images/logo_upside-down.svg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__section-h {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #000;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__section-h-link {
+    text-decoration: none;
+    color: $blue-color;
+  }
+
+  &__section-p-1 {
+    font-size: 24px;
+    color: $blue-color;
+  }
+
+  &__section-p-2,
+  &__section-p-3 {
+    color: #3e3e3e;
+  }
 }
 
-.page {
+.main-content {
   padding-right: 120px;
   padding-left: 120px;
 }
