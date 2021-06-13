@@ -12,3 +12,9 @@ $(document).ready(function() {
     $('.header__burger.active,.burger-menu.active').toggleClass('active');
   });
 });
+
+$(document).ready(function() {
+  $('.header__logo-img').click(function(event) {
+    $('.header__burger.active,.burger-menu.active').toggleClass('active');
+  });
+});
