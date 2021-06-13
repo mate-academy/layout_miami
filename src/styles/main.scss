@@ -1,77 +1,135 @@
-@import "utils";
-@import "fonts";
-@import "typography";
 @import "./reset.scss";
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
 * {
   box-sizing: border-box;
 }
 
-html {
+.page {
   font-family: "Roboto", sans-serif;
-
+  &__body {
+    background-color: #eee;
+  }
 }
 
-body {
-  background: $c-gray;
+.header__container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .header {
-  height: 100vh;
-  padding: 20px 24px 80px;
-  display: flex;
-  justify-content: center;
-  background: url(../images/header.jpg) no-repeat center /cover;
-  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
 
-  &__main {
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    height: 100vh;
+    padding: 24px 0 80px;
   }
 
-  &__info {
+  &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
 
-  &__logo-link {
-    display: flex;
-    width: 78.6px;
-    height: 45.46px;
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
   }
 
-  &__content {
-    position: relative;
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
   }
 
   &__title {
-    font-weight: 700;
+    font-weight: bold;
     font-size: 46px;
-  }
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
 
-  &__title::after {
-    position: absolute;
-    top: -24px;
-    left: 0;
-    content: "";
-    background-color: #fff;
-    width: 40px;
-    height: 2px;
-  }
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
 
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
 }
 
-.nav {
-  &__toggler {
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-  }
+.logo {
+  &__image {
+    height: 48px;
 
-  &__toggler-label {
-    content: url(../images/menu.svg);
+    @include onDesktop {
+      height: 80px;
+    }
   }
-
 }
