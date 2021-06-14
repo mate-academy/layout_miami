@@ -1,0 +1,64 @@
+.top-actions {
+  display: grid;
+  grid-template-columns: 18px 1fr 18px;
+  justify-items: center;
+  align-items: center;
+
+  @include desktop {
+    grid-template-columns: 24px 1fr 24px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
+  &--call {
+    text-decoration: none;
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        color: #fff;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 100%);
+        pointer-events: none;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+  }
+
+}
