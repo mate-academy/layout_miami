@@ -1,0 +1,99 @@
+.gallery {
+  padding-bottom: 100px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  &__logo {
+    height: 19px;
+    width: 23px;
+    margin: 0 auto 61px;
+    background-image: url(../images/crown.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__image-block {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__image {
+    height: 131px;
+    width: 131px;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: 0.3s linear;
+
+    &:hover {
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    @for $i from 1 through 6 {
+      &--#{$i} {
+        background-image: url(../images/photos/#{$i}.jpg);
+        flex-grow: 1;
+      }
+
+      @media (min-width: 768px) {
+        height: 256px;
+        &--1,
+        &--6 {
+          flex-grow: 2;
+        }
+      }
+    }
+
+    &-byline {
+      font-family: Roboto, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 27px;
+      padding: 24px 0 40px;
+    }
+
+    &-byline span {
+      color: $main-color;
+    }
+  }
+
+  &__button {
+    height: 56px;
+    color: $main-color;
+    border: 1px solid $main-color;
+    border-radius: 8px;
+
+    font-weight: bold;
+    text-align: center;
+    line-height: 56px;
+    font-size: 16px;
+    transition: 0.3s linear;
+
+    &:hover {
+      background-color: $main-color;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    }
+    &:active {
+      background: #005ecc;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+
+    @media (min-width: 768px) {
+      width: 154px;
+      margin: 0 auto;
+    }
+
+  }
+}
