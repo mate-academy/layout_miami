@@ -1,0 +1,45 @@
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(0, 0);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        pointer-events: none;
+        opacity: 0;
+
+      }
+
+      &:hover::before {
+        transform: translate(-100%, 100%);
+        pointer-events: all;
+        opacity: 1;
+        transition: transform 0.6s, opacity 0.5s;
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #000;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: 4px auto 32px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(../images/crown.svg);
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+
+      &::after {
+        margin-bottom: 59px;
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: 16px;
+
+    display: flex;
+
+  }
+
+  &__image {
+    object-position: center;
+    object-fit: cover;
+    width: 130px;
+    height: 130px;
+    border-radius: 8px;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+
+  &__item-geo {
+    margin-bottom: 32px;
+  }
+
+  &__geo-link {
+    color: $color-blue;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    text-decoration: none;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 56px;
+    text-decoration: none;
+    color: $color-blue;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 17px;
+    border: 2px solid $color-blue;
+    border-radius: 8px;
+
+    &:hover {
+      color: #fff;
+      background-color: $hover-link-color;
+      border-color: $hover-link-color;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  @include onDesktop {
+    align-items: initial;
+    &__item {
+      margin-bottom: 24px;
+    }
+
+    &__image {
+      height: 256px;
+      transition: transform 0.6s;
+      &:hover {
+        transform: scale(1.4);
+        box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+      }
+
+      &:first-child {
+        margin-right: 24px;
+      }
+
+      &--big {
+        flex: 1 1 672px;
+      }
+
+      &--medium {
+        flex: 1 1 498px;
+      }
+
+      &--small {
+        flex: 1 1 324px;
+      }
+    }
+
+    &__item-geo {
+      margin-bottom: 40px;
+    }
+
+    &__link {
+      align-self: center;
+      width: 150px;
+    }
+  }
+}
