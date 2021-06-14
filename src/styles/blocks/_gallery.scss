@@ -1,35 +1,92 @@
 .gallery {
 
-  &__line-1 {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    height: 256px;
-    gap: 24px;
+  &__title {
+    @extend %h2;
+    text-align: center;
+    margin-top: 64px;
+    @include desktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::after {
+      @include crown;
+    }
   }
 
-  &__line-2 {
+  &__img {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 256px;
-    gap: 24px;
-  }
+    height: 131px;
+    gap: 20px;
 
-  &__line-3 {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    height: 256px;
-    gap: 24px;
+    &--line-1 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--line-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--line-3 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include desktop {
+      height: 256px;
+      gap: 24px;
+      &--line-1 {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      &--line-3 {
+        grid-template-columns: 1fr 2fr;
+      }
+
+    }
   }
 
   &__text {
-    margin-top: 24px;
-    margin-bottom: 40px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+
+    @include desktop {
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
   }
 
   &__photo {
-    height: 256px;
+    height: 131px;
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
+
+    @include desktop {
+      height: 256px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $colorBlue;
+  }
+
+  &__button {
+    height: 56px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $colorBlue;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: $colorBlue;
+
+    &:hover {
+      background-color: $colorBlue;
+      color: #fff;
+    }
   }
 }
