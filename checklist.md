@@ -5,7 +5,7 @@
 - follow DRY principle
 - write semantic markup
 - elements of type block (e.g. `div`) are already 100% wide, there is no need to write this in styles
-- after you open the tag, you have to add at least one more level of indentation before you close this tag 
+- after you open the tag, you have to add at least one more level of indentation before you close this tag
 
  GOOD example:
 ```
@@ -26,7 +26,7 @@ some text
 ```
 - do not add extra files to the PR, use `git add <file_name>` instead of `git add.` or use `.gitignore` file ([gitignore](https://git-scm.com/docs/gitignore))
 - check the [style guide](https://mate-academy.github.io/style-guides/htmlcss.html)
-- `*` selector is used to add styles to EACH element of the file, you don't usually need this and this is too heavy for the big page, 
+- `*` selector is used to add styles to EACH element of the file, you don't usually need this and this is too heavy for the big page,
 that's why this is better to add this style to those elements you really need (the major case when it is used is for `box-sizing` property)
 - we preferably use classes for styling, not tags, ids, attributes or something else
 - do not reset paddings for `body`, it doesn't have them by default
@@ -53,4 +53,4 @@ that's why this is better to add this style to those elements you really need (t
 - you can implement smooth scroll by using 'scroll-behavior' css property
 - blue text indicates links, they should be clickable
 - you can add light hover effect to the pictures (for example you can use border/transform(scale)/box-shadow css properties)
-- contact info also should be clickable
+- register info also should be clickable

@@ -1,0 +1,158 @@
+.header {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 25px 20px 80px;
+  background: url(../images/header.jpg) no-repeat center;
+  background-position: cover;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @extend %width;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav-toggler {
+    display: none;
+  }
+
+  &__nav-icon {
+    display: block;
+    z-index: 2;
+    width: 30px;
+    height: 20px;
+    background: url(../images/menu.svg) no-repeat center;
+    background-position: contain;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-icon {
+    background-image: url(../images/cross.svg);
+    transform: rotate(180deg);
+  }
+
+  &__nav-toggler:checked ~ .nav {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__logo {
+    z-index: 2;
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      display: block;
+      width: 130px;
+      transition-duration: 0.5s;
+      align-self: center;
+      top: 5px;
+      opacity: 0;
+      margin-right: 44px;
+      content: "+1 234 555-55-55";
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    position: relative;
+    width: 498px;
+    letter-spacing: -1.5px;
+
+    &::before {
+      position: absolute;
+      top: -24px;
+      content: "";
+      height: 2px;
+      width: 40px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    &__phone {
+      &::before {
+        width: 130px;
+        margin-right: 28px;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    height: 80vh;
+    &__nav-icon {
+      width: 18px;
+      height: 12px;
+    }
+
+    &__logo {
+      & > :first-child {
+        width: 78.6px;
+        height: 45.46px;
+      }
+    }
+
+    &__phone {
+      & > :first-child {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__title {
+      width: 280px;
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    &__phone {
+      &:hover::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@media (max-height: 600px) {
+  .header {
+    height: 100vh;
+  }
+}

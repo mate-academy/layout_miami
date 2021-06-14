@@ -1,0 +1,127 @@
+.gal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @extend %width;
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition-duration: 0.5s;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.48);
+    }
+  }
+  &__row-1,
+  &__row-2,
+  &__row-3 {
+    @extend %gal;
+  }
+
+  &__row-1 {
+    margin-top: 59px;
+    @include gal(2fr 1fr);
+  }
+
+  &__row-2 {
+    @include gal(1fr 1fr);
+  }
+
+  &__row-3 {
+    @include gal(1fr 2fr);
+  }
+
+  &__description {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__place {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__name {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+    color: $blue;
+  }
+
+  &__all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 56px;
+    margin-top: 32px;
+    text-align: center;
+    text-decoration: none;
+    color: $blue;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: bold;
+    border: 2px solid $blue;
+    border-radius: 8px;
+
+    &:hover {
+      color: #fff;
+      background: $blue-2;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      border: 2px solid $blue-2;
+    }
+
+    &:active {
+      color: #fff;
+      background: $blue-2;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .gal {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gal(1fr 1fr);
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .gal {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gal(1fr 1fr);
+      grid-template-rows: 131px;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    &__row-1 {
+      margin-top: 32px;
+    }
+
+    &__description {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .gal {
+    &__all {
+      width: 100%;
+    }
+  }
+}
