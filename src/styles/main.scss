@@ -23,6 +23,7 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
 }
 
 .lock {
@@ -30,21 +31,16 @@ body {
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 320px;
+  margin: 0 auto;
   padding: 64px 20px;
-
-  &__content {
-    max-width: 1020px;
-    margin: 0 auto;
-  }
-
+  max-width: 1020px;
   &__inform {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding-bottom: 64px;
+    
+    
   }
 
   &__title {
@@ -81,12 +77,120 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 1020px;
-    :first-child {
-      color: black;
-      ::before {
-        content: "";
-        background: url(../images/crown.svg);
+    align-items: center;
+    padding-bottom: 104px;
+  }
+
+  &__title-2 {
+    position: relative;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    padding-bottom: 53px;
+    color: black;
+    
+    &::before {
+      position: absolute;
+      content: "";
+      background: url(../images/corona.svg) no-repeat center;
+      background-size: contain;
+      height: 16px;
+      width: 23px;
+      top: 35px;
+      left: 36%;
+    }
+  }
+
+  &__pictures {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    padding-bottom: 75px;
+    width: 100%;
+  }
+
+  &__foto {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+    height: 131px;
+    width: 131px;
+    flex-basis: 48%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    transition: transform 0.2s linear;
+    z-index: 1;
+
+    @media (min-width: 1200px) {
+      &:hover {
+        transform: scale(120%);
+        transition: transform 1s linear;
+        z-index: 2;
+      }
+    }
+  }
+
+  &__fotos {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    margin-bottom: 32px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $color--page;
+
+    & :first-child {
+      font-weight: 700;
+      color: $color--page--blue;
+    }
+  }
+
+  &__button {
+    height: 56px;
+    width: 280px;
+    font-weight: 700;
+    font-size: 16px;
+    color: $color--page--blue;
+    background: #fff;
+    border: 2px solid $color--page--blue;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 52px;
+
+    &:hover {
+      color: #fff;
+      background-color: $color--button;
+    }
+
+    @media (min-width: 1000px) {
+      &--1 {
+        width: 150px;
+      }
+    }
+  }
+
+  &__testimonials {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 500px) {
+    &__foto {
+      height: 256px;
+      flex-basis: 49%;
+
+      &--1 {
+        flex-basis: 65.5%;
+      }
+
+      &--2 {
+        flex-basis: 32.5%;
       }
     }
   }
