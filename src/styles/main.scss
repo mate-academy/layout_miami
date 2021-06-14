@@ -1,76 +1,88 @@
 @import "utils";
-@import "fonts";
+@import "./fonts";
 @import "typography";
+@import "./blocks/page";
+@import "./blocks/header";
+@import "./blocks/menu";
+@import "./blocks/nav";
+@import "./blocks/adv";
+@import "./blocks/container-main";
+@import "./blocks/gallery";
+@import "./blocks/testimonials";
+@import "./blocks/person";
+@import "./blocks/contacts";
+@import "./blocks/footer";
+@import "./blocks/definition";
+@import "./blocks/estate";
+@import "./blocks/form";
 
 * {
   margin: 0;
-
+  
 }
 
 body {
   background: $c-gray;
   font-family: "Roboto", sans-serif;
-}
-
-.body-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  position: relative;
-  height: 100vh;
-  background: url(../images/header.jpg) no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-  &__title {
-    position: relative;
-    top: 459px;
-    left: 120px;
-    font-weight: 700;
-    color: #fff;
-    font-size: 80px;
-    line-height: 80px;
-
-    &::before {
-      content: "";
-      width: 40px;
-      height: 2px;
-      background-color: #fff;
-      position: absolute;
-      left: 0;
-      top: -24px;
-    }
-  }
-    
-}
-
-.nav {
-  position: relative;
-
-  &__list {
-    padding: 0;
-    width: inherit;
-    position: absolute;
-    top: 25.5px;
-    left: 124px;
-    right: 124px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  &__item {
-    list-style: none;
-  }
-
+  font-weight: normal;
 }
 
 .burger-svg {
+  display: block;
   height: 16px;
   width: 24px;
+  background: no-repeat url("../images/menu.svg");
+}
+
+.wrapper-about {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 104px;
+}
+
+@media (max-width: 1024px) {
+  .wrapper-about {
+    flex-direction: column;
+  }
+}
+
+.logo-burger {
+  display: inline-block;
+  position: absolute;
+  top: 25.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+
+.burger-svg:hover {
+  background: no-repeat url("../images/menu_hover.svg");
+}
+
+.tel-svg {
+  display: block;
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background: no-repeat url("../images/phone.svg");
+}
+
+.tel-svg:hover::before {
+  content: "+1 234 555-55-55";
+  display: block;
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  width: 128px;
+  font-weight: 700;
+  left: -110px;
+}
+
+@media (max-width: 1024px) {
+  .tel-svg:hover::before {
+    display: none;
+  }
 }
 
 .logo-img {
@@ -78,137 +90,33 @@ body {
   width: 130.35px;
 }
 
-.main-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 1260px;
-  padding: 104px 120px;
-
-  &__adv {
-    margin-bottom: 104px;
-  }
-}
-
-.adv {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+@media (max-width: 1024px) {
   
-  &__estate {
-    font-size: 48px;
-    line-height: 48px;
-    font-weight: 700;
-    max-width: 324px;
+  .logo-img {
+    height: 48px;
+    width: 78px;
   }
 
-  &__about {
-    max-width: 498px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__experience {
-    font-weight: 700;
-    color: #0075ff;
-    line-height: 30px;
-    margin-bottom: 16px;
+  .burger-svg {
+    height: 12px;
+    width: 18px;
   
   }
-  
-  &__description {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 27px;
-    color: #3e3e3e;
-  
-  }
-}
-
-.here-link {
-  color: #0075ff;
- 
-}
-
-.gallery {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &__title {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    line-height: 48px;
-    font-size: 48px;
-    font-weight: 700;
-
-    &::after {
-      position: absolute;
-      top: 115%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: block;
-      content: "";
-      background: no-repeat url("../images/crown.svg");
-      background-size: 23px 16px;
-      height: 24px;
-      width: 24px;
-    }
-  }
-
-  &__marina {
-    grid-template-columns: 2fr 1fr;
+  .tel-svg {
+    height: 18px;
+    width: 18px;
   }
   
-  &__editions {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  &__faena {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  &__link {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 27px;
-    text-decoration: none;
-    color: #000;
-  }
-
-  &__btn {
-    width: 150px;
-    height: 56px;
-    border-radius: 8px;
-    border: 2px solid #0075ff;
-    align-self: center;
-  }
-
-  
-}
-
-.title-gallery {
-
-  margin-bottom: 80px;
-}
-
-.property-img {
-  height: 256px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.property-name {
-  font-weight: 700;
-  color: #0075ff;
 }
 
 .view-btn {
   margin-bottom: 104px;
+}
+
+@media (max-width: 1020px) {
+  .view-btn {
+    margin-bottom: 64px;
+  }
 }
 
 .show-btn {
@@ -219,15 +127,22 @@ body {
   color: #0075ff;
 }
 
-.grid-wrapper {
-  box-sizing: content-box;
-  display: grid;
-  gap: 24px;
-  margin-bottom: 24px;
+.property-name {
+  font-weight: 700;
+  color: #0075ff;
 }
 
 .property-link:not(:last-child) {
   margin-bottom: 40px;
+}
+
+@media (max-width: 1020px) {
+   
+
+  .property-link:not(:last-child) {
+
+    margin-bottom: 32px;
+  }
 }
 
 .property-link:last-child {
@@ -238,48 +153,33 @@ body {
   margin-bottom: 80px;
 }
 
-.testimonials {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &__title {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    line-height: 48px;
-    font-size: 48px;
-    font-weight: 700;
-
-    &::after {
-      position: absolute;
-      top: 115%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: block;
-      content: "";
-      background: no-repeat url("../images/crown.svg");
-      background-size: 23px 16px;
-      height: 24px;
-      width: 24px;
-    }
+@media (max-width: 1020px) {
+  .title-testimonials {
+    margin-bottom: 53px;
   }
 }
 
-.testimonials-wrapper {
+.contacts-wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
 }
 
-.person {
-  display: flex;
+@media (max-width: 1020px) {
+  .contacts-wrapper {
+    margin-bottom: 0;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
 
-  justify-content: space-between;
-  max-width: 324px;
+.title-contacts {
+  margin-bottom: 93px;
+}
 
-  &__img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+@media (max-width: 1020px) {
+  .title-contacts {
+    margin-bottom: 53px;
   }
 }
