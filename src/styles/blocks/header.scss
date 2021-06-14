@@ -26,10 +26,20 @@
   }
 
   &__toggler {
+    display: none;
     position: absolute;
     width: 1px;
     height: 1px;
     margin: -1px;
+
+    &:checked + label {
+      background: url(../images/cross.svg) center no-repeat;
+      background-size: contain;
+    }
+
+    &:checked ~ nav {
+      transform: translateX(0);
+    }
 
   }
   &__toggler-label {
@@ -52,6 +62,7 @@
   }
 
   &__logo {
+    z-index: 1;
     width: 68px;
     height: 45px;
     background-image: url(../images/logo.png);
@@ -70,7 +81,6 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-
     background-image: url(../images/phone.svg);
     text-decoration: none;
 
@@ -86,7 +96,7 @@
         display: block;
         width: max-content;
         padding-right: 20px;
-        color: #fff;
+        color: $white-color;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
@@ -109,7 +119,7 @@
     font-weight: bold;
     font-size: 46px;
     line-height: 40px;
-    color: white;
+    color: $white-color;
 
     @include onDesktop {
       font-size: 80px;
@@ -126,7 +136,15 @@
     width: 40px;
     left: 0;
     content: "";
-    background-color: white;
+    background-color: $white-color;
   }
 
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    
+  }
 }
