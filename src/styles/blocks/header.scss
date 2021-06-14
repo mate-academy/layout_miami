@@ -11,52 +11,29 @@
   }
 
   &__top {
-    display: flex;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
     align-items: center;
-    justify-content: space-between;
+    justify-items: center;
   }
 
   &__toggler {
     display: none;
   }
 
-  &__btn-box {
-    z-index: 2;
-    width: min-content;
-    height: min-content;
-    @include icon-size(18px, 12px);
-    background: url(../images/menu.svg) no-repeat center / contain;
-    cursor: pointer;
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
+  
   
   &__nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 1;
     transition: transform 0.5s;
     transform: translateX(-100%);
-  }
-
-  &__toggler:checked + &__btn-box {
-    background-image: url(../images/cross.svg);
-  }
-
-  &__toggler:checked ~ &__nav {
-    transform: translateX(0);
-  }
-
-  &__logo-link {
-    z-index: 1;
-    text-decoration: none;
-  }
-
-  &__logo {
-    z-index: 1;
-    @include logo-size;
+    &:target {
+      transform: translateX(0);
+    }
   }
 
   &__phone-link {
@@ -65,6 +42,7 @@
 
   &__phone-btn {
     @include icon-size(18px, 18px);
+    position: relative;
     cursor: pointer;
     background-image: url(../images/phone.svg);
     background-repeat: no-repeat;
@@ -73,11 +51,12 @@
     @include respond(tablet) {
       &::after {
         content: "+1 234 555-55-55";
-        position: relative;
+        position: absolute;
         top: 50%;
-        left: -120px;
+        right: 100%;
         display: block;
-        width: 100px;
+        width: max-content;
+        padding: 10px;
         font-size: 12px;
         color: $color-white;
         transform: translateY(-50%) rotate(180deg) scale(0);
