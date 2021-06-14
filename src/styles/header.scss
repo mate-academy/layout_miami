@@ -164,12 +164,31 @@
   }
 
   &__nav-option {
+    position: relative;
+    width: min-content;
+    white-space: nowrap;
+
+    & a {
+      text-decoration: none;
+      color: #fff;
+    }
+
     &:not(:last-child) {
-      padding-bottom: 32px;
+      margin-bottom: 32px;
     }
 
     &:last-child {
-      padding-bottom: 48px;
+      margin-bottom: 48px;
+    }
+
+    &:hover::after {
+      position: absolute;
+      display: block;
+      content: "";
+      @include create-obj(100%, 1px);
+      bottom: -8px;
+      background: #fff;
+      border-radius: 8px;
     }
   }
 
