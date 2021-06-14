@@ -24,23 +24,15 @@
   }
 
   &__nav {
-    display: none;
-    z-index: 1;
+    position: absolute;
+    top: 0;
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: $c-blue;
-      z-index: -1;
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &--active {
+      transform: translateX(0);
     }
-  }
-
-  &__checkbox {
-    display: none;
   }
 
   &__toggler {
@@ -54,37 +46,17 @@
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
-  }
 
-  &__checkbox:checked ~ .header__nav {
-    display: flex;
-    animation: opacity 0.5s;
-  }
-
-  @keyframes opacity {
-    from {
-      opacity: 0;
+    &--active {
+      background-image: url(../images/cross.svg);
     }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  &__checkbox:checked ~ .header__toggler {
-    background-image: url(../images/cross.svg);
-  }
-
-  &__logo {
-    width: 79px;
-    height: 45px;
-    z-index: 2;
   }
 
   &__phone {
     position: relative;
     @include square($header-icon-size);
     background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
   }
@@ -109,11 +81,11 @@
   }
 
   @include desktop {
-    padding: 20px 120px;
+    padding: 0;
 
-    &__logo {
-      width: 130px;
-      height: 76px;
+    &__container {
+      box-sizing: border-box;
+      padding: 20px 120px;
     }
 
     &__toggler {
@@ -140,6 +112,10 @@
         opacity: 1;
         transform: translateX(-115%) translateY(-50%);
       }
+    }
+
+    &__nav {
+      margin: 0 auto;
     }
 
     &__title {
