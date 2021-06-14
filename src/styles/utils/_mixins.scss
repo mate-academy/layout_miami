@@ -63,3 +63,27 @@
     background-repeat: no-repeat;
   }
 }
+
+@mixin link-hover {
+  position: relative;
+  transform-origin: left;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $c-blue;
+    transform: scaleX(0%);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(100%);
+    }
+  }
+}

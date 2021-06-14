@@ -12,8 +12,6 @@
 
   &__link {
     text-decoration: none;
-    @include hover(transform, scale(107%));
-    transform-origin: left;
   }
 
   &__subtitle {
@@ -32,6 +30,12 @@
     margin-bottom: 16px;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: scale(105%);
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
   }
 
   &__photo-1 {
@@ -58,10 +62,17 @@
     grid-area: 6 / 2 / 7 / -1;
   }
 
+  // @for $n from 1 through 6 {
+  //   &__photo-#{$n} {
+  //     @include hover(transform, scale(105%));
+  //   }
+  // }
+
   &__article {
     display: flex;
     grid-column: 1 / -1;
     margin-bottom: 32px;
+    @include link-hover;
   }
 
   &__button {
@@ -85,10 +96,7 @@
 
     &__article {
       margin-bottom: 40px;
-
-      &:last-child {
-        margin-bottom: 32px;
-      }
+      width: max-content;
     }
 
     &__photo {
