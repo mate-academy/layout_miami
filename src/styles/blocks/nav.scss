@@ -6,10 +6,13 @@
   &__container {
     @extend %container;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  }
 
+  &__top {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    justify-items: center;
   }
 
   &__box {
@@ -76,26 +79,39 @@
     }
   }
 
-  &__phone {
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  &__order {
+  &__call-link {
     display: inline-block;
-    padding: 5px 0;
+    
     color: $color-white;
     text-transform: uppercase;
     text-decoration: none;
 
-    &::after {
-      content: "";
-      position: relative;
-      bottom: -8px;
+    &--phone {
       display: block;
-      height: 1px;
-      width: 100%;
-      background-color: $color-white;
+      margin-bottom: 8px;
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &--order {
+      padding: 8px 0;
+      
+      &::after {
+        content: "";
+        position: relative;
+        bottom: -8px;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: $color-white;
+        transition: width 0.3s;
+      }
+
+      &:hover::after {
+        width: 0;
+      }
     }
   }
 }
