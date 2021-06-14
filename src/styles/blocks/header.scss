@@ -1,0 +1,182 @@
+.header {
+  height: 100vh;
+  padding: 24px 20px 80px;
+  background: url(../images/header.jpg) no-repeat center;
+  background-size: cover;
+
+  @media only screen and (min-width: 900px) {
+    padding: 48px 120px 80px;
+  }
+
+  &__nav-toggler {
+    display: none;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__nav-icon {
+    display: block;
+    position: relative;
+    z-index: 100;
+    width: 30px;
+    height: 20px;
+    background: url(../images/menu.svg) no-repeat center;
+    cursor: pointer;
+    transition: transform 3s;
+    @media only screen and (min-width: 900px) {
+      width: 36px;
+      height: 36px;
+    }
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-icon {
+    z-index: 100;
+    background-image: url(../images/cross.svg);
+    transform: rotate(180deg);
+  }
+
+  &__nav-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 100vh;
+
+    list-style: none;
+
+    background-color: #0075ff;
+
+    transition: opacity 0.3s linear;
+    @media only screen and (min-width: 1000px) {
+      padding: 24px 120px 80px;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+  }
+
+  &__nav-item {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  &__nav-item-number {
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__nav-toggler:checked ~ &__nav-items {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+}
+
+.header__wrapper {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.header__container {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.header__burger {
+  align-self: center;
+  width: 16px;
+  height: 16px;
+}
+
+.header__logo {
+  width: 82px;
+  z-index: 10;
+  @media only screen and (min-width: 900px) {
+    width: 136px;
+    height: 80px;
+  }
+}
+
+.header__phone-call {
+  align-self: center;
+  width: 16px;
+  height: 16px;
+  position: relative;
+
+  @media only screen and (min-width: 900px) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header__textNumberToCall {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+  color: white;
+  &::before {
+    position: absolute;
+    content: "+1 332 323 323";
+    letter-spacing: 2px;
+    width: 176px;
+    height: 32px;
+    right: 100%;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.header__text {
+  font-size: 46px;
+  color: white;
+  line-height: 40px;
+  font-weight: 700;
+  position: relative;
+  z-index: 0;
+  &::after {
+    width: 40px;
+    height: 2px;
+    top: -35%;
+    left: 0;
+    content: " ";
+    position: absolute;
+    background-color: white;
+  }
+  @media only screen and (min-width: 900px) {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
