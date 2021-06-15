@@ -1,9 +1,44 @@
 .menu {
   background-color: $colorBlue;
 
+  &--position {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+  
+    &:target {
+      transform: translateX(0);
+      transition: transform 0.3s;
+    }
+  }
+
+  &__container {
+    margin: 0 auto;
+    max-width: 1020px;
+    padding: 0 20px;
+  
+    @include onDesktop {
+      padding: 0 40px;
+    }
+  }
+
   &__content {
     padding: $headerTopPadding 0;
     height: 100vh;
+  }
+
+  &__actions {
+    --icon-width: 18px;
+    display: grid;
+    grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+    justify-items: center;
+    align-items: center;
+  
+    @include onDesktop {
+      --icon-width: 24px;
+    }
   }
 
   &__list {
