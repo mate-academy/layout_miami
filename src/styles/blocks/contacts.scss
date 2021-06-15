@@ -1,4 +1,27 @@
 .contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onDesktop {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+
+    @include onDesktop {
+      perspective: 100px;
+      transition: transform 1s;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
   &__title {
     margin: 0;
     margin-bottom: 8px;
@@ -10,17 +33,20 @@
 
   &__element {
     display: inline-block;
+    width: 150px;
     margin: 0;
     margin-bottom: 24px;
     font-size: 16px;
     line-height: 27px;
     color: #3e3e3e;
     text-decoration: none;
-    perspective: 100px;
-    transition: transform 1s;
+  }
+}
 
-    &:hover {
-      transform: scale(1.05);
-    }
+.feedback {
+
+  @include onDesktop {
+    display: flex;
+    justify-content: space-between;
   }
 }
