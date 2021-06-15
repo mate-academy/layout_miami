@@ -1,0 +1,119 @@
+.header {
+
+  height: 100vh;
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 80px;
+  @extend %padding;
+
+  @include dekstop {
+    max-height: 700px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__burger {
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 18px;
+    transition: background-image 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__logo {
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 40px;
+    width: 130px;
+
+    @include dekstop {
+      height: 80px;
+    }
+  }
+
+  &__call {
+    position: relative;
+    background-image: url(../images/phone.svg);
+
+    @include dekstop {
+      &::before {
+        position: relative;
+        top: 50%;
+        opacity: 0;
+        display: block;
+        content: "+1 234 555-55-55";
+        width: max-content;
+        color: #fff;
+        font-weight: bold;
+        transform: translate(-100%, -50%);
+        font-size: 12px;
+        line-height: 16px;
+        padding-right: 20px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+  }
+
+  &__title {
+    position: relative;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include dekstop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: "";
+      height: 2px;
+      width: 40px;
+      top: -24px;
+      background-color: #fff;
+
+    }
+  }
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  text-decoration: none;
+
+  @include dekstop {
+    height: 24px;
+    width: 24px;
+  }
+}
