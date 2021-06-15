@@ -1,41 +1,113 @@
 
-.main {
-  background: url(../images/header.jpg) center no-repeat;
-  height: 100vh;
-
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-
-.header {
+.main__header {
+  padding: 20px;
   margin: 0 20px;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: space-between;
 
-  &__menu {
+  &-logo {
+    width: 130px;
+    z-index: 2;
+  }
+
+  &-nav {
+    z-index: 2;
+    height: 100vh;
+    font-family: Roboto, sans-serif;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 100px;
+    background-color: $bg__nav;
+    list-style: none;
+    transform: translateX(-100%);
+    transition: ease 0.5s;
+  }
+
+  &-nav--active {
+    transform: translateX(0%);
+    transition: ease 0.5s;
+  }
+
+  &-nav_ul {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &-nav_li {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+
+    &:hover::after {
+      position: absolute;
+      top: 30px;
+      border-radius: 10%;
+      content: "";
+      height: 2px;
+      width: 175px;
+      background-color: white;
+    }
+
   }
 
-  &__menu-rectengle_1 {
-    border-radius: 5px;
-    width: 25px;
-    border-bottom: 3px solid white;
+  &-nav_link {
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
   }
 
-  &__menu-rectengle_2 {
-    border-radius: 5px;
-    width: 25px;
-    border-bottom: 3px solid white;
+  &-menu {
+    z-index: 2;
+    transform: rotate(0deg);
+    width: 24px;
+    height: 16px;
+    background: url(../images/menu.svg) center no-repeat;
+    transition: ease 0.3s;
+
+    &:hover {
+      background: url(../images/menu_hover.svg) center no-repeat;
+      transition: ease 0.3s;
+    }
+
   }
 
-  &__menu-rectengle_3 {
-    border-radius: 5px;
-    width: 25px;
-    border-bottom: 3px solid white;
+  .main__header-menu--active {
+    width: 24px;
+    height: 16px;
+    transform: rotate(360deg);
+    transition: ease 0.4s;
+    background: url(../images/cross.svg) center no-repeat ;
   }
+  
+  &__main-phone_container {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    flex-direction: row-reverse;
+
+    & ::before {
+      position: absolute;
+      right: -50px;
+      top: -60px;
+      width: 200px;
+      content: "+1 234 555-55-55";
+      color: white;
+      font-family: Roboto, sans-serif;
+      font-size: 12px;
+      transition: ease 0.3s;
+    }
+
+    &:hover ::before {
+      top: 5px;
+      transition: ease 0.3s;
+    }
+
+  }
+       
 }
