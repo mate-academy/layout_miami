@@ -8,6 +8,6 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   for (const input of inputs) {
-    input.value = '""';
+    input.value = '';
   }
 });
