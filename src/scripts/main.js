@@ -11,6 +11,8 @@ if (headerBurger) {
   });
 };
 
+
+
 const menuLinks = document.querySelectorAll('.header__link')
 
 if (menuLinks.length > 0) {
@@ -38,3 +40,14 @@ if (menuLinks.length > 0) {
     }
   }
 }
+
+const form = document.querySelector(".main__forms");
+const inputs = document.querySelectorAll(".main__form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  for (const input of inputs) {
+    input.value = '';
+  }
+});
+
