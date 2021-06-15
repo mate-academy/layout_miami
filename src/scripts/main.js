@@ -3,18 +3,13 @@
 
 $(document).ready(function() {
   $('.header__burger').click(function(event) {
-    $('.header__burger,.burger-menu').toggleClass('active');
+    $('.header__burger,.burger-menu,.header__logo').toggleClass('active');
   });
 });
 
 $(document).ready(function() {
-  $('.burger-menu__item').click(function(event) {
-    $('.header__burger.active,.burger-menu.active').toggleClass('active');
-  });
-});
-
-$(document).ready(function() {
-  $('.header__logo-img').click(function(event) {
-    $('.header__burger.active,.burger-menu.active').toggleClass('active');
+  $('.burger-menu__item,.burger-menu__logo-img').click(function(event) {
+    $('.header__burger.active,.burger-menu.active,.header__logo.active')
+      .toggleClass('active');
   });
 });
