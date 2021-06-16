@@ -1,4 +1,6 @@
 .header {
+  @extend %section-gap;
+
   background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -19,12 +21,13 @@
     justify-items: center;
     align-items: center;
 
-    @media (min-width: 768px) {
+    @include onTablet {
       grid-template-columns: $icon-width-l 1fr $icon-width-l;
     }
   }
 
   &__menu {
+    cursor: pointer;
     background-image: url(../images/menu.svg);
     @extend %icon-style;
 
@@ -38,8 +41,7 @@
     @extend %icon-style;
 
     transition-property: transform;
-    transition-duration: 0.2s;
-    transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    @extend %transition;
 
     &:hover {
       transform: scale(1.2);

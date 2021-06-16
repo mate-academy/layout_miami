@@ -2,15 +2,28 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -1.5px;
-  color: #fff;
+  color: $color-white;
 }
 
 %title-h2 {
+  position: relative;
   font-weight: bold;
   font-size: 48px;
   line-height: 1;
   letter-spacing: -1.5px;
-  color: #000;
+  color: $color-black;
+
+  &::after {
+    content: "";
+    background: url(../images/favicon.svg) no-repeat center / contain;
+    position: relative;
+    left: 50%;
+    margin-top: 8px;
+    transform: translateX(-50%);
+    display: block;
+    width: 23px;
+    height: 16px;
+  }
 }
 
 %icon-style {
@@ -20,4 +33,60 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+%btn-default {
+  height: 56px;
+
+  text-align: center;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 56px;
+  text-decoration: none;
+
+  color: $color-blue;
+
+  border: 2px solid $color-blue;
+  border-radius: 8px;
+
+  cursor: pointer;
+  background-color: $color-white;
+
+  transition-property: background-color,
+    box-shadow,
+    color,
+    border-color;
+  transition-duration: $transition-duration;
+  transition-timing-function: linear;
+
+
+  &:hover {
+    background: $color-blue-active;
+    box-shadow: $box-shadow;
+    color: $color-white;
+    border-color: $color-blue-active;
+  }
+
+  &:active {
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+
+%section-gap {
+  margin-bottom: 60px;
+
+  @include onTablet {
+    margin-bottom: 100px;
+  }
+}
+
+%transition {
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing-function;
+}
+
+%transition-mixin {
+  @include transition-mixin;
 }

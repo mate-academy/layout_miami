@@ -1,0 +1,82 @@
+.about-us {
+  @extend %section-gap;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+
+    @include onLaptop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__title {
+    margin-bottom: 48px;
+
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+
+    color: $color-black;
+  }
+
+  &__link {
+    position: relative;
+
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+
+    color: $color-blue;
+    text-decoration: none;
+
+    @include onLaptop {
+      display: block;
+      max-width: min-content;
+
+      &::after {
+        content: "";
+        display: block;
+        left: 0;
+        height: 2px;
+        width: 0;
+
+        background-color: $color-blue;
+
+        transition-property: width;
+        @include transition-mixin;
+      }
+
+      &:hover::after,
+      &:focus::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__info-title {
+    margin-bottom: 16px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.25;
+
+    color: $color-blue;
+  }
+
+  &__info-text {
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: $text-color;
+    margin-bottom: 30px;
+  }
+
+  &__info-text-storng {
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+}

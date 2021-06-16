@@ -1,6 +1,6 @@
 'use strict';
 
-const menuOpen = document.querySelector('.header-menu');
+const menuOpen = document.querySelector('.header__menu');
 const nav = document.querySelector('.page__nav');
 const menuClose = document.querySelector('.nav__close-btn');
 const navLink = document.querySelector('.nav__list');

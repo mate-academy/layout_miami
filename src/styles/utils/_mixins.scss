@@ -1,6 +1,40 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onMobile-landscape {
+  @media (orientation: landscape) and (max-height: 415px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin transition-mixin {
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing-function;
+}
+
+@mixin titleDecor {
+  content: "";
+  background: url(../images/favicon.svg) no-repeat center / contain;
+  position: relative;
+  left: 50%;
+  margin-top: 8px;
+  transform: translateX(-50%);
+  display: block;
+  width: 23px;
+  height: 16px;
 }
