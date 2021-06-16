@@ -1,19 +1,30 @@
 .header {
 
-  height: 100vh;
   background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 25px;
-  padding-bottom: 80px;
-  @extend %padding;
+  height: 100vh;
+  width: 100%;
 
   @include dekstop {
     max-height: 700px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 80px;
+    @extend %padding;
+    height: 100vh;
+
+    @include dekstop {
+      max-height: 700px;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
   }
 
   &__nav {
@@ -36,19 +47,6 @@
     }
   }
 
-  &__logo {
-    background-image: url(../images/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    height: 40px;
-    width: 130px;
-
-    @include dekstop {
-      height: 80px;
-    }
-  }
-
   &__call {
     position: relative;
     background-image: url(../images/phone.svg);
@@ -66,8 +64,10 @@
         transform: translate(-100%, -50%);
         font-size: 12px;
         line-height: 16px;
+        letter-spacing: 2px;
         padding-right: 20px;
         pointer-events: none;
+        transition: opacity 0.3s;
       }
 
       &:hover::before {
