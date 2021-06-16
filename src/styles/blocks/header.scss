@@ -1,94 +1,68 @@
 .header {
-  position: relative;
-  background: url(../images/header.jpg) center/cover no-repeat;
+  box-sizing: border-b0x;
   height: 100vh;
-  background-color: $color-blue;
-
-  &__container {
-    height: 100%;
-    padding: 25px 20px;
-  }
+  padding: 24px 20px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
 
   &__content {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
-  }
-
-  &__toggler {
-    display: none;
-  }
-
-  &__menu-toggler {
-    z-index: 2;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-  }
-
-  &__menu-toggler::after {
-    content: url(../images/menu.svg);
-  }
-
-  &__menu-toggler:hover::after {
-    content: url(../images/menu_hover.svg);
-  }
-
-  &__nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transform: translateX(-100%);
-  }
-
-  &__toggler:checked + &__menu-toggler::after {
-    content: url(../images/cross.svg);
-  }
-
-  &__toggler:checked ~ &__nav {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  &__logo {
-    z-index: 1;
-    width: 78px;
-  }
-
-  &__phone-btn {
-    position: relative;
-    width: 18px;
-    height: 18px;
-    background: url(../images/phone.svg) center/contain no-repeat;
-    cursor: pointer;
-  }
-
-  &__phone-btn::after {
-    content: "+1 234 555-55-55";
-    display: block;
-    width: 200px;
-    right: 0;
-    color: #fff;
-    position: absolute;
-    opacity: 0;
-  }
-
-  &__phone-btn:hover::after {
-    opacity: 1;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
   }
 
   &__title {
-    position: absolute;
-    bottom: 80px;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
     &::before {
       content: "";
       display: block;
-      position: absolute;
-      top: -12px;
       width: 40px;
       height: 2px;
       background-color: #fff;
+      margin-bottom: 20px;
     }
   }
+
+  // &__call {
+  //   text-decoration: none;
+
+  //   @include onDesktop {
+  //     &::before {
+  //       content: "+1 234 555-55-55";
+  //       display: block;
+  //       position: relative;
+  //       top: 50%;
+  //       transform: translate(-100%, -50%);
+  //       color: #fff;
+  //       font-style: bold;
+  //       font-size: 12px;
+  //       line-height: 16px;
+  //       letter-spacing: 2px;
+  //       text-transform: uppercase;
+  //       padding-right: 20px;
+  //       width: max-content;
+  //       opacity: 0;
+  //       pointer-events: none;
+  //     }
+  //     &:hover::before {
+  //       opacity: 1;
+  //       pointer-events: all;
+  //     }
+  //   }
+  // }
 }
