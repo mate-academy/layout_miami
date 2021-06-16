@@ -1,0 +1,168 @@
+.header {
+  height: 100vh;
+  min-width: 320px;
+  padding: 25px 20px 80px;
+  background-image: url(../images/header.jpg);
+  background-position: center;
+  background-size: cover;
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+  }
+
+  @include landscapeMobile {
+    padding-bottom: 25px;
+  }
+
+  @include onDesktop {
+    padding: 25px 120px 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  &__icon-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__toggler {
+    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    transition: background-image $trnstn300ms;
+
+    &-label {
+      height: 12px;
+      width: 18px;
+      z-index: 2;
+      background-image: url(../images/menu.svg);
+      background-size: cover;
+      cursor: pointer;
+      transition: background-image $trnstn300ms;
+
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+      @include onDesktop {
+        height: 16px;
+        width: 24px;
+      }
+
+    }
+
+    &:checked + &-label {
+      background: url(../images/cross.svg) center no-repeat;
+      background-size: contain;
+      width: 18px;
+      height: 18px;
+      transform: rotate(180deg);
+
+      @include onDesktop {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:checked ~ .header__nav {
+      transform: translateX(0);
+    }
+
+  }
+
+  &__logo {
+    z-index: 2;
+    width: 68px;
+    height: 45px;
+    background-image: url(../images/logo.png);
+    background-size: cover;
+
+    @include onDesktop {
+      width: 130px;
+      height: 76px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      width: 24px;
+      height: 24px;
+
+      &::before {
+        content: "+1 234 55-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%,-50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        color: $white-color;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $trnstn300ms;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    color: $white-color;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  &__title:before {
+    display: block;
+    position: relative;
+    top: -24px;
+    height: 2px;
+    width: 40px;
+    left: 0;
+    content: "";
+    background-color: $white-color;
+    z-index: 0;
+  }
+
+}
