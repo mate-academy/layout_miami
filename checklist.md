@@ -37,7 +37,7 @@ that's why this is better to add this style to those elements you really need (t
 - hover with transition should work perfectly
 - all interactive elements should have cursor pointer
 - inputs must have `name` attribute
-- check the page on different screen sizes, it should be responsive (including sizes over 1700px)
+- check the page on different screen sizes, it should be responsive (including sizes over 1$tablet)
 - remove commented code and unnecessary comments
 - use either `kebab-case` or `snake_case` for class names
 - if you pushed some new changes, deploy them as well
