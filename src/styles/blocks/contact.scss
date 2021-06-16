@@ -2,7 +2,7 @@
 
   .contact__title {
     @extend %section-title-font-styles;
-    padding-top: $section-padding-top;
+    padding-top: var(--padding-section-top);
     text-align: center;
     color: $section-title-color;
 
@@ -15,13 +15,32 @@
     display: flex;
     justify-content: space-between;
     padding-top: 72px;
+
+    @include onTablet {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__data {
     display: flex;
 
+    @include onTablet {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
     & * {
       text-decoration: none;
+    }
+  }
+
+  &__address {
+    width: 100%;
+    @include onTablet {
+      margin-bottom: 32px;
+      padding-top: 24px;
     }
   }
 
@@ -43,7 +62,11 @@
   }
 
   &__forms-container {
-    min-width: 411px;
+    width: 441px;
+
+    @media (max-width: 490px) {
+      width: 280px;
+    }
   }
 
   &__forms {
@@ -75,11 +98,11 @@
   }
 
   &__form-button {
-    max-width: 411px;
+    width: 100%;
     height: 56px;
     border-radius: 8px;
     margin-top: 32px;
-    margin-bottom: $section-padding-top;
+    margin-bottom: var(--padding-section-top);
     border: transparent;
     line-height: 14px;
     color: #fff;

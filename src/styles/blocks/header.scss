@@ -1,12 +1,26 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 40px;
+
+  @include onMobile {
+    padding: 0 20px;
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
   background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
 
   &__title {
     font-size: 80px;
@@ -15,7 +29,11 @@
     letter-spacing: -1.5px;
     color: #fff;
 
-    margin: 0 120px 80px;
+    @include onMobile {
+      font-size: 46px;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
 
     &::before {
       content: " ";
@@ -30,17 +48,20 @@
 }
 
 .nav {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $header-icon-paddings;
 
   &__menu-icon {
-    width: 24px;
-    height: 24px;
     background-image: url(../images/menu.svg);
     background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+
+    @include onMobile {
+      width: 18px;
+      height: 18px;
+    }
 
     transition: background-image 0.3s;
 
@@ -52,16 +73,25 @@
 
   &__logo-icon {
     height: 80px;
+
+    @include onMobile {
+      height: 48px;
+    }
   }
 
   &__phone-icon {
     text-decoration: none;
     background-image: url(../images/phone.svg);
-    width: 24px;
-    height: 24px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+
+    @include onMobile {
+      width: 18px;
+      height: 18px;
+    }
 
     &::before {
       content: "+1 234 555-55-55";
@@ -80,6 +110,10 @@
       pointer-events: none;
 
       transition: opacity 0.3s;
+
+      @include onMobile {
+        display: none;
+      }
     }
 
     &:hover::before {

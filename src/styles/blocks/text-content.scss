@@ -1,19 +1,52 @@
 .text-content {
   display: flex;
   justify-content: space-between;
-  padding-top: $section-padding-top;
+  padding-top: var(--padding-section-top);
+
+  @include onTablet {
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__title {
     @extend %section-title-font-styles;
     color: $section-title-color;
+
+    @include onTablet {
+      margin-bottom: 48px;
+    }
+
+    @include onMobile {
+      font-size: 36px;
+      line-height: 36px;
+    }
+
+    &-container {
+      max-width: 325px;
+    }
   }
 
   &__link {
     color: $theme-color-blue;
     text-decoration: none;
+
+    &--subtitle {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 30px;
+
+      @include onTablet {
+        margin-bottom: 48px;
+      }
+    }
+  }
+
+  &__paragraphs-text {
+    margin-bottom: 27px;
   }
 
   &__paragraphs-text-bold {
     font-weight: bold;
+    margin-bottom: 0;
   }
 }

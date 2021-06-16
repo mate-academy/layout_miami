@@ -3,9 +3,13 @@
   &__title {
     @extend %section-title-font-styles;
     text-align: center;
-    padding-top: $section-padding-top - 16;
+    padding-top: var(--padding-section-top);
     margin-bottom: 59px;
     color: $section-title-color;
+
+    @include onMobile {
+      margin-bottom: 32px;
+    }
 
     &::after {
       @extend %logo-crown-positioning;
@@ -18,6 +22,11 @@
     height: 256px;
     object-fit: cover;
     border-radius: 8px;
+
+    @media (max-width: 600px) {
+      height: 131px;
+      // width: 131px;
+    }
   }
 
   &__photos-row-1 {
@@ -25,6 +34,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "photo-1 photo-1 photo-2";
     gap: $gallery-photo-gap;
+
+    @media (max-width: 899px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "photo-1 photo-2";
+    }
   }
 
   &__photos-row-2 {
@@ -38,6 +52,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "photo-5 photo-6 photo-6";
     gap: $gallery-photo-gap;
+
+    @media (max-width: 899px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "photo-5 photo-6";
+    }
   }
 
   &__photo--1 {
@@ -57,13 +76,18 @@
   }
 
   &___photo-title {
-    white-space: nowrap;
     padding-top: 24px;
     padding-bottom: 40px;
+
+    @include onMobile {
+      padding-top: 16px;
+      padding-bottom: 32px;
+    }
 
   }
 
   &___photo-link {
+    font-weight: bold;
     color: $theme-color-blue;
     text-decoration: none;
   }
@@ -73,12 +97,15 @@
     justify-content: center;
 
     &-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 150px;
       height: 56px;
-      line-height: 56px;
-      text-align: center;
+      line-height: 14px;
       border: 1px solid $theme-color-blue;
       border-radius: 8px;
+      font-weight: bold;
       text-decoration: none;
       color: $theme-color-blue;
 
