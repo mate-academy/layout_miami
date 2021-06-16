@@ -1,7 +1,9 @@
 .gallery {
-  text-align: center;
-  width: 1260px;
+  min-width: 1260px;
   scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     margin: 0;
@@ -11,17 +13,20 @@
     line-height: 48px;
     letter-spacing: -1.5px;
     text-align: center;
-    transition: all 0.5s ease 0s;
+    transition: margin-top 0.5s ease 0s;
   }
 
   &__logo {
+    display: flex;
+    margin: 0 auto;
     width: 23px;
     height: 23px;
   }
 
   &__images {
+
     margin-top: 59px;
-    p {
+    &-paragraphp {
       width: 1200px;
       margin: 24px 120px;
       font-size: 16px;
@@ -32,20 +37,16 @@
       text-align: left;
     }
 
-    a {
-      color: black;
-    }
-
-    p:nth-child(-n + 4) {
+    &-paragraph:nth-child(-n + 4) {
       margin-bottom: 40px;
     }
 
-    p:last-child {
+    &-paragraph:last-child {
       margin-bottom: 0;
     }
 
-    strong {
-      color: #0075ff;
+    &-strongtext {
+      color: $gallery-strong-text-color;
     }
   }
 
@@ -61,8 +62,13 @@
     filter: brightness(70%);
   }
 
-  &__link:hover {
-    text-decoration: underline;
+  &__link {
+    text-align: left;
+    color: $gallery-link-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__button {
@@ -78,7 +84,7 @@
 
     &:hover {
       cursor: pointer;
-      background: #0075ff;
+      background: $gallery-button-hover-color;
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
     }
 
@@ -92,22 +98,23 @@
       line-height: 50px;
       letter-spacing: 0;
       text-align: center;
-      color: #0075ff;
+      color: $gallery-button-text-color;
       transition: color 0.5s ease 0s;
 
       &:hover {
-        color: white;
+        color: $gallery-button-text-color-hover;
       }
     }
   }
 }
 
-@media (min-width: 320px) and (max-width: 700px) {
+@media (min-width: $small-min-width) and (max-width: $small-max-width) {
   .container {
     padding: 0 20px;
+    text-align: center;
   }
   .gallery {
-    width: 322px;
+    min-width: 322px;
     &__title {
       margin-top: 64px;
       font-size: 36px;
@@ -118,13 +125,17 @@
       text-align: center;
     }
 
+    &__link {
+      display: block;
+      width: 280px;
+
+    }
+
     &__images {
       margin-top: 37px;
 
-      p {
-        margin: 24px auto;
-        width: 280px;
-        text-align: left;
+      &-paragraphp {
+        width: 200px;
       }
     }
 
@@ -146,10 +157,10 @@
   }
 }
 
-@media (min-width: 701px) and (max-width: 1200px) {
+@media (min-width: $medium-min-width) and (max-width: $medium-max-width) {
   .gallery {
-    width: 660px;
-    padding: 0 23px;
+    min-width: 660px;
+    padding: 0;
 
     &__title {
       margin-top: 84px;
@@ -164,7 +175,7 @@
     &__images {
       margin-top: 45px;
 
-      p {
+      &-paragraphp {
         margin: 24px 22px;
         font-size: 16px;
         font-style: normal;

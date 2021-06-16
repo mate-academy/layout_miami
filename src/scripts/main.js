@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
   $('.header__burger').click(function(event) {
-    $('.header__burger,.burger-menu,.header__logo,html').toggleClass('active');
+    $('.header__burger,.burger-menu,.header__logo,.html').toggleClass('active');
   });
 });
 

@@ -5,26 +5,41 @@
   padding-top: 152px;
   height: 100vh;
   width: 100%;
-  padding-left: 120px;
-  top: -5000px;
+  transform: translateY(-250%);
+  margin: 0;
   left: 0;
   z-index: 2;
 
-  background: #0075ff;
-  color: #fff;
+  background: $burger-bgc;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
   line-height: 22px;
   letter-spacing: 2px;
-  text-align: left;
   text-transform: uppercase;
   text-decoration: none;
 
-  transition: all 0.5s ease 0s;
+  transition: transform 0.5s ease 0s;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__logo {
+    padding-top: 25.5px;
+    margin-bottom: 18px;
+  }
 
   &__item {
-    width: 125px;
+    width: 250px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__contact {
@@ -35,6 +50,10 @@
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 2px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__item:nth-child(n + 2) {
@@ -52,180 +71,40 @@
   }
 
   & span {
-    position: absolute;
-    background-color: #fff;
-    width: 111px;
-    left: 121px;
-    top: 494px;
-    border: 1px solid #fff;
-    transition: all 0.5s ease 0s;
-  }
-}
-
-.burger-menu__logo {
-  position: relative;
-  padding-top: 25.5px;
-  right: 60px;
-  margin: 0 auto;
-  margin-top: 0;
-}
-
-.header {
-  &__burger {
-    display: block;
     position: relative;
-    width: 24px;
-    height: 16px;
-
-    &::before,
-    &::after {
-      content: "";
-      background-color: #fff;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      border-radius: 2px;
-      left: 0;
-      z-index: 2;
-    }
-
-    &::before {
-      top: 0;
-    }
-
-    &::after {
-      bottom: 0;
-    }
-
-    & span {
-      position: absolute;
-      background-color: #fff;
-      width: 100%;
-      height: 2px;
-      top: 7px;
-      border-radius: 2px;
-      z-index: 2;
-    }
+    align-items: center;
+    margin-top: 20px;
+    width: 111px;
+    border: 1px solid #fff;
   }
-
-  &__burger:hover {
-    cursor: pointer;
-    &::before,
-    &::after {
-      content: "";
-      background-color: #fff;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      border-radius: 2px;
-      left: 0;
-      transition: all 0.3s ease 0s;
-      z-index: 2;
-    }
-
-    &::before {
-      width: 75%;
-      top: 0;
-    }
-
-    &::after {
-      width: 50%;
-      bottom: 0;
-    }
-
-    & span {
-      position: absolute;
-      background-color: #fff;
-      width: 100%;
-      height: 2px;
-      top: 7px;
-      border-radius: 2px;
-      transition: all 0.3s ease 0s;
-    }
-  }
-
-  &__burger.active {
-    position: fixed;
-    z-index: 2;
-    &::before,
-    &::after {
-      content: "";
-      background-color: #fff;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      border-radius: 2px;
-      left: 0;
-    }
-
-    &::before {
-      width: 100%;
-      top: 5px;
-      transform: rotate(45deg);
-    }
-
-    &::after {
-      width: 100%;
-      bottom: 9px;
-      transform: rotate(-45deg);
-    }
-
-    & span {
-      transform: scale(0);
-    }
-  }
-}
-
-.burger-menu__item:hover {
-  text-decoration: underline;
-}
-
-.burger-menu__contact:hover {
-  text-decoration: underline;
 }
 
 .burger-menu.active {
-  position: fixed;
-  top: -22px;
-  padding-top: 0;
+  transform: translateY(0%);
+  padding: 0;
+  margin: 0;
 }
 
-@media (min-width: 320px) and (max-width: 700px) {
+@media (min-width: $small-min-width) and (max-width: $small-max-width) {
   .burger-menu {
-    padding-left: 20px;
-
     &__logo {
       margin-bottom: 22px;
       &-img {
         height: 55px;
         width: 88px;
-        left: 25px;
-        position: relative;
       }
-    }
-
-    & span {
-      left: 20px;
     }
   }
 }
 
-@media (min-width: 701px) and (max-width: 1200px) {
+@media (min-width: $medium-min-width) and (max-width: $medium-max-width) {
   .burger-menu {
-    padding-left: 50px;
-
     &__logo {
       margin-bottom: 12px;
       &-img {
         height: 65px;
         width: 98px;
-        left: 17px;
-        position: relative;
       }
-    }
-
-    & span {
-      left: 50px;
     }
   }
 }
