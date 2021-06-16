@@ -53,4 +53,4 @@ that's why this is better to add this style to those elements you really need (t
 - you can implement smooth scroll by using 'scroll-behavior' css property
 - blue text indicates links, they should be clickable
 - you can add light hover effect to the pictures (for example you can use border/transform(scale)/box-shadow css properties)
-- contact info also should be clickable
+- contact column also should be clickable

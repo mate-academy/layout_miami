@@ -1,6 +1,6 @@
 # Miami landing page
 - Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-- Read [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md). You can find a lot of useful information there.
+- Read [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md). You can find a lot of useful columnrmation there.
 
 ## Instructions
 1. **Fork** the repo.
@@ -16,7 +16,7 @@
 11. `git push origin develop` - to send you code for PR
 12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
 13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
+  [DEMO LINK](https://pavlo1983.github.io/layout_miami/)
 14. Copy `DEMO LINK` to the PR description
 
 > To update you PR repeat steps 7-11

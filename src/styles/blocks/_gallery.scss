@@ -1,0 +1,115 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    line-height: 48px;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+
+    &::after {
+      position: absolute;
+      top: 115%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      content: "";
+      background: no-repeat url("../images/crown.svg");
+      background-size: 23px 16px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__marina {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__editions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__faena {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-decoration: none;
+    color: #000;
+    
+  }
+
+  &__btn {
+    width: 150px;
+    height: 56px;
+    border-radius: 8px;
+    border: 2px solid $c-blue;
+    align-self: center;
+
+    &:hover {
+      background-color: #005ecc;
+      box-shadow: 0 13px 27px 0 #0053b575;
+
+      &:hover > .show-btn {
+        color: #fff;
+      }
+    }
+
+    &:active {
+      background-color: #005ecc;
+      box-shadow: 0 8px 14px 0 #0053b57a;
+
+      &:active > .show-btn {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (max-width: $s-large) {
+  .gallery {
+    &__title {
+      line-height: 36px;
+      font-size: 36px;
+
+      &::after {
+        background-size: 12px 10px;
+        height: 10px;
+        width: 12px;
+      }
+    }
+
+    &__marina {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__editions {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__faena {
+      grid-template-columns: 1fr 1fr;
+    }
+    &__btn {
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .gallery {
+    &__btn {
+      width: 280px;
+    }
+  }
+}
