@@ -4,3 +4,162 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == land-500 {
+    @media only screen and (orientation: landscape) and (max-height: 500px) {
+      @content;
+    }
+  }
+  @if $breakpoint == land-350 {
+    @media only screen and (orientation: landscape) and (max-height: 350px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-height {
+    @media only screen and (min-height: 1000px) and (max-width: 1400px) {
+      @content;
+    }//600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (min-width: 600px) {
+      @content;
+    }//600px
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: 900px) {
+      @content;
+    }//900px
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }//1200px
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }//1800
+  }
+}
+
+@mixin icon-size($width, $height) {
+  width: $width;
+  height: $height;
+
+  @include respond(tab-port) {
+    width: $width + 2px;
+    height: $height + 2px;
+  }
+
+  @include respond(tablet) {
+    width: $width + 4px;
+    height: $height + 4px;
+  }
+  @include respond(desktop) {
+    width: $width + 6px;
+    height: $height + 6px;
+  }
+  @include respond(tab-height) {
+    width: $width + 26px;
+    height: $height + 26px;
+  }
+}
+
+@mixin margin-bottom {
+  margin-bottom: 64px;
+
+  @include respond(tab-port) {
+    margin-bottom: 74px;
+  }
+
+  @include respond(tablet) {
+    margin-bottom: 84px;
+  }
+
+  @include respond(desktop) {
+    margin-bottom: 104px;
+  }
+}
+
+@mixin margin-after-title {
+  margin-bottom: 53px;
+
+  @include respond(tab-port) {
+    margin-bottom: 60px;
+  }
+
+  @include respond(tablet) {
+    margin-bottom: 70px;
+  }
+
+  @include respond(desktop) {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin margin-gap-gallery {
+  margin-bottom: 32px;
+  gap: 16px 20px;
+
+  @include respond(tab-port) {
+    margin-bottom: 35px;
+  }
+
+  @include respond(tablet) {
+    margin-bottom: 38px;
+    gap: 18px 22px;
+  }
+
+  @include respond(desktop) {
+    margin-bottom: 40px;
+    gap: 20px 24px;
+  }
+}
+
+@mixin crown {
+  position: relative;
+  text-align: center;
+  @include margin-after-title;
+  &::after {
+    content: url(../images/crown.svg);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin grid-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(111px, 1fr));
+
+}
+
+@mixin grid-gallery-1fr-2fr {
+  grid-template-columns: 1fr 2fr;
+}
+@mixin grid-gallery-2fr-1fr {
+  grid-template-columns: 2fr 1fr;
+}
+
+@mixin logo-size {
+  width: 78px;
+  @include respond(tab-port) {
+    width: 95px;
+  }
+
+  @include respond(tablet) {
+    width: 115px;
+  }
+
+  @include respond(desktop) {
+    width: 130px;
+  }
+  @include respond(tab-height) {
+    width: 130px;
+  }
+}
