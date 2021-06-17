@@ -1,0 +1,74 @@
+.header {
+  @extend %section-gap;
+
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $header-top-padding 0 80px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: $icon-width-m 1fr $icon-width-m;
+    justify-items: center;
+    align-items: center;
+
+    @include onTablet {
+      grid-template-columns: $icon-width-l 1fr $icon-width-l;
+    }
+  }
+
+  &__menu {
+    cursor: pointer;
+    background-image: url(../images/menu.svg);
+    @extend %icon-style;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__phone {
+    position: relative;
+    background-image: url(../images/phone.svg);
+    @extend %icon-style;
+
+    transition-property: transform;
+    @extend %transition;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include onLaptop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        left: 0;
+        top: 5px;
+        position: absolute;
+        font-size: 12px;
+        color: $color-white;
+        text-decoration: none;
+        opacity: 0;
+
+        transition-property: transform, opacity;
+        @include transition-mixin;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(-110%);
+      }
+    }
+  }
+}
