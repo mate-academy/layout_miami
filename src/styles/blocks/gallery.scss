@@ -1,0 +1,105 @@
+.gallery {
+  margin: 0 auto;
+  max-width: 1020px;
+  display: flex;
+  flex-direction: column;
+
+
+  &__row {
+    display: grid;
+    grid-template-rows: 256px;
+    gap: 24px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+
+    &--1 {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--3 {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+    &__image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      @include hoverImage;
+    }
+
+    @include smallScreen {
+      gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery__row {
+        &--1 {
+          grid-template-columns: 1fr 1fr;
+        }
+    
+        &--2 {
+          grid-template-columns: 1fr 1fr;
+        }
+    
+        &--3 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__button {
+    position: absolute;
+    right: $button-position-mobile;
+    width: 280px;
+    height: 56px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    border: 2px solid $blue-color;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    @include onDesktop {
+      width: 150px;
+      right: $button-position-desktop;
+    }
+
+    &:hover {
+      background-color: $dark-blue-color;
+      box-shadow: 0px 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:hover &-link {
+      color: $text-color;
+    }
+
+    &:active {
+      box-shadow: 0px 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  &__button-link {
+    text-decoration: none;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: #0075ff;
+  }
+}
+
+@include smallScreen {
+  .desktop-wrapper {
+    width: 100%;
+  }
+}
