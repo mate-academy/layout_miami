@@ -1,5 +1,5 @@
 .header {
-
+  position: relative;
   background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,13 +38,26 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    cursor: pointer;
     width: 24px;
     height: 18px;
-    transition: background-image 0.5s;
+    transition: background-image $anim, transform $anim;
+    z-index: 100;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-image: url(../images/menu_hover.svg);
     }
+
+    &--active {
+      background-image: url(../images/cross.svg);
+
+      &:hover,
+      &:focus {
+        background-image: url(../images/cross.svg);
+      }
+    }
+
   }
 
   &__call {
@@ -70,7 +83,8 @@
         transition: opacity 0.3s;
       }
 
-      &:hover::before {
+      &:hover::before,
+      &:focus::before {
         opacity: 1;
         pointer-events: all;
       }
@@ -85,6 +99,7 @@
     font-weight: bold;
     color: #fff;
     letter-spacing: -1.5px;
+    // z-index: -1;
 
     @include dekstop {
       font-size: 80px;
