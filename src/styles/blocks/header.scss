@@ -37,6 +37,7 @@
   }
 
   &__phone {
+    position: relative;
     background-image: url(../images/phone.svg);
     @extend %icon-style;
 
@@ -45,6 +46,29 @@
 
     &:hover {
       transform: scale(1.2);
+    }
+
+    @include onLaptop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        left: 0;
+        top: 5px;
+        position: absolute;
+        font-size: 12px;
+        color: $color-white;
+        text-decoration: none;
+        opacity: 0;
+
+        transition-property: transform, opacity;
+        @include transition-mixin;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(-110%);
+      }
     }
   }
 }
