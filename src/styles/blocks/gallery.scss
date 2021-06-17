@@ -1,0 +1,129 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @extend %width;
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 14px rgba(0, 0, 0, 0.48);
+    }
+  }
+  &__row-1,
+  &__row-2,
+  &__row-3 {
+    @extend %gallery;
+  }
+
+  &__row-1 {
+    margin-top: 59px;
+    @include gallery(2fr 1fr);
+  }
+
+  &__row-2 {
+    @include gallery(1fr 1fr);
+  }
+
+  &__row-3 {
+    @include gallery(1fr 2fr);
+  }
+
+  &__description {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__place {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__name {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+    color: $color-blue;
+  }
+
+  &__people {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 148px;
+    height: 56px;
+    margin-top: 32px;
+    text-align: center;
+    text-decoration: none;
+    color: $color-blue;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: bold;
+    border: 2px solid $color-blue;
+    border-radius: 8px;
+    transition: background-color 0.5s;
+
+    &:hover {
+      color: #fff;
+      background: $color-blue-2;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      border: 2px solid $color-blue-2;
+      transition: background 0.5s;
+    }
+
+    &:active {
+      color: #fff;
+      background: $color-blue-2;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+}
+
+@media (max-width: $tablet-width-2) {
+  .gallery {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gallery(1fr 1fr);
+    }
+  }
+}
+
+@media (max-width: $phone-width) {
+  .gallery {
+    &__row-1,
+    &__row-2,
+    &__row-3 {
+      @include gallery(1fr 1fr);
+      grid-template-rows: 131px;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    &__row-1 {
+      margin-top: 32px;
+    }
+
+    &__description {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .gallery {
+    &__people {
+      width: 100%;
+    }
+  }
+}
