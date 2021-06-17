@@ -14,6 +14,7 @@ burgerIcon.addEventListener('click', () => {
 
 menuList.addEventListener('click', () => {
   burger.classList.remove('burger--active');
+  burgerIcon.classList.remove('header__burger--active');
 });
 
 form.addEventListener('submit', (event) => {
