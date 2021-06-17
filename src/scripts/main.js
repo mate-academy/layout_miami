@@ -16,3 +16,17 @@ menuClose.addEventListener('click', () => {
 navLink.addEventListener('click', () => {
   nav.classList.remove('page__nav-is-active');
 });
+
+const form = document.querySelector('.contact-form');
+const inputs = document.querySelectorAll('.contact-form__input');
+const textarea = document.querySelector('.contact-form__textarea');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  for (const input of inputs) {
+    input.value = '';
+  }
+
+  textarea.value = '';
+});

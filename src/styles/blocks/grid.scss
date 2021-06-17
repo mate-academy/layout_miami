@@ -3,12 +3,23 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  &__item-mobile {
+
+    @for $start from 1 through 2 {
+      @for $end from $start through 3 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+    }
+  }
+
   @include onLaptop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
 
-  &__item {
+  &__item-desktop {
     @include onLaptop {
       @for $start from 1 through 12 {
         @for $end from $start through 12 {

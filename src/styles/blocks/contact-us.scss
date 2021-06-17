@@ -1,0 +1,84 @@
+.contact-us {
+  @extend %section-gap;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__info {
+    row-gap: 32px;
+    width: 100%;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 1.9;
+
+    color: $color-light-grey;
+  }
+
+  &__link {
+    color: $text-color;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    position: relative;
+
+    &:active {
+      color: $color-blue;
+    }
+
+    @include onLaptop {
+      &:hover,
+      &:active {
+        color: $color-blue;
+      }
+      @include linkDecor($color-blue);
+    }
+  }
+
+  &__link-consist {
+    color: $text-color;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition-property: color;
+    @include transition-mixin;
+
+    &::after {
+      content: "";
+      display: block;
+      left: 50%;
+      height: 2px;
+      width: 100%;
+
+      background-color: $color-blue;
+
+      transform: scaleX(0);
+      transition-property: transform;
+      @include transition-mixin;
+    }
+  }
+
+  &__link-container {
+    display: inline-block;
+    @include onLaptop {
+      &:hover .contact-us__link-consist,
+      &:active .contact-us__link-consist {
+        color: $color-blue;
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}

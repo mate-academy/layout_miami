@@ -1,28 +1,59 @@
 %title-h1 {
+  position: relative;
+
+  font-size: 46px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
+
   color: $color-white;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+
+    margin-bottom: 24px;
+
+    background-color: $color-white;
+    border-radius: 8px;
+  }
+
+  @include onTablet {
+    font-size: 80px;
+    letter-spacing: -1.5px;
+  }
 }
 
 %title-h2 {
   position: relative;
+  margin-bottom: 32px;
+
+  font-size: 36px;
   font-weight: bold;
-  font-size: 48px;
   line-height: 1;
   letter-spacing: -1.5px;
+
   color: $color-black;
 
   &::after {
     content: "";
-    background: url(../images/favicon.svg) no-repeat center / contain;
     position: relative;
-    left: 50%;
-    margin-top: 8px;
-    transform: translateX(-50%);
+
     display: block;
     width: 23px;
     height: 16px;
+    left: 50%;
+    margin-top: 8px;
+
+    background: url(../images/favicon.svg) no-repeat center / contain;
+    transform: translateX(-50%);
+  }
+
+  @include onLaptop {
+    margin-bottom: 48px;
+    font-size: 48px;
   }
 }
 
@@ -35,7 +66,7 @@
   background-position: center;
 }
 
-%btn-default {
+%btn {
   height: 56px;
 
   text-align: center;
@@ -51,8 +82,9 @@
   border: 2px solid $color-blue;
   border-radius: 8px;
 
-  cursor: pointer;
   background-color: $color-white;
+
+  cursor: pointer;
 
   transition-property: background-color,
     box-shadow,
@@ -61,12 +93,14 @@
   transition-duration: $transition-duration;
   transition-timing-function: linear;
 
-
-  &:hover {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     background: $color-blue-active;
     box-shadow: $box-shadow;
     color: $color-white;
     border-color: $color-blue-active;
+    outline: none;
   }
 
   &:active {
@@ -89,4 +123,44 @@
 
 %transition-mixin {
   @include transition-mixin;
+}
+
+%input {
+  padding: 14px 17px;
+
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+
+  color: $color-black;
+
+  background-color: $color-bg-input;
+
+  border: 2px solid $color-bg-input;
+  border-radius: 8px;
+
+  outline: none;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    border: none;
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:hover {
+    border-color: $color-border-input;
+  }
+
+  &:focus {
+    border-color: $color-blue;
+  }
+
+  &::placeholder {
+    color: $color-placeholder-text;
+  }
 }

@@ -1,0 +1,78 @@
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__avatar-container {
+    margin-bottom: 32px;
+
+    width: 150px;
+    height: 150px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+  }
+
+  &__avatar {
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__user-name {
+    position: relative;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.25;
+    text-decoration: none;
+
+    color: $color-blue;
+
+    @include onLaptop {
+      @include linkDecor($color-blue);
+
+      &::before {
+        content: "";
+        display: block;
+        opacity: 0;
+        height: 24px;
+        width: 24px;
+        background: url(../images/icon-linkedIn.png) no-repeat center / cover;
+        top: 3px;
+
+        position: absolute;
+        left: -40px;
+
+        transform: translateY(-50px);
+        transition-property: transform, opacity;
+        @include transition-mixin;
+      }
+
+      &:hover::before {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__user-position {
+    font-size: 14px;
+    line-height: 2;
+    text-transform: capitalize;
+
+    color: $color-light-grey;
+  }
+
+  &__text {
+    max-width: 324px;
+    text-align: center;
+  }
+}
