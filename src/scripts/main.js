@@ -14,3 +14,18 @@ const burgerButton = document.querySelector('.hamburger');
 headerNav.addEventListener('click', (event) => {
   burgerButton.click();
 });
+
+const feedbackForm = document.querySelector('.contact-us-form');
+let answer = 'Thank you for your message.';
+
+answer += '\nWe will call you back as soon as possible.';
+
+feedbackForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  for (const input of feedbackForm.elements) {
+    input.value = '';
+  }
+
+  window.alert(answer);
+});
