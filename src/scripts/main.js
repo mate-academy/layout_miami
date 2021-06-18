@@ -15,6 +15,12 @@ headerNav.addEventListener('click', (event) => {
   burgerButton.click();
 });
 
+window.addEventListener('scroll', function() {
+  navContainer.classList.remove('nav-container--active');
+  hamburger.classList.remove('hamburger--active');
+});
+
+
 const feedbackForm = document.querySelector('.contact-us-form');
 let answer = 'Thank you for your message.';
 
