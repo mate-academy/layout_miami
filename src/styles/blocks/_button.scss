@@ -1,0 +1,66 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+
+  &__primary {
+    @extend %button;
+    width: 280px;
+    height: 56px;
+    @include onDesktop {
+      width: 411px;
+    }
+    background-color: $color-blue;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    transition: background-color $time ease, box-shadow $time ease;
+
+    &:hover {
+      cursor: pointer;
+      @extend %button-hover;
+    }
+    &:active {
+      cursor: pointer;
+      @extend %button-active;
+    }
+    &--text {
+      @extend %button-text;
+      color: $placeholder-text-color;
+      transition: color $time ease;
+      &:hover {
+        color: $contrast-text-color;
+      }
+      &:active {
+        color: $contrast-text-color;
+      }
+    }
+  }
+  &__secondary {
+    @extend %button;
+    border: 2px solid $color-blue;
+    background-color: $contrast-text-color;
+    color: $color-blue;
+    transition: background-color $time ease,
+      box-shadow $time ease,
+      color $time ease;
+
+    &:hover {
+      @extend %button-hover;
+      color: $contrast-text-color;
+    }
+    &:active {
+      @extend %button-active;
+      color: $contrast-text-color;
+    }
+    &--text {
+      @extend %button-text;
+    }
+    &--size-view-all {
+      width: 280px;
+      height: 56px;
+      @include onDesktop {
+        width: 150px;
+      }
+    }
+  }
+}

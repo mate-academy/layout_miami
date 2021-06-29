@@ -1,4 +1,160 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%iconWrapper {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+%container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+%link {
+  text-decoration: none;
+  color: $color-blue;
+}
+
+%bold {
+  font-weight: bold;
+}
+
+%title {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+  padding-bottom: 48px;
+  text-align: center;
+  letter-spacing: -1.5px;
+  color: $title-text-color;
+  flex-grow: 1;
+  flex-basis: 100%;
+
+  @include onDesktop {
+    font-size: 36px;
+    line-height: 36px;
+    padding-bottom: 80px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 23px;
+    height: 16px;
+    margin: 4px auto 0;
+
+    background-image: url(../images/crown.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+%button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 8px;
+
+  &-text {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 14px;
+    text-decoration: none;
+  }
+
+  &-hover {
+    transition: background-color $time ease,
+      box-shadow $time ease,
+      color $time ease;
+    background-color: $color-hover;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+
+  &-active {
+    transition: background-color $time ease,
+      box-shadow $time ease,
+      color $time ease;
+    background-color: $color-hover;
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+
+%card-alignment {
+  width: 100%;
+  text-align: center;
+}
+
+%maxWidthBlock {
+  max-width: 280px;
+  @include onDesktop {
+    max-width: 100%;
+  }
+}
+
+%maxWidthBigBlock {
+  max-width: 280px;
+  @include onDesktop {
+    max-width: 1020px;
+  }
+}
+
+%maxWidthSmallBlock {
+  max-width: 280px;
+  @include onDesktop {
+    max-width: 150px;
+  }
+}
+
+%textValue {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 27px;
+  color: $article-text-color;
+}
+
+%cardPhoto {
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 28px;
+  @include onDesktop {
+    margin-bottom: 32px;
+  }
+}
+
+%hoverEffect {
+  transition: text-shadow $time ease;
+  &:hover {
+    text-shadow: 1px 1px 1px $color-gray;
+  }
+}
+
+%hoverPhoto {
+  transition: transform $time ease, z-index $time ease, box-shadow $time ease;
+  &:hover {
+    transition: transform $time ease, z-index $time ease;
+    position: relative;
+    z-index: 1;
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
 }

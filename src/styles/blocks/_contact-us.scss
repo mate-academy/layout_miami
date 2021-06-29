@@ -1,0 +1,63 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-basis: 100%;
+  justify-content: space-between;
+  @extend %maxWidthBigBlock;
+
+  @include onDesktop {
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @include onDesktop {
+      height: 200px;
+    }
+    &-name {
+      @extend %maxWidthSmallBlock;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 27px;
+      height: 27px;
+      color: $color-gray;
+      margin-bottom: 8px;
+
+    }
+    &-value {
+      @extend %maxWidthSmallBlock;
+      @extend %textValue;
+      height: 27px;
+      margin-bottom: 24px;
+    }
+    &-message {
+      @extend %maxWidthSmallBlock;
+      @extend %textValue;
+      height: 83px;
+      margin-bottom: 32px;
+      @include onDesktop {
+        height: 110px;
+        margin-bottom: 0;
+      }
+    }
+    &-link {
+      @extend %textValue;
+      text-decoration: none;
+      transition: color $time ease, text-shadow $time ease;
+
+      &:hover {
+        text-shadow: 1px 1px 1px $color-gray;
+        color: $color-blue;
+      }
+    }
+  }
+
+  &__request {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

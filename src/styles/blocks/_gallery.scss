@@ -1,0 +1,76 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1020px;
+
+  &__row {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-rows: 131px;
+    column-gap: 20px;
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      grid-template-rows: 256px;
+      column-gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    &--1 {
+      grid-template-columns: 1fr 1fr;
+      @include onDesktop {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    &--2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    &--3 {
+      grid-template-columns: 1fr 1fr;
+      @include onDesktop {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-position: center center;
+    object-fit: cover;
+    transition: transform $time ease, z-index $time ease, box-shadow $time ease;
+
+    &:hover {
+      transition: transform $time ease,
+        z-index $time ease,
+        box-shadow $time ease;
+      position: relative;
+      z-index: 1;
+      transform: scale(1.05);
+      cursor: zoom-in;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  &__description {
+    align-self: start;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    font-style: bold;
+    text-decoration: none;
+    color: $color-blue;
+    @extend %hoverEffect;
+  }
+}
