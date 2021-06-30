@@ -8,7 +8,6 @@ const link3 = document.getElementById('burger__link-3');
 const link4 = document.getElementById('burger__link-4');
 const link5 = document.getElementById('burger__link-5');
 const link6 = document.getElementById('burger__link-6');
-const link7 = document.getElementById('burger__link-7');
 
 buttonOpenClose.addEventListener('click', () => {
   buttonOpenClose.classList.toggle('main__header-menu--active');
@@ -41,11 +40,6 @@ link5.addEventListener('click', () => {
 });
 
 link6.addEventListener('click', () => {
-  buttonOpenClose.classList.remove('main__header-menu--active');
-  nav.classList.remove('main__header-nav--active');
-});
-
-link7.addEventListener('click', () => {
   buttonOpenClose.classList.remove('main__header-menu--active');
   nav.classList.remove('main__header-nav--active');
 });

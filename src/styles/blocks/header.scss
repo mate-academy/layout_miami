@@ -40,21 +40,18 @@
 
   &-nav_link {
     position: relative;
-    font-size: 22px;
+    font-size: 20px;
     text-decoration: none;
     color: white;
   }
 
   &-nav_link-S {
-    font-size: 12px;
+    position: relative;
+    text-transform: uppercase;
     text-decoration: none;
     color: white;
-    max-width: 100px;
-    line-height: 25px;
-    &::before {
-      display: block;
-      content: "+1 234 555-55-55";
-    }
+    max-width: 120px;
+    line-height: 20px;
   }
 
   &-nav_ul {
@@ -62,7 +59,16 @@
     margin: 0 auto;
     transition: ease 0.3s;
 
-    & > li:nth-child(-n+6):hover::after {
+    & > li:nth-child(5n+6)::after {
+      position: absolute;
+      content: "";
+      background-color: white;
+      top: 30px;
+      height: 2px;
+      width: 120px;
+    }
+
+    & > li:nth-child(-n+5):hover::after {
       position: absolute;
       transition: ease 0.3s;
       top: 35px;
@@ -71,13 +77,8 @@
       height: 2px;
       width: 145px;
       background-color: white;
-   
     }
-    & > li:nth-child(5n+6):hover::after {
-      top: 50px;
-      width: 120px;
-    }
-    
+
   }
 
   &-nav_li {
@@ -125,16 +126,21 @@
 
     & ::before {
       position: absolute;
-      right: -50px;
+      right: -40px;
       top: -80px;
       width: 200px;
       content: "+1 234 555-55-55";
       color: white;
       font-family: Roboto, sans-serif;
-      font-size: 12px;
+      font-size: 16px;
+      text-transform: uppercase;
       transition: ease 0.3s;
-    }
 
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+ 
     &:hover ::before {
       top: 5px;
       transition: ease 0.3s;
