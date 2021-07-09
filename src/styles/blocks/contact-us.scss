@@ -1,0 +1,157 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+
+  &__title {
+    width: 100%;
+    text-align: center;
+    @include block-title;
+    @include crown;
+  }
+
+  &__subtitle {
+    @extend %h4;
+    letter-spacing: normal;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    display: block;
+    @extend %block-text;
+    text-decoration: none;
+    margin-bottom: 24px;
+    @include hover(color, $c-blue);
+  }
+
+  &__form {
+    width: 280px;
+  }
+
+  &__input {
+    font: inherit;
+    display: flex;
+    box-sizing: border-box;
+    padding: 14px 17px;
+    margin-bottom: 16px;
+    height: 48px;
+    width: 100%;
+    border-radius: 8px;
+    color: $c-black;
+    font-size: $h4-size;
+    line-height: 1.43em;
+    background-color: $c-light-gray;
+    border: 2px solid $c-light-gray;
+    @include hover(border-color, $c-border);
+
+    &::placeholder {
+      font-size: $h4-size;
+      line-height: 1.43em;
+      color: $c-dark-gray-text;
+    }
+
+    &:focus {
+      border-color: $c-blue;
+      outline: none;
+    }
+
+    &--textarea {
+      height: 144px;
+      font: 14px "Roboto", sans-serif;
+      resize: none;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      background-color: $c-light-gray;
+    }
+  }
+
+  &__button {
+    margin-top: 32px;
+    @extend %button;
+    width: 280px;
+    color: $c-white;
+    background-color: $c-blue;
+    border: none;
+    outline: none;
+    @include button-hover;
+    @include button-active;
+  }
+
+  @include mid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__form {
+      margin-top: 16px;
+      width: 100%;
+      max-width: 490px;
+    }
+
+    &__button {
+      margin: 0 auto;
+    }
+  }
+
+  @include tablet {
+    padding: 0 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__article {
+      width: 150px;
+    }
+
+    &__form {
+      width: 320px;
+    }
+
+    &__button {
+      width: 320px;
+    }
+  }
+
+  @include laptop {
+    padding: 0 60px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__title {
+      font-size: $h2-desktop-size;
+      margin-bottom: 93px;
+    }
+
+    &__article {
+      margin-right: 60px;
+      width: 150px;
+
+      &:last-of-type {
+        margin-right: 100px;
+      }
+    }
+
+    &__form {
+      width: 411px;
+    }
+
+    &__button {
+      width: 411px;
+    }
+  }
+
+  @include desktop {
+    padding: 0;
+
+    &__article {
+      margin-right: 111px;
+
+      &:last-of-type {
+        margin-right: 198px;
+      }
+    }
+  }
+}
