@@ -1,0 +1,31 @@
+.call {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+
+  &__phone-number {
+    @extend %phone-number;
+
+    transform: scale(0) translateY(-300px);
+    transition: transform 0.3s;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  &__phone {
+    align-self: start;
+    @include icon-sizing (32px);
+    cursor: pointer;
+
+    background: url(../images/phone.svg) center no-repeat;
+    background-size: cover;
+
+    &:hover + .call__phone-number {
+      transform: scale(1);
+    }
+  }
+}

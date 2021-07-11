@@ -1,6 +1,119 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: $_property 0.5s;
+
   &:hover {
     #{$_property}: $_toValue;
   }
+}
+
+@mixin header-logo {
+  position: absolute;
+  left: 50%;
+  width: 136px;
+  height: 80px;
+
+  transform: translateX(-50%);
+
+  @media (max-width: 900px) {
+    width: 82px;
+    height: 48px;
+  }
+}
+
+@mixin icon-sizing ($_size) {
+  width: $_size;
+  height: $_size;
+
+  @media (max-width: 900px) {
+    width: $_size - 10px;
+    height: $_size - 10px;
+  }
+}
+
+@mixin gallery-picture-sizing {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  border-radius: 8px;
+
+  transition: transform 1s, box-shadow 0.3s;
+
+  &:hover {
+    cursor: zoom-in;
+    transform: scale(1.1);
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+}
+
+@mixin primary-button {
+  text-align: center;
+  width: 148px;
+  height: 56px;
+  cursor: pointer;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 14px;
+
+  border: none;
+  border-radius: 8px;
+  background-color: $c-light-blue;
+  color: $c-white;
+  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: $c-blue;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+
+  &:active {
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+
+@mixin secondary-button {
+  text-align: center;
+  width: 148px;
+  height: 56px;
+  cursor: pointer;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 14px;
+
+  border: 2px solid $c-blue;
+  border-radius: 8px;
+  background-color: $c-white;
+  color: $c-blue;
+
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: $c-blue;
+    color: $c-white;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+
+  &:active {
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+
+@mixin form-input-params {
+  padding: 14px 17px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  opacity: 0.5;
+
+  border: none;
+  border-radius: 8px;
+  background-color: $input-bg-color;
 }
