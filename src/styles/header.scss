@@ -1,0 +1,242 @@
+@import url("./utils/_extends.scss");
+@import url("./utils/_mixins.scss");
+
+.page {
+  &__body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.icon {
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+  @include create-obj($icon-size, $icon-size);
+  @include onDesktop {
+    @include create-obj($big-icon-size, $big-icon-size);
+  }
+}
+
+.logo {
+  z-index: 2;
+  @include create-obj(79px, 45px);
+  background-image: url("../images/logo.png");
+  @extend %bg;
+  @include onDesktop {
+    @include create-obj(130px, 76px);
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background-image: url("../images/header.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__container {
+    height: 100vh;
+    max-width: 1024px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include onDesktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    padding: 80px 20px;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    &::before {
+      position: relative;
+      display: block;
+      content: "";
+      @include create-obj(40px, 2px);
+      bottom: 24px;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  &__menu {
+    z-index: 2;
+    @extend %bg;
+    background-image: url("../images/menu.svg");
+    transition-duration: 0.3s;
+
+    &--active {
+      background-image: url("../images/cross.svg");
+    }
+
+    &--passive {
+      &:hover {
+        background-image: url("../images/menu_hover.svg");
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  &__phone {
+    @extend %bg;
+    background-image: url("../images/phone.svg");
+
+    @include onDesktop {
+      &::before {
+        transform: translate(-100%, 50%);
+        padding-right: 20px;
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition-duration: 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__head {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 23px;
+  }
+
+  &__nav-container {
+    transform: translateX(-100%);
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-duration: 0.2s;
+    
+    background-color: $default-blue;
+    &--active {
+      transition-duration: 0.2s;
+      transform: translateX(0%);
+    }
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    padding: 120px 20px 0;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    color: #fff;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      width: 1024px;
+      margin: 0 auto;
+      padding-top: 152px;
+    }
+  }
+
+  &__nav-option {
+    position: relative;
+    width: min-content;
+    white-space: nowrap;
+
+    & a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &:last-child {
+      margin-bottom: 48px;
+    }
+
+    &:hover::after {
+      position: absolute;
+      display: block;
+      content: "";
+      @include create-obj(100%, 1px);
+      bottom: -8px;
+      background: #fff;
+      border-radius: 8px;
+    }
+  }
+
+  &__nav-tel {
+    padding-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      display: block;
+      width: 1024px;
+      margin: 0 auto;
+    }
+  }
+
+  &__nav-tel-text {
+    position: relative;
+    padding: 16px 20px 0;
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &::after {
+      margin-top: 8px;
+      position: relative;
+      display: block;
+      content: "";
+      @include create-obj(111px, 1px);
+      bottom: 0;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    @include onDesktop {
+      display: block;
+      width: 1024px;
+      margin: 0 auto;
+    }
+  }
+}
