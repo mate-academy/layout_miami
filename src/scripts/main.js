@@ -5,7 +5,7 @@ const headerMennu = document.querySelector('.header__menu');
 const headerList = document.querySelector('.header__list');
 
 if (headerBurger) {
-  headerBurger.addEventListener("click", function(e) {
+  headerBurger.addEventListener('click', function(e) {
     document.body.classList.toggle('lock');
     headerBurger.classList.toggle('header__burger--active');
     headerMennu.classList.toggle('header__menu--active');
@@ -15,13 +15,13 @@ if (headerBurger) {
 headerList.addEventListener('click', () => {
   headerBurger.classList.remove('header__burger--active');
   headerMennu.classList.remove('header__menu--active');
-})
+});
 
-const menuLinks = document.querySelectorAll('.header__link')
+const menuLinks = document.querySelectorAll('.header__link');
 
 if (menuLinks.length > 0) {
   menuLinks.forEach(menuLinks => {
-    menuLinks.addEventListener("click", onMenuLinkClick);
+    menuLinks.addEventListener('click', onMenuLinkClick);
   });
 
 function onMenuLinkClick(e) {
