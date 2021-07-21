@@ -1,0 +1,151 @@
+
+.main__header {
+  padding: 20px;
+  margin: 0 20px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+
+  &-logo_link {
+    z-index: 2;
+  }
+  &-logo {
+    width: 130px;
+    z-index: 20;
+  }
+
+  &-nav {
+    text-transform: uppercase;
+    z-index: 2;
+    height: 100vh;
+    font-family: Roboto, sans-serif;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 100px;
+    background-color: $bg__nav;
+    list-style: none;
+    transform: translateX(-100%);
+    transition: ease 0.5s;
+  }
+
+  &-nav--active {
+    overflow: hidden;
+    position: fixed;
+    transform: translateX(0%);
+    transition: ease 0.5s;
+  }
+
+  &-nav_link {
+    position: relative;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+  }
+
+  &-nav_link-S {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    max-width: 120px;
+    line-height: 20px;
+  }
+
+  &-nav_ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: ease 0.3s;
+
+    & > li:nth-child(5n+6)::after {
+      position: absolute;
+      content: "";
+      background-color: white;
+      top: 30px;
+      height: 2px;
+      width: 120px;
+    }
+
+    & > li:nth-child(-n+5):hover::after {
+      position: absolute;
+      transition: ease 0.3s;
+      top: 35px;
+      border-radius: 10%;
+      content: "";
+      height: 2px;
+      width: 145px;
+      background-color: white;
+    }
+
+  }
+
+  &-nav_li {
+    width: 140px;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 40px;
+    display: flex;
+    @media (max-width:500px) {
+      margin-top: 30px;
+    }
+
+  }
+  
+  &-menu {
+    cursor: pointer;
+    z-index: 3;
+    transform: rotate(0deg);
+    width: 24px;
+    height: 16px;
+    background: url(../images/menu.svg) center no-repeat;
+    transition: ease 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background: url(../images/menu_hover.svg) center no-repeat;
+      transition: ease 0.3s;
+    }
+
+  }
+
+  .main__header-menu--active {
+    width: 24px;
+    height: 16px;
+    transform: rotate(360deg);
+    transition: ease 0.4s;
+    background: url(../images/cross.svg) center no-repeat ;
+  }
+  
+  &-phone_container {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    flex-direction: row-reverse;
+
+    & ::before {
+      position: absolute;
+      right: -40px;
+      top: -80px;
+      width: 200px;
+      content: "+1 234 555-55-55";
+      color: white;
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      transition: ease 0.3s;
+
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+ 
+    &:hover ::before {
+      top: 5px;
+      transition: ease 0.3s;
+    }
+
+  }
+       
+}
