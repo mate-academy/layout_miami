@@ -1,0 +1,115 @@
+.header {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../images/header.jpg");
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerPaddingTop 0 80px;
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 100%);
+  
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+  
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #fff;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: #fff;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      margin-bottom: 24px;
+      background-color: #fff;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
+
+.top-action {
+  --width-icon: 18px;
+
+  display: grid;
+  grid-template-columns: var(--width-icon) 1fr var(--width-icon);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --width-icon: 24px;
+  }
+}
+
+.logo {
+  &__img {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
+}
