@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @for $index from 1 to 2 {
+    @for $new-index from $index to 3 {
+      &__mobile--from-#{$index}-to-#{$new-index} {
+        grid-column: #{$index} / #{$new-index+1};
+      }
+    }
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+
+    @for $index from 1 to 12 {
+      @for $new-index from $index to 13 {
+        &__desktop--from-#{$index}-to-#{$new-index} {
+          @include onDesktop {
+            grid-column: #{$index} / #{$new-index+1};
+          }
+
+        }
+      }
+    }
+  }
+}
