@@ -1,17 +1,51 @@
 .gallery {
   padding-bottom: $page-section-margin-bottom;
 
+  @include onDesktop {
+    padding-bottom: 0;
+  }
+
   &__title {
     @extend %page-headline-with-crown-style;
+
   }
+
   &__list-image {
     width: 100%;
     height: 130px;
     border-radius: 8px;
     object-fit: cover;
+    margin-bottom: 16px;
+    transition: transform 0.2s linear;
 
     @include onDesktop {
       height: 256px;
+      margin-bottom: 24px;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+      }
     }
+  }
+
+  &__list-card {
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__card-title {
+    @extend %text-font;
+  }
+
+  &__card-title__text {
+    display: inline;
+  }
+
+  &__view-all-button {
+    background-color: $c-white;
   }
 }
