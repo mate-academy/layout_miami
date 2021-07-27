@@ -1,0 +1,44 @@
+.call {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+
+  &__phone-number {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: $c-white;
+
+    transform: scale(0) translateX(-100px);
+    transition: transform $t-anim;
+    transition-delay: $t-anim;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__phone {
+    align-self: start;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    background: url(../images/phone.svg) center no-repeat;
+    background-size: cover;
+
+    @include onMobile {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover + .call__phone-number {
+      transform: scale(1);
+    }
+  }
+}
