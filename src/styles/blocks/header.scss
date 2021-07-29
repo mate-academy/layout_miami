@@ -1,0 +1,228 @@
+
+.header {
+  height: 100vh;
+  padding: 24px 20px 80px;
+  background: url(../images/header.png) no-repeat center;
+  background-size: cover;
+
+  @media only screen and (min-width: 900px) {
+    padding: 48px 120px 80px;
+  }
+
+  &__nav-toggler {
+    display: none;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__nav-icon {
+    display: block;
+    position: relative;
+    z-index: 100;
+    width: 30px;
+    height: 20px;
+    background: url(../images/menu.svg) no-repeat center;
+    cursor: pointer;
+    transition: transform 3s;
+    @media only screen and (min-width: $width-laptop-m) {
+      width: 36px;
+      height: 36px;
+    }
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-icon {
+    z-index: 100;
+    background-image: url(../images/cross.svg);
+    transform: rotate(180deg);
+    overflow-y: hidden;
+  }
+
+  &__nav-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    visibility: hidden;
+    padding: 36px 20px 80px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+    list-style: none;
+
+    background-color: #0075ff;
+
+    transition: opacity 0.3s linear;
+    @media only screen and (min-width: $width-laptop-m) {
+      padding: 48px 120px 80px;
+    }
+  }
+
+  &__nav-item-link {
+    text-decoration: none;
+    color: white;
+    border-color: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+    &:hover {
+      border-color: white;
+    }
+  }
+
+  &__nav-items-container {
+    @media only screen and (min-width: $width-laptop-m) {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  &__nav-item {
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  &__nav-item-number {
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__nav-item-link-to-call {
+    margin-top: 26px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    border-bottom: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+
+  &__nav-toggler:checked ~ &__nav-items {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  &__wrapper {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  &__container {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__burger {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__logo {
+    width: 82px;
+    z-index: 10;
+    @media only screen and (min-width: $width-laptop-m) {
+      width: 136px;
+      height: 80px;
+    }
+  }
+
+  &__phone-call {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    position: relative;
+
+    @media only screen and (min-width: $width-laptop-m) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__text-number-to-call {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+    color: white;
+    &::before {
+      position: absolute;
+      content: "+1 234 555-55-55";
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      width: 176px;
+      height: 32px;
+      right: 0;
+      top: 30%;
+      opacity: 0;
+      transition: opacity 0.3s linear;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    font-size: 46px;
+    color: white;
+    line-height: 40px;
+    font-weight: 700;
+    position: relative;
+    z-index: 0;
+    &::after {
+      width: 40px;
+      height: 2px;
+      top: -35%;
+      left: 0;
+      content: " ";
+      position: absolute;
+      background-color: white;
+    }
+    @media only screen and (min-width: $width-laptop-m) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
