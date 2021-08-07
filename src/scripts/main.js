@@ -8,8 +8,15 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 });
 
-// const manu = document.querySelector('.page__menu');
+const manu = document.querySelector('.menu');
+const iconMenu = document.querySelector('.icon--menu');
 
-// window.addEventListener('scroll', () => {
-//   manu.target.style.transform = 'translateX(-100%)';
-// });
+iconMenu.addEventListener('click', () => {
+  manu.classList.toggle('menu--active');
+  iconMenu.classList.toggle('icon--menu-cross');
+});
+
+window.addEventListener('scroll', () => {
+  manu.classList.remove('menu--active');
+  iconMenu.classList.remove('icon--menu-cross');
+});
