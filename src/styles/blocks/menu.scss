@@ -1,0 +1,110 @@
+.menu {
+  z-index: 2;
+
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  background: $c-blue;
+
+  transition: all 0.2s ease-in-out;
+
+  border-radius: 500px;
+
+  overflow: hidden;
+
+  &:target {
+    transform: translateX(0);
+    border-radius: 0;
+  }
+
+  &__content {
+    height: 100vh;
+    width: 100%;
+
+    padding: 24px 0 80px;
+  }
+
+  &__list {
+    padding: 0;
+    padding-bottom: 24px;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 8px 0;
+
+    position: relative;
+
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #fff;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+
+      top: 100%;
+      
+      transition: all 1s cubic-bezier(0.25, 1.07, 0, 0.87);
+      
+      width: 0;
+
+      height: 1px;
+      
+      background: transparent;
+    }
+    
+    &:hover {
+      &::after {
+        width: 100%;
+        background: #fff;
+      }
+    }
+  }
+
+  &__call {
+    width: max-content;
+    text-decoration: none;
+    display: block;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #fff;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  @include onDesktop {
+    padding: 0 100px;
+  }
+}
