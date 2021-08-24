@@ -1,5 +1,6 @@
 .menu {
   background-color: #{$colorBlue};
+  z-index: 1;
   
   &__content {
     height: 100vh;
@@ -14,6 +15,15 @@
   &__list {
     list-style: none;
     margin-bottom: 48px;
+
+    @media onDesktop {
+      display: inline-block;
+    }
+
+    @media (orientation: landscape) and (max-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__item {
@@ -24,7 +34,7 @@
 
   &__link {
     display: inline-block;
-    padding: 8px;
+    padding: 8px 0;
     border-bottom: 1px solid transparent ;
     font-weight: bold;
     font-size: 22px;
@@ -48,6 +58,7 @@
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    text-decoration: none;
     color: #fff;
 
     &--phone {
