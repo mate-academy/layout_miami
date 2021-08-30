@@ -1,0 +1,53 @@
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.icon--menu {
+  background-image: url("/images/menu.svg");
+
+  &:hover {
+    background-image: url("/images/menu_hover.svg");
+  }
+}
+
+.icon--cross {
+  background-image: url("/images/cross.svg");
+}
+
+.icon--phone {
+  position: relative;
+  background-image: url("/images/phone.svg");
+  @extend %call-us-font;
+
+  @include onDesktop {
+    &:before {
+      transition: opacity 0.3s linear;
+      visibility: visible;
+      position: absolute;
+      content: "+1 234 555-55-55";
+      width: max-content;
+      right: 44px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+
+    }
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+}
