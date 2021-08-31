@@ -19,4 +19,5 @@
   [DEMO LINK](https://nkgrand.github.io/layout_miami/)
 14. Copy `DEMO LINK` to the PR description
 
+
 > To update you PR repeat steps 7-11
