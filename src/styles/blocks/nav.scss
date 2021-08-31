@@ -1,0 +1,46 @@
+.nav {
+  display: grid;
+  padding-top: 25px;
+  grid-template-columns: var(--icon-size) 1fr var(--icon-size);
+  justify-items: center;
+  align-items: center;
+  &__icon {
+    height: var(--icon-size);
+    width: var(--icon-size);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  &__icon--opener {
+    background-image: url(../images/menu.svg);
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  &__icon--phone {
+    text-decoration: none;
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        opacity: 0;
+        width: max-content;
+        color: #fff;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+    background-image: url(../images/phone.svg);
+  }
+}
