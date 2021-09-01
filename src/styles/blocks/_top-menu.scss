@@ -1,0 +1,72 @@
+
+.top-menu {
+  display: grid;
+  grid-template-columns: 18px 1fr 18px;
+  justify-items: center;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 24px 1fr 24px;
+  }
+
+  &__opener {
+    width: 100%;
+    padding-bottom: 100%;
+    @include backgroundStyle (
+      url(../images/menu.svg),
+      center,
+      cover,
+      no-repeat
+    );
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+  }
+
+  &__cross {
+    width: 100%;
+    padding-bottom: 100%;
+    @include backgroundStyle (
+      url(../images/cross.svg),
+      center,
+      cover,
+      no-repeat
+    );
+  }
+
+  &__phone {
+    width: 100%;
+    padding-bottom: 100%;
+    @include backgroundStyle (
+      url(../images/phone.svg),
+      center,
+      cover,
+      no-repeat
+    );
+    text-decoration: none;
+
+    @media (min-width: 1024px) {
+      &::before {
+        display: none;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+        content: "+1 234 555-55-55";
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $whiteColor;
+      }
+
+      &:hover::before {
+        display: block;
+      }
+    }
+  }
+}
