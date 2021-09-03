@@ -1,4 +1,5 @@
 @import "utils/_variables.scss";
+@import "utils/_mixins.scss";
 
 h1 {
   margin: 0;
@@ -12,16 +13,28 @@ h1 {
   }
 }
 
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
 .header {
-  box-sizing: border-box;
   background: url("../images/header.jpg") no-repeat center;
   background-size: cover;
-  padding: 24px 20px 80px;
-  height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
 
   &__nav {
     display: flex;
@@ -30,29 +43,44 @@ h1 {
   }
 
   &__menu-opener {
-    width: 24px;
-    height: 24px;
     background: url("../images/menu.svg") no-repeat center;
     border: none;
 
     &:hover {
       background: url("../images/menu_hover.svg") no-repeat center;
     }
-
-    @media (min-width: 1024px) {
-      width: 32px;
-      height: 32px;
-    }
   }
 
   &__call {
-    width: 24px;
-    height: 24px;
     background: url("../images/phone.svg") no-repeat center;
+    text-decoration: none;
 
-    @media (min-width: 1024px) {
-      width: 32px;
-      height: 32px;
+    @include onDesktop {
+      &::before {
+        display: block;
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        position: relative;
+        width: max-content;
+        padding-right: 20px;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        color: $color-white;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none;
+        transition: all ease 0.3s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
     }
   }
 
@@ -74,16 +102,23 @@ h1 {
       background-color: $color-white;
     }
 
-    @media (min-width: 1024px) {
+    @include onDesktop {
       font-size: 80px;
       line-height: 80px;
       letter-spacing: -1.5px;
     }
   }
+}
 
-  @media (min-width: 1024px) {
-    padding-right: 120px;
-    padding-left: 120px;
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -91,7 +126,7 @@ h1 {
   &__image {
     height: 48px;
 
-    @media (min-width: 1024px) {
+    @include onDesktop {
       height: 80px;
     }
   }
