@@ -1,0 +1,39 @@
+.grid {
+  --gutter: 20px;
+  $columns: 12;
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  column-gap: var(--gutter);
+
+  // 1024px +
+  @include onDesktop {
+    --gutter: 24px;
+  }
+
+  &__col {
+    @for $col from 1 through $columns {
+      &-#{$col} {
+        grid-column: auto / span #{$col};
+      }
+    }
+
+    @for $col from 1 through $columns {
+      &-st-#{$col} {
+        grid-column-start: #{$col};
+      }
+    }
+
+    @include onDesktop {
+      @for $col from 1 through $columns {
+        &-md-#{$col} {
+          grid-column: auto / span #{$col};
+        }
+      }
+      @for $col from 1 through $columns {
+        &-md-st-#{$col} {
+          grid-column-start: #{$col};
+        }
+      }
+    }
+  }
+}
