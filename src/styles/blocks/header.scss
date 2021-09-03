@@ -1,0 +1,79 @@
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
+
+    @include onAlbome {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__menu {
+    padding-bottom: 66%;
+  }
+
+  &__call {
+    text-decoration: none;
+    height: 0;
+
+    @include onDesctop {
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: bold;
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s linear;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 0;
+    font-weight: bold;
+    line-height: 40px;
+    font-size: 46px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    @include onDesctop {
+      line-height: 80px;
+      font-size: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      position: absolute;
+      top: -24px;
+      display: inline-block;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+  }
+}
