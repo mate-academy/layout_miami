@@ -1,7 +1,139 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: 'Roboto', sans-serif;
+  
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto; 
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 24px 0 80px;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+    height: 11px;
+    width: 18px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    @include onDesktop {
+      height: 18px;
+      width: 25px;
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+    }
+  }
+
+  &__call {
+    position: relative;
+    background-image: url(../images/phone.svg);
+    height: 18px;
+    width: 18px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-decoration: none;
+
+    @include onDesktop {
+      height: 25px;
+      width: 25px;
+
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+        width: max-content;
+        display: block;
+        content: "+1 234 555-55-55";
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    border-radius: 1px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+    width: 73px;
+     
+    @include onDesktop {
+      height: 78px;
+      width: 125px;
+    }
+  }
 }
