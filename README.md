@@ -1,3 +1,5 @@
+- [DEMO LINK](https://vladsaen.github.io/layout_miami/)
+
 # Miami landing page
 Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
 following the lesson videos.
@@ -21,7 +23,7 @@ Additionally:
 11. `git push origin develop` - to send you code for PR
 12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
 13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
+  [DEMO LINK](https://VladSaen.github.io/layout_miami/)
 14. Copy `DEMO LINK` to the PR description
 
 > To update you PR repeat steps 7-11
