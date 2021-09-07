@@ -6,22 +6,40 @@ Additionally:
 - Add a favicon
 - Increase Gallery an Testimonial photos on :hover
 - Change text color on hover for phone, email and address
+- Gallery links should open google maps in a new tab
+- Fix menu for small screens (if there is not enough space for all the menu items)
+    ```css
+    .page__body--with-menu {
+      /* Disable page scrollin when menu is open */
+      overflow: hidden;
+    }
 
-## Instructions
-1. **Fork** the repo.
-2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
-3. Run `npm install` (or just `npm i`)
-4. Run `npm start`.
-5. Open one more terminal window for the next steps
-6. `git checkout -b develop` - to create new branch and switch on it
-7. Write you code in `src` folder
-8. Run `npm run lint` and fix code style errors.
-9. Run `npm run deploy` to deploy your solution to `gh-pages`
-10. `git add . && git commit -m 'solution'` to save your changes
-11. `git push origin develop` - to send you code for PR
-12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
-13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://<your_account>.github.io/layout_miami/)
-14. Copy `DEMO LINK` to the PR description
+    .menu {
+      /* Move these rules from .menu__content */
+      box-sizing: border-box;
+      height: 100vh;
+      padding: 24px 0;
+      
+      background-color: #0075ff;
+      
+      /* Add this rule to add scroll when there is not enough space */
+      overflow-y: auto;
+      
+      ...
+    ```
+    ```js
+    const body = document.querySelector('.page__body');
+    const menuOpener = document.querySelector('.menu-toggler--opener');
+    const menu = document.querySelector('.menu');
 
-> To update you PR repeat steps 7-11
+    // We disable page scroll when openning the menu
+    menuOpener.addEventListener('click', function() {
+      body.classList.add('page__body--with-menu');
+    });
+
+    // We enable page scrolling after closing the menu or pressing a nav link
+    menu.addEventListener('click', () => {
+      body.classList.remove('page__body--with-menu');
+    });
+    ```
+   
