@@ -8,10 +8,21 @@
     column-gap: 24px;
   }
 
+  @include onTablet {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+  }
+
   &--desktop {
     display: block;
 
     @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &--tablet {
+    @include onTablet {
       display: grid;
     }
   }
@@ -25,6 +36,12 @@
 
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
