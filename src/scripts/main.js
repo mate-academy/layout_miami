@@ -2,12 +2,14 @@
 
 const body = document.querySelector('.page__body');
 const menuOpener = document.querySelector('.menu-toggler--opener');
-const menuCloser = document.querySelector('.menu-toggler--closer');
+const menu = document.querySelector('.menu');
 
-menuOpener.addEventListener('click', function(){
+// We disable page scroll when openning the menu
+menuOpener.addEventListener('click', function() {
   body.classList.add('page__body--with-menu');
 });
 
-menuCloser.addEventListener('click', function(){
+// We enable page scrolling after closing the menu or pressing a nav link
+menu.addEventListener('click', () => {
   body.classList.remove('page__body--with-menu');
 });
