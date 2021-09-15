@@ -22,3 +22,18 @@ Additionally:
       
       ...
     ```
+- To disable page scrolling under the menu add the next code
+    ```css
+    .page__body--with-menu {
+      overflow: hidden;
+    }
+    ```
+    ```js
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#menu') {
+        document.body.classList.add('page__body--with-menu');
+      } else {
+        document.body.classList.remove('page__body--with-menu');
+      }
+    });
+    ```
