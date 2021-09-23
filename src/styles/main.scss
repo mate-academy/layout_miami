@@ -2,10 +2,190 @@
 @import "fonts";
 @import "typography";
 
+* {
+  box-sizing: border-box;
+}
+
 .html {
   font-family: "Roboto", sans-serif;
 
   &__body {
     margin: 0;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1260px;
+  padding: 0 120px;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 24px;
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 700px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: inherit;
+    
+  }
+
+  &__nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+  }
+
+  &__menu-button {
+    background-image: url(../images/menu.svg);
+    height: 16px;
+    transition: background-image 1s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  
+  &__logo {
+    height: 76px;
+    z-index: 1;
+  }
+
+  &__call-us {
+    background-image: url(../images/phone.svg);
+    height: 24px;
+    transition: transform 1s;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      width: max-content;
+      display: block;
+      color: #fff;
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      padding-right: 20px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s, visibility 0s linear 0.4s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-bottom: 80px;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 1em;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: #fff;
+      width: 40px;
+      height: 2px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.menu {
+  background-color: #0075ff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 120px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s, visibility 0s linear 0.8s;
+  
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  &__button {
+    display: block;
+    background-image: url(../images/cross.svg);
+    height: 16px;
+    margin: 54px 3px 77px; //Я в курсе что это костыль, исправлю.
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    padding-bottom: 32px;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+
+    &:hover {
+      width: fit-content;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  &__call-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 25px;
+  }
+
+  &__call-link {
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    &:last-child {
+      width: fit-content;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+    }
   }
 }
