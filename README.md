@@ -1,7 +1,7 @@
 - About:
 Experts in sales and service for the Best New Condos in South Florida. CALL FOR VIP PRICING: 1-786-488-5722
 
-We will help you find the best real-estate investment opportunity in Miami Beach, Brickell, Sunny Isles, Aventura, Bal-Harbour - and other luxury beachfront destinations in South Florida
+- We will help you find the best real-estate investment opportunity in Miami Beach, Brickell, Sunny Isles, Aventura, Bal-Harbour - and other luxury beachfront destinations in South Florida
 
 - technologies:
 -- HTML,
