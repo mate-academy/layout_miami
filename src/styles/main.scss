@@ -1,7 +1,160 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./normalize.scss";
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Roboto", sans-serif;
+
+  &__body {
+    max-width: 1260px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 130px -15px #000;
+  }
+}
+
+.special-wraper {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 60px;
+  }
+
+  @include onDesktop {
+    padding: 0 20px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 25px 0 80px;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    margin: 3px;
+    display: block;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu.svg);
+    background-size:cover;
+    background-position: center;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include onTablet {
+      width: 22px;
+      height: 15px;
+    }
+
+    @include onDesktop {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__tel {
+    margin: 3px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+
+
+    @include onTablet {
+      width: 22px;
+      height: 22px;
+    }
+
+    @include onDesktop {
+      width: 24px;
+      height: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: $white-color;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 40px;
+    color: $white-color;
+
+    &::before {
+      display: block;
+      content: "";
+      height: 2px;
+      width: 40px;
+      margin-bottom: 24px;
+      background-color: $white-color;
+    }
+
+    @include onTablet {
+      font-size: 60px;
+      line-height: 60px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onTablet {
+      height: 60px;
+    }
+
+    @include onDesktop {
+      height: 76px;
+    }
+  }
 }
