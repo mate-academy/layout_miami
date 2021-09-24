@@ -15,6 +15,7 @@
 .header {
   background-image: url(../images/header.jpg);
   background-position: center;
+  background-size: cover;
 
   &__container {
     display: flex;
@@ -38,7 +39,7 @@
     width: 18px;
     height: 12px;
 
-    @media (min-width: 1024px) {
+    @include onDekstop {
       width: 24px;
       height: 16px;
     }
@@ -51,12 +52,38 @@
   &__tel {
     background-image: url(../images/phone.svg);
     background-size: contain;
+    text-decoration: none;
     width: 18px;
     height: 18px;
 
-    @media (min-width: 1024px) {
+    @include onDekstop {
       width: 24px;
       height: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        text-decoration: none;
+        display: block;
+        width: max-content;
+        color: #fff;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 
@@ -68,7 +95,7 @@
     color: #fff;
     margin: 0 20px 80px;
 
-    @media (min-width: 1024px) {
+    @include onDekstop {
       font-size: 80px;
       line-height: 80px;
       letter-spacing: -1.5px;
@@ -89,7 +116,7 @@
   &__img {
     height: 48px;
 
-    @media (min-width: 1024px) {
+    @include onDekstop {
       height: 75px;
     }
   }
