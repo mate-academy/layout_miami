@@ -1,4 +1,16 @@
 .testimonial {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include onDesktop {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
   &__photo-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -15,6 +27,12 @@
     grid-column: 2 / 4;
     width: 100%;
     border-radius: 50%;
+
+    transition: border-radius 0.3s;
+  }
+
+  &:hover &__photo {
+    border-radius: 25%;
   }
 
   &__name {
@@ -31,7 +49,7 @@
     font-size: 14px;
     line-height: 27px;
     text-align: center;
-    color: #9fadc2;
+    color: $c-middle-gray;
   }
 
   &__about {
