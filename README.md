@@ -2,7 +2,7 @@
 
 My first landing page which were constructed during my first 2 weeks of studiyng in Mate Academy. It was created with HTML, SCSS and assembled with parcel also it contains small piece of JS code which prevents page from scrolling while nav menu is open.
 
-- [Mockup](https://goo.gl/maps/nNbmoLjvx7QsAN4g8)
+- [Mockup](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A1)
 
 - [DEMO LINK](https://trskzk.github.io/layout_miami/)
 
