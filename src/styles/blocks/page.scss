@@ -2,8 +2,30 @@
   font-family: "Roboto", sans-serif;
 
   &__body {
-    max-width: 1260px;
+    max-width: $maxPageWidth;
     margin: 0 auto;
     box-shadow: 0px 0px 130px -15px #000;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.7s cubic-bezier(.44,1.29,.45,1.28);
+
+    @include onDesktop {
+      transform: translateX(-300%);
+      max-width: $maxPageWidth;
+      left: calc((100vw - #{$maxPageWidth}) / 2);
+      transition: transform 1.2s cubic-bezier(.73,1.14,.43,1.1);
+
+
+    }
+
+    &:target {
+    transform: translateX(0);
+    }
   }
 }
