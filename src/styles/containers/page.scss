@@ -2,21 +2,29 @@
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 27px;
-  color: #3f3f3f;
+  color: $colorTextBasic;
   scroll-behavior: smooth;
 
   &__content {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
     position: fixed;
+    @include onDesktop {
+      position: absolute;
+    }
+
     top: 0;
     left: 0;
     right: 0;
 
     transform: translateX(-100%);
-    transition: transform 0.3s;
+    transition: transform $animationTime;
 
     &:target {
       transform: translateX(0);
@@ -38,7 +46,7 @@
     line-height: 36px;
     text-align: center;
     letter-spacing: -1.5px;
-    color: #000;
+    color: $colorBlack;
 
     @include onDesktop {
       font-size: 48px;
