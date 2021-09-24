@@ -4,6 +4,10 @@
   position: relative;
   height: 700px;
 
+  @include to1024 {
+    height: 100vh;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -23,6 +27,11 @@
     height: 16px;
     transition: background-image 0.5s;
 
+    @include to640 {
+      width: 18px;
+      height: 12px;
+    }
+
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
@@ -32,6 +41,11 @@
     background-image: url(../images/phone.svg);
     height: 24px;
     transition: transform 0.5s;
+
+    @include to640 {
+      width: 18px;
+      height: 18px;
+    }
 
     &::before {
       content: "+1 234 555-55-55";
@@ -48,6 +62,10 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s, visibility 0s linear 0.5s;
+
+      @include to1024 {
+        display: none;
+      }
     }
 
     &:hover::before {
@@ -62,9 +80,19 @@
     padding-bottom: 80px;
     font-weight: bold;
     font-size: 80px;
-    line-height: 1em;
+    line-height: 80px;
     letter-spacing: -1.5px;
     color: $c-white;
+
+    @include to1024 {
+      font-size: 46px;
+      line-height: 40px;
+      padding-bottom: 80px;
+    }
+
+    @include to640 {
+      letter-spacing: -1px;
+    }
 
     &::before {
       content: "";

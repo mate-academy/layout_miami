@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0; //это здесь для того что-бы транзишн работал.
+  opacity: 0;
   visibility: hidden;
   transition: opacity 0.7s, visibility 0s linear 0.7s;
 
@@ -22,7 +22,16 @@
     display: block;
     background-image: url(../images/cross.svg);
     height: 16px;
-    margin: 29px 3px 77px; //понимаю что костыль, исправлю.
+    margin: 29px 3px 77px;
+
+    @include to1024 {
+      margin: 16px 0 64px;
+    }
+
+    @include to640 {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__list {
@@ -37,7 +46,7 @@
 
   &__link {
     font-size: 22px;
-    line-height: 1em;
+    line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: $c-white;
