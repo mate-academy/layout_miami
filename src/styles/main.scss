@@ -4,7 +4,6 @@
 
 .page {
   font-family: "Roboto", sans-serif;
-  font-weight: 700;
   
   &__body {
     background: $c-gray;
@@ -16,26 +15,34 @@
 .header {
   background-image: url(../images/header.jpg);
   background-position: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
   &__nav {
     margin: 25px 23px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-
+    align-items: center;
   }
 
   &__menu-link {
     background-image: url(../images/menu.svg);
-    background-position: center;
+    background-size: contain;
     width: 18px;
     height: 12px;
-  
 
+    @media (min-width: 1024px) {
+      width: 24px;
+      height: 16px;
+    }
+  
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
@@ -43,16 +50,29 @@
 
   &__tel {
     background-image: url(../images/phone.svg);
+    background-size: contain;
     width: 18px;
     height: 18px;
+
+    @media (min-width: 1024px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__title {
     font-size: 46px;
+    font-weight: 700;
     letter-spacing: -1px;
     line-height: 40px;
     color: #fff;
     margin: 0 20px 80px;
+
+    @media (min-width: 1024px) {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
 
     &::before {
       content: "";
@@ -61,6 +81,16 @@
       height: 2px;
       background-color: #fff;
       margin-bottom: 24px;
+    }
+  }
+}
+
+.logo {
+  &__img {
+    height: 48px;
+
+    @media (min-width: 1024px) {
+      height: 75px;
     }
   }
 }
