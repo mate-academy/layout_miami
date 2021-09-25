@@ -1,6 +1,15 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin gridColumns ($device) {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--#{$device}-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
   }
 }
