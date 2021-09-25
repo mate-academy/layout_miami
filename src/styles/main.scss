@@ -16,6 +16,7 @@
   background-image: url(../images/header.jpg);
   background-position: center;
   background-size: cover;
+  padding: 25px 20px;
 
   &__container {
     display: flex;
@@ -26,35 +27,70 @@
     margin: 0 auto;
   }
 
-  &__nav {
-    margin: 25px 23px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-link {
-    background-image: url(../images/menu.svg);
-    background-size: contain;
-    width: 18px;
-    height: 12px;
+  &__title {
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 40px;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 80px;
 
     @include onDekstop {
-      width: 24px;
-      height: 16px;
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
     }
-  
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
     }
   }
+}
 
-  &__tel {
-    background-image: url(../images/phone.svg);
-    background-size: contain;
+.top-actions {
+  display: grid;
+  grid-template-columns: $icon-width 1fr $icon-width;
+  justify-items: center;
+  align-items: center;
+
+  @include onDekstop {
+    $icon-width: 24px;
+    // margin: 25.5px 0;
+    grid-template-columns: $icon-width 1fr $icon-width;
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 18px;
+  height: 12px;
+
+  @include onDekstop {
+    width: 24px;
+    height: 16px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+  }
+
+  &--menu:hover {
+    background-image: url(../images/menu_hover.svg);
+  }
+
+  &--tel {
     text-decoration: none;
     width: 18px;
     height: 18px;
+    background-image: url(../images/phone.svg);
 
     @include onDekstop {
       width: 24px;
@@ -62,7 +98,6 @@
 
       &::before {
         content: "+1 234 555-55-55";
-        text-decoration: none;
         display: block;
         width: max-content;
         color: #fff;
@@ -87,37 +122,80 @@
     }
   }
 
-  &__title {
-    font-size: 46px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 40px;
-    color: #fff;
-    margin: 0 20px 80px;
+  &--cross {
+    height: 16px;
+    width: 16px;
+    background-image: url(../images/cross.svg);
 
     @include onDekstop {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
+      height: 22px;
+      width: 22px;
+    }
+  }
+}
+
+.menu {
+  height: 100vh;
+  background-color: $color-blue;
+  padding: 25px 20px;
+
+  &__container {
+    max-width: 1020px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 64px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__tel {
+    width: max-content;
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+
+    &--tel {
+      margin-bottom: 16px;
     }
 
-    &::before {
-      content: "";
-      display: block;
-      width: 40px;
-      height: 2px;
-      background-color: #fff;
-      margin-bottom: 24px;
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
     }
   }
 }
 
 .logo {
   &__img {
-    height: 48px;
+    width: 78px;
+    height: 45px;
 
     @include onDekstop {
       height: 75px;
+      width: 130px;
     }
   }
 }
