@@ -1,14 +1,60 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "blocks/grid";
 
 .page {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
   
   &__body {
     background: $c-gray;
     margin: 0;
     box-sizing: border-box;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__main {
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
+  &__section {
+    margin-bottom: 64px;
+  }
+
+  &__section-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #000;
+    text-align: center;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: 4px auto 0;
+      background-image: url(../images/crown.svg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 
@@ -151,12 +197,21 @@
     margin: 0;
     padding: 0;
     margin-top: 64px;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__link {
     display: inline-block;
-    padding-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
     color: #fff;
     text-decoration: none;
     font-weight: 700;
@@ -164,6 +219,11 @@
     line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #fff;
+    }
   }
 
   &__tel {
@@ -197,5 +257,22 @@
       height: 75px;
       width: 130px;
     }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 320px;
+  padding-bottom: 24px;
+
+  background-image: url(../images/footer.jpg);
+  background-size: cover;
+  background-position: center;
+
+  @include onDekstop {
+    height: 360px;
+    padding-bottom: 36px;
   }
 }
