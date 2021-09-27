@@ -1,14 +1,16 @@
+'use strict';
+
 window.addEventListener('hashchange', () => {
-  if (location.hash === '#menu') {
+  if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
 });
 
-const form = document.querySelector(".form");
+const form = document.querySelector('.form');
 
-form.addEventListener("submit", handleEvent);
+form.addEventListener('submit', handleEvent);
 
 function handleEvent(event) {
   event.preventDefault();
