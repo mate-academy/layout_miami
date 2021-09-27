@@ -1,7 +1,11 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "blocks/page";
 @import "blocks/grid";
+@import "blocks/header";
+@import "blocks/icon";
+@import "blocks/menu";
 @import "blocks/about";
 @import "blocks/gallery";
 @import "blocks/place";
@@ -9,120 +13,6 @@
 @import "blocks/testimonials";
 @import "blocks/contacts";
 @import "blocks/form-field";
-
-.page {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: #3e3e3e;
-  font-size: 16px;
-  line-height: 27px;
-  scroll-behavior: smooth;
-  
-  &__body {
-    background: $c-gray;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    transform: translateX(-100%);
-    transition: transform 0.5s;
-
-    &:target {
-      transform: translateX(0);
-    }
-  }
-
-  &__main {
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  &__section {
-    margin-bottom: 64px;
-
-    @include onDekstop {
-      margin-bottom: 104px;
-    }
-  }
-
-  &__section-title {
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 36px;
-    letter-spacing: -1.5px;
-    color: #000;
-    text-align: center;
-    margin: 0 0 32px;
-    // margin-bottom: 32px;
-
-    @include onDekstop {
-      // margin-bottom: 56px;
-      margin: 0 0 56px;
-      font-size: 48px;
-      line-height: 48px;
-    }
-
-    &:after {
-      content: "";
-      display: block;
-      width: 23px;
-      height: 16px;
-      margin: 4px auto 0;
-      background-image: url(../images/crown.svg);
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-  }
-}
-
-.header {
-  background-image: url(../images/header.jpg);
-  background-position: center;
-  background-size: cover;
-  padding: 25px 20px;
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    max-width: 1020px;
-    margin: 0 auto;
-  }
-
-  &__title {
-    font-size: 46px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 40px;
-    color: #fff;
-    margin: 0;
-    margin-bottom: 80px;
-
-    @include onDekstop {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      width: 40px;
-      height: 2px;
-      background-color: #fff;
-      margin-bottom: 24px;
-    }
-  }
-}
 
 .top-actions {
   display: grid;
@@ -132,144 +22,7 @@
 
   @include onDekstop {
     $icon-width: 24px;
-    // margin: 25.5px 0;
     grid-template-columns: $icon-width 1fr $icon-width;
-  }
-}
-
-.icon {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: 18px;
-  height: 12px;
-
-  @include onDekstop {
-    width: 24px;
-    height: 16px;
-  }
-
-  &--menu {
-    background-image: url(../images/menu.svg);
-  }
-
-  &--menu:hover {
-    background-image: url(../images/menu_hover.svg);
-  }
-
-  &--tel {
-    text-decoration: none;
-    width: 18px;
-    height: 18px;
-    background-image: url(../images/phone.svg);
-
-    @include onDekstop {
-      width: 24px;
-      height: 24px;
-
-      &::before {
-        content: "+1 234 555-55-55";
-        display: block;
-        width: max-content;
-        color: #fff;
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        padding-right: 20px;
-
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
-
-  &--cross {
-    height: 16px;
-    width: 16px;
-    background-image: url(../images/cross.svg);
-
-    @include onDekstop {
-      height: 22px;
-      width: 22px;
-    }
-  }
-}
-
-.menu {
-  height: 100vh;
-  background-color: $color-blue;
-  padding: 25px 20px;
-
-  &__container {
-    max-width: 1020px;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-top: 64px;
-    margin-bottom: 40px;
-  }
-
-  &__item {
-    margin-bottom: 24px;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__link {
-    display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 1px solid transparent;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: #fff;
-    }
-  }
-
-  &__tel {
-    width: max-content;
-    display: block;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-
-    &--tel {
-      margin-bottom: 16px;
-    }
-
-    &--action {
-      padding-bottom: 8px;
-      border-bottom: 1px solid #fff;
-    }
   }
 }
 
@@ -283,6 +36,11 @@
       width: 130px;
     }
   }
+}
+
+.link {
+  color: $color-blue;
+  text-decoration: none;
 }
 
 .footer {
