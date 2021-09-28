@@ -1,0 +1,113 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    animation: calling 4s linear infinite forwards;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        transform: translate(-100%, -50%);
+        position: relative;
+        top: 20px;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-duration;
+      }
+
+      &:hover {
+        animation: pause;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+@keyframes calling {
+  0% {
+    transform: rotate(-20deg);
+  }
+  5% {
+    transform: rotate(21deg);
+  }
+  10% {
+    transform: rotate(-20deg);
+  }
+  15% {
+    transform: rotate(21deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  25% {
+    transform: rotate(21deg);
+  }
+  30% {
+    transform: rotate(-20deg);
+  }
+  35% {
+    transform: rotate(21deg);
+  }
+  40% {
+    transform: rotate(-20deg);
+  }
+  45% {
+    transform: rotate(21deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+}
