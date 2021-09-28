@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.form');
 
   form.addEventListener('submit', handleEvent);
@@ -17,4 +17,4 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     form.reset();
   }
-})
+});
