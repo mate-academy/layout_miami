@@ -1,0 +1,104 @@
+.page {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: $c-dark;
+  scroll-behavior: smooth;
+
+  &__body {
+    // max-width: $maxPageWidth;
+    margin: 0 auto;
+    box-shadow: 0px 0px 130px -15px #888;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.7s cubic-bezier(.44,1.29,.45,1.28);
+
+    @include onDesktop {
+      transform: translateX(-255%);
+      // max-width: $maxPageWidth;
+      // left: calc((100vw - #{$maxPageWidth}) / 2);
+      transition: transform 1.2s cubic-bezier(.73,1.14,.43,1.1);
+    }
+
+    &:target {
+    transform: translateX(0);
+    }
+  }
+
+  &__master-title {
+    margin-bottom: 48px;
+    font-size: 48px;
+    line-height: 48px;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: -1.5px;
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    &-title {
+      font-size: 36px;
+      line-height: 36px;
+      font-weight: bold;
+      letter-spacing: -1.5px;
+      color: $c-black;
+      text-align: center;
+      
+
+      &::after {
+        display: block;
+        content: "";
+        width: 25px;
+        height: 16px;
+        margin: 4px auto 32px;
+        background-image: url(../images/crown.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include onDesktop {
+          margin: 5px auto 59px;
+        }
+      }
+    }
+
+    &-link-here {
+      color: $c-blue;
+      text-decoration: none;
+    }
+
+    &-subtitle {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: bold;
+      color: $c-blue;
+      text-decoration: none;
+    }
+
+    &-article {
+      font-size: 16px;
+      line-height: 27px;
+      color: $c-dark;
+
+      &-span {
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
