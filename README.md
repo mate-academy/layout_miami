@@ -3,10 +3,10 @@ Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99v
 following the lesson videos.
 
 Additionally:
-- Add a favicon
-- Increase Gallery an Testimonial photos on :hover
-- Change text color on hover for phone, email and address
-- Gallery links should open google maps in a new tab
+- Add a favicon +
+- Increase Gallery an Testimonial photos on :hover +
+- Change text color on hover for phone, email and address + 
+- Gallery links should open google maps in a new tab +
 - Fix menu for small screens (if there is not enough space for all the menu items)
     ```css
     .page__body--with-menu {
