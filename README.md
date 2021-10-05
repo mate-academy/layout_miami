@@ -3,6 +3,7 @@ Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99v
 following the lesson videos.
 
 Additionally:
+
 1. Add a favicon
 2. Don’t forget to add a title for the whole web page (it could be the name of your landing)
 3. Logos in header and footer should be links to home page
@@ -17,6 +18,7 @@ Additionally:
 12. Placeholders in the forms suggest what to enter, and if there is a validation of the form, then it is clear in what format to enter the data
 13. Add a smooth scroll for the whole page
 14. Fix menu for small screens (if there is not enough space for all the menu items)
+
     ```css
     .menu {
       /* Move these rules from .menu__content */

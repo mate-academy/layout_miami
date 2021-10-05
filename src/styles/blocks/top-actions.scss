@@ -1,0 +1,63 @@
+.top-actions {
+  --cellSize: 18px;
+
+  display: grid;
+  grid-template-columns: var(--cellSize) 1fr var(--cellSize);
+  justify-items: center;
+  margin-bottom: 50px;
+  padding: 24px 0 0;
+
+  overflow-y: auto;
+
+  @include onDesktop {
+    --cellSize: 24px;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__menu-cross {
+    background-image: url(../images/cross.svg);
+  }
+
+  &__phone {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+      
+      &::after {
+        position: relative;
+        display: block;
+        content: "+1 234 555-55-55";
+        width: max-content;
+        
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        
+        padding-right: 20px;
+        
+        top: 50%;
+        transform: translate(-100%, -50%);
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+      }
+    }
+  }
+}
