@@ -3,7 +3,7 @@ Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99v
 following the lesson videos.
 
 
-Additionally:
+Additionally:w
 1. Add a favicon
 2. Don’t forget to add a title for the whole web page (it could be the name of your landing)
 3. Logos in header and footer should be links to home page
