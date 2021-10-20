@@ -2,6 +2,137 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Roboto", sans-serif;
+  &__body {
+    background: $c-gray;
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  &__img {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
+  background-image: url(../images/header.jpg);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1px;
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        width: max-content;
+        display: block;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 16px;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
 }
