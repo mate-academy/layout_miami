@@ -2,7 +2,9 @@
 @import "fonts";
 @import "typography";
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -13,39 +15,9 @@
   }
 }
 
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  @include onDesctop {
-    width: 24px;
-    height: 24px;
-  }
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &--menu {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
-  &--phone {
-    background-image: url(../images/phone.svg);
-  }
-
-  &--cross {
-    background-image: url(../images/cross.svg);
-  }
-}
-
 .page {
   font-family: "Roboto", sans-serif;
+
   &__body {
     margin: 0;
   }
@@ -69,13 +41,45 @@
   @include onDesctop {
     padding: 0 40px;
   }
+}
 
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
 }
 
 .top-action {
-  display: flex;
-  justify-content:space-between;
+  --icon-widht: 18px;
+
+  display: grid;
+  grid-template-columns: var(--icon-widht) 1fr var(--icon-widht);
+  justify-items: center;
   align-items: center;
+
+  @include onDesctop {
+    --icon-widht: 24px;
+  }
 }
 
 .header {
@@ -117,11 +121,12 @@
 
   &__call {
     text-decoration: none;
+    position: relative;
 
     @include onDesctop {
       &::before {
         content: "+1 234 555-55-55";
-        position: relative;
+        position: absolute;
         top: 50%;
         transform: translate(-100%, -50%);
         
