@@ -1,4 +1,4 @@
-[DEMO LINK](https://lanebx.github.io/layout_antisnake/)
+[DEMO LINK](https://lanebx.github.io/layout_miami/)
 
 
 # Miami landing page
