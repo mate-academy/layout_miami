@@ -54,3 +54,6 @@ that's why this is better to add this style to those elements you really need (t
 - blue text indicates links, they should be clickable
 - you can add light hover effect to the pictures (for example you can use border/transform(scale)/box-shadow css properties)
 - contact info also should be clickable
+- make sure that on open menu tabular key works correctly
+
+  <img width="385" alt="Знімок екрана 2021-10-28 о 16 02 05" src="https://user-images.githubusercontent.com/47606379/139260485-6882a4ec-756b-4bc4-b079-782de01ef5f6.png">

@@ -47,3 +47,5 @@ Additionally:
     });
     ```
 16. Remember to reset default margins for headings (h1, h2, h3, etc.). Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
+
+--> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
