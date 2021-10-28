@@ -1,59 +1,46 @@
-- make sure all links work
-- comments are usually applicable to the whole project, not only the place where it was left (think about similar issues in your code)
-- did you fully followed the design?
-- make sure there is an empty line at the end of the file ([find out why](https://evanhahn.com/newline-necessary-at-the-end-of-javascript-files/))
-- follow DRY principle
-- write semantic markup
-- elements of type block (e.g. `div`) are already 100% wide, there is no need to write this in styles
-- after you open the tag, you have to add at least one more level of indentation before you close this tag 
+1. Add a favicon
+2. Don’t forget to add a title for the whole web page (it could be the name of your landing)
+3. Logos in header and footer should be links to home page
+4. Change text color on hover for phone, email and address
+5. When you click on ‘CALL TO ORDER’, make sure that there is no 404 error, make it a real link to activate your phone on your laptop/phone
+6. In the “Miami best” block, make sure that the “Real estate here” link does not lead to a 404 error, but to a location in Google Maps
+7. Pictures in Gallery should increase on hover
+8. Gallery links should open google maps in a new tab `target="_blank"`
+9. Photos in the Testimonials section should also increase on hover
+10. Make sure everything looks neat on mobile and without horizontal scrolling
+11. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
+12. Placeholders in the forms suggest what to enter, and if there is a validation of the form, then it is clear in what format to enter the data
+13. Add a smooth scroll for the whole page
+14. Fix menu for small screens (if there is not enough space for all the menu items)
+    ```css
+    .menu {
+      /* Move these rules from .menu__content */
+      box-sizing: border-box;
+      height: 100vh;
+      padding: 24px 0;
 
- GOOD example:
-```
-<div>
-  <div>
-    some text
-  </div
-</div>
-```
+      background-color: #0075ff;
 
- BAD example:
-```
-<div>
-<div>
-some text
-</div
-</div>
-```
-- do not add extra files to the PR, use `git add <file_name>` instead of `git add.` or use `.gitignore` file ([gitignore](https://git-scm.com/docs/gitignore))
-- check the [style guide](https://mate-academy.github.io/style-guides/htmlcss.html)
-- `*` selector is used to add styles to EACH element of the file, you don't usually need this and this is too heavy for the big page, 
-that's why this is better to add this style to those elements you really need (the major case when it is used is for `box-sizing` property)
-- we preferably use classes for styling, not tags, ids, attributes or something else
-- do not reset paddings for `body`, it doesn't have them by default
-- check your class names again and make sure they are meaningful and describe the element behavior or its appearance
-- styles for `body` is usually written at the beginning of the file
-- don't increase specificity of selectors ([about selectors specificity](https://www.w3schools.com/css/css_specificity.asp))
-- don't use word `image` in alt ([check here why](https://moz.com/learn/seo/alt-text))
-- hover with transition should work perfectly
-- all interactive elements should have cursor pointer
-- inputs must have `name` attribute
-- check the page on different screen sizes, it should be responsive (including sizes over 1700px)
-- remove commented code and unnecessary comments
-- use either `kebab-case` or `snake_case` for class names
-- if you pushed some new changes, deploy them as well
-- check up this [link](https://docs.google.com/document/d/1iglPsTDmcbDEwCEga20cUFO0eu8IIgXeqy06PLb46jY/edit) to prepare your project for HR review
-- phones should be links like this: `<a href="tel:123-456-7890">123-456-7890</a>`
-- emails should be links like this: `<a href="mailto:someone@yoursite.com">Email Us</a>`
-- use ids for anchoring from your `nav` through site
-- forms should have attributes `method` and `action`
-- phone inputs in forms should have `type="tel"` so the HTML validation works
-- email inputs in forms should have `type="email"` so the HTML validation works
-- form have button with `type="submit"` ([check here why button](https://html.com/attributes/button-type/#Difference_between_ltbutton_typesubmitgt_and_ltinput_typesubmitgt))
-- logos in the footer and header should be clickable
-- you can implement smooth scroll by using 'scroll-behavior' css property
-- blue text indicates links, they should be clickable
-- you can add light hover effect to the pictures (for example you can use border/transform(scale)/box-shadow css properties)
-- contact info also should be clickable
-- make sure that on open menu tabular key works correctly
+      /* Add this rule to add scroll when there is not enough space */
+      overflow-y: auto;
 
-  <img width="385" alt="Знімок екрана 2021-10-28 о 16 02 05" src="https://user-images.githubusercontent.com/47606379/139260485-6882a4ec-756b-4bc4-b079-782de01ef5f6.png">
+      ...
+    ```
+15. To disable page scrolling under the menu add the next code
+    ```css
+    .page__body--with-menu {
+      overflow: hidden;
+    }
+    ```
+    ```js
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash === '#menu') {
+        document.body.classList.add('page__body--with-menu');
+      } else {
+        document.body.classList.remove('page__body--with-menu');
+      }
+    });
+    ```
+16. Remember to reset default margins for headings (h1, h2, h3, etc.). Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
+17. Make sure that user can't navigate to bottom of your page with `TAB` key while menu is open:
+    <img width="385" alt="Menu tab bug" src="https://user-images.githubusercontent.com/47606379/139260485-6882a4ec-756b-4bc4-b079-782de01ef5f6.png">
