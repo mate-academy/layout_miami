@@ -1,20 +1,45 @@
+$headerTopPadding: 24px;
+
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0 20px;
+  padding: 24px 20px;
+  // box-sizing: border-box;
 
   @include onDesktop {
-    padding: 0 40px;
+    padding: 24px 40px;
   }
+}
+
+.top-actions {
+  display: grid;
+  grid-template-columns: $iconSize 1fr $iconSize;
+  justify-items: center;
+  align-items: center;
 }
 
 .icon {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: $iconSize;
+  height: $iconSize;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
 
   @include onDesktop {
     width: 24px;
@@ -26,19 +51,14 @@
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
-  padding: 24px 0 0;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: $headerTopPadding 0 80px;
   }
 
   &__title {
@@ -47,7 +67,7 @@
     line-height: 40px;
     color: #fff;
     letter-spacing: -1px;
-
+    // margin-bottom: 0;
     &::before {
       content: "";
       display: block;
@@ -64,15 +84,7 @@
     }
   }
 
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__call {
-    background-image: url(../images/phone.svg);
     text-decoration: none;
 
     @include onDesktop {
