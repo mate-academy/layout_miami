@@ -1,0 +1,115 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 24px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        padding-right: 20px;
+        color: #fff;
+        width: max-content;
+        transform: translate(-100%, -50%);
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        transition-duration: 300ms;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transition-duration: 500ms;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
