@@ -1,11 +1,50 @@
 .place {
-
-  &__photo {
+  &__photo--container {
+    position: relative;;
     width: 100%;
-    height: 128px;
+    max-height: 256px;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+      border-radius: 20px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
 
     @include onDesctop {
       height: 256px;
+      padding-bottom: 0;
     }
+  }
+
+  &__photo {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDesctop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    color: $color-actient-blue;
+    text-decoration: none;
   }
 }
