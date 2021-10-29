@@ -48,4 +48,5 @@ Additionally:
     ```
 16. Remember to reset default margins for headings (h1, h2, h3, etc.). Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
 
-17. [DEMO LINK](https://pavlokhanas.github.io/layout_dia/)
+17. Replace `<your_account>` with your Github username in the
+  [DEMO LINK](https://pavlokhanas.github.io/layout_dia/).
