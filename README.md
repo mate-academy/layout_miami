@@ -9,7 +9,7 @@ Additionally:
 4. Change text color on hover for phone, email and address
 5. When you click on ‘CALL TO ORDER’, make sure that there is no 404 error, make it a real link to activate your phone on your laptop/phone
 6. In the “Miami best” block, make sure that the “Real estate here” link does not lead to a 404 error, but to a location in Google Maps
-7. Pictures in Gallery should increase on hover
+7. Pictures in Gallery should increase on hover 
 8. Gallery links should open google maps in a new tab `target="_blank"`
 9. Photos in the Testimonials section should also increase on hover
 10. Make sure everything looks neat on mobile and without horizontal scrolling
