@@ -10,14 +10,15 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0 80px;
+    padding: $header-top-padding 0 80px;
   }
 
   &__title {
+    margin: 0;
     font-size: 46px;
     line-height: 40px;
     font-weight: bold;
-    color: #fff;
+    color: $c-white;
     letter-spacing: -1px;
 
     @include onDesktop {
@@ -31,18 +32,19 @@
       display: block;
       width: 40px;
       height: 2px;
-      background-color: #fff;
+      background-color: $c-white;
       margin-bottom: 24px;
     }
   }
 
   &__call {
+    position: relative;
     text-decoration: none;
 
     @include onDesktop {
       &::before {
+        position: absolute;
         content: "+1 234 555-55-55";
-        position: relative;
         top: 50%;
         transform: translate(-100%, -50%);
 
@@ -53,11 +55,13 @@
         font-weight: bold;
         font-size: 12px;
         line-height: 16px;
-        color: #fff;
+        color: $c-white;
         letter-spacing: 2px;
         text-transform: uppercase;
         opacity: 0;
         pointer-events: none;
+
+        transition: opacity $transition-duration;
       }
 
       &:hover::before {
