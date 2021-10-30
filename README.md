@@ -1,6 +1,5 @@
 # Miami Condo Kings
 
-Write here about your project in two-three sentences.
 - [DEMO](https://arielg0rl.github.io/layout_miami/)
 
 ## Description
