@@ -4,3 +4,104 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin button-hover {
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    color: $c-white;
+    background-color: $c-dark-blue;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+}
+
+@mixin button-active {
+  &:active {
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+}
+
+@mixin mid {
+  @media (max-width: 767px) and (min-width: 321px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin circle($size) {
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+}
+
+@mixin phone-num {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.33em;
+  letter-spacing: 2px;
+}
+
+@mixin block-title {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 53px;
+}
+
+@mixin crown {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -21px;
+    height: 16px;
+    width: 23px;
+    background-image: url("../images/crown.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+@mixin link-hover {
+  position: relative;
+  transform-origin: left;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $c-blue;
+    transform: scaleX(0%);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(100%);
+    }
+  }
+}
