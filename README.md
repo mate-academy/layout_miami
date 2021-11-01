@@ -4,7 +4,7 @@ This is a lending page for Miami Condo Kings — experts in sales and service in
 
 - [MOCKUP](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=0%3A1)
 
-- [DEMO LINK](https://trskzk.github.io/layout_miami/)
+- [DEMO LINK](https://olexandr6.github.io/layout_miami/)
 
 TECHNOLOGIES:
 - HTML
