@@ -1,7 +1,78 @@
 @import "utils";
-@import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@import "./block/container.scss";
+@import "./block/header.scss";
+@import "./block/menu.scss";
+@import "./block/grid.scss";
+@import "./block/about.scss";
+@import "./block/gallery.scss";
+@import "./block/place.scss";
+@import "./block/button.scss";
+@import "./block/testimonials.scss";
+@import "./block/contact-us.scss";
+@import "./block/form-field.scss";
+@import "./block/footer.scss";
+
+.page {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 27px;
+  color: #3e3e3e;
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    &-title {
+      font-size: 36px;
+      line-height: 36px;
+      text-align: center;
+      letter-spacing: -1.5px;
+
+      @include onDesktop {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      &::after {
+        display: block;
+        margin: 4px auto 0;
+        width: 23px;
+        height: 16px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: "";
+        background-image: url(../images/crown.svg);
+      }
+    }
+  }
 }
