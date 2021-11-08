@@ -1,0 +1,110 @@
+.header {
+  background-image: url(../images/header.jpg);
+  @include img-centr;
+  position: relative;
+  height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: inherit;
+    padding-top: 25px;
+  }
+
+  &__nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-button {
+    background-image: url(../images/menu.svg);
+    @include img-centr;
+    width: 24px;
+    height: 16px;
+    transition: background-image 0.5s;
+
+    @include to640 {
+      width: 18px;
+      height: 12px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call-us {
+    background-image: url(../images/phone.svg);
+    @include img-centr;
+    @include size($s-onDekstop);
+    transition: transform 0.5s;
+
+    @include to1024 {
+      &:hover {
+        animation: 0.5s call linear infinite alternate;
+      }
+    }
+
+    @include to640 {
+      @include size($s-onMobile);
+    }
+
+    &::before {
+      content: "+1 234 555-55-55";
+      width: max-content;
+      display: block;
+      color: $c-white;
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      padding-right: 20px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s, visibility 0s linear 0.5s;
+
+      @include to1024 {
+        display: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-bottom: 80px;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    color: $c-white;
+
+    @include to1024 {
+      font-size: 46px;
+      line-height: 40px;
+      padding-bottom: 80px;
+    }
+
+    @include to640 {
+      letter-spacing: -1px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: $c-white;
+      width: 40px;
+      height: 2px;
+      margin-bottom: 24px;
+    }
+  }
+}
