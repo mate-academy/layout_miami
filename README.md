@@ -1,5 +1,5 @@
-# Miami landing page
-Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-following the lesson videos.
+# Landing page "Maiami condo kings" for the market leader in real estate.
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+The landing page was created using: Gulp, SCSS, HTML, JS.
+[DEMOLINK](https://Dmytryi-Bashlai.github.io/layout_miami/)
+[LAYOUT LINK](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new)
