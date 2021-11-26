@@ -1,6 +1,5 @@
 # Miami landing page
 Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-following the lesson videos.
 
 Additionally:
 1. Add a favicon
@@ -16,34 +15,3 @@ Additionally:
 11. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
 12. Placeholders in the forms suggest what to enter, and if there is a validation of the form, then it is clear in what format to enter the data
 13. Add a smooth scroll for the whole page
-14. Fix menu for small screens (if there is not enough space for all the menu items)
-    ```css
-    .menu {
-      /* Move these rules from .menu__content */
-      box-sizing: border-box;
-      height: 100vh;
-      padding: 24px 0;
-
-      background-color: #0075ff;
-
-      /* Add this rule to add scroll when there is not enough space */
-      overflow-y: auto;
-
-      ...
-    ```
-15. To disable page scrolling under the menu add the next code
-    ```css
-    .page__body--with-menu {
-      overflow: hidden;
-    }
-    ```
-    ```js
-    window.addEventListener('hashchange', () => {
-      if (window.location.hash === '#menu') {
-        document.body.classList.add('page__body--with-menu');
-      } else {
-        document.body.classList.remove('page__body--with-menu');
-      }
-    });
-    ```
-16. Remember to reset default margins for headings (h1, h2, h3, etc.). Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
