@@ -1,0 +1,96 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 25px;
+
+  @include onDesktop {
+    width: 1000px;
+    align-self: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      padding-bottom: 32px;
+    }
+  }
+
+  &__link {
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__phone {
+    position: relative;
+    width: max-content;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 1;
+
+    &::after {
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      top: 100%;
+      margin-top: 8px;
+      content: "";
+      background-color: #fff;
+    }
+
+    &::before {
+      position: absolute;
+      content: "+1 234 555-55-55";
+      width: max-content;
+      transform: translateY(-200%);
+    }
+  }
+
+  &__toggler {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.container {
+  background-color: #00f;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+
+  &:target {
+    transform: translateX(0);
+  }
+}
+
+.page__body--with-menu {
+  overflow: hidden;
+}
