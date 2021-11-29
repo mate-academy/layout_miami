@@ -1,5 +1,5 @@
 # Miami landing page
-Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-following the lesson videos.
+Technology stack: HTML5/CSS3/JS, SCSS, BEM metodology, Figma
 
-[DEMO](https://dariia-romanova.github.io/layout_miami/)
+-  [DEMO LINK](https://dariia-romanova.github.io/layout_miami/) 
+-  Implemented according to [Design](https://dariia-romanova.github.io/layout_miami/)
