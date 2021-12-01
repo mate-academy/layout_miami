@@ -9,7 +9,6 @@ window.addEventListener('hashchange', () => {
         return false;
       }
     };
-
   } else {
     document.body.classList.remove('page__body--with-menu');
 
@@ -19,5 +18,4 @@ window.addEventListener('hashchange', () => {
       }
     };
   }
-
 });
