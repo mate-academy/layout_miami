@@ -1,15 +1,42 @@
 'use strict';
 
-const main = document.getElementById('main');
+const link = document.getElementsByTagName('a');
+const input = document.getElementsByTagName('input');
+const textarea = document.getElementsByTagName('textarea');
+const img = document.getElementsByTagName('img');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
 
-    main.setAttribute('hidden', 'true');
+    for (let i = 12; i < link.length; i++) {
+      link[i].setAttribute('tabindex', '-1');
+    }
+
+    for (let i = 0; i < input.length; i++) {
+      input[i].setAttribute('tabindex', '-1');
+    }
+
+    textarea[0].setAttribute('tabindex', '-1');
+
+    for (let i = 0; i < img.length; i++) {
+      img[i].setAttribute('hidden', 'true');
+    }
   } else {
     document.body.classList.remove('page__body--with-menu');
 
-    main.removeAttribute('hidden');
+    for (let i = 12; i < link.length; i++) {
+      link[i].removeAttribute('tabindex');
+    }
+
+    for (let i = 0; i < input.length; i++) {
+      input[i].removeAttribute('tabindex');
+    }
+
+    textarea[0].removeAttribute('tabindex');
+
+    for (let i = 0; i < img.length; i++) {
+      img[i].removeAttribute('hidden');
+    }
   }
 });
