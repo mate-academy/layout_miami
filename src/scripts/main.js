@@ -8,10 +8,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
-
-document.getElementById('submit').addEventListener(
-  'click', stopDefAction, false
-);
+document
+  .getElementById('consultation-form')
+  .addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
