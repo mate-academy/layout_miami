@@ -1,0 +1,82 @@
+.header {
+  background-image: url(../images/header.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
+  }
+
+  &__title {
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1;
+
+    @include onDeskTop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDeskTop {
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 100%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        content: "+1 234 555-55-55";
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDeskTop {
+    --icon-width: 24px;
+  }
+}
