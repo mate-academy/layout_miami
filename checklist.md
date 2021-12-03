@@ -12,8 +12,9 @@
 12. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
 13. Placeholders in the forms suggest what to enter, and if there is a validation of the form, then it is clear in what format to enter the data
 14. Form shouldn't be submitted if some of the fields are not filled
-15. Add a smooth scroll for the whole page
-16. Fix menu for small screens (if there is not enough space for all the menu items)
+15. Page shouldn't be reloaded on form submit (https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+16. Add a smooth scroll for the whole page
+17. Fix menu for small screens (if there is not enough space for all the menu items)
     ```css
     .menu {
       /* Move these rules from .menu__content */
