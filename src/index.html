@@ -387,7 +387,10 @@
             </div>
 
             <div class="grid__item grid__item--8-12">
-              <form action="" method="get">
+              <form npaction=""
+								method="get"
+								class="contact-us__form"
+							>
                 <input
                   name="name"
                   type="text"
@@ -409,9 +412,9 @@
                   required
                ></textarea>
 
-                <div class="button button--primary">
+                <button class="button button--primary" type="submit">
                 Consultation
-                </div>
+                </button>
               </form>
             </div>
           </div>
@@ -437,6 +440,20 @@
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
+});
+
+const form = document.querySelector('.contact-us__form');
+const inputs = document.querySelectorAll('.form-field');
+const textarea = document.querySelector('.form-field--textarea');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+	for (let input of inputs) {
+    input.value = '';
+  }
+
+  textarea.value = '';
 });
 
 
