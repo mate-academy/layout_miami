@@ -1,0 +1,64 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    width: 100%;
+    max-height: 256px;
+    overflow: hidden;
+
+    @include hover (transform, scale(1.05));
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 256px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    color: $c-blue;
+    text-decoration: none;
+
+    &--1::after {
+      content: "/ North Miami Beach, FL 33162";
+      font-weight: normal;
+      color: $c-gray-text;
+    }
+
+    &--2::after {
+      content: "/ Miami Beach, FL 331390";
+      font-weight: normal;
+      color: $c-gray-text;
+    }
+
+    &--3::after {
+      content: "/ Miami Beach, FL 33140";
+      font-weight: normal;
+      color: $c-gray-text;
+    }
+  }
+}
