@@ -40,3 +40,17 @@ window.addEventListener('hashchange', () => {
     }
   }
 });
+
+const form = document.querySelector('.contact-us__form');
+const inputs = document.querySelectorAll('.contact-us__form-input');
+const textareas = document.querySelector('.contact-us__form-text');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  inputs.forEach((elem) => {
+    elem.value = '';
+  });
+
+  textareas.value = '';
+});
