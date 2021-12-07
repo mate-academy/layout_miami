@@ -7,3 +7,17 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const form = document.querySelector('.contact-us__form');
+const inputs = document.querySelectorAll('.form-field--input');
+const textarea = document.querySelector('.form-field--textarea');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  for (const input of inputs) {
+    input.value = '';
+  }
+
+  textarea.value = '';
+});
