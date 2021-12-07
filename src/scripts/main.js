@@ -8,8 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document
-  .getElementById('consultation-form')
-  .addEventListener('submit', (event) => {
-    event.preventDefault();
-  });
+const form = document.querySelector('.contact-us__forms');
+const inputs = document.querySelectorAll('.contact-us__field');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  for (const elem of inputs) {
+    elem.value = '';
+  };
+});
