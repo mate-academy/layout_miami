@@ -8,7 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function handleForm(event) {
+const form = document.getElementById('contacts-form');
+const inputsAndTextarea = document.querySelectorAll('.form-field');
+
+form.addEventListener('submit', (event) => {
   event.preventDefault();
-}
-document.getElementById('contacts-form').addEventListener('submit', handleForm);
+
+  for (const elem of inputsAndTextarea) {
+    elem.value = '';
+  }
+});
