@@ -3,3 +3,5 @@ Implement [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99v
 following the lesson videos.
 
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+
+- [DEMO LINK](https://OlehRak.github.io/layout_miami/)
