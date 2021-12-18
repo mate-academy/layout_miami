@@ -8,10 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
+const form = document.querySelector('.contact-us__form');
+const inputs = document.querySelectorAll('.form-field');
+const textarea = document.querySelector('.form-field--textarea');
 
-document.getElementById('button').addEventListener(
-  'click', stopDefAction, false
-);
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  for (const input of inputs) {
+    input.value = '';
+  }
+
+  textarea.value = '';
+});
