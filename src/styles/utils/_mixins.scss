@@ -1,6 +1,13 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin photoHoverIncrease($scale-coefficient, $transition-duration) {
+  transition: transform $transition-duration;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale($scale-coefficient);
   }
 }
