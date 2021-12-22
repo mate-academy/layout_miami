@@ -1,3 +1,9 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Roboto", sans-serif;
   &__body {
@@ -5,17 +11,54 @@
   }
 }
 
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
 .header {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+ 
   background-image: url(../images/header.jpg);
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  padding: 24px 20px 80px;
-
+ 
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
   &__title {
     font-weight: bold;
     font-size: 46px;
@@ -32,6 +75,13 @@
       margin-bottom: 24px;
       border-radius: 8px;
     }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
   }
 
   &__nav {
@@ -41,32 +91,38 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
   }
 
   &__call {
-    display: block;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 18px;
-    height: 18px;
     background-image: url(../images/phone.svg);
-  }
-}
+    text-decoration: none;
 
-.logo {
-  &__image {
-    height: 48px;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        color: #fff;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding-right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 }
