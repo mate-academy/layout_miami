@@ -4,4 +4,4 @@ following the lesson videos.
 
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
 
-[solution V2](https://KatrukEvgeny.github.io/layout_miami/)
+- [DEMO LINK](https://KatrukEvgeny.github.io/layout_miami/)
