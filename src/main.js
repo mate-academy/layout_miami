@@ -10,17 +10,16 @@ document.querySelector('.contact-us__form').addEventListener(
   false
 );
 
-// window.addEventListener('hashchange', () => {
-//   if (window.location.hash === '#menu') {
-//     document.body.classList.add('page__body--with-menu');
-//   } else {
-//     document.body.classList.remove('page__body--with-menu');
-//   }
-// });
-
 const page = document.querySelector('.page__body');
-const toggler = document.querySelector('.menu__togler');
+const togglers = document.querySelectorAll('.menu__togler');
+const notabs = document.querySelectorAll('.notab *');
 
-toggler.addEventListener('click', function() {
-  page.classList.toggle('page__body--with-modal');
+togglers.forEach(toggler => {
+  toggler.addEventListener('click', function() {
+    page.classList.toggle('page__body--with-modal');
+
+    notabs.forEach(element => {
+      element.setAttribute('tabindex', '-1');
+    });
+  });
 });
