@@ -19,7 +19,11 @@ togglers.forEach(toggler => {
     page.classList.toggle('page__body--with-modal');
 
     notabs.forEach(element => {
-      element.setAttribute('tabindex', '-1');
+      if (element.getAttribute('tabindex') === '-1') {
+        element.setAttribute('tabindex', '0');
+      } else {
+        element.setAttribute('tabindex', '-1');
+      }
     });
   });
 });
