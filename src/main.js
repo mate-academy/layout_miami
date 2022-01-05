@@ -20,7 +20,7 @@ togglers.forEach(toggler => {
 
     notabs.forEach(element => {
       if (element.getAttribute('tabindex') === '-1') {
-        element.setAttribute('tabindex', '0');
+        element.toggleAttribute('tabindex');
       } else {
         element.setAttribute('tabindex', '-1');
       }
