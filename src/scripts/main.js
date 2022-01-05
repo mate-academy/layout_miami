@@ -1,15 +1,18 @@
 'use strict';
 
-document.getElementById('formButton')
-  .addEventListener('click', function(event) {
+document.getElementById('contactForm')
+  .addEventListener('submit', function(event) {
     event.preventDefault();
+
+    document.getElementsByName('name')[0].value = '';
+    document.getElementsByName('email')[0].value = '';
+    document.getElementsByName('message')[0].value = '';
   });
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.getElementById('page').classList.add('page--with-menu');
-    document.querySelectorAll('body > div:not(.menu)').tabIndex = -1;
+    document.body.classList.add('page--with-menu');
   } else {
-    document.getElementById('page').classList.remove('page--with-menu');
+    document.body.classList.remove('page--with-menu');
   }
 });
