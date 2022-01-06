@@ -1,14 +1,14 @@
 'use strict';
 
-const noDefault = document.querySelectorAll('.noDefault');
+const noDefault = document.querySelector('.noDefault');
 
-noDefault.addEventListener(
-  'click',
-  function(event) {
-    event.preventDefault();
-  },
-  false
-);
+noDefault.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  document.getElementsByName('name')[0].value = '';
+  document.getElementsByName('email')[0].value = '';
+  document.getElementsByName('message')[0].value = '';
+});
 
 const page = document.querySelector('.page__body');
 const togglers = document.querySelectorAll('.menu__togler');
