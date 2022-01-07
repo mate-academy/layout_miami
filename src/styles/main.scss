@@ -2,6 +2,12 @@
 @import "fonts";
 @import "typography";
 
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Roboto", sans-serif;
   &__body {
@@ -9,29 +15,57 @@
   }
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+    transition-duration: 1s;
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 24px 20px 80px;
   background-size: cover;
   background-position: center;
   background-image: url(../images/header.jpg);
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
   &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   &__menu-opener {
-    display: block;
     background-image: url(../images/menu.svg);
-    width: 18px;
-    height: 12px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
@@ -42,6 +76,12 @@
     line-height: 40px;
     color: #fff;
     letter-spacing: -1px;
+    transition: 1s;
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
     &::before {
       content: "";
       display: block;
@@ -52,18 +92,31 @@
     }
   }
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-}
-
-.logo {
-  &__image {
-    height: 48px;
+    @include onDesktop {
+      &::before {
+        content: "+3 8 096-765-99-50";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        opacity: 0;
+        transition: 1s;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 }
