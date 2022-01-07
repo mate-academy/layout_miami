@@ -8,6 +8,9 @@
   }
 }
 
+$headerTopPadding: 24px;
+$colorBlue: #0075ff;
+
 .page {
   font-family: "Roboto", sans-serif;
   &__body {
@@ -36,15 +39,37 @@
 
 .icon {
   display: block;
-  width: 18px;
-  height: 18px;
-  @include onDesktop {
-    width: 24px;
-    height: 24px;
-  }
-  background-size: cover;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+  @include onDesktop {
+    --icon-width: 24px;
+  }
 }
 
 .header {
@@ -57,19 +82,9 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 24px 0 80px;
+    padding: $headerTopPadding 0 80px;
   }
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
+
   &__title {
     font-weight: bold;
     font-size: 46px;
@@ -93,7 +108,6 @@
   }
   &__call {
     text-decoration: none;
-    background-image: url(../images/phone.svg);
     @include onDesktop {
       &::before {
         content: "+3 8 096-765-99-50";
@@ -118,5 +132,14 @@
         pointer-events: all;
       }
     }
+  }
+}
+
+.menu {
+  background-color: $colorBlue;
+  &__content {
+    padding: $headerTopPadding 0;
+    height: 100vh;
+    box-sizing: border-box;
   }
 }
