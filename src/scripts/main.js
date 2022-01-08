@@ -12,6 +12,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.getElementById('submit').addEventListener('click', function(event) {
+document.getElementById('form').addEventListener('submit', function(event) {
   event.preventDefault();
-}, false);
+  document.getElementById('name').value = '';
+  document.getElementById('message').value = '';
+  document.getElementById('email').value = '';
+});
