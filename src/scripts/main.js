@@ -11,6 +11,7 @@ window.addEventListener('hashchange', () => {
 document.getElementById('consultationForm').addEventListener('submit', (e) => {
   e.preventDefault();
 
-  document.getElementById('name').value = '';
-  document.getElementById('email').value = '';
+  document.getElementsByName('name')[0].value = '';
+  document.getElementsByName('email')[0].value = '';
+  document.getElementsByName('message')[0].value = '';
 });
