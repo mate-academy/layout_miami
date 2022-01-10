@@ -12,8 +12,8 @@ document.getElementById('form').addEventListener('submit',
   function(event) {
     event.preventDefault();
 
-    document.getElementsByName('name').value = '';
-    document.getElementsByName('email').value = '';
-    document.getElementsByName('message').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
   }
 );
