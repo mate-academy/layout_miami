@@ -8,6 +8,12 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#form').addEventListener('submit', function(event) {
-  event.preventDefault();
-}, false);
+document.getElementById('form').addEventListener('submit',
+  function(event) {
+    event.preventDefault();
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+  }
+);
