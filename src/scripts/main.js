@@ -8,12 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const makeDefault = document.querySelector('.form');
-
-makeDefault.addEventListener('submit', function(e) {
+const onSubmit = (e) => {
   e.preventDefault();
-
   document.getElementsByName('name')[0].value = '';
   document.getElementsByName('email')[0].value = '';
-  document.getElementsByName('message')[0].value = '';
-});
+  document.getElementsByName('message')[0].value = 'Have a good day:)';
+};
+
+const el = document.getElementById('form');
+
+el.addEventListener('submit', onSubmit, false);
