@@ -14,3 +14,5 @@ document.getElementById('form').addEventListener('submit', function(event) {
   document.getElementById('message').value = '';
   document.getElementById('email').value = '';
 });
+
+document.myForm.reset();
