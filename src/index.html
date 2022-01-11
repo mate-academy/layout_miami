@@ -44,7 +44,7 @@
       </div>
     </header>
 
-    <nav class="page__menu menu" id="menu">
+    <nav class="page__menu menu page__body--with-modal" id="menu">
       <div class="container">
         <div class="menu__content">
           <div class="menu__top top-actions">
@@ -438,7 +438,7 @@
     </main>
 
     <footer class="footer">
-      <a href="/" class="logo">
+      <a href="#" class="logo">
         <img
           class="logo__image"
           src="images/logo.png"
@@ -446,5 +446,23 @@
         >
       </a>
     </footer>
+
+    <script>
+      function stopDefAction (eve) {
+        eve.preventDefault();
+        document.querySelector("#form").addEventListener("click", function (eve) {
+      }, false)
+      }
+    </script>
+
+    <script>
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#menu') {
+          document.body.classList.add('page__body--with-modal');
+        } else {
+          document.body.classList.remove('page__body--with-modal');
+        }
+      });
+    </script>
   </body>
 </html>
