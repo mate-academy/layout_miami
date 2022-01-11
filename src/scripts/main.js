@@ -1,8 +1,12 @@
 'use strict';
 
-document.getElementById('form').addEventListener('click',
+document.querySelector('form').addEventListener('submit',
   function(event) {
     event.preventDefault();
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
   }
 );
 
