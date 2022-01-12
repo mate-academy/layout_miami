@@ -1,8 +1,8 @@
 'use strict';
 
-document.getElementById('button').addEventListener('click', function(event) {
-  event.preventDefault();
-}, false);
+// document.getElementById('button').addEventListener('click', function(event) {
+//   event.preventDefault();
+// }, false);
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
