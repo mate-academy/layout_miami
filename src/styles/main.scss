@@ -1,3 +1,33 @@
+$c-main-grey: rgba(29, 29, 29, 1);
+$c-second-greylight: rgba(41, 41, 41, 1);
+
+@mixin onTabs {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+  
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTabs {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 .page {
   font-family: "Poppins", "Inter", sans-serif;
 
@@ -6,17 +36,53 @@
   }
 }
 
-.header {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.logo {
+  &__img {
+    height: 38px;
+    
+    @include onTabs {
+      height: 56px;
+    }
+  }
+}
 
-  height: 100vh;
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @include onTabs {
+    padding: 0 72px;
+  }
+  
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.header {
+
   background-image: url(../images/header-960-480.jpg);
   background-size: cover;
   background-position: center;
-  padding: 29px 20px 88px;
+  
+  @include onTabs {
+    background-image: url(../images/header-1260-630.jpg);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 29px 0 88px;
+    height: 100vh;
+    @include onTabs() {
+      padding: 36px 0 130px;
+    }
+    @include onDesktop() {
+      padding: 36px 0 122px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -32,43 +98,54 @@
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
-    
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        transform: translateX(-100%);
+        
+        color: $c-second-greylight;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__menu-open {
-    width: 18px;
-    height: 12px;
-    display: block;
-
     background-image: url(../images/menu.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 
     &:hover {
       background-image: url(../images/menu-hover.svg);
     }
   }
 
-  .logo {
-    &__image {
-      height: 48px;
-    }
-  }
-
   &__title {
+    text-align: center;
     font-style: bold;
     font-weight: 700;
     font-size: 36px;
     letter-spacing: -1.5px;
-    color: rgba(41, 41, 41, 1);
+    color: $c-second-greylight;
+
+    @include onTabs {
+      color: $c-main-grey;
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
-  
 }
