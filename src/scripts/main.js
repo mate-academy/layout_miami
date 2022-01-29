@@ -2,7 +2,7 @@
 
 const body = document.querySelector('body');
 const menu = document.querySelector('.header__nav_menu');
-const menuOpen = document.querySelector('.header__nav_menu--open');
+const menuOpen = document.querySelector('.main_menu');
 const menuClose = document.querySelector('.menu--close');
 const returnButton = document.querySelector('.return_to_top--button');
 const link = document.querySelectorAll('.menu_item--link');
