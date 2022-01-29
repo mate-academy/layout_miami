@@ -2,6 +2,153 @@
 @import "fonts";
 @import "typography";
 
+$headerTopPadding: 24px;
+$colorBlue: #0075ff;
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 body {
   background: $c-gray;
+}
+
+.page {
+  font-family: "Roboto", sans-serif;
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
+  }
+
+  &__title {
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
 }
