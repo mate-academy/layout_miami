@@ -2,6 +2,18 @@
 @import "fonts";
 @import "typography";
 
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
 .page {
   font-family: 'Inter', sans-serif;
   &__body {
@@ -9,17 +21,68 @@
   }
 }
 
+h1 {
+  margin: 0;
+}
+.container {
+  margin: 0 auto;
+  padding: 0 23px;
+
+  @include onTablet {
+    max-width: 744px;
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1260px;
+    padding: 0 120px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
   background-image: url("../images/header-bg-320.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 40px 23px 94px;
+
+
+  @include onTablet {
+    background-image: url("../images/header-bg.png");
+  }
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop() {
+      padding: 52px 0 64px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -32,13 +95,8 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 18px;
     background-image: url("../images/burger--default.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
 
     &:hover {
       background-image: url("../images/burger--hover.svg");
@@ -46,14 +104,12 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
     background-image: url("../images/phone.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin-right: 24px;
+
+    @include onTablet {
+      margin-right: 36px;
+    }
   }
 
   &__title {
@@ -67,6 +123,14 @@
 
     color: #292929;
 
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
     &::before {
       content: "";
       display: block;
@@ -76,11 +140,31 @@
       background-repeat: no-repeat;
       background-position: center;
       margin-bottom: 16px;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        background-image: url("../images/sound-icon.svg");
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop() {
+        margin-bottom: 32px;
+      }
     }
   }
 }
 
 .logo {
-  width: 130px;
   height: 16px;
+
+  @include onTablet {
+    height: 24px;
+  }
+
+  align-items: center;
+
+  &__image {
+    height: 100%;
+  }
 }
