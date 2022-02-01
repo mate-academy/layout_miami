@@ -13,16 +13,51 @@
   }
 
   &--menu-opener {
-    background-image: url(../images/menu.svg);
+    height: max-content;
+    padding: 0;
 
-    @include onTablet {
+    span {
+      float: right;
+
+      display: block;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+
+      background-color: $c-darkgray;
+      margin-bottom: 4px;
+
+      @include transitions(width);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
       &:hover {
-        background-image: url(../images/menu_hover.svg);
+        span {
+          &:first-child {
+            width: 70%;
+          }
+
+          &:last-child {
+            width: 50%;
+          }
+        }
       }
     }
   }
 
   &--cross {
     background-image: url(../images/cross.svg);
+
+    @include transitions(transform);
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
   }
 }

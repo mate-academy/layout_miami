@@ -21,7 +21,7 @@
       &::before {
         content: "+1 234 5555-55-55";
 
-        transform: translate(-100%, 50%);
+        transform: translate(-50%, 50%) scaleX(0);
 
         display: block;
         width: max-content;
@@ -31,18 +31,22 @@
         line-height: 16px;
         font-weight: bold;
         letter-spacing: 2px;
-        color: #292929;
+        color: $c-darkgray-29;
 
         opacity: 0;
+
+        visibility: hidden;
         pointer-events: none;
 
-        @include transitions("opacity");
+        @include transitions(opacity transform);
       }
 
       &:hover {
         &::before {
           pointer-events: all;
+          visibility: visible;
           opacity: 1;
+          transform: translate(-100%, 50%) scaleX(1);
         }
       }
     }
@@ -55,7 +59,7 @@
     line-height: 100%;
     letter-spacing: -1.5px;
 
-    color: #292929;
+    color: $c-darkgray-29;
 
     @include onTablet {
       font-size: 64px;

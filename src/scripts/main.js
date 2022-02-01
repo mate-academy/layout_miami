@@ -8,18 +8,30 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#contact-form')
-  .addEventListener('submit', function(event) {
-    document.querySelector('#submit-button').animate([
-      { background: '#fff' },
-      { background: '#62ff6f' },
-      { background: '#fff' },
+const contactForm = document.querySelector('.contacts__form');
+const buttonSubmit = document.querySelector('.button--submit');
+
+contactForm.addEventListener('submit', function(event) {
+  buttonSubmit.animate(
+    [
+      {
+        background: '#fff',
+        transform: 'scale(1)',
+      },
+      {
+        background: '#62ff6f',
+        transform: 'scale(0.9)',
+      },
+      {
+        background: '#fff',
+        transform: 'scale(1)',
+      },
     ],
     {
-      delay: 600,
+      delay: 100,
       duration: 600,
     }
-    );
-
-    event.preventDefault();
-  }, false);
+  );
+  event.preventDefault();
+  contactForm.reset();
+}, false);
