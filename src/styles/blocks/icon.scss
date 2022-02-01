@@ -1,0 +1,82 @@
+.icon {
+  &__phone {
+    @include iconProperty;
+
+    @include square ($icon-size-mobile);
+
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      @include square ($icon-size-desktop);
+
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+
+        padding-right: 12px;
+
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        width: max-content;
+
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        pointer-events: none;
+
+        color: $page-color;
+
+        transition: opacity 0.3s linear;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    @include iconProperty;
+
+    @include square ($icon-size-mobile);
+
+    background-image: url(../images/menu.svg);
+
+    transition: background-image 0.3s linear ;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+
+    @include onDesktop {
+      @include square ($icon-size-desktop);
+
+      background-image: url(../images/menu-1260.svg);
+
+      &:hover {
+        background-image: url(../images/menu-hover-1260.svg);
+      }
+    }
+  }
+
+  &--closed {
+    @include iconProperty;
+
+    @include square ($icon-size-mobile);
+
+    background-image: url(../images/closed.svg);
+
+    transition: transform 0.3s linear;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
