@@ -1,4 +1,27 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%bottom-line {
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 1px;
+
+    background-color: $c-darkgray;
+
+    @include transitions(width);
+  }
+
+  @include onDesktop {
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+%bottom-line-mt8 {
+  @extend %bottom-line;
+  &::after {
+    margin-top: 8px;
+  }
 }
