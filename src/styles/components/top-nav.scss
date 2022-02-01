@@ -1,8 +1,14 @@
 .top-nav {
+  $block: &;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 25px;
+
+  @include media-breakpoint-md {
+    padding-top: 32px;
+  }
 
   &__buttons {
     display: flex;
@@ -14,5 +20,36 @@
     @include media-breakpoint-md {
       margin-right: 63px;
     }
+  }
+
+  &__phone {
+    position: relative;
+    display: block;
+
+    &:hover {
+      #{$block}__phone-container {
+        visibility: visible;
+
+        transform: translate(-100%, -50%);
+      }
+
+      #{$block}__phone-icon {
+        animation: shake 1.2s ease-in-out;
+      }
+    }
+  }
+
+  &__phone-container {
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+
+    width: max-content;
+    padding-right: 20px;
+
+    text-align: right;
+
+    transform: translate(-70%, -50%);
+    transition: transform $duration-default linear;
   }
 }
