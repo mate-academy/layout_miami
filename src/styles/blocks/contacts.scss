@@ -1,4 +1,17 @@
 .contacts {
+  &__items {
+    @include onTablet {
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  &__form {
+    @include onTablet {
+      flex-basis: 50%;
+    }
+  }
+
   &__input {
     width: 100%;
     margin-bottom: 16px;
@@ -39,9 +52,28 @@
     line-height: 27px;
     font-weight: 700;
 
+    cursor: pointer;
+
     background-color: $page-color;
 
     border: 1px transparent solid;
     border-radius: 40px;
+
+    transition:
+      color 0.3s linear,
+      border-color 0.3s linear,
+      background-color 0.3s linear;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      &:hover {
+        color: $page-color;
+        border-color: $page-color;
+        background-color: white;
+      }
+    }
   }
 }
