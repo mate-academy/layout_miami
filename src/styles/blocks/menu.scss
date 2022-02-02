@@ -24,19 +24,45 @@
   }
 
   &__link {
+    display: block;
     font-weight: bold;
-    font-size: 22px;
-    line-height: 22px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $c-darkGray;
+
+    @include onDesctop {
+      width: max-content;
+
+      &::after {
+        margin-top: 8px;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: $c-darkGray;
+
+        transform: translateX(-100%);
+        opacity: 0;
+
+        transition: transform 0.3s;
+      }
+
+      &:hover {
+        &::after {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &__cell-number {
     margin-bottom: 16px;
 
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 27px;
   }
 
