@@ -1,5 +1,22 @@
 .icons {
   display: flex;
+  align-items: center;
+
+  // FIXME
+  &:hover &__call-number {
+    opacity: 1;
+  }
+
+  &__call-number {
+    padding-right: 8px;
+    opacity: 0;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: $c-dark-grey-text;
+    transition: transform 500ms ease-in;
+    pointer-events: none;
+  }
 
   &__icon {
     display: block;
@@ -17,16 +34,12 @@
     }
 
     &--menu {
-      background-image: url(../images/icons/Icon-Burger-menu.svg);
       margin-left: 24px;
-      transition: background-image 300ms;
+      background-image: url(../images/icons/Icon-Burger-menu.svg);
+      @include hover(background-image, url(../images/icons/Icon-Burger-menu-hover.svg))
 
       @include onTablet {
         margin-left: 32px;
-      }
-
-      &:hover {
-        background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
       }
     }
 
