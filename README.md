@@ -1,12 +1,18 @@
-# Miami landing page
+# MyBike Landing Page
 
-You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
+Write here about your project in two-three sentences.
+- [MY_BIKE DEMO LINK](https://jstmpelowycz.github.io/layout_miami/)
 
-- [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [the MYBIKE landing page](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [the MET landing page](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=0%3A1)  
-- [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+## Description
+This landing page is implemented according to [this](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1) mock
 
-Implement selected landing page following the lesson videos.
+### Dependencies
+* Node v14.18.2
+* NPM 6.14.15
+
+### Installing
+* Fork and clone this repository
+* Run `npm install` in your terminal
+* Run `npm start`
 
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
