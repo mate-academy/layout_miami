@@ -1,5 +1,5 @@
 # Bose landing page
-- [DEMOLINK](https://krolich500grn.github.io/layout_miami/)
+- [DEMOLINK](https://krolich500grn.github.io/layout_bose/)
 
 ### Dependencies
 * Node v14.18.2 and higher
