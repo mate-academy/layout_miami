@@ -1,11 +1,14 @@
 $x2-image-width: calc(((100vw - 2 * 20px) - 1 * 20px) / 2);
 $x3-image-width: calc(((100vw - 2 * 20px) - 2 * 8px) / 3);
+$double-img-width: calc((100vw - 2 * 12px) / 3 * 2 - 24px);
 
 .view-section {
 
   &__header {
+    max-width: 340px;
     text-align: center;
     margin: 0 auto 48px;
+
   }
 
   &__secondary-title {
@@ -29,14 +32,42 @@ $x3-image-width: calc(((100vw - 2 * 20px) - 2 * 8px) / 3);
     object-fit: cover;
   }
 
-  &__images-x2 .view-section__image {
+  &__images-1 .view-section__image {
     width: $x2-image-width;
     height: $x2-image-width;
+    @media (min-width: 744px) {
+      width: $x3-image-width;
+      height: $x3-image-width;
+      &:first-child {
+        width: $double-img-width;
+        height: $x3-image-width;
+      }
+    }
   }
 
-  &__images-x3 .view-section__image {
+  &__images-2 .view-section__image {
     width: $x3-image-width;
     height: $x3-image-width;
+    @media (min-width: 744px) {
+      width: $x2-image-width;
+      height: $x2-image-width;
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  &__images-3 .view-section__image {
+    width: $x2-image-width;
+    height: $x2-image-width;
+    @media (min-width: 744px) {
+      width: $x3-image-width;
+      height: $x3-image-width;
+      &:last-child {
+        width: $double-img-width;
+        height: $x3-image-width;
+      }
+    }
   }
 
   &__button {
@@ -46,6 +77,7 @@ $x3-image-width: calc(((100vw - 2 * 20px) - 2 * 8px) / 3);
     font-size: 16px;
     line-height: 56px;
     width: 100%;
+    max-width: 392px;
     height: 56px;
     text-align: center;
     color: #fff;
