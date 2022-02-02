@@ -12,11 +12,17 @@
   }
 
   &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: $start / ($end + 1);
-        }
+    grid-column: 1 / -1;
+
+    &--tab {
+      @include onTablet {
+        @include build-grid(6);
+      }
+    }
+
+    &--desk {
+      @include onDesktop {
+        @include build-grid(12);
       }
     }
   }
