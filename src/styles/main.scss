@@ -1,4 +1,5 @@
 @import "utils";
+@import "utils/vars.scss";
 @import "fonts";
 @import "typography";
 @import url("https://rsms.me/inter/inter.css");
@@ -177,15 +178,18 @@ a {
 
 @media (max-width: 743px) {
   .header {
-    padding: 40px 20px 94px;
+    padding: 40px 42px 94px;
   }
-
   .sticks {
     display: none;
   }
 
   .wave-picture {
     display: block;
+  }
+
+  .direct {
+    grid-auto-columns: minmax(100%);
   }
 }
 
@@ -221,7 +225,7 @@ a {
 
 .direct {
   display: grid;
-  grid-auto-columns: minmax(288px, 50%);
+  grid-auto-columns: minmax($column-width, 50%);
   grid-auto-flow: column;
   justify-content: center;
   gap: 24px;
@@ -265,6 +269,8 @@ a {
     line-height: 40px;
     letter-spacing: -1.5px;
     text-align: center;
+    
+    display: flex;
   }
 
   &__send {
@@ -282,12 +288,32 @@ fieldset {
   border: none;
 }
 
-input {
-  height: 48px;
-  width: 285px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.contact__label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  margin-bottom: 16px;
   border-radius: 40px;
+  
+}
+
+input,
+textarea {
   border: none;
   background-color: #f8f8fa;
+  height: 48px;
+  max-width: $column-width;
+}
+
+button {
+  background-color: #fff;
 }
 
 .contact__title {
