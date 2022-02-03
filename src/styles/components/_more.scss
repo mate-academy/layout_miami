@@ -2,6 +2,8 @@ $more-image-width: calc(100vw - 2 * 20px);
 $more-width-744: calc(100vw - 2 * 72px - 2 * 80px - 2 * 24px);
 $more-width-1024: calc((100vw - 2 * 80px) / 3);
 
+$wDeskImg: calc(328 / 1024 * (100vw - 240px));
+
 .more-section {
 
   &__header {
@@ -10,50 +12,57 @@ $more-width-1024: calc((100vw - 2 * 80px) / 3);
     margin: 0 auto 48px;
   }
 
-  &__image-container {
-    @media (min-width: 1024px) {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  &__image-wrapper {
-    @media (min-width: 1024px) {
-      width: $more-width-1024;
-    }
+  &__images {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__image {
+    width: $wDeskImg;
+    height: $wDeskImg;
     display: block;
-    width: $more-image-width;
-    height: $more-image-width;
-    margin: 0 auto 24px;
-    @media (min-width: 744px) {
-      width: $more-width-744;
-      height: $more-width-744;
+    @include onTablet {
+      width: $wDeskImg;
+      height: $wDeskImg;
     }
-    @media (min-width: 1024px) {
-      width: $more-width-1024;
-      height: $more-width-1024;
+
+    @include onDesktop {
+      width: $wDeskImg;
+      height: $wDeskImg;
+      margin-bottom: 32px;
+    }
+
+    &-container {
+
+      @include onTablet {
+        width: $wDeskImg;
+      }
+
+      @include onDesktop {
+        width: $wDeskImg;
+      }
     }
 
     &-title {
+      width: $wDeskImg;
       margin: 0 auto 4px;
       text-align: center;
       font-weight: bold;
       font-size: 24px;
       line-height: 140%;
       color: #d12d35;
-      @media (min-width: 744px) {
-        width: $more-width-744;
+      @include onTablet {
+        width: $wDeskImg;
       }
-      @media (min-width: 1024px) {
-        width: $more-width-1024;
+
+      @include onDesktop {
+        width: $wDeskImg;
       }
     }
 
     &-description {
-      margin: 0 auto 48px;
+      width: $wDeskImg;
+      margin: 0 auto;
       font-family: Roboto, Arial, sans-serif;
       font-style: normal;
       font-weight: normal;
@@ -61,11 +70,12 @@ $more-width-1024: calc((100vw - 2 * 80px) / 3);
       line-height: 27px;
       text-align: center;
       color: #161616;
-      @media (min-width: 744px) {
-        width: $more-width-744;
+      @include onTablet {
+        width: $wDeskImg;
       }
-      @media (min-width: 1024px) {
-        width: $more-width-1024;
+
+      @include onDesktop {
+        width: $wDeskImg;
       }
     }
   }

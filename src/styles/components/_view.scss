@@ -1,6 +1,5 @@
-$view-image-x2-width-774: calc(((100vw - 2 * 72px) - 1 * 20px) / 2);
-$view-image-x3-width-774: calc(((100vw - 2 * 20px) - 2 * 8px) / 3);
-$long-image-width-774: calc((100vw - 2 * 12px) / 3 );
+$wDeskImg: calc(328 / 1024 * (100vw - 240px));
+$wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
 
 .view-section {
 
@@ -22,59 +21,65 @@ $long-image-width-774: calc((100vw - 2 * 12px) / 3 );
     }
   }
 
-  &__images {
+  &__image-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
+
+    @include onTablet {
+      width: $wDeskImg;
+    }
+
+    @include onDesktop {
+      width: $wDeskImg;
+    }
+
+    &-masters {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      & :first-child {
+        width: $wDeskLongImg;
+      }
+    }
+
+    &-bodhisattvas {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-disney {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      & :last-child {
+        width: $wDeskLongImg;
+      }
+    }
   }
 
   &__image {
+    display: block;
     object-fit: cover;
-  }
+    object-position: center;
+    width: $wDeskImg;
+    height: $wDeskImg;
 
-  &__images-1 .view-section__image {
-    width: $view-image-x2-width-774;
-    height: $view-image-x2-width-774;
-    @media (min-width: 744px) {
-      width: $view-image-x3-width-774;
-      height: $view-image-x3-width-774;
-      &:first-child {
-        width: $long-image-width-774;
-        height: $view-image-x3-width-774;
-      }
+    @include onTablet {
+      width: $wDeskImg;
+      height: $wDeskImg;
     }
-  }
 
-  &__images-2 .view-section__image {
-    width: $view-image-x3-width-774;
-    height: $view-image-x3-width-774;
-    @media (min-width: 744px) {
-      width: $view-image-x2-width-774;
-      height: $view-image-x2-width-774;
-      &:last-child {
-        display: none;
-      }
-    }
-    @media (min-width: 1024px) {
-      width: $view-image-x3-width-774;
-      height: $view-image-x3-width-774;
-      &:last-child {
-        display: block;
-      }
+    @include onDesktop {
+      width: $wDeskImg;
+      height: $wDeskImg;
+      margin-bottom: 32px;
     }
   }
 
-  &__images-3 .view-section__image {
-    width: $view-image-x2-width-774;
-    height: $view-image-x2-width-774;
-    @media (min-width: 744px) {
-      width: $view-image-x3-width-774;
-      height: $view-image-x3-width-774;
-      &:last-child {
-        width: $long-image-width-774;
-        height: $view-image-x3-width-774;
-      }
-    }
+  &__images {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__button {
@@ -83,13 +88,13 @@ $long-image-width-774: calc((100vw - 2 * 12px) / 3 );
     font-weight: bold;
     font-size: 16px;
     line-height: 56px;
-    width: 100%;
-    max-width: 392px;
     height: 56px;
     text-align: center;
+    text-decoration: none;
     color: #fff;
     background: #d12d35;
     border: none;
     margin: 0 auto;
+    cursor: pointer;
   }
 }
