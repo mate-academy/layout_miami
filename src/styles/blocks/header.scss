@@ -71,6 +71,7 @@ $icon-width: 18px;
 
   &__call {
     text-decoration: none;
+    transition: transform 0.5s;
 
     @include onDesktop {
       &::before {
@@ -94,6 +95,10 @@ $icon-width: 18px;
       &:hover::before {
         pointer-events: all;
         opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }
@@ -123,8 +128,11 @@ $icon-width: 18px;
   background-position: center;
   background-repeat: no-repeat;
 
+  transition: background-image 0.3s;
+
   &--menu {
     background-image: url(../images/menu.svg);
+    
   
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -135,12 +143,12 @@ $icon-width: 18px;
     background-image: url(../images/phone.svg);
   }
 
-  // &--hidden {
-  //   visibility: hidden;
-  // }
-
   &--cross {
     background-image: url(../images/cross.svg);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -149,77 +157,4 @@ $icon-width: 18px;
   grid-template-columns: $icon-width 1fr $icon-width;
   justify-items: center;
   align-items: center;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-}
-
-.menu {
-  background-color: $color-blue;
-
-  &__content {
-    height: 100vh;
-    padding: $header-padding-top 0;
-  }
-
-  &__top {
-    margin-bottom: 48px;
-  }
-
-  &__list {
-    margin: 0 0 48px;
-    padding: 0;
-    list-style: none;
-  }
-
-  &__item {
-    margin-bottom: 24px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__link {
-    display: inline-block;
-    // width: max-content;
-    padding-bottom: 8px;
-    border-bottom: 1px solid transparent;
-
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 22px;
-    color: $color-white;
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: $color-white;
-    }
-  }
-
-  &__call {
-    display: block;
-    width: max-content;
-
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    color: $color-white;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    &--phone {
-      margin-bottom: 16px;
-    }
-
-    &--action {
-      padding-bottom: 8px;
-      border-bottom: 1px solid $color-white;
-
-    }
-  }
 }
