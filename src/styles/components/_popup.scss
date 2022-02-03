@@ -1,37 +1,51 @@
 $popup-color: #d12d35;
 
 .popup {
+  display: none;
+  scroll-behavior: smooth;
   font-family: Cinzel, Arial, sans-serif;
   padding: 25px 20px;
   position: absolute;
   top: 100vw;
   left: 100vw;
+  z-index: 2;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: $popup-color;
   color: #fff;
+  transition: all 0.3s ease-in-out;
+  @include onTablet {
+    padding: 25px 72px;
+  }
+  @include onDesktop {
+    padding: 25px 120px;
+  }
 
   &__header {
+    height: 100px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 40px;
   }
 
   &__logo {
+    @include header-text-shadow;
     font-family: Cinzel, Arial, sans-serif;
+    display: flex;
+    align-items: center;
     width: 90px;
     font-weight: bold;
     font-size: 40px;
     line-height: 40px;
     text-align: center;
     text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
     letter-spacing: -1.5px;
   }
 
   &__close {
-    width: 24px;
-    height: 24px;
     background-image: url(../images/cross.svg);
   }
 
@@ -40,6 +54,7 @@ $popup-color: #d12d35;
   }
 
   &__nav-link {
+    @include header-text-shadow;
     font-family: Cinzel, Arial, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -80,17 +95,19 @@ $popup-color: #d12d35;
     padding-top: 8px;
     padding-bottom: 8px;
   }
-
 }
 
 .popup--active {
   display: block;
+  overflow: hidden;
   transform: translate(-100vw, -100vw);
   transition: all 0.3s ease-in-out;
 }
 
-@media (min-width: 744px) {
-  .popup {
-    padding: 32px 72px;
-  }
+@include onTablet {
+  padding: 25px 72px;
+}
+
+@include onDesktop {
+  padding: 25px 120px;
 }

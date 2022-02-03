@@ -1,6 +1,6 @@
 'use strict';
 
-const menuButton = document.querySelector('.header__menu-icon');
+const menuButton = document.querySelector('.header__menu-opener');
 const closeMenuButton = document.querySelector('.popup__close');
 const menu = document.querySelector('.popup');
 
