@@ -2,9 +2,9 @@
 
 const form = document.querySelector('.form');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (event) => {
   form.reset();
-  e.preventDefault();
+  event.preventDefault();
   window.location.href = '#';
 });
 
