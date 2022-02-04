@@ -6,7 +6,7 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   form.reset();
 
-  window.location.href = 'page';
+  window.location.href = '#';
 });
 
 window.addEventListener('hashchange', () => {
