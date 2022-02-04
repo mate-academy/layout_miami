@@ -2,7 +2,9 @@ $more-image-width: calc(100vw - 2 * 20px);
 $more-width-744: calc(100vw - 2 * 72px - 2 * 80px - 2 * 24px);
 $more-width-1024: calc((100vw - 2 * 80px) / 3);
 
-$wDeskImg: calc(328 / 1024 * (100vw - 240px));
+$wDeskImg: calc((100vw - 240px) * 328 / 1024);
+$wTabletImg: calc((100vw - 144px) * 392 / 600);
+$wMobImg: calc(1 + 0);
 
 .more-section {
 
@@ -14,7 +16,16 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
 
   &__images {
     display: flex;
-    justify-content: space-between;
+
+    @include onTablet {
+      flex-direction: column;
+      align-items: center;
+    }
+    @include onDesktop {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
   }
 
   &__image {
@@ -22,10 +33,9 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
     height: $wDeskImg;
     display: block;
     @include onTablet {
-      width: $wDeskImg;
-      height: $wDeskImg;
+      width: $wTabletImg;
+      height: $wTabletImg;
     }
-
     @include onDesktop {
       width: $wDeskImg;
       height: $wDeskImg;
@@ -35,7 +45,7 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
     &-container {
 
       @include onTablet {
-        width: $wDeskImg;
+        width: $wTabletImg;
       }
 
       @include onDesktop {
@@ -44,7 +54,7 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
     }
 
     &-title {
-      width: $wDeskImg;
+      //width: $wDeskImg;
       margin: 0 auto 4px;
       text-align: center;
       font-weight: bold;
@@ -52,7 +62,7 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
       line-height: 140%;
       color: #d12d35;
       @include onTablet {
-        width: $wDeskImg;
+        width: $wTabletImg;
       }
 
       @include onDesktop {
@@ -61,7 +71,7 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
     }
 
     &-description {
-      width: $wDeskImg;
+      //width: $wDeskImg;
       margin: 0 auto;
       font-family: Roboto, Arial, sans-serif;
       font-style: normal;
@@ -71,7 +81,7 @@ $wDeskImg: calc(328 / 1024 * (100vw - 240px));
       text-align: center;
       color: #161616;
       @include onTablet {
-        width: $wDeskImg;
+        width: $wTabletImg;
       }
 
       @include onDesktop {

@@ -1,5 +1,8 @@
-$wDeskImg: calc(328 / 1024 * (100vw - 240px));
-$wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
+$wDeskImg-4x-1024: calc(328 / 1024 * (100vw - 240px));
+$wDeskImg-8x-1024: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
+$wDeskImg-2x-744: calc((100vw - 144px) * 184 / 600);
+$wDeskImg-3x-744: calc((100vw - 144px) * 288 / 600);
+$wDeskImg-4x-744: calc((100vw - 144px) * 392 / 600);
 
 .view-section {
 
@@ -7,7 +10,6 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
     max-width: 340px;
     text-align: center;
     margin: 0 auto 48px;
-
   }
 
   &__secondary-title {
@@ -21,16 +23,21 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
     }
   }
 
+  &__images {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__image-container {
     display: flex;
     justify-content: space-between;
 
     @include onTablet {
-      width: $wDeskImg;
+      width: $wDeskImg-2x-744;
     }
 
     @include onDesktop {
-      width: $wDeskImg;
+      width: $wDeskImg-4x-1024;
     }
 
     &-masters {
@@ -38,7 +45,12 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
       display: flex;
       justify-content: space-between;
       & :first-child {
-        width: $wDeskLongImg;
+        @include onTablet {
+          width: $wDeskImg-4x-744;
+        }
+        @include onDesktop {
+          width: $wDeskImg-8x-1024;
+        }
       }
     }
 
@@ -46,6 +58,24 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
       width: 100%;
       display: flex;
       justify-content: space-between;
+      @include onTablet {
+        & > img {
+          width: $wDeskImg-3x-744;
+          height: $wDeskImg-3x-744;
+        }
+        & :last-child {
+          display: none;
+        }
+      }
+      @include onDesktop {
+        & > img {
+          width: $wDeskImg-4x-1024;
+          height: $wDeskImg-4x-1024;
+        }
+        & :last-child {
+          display: block;
+        }
+      }
     }
 
     &-disney {
@@ -53,7 +83,17 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
       display: flex;
       justify-content: space-between;
       & :last-child {
-        width: $wDeskLongImg;
+        width: $wDeskImg-4x-744;
+      }
+      @include onTablet {
+        & :last-child {
+          width: $wDeskImg-4x-744;
+        }
+      }
+      @include onDesktop {
+        & :last-child {
+          width: $wDeskImg-8x-1024;
+        }
       }
     }
   }
@@ -62,24 +102,19 @@ $wDeskLongImg: calc((328 / 512 + 24 / 1020) * (100vw - 240px));
     display: block;
     object-fit: cover;
     object-position: center;
-    width: $wDeskImg;
-    height: $wDeskImg;
+    //width: $wDeskImg-4x-1024;
+    //height: $wDeskImg-4x-1024;
 
     @include onTablet {
-      width: $wDeskImg;
-      height: $wDeskImg;
+      width: $wDeskImg-2x-744;
+      height: $wDeskImg-2x-744;
     }
 
     @include onDesktop {
-      width: $wDeskImg;
-      height: $wDeskImg;
+      width: $wDeskImg-4x-1024;
+      height: $wDeskImg-4x-1024;
       margin-bottom: 32px;
     }
-  }
-
-  &__images {
-    display: flex;
-    justify-content: space-between;
   }
 
   &__button {
