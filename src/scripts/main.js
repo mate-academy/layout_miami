@@ -1,11 +1,14 @@
 'use strict';
 
-// const menuButton = document.querySelector('.header__menu-opener');
-// const closeMenuButton = document.querySelector('.popup__close');
-// const menu = document.querySelector('.popup');
-//
-// const showMenu = () => menu.classList.add('popup--active');
-// const hideMenu = () => menu.classList.remove('popup--active');
-//
-// menuButton.addEventListener('click', () => showMenu());
-// closeMenuButton.addEventListener('click', () => hideMenu());
+// $(document).ready(function(){
+//   $("#header").on("click","a", function (event) {
+//     //отменяем стандартную обработку нажатия по ссылке
+//     event.preventDefault();
+//     //забираем идентификатор бока с атрибута href
+//     let id = $(this).attr('href'),
+//     //узнаем высоту от начала страницы до блока на который ссылается якорь
+//     top = $(id).offset().top;
+//     //анимируем переход на расстояние - top за 1500 мс
+//     $('body,html').animate({scrollTop: top}, 1500);
+//   });
+// });
