@@ -4,12 +4,12 @@
   column-gap: 20px;
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(7, auto);
+    grid-template-rows: repeat(10, auto);
     column-gap: 24px;
   }
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(10, auto);
     column-gap: 24px;
   }
 
@@ -29,20 +29,6 @@
 
   &__item {
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
-      }
-    }
-
     @for $start from 1 through 6 {
       @for $end from $start through 6 {
         &--#{$start}-#{$end} {
@@ -57,29 +43,47 @@
       }
     }
 
-    &--tablet-row-1-2 {
-      @include onTablet {
-        grid-row: 1 / 3;
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
       }
     }
 
-    &--tablet-row-3-4 {
-      @include onTablet {
-        grid-row: 3 / 5;
-      }
-    }
-
-    &--tablet-row-5-6 {
-      @include onTablet {
-        grid-row: 5 / 7;
-      }
-    }
-
-    &--tablet-row-3-6 {
-      @include onTablet {
-        grid-row: 3 / 7;
-      }
-    }
+    //@for $start from 1 through 10 {
+    //  @for $end from $start through 10 {
+    //    &--tablet-row-#{$start}-#{$end} {
+    //      grid-row: #{$start} / #{$end + 1};
+    //    }
+    //
+    //    &--tablet-#{$start}-#{$end} {
+    //      @include onTablet {
+    //        grid-row: #{$start} / #{$end + 1};
+    //      }
+    //    }
+    //  }
+    //}
+    //
+    //@for $start from 1 through 10 {
+    //  @for $end from $start through 10 {
+    //    &--desktop-row-#{$start}-#{$end} {
+    //      grid-row: #{$start} / #{$end + 1};
+    //    }
+    //
+    //    &--desktop-#{$start}-#{$end} {
+    //      @include onDesktop {
+    //        grid-row: #{$start} / #{$end + 1};
+    //      }
+    //    }
+    //  }
+    //}
 
   }
 }
