@@ -1,7 +1,7 @@
 @import "utils";
+@import "utils/normalize.scss";
 @import "utils/grid.scss";
 @import "utils/vars.scss";
-@import "utils/normalize.scss";
 @import "fonts";
 @import "typography";
 @import url("https://rsms.me/inter/inter.css");
@@ -11,76 +11,83 @@
 }
 
 .headmenu {
-  display: none;
+  transform: translateX(-100%);
+  padding: 40px 20px 94px;
+  margin: 0;
+  height: 100vh;
+  background-color: #b5e0f1;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  &__linkbar {
+    margin-top: 55px;
+  }
+
+  &__link {
+    width: max-content;
+    font-weight: bold;
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    margin-bottom: 32px;
+
+    color: #292929;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: black;
+    }
+  }
+
+  &__contacts {
+    // font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+
+  &__call {
+    color: #292929;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #000;
+    width: max-content;
+  }
 }
-
-// .headmenu {
-//   padding: 40px 20px 94px;
-//   margin: 0;
-//   height: 100vh;
-//   background-color: #B5E0F1;
-//   box-sizing: border-box;
-//   transform: translateX(-0%);
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-
-//   &__nav {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-direction: row;
-//   }
-
-//   &__linkbar {
-//     margin-top: 55px;
-//   }
-
-//   &__link {
-//     width: max-content;
-//     font-weight: bold;
-//     font-size: 22px;
-
-//     display: flex;
-//     align-items: center;
-//     letter-spacing: 2px;
-//     text-transform: uppercase;
-//     text-decoration: none;
-
-//     margin-bottom: 32px;
-
-//     color: #292929;
-//     padding-bottom: 8px;
-//     border-bottom: 1px solid transparent;
-
-//     transition: border-color 0.3s;
-
-//     &:hover {
-//       border-color: black;
-//     }
-//   }
-
-//   &__contacts {
-//     font-family: Inter;
-//     font-size: 16px;
-//     font-weight: 700;
-//     line-height: 27px;
-//     text-transform: uppercase;
-//   }
-
-//   &__call {
-//     color: #292929;
-//     padding-bottom: 8px;
-//     border-bottom: 1px solid #000;
-//     width: max-content;
-//   }
-// }
 
 .menu-opener:hover {
   .headmenu {
     transform: translateX(0);
   }
 }
+
+.menu-closer:target {
+  .headmenu {
+    transform: translateX(-100%);
+  }
+}
+
 /*#region header*/
 .header {
   height: 100vh;
@@ -204,6 +211,12 @@
 }
 
 /*#region browse*/
+
+.browe__image {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
 
 .headphones-1 {
   background-image: url(/images/browse-headphones-1.jpg);
