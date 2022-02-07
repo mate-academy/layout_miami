@@ -1,0 +1,59 @@
+.icon {
+  width: 100%;
+  padding-top: 100%;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+  transition: $transition-limit;
+
+  &--burger {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    &_disable {
+      background-image: url(../images/cross.svg);
+    }
+  }
+
+  &--tel {
+    background-image: url(../images/phone.svg);
+
+    @include onDesctop() {
+      text-decoration: none;
+      position: relative;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 0;
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-size: 1px;
+
+        transition: $transition-limit;
+        transform: translateX(-50%);
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before {
+          font-size: 12px;
+
+          transform: translateX(-100%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
