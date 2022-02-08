@@ -1,40 +1,57 @@
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(10, auto);
   column-gap: 20px;
+
   @include onTablet {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(10, auto);
     column-gap: 24px;
   }
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+
+  @include onLaptop {
+    grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, auto);
     column-gap: 24px;
   }
 
   &--tablet {
-    display: block;
     @include onTablet {
       display: grid;
     }
   }
 
-  &--desktop {
-    display: block;
-    @include onDesktop {
+  &--laptop {
+    @include onLaptop {
       display: grid;
     }
   }
 
   &__item {
 
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+      }
+    }
 
+    @for $start from 1 through 8 {
+      @for $end from $start through 8 {
         &--tablet-#{$start}-#{$end} {
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};
@@ -43,47 +60,43 @@
       }
     }
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--laptop-#{$start}-#{$end} {
+          @include onLaptop {
             grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    //@for $start from 1 through 10 {
-    //  @for $end from $start through 10 {
-    //    &--tablet-row-#{$start}-#{$end} {
-    //      grid-row: #{$start} / #{$end + 1};
-    //    }
-    //
-    //    &--tablet-#{$start}-#{$end} {
-    //      @include onTablet {
-    //        grid-row: #{$start} / #{$end + 1};
-    //      }
-    //    }
-    //  }
-    //}
-    //
-    //@for $start from 1 through 10 {
-    //  @for $end from $start through 10 {
-    //    &--desktop-row-#{$start}-#{$end} {
-    //      grid-row: #{$start} / #{$end + 1};
-    //    }
-    //
-    //    &--desktop-#{$start}-#{$end} {
-    //      @include onDesktop {
-    //        grid-row: #{$start} / #{$end + 1};
-    //      }
-    //    }
-    //  }
-    //}
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--row-#{$start}-#{$end} {
+          grid-row: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--tablet-row-#{$start}-#{$end} {
+          @include onTablet {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--laptop-row-#{$start}-#{$end} {
+          @include onLaptop {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
 
   }
 }
