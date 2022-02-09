@@ -8,11 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector('.form-field');
+const form = document.querySelector('.form-fields');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   form.reset();
-
-  window.location.href = '#';
 });
