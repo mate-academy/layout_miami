@@ -1,0 +1,66 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.icon {
+
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  &--phone {
+    background: url(../images/phone.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-decoration: none;
+
+    @include bigSize {
+
+      &::before {
+        display: block;
+        content: "+1 234 555-55-55";
+        color: #292929;
+        font-size: 12px;
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        width: max-content;
+        padding-right: 12px;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        transition: 0.2s linear;
+        pointer-events: none;
+      }
+  
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu {
+    background: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    grid-column: 4 / 5;
+    background-size: contain;
+    transform: rotateZ(180deg);
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background: url(../images/menu_hover.svg);
+      background-repeat: no-repeat;
+    }
+  }
+
+  &--cross {
+    background: url(../images/cross.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.2s ease-in-out;
+  }
+}
