@@ -8,5 +8,5 @@ You have several designs that are very similar to Miami. Choose the most interes
 - [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
 
 Implement selected landing page following the lesson videos.
-
+[DEMO LINK](https://<oleg-zolkiewskyi>.github.io/layout_miami/)
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
