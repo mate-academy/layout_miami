@@ -1,0 +1,88 @@
+// $headerTopPadding: 40px;
+
+.header {
+  background-image: url(../images/main.png);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 120px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative; //to center element
+        top: 80%;
+        transform: translate(-100%, -50%);
+
+        color: #292929;
+        width: max-content;
+        display: block;
+        opacity: 0;
+
+        padding-right: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__icon {
+    height: 27px;
+    margin-bottom: 16px;
+
+    @include oniPad {
+      display: none;
+    }
+  }
+
+  &__icon2 {
+    display: none;
+
+    @include oniPad {
+      display: block;
+      height: 64px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include oniPad {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+}
