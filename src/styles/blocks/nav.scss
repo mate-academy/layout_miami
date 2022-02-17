@@ -1,0 +1,95 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 18px);
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+
+  @include onLaptop {
+    gap: 40px;
+  }
+
+  &__logo {
+    display: block;
+    width: 130px;
+    height: 18px;
+    background-image: url(../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onLaptop {
+      width: 190px;
+      height: 24px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    @include onLaptop {
+      width: 24px;
+      height: 24px;
+    }
+
+    &--phone {
+      background-image: url(../images/phone.svg);
+      margin-right: 30px;
+      text-decoration: none;
+
+      @include onLaptop {
+        &:hover::before {
+          content: "+1 234 555-55-55";
+          display: block;
+          color: $text-color;
+          width: max-content;
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          padding-right: 12px;
+          font-family: "Inter", sans-serif;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &--menu {
+      background-image: url(../images/menu.svg);
+      transition: background-image 0.3s;
+
+      @include onLaptop {
+        height: 24px;
+      }
+
+      &:hover {
+        background-image: url(../images/menu_hover-320px.png);
+
+        @include onLaptop {
+          height: 24px;
+          background-image: url(../images/menu_hover.png);
+        }
+      }
+    }
+
+    &--cross {
+      background-image: url(../images/cross.svg);
+    }
+  }
+
+  &--menu {
+    grid-template-columns: 1fr 18px;
+  }
+}
