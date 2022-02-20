@@ -3,13 +3,18 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 
-  &--three-colls {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   @include onLaptop() {
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
+  }
+
+  &--three-colls {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include onLaptop() {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
   }
 
   &--laptop {
@@ -38,6 +43,15 @@
         &--laptop-#{$start}-#{$end} {
           @include onLaptop() {
             grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop() {
+            grid-column: #{$start} / #{$end + 1} !important;
+            /* единтственное решение !important,
+            с которым работает @include onDesktop() */
+
           }
         }
       }
