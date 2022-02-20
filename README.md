@@ -4,7 +4,14 @@
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Using BEM methodologhy.
+
+Adaptive layout with resolutions:
+
+*   High resolution - 2500px
+*   Desktop - 1260px
+*   Tablets - 744px
+*   Phones - 320px
 
 ## Local development
 
