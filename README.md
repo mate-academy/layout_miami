@@ -1,6 +1,5 @@
 # The MET landing page
 
-Write here about your project in two-three sentences.
 - [DEMO Link](https://mariiishka.github.io/layout_met/)
 
 ## Description
@@ -22,5 +21,5 @@ An in-depth paragraph about your project and overview of use.
 ## Troubleshooting
 
 Any advise for common problems or issues.
-For any contributing or problem solving you could find me [here]() and [here]()
+For any contributing or problem solving you could find me [here](https://t.me/maryberr)
 
