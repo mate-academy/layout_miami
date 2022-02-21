@@ -2,4 +2,57 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &__right-part {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onLaptop {
+      width: 140px;
+    }
+  }
+
+  &__call-links {
+    @include hover(opacity, 1);
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    width: 240px;
+    position: absolute;
+    transform: translate(-120px, 5px);
+    padding-right: 20px;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+
+  &__call-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    @include hover(color, rgb(207, 199, 199));
+
+    &:hover {
+      color: rgb(207, 199, 199);
+    }
+  }
+
+  &__header-call {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include onDesktop {
+      &:hover > .top-actions__call-links {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
 }
