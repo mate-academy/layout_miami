@@ -1,0 +1,70 @@
+.icons {
+  display: flex;
+  align-items: center;
+
+  &__call-number {
+    padding-right: 8px;
+    opacity: 0;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: $c-dark-grey-text;
+    transition: transform 500ms ease-in;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: block;
+    @include icon-size(24px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include hover(transform, scale(1.08));
+
+    @include onTablet {
+      @include icon-size(32px);
+    }
+
+    &--phone {
+      background-image: url(../images/icons/Icon-Phone-call.svg);
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+        opacity: 0;
+        color: $c-dark-grey-text;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        pointer-events: none;
+        transition: opacity 300ms ease;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+    &--menu {
+      margin-left: 24px;
+      background-image: url(../images/icons/Icon-Burger-menu.svg);
+      @include hover(
+        background-image,
+        url(../images/icons/Icon-Burger-menu-hover.svg)
+      );
+
+      @include onTablet {
+        margin-left: 32px;
+      }
+    }
+
+    &--close {
+      background-image: url(../images/icons/Icon-Close.svg);
+    }
+  }
+}
