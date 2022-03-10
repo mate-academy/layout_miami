@@ -10,7 +10,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// disable reloding when submit form
+// disable reloading when submit form
 
 const form = document.getElementById('form');
 
