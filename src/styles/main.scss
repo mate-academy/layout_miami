@@ -1,147 +1,15 @@
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
 
-.page {
-  font-family: "Roboto", sans-serif;
+@import "./utils/variables";
+@import "./utils/mixins";
 
-  &__body {
-    margin: 0;
-  }
-}
-
-.logo {
-  &__img {
-    height: 48px;
-
-    @include onDesktop {
-      height: 80px;
-    }
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 20px;
-
-  @include onDesktop {
-    padding: 0 40px;
-  }
-}
-
-.icon {
-  display: block;
-  width: 100%;
-  padding-bottom: 100%;
-
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &--menu {
-    background-size: contain;
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
-  &--phone {
-    background-image: url(../images/phone.svg);
-  }
-
-  &--cross {
-    background-image: url(../images/cross.svg);
-  }
-}
-
-.top-actions {
-  --icon-width: 18px;
-
-  display: grid;
-  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
-  justify-items: center;
-  align-items: center;
-
-  @include onDesktop {
-    --icon-width: 24px;
-  }
-}
-
-.header {
-  background-size: cover;
-  background-position: center;
-  background-image: url(../images/header.jpg);
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    height: 100vh;
-    padding: 24px 0 80px;
-  }
-
-  &__call {
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555 55 55";
-        position: relative;
-        transform: translate(-100%, 75%);
-
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-
-        color: #fff;
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-
-        transition: all 0.2s;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
-
-  &__title {
-    font-weight: 700;
-    font-size: 46px;
-    line-height: 40px;
-    color: #fff;
-    letter-spacing: -1px;
-
-    @include onDesktop {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      width: 40px;
-      height: 2px;
-      background-color: #fff;
-      margin-bottom: 24px;
-    }
-  }
-}
+@import "./blocks/page.scss";
+@import "./blocks/container.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/icon.scss";
+@import "./blocks/top-action.scss";
+@import "./blocks/header.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/footer.scss";
