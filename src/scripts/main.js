@@ -7,3 +7,12 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+function stopDefAction(event) {
+  document.getElementById('consultationForm').reset();
+  event.preventDefault();
+}
+
+document.getElementById('consultationForm').addEventListener(
+  'submit', stopDefAction, false
+);
