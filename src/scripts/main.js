@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    form.reset();
 
     return false;
   });
