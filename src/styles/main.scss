@@ -31,35 +31,92 @@
   background-size: cover;
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr;
+    grid-template-areas:
+      "Header"
+      "Title";
+    align-items: start;
+
     height: 100vh;
-    padding: 29px 0 88px;
+    padding: 29px 0 115px;
+
+    @include onTablet {
+      padding: 36px 0 105px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 100px;
+    }
   }
 
   &__nav {
-    display: flex;
-    justify-content: space-between;
+    grid-area: Header;
+    display: grid;
+    grid-template-columns: 1fr 18px 18px;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "Logo Phone Menu";
+    gap: 30px;
     align-items: center;
+
+    @include onTablet {
+      grid-template-columns: 1fr 24px 24px;
+      gap: 40px;
+    }
   }
 
   &__call-phone {
-    width: 18px;
+    grid-area: Phone;
     height: 18px;
-    background-image: url(../images/icon/Phone.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    @include background-icon("../images/icon/Phone.svg");
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-family: 'Poppins';
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet {
+      height: 24px;
+    }
   }
 
   &__menu-open {
-    width: 18px;
+    grid-area: Menu;
     height: 12px;
-    background-image: url(../images/icon/Menu--Open.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    transition: background-image 0.3s;
+    @include background-icon("../images/icon/Menu--Open.svg");
+
+    @include onTablet {
+      height: 16px;
+    }
 
     &:hover {
       background-image: url(../images/icon/Menu--Hover.svg);
@@ -67,20 +124,39 @@
   }
 
   &__title {
+    grid-area: Title;
+    margin: 0;
     text-align: center;
-    font-family: 'Poppins';
+
+    font-family: "Poppins", sans-serif;
     font-size: 36px;
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #292929;
-    margin: 16px 0;
+
+    @include onTablet {
+      font-size: 64px;
+      color: #1d1d1d;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
 }
 
 .logo {
+  grid-area: Logo;
+  cursor: auto;
+
   &__image {
     display: block;
     height: 38px;
+    cursor: pointer;
+
+    @include onTablet {
+      height: 56px;
+    }
   }
 }
