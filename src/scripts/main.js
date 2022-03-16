@@ -12,9 +12,11 @@ window.addEventListener('hashchange', () => {
 
 // disable reloading when submit form
 
-const form = document.getElementById('form');
-
-function handleForm(event) {
+function stopDefAction(event) {
+  document.getElementById('form').reset();
   event.preventDefault();
 }
-form.addEventListener('submit', handleForm);
+
+document.getElementById('form').addEventListener(
+  'submit', stopDefAction, false
+);
