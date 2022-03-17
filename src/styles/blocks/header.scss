@@ -1,0 +1,90 @@
+.header {
+  background-image: url(../images/background/Header_BG_Desktop.jpg);
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr;
+    grid-template-areas: "Header"
+      "Title";
+    align-items: start;
+
+    height: 100vh;
+    padding-top: $header-top-padding;
+    padding-bottom: $header-bottom-padding;
+
+    @include onTablet {
+      padding-top: calc(#{$header-top-padding + 7});
+      padding-bottom: calc(#{$header-bottom-padding + 42});
+    }
+
+    @include onDesktop {
+      padding-bottom: calc(#{$header-bottom-padding + 34});
+    }
+  }
+
+  &__call-phone {
+    grid-area: Phone;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        height: 0;
+        padding-right: 12px;
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-open {
+    grid-area: Menu;
+    transition: background-image 0.3s;
+  }
+
+  &__title {
+    grid-area: Title;
+    margin: 0;
+    text-align: center;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onTablet {
+      font-size: 64px;
+      color: #1d1d1d;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
