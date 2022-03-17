@@ -25,6 +25,70 @@
 }
 
 // ----- Header -----
+.logo {
+  grid-area: Logo;
+  cursor: auto;
+
+  &__image {
+    display: block;
+    height: 38px;
+    cursor: pointer;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  &--phone {
+    @include background-icon("../images/icon/Phone.svg");
+  }
+
+  &--menu-open {
+    padding-bottom: calc(100% - 33.3%);
+    @include background-icon("../images/icon/Menu--Open.svg");
+
+    &:hover {
+      background-image: url(../images/icon/Menu--Hover.svg);
+    }
+  }
+
+  &--menu-close {
+    @include background-icon("../images/icon/Menu--Close.svg");
+  }
+}
+
+.top-actions {
+  grid-area: Header;
+  display: grid;
+  grid-template-columns: 1fr $icon-width $icon-width;
+  grid-template-rows: 1fr;
+  grid-template-areas: "Logo Phone Menu";
+  gap: 30px;
+  align-items: center;
+
+  @include onTablet {
+    grid-template-columns: 1fr
+      calc(#{$icon-width + 6})
+      calc(#{$icon-width + 6});
+    gap: 40px;
+  }
+
+  &--menu-close {
+    grid-template-columns: 1fr $icon-width;
+    grid-template-areas: "Logo Phone";
+
+    @include onTablet {
+      grid-template-columns: 1fr calc(#{$icon-width + 6});
+    }
+  }
+}
+
 .header {
   background-image: url(../images/background/Header_BG_Desktop.jpg);
   background-position: center;
@@ -34,43 +98,26 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr;
-    grid-template-areas:
-      "Header"
+    grid-template-areas: "Header"
       "Title";
     align-items: start;
 
     height: 100vh;
-    padding: 29px 0 115px;
+    padding-top: $header-top-padding;
+    padding-bottom: $header-bottom-padding;
 
     @include onTablet {
-      padding: 36px 0 105px;
+      padding-top: calc(#{$header-top-padding + 7});
+      padding-bottom: calc(#{$header-bottom-padding + 42});
     }
 
     @include onDesktop {
-      padding-bottom: 100px;
-    }
-  }
-
-  &__nav {
-    grid-area: Header;
-    display: grid;
-    grid-template-columns: 1fr 18px 18px;
-    grid-template-rows: 1fr;
-    grid-template-areas:
-      "Logo Phone Menu";
-    gap: 30px;
-    align-items: center;
-
-    @include onTablet {
-      grid-template-columns: 1fr 24px 24px;
-      gap: 40px;
+      padding-bottom: calc(#{$header-bottom-padding + 34});
     }
   }
 
   &__call-phone {
     grid-area: Phone;
-    height: 18px;
-    @include background-icon("../images/icon/Phone.svg");
     text-decoration: none;
 
     @include onDesktop {
@@ -83,9 +130,10 @@
 
         display: block;
         width: max-content;
+        height: 0;
         padding-right: 12px;
 
-        font-family: 'Poppins';
+        font-family: "Poppins", sans-serif;
         font-weight: 700;
         font-size: 12px;
         letter-spacing: 2px;
@@ -102,25 +150,11 @@
         pointer-events: all;
       }
     }
-
-    @include onTablet {
-      height: 24px;
-    }
   }
 
   &__menu-open {
     grid-area: Menu;
-    height: 12px;
     transition: background-image 0.3s;
-    @include background-icon("../images/icon/Menu--Open.svg");
-
-    @include onTablet {
-      height: 16px;
-    }
-
-    &:hover {
-      background-image: url(../images/icon/Menu--Hover.svg);
-    }
   }
 
   &__title {
@@ -145,18 +179,15 @@
     }
   }
 }
+// ----- Header END -----
 
-.logo {
-  grid-area: Logo;
-  cursor: auto;
+// ----- Navigation Menu -----
+.menu {
+  background-color: $color-grey;
 
-  &__image {
-    display: block;
-    height: 38px;
-    cursor: pointer;
-
-    @include onTablet {
-      height: 56px;
-    }
+  &__content {
+    height: 100vh;
+    padding: $header-top-padding 0;
   }
 }
+// ----- Navigation Menu END -----
