@@ -1,7 +1,139 @@
 @import "utils";
-@import "fonts";
 @import "typography";
+@import "_fonts";
+@mixin OnDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include OnDesktop {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.svg);
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 28px 20px 100px;
+
+    @include OnDesktop {
+      padding: 36px 0 160px;
+    }
+  }
+
+  &__menu-opener {
+    height: 12px;
+    width: 18px;
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include OnDesktop {
+      height: 16px;
+      width: 24px;
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    height: 18px;
+    width: 18px;
+
+    background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    text-decoration: none;
+
+    @include OnDesktop {
+      height: 24px;
+      width: 24px;
+      margin-right: 40px;
+
+      &::before {
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        content: "+1 234 555-55-55";
+        opacity: 0;
+
+        color: #292929;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include OnDesktop {
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.logo {
+  height: 40px;
+
+  @include OnDesktop {
+    height: 56px;
+  }
 }
