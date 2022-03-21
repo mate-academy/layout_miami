@@ -2,6 +2,205 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@import "./blocks/mixins.scss";
+
+.page {
+  font-family: "Inter", sans-serif;
+
+  &__body {
+    margin: 0;
+
+    background: $c-gray;
+  }
+}
+
+header,
+.header__title::before,
+.icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/header_320px.jpg);
+
+  @include tablet {
+    background-image: url(../images/header_744px.jpg);
+  }
+
+  @include desktop {
+    background-image: url(../images/header_1260px.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    height: 100vh;
+
+    padding: 40px 0 94px;
+
+    @include tablet {
+      padding: 52px 0 40px;
+    }
+
+    @include desktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: $h1-font-size;
+    font-style: italic;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    margin: 0;
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+
+      width: $sound-wave-width;
+      height: $sound-wave-height;
+
+      background-image: url(../images/soud-wave-320px.svg);
+
+      margin-bottom: 16px;
+
+      @include tablet {
+        background-image: url(../images/sound_waves.svg);
+
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 40px;
+      }
+
+    }
+  }
+
+  &__nav {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    display: block;
+
+    width: $menu-opener-width;
+    height: $menu-opener-height;
+
+    margin-left: $menu-opener-margin-left;
+
+    background-image: url(../images/menu.svg);
+    background-color: transparent;
+
+    border: none;
+
+    @include tablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__call {
+    height: $phone-size;
+    width: $phone-size;
+
+    display: block;
+
+    background-image: url(../images/call.svg);
+
+    text-decoration: none;
+
+    @include tablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        opacity: 0;
+
+        color: rgba(41, 41, 41, 1);
+
+        width: max-content;
+
+        display: block;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        padding-right: 12px;
+
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: $logo-height;
+    width: $logo-width;
+
+    @include tablet {
+      width: 190px;
+      height: 24px;
+    }
+
+    @include desktop {
+      width: 190px;
+      height: 24px;
+    }
+  }
 }
