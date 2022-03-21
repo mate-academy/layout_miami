@@ -1,0 +1,52 @@
+.top-actions {
+  --icon-width: #{$icon-width};
+
+  display: grid;
+  grid-template-columns: 1fr repeat(2, var(--icon-width));
+  align-items: center;
+  gap: 25px;
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width);
+
+    margin-bottom: 54px;
+  }
+
+  @include onTablet() {
+    --icon-width: #{$icon-width-onTablet};
+  }
+
+  &__call {
+    position: relative;
+
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-text;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
