@@ -1,0 +1,66 @@
+.header {
+  background: center / cover no-repeat url(../images/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
+  &__title {
+    font-style: normal;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+
+        transform: translate(-100%, -50%);
+        pointer-events: none;
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        color: #fff;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        opacity: 0;
+
+        transition: opacity 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
