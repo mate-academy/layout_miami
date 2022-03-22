@@ -1,12 +1,24 @@
 .people {
 
-  &__size {
-    height: 100px;
+  &__photos {
+    margin-bottom: 16px;
   }
 
-  &__photo {
-    height: 100px;
-    width: 100px;
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    ::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+      @include middleScreen {
+        padding-bottom: 0;
+      }
+    }
 
     @include middleScreen {
       height: 187px;
@@ -17,8 +29,14 @@
     }
   }
 
-  &__discripshin {
-    margin-top: 16px;
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__discription {
+    margin-bottom: 64px;
     text-align: start;
   }
 }

@@ -63,6 +63,23 @@
     font-size: 16px;
     line-height: 140%;
 
+    &--tablet::after {
+      content: "speaker II";
+      visibility: hidden;
+
+      @include middleScreen {
+        visibility: visible;
+      }
+    }
+
+    &--mobile {
+      visibility: visible;
+
+      @include middleScreen {
+        display: none;
+      }
+    }
+
     &--page-3 {
       margin-top: 16px;
 
@@ -87,8 +104,6 @@
   }
 
   &__button {
-    margin-top: 40px;
-    width: 280px;
     height: 56px;
 
     display: flex;
@@ -105,6 +120,14 @@
 
     color: #fff;
 
+    &--form {
+      margin-bottom: 48px;
+
+      @include middleScreen {
+        margin-bottom: 0;
+      }
+    }
+
     &:hover {
       background-color: $main-background-color;
       color: $basic-color-of-font;
@@ -117,18 +140,15 @@
     }
   }
 
-  &__contact {
-    display: grid;
-    grid-template-columns: 280px;
-  }
-
   &__form {
     display: flex;
     flex-direction: column;
   }
 
   &__form-field {
+    margin-bottom: 16px;
     padding-left: 16px;
+    width: 100%;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -158,50 +178,40 @@
 
     &--frame {
       border-radius: 40px;
-    }
-
-    &--name {
-      margin-top: 48px;
-      height: 48px;
-    }
-
-    &--email {
-      margin-top: 16px;
       height: 48px;
     }
 
     &--message {
-      margin-top: 16px;
+      margin-bottom: 32px;
       padding-top: 13px;
     }
   }
 
   &__contact-title {
+    margin-bottom: 8px;
+
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
 
     color: #9fadc2;
-
-    &--1 {
-      margin-top: 40px;
-    }
-
-    &--2-3 {
-      margin-top: 24px;
-    }
   }
 
   &__contact-text {
-    margin-top: 8px;
+    margin-bottom: 24px;
+    display: block;
 
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     color: #3e3e3e;
 
-    &--3 {
-      margin-bottom: 120px;
+    &:last-child {
+      margin-bottom: 0;
     }
+  }
+
+  &__contact-link {
+    text-decoration: none;
   }
 }
