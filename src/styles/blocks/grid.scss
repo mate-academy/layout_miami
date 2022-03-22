@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include tablet() {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include desktop() {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include tablet() {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--1-4 {
+      grid-column: 1 / 5;
+    }
+
+    &--5-9 {
+      grid-column: 5 / 10;
+    }
+
+    &--10-13 {
+      grid-column: 10 / 13;
+    }
+  }
+}
