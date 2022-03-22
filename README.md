@@ -7,5 +7,5 @@
 - HTML5
 - SCSS
 - JavaScript
-- BEM-methodology
 - Figma
+- BEM-methodology
