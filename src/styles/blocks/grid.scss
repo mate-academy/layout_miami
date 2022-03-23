@@ -3,9 +3,17 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  &-view--mob {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
+
+    &-view--tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @include onDesktop {
@@ -20,10 +28,18 @@
     }
   }
 
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
   &__item {
     @include onTablet {
-      @for $start from 1 to 7 {
-        @for $end from $start to 7 {
+      @for $start from 1 to 6 {
+        @for $end from $start to 6 {
           &-tablet--#{$start}-#{$end} {
             grid-column: #{$start} / #{$end+1};
           }
@@ -32,10 +48,10 @@
     }
 
     @include onDesktop {
-      @for $start from 1 to 12 {
-        @for $end from $start to 12 {
-          &--#{$start}-#{$end} {
-            grid-column: #{$start} / #{$end + 1};
+      @for $start from 1 to 13 {
+        @for $end from $start to 13 {
+          &-desktop--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
           }
         }
       }
