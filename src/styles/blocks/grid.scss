@@ -10,7 +10,7 @@
 
   @include desktop() {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
+    column-gap: 20px;
   }
 
   &--desktop {
@@ -19,19 +19,36 @@
     @include tablet() {
       display: grid;
     }
+
+    @include desktop() {
+      display: grid;
+    }
   }
 
   &__item {
-    &--1-4 {
-      grid-column: 1 / 5;
-    }
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: #292929;
 
-    &--5-9 {
-      grid-column: 5 / 10;
-    }
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
 
-    &--10-13 {
-      grid-column: 10 / 13;
+        &--tablet-#{$start}-#{$end} {
+          @include tablet() {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include desktop() {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
   }
 }
