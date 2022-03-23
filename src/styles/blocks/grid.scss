@@ -3,12 +3,12 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  @include tablet() {
+  @include tablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
-  @include desktop() {
+  @include desktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 20px;
   }
@@ -19,10 +19,6 @@
     @include tablet() {
       display: grid;
     }
-
-    @include desktop() {
-      display: grid;
-    }
   }
 
   &__item {
@@ -31,21 +27,25 @@
     line-height: 27px;
     color: #292929;
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--tablet-#{$start}-#{$end} {
-          @include tablet() {
-            grid-column: #{$start} / #{$end + 1};
+    &-tablet {
+      @include tablet() {
+        @for $start from 1 through 12 {
+          @for $end from $start through 12 {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
+      }
+    }
 
-        &--desktop-#{$start}-#{$end} {
-          @include desktop() {
-            grid-column: #{$start} / #{$end + 1};
+    &-desktop {
+      @include desktop() {
+        @for $start from 1 through 12 {
+          @for $end from $start through 12 {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
       }
