@@ -1,13 +1,24 @@
 .product {
   transition: transform 0.3s;
+  @include onMedium {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    column-gap: 20px;
+  }
+
+  @include onDesktop {
+    display: block;
+  }
+
   &__photo-container {
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    column-gap: 20px;
+    column-gap: 24px;
 
     @include onMedium {
-      display: block;
-      text-align: center;
+      // display: block;
+      // text-align: center;
+      grid-column: 3 / 6;
     }
   }
 
@@ -29,6 +40,12 @@
     line-height: 140%;
     margin: 0 0 8px;
     color: #292929;
+
+    @include onMedium {
+      // display: block;
+      // text-align: center;
+      grid-column: 3 / 6;
+    }
   }
 
   &__role {
@@ -37,6 +54,12 @@
     line-height: 140%;
     margin: 0 0 12px;
     color: #292929;
+
+    @include onMedium {
+      // display: block;
+      // text-align: center;
+      grid-column: 3 / 5;
+    }
   }
 
   &__price {
@@ -45,9 +68,19 @@
     line-height: 140%;
 
     color: #292929;
+
+    @include onMedium {
+      // display: block;
+      // text-align: center;
+      grid-column: 3 / 5;
+    }
   }
 
   &:hover {
     transform: scale(1.2);
+  }
+
+  &__link {
+    text-decoration: none;
   }
 }
