@@ -1,5 +1,6 @@
 @import "./utils";
 @import "./normalize.scss";
+@import "./utils/mixins";
 
 * {
   box-sizing: border-box;
@@ -82,11 +83,8 @@
       font-weight: 700;
       color: #000;
       text-transform: uppercase;
-      transition: 0.25s;
 
-      &:hover {
-        color: #292929;
-      }
+      @include hover(color, #292929);
 
       &:hover::after {
         position: absolute;
@@ -140,7 +138,6 @@
     width: 18px;
     height: 18px;
   }
-
   &:hover::before {
     position: absolute;
     content: "+125-555-555-555";
@@ -160,9 +157,7 @@
     width: 18px;
     height: 12px;
     transition: 0.3s;
-    &:hover {
-      background-image: url(../images/menu-hover.png);
-    }
+    @include hover(background-image, url(../images/menu-hover.png));
 
     &--1 {
       background-image: url(../images/menu-click.png);
@@ -348,12 +343,7 @@
       font-weight: 700;
       font-family: Poppins, sans-serif;
       border-radius: 40px;
-      transition: 0.3s;
-
-      &:hover {
-        box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
-        cursor: pointer;
-      }
+      @include hover(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.4));
     }
   }
 }
@@ -363,3 +353,120 @@
   width: 130px;
   height: 130px;
 }
+
+.page__body--with-menu {
+  overflow: hidden;
+}
+
+.contact {
+  text-align: center;
+
+  &__container {
+    display: flex;
+    gap: 48px;
+    flex-direction: column;
+    padding-bottom: 120px;
+
+    @media (min-width: 744px) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-self: center;
+
+    &_part {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &_name {
+      align-self: start;
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    &_description {
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      text-align: left;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 32px;
+    color: #fff;
+    padding-bottom: 32px;
+  }
+
+  &__item {
+    background-color: #f8f8fa;
+    width: 278px;
+    height: 48px;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 40px;
+
+    &--big {
+      height: 148px;
+      border-radius: 16px;
+    }
+
+    @media (min-width: 1260px) {
+      width: 411px;
+    }
+  }
+
+  &__btn {
+    width: 280px;
+    height: 56px;
+    border-radius: 40px;
+    margin-top: 16px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #fff;
+    color: #000;
+    @include hover(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.4));
+    @media (min-width: 1260px) {
+      width: 411px;
+    }
+  }
+
+}
+
+.last__image {
+  height: 200px;
+  background-image: url(../images/lastimg2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @media (min-width: 744px) and (max-width: 1260px) {
+    height: 480px;
+  }
+
+  @media (min-width: 1260px) {
+    height: 555px;
+  }
+}
+
+@include screenImg(392, 187, 184, 187, 392, 120, 744, 1260);
+@include screenImgOut(672, 320, 324, 320, 324, 180, 1260);
