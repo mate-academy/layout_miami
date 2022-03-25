@@ -25,16 +25,27 @@
 }
 
 .product {
-  &__photo-container {
+  @include onTablet {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 20px;
+  }
+
+  @include onDesktop {
+    display: block;
+  }
+
+  &__photo-container {
+    margin: 0 auto;
+    text-align: center;
 
     transition: transform 0.5s;
 
     @include onTablet {
-      display: block;
-      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+      grid-column: 2 / 6;
     }
 
     &:hover {
@@ -66,6 +77,10 @@
     color: #292929;
 
     margin: 0 0 8px;
+
+    @include onTablet {
+      grid-column: 3 / 5;
+    }
   }
 
   &__description {
@@ -75,6 +90,10 @@
     color: #292929;
 
     margin: 0 0 12px;
+
+    @include onTablet {
+      grid-column: 3 / 5;
+    }
   }
 
   &__cost {
@@ -83,5 +102,9 @@
     line-height: 140%;
     color: #292929;
     margin: 0;
+
+    @include onTablet {
+      grid-column: 3 / 5;
+    }
   }
 }
