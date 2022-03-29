@@ -122,10 +122,16 @@
 .parag {
   font-weight: 700;
   font-style: normal;
-  font-size: 36px;
+  font-size: $screen_width / (8.89 * 2);
   color: #292929;
   align-self: center;
-  margin-bottom: 88px;
+  margin-bottom: $screen_height / 6.22;
+  @media (min-width: 1260px) {
+    font-size: $screen_width / (8.89 * 2);
+  }
+  @media (min-width: 320px) and (max-width: 450px) {
+    margin-bottom: $screen_height / 5.8;
+  }
 }
 
 .logo {
@@ -157,6 +163,8 @@
     font-size: 12px;
     color: black;
     font-weight: 700;
+    animation-name: example;
+    animation-duration: 0.4s;
     transform: translateX(-105%);
   }
 }
@@ -201,7 +209,8 @@
     @media (min-width: 1260px) {
       flex-direction: row;
       padding: 120px 120px 160px;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 100px;
     }
 
     @media (min-width: 744px) and (max-width: 1260px) {
@@ -342,10 +351,17 @@
     }
 
     &_name {
+      width: 260px;
       font-size: 24px;
       font-weight: 700;
       color: #fff;
       margin-top: 16px;
+      @media (min-width: 1260px) {
+        width: 996px;
+      }
+      @media (min-width: 744px) and (max-width: 1260px) {
+        width: 576px;
+      }
     }
 
     &_description {
@@ -353,6 +369,13 @@
       font-weight: 400;
       color: #fff;
       margin-top: 8px;
+      width: 260px;
+      @media (min-width: 1260px) {
+        width: 996px;
+      }
+      @media (min-width: 744px) and (max-width: 1260px) {
+        width: 576px;
+      }
     }
 
     &-btn {
@@ -372,6 +395,10 @@
 .img {
   width: 130px;
   height: 130px;
+  @media (min-width: 320px) and (max-width: 744px) {
+    width: $screen_width / 2.46;
+    height: $screen_width / 2.46;
+  }
 }
 
 .page__body--with-menu {
@@ -389,7 +416,8 @@
 
     @media (min-width: 744px) {
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 120px;
     }
 
   }
@@ -501,3 +529,12 @@ img {
 
 @include screenImg(392, 187, 184, 187, 392, 120, 744, 1260);
 @include screenImgOut(672, 320, 324, 320, 324, 180, 1260);
+
+@keyframes example {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(-105%);
+  }
+}
