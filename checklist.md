@@ -3,7 +3,7 @@
 3. Logos in header and footer should be links to home page
 4. Change text color on hover for phone, email and address
 5. When you click on ‘CALL TO ORDER’, make sure that there is no 404 error, make it a real link to activate your phone on your laptop/phone
-6. Same when you click on logo. There shouldn't be any error. 
+6. Same when you click on logo. There shouldn't be any error.
 7. In the “Miami best” block, make sure that the “Real estate here” link does not lead to a 404 error, but to a location in Google Maps
 8. Pictures in Gallery should increase on hover
 9. Gallery links should open google maps in a new tab `target="_blank"`

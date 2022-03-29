@@ -2,5 +2,51 @@
   transition: #{$_property} 0.3s;
   &:hover {
     #{$_property}: $_toValue;
+    cursor: pointer;
+  }
+}
+
+@mixin screenImg($width_b, $height_b, $width_s,
+$height_s, $but_width,
+$padding_width,$min, $max) {
+  @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+    .img {
+      width: #{$width_s}px;
+      height: #{$height_s}px;
+      &-big {
+        width: #{$width_b}px;
+        height: #{$height_b}px;
+      }
+    }
+
+    .details {
+      padding-bottom: #{$padding_width}px;
+
+      &__card-btn {
+        width: #{$but_width}px;
+      }
+    }
+  }
+}
+
+@mixin screenImgOut($width_b, $height_b,
+$width_s, $height_s,$but_width,
+$padding_width, $min) {
+  @media (min-width: #{$min}px) {
+    .img {
+      width: #{$width_s}px;
+      height: #{$height_s}px;
+      &-big {
+        width: #{$width_b}px;
+        height: #{$height_b}px;
+      }
+    }
+    .details {
+      padding-bottom: #{$padding_width}px;
+
+      &__card-btn {
+        width: #{$but_width}px;
+      }
+    }
   }
 }
