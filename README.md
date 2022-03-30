@@ -1,7 +1,7 @@
 # MyBike Landing Page
 
 Write here about your project in two-three sentences.
-- [MY_BIKE DEMO LINK](https://jstmpelowycz.github.io/layout_miami/)
+- [MY_BIKE DEMO LINK](https://jstmpelowycz.github.io/layout_bike/)
 
 ## Description
 This landing page is implemented according to [this](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1) mock
