@@ -1,0 +1,129 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  padding: 48px 120px 64px;
+
+  background-image: url("../images/photos/header.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media (max-width: $tabletWidth) {
+    height: 800px;
+    min-width: 540px;
+    padding: 48px 72px 40px;
+    background-image: url("../images/photos/header_tablet.jpg");
+  }
+
+  @media (max-width: $mobileWidth) {
+    min-width: unset;
+    @include heightWidth(500px, $mobileWidth);
+    padding: 40px 20px 94px;
+    background-image: url("../images/photos/header_mobile.jpg");
+  }
+
+  &__control-area {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1020px;
+  }
+
+  &__logo {
+    &-image {
+      display: block;
+      @include heightWidth(24px, unset);
+
+      @media (max-width: 320px) {
+        @include heightWidth(unset, 130px);
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    &-link {
+      font-size: 0; //to remove the extra 4px in the link and image
+    }
+
+    &-phone {
+      @include heightWidth;
+
+      @media (max-width: 320px) {
+        @include heightWidth(18px, 18px);
+      }
+    }
+
+    &-toggler {
+      @include heightWidth;
+
+      padding: 0;
+      border: none;
+      background-image: url("../images/menu.svg");
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      cursor: pointer;
+    }
+
+    &:hover {
+      @include hover(color, #fff);
+
+      &::before {
+        content: "+1 234 555-55-55";
+        text-align: right;
+
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__sound-waves {
+    @include heightWidth(76px, 70px);
+    background: no-repeat url("../images/Sound_waves.svg");
+
+    @media (max-width: $mobileWidth) {
+      @include heightWidth(32px, auto);
+      background: no-repeat url("../images/sound_w_mobile.svg");
+    }
+  }
+
+  &__title {
+    @include fontProperties(48px, 48px, 800, 2px);
+
+    @media (max-width: $tabletWidth) {
+      @include fontProperties(40px, 40px, 800);
+    }
+
+    @media (max-width: $mobileWidth) {
+      @include fontProperties(32px, 32px, 800);
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      @media (max-width: $tabletWidth) {
+        gap: 40;
+      }
+
+      @media (max-width: $mobileWidth) {
+        gap: 16;
+      }
+    }
+  }
+}
