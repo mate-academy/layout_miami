@@ -1,8 +1,4 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
   height: 100vh;
   padding: 48px 120px 64px;
 
@@ -25,13 +21,20 @@
     background-image: url("../images/photos/header_mobile.jpg");
   }
 
+  &__wrapper {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    max-width: 1020px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &__control-area {
     display: flex;
     justify-content: space-between;
-
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1020px;
   }
 
   &__logo {
@@ -52,7 +55,36 @@
     gap: 40px;
 
     &-link {
+      position: relative;
+      display: inline-block;
+
       font-size: 0; //to remove the extra 4px in the link and image
+      // i cannot use display block since i use flex for icons
+
+      &::before {
+        content: "+1 234 555-55-55";
+
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+
+        @include fontProperties(12px, 16px, 700, 2px);
+        color: $colorFontMain;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity $transitionTime;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
 
     &-phone {
@@ -74,20 +106,6 @@
       background-position: center;
 
       cursor: pointer;
-    }
-
-    &:hover {
-      @include hover(color, #fff);
-
-      &::before {
-        content: "+1 234 555-55-55";
-        text-align: right;
-
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
     }
   }
 
