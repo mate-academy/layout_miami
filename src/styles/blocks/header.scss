@@ -1,1 +1,135 @@
+.header {
+  height: 630px;
+  background-image: url("/images/header.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 36px 120px 122px 124px;
 
+  @media (max-width: 744px) {
+    padding: 36px 72px 130px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 29px 20px 88px;
+    height: 480px;
+  }
+
+  &__content-wrapper {
+    margin: 0 auto;
+    max-width: $maxContentWidthDesktop;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 744px) {
+      max-width: $maxContentWidthTablet;
+    }
+
+    @media (max-width: 320px) {
+      max-width: $maxContentWidthMobile;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-wrapper {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      @media (max-width: 320px) {
+        gap: 30px;
+      }
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 187px;
+    height: 56px;
+
+    @media (max-width: 320px) {
+      width: 130px;
+      height: 38px;
+    }
+  }
+
+  &__call-link {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+
+    background-color: transparent;
+    background-image: url("/images/phone.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      width: max-content;
+      padding-right: 12px;
+
+      opacity: 0;
+      pointer-events: none;
+      letter-spacing: 2px;
+
+      @include fontParams(12px, 16px, 700);
+      color: #000;
+      transition: opacity $transitionDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: visible;
+    }
+  }
+
+  &__menu-toggler {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background-color: transparent;
+    background-image: url("/images/menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("/images/menu_hover.svg");
+    }
+  }
+
+  &__title {
+    align-self: center;
+    position: relative;
+    @include fontParams(80px, 80px, 700);
+    color: #1d1d1d;
+    letter-spacing: -1.5px;
+    width: max-content;
+
+    @media (max-width: 744px) {
+      @include fontParams(64px, 64px, 700);
+    }
+
+    @media (max-width: 320px) {
+      @include fontParams(36px, 36px, 700);
+    }
+  }
+}
