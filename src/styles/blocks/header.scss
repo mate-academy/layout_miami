@@ -11,10 +11,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     max-width: 1020px;
     padding: 36px 120px;
+
+    @include atResolution($r-tablet) {
+      padding: 36px 72px;
+    }
+
+    @include atResolution($r-mobile) {
+      padding: 29px 20px;
+    }
   }
 
   &__nav {
@@ -23,7 +31,12 @@
   }
 
   &__logo {
-    height: 56px;
+    width: 187px;
+    display: block;
+
+    @include atResolution($r-mobile) {
+      width: 130px;
+    }
   }
 
   &__icons {
@@ -38,6 +51,11 @@
     background-repeat: no-repeat;
     background-position: center;
     @extend %icons-size;
+    @include atResolution($r-mobile) {
+      width: 24px;
+      height: 24px;
+    }
+
 
     &:hover {
       background-image: url("/images/menu_hover.png");
@@ -51,6 +69,10 @@
     background-position: center;
     cursor: pointer;
     @extend %icons-size;
+    @include atResolution($r-mobile) {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__phone-icon::before {
@@ -65,6 +87,14 @@
     line-height: 16px;
     opacity: 0;
     transition: opacity 0.5s;
+
+    @include atResolution($r-tablet) {
+      display: none;
+    }
+
+    @include atResolution($r-mobile) {
+      display: none;
+    }
   }
 
   &__phone-icon:hover::before {
@@ -72,11 +102,21 @@
   }
 
   &__title {
-    margin-bottom: 120px;
+    margin: 0 0 122px 0;
 
     font-weight: 800;
     font-size: 80px;
-    line-height: -1.5px;
+    letter-spacing: -1.5px;
     text-align: center;
+
+    @include atResolution($r-tablet) {
+      @include text(64px, 700, 100%);
+      margin: 0 0 130px 0;
+    }
+
+    @include atResolution($r-mobile) {
+      @include text(36px, 700, 100%);
+      margin: 0 0 88px 0;
+    }
   }
 }
