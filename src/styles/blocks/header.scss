@@ -1,53 +1,52 @@
 .header {
-  height: 100vh;
-  background-image: url("/images/header_320.png");
+  height: 100%;
+  background-image: url("/images/header.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
-  padding: 29px 20px 88px;
+  padding: 29px $mobilePaddingX 88px;
 
   @include tablet {
-    background-image: url("/images/header_744.png");
-    padding: 36px 72px 130px;
+    padding: 36px $tabletPaddingX 130px;
   }
 
   @include desktop {
-    background-image: url("/images/header_1260.png");
-    padding: 36px 120px 122px 124px;
+    padding: 36px $desktopPaddingX 122px 124px;
   }
 
   &__content-wrapper {
-    margin: 0 auto;
-    max-width: $maxContentWidthMobile;
+    @include limitContentWitdth($maxContentWidthMobile);
     height: 100%;
+    min-width: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 289px;
 
     @include tablet {
-      max-width: $maxContentWidthTablet;
+      @include limitContentWitdth($maxContentWidthTablet);
+      gap: 344px;
     }
 
     @include desktop {
-      max-width: $maxContentWidthDesktop;
+      @include limitContentWitdth($maxContentWidthDesktop);
+      gap: 336px;
     }
   }
 
   &__controls {
     display: flex;
     justify-content: space-between;
+  }
+
+  &__icons {
+    display: flex;
     align-items: center;
+    gap: 24px;
 
-    &-wrapper {
-      height: 32px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      @include desktop {
-        gap: 24px;
-      }
+    @include tablet {
+      gap: 32px;
     }
   }
 
@@ -60,18 +59,17 @@
       width: 187px;
       height: 56px;
     }
-
-    @include desktop {
-      width: 187px;
-      height: 56px;
-    }
   }
 
   &__call-link {
     position: relative;
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+
+    @include tablet {
+      transform: scale( calc(32 / 24) );
+    }
 
     background-color: transparent;
     background-image: url("/images/phone.svg");
@@ -83,11 +81,11 @@
       display: block;
 
       position: absolute;
-      top: 50%;
-      transform: translate(-100%, -50%);
+      top: 100%;
+      right: 0;
+      transform: translate(0, -25%);
 
       width: max-content;
-      padding-right: 12px;
 
       opacity: 0;
       pointer-events: none;
@@ -96,6 +94,13 @@
       @include fontParams(12px, 16px, 700);
       color: #000;
       transition: opacity $transitionDuration;
+
+      @include tablet {
+        top: 50%;
+        left: 0;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+      }
     }
 
     &:hover::before {
@@ -105,8 +110,9 @@
   }
 
   &__menu-toggler {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
 
     border: none;
 
@@ -120,6 +126,10 @@
     &:hover {
       background-image: url("/images/menu_hover.svg");
     }
+
+    @include tablet {
+      transform: scale( calc(32 / 24));
+    }
   }
 
   &__title {
@@ -128,7 +138,6 @@
     @include fontParams(36px, 36px, 700);
     color: #1d1d1d;
     letter-spacing: -1.5px;
-    width: max-content;
 
     @include tablet {
       @include fontParams(64px, 64px, 700);
