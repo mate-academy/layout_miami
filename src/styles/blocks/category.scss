@@ -1,11 +1,18 @@
 .category {
+  &__wraper {
+    display: grid;
+    max-width: $maxContentWidth;
+    row-gap: 64px;
+  }
+
   &__heading {
     text-align: center;
+    margin-bottom: 64px;
     grid-area: title;
   }
 
   @for $cat from 1 through 3 {
-    &__#{$cat} {
+    &__details--#{$cat} {
       grid-area: cat-#{$cat};
     }
   }
@@ -14,26 +21,20 @@
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 1;
-    gap: 24px;
+    column-gap: 24px;
   }
 
   display: grid;
 
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-
-  grid-template-areas: ". . . . title title title title . . . ."
-    "cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1 cat-1"
-    "cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2 cat-2"
-    "cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3 cat-3"
-    ". . . . btn btn btn btn . . . .";
+  grid-template-columns: repeat(3, 1fr);
+  // gap: 24px;
 
   &__name {
     text-align: left;
   }
 
   &__btn {
-    grid-area: btn; //Not sure if it's apppropriate to have this here
+    grid-area: btn;
     padding: 0 48px;
 
     height: 56px;
@@ -47,4 +48,10 @@
 
     color: #fff;
   }
+
+  grid-template-areas: ". title ."
+    "cat-1 cat-1 cat-1"
+    "cat-2 cat-2 cat-2"
+    "cat-3 cat-3 cat-3"
+    ". btn .";
 }

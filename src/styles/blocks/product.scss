@@ -1,50 +1,62 @@
 .product {
-  &__heading {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  column-gap: 24px;
+
+  max-width: $maxContentWidth;
+
+  &__title {
     grid-area: title;
+    text-align: center;
   }
 
-  @for $section from 1 through 3 {
-    &__#{$section} {
-      grid-area: sec#{$section};
+  @for $prod from 1 through 3 {
+    &__details--#{$prod} {
+      grid-area: product-#{$prod};
     }
   }
 
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  grid-template-columns: repeat(12, 1fr);
-  $gap: 24px;
+  grid-template-areas: "title title title"
+    "product-1 product-2 product-3";
 
-  grid-template-areas: ". . . . title title title title . . . ."
-    "sec1 sec1 sec1 sec1 sec2 sec2 sec2 sec2 sec3 sec3 sec3 sec3";
+  padding: 120px 0;
+
+  &__image {
+    margin-bottom: 32px;
+  }
 
   &__info {
     text-align: left;
   }
 
   @media (max-width: 744px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 1fr;
 
     &__info {
       text-align: left;
     }
 
-    grid-template-areas: " . . prod-heading prod-heading . . "
-      " . section-1 section-1 section-1 section-1 . "
-      " . section-2 section-2 section-2 section-2 . "
-      " . section-3 section-3 section-3 section-3 . ";
+    grid-template-areas: "title"
+      "product-1"
+      "product-2"
+      "product-3";
+
+    gap: 40px;
   }
 
   @media (max-width: 320px) {
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: 1fr;
+    gap: 48px;
     &__info {
       text-align: left;
     }
 
-    grid-template-areas: "prod-heading prod-heading"
-      "section-1 section-1"
-      " section-2 section-2"
-      "section-3 section-3";
+    grid-template-areas: "title"
+      "product-1"
+      "product-2"
+      "product-3";
   }
 }
