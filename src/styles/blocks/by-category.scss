@@ -15,29 +15,18 @@
     }
   }
 
-  &__ear-products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px 24px;
-    align-items: center;
-
-    margin: 64px auto 0;
-
-    @media (max-width: $maxWidth) {
-      grid-template-columns: 60vw 30vw;
-      column-gap: 2vw;
-    }
-
-    @media (max-width: $mobileWidth) {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 20px;
-    }
+  &__ear-products,
+  &__speakers {
+    @include gridLayout;
   }
 
-  &__earbuds {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  &__sunglasses {
+    @include gridLayout(30vw, 60vw);
+  }
+
+  &__earbuds,
+  &__speaker-light-blue {
+    @include heightWidth(100%, 100%);
     grid-column: 1 / 3;
 
     @media (max-width: $maxWidth) {
@@ -49,10 +38,9 @@
     }
   }
 
-  &__headphones {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  &__headphones,
+  &__speaker-blue {
+    @include heightWidth(100%, 100%);
     grid-column: 3 / -1;
 
     @media (max-width: $maxWidth) {
@@ -64,7 +52,7 @@
     }
   }
 
-  &__ear-products-name {
+  &__name {
     @include fontProperties(24px, 140%, 700, initial);
 
     grid-row: 2;
@@ -73,5 +61,33 @@
     @media (max-width: $mobileWidth) {
       font-size: 16px;
     }
+  }
+
+  //think a better way to write this
+  &__sunglasses-blue {
+    @include heightWidth(100%, 100%);
+    grid-column: 1 / 2;
+
+    @media (max-width: $maxWidth) {
+      grid-column: 1 / 2;
+    }
+
+    @media (max-width: $mobileWidth) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  &__sunglasses-black {
+    @include heightWidth(100%, 100%);
+    grid-column: 2 / -1;
+    background-position: center;
+
+    // @media (max-width: $maxWidth) {
+    //   grid-column: 2 / -1;
+    // }
+
+    // @media (max-width: $mobileWidth) {
+    //   grid-column: 2 / -1;
+    // }
   }
 }
