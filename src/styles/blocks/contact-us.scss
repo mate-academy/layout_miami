@@ -1,16 +1,24 @@
 .contact-us {
-  padding-top: 80px;
+  &__wrapper {
+    padding-top: 80px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    @include limitContentWitdth($maxContentWidthMobile);
 
-  @include tablet {
-    padding-top: 120px;
-  }
+    @include tablet {
+      padding-top: 120px;
+      max-width: $maxContentWidthTablet;
+    }
 
-  @include desktop {
-    padding-top: 180px;
+    @include desktop {
+      padding-top: 180px;
+      padding-bottom: 156px;
+      max-width: $maxContentWidthDesktop;
+    }
   }
 
   &__title {
-    padding-bottom: 48px;
     @include headings320;
 
     @include tablet {
@@ -23,21 +31,32 @@
     }
   }
 
-  &__wrapper {
+  &__content-wrapper {
+    padding-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
     @include tablet {
-      display: grid;
-      grid-template-columns: 288px 237px;
-      column-gap: 24px;
+      flex-direction: row;
+      gap: 24px;
     }
 
     @include desktop {
-      grid-template-columns: 411px 237px;
-      column-gap: 198px;
+      gap: 198px;
     }
   }
 
   &__form {
     @include fontParams(14px, 20px, 400);
+
+    @include tablet {
+      width: 288px;
+    }
+
+    @include tablet {
+      width: 411px;
+    }
 
     &-name {
       width: 100%;
@@ -75,8 +94,6 @@
   }
 
   &__details {
-    padding-top: 48px;
-
     @include tablet {
       padding: 0;
     }

@@ -1,8 +1,22 @@
 .details {
-  padding-top: 92px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include limitContentWitdth($maxContentWidthMobile);
+    padding-top: 92px;
+
+    @include tablet {
+      @include limitContentWitdth($maxContentWidthTablet);
+      padding-top: 120px;
+    }
+
+    @include desktop {
+      @include limitContentWitdth($maxContentWidthDesktop);
+      padding-top: 144px;
+    }
+  }
 
   &__title {
     padding-bottom: 48px;
@@ -67,11 +81,12 @@
   }
 
   &__content {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr);
     margin: 16px 0 40px;
 
     @include tablet {
       margin-bottom: 48px;
-      display: grid;
       grid-template-columns: 600px;
     }
 
