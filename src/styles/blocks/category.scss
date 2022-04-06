@@ -1,57 +1,47 @@
 .category {
+  max-width: $maxContentWidth;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 120px;
+
   &__wraper {
-    display: grid;
-    max-width: $maxContentWidth;
+    display: flex;
+    flex-direction: column;
     row-gap: 64px;
   }
 
   &__heading {
     text-align: center;
     margin-bottom: 64px;
-    grid-area: title;
-  }
-
-  @for $cat from 1 through 3 {
-    &__details--#{$cat} {
-      grid-area: cat-#{$cat};
-    }
+    @include fontProperties(48px, 700, 48px);
+    letter-spacing: $h2LetterSpacing;
   }
 
   &__photos {
     display: flex;
     flex-wrap: nowrap;
-    flex-shrink: 1;
     column-gap: 24px;
   }
 
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-  // gap: 24px;
-
   &__name {
     text-align: left;
+    @include fontProperties(24px, 700, 140%);
   }
 
   &__btn {
-    grid-area: btn;
-    padding: 0 48px;
+    @include primaryBtn();
+    @include btnTransition();
 
-    height: 56px;
-    line-height: 56px;
+    &:hover {
+      color: #292929;
+      background-color: #fff;
+    }
 
-    background: #292929;
-    border-radius: 40px;
-
-    text-align: center;
-    text-decoration: none;
-
-    color: #fff;
+    &:active {
+      color: #fff;
+      background-color: #111;
+    }
   }
-
-  grid-template-areas: ". title ."
-    "cat-1 cat-1 cat-1"
-    "cat-2 cat-2 cat-2"
-    "cat-3 cat-3 cat-3"
-    ". btn .";
 }

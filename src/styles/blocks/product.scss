@@ -1,28 +1,23 @@
 .product {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
   column-gap: 24px;
-
   max-width: $maxContentWidth;
+  padding: 120px 0;
 
   &__title {
-    grid-area: title;
     text-align: center;
+    @include fontProperties(48px, 700, 48px);
+    letter-spacing: $h2LetterSpacing;
   }
 
-  @for $prod from 1 through 3 {
-    &__details--#{$prod} {
-      grid-area: product-#{$prod};
-    }
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
   }
-
-  grid-template-areas: "title title title"
-    "product-1 product-2 product-3";
-
-  padding: 120px 0;
 
   &__image {
     margin-bottom: 32px;
@@ -30,33 +25,10 @@
 
   &__info {
     text-align: left;
+    @include fontProperties (16px, 700, 140%);
   }
 
-  @media (max-width: 744px) {
-    grid-template-columns: 1fr;
-
-    &__info {
-      text-align: left;
-    }
-
-    grid-template-areas: "title"
-      "product-1"
-      "product-2"
-      "product-3";
-
-    gap: 40px;
-  }
-
-  @media (max-width: 320px) {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    &__info {
-      text-align: left;
-    }
-
-    grid-template-areas: "title"
-      "product-1"
-      "product-2"
-      "product-3";
+  &__desc {
+    @include fontProperties (16px, 400, 140%);
   }
 }

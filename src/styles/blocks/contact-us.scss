@@ -2,13 +2,85 @@
   display: flex;
   flex-direction: column;
 
-  &__wraper {
-    display: flex;
-    flex-direction: row;
-
+  &__title {
+    text-align: center;
+    @include fontProperties(48px, 700, 48px);
+    letter-spacing: -1.5px;
+    margin-bottom: 48px;
   }
 
-  &__form-control {
-    display: block;
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 120px;
+  }
+
+  &__input {
+    border: none;
+    background-color: #f8f8fa;
+    border-radius: 40px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    width: 408px;
+    @include fontProperties(14px, 400, 20px);
+    transition: border ease $transitionDuration;
+
+    &--address {
+      border-radius: 16px;
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+      z-index: 1;
+    }
+
+    &:active {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  ::placeholder {
+    color: #7e7e83;
+    @include fontProperties(14px, 400, 20px);
+  }
+
+  &__form {
+    flex-basis: $twoFlexColumns;
+
+    &-control {
+      display: block;
+    }
+  }
+
+  &__info {
+    flex-basis: $twoFlexColumns;
+    margin-bottom: 24px;
+  }
+
+  &__btn {
+    @include primaryBtn();
+    @include btnTransition();
+    display: inline-block;
+
+    &:hover {
+      color: #292929;
+      background-color: #fff;
+    }
+
+    &:active {
+      color: #fff;
+      background-color: #111;
+    }
+  }
+
+  &__details {
+    font-size: 16px;
+    line-height: 140%;
+    color: #3e3e3e;
+  }
+
+  &__label {
+    color: #9fadc2;
+    margin-bottom: 8px;
   }
 }
