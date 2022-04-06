@@ -9,16 +9,15 @@
 
   @media (max-width: $tabletWidth) {
     height: 800px;
-    min-width: 540px;
     padding: 48px 72px 40px;
     background-image: url("../images/photos/header_tablet.jpg");
   }
 
   @media (max-width: $mobileWidth) {
-    min-width: unset;
-    @include heightWidth(500px, $mobileWidth);
+    height: 500px;
     padding: 40px 20px 94px;
-    background-image: url("../images/photos/header_mobile.jpg");
+    background-image: url("../images/photos/header_tablet.jpg");
+    background-position: left;
   }
 
   &__wrapper {
@@ -42,7 +41,7 @@
       display: block;
       @include heightWidth(24px, unset);
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobileWidth) {
         @include heightWidth(unset, 130px);
         object-fit: contain;
       }
@@ -67,10 +66,10 @@
         display: block;
         white-space: nowrap;
         position: absolute;
-        top: 50%;
-
-        transform: translate(-100%, -50%);
-        padding-right: 20px;
+        top: -150%; //top: 50%
+        //for the mockup use the values in comments...
+        //the layout is changed due to overlap of the number
+        transform: translateX(-50%); //translate(-100%, -50%)
 
         @include fontProperties(12px, 16px, 700, 2px);
         color: $colorFontMain;
@@ -90,13 +89,17 @@
     &-phone {
       @include heightWidth;
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobileWidth) {
         @include heightWidth(18px, 18px);
       }
     }
 
     &-toggler {
       @include heightWidth;
+
+      @media (max-width: $mobileWidth) {
+        @include heightWidth(18px, 18px);
+      }
 
       padding: 0;
       border: none;
@@ -121,6 +124,7 @@
 
   &__title {
     @include fontProperties(48px, 48px, 800, 2px);
+    font-style: italic;
 
     @media (max-width: $tabletWidth) {
       @include fontProperties(40px, 40px, 800);
@@ -128,6 +132,10 @@
 
     @media (max-width: $mobileWidth) {
       @include fontProperties(32px, 32px, 800);
+    }
+
+    @media (max-width: 360px) {
+      @include fontProperties(24px, 32px, 800);
     }
 
     &-wrapper {
