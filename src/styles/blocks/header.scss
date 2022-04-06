@@ -1,6 +1,6 @@
 .header {
   height: 100vh;
-  padding: 48px 120px 64px;
+  padding: 48px $paddingDekstopX 64px;
 
   background-image: url("../images/photos/header.png");
   background-position: center;
@@ -8,14 +8,13 @@
   background-size: cover;
 
   @media (max-width: $tabletWidth) {
-    height: 800px;
-    padding: 48px 72px 40px;
+    padding: 48px $paddingTabletX 40px;
     background-image: url("../images/photos/header_tablet.jpg");
   }
 
   @media (max-width: $mobileWidth) {
     height: 500px;
-    padding: 40px 20px 94px;
+    padding: 40px $paddingMobileX 94px;
     background-image: url("../images/photos/header_tablet.jpg");
     background-position: left;
   }
@@ -66,7 +65,7 @@
         display: block;
         white-space: nowrap;
         position: absolute;
-        top: -150%; //top: 50%
+        top: -100%; //top: 50%
         //for the mockup use the values in comments...
         //the layout is changed due to overlap of the number
         transform: translateX(-50%); //translate(-100%, -50%)
@@ -78,6 +77,10 @@
         pointer-events: none;
 
         transition: opacity $transitionTime;
+
+        @media (max-width: $mobileWidth) {
+          @include fontProperties(10px, 12px, 700, 0);
+        }
       }
 
       &:hover::before {
@@ -132,10 +135,6 @@
 
     @media (max-width: $mobileWidth) {
       @include fontProperties(32px, 32px, 800);
-    }
-
-    @media (max-width: 360px) {
-      @include fontProperties(24px, 32px, 800);
     }
 
     &-wrapper {
