@@ -1,10 +1,18 @@
 .header {
-  padding: 52px 120px 64px;
+  padding: 52px 60px 64px;
   height: 100vh;
   background-image: url(/images/header_img.png);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+
+  @include forIpad {
+    padding: 52px 36px 40px;
+  }
+
+  @include forMobile {
+    padding: 40px 20px 94px;
+  }
 
   &__content-wrapper {
     margin: 0 auto;
@@ -25,6 +33,11 @@
     display: block;
     width: 190px;
     height: 24px;
+
+    @include forMobile {
+      height: 16px;
+      width: 130px;
+    }
   }
 
   &__icon {
@@ -46,6 +59,11 @@
     &:hover {
       background-image: url(/images/menu_toggler_hover.png);
     }
+
+    @include forMobile {
+      height: 18px;
+      width: 18px;
+    }
   }
 
   .header__phone {
@@ -62,8 +80,8 @@
       white-space: nowrap;
       letter-spacing: 2px;
       position: absolute; // for before element
-      right: 100px; // for before element
-      top: 5px;
+      right: 50%; // for before element
+      top: -100%;
       @include fontParams(12px, 16px, 700);
       color: transparent;
       pointer-events: none;
@@ -73,6 +91,11 @@
     &:hover::before {
       color: #000;
       pointer-events: auto;
+    }
+
+    @include forMobile {
+      height: 18px;
+      width: 18px;
     }
   }
 
@@ -89,6 +112,23 @@
       height: 76px;
       position: absolute;
       top: -108px; // (-32-height)
+
+      @include forMobile {
+        background-image: url(/images/mobile_sound-wave.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 32px;
+        height: 27px;
+        top: -43px;
+      }
+    }
+
+    @include forIpad {
+      @include fontParams(40px, 40px, 800);
+    }
+
+    @include forMobile {
+      @include fontParams(32px, 32px, 800);
     }
   }
 }
