@@ -1,8 +1,22 @@
 .compare {
-  padding-top: 80px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 80px $mobilePaddingX 0;
+    @include limitContentWitdth($maxContentWidthMobile);
+
+    @include tablet {
+      max-width: $maxContentWidthTablet;
+    }
+
+    @include desktop {
+      max-width: $maxContentWidthDesktop;
+    }
+  }
 
   &__title {
-    padding: 80px 0 48px;
     @include headings320;
 
     @include tablet {
@@ -17,20 +31,23 @@
   }
 
   &__bike-wrapper {
-    padding-top: 48px;
-
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    grid-template-columns: 280px;
-    row-gap: 40px;
+    gap: 40px;
+
+    @include limitContentWitdth($maxContentWidthMobile);
 
     @include tablet {
-      row-gap: 48px;
+      gap: 48px;
+      max-width: $maxContentWidthTablet;
+
     }
 
     @include desktop {
-      grid-template-columns: 280px 280px 280px;
-      column-gap: 24px;
+      flex-direction: row;
+      gap: 24px;
+      max-width: $maxContentWidthDesktop;
     }
   }
 }
