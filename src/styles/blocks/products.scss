@@ -1,8 +1,14 @@
 .products {
-  padding-top: 120px;
+  padding: 120px $paddingDekstopX 0;
 
-  @media (min-width: 1260px) {
-    padding: 120px $paddingDekstopX 0;
+  @include mediaMaxWidth {
+    padding-left: $paddingTabletX;
+    padding-right: $paddingTabletX;
+  }
+
+  @include mediaMaxWidth($mobileWidth) {
+    padding-left: $paddingMobileX;
+    padding-right: $paddingMobileX;
   }
 
   &__title {
@@ -24,6 +30,8 @@
     gap: 24px;
     grid-template-columns: repeat(3, 1fr);
 
+    margin: 0 auto;
+
     @include mediaMaxWidth {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(3, auto);
@@ -35,60 +43,26 @@
   }
 
   &__first {
-    @include productWidthCenter;
-
-    @include mediaMaxWidth {
-      width: $productTabletWidth;
-    }
+    margin: $marginTopProduct auto 0;
 
     @include mediaMaxWidth($mobileWidth) {
-      @include productWidthCenter($marginTopProductMobile, $productMobileWidth);
+      margin-top: $marginTopProductMobile;
     }
   }
 
-  &__second {
-    @include productWidthCenter;
-
-    @include mediaMaxWidth {
-      width: $productTabletWidth;
-    }
-
-    @include mediaMaxWidth($mobileWidth) {
-      width: $productMobileWidth;
-    }
-  }
-
+  &__second,
   &__third {
-    @include productWidthCenter;
-
-    @include mediaMaxWidth {
-      width: $productTabletWidth;
-    }
-
-    @include mediaMaxWidth($mobileWidth) {
-      width: $productMobileWidth;
-    }
+    margin: $marginTopProduct auto 0;
   }
 
   &__image {
-    display: block;
-    margin: 0 auto;
-
-    @media (max-width: 1040px) {
-      width: $productMobileWidth;
-    }
-
-    @include mediaMaxWidth {
-      width: $productTabletWidth;
-    }
-
-    @include mediaMaxWidth($mobileWidth) {
-      width: $productMobileWidth;
-    }
+    max-width: 320px;
+    width: 100%;
   }
 
   &__text {
     @include fontProperties(16px, 140%, 700, initial);
+    max-width: 320px;
 
     @media (max-width: 1040px) {
       font-size: 14px;
