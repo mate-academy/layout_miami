@@ -1,13 +1,24 @@
 .contact-us {
   display: flex;
   flex-direction: column;
+  padding-bottom: 120px;
   @include maxContentWidthForDesktop();
+
+  @include forMobile() {
+    margin-bottom: 48px;
+    font-size: 32px;
+  }
 
   &__title {
     text-align: center;
     @include fontProperties(48px, 700, 48px);
     letter-spacing: -1.5px;
     margin-bottom: 48px;
+
+    @include forMobile() {
+      margin-bottom: 48px;
+      font-size: 32px;
+    }
   }
 
   &__wraper {
@@ -15,16 +26,26 @@
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     column-gap: 200px;
-    margin-bottom: 120px;
+    padding: 0 20px 120px;
+
+    @include forMobile() {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      row-gap: 42px;
+    }
   }
 
   &__form {
     width: 408px;
     flex-basis: $twoFlexColumns;
+
+    @include forMobile() {
+      width: 100%;
+    }
   }
 
   &__input {
-    border: none;
     background-color: #f8f8fa;
     border-radius: 40px;
     margin-bottom: 16px;
@@ -32,23 +53,32 @@
     width: 100%;
     @include fontProperties(14px, 400, 20px);
     transition: border ease $transitionDuration;
+    border: 1px solid transparent;
 
     &--address {
       border-radius: 16px;
     }
 
     &:hover {
-      border: 1px solid #d5d7de;
+      border-color: #d5d7de;
     }
 
     &:active {
       border: 1px solid $primaryColor;
+    }
+
+    @include forMobile() {
+      padding: 34px 0;
     }
   }
 
   ::placeholder {
     color: #7e7e83;
     @include fontProperties(14px, 400, 20px);
+
+    @include forMobile() {
+      padding: 14px 16px;
+    }
   }
 
   &__info {
@@ -76,6 +106,10 @@
     font-size: 16px;
     line-height: 140%;
     color: #3e3e3e;
+
+    @include forMobile() {
+      justify-self: left;
+    }
   }
 
   &__label {
