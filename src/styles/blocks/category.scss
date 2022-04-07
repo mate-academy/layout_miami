@@ -24,22 +24,49 @@
   &__photos {
     display: flex;
     flex-wrap: nowrap;
-    column-gap: 24px;
+    column-gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform linear $transitionDuration,
+      box-shadow ease $transitionDuration;
+
+    &:hover {
+      transform: scale(105%);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
 
     @include forMobile() {
+      height: 0;
       padding-bottom: 50%;
+      column-gap: 20px;
     }
   }
 
   &__image {
     display: block;
-    width: 100%;
-    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    @include forMobile() {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__name {
     text-align: left;
     @include fontProperties(24px, 700, 140%);
+    margin-bottom: 64px;
+
+    @include forMobile() {
+      margin-bottom: 40px;
+    }
   }
 
   @include forMobile() {
