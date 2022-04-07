@@ -1,7 +1,6 @@
 .header {
-  display: grid;
 
-  justify-content: space-around;
+  padding: 0 120px;
 
   height: 630px;
   background-image: url(/images/photos/image-header.png);
@@ -9,7 +8,101 @@
   background-position: top center;
   background-size: cover;
 
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+    max-width: $maxContentWidth;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    height: 56px;
+    width: 187px;
+
+    margin-top: 36px;
+  }
+
   &__text {
-    line-height: 50%;
+    @include fontParams(80px, 80px, 700);
+    margin-top: 336px;
+
+    text-align: center;
+    color: #1d1d1d;
+  }
+
+  &__menu-toggle {
+    margin-top: 56px;
+
+    background-image: url(/images/menu.svg);
+    background-color: transparent;
+    border: none;
+
+    height: 16px;
+    width: 24px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(/images/menu_hover.svg);
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: inline-block;
+
+    height: 24px;
+    width: 24px;
+    margin: 52px 20px 0 741px;
+
+    background-image: url(/images/phone.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      content: "+1 234 555-55-55";
+      display: block;
+
+      @include fontParams(12px, 16px, 700);
+      color: #292929;
+
+      width: max-content;
+      padding-right: 12px;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity $transitionDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.promo {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 120px 207px 160px 120px;
+  gap: 24px;
+  background-color: #e5e5e5;
+
+  &__title {
+    @include fontParams(64px, 100% 500);
+    margin: 0 auto;
+    width: 411px;
+  }
+
+  &__text {
+    @include fontParams(24px, 140%, 500);
+    font-family: "Inter", sans-serif;
   }
 }
