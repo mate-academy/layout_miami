@@ -1,82 +1,67 @@
 .details {
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    @include limitContentWitdth($maxContentWidthMobile);
+  &__wrapper {
+    @include limitContentWitdth;
     padding-top: 92px;
 
     @include tablet {
-      @include limitContentWitdth($maxContentWidthTablet);
       padding-top: 120px;
+      max-width: $maxContentWidthTablet;
     }
 
     @include desktop {
-      @include limitContentWitdth($maxContentWidthDesktop);
       padding-top: 144px;
+      max-width: $maxContentWidthDesktop;
     }
   }
 
   &__title {
-    padding-bottom: 48px;
-    @include headings320;
+    margin: 0 auto 48px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    margin-bottom: 16px;
 
     @include tablet {
-      @include headings744;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
     }
+  }
 
-    @include desktop {
-      @include headings1260;
+  &__photo {
+    grid-column: unset;
+
+    height: 100%;
+    width: 100%;
+
+    @include tablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--cols--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
   }
 
   &__image {
-    width: 130px;
-    height: 130px;
+    display: block;
+    height: 100%;
+    width: 100%;
 
-    @include tablet {
-      width: 184px;
-      height: 187px;
+    object-fit: fill;
+    object-position: center;
 
-      &--big {
-        width: 392px;
-      }
-    }
+    transition: transform $transitionDuration;
 
-    @include desktop {
-      width: 324px;
-      height: 320px;
-
-      &--big {
-        width: 672px;
-      }
-    }
-  }
-
-  &__images {
-    display: grid;
-    grid-template-columns: 130px 130px;
-    grid-template-rows: 130px;
-    column-gap: 20px;
-
-    @include tablet {
-      grid-template-columns: 392px 184px;
-      grid-template-rows: 187px;
-
-      &--reverse {
-        grid-template-columns: 184px 392px;
-      }
-    }
-
-    @include desktop {
-      grid-template-columns: 672px 324px;
-      grid-template-rows: 320px;
-      column-gap: 24px;
-
-      &--reverse {
-        grid-template-columns: 324px 672px;
-      }
+    &:hover {
+      transform: scale(1.1);
+      z-index: 1;
     }
   }
 
@@ -105,22 +90,6 @@
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    color: #000;
-    width: 278px;
-    height: 56px;
-    border-radius: 40px;
-    @include fontParams(16px, 27px, 700);
-
-    @include tablet {
-      width: 392px;
-    }
-
-    @include desktop {
-      width: 324px;
-    }
+    margin: 0 auto;
   }
 }
