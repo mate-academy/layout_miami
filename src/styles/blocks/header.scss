@@ -15,108 +15,8 @@
   }
 
   @include desktop {
-    padding: 36px 124px 18vh $desktopPaddingX;
-  }
-
-  &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-
-    background-color: $c-lightGray;
-
-    text-transform: uppercase;
-
-    transform: translateX(-100%);
-    transition: transform $transitionDurationMenu ease-in-out;
-
-    &:target {
-      transform: translateX(0);
-    }
-
-    &-wrapper {
-      padding-top: 29px;
-
-      @include limitContentWitdth;
-
-      @include tablet {
-        padding-top: 36px;
-
-        max-width: $maxContentWidthTablet;
-      }
-
-      @include desktop {
-        padding-top: 48px;
-
-        max-width: $maxContentWidthDesktop;
-      }
-    }
-
-    &-items {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &-cross {
-      width: 24px;
-      height: 24px;
-
-      background-image: url("/images/cross.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
-
-      cursor: pointer;
-    }
-
-    &-number {
-      @include fontParams(16px, 27px, 700);
-      margin-top: 40px;
-      letter-spacing: 2px;
-
-      color: #000;
-
-      &:hover::after {
-        position: absolute;
-        display: block;
-        left: 0;
-        bottom: -8px;
-
-        content: "";
-
-        height: 1px;
-        width: 100%;
-        margin-top: 8px;
-        background-color: #000;
-
-      }
-    }
-
-    &-book {
-      @include fontParams(12px, 16px, 700);
-      margin-top: 16px;
-      letter-spacing: 2px;
-
-      color: #000;
-
-      &:hover::after {
-        position: absolute;
-        display: block;
-        left: 0;
-        bottom: -8px;
-
-        content: "";
-
-        height: 1px;
-        width: 100%;
-        margin-top: 8px;
-
-        background-color: #000;
-      }
-    }
+    padding-left: $desktopPaddingX;
+    padding-right: $desktopPaddingX;
   }
 
   &__content-wrapper {
@@ -132,7 +32,7 @@
       max-width: $maxContentWidthTablet;
     }
 
-    @include tablet {
+    @include desktop {
       max-width: $maxContentWidthDesktop;
     }
   }
@@ -235,17 +135,107 @@
       width: 32px;
       height: 32px;
     }
+  }
 
-    &--cross {
-      background-image: url("/images/cross.svg");
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    z-index: -1;
 
-      @include desktop {
-        width: 32px;
-        height: 32px;
+    background-color: $c-lightGray;
+
+    text-transform: uppercase;
+
+    transform: translateY(-100%);
+    transition: transform $transitionDurationMenu ease-in-out,
+      z-index $transitionDurationMenu ease-in-out;
+
+    &:target {
+      transform: translateY(0);
+      z-index: 1;
+    }
+
+    &-wrapper {
+      padding-top: 29px;
+
+      @include limitContentWitdth;
+
+      @include tablet {
+        padding-top: 36px;
+
+        max-width: $maxContentWidthTablet;
       }
 
-      &:hover {
-        background-image: url("/images/cross.svg");
+      @include desktop {
+        padding-top: 48px;
+
+        max-width: $maxContentWidthDesktop;
+      }
+    }
+
+    &-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-cross {
+      width: 24px;
+      height: 24px;
+
+      background-image: url("/images/cross.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      cursor: pointer;
+    }
+
+    &-number {
+      @include fontParams(16px, 27px, 700);
+      margin-top: 40px;
+      letter-spacing: 2px;
+
+      color: #000;
+
+      &:hover::after {
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: -8px;
+
+        content: "";
+
+        height: 1px;
+        width: 100%;
+        margin-top: 8px;
+        background-color: #000;
+
+      }
+    }
+
+    &-book {
+      @include fontParams(12px, 16px, 700);
+      margin-top: 16px;
+      letter-spacing: 2px;
+
+      color: #000;
+
+      &:hover::after {
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: -8px;
+
+        content: "";
+
+        height: 1px;
+        width: 100%;
+        margin-top: 8px;
+
+        background-color: #000;
       }
     }
   }
