@@ -7,6 +7,11 @@
   background-position: top center;
   background-size: cover;
   padding: 52px 0 64px;
+
+  @include forMobile() {
+    padding: 40px 20px 94px;
+  }
+
   &__content-wraper {
     display: flex;
     flex-direction: column;
@@ -19,6 +24,13 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+  }
+
+  &__logo-image {
+    @include forMobile() {
+      width: 120px;
+      height: 16px;
+    }
   }
 
   &__phone-link {
@@ -65,6 +77,10 @@
     cursor: pointer;
     transition: background-image ease $transitionDuration;
 
+    @include forMobile() {
+      background: url("../images/mobile-menu.svg") no-repeat;
+    }
+
     &:hover {
       background-image: url("../images/menu_hover.svg");
     }
@@ -73,6 +89,7 @@
   &__title {
     @include fontProperties(48px, 800, normal);
     font-style: italic;
+    white-space: nowrap;
 
     &::before {
       content: "";
@@ -81,6 +98,14 @@
       height: 76px;
       display: block;
       margin: 0;
+
+      @include forMobile() {
+        background: url("../images/mobile-wave.svg") no-repeat;
+      }
+    }
+
+    @include forMobile() {
+      font-size: 32px;
     }
   }
 }
