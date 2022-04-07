@@ -1,6 +1,7 @@
 .contact-us {
   display: flex;
   flex-direction: column;
+  @include maxContentWidthForDesktop();
 
   &__title {
     text-align: center;
@@ -10,15 +11,15 @@
   }
 
   &__wraper {
-    @include maxContentWidthForDesktop();
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
+    column-gap: 200px;
     margin-bottom: 120px;
   }
 
   &__form {
-    // display: flex;
-    // flex-direction: column;
+    width: 408px;
     flex-basis: $twoFlexColumns;
   }
 
@@ -28,7 +29,7 @@
     border-radius: 40px;
     margin-bottom: 16px;
     padding: 14px 16px;
-    width: 408px;
+    width: 100%;
     @include fontProperties(14px, 400, 20px);
     transition: border ease $transitionDuration;
 
@@ -57,11 +58,11 @@
   &__btn {
     @include primaryBtn();
     @include btnTransition();
-    display: inline-block;
 
     &:hover {
       color: #292929;
       background-color: #fff;
+      cursor: pointer;
     }
 
     &:active {
@@ -78,6 +79,7 @@
   }
 
   &__label {
+    display: inline-block;
     color: #9fadc2;
     margin-bottom: 8px;
   }
