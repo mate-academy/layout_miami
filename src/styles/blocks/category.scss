@@ -1,0 +1,84 @@
+.category {
+  padding: 0 120px 120px;
+
+  @include forIpad {
+    padding: 0 72px 120px;
+  }
+
+  @include forMobile {
+    padding: 0 20px 120px;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+  }
+
+  &__title {
+    padding-bottom: 64px;
+
+    @include forMobile {
+      padding-bottom: 48px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 48px;
+    padding-bottom: 16px;
+
+    @include forMobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+    }
+  }
+
+  &__photo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    @for $start from 1 through 7 {
+      @for $end from $start through 7 {
+        &--cols--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+    }
+
+    @include forMobile {
+      grid-column: unset;
+      height: 0;
+      padding-bottom: 100%;
+    }
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include forMobile {
+      position: absolute;
+    }
+  }
+
+  &__text {
+    @include fontParams(24px, 33px, 700);
+    margin: 0 0 64px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+
+    @include forMobile {
+      margin: 0 0 40px;
+    }
+  }
+}
+
+.category__button {
+  margin: 0 auto;
+}
