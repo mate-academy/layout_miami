@@ -1,22 +1,23 @@
 .header {
   height: 100vh;
   width: 100vw;
+
   background-image: url("../images/header-bg.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+
   padding: 52px 0 64px;
 
-  &__content {
+  &__content-wraper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @include maxContentWidthForDesktop();
     height: 100%;
-    margin: 0 auto;
-    max-width: $maxContentWidth;
   }
 
-  &__controls {
+  &__control-wraper {
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -31,18 +32,17 @@
     white-space: nowrap;
     width: 24px;
     height: 24px;
-    margin-right: 40px;
     position: absolute;
-    right: 4px;
+    right: 48px;
 
     &::before {
       content: "+1 234 555-55-55";
       @include fontProperties(12px, 700, 16px);
       color: $primaryColor;
-      position: relative;
-      right: 120px;
       opacity: 0;
       pointer-events: none;
+      transform: rotateX(50%);
+      right: 120px;
       transition: opacity linear $transitionDuration;
     }
 
