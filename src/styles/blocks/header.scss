@@ -1,32 +1,46 @@
 .header {
-  height: 100vh;
+  height: 768px;
 
-  padding: 24px 120px 80px;
+  padding: 48px 60px 64px;
 
   background-image: url("/images/header.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
 
-  &__controls {
+
+  @media (max-width: $mobileBreakPoint) {
+    padding: 32px 20px 0;
+  }
+
+  &__content-wrapper {
     margin: 0 auto;
     max-width: $maxContentWidth;
 
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+  }
+
+
+  &__controls {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 
-  }
-
-  &__logo {
-    display: inline-block;
-
+    @media (max-width: $mobileBreakPoint) {
+      transform: scale(0.8);
+    }
   }
 
   &__right-controls {
     display: flex;
     justify-content: space-between;
     width: 96px;
+
+
   }
 
   &__menu-toggler {
@@ -39,12 +53,14 @@
     background-image: url("/images/menu.svg");
     background-repeat: no-repeat;
     background-position: center;
+    transition: background-image $transitionDuration;
 
     cursor: pointer;
 
     &:hover {
       background-image: url("/images/menu_hover.svg");
     }
+
   }
 
   &__call-link {
@@ -56,11 +72,13 @@
     background-image: url("/images/phone.svg");
     background-repeat: no-repeat;
     background-position: center;
+    opacity: 1;
 
-    &:hover:before {
+    &:before {
       content: "+1 234 555-55-55";
       letter-spacing: 2px;
-      position: absolute;
+
+      position:absolute;
       right: 44px;
       top: 8px;
 
@@ -71,15 +89,41 @@
       @include fontParams(12px, 16px, 700);
       color: $c-gray-default;
 
-      width: 144px;
 
+      width: max-content;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transitionDuration;
+
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
   &__title {
-    font-weight: 800;
+    position: relative;
+    @include fontParams (48px, 48px, 800);
     font-style: italic;
-    font-size: 48px;
-    line-height: 48px;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 63px;
+      height: 76px;
+
+      background-image: url("/images/Sound waves.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+
+      position: absolute;
+      top: -108px;
+    }
   }
 }
+
+
