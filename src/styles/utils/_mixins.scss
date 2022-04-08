@@ -8,6 +8,16 @@
   line-height: $lineHeight;
 }
 
+@mixin btnTransition (
+  $prop1: color,
+  $prop2: background-color,
+  $prop3: box-shadow,
+  $easeFunc: ease,
+  $duration: $transitionDuration
+) {
+  transition: $prop1, $prop2, $prop3 $easeFunc $transitionDuration;
+}
+
 @mixin primaryBtn (
   $padTB: 16px,
   $padRL: 48px,
@@ -21,7 +31,7 @@
   $color: #fff,
   $fontSize: 16px,
   $fontWeight: 700,
-  $border: 2px solid #292929
+  $border: 2px solid transparent
 ) {
   padding: $padTB $padRL;
   width: $width;
@@ -35,15 +45,7 @@
   font-size: $fontSize;
   font-weight: $fontWeight;
   border: $border;
-}
-
-@mixin btnTransition (
-  $prop1: color,
-  $prop2: background-color,
-  $easeFunc: ease,
-  $duration: $transitionDuration
-) {
-  transition: $prop1, $prop2 $easeFunc $transitionDuration;
+  @include btnTransition();
 }
 
 @mixin maxContentWidthForDesktop () {
@@ -53,13 +55,14 @@
 
 /*Media Queries*/
 @mixin forTablet () {
-  @media (max-width: 1259px) {
+  @media (max-width: 768px) {
     @content;
   }
 }
 
 @mixin forMobile () {
-  @media (max-width: 743px) {
+  @media (max-width: 480px) and
+    (min-width: 200px) {
     @content;
   }
 }
