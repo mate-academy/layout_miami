@@ -1,0 +1,95 @@
+.header {
+  &__menu-logo {
+    width: 130px;
+    height: 38px;
+  }
+
+  &__button {
+
+    &-menu {
+      // background-image: url(/images/icon-menu.svg);
+      // background-repeat: no-repeat;
+      // background-position: center;
+      // background-size: cover;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 18px;
+      height: 12px;
+
+      &:hover .header__button-menu__bar:first-child {
+        width: 13px;
+      }
+
+      &:hover .header__button-menu__bar:last-child {
+        width: 9px;
+      }
+
+      &__bar {
+        display: block;
+        background-color: #000;
+        height: 2px;
+        width: 100%;
+        border-radius: 40px;
+        transition: width 300ms;
+      }
+
+      @include tablet-screen {
+        width: 24px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__menu {
+    background-color: #e5e5e5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    padding: 29px 24px 112px 20px;
+    transition: transform $transition-duration;
+
+    &-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+
+    &--open {
+      transform: translateX(0%);
+    }
+
+    &-button-close {
+      cursor: pointer;
+    }
+
+    @media (min-width: 668px) {
+      padding: 36px 76px 167px 72px;
+    }
+
+    @media (min-width: 745px) {
+      padding: 48px 120px 203px;
+
+      &-controls {
+        margin-bottom: 48px;
+      }
+    }
+
+    @include desktop-screen {
+      &-logo {
+        width: 187px;
+        height: 56px;
+      }
+    }
+
+    &-button-close {
+      background-image: url("/images/icon-close.svg");
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
