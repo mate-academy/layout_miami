@@ -3,19 +3,31 @@
 
 .move {
   display: grid;
-  grid-template-columns: repeat(12, 63px);
-  gap: 24px;
   justify-content: center;
-  align-items: center;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
   color: $primaryColor;
+
+  @media (max-width: 744px) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
 
   &__title {
     @include fontParams(64px, 100%, 500);
     grid-column: 1/6;
+    @media (max-width: 744px) {
+      @include fontParams (48px, 100%, 500);
+      grid-column: 1/4;
+    }
   }
 
   &__text {
     @include fontParams(24px, 140%, 500);
-    grid-column: 6/12;
+    grid-column: 6/11;
+
+    @media (max-width: 744px) {
+      grid-column: 4/-1;
+    }
   }
 }
