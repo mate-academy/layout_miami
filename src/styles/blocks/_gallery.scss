@@ -1,7 +1,21 @@
 .gallery {
-  display: grid;
+  padding: 140px $deskop-paddingX;
+
+  &__content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    column-gap: 24px;
+  }
 
   &__title {
     padding-top: 140px;
+  }
+
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--columns--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end -1};
+      }
+    }
   }
 }

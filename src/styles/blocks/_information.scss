@@ -1,11 +1,10 @@
 .info {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(12, 63px);
+  padding: 140px $deskop-paddingX;
 
   &__content-wrapper {
     display: grid;
-    padding-top: 140px;
+    grid-template-columns: repeat(12, 63px);
+    column-gap: 24px;
   }
 
   &__hello {
@@ -18,16 +17,15 @@
   }
 
   &__row {
-    display: flex;
-    flex-direction: column;
-
-    padding-bottom: 8px;
-
-    &:last-child {
-      // display: block;
-      padding-top: 16px;
-    }
+    display: grid;
+    margin-bottom: 16px;
   }
+
+//     &:last-child {
+//       // display: block;
+//       padding-top: 16px;
+//     }
+//   }
 
   &__open-hours-adress {
     @include font-param(24px, 30px, 700);
@@ -40,10 +38,19 @@
     padding-right: 25px;
   }
 
-  &__open-hours-days {
-    display: inline;
-    // &:last-child {
-    //   display: block;
-    // }
+//   &__open-hours-days {
+//     display: inline;
+//     // &:last-child {
+//     //   display: block;
+//     // }
+//   }
+// }
+
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--columns--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end -1};
+      }
+    }
   }
 }
