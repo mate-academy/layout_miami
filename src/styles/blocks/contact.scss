@@ -1,0 +1,115 @@
+.contact {
+  padding: 0 120px 120px;
+
+  @include forIpad {
+    padding: 0 72px 96px;
+  }
+
+  @include forMobile {
+    padding: 0 20px 120px;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+
+    @include forIpad {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+    }
+
+    @include forMobile {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, auto);
+      row-gap: 56px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__form {
+    grid-column: 1 / 6;
+    flex-basis: 50%;
+
+    @include forIpad {
+      grid-column: 1 / 2;
+    }
+
+    @include forMobile {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+    }
+  }
+
+  .contact__input {
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 40px;
+    padding-left: 16px;
+    border: 1px solid transparent;
+    background-color: #f8f8fa;
+
+    &:hover {
+      border-color: #d5d7de;
+    }
+
+    &:active {
+      background-color: #292929;
+      color: #292929;
+    }
+  }
+
+  &__name {
+    height: 48px;
+  }
+
+  &__email {
+    height: 48px;
+  }
+
+  &__message {
+    height: 148px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    padding-top: 14px;
+  }
+  &__button {
+    width: 100%;
+  }
+
+  &__details {
+    grid-column: 8 / 13;
+
+    @include forIpad {
+      grid-column: 2 / -1;
+    }
+
+    @include forMobile {
+      grid-column: 1 / -1;
+      grid-row: 2 / -1;
+    }
+  }
+
+  &__light-text {
+    padding-bottom: 8px;
+    @include fontParams(14px, 20px, 400);
+    color: #9fadc2;
+  }
+
+  &__dark-text {
+    padding-bottom: 24px;
+    @include fontParams(16px, 22px, 400);
+    color: #3e3e3e;
+  }
+}
+
+.contact__input::placeholder {
+  font-family: "Inter", sans-serif;
+}
