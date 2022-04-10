@@ -1,30 +1,32 @@
 .header {
-  height: 500px;
+  height: $mobileHeaderHeight;
   width: 100%;
   justify-content: center;
   background: url("/images/photos/background.png") center no-repeat;
-  //transform: matrix(-1, 0, 0, 1, 0, 0);
   background-size: cover;
 
-  /*
-  &::before {
-    content: "";
-    position: absolute;
-    width: 787px;
-    height: 500px;
-    z-index: -1;
-    background: url("/images/photos/background.png") 0 0 no-repeat;
-    background-size: 787px 500px;
-    left: -136px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+  @include forDesktop {
+    height: $desktopHeaderHeight;
   }
-*/
+
+  @include forTablet {
+    height: $tabletHeaderHeight;
+  }
 
   &__wrapper {
     display: flex;
     flex-direction: column;
+    height: 100%;
     justify-content: space-between;
-    padding-top: 36px;
+    padding: 36px 20px 94px 20px;
+
+    @include forDesktop {
+      padding: 52px 124px 0 120px;
+    }
+
+    @include forTablet {
+      padding: 52px 76px 0 72px;
+    }
   }
 
   &__menu {
@@ -37,14 +39,12 @@
 
   &__navigation {
     display: inline-block;
-    margin-right: 20px;
   }
 
   &__logo {
     display: block;
     height: 16px;
     width: 130px;
-    margin-left: 20px;
   }
 
   &__logo-img {
@@ -93,12 +93,11 @@
     display: none;
     top: 111px;
     width: 100%;
-    padding-left: 20px;
+    padding-top: 55px;
   }
 
   &__title {
-    margin-top: 299px;
-    margin-left: 20px;
+    display: inline-block;
     width: 100%;
   }
 
