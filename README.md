@@ -11,4 +11,4 @@ Implement selected landing page following the lesson videos.
 
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
 
-- [DEMO LINK](https://proznerka.github.io/layout_met/)
+- [DEMO LINK](https://proznerka.github.io/layout_miami/)
