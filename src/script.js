@@ -22,3 +22,9 @@ cross.addEventListener('click', function() {
   toggler.style.display = 'inline-block';
   title.style.display = 'block';
 });
+
+const submit = document.querySelector('#submitButton');
+
+submit.addEventListener('click', function() {
+  document.querySelector('#contactForm').submit();
+});
