@@ -28,15 +28,81 @@
   }
 
   &__menu {
-    display: flex;
-    flex-direction: column;
-    row-gap: 80px;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #e8eff9;
+    z-index: 1;
+    transform: translate(-100%);
+    transition: transform ease-in-out 1s;
+
+    &-toggler {
+      display: inline-block;
+      border-radius: 2px;
+      border: none;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      background-image: url("../images/menu.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-color: transparent;
+      cursor: pointer;
+      transition: background-image ease $transitionDuration;
+
+      @include forMobile() {
+        background: url("../images/mobile-menu.svg") no-repeat;
+      }
+
+      &:hover {
+        background-image: url("../images/menu_hover.svg");
+      }
+    }
+
+    &-wraper {
+      @include maxContentWidthForDesktop;
+      padding: 52px 0 64px;
+    }
+
+    &--controls {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-hide {
+      display: flex;
+      justify-self: right;
+      background-image: url("../images/cross.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-color: transparent;
+      width: 22px;
+      height: 22px;
+      border: none;
+      cursor: pointer;
+      transition: transform ease 0.3s;
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--is-active {
+      transform: translate(0);
+    }
   }
 
-  &__logo-image {
-    @include forMobile() {
-      width: 120px;
-      height: 16px;
+  &__logo {
+    &-image {
+      @include forMobile() {
+        width: 120px;
+        height: 16px;
+      }
     }
   }
 
@@ -67,33 +133,6 @@
     &:hover::before {
       opacity: 1;
       pointer-events: auto;
-    }
-  }
-
-  &__menu-toggler {
-    border-radius: 2px;
-    border: none;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    background-image: url("../images/menu.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: transparent;
-    cursor: pointer;
-    transition: background-image ease $transitionDuration;
-
-    @include forMobile() {
-      background: url("../images/mobile-menu.svg") no-repeat;
-    }
-
-    &:hover {
-      background-image: url("../images/menu_hover.svg");
-    }
-
-    &:focus {
-      background-image: url("../images/cross.svg");
     }
   }
 
