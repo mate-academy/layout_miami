@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   height: 100vh;
   padding: 48px $paddingDekstopX 64px;
 
@@ -39,16 +40,8 @@
     justify-content: space-between;
   }
 
-  &__logo {
-    &-image {
-      display: block;
-      @include heightWidth(24px, unset);
-
-      @include mediaMaxWidth($mobileWidth) {
-        @include heightWidth(unset, 130px);
-        object-fit: contain;
-      }
-    }
+  &__logo-image {
+    @extend %logoDesktopMobile;
   }
 
   &__icons {
@@ -114,9 +107,11 @@
       background-color: transparent;
       background-repeat: no-repeat;
       background-position: center;
+      background-size: contain;
 
-      cursor: pointer;
+      @include hoverState(background-image, url("../images/menu_hover.svg"));
     }
+    
   }
 
   &__sound-waves {
@@ -153,6 +148,25 @@
       @include mediaMaxWidth($mobileWidth) {
         gap: 16;
       }
+    }
+  }
+
+  /* toggle menu section */
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: opacity $transitionTime;
+
+    &:target {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

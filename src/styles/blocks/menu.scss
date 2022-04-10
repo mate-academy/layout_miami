@@ -1,0 +1,142 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  padding: 48px $paddingDekstopX 64px;
+  background-color: #e8eff9;
+
+  @include mediaMaxWidth {
+    padding: 48px $paddingTabletX 40px;
+  }
+
+  @include mediaMaxWidth($tabletMobileTransitionWidth) {
+    padding: 48px $paddingTabMobTransitionX 40px;
+  }
+
+  @include mediaMaxWidth($mobileWidth) {
+    height: 560px;
+    padding: 40px $paddingMobileX 120px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo-image {
+    @extend %logoDesktopMobile;
+  }
+
+  &__cross {
+    @include heightWidth;
+
+    background-image: url("../images/cross.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include mediaMaxWidth($mobileWidth) {
+      @include heightWidth(18px, 18px);
+    }
+  }
+
+  &__list {
+    margin-top: 80px;
+
+    @include mediaMaxWidth {
+      margin-top: 56px;
+    }
+  }
+
+  &__item {
+    margin-top: 32px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-top: 80px;
+    }
+  }
+
+  &__link {
+    @include fontProperties(22px, 22px, 700, 2px);
+
+    position: relative;
+    padding: 10px 0;
+    max-width: max-content;
+    color: $colorMain;
+    text-transform: uppercase;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 2px;
+      right: 0;
+      left: 0;
+
+      display: block;
+      opacity: 0;
+      background-color: $colorMain;
+
+      border: 1px solid $colorMain;
+      transition: opacity $transitionTime;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__link-last {
+    @include fontProperties(12px, 16px, 700, 2px);
+
+    position: relative;
+    max-width: max-content;
+
+    color: $colorMain;
+    text-transform: uppercase;
+
+    &::before {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      top: -30px;
+      left: -20px;
+      pointer-events: none;
+      opacity: 0;
+      white-space: nowrap;
+
+      transition: 
+        opacity $transitionTime,
+        transform $transitionTime;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        transform: translateX(20px);
+      }
+    }
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: -8px;
+      right: 0;
+      left: 0;
+
+      display: block;
+      border: 1px solid $colorMain;
+    }
+  }
+}
