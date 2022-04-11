@@ -1,39 +1,39 @@
 .contact-us {
+  @include maxContentWidthForDesktop();
   display: flex;
   flex-direction: column;
-  padding-bottom: 120px;
+  padding-bottom: $paddingY;
 
   @include forMobile() {
     margin-bottom: 48px;
-    font-size: 32px;
+    font-size: $fontSizeLarge;
   }
 
   &__title {
     text-align: center;
-    @include fontProperties(48px, 700, 48px);
-    letter-spacing: -1.5px;
     margin-bottom: 48px;
 
     @include forMobile() {
       margin-bottom: 48px;
-      font-size: 32px;
+      font-size: $fontSizeLarge;
     }
   }
 
   &__wraper {
     display: flex;
     justify-content: space-between;
-    padding: 0 20px 120px;
+    padding: 0 0 $paddingY;
 
     @include forTablet() {
-      padding: 0 72px 120px;
+      padding: 0 75px $paddingY;
+      column-gap: 24px;
     }
 
     @include forMobile() {
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       row-gap: 42px;
+      padding: 110px 0 120px;
     }
   }
 
@@ -52,8 +52,10 @@
     margin-bottom: 16px;
     padding: 14px 16px;
     width: 100%;
-    @include fontProperties(14px, 400, 20px);
-    transition: border, box-shadow ease $transitionDuration;
+    @include fontProperties($fontSizeNormal, $fontWeightRegular, 20px);
+    transition: border  ease-in-out $transitionDuration,
+      box-shadow ease-in-out $transitionDuration;
+
     border: 1px solid transparent;
 
     &--message {
@@ -75,8 +77,8 @@
   }
 
   ::placeholder {
-    color: #7e7e83;
-    @include fontProperties(14px, 400, 20px);
+    color: $c-medGray;
+    @include fontProperties($fontSizeNormal, $fontWeightRegular, 20px);
 
     @include forMobile() {
       padding: 14px 16px;
@@ -93,9 +95,9 @@
 
   &__details {
     flex-basis: 100% / 3;
-    font-size: 16px;
+    font-size: $fontSizeRegular;
     line-height: 140%;
-    color: #3e3e3e;
+    color: $c-darkGray;
 
     @include forMobile() {
       justify-self: left;
@@ -109,7 +111,7 @@
 
   &__label {
     display: inline-block;
-    color: #9fadc2;
+    color: $c-lightGray;
     margin-bottom: 8px;
   }
 }

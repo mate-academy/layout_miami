@@ -3,15 +3,15 @@
 const menu = document.querySelector('#menuOverlay');
 const navLink = document.querySelectorAll('.nav__link');
 const openMenuIcon = document.querySelector('.header__menu-toggler');
-const closeMenuIcon = document.querySelector('.header__menu-hide');
+const closeMenuIcon = document.querySelector('.menu__hide');
 
 function openMenu(e) {
-  menu.classList.add('header__menu--is-active');
+  menu.classList.add('menu--is-active');
   e.preventDefault();
 }
 
 function closeMenu(e) {
-  menu.classList.remove('header__menu--is-active');
+  menu.classList.remove('menu--is-active');
   e.preventDefault();
 }
 
