@@ -3,6 +3,10 @@
 
   @include forTablet {
     padding: 120px 72px;
+
+    @include forPhone {
+      padding: 80px 22px 120px;
+    }
   }
 
   &__container {
@@ -12,15 +16,18 @@
 
   &__title {
     text-align: center;
-    max-width: 1020px;
     margin: 0 auto 48px;
 
     @include fontParams(48px, 48px, 700);
     font-family: "Inter", sans-serif;
 
     @include forTablet {
-      @include fontParams(48px, 100% 500);
+      font-weight: 500;
       font-family: "Poppins", sans-serif;
+
+      @include forPhone {
+        @include fontParams(32px, 32px, 500);
+      }
     }
   }
 
@@ -32,12 +39,20 @@
 
     @include forTablet {
       gap: 24px;
+
+      @include forPhone {
+        display: grid;
+        gap: 48px;
+        justify-content: center;
+        margin-left: 2px;
+      }
     }
   }
 
   &__inputs {
     display: grid;
     gap: 16px;
+    min-width: 278px;
   }
 
   &__field {
@@ -45,6 +60,10 @@
 
     @include forTablet {
       width: 288px;
+
+      @include forPhone {
+        width: 278px;
+      }
     }
   }
 
@@ -58,13 +77,16 @@
 
     @include fontParams(14px, 20px, 400);
 
+    @include forPhone {
+      width: 278px;
+    }
+
     left: 16px;
 
     background-color: #fff;
 
     &-textarea {
       height: 148px;
-      // width: 100%;
       border-radius: 16px;
       margin-bottom: 32px;
       padding: 14px 16px;
@@ -83,10 +105,31 @@
     border: none;
     border-radius: 40px;
 
+    cursor: pointer;
+
+    @include fontParams(16px, 100%, 700);
+
     background-color: #fff;
 
     @include forTablet {
       width: 288px;
+      box-shadow: none;
+
+      @include forPhone {
+        width: 280px;
+      }
+    }
+  }
+
+  &__button:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+
+    @include forTablet {
+      box-shadow: none;
+    }
+
+    &__button:focus {
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
     }
   }
 
