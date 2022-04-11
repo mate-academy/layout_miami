@@ -1,19 +1,27 @@
 .contact {
   padding: 180px 120px;
 
+  @include forTablet {
+    padding: 120px 72px;
+  }
+
   &__container {
     max-width: $maxContentWidth;
     margin: 0 auto;
   }
 
   &__title {
-    display: block;
     text-align: center;
-    width: 1020px;
+    max-width: 1020px;
     margin: 0 auto 48px;
 
     @include fontParams(48px, 48px, 700);
     font-family: "Inter", sans-serif;
+
+    @include forTablet {
+      @include fontParams(48px, 100% 500);
+      font-family: "Poppins", sans-serif;
+    }
   }
 
   &__forms {
@@ -21,20 +29,32 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 198px;
+
+    @include forTablet {
+      gap: 24px;
+    }
   }
 
   &__inputs {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 16px;
+  }
+
+  &__field {
+    width: 411px;
+
+    @include forTablet {
+      width: 288px;
+    }
   }
 
   &__box {
     border: none;
-    width: 411px;
+    width: 100%;
     height: 48px;
     border-radius: 40px;
     padding-left: 16px;
+    box-sizing: border-box;
 
     @include fontParams(14px, 20px, 400);
 
@@ -57,10 +77,6 @@
     }
   }
 
-  // &__field {
-  //   width: 411px;
-  // }
-
   &__button {
     width: 411px;
     height: 48px;
@@ -68,6 +84,10 @@
     border-radius: 40px;
 
     background-color: #fff;
+
+    @include forTablet {
+      width: 288px;
+    }
   }
 
   &__type {
