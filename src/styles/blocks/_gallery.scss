@@ -1,21 +1,79 @@
 .gallery {
-  // padding: 140px $deskop-paddingX;
-  text-align: center;
+  padding: 0 $desktop-paddingX;
+
+  @include for-mobile {
+    padding: 60px $mobile-paddingX;
+  }
 
   &__content-wrapper {
-    display: grid;
-    @include grid-width-columns(6, 1);
+    @include limit-content-width;
   }
 
   &__title {
-    margin: 0 auto 48px;
+    text-align: center;
+    margin: 0 0 8px;
   }
 
-  @for $start from 1 through 12 {
-    @for $end from $start through 12 {
-      &--columns--#{$start}-#{$end} {
-        grid-column: #{$start} / #{$end -1};
+  &__title-description {
+    @include font-param(16px, 27px, 400);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__row {
+    display: grid;
+    margin-bottom: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: $grid-gap-desktop;
+
+    @include for-mobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $grid-gap-mobile;
+    }
+  }
+
+  &__photo {
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--cols--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
       }
     }
+
+    @include for-mobile {
+      grid-column: unset;
+
+      height: 0;
+      padding-bottom: 100%;
+    }
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    object-position: center;
+    object-fit: cover;
+
+    @include for-mobile {
+      position: absolute;
+    }
+  }
+
+  &__caption-title {
+    @include font-param(16px, 27px, 700);
+    color: $main-accent;
+  }
+
+  &__caption {
+    @include font-param(16px, 27px, 400);
+    margin-bottom: 48px;
   }
 }

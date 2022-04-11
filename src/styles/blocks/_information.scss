@@ -2,8 +2,21 @@
   padding: 140px $desktop-paddingX;
 
   &__content-wrapper {
-    display: grid;
-    @include grid-width-columns(2, 1);
+    @include limit-content-width;
+
+    display: flex;
+    @include grid-width-columns(2, 1fr);
+    gap: 24px;
+
+    @include for-mobile {
+      flex-direction: column;
+      gap: 48px;
+      flex-basis: auto;
+    }
+  }
+
+  &__title-wrapper {
+    flex-basis: 50%;
   }
 
   &__hello {
@@ -13,43 +26,54 @@
 
   &__hello-title {
     @include font-param(48px, 48px, 700);
+    letter-spacing: -1.5px;
+    text-align: left;
+
+    @include for-mobile {
+      @include font-param(32px, 32px, 700);
+    }
   }
+
+  // &__wrapper {
+  //   &:last-child {
+  //     // display: block;
+  //     padding-top: 16px;
+  //   }
+  // }
 
   &__row {
-    display: grid;
     margin-bottom: 16px;
+    flex-basis: 50%;
   }
 
-  //     &:last-child {
-  //       // display: block;
-  //       padding-top: 16px;
-  //     }
-  //   }
-
-  &__open-hours-adress {
+  &__adress {
     @include font-param(24px, 30px, 700);
     padding-bottom: 16px;
   }
 
-  &__open-hours-hours {
+  &__open-hours {
     display: inline;
     @include font-param(16px, 27px, 700);
     padding-right: 25px;
   }
 
-  //   &__open-hours-days {
-  //     display: inline;
-  //     // &:last-child {
-  //     //   display: block;
-  //     // }
+  &__open-days {
+    display: inline;
+  }
+
+  &__last-inline {
+    padding-right: 57px;
+  }
+
+  &__last-inline2 {
+    padding-right: 82px;
+  }
+
+  // @for $start from 1 through 6 {
+  //   @for $end from $start through 6 {
+  //     &--cols--#{$start}-#{$end} {
+  //       grid-column: #{$start} / #{$end + 1};
+  //     }
   //   }
   // }
-
-  @for $start from 1 through 12 {
-    @for $end from $start through 12 {
-      &--columns--#{$start}-#{$end} {
-        grid-column: #{$start} / #{$end + 1};
-      }
-    }
-  }
 }
