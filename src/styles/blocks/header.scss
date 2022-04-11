@@ -1,6 +1,7 @@
 .header {
-  height: 100vh;
-  padding: 48px 60px 80px;
+  height: 720px;
+
+  padding: 48px $paddingXDesktop 80px;
 
   background-image: url("/images/header.png");
   background-repeat: no-repeat;
@@ -8,17 +9,24 @@
   background-size: cover;
 
   @include tabletLayout {
-    padding: 48px 48px 80px;
+    height: 800px;
+
+    padding: 48px $paddingXTablet 40px;
 
     background-image: url("/images/header-744.png");
+  }
+
+  @include mobileWideLayout {
+    padding: 48px $paddingXMobileWide 96px;
 
   }
 
   @include mobileLayout {
-    padding: 40px 20px 80px;
+    height: 500px;
+
+    padding: 40px $paddingXMobile 96px;
 
     background-image: url("/images/header-320.png");
-
   }
 
   &__wrapper {
@@ -31,15 +39,18 @@
     height: 100%;
   }
 
-  &__menu-toggle {
+  &__menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
   }
 
-  &__menu {
-    position: absolute;
+  &__logo {
+    @include mobileLayout {
+      width: 130px;
+    }
+
   }
 
   &__icon-buttons {
@@ -47,24 +58,8 @@
     justify-content: space-between;
     width: 96px;
 
-  }
-
-  &__menu-toggler {
-    width: 32px;
-    height: 32px;
-
-    border: none;
-
-    background-color: transparent;
-    background-image: url("/images/menu.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: background-image $transitionDuration;
-
-    cursor: pointer;
-
-    &:hover {
-      background-image: url("/images/menu_hover.svg");
+    @include mobileLayout {
+      width: 72px;
     }
 
   }
@@ -73,12 +68,16 @@
     position: relative;
     display: flex;
     width: 32px;
-    height: 32px;
 
     background-image: url("/images/phone.svg");
     background-repeat: no-repeat;
     background-position: center;
     opacity: 1;
+
+    @include mobileLayout {
+      width: 24px;
+      height: 24px;
+    }
 
     &::before {
       content: "+1 234 555-55-55";
@@ -107,10 +106,50 @@
       opacity: 1;
       pointer-events: auto;
 
+      @include tabletLayout {
+        display: none;
+      }
+
       @include mobileLayout {
         display: none;
       }
     }
+  }
+
+  &__menu-toggler {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background-color: transparent;
+    background-image: url("/images/menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: background-image $transitionDuration;
+
+    cursor: pointer;
+
+    @include mobileLayout {
+      width: 24px;
+      height: 24px;
+
+      background-image: url("/images/menu.svg");
+    }
+
+    &:hover {
+      background-image: url("/images/menu_hover.svg");
+
+      @include tabletLayout {
+        background-image: url("/images/menu.svg");
+      }
+
+      @include mobileLayout {
+        background-image: url("/images/menu.svg");
+      }
+    }
+
   }
 
   &__title {
@@ -119,18 +158,40 @@
     font-style: italic;
     letter-spacing: -1.5px;
 
+    @include tabletLayout {
+      @include fontParams (40px, 40px, 800);
+    }
+
+    @include mobileLayout {
+      @include fontParams (32px, 32px, 800);
+      width: 274px;
+    }
+
     &::before {
       content: "";
       display: block;
       width: 63px;
       height: 76px;
 
-      background-image: url("/images/Sound waves.svg");
+      background-image: url("/images/sound_waves.svg");
       background-repeat: no-repeat;
       background-position: center;
 
       position: absolute;
       top: -108px;
+
+      @include tabletLayout {
+        top: -116px;
+      }
+
+      @include mobileLayout {
+        width: 32px;
+        height: 27px;
+
+        background-image: url("/images/sound_waves-320.svg");
+
+        top: -43px;
+      }
     }
   }
 }
