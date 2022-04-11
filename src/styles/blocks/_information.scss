@@ -1,10 +1,9 @@
 .info {
-  padding: 140px $deskop-paddingX;
+  padding: 140px $desktop-paddingX;
 
   &__content-wrapper {
     display: grid;
-    grid-template-columns: repeat(12, 63px);
-    column-gap: 24px;
+    @include grid-width-columns(2, 1);
   }
 
   &__hello {
@@ -21,11 +20,11 @@
     margin-bottom: 16px;
   }
 
-//     &:last-child {
-//       // display: block;
-//       padding-top: 16px;
-//     }
-//   }
+  //     &:last-child {
+  //       // display: block;
+  //       padding-top: 16px;
+  //     }
+  //   }
 
   &__open-hours-adress {
     @include font-param(24px, 30px, 700);
@@ -38,18 +37,18 @@
     padding-right: 25px;
   }
 
-//   &__open-hours-days {
-//     display: inline;
-//     // &:last-child {
-//     //   display: block;
-//     // }
-//   }
-// }
+  //   &__open-hours-days {
+  //     display: inline;
+  //     // &:last-child {
+  //     //   display: block;
+  //     // }
+  //   }
+  // }
 
   @for $start from 1 through 12 {
     @for $end from $start through 12 {
       &--columns--#{$start}-#{$end} {
-        grid-column: #{$start} / #{$end -1};
+        grid-column: #{$start} / #{$end + 1};
       }
     }
   }

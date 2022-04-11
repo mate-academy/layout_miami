@@ -16,3 +16,20 @@
     @content;
   }
 }
+
+@mixin limit-content-width {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@mixin grid-width-columns($number-of-cols-desktop, $number-of-cols-mobile) {
+  display: grid;
+  grid-template-columns: repeat($number-of-cols-desktop, 1fr);
+  column-gap: $grid-gap-desktop;
+
+  @include for-mobile {
+    grid-template-columns: repeat($number-of-cols-mobile, 1fr);
+    column-gap: $grid-gap-mobile;
+  }
+}
