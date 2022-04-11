@@ -6,13 +6,32 @@
     @include fontParams(32px, 32px, 700px);
     text-align: center;
     margin-bottom: 48px;
+
+    @include forTablet {
+      @include fontParams(40px, 40px, 700px);
+      margin-bottom: 64px;
+    }
+
+    @include forDesktop {
+      @include fontParams(48px, 48px, 700px);
+      margin-bottom: 64px;
+    }
   }
 
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: $mobileGridGap;
+    grid-gap: $mobileGalleryGap;
     margin-bottom: 16px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include forDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
   }
 
   &__photo {
@@ -20,22 +39,63 @@
     height: 0;
     width: 100%;
     padding-bottom: 100%;
+
+    @include forTablet {
+      height: 100%;
+      width: 100%;
+      padding-bottom: 0;
+      @for $start from 1 through 6 {
+        @for $end from 1 through 6 {
+          &--t-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+
+    @include forDesktop {
+      height: 100%;
+      width: 100%;
+      padding-bottom: 0;
+      @for $start from 1 through 12 {
+        @for $end from 1 through 12 {
+          &--d-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
   }
 
   &__image {
     display: block;
     position: absolute;
-
     height: 100%;
     width: 100%;
 
     object-position: center;
     object-fit: cover;
+
+    @include forDesktop {
+      position: static;
+    }
+
+    @include forTablet {
+      position: static;
+    }
   }
 
   &__caption {
     margin-bottom: 40px;
     @include fontParams(16px, 140%, 700);
+
+    @include forTablet {
+      @include fontParams(24px, 140%, 700);
+    }
+
+    @include forDesktop {
+      @include fontParams(24px, 140%, 700);
+    }
   }
 
   .button {
@@ -51,8 +111,16 @@
     @include fontParams(16px, 27px, 700);
 
     border-radius: 40px;
+
+    @include forTablet {
+      padding: 16.5px 165px;
+    }
+
+    @include forDesktop {
+      padding: 14.5px 131px;
+    }
   }
-  
+
   &__button {
     margin: 0 auto;
   }

@@ -10,6 +10,7 @@ const phone = document.querySelector('.header__phone');
 toggler.addEventListener('click', function() {
   nav.style.display = 'block';
   bgc.style.background = '#e8eff9';
+  bgc.style.height = 'fit-content';
   cross.style.display = 'inline-block';
   toggler.style.display = 'none';
   title.style.display = 'none';
@@ -19,15 +20,10 @@ toggler.addEventListener('click', function() {
 cross.addEventListener('click', function() {
   nav.style.display = 'none';
   bgc.style.background = 'none';
+  bgc.style.height = '100%';
   bgc.style.backgroundImg = 'url("/images/photos/background.png")';
   cross.style.display = 'none';
   toggler.style.display = 'inline-block';
   title.style.display = 'block';
   phone.style.display = 'inline-block';
-});
-
-const submit = document.querySelector('#submitButton');
-
-submit.addEventListener('click', function() {
-  document.querySelector('#contactForm').submit();
 });

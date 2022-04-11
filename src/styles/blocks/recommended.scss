@@ -4,22 +4,37 @@
   justify-content: center;
   text-align: center;
   grid-template-columns: 1fr;
+  grid-gap: $mobileRecomGap;
+
+  @include forTablet {
+    margin: $tabletRecomMargins;
+    grid-gap: $tabletRecomGap;
+  }
+
+  @include forDesktop {
+    margin: $desktopMargins;
+    grid-gap: $desktopRecomGap;
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   &__title {
     @include fontParams(32px, 32px, 700);
-    margin-bottom: 48px;
+
+    @include forTablet {
+      @include fontParams(40px, 100%, 700);
+      margin-bottom: 24px;
+    }
+
+    @include forDesktop {
+      @include fontParams(48px, 48px, 700);
+      margin-bottom: 40px;
+      grid-column: 1/4;
+    }
   }
 
   &__product-image {
     margin-bottom: 32px;
-  }
-
-  &__product {
-    margin-bottom: 48px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    width: 100%;
   }
   &__product-header {
     text-align: left;
