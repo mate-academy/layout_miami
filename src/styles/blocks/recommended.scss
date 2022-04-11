@@ -5,12 +5,24 @@
     padding: 120px 48px 0;
   }
 
+  @include mobileWideLayout {
+    padding: 48px $paddingXMobileWide 96px;
+  }
+
   @include mobileLayout {
     padding: 120px 20px 0;
   }
 
   &__wrapper {
-    @include limitContentWidth;
+    @include limitContentWidthDesktop;
+
+    @include tabletLayout {
+      @include limitContentWidthTablet;
+    }
+
+    @include mobileLayout {
+      @include limitContentWidthMobile;
+    }
   }
 
   &__title {
@@ -24,11 +36,32 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
 
+    @include tabletLayout {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include mobileLayout {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__card {
     width: 100%;
     height: 100%;
+
+    @include tabletLayout {
+      grid-column: 2 / 6;
+
+      margin-bottom: 40px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include mobileLayout {
+      grid-column: 1 /3;
+    }
   }
 
   &__image {

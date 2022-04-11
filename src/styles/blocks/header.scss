@@ -18,7 +18,6 @@
 
   @include mobileWideLayout {
     padding: 48px $paddingXMobileWide 96px;
-
   }
 
   @include mobileLayout {
@@ -30,13 +29,21 @@
   }
 
   &__wrapper {
-    @include limitContentWidth;
+    @include limitContentWidthDesktop;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     height: 100%;
+
+    @include tabletLayout {
+      @include limitContentWidthTablet;
+    }
+
+    @include mobileLayout {
+      @include limitContentWidthMobile;
+    }
   }
 
   &__menu {
@@ -164,7 +171,6 @@
 
     @include mobileLayout {
       @include fontParams (32px, 32px, 800);
-      width: 274px;
     }
 
     &::before {
