@@ -1,18 +1,18 @@
 .header {
-  padding: 52px 120px 64px;
+  padding: 52px $desktopPaddingX 64px;
   height: 100vh;
   background-image: url(/images/header_img.png);
-  background-repeat: no-repeat;
+  @include backgroundDefault;
   background-position: top center;
-  background-size: cover;
 
   @include forIpad {
-    padding: 52px 72px 40px;
+    padding: 52px $ipadPaddingX 40px;
     background-image: url(/images/header_ipad-img.png);
   }
 
   @include forMobile {
     padding: 40px $mobilePaddingX 94px;
+    height: 700px;
     background-image: url(/images/header_mobile-img.png);
   }
 
@@ -47,14 +47,12 @@
   }
 
   &__menu-toggler {
-    height: 24px;
-    width: 24px;
+    @include iconSize(24px);
     margin-left: 40px;
     border: none;
     background-image: url(/images/menu_toggler_default.png);
-    background-repeat: no-repeat;
+    @include backgroundDefault;
     background-color: transparent;
-    background-size: cover;
     background-position: center;
     cursor: pointer;
 
@@ -63,22 +61,18 @@
     }
 
     @include forMobile {
-      height: 18px;
-      width: 18px;
+      @include iconSize(18px);
     }
   }
 
   .header__phone {
-    height: 24px;
-    width: 24px;
+    @include iconSize(24px);
     background-image: url(/images/phone.png);
-    background-repeat: no-repeat;
+    @include backgroundDefault;
     background-color: transparent;
-    background-size: cover;
 
     @include forMobile {
-      height: 18px;
-      width: 18px;
+      @include iconSize(18px);
     }
 
     &::before {
@@ -92,16 +86,19 @@
       color: transparent;
       pointer-events: none;
       transition: color $transitionDuration;
+
+      @include forIpad {
+        display: none;
+      }
+
+      @include forMobile {
+        display: none;
+      }
     }
 
     &:hover::before {
-      color: #000;
+      color: #292929;
       pointer-events: auto;
-    }
-
-    @include forMobile {
-      height: 18px;
-      width: 18px;
     }
   }
 
