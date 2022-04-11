@@ -7,24 +7,12 @@
   &__button {
 
     &-menu {
-      // background-image: url(/images/icon-menu.svg);
-      // background-repeat: no-repeat;
-      // background-position: center;
-      // background-size: cover;
-
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 18px;
       height: 12px;
-
-      &:hover .header__button-menu__bar:first-child {
-        width: 13px;
-      }
-
-      &:hover .header__button-menu__bar:last-child {
-        width: 9px;
-      }
+      cursor: pointer;
 
       &__bar {
         display: block;
@@ -32,7 +20,15 @@
         height: 2px;
         width: 100%;
         border-radius: 40px;
-        transition: width 300ms;
+        transition: width $transition-duration;
+      }
+
+      &:hover .header__button-menu__bar:first-child {
+        width: 13px;
+      }
+
+      &:hover .header__button-menu__bar:last-child {
+        width: 9px;
       }
 
       @include tablet-screen {
@@ -48,23 +44,15 @@
     left: 0;
     right: 0;
     top: 0;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     padding: 29px 24px 112px 20px;
-    transition: transform $transition-duration;
+    transition: transform $transition-duration ease-out;
 
     &-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 44px;
-    }
-
-    &--open {
-      transform: translateX(0%);
-    }
-
-    &-button-close {
-      cursor: pointer;
     }
 
     @media (min-width: 668px) {
@@ -90,6 +78,15 @@
       background-image: url("/images/icon-close.svg");
       width: 16px;
       height: 16px;
+      cursor: pointer;
     }
   }
+}
+
+.menu-toggler {
+  display: none;
+}
+
+.menu-toggler:checked + .header__menu {
+  transform: translateX(0);
 }
