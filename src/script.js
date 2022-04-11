@@ -27,3 +27,10 @@ cross.addEventListener('click', function() {
   title.style.display = 'block';
   phone.style.display = 'inline-block';
 });
+
+const button = document.querySelector('#submitButton');
+
+button.addEventListener('click', function(event) {
+  window.alert('preventDeafault', 1);
+  event.preventDefault();
+}, false);
