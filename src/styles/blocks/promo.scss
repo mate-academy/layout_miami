@@ -1,30 +1,77 @@
 .promo {
+  padding: 120px 60px 0;
+  // margin: 0 auto;
+
+  @include tabletLayout {
+    padding: 120px 48px 0;
+  }
+
+  @include mobileLayout {
+    padding: 120px 20px 0;
+  }
 
   &__wrapper {
-    padding: 120px 60px 0;
-    max-width: $maxContentWidth;
     margin: 0 auto;
+    max-width: $maxContentWidth;
 
     display: grid;
     grid-template-columns: repeat(12, 63px);
     column-gap: 24px;
+
+    width: 100%;
+
+    @include tabletLayout {
+      display: grid;
+      grid-template-columns: repeat(2, 288px);
+    }
+
+    @include mobileLayout {
+      display: grid;
+      grid-template-columns: repeat(2, 130px);
+    }
   }
 
   &__title {
     grid-column: 1 / 6;
 
+    @include tabletLayout {
+      grid-column: 1 / 2;
+    }
+
+    @include mobileLayout {
+      grid-column: 1 / 3;
+      padding-bottom: 32px;
+    }
+
     @include fontParams(48px, 48px, 700);
     letter-spacing: -1.5px;
+
+    @include tabletLayout {
+      @include fontParams(40px, 40px, 700);
+    }
+
+    @include tabletLayout {
+      @include fontParams(32px, 32px, 700);
+    }
   }
 
   &__content {
     grid-column: 6 / 11;
+
+    @include tabletLayout {
+      grid-column: 2 / 3;
+    }
+
+    @include mobileLayout {
+      grid-column: 1 / 3;
+    }
 
     @include fontParams(16px, 27px, 400);
   }
 
   &__points {
     padding-bottom: 16px;
+    line-height: 22px;
     font-weight: 700;
 
     &:last-child {
