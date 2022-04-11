@@ -18,10 +18,8 @@
   &__wrapper {
     @include limitContentWidth;
     @include forTablet {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
       gap: 24px;
-      justify-items: center;
     }
     @include forDesktop {
       gap: 198px;
@@ -33,6 +31,11 @@
     flex-direction: column;
     gap: 16px;
     margin-top: 48px;
+
+    @include forTablet {
+      flex-basis: 50%;
+      align-items: flex-end;
+    }
   }
 
   &__form-field {
@@ -45,6 +48,10 @@
 
     @include forTablet {
       width: 288px;
+    }
+
+    @include forDesktop {
+      width: 411px;
     }
 
     &::placeholder {
@@ -84,6 +91,10 @@
       width: 288px;
     }
 
+    @include forDesktop {
+      width: 411px;
+    }
+
     &:hover {
       box-shadow: 1px 4px 16px $button-hover-white;
     }
@@ -95,6 +106,10 @@
 
   &__info {
     margin-top: 48px;
+
+    @include forTablet {
+      flex-basis: 50%;
+    }
   }
 
   &__info-text {
@@ -107,7 +122,7 @@
   }
 
   &__info-link {
-    display: block;
+    display: inline-block;
     margin-top: 8px;
     font-size: 16px;
     font-weight: 500;
