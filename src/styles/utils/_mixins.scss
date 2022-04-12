@@ -32,3 +32,17 @@
     column-gap: $grid-gap-mobile;
   }
 }
+
+@mixin custom-cols($number-of-cols) {
+  @for $start from 1 through $number-of-cols {
+    @for $end from $start through $number-of-cols {
+      &--cols--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+
+  @include for-mobile {
+    grid-column: unset;
+  }
+}

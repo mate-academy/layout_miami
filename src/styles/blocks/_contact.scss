@@ -1,12 +1,50 @@
 .contact {
+  $number-of-cols: 12;
+
   padding: 140px $desktop-paddingX;
+
+  @include for-mobile {
+    padding: 100px $mobile-paddingX;
+  }
 
   &__content-wrapper {
     @include limit-content-width;
-    @include grid-width-columns(3, 1);
   }
 
   &__title {
     margin-bottom: 48px;
+  }
+
+  &__container {
+    @include grid-width-columns($number-of-cols, 1);
+  }
+
+  &__item {
+    @include custom-cols($number-of-cols);
+  }
+
+  &__address {
+    margin-bottom: 16px;
+
+    @include font-param(16px, 27px, 700);
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+
+    @include font-param(14px, 27px, 400);
+  }
+
+  &__link {
+    display: inline-block;
+    margin-bottom: 8px;
+    @include font-param(16px, 27px, 700);
+    color: #3e3e3e;
+
+    &--last {
+      @include for-mobile {
+        margin-bottom: 48px;
+      }
+    }
   }
 }
