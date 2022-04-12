@@ -1,0 +1,77 @@
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-y: auto;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__section-title {
+    margin: 0 auto;
+    padding-top: 25px;
+    text-align: center;
+
+    color: #000;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      margin: 4px auto 36px;
+      width: 23px;
+      height: 16px;
+      background-image: url(../images/crown.svg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include onDesktop {
+        margin-bottom: 65px;
+      }
+    }
+  }
+}
