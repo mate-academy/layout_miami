@@ -1,6 +1,18 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+
+@mixin fontParams($fontSize, $lineHeight, $fontWeight:400px) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin forTablet {
+  @media (min-width:$mobileBreakpoint) {
+    @content;
+  }
+}
+
+@mixin forDesktop {
+  @media (min-width:$tabletBreakpoint) {
+    @content;
   }
 }
