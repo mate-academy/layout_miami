@@ -1,12 +1,20 @@
 .header {
   height: 100vh;
 
+  padding: 0 $desktop-paddingX;
+
   background-image: url(/images/photos/header.png);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
 
+  @include for-mobile {
+    padding-left: $mobile-paddingX;
+    padding-right: $mobile-paddingX;
+  }
+
   &__content-wrapper {
+    @include limit-content-width;
     height: 148px;
     margin: 0 auto;
 
@@ -19,11 +27,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 120px;
-
-    @include for-mobile {
-      padding: 0 20px;
-    }
   }
 
   &__menu-control-wrapper {
@@ -48,14 +51,6 @@
     &:hover {
       background-image: url(/images/menu_hover.svg);
     }
-  }
-
-  &__logo {
-    @include font-param(40px, 32px, 700);
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
   }
 
   &__title {
