@@ -1,8 +1,8 @@
 .gallery {
-  padding: 0 $desktop-paddingX;
+  padding: 140px $desktop-paddingX 0;
 
   @include for-mobile {
-    padding: 0 $mobile-paddingX;
+    padding: 100px $mobile-paddingX 0;
   }
 
   &__content-wrapper {
@@ -23,14 +23,10 @@
   &__row {
     display: grid;
     margin-bottom: 24px;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: $grid-gap-desktop;
+    @include grid-width-columns(6, 2);
 
-    @include for-mobile {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: $grid-gap-mobile;
-
-      &--3cols {
+    &--3cols {
+      @include for-mobile {
         grid-template-columns: repeat(3, 1fr);
       }
     }
@@ -42,13 +38,7 @@
     height: 100%;
     width: 100%;
 
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
-        &--cols--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-      }
-    }
+    @include custom-cols(6);
 
     @include for-mobile {
       grid-column: unset;
@@ -60,8 +50,10 @@
 
   &__image {
     display: block;
+    position: relative;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 
     object-position: center;
     object-fit: cover;
@@ -77,6 +69,10 @@
     &--right {
       object-position: bottom right;
     }
+
+    @include hover-tr(transform, scale(1.1)) {
+      z-index: 1;
+    }
   }
 
   &__caption-title {
@@ -87,5 +83,9 @@
   &__caption {
     @include font-param(16px, 27px, 400);
     margin-bottom: 48px;
+
+    @include for-mobile {
+      margin-bottom: 40px;
+    }
   }
 }
