@@ -8,8 +8,11 @@
   font-variant: small-caps;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #fff;
   margin: 0;
 }
 
@@ -116,41 +119,67 @@ body {
   }
 }
 
+.top__info {
+  display: flex;
+  cursor: pointer;
+}
+
+.info__phone {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 63px;
+
+  &::before {
+    content: "+1 212-535-7710";
+    max-width: 160px;
+    color: #fff;
+    padding-right: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
 .header {
   position: relative;
   padding: 32px 120px;
   height: 100vh;
-  background: url("/src/images/photos/image5.png") no-repeat top center fixed;
+  background: url("/images/photos/image5.png") no-repeat top center fixed;
   background-size: cover;
   z-index: 1;
+
+  @include changeSize($mobile) {
+    padding: 20px 25px;
+  }
+
 
   &__top {
     display: flex;
     justify-content: space-between;
-
-    .top__info {
-      display: flex;
-      cursor: pointer;
-
       .info__phone {
         position: relative;
         width: 24px;
         height: 24px;
         margin-right: 63px;
-      }
 
-      &::before {
-        content: "+1 212-535-7710";
-        max-width: 160px;
-        color: #fff;
-        padding-right: 12px;
-        font-weight: 700;
-        font-size: 1rem;
-        display: none;
-      }
+        &::before {
+          content: "+1 212-535-7710";
+          max-width: 160px;
+          color: #fff;
+          padding-right: 12px;
+          font-weight: 700;
+          font-size: 1rem;
+          opacity: 0;
+        }
 
-      &:hover::before {
-        display: block;
+        &:hover::before {
+          opacity: 1;
+        }
       }
 
       .info__bar {
@@ -198,8 +227,6 @@ body {
         }
       }
     }
-  }
-
   &__title {
     display: flex;
     justify-content: center;
@@ -214,11 +241,6 @@ body {
       letter-spacing: -1.5px;
     }
   }
-
-  @include changeSize($mobile) {
-    padding: 20px 25px;
-    height: 100%;
-  }
 }
 
 .main {
@@ -231,7 +253,6 @@ body {
     // justify-content: space-around;
     // gap: 48px;
     justify-content: center;
-
 
     .plan {
       line-height: 2px;
@@ -367,9 +388,9 @@ body {
         background-color: #ae1c23;
       }
 
-        &:active {
-          background: #eb343d;
-        }
+      &:active {
+        background: #eb343d;
+      }
     }
   }
 
@@ -458,6 +479,7 @@ body {
           font-weight: 700;
           font-size: 16px;
           color: #3e3e3e;
+          text-decoration: none;
         }
 
         &__address {
@@ -465,6 +487,7 @@ body {
           font-size: 16px;
           color: #3e3e3e;
           text-transform: uppercase;
+          text-decoration: none;
         }
 
         .contact__name,
@@ -481,18 +504,21 @@ body {
         .contact__name {
           background: #f8f8fa;
           height: 48px;
+          font-family: "Cinzel", sans-serif;
+          padding: 14px 16px;
+          color: #161616;
 
           &::placeholder {
             font-family: "Cinzel", sans-serif;
             font-weight: 400;
             font-size: 14px;
             color: #7e7e83;
-            padding-left: 16px;
           }
 
           &:hover {
-            background: #f8f8fA;
-            border: 1px solid #d5d7dE;
+            background: #f8f8fa;
+            border: 1px solid #d5d7de;
+            cursor: pointer;
           }
 
           &:hover::placeholder {
@@ -507,18 +533,21 @@ body {
         .contact__email {
           background: #f8f8fa;
           height: 48px;
+          font-family: "Cinzel", sans-serif;
+          padding: 14px 16px;
+          color: #161616;
 
           &::placeholder {
-            font-family: "Cinzel", sans-serif;
+
             font-weight: 400;
             font-size: 14px;
             color: #7e7e83;
-            padding-left: 16px;
           }
 
           &:hover {
-            background: #f8f8fA;
-            border: 1px solid #d5d7dE;
+            background: #f8f8fa;
+            border: 1px solid #d5d7de;
+            cursor: pointer;
           }
 
           &:hover::placeholder {
@@ -536,13 +565,14 @@ body {
           font-size: 14px;
           color: #7e7e83;
           padding-top: 17px;
-          padding-left: 16px;
+          padding: 14px 16px;
           background: #f8f8fa;
 
           &:hover {
-            background: #f8f8fA;
+            background: #f8f8fa;
             color: #161616;
-            border: 1px solid #d5d7dE;
+            border: 1px solid #d5d7de;
+            cursor: pointer;
           }
 
           &:focus {
@@ -575,7 +605,7 @@ body {
 
 .footer {
   &__image {
-    background: url("/src/images/photos/image12.png") no-repeat center center;
+    background: url("/images/photos/image12.png") no-repeat center center;
     background-size: cover;
     height: 360px;
   }
