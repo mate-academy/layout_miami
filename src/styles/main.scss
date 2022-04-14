@@ -69,40 +69,41 @@ body {
 
   .met__info {
     margin: 48px 0;
-    .met__avenue {
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      line-height: 10px;
-      color: #fff;
-      margin-bottom: 30px;
-
-      .fifth__avenue {
-        cursor: pointer;
+      .met__avenue {
+        margin-bottom: 30px;
+        .fifth__avenue {
+          font-weight: 700;
+          font-size: 1rem;
+          text-transform: uppercase;
+          line-height: 10px;
+          color: #fff;
+          margin-bottom: 20px;
+          display: block;
+          text-decoration: none;
 
         &:hover {
+          cursor: pointer;
           text-underline-position: under;
           text-decoration: underline;
         }
       }
-    }
+      }
 
-    .met__cloister {
+    .cloister__title,
+    .cloister__mobile {
       font-weight: 700;
       font-size: 1rem;
       text-transform: uppercase;
       line-height: 10px;
       color: #fff;
       margin-bottom: 20px;
+      display: block;
+      text-decoration: none;
 
-      .cloister__title,
-      .cloister__mobile {
+      &:hover {
         cursor: pointer;
-
-        &:hover {
-          text-underline-position: under;
-          text-decoration: underline;
-        }
+        text-underline-position: under;
+        text-decoration: underline;
       }
     }
 
@@ -112,10 +113,10 @@ body {
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #fff;
-      cursor: pointer;
       text-decoration: none;
 
       &:hover {
+        cursor: pointer;
         text-underline-position: under;
         text-decoration: underline;
       }
@@ -163,7 +164,13 @@ body {
 
   &__top {
     display: flex;
+    max-width: 1020px;
     justify-content: space-between;
+    margin: 0 auto;
+
+    @include changeSize($mobile) {
+      padding: 20px 25px;
+    }
 
     .info__phone {
       position: relative;
@@ -231,6 +238,7 @@ body {
       }
     }
   }
+
   &__title {
     display: flex;
     justify-content: center;
@@ -244,20 +252,41 @@ body {
       font-size: 80px;
       letter-spacing: -1.5px;
       margin-bottom: 80px;
+
+      @include changeSize($mobile) {
+        width: 280px;
+        font-size: 40px;
+      }
     }
   }
 }
 
 .main {
   position: relative;
-  padding: 140px 120px;
+  max-width: 1020px;
+  // padding: 120px 140px;
+  margin: 140px auto;
+
+  @include changeSize($mobile) {
+    padding: 20px 20px;
+    width: 280px;
+  }
 
   &__section-1 {
     display: grid;
     grid-template-columns: repeat(2, 512px);
-    // justify-content: space-around;
-    // gap: 48px;
     justify-content: center;
+
+    // @include changeSize($mobile) {
+    //   grid-template-columns: 1fr;
+    // }
+
+    @include changeSize($mobile) {
+      display: grid;
+      grid-template-columns: 1fr;
+      // padding: 20px 20px;
+      // width: 280px;
+    }
 
     .plan {
       line-height: 2px;
@@ -271,6 +300,10 @@ body {
       &__title {
         font-size: 48px;
         font-weight: 700;
+
+      @include changeSize($mobile) {
+        font-size: 32px;
+      }
       }
     }
 
@@ -315,33 +348,55 @@ body {
     .main__section-title {
       text-align: center;
       position: relative;
-      width: 350px;
       margin: 0 auto 70px;
+    }
+    .section__view {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 0;
 
-      .section__view {
-        font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 0;
-      }
-
-      .section__explore {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 255px;
-        font-size: 1rem;
-        font-weight: 400;
+      @include changeSize($mobile) {
+        font-size: 32px;
       }
     }
 
+    .section__explore {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 255px;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
     .main__section-wrapper {
-      max-width: 1020px;
-      margin: 0 auto;
       .main__section-photos {
         display: grid;
         grid-template-columns: repeat(2, 0fr);
         column-gap: 24px;
         justify-content: center;
+      }
+
+      .img3,
+      .img4 {
+        @include changeSize($mobile) {
+          width: 130px;
+          height: 130px;
+        }
+      }
+
+      .img3,
+      .img4,
+      .img5,
+      .img6,
+      .img7,
+      .img8,
+      .img9 {
+        transition: transform 0.3s ease-in;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
       }
 
       .description {
@@ -366,6 +421,15 @@ body {
         grid-template-columns: repeat(3, 0fr);
         column-gap: 24px;
         justify-content: center;
+
+        .img5,
+        .img6,
+        .img7 {
+          @include changeSize($mobile) {
+            width: 88px;
+            height: 87px;
+          }
+        }
       }
 
       .main__section-row__third {
@@ -373,6 +437,14 @@ body {
         grid-template-columns: repeat(2, 0fr);
         column-gap: 24px;
         justify-content: center;
+
+        .img8,
+        .img9 {
+          @include changeSize($mobile) {
+            width: 130px;
+            height: 130px;
+          }
+        }
       }
     }
 
@@ -401,6 +473,10 @@ body {
 
   &__section-3 {
     margin-top: 235px;
+    @include changeSize($mobile) {
+      padding: 20px 20px;
+      width: 280px;
+    }
 
     .explore {
       width: 500px;
@@ -411,21 +487,47 @@ body {
         font-weight: 700;
         text-align: center;
         letter-spacing: -1.5px;
+
+        @include changeSize($mobile) {
+          width: 280px;
+          font-size: 32px;
+          letter-spacing: -1.5px;
+        }
       }
     }
 
     .section__block {
       margin-top: 48px;
       display: grid;
-      grid-template-columns: repeat(3, 0fr);
+      grid-template-columns: repeat(3, 1fr);
       column-gap: 24px;
       justify-content: center;
 
+      @include changeSize($mobile) {
+        grid-template-columns: 1fr;
+      }
+
       .section__col-4 {
 
+        @include changeSize($mobile) {
+          padding: 20px 20px;
+          width: 280px;
+        }
+
         .section__photos {
-          width: 324;
+          width: 324px;
           height: 320px;
+          transition: transform 0.3s ease-in;
+
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+
+          @include changeSize($mobile) {
+            width: 288px;
+            height: 287px;
+          }
         }
 
         .title__area {
@@ -462,11 +564,20 @@ body {
     }
     .section__block {
       display: grid;
-      grid-template-columns: 240px 240px 410px;
+      grid-template-columns: repeat(3, 1fr);
       column-gap: 70px;
       justify-content: center;
 
+      @include changeSize($mobile) {
+        grid-template-columns: 1fr;
+      }
+
       .col-1 {
+
+        @include changeSize($mobile) {
+          padding: 20px 20px;
+        }
+
         &__title {
           font-weight: 700;
           font-size: 16px;
