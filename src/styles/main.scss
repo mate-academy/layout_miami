@@ -9,6 +9,7 @@ $colorBlue: #0075ff;
 
 .page {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
@@ -27,6 +28,36 @@ $colorBlue: #0075ff;
       transform: translateX(0);
     }
   }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop() {
+      margin-bottom: 104px;
+    }
+  }
+
+  &__section-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    color: #000;
+
+    &::after {
+      content: "";
+      display: block;
+      margin: 6px auto 0;
+      background-image: url("../images/icons/crown.svg");
+      background-position: center;
+      background-size: contain;
+      width: 20px;
+      height: 13px;
+    }
+  }
 }
 
 .container {
@@ -36,6 +67,35 @@ $colorBlue: #0075ff;
 
   @include onDesktop() {
     padding: 0 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop() {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
   }
 }
 
@@ -228,6 +288,56 @@ $colorBlue: #0075ff;
     &--action {
       padding-bottom: 8px;
       border-bottom: 1px solid #fff;
+    }
+  }
+}
+
+.about {
+  &__title {
+    margin: 0 0 48px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    align-items: center;
+    letter-spacing: -1.5px;
+    color: #000;
+
+    @include onDesktop() {
+      margin-bottom: 0;
+      
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__title-link {
+    color: $colorBlue;
+    text-decoration: none;
+  }
+
+  &__subtitle {
+    display: block;
+    margin-bottom: 16px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: $colorBlue;
+    text-decoration: none;
+  }
+
+  &__paragraph {
+    margin: 0 0 27px;
+
+    line-height: 27px;
+    color: #3e3e3e;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--bold {
+      font-weight: 700;
     }
   }
 }
