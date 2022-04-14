@@ -1,0 +1,104 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.header {
+  background-image: url("../images/photos/header-bgr.png");
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    @include universalFlex (flex, column, space-between, unset);
+
+    height: 100vh;
+    padding: 30px 0 120px;
+
+    @include onTablet {
+      padding: 30px 72px 120px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 105px;
+    }
+  }
+
+  &__nav {
+    @include universalFlex (flex, row, space-between, center);
+  }
+
+  &__logo {
+    height: 38px;
+  }
+
+  &__logo-img {
+    @include onTablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__nav-wrapper {
+    @include universalFlex (flex, row, space-between, center);
+  }
+
+  &__phone {
+    margin-right: 30px;
+
+    background-image: url("../images/phone-black.svg");
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      position: relative;
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $mainHeaderColor;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-btn {
+    background-image: url("../images/menu-black.svg");
+
+    &:hover {
+      background-image: url("../images/menu-black-hover.svg");
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainHeaderColor;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      color: $baseColor;
+    }
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
