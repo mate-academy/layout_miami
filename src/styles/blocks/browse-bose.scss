@@ -1,16 +1,16 @@
 .browse-bose {
-  padding: 120px $paddingXDesktop 0;
+  padding: 0 $paddingXDesktop 120px ;
 
   @include tabletLayout {
-    padding: 120px $paddingXTablet 0;
+    padding: 0 $paddingXTablet 120px;
   }
 
   @include mobileWideLayout {
-    padding: 48px $paddingXMobileWide 96px;
+    padding: 0 $paddingXMobileWide 120px;
   }
 
   @include mobileLayout {
-    padding: 120px $paddingXMobile 0;
+    padding: 0 $paddingXMobile 120px;
   }
 
   &__wrapper {
@@ -48,9 +48,23 @@
   }
 
   &__image {
+    z-index: 1;
+
     display: block;
     width: 100%;
     height: 100%;
+
+    transition: transform $transitionDuration, box-shadow $transitionDuration;
+
+    &:hover {
+      z-index: 0;
+
+      object-position: center;
+      object-fit: cover;
+      box-shadow: 2px 4px 16px rgba(0, 128, 128, 0.5);
+
+      transform: scale(1.1);
+    }
 
     @for $start from 1 through 4 {
       @for $end from $start through 4 {
@@ -69,9 +83,6 @@
         }
       }
     }
-
-    object-position: center;
-    object-fit: cover;
   }
 
   &__department {
@@ -108,19 +119,22 @@
 
   &__button {
     margin: 0 auto;
+
     @include fontParams (16px, 27px, 700);
+
     display: flex;
+    grid-column: 2 / 3;
     justify-content: center;
     align-items: center;
     height: 56px;
-
-    grid-column: 2 / 3;
     width: 100%;
 
     background-color: #292929;
-    color: #fff;
     border: 3px solid transparent;
     border-radius: 40px;
+
+    color: #fff;
+
     transition: $transitionDuration;
 
     @include tabletLayout {
@@ -133,15 +147,16 @@
 
     &:hover {
       border: 3px solid $c-gray-default;
-      color: $c-gray-default;
-      background-color: #fff;
 
+      color: $c-gray-default;
+
+      background-color: #fff;
     }
 
     &:active {
-      background-color: #111;
       color: #fff;
 
+      background-color: #111;
     }
   }
 }
