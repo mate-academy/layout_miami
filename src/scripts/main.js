@@ -1,6 +1,8 @@
 'use strict';
 
-document.querySelector('#landing-form')
-  .addEventListener('click', function(event) {
-    event.preventDefault();
-  }, false);
+const form = document.querySelector('#landing-form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  form.reset();
+});
