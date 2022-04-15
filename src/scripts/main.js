@@ -8,6 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
+const e = document.getElementById('email');
+const n = document.getElementById('name');
+const m = document.getElementById('message');
+
 document.querySelector('#submit').addEventListener('click', function(event) {
   event.preventDefault();
+
+  n.value = '';
+  e.value = '';
+  m.value = '';
 }, false);
