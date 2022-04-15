@@ -1,0 +1,121 @@
+$wDeskImg-4x-1024: calc(328 / 1024 * (100vw - 240px));
+$wDeskImg-8x-1024: calc((328 / 512 + 24 / 1020) * (100vw - 260px));
+$wTabletImg-2x-744: calc((100vw - 144px) * 184 / 600);
+$wTabletImg-3x-744: calc((100vw - 144px) * 288 / 600);
+$wTabletImg-4x-744: calc((100vw - 144px) * 392 / 600);
+$wMobileImg-1-3--320: calc((100vw - 40px) / 3 - 100vw / 32);
+$wMobileImg-1-2--320: calc((100vw - 40px) / 2 - 100vw / 32);
+$wMobileImg-1-1--320: calc(100vw - 60px);
+
+.view-section {
+
+  &__header {
+    max-width: 340px;
+    text-align: center;
+    margin: 0 auto 48px;
+  }
+
+  &__secondary-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    color: #d12d35;
+
+    &-description {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    @include onTablet {
+      width: $wTabletImg-2x-744;
+      height: $wTabletImg-2x-744;
+      margin-bottom: 16px;
+    }
+    @include onLaptop {
+      width: $wDeskImg-4x-1024;
+      height: $wDeskImg-4x-1024;
+      margin-bottom: 32px;
+    }
+
+    &--masters {
+      width: $wMobileImg-1-2--320;
+      @include onTablet {
+        width: $wTabletImg-2x-744;
+        &:first-child {
+          width: $wTabletImg-4x-744;
+        }
+      }
+      @include onLaptop {
+        width: $wDeskImg-4x-1024;
+        &:first-child {
+          width: $wDeskImg-8x-1024;
+        }
+      }
+    }
+
+    &--bodhisattvas {
+      width: $wMobileImg-1-3--320;
+      @include onTablet {
+        width: $wTabletImg-3x-744;
+        height: $wTabletImg-3x-744;
+        &:last-child {
+          display: none;
+        }
+      }
+      @include onLaptop {
+        width: $wDeskImg-4x-1024;
+        height: $wDeskImg-4x-1024;
+        &:last-child {
+          display: block;
+        }
+      }
+    }
+
+    &--disney {
+      width: $wMobileImg-1-2--320;
+      @include onTablet {
+        width: $wTabletImg-2x-744;
+        &:last-child {
+          width: $wTabletImg-4x-744;
+        }
+      }
+      @include onLaptop {
+        width: $wDeskImg-4x-1024;
+        &:last-child {
+          width: $wDeskImg-8x-1024;
+        }
+      }
+    }
+  }
+
+  &__button {
+    font-family: Cinzel, Arial, sans-serif;
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 56px;
+    height: 56px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: $c-btn-red-default;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: $c-btn-red-hover;
+    }
+    &:active {
+      background-color: $c-btn-red-pressed;
+    }
+  }
+}

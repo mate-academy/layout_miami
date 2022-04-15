@@ -1,0 +1,102 @@
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(10, auto);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, auto);
+    column-gap: 24px;
+  }
+
+  @include onLaptop {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, auto);
+    column-gap: 24px;
+  }
+
+  &--tablet {
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--laptop {
+    @include onLaptop {
+      display: grid;
+    }
+  }
+
+  &__item {
+
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 1 through 8 {
+      @for $end from $start through 8 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--laptop-#{$start}-#{$end} {
+          @include onLaptop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--row-#{$start}-#{$end} {
+          grid-row: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--tablet-row-#{$start}-#{$end} {
+          @include onTablet {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 10 {
+      @for $end from $start through 10 {
+        &--laptop-row-#{$start}-#{$end} {
+          @include onLaptop {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+  }
+}

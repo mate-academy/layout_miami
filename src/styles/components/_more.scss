@@ -1,0 +1,86 @@
+$more-image-width: calc(100vw - 2 * 20px);
+$more-width-744: calc(100vw - 2 * 72px - 2 * 80px - 2 * 24px);
+$more-width-1024: calc((100vw - 2 * 80px) / 3);
+
+$wDeskImg: calc(328 / 1024 * (100vw - 240px));
+$wTabletImg: calc((100vw - 144px) * 392 / 600);
+$wMobileImg: calc((100vw - 40px) / 3 - 100vw / 32);
+
+.more-section {
+
+  &__header {
+    text-align: center;
+    margin: 0 auto 48px;
+  }
+
+  &__images {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    @include onTablet {
+      gap: 48px;
+    }
+    @include onLaptop {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: unset;
+    }
+  }
+
+  &__image {
+    width: calc(100vw - 40px);
+    height: calc(100vw - 40px);
+    display: block;
+    @include onTablet {
+      width: $wTabletImg;
+      height: $wTabletImg;
+      margin-bottom: 24px;
+    }
+
+    @include onLaptop {
+      width: $wDeskImg;
+      height: $wDeskImg;
+      margin-bottom: 32px;
+    }
+
+    &-container {
+
+      @include onTablet {
+        width: $wTabletImg;
+      }
+
+      @include onLaptop {
+        width: $wDeskImg;
+      }
+    }
+
+    &-title {
+      margin: 0 auto 4px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 140%;
+      color: #d12d35;
+      @include onLaptop {
+        width: $wDeskImg;
+      }
+    }
+
+    &-description {
+      margin: 0 auto;
+      font-family: Roboto, Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 27px;
+      text-align: center;
+      color: #161616;
+      @include onLaptop {
+        width: $wDeskImg;
+      }
+    }
+  }
+}
