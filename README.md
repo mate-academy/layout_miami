@@ -10,3 +10,4 @@ You have several designs that are very similar to Miami. Choose the most interes
 Implement selected landing page following the lesson videos.
 
 --> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+Your site is published at https://vitaliy-anochin.github.io/layout_miami/
