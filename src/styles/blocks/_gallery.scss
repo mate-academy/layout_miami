@@ -1,6 +1,10 @@
 .gallery {
   padding: 140px $desktop-paddingX 0;
 
+  @include for-tablet {
+    padding: 140px $tablet-paddingX 0;
+  }
+
   @include for-mobile {
     padding: 100px $mobile-paddingX 0;
   }
@@ -23,9 +27,13 @@
   &__row {
     display: grid;
     margin-bottom: 24px;
-    @include grid-width-columns(6, 2);
+    @include grid-width-columns(3, 2);
 
     &--3cols {
+      @include for-tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       @include for-mobile {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -38,13 +46,18 @@
     height: 100%;
     width: 100%;
 
-    @include custom-cols(6);
+    @include custom-cols(3);
 
     @include for-mobile {
       grid-column: unset;
 
       height: 0;
       padding-bottom: 100%;
+    }
+
+    @include for-tablet {
+      @include custom-cols(2);
+      column-gap: 0;
     }
   }
 
@@ -73,6 +86,13 @@
     @include hover-tr(transform, scale(1.1)) {
       z-index: 1;
     }
+
+    &--tablet-hidden {
+      @include for-tablet {
+        display: none;
+        column-gap: $grid-gap-tablet;
+      }
+    }
   }
 
   &__caption-title {
@@ -87,5 +107,9 @@
     @include for-mobile {
       margin-bottom: 40px;
     }
+  }
+
+  &__button {
+    text-align: center;
   }
 }

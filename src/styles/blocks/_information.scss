@@ -1,6 +1,10 @@
 .info {
   padding: 140px $desktop-paddingX 0;
 
+  @include for-tablet {
+    padding: 140px $tablet-paddingX 0;
+  }
+
   @include for-mobile {
     padding: 100px $mobile-paddingX 0;
   }
@@ -8,9 +12,8 @@
   &__content-wrapper {
     @include limit-content-width;
 
-    display: flex;
     @include grid-width-columns(2, 1);
-    gap: 24px;
+    column-gap: $grid-gap-desktop;
 
     @include for-mobile {
       flex-direction: column;
@@ -38,16 +41,13 @@
     }
   }
 
-  // &__wrapper {
-  //   &:last-child {
-  //     // display: block;
-  //     padding-top: 16px;
-  //   }
-  // }
-
   &__row {
     margin-bottom: 16px;
     flex-basis: 50%;
+
+    &:last-child {
+      margin-bottom: 24px;
+    }
   }
 
   &__adress {
@@ -72,12 +72,4 @@
   &__last-inline2 {
     padding-right: 82px;
   }
-
-  // @for $start from 1 through 6 {
-  //   @for $end from $start through 6 {
-  //     &--cols--#{$start}-#{$end} {
-  //       grid-column: #{$start} / #{$end + 1};
-  //     }
-  //   }
-  // }
 }
