@@ -13,7 +13,6 @@
 
     @include onDesktop {
       display: grid;
-      // align-items: start;
     }
   }
 
@@ -23,6 +22,12 @@
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+
         }
       }
     }
