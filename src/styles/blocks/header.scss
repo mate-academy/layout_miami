@@ -1,107 +1,92 @@
 
-// @import url(/styles/utils/_extends.scss);
-// @import url(/src/styles/utils/_mixins.scss);
+.header {
+  padding: 25px 0;
+  height: 100vh;
+  background-image: url(../images/metimgs/headermax.png);
+  @extend %background-imgs;
 
-// @mixin onTablet {
-//   @media (min-width: 744px) {
-//   @content;
-//   }
-// }
+  &__top-actions {
+    margin-bottom: 130px;
 
-// @mixin onDesktop {
-//   @media (min-width: 1024px) {
-//     @content;
-//   }
-// }
+    @include onDesktop {
+      margin-bottom: 110px;
+    }
+  }
 
-// .header {
-//     padding: 25px 0;
-//     height: 100vh;
-//     background-image: url(../images/metimgs/headermax.png);
-//     @extend %background-imgs;
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
 
-//     &__top-actions {
-//       margin-bottom: 130px;
+  &__phone {
+    --phone-size: 18px;
 
-//       @include onDesktop {
-//       margin-bottom: 110px;
-//       }
-//     }
+    height: var(--phone-size);
+    width: var(--phone-size);
+    background-image: url(../images/metimgs/phone.svg);
+    @extend %background-imgs;
 
-//     &__icons {
-//       display: flex;
-//       align-items: center;
-//     }
+    margin-right: 30px;
 
-//     &__phone {
-//       --phone-size: 18px;
+    @include onTablet {
+      --phone-size: 24px;
 
-//       height: var(--phone-size);
-//       width: var(--phone-size);
-//       text-decoration: none;
-//       background-image: url(../images/metimgs/phone.svg);
-//       @extend %background-imgs;
+      margin-right: 63px;
+    }
 
-//       margin-right: 30px;
+    .on-hover-content {
+      opacity: 0;
+      pointer-events: none;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: right;
+      width: max-content;
+      transform: translate(-100%, -35%);
+      position: relative;
+      right: 20px;
+    }
 
-//       @include onTablet {
-//         --phone-size: 24px;
-//         margin-right: 63px;
-//       }
+    @include onDesktop {
+      &:hover {
 
-//       .on-hover-content {
-//         visibility: hidden;
-//         color: #fff;
-//         font-size: 16px;
-//         line-height: 27px;
-//         text-transform: uppercase;
-//         text-align: right;
-//         width: max-content;
-//         transform: translate(-100%, -35%);
-//         position: relative;
-//         right: 20px;
-//         font-weight: 700;
-//       }
+        .on-hover-content {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
 
-//       @include onDesktop {
-//         &:hover {
-//           .on-hover-content {
-//             visibility: unset;
-//           }
-//         }
-//       }
-//     }
+  &__burger-menu {
+    --burger-menu-size: 12px;
+    height: var(--burger-menu-size);
+    width: calc(1.5 * var(--burger-menu-size));
+    background-image: url(../images/metimgs/menu.svg);
 
-//     &__burger-menu {
-//       --burger-menu-size: 12px;
-//       height: var(--burger-menu-size);
-//       width: calc(1.5 * var(--burger-menu-size));
-//       background-image: url(../images/metimgs/menu.svg);
+    @include onTablet {
+      --burger-menu-size: 16px;
+    }
 
-//       @include onTablet {
-//         --burger-menu-size: 16px;
-//       }
+    &:hover {
+      background-image: url(../images/metimgs/menu_hover.svg);
+      @extend %background-imgs;
+    }
+  }
 
-//       &:hover {
-//         background-image: url(../images/metimgs/menu_hover.svg);
-//         @extend %background-imgs;
-//       }
-//     }
+  &__title {
+    --font-size: 40px;
 
-//     &__title {
-//       --font-size: 40px;
+    color: #fff;
+    font-size: var(--font-size);
+    line-height: var(--font-size);
+    text-align: center;
 
-//       color: #fff;
-//       font-size: var(--font-size);
-//       line-height: var(--font-size);
-//       text-align: center;
+    @include onTablet {
+      --font-size: 64px;
+    }
 
-//       @include onTablet {
-//         --font-size: 64px;
-//       }
-
-//       @include onDesktop {
-//         --font-size: 80px;
-//       }
-//     }
-//   }
+    @include onDesktop {
+      --font-size: 80px;
+    }
+  }
+}
