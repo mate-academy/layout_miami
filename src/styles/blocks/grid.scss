@@ -1,14 +1,14 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
+  grid-gap: 20px;
 
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
 
-  &--desktop {
+  &__desktop {
     display: block;
 
     @include onDesktop {
@@ -17,10 +17,17 @@
   }
 
   &__item {
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }

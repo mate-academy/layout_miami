@@ -1,46 +1,61 @@
 .page {
-  font-family: "Roboto", sans-serif;
-  scroll-behavior: smooth;
-
-  &__body {
-    margin: 0;
-  }
 
   &__menu {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    transform: translateX(-100%);
+
+    transform: translate(-100%);
+    transition: transform 300ms;
 
     &:target {
-      transform: translateX(0);
+      transform: translate(0);
     }
   }
 
   &__section {
     margin-bottom: 64px;
-  }
 
-  &__section-title {
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 36px;
+    @include onDesktop {
+      margin-bottom: 104px;
 
-    text-align: center;
-    letter-spacing: -1.5px;
-    color: #000;
+      &--last {
+        margin-bottom: 120px;
+      }
+    }
 
-    &::after {
-      content: "";
-      display: block;
-      width: 23px;
-      height: 16px;
-      margin: 4px auto 0;
-      background-image: url(../images/crown.svg);
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
+    &-title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 36px;
+      text-align: center;
+      letter-spacing: -1.5px;
+      color: #000;
+      margin-bottom: 32px;
+
+      @include onDesktop {
+        margin-bottom: 60px;
+        font-size: 48px;
+        line-height: 48px;
+
+        &:last-child {
+          margin-bottom: 72px;
+        }
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: 23px;
+        height: 16px;
+        margin: 4px auto 0;
+
+        background-image: url(../images/crown.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
     }
   }
 }
