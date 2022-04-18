@@ -8,15 +8,18 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const inputEmail = document.getElementById('email');
-const inputName = document.getElementById('name');
+// const inputEmail = document.getElementById('email');
+// const inputName = document.getElementById('name');
+// const inputMessage = document.getElementById('message');
 
-document.querySelector('#submit').addEventListener('click', function(event) {
-  event.preventDefault();
+// document.querySelector('#submit').addEventListener('click', function(event) {
+//   event.preventDefault();
 
-  if (inputName.value === '' || inputEmail.value === '') {
-    window.alert('Please, enter your details');
-  }
-  inputEmail.value = '';
-  inputName.value = '';
-}, false);
+//   if (inputName.value === '' || inputEmail.value === '') {
+//     window.alert('Please, enter your details');
+//   }
+//   inputEmail.value = '';
+//   inputName.value = '';
+//   inputMessage.value = '';
+
+// }, false);
