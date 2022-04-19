@@ -1,0 +1,108 @@
+.header {
+  &-wrapper__header {
+    margin: auto;
+    overflow: hidden;
+  }
+
+  max-width: 1260px;
+  height: 480px;
+  padding: 29px 20px 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+
+    &-call {
+      position: relative;
+      display: inline-block;
+      background-image: url("/images/icon-phone.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: $letter-spacing;
+    color: #292929;
+  }
+
+  @media (min-width: 321px) {
+    height: 630px;
+    padding-bottom: 130px;
+  }
+
+  @include tablet-screen {
+    padding: 36px 72px 130px;
+
+    &__logo {
+      width: 187px;
+      height: 56px;
+    }
+
+    &__title {
+      font-size: 64px;
+      color: #1d1d1d;
+    }
+
+    &__button {
+      column-gap: 40px;
+
+      &-call {
+        width: 24px;
+        height: 24px;
+
+        &::before {
+          content: "+1 1234 5555 55-55";
+          position: absolute;
+          transform: translate(-100%, -50%);
+          top: 50%;
+          left: -12px;
+          width: max-content;
+          white-space: nowrap;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          color: #292929;
+          opacity: 0;
+          transition: opacity $transition-duration;
+          pointer-events: none;
+        }
+
+        &:hover.header__button-call::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @include desktop-screen {
+    padding: 36px 120px 122px;
+
+    &__title {
+      font-size: 80px;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header"
+    "form"
+    "address";
+  row-gap: 48px;
+
+  @include tablet-screen {
+    column-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "header header"
+      "form address";
+  }
+
+  @include desktop-screen {
+    column-gap: 198px;
+  }
+
+  &__title {
+    @include h2-font;
+    grid-area: header;
+
+    @include tablet-screen {
+      font-size: 48px;
+    }
+
+    @include desktop-screen {
+      margin-top: 40px;
+    }
+  }
+
+  &__label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__phone,
+  &__email,
+  &__physical-address {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+    transition: color $transition-duration;
+
+    &:hover {
+      color: #008080;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    grid-area: address;
+  }
+}

@@ -1,6 +1,106 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin h2-font {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -1.5px;
+}
+
+@mixin h3-font {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin paragraph-font {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@mixin invisible-underlines {
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $nav-underlines-clr;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 1px;
+    opacity: 0;
+    transition: opacity $transition-duration;
+  }
+}
+
+@mixin tablet-screen {
+  @media (min-width: 668px) {
+    @content;
+  }
+}
+
+@mixin desktop-screen {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin button {
+  background-color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: $btn-text-clr;
+  border-radius: 40px;
+  padding: 14.5px 0;
+  width: 278px;
+  transition: box-shadow 300ms;
+  cursor: pointer;
+}
+
+@mixin button-hover {
   &:hover {
-    #{$_property}: $_toValue;
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+}
+
+@mixin button-pressed {
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin form-field {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #292929;
+  padding: 13px 16px;
+  width: 100%;
+  border: 1px solid transparent;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+}
+
+@mixin injected-heading($heading: "The Details") {
+  &::before {
+    content: "#{$heading}";
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+@mixin hover-image {
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1;
   }
 }
