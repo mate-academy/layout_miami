@@ -79,18 +79,18 @@
 }
 
 @mixin maxContentWidthForDesktop () {
-  max-width: 1024px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-@mixin maxContentWidthForTablet () {
-  max-width: 744px;
-  margin: 0 auto;
-}
-
-@mixin maxContentWidthForMobile () {
-  max-width: 320px;
-  margin: 0 auto;
+@mixin gridColumns($numberOfCols) {
+  @for $start from 1 through $numberOfCols {
+    @for $end from $start through $numberOfCols {
+      &--cols--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
 }
 
 /*Media Queries*/
@@ -101,7 +101,7 @@
 }
 
 @mixin forMobile () {
-  @media (max-width: 743px) {
+  @media (max-width: 640px) {
     @content;
   }
 }

@@ -1,15 +1,20 @@
 .contact-us {
-  @include maxContentWidthForDesktop();
   display: flex;
   flex-direction: column;
-  padding-bottom: $paddingY;
-
-  @include forMobile() {
-    margin-bottom: 48px;
-    font-size: $fontSizeLarge;
-  }
 
   &__title {
+    @include maxContentWidthForDesktop();
+    padding: $desktopPaddingXMain;
+
+    @include forTablet() {
+      padding: $tabletPaddingXMain;
+    }
+
+    @include forMobile() {
+      padding: $mobilePaddingXMain;
+      font-size: $fontSizeLarge;
+    }
+
     text-align: center;
     margin-bottom: 48px;
 
@@ -20,12 +25,15 @@
   }
 
   &__wraper {
+    @include maxContentWidthForDesktop();
     display: flex;
     justify-content: space-between;
-    padding: 0 0 $paddingY;
+    padding: $desktopPaddingXMain;
+    column-gap: 20px;
+    margin-bottom: 106px;
 
     @include forTablet() {
-      padding: 0 75px $paddingY;
+      padding: $tabletPaddingXMain;
       column-gap: 24px;
     }
 
@@ -33,12 +41,13 @@
       display: flex;
       flex-direction: column;
       row-gap: 42px;
-      padding: 110px 0 120px;
+      padding: $mobilePaddingXMain;
+      margin-bottom: 48px;
     }
   }
 
   &__form {
-    width: 408px;
+    width: 100%;
     flex-basis: 100% / 3;
 
     @include forMobile() {
@@ -62,7 +71,8 @@
       border-radius: 16px;
       resize: none;
       font-family: inherit;
-      font-size: inherit;
+      @include fontProperties($fontSizeNormal, $fontWeightRegular, 20px);
+      height: 148px;
     }
 
     &:hover {
@@ -75,17 +85,9 @@
       border-color: $primaryColor;
     }
 
-    @include forMobile() {
-      padding: 14px 16px;
-    }
-
     &::placeholder {
       color: $c-medGray;
       @include fontProperties($fontSizeNormal, $fontWeightRegular, 20px);
-
-      @include forMobile() {
-        padding: 14px 16px;
-      }
     }
   }
 
@@ -102,6 +104,7 @@
     font-size: $fontSizeRegular;
     line-height: 140%;
     color: $c-darkGray;
+    width: 100%;
 
     @include forMobile() {
       justify-self: left;
@@ -111,6 +114,7 @@
   &__map {
     flex-basis: 100% / 3;
     height: 100%;
+    width: 100%;
   }
 
   &__label {
