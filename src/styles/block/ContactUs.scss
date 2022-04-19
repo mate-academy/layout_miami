@@ -1,0 +1,115 @@
+.contactUs {
+  padding: 140px $desktopPaddingX 0;
+  transform: transition $transitionDuration;
+
+  @include forMobile {
+    padding: 100px $mobilePaddingX;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: $gridGutterWidthDesktop;
+  }
+
+  &__text {
+    width: 237px;
+    margin-top: 48px;
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--cols--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  &__boldtext {
+    @include fontParams(16px, 27px, 700);
+    color: $MainDark;
+    width: 237px;
+
+    &:first-child {
+      margin-bottom: 16px;
+    }
+
+    &:last-child {
+      line-height: 22.4px;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      padding-bottom: 8px;
+    }
+
+  }
+
+  &__smalltext {
+    @include fontParams(14px, 27px, 400);
+    color: $MainDark;
+    margin-bottom: 4px;
+  }
+
+  &__textbox {
+    width: 411px;
+    height: 48px;
+    margin-bottom: 16px;
+    border: none;
+    background-color: $formcolor;
+    color: $placeholdercolor;
+    font-family: "Cinzel", sans-serif;
+    text-transform: uppercase;
+    @include fontParams(14px, 20px, 400);
+
+    &:hover {
+      border: 1px solid $HoverGrey;
+      color: $MainDark;
+    }
+  }
+
+  &__textArea {
+    width: 411px;
+    height: 144px;
+    border: none;
+    margin-bottom: 32px;
+    background-color: $formcolor;
+    color: $placeholdercolor;
+    font-family: "Cinzel", sans-serif;
+    text-transform: uppercase;
+    @include fontParams(14px, 20px, 400);
+
+    &:hover {
+      border: 1px solid $HoverGrey;
+      color: $MainDark;
+    }
+  }
+
+  &__button-send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include fontParams(16px, 27px, 700);
+    color: #fff;
+    background-color: $Accentmain;
+
+    transition: all $transitionDuration;
+
+    width: 411px;
+    height: 56px;
+
+    &:hover {
+      color: #fff;
+      background-color: $HoverRed;
+    }
+
+    &:active {
+      color: #fff;
+      background-color: $ActiveRed;
+    }
+  }
+}

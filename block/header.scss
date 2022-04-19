@@ -1,0 +1,123 @@
+.header {
+  height: 100vh;
+
+  padding: 16px $desktopPaddingX 480;
+
+  background-image: url("/src/images/Header.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+
+  @include forMobile {
+    padding: 16px $mobilePaddingX 456;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-toggler {
+    width: 24px;
+    height: 16px;
+
+    border: none;
+
+    background-color: transparent;
+    background-image: url("/images/Icon-Burger-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("/images/Icon-Burger-menu-hover.svg");
+    }
+
+    @include forMobile {
+      transform: scale(0.8);
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 87px;
+    height: 65px;
+
+    @include forMobile {
+      width: 87px;
+      height: 65px;
+  }
+}
+
+  &__call-link {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+
+    background-image: url("/images/Icon-Phone-call.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &::before {
+      content: "+1 212-535-7710";
+      display: flex;
+      align-items: center;
+
+      top: calc(50% - 27px/2 - 44.5px);
+      transform: translate(-100% -50%);
+      width: max-content;
+      padding-left: 889px;
+
+      opacity: 0;
+      pointer-events: none;
+
+      @include fontParams(16px, 27px, 700);
+      color: #fff;
+
+      transition: opacity $transitionDuration;
+    }
+
+    &:hover {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @include forMobile {
+      transform: scale(0.8);
+  }
+}
+
+  &__welcome-text {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+
+    margin-top: 200px;
+    margin-left: 381px;
+
+    width: 498px;
+    height: 160px;
+    letter-spacing: -1.5px;
+
+    @include fontParams(80px, 80px, 700) {
+      color: #fff;
+  }
+    @include forMobile {
+      @include fontParams (64px, 64px, 700) {
+        letter-spacing: -1.5px;
+      }
+    }
+  }
+}

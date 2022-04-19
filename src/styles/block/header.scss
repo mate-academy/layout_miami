@@ -1,0 +1,115 @@
+.header {
+  position: relative;
+  height: 100vh;
+
+  padding: 24px $desktopPaddingX 80px;
+
+  background-image: url("/images/Header.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+
+  @include forMobile {
+    padding: 20px $mobilePaddingX 32px;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__controls {
+    position: absolute;
+    display: block;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__menu-toggler {
+    position: relative;
+    top: 56px;
+    left: 992px;
+    width: 24px;
+    height: 16px;
+
+    border: none;
+
+    background-color: transparent;
+    background-image: url("/images/Icon-Burger-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("/images/Icon-Burger-menu-hover.svg");
+    }
+
+    @include forMobile {
+      transform: scale(0.8);
+    }
+  }
+
+  &__logo {
+    display: block;
+    position: absolute;
+
+    width: 87px;
+    height: 65px;
+    margin-top: 32px;
+
+    @include forMobile {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__call-link {
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: 905px;
+    width: 24px;
+    height: 24px;
+
+    background-image: url("/images/Icon-Phone-call.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include fontParams(16px, 27px, 700);
+    color: #fff;
+
+    transition: opacity $transitionDuration;
+  }
+
+  &:hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @include forMobile {
+    transform: scale(0.8);
+  }
+
+  &__welcome-text {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    letter-spacing: -1.5px;
+
+    @include fontParams(80px, 80px, 700);
+    color: #fff;
+
+    @include forMobile {
+      @include fontParams(64px, 64px, 700);
+    }
+  }
+}
