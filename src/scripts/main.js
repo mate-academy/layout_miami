@@ -11,4 +11,7 @@ window.addEventListener('hashchange', () => {
 document.getElementById(
   'form').addEventListener('submit', function(event) {
   event.preventDefault();
+  document.querySelector('#input-name').value = '';
+  document.querySelector('#input-email').value = '';
+  document.querySelector('#input-textarea').value = '';
 });
