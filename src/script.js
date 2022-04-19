@@ -20,7 +20,7 @@ toggler.addEventListener('click', function() {
   body.style.overflow = 'hidden';
 });
 
-cross.addEventListener('click', function() {
+function exit() {
   nav.style.display = 'none';
   bgc.style.background = 'none';
   bgc.style.height = '100%';
@@ -31,14 +31,19 @@ cross.addEventListener('click', function() {
   title.style.display = 'block';
   phone.style.display = 'inline-block';
   body.style.overflow = 'scroll';
+}
+
+cross.addEventListener('click', exit);
+
+const form = document.querySelector('#contactForm');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  form.reset();
 });
 
-/*
-const button = document.querySelector('#submitButton');
+const link = document.querySelectorAll('.nav__link');
 
-button.addEventListener('submit', function(event) {
-  window.alert('preventDeafault', 1);
-  event.preventDefault();
-}, false);
-
-*/
+for (let i = 0; i < link.length; i++) {
+  link[i].addEventListener('click', exit);
+}
