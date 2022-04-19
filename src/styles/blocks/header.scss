@@ -1,0 +1,114 @@
+.header {
+  padding: 52px 120px 64px;
+
+  height: 700px;
+
+  background-image: url("/images/1_header.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+
+  &__wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 376px;
+
+    max-width: 1020px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      @include imgSize (190px, 24px);
+    }
+
+    &-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+
+      &--phone {
+        position: relative;
+
+        text-decoration: none;
+        color: $main-text-color;
+
+        display: inline-block;
+        @include imgSize (32px, 32px);
+
+        background-image: url("/images/phone.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+
+        &::before {
+          content: "+1 234 555-55-55";
+
+          display: block;
+
+          position: absolute;
+          top: -5px;
+          transform: translate(-100%, 100%);
+
+
+          width: max-content;
+          padding-right: 12px;
+
+          opacity: 0;
+          pointer-events: none;
+
+          font-family: "Inter", "Montserrat", sans-serif;
+          @include font (12px, normal, 700, 16px);
+          letter-spacing: 2px;
+
+          transition: opacity 0.5s;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+      }
+
+      &--toogler {
+        @include imgSize (24px, 18px);
+
+        border: none;
+
+        background-image: url("/images/menu.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: center;
+
+        transition: background-image 0.5s;
+
+        &:hover {
+          background-image: url("/images/menu_hover.svg");
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-graph {
+      @include imgSize (63px, 76px);
+    }
+
+    &-slogan {
+      @include font (48px, italic, 800, 48px);
+      letter-spacing: $letter-spacing;
+    }
+  }
+}
