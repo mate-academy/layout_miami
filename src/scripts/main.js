@@ -7,12 +7,10 @@ const closeMenuIcon = document.querySelector('.menu__hide');
 
 function openMenu(e) {
   menu.classList.add('menu--is-active');
-  e.preventDefault();
 }
 
 function closeMenu(e) {
   menu.classList.remove('menu--is-active');
-  e.preventDefault();
 }
 
 openMenuIcon.addEventListener('click', openMenu, true);
