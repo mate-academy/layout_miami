@@ -4,14 +4,15 @@
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 24px 20px 0;
+  padding: $mobilePaddingY $mobilePaddingX 0;
 
   @include forTablet {
-    padding: 32px 40px 0;
+    padding: $tabletPaddingY $tabletPaddingX 0;
   }
 
   @include forDesktop {
-    padding: 32px 72px 0;
+    padding-left: $desktopPaddingX;
+    padding-right: $desktopPaddingX;
   }
 
   &__content-wrapper {
@@ -19,28 +20,28 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    max-width: 1020px;
+    max-width: $maxContentwidth;
   }
 
   &__controls {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 130px;
+    padding-bottom: $mobileTopsecBotpadd;
     
     @include forTablet {
-      padding-bottom: 160px;
+      padding-bottom: $tabletTopsecBotpadd;
     }
 
     @include forDesktop {
       
-      padding-bottom: 104px;
+      padding-bottom: $desktopTopsecBotpadd;
     }
   }
 
   &__menu-toggler {
     display: block;
-    width: 18px;
-    height: 12px;
+    width: $mobileLinkWidth;
+    height: $mobileMenuheight;
     border: none;
     background-color: transparent;
     background-image: url("/images/menu.png");
@@ -48,17 +49,15 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    transition: transform $transitionduration;
 
     &:hover {
       background-image: url("/images/menu-hover.png");
     }
 
     @include forTablet {
-      width: 24px;
-      height: 16px;
-    }
-    @include forDesktop {
-      margin-top: -6%;
+      width: $tabletLinkWidth;
+      height: $tabletMenuheight;
     }
   }
 
@@ -66,83 +65,46 @@
     display: block;
     width: 64px;
     height: 46px;
+    transform: transition $transitionduration;
     &:hover {
       transform: scale(1.1);
     }
 
     @include forTablet {
-      width: 88px;
-      height: 64px;
+      width: $tabletLogowidth;
+      height: $tabletLogoheight;
     }
   }
 
   &__link {
-    position: relative;
     display: flex;
     align-items: center;
-    column-gap: 30px;
+    column-gap: $mobileColgap;
 
-    &__container {
-      display: flex;
-      column-gap: 64px;
-      align-items: center;
-    }
-    
     @include forTablet {
       column-gap: 64px;
     }
   }
   
-  &__span {
-    @include forDesktop {
-      display: flex;
-      column-gap: 20px;
-      align-items: center;
-      text-align: right;
-      flex-direction: row-reverse;
-    }
-    &__details {
-      display: none;
-      @include forDesktop {
-        margin-top: -20px;
-      }
-    }
-    &__address {
-      @include fontParams(16ps, 27px, 700);
-      color: #fff;
-    }
-    &__call {
-      @include fontParams(16px, 27px, 700);
-      color: #fff;
-      padding-bottom: 8px;
-    }
-  }
 
   &__call-link {
-    position: relative;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
+    display: block;
+    width: $mobileLinkWidth;
+    height: $mobileLinkWidth;
     background-image: url("/images/phone.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition-duration: 0.05ms;
+    transition: transform $transitionduration;
     &:hover {
       transform: scale(1.1);
     }
 
     @include forTablet {
-      width: 24px;
-      height: 24px;
+      width: $tabletLinkWidth;
+      height: $tabletLinkWidth;
     }
-    @include forDesktop {
-      margin-top: -10%;
-      &:hover + .header__span__details {
-        display: block;
-      }
-      
-    }
+    
   }
 
   &__title {
