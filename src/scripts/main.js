@@ -2,7 +2,10 @@
 
 const contactForm = document.querySelector('#contact-us__form');
 
-contactForm.addEventListener('submit', ev => ev.preventDefault());
+contactForm.addEventListener('submit', ev => {
+  ev.preventDefault();
+  contactForm.reset();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
