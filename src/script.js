@@ -6,7 +6,7 @@ const toggler = document.querySelector('.header__burger');
 const cross = document.querySelector('.header__cross');
 const title = document.querySelector('.header__title');
 const phone = document.querySelector('.header__phone');
-const body = document.querySelector('body');
+const html = document.querySelector('html');
 
 toggler.addEventListener('click', function() {
   nav.style.display = 'block';
@@ -17,7 +17,7 @@ toggler.addEventListener('click', function() {
   toggler.style.display = 'none';
   title.style.display = 'none';
   phone.style.display = 'none';
-  body.style.overflow = 'hidden';
+  html.style.overflow = 'hidden';
 });
 
 function exit() {
@@ -30,7 +30,7 @@ function exit() {
   toggler.style.display = 'inline-block';
   title.style.display = 'block';
   phone.style.display = 'inline-block';
-  body.style.overflow = 'scroll';
+  html.style.overflow = 'scroll';
 }
 
 cross.addEventListener('click', exit);
