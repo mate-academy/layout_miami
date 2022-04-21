@@ -1,0 +1,154 @@
+.gallery {
+  display: grid;
+  margin: $mobileMargins;
+  max-width: $maxContentWidth;
+  @include forDesktop {
+    margin: $desktopMargins;
+  }
+
+  @include forTablet {
+    margin: $tabletMargins;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-rows: 1fr 98px 1fr 98px 1fr;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include fontParams(32px, 32px, 700px);
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include forTablet {
+      @include fontParams(40px, 40px, 700px);
+      margin-bottom: 64px;
+    }
+
+    @include forDesktop {
+      @include fontParams(48px, 48px, 700px);
+      margin-bottom: 64px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 20px;
+    margin-bottom: 16px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include forDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+  }
+
+  &__photo {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+
+    @include forTablet {
+      height: 100%;
+      width: 100%;
+      padding-bottom: 0;
+      @for $start from 1 through 6 {
+        @for $end from 1 through 6 {
+          &--t-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+
+    @include forDesktop {
+      height: 100%;
+      width: 100%;
+      padding-bottom: 0;
+      @for $start from 1 through 12 {
+        @for $end from 1 through 12 {
+          &--d-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+
+    transition: transform 0.5s;
+    &:hover {
+      transform: scale(1.1);
+      z-index: 1;
+    }
+  }
+
+  &__image {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-position: center;
+    object-fit: cover;
+
+    @include forDesktop {
+      position: static;
+    }
+
+    @include forTablet {
+      position: static;
+    }
+  }
+
+  &__caption {
+    grid-column: 1/13;
+    @include fontParams(16px, 140%, 700);
+
+    @include forTablet {
+      @include fontParams(24px, 140%, 700);
+    }
+
+    @include forDesktop {
+      @include fontParams(24px, 140%, 700);
+    }
+  }
+
+  .button {
+    display: block;
+    width: max-content;
+    height: 56px;
+    padding: 14.5px 109px;
+
+    background: $buttonColor;
+
+    color: $bgcColor;
+    text-decoration: none;
+    @include fontParams(16px, 27px, 700);
+
+    border-radius: 40px;
+    border: 3px solid $buttonColor;
+    transition: all 0.5s;
+
+    &:hover {
+      border-style: solid;
+      background-color: $bgcColor;
+      color: $buttonColor;
+    }
+    @include forTablet {
+      padding: 16.5px 165px;
+    }
+
+    @include forDesktop {
+      padding: 14.5px 131px;
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+}
