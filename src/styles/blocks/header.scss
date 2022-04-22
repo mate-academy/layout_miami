@@ -1,0 +1,62 @@
+.header {
+  background-image: url(../images/myBike/image_desktop.jpg);
+  background-size: cover;
+  background-position: center;
+ 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: #292929;
+    letter-spacing: -1.5px;
+    align-items: center;
+    text-align: center;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        font-weight: bold;
+        position: relative;
+        top: 80%;
+        transform: translate(-100%, -50%);
+        
+        width: max-content;
+        display: block;
+        font-size: 12px;
+        padding-right: 20px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        content: "+1 234 5555-55-55";
+        opacity: 0;
+        color: #292929;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+     
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
