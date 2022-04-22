@@ -1,5 +1,9 @@
 'use strict';
 
+window.addEventListener('orientationchange', () => {
+  window.location.reload();
+});
+
 const menu = document.querySelector('#menuOverlay');
 const navLink = document.querySelectorAll('.nav__link');
 const openMenuIcon = document.querySelector('.header__menu-toggler');
