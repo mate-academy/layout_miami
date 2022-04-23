@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onIPAD_mini {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--not-mobile {
+    display: block;
+
+    @include onIPAD_mini {
+      display: grid;
+    }
+  }
+
+  &__item {
+
+    &--onIpad {
+      @include onIPAD_mini {
+        $max-column: 6;
+        @for $start from 1 through $max-column {
+          @for $end from $start through $max-column {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
+    &--onDesktop {
+      @include onDesktop {
+        $max-column: 12;
+        @for $start from 1 through $max-column {
+          @for $end from $start through $max-column {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+  }
+}
