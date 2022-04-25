@@ -1,0 +1,149 @@
+.header {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/header-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  object-position: center;
+
+  @include forMobile() {
+    background-image: url("../images/header-bg-mobile.png");
+  }
+
+  &__content-wraper {
+    padding: 52px 120px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include maxContentWidthForDesktop();
+    height: 100%;
+
+    @include forTablet() {
+      padding: 52px 72px 40px;
+    }
+
+    @include forMobile() {
+      padding: 40px 20px 94px;
+    }
+  }
+
+  &__control-wraper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &__menu-toggler {
+    display: inline-block;
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url("../images/menu.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-image $easeFunction $transitionDuration;
+
+    @include forTablet() {
+      width: 24px;
+      height: 18px;
+      display: block;
+      background: url("../images/mobile-menu.svg") no-repeat;
+      background-position: bottom;
+      background-size: cover;
+    }
+
+    @include forMobile() {
+      background: url("../images/mobile-menu.svg") no-repeat;
+      background-position: bottom;
+      background-size: cover;
+    }
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &__logo {
+    &-image {
+      @include forMobile() {
+        width: 120px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__phone-link {
+    background-image: url("../images/phone.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 48px;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      @include fontProperties($fontSizeSmall,$fontWeightBold, 16px);
+      color: $primaryColor;
+      opacity: 0;
+      pointer-events: none;
+      position: relative;
+      transform: rotateX(-50%);
+      right: 120px;
+      transition: opacity linear $transitionDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: auto;
+
+      @include forMobile() {
+        display: none;
+      }
+    }
+
+    @include forTablet() {
+      width: 18px;
+      height: 18px;
+      background-image: url("../images/phone_mobile.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-size: $fontSizeExtra2Large;
+    font-weight: $fontWeightExtraBold;
+
+    &::before {
+      content: "";
+      background-image: url("../images/sound_waves.svg");
+      width: 63px;
+      height: 76px;
+      display: block;
+      margin-bottom: 32px;
+
+      @include forMobile() {
+        background: url("../images/mobile-wave.svg") no-repeat;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    @include forMobile() {
+      font-size: $fontSizeLarge;
+    }
+  }
+}

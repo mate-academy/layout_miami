@@ -1,6 +1,76 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin fontProperties(
+  $fontSize: $fontSizeRegular,
+  $fontWeight: 400,
+  $lineHeight: 27px
+) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}
+
+@mixin btnTransition (
+  $prop1: color,
+  $prop2: background-color,
+  $easeFunc: ease-in-out,
+  $duration: $transitionDuration
+) {
+  transition: $prop1, $prop2, $easeFunc $transitionDuration;
+}
+
+@mixin primaryBtn (
+  $padTB: 16px,
+  $padRL: 48px,
+  $width: 324px,
+  $height: 56px,
+  $lHeight:56px,
+  $bgColor: #292929,
+  $bRadius: 40px,
+  $textAlign: center,
+  $textDeco: none,
+  $color: #fff,
+  $fontSize: 16px,
+  $fontWeight: 700,
+  $border: 2px solid transparent
+) {
+  padding: $padTB $padRL;
+  width: $width;
+  height: $height;
+  line-height: $lHeight;
+  background: $bgColor;
+  border-radius: $bRadius;
+  text-align: $textAlign;
+  text-decoration: $textDeco;
+  color: $color;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  border: $border;
+  @include btnTransition();
+}
+
+@mixin maxContentWidthForDesktop () {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@mixin gridColumns($numberOfCols) {
+  @for $start from 1 through $numberOfCols {
+    @for $end from $start through $numberOfCols {
+      &--cols--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+/*Media Queries*/
+@mixin forTablet () {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin forMobile () {
+  @media (max-width: 640px) {
+    @content;
   }
 }
