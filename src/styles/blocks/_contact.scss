@@ -3,6 +3,10 @@
 
   padding: 140px $desktop-paddingX;
 
+  @include for-tablet {
+    padding: 140px $tablet-paddingX;
+  }
+
   @include for-mobile {
     padding: 100px $mobile-paddingX;
   }
@@ -16,11 +20,23 @@
   }
 
   &__container {
-    @include grid-width-columns($number-of-cols, $number-of-cols,1);
+    @include grid-width-columns($number-of-cols, 6, 1);
   }
 
   &__item {
     @include custom-cols($number-of-cols);
+
+    &--tablet {
+      @include for-tablet {
+        @include custom-cols(6);
+      }
+    }
+
+    &--mobile {
+      @include for-mobile {
+        @include custom-cols(2);
+      }
+    }
   }
 
   &__address {
@@ -45,6 +61,30 @@
       @include for-mobile {
         margin-bottom: 48px;
       }
+    }
+  }
+
+  &__tablet-visible {
+    display: none;
+
+    @include for-tablet {
+      display: block;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  &__tablet-invisible {
+    display: block;
+
+    @include for-tablet {
+      display: none;
+    }
+
+    @include for-mobile {
+      display: block;
     }
   }
 }
