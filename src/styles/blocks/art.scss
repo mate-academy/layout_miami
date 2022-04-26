@@ -1,0 +1,66 @@
+.art {
+
+  &__photo-container {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--extra {
+      @media(min-width: 740px) and (max-width: 1023px) {
+        display: none;
+      }
+      @media (max-width: 740px) {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: content;
+    object-position: center;
+    margin-bottom: 24px;
+
+    transition: transform $transition-speed ease-in-out;
+    cursor: zoom-in;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    text-decoration: none;
+    color: $c-accent-red;
+    transition: color $transition-speed ease-in-out;
+    &:hover {
+      color: #ae1c23;
+    }
+  }
+}
