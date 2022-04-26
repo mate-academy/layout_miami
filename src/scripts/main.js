@@ -15,3 +15,11 @@ form.addEventListener('submit', (event) => {
   form.reset();
   window.scrollTo(0, 0);
 });
+
+const form2 = document.getElementById('form2');
+
+form2.addEventListener('submit', (event) => {
+  event.preventDefault();
+  form2.reset();
+  window.scrollTo(0, 0);
+});
