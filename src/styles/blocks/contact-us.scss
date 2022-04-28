@@ -1,24 +1,19 @@
 .contact-us {
+  padding: 80px $mobilePaddingX 96px;
+
+  @include tablet {
+    padding: 120px $tabletPaddingX 120px;
+  }
+
+  @include desktop {
+    padding: 180px $tabletPaddingX 180px;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;
 
-    padding-top: 80px;
-    padding-bottom: 96px;
-
     @include limitContentWitdth;
-
-    @include tablet {
-      padding: 120px 0;
-
-      max-width: $maxContentWidthTablet;
-    }
-
-    @include desktop {
-      padding: 180px 0;
-
-      max-width: $maxContentWidthDesktop;
-    }
   }
 
   &__title {
@@ -26,23 +21,28 @@
   }
 
   &__content-wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 48px;
 
     @include tablet {
-      flex-direction: row;
-      gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
     }
 
     @include desktop {
-      gap: 198px;
+      grid-template-columns: repeat(12, 1fr);
     }
   }
 
   &__details {
     @include tablet {
       padding: 0;
+      grid-column: 4 / 6;
+    }
+
+    @include desktop {
+      grid-column: 8 / 12;
     }
 
     &-heading {
