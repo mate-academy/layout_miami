@@ -2,6 +2,10 @@
 @import "normalize";
 @import "utils";
 @import "typography";
+@import "header.scss";
+@import "side-page.scss";
+@import "info-museum.scss";
+@import "museum-view.scss";
 
 * {
   box-sizing: border-box;
@@ -20,461 +24,21 @@ body {
   overflow: hidden;
 }
 
-.met__bar {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  transition: transform 0.5s ease-in-out;
-  left: 0;
-  transform: translateX(-100%);
-  padding: 32px 120px 0;
-  background: #d12d35;
-  z-index: 2;
-
-  &:target {
-    transform: translateX(0);
-  }
-
-  .met__nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .nav {
-    margin-top: 35px;
-
-    .nav-list {
-      list-style: none;
-      padding: 0;
-
-      &__item {
-        line-height: 48px;
-      }
-
-      &__link {
-        text-decoration: none;
-        font-size: 22px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-
-        &:hover {
-          text-underline-position: under;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .met__info {
-    margin: 48px 0;
-      .met__avenue {
-        margin-bottom: 30px;
-        .fifth__avenue {
-          font-weight: 700;
-          font-size: 1rem;
-          text-transform: uppercase;
-          line-height: 10px;
-          color: #fff;
-          margin-bottom: 20px;
-          display: block;
-          text-decoration: none;
-
-        &:hover {
-          cursor: pointer;
-          text-underline-position: under;
-          text-decoration: underline;
-        }
-      }
-      }
-
-    .cloister__title,
-    .cloister__mobile {
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      line-height: 10px;
-      color: #fff;
-      margin-bottom: 20px;
-      display: block;
-      text-decoration: none;
-
-      &:hover {
-        cursor: pointer;
-        text-underline-position: under;
-        text-decoration: underline;
-      }
-    }
-
-    .call__order a {
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-
-      &:hover {
-        cursor: pointer;
-        text-underline-position: under;
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.top__info {
-  display: flex;
-  cursor: pointer;
-}
-
-.info__phone {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  margin-right: 63px;
-
-  &::before {
-    content: "+1 212-535-7710";
-    max-width: 160px;
-    color: #fff;
-    padding-right: 12px;
-    font-weight: 700;
-    font-size: 1rem;
-    opacity: 0;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-}
-
-.header {
-  position: relative;
-  padding: 32px 120px;
-  height: 100vh;
-  background: url("/images/photos/image5.png") no-repeat top center fixed;
-  background-size: cover;
-  z-index: 1;
-
-  @include changeSize($mobile) {
-    padding: 20px 25px;
-  }
-
-  &__top {
-    display: flex;
-    max-width: 1020px;
-    justify-content: space-between;
-    margin: 0 auto;
-
-    @include changeSize($mobile) {
-      padding: 20px 25px;
-    }
-
-    .info__phone {
-      position: relative;
-      width: 24px;
-      height: 24px;
-      margin-right: 63px;
-
-      &::before {
-        content: "+1 212-535-7710";
-        max-width: 160px;
-        color: #fff;
-        padding-right: 12px;
-        font-weight: 700;
-        font-size: 1rem;
-        opacity: 0;
-      }
-
-      &:hover::before {
-        opacity: 1;
-      }
-    }
-
-    .info__bar {
-      width: 24px;
-      height: 5px;
-      background-color: #fff;
-      border-radius: 2px;
-      position: relative;
-
-      &::before {
-        content: "";
-        width: 24px;
-        height: 5px;
-        background-color: #fff;
-        border-radius: 2px;
-        position: absolute;
-        top: -8px;
-      }
-
-      &::after {
-        content: "";
-        width: 24px;
-        height: 5px;
-        background-color: #fff;
-        border-radius: 2px;
-        position: absolute;
-        top: 8px;
-      }
-    }
-
-    .cursor {
-      display: flex;
-      align-items: center;
-      height: 24px;
-      cursor: pointer;
-
-      &:hover .info__bar::before {
-        transition: width 0.4s ease-in;
-        width: 80%;
-      }
-
-      &:hover .info__bar::after {
-        transition: width 0.4s ease-in;
-        width: 60%;
-      }
-    }
-  }
-
-  &__title {
-    display: flex;
-    justify-content: center;
-    transform: translateY(20%);
-
-    .main__title {
-      width: 550px;
-      text-align: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 80px;
-      letter-spacing: -1.5px;
-      margin-bottom: 80px;
-
-      @include changeSize($mobile) {
-        width: 280px;
-        font-size: 40px;
-      }
-    }
-  }
-}
-
 .main {
   position: relative;
   max-width: 1020px;
   // padding: 120px 140px;
   margin: 140px auto;
 
-  @include changeSize($mobile) {
-    padding: 20px 20px;
+  @include forMobile {
+    padding: 20px;
     width: 280px;
-  }
-
-  &__section-1 {
-    display: grid;
-    grid-template-columns: repeat(2, 512px);
-    justify-content: center;
-
-    // @include changeSize($mobile) {
-    //   grid-template-columns: 1fr;
-    // }
-
-    @include changeSize($mobile) {
-      display: grid;
-      grid-template-columns: 1fr;
-      // padding: 20px 20px;
-      // width: 280px;
-    }
-
-    .plan {
-      line-height: 2px;
-
-      &__text {
-        font-size: 12px;
-        font-weight: 700;
-        color: #d12d35;
-      }
-
-      &__title {
-        font-size: 48px;
-        font-weight: 700;
-
-      @include changeSize($mobile) {
-        font-size: 32px;
-      }
-      }
-    }
-
-    .main__date {
-      line-height: 16px;
-
-      .main__text__title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-
-      .date__text {
-        font-size: 1rem;
-        font-weight: 700;
-      }
-
-      &__day {
-        display: flex;
-
-        .date__right {
-          margin-left: 25px;
-        }
-      }
-
-      .date__text-day,
-      .date__holiday-text {
-        font-weight: 400;
-        font-size: 1rem;
-        color: #161616;
-      }
-
-      .main__block-first {
-        margin-bottom: 40px;
-      }
-    }
-  }
-
-  &__section-2 {
-    margin-top: 140px;
-
-    .main__section-title {
-      text-align: center;
-      position: relative;
-      margin: 0 auto 70px;
-    }
-    .section__view {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 0;
-
-      @include changeSize($mobile) {
-        font-size: 32px;
-      }
-    }
-
-    .section__explore {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 255px;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-
-    .main__section-wrapper {
-      .main__section-photos {
-        display: grid;
-        grid-template-columns: repeat(2, 0fr);
-        column-gap: 24px;
-        justify-content: center;
-      }
-
-      .img3,
-      .img4 {
-        @include changeSize($mobile) {
-          width: 130px;
-          height: 130px;
-        }
-      }
-
-      .img3,
-      .img4,
-      .img5,
-      .img6,
-      .img7,
-      .img8,
-      .img9 {
-        transition: transform 0.3s ease-in;
-        &:hover {
-          cursor: pointer;
-          transform: scale(1.1);
-        }
-      }
-
-      .description {
-        line-height: 15px;
-        margin-top: 24px;
-        margin-bottom: 48px;
-        &__master {
-          font-size: 1rem;
-          font-weight: 700;
-          color: #d12d35;
-        }
-
-        &__duration {
-          font-size: 1rem;
-          font-weight: 400;
-          color: #161616;
-        }
-      }
-
-      .main__section-row__second {
-        display: grid;
-        grid-template-columns: repeat(3, 0fr);
-        column-gap: 24px;
-        justify-content: center;
-
-        .img5,
-        .img6,
-        .img7 {
-          @include changeSize($mobile) {
-            width: 88px;
-            height: 87px;
-          }
-        }
-      }
-
-      .main__section-row__third {
-        display: grid;
-        grid-template-columns: repeat(2, 0fr);
-        column-gap: 24px;
-        justify-content: center;
-
-        .img8,
-        .img9 {
-          @include changeSize($mobile) {
-            width: 130px;
-            height: 130px;
-          }
-        }
-      }
-    }
-
-    .section__view-button {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      width: 324px;
-      height: 56px;
-      font-family: "Cinzel", sans-serif;
-      background-color: #d12d35;
-      border: 1px solid transparent;
-      margin-top: 40px;
-
-      &:hover {
-        cursor: pointer;
-        background-color: #ae1c23;
-      }
-
-      &:active {
-        background: #eb343d;
-      }
-    }
   }
 
   &__section-3 {
     margin-top: 235px;
-    @include changeSize($mobile) {
-      padding: 20px 20px;
+    @include forMobile {
+      padding: 20px;
       width: 280px;
     }
 
@@ -488,7 +52,7 @@ body {
         text-align: center;
         letter-spacing: -1.5px;
 
-        @include changeSize($mobile) {
+        @include forMobile {
           width: 280px;
           font-size: 32px;
           letter-spacing: -1.5px;
@@ -503,14 +67,14 @@ body {
       column-gap: 24px;
       justify-content: center;
 
-      @include changeSize($mobile) {
+      @include forMobile {
         grid-template-columns: 1fr;
       }
 
       .section__col-4 {
 
-        @include changeSize($mobile) {
-          padding: 20px 20px;
+        @include forMobile {
+          padding: 20px;
           width: 280px;
         }
 
@@ -524,7 +88,7 @@ body {
             transform: scale(1.1);
           }
 
-          @include changeSize($mobile) {
+          @include forMobile {
             width: 288px;
             height: 287px;
           }
@@ -568,14 +132,14 @@ body {
       column-gap: 70px;
       justify-content: center;
 
-      @include changeSize($mobile) {
+      @include forMobile {
         grid-template-columns: 1fr;
       }
 
       .col-1 {
 
-        @include changeSize($mobile) {
-          padding: 20px 20px;
+        @include forMobile {
+          padding: 20px;
         }
 
         &__title {
