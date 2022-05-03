@@ -2,28 +2,21 @@
   &__section-1 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    justify-content: center;
+    column-gap: 24px;
 
-    // @include forMobile {
-    //   grid-template-columns: 1fr;
-    // }
-
-    // @include forMobile {
-    //   display: grid;
-    //   grid-template-columns: 1fr;
-    //   // padding: 20px 20px;
-    //   // width: 280px;
-    // }
-
-    &__text__title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
     }
+  }
+
+  &__text__title {
+    @include forStyle(24px, 30px, 700);
+    margin: 0;
   }
 
   &__date__day {
     display: flex;
+    column-gap: 25px;
   }
 
   &__block-first {
@@ -31,46 +24,54 @@
   }
 }
 
-  .date {
-    grid-column: 6 / 12;
-    line-height: 16px;
+.date {
+  grid-column: 6 / 12;
 
-    &__text {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    &__text-day,
-    &__holiday-text {
-      font-weight: 400;
-      font-size: 1rem;
-      color: #161616;
-    }
-
-    &__right {
-      margin-left: 25px;
-    }
-  }
-  .plan {
-    grid-column: 1 / 6;
-    line-height: 2px;
-
-    &__text {
-      font-size: 12px;
-      font-weight: 700;
-      color: #d12d35;
-    }
-
-    &__title {
-      font-size: 48px;
-      font-weight: 700;
-
-      @include forMobile {
-        font-size: 32px;
-      }
-    }
+  @include forTablet {
+    grid-column: 4 / -1;
   }
 
-  .main__block-first {
-    margin-bottom: 40px;
+  &__text {
+    @include forStyle(16px, 27px, 700);
+    margin-bottom: 0;
   }
+
+  &__text-day,
+  &__holiday-text {
+    @include forStyle(16px, 27px, 400);
+    color: #161616;
+  }
+
+  &__right {
+    // margin-left: 25px;
+  }
+}
+
+.plan {
+  grid-column: 1 / 6;
+
+  @include forTablet {
+    grid-column: 1 / 4;
+  }
+
+  &__text {
+    @include forStyle (12px, 140%, 700);
+    color: #d12d35;
+
+    @include forTablet {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    @include forStyle (48px, 48px, 700);
+
+    @include forTablet {
+      margin: 0;
+    }
+
+    @include forMobile {
+      font-size: 32px;
+    }
+  }
+}

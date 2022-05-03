@@ -6,18 +6,27 @@
   .main__section-wrapper-2 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    justify-content: center;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 
   &__section-title {
     grid-column: 5 / 9;
     text-align: center;
+
+    @include forTablet {
+      grid-column: 2 / 6;
+    }
   }
 
   .section__view {
-    font-size: 48px;
-    font-weight: 700;
+    @include forStyle(48px, 48px, 700);
+    letter-spacing: -1.5px;
     margin-bottom: 0;
+
+    color: $textColor;
 
     @include forMobile {
       font-size: 32px;
@@ -25,17 +34,22 @@
   }
 
   .section__explore {
-    font-size: 1rem;
-    font-weight: 400;
+    @include forStyle(16px, 27px, 400);
 
     max-width: 270px;
     margin: 0 auto 48px;
+
+    color: $textColor;
   }
 
   &__section-photos {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 
   .img3 {
@@ -45,6 +59,11 @@
 
     grid-column: 9 / -1;
 
+    @include forTablet {
+      padding-top: 186px;
+
+      grid-column: 5 / -1;
+    }
   }
 
   .img4 {
@@ -53,12 +72,22 @@
     padding-top: 324px;
 
     grid-column: 1 / 9;
+
+    @include forTablet {
+      padding-top: 186px;
+
+      grid-column: 1 / 5;
+    }
   }
 
   &__section-row__second {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 
   .img5 {
@@ -67,6 +96,12 @@
     padding-top: 324px;
 
     grid-column: 1 / 5;
+
+    @include forTablet {
+      padding-top: 284px;
+
+      grid-column: 1 / 4;
+    }
   }
 
   .img6 {
@@ -75,6 +110,12 @@
     padding-top: 324px;
 
     grid-column: 5 / 9;
+
+    @include forTablet {
+      padding-top: 284px;
+
+      grid-column: 4 / -1;
+    }
   }
 
   .img7 {
@@ -83,12 +124,20 @@
     padding-top: 324px;
 
     grid-column: 9 / -1;
+
+    @include forTablet {
+      display: none;
+    }
   }
 
   &__section-row__third {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 
   .img8 {
@@ -98,6 +147,11 @@
 
     grid-column: 1 / 5;
 
+    @include forTablet {
+      padding-top: 186px;
+
+      grid-column: 1 / 3;
+    }
   }
 
   .img9 {
@@ -106,34 +160,27 @@
     padding-top: 324px;
 
     grid-column: 5 / -1;
+
+    @include forTablet {
+      padding-top: 186px;
+
+      grid-column: 3 / -1;
+    }
   }
 
-  // &__section-photos {
-  //   grid-template-rows: repeat(2, 1fr);
-  //   justify-content: center;
-  // }
-
-  // .img3,
-  // .img4 {
-  //   @include forMobile {
-  //     width: 130px;
-  //     height: 130px;
-  //   }
-  // }
-
-  // .img3,
-  // .img4,
-  // .img5,
-  // .img6,
-  // .img7,
-  // .img8,
-  // .img9 {
-  //   transition: transform 0.3s ease-in;
-  //   &:hover {
-  //     cursor: pointer;
-  //     transform: scale(1.1);
-  //   }
-  // }
+  .img3,
+  .img4,
+  .img5,
+  .img6,
+  .img7,
+  .img8,
+  .img9 {
+    transition: transform 0.3s ease-in;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
 
   .description {
     line-height: 15px;
@@ -141,32 +188,40 @@
     margin-bottom: 48px;
 
     &__master {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #d12d35;
+      @include forStyle(16px, 27px, 700);
+      color: $masterTitle;
     }
 
     &__duration {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #161616;
+      @include forStyle(16px, 27px, 400);
+      color: $textColor;
     }
   }
 
   .section__view-button {
     display: grid;
     grid-template-columns: (12, 1fr);
+    column-gap: 24px;
+
+    @include forTablet {
+      grid-template-columns: (6, 1fr);
+      column-gap: 0;
+    }
   }
 
   .buttton {
     grid-column: 5 / 9;
+
+    @include forTablet {
+      grid-column: 2 / 3;
+    }
   }
 
   .view-button {
     color: #fff;
     padding: 15px 74px;
     font-family: "Cinzel", sans-serif;
-    background-color: #d12d35;
+    background-color: $masterTitle;
     border: 1px solid transparent;
     margin-top: 40px;
 
@@ -177,6 +232,10 @@
 
     &:active {
       background: #eb343d;
+    }
+
+    @include forTablet {
+      padding: 14.5px 107.5px;
     }
   }
 }
