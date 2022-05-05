@@ -7,11 +7,19 @@
     @include forTablet {
       grid-template-columns: repeat(6, 1fr);
     }
+
+    @include forMobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__text__title {
     @include forStyle(24px, 30px, 700);
     margin: 0;
+
+    @include forMobile {
+      margin-top: 32px;
+    }
   }
 
   &__date__day {
@@ -31,19 +39,25 @@
     grid-column: 4 / -1;
   }
 
+  @include forMobile {
+    grid-column: 1 / -1;
+  }
+
   &__text {
     @include forStyle(16px, 27px, 700);
+
     margin-bottom: 0;
   }
 
   &__text-day,
   &__holiday-text {
     @include forStyle(16px, 27px, 400);
-    color: #161616;
+    color: $textColor;
   }
 
-  &__right {
-    // margin-left: 25px;
+  &__holiday,
+  &__holiday-text {
+    margin-top: 0;
   }
 }
 
@@ -52,6 +66,10 @@
 
   @include forTablet {
     grid-column: 1 / 4;
+  }
+
+  @include forMobile {
+    grid-column: 1 / -1;
   }
 
   &__text {
@@ -71,7 +89,9 @@
     }
 
     @include forMobile {
-      font-size: 32px;
+      @include forStyle (32px, 32px, 700);
+
+      letter-spacing: -1.5px;
     }
   }
 }
