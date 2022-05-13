@@ -1,0 +1,66 @@
+.place {
+  font-family: "Poppins", sans-serif;
+  line-height: 140%;
+  color: #fff;
+
+  &__photos-container {
+    display: grid;
+    column-gap: 24px;
+    margin-bottom: 16px;
+    @for $start from 1 through 2 {
+      @for $end from 1 through 2 {
+        &-#{$start}-#{$end} {
+          grid-template-columns: #{$end + fr} #{$start + fr};
+        }
+      }
+    }
+    @include onMobile {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+    }
+  }
+
+  &__photo-container {
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ;
+    &--wide {
+      object-fit: cover;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 8px;
+
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+
+  }
+
+  &__button {
+    margin: 0 auto;
+    width: 324px;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onMobile {
+      width: 100%;
+    }
+  }
+}

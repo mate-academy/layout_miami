@@ -1,0 +1,87 @@
+.header {
+  background-image: url(../images/header-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 36px 0 20vh;
+
+    @include onMobile {
+      padding: 29px 0 20vh;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    &:not(:last-child) {
+      margin-right: 40px;
+
+      @include onMobile {
+        margin-right: 30px;
+      }
+    }
+
+    &--call {
+      text-decoration: none;
+
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: $dark;
+          display: block;
+          width: max-content;
+          padding-right: 20px;
+          opacity: 0;
+          transform: translate(-100%,-50%);
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    color: $dark;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onMobile {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}
