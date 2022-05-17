@@ -1,0 +1,152 @@
+@mixin forTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin forDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include forTablet {
+    padding: 0 72px;
+  }
+
+  @include forDesktop {
+    padding: 0 120px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include forTablet {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/header__image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 20px 0 0;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 129px;
+
+    @include forTablet {
+      margin-bottom: 159px;
+    }
+
+    @include forDesktop {
+      margin-bottom: 103px;
+    }
+  }
+
+  &__logo {
+    &-image {
+      height: 46px;
+
+      @include forTablet {
+        height: 65px;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+
+    margin-right: 30px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include forTablet {
+      margin-right: 63px;
+    }
+
+    &-option {
+      display: block;
+      padding-right: 20px;
+      position: absolute;
+      width: max-content;
+      text-align: right;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: #fff;
+      opacity: 0;
+    }
+
+    &-option--1 {
+      transform: translate(-100%, -70%);
+      margin-bottom: 8px;
+    }
+
+    &-option--2 {
+      transform: translate(-100%, 30%);
+    }
+
+    @include forDesktop {
+      &:hover {
+        .header__call-option {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include forTablet {
+      font-size: 64px;
+    }
+
+    @include forDesktop {
+      font-size: 80px;
+    }
+  }
+}
