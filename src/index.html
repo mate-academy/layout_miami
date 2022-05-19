@@ -82,7 +82,7 @@
         </div>
       </div>
     </header>
-    <main class="main">
+    <main class="page__main main">
       <section class="page__section about" id="about">
         <div class="container">
           <div class="grid grid--tablet">
@@ -311,13 +311,11 @@
                   "
                   name="textarea"
                   placeholder="Message"
-                >
-                </textarea>
+                ></textarea>
               </label>
               <button
                 class="contact-form__btn button"
                 type="submit"
-                id="btn-submit"
               >
                 Send
               </button>
@@ -366,28 +364,24 @@
     <footer class="footer"></footer>
     <script>
       const nav = document.querySelector('.nav');
-        const headerBtn = document.querySelector('.header__btn');
-        const togglers = document.querySelectorAll('.nav__link, .header__btn');
-        const submitBtn = document.getElementById('btn-submit');
+      const headerBtn = document.querySelector('.header__btn');
+      const form = document.querySelector('.contact-form');
+      const togglers = document.querySelectorAll('.nav__link, .header__btn');
+      const pageBody = document.getElementById('home');
 
-        submitBtn.addEventListener('click', function (event) {
+
+      togglers.forEach(toogler => {
+        toogler.addEventListener('click', () => {
+          pageBody.classList.toggle('page__body--with-menu');
+          nav.classList.toggle('nav--active');
+          headerBtn.classList.toggle('header__btn--active');
+        });
+      });
+
+      form.addEventListener('submit', function (event) {
           event.preventDefault();
-        });
-
-        togglers.forEach(toogler => {
-          toogler.addEventListener('click', () => {
-            nav.classList.toggle('nav--active');
-            headerBtn.classList.toggle('header__btn--active');
-          });
-        });
-
-        window.addEventListener('hashchange', () => {
-          if (window.location.hash === '#menu') {
-            document.body.classList.add('page__body--with-menu');
-          } else {
-            document.body.classList.remove('page__body--with-menu');
-          }
-        });
+          form.reset();
+      });
     </script>
   </body>
 </html>
