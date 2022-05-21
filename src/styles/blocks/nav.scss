@@ -1,0 +1,63 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo-img {
+    height: 18px;
+    width: 130px;
+
+    @include onTablet {
+      height: 24px;
+      width: 190px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 30px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/phone.png);
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        transform: translate(-100%, -50%);
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $text-color;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/menu.png);
+
+    &:hover {
+      background-image: url(../images/menu-hover.png);
+    }
+  }
+}
