@@ -9,3 +9,21 @@
     @content;
   }
 }
+
+@mixin exhibit-mobile-columns ($number-of-columns) {
+  &__exhibit {
+    display: grid;
+    grid-template-columns: repeat($number-of-columns, 1fr);
+    column-gap: 8px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include forDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+}

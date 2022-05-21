@@ -13,47 +13,57 @@
     column-gap: 24px;
   }
 
-  &__exhibit {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 8px;
+  @include exhibit-mobile-columns(3);
 
-    @include forTablet {
-      grid-template-columns: repeat(6, 1fr);
-      column-gap: 24px;
-    }
-
-    @include forDesktop {
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
-    }
-  }
-
-  &--tablet {
+  &--tablet,
+  &--desktop {
     display: block;
 
     @include forTablet {
+      display: grid;
+    }
+
+    @include forDesktop {
       display: grid;
     }
   }
 
   &__item {
 
+    @include forTablet {
+      &--tablet-rows {
+        grid-row: 1 / 3;
+      }
+    }
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end+1};
         }
+      }
+    }
 
-        &--tablet-#{$start}-#{$end} {
-          @include forTablet {
-            grid-column: #{$start} / #{$end+1};
+  
+    @include forTablet {
+      &--tablet {
+        @for $start from 1 through 6 {
+          @for $end from 1 through 6 {
+            &-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
+      }
+    }
 
-        &--desktop-#{$start}-#{$end} {
-          @include forDesktop {
-            grid-column: #{$start} / #{$end+1};
+    @include forDesktop {
+      &--desktop {
+        @for $start from 1 through 12 {
+          @for $end from 1 through 12 {
+            &-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
       }
