@@ -4,3 +4,52 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin forGrid($columnMobile) {
+  grid-template-columns: repeat($columnMobile, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin forGallery($height) {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-height: 320px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    padding-bottom: 0;
+    height: $height;
+  }
+
+  @include onDesktop {
+    height: 320px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
