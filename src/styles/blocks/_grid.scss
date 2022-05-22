@@ -37,35 +37,22 @@
     }
 
     @for $start from 1 through 12 {
-      @for $end from $start through 12 {
+      @for $end from 1 through 12 {
         &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end+1};
+          grid-column: #{$start} / #{$end + 1};
         }
       }
     }
 
-  
     @include forTablet {
       &--tablet {
-        @for $start from 1 through 6 {
-          @for $end from 1 through 6 {
-            &-#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
+        @include position-in-grid(6);
       }
     }
 
     @include forDesktop {
       &--desktop {
-        @for $start from 1 through 12 {
-          @for $end from 1 through 12 {
-            &-#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
+        @include position-in-grid(12);
       }
     }
   }
