@@ -1,8 +1,8 @@
 .header {
   background-image: url(../images/photos/header_bg_320px.png);
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
+  margin-bottom: 120px;
 
   @include onTablet {
     background-image: url(../images/photos/header_bg_744px.png);
@@ -10,6 +10,7 @@
 
   @include onDesktop {
     background-image: url(../images/photos/header_bg_desktop.png);
+    background-position: center right;
   }
 
   &__content {
@@ -22,56 +23,39 @@
 
     @include onTablet {
       min-height: 800px;
+      padding-top: 52px;
     }
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
     margin-right: 30px;
-    background-image: url(../images/call_ico.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        display: block;
+        width: max-content;
+        content: "+1 234 555-55-55";
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $mainColor;
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, 50%);
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before{
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
 
     @include onTablet {
-      height: 24px;
-      width: 24px;
       margin-right: 40px;
-    }
-
-    @include onDesktop {
-      height: 32px;
-      width: 32px;
-    }
-  }
-
-  &__menu {
-    display: block;
-    height: 12px;
-    width: 18px;
-    background-image: url(../images/burger_menu_ico_mobile.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    @include onTablet {
-      height: 24px;
-      width: 24px;
-      background-image: url(../images/burger_menu_ico.svg);
-      background-position: center;
-      background-size: auto;
-    }
-
-    @include onDesktop {
-      height: 32px;
-      width: 32px;
-      background-size: 32px 32px;
     }
   }
 
@@ -80,6 +64,7 @@
     font-variation-settings: "slnt" -10;
     font-size: 32px;
     line-height: 100%;
+    letter-spacing: -1.5px;
 
     @include onTablet {
       font-size: 40px;
@@ -108,37 +93,6 @@
       @include onDesktop {
         margin-bottom: 32px;
       }
-    }
-  }
-}
-
-.container {
-  margin: 0 auto;
-  padding: 0 23px;
-  max-width: 1260px;
-
-  @include onTablet {
-    padding: 0 72px;
-  }
-
-  @include onDesktop {
-    padding: 0 120px;
-  }
-}
-
-.logo {
-  margin-right: auto;
-  height: 16px;
-
-  @include onTablet {
-    height: 24px;
-  }
-
-  &__image {
-    height: 16px;
-
-    @include onTablet {
-      height: 24px;
     }
   }
 }
