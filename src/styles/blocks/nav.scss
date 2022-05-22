@@ -3,11 +3,40 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0;
-  padding: 36px 0;
+  padding: 36px 0 40px;
+
+  &__number {
+    font-family: $main-font;
+    @extend %basic-transition;
+    @include media-properties ($desktop-screen-resolution) {
+
+      & {
+        display: block;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #292929;
+
+        transform: translateX(28px);
+
+        &--hidden {
+          font-size: 0;
+        }
+
+        &--visible {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
   &__side {
     display: flex;
     align-items: center;
     gap: 30px;
+    padding: 0;
 
     @include media-properties ($medium-screen-resolution) {
       gap: 40px;
@@ -15,19 +44,18 @@
   }
 
   &__btn {
-    width: 18px;
-    height: 12px;
+    width: $small-icons;
+    height: $small-icons;
+    @extend %icon-normalize;
+    @extend %basic-transition;
 
-    @extend %picture-normalize;
+    @include media-properties ($medium-screen-resolution) {
+      width: $big-icons;
+      height: $big-icons;
+    }
 
     &--burger {
       background-image: url("./images/icon-burger.svg");
-      transition: all 0.3s ease;
-
-      @include media-properties ($medium-screen-resolution) {
-        width: 24px;
-        height: 16px;
-      }
 
       &:hover {
         background-image: url("./images/burger-hover.svg");
@@ -35,32 +63,14 @@
     }
 
     &--phone {
-      width: 18px;
-      height: 18px;
-
-      @extend %picture-normalize;
       background-image: url("./images/Icon-Phone-call.svg");
-
-      transition: all 0.3s ease;
-
-      @include media-properties ($medium-screen-resolution) {
-        width: 24px;
-        height: 24px;
-      }
     }
 
     &--cross {
-      width: 16px;
-      height: 16px;
+      background-image: url("./images/cross.svg");
 
-      @extend %picture-normalize;
-      // background-image: url("../../images/cross.svg");
-
-      transition: all 0.3s ease;
-
-      @include media-properties ($medium-screen-resolution) {
-        width: 21px;
-        height: 21px;
+      &:hover {
+        transform: rotate(180deg);
       }
     }
   }
