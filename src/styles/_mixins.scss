@@ -1,0 +1,40 @@
+@mixin onPlanshet {
+  @media (min-width: 744px) and (max-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin number {
+  width: 24px;
+  height: 24px;
+
+  &::before {
+    content: "+1 234 555-55-55";
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    color: #292929;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    width: max-content;
+    display: block;
+    padding-right: 20px;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
