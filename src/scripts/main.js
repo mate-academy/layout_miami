@@ -7,25 +7,39 @@ const menu = document.querySelector('.menu');
 const cross = document.querySelector('.nav__btn--cross');
 const header = document.querySelector('.header');
 const menuContainer = document.querySelector('.menu__container');
+const links = document.querySelectorAll('.menu__link');
+const body = document.querySelector('.mybike-page__body');
 
 phone.addEventListener('mouseover', function(e) {
   number.classList.add('nav__number--visible');
 });
 
 phone.addEventListener('mouseout', function(e) {
-  number.classList.add('nav__number--hidden');
   number.classList.remove('nav__number--visible');
 });
 
 burger.addEventListener('click', function() {
-  menu.style.cssText = 'width: 100%; transform: translateX(0)';
-  menuContainer.style.cssText = 'opacity: 1; pointer-events: all;';
-  header.style.cssText = 'transform: translateX(100%)';
-  menuContainer.classList.add = 'menu__container--visible';
+  menu.classList.add('menu--visible');
+  menuContainer.classList.add('menu__container--visible');
+  header.classList.add('header--hidden');
+  body.classList.add('mybike-page__body--hidden');
 });
 
 cross.addEventListener('click', function(e) {
-  header.style.cssText = 'transform: translateX(0%)';
-  menu.style.cssText = 'width: 0; transform: translateX(-100%)';
-  menuContainer.style.cssText = 'opacity: 0; pointer-events: 0;';
+  header.classList.remove('header--hidden');
+  menu.classList.remove('menu--visible');
+  menuContainer.classList.remove('menu__container--visible');
+  body.classList.remove('mybike-page__body--hidden');
 });
+
+links.forEach(link => link.addEventListener('click', function() {
+  header.classList.remove('header--hidden');
+  menu.classList.remove('menu--visible');
+  menuContainer.classList.remove('menu__container--visible');
+  body.classList.remove('mybike-page__body--hidden');
+}));
+
+document.querySelector('.button--submit').addEventListener('click',
+  function(event) {
+    event.preventDefault();
+  }, true);
