@@ -1,0 +1,94 @@
+.header {
+  background-image: url(../images/photos/header.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include onIpad {
+    background-image: url(../images/photos/header-background.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+    @include onIpad {
+      padding: 52px 0 40px;
+    }
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    @include onIpad {
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    text-decoration: none;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%,-50%);
+        opacity: 0;
+        color: $main-black;
+        padding-right: 12px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        pointer-events: none;
+        transition: opacity $transition-time linear;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    @include onIpad {
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      background-image: url(../images/photos/title-before.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      @include onIpad {
+        background-image: url(../images/photos/soundwaves.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
