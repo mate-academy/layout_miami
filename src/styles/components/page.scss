@@ -1,0 +1,50 @@
+.page {
+  &__button-scroll {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+    transform: translateY(100%);
+    visibility: hidden;
+    z-index: 1;
+
+    @include media-breakpoint-md {
+      bottom: 20px;
+      right: 25px;
+    }
+
+    &--visible {
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &--with-menu {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    visibility: hidden;
+    transform: translateY(-100%);
+
+    transition: transform $duration-light ease-in-out,
+      visibility $duration-light ease-in-out;
+  }
+
+  &--menu-open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+
+    z-index: -1;
+  }
+}

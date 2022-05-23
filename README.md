@@ -1,12 +1,32 @@
-# Miami landing page
+# The MET landing page
 
-You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
+- [DEMO Link](https://mariiishka.github.io/layout_met/)
 
-- [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [the MYBIKE landing page](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [the MET landing page](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=0%3A1)  
-- [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+## Description
 
-Implement selected landing page following the lesson videos.
+Using BEM methodologhy.
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+Adaptive layout with resolutions:
+
+*   High resolution - 2500px
+*   Desktop - 1260px
+*   Tablets - 744px
+*   Phones - 320px
+
+## Local development
+
+### Dependencies
+* Node v12.16.3 and higher
+* NPM v6.14.4 and higher
+
+
+### Installing
+* Fork and clone this repository
+* Run `npm install` in your terminal
+* Run `npm start`
+
+## Troubleshooting
+
+Any advise for common problems or issues.
+For any contributing or problem solving you could find me [here](https://t.me/maryberr)
+

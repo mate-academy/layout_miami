@@ -1,6 +1,48 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin media-breakpoint-md {
+  @media (min-width: 640px) {
+    @content;
   }
+}
+
+@mixin media-breakpoint-lg {
+  @media (min-width: 1140px) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-xl {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin narrow($width) {
+  @keyframes narrow {
+    to {
+      width: $width;
+    }
+  }
+}
+
+@mixin zoomIn {
+  cursor: zoom-in;
+  transition: transform $duration-light ease-in-out,
+    box-shadow $duration-light ease-in-out;
+
+  &:hover {
+    box-shadow: 0 20px 40px #0000004d;
+    transform: scale(1.1);
+  }
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+
+  border-radius: 50%;
 }

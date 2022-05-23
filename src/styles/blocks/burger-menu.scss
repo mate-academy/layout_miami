@@ -1,0 +1,42 @@
+%burger-line {
+  display: block;
+  width: $icon-width;
+  height: 2px;
+  border-radius: 2px;
+
+  background-color: $light;
+
+  transition: width $duration-default linear;
+
+  @include media-breakpoint-md {
+    width: $icon-width-md;
+  }
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__line {
+    margin: 3px 0;
+
+    @extend %burger-line;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    @extend %burger-line;
+  }
+
+  &:hover {
+    &::before {
+      width: 18px;
+    }
+
+    &::after {
+      width: 12px;
+    }
+  }
+}
