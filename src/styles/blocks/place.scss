@@ -1,0 +1,54 @@
+@import "./src/styles/utils/mixins";
+@import "./src/styles/utils/vars";
+
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    @include onDeskTop {
+      height: 256px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDeskTop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    color: $colorBlue;
+    text-decoration: none;
+  }
+}
