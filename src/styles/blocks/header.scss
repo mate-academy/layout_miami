@@ -1,0 +1,121 @@
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 29px 20px 108px;
+
+    @include onTab {
+      padding: 36px 0 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 122px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__communication {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tel {
+    display: block;
+    text-decoration: none;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onTab {
+      width: 24px;
+      height: 24px;
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        padding-right: 12px;
+        display: block;
+        width: max-content;
+
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    display: block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include onTab {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    align-self: center;
+
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #292929;
+
+    @include onTab {
+      font-size: 64px;
+      color: #1d1d1d;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: 80px;
+    }
+  }
+}
