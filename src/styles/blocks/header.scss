@@ -1,0 +1,79 @@
+.header {
+  background-image: url(../images/bigImg.png);
+  background-size: cover;
+  background-position: 29%;
+
+  @include onDesktop {
+    background-image: url(../images/bigImg.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include forText(800, 32px, 100%);
+    color: $colorAll;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/line_decor.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onDesktop {
+        background-image: url(../images/soundWaves.svg);
+        width: 63px;
+        height: 76px;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 90%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        @include forText(700, 12px, 16px);
+        color: $colorAll;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
