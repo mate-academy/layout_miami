@@ -1,0 +1,24 @@
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+
+  @include onTab {
+    min-width: 600px;
+  }
+
+  @include onDeskTop {
+
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+
+    &__position_desk {
+      @for $index-start-column from 1 through 13 {
+        @for $index-end-column from $index-start-column through 13 {
+          &--#{$index-start-column}-#{$index-end-column} {
+            grid-column: #{$index-start-column} / #{$index-end-column  + 1};
+          }
+        }
+      }
+    }
+  }
+}
