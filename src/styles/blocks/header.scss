@@ -1,0 +1,93 @@
+.header {
+  background-image: url(../images/bose/header.jpeg);
+  background-size: cover;
+  background-position: 20%;
+
+  @include onDesktop {
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $header-top-padding 0 32px;
+  }
+
+  &__logo {
+    &-image {
+      display: block;
+      width: 130px;
+      height: $img-height-phone;
+
+      @include onTablet {
+        width: 190px;
+        height: $img-height-desktop;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 800;
+    font-style: italic;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      display: block;
+      width: 32px;
+      height: 28px;
+      margin-bottom: 16px;
+      content: url(../images/bose/sound_mobile.svg);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 32px;
+        content: url(../images/bose/waves.svg);
+      }
+    }
+  }
+}
