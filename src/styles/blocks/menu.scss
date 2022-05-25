@@ -1,57 +1,79 @@
 .menu {
   background-color: #e8eff9;
-  height: 100vh;
   z-index: 1;
+  overflow-y: auto;
 
   &__content {
+    box-sizing: border-box;
+    height: 100vh;
     padding: 40px 0;
 
-    @include onTablet {
-      padding: 52px 0;
+    text-transform: uppercase;
+
+    @include onTablet() {
+      padding-top: 52px;
     }
+  }
+
+  &__top {
+    margin-bottom: 55px;
   }
 
   &__list {
-    margin-bottom: 40px;
+    margin: 0 0 40px;
+    padding: 0;
+
+    list-style: none;
   }
 
   &__item {
-    margin-bottom: 32px;
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
   }
 
   &__link {
+    display: inline-block;
     padding-bottom: 8px;
-    text-decoration: none;
-    color: $mainColor;
-    font-weight: 700;
+
+    font-weight: bold;
     font-size: 22px;
     line-height: 22px;
+
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom 0.3s;
-
-    &:hover {
-      border-bottom: 1px solid $mainColor;
-    }
+    
   }
 
   &__call {
     display: block;
-    text-decoration: none;
+    width: max-content;
+
+    font-weight: bold;
     color: $mainColor;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    text-decoration: none;
 
     &--phone {
+      font-size: 16px;
+      line-height: 27px;
+
       margin-bottom: 16px;
+      border-bottom: 1px solid transparent;
+
+      transition: border-color 0.3s linear;
+
+      &:hover {
+        border-color: $mainColor;
+      }
     }
 
     &--action {
-      width: max-content;
+      font-size: 12px;
+      line-height: 16px;
+
+      letter-spacing: 2px;
+
+      padding-bottom: 9px;
       border-bottom: 1px solid $mainColor;
     }
   }
