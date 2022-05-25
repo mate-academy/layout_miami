@@ -1,0 +1,136 @@
+.place {
+  &__goods {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 16px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition-duration: 300ms;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+
+    margin-bottom: 16px;
+
+    &--big-small {
+      @include onDesktop {
+        grid-template-columns: 8fr 4fr;
+        column-gap: 24px;
+      }
+
+      @include onTablet {
+        grid-template-columns: 4fr 2fr;
+        column-gap: 24px;
+      }
+    }
+
+    &--small-big {
+      @include onTablet {
+        grid-template-columns: 4fr 8fr;
+        column-gap: 24px;
+      }
+
+      @include onTablet {
+        grid-template-columns: 2fr 4fr;
+        column-gap: 24px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__description {
+    margin-bottom: 64px;
+    margin-top: -10px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include onTablet {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: $text-color;
+    text-decoration: none;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  &__button-container {
+    display: grid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+
+  }
+
+  &__button-position {
+
+    @include onTablet {
+      grid-column: 2 / 5;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
