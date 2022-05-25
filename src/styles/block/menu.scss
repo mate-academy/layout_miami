@@ -1,69 +1,63 @@
 .menu {
-  background-color: $colorBlue;
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $headerTopPadding 0;
+  height: 100vh;
+  padding: 32px $desktop-paddingX;
+  background-color: $main-accent;
+
+  @include for-mobile {
+    padding-left: $mobile-paddingX;
+    padding-right: $mobile-paddingX;
   }
 
-  &__top {
-    margin-bottom: 48px;
+  &__content-wrapper {
+    @include limit-content-width;
   }
 
-  &__list {
-    margin: 0 0 48px;
-    padding: 0;
-    list-style: none;
-
+  &__top-wrapper {
+    @include grid-width-columns(2, 2, 2);
+    align-items: center;
+    margin-bottom: 55px;
   }
 
-  &__item {
-    margin-bottom: 24px;
+  &__toggler {
+    width: 24px;
+    height: 24px;
+    justify-self: right;
+    border: none;
+    background-color: transparent;
+    background-image: url(../images/MET/icons/cross.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include for-mobile {
+      transform: scale(0.8);
     }
+  }
+
+  &__logo-link {
+    justify-self: left;
   }
 
   &__link {
-    display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 1px solid transparent;
-
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 22px;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: #fff;
-
-    }
-  }
-
-  &__call {
     display: block;
     width: max-content;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
+    margin-bottom: 8px;
+    padding: 8px, 0;
+    border-bottom: 1px solid transparent;
 
-    &--phone {
-      margin-bottom: 16 px;
+    @include font-param(16px, 27px, 700);
+    text-transform: uppercase;
+
+    &--border {
+      border-bottom-color: #fff;
     }
 
-    &--action {
-      padding-bottom: 8px;
-      border-bottom: 1px solid #fff;
+    &:last-child {
+      margin-top: 16px;
+    }
+
+    &:hover {
+      color: $dark-accent;
     }
   }
 }
