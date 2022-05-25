@@ -1,0 +1,114 @@
+.header {
+  background-position: center;
+  background-size: cover;
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 50px;
+
+    @include onTablet() {
+      padding: 35px 0 80px;
+    }
+
+    @include onDesktop() {
+      padding: 42px 0 80px;
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 18px 18px ;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet() {
+      grid-template-columns: 24px 24px ;
+      gap: 64px;
+    }
+  }
+
+  &__call {
+    height: 18px;
+
+    @include onTablet() {
+      height: 24px;
+    }
+
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: 200px;
+        padding: 0 20px;
+        margin-bottom: 8px;
+        color: $mainWhite;
+        transform: translate(-100%, -100%);
+        opacity: 0;
+        pointer-events: none;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      &::after {
+        content: "The Met Cloisters +1 212-923-3700";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: 175px;
+        padding: 0 20px;
+        color: $mainWhite;
+        transform: translate(-100%, -100%);
+        opacity: 0;
+        pointer-events: none;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    text-align: center;
+    color: $mainWhite;
+    letter-spacing: -1.5px;
+
+    @include onTablet() {
+      font-size: 64px;
+    }
+
+    @include onDesktop() {
+      font-size: 80px;
+    }
+  }
+}
