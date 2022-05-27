@@ -1,0 +1,112 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_mobile.jpg);
+
+  @include onTablet() {
+    background-image: url(../images/header_tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 40px 0 95px;
+
+    @include onTablet {
+      height: 800px;
+      padding: 50px 0 40px;
+    }
+
+    @include onDesktop {
+      height: 720px;
+      padding: 50px 0 64px;
+    }
+  }
+
+  &__block-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+      margin-right: 40px;
+    }
+  }
+
+  &__title {
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $colorBlack;
+    max-width: 274px;
+    margin: 0;
+
+    @include onDesktop {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+      max-width: 498px;
+    }
+
+    &::before {
+      content: url(../images/Vector.svg);
+      display: block;
+      height: 27px;
+      width: 32px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      padding-bottom: 16px;
+
+      @include onTablet() {
+        content: url(../images/waves.svg);
+        width: 63px;
+        height: 76px;
+        padding-bottom: 40px;
+      }
+      @include onDesktop {
+        content: url(../images/waves.svg);
+        width: 63px;
+        height: 76px;
+        padding-bottom: 32px;
+      }
+    }
+  }
+}
