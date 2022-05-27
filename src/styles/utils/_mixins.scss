@@ -1,6 +1,29 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin heightWidth($height: 24px, $width: 24px) {
+  height: $height;
+  width: $width;
+}
+
+@mixin fontProperties($fontSize: 12px,
+$lineHeight: 16px,
+$fontWeight: 700,
+$letterSpacing: -1.5px) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin mediaMaxWidth($maxWidth: $tabletWidth) {
+  @media (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+@mixin hoverState($property, $value) {
+  transition: #{$property} $transitionTime;
+
   &:hover {
-    #{$_property}: $_toValue;
+    cursor: pointer;
+    #{$property}: $value;
   }
 }

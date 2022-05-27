@@ -1,4 +1,48 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%gridGeneral {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px 24px;
+
+  @include mediaMaxWidth($mobileWidth) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+}
+
+%paddingArticles {
+  padding: 120px $paddingDekstopX 0;
+
+  @include mediaMaxWidth {
+    padding: 120px $paddingTabletX 0;
+  }
+
+  @include mediaMaxWidth($tabletMobileTransitionWidth) {
+    padding: 48px $paddingTabMobTransitionX 40px;
+  }
+
+  @include mediaMaxWidth($mobileWidth) {
+    padding: 120px $paddingMobileX 0;
+  }
+}
+
+%flexTurningWrapper {
+  @extend %gridGeneral;
+
+  @include mediaMaxWidth {
+    display: flex;
+  }
+
+  @include mediaMaxWidth($mobileWidth) {
+    flex-direction: column;
+  }
+}
+
+%logoDesktopMobile {
+  display: block;
+  @include heightWidth(24px, unset);
+
+  @include mediaMaxWidth($mobileWidth) {
+    @include heightWidth(unset, 130px);
+    object-fit: contain;
+  }
 }
