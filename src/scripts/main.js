@@ -2,7 +2,10 @@
 
 const form = document.getElementById('form');
 
-form.addEventListener('submit', (event) => event.preventDefault());
+form.addEventListener('submit', (event) => {
+  form.reset();
+  event.preventDefault();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
