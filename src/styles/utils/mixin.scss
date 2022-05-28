@@ -1,0 +1,26 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTab {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin columnGap($colums, $gap) {
+  grid-template-columns: repeat($colums, 1fr);
+  column-gap: $gap;
+}
+
+@mixin numberfColumns ($first, $last) {
+  @for $start from $first through $last {
+    @for $end from $first through $last {
+      &-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}

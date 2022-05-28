@@ -1,0 +1,38 @@
+.grid {
+  display: grid;
+  @include columnGap(2, 20px);
+
+  @include onTab {
+    @include columnGap(6, 24px);
+  }
+
+  @include onDesktop {
+    @include columnGap(12, 24px);
+  }
+
+  &--phone {
+    display: block;
+
+    @include onTab {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--phone {
+      @include numberfColumns (1, 2);
+    }
+
+    @include onTab {
+      &--tablet {
+        @include numberfColumns (1, 6);
+      }
+    }
+
+    @include onDesktop {
+      &--desktop {
+        @include numberfColumns (1, 12);
+      }
+    }
+  }
+}
