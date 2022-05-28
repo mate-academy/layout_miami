@@ -3,9 +3,8 @@
   background-size: cover;
   background-position: 20%;
 
-  @include onDesktop {
-    background-size: cover;
-    background-position: left;
+  @include onTablet {
+    background-position: 30%;
     background-repeat: no-repeat;
   }
 
@@ -15,24 +14,26 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: $header-top-padding 0 32px;
+    padding: $headerPaddingTop 0 32px;
   }
 
   &__logo {
     &-image {
       display: block;
       width: 130px;
-      height: $img-height-phone;
+      height: $iconSizePhone;
+      cursor: $pointer, pointer;
 
       @include onTablet {
         width: 190px;
-        height: $img-height-desktop;
+        height: $iconSizeDesktop;
       }
     }
   }
 
   &__call {
     text-decoration: none;
+    transition: transform $animationDuration;
 
     @include onTablet {
       &::before {
@@ -49,7 +50,7 @@
         font-weight: 700;
         line-height: 16px;
         letter-spacing: 2px;
-        color: $main-color;
+        color: $mainColor;
         opacity: 0;
         pointer-events: none;
       }
@@ -62,13 +63,17 @@
   }
 
   &__title {
-    margin: 0;
     font-size: 32px;
     line-height: 32px;
     font-weight: 800;
     font-style: italic;
-    color: $main-color;
+    color: $mainColor;
     letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
 
     @include onDesktop {
       font-size: 48px;
