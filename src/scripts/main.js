@@ -5,3 +5,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+/* document.querySelector('#id-form').addEventListener('submit',
+function(evetn) {
+  evetn.preventDefault();
+});
+*/
