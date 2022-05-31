@@ -10,15 +10,16 @@ function doHeaderMenu() {
 
 function showHeaderWhenScroll() {
   const header = document.querySelector('#header');
-  const sectionHome = document.querySelector('#home');
-  const sectionHomeHeight = sectionHome.clientHeight;
-  const headerModifier = 'page__header--scroll';
+  const menu = document.querySelector('#menu');
+  const sectionHomeHeight = document.querySelector('#home').clientHeight;
   const headerTopIndent = document.querySelector('.top-actions').clientHeight;
 
   if (window.scrollY >= (sectionHomeHeight - headerTopIndent)) {
-    header.classList.add(headerModifier);
+    header.classList.add('page__header--scroll');
+    menu.classList.add('page__menu--scroll');
   } else {
-    header.classList.remove(headerModifier);
+    header.classList.remove('page__header--scroll');
+    menu.classList.remove('page__menu--scroll');
   }
 };
 
