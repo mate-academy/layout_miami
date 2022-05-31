@@ -25,3 +25,7 @@ function showHeaderWhenScroll() {
 
 window.addEventListener('hashchange', doHeaderMenu);
 document.addEventListener('scroll', showHeaderWhenScroll);
+
+document.querySelector('.form').addEventListener('submit', e => {
+  return e.preventDefault();
+});
