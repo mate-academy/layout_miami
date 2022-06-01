@@ -8,13 +8,11 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function preventDef(event) {
+const form = document.querySelector('#form');
+
+form.addEventListener('submit', handleEvent);
+
+function handleEvent(event) {
   event.preventDefault();
+  form.reset();
 }
-
-function removeHandler() {
-  document.getElementById('formBtn').removeEventListener('click',
-    preventDef, false);
-}
-
-removeHandler();
