@@ -23,9 +23,12 @@ function showHeaderWhenScroll() {
   }
 };
 
+const form = document.querySelector('.form');
+
 window.addEventListener('hashchange', doHeaderMenu);
 document.addEventListener('scroll', showHeaderWhenScroll);
 
-document.querySelector('.form').addEventListener('submit', e => {
-  return e.preventDefault();
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  form.reset();
 });
