@@ -12,5 +12,6 @@ const form = document.getElementById('boseForm');
 
 function handleForm(event) {
   event.preventDefault();
+  document.getElementById('boseForm').reset();
 }
 form.addEventListener('submit', handleForm);
