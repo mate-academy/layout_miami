@@ -1,0 +1,109 @@
+.header {
+  background-size: cover;
+  background-position: bottom 40% left 50%;
+  background-repeat: no-repeat;
+  background-image: url(../images/photos/header-image-sm-1024px.jpg);
+
+  @include md-device() {
+    background-image: url(../images/photos/header-image-md-1440px.jpg);
+    background-position: bottom 20% left 70%;
+  }
+
+  @include xl-device() {
+    background-image: url(../images/photos/header-image-xl-2560px.jpg);
+    background-position: bottom 20% left 60%;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 40px 0 50px;
+
+    @include md-device() {
+      padding: 52px 0 40px;
+      height: 800px;
+    }
+
+    @include xl-device() {
+      height: 720px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__call {
+    position: relative;
+    text-decoration: none;
+
+    @include xl-device() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: $main-dark-color;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+    
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(../images/waves-sm.svg);
+    }
+
+    @include md-device() {
+      font-size: 40px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+
+        background-image: url(../images/waves.svg);
+      }
+    }
+
+    @include xl-device() {
+      font-size: 48px;
+
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+  
+}
