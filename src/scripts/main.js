@@ -7,3 +7,10 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+document.querySelector('#submit').addEventListener('click', function(event) {
+  document.querySelector('#name').value = '';
+  document.querySelector('#email').value = '';
+  document.querySelector('#message').value = 'Thank you for contacting us!';
+  event.preventDefault();
+}, false);
