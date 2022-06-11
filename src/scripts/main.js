@@ -8,9 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#submit').addEventListener('click', function(event) {
-  document.querySelector('#name').value = '';
-  document.querySelector('#email').value = '';
-  document.querySelector('#message').value = 'Thank you for contacting us!';
+const form = document.querySelector('#form');
+
+form.addEventListener('submit', (event) => {
+  form.reset();
   event.preventDefault();
-}, false);
+  window.location.href = '#gallery';
+});
