@@ -1,3 +1,19 @@
+@mixin hover($_property, $_toValue, $_property2: 0, $_toValue2: 0) {
+  cursor: pointer;
+  transition: #{$_property} 0.4s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+
+  @if $_property2 != 0 {
+    transition: #{$_property} 0.4s, #{$_property2};
+    &:hover {
+      #{$_property2}: $_toValue2;
+    }
+  }
+}
+
 @mixin onTablet {
   @media (min-width: 744px) {
     @content;
