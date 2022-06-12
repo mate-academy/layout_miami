@@ -1,1 +1,137 @@
 'use strict';
+
+const button = document.querySelector('.menuButton');
+const background = document.querySelector('.menu__background');
+const container = document.querySelector('.menu__container');
+const headerLink = document.querySelector('.header__link');
+const menuBlock = document.querySelector('.menu');
+const menuList = document.querySelectorAll('.menu__list');
+const rippleButton = document.querySelectorAll('.button__global');
+const phoneNumber = document.querySelector('.header__phoneNumber');
+const phoneIcon = document.querySelector('.header__phone');
+const mapBtn = document.querySelector('.map__btn');
+const mapOpen = document.querySelector('.mapOpen');
+const map = document.querySelector('.map');
+const contucts = document.querySelector('.contucts');
+const form = document.querySelector('.contucts__form');
+
+/// ///////////////////////menu////////////////////////////////
+let menuOpen = false;
+let menuButtonEnabled = true;
+
+const toggleHandler = () => {
+  menuButtonEnabled = false;
+  background.classList.toggle('menu__background--open');
+  container.classList.toggle('container--open');
+  button.classList.toggle('menuButton--open');
+};
+
+const openMenuHandler = () => {
+  button.style.setProperty('position', 'fixed');
+  headerLink.style.setProperty('position', 'fixed');
+  menuBlock.style.setProperty('z-index', '1');
+  toggleHandler();
+};
+
+const closeMenuHandler = () => {
+  button.style.setProperty('position', 'absolute');
+  headerLink.style.setProperty('position', 'absolute');
+  toggleHandler();
+};
+
+button.addEventListener('click', function() {
+  if (!menuOpen && menuButtonEnabled) {
+    openMenuHandler();
+  } else if (menuOpen && menuButtonEnabled) {
+    closeMenuHandler();
+  }
+});
+
+[...menuList].map(el => {
+  el.addEventListener('click', function(e) {
+    closeMenuHandler();
+  });
+});
+
+menuBlock.addEventListener('animationend', function() {
+  if (!menuOpen && !menuButtonEnabled) {
+    menuOpen = true;
+    menuButtonEnabled = true;
+  } else if (menuOpen) {
+    menuBlock.style.setProperty('z-index', '-1');
+    menuOpen = false;
+    menuButtonEnabled = true;
+  }
+});
+
+/// /////////////////////////////////ripple button////////////////////////////
+
+[...rippleButton].map(el => {
+  el.addEventListener('click', function(e) {
+    const posX = e.offsetX;
+    const posY = e.offsetY;
+
+    el.style.setProperty('--x', posX + 'px');
+    el.style.setProperty('--y', posY + 'px');
+    el.classList.add('rippleButton');
+  });
+
+  el.addEventListener('animationend', function() {
+    el.classList.remove('rippleButton');
+  });
+});
+
+// phone
+
+phoneIcon.addEventListener('click', function() {
+  phoneNumber.classList.toggle('phoneNumber__hiden');
+});
+
+// map
+let mapIsOpen = false;
+
+const closeMapHandler = () => {
+  map.classList.add('map-hiden');
+  contucts.classList.remove('contucts__map');
+  mapIsOpen = false;
+  map.style.setProperty('z-index', '-1');
+};
+
+mapOpen.addEventListener('click', function() {
+  if (!mapIsOpen) {
+    map.classList.remove('map-hiden');
+    contucts.classList.add('contucts__map');
+    map.style.setProperty('z-index', '1');
+    mapIsOpen = true;
+  } else {
+    closeMapHandler();
+  }
+});
+
+mapBtn.addEventListener('click', function() {
+  closeMapHandler();
+});
+
+/// //////////////////////form ///////////////////////
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // const urlAPI = 'https://boring-fe.herokuapp.com/comments';
+  // // courtesy to Illia Litvinov for free API
+
+  // const requestData = new FormData(e.target);
+
+  // fetch(urlAPI, {
+  //   method: 'POST',
+  //   body: requestData,
+  // })
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
+
+  form.reset();
+});

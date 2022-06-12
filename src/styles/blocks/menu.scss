@@ -1,0 +1,186 @@
+
+.menu {
+  font-family: "Poppins" , Arial, Helvetica, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1 ;
+
+  &__relative {
+    position: relative;
+  }
+
+  &__background {
+    background: $backgroundGray;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    animation: disappear;
+    animation-duration: 1s;
+    left: -150%;
+    opacity: 0;
+
+    &--open {
+      animation: appear;
+      animation-duration: 0.5s;
+      left: 0;
+      opacity: 1;
+    }
+  }
+
+  &__container {
+    padding-left: 120px;
+    padding-top: 152px;
+    list-style: none;
+
+    @media screen and (max-width: 1260px) {
+      & {
+        padding-left: 72px;
+        padding-top: 120px;
+      }
+    }
+
+    @media screen and (max-width: 745px) {
+      & {
+        padding-left: 20px;
+        padding-top: 110px;
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: 32px;
+    transform: translateX(-250px);
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    width: fit-content;
+
+    &:nth-child(5) {
+      margin-bottom: 40px;
+    }
+
+    &:nth-child(6) {
+      margin-bottom: 16px;
+    }
+
+    &:last-child {
+      position: relative;
+      width: fit-content;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: $blackish ;
+        bottom: -3px;
+        left: 0;
+      }
+    }
+  }
+
+  &__link ,
+  &__booking ,
+  &__telefon {
+    text-decoration: none;
+  }
+
+  &__telefon {
+    color: $blackish;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+  }
+
+  &__booking {
+    color: $blackish;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    position: relative;
+  }
+
+  &__link {
+    color: $blackish;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+
+    &::after {
+      content: "";
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: $blackish ;
+      bottom: -3px;
+      left: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
+    &:hover ,
+    &:focus {
+    
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//upon close menu  items disappear
+@for $index from 1 through 7 {
+
+  .menu__container .menu__list:nth-child(#{$index}) {
+    transition-delay: 0.05s * $index;
+    transform: translateX(-250px);
+    opacity: 0;
+  }
+}
+
+//upon open menu  items appear
+@for $index from 1 through 7 {
+  .container--open .menu__list:nth-child(#{$index}) {
+    transition-delay: 0.05s * $index;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    left: -150%;
+    opacity: 0;
+  }
+  10% {
+    left: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  90% {
+    opacity: 0;
+    left: 0;
+  }
+  95% {
+    left: 0;
+  }
+  100% {
+    left: -150%;
+  }
+}
