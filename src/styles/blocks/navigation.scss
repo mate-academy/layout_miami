@@ -1,10 +1,29 @@
 .nav {
-
-
   &__icon {
+    display: block;
+    background: url("../images/menu.svg") center no-repeat;
     height: 18px;
     width: 18px;
+    @include mediaIconSize;
+    transition: background 0.5s;
+
+    &:hover {
+      background: url("../images/menu_hover.svg") center no-repeat;
+    }
+
+    &-cross {
+      display: block;
+      background: url("../images/cross.svg") center no-repeat;
+      height: 18px;
+      width: 18px;
+      @include mediaIconSize;
+      transition: transform 0.5s;
+      &:hover {
+        transform: rotate(270deg);
+      }
+    }
   }
+
   &__menu {
     display: flex;
     flex-direction: column;
@@ -12,19 +31,24 @@
     height: 100vh;
     max-width: 1260px;
     background-color: $c-blue;
-    top: -99%;
+    top: -100%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    @include media;
-  }
+    transition: top 1s;
+    z-index: 1;
+    @include mediaNavigationPaddings;
+
+    &--active {
+      top: 0
+    }
+}
 
   &__items {
     display: flex;
     justify-content: space-between;
-    padding: 25px 20px 85px;
-
-
+    align-items: center;
+    padding: 30px 20px 85px;
   }
   &__links {
     display: flex;
@@ -62,9 +86,10 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    color: #FFFFFF;
+    color: #fff;
 
     margin: 16px 0 0 20px;
+
     &:after {
       content: "";
       width: 123px;
@@ -80,3 +105,4 @@
 .logo--nav {
   margin: 0 auto;
 }
+
