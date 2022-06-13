@@ -1,0 +1,243 @@
+.header {
+  background-image: url("/images/header_banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100%;
+    max-width: 1260px;
+    padding: 36px 120px;
+
+    @include atResolution($r-tablet) {
+      padding: 36px 72px;
+    }
+
+    @include atResolution($r-mobile) {
+      padding: 29px 20px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 187px;
+    display: block;
+
+    @include atResolution($r-mobile) {
+      width: 130px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__menu-toggler {
+    display: block;
+    background-image: url("/images/menu_black.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    @extend %icons-size;
+    @include atResolution($r-mobile) {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background-image: url("/images/menu_hover.png");
+    }
+  }
+
+  &__phone-icon {
+    display: block;
+    background-image: url("/images/phone_black.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    @extend %icons-size;
+    @include atResolution($r-mobile) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__phone-icon::before {
+    content: "+1234555-55-55";
+    display: block;
+    width: max-content;
+    transform: translate(-100%, 50%);
+    padding-right: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    opacity: 0;
+    transition: opacity $transitionTime;
+
+    @include atResolution($r-tablet) {
+      display: none;
+    }
+
+    @include atResolution($r-mobile) {
+      display: none;
+    }
+  }
+
+  &__phone-icon:hover::before {
+    opacity: 1;
+  }
+
+  &__title {
+    padding: 0 0 120px;
+
+    font-weight: 800;
+    font-size: 80px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include atResolution($r-tablet) {
+      @include text(64px, 700, 100%);
+      padding: 0 0 120px;
+    }
+
+    @include atResolution($r-mobile) {
+      @include text(36px, 700, 100%);
+      padding: 0 0 150px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    background-color: $c-menu;
+    transition: transform $transitionTime;
+
+    transform: translateX(-100%);
+
+    &:target {
+      transform: translateX(0);
+    }
+
+    &-content {
+      position: relative;
+      top: 0;
+      left: 0;
+      padding: 36px 120px;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1020px;
+      margin: 0 auto;
+
+      @include atResolution($r-tablet) {
+        padding: 36px 72px;
+      }
+
+      @include atResolution($r-mobile) {
+        padding: 29px 20px;
+      }
+    }
+
+    &-list {
+      margin-top: 48px;
+      list-style: none;
+    }
+
+    &-cross {
+      z-index: 2;
+      display: block;
+      background-image: url("/images/cross.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      @extend %icons-size;
+      @include atResolution($r-mobile) {
+        width: 24px;
+        height: 24px;
+      }
+      padding-top: 18px;
+    }
+
+    &-item {
+      margin-top: 32px;
+      @include text(22px, 700, 22px);
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      width: max-content;
+    }
+
+    &-item:first-child {
+      margin-top: 0;
+    }
+
+    &-item:nth-last-child(2) {
+      margin-top: 40px;
+    }
+
+    &-item:last-child {
+      margin-top: 16px;
+    }
+
+    &-item:hover::after {
+      margin-top: 8px;
+      position: absolute;
+      display: block;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $c-black;
+    }
+  }
+
+  &__phone-number {
+    margin-top: 40px;
+    width: max-content;
+    @include text(16px, 700, 27px);
+    text-transform: uppercase;
+
+    &:hover::after {
+      margin-top: 8px;
+      position: absolute;
+      display: block;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $c-black;
+    }
+  }
+
+  &__call-to-action {
+    margin-top: 16px;
+    @include text(12px, 700, 16px);
+    text-transform: uppercase;
+
+    &:hover::after {
+      margin-top: 8px;
+      position: absolute;
+      display: block;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $c-black;
+    }
+  }
+}
