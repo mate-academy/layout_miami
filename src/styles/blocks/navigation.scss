@@ -1,12 +1,21 @@
 .nav {
+  max-width: $max-width;
   &__icon {
     display: block;
     background: url("../images/menu.svg") center no-repeat;
     height: 18px;
     width: 18px;
-    @include mediaIconSize;
     transition: background 0.5s;
 
+    @include tablet {
+      height: 20px;
+      width: 20px
+    }
+
+    @include desktop {
+      height: 25px;
+      width: 25px
+    }
     &:hover {
       background: url("../images/menu_hover.svg") center no-repeat;
     }
@@ -16,8 +25,18 @@
       background: url("../images/cross.svg") center no-repeat;
       height: 18px;
       width: 18px;
-      @include mediaIconSize;
       transition: transform 0.5s;
+
+      @include tablet {
+        height: 20px;
+        width: 20px
+      }
+
+      @include desktop {
+        height: 25px;
+        width: 25px
+      }
+
       &:hover {
         transform: rotate(270deg);
       }
@@ -29,7 +48,7 @@
     flex-direction: column;
     position: absolute;
     height: 100vh;
-    max-width: 1260px;
+    max-width: $max-width;
     background-color: $c-blue;
     top: -100%;
     left: 0;
@@ -40,9 +59,9 @@
     @include mediaNavigationPaddings;
 
     &--active {
-      top: 0
+      top: 0;
     }
-}
+  }
 
   &__items {
     display: flex;
@@ -58,14 +77,32 @@
   }
 
   &__link {
+    position: relative;
     display: block;
+    width: max-content;
     font-weight: 700;
     font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-
     color: #fff;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background: #fff;
+      bottom: -7px;
+      left: 0;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &:hover:after {
+      opacity: 1;
+    }
   }
   &__tel {
     display: block;
@@ -85,9 +122,7 @@
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     color: #fff;
-
     margin: 16px 0 0 20px;
 
     &:after {
@@ -100,9 +135,5 @@
       left: 0;
     }
   }
-}
-
-.logo--nav {
-  margin: 0 auto;
 }
 
