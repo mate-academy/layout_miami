@@ -9,26 +9,39 @@
   @include desktop {
     padding: 0 120px;
   }
+  @include oversize {
+    padding: 0 20%;
+  }
 
   &__container {
     display: flex;
     flex-direction: column;
     gap: 48px;
+    align-items: center;
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
+      align-items: start;
       gap: 0;
     }
   }
   &__item {
+    padding-top: 5px;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    transition: transform 0.5s;
 
     @include tablet {
       width: 33%;
+    }
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px 5px rgba(4,153,255,0.35);
+      border-radius: 8px;
     }
   }
 
@@ -36,11 +49,6 @@
     height: 150px;
     width: 150px;
     margin-bottom: 28px;
-    transition: transform 0.5s;
-
-    &:hover {
-      transform: scale(1.2);
-    }
 
     @include tablet {
       margin-bottom: 32px;
@@ -51,12 +59,8 @@
     font-weight: 700;
     font-size: 24px;
     color: $c-blue;
+    text-decoration: none;
     margin-bottom: 4px;
-    transition: color 0.5s;
-
-    &:hover {
-      color: $c-dark-gray;
-    }
   }
 
   &__position {
