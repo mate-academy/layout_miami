@@ -9,11 +9,11 @@ const menuList = document.querySelectorAll('.menu__list');
 const rippleButton = document.querySelectorAll('.button__global');
 const phoneNumber = document.querySelector('.header__phoneNumber');
 const phoneIcon = document.querySelector('.header__phone');
-const mapBtn = document.querySelector('.map__btn');
-const mapOpen = document.querySelector('.mapOpen');
-const map = document.querySelector('.map');
-const contucts = document.querySelector('.contucts');
+const menuButtonUp = document.querySelector(`.menuButton__bar--up`);
+const menuButtonMid = document.querySelector(`.menuButton__bar--mid`);
+const menuButtonDown = document.querySelector(`.menuButton__bar--down`);
 const form = document.querySelector('.contucts__form');
+const body = document.querySelector('body');
 
 /// ///////////////////////menu////////////////////////////////
 let menuOpen = false;
@@ -23,7 +23,11 @@ const toggleHandler = () => {
   menuButtonEnabled = false;
   background.classList.toggle('menu__background--open');
   container.classList.toggle('container--open');
-  button.classList.toggle('menuButton--open');
+  button.classList.toggle('menuButtonOpen');
+  menuButtonUp.classList.toggle('bar--up');
+  menuButtonMid.classList.toggle('bar--mid');
+  menuButtonDown.classList.toggle('bar--down');
+  body.classList.toggle('overflowJidden');
 };
 
 const openMenuHandler = () => {
@@ -85,31 +89,6 @@ menuBlock.addEventListener('animationend', function() {
 
 phoneIcon.addEventListener('click', function() {
   phoneNumber.classList.toggle('phoneNumber__hiden');
-});
-
-// map
-let mapIsOpen = false;
-
-const closeMapHandler = () => {
-  map.classList.add('map-hiden');
-  contucts.classList.remove('contucts__map');
-  mapIsOpen = false;
-  map.style.setProperty('z-index', '-1');
-};
-
-mapOpen.addEventListener('click', function() {
-  if (!mapIsOpen) {
-    map.classList.remove('map-hiden');
-    contucts.classList.add('contucts__map');
-    map.style.setProperty('z-index', '1');
-    mapIsOpen = true;
-  } else {
-    closeMapHandler();
-  }
-});
-
-mapBtn.addEventListener('click', function() {
-  closeMapHandler();
 });
 
 /// //////////////////////form ///////////////////////
