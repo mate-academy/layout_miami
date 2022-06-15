@@ -1,0 +1,162 @@
+//local variables
+$logoLinkTopLeft:   //for Bike logo on header 
+  "min-width" 1259px 36px 120px ,
+  "max-width" 1259px 36px 72px ,
+  "max-width" 743px 29px 20px;
+
+$menuButtonTopRight:   //for button position 
+  "min-width" 1259px 46px 120px ,
+  "max-width" 1259px 46px 62px ,
+  "max-width" 743px 32px 10px;
+
+$phoneTopRight:   //for phone position 
+  "min-width" 1259px 52px 190px ,
+  "max-width" 1259px 52px 140px ,
+  "max-width" 743px 39px 70px;
+//styles
+
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 20vh;
+  align-items: center;
+  background: url("../images/image3.png");
+  background-position: center;
+  background-size: cover;
+
+  @media screen and (max-width:$phoneWidth) {
+    & {
+      height: 480px;
+      padding-bottom: 85px;
+    }
+  }
+
+  &__logo {
+    width: 187px;
+
+    @media screen and (max-width:$phoneWidth) {
+      & {
+        width: 130px;
+      }
+    }
+  }
+
+  &__link {
+    z-index: 2;
+    position: absolute;
+    
+    @each $minmax , $scrWidth , $top , $left in $logoLinkTopLeft {
+      @media screen and (#{$minmax}:#{$scrWidth}) {
+        & {
+          top: $top ;
+          left: $left;
+        }
+      }
+    }
+  }
+
+  &__menuButton {
+    position: absolute;
+
+    @each $minmax , $scrWidth , $top , $right in $menuButtonTopRight {
+      @media screen and (#{$minmax}:#{$scrWidth}) {
+        & {
+          top: $top ;
+          right: $right;
+        }
+      }
+    }
+  }
+
+  &__phoneNumber-container {
+    position: relative;
+  }
+
+  &__phone {
+    z-index: 2;
+    padding-left: 30px;
+
+    &:hover ,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__phoneNumber {
+    font-family: "Poppins" , Arial , Helvetica , sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: rgb(41, 41, 41);
+    position: absolute;
+    right: 40px;
+    top: 5px;
+    width: 150px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    @media screen and (max-width:450px) {
+      & {
+        top: 33px;
+        right: -20px;
+      }
+    }
+
+    &:hover {
+      color: white;
+    }
+
+  }
+
+  &__link--phone {
+    position: absolute;
+    text-decoration: none;
+
+    @each $minmax , $scrWidth , $top , $right in $phoneTopRight {
+      @media screen and (#{$minmax}:#{$scrWidth}) {
+        & {
+          top: $top ;
+          right: $right;
+        }
+      }
+    }
+  }
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__text {
+    font-family: "Poppins" , Arial, Helvetica, sans-serif;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    color: rgb(29, 29, 29);
+    font-weight: 700;
+
+    @media screen and (max-width: $tabletWidth) {
+
+      & {
+        font-size: 64px;
+        line-height: 64px;
+      }
+    }
+
+    @media screen and (max-width: $phoneWidth) {
+
+      & {
+        font-size: 36px;
+        line-height: 36px;
+      }
+    }
+  }
+}
+
+.phoneNumber__hiden {
+  opacity: 0;
+}

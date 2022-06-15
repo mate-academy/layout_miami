@@ -1,0 +1,77 @@
+//local variables
+$contentWidth:24px;
+$contentHeight:16px;
+//
+
+.menuButton {
+  width: $contentWidth + 20px;
+  height: $contentHeight + 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+
+  &:hover ,
+  &:focus {
+    cursor: pointer;
+
+    .menuButton__bar--up {
+      width: $contentWidth * 0.5;
+    }
+
+    .menuButton__bar--down {
+      width: $contentWidth * 0.7;
+    }
+  }
+
+  &__content {
+    width: $contentWidth;
+    height: $contentHeight;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    // background: orange;
+  }
+
+  &__bar {
+    display: flex;
+    width: $contentWidth;
+    height: 3px;
+    background-color: black;
+    border-radius: 3px;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.menuButtonOpen {
+
+  .bar--up {
+    width: $contentWidth * 1.2;
+    transform-origin: right top;
+    transform: rotate(-45deg)  translateY( -4px);
+  }
+
+  .bar--mid {
+    transition: all 100ms ease-in-out;
+    transform: scale(0);
+  }
+  .bar--down {
+    width: $contentWidth * 1.2;
+    transform-origin: right bottom;
+    transform: rotate(45deg) translateY( 4px) translateX( 1px);
+  }
+
+  &:hover ,
+  &:focus {
+    cursor: pointer;
+
+    .bar--up {
+      width: $contentWidth * 1.2;
+    }
+
+    .bar--down {
+      width: $contentWidth * 1.2;
+    }
+  }
+}
