@@ -1,0 +1,111 @@
+@import "../../utils/mixins";
+@import "../../utils/vars";
+
+.header {
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: center;
+
+  &__logo {
+    text-decoration: none;
+
+    &-content {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 80%;
+      letter-spacing: -1.5px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $HeaderTopPadding 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+
+    @include desktop768 {
+      gap: 60px;
+    }
+  }
+
+  &__phone {
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+
+    &::before {
+      content: "The Met Fifth Avenue \A +1 212-535-7710";
+      white-space: pre;
+      text-align: end;
+      display: block;
+      opacity: 0;
+      position: absolute;
+      transform: translate(-100%, -80%);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: white;
+      width: max-content;
+      padding-right: 20px;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "The Met Cloisters \A +1 212-923-3700";
+      white-space: pre;
+      text-align: end;
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 40%;
+      transform: translate(-100%, 20%);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: white;
+      width: max-content;
+      padding-right: 20px;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    @include desktop {
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  // .header__title
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 64px;
+    color: white;
+    letter-spacing: -1.5px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include desktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
