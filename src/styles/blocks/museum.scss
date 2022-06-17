@@ -1,0 +1,75 @@
+.museum {
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 186px;
+    overflow: hidden;
+    @include hover(transform, scale(1.06, 1.1));
+
+    &--big {
+      max-height: 276px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onLaptop {
+      height: 186px;
+      padding-bottom: 0;
+
+      &--big {
+        height: 276px;
+      }
+    }
+
+    &--hidden {
+      @include onLaptop {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: flex;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--cover {
+      object-position: right;
+    }
+  }
+
+  &__description {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 27px;
+
+    &-title {
+      color: $colorRed;
+      font-weight: bold;
+    }
+
+    &-info {
+      font-size: 16px;
+      line-height: 27px;
+      color: #161616;
+    }
+  }
+}
