@@ -26,13 +26,30 @@
   }
 }
 
+$header-top-padding: 29px;
+$header-bottom-padding: 88px;
+$header-top-padding-tablet: 36px;
+$header-bottom-padding-tablet: 130px;
+$header-bottom-padding-laptop: 122px;
+$header-bottom-padding-desktop: 180px;
+$c-gray: #e5e5e5;
+
 .page {
   font-family: "Poppins", sans-serif;
   // font-family: 'Inter', sans-serif;
 
-  // &__body {
-  //   margin: 0;
-  // }
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
 }
 
 .container {
@@ -49,19 +66,93 @@
   }
 }
 
+$icon-width-mobile: 24px;
+$icon-width-tablet: 32px;
+
 .icon {
   display: block;
-  width: 24px;
-  height: 24px;
+  // width: 100%;
+  // padding-bottom: 100%;
+  width: $icon-width-mobile;
+  height: $icon-width-mobile;
 
   @include onTablet {
-    width: 32px;
-    height: 32px;
+    width: $icon-width-tablet;
+    height: $icon-width-tablet;
   }
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    grid-area: menu;
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+      transform: rotate(180deg);
+    }
+  }
+
+  &--phone {
+    grid-area: phone;
+    background-image: url(../images/Icon-Phone-call.svg);
+  }
+
+  &--cross {
+    grid-area: menu;
+    background-image: url(../images/Icon-Close.svg);
+  }
+}
+
+.top-actions {
+  // --icon-width: 24px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  display: grid;
+  grid-template-columns: 1fr
+    $icon-width-mobile $icon-width-mobile $icon-width-mobile;
+  // grid-template-columns: 1fr
+  // var(--icon-width) var(--icon-width) var(--icon-width);
+  grid-template-areas: "logo phone . menu";
+  align-items: center;
+
+  @include onTablet {
+    // --icon-width: 32px;
+    grid-template-columns: 1fr
+      $icon-width-tablet $icon-width-tablet $icon-width-tablet;
+  }
+
+  // &__icons-in-top {
+  //--icon-width: 24px;
+  // --icon-gap: 24px;
+  // display: flex;
+  // gap: 24px;
+  // display: grid;
+  // grid-template-columns: var(--icon-width) var(--icon-width);
+  // gap: var(--icon-gap);
+  // @include onTablet {
+  // grid-template-columns: 32px 32px;
+  // gap: 32px;
+  // --icon-width: 32px;
+  // --icon-gap: 32px;
+  // }
+  // }
+}
+
+.logo {
+  grid-area: logo;
+  line-height: 0%;
+
+  &__image {
+    height: 38px;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
 }
 
 .header {
@@ -77,34 +168,22 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 29px 0 88px;
+    padding: $header-top-padding 0 $header-bottom-padding;
 
     @include onTablet {
-      padding: 36px 0 130px;
+      padding: $header-top-padding-tablet 0 $header-bottom-padding-tablet;
     }
 
     @include onLaptop {
-      padding: 36px 0 122px;
+      padding: $header-top-padding-tablet 0 $header-bottom-padding-laptop;
     }
 
     @include onDesktop {
-      padding: 36px 0 180px;
+      padding: $header-top-padding-tablet 0 $header-bottom-padding-desktop;
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__icons-in-top {
-    display: flex;
-    gap: 30px;
-  }
-
   &__call {
-    background-image: url(../images/Icon-Phone-call.svg);
     text-decoration: none;
 
     @include onLaptop {
@@ -135,15 +214,6 @@
     }
   }
 
-  &__burger-menu {
-    background-image: url(../images/Icon-Burger-menu.svg);
-
-    &:hover {
-      background-image: url(../images/Icon-Burger-menu-hover.svg);
-      transform: rotate(180deg);
-    }
-  }
-
   &__title {
     display: flex;
     justify-content: center;
@@ -170,14 +240,76 @@
   }
 }
 
-.logo {
-  line-height: 0%;
+.menu {
+  background-color: $c-gray;
 
-  &__image {
-    height: 38px;
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $header-top-padding 0;
+  }
 
-    @include onTablet {
-      height: 56px;
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+    list-style: none;
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1d1d1d;
+    transition: border-color 0.5s;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+
+    @include onLaptop {
+      font-family: "Poppins", sans-serif;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1d1d1d;
+
+    &--phone {
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
     }
   }
 }
