@@ -1,3 +1,7 @@
+$headerTopPadding: 25px;
+
+$c-accentMain: #D12D35;
+
 @mixin onTablet {
   @media (min-width: 744px) {
     @content;
@@ -8,6 +12,15 @@
   @media (min-width: 1024px) {
     @content;
   }
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
 }
 
 .page {
@@ -31,6 +44,20 @@
   }
 }
 
+.top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  column-gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    --icon-width: 24px;
+    column-gap: 63px;
+  }
+}
+
 .header {
   background-size: cover;
   background-position: center;
@@ -42,7 +69,7 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 25px 0 0;
+    padding: $headerTopPadding 0 0;
 
     @include onTablet {
       padding: 32px 0 0;
@@ -71,23 +98,8 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__call {
     text-decoration: none;
-    background-image: url(../images/phone.svg);
 
     @include onDesktop {
       &::before {
@@ -167,15 +179,36 @@
 .icon {
   display: block;
 
-  width: 18px;
-  height: 18px;
-
-  @include onTablet {
-    width: 24px;
-    height: 24px;
-  }
+  width: 100%;
+  padding-bottom: 100%;
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+
+  background-color: $c-accentMain;
+  &__content {
+    padding: $headerTopPadding 0;
+  }
 }
