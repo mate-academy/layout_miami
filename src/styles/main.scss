@@ -1,7 +1,183 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+// @import "utils";
+// @import "fonts";
+// @import "typography";
 
-body {
-  background: $c-gray;
+// body {
+//   background: $c-gray;
+// }
+
+@import "./reset.scss";
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-height: 850px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  // font-family: 'Inter', sans-serif;
+
+  // &__body {
+  //   margin: 0;
+  // }
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onLaptop {
+    padding: 0 120px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-image: url(../images/photos/image3.png);
+  background-size: cover;
+  background-position: center;
+  // background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 36px 0 130px;
+    }
+
+    @include onLaptop {
+      padding: 36px 0 122px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 180px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons-in-top {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__call {
+    background-image: url(../images/Icon-Phone-call.svg);
+    text-decoration: none;
+
+    @include onLaptop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__burger-menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+      transform: rotate(180deg);
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    // font-family: 'Poppins';
+    // font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    color: #292929;
+
+    @include onTablet {
+      font-size: 64px;
+      color: #1d1d1d;
+    }
+
+    @include onLaptop {
+      font-size: 80px;
+      color: #1d1d1d;
+    }
+  }
+}
+
+.logo {
+  line-height: 0%;
+
+  &__image {
+    height: 38px;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
 }
