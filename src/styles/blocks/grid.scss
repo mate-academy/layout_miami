@@ -13,10 +13,31 @@
     column-gap: 24px;
   }
 
+  &__three-columns {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+    }
+  }
+
   &--tablet {
     display: block;
 
     @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    @include onDesktop {
       display: grid;
     }
   }
@@ -39,6 +60,12 @@
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
+
+    &-hide {
+      @include onTablet {
+        display: none;
       }
     }
   }
