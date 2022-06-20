@@ -1,0 +1,137 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 720px;
+  padding: 50px 120px;
+  box-sizing: border-box;
+
+  background: url(../images/photos/header.jpg) 60%/cover;
+
+  @media (max-width: 1259px) {
+    padding: 50px 70px;
+  }
+
+  @media (max-width: 744px) {
+    height: 800px;
+
+    background: url(../images/photos/header-medium.jpg) center/cover;
+  }
+
+  @media (max-width: 743px) {
+    padding: 40px 15px;
+  }
+
+  @media (max-width: 320px) {
+    height: 500px;
+
+    background-position: 30%;
+  }
+
+  &__top-panel {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 743px) {
+      &,
+      & > :first-child {
+        width: 130px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+
+    @media (max-width: 743px) {
+      margin-right: $top-panel_button_size_small;
+    }
+  }
+
+  &__number {
+    order: -1;
+
+    display: none;
+    margin-right: 8px;
+    letter-spacing: 2px;
+
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+
+  &__phone-link,
+  &__phone-link > :first-child,
+  &__burger {
+    @include square($top-panel_button_size);
+
+    @media (max-width: 743px) {
+      @include square($top-panel_button_size_small);
+    }
+  }
+
+  @media (min-width: 450px) {
+    &__phone-link:hover + &__number {
+      display: block;
+    }
+  }
+
+  &__burger {
+    z-index: 1;
+
+    background: url(../images/burger.svg) center/cover;
+
+    cursor: pointer;
+
+    @include hover(background-image, url(../images/burger-hover.svg));
+  }
+
+  &__waves {
+    @include square(76px);
+    margin-bottom: 36px;
+
+    background: url(../images/waves.svg) no-repeat;
+
+    @media (max-width: 743px) {
+      @include square(32px);
+      margin-bottom: 16px;
+
+      background-image: url(../images/waves-small.svg);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+#menu-toggler {
+  display: none;
+
+  &:checked ~ .header__menu {
+    display: block;
+  }
+
+  &:checked ~ .header__burger {
+    background-image: url(../images/burger-close.svg);
+
+    @include hover(background-image, url(../images/burger-hover.svg));
+  }
+}
