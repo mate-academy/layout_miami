@@ -1,7 +1,133 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/reset";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
 }
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header {
+
+  background-size: cover;
+  background-position: center;
+  background-image: url("../images/photos/m-header.jpg");
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 130px;
+    height: 100vh;
+    padding: 25px 0;
+
+    @include onDesktop {
+      padding: 30px 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+
+    @include onDesktop {
+      gap: 65px;
+    }
+  }
+
+  &__menu-opener {
+    background-image: url("../images/Icon-Burger-menu.svg");
+
+    &:hover {
+      background-image: url("../images/Icon-Burger-menu-hover.svg");
+    }
+  }
+
+  &__call {
+    background-image: url("../images/Icon-Phone-call.svg");
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue \a +1 212-535-7710 \a The Met Cloisters \a +1 212-923-3700";
+        position: relative;
+        transform: translate(-100%, -35%);
+        display: block;
+        width: min-content;
+        font-weight: 700;
+        padding-right: 20px;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: end;
+        white-space: pre;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.logo {
+  &__image {
+    display: block;
+    height: 46px;
+
+    @include onDesktop {
+      height: 65px;
+    }
+  }
+}
+
+
