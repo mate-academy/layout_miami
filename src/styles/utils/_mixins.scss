@@ -1,6 +1,29 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+// @mixin hover($_property, $_toValue) {
+//   transition: #{$_property} 0.3s;
+//   &:hover {
+//     #{$_property}: $_toValue;
+//   }
+// }
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin interactZoom($property, $duration, $zoomIn) {
+  transition: $property $duration ease-in;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale($zoomIn);
+  }
+
+  &:active {
+    transform: scale(100%);
   }
 }
