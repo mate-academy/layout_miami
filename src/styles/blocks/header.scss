@@ -37,24 +37,30 @@
     text-transform: uppercase;
     text-align: end;
 
+    &::before,
+    &::after {
+      display: block;
+      width: max-content;
+      white-space: pre;
+      padding-right: 20px;
+      transform: translate(-100%, -80%);
+      color: transparent;
+      transition: color $transitionTime;
+    }
+
+    &::before {
+      content: "The Met Fifth Avenue \A +1 212-535-7710";
+    }
+
+    &::after {
+      content: "The Met Cloisters \A +1 212-923-3700";
+    }
+
     @include OnDesktop {
       &:hover {
-        &::before {
-          content: "The Met Fifth Avenue \A +1 212-535-7710";
-          display: block;
-          width: max-content;
-          white-space: pre;
-          transform: translate(-100%, -80%);
-          padding-right: 20px;
-        }
-
+        &::before,
         &::after {
-          content: "The Met Cloisters \A +1 212-923-3700";
-          display: block;
-          width: max-content;
-          white-space: pre;
-          padding-right: 20px;
-          transform: translate(-100%,-75%);
+          color: #fff;
         }
       }
     }
