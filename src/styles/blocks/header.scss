@@ -1,0 +1,92 @@
+.header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(..//images/header_320.png);
+
+  @include onTablet {
+    background-image: url(..//images/header_744.png);
+  }
+
+  @include onDesktop {
+    background-image: url(..//images/header_1260.png);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 0;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        padding-right: 12px;
+
+        color: #292929;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        transform: translate(-100%, 100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        transition: 1s ease;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    font-weight: 800;
+    font-style: italic;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      height: 30px;
+      width: 35px;
+      background-image: url(..//images/sign.svg);
+      color: #292929;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        height: 76px;
+        width: 63px;
+        background-image: url(..//images/big_sign.svg);
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
