@@ -1,4 +1,102 @@
 .header {
-  display: flex;
-  justify-content: space-between;
+  background-image: url(../images/main-bike.png);
+  background-size: cover;
+  background-position: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 29px 0 88px;
+
+    height: 100vh;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -15px;
+  }
+
+  &__logo {
+    @include linkBigClick;
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__phone-link {
+    position: relative;
+
+    @include linkBigClick;
+
+    @include onDescktop {
+      margin-right: 10px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+
+        display: inline-block;
+        width: max-content;
+        height: 16px;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__phone {
+    @include link-square(18px);
+
+    @include onDescktop {
+      @include link-square(24px);
+    }
+
+  }
+
+  &__menu-link {
+    @include linkBigClick;
+  }
+
+  &__menu {
+    @include link-square(18px);
+
+    @include onDescktop {
+      @include link-square(24px);
+    }
+  }
+
+  &__title {
+    color: #292929;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onDescktop {
+      font-size: 80px;
+    }
+  }
 }
