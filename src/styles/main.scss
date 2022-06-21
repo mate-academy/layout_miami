@@ -1,3 +1,9 @@
+@mixin tableSize {
+  @media (min-width: 744px) {
+      @content;
+    }
+}
+
 .page {
   font-family: Poppins, sans-serif;
 
@@ -6,47 +12,76 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
   
-  box-sizing: border-box;
-  padding: 30px 20px 90px;
-  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
 
+  @include tableSize {
+      width: 24px;
+      height: 24px;
+    }
+}
+
+.logo {
+
+  &__img {
+    height: 38px;
+    
+      @include tableSize {
+        height: 56px;
+      }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+  }
+}
+
+.header {
   background-image: url(../images/photos/header.png);
   background-size: cover;
   background-position: center;
 
   color: #1d1d1d;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 30px 0 90px;
+    height: 100vh;
+
+  }
+
   &__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-
-    background-position: center;
-    background-repeat: no-repeat;
     background-image: url("../images/phone.svg");
   }
   
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 18px;
-
-    background-position: center;
-    background-repeat: no-repeat;
     background-image: url("../images/menu.svg");
 
     &:hover {
+      background-position: center;
+      background-repeat: no-repeat;
       background-image: url(../images/menu_hover.svg);
     }
   }
@@ -56,6 +91,10 @@
     font-size: 36px;
     line-height: 100%;
     letter-spacing: -1.5px;
+
+    @include tableSize {
+        font-size: 64px;
+      }
   }
 }
 
@@ -63,8 +102,8 @@
   display: flex;
   justify-content: space-between;
   width: 66px;
-}
 
-.logo {
-  height: 38px;
+  @include tableSize {
+      width: 76px;
+  }
 }
