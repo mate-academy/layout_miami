@@ -1,0 +1,94 @@
+.header {
+  @each $view-size, $bg-img in $b-g-image {
+    @media(min-width: $view-size) {
+      background-image: $bg-img;
+    }
+  }
+  @extend %img-positioning;
+
+  &__content {
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__conect {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__phone {
+    display: block;
+    @include square(18px);
+    background-image: url(../images/phone.svg);
+    @extend %img-positioning;
+    margin-right: 30px;
+  }
+
+  &__menu {
+    display: block;
+    @include square(18px);
+    background-image: url(../images/menu.svg);
+    @extend %img-positioning;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $c-black;
+
+    &::before {
+      content: "";
+      position: relative;
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+      left: -2px;
+      right: -2px;
+      top: -2px;
+      bottom: -2px;
+      display: block;
+      width: 32px;
+      height: 27px;
+      padding: -2px;
+      background-image: url(../images/wawe.svg);
+      @extend %img-positioning;
+      margin-bottom: 16px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+
+}
