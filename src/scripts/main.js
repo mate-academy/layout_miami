@@ -1,9 +1,5 @@
 'use strict';
 
-document.getElementById('button').addEventListener('click', function(event) {
-  event.preventDefault();
-});
-
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
@@ -11,3 +7,12 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const formClass = document.querySelector('.form-class');
+
+function submitForm(event) {
+  event.preventDefault();
+  formClass.reset();
+}
+
+formClass.addEventListener('submit', submitForm);
