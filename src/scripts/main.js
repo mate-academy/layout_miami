@@ -13,5 +13,5 @@ const form = document.querySelector('#form');
 form.addEventListener('submit', (event) => {
   form.reset();
   event.preventDefault();
-  window.location.href = '#gallery';
+  window.location.href = '#';
 });
