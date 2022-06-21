@@ -1,15 +1,13 @@
 .header {
   background-image: url(../images/small_header_image.png);
   background-size: cover;
-  // background-position: center;
 
-  @media (min-width: $bp-large) {
-    background-image: url(../images/big_header_image.png);
-      // background-position: left;
+  @include onTablet {
+    background-image: url(../images/medium_header_image.png);
   }
 
-  @media (min-width: $bp-medium) {
-    background-image: url(../images/medium_header_image.png);
+  @include onDesktop {
+    background-image: url(../images/big_header_image.png);
   }
 
   &__content {
@@ -18,14 +16,14 @@
     justify-content: space-between;
 
     height: 100vh;
-    padding: 40px 0 85px;
+    padding: 40px 0 90px;
 
-    @media (min-width: $bp-large) {
-      padding: 52px 0 64px;
+    @include onTablet {
+      padding: 52px 0 40px;
     }
 
-    @media (min-width: $bp-medium) {
-      padding: 52px 0 40px;
+    @include onDesktop {
+      padding: 52px 0 64px;
     }
   }
 
@@ -43,33 +41,52 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
     height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onTablet {
+      height: 18px;
+    }
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
   }
 
   &__call {
-    display: block;
-    width: 18px;
     height: 18px;
-
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+    text-decoration: none;
+
+    @include onTablet {
+      height: 24px;
+
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        color: $c-main;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
 
   &__title {
     font-size: 32px;
@@ -79,18 +96,18 @@
     line-height: 32px;
     letter-spacing: -1.5px;
 
-    @media (min-width: $bp-medium) {
+    @include onTablet {
       font-size: 40px;
       line-height: 40px;
     }
 
-    @media (min-width: $bp-large) {
+    @include onDesktop {
       font-size: 48px;
       line-height: 48px;
     }
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       width: 32px;
       height: 27px;
@@ -102,7 +119,7 @@
 
       margin-bottom: 16px;
 
-      @media (min-width: $bp-medium) {
+      @include onTablet {
         width: 63px;
         height: 76px;
         background-image: url(../images/pdeudo_titile_bigger.svg);
@@ -110,7 +127,7 @@
         margin-bottom: 40px;
       }
 
-      @media (min-width: $bp-large) {
+      @include onDesktop {
         margin-bottom: 32px;
       }
     }
