@@ -1,11 +1,31 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 40px 20px 95px;
-  background-image: url(../images/photos/header.jpg);
+  padding: 0 20px;
+
+  @each $name, $screen in $media {
+    @media (min-width: $screen) {
+      background-image: url(../images/photos/header_#{$name}.jpg);
+    }
+  }
   @include back-position;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 100vh;
+    padding: 40px 0 95px;
+
+    @media (min-width: $screen-big) {
+      padding: 50px 0 65px;
+      max-width: $screen-big;
+    }
+
+    @media (min-width: $screen-medium) {
+      padding: 50px 0 40px;
+      max-width: $screen-medium;
+    }
+  }
 
   &__title {
     font-size: 32px;
@@ -14,6 +34,16 @@
     font-style: italic;
     letter-spacing: -1.5px;
     color: $c-main;
+
+    @media (min-width: $screen-medium) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @media (min-width: $screen-big) {
+      font-size: 48px;
+      line-height: 48px;
+    }
 
     &::before {
       content: "";
@@ -24,7 +54,6 @@
       margin-bottom: 17px;
       @include back-position;
     }
-
   }
 
   &__nav {
@@ -33,29 +62,54 @@
     align-items: center;
   }
 
+  &__nav-container {
+    display: flex;
+    align-items: center;
+  }
+
   &__call {
-    display: inline-block;
-    margin-right: -35%;
-    width: 19px;
-    height: 19px;
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    @include back-position;
+
+    @media (min-width: $screen-big) {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        width: max-content;
+        padding-right: 12px;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        color: $c-main;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &__menu-opener {
-    display: inline-block;
     margin-left: 30px;
-    width: 19px;
-    height: 13px;
     background-image: url(../images/menu-mobile.svg);
-    @include back-position;
 
-    &:hover {
-      background-image: url(../images/menu-hover.svg);
-      display: block;
-      width: 18px;
-      height: 12px;
-      @include back-position;
+    @media (min-width: $screen-medium) {
+      background-image: url(../images/menu_big.svg);
+    }
+
+    @media (min-width: $screen-big) {
+      &:hover {
+        background-image: url(../images/menu-hover.svg);
+      }
     }
   }
 }
