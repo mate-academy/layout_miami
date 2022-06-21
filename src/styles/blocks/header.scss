@@ -1,4 +1,14 @@
 .header {
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +17,8 @@
   box-sizing: border-box;
 
   background: url(../images/photos/header.jpg) 60%/cover;
+
+  animation: appear $appearence_duration;
 
   @media (max-width: 1259px) {
     padding: 50px 70px;
@@ -33,11 +45,23 @@
     justify-content: space-between;
   }
 
+  @keyframes right {
+    from {
+      transform: translateX(100vw);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
   &__logo {
     z-index: 1;
 
     display: flex;
     align-items: center;
+
+    animation: right $appearence_duration;
 
     @media (max-width: 743px) {
       &,
@@ -47,9 +71,21 @@
     }
   }
 
+  @keyframes left {
+    from {
+      transform: translateX(-100vw);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
   &__buttons {
     display: flex;
     align-items: center;
+
+    animation: left $appearence_duration;
   }
 
   &__phone {
@@ -100,11 +136,23 @@
     @include hover(background-image, url(../images/burger-hover.svg));
   }
 
+  @keyframes up {
+    from {
+      transform: translateY(-100vh);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
   &__waves {
     @include square(76px);
     margin-bottom: 36px;
 
     background: url(../images/waves.svg) no-repeat;
+
+    animation: up $appearence_duration;
 
     @media (max-width: 743px) {
       @include square(32px);
@@ -121,6 +169,8 @@
     font-size: 48px;
     line-height: 48px;
     font-weight: 800;
+
+    animation: up $appearence_duration;
 
     @media (max-width: 1259px) {
       font-size: 40px;
@@ -146,6 +196,8 @@
 
   &:checked ~ .header__menu {
     display: block;
+
+    animation: up $appearence_duration;
   }
 
   &:checked ~ .header__burger {
