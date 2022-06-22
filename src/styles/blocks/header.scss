@@ -5,7 +5,13 @@
 
   &__content {
     height: 100vh;
-    box-sizing: border-box;
+    margin-bottom: 140px;
+
+    padding-top: $small-top-padding;
+
+    @include ipadMini {
+      padding-top: $big-top-padding;
+    }
   }
 
   &__title {
@@ -32,11 +38,12 @@
 
   &__call {
     text-decoration: none;
+    @extend %normal-text-Upper;
 
     @include onDesktop {
       &::before {
         margin-bottom: 8px;
-        content: "The Met Fifth Avenue\A+1 212-535-7710";
+        content: "The Met Fifth Avenue\A+1 \00a0 212-535-7710";
         white-space: pre;
         text-align: end;
         opacity: 0;
@@ -51,17 +58,12 @@
 
         padding-right: 20px;
 
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 27px;
-        text-transform: uppercase;
-
         pointer-events: none;
         transition-duration: 0.3s;
       }
 
       &::after {
-        content: "The Met Cloisters \A +1 212-923-3700";
+        content: "The Met Cloisters\A +1 \00a0 212-923-3700";
         opacity: 0;
         white-space: pre;
         text-align: end;
@@ -75,11 +77,6 @@
         color: $white;
 
         padding-right: 20px;
-
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 27px;
-        text-transform: uppercase;
 
         pointer-events: none;
         transition-duration: 0.3s;
