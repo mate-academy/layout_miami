@@ -6,14 +6,15 @@
   @include ipadMini {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
-  };
+  }
 
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
 
-  &--tablet-desktop {
+  &--tablet,
+  &--desktop {
     display: block;
 
     @include ipadMini {
@@ -21,8 +22,8 @@
     }
   }
 
-  &__grid-item {
-    @for $start from 1 through 12{
+  &__item {
+    @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
