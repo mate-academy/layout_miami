@@ -1,0 +1,103 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 130px;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPaddingMobile 0;
+
+    @include onTablet {
+      padding: $headerTopPaddingDesktop 0;
+      gap: 160px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: -1.5px;
+    animation: opacity-title 1.5s linear;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue \A +1 212-535-7710";
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        transform: translate(-100%, -80%);
+        white-space: pre;
+        text-align: end;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &::after {
+        content: "The Met Cloisters \A +1 212-923-3700";
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        transform: translate(-100%, -75%);
+        white-space: pre;
+        text-align: end;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__icons {
+    --icon-gap: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--icon-gap);
+    animation: scale-header 1.3s linear;
+
+    @include onTablet {
+      --icon-gap: 63px;
+    }
+  }
+}
