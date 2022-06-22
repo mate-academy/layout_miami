@@ -6,6 +6,23 @@
 
 $headerTopPadding: 36px;
 $backgroundColor: #e8eff9;
+body,
+h1,
+h2 {
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #292929;
+
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #292929;
+  }
+}
 
 .icon {
   display: block;
@@ -43,6 +60,7 @@ $backgroundColor: #e8eff9;
 
 .page {
   font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
@@ -61,6 +79,28 @@ $backgroundColor: #e8eff9;
       transform: translateY(0);
     }
   }
+
+  &__section {
+    margin-bottom: 120px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+
+    // letter-spacing: -1.5px;
+
+    color: #292929;
+    &--title {
+      margin-bottom: 48px;
+      line-height: 100%;
+      text-align: center;
+
+      @include onDesktop {
+        margin-bottom: 64px;
+        font-size: 48px;
+      }
+    }
+  }
+
 }
 
 .container {
@@ -95,13 +135,14 @@ $backgroundColor: #e8eff9;
       }
     }
   }
-  
+
   &__cross {
     grid-column-start: 2;
   }
 }
 
 .header {
+  margin-bottom: 120px;
   background-size: cover;
   background-position: top;
   background-image: url(../images/header-background-phone.jpg);
@@ -276,6 +317,100 @@ $backgroundColor: #e8eff9;
       &:hover {
         transform: scale(1.1);
       }
+    }
+  }
+}
+
+.products {
+  &__item {
+    margin-bottom: 48px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.product {
+  &__photo {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__subtitle {
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+
+.footer {
+  background-image: url(../images/footer-background.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+
+  @include onDesktop {
+    height: 460px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--9-13 {
+      grid-column: 9 / 13;
+    }
+    &--5-8 {
+      grid-column: 5 / 9;
+    }
+    &--1-4 {
+      grid-column: 1 / 5;
+    }
+
+    &--7-12 {
+      grid-column: 7 / 13;
     }
   }
 }
