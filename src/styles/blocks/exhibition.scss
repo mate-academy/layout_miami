@@ -1,8 +1,9 @@
-.place {
+.exhibition {
   &__photo-container {
-    height: 186px;
+    max-height: 320px;
     position: relative;
     width: 100%;
+
     box-sizing: border-box;
     transition: all 0.5s;
 
@@ -10,22 +11,27 @@
       transition: all 0.5s;
       transform: scale(1.03);
     }
-    
-    &--second-row {
-      height: 285px;
-    }
 
-    @include onSmallScreen {
-      height: 130px;
+    &::after {
+      display: block;
+      content: " ";
+      padding-bottom: 100%;
 
-      &--second-row {
-        height: 87px;
-        width: 88px;
+      @include onMobile {
+        height: 185px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 0;
       }
     }
-
-    @include onDesktop {
-      height: 320px;
+    
+    &--second-row {
+      @include onMobile {
+         height: 285px;
+      }
     }
   }
 
@@ -33,11 +39,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     object-position: center;
 
+    &--left-pos {
+      object-position: top left;
+    }
+
     &--right {
-      object-position: right;
+      object-position: top right;
     }
   }
 
