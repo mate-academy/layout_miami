@@ -1,26 +1,56 @@
+:root {
+  --icon-width: 18px;
+}
+
 .top-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 30px;
-  justify-items: space-between;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 
-  &__phone-numbers {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-items: end;
+    align-items: center;
+    column-gap: 30px;
+  }
+
+  &__phones {
     display: none;
     flex-direction: column;
     align-items: end;
+    pointer-events: none;
+    transition: opacity 0.3s;
+
+    grid-column: 1;
+    order: 1;
   }
 
   &__icons {
-    --icon-width: 18px;
+    width: var(--icon-width);
 
-    display: grid;
-    grid-template-columns: repeat(2, var(--icon-width));
-    column-gap: 30px;
-    justify-content: end;
+    &--phone {
+      grid-column: 2;
+      align-self: center;
+      order: 2;
+
+      @include onDesktop {
+        &:hover + .top-actions__phones {
+          display: flex;
+          pointer-events: all;
+        }
+      }
+    }
 
     &--menu {
-      grid-template-columns: var(--icon-width);
+      grid-column: 3;
+      order: 3;
+    }
+
+    @include onTablet {
+      --icon-width: 24px;
     }
   }
 }
