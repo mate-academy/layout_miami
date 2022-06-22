@@ -8,11 +8,19 @@
 
   &__content {
     box-sizing: border-box;
-    padding: 40px 0 94px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
   }
 
   &__nav {
@@ -35,6 +43,32 @@
     @include onTablet {
       @include square(24px);
     }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        width: max-content;
+        display: block;
+        color: $c-black;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+
+    }
+
   }
 
   &__menu {
@@ -80,6 +114,10 @@
       background-image: url(../images/wawe.svg);
       @extend %img-positioning;
       margin-bottom: 16px;
+
+      @include onTablet {
+        display: none;
+      }
     }
 
     @include onTablet {
