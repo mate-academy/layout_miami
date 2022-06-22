@@ -1,0 +1,50 @@
+.exhibition {
+  &__photo-container {
+    position: relative;
+    margin-bottom: 24px;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 256px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    cursor: pointer;
+
+    transition: transform 800ms ease-out;
+
+    &:hover {
+      transform: translate(0, 0) scale(1.04, 1.04);
+    }
+  }
+
+  &__description {
+    &-title {
+      font-weight: 700;
+      line-height: 27px;
+    }
+  }
+}
