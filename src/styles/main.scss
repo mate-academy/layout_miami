@@ -1,28 +1,74 @@
+@mixin onDesktop{
+  @media(min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 
   &__body {
     margin: 0;
   }
 }
 
-.header{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 26px 40px;
+.container{
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+
+
+}
+
+.logo {
+  &__image {
+    height: 17px;
+  }
+  @include onDesktop {
+    height: 24px;
+  }
+}
+
+.top-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
   background-size: cover;
   background-position: top;
   background-image: url(../images/image__background_mobile.png);
+  @include onDesktop{
+    background-image: url(../images/backgrounddesktop.png);
+  }
 
-  &__title{
+  &__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 26px 0 40px;
+  }
+
+  &__title {
     font-weight: 800;
     font-size: 32px;
     line-height: 32px;
     position: relative;
     letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+    }
 
     &::before {
       content: "";
@@ -34,12 +80,7 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-  }
 
   &__nav__icons {
     display: grid;
@@ -51,17 +92,43 @@
       display: block;
       width: 18px;
       height: 18px;
+      text-decoration: none;
       background-image: url(../images/phone.svg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
+      @include onDesktop{
+        &::before{
+          content: "+1 234 555-55-55";
+          width: max-content;
+          display: block;
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          padding-right: 12px;
+          color: #292929;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all
+        }
+      }
 
     }
 
     &__menu-opener {
       display: block;
       width: 18px;
-      height: 12px;
+      height: 18px;
       background-image: url(../images/menu.svg);
       background-size: cover;
       background-position: center;
@@ -72,26 +139,6 @@
       }
     }
   }
-
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
-
 }
-.logo {
-  &__image{
-    height: 17px;
-  }
 
-}
+
