@@ -3,6 +3,7 @@
 Replace `<your_account>` with your Github username and copy the links to Pull Request description:
 [DEMO LINK](https://vitalii-labunskyi.github.io/layout_bike/)
 
+
 You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
 
 - [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
