@@ -1,0 +1,70 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPaddingS 0 88px;
+
+    @include onMiddleScreen {
+      padding: $headerTopPaddingM 0 130px;
+    }
+
+    @include onBigScreen {
+      padding-bottom: 122px;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color1;
+    text-align: center;
+
+    @include onMiddleScreen {
+      font-size: 64px;
+      color: $color2;
+    }
+
+    @include onBigScreen {
+      font-size: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onBigScreen {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color1;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
