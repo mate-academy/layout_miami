@@ -1,6 +1,12 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+
+@mixin media-properties ($screen-size) {
+  @media (min-width: $screen-size) {
+    @content;
+  }
+}
+
+@mixin set-margin($screen, $margin, $value) {
+  @media (min-width: $screen) {
+    margin-#{$margin}: 0 0 $value;
   }
 }

@@ -1,0 +1,78 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0;
+  padding: 36px 0 40px;
+
+  &__number {
+    font-family: $main-font;
+    @extend %basic-transition;
+    @include media-properties ($desktop-screen-resolution) {
+
+      & {
+        display: block;
+
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #292929;
+
+        transform: translateX(28px);
+        font-size: 0;
+
+        pointer-events: none;
+
+        &--visible {
+          font-size: 12px;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__side {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+
+    @include media-properties ($medium-screen-resolution) {
+      gap: 40px;
+    }
+  }
+
+  &__btn {
+    width: $small-icons;
+    height: $small-icons;
+    @extend %icon-normalize;
+    @extend %basic-transition;
+
+    @include media-properties ($medium-screen-resolution) {
+      width: $big-icons;
+      height: $big-icons;
+    }
+
+    &--burger {
+      background-image: url("../img/icon-burger.svg");
+
+      &:hover {
+        background-image: url("../img/burger-hover.svg");
+      }
+    }
+
+    &--phone {
+      background-image: url("../img/Icon-Phone-call.svg");
+    }
+
+    &--cross {
+      background-image: url("../img/cross.svg");
+
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
