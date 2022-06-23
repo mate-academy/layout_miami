@@ -1,14 +1,26 @@
 @import "./utils/vars";
 @import "./utils/normalize";
 @import "./utils/mixins";
-@import "./utils/extends";
-@import "./typography";
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 20px 90px;
+  position: relative;
   background-image: url(../images/header_bg.svg);
+  background-position: top;
+  background-size: cover;
   background-repeat: no-repeat;
+
+  @media (min-width: 744px) {
+    background-image: url(../images/header_tablet.svg);
+  }
+
+  @media (min-width: 1020px) {
+    background-image: url(../images/header_desk.svg);
+  }
 
   &__nav {
     display: flex;
@@ -27,11 +39,9 @@
     height: 12px;
     background-image: url(../images/burger.svg);
 
-    &:hover {
+    &:focus {
       background-image: url(../images/burger_hover.svg);
-      background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
     }
   }
 
@@ -40,10 +50,24 @@
     height: 18px;
     width: 18px;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 
+  &__wave {
+    background-image: url(../images/header_wave.svg);
+    width: 32px;
+    height: 27px;
+    background-size: cover;
+    position: absolute;
+    bottom: 185px;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    color: $text-color;
+    letter-spacing: -1.5px;
+  }
 
 }
