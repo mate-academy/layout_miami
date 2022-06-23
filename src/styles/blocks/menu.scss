@@ -1,22 +1,11 @@
 .menu {
   display: none;
   background-color: $c-menu;
-  height: 100vh;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
 
   & a {
     color: $c-main-color;
-  }
-
-  &__container {
-    font-family: "Inter", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 29px 20px 0;
-
-    @include tablet {
-      padding: 36px 72px 0;
-    }
   }
 
   &__menu-close {
@@ -24,13 +13,32 @@
     width: 16px;
     height: 16px;
     background-image: url(../icons/menu_close.svg);
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: rotate(45deg);
+    }
   }
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 44px;
+  &__content {
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: $headerTopPadding 20px 0;
+
+    @include tablet {
+      padding: 36px 72px 0;
+    }
+
+    @include desktop {
+      padding: 48px 120px 0;
+    }
+  }
+
+  &__top {
+    margin-bottom: 44px;
   }
 
   &__list {
@@ -38,26 +46,18 @@
   }
 
   &__item {
-    margin-bottom: 32px;
-    position: relative;
+    margin-bottom: 24px;
+    width: max-content;
     padding-bottom: 8px;
-    transition: all 0.5s ease-in;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.5s ease-in;
 
     &:last-child {
       margin-bottom: 40px;
     }
 
-    &:hover:after {
-      display: block;
-      content: "";
-      height: 2px;
-      position: absolute;
-      // width: 1em;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: $c-main-color;
-      border-radius: 8px;
+    &:hover {
+      border-color: $c-main-color;
     }
   }
 
@@ -67,25 +67,17 @@
 
   &__call-phone {
     display: block;
+    width: max-content;
     margin-bottom: 16px;
   }
 
   &__call-action {
-    position: relative;
     padding-bottom: 8px;
-    &:after {
-      position: absolute;
-      content: "";
-      height: 1px;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: $c-main-color;
-      border-radius: 8px;
-    }
+    border-bottom: 1px solid $c-main-color;
   }
 }
 
 .show {
   display: block;
+  transform: translateX(0);
 }
