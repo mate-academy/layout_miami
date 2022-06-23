@@ -41,14 +41,23 @@ $headerTopPadding: 29px;
   &__section {
     margin-bottom: 80px;
 
+    @include onDesktop {
+      margin-bottom: 180px;
+    }
   }
   &__section-title {
+    font-family: 'Inter', sans-serif;
     font-size: 32px;
     font-weight: 500;
     line-height: 32px;
     letter-spacing: -1.5px;
     text-align: center;
     color: #fff;
+
+    @include onDesktop {
+      font-size: 64px;
+      line-height: 64px;
+    }
   }
 }
 
@@ -249,5 +258,54 @@ $headerTopPadding: 29px;
 
   @include onDesktop {
     height: 555px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end+1};
+        }
+      }
+    }
+  }
+}
+
+.about {
+  &__title {
+    margin: 0 0 32px;
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #fff;
   }
 }
