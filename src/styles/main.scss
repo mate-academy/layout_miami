@@ -1,6 +1,7 @@
 @import "./utils/vars";
 @import "./utils/normalize";
 @import "./utils/mixins";
+@import "./blocks/icon.scss";
 
 .header {
   display: flex;
@@ -14,12 +15,14 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media (min-width: 744px) {
+  @include tablet {
     background-image: url(../images/header_tablet.svg);
+    padding: 50px 70px 40px;
   }
 
-  @media (min-width: 1020px) {
+  @include desktop {
     background-image: url(../images/header_desk.svg);
+    padding: 50px 120px 60px;
   }
 
   &__nav {
@@ -32,23 +35,32 @@
     justify-content: end;
     gap: 30px;
     align-items: center;
+
+    @include tablet {
+      gap: 40px;
+    }
+
+    @include desktop {
+      gap: 40px;
+    }
   }
+
   &__menu--opener {
-    display: inline-block;
-    width: 18px;
-    height: 12px;
     background-image: url(../images/burger.svg);
+    transition: background-image 0.3s;
 
     &:focus {
-      background-image: url(../images/burger_hover.svg);
-      background-position: center;
+      background-image: url(../images/burger_focus.svg);
+    }
+
+    @include desktop {
+      &:hover {
+        background-image: url(../images/burger_hover.svg);
+      }
     }
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
     background-image: url(../images/phone.svg);
   }
 
@@ -59,6 +71,13 @@
     background-size: cover;
     position: absolute;
     bottom: 185px;
+
+    @include tablet {
+      background-image: url(../images/Sound_waves.svg);
+      background-position: center;
+      width: 63px;
+      height: 76px;
+    }
   }
 
   &__title {
@@ -66,8 +85,14 @@
     font-weight: 800;
     font-size: 32px;
     line-height: 100%;
-    color: $text-color;
     letter-spacing: -1.5px;
-  }
 
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 48px;
+    }
+  }
 }
