@@ -6,6 +6,7 @@
 
 .page {
   font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
@@ -22,6 +23,23 @@
 
     &:target {
       transform: translateX(0);
+    }
+  }
+  &__section {
+    margin-bottom: 120px;
+  }
+  &__section-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onDesktop {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 48px;
     }
   }
 }
@@ -81,6 +99,7 @@
 .header {
   background-size: cover;
   background-position: top;
+  margin-bottom: 120px;
   background-image: url(../images/image__background_mobile.png);
   @include onDesktop {
     background-image: url(../images/backgrounddesktop.png);
@@ -261,5 +280,57 @@
 
   @include onDesktop {
     height: 460px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end+1};
+        }
+      }
+    }
+  }
+}
+
+.marit{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  &--simple {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 110px;
+
+    @include onDesktop {
+      margin-bottom: 120px;
+    }
+
   }
 }
