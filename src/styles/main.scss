@@ -1,3 +1,15 @@
+@mixin onDescktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Cinzel", serif;
 
@@ -16,7 +28,11 @@
   &__image {
     height: 46px;
 
-    @media (min-width: 744px) {
+    @include onTablet {
+      height: 65px;
+    }
+
+    @include onDescktop {
       height: 65px;
     }
   }
@@ -27,12 +43,12 @@
   max-width: 1260px;
   padding: 0 23px 0 20px;
 
-  @media (min-width: 744px) {
-    padding: 32px 43px 456px 40px;
+  @include onTablet {
+    padding: 0 43px 0 40px;
   }
 
-  @media (min-width: 1260px) {
-    padding: 30px 125px 480px 120px;
+  @include onDescktop {
+    padding: 0 125px 0 120px;
   }
 }
 
@@ -41,6 +57,14 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+
+  @include onTablet {
+    gap: 63px;
+  }
+
+  @include onDescktop {
+    gap: 63px;
+  }
 
   &__menu-opener {
     display: block;
@@ -51,6 +75,16 @@
     background-position: center;
     background-repeat: no-repeat;
 
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+
+    @include onDescktop {
+      width: 24px;
+      height: 16px;
+    }
+
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
@@ -60,12 +94,20 @@
     display: block;
     width: 18px;
     height: 18px;
-
     background-image: url(../images/phone.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDescktop {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
@@ -80,7 +122,15 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 25px 0 288px 0;
+    padding: 25px 0 288px;
+
+    @include onTablet {
+      padding: 32px 0 456px;
+    }
+
+    @include onDescktop {
+      padding: 32px 0 480px;
+    }
   }
 
   &__nav {
@@ -96,5 +146,13 @@
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDescktop {
+      font-size: 80px;
+    }
   }
 }
