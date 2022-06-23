@@ -13,6 +13,13 @@
     width: 100%;
     max-height: 320px;
     overflow: hidden;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      -webkit-box-shadow: 0px -1px 43px 11px rgba(34, 60, 80, 0.46);
+      -moz-box-shadow: 0px -1px 43px 11px rgba(34, 60, 80, 0.46);
+      box-shadow: 0px -1px 43px 11px rgba(34, 60, 80, 0.46);
+    }
 
     &::after {
       content: "";
@@ -32,11 +39,42 @@
   }
 
   &__photo {
+
     position: absolute;
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: 25%;
+    transition: transform 0.3s;
+    box-shadow: 10px 10px 5px #ccc;
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    -khtml-box-shadow: 10px 10px 5px #ccc;
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 1;
+      -webkit-animation: flash 1.5s;
+      animation: flash 2s;
+    }
+    @-webkit-keyframes flash {
+      0% {
+        opacity: .4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes flash {
+      0% {
+        opacity: .4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+
 
     &--5 {
       object-position: 90%;
@@ -45,6 +83,11 @@
 
   &__description-link {
     color: $c-accent-main;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $c-dark-red;
+    }
   }
 
   &__description-date {
