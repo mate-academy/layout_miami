@@ -1,10 +1,9 @@
 .choose-goods {
-  margin: 0 auto;
-  &__fotos {
-    margin-bottom: 16px;
-  }
+  display: grid;
+  justify-content: center;
 
   &__category {
+    display: block;
     margin-bottom: 40px;
 
     &:not(:last-child) {
@@ -13,4 +12,51 @@
       }
     }
   }
+
+  &__fotos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 130px;
+    gap: 20px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas: "big small";
+      grid-auto-rows: 187px;
+      gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-auto-rows: 320px;
+    }
+
+    &--last {
+      @include onTablet {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas: "small big";
+      }
+    }
+  }
+
+  &__link-foto {
+
+    @include onTablet {
+      grid-area: small;
+    }
+
+    &--big {
+      @include onTablet {
+        grid-area: big;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
 }
