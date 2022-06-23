@@ -1,7 +1,146 @@
 @import "utils";
+@import "./utils/vars";
 @import "fonts";
-@import "typography";
+@import "./blocks/container.scss";
+@import "./blocks/icon.scss";
+@import "./blocks/top-actions.scss";
+@import "./blocks/header.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/page.scss";
+@import "./blocks/footer.scss";
 
-body {
-  background: $c-gray;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
+
+  &__item {
+    
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  &--mobile-block {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0;
+
+    @include onDesktop {
+      display: grid;
+      gap: 24px;
+    }
+  }
+
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin-bottom: 48px;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  @include onTablet {
+    &:last-child &__title {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__card {
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  
+  color: #292929;
+
+  &__image {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__type {
+    margin-bottom: 12px;
+
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
