@@ -1,4 +1,4 @@
-@mixin onDesktop{
+@mixin onDesktop {
   @media(min-width: 1024px) {
     @content;
   }
@@ -10,9 +10,23 @@
   &__body {
     margin: 0;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
 }
 
-.container{
+.container {
   margin: 0 auto;
   max-width: 1020px;
   padding: 0 20px;
@@ -20,8 +34,6 @@
   @include onDesktop {
     padding: 0 40px;
   }
-
-
 }
 
 .logo {
@@ -33,21 +45,48 @@
   }
 }
 
-.top-actions{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header {
   background-size: cover;
   background-position: top;
   background-image: url(../images/image__background_mobile.png);
-  @include onDesktop{
+  @include onDesktop {
     background-image: url(../images/backgrounddesktop.png);
   }
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -80,8 +119,6 @@
     }
   }
 
-
-
   &__nav__icons {
     display: grid;
     grid-template-columns: 18px 18px;
@@ -94,12 +131,14 @@
       height: 18px;
       text-decoration: none;
       background-image: url(../images/phone.svg);
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
 
-      @include onDesktop{
-        &::before{
+      @include onDesktop {
+        width: 24px;
+        height: 24px;
+        &::before {
           content: "+1 234 555-55-55";
           width: max-content;
           display: block;
@@ -119,10 +158,9 @@
 
         &:hover::before {
           opacity: 1;
-          pointer-events: all
+          pointer-events: all;
         }
       }
-
     }
 
     &__menu-opener {
@@ -130,9 +168,14 @@
       width: 18px;
       height: 18px;
       background-image: url(../images/menu.svg);
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
+
+      @include onDesktop {
+        width: 24px;
+        height: 24px;
+      }
 
       &:hover {
         background-image: url(../images/menu_hover.svg);
@@ -141,4 +184,82 @@
   }
 }
 
+.menu {
+  background-color: #e5e5e5;
 
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__top {
+    margin-bottom: 54px;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 8px;
+    border-bottom: 1px solid transparent;
+    color: #292929;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.4s;
+
+    &:hover {
+      border-color: #292929;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #292929;
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #292929;
+    }
+  }
+}
+
+.footer {
+  height: 200px;
+  background-image: url(../images/backgroundfooter.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onDesktop {
+    height: 460px;
+  }
+}
