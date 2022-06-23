@@ -1,0 +1,167 @@
+.group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__phone {
+    display: block;
+    margin-right: 30px;
+    @include icon-s;
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: height 1s,
+      width 1s,
+      margin-right 1s,
+      animation 1s,
+      opacity 0.3s;
+
+    &:hover {
+      animation: phone 5s linear infinite;
+
+      @keyframes phone {
+        10% {
+          transform: scale(1.4);
+        }
+        20% {
+          transform: rotate3d(25deg);
+        }
+        30% {
+          transform: rotate3d( -25deg);
+        }
+        40% {
+          transform: rotate3d(25deg);
+        }
+        50% {
+          transform: rotate3d(-25deg);
+        }
+        60% {
+          transform: rotateZ(-180deg);
+        }
+        70% {
+          transform: rotate3d(25deg);
+        }
+        80% {
+          transform: rotate3d(-25deg);
+        }
+        90% {
+          transform: scale(0.8);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(0.8);
+      opacity: 0.1;
+    }
+
+    @include tablet {
+      margin-right: 40px;
+      @include icon-l;
+
+      &:hover + .group__phone-number {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phone-number {
+    display: none;
+    text-decoration: none;
+
+    @include desktop {
+      display: block;
+      position: absolute;
+      right: 100%;
+      width: max-content;
+      margin-right: 12px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-align: right;
+      color: $c-black;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  }
+
+  &__nav {
+    display: block;
+    height: 12px;
+    width: 18px;
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: height 1s,
+      width 1s,
+      transform 1s,
+      animation 1s,
+      opacity 0.3s,
+      background-image 0.3s;
+
+    @include tablet {
+      height: 16px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+      animation: nav 2s linear infinite alternate;
+
+      @keyframes nav {
+        50% {
+          transform: skew(-10deg,-10deg);
+        }
+        100% {
+          transform: skew(10deg, 10deg);
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(0.8);
+      opacity: 0.1;
+    }
+  }
+  &__cross {
+    display: block;
+    @include icon-xs;
+    background-image: url(../images/cross.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: height 1s,
+      width 1s,
+      transform 1s,
+      animation 1s
+      opacity 0.3s;
+
+    @include desktop {
+      @include icon-xs;
+    }
+
+    &:hover {
+      animation: cross 2s linear infinite alternate;
+
+      @keyframes cross {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(0.8);
+      opacity: 0.1;
+    }
+  }
+}
