@@ -1,54 +1,68 @@
-:root {
-  --icon-width: 18px;
-}
-
 .top-actions {
   position: relative;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content max-content;
+  column-gap: 30px;
   align-items: center;
 
-  &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    justify-items: end;
-    align-items: center;
-    column-gap: 30px;
+  &__logo {
+    grid-column: 1;
   }
 
-  &__phones {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    grid-column: 3;
+  }
+
+  &__phone-numbers {
     display: none;
     flex-direction: column;
     align-items: end;
-    pointer-events: none;
+
+    margin: -30px 0;
+    padding-right: 20px;
+
+    opacity: 0;
     transition: opacity 0.3s;
 
-    grid-column: 1;
-    order: 1;
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &__phone-number {
+    margin-bottom: 8px;
+
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: right;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__wrapper:hover > &__phone-numbers {
+    opacity: 1;
   }
 
   &__icons {
     width: var(--icon-width);
 
-    &--phone {
-      grid-column: 2;
-      align-self: center;
-      order: 2;
-
-      @include onDesktop {
-        &:hover + .top-actions__phones {
-          display: flex;
-          pointer-events: all;
-        }
-      }
-    }
-
     &--menu {
-      grid-column: 3;
-      order: 3;
-    }
+      justify-self: end;
 
+      grid-column: -1;
+    }
     @include onTablet {
       --icon-width: 24px;
     }
