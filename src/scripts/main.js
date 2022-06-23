@@ -3,7 +3,15 @@
 // prevent the form from submitting
 const form = document.querySelector('form');
 
-form.addEventListener('submit', (event) => event.preventDefault());
+function submit(event) {
+  event.preventDefault();
+
+  for (const field of document.querySelectorAll('.form-field')) {
+    field.value = '';
+  }
+}
+
+form.addEventListener('submit', submit);
 
 // disable page scrolling under the menu
 window.addEventListener('hashchange', () => {
