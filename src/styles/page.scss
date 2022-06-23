@@ -1,0 +1,62 @@
+.page {
+  font-family: Roboto, sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+
+    transition: transform 0.5s cubic-bezier(0.2, -0.06, 0.32, 1.27);
+
+    &:target {
+      transform: translateX(0%);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+  }
+
+  &__section-title {
+    margin: 0 0 32px;
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    color: #000;
+
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      margin-bottom: 59px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      background-image: url(../images/crown.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include square($crown-size);
+
+      margin: 5px auto 0;
+    }
+  }
+}
