@@ -39,6 +39,22 @@
             grid-column: #{$start} / #{$end + 1};
           }
         }
+
+        &--mobile-#{$start}-#{$end} {
+          @include onMobile {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+
+      &-hidden {
+        @include onTablet {
+          display: none;
+        }
+
+        @include onDesktop {
+          display: block;
+        }
       }
     }
   }
@@ -47,6 +63,23 @@
     @include onBigScreen {
       grid-template-rows: 1fr;
       grid-auto-flow: column;
+    }
+  }
+
+  &__three-columns {
+    @include onMobile {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+    }
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
     }
   }
 }

@@ -1,0 +1,97 @@
+.exhibition {
+  &__photo-container {
+    width: 100%;
+    max-height: 320px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &::after {
+      padding-bottom: 100%;
+      content: "";
+      display: block;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__middle-photo-container {
+    width: 100%;
+    max-height: 320px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @include onMobile {
+
+      &::after {
+        padding-bottom: 87px;
+        content: "";
+        display: block;
+      }
+    }
+
+    @include onTablet {
+      height: 284px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--cover {
+      @include onMobile {
+        transform: scale(1.5);
+        object-position: 18%;
+      }
+    }
+
+    &--cover-1 {
+      @include onMobile {
+        object-position: right;
+      }
+    }
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+
+    &-link {
+      font-weight: 700;
+      text-decoration: none;
+
+      color: $accent-main-color;
+    }
+  }
+}
