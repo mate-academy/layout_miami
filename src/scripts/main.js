@@ -13,6 +13,7 @@ const inputs = document.querySelectorAll('.form__field');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
+  window.location.href = '#';
 
   for (const input of inputs) {
     input.value = '';
