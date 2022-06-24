@@ -2,11 +2,12 @@
 
 const form = document.querySelector('.contacts__form');
 
-function stopPageReload(e) {
-  e.preventDefault();
-}
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  form.reset();
 
-form.onclick = stopPageReload;
+  window.location.href = '#top';
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
