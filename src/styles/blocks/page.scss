@@ -3,12 +3,16 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #fff;
+  color: $color-light;
 
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -17,18 +21,17 @@
     left: 0;
     right: 0;
     transform: translate(-100%);
-    transition: transform 0.5s;
+    opacity: 0;
+    transition: transform 0.8s, opacity 0.8s;
 
     &:target {
       transform: translate(0);
+      opacity: 1;
     }
   }
 
   &__main {
-    background-color: #1d1d1d;
-    color: #fff;
-    // padding-top: 60px;
-    // padding-bottom: 120px;
+    background-color: $color-dark;
     padding: 60px 0 120px;
 
     @include onDestop {
@@ -51,13 +54,12 @@
     }
 
     &-title {
-      font-family: "Poppins", sans-serif;
       font-weight: 500;
       font-size: 32px;
       line-height: 32px;
       text-align: center;
       letter-spacing: -1.5px;
-      margin: 0 0 32px;
+      margin-bottom: 32px;
 
       @include onTablet {
         font-size: 48px;
