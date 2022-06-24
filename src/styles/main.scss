@@ -2,7 +2,7 @@
 @import "./blocks/reset.scss";
 
 @mixin onDesktop {
-  @media (min-width:1024px) {
+  @media (min-width:1260px) {
     @content;
   }
 }
@@ -316,11 +316,80 @@ $headerTopPadding: 29px;
 }
 
 .details {
-  &__photo {
-    height: 130px;
+  color: #fff;
+  &__photo--container {
+    position: relative;
+
+    width: 100%;
+    max-height: 321px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
 
     @include onDesktop {
       height: 321px;
+      padding-bottom: 0;
     }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+  &__description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+
+  &--title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0px;
+    }
+  }
+}
+
+.gallery {
+  &__point {
+    margin-bottom: 40px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 48px;
+  }
+}
+
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+
+  text-decoration: none;
+  color: #1d1d1d;
+  background-color: #fff;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
   }
 }
