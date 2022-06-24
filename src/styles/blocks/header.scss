@@ -1,0 +1,116 @@
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(/images/photos/header_s.png);
+
+  @include onTablet {
+    background-image: url(/images/photos/header_m.png);
+  }
+
+  @include onDesktop {
+    background-image: url(/images/photos/header_l.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 288px;
+
+    @include onTablet {
+      padding: 32px 0 90%;
+    }
+
+    @include onDesktop {
+      padding: 32px 0 47%;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue\a+1 212-535-7710";
+        position: absolute;
+        display: block;
+        width: max-content;
+
+        padding-right: 20px;
+        padding-bottom: 8px;
+        transform: translateX(-100%) translateY(-75%);
+
+        white-space: pre;
+        color: $c-white;
+        text-align: end;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s ease-in;
+      }
+
+      &::after {
+        content: "The Met Cloisters\a+1 212-923-3700";
+        position: absolute;
+        display: block;
+        width: max-content;
+
+        padding-right: 20px;
+        transform: translateX(-100%) translateY(30%);
+
+        white-space: pre;
+        color: $c-white;
+        text-align: end;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s ease-in;
+      }
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $c-white;
+    cursor: pointer;
+
+    @include interactZoom(0.5s, 110%);
+
+    @extend %animationAppear;
+
+    @include onTablet {
+      font-size: 80px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
