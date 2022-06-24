@@ -13,11 +13,10 @@
     column-gap: 24px;
   }
 
-  &--tablet,
-  &--desktop {
+  &--devices {
     display: block;
 
-    @include onTablet {
+    @include onBigScreen {
       display: grid;
     }
   }
@@ -29,14 +28,14 @@
           grid-column: #{$start} / #{$end + 1};
         }
 
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
 
-        &--tablet-#{$start}-#{$end} {
-          @include onTablet {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
           }
         }
@@ -45,7 +44,7 @@
   }
 
   &__row {
-    @include onTablet {
+    @include onBigScreen {
       grid-template-rows: 1fr;
       grid-auto-flow: column;
     }
