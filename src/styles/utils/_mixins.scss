@@ -22,3 +22,23 @@
     @content;
   }
 }
+
+@mixin whiteBorderBottom ($indent: 0) {
+  margin-bottom: ($indent * -1);
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 1px;
+    margin-top: $indent;
+
+    background-color: #fff;
+
+    transition: width 0.3s;
+
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
