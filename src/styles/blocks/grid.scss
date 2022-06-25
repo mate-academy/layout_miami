@@ -1,7 +1,12 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
+
+  &--mobile {
+    @include onMobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+    }
+  }
 
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
@@ -28,20 +33,14 @@
           grid-column: #{$start} / #{$end + 1};
         }
 
-        &--tablet-#{$start}-#{$end} {
+        &_tablet-#{$start}-#{$end} {
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
 
-        &--desktop-#{$start}-#{$end} {
+        &_desktop-#{$start}-#{$end} {
           @include onDesktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
-
-        &--mobile-#{$start}-#{$end} {
-          @include onMobile {
             grid-column: #{$start} / #{$end + 1};
           }
         }
