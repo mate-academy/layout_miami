@@ -12,4 +12,4 @@ You have several designs that are very similar to Miami. Choose the most interes
 
 Implement selected landing page following the lesson videos.
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+--> [CHECKLIST](https://github.com/yahyafullstack01/layout_miami/blob/master/checklist.md)
