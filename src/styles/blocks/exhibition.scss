@@ -1,0 +1,107 @@
+.exhibition {
+  &__photo-container {
+    width: 100%;
+    max-height: 320px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      padding-bottom: 100%;
+      content: "";
+      display: block;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__middle-photo-container {
+    width: 100%;
+    max-height: 320px;
+    position: relative;
+    overflow: hidden;
+
+    @include onMobile {
+      &::after {
+        padding-bottom: 87px;
+        content: "";
+        display: block;
+      }
+    }
+
+    @include onTablet {
+      height: 284px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: all 0.4s;
+
+    cursor: pointer;
+    
+    &--cover {
+      @include onMobile {
+        object-position: 18%;
+      }
+    }
+
+    &--cover-1 {
+      @include onMobile {
+        object-position: right;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__description {
+    @extend %thin-bigger-text;
+
+    &-link {
+      display: block;
+      font-weight: 700;
+      text-decoration: none;
+
+      color: $accent-main-color;
+
+      &--transferred {
+        @include onMobile {
+          margin: 0;
+          max-width: 224px;
+        }
+      }
+    }
+  }
+}
