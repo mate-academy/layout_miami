@@ -1,23 +1,32 @@
 .grid {
-  display: block;
+  display: grid;
 
-  @include onTablet {
-    display: grid;
-  }
-
-  @include onDescktop {
-    display: grid;
+  &--mobile {
+    column-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   &--tablet {
     @include onTablet {
+      column-gap: 24px;
       grid-template-columns: repeat(6, 1fr);
     }
   }
 
   &--descktop {
     @include onDescktop {
+      column-gap: 24px;
       grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__item-mobile {
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start}/#{$end + 1};
+        }
+      }
     }
   }
 
