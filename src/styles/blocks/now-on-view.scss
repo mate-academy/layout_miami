@@ -1,14 +1,76 @@
 .now-on-view {
-  &__photo {
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    position: relative;
     width: 100%;
-    height: 130px;
+    height: 100%;
+    overflow: hidden;
+    perspective: 100px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDescktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--off {
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &--specified-height {
+      @include onTablet {
+        height: 284px;
+      }
+    }
   }
 
-  @include onTablet {
-    height: 186px;
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    &--bias {
+      right: 15px;
+      object-position: 10%;
+      transform: translateZ(20px);
+
+      @include onTablet {
+        right: 0;
+        object-position: center;
+        transform: translateZ(0);
+      }
+    }
   }
 
-  @include onDescktop {
-    height: 320px;
+  &__link {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $c-red;
+    text-decoration: none;
+  }
+
+  &__comment {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 48px;
   }
 }
