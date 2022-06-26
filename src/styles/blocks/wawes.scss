@@ -1,0 +1,33 @@
+.wawes {
+  @include onMobile {
+    display: none;
+  }
+
+  @include onTablet {
+    display: grid;
+  }
+
+  width: 63px;
+  align-items: center;
+  grid-template-columns: repeat(11, 3px);
+  gap: 3px;
+  margin-bottom: 40px;
+
+  transition: transform 0.5s linear;
+
+  @each $line, $heigt in $wawe-lines-height {
+    &__#{$line} {
+      @include wawe-line ($heigt);
+    }
+  }
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+
+  & > :hover {
+    background-color: aquamarine;
+    transform: scale(2);
+    transition: transform 0.1s ease;
+  }
+}

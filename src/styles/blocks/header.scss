@@ -1,0 +1,148 @@
+.header {
+  @each $view-size, $bg-img in $b-g-image {
+    @media(min-width: $view-size) {
+      background-image: $bg-img;
+    }
+  }
+  @extend %img-positioning;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 1020px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      padding: 0 72px;
+    }
+
+    @include onDesktop {
+      padding: 0 40px;
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__conect {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__phone {
+    display: block;
+    @include square(18px);
+    background-image: url(../images/phone.svg);
+    @extend %img-positioning;
+    margin-right: 30px;
+
+    @include onTablet {
+      @include square(24px);
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        color: $c-black;
+        position: relative;
+        display: block;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        width: max-content;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__menu {
+    display: block;
+    @include square(18px);
+    background-image: url(../images/menu.svg);
+    @extend %img-positioning;
+
+    @include onTablet {
+      @include square(24px);
+      background-image: url(../images/big_menu.svg);
+    }
+
+    transition: background-image 0.3s ease 0.1s;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+
+      @include onTablet {
+        background-image: url(../images/big_menu_hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      position: relative;
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+      left: -2px;
+      right: -2px;
+      top: -2px;
+      bottom: -2px;
+      display: block;
+      width: 32px;
+      height: 27px;
+      padding: -2px;
+      background-image: url(../images/wawe.svg);
+      @extend %img-positioning;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
