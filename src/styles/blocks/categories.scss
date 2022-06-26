@@ -1,4 +1,9 @@
 .categories {
+  @include onTablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__image {
     @include square(130px);
@@ -7,17 +12,28 @@
     margin-right: 20px;
     margin-bottom: 16px;
 
+    transition: transform 1s;
+
     &:nth-of-type(2n) {
       margin-right: 0;
+    }
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 
   &__title {
+    font-weight: 700;
     margin-bottom: 40px;
   }
 
   &__button {
     @include button;
-    width: 100%;
+    width: 280px;
+
+    @include onTablet {
+      width: 392px;
+    }
   }
 }
