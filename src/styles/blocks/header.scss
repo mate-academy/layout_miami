@@ -1,0 +1,193 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: $paddingTop $paddingSide 90px;
+  position: relative;
+  background-image: url(../images/header_bg.svg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include tablet {
+    background-image: url(../images/header_tablet.svg);
+    padding: 50px 70px 40px;
+  }
+
+  @include desktop {
+    background-image: url(../images/header_desk.svg);
+    padding: 50px 120px 60px;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__menu--opener {
+    background-image: url(../images/burger.svg);
+    transition: background-image $trans-duration;
+    margin-left: 30px;
+
+    @include tablet {
+      margin-left: 40px;
+    }
+
+    @include desktop {
+      &:hover {
+        background-image: url(../images/burger_hover.svg);
+      }
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    &:hover {
+      animation: vibrate 1s;
+      transform-origin: top right;
+    }
+
+    @keyframes vibrate {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-2deg); }
+      20% { transform: rotate(2deg); }
+      30% { transform: rotate(0deg); }
+      40% { transform: rotate(2deg); }
+      50% { transform: rotate(-2deg); }
+      60% { transform: rotate(0deg); }
+      70% { transform: rotate(-2deg); }
+      80% { transform: rotate(2deg); }
+      90% { transform: rotate(0deg); }
+      100% { transform: rotate(-2deg); }
+    }
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        display: block;
+        opacity: 0;
+        color: $text-color;
+        width: max-content;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: opacity $trans-duration;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__wave {
+    background-image: url(../images/header_wave.svg);
+    width: 32px;
+    height: 27px;
+    background-size: cover;
+    position: absolute;
+    bottom: 185px;
+
+    @include tablet {
+      background-image: url(../images/Sound_waves.svg);
+      background-position: center;
+      width: 63px;
+      height: 76px;
+    }
+
+    @include desktop {
+      background-image: none;
+
+      .header__wave-animation {
+        position: relative;
+      }
+
+      .header__wave-element {
+        display: block;
+        bottom: 0px;
+        width: 10px;
+        height: 8px;
+        margin-left: 10px;
+        background: $text-color;
+        position: absolute;
+        animation: audio-wave 2s infinite ease-in-out;
+      }
+
+      .header__wave-element:nth-child(2) {
+        left: 11px;
+        animation-delay: 0.2s;
+        }
+
+        .header__wave-element:nth-child(3) {
+        left: 22px;
+        animation-delay: 0.4s;
+        }
+
+        .header__wave-element:nth-child(4) {
+        left: 33px;
+        animation-delay: 0.6s;
+        }
+
+        .header__wave-element:nth-child(5) {
+        left: 44px;
+        animation-delay: 0.8s;
+        }
+
+        .header__wave-element:nth-child(6) {
+          left: 55px;
+          animation-delay: 1s;
+          }
+
+        .header__wave-element:nth-child(7) {
+          left: 66px;
+          animation-delay: 1.2s;
+          }
+
+        .header__wave-element:nth-child(8) {
+          left: 77px;
+          animation-delay: 1.4s;
+          }
+
+        @keyframes audio-wave {
+          0% {height:5px;transform:translateY(0px);}
+          25% {height:40px;transform:translateY(20px);}
+
+          50% {height:5px;transform:translateY(0px);}
+          100% {height:5px;transform:translateY(0px);}
+        }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 48px;
+    }
+  }
+}
