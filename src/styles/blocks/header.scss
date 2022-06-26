@@ -1,0 +1,106 @@
+.header {
+  background-image: url("../images/background-mobile.png");
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPading 0 90px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $c-gray-darc;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $c-gray-darc;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+      width: 32px;
+      height: 27px;
+      background-image: url("../images/wave.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+
+      &::before {
+        margin-bottom: 40px;
+        width: 63px;
+        height: 76px;
+        background-image: url("../images/waves-tablet.png");
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  @include onTablet {
+    background-image: url("../images/background-tablet.png");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/backgounrd-desc.png");
+  }
+}
