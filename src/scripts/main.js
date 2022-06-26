@@ -9,10 +9,12 @@ window.addEventListener('hashchange', () => {
 });
 
 const form = document.querySelector('.form');
+const inputs = document.querySelectorAll('.form-field');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  form.reset();
-  window.location.href = '#menu';
+  for (const input of inputs) {
+    input.value = '';
+  }
 });
