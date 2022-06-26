@@ -7,26 +7,43 @@
     display: flex;
     align-items: center;
     gap: 30px;
-    padding: 0;
+
+    @include onTablet {
+      gap: 40px;
+      height: 24px;
+    }
   }
 
   &__phone {
-    width: 18px;
-    height: 18px;
-    background-image: url(../images/phone.svg);
-    background-position: center;
-    background-repeat: no-repeat;
+    @include square (18px);
+    background: url(../images/phone.svg) center no-repeat;
+    background-size: cover;
+
+    @include onTablet {
+      @include square(24px);
+    }
   }
 
   &__menu-open {
     width: 18px;
     height: 12px;
-    background-image: url(../images/menu.svg);
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url(../images/menu.svg) center no-repeat;
+    background-size: cover;
+
+    transition: background-image 1s;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
+      background-size: contain;
+
+      @include onTablet {
+        background-image: url(../images/big-menu-hover.svg);
+      }
+    }
+
+    @include onTablet {
+      height: 24px;
+      background: url(../images/big-menu.svg) center no-repeat;
     }
   }
 }
