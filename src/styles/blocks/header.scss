@@ -1,0 +1,86 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 288px;
+
+    @include onTablet {
+      padding: $headerBigTopPadding 0 456px;
+    }
+
+    @include onDesktop() {
+      padding: $headerBigTopPadding 0 480px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    text-align: center;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop() {
+      font-size: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        display: block;
+        width: 201px;
+        padding-right: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        text-align: end;
+
+        text-transform: uppercase;
+        color: #fff;
+        transform: translate(-100%, 20%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "The Met Cloisters +1 212-923-3700";
+        display: block;
+        width: 172px;
+        padding-right: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        text-align: end;
+
+        text-transform: uppercase;
+        color: #fff;
+        transform: translate(-100%, 40%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
