@@ -1,0 +1,52 @@
+.page {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: transform $transitionMenu;
+    transform: translateX(-100%);
+
+    @include onTablet {
+      transition: transform $transitionMenu * 2;
+    }
+
+    @include onDesktop {
+      transition: transform $transitionMenu * 3;
+    }
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 120px;
+
+    &-title {
+      margin-bottom: 48px;
+
+      font-weight: 700;
+      @include titleSize($title-size-mobile);
+      text-align: center;
+      letter-spacing: -1.5px;
+      color: $color-text;
+
+      @include onTablet {
+        @include titleSize($title-size-tablet);
+      }
+
+      @include onDesktop {
+        @include titleSize($title-size-desktop);
+      }
+    }
+  }
+
+}
