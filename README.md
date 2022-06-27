@@ -1,9 +1,10 @@
 # Miami landing page
 - Watch the videos about [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
 and implement **ANOTHER** landing from the list below by analogy.
-- **DON'T** try to do it **pixel perfect** just implement it the most **simple** way so it looks similar
+- **DON'T** try to do it `Pixel Perfect` just implement it the most `simple` way so it looks similar
+- Implement it block by block, adopt and deploy to show your current progress at any time
 - Check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished
-- Push, deploy and add correct DEMO_LINK to your Pull Request
+- Push, deploy and add correct `DEMO_LINK` to your Pull Request
 ```
 - [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
 ```
