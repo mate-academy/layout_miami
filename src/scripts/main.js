@@ -12,6 +12,5 @@ const form = document.querySelector('.form__button');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
-
   form.reset();
 });
