@@ -1,22 +1,73 @@
 .top-actions {
-  --icon-width: 18px;
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
-  column-gap: 30px;
+  grid-template-columns: max-content 1fr max-content max-content;
   align-items: center;
 
-  @include onBigScreen {
-    --icon-width: 24px;
+  column-gap: 30px;
+
+  &--menu {
+    grid-template-columns: 1fr 16px;
+
+    @include onBigScreen {
+      grid-template-columns: 1fr 21px;
+    }
+  }
+
+  @include onDesktop {
     column-gap: 63px;
   }
 
-  &--menu {
-    grid-template-columns: 1fr var(--icon-width);
-    --icon-width: 16px;
+  &__logo {
+    grid-column: 1;
+  }
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    grid-column: 3;
+  }
 
-    @include onBigScreen {
-      --icon-width: 21px;
+  &__phone-numbers {
+    position: absolute;
+    right: 120px;
+    display: none;
+    flex-direction: column;
+
+    padding-right: 20px;
+
+    opacity: 0;
+    transition: all 0.4s;
+    visibility: hidden;
+
+    grid-column: 2;
+
+    @include onDesktop {
+      display: flex;
     }
+  }
+
+  &__phone-number {
+    margin-bottom: 8px;
+
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: right;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__wrapper:hover>&__phone-numbers {
+    opacity: 1;
+    visibility: visible;
   }
 }

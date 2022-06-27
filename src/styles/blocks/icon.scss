@@ -3,8 +3,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
-  width: 100%;
-  padding-bottom: 100%;
 
   transition: all 0.4s;
 
@@ -12,8 +10,9 @@
 
   &--menu {
     background-image: url(../images/menu.svg);
-    padding-bottom: 12px;
-    order: 1;
+
+    @include rectangle(18px, 12px);
+
     margin-right: 3px;
     transition: background-image 0.4s;
 
@@ -23,16 +22,28 @@
 
     @include onBigScreen {
       margin-right: 4px;
-      padding-bottom: 16px;
+
+      @include rectangle(24px, 16px)
     }
   }
 
   &--phone {
     background-image: url(../images/phone.svg);
+    @include square(18px);
+
+    @include onBigScreen {
+      @include square(24px);
+    }
   }
 
   &--cross {
     background-image: url(../images/cross.svg);
     margin-right: 4px;
+
+    @include square(16px);
+
+    @include onDesktop{
+      @include square(22px);
+    }
   }
 }
