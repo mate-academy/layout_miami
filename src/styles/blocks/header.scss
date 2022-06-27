@@ -12,6 +12,14 @@
     box-sizing: border-box;
     height: 100vh;
     padding: $headerTopPadding 0 94px;
+
+    @include onTablet {
+      padding: 48px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 48px 0 64px;
+    }
   }
 
   &__call {
@@ -63,6 +71,23 @@
     color: #292929;
     letter-spacing: -1.5px;
 
+    animation: text-focus-in 0.9s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+
+    @keyframes text-focus-in {
+      0% {
+        filter: blur(12px);
+        opacity: 0;
+      }
+      100% {
+        filter: blur(0px);
+        opacity: 1;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
     @include onDesktop {
       font-size: 48px;
     }
@@ -79,10 +104,15 @@
       background-position: center;
       background-image: url(../images/title-icon.svg);
 
-      @include onDesktop {
+      @include onTablet {
+        margin-bottom: 40px;
         width: 63px;
         height: 76px;
+
         background-image: url(../images/title-icon_desktop.svg);
+      }
+
+      @include onDesktop {
         margin-bottom: 32px;
       }
     }
