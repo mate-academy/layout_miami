@@ -8,59 +8,8 @@
 @import "./blocks/menu.scss";
 @import "./blocks/page.scss";
 @import "./blocks/footer.scss";
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 130px);
-  gap: 20px;
-
-  @include onTablet {
-    grid-template-columns: repeat(6, 80px);
-    gap: 24px;
-  }
-
-  @include onDesktop {
-    grid-template-columns: repeat(12, 63px);
-    gap: 24px;
-  }
-
-  &__item {
-    
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-      }
-    }
-  }
-
-  &--mobile-block {
-    display: block;
-
-    @include onTablet {
-      display: grid;
-    }
-
-    @include onDesktop {
-      display: grid;
-    }
-  }
-
-  &--desktop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 0;
-
-    @include onDesktop {
-      display: grid;
-      gap: 24px;
-    }
-  }
-
-}
+@import "./blocks/grid.scss";
+@import "./blocks/card.scss";
 
 .section {
   display: flex;
@@ -109,38 +58,33 @@
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.bose-type {
 
-  
-  color: #292929;
+  &__image-container {
+    position: relative;
+    width: 100%;
+    max-height: 187px;
+
+    box-sizing: border-box;
+
+    &::after {
+      content: "";
+      padding-bottom: 100%;
+      display: block;
+    }
+
+    @include onTablet {
+      max-height: 320px;
+    }
+
+  }
 
   &__image {
+    position: absolute;
     width: 100%;
-    margin-bottom: 32px;
-  }
+    height: 100%;
 
-  &__title {
-    margin-bottom: 8px;
-
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
-  }
-
-  &__type {
-    margin-bottom: 12px;
-
-    font-weight: 400;
-    font-size: 16px;
-  }
-
-  &__price {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
+    object-fit: cover;
+    object-position: center;
   }
 }
