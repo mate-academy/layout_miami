@@ -27,6 +27,9 @@
   }
 
   &__content {
+    max-width: 1260px;
+    box-sizing: border-box;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     padding: 25px 20px;
@@ -72,12 +75,19 @@
     text-decoration: none;
 
     @media (min-width: 1260px) {
-      &:hover::before {
+      &::before {
         content: "+1 212-535-7710";
-        position: absolute;
-        right: 18%;
+        position: relative;
+        top: 50%;
+        transform: translate(-120%, -50%);
+        display: block;
         width: max-content;
         color: white;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
       }
     }
   }
