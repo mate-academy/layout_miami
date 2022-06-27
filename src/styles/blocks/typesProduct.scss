@@ -5,22 +5,42 @@
     margin-bottom: 64px;
   }
 
+  &__images--container {
+    position: relative;
+    width: 100%;
+    max-height: 187px;
+
+    @include onTablet {
+      max-height: 319px;
+      height: 187px;
+      padding-bottom: 0;
+    }
+   
+    @include onDesktop {
+      max-height: 350px;
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+
   &__images {
     margin-bottom: 16px;
   }
 
   &__image {
-    height: 130px;
+    position: absolute;
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+    object-position: center;
+
     cursor: pointer;
-    
-    @include onTablet {
-      height: 187px;
-    }
-   
-    @include onDesktop {
-      height: 321px;
-    }
 
     transition: transform 0.3s;
 
