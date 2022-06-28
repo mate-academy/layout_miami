@@ -1,0 +1,36 @@
+.header {
+
+  &__content {
+    position: relative;
+  }
+
+  &__phone {
+
+    @include on-desktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        width: max-content;
+        padding: 12px;
+
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-main;
+        transition: opacity $smooth-duration linear;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+}

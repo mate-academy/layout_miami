@@ -1,0 +1,87 @@
+@mixin header-position {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@mixin menu-link-hover {
+  transition: text-shadow $smooth-duration linear;
+
+  @include on-desktop {
+    &:hover {
+      text-shadow: 1px 1px 20px $color-main;
+    }
+  }
+}
+
+@mixin menu-link-text {
+  font-weight: 700;
+  color: $color-main;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@mixin navigation-scroll {
+  padding-top: $header-padding-top;
+
+  &--scroll {
+    position: fixed;
+    padding: 6px 0;
+    background-color: $color-second;
+  }
+}
+
+@mixin section-title-text {
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 64px;
+  }
+}
+
+@mixin grid-column($name) {
+  &--#{$name}-#{$start}-#{$end} {
+    grid-column: #{$start} / #{$end + 1};
+  }
+}
+
+@mixin input-field {
+  box-sizing: border-box;
+  padding: 14px 16px;
+  width: 100%;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-form-input;
+  background: $color-form-input-bg;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    transition: color $smooth-duration linear;
+  }
+
+  &:focus::placeholder,
+  &:hover::placeholder {
+    color: $color-form-input;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
