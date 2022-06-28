@@ -1,0 +1,73 @@
+.categories {
+
+  &__title {
+    margin-bottom: 48px;
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__category {
+    margin-bottom: 40px;
+
+    @include tablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+
+    width: 100%;
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include tablet {
+      height: 187px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    @include desktop {
+      height: 320px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+
+    @include maxSize;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform ease-in-out $transitions-speed;
+
+    @include tablet {
+      position: static;
+    }
+
+    &--align-right {
+      object-position: right;
+    }
+
+    @include desktop {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+}

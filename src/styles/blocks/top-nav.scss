@@ -1,0 +1,48 @@
+.top-nav {
+  --icon-size: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr var( --icon-size) var( --icon-size);
+  align-items: center;
+  gap: 30px;
+
+  @include tablet {
+    gap: 40px;
+    --icon-size: 32px;
+  }
+  &__close {
+    grid-column: 3;
+  }
+  &__phone {
+    position: relative;
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+
+        width: max-content;
+        padding-right: 12px;
+
+        color: $main-color;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transition: opacity 0.1s 0.1s;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}

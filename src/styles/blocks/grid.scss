@@ -1,0 +1,38 @@
+.grid {
+  display: grid;
+  @include columnTemplate(2, 20px);
+
+  @include tablet {
+    @include columnTemplate(6, 24px);
+  }
+
+  @include desktop {
+    @include columnTemplate(12, 24px);
+  }
+
+  &--phone-none {
+    display: block;
+
+    @include tablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--phone {
+      @include columnsRulesMod (1, 2);
+    }
+
+    @include tablet {
+      &--tablet {
+        @include columnsRulesMod (1, 6);
+      }
+    }
+
+    @include desktop {
+      &--desktop {
+        @include columnsRulesMod (1, 12);
+      }
+    }
+  }
+}

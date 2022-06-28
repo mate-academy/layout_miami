@@ -1,6 +1,31 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin maxSize {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin columnTemplate($colums, $gap) {
+  grid-template-columns: repeat($colums, 1fr);
+  column-gap: $gap;
+}
+
+@mixin columnsRulesMod ($start, $end) {
+  @for $i from $start through $end {
+    @for $k from $start through $end {
+      &-#{$i}-#{$k} {
+        grid-column: #{$i} / #{$k + 1};
+      }
+    }
   }
 }
