@@ -1,80 +1,73 @@
 .header {
-  background-size: cover;
-  background-position: center;
-  background-image: url(../images/header.png);
+  background: url("../images/header.png") center / cover no-repeat;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 29px 0 88px;
 
-&__content {
+    @include onTablet {
+      padding: 36px 0 130px;
+    }
+  }
 
-  box-sizing: border-box;
-  height: 100vh;
-  padding: $headerTopPadding 0px 88px;
+  &__icon-block {
+    display: flex;
+    gap: 30px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    @include onTablet {
+      gap: 40px;
+    }
+  }
 
-
-&__icon {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  height: 100%;
-}
-
-
-&__call {
-
-  text-decoration: none;
-
-  @include onDesktop {
-  &::before {
-    content: "+1 234 555-55-55";
+  &__phone {
+    text-decoration: none;
     position: relative;
-    top: 50%;
-    transform: translate(-100%, -50%);
 
-    opacity: 0;
-    color: #292929;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        color: $color-text-light;
+
+        pointer-events: none;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
     font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    display: block;
-    width: max-content;
-    transform: translateX(-100%);
-    padding-right: 20px;
-    pointer-events: none;
-}
-
-&:hover::before {
-  opacity: 1;
-  pointer-events: all;
-}
-
-}
-
-
-
- &__title {
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 100%;
-  letter-spacing: -1.5px;
-  color: #1D1D1D;
-  text-align: center;
-
-  @include onDesktop {
-    font-size: 80px;
+    font-size: 36px;
     line-height: 100%;
     letter-spacing: -1.5px;
-   }
-}
-}
-}
+    color: $color-text-light;
+    text-align: center;
 
+    @include onTablet {
+      font-size: 64px;
+    }
 
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
