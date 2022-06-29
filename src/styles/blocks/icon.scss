@@ -28,6 +28,7 @@
   &--tel {
 
     background-image: url(../images/phone.svg);
+    
 
     &::before {
       position: relative;
@@ -35,8 +36,9 @@
       width: max-content;
       padding: 3px 16px 3px 0;
       
-      display: none;
+      display: block;
       content: "+1 234 555-55-55";
+      opacity: 0;
 
       font-style: normal;
       font-weight: 700;
@@ -47,11 +49,14 @@
       text-transform: uppercase;
 
       transform: translate(-100%, -50%);
+      pointer-events: none;
+      transition: opacity 0.4s;
     }
 
     @include onDesktop {
       &:hover::before {
-        display: block;
+        opacity: 1;
+        pointer-events: all;
       }
     }
   }
