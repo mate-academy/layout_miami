@@ -1,4 +1,5 @@
 'use strict';
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#nav-menu') {
     document.body.classList.add('page--with-menu');
@@ -7,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector(".contact-us__form");
+const form = document.querySelector('.contact-us__form');
 
-form.addEventListener("submit", (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   form.reset();
