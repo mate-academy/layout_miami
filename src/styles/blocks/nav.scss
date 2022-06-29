@@ -3,47 +3,37 @@
   align-items: center;
   justify-content: space-between;
 
+  --icons-size: 18px;
+
   &__icons {
-    display: flex;
+    display: grid;
+    grid-template-columns: var(--icons-size) var(--icons-size);
+    justify-items: center;
     align-items: center;
     gap: 30px;
 
     @include onTablet {
+      --icons-size: 24px;
       gap: 40px;
-      height: 24px;
     }
   }
 
   &__phone {
-    @include square (18px);
-    background: url(../images/phone.svg) center no-repeat;
-    background-size: cover;
+    text-decoration: none;
+    color: $c-main;
 
     @include onTablet {
-      @include square(24px);
-    }
-  }
+      &:hover::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 50%);
 
-  &__menu-open {
-    width: 18px;
-    height: 12px;
-    background: url(../images/menu.svg) center no-repeat;
-    background-size: cover;
+        display: block;
+        width: max-content;
+        padding-right: 10px;
 
-    transition: background-image 1s;
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-      background-size: contain;
-
-      @include onTablet {
-        background-image: url(../images/big-menu-hover.svg);
+        font-weight: 700;
       }
-    }
-
-    @include onTablet {
-      height: 24px;
-      background: url(../images/big-menu.svg) center no-repeat;
     }
   }
 }
