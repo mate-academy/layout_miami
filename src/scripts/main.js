@@ -8,8 +8,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// const button = document.querySelector('.button--primery');
+const buttonSubmit = document.querySelector('.button--primery');
 
-// button.addEventListener('submit', (e) => {
-//   e.preventDefault();
-// });
+buttonSubmit.addEventListener('submit', (e) => {
+  e.preventDefault(true);
+});
