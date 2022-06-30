@@ -4,3 +4,20 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $nav-size $nav-size;
+
+  @include onDesktop {
+    grid-template-columns: 1fr $nav-size-desktop $nav-size-desktop;
+  }
+  justify-content: space-between;
+  align-items: center;
+}
