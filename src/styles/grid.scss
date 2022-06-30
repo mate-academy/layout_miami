@@ -16,8 +16,20 @@
   &--desktop {
     display: block;
 
+    @include onTablet {
+      display: grid;
+    }
+
     @include onDesktop {
       display: grid;
+    }
+  }
+
+  &-mobile--tree-column {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -27,15 +39,19 @@
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
       }
-    }
-
-    &--1-4 {
-      grid-column: 1 / 5;
-    }
-
-    &--7-12 {
-      grid-column: 7 / 13;
     }
   }
 }
