@@ -1,15 +1,21 @@
 # Miami landing page
 
-Replace `<your_account>` with your Github username and copy the links to Pull Request description:
-[DEMO LINK](https://<your_account>.github.io/layout_miami/)
+This work is considered to be my first landing project and there are a few main tools used I would like to highlight:
+  - BEM (the structure of the HTML page was done in accordance with BEM technologies to structure the code and enable its refactoring);
 
-You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
+  - SAAS (the CSS code was compilled from the developed SAAS code with its variables, mixin and loops);
 
-- [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [the MYBIKE landing page](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [the MET landing page](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=0%3A1)  
-- [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+  - Display Grid (in a combination with BEM modifiers and SAAS loops this mix allowed us to easily locate the items throughout the whole page by changing the modifiers in the HTML);
 
-Implement selected landing page following the lesson videos.
+  - Position Fixed (was used to locate wisely the navigation menu page);
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+  - JS (a piece of the Javascript code was used to disable scrolling on the "Menu" page and enable it for the rest of the webpages; to prevent the default behavior of the "submit" button reloading the page);
+
+  - Anchors (implemented to easily navigate from the menu to the corresponding page on the main webpage);
+
+  - Telephone Link (created to enable the calling option on the website);
+
+  - Form (is a way for the client to fill in his name, email and the message to pass this data to the server);
+
+  - Transition (this tool was choosed to make a smooth appearing/disappearing of the page, phone number, photos, links and the buttons).
+ 

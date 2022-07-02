@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector("#submit").addEventListener("click", function(event) {
-  document.getElementById("output-box").innerHTML += "Sorry! Currently the form may not be submitted!<br>";
+document.querySelector('#submit').addEventListener('click', function(event) {
+  document.getElementById('output-box').innerHTML += '';
   event.preventDefault();
-  }, false);
+}, false);
