@@ -1,0 +1,100 @@
+.place {
+
+  &__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    margin: 48px 0 24px;
+
+    &--1 {
+      @include onTablet() {
+        grid-template-columns: 2fr 1fr;
+        column-gap: 24px;
+      }
+    }
+
+    &--2 {
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 8px;
+
+      @include onTablet() {
+        grid-template-columns: 1fr 1fr 0;
+        column-gap: 24px;
+      }
+
+      @include onDesktop() {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 24px;
+      }
+    }
+
+    &--3 {
+      @include onTablet() {
+        grid-template-columns: 1fr 2fr;
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+
+    &--ch {
+      @include onTablet() {
+        padding-bottom: 0;
+        height: 186px;
+      }
+
+      @include onDesktop() {
+        height: 320px;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s;
+
+    &:hover {
+      position: absolute;
+      z-index: 1;
+
+      transform: scale(1.2);
+    }
+
+    &--hidden {
+      @include onTablet() {
+        display: none;
+      }
+
+      @include onDesktop() {
+        display: inline;
+      }
+    }
+
+    &--1 {
+      object-position: center left;
+    }
+
+    &--7 {
+      @include onTablet() {
+        object-position: 0 -30px;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $mainColor;
+    text-decoration: none;
+  }
+}
