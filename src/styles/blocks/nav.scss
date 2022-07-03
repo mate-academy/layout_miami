@@ -19,20 +19,33 @@
   }
 
   &__phone {
+    position: relative;
     text-decoration: none;
     color: $c-main;
 
     @include onTablet {
-      &:hover::before {
+      &:before {
         content: "+1 234 555-55-55";
-        position: relative;
-        transform: translate(-100%, 50%);
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        opacity: 0;
 
         display: block;
         width: max-content;
         padding-right: 10px;
 
+        font-size: 12px;
         font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transform: translateY(-45%);
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
       }
     }
   }
