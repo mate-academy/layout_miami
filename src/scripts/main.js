@@ -20,6 +20,7 @@ function closeMenu() {
 function onSubmit(e) {
   if (document.querySelector('form').checkValidity()) {
     e.preventDefault();
+    document.querySelector('form').reset();
   }
 }
 
