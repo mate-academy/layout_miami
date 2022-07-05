@@ -1,0 +1,104 @@
+.contact {
+  $number-of-cols: 12;
+
+  padding: 140px $desktop-paddingX;
+
+  @include for-tablet {
+    padding: 140px $tablet-paddingX;
+  }
+
+  @include for-mobile {
+    padding: 100px $mobile-paddingX;
+  }
+
+  &__content-wrapper {
+    @include limit-content-width;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+
+    @include for-mobile {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &__container {
+    @include grid-width-columns($number-of-cols, 6, 1);
+  }
+
+  &__item {
+    @include custom-cols($number-of-cols);
+
+    &--tablet {
+      @include for-tablet {
+        @include custom-cols(6);
+      }
+    }
+
+    &--mobile {
+      @include for-mobile {
+        @include custom-cols(2);
+      }
+    }
+  }
+
+  &__address {
+    margin-bottom: 16px;
+
+    @include font-param(16px, 27px, 700);
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+
+    @include font-param(14px, 27px, 400);
+  }
+
+  &__link {
+    display: inline-block;
+    margin-bottom: 8px;
+    @include font-param(16px, 27px, 700);
+    color: #3e3e3e;
+
+    &:hover {
+      color: $hover-color;
+    }
+
+    &--last {
+      @include for-mobile {
+        margin-bottom: 48px;
+      }
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+
+  &__tablet-visible {
+    display: none;
+
+    @include for-tablet {
+      display: block;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  &__tablet-invisible {
+    display: block;
+
+    @include for-tablet {
+      display: none;
+    }
+
+    @include for-mobile {
+      display: block;
+    }
+  }
+
+}

@@ -1,0 +1,123 @@
+.gallery {
+  padding: 140px $desktop-paddingX 0;
+
+  @include for-tablet {
+    padding: 140px $tablet-paddingX 0;
+  }
+
+  @include for-mobile {
+    padding: 100px $mobile-paddingX 0;
+  }
+
+  &__content-wrapper {
+    @include limit-content-width;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0 0 8px;
+
+    @include for-mobile {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &__title-description {
+    @include font-param(16px, 27px, 400);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__row {
+    display: grid;
+    margin-bottom: 24px;
+    @include grid-width-columns(3, 3, 2);
+
+    &--3cols {
+      @include for-tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include for-mobile {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  &__photo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    @include custom-cols(3);
+
+    @include for-mobile {
+      grid-column: unset;
+
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    &--tablet-hidden {
+      @include for-tablet {
+        display: none;
+        column-gap: $grid-gap-tablet;
+
+        @include for-mobile {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-position: center;
+    object-fit: cover;
+
+    @include for-mobile {
+      position: absolute;
+
+      &--small {
+        height: 130px;
+        width: 130px;
+      }
+
+    }
+
+    &--left {
+      object-position: 10% 50%;;
+    }
+
+    &--right {
+      object-position: bottom right;
+    }
+
+    @include hover-tr(transform, scale(1.1)) {
+      z-index: 1;
+    }
+  }
+
+  &__caption-title {
+    @include font-param(16px, 27px, 700);
+    color: $main-accent;
+  }
+
+  &__caption {
+    @include font-param(16px, 27px, 400);
+    margin-bottom: 48px;
+
+    @include for-mobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__button {
+    text-align: center;
+  }
+}
