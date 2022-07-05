@@ -1,7 +1,7 @@
 # MyBIKE landing page
 
 
-[DEMOILNK](https://samaev.github.io/layout_miami/#)
+[DEMOLINK](https://samaev.github.io/layout_miami/#)
 
 
 
