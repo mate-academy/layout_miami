@@ -2,7 +2,7 @@
 In this task, you will learn how to implement a landing page. To do that:
 
 Replace `<your_account>` with your Github username and copy the links to Pull Request description:
-[DEMO LINK](https://Oleksandr-Naumchak/git.github.io/layout_miami/)
+[DEMO LINK](https://oleksandr-naumchak.github.io/layout_miami/)
 - watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
   - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
 - choose a landing page design from the list below;
