@@ -8,7 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// checklist 15, preventDefault didnt check empty form rows, I dont know js :c
-document.getElementById('cons').addEventListener('click', function(event) {
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', function(event) {
   event.preventDefault();
+
+  form.reset();
 });
