@@ -1,0 +1,73 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+    
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      &-tablet {
+        height: 186px;
+        padding-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  @include onTablet {
+    &__photo-five {
+      display: none;
+    }
+  }
+  
+  @include onDesktop {
+    &__photo-five {
+      display: inherit;
+    }
+  }
+  
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+
+    &-one {
+      object-position: 15%;
+    }
+
+    &-seven {
+      object-position: right;
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    color: $colortirakoth;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
