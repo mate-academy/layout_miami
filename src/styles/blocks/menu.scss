@@ -2,7 +2,9 @@
   background-color: $color;
 
   &__content {
+    box-sizing: border-box;
     height: 100vh;
+    overflow-y: auto;
   }
 
   &__top {
@@ -27,8 +29,6 @@
     @include fontLine(22px, 22px);
     @extend %inter;
 
-    transition: border-color 0.3s;
-
     @include hover (border-color, $menuColor);
   }
 
@@ -41,6 +41,26 @@
 
     &--phone {
       margin-bottom: 16px;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        color: black;
+
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-in;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
     }
 
     &--action {
