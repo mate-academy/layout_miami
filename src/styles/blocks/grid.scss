@@ -1,0 +1,179 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 20px;
+
+  @include onLapTop {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0 24px;
+  }
+
+  @include onDescktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onLapTop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 to 12 {
+      @for $end from $start to 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  &__about-us {
+    &--title {
+      @include onLapTop {
+        grid-column: 1 / 4;
+      }
+
+      @include onDescktop {
+        grid-column: 1 / 6;
+      }
+    }
+    &--text {
+      @include onLapTop {
+        grid-column: 4 / 7;
+      }
+
+      @include onDescktop {
+        grid-column: 6 / 12;
+      }
+    }
+  }
+
+  &__section {
+    &--title {
+      @include onLapTop {
+        grid-column: 1 / 7;
+      }
+
+      @include onDescktop {
+        grid-column: 1 / 12;
+      }
+    }
+  }
+
+  &__card {
+    &--2-5 {
+      @include onLapTop {
+        grid-column: 2 / 6;
+      }
+
+      // @include onDescktop {
+      //   grid-column: 1 / 12;
+      // }
+    }
+
+    &--descktop--1 {
+      @include onDescktop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--descktop--2 {
+      @include onDescktop {
+        grid-column: 5 / 9;
+      }
+    }
+
+    &--descktop--3 {
+      @include onDescktop {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &__details {
+    @include onLapTop {
+      &--b-left-img {
+        grid-column: 1 / 5;
+      }
+
+      &--s-right-img {
+        grid-column: 5 / 7;
+      }
+
+      &--s-left-img {
+        grid-column: 1 / 3;
+      }
+
+      &--b-right-img {
+        grid-column: 3 / 7;
+      }
+    }
+    @include onDescktop {
+      &--b-left-img {
+        grid-column: 1 / 9;
+      }
+
+      &--s-right-img {
+        grid-column: 9 / 13;
+      }
+      &--s-left-img {
+        grid-column: 1 / 5;
+      }
+
+      &--b-right-img {
+        grid-column: 5 / 13;
+      }
+    }
+
+    &--text {
+      @include onMobile {
+        grid-column: 1 / 3;
+      }
+
+      @include onLapTop {
+        grid-column: 1 / 7;
+      }
+
+      @include onDescktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--button {
+      @include onMobile {
+        grid-column: 1 / 3;
+      }
+
+      @include onLapTop {
+        grid-column: 2 / 6;
+      }
+
+      @include onDescktop {
+        grid-column: 5 / 9;
+      }
+    }
+  }
+
+  &__contact-us {
+    &--form {
+      @include onLapTop {
+        grid-column: 1 / 4;
+      }
+
+      @include onDescktop {
+        grid-column: 1 / 6;
+      }
+    }
+
+    &--info {
+      grid-column: 4 / 6;
+
+      @include onDescktop {
+        grid-column: 8 / 12;
+      }
+    }
+  }
+}
