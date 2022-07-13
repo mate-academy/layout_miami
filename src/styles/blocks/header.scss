@@ -1,0 +1,111 @@
+.header {
+  background-image: url(../images/header.jpg);
+  @extend %photoPosition;
+  margin-bottom: 0;
+     
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: $headerTopPadding 0 130px;
+    height: 480px;
+  
+    @include onIpad {
+      height: 100vh;
+    }
+  
+    @include onDesktop {
+      height: 630px;
+    }
+  }
+   
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+    margin: 0 auto;
+   
+    @include onIpad {
+      font-size: 64px;
+    }
+  
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+  
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 260px;
+  
+    @include onIpad {
+      margin-bottom: 240px;
+    }
+  
+    &--logo {
+      &_image {
+        width: 130px;
+        height: 38px;
+  
+        @include onIpad {
+          width: 190px;
+          height: 56px;
+        }
+      }
+    }
+  
+    &--item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+              
+      &_call {
+        margin-right: 30px;
+        background-image: url(../images/phone.svg);
+        text-decoration: none;
+         
+        @include onIpad {
+          margin-right: 40px;
+        }
+         
+        @include onDesktop {
+          &::before {
+            content: "+1 234 555-55-55";
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translate(-100%, -50%);
+            padding-right: 12px;
+            width: max-content;
+            color: #292929;
+            opacity: 0;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            pointer-events: none;
+          }
+  
+          &:hover::before {
+            opacity: 1;
+            pointer-events: all;
+          }
+        }
+      }
+        
+      &_menu-opener {
+        background-image: url(../images/menu.svg);
+             
+        &:hover {
+          background-image: url(../images/menu_hover.svg);
+        }
+      }
+    }
+  }
+}
