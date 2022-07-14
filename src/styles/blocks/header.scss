@@ -1,0 +1,84 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/background.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 30px 0 90px;
+
+    @include onTablet {
+      padding: 30px 0 120px;
+      height: 100vh;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/call.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        @include poppins-700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include poppins-700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #1d1d1d;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+}
