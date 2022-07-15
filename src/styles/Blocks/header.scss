@@ -1,0 +1,115 @@
+.header {
+  background-image: url("../images/Met/header.png");
+  background-position: center;
+  background-size: cover;
+
+  color: $white;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    box-sizing: border-box;
+
+    height: 100vh;
+    padding: 25px 0 290px;
+
+    @include onMiddleScreen {
+      padding: 32px 0 460px;
+    }
+
+    @include onDesktop {
+      padding: 32px 0 480px;
+    }
+  }
+
+  &__title {
+    --font: 40px;
+
+    font-weight: bold;
+    font-size: var(--font);
+    line-height: var(--font);
+    letter-spacing: -1.5px;
+
+    @include onMiddleScreen {
+      --font: 64px;
+    }
+
+    @include onDesktop {
+      --font: 80px;
+    }
+  }
+}
+
+.top-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.contact {
+  position: relative;
+  margin-right: 25px;
+  cursor: pointer;
+
+  @include onMiddleScreen {
+    margin-right: 65px;
+  }
+}
+
+.numbers {
+  padding-right: 40px;
+
+  color: white;
+  text-transform: uppercase;
+
+  @extend %font-bold-16-27;
+
+  & > p:nth-child(2) {
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s linear;
+
+    &:hover {
+      font-size: 18px;
+    }
+
+    @extend %font-bold-16-27;
+  }
+
+  &--header {
+    visibility: hidden;
+    position: absolute;
+    width: max-content;
+    top: -40px;
+    right: calc(100% - 20px);
+
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+
+    text-align: right;
+  }
+
+  &--menu {
+    margin-bottom: 16px;
+  }
+}
+
+.numbers--header:hover,
+.contact:hover .numbers--header {
+  @include onDesktop {
+    visibility: visible;
+    opacity: 1;
+  }
+}
