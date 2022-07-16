@@ -6,7 +6,7 @@ and implement **ANOTHER** landing from the list below by analogy.
 - Check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished
 - Push, deploy and add correct `DEMO_LINK` to your Pull Request
 ```
-- [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
+- [DEMO LINK](https://Vikuwa88.github.io/layout_miami/) 
 ```
 
 The designs to chose from:
