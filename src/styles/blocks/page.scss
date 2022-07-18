@@ -1,9 +1,15 @@
 .page {
   font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -21,10 +27,19 @@
   }
 
   &__section {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
+
+    &:nth-child(2) {
+      margin-bottom: 120px;
+    }
+
+    @include onTablet {
+      margin-bottom: 70px;
+    }
   }
 
   &__section-title {
+    box-sizing: border-box;
     max-width: 280px;
     margin: 0 auto 48px;
     font-weight: 700;
@@ -55,6 +70,13 @@
 
   &__picture {
     margin-bottom: 12px;
+    transition: transform 350ms;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+    }
   }
 
   &__image {
@@ -77,7 +99,6 @@
     margin: 0 0 40px;
 
     font-weight: 700;
-    font-size: 16px;
     line-height: 140%;
     color: $textColor;
 
