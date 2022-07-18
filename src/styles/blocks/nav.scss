@@ -1,0 +1,52 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  --icons-size: 18px;
+
+  &__icons {
+    display: grid;
+    grid-template-columns: var(--icons-size) var(--icons-size);
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      --icons-size: 24px;
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    text-decoration: none;
+    color: $c-main;
+
+    @include onTablet {
+      &:before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        opacity: 0;
+
+        display: block;
+        width: max-content;
+        padding-right: 10px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transform: translateY(-45%);
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+}
