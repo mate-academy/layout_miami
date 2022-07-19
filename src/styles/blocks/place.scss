@@ -1,0 +1,89 @@
+.place {
+  &__photos {
+    padding-bottom: 24px;
+  }
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &--2 {
+      @include onTablet {
+        height: 284px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 0;
+      }
+    }
+
+    &--noneOnTabl {
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &::after {
+      padding-bottom: 100%;
+      display: block;
+      content: "";
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+      transform: scale(1.25);
+      transition: all 1s;
+    }
+
+
+    &--text {
+      @include onMobile {
+        transform: scale(1.5);
+        object-position: 18%;
+      }
+    }
+
+    &--position {
+      @include onMobile {
+        object-position: right;
+      }
+    }
+  }
+
+  &__description {
+
+    &--title {
+      color: $colorRed;
+      font-weight: 700;
+    }
+  }
+}
+
+//

@@ -1,0 +1,89 @@
+.header {
+  background-size: cover;
+  background-position: top;
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
+    @include onTablet {
+      padding: 32px;
+    }
+  }
+
+  &__right-side {
+    --icon-width: 18px;
+    grid-area: rightSide;
+    display: grid;
+    grid-template-columns: var(--icon-width) var(--icon-width);
+    grid-template-areas:
+    "phone menu";
+    gap: 30px;
+
+    @include onTablet() {
+      --icon-width: 24px;
+      gap: 64px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+    font-family: inherit;
+    margin: 130px 0 0;
+
+    @include onDesktop {
+      margin-top: 104px;
+      font-size: 80px;
+    }
+    @include onTablet {
+      margin-top: 160px;
+      font-size: 64px;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    transform: translate(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+    font-weight: 700;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    @include onTablet {
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    @include onMobile {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__phone-discription {
+    display: block;
+    width: max-content;
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
