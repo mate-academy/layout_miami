@@ -3,7 +3,7 @@
   max-width: 1060px;
   padding: 0 20px;
 
-  @include onTables {
+  @include onTablet {
     max-width: 1164px;
     padding: 0 72px;
   }
@@ -14,32 +14,21 @@
   }
 }
 
-.row-actions {
-  --icon-width: 24px;
-
-  display: grid;
-  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
-  align-items: center;
-  gap: 24px;
-
-  @include onTables {
-    --icon-width: 32px;
-  }
-}
-
 .logo {
   width: 187px;
 
   &__image {
     height: 38px;
 
-    @include onTables {
+    @include onTablet {
       height: 56px;
     }
   }
 }
 
 .icon {
+  position: relative;
+
   display: block;
   width: 100%;
   padding-bottom: 100%;
@@ -47,6 +36,32 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding: 0 20px 0 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #292929;
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity 0.3s ease 0s;
+  }
+
+  &:hover &__tooltip {
+    pointer-events: all;
+    opacity: 1;
+  }
 
   &--phone {
     background-image: url(../images/icon/phone.svg);
@@ -74,7 +89,7 @@
   letter-spacing: -1.5px;
   color: #fff;
 
-  @include onTables {
+  @include onTablet {
     font-size: 48px;
   }
 
@@ -104,6 +119,9 @@
 }
 
 .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
