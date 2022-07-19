@@ -16,6 +16,8 @@
     padding-top: 30px;
     padding-bottom: 90px;
 
+    transition: 300ms;
+
     @include mediaPad {
       min-height: $header-height;
       padding-top: 36px;
@@ -35,6 +37,10 @@
     align-items: center;
     gap: 30px;
     width: 100%;
+
+    @include mediaPad {
+      gap: 40px;
+    }
   }
 
   &__logo {
@@ -42,6 +48,13 @@
 
     width: 130px;
     height: 38px;
+
+    transition: 300ms;
+
+    @include mediaPad {
+      width: 187px;
+      height: 56px;
+    }
 
     &-img {
       width: 100%;
@@ -52,6 +65,11 @@
     width: 18px;
     height: 18px;
     margin-left: auto;
+
+    @include mediaPad {
+      width: 24px;
+      height: 24px;
+    }
 
     &-icon {
       width: 100%;
@@ -75,17 +93,32 @@
 
         cursor: pointer;
 
+        @include mediaPad {
+          width: 24px;
+          height: 24px;
+
+          background-size: 24px;
+        }
+
         &:hover {
           background-image: url("/images/icons/icon_menu-hover.svg");
         }
       }
 
-      &:checked ~ &-icon {
-        background-image: url("/images/icons/icon_menu-close.svg");
-      }
+      &:checked ~ #{$root} {
+        &__menu-toggler-icon {
+          background-size: 18px;
+          background-image: url("/images/icons/icon_menu-close.svg");
+        }
 
-      &:checked ~ #{$root}__nav {
-        transform: translateY(0);
+        &__nav {
+          transform: translateY(0);
+        }
+
+        &__logo {
+          width: 130px;
+          height: 38px;
+        }
       }
     }
   }
@@ -103,15 +136,35 @@
 
     transform: translateY(-100%);
     transition: 300ms;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 110px;
+    }
+
+    &-link {
+      font-family: $ff-primary;
+      font-weight: $fw-700;
+      font-size: $fs-225;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $color-dark-900;
+    }
   }
 
   &__slogan {
-    font-family: $ff-header;
+    font-family: $ff-heading;
     font-weight: $fw-700;
     font-size: $fs-450;
     line-height: 1;
     letter-spacing: -1.5px;
     color: $color-dark-900;
+
+    transition: 300ms;
 
     @include mediaPad {
       font-size: $fs-800;
