@@ -1,18 +1,31 @@
 .header {
   $root: &;
 
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 480px;
-  padding: 30px 20px 90px;
-
   background-size: cover;
   background-position: center;
   background-image: url("/images/backgrounds/bg_header.jpg");
+
+  &__content {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: $header-height-mobile;
+    padding-top: 30px;
+    padding-bottom: 90px;
+
+    @include mediaPad {
+      min-height: $header-height;
+      padding-top: 36px;
+      padding-bottom: 130px;
+    }
+
+    @include mediaDesktop {
+      padding-bottom: 120px;
+    }
+  }
 
   &__line {
     position: relative;
@@ -84,11 +97,11 @@
     right: 0;
     z-index: 1;
 
-    height: $nav-height;
+    height: 100%;
 
     background-color: $color-light-900;
 
-    transform: translateY(-$nav-height);
+    transform: translateY(-100%);
     transition: 300ms;
   }
 
@@ -96,7 +109,16 @@
     font-family: $ff-header;
     font-weight: $fw-700;
     font-size: $fs-450;
+    line-height: 1;
     letter-spacing: -1.5px;
     color: $color-dark-900;
+
+    @include mediaPad {
+      font-size: $fs-800;
+    }
+
+    @include mediaDesktop {
+      font-size: $fs-900;
+    }
   }
 }
