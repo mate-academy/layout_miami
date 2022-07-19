@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  height: 480px;
   padding: 30px 20px 90px;
 
   background-size: cover;
@@ -25,6 +25,8 @@
   }
 
   &__logo {
+    z-index: 2;
+
     width: 130px;
     height: 38px;
 
@@ -48,6 +50,8 @@
       display: none;
 
       &-icon {
+        z-index: 2;
+
         width: 18px;
         height: 18px;
 
@@ -66,11 +70,26 @@
       &:checked ~ &-icon {
         background-image: url("/images/icons/icon_menu-close.svg");
       }
+
+      &:checked ~ #{$root}__nav {
+        transform: translateY(0);
+      }
     }
   }
 
   &__nav {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    height: $nav-height;
+
+    background-color: $color-light-900;
+
+    transform: translateY(-$nav-height);
+    transition: 300ms;
   }
 
   &__slogan {
