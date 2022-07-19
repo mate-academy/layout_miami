@@ -1,0 +1,36 @@
+.rectangles {
+  display: flex;
+  width: max-content;
+  height: 76px;
+  align-items: center;
+
+  &__rectangle {
+    margin-right: 3px;
+    width: 3px;
+    background: #292929;
+    border-radius: 2px;
+  }
+
+  $rectangles:
+    "1" 10px,
+    "2" 20px,
+    "3" 26px,
+    "4" 44px,
+    "5" 32px,
+    "6" 64px,
+    "7" 76px,
+    "8" 44px,
+    "9" 30px,
+    "10" 22px,
+    "11" 10px;
+
+  @each $name, $rec-height in $rectangles {
+    &__rectangle--#{$name} {
+      height: $rec-height;
+    }
+  }
+
+  @include onSmallScreen() {
+    display: none;
+  }
+}
