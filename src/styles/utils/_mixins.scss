@@ -1,0 +1,16 @@
+@mixin gridColumnSpan($colStart, $colSpan) {
+  grid-column: $colStart / span $colSpan;
+}
+
+@mixin gridColsGenerator($root, $name, $colsCount, $colSize: 1) {
+  @for $colStart from 1 through $colsCount {
+    @for $colSpan from 1 through ($colsCount + 1 - $colStart) {
+      #{$root}__col--#{$name}-col-#{$colStart}-span-#{$colSpan} {
+        @include gridColumnSpan(
+          if($colStart == 1, 1, $colStart + $colSize - 1),
+          $colSpan * $colSize
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+$containerClass: ".container";
+
+#{$containerClass} {
+  display: grid;
+  grid-template-columns: repeat(
+    $grid-columns-mobile,
+    minmax($grid-column-width-mobile, 1fr)
+  );
+  gap: $grid-gap-mobile;
+  max-width: $grid-max-width-mobile;
+  padding-inline: $grid-padding-inline-mobile;
+  margin: 0 auto;
+
+  @extend %transition;
+
+  @include mediaPad {
+    grid-template-columns: repeat(
+      $grid-columns-pad,
+      minmax($grid-column-width-pad, 1fr)
+    );
+    gap: $grid-gap-pad;
+    max-width: $grid-max-width-pad;
+    padding-inline: $grid-padding-inline-pad;
+  }
+
+  @include mediaDesktop {
+    grid-template-columns: repeat(
+      $grid-columns-desktop,
+      minmax($grid-column-width-desktop, 1fr)
+    );
+    gap: $grid-gap-desktop;
+    max-width: $grid-max-width-desktop;
+    padding-inline: $grid-padding-inline-desktop;
+  }
+}
+
+@include gridColsGenerator(
+  $containerClass,
+  "s",
+  $grid-columns-mobile,
+);
+
+@include mediaPad {
+  @include gridColsGenerator(
+    $containerClass,
+    "s",
+    $grid-columns-mobile,
+    $grid-columns-pad / $grid-columns-mobile,
+  );
+
+  @include gridColsGenerator(
+    $containerClass,
+    "m",
+    $grid-columns-pad,
+  );
+}
+
+@include mediaDesktop {
+  @include gridColsGenerator(
+    $containerClass,
+    "s",
+    $grid-columns-mobile,
+    $grid-columns-desktop / $grid-columns-mobile,
+  );
+
+  @include gridColsGenerator(
+    $containerClass,
+    "m",
+    $grid-columns-pad,
+    $grid-columns-desktop / $grid-columns-pad,
+  );
+
+  @include gridColsGenerator(
+    $containerClass,
+    "l",
+    $grid-columns-desktop
+  );
+}
