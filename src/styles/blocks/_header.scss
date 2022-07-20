@@ -16,15 +16,18 @@
     padding-top: 30px;
     padding-bottom: 90px;
 
-    transition: 300ms;
+    text-align: center;
+
+    @extend %transition;
 
     @include mediaPad {
-      min-height: $header-height;
+      min-height: $header-height-pad;
       padding-top: 36px;
       padding-bottom: 130px;
     }
 
     @include mediaDesktop {
+      min-height: $header-height-desktop;
       padding-bottom: 120px;
     }
   }
@@ -49,7 +52,7 @@
     width: 130px;
     height: 38px;
 
-    transition: 300ms;
+    @extend %transition;
 
     @include mediaPad {
       width: 187px;
@@ -86,7 +89,7 @@
         width: 18px;
         height: 18px;
 
-        background-size: 18px;
+        background-size: contain;
         background-position: center;
         background-image: url("/images/icons/icon_menu.svg");
         background-repeat: no-repeat;
@@ -96,8 +99,6 @@
         @include mediaPad {
           width: 24px;
           height: 24px;
-
-          background-size: 24px;
         }
 
         &:hover {
@@ -135,36 +136,90 @@
     background-color: $color-light-900;
 
     transform: translateY(-100%);
-    transition: 300ms;
+    @extend %transition;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+      gap: 40px;
+      padding-top: 110px;
+    }
 
     &-list {
       display: flex;
       flex-direction: column;
       gap: 32px;
-      padding-top: 110px;
+
+      text-align: left;
+
+      &-link {
+        position: relative;
+
+        padding-bottom: 8px;
+
+        font-weight: $fw-bold;
+        font-size: $fs-225;
+        line-height: 1;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color-dark-900;
+
+        &::after {
+          @extend %link-underline;
+        }
+
+        &:hover::after {
+          @extend %link-underline-hover;
+        }
+      }
     }
 
-    &-link {
-      font-family: $ff-primary;
-      font-weight: $fw-700;
-      font-size: $fs-225;
-      line-height: 1;
-      letter-spacing: 2px;
-      text-decoration: none;
-      text-transform: uppercase;
+    &-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      font-weight: $fw-bold;
       color: $color-dark-900;
+      text-transform: uppercase;
+      text-align: left;
+
+      &-call {
+        width: max-content;
+
+        font-size: $fs-200;
+        line-height: 27px;
+      }
+
+      &-book {
+        position: relative;
+
+        width: max-content;
+        padding-bottom: 8px;
+
+        font-size: $fs-150;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        &::after {
+          @extend %link-underline;
+          @extend %link-underline-hover;
+        }
+      }
     }
   }
 
   &__slogan {
     font-family: $ff-heading;
-    font-weight: $fw-700;
+    font-weight: $fw-bold;
     font-size: $fs-450;
     line-height: 1;
     letter-spacing: -1.5px;
     color: $color-dark-900;
 
-    transition: 300ms;
+    @extend %transition;
 
     @include mediaPad {
       font-size: $fs-800;
