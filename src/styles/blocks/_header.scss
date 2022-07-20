@@ -107,28 +107,48 @@
     right: 0;
     z-index: 1;
 
-    height: 100%;
-
     background-color: $color-light-900;
 
-    transform: translateY(-100%);
+    transform: translateY(-200vh);
     @extend %transition;
 
     &-content {
-      display: flex;
-      flex-direction: column;
-      align-content: flex-start;
-      gap: 40px;
-      padding-top: 110px;
+      box-sizing: border-box;
+      height: 100vh;
+      padding-top: 80px;
 
       @extend %transition;
 
       @include mediaPad {
-        padding-top: 120px;
+        padding-top: 90px;
       }
 
       @include mediaDesktop {
-        padding-top: 150px;
+        padding-top: 120px;
+      }
+
+      &-scrollable {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        gap: 40px;
+        height: 100%;
+        padding-top: 30px;
+
+        overflow-y: auto;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+
+          display: block;
+          width: 100%;
+          height: 100%;
+          margin-top: -30px;
+
+          box-shadow: inset 0 20px 20px $color-light-900;
+        }
       }
     }
 
@@ -166,6 +186,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      margin-bottom: 40px;
 
       font-weight: $fw-bold;
       color: $color-dark-900;
