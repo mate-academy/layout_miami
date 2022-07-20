@@ -1,41 +1,53 @@
 .icon {
-  width: 18px;
-  height: 18px;
+  width: 100%;
+  padding-bottom: 100%;
 
-  @include onTablet {
-    width: 24px;
-    height: 24px;
-  }
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  &--phone {
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/phone.svg);
-  }
+  transition: 0.3s;
 
   &--menu {
-    height: 12px;
-
-    background-repeat: no-repeat;
-    background-position: center;
     background-image: url(../images/menu.svg);
-
-    @include onTablet {
-      height: 16px;
-    }
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
   }
 
-  &--cross {
-    width: 16px;
-    height: 16px;
+  &--phone {
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
 
-    background-repeat: no-repeat;
-    background-position: center;
+    @include onDesktop {
+      &::before {
+        display: block;
+        content: "+1 234 555-55-55";
+        width: max-content;
+        padding-right: 20px;
+  
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 80%);
+        pointer-events: none;
+      }
+  
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--cross {
     background-image: url(../images/cross.svg);
   }
 }
