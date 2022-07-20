@@ -1,41 +1,155 @@
 @import "utils";
-@import "fonts";
 @import "typography";
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
 
 body {
   background: $c-gray;
   margin: 0;
 }
 
+.icon {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 18px;
+
+  @include onTablet {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding: 0 60px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .header {
   box-sizing: border-box;
+  height: 100vh;
   background-image: url(../images/header.png);
   background-position: center;
   background-size: cover;
-  height: 100vh;
-  padding: 25px 20px;
+
+  padding-top: 25px;
+
+  @include onTablet {
+    padding-top: 50px;
+  }
 
   &__image {
     height: 46px;
     width: 64px;
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
+    }
   }
 
   &__phone {
-    height: 18px;
-    width: 18px;
+    background-image: url(../images/phone.svg);
+    transition-duration: 0.3s;
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        width: max-content;
+        content: "The Met Fifth Avenue\A+1 212-535-7710";
+        text-align: right;
+        font-family: "Cinzel", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        white-space: pre;
+        display: block;
+        transform: translate(-100%, -80%);
+        padding-right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "\AThe Met Cloisters\A+1 212-923-3700";
+        width: max-content;
+        text-align: right;
+        font-family: "Cinzel", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        white-space: pre;
+        display: block;
+        transform: translate(-100%, -80%);
+        padding-right: 20px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    }
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 
   &__menu-opener {
     background-image: url(../images/menu.svg);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 12px;
-    width: 18px;
-    transition: background-image 0.2s;
+    transition-duration: 0.3s;
 
     &:hover {
-      background-image: url(../images/menu_hover.svg);
+      transform: scale(1.2);
     }
   }
 
@@ -50,6 +164,30 @@ body {
     align-items: center;
     a:last-child {
       margin-left: 30px;
+
+      @include onTablet {
+        margin-left: 63px;
+      }
+    }
+  }
+
+  &__title {
+    color: #fff;
+    text-align: center;
+    margin-top: 129px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
     }
   }
 }
