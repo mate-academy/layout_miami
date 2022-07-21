@@ -73,6 +73,9 @@
     &::after {
       content: "+1 234 5555-55-55";
 
+      position: relative;
+      top: 50%;
+
       display: block;
       width: max-content;
       padding-right: 12px;
@@ -80,19 +83,22 @@
       font-family: $ff-poppins;
       font-weight: $fw-bold;
       font-size: $fs-150;
-      line-height: 24px;
       letter-spacing: 2px;
       color: $color-dark-800;
-      transform: translateX(0);
+      transform: translate(0, -50%);
       opacity: 0;
+
+      pointer-events: none;
 
       @extend %transition;
     }
 
     &:hover::after {
       @include mediaPad {
-        transform: translateX(-100%);
+        transform: translate(-100%, -50%);
         opacity: 1;
+
+        pointer-events: all;
       }
     }
   }
@@ -179,7 +185,6 @@
         font-size: $fs-225;
         line-height: 1;
         letter-spacing: 2px;
-        text-decoration: none;
         text-transform: uppercase;
         color: $color-dark-900;
       }
@@ -200,7 +205,7 @@
         @extend %link;
 
         font-size: $fs-200;
-        line-height: 27px;
+        line-height: 1.4;
       }
 
       &-book {
