@@ -5,7 +5,7 @@ document
   .addEventListener('change', e => bodyMenuToggle(e.target));
 
 const navLinks = document
-  .getElementsByClassName('header__nav-list-link');
+  .getElementsByClassName('nav__list-link');
 
 for (let i = 0; i < navLinks.length; i++) {
   navLinks.item(i).addEventListener('click', (e) => {
