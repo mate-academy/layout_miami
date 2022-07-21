@@ -1,3 +1,5 @@
+- [DEMO LINK](https://sergii-nosachenko.github.io/layout_miami/)
+
 # Miami landing page
 In this task, you will learn how to implement a landing page. To do that:
 
@@ -8,11 +10,8 @@ In this task, you will learn how to implement a landing page. To do that:
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
 - check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
 - push, deploy and add the correct `DEMO_LINK` to your Pull Request.
-```
-- [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-```
 
 The designs to choose from:
 - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
 - [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)  
+- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)

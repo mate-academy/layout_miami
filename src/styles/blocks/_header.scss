@@ -1,0 +1,163 @@
+.header {
+  $root: &;
+
+  background-size: cover;
+  background-position: center;
+  background-image: url("/images/backgrounds/bg_header.jpg");
+
+  &__content {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: $header-height-mobile;
+    padding-top: 30px;
+    padding-bottom: 90px;
+
+    text-align: center;
+
+    @extend %transition;
+
+    @include mediaPad {
+      min-height: $header-height-pad;
+      padding-top: 36px;
+      padding-bottom: 130px;
+    }
+
+    @include mediaDesktop {
+      min-height: $header-height-desktop;
+      padding-bottom: 120px;
+    }
+  }
+
+  &__line {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 18px 18px;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+
+    @include mediaPad {
+      grid-template-columns: 1fr 24px 24px;
+      gap: 40px;
+    }
+  }
+
+  &__logo {
+    z-index: 2;
+
+    width: 130px;
+    height: 38px;
+
+    @extend %transition;
+
+    @include mediaDesktop {
+      width: 187px;
+      height: 56px;
+    }
+
+    &-img {
+      width: 100%;
+    }
+  }
+
+  &__call {
+    position: relative;
+
+    @extend %icon;
+    background-image: url("/images/icons/icon_tel.svg");
+
+    &-tooltip {
+      position: absolute;
+      right: 100%;
+
+      display: flex;
+      align-items: center;
+      width: max-content;
+      height: 100%;
+      padding-right: 12px;
+
+      font-family: $ff-poppins;
+      font-weight: $fw-bold;
+      font-size: $fs-150;
+      letter-spacing: 2px;
+      color: $color-dark-800;
+      opacity: 0;
+
+      pointer-events: none;
+
+      @extend %transition;
+    }
+
+    &:hover &-tooltip {
+      @include mediaPad {
+        opacity: 1;
+
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    &-toggler {
+      display: none;
+
+      &-icon {
+        z-index: 2;
+
+        @extend %icon;
+        background-image: url("/images/icons/icon_menu.svg");
+
+        cursor: pointer;
+
+        &:hover {
+          background-image: url("/images/icons/icon_menu-hover.svg");
+        }
+      }
+
+      &:checked ~ #{$root} {
+        &__menu-toggler-icon {
+          background-image: url("/images/icons/icon_menu-close.svg");
+        }
+
+        &__nav {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    transform: translateY(-200vh);
+    @extend %transition;
+  }
+
+  &__slogan {
+    font-family: $ff-heading;
+    font-weight: $fw-bold;
+    font-size: $fs-450;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    color: $color-dark-900;
+
+    @extend %transition;
+
+    @include mediaPad {
+      font-size: $fs-800;
+    }
+
+    @include mediaDesktop {
+      font-size: $fs-900;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+%transition {
+  transition: $transition-duration;
+}
+
+%link {
+  position: relative;
+
+  width: max-content;
+  padding-bottom: 8px;
+
+  text-decoration: none;
+
+  @extend %link-underline;
+  @extend %link-underline-hover;
+}
+
+%link-underline {
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+    width: 0%;
+    height: 1px;
+
+    background-color: var(--color, $color-dark-900);
+
+    @extend %transition;
+  }
+}
+
+%link-underline-hover {
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+%icon {
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+%title {
+  margin-bottom: 48px;
+
+  font-family: $ff-heading;
+  font-size: $fs-400;
+  font-weight: $fw-semi-bold;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include mediaPad {
+    font-size: $fs-600;
+  }
+
+  @include mediaDesktop {
+    font-size: $fs-800;
+  }
+}
+
+%heading {
+  font-family: $ff-heading;
+  font-weight: $fw-bold;
+  font-size: $fs-250;
+  line-height: 1.4;
+}
+
+%paragraph {
+  font-family: $ff-paragraph;
+  font-size: $fs-200;
+  font-weight: $fw-regular;
+  line-height: 1.4;
+}
+
+%img-hover-effect {
+  @extend %transition;
+
+  &:hover {
+    transform: scale(1.1) translateY(-3%);
+  }
+}

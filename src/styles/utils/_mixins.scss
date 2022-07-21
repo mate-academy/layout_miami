@@ -1,6 +1,16 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin gridColumnSpan($colStart, $colSpan) {
+  grid-column: $colStart / span $colSpan;
+}
+
+@mixin gridColsGenerator($root, $name, $colsCount, $colSize: 1) {
+  @for $colStart from 1 through $colsCount {
+    @for $colSpan from 1 through ($colsCount + 1 - $colStart) {
+      #{$root}__cols--#{$name}-col-#{$colStart}-span-#{$colSpan} {
+        @include gridColumnSpan(
+          if($colSize == 1, $colStart, ($colStart - 1) * $colSize + 1),
+          $colSpan * $colSize
+        );
+      }
+    }
   }
 }
