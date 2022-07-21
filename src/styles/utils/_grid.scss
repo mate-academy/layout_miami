@@ -7,21 +7,21 @@
   - pad (m)     = 6 columns
   - desktop (l) = 12 columns
 
-  Container defines grid system with exact number of columns for
+  Class defines grid system with exact number of columns for
   every media.
 
   Structure for html:
 
-  .container                            <-- parent grid block
-    |_  .container__cols                <-- child column block = full grid width
+  .grid                            <-- parent grid block
+    |_  .grid                      <-- child column block = full grid width
     |  ...
-    |_  .container__cols                <-- (obligatory)
-      | .container__cols--modifiers...  <-- (optional)
-      |_  .some-block                   <-- children of column
+    |_  .grid__cols                <-- (obligatory)
+      | .grid__cols--modifiers...  <-- (optional)
+      |_  .some-block              <-- children of column
 
   Modifiers:
 
-  .container__cols--{SIZE}-col-{START}-span-{COUNT}
+  .grid__cols--{SIZE}-col-{START}-span-{COUNT}
 
     where
     {SIZE}  - one of [s, m, l];
@@ -30,8 +30,8 @@
 
   Example:
 
-  .container__cols
-  .container__cols--m-col-2-span-4
+  .grid__cols
+  .grid__cols--m-col-2-span-4
 
   - Mobile version:
 
@@ -54,18 +54,15 @@
 
 */
 
-$containerClass: ".container";
+$gridClass: ".grid";
 
-#{$containerClass} {
+#{$gridClass} {
   display: grid;
   grid-template-columns: repeat(
     $grid-columns-mobile,
     minmax($grid-column-width-mobile, 1fr)
   );
   column-gap: $grid-gap-mobile;
-  max-width: $grid-max-width-mobile;
-  padding-inline: $grid-padding-inline-mobile;
-  margin: 0 auto;
 
   @extend %transition;
 
@@ -79,8 +76,6 @@ $containerClass: ".container";
       minmax($grid-column-width-pad, 1fr)
     );
     column-gap: $grid-gap-pad;
-    max-width: $grid-max-width-pad;
-    padding-inline: $grid-padding-inline-pad;
   }
 
   @include mediaDesktop {
@@ -89,27 +84,25 @@ $containerClass: ".container";
       minmax($grid-column-width-desktop, 1fr)
     );
     column-gap: $grid-gap-desktop;
-    max-width: $grid-max-width-desktop;
-    padding-inline: $grid-padding-inline-desktop;
   }
 }
 
 @include gridColsGenerator(
-  $containerClass,
+  $gridClass,
   "s",
   $grid-columns-mobile,
 );
 
 @include mediaPad {
   @include gridColsGenerator(
-    $containerClass,
+    $gridClass,
     "s",
     $grid-columns-mobile,
     $grid-columns-pad / $grid-columns-mobile,
   );
 
   @include gridColsGenerator(
-    $containerClass,
+    $gridClass,
     "m",
     $grid-columns-pad,
   );
@@ -117,21 +110,21 @@ $containerClass: ".container";
 
 @include mediaDesktop {
   @include gridColsGenerator(
-    $containerClass,
+    $gridClass,
     "s",
     $grid-columns-mobile,
     $grid-columns-desktop / $grid-columns-mobile,
   );
 
   @include gridColsGenerator(
-    $containerClass,
+    $gridClass,
     "m",
     $grid-columns-pad,
     $grid-columns-desktop / $grid-columns-pad,
   );
 
   @include gridColsGenerator(
-    $containerClass,
+    $gridClass,
     "l",
     $grid-columns-desktop
   );
