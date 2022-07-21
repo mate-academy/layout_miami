@@ -5,6 +5,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
 
   @include onSmallScreen() {
     width: 18px;
@@ -31,5 +32,32 @@
 
   &--cross {
     background-image: url(../images/cross.svg);
+  }
+
+  &__tooltip {
+    display: flex;
+    color: #292929;
+    width: max-content;
+    height: 24px;
+    transform: translateX(-100%);
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    padding-right: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+
+    @include onSmallScreen() {
+      display: none;
+    }
+  }
+
+  &:hover .icon__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 }
