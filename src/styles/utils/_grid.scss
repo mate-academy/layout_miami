@@ -1,3 +1,59 @@
+/*
+  Principle:
+
+  This template grid generates classes for
+  3 media breakpoints set in variables:
+  - mobile (s)  = 2 columns
+  - pad (m)     = 6 columns
+  - desktop (l) = 12 columns
+
+  Container defines grid system with exact number of columns for
+  every media.
+
+  Structure for html:
+
+  .container                            <-- parent grid block
+    |_  .container__cols                <-- child column block = full grid width
+    |  ...
+    |_  .container__cols                <-- (obligatory)
+      | .container__cols--modifiers...  <-- (optional)
+      |_  .some-block                   <-- children of column
+
+  Modifiers:
+
+  .container__cols--{SIZE}-col-{START}-span-{COUNT}
+
+    where
+    {SIZE}  - one of [s, m, l];
+    {START} - column start index [1 ... total of media columns];
+    {COUNT} - columns span count [1 ... (total of media columns - {START})];
+
+  Example:
+
+  .container__cols
+  .container__cols--m-col-2-span-4
+
+  - Mobile version:
+
+    |                             |                             |
+    |<-                        content                        ->|
+
+  - Pad version:
+
+    |         |         |         |         |         |         |
+    |  empty  |<-              content              ->|  empty  |
+
+  - Desktop version:
+
+    |    |    |    |    |    |    |    |    |    |    |    |    |
+    |  empty  |<-              content              ->|  empty  |
+
+    *  here {START} and {COUNT} are recalculated automatically for
+       larger media, so you don't need to define it if it occupies
+       same area. It works for all modifiers: s --> m --> l
+
+*/
+
 $containerClass: ".container";
 
 #{$containerClass} {
