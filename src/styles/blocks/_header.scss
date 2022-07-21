@@ -69,6 +69,32 @@
 
     @extend %icon;
     background-image: url("/images/icons/icon_tel.svg");
+
+    &::after {
+      content: "+1 234 5555-55-55";
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-family: $ff-poppins;
+      font-weight: $fw-bold;
+      font-size: $fs-150;
+      line-height: 24px;
+      letter-spacing: 2px;
+      color: $color-dark-800;
+      transform: translateX(0);
+      opacity: 0;
+
+      @extend %transition;
+    }
+
+    &:hover::after {
+      @include mediaPad {
+        transform: translateX(-100%);
+        opacity: 1;
+      }
+    }
   }
 
   &__menu {
@@ -147,9 +173,7 @@
       text-align: left;
 
       &-link {
-        position: relative;
-
-        padding-bottom: 8px;
+        @extend %link;
 
         font-weight: $fw-bold;
         font-size: $fs-225;
@@ -158,14 +182,6 @@
         text-decoration: none;
         text-transform: uppercase;
         color: $color-dark-900;
-
-        &::after {
-          @extend %link-underline;
-        }
-
-        &:hover::after {
-          @extend %link-underline-hover;
-        }
       }
     }
 
@@ -181,25 +197,21 @@
       text-align: left;
 
       &-call {
-        width: max-content;
+        @extend %link;
 
         font-size: $fs-200;
         line-height: 27px;
       }
 
       &-book {
-        position: relative;
-
-        width: max-content;
-        padding-bottom: 8px;
+        @extend %link;
 
         font-size: $fs-150;
         line-height: 16px;
         letter-spacing: 2px;
 
         &::after {
-          @extend %link-underline;
-          @extend %link-underline-hover;
+          width: 100%;
         }
       }
     }

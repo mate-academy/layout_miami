@@ -2,24 +2,38 @@
   transition: $transition-duration;
 }
 
+%link {
+  position: relative;
+
+  width: max-content;
+  padding-bottom: 8px;
+
+  @extend %link-underline;
+  @extend %link-underline-hover;
+}
+
 %link-underline {
-  content: "";
+  &::after {
+    content: "";
 
-  position: absolute;
-  bottom: 0;
-  left: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-  display: block;
-  width: 0%;
-  height: 1px;
+    display: block;
+    width: 0%;
+    height: 1px;
 
-  background-color: $color-dark-900;
+    background-color: $color-dark-900;
 
-  @extend %transition;
+    @extend %transition;
+  }
 }
 
 %link-underline-hover {
-  width: 100%;
+  &:hover::after {
+    width: 100%;
+  }
 }
 
 %icon {
