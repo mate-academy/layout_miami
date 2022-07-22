@@ -1,29 +1,103 @@
 .header {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  z-index: 50;
-  width: 100%;
-  padding: 0 20px;
+  $root: &;
 
-  &__row {
-    display: grid;
-    grid-template-columns: 10fr repeat(2, minmax(48px, 1fr));
+  height: 100vh;
+  background-image: url("../images/header/bg-img.png");
+  background-size: cover;
+  background-position: center;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    max-width: 1060px;
-    margin: 0 auto;
+    margin-bottom: 140px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+
   }
   &__logo {
+    flex: 1 0 auto;
 
+    img {
+      height: 48px;
+      width: 64px;
+
+      @include onTablet {
+        height: 65px;
+        width: 87px;
+      }
+    }
+  }
+  &__phone-info-container {
+    display: none;
+    padding-right: 16px;
+
+    opacity: 0;
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &__phone-info {
+    text-align: right;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #fff;
+
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
   }
   &__phone {
-    justify-self: end;
+    margin-right: 24px;
+    text-decoration: none;
+    background-image: url("../images/header/ui/phone.svg");
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710 The Met Cloisters +1 212-923-3700";
+
+        display: block;
+        width: 200px;
+        position: relative;
+        top: 50%;
+        transform: translate(-95%, -50%);
+        padding-right: 16px;
+
+        text-align: right;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
+        color: #fff;
+
+        opacity: 0;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(.19,.01,.57,1.63), opacity 0.3s;
+      }
+      &:hover::before {
+        transform: translate(-100%, -50%);
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+    @include onTablet {
+      margin-right: 50px;
+    }
   }
-  &__menu-button {
-    justify-self: end;
+  &__menu-btn {
+    background-image: url("../images/header/ui/menu-default.svg");
+
+    transition: background-image 0.3s;
+
+    &:hover {
+    background-image: url("../images/header/ui/menu-hover.svg");
+    }
   }
-  &__menu-checkbox {
-    // display: none;
+  &__title {
+    text-align: center;
   }
 }
 
