@@ -1,0 +1,64 @@
+.icon {
+  @extend %link;
+  width: $icon-width;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    width: 24px;
+  }
+
+  &--menu {
+    background-image: url(/images/menu.svg);
+    margin-left: 30px;
+
+    @include onTablet {
+      margin-left: 63px;
+    }
+
+    &:hover {
+      background-image: url(/images/menu_hover.svg);
+    }
+
+  }
+
+  &--cross {
+    background-image: url(/images/cross.svg);
+  }
+
+  &--phone {
+    background-image: url(/images/phone.svg);
+  }
+
+  &__tooltip {
+    display: none;
+  }
+
+  @include onDesktop {
+    &__tooltip {
+      display: block;
+      width: max-content;
+      position: relative;
+      right: 200px;
+      top: 50px;
+      text-align: end;
+      color: #fff;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms;
+
+      &:first-child {
+        margin-bottom: 8px;
+        right: 230px;
+      }
+    }
+
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
