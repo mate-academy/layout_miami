@@ -1,13 +1,12 @@
 h1,
+h2,
+h3,
 p {
   margin: 0;
 }
 
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
-  }
-}
+@import "./utils/mixins";
+@import "./blocks/header";
 
 .page {
   font-family: "Poppins", sans-serif;
@@ -32,7 +31,7 @@ p {
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0 21px;
+  padding: 0 20px;
 
   @media (min-width: 1024px) {
     padding: 0 120px;
@@ -54,81 +53,188 @@ p {
   background-repeat: no-repeat;
 }
 
-.header {
-  background-size: cover;
-  background-position: center;
-  background-image: url(../images/header.png);
-
-  &__title {
-    font-weight: 700;
-    font-size: 36px;
-    text-align: center;
-    line-height: 100%;
-    color: #292929;
-    letter-spacing: -1.5px;
-
-    @include onDesktop {
-      font-size: 80px;
-      line-height: 100%;
-    }
-  }
+.main {
+  background-color: #1d1d1d;
 
   &__content {
+    padding: 60px 20px 120px;
+    box-sizing: content-box;
+
+    color: #fff;
+  }
+
+  &__entry {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    padding-bottom: 48px;
+
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  &__entry-title {
+    text-align: left;
+    padding-bottom: 32px;
+  }
+
+  &__entry-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__bike-title {
+    padding: 32px 0 8px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__details-title {
+    padding: 16px 0 8px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__bike-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__bike-price {
+    padding: 16px 0 40px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__bike-price_last {
+    padding-bottom: 92px;
+  }
+
+  &__recommended-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
-    box-sizing: border-box;
-    height: 100vh;
-    padding: 29px 0 80px;
-
-    @include onDesktop {
-      padding: 36px 0 115px;
-    };
+    margin-bottom: 80px;
+    gap: 40px;
   }
 
-  &__nav {
+  &__container-picture-details {
     display: flex;
     justify-content: space-between;
-
   }
 
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
+  &__details-picture {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
   }
 
-  &__call {
+  &__contact-information {
+    margin-top: 48px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 56px;
+  left: 22px;
+  top: 3600px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #1d1d1d;
+  background: #fff;
+
+  border-radius: 40px;
+
+  text-decoration: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__field {
+    box-sizing: border-box;
+    padding: 16px 14px;
+    height: 48px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Poppins", sans-serif;
+
+    color: #7e7e83;
+
+    width: 100%;
+    border-radius: 40px;
+    outline: none;
+    border: none;
+
+    background-color: #f8f8fa;
+  }
+
+  &__field-message {
+    height: 148px;
+    border-radius: 16px;
+    resize: none;
+  }
+
+  &__button {
+    margin-top: 25px;
+  }
+
+}
+
+.contact-information {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  &__text {
     text-decoration: none;
-    background-image: url(../images/phone.svg);
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: #292929;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
+    font-weight: 500;
+    line-height: 140%;
+    color: #fff;
   }
+}
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-image: url(../images/footer.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 85%;
 }
