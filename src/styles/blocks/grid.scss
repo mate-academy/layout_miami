@@ -1,12 +1,25 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 
   &__item {
+    @for $start from 1 through 2 {
+      @for $end from 1 through 2 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  @include onSmallScreen {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+
     @for $start from 1 through 6 {
       @for $end from 1 through 6 {
-        &--#{$start}-#{$end} {
+        &__item--small-screen--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
       }
@@ -20,19 +33,6 @@
     @for $start from 1 through 12 {
       @for $end from 1 through 12 {
         &__item--desktop--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-      }
-    }
-  }
-
-  @include onSmallScreen {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-    @for $start from 1 through 2 {
-      @for $end from 1 through 2 {
-        &__item--small-screen--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
       }

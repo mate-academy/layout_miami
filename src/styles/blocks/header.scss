@@ -1,14 +1,14 @@
 .header {
   background-size: cover;
   background-position: center;
-  background-image: url(../images/header-bg.svg);
+  background-image: url(../images/header-small-screen-bg.svg);
+
+  @include onSmallScreen() {
+    background-image: url(../images/header-bg.svg);
+  }
 
   @include onDesktop {
     background-image: url(../images/header-bg-desktop.svg);
-  }
-
-  @include onSmallScreen() {
-    background-image: url(../images/header-small-screen-bg.svg);
   }
 
   &__top {
@@ -23,18 +23,18 @@
     height: 100vh;
     padding: $header-padding;
 
-    @include onDesktop {
-      padding: $header-padding-dekstop;
-    }
-
     @include onSmallScreen() {
       padding: $header-padding-small-screen;
+    }
+
+    @include onDesktop {
+      padding: $header-padding-dekstop;
     }
   }
 
   &__tittle {
     margin: 0;
-    font-size: 40px;
+    font-size: 32px;
     font-style: italic;
     font-weight: 800;
     align-items: center;
@@ -42,18 +42,25 @@
     color: $ligth-black;
     line-height: 100%;
 
-    @include onDesktop {
-      font-size: 48px;
+    &::before {
+      display: block;
+      content: url(../images/small-wave.svg);
+      height: 27px;
+      width: 32px;
+      margin-bottom: 16px;
     }
 
     @include onSmallScreen() {
-      font-size: 32px;
+      font-size: 40px;
       &::before {
-        display: block;
-        content: url(../images/small-wave.svg);
-        height: 27px;
-        width: 32px;
-        margin-bottom: 16px;
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      &::before {
+        display: none;
       }
     }
   }
