@@ -1,7 +1,15 @@
 .header {
   background-size: cover;
   background-position: center;
-  background-image: url(../images/header-background.svg);
+  background-image: url(../images/header-bg.svg);
+
+  @include onDesktop {
+    background-image: url(../images/header-bg-desktop.svg);
+  }
+
+  @include onSmallScreen() {
+    background-image: url(../images/header-small-screen-bg.svg);
+  }
 
   &__top {
     @include top-actions;
@@ -13,14 +21,14 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 52px 0 40px;
+    padding: $header-padding;
 
     @include onDesktop {
-      padding: 52px 0 64px;
+      padding: $header-padding-dekstop;
     }
 
     @include onSmallScreen() {
-      padding: 40px 0 94px;
+      padding: $header-padding-small-screen;
     }
   }
 
@@ -31,7 +39,7 @@
     font-weight: 800;
     align-items: center;
     letter-spacing: -1.5px;
-    color: #292929;
+    color: $ligth-black;
     line-height: 100%;
 
     @include onDesktop {
