@@ -1,38 +1,35 @@
 .menu {
   $root: &;
 
-  position: absolute;
   height: 100vh;
   width: 100vw;
-  top: 0;
-  right: 0;
 
-  color: $main-text-color-white;
   text-transform: uppercase;
   font-weight: 700;
 
+  color: $main-text-color-white;
   background-color: $main-color-accent;
-  // transition: right 1s ease-out;
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 55px;
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 55px;
+    }
   }
-  &__menu-btn  {
+
+  &__menu-btn {
     background-image: url("../images/header/ui/menu-close.svg");
-  }
-  &:target  {
 
+    transition: transform 0.3s;
+    &:hover {
+      transform: rotate(90deg);
+    }
   }
 
-  // @keyframes menu-open {
-  //   100% {
-  //     // transform: translateX(100%);
-  //     right: 0;
-  //   }
-  // }
   &__list {
     margin-bottom: 48px;
     list-style: none;
@@ -46,29 +43,12 @@
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-    // &::after{
-    //   content: "";
-    //   position: absolute;
-    //   bottom: -8px;
-    //   left: 50%;
-    //   right: 50%;
-    //   height: 1px;
-    //   background-color: #fff;
-    //   transition: left 0.3s, right 0.3s;
-    // }
 
-    // &:hover::after {
-    //   left: 0;
-    //   right: 0;
-    // }
     @include menuHover(-8px);
   }
 
   &__phone-info-container {
-    // display: flex;
-    // flex-direction: column;
     margin-bottom: 16px;
-
     line-height: 27px;
   }
 
@@ -82,6 +62,7 @@
       margin-bottom: 8px;
     }
   }
+
   &__call {
     font-weight: 700;
     font-size: 12px;
@@ -89,6 +70,6 @@
     letter-spacing: 2px;
     padding-bottom: 8px;
 
-    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #fff;
   }
 }
