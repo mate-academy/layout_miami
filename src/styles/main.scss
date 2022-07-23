@@ -18,12 +18,12 @@ p {
 
 .logo {
   &__image {
-    height: 38px;
-    width: 130px;
+    height: 56px;
+    width: 186px;
 
-    @include onDesktop {
-      height: 56px;
-      width: 186px;
+    @include onMobile {
+      height: 38px;
+      width: 130px;
     }
   }
 }
@@ -33,19 +33,23 @@ p {
   max-width: 1020px;
   padding: 0 20px;
 
-  @media (min-width: 1024px) {
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
     padding: 0 120px;
   }
 }
 
 .icon {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 
-  @include onDesktop {
-    width: 24px;
-    height: 24px;
+  @include onMobile {
+    width: 18;
+    height: 18px;
   }
 
   background-size: contain;
@@ -57,17 +61,39 @@ p {
   background-color: #1d1d1d;
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
     padding: 60px 20px 120px;
+    margin: auto;
     box-sizing: content-box;
 
     color: #fff;
+
+    @include onTablet {
+      padding: 120px 75px;
+    }
   }
 
   &__entry {
     padding-bottom: 80px;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 24px;
+      padding-bottom: 120px;
+    }
+  }
+
+  &__compaire-bikes {
+    max-width: 392px;
+    margin: auto;
   }
 
   &__title {
+    display: block;
     padding-bottom: 48px;
 
     text-align: center;
@@ -75,6 +101,29 @@ p {
     font-weight: 500;
     font-size: 32px;
     line-height: 32px;
+
+    &--desktop {
+      display: none;
+      @media (min-width: 426px) {
+        display: block;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: -1.5px;
+      }
+    }
+
+    &--mob {
+      display: none;
+      @include onMobile {
+        display: block;
+      }
+    }
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+    }
   }
 
   &__entry-title {
@@ -87,6 +136,12 @@ p {
     font-weight: 500;
     font-size: 24px;
     line-height: 140%;
+  }
+
+  &__bike-picture {
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
   }
 
   &__bike-title {
@@ -126,47 +181,71 @@ p {
     padding-bottom: 92px;
   }
 
-  &__recommended-container {
+  &__details-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 80px;
     gap: 40px;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
   }
 
   &__container-picture-details {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    &--brakes-lighweight {
+      @include onTablet {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
   }
 
   &__details-picture {
-    width: 130px;
-    height: 130px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
   &__contact-information {
     margin-top: 48px;
+
+    @include onTablet {
+      margin: 0;
+    }
   }
 }
 
 .button {
   display: flex;
+  margin: auto;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
+  width: 280px;
   height: 56px;
-  left: 22px;
-  top: 3600px;
-
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
   color: #1d1d1d;
   background: #fff;
-
   border-radius: 40px;
 
   text-decoration: none;
+
+  @include onTablet {
+    width: 392px;
+  }
 }
 
 .form {
@@ -202,6 +281,10 @@ p {
 
   &__button {
     margin-top: 25px;
+
+    @include onTablet {
+      width: 288px;
+    }
   }
 
 }
@@ -230,6 +313,15 @@ p {
   }
 }
 
+.contact-us {
+  @include onTablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-content: center;
+  }
+}
+
 .footer {
   height: 200px;
   width: 100%;
@@ -237,4 +329,9 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 85%;
+
+  @include onTablet {
+    height: 485px;
+
+  }
 }
