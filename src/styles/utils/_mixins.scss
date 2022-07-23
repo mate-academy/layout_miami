@@ -9,3 +9,37 @@
     @content;
   }
 }
+
+@mixin icon {
+  --icons-size: 24px;
+  --phone-margin: 24px;
+  flex-shrink: 0;
+  width: var(--icons-size);
+  height: var(--icons-size);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    --icons-size: 32px;
+  }
+}
+
+
+@mixin menuHover($bottom-shift) {
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: $bottom-shift;
+    left: 50%;
+    right: 50%;
+    height: 1px;
+    background-color: #fff;
+    transition: left 0.3s, right 0.3s;
+  }
+
+  &:hover::after {
+    left: 0;
+    right: 0;
+  }
+}
