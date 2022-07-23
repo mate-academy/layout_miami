@@ -74,10 +74,16 @@ p {
     @include onTablet {
       padding: 120px 75px;
     }
+
+    @include onDesktop {
+      padding: 180px 120px;
+    }
   }
 
   &__entry {
+    margin: auto;
     padding-bottom: 80px;
+    max-width: 920px;
 
     @include onTablet {
       display: grid;
@@ -85,11 +91,23 @@ p {
       gap: 24px;
       padding-bottom: 120px;
     }
+
+    @include onDesktop {
+      grid-template-columns: 1fr 1.5fr;
+      padding-bottom: 160px;
+    }
   }
 
-  &__compaire-bikes {
+  &__compaire-bikes-box {
     max-width: 392px;
     margin: auto;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+      max-width: 100%;
+    }
   }
 
   &__title {
@@ -101,6 +119,12 @@ p {
     font-weight: 500;
     font-size: 32px;
     line-height: 32px;
+
+    @media (min-width: 426px) {
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+    }
 
     &--desktop {
       display: none;
@@ -117,12 +141,6 @@ p {
       @include onMobile {
         display: block;
       }
-    }
-
-    @include onTablet {
-      font-size: 48px;
-      line-height: 100%;
-      letter-spacing: -1.5px;
     }
   }
 
@@ -142,6 +160,7 @@ p {
     width: 100%;
     object-position: center;
     object-fit: cover;
+
   }
 
   &__bike-title {
@@ -167,6 +186,10 @@ p {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
+
+    @include onDesktop {
+      max-width: 672px;
+    }
   }
 
   &__bike-price {
@@ -175,10 +198,10 @@ p {
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-  }
 
-  &__bike-price_last {
-    padding-bottom: 92px;
+    @include onDesktop {
+      padding-bottom: 144px;
+    }
   }
 
   &__details-container {
@@ -189,6 +212,10 @@ p {
 
     @include onTablet {
       margin-bottom: 120px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 180px;
     }
   }
 
@@ -207,7 +234,6 @@ p {
         grid-template-columns: 1fr 2fr;
       }
     }
-
   }
 
   &__details-picture {
@@ -223,6 +249,14 @@ p {
       margin: 0;
     }
   }
+
+  &__button-explore {
+    width: 280px;
+
+    @include onDesktop {
+      width: 324px;
+    }
+  }
 }
 
 .button {
@@ -232,7 +266,6 @@ p {
   align-items: center;
   text-align: center;
 
-  width: 280px;
   height: 56px;
   font-weight: 700;
   font-size: 16px;
@@ -242,10 +275,6 @@ p {
   border-radius: 40px;
 
   text-decoration: none;
-
-  @include onTablet {
-    width: 392px;
-  }
 }
 
 .form {
@@ -281,12 +310,8 @@ p {
 
   &__button {
     margin-top: 25px;
-
-    @include onTablet {
-      width: 288px;
-    }
+    width: 100%;
   }
-
 }
 
 .contact-information {
@@ -314,11 +339,22 @@ p {
 }
 
 .contact-us {
+  margin: auto;
+
+  @media (max-width: 743px) {
+    max-width: 400px;
+  }
+
   @include onTablet {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     align-content: center;
+  }
+
+  @include onDesktop {
+    gap: 198px;
   }
 }
 
@@ -332,6 +368,9 @@ p {
 
   @include onTablet {
     height: 485px;
+  }
 
+  @include onTablet {
+    height: 550px;
   }
 }
