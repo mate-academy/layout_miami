@@ -1,79 +1,50 @@
 .explore {
   @extend %cinzel;
-  &__title {
-    font-size: 32px;
-    line-height: 32px;
-    letter-spacing: -1.5px;
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    width: 280px;
 
-    @include onTablet {
-      font-size: 48px;
-      line-height: 48px;
-      width: 390px;
-      margin-bottom: 48px;
-    }
-
-    @include onDesktop {
-      width: 500px;
-    }
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @include onDesktop {
-      flex-direction: row;
-      align-items: baseline;
-    }
-  }
-
-  &__photos {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__photos:nth-child(-n+2) {
-    @include onDesktop {
-      margin-right: 24px;
-    }
-  }
-
-  &__photo {
-    width: 280px;
-    height: 280px;
+  &__photo-container {
+    position: relative;
     margin-bottom: 24px;
-    transition-duration: $transition-duration;
+    width: 100%;
+    margin-bottom: 24px;
 
-    @include onTablet {
-      width: 390px;
-      height: 390px;
-      margin-bottom: 32px;
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
     }
+  }
+  &__photo {
+    position: absolute ;
+    height: 100%;
+    width: 100%;
+    transition: transform $transition-duration;
 
     @include onDesktop {
-      width: 320px;
-      height: 320px;
-
       &:hover {
         transform: scale(1.05);
       }
     }
   }
 
+  &__block {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__block:nth-child(-n+2) {
+    margin-bottom: 48px;
+  }
+
   &__link {
     position: relative;
-    margin-bottom: 4px;
+    display: inline;
+    margin-bottom: 0 0 4px;
+    text-decoration: none;
     font-size: 24px;
     line-height: 140%;
     color: $color-red;
-    text-decoration: none;
-    position: relative;
 
     &::after {
       @extend %text-underline;
@@ -85,23 +56,28 @@
     }
   }
 
-  &__description {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 27px;
-    margin-bottom: 48px;
-  }
-
-  &-block {
-    width: 280px;
+  &__title {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 32px;
     text-align: center;
+    letter-spacing: -1.5px;
 
     @include onTablet {
-      width: 400px;
+      margin: 0 auto 48px;
+      font-size: 48px;
+      line-height: 48px;
+      max-width: 400px;
     }
 
     @include onDesktop {
-      width: 320px;
+      margin: 0 auto 48px;
+      max-width: 500px;
     }
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
   }
 }
