@@ -1,6 +1,23 @@
 .contacts {
   @extend %cinzel;
 
+  &__block {
+    display: flex;
+    flex-direction: column;
+
+    @include onDesktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 54px;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
+
   &__head {
     display: block;
     text-align: left;
@@ -19,15 +36,24 @@
   &__link {
     position: relative;
     display: inline-block;
+    width: max-content;
     color: #3e3e3e;
     text-decoration: none;
     margin-bottom: 8px;
+    transition: color $transition-duration;
+
+    &:hover {
+      color: $color-red;
+    }
 
     &::after {
       @extend %text-underline;
       background-color: $color-red;
     }
 
+    &:hover::after {
+      width: 100%;
+    }
 
     &:nth-child(5n) {
       margin-bottom: 48px;
@@ -39,16 +65,13 @@
         color: $color-red;
       }
     }
-
-    &:hover::after {
-      width: 100%;
-    }
   }
 
   &__name,
   &__email,
   &__message {
     @extend %cinzel;
+    box-sizing: border-box;
     font-weight: 400;
     width: 100%;
     height: 48px;
@@ -59,6 +82,13 @@
     margin-bottom: 16px;
     font-size: 14px;
     color: $color-dark;
+    border: 1px solid transparent;
+    transition: border-color $transition-duration;
+
+    &:hover {
+      border-color: #7e7e836a;
+    }
+
 
     &::placeholder {
       color: #7E7E83;
@@ -66,6 +96,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
+      transition: color $transition-duration;
     }
 
     &:hover::placeholder {
@@ -73,7 +104,7 @@
     }
 
     &:focus {
-      border: 1px solid $color-dark;
+      border-color: $color-dark;
     }
   }
   &__message {
