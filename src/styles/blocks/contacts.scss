@@ -42,17 +42,21 @@
     margin-bottom: 8px;
     transition: color $transition-duration;
 
-    &:hover {
-      color: $color-red;
+    @include onDesktop {
+      &:hover {
+        color: $color-red;
+      }
     }
 
-    &::after {
-      @extend %text-underline;
-      background-color: $color-red;
-    }
+    @include onDesktop {
+      &::after {
+        @include textUnderline;
+        background-color: $color-red;
+      }
 
-    &:hover::after {
-      width: 100%;
+      &:hover::after {
+        width: 100%;
+      }
     }
 
     &:nth-child(5n) {
@@ -119,6 +123,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     box-sizing: border-box;
     color: #fff;
