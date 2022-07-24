@@ -12,6 +12,8 @@
   transform: translateX(100%);
   transition: transform 0.5s ease;
 
+  overflow: auto;
+
   &:target {
     transform: translateX(0);
   }
@@ -19,6 +21,19 @@
   &__container {
     display: flex;
     flex-direction: column;
+
+    &-top {
+      position: sticky;
+      z-index: 4;
+      top: 0;
+      height: 120px;
+      background-color: #e5e5e5;
+      overflow: hidden;
+
+      @include onTablet {
+        height: 144px;
+      }
+    }
   }
 
   &--is-open {
@@ -40,9 +55,9 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    padding-top: 111px;
     padding-bottom: 40px;
     list-style: none;
+
   }
 
   &__link {
