@@ -1,0 +1,108 @@
+.menu {
+  position: fixed;
+  flex-direction: column;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+  background-color: #e5e5e5;
+
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--is-open {
+    transform: translateX(0);
+  }
+
+  &__menu-close {
+    position: relative;
+    top: 40px;
+    margin-left: auto;
+    background-image: url(../images/cross.svg);
+
+    @include onDesktop {
+      top: 50px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 111px;
+    padding-bottom: 40px;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 22px;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &-tel {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 27px;
+      transition: 0.2s;
+
+      &:hover {
+        text-shadow: 1px 2px 5px black;
+        color: white;
+      }
+    }
+
+    &-book-test {
+      font-size: 12px;
+      line-height: 16px;
+
+      &::after {
+        position: relative;
+        content: " ";
+        display: flex;
+        height: 1px;
+        top: 8px;
+        width: 141px;
+        background: #1d1d1d;
+        border-radius: 8px;
+        text-decoration: solid;
+
+      }
+    }
+  }
+
+  &__item-link {
+    &::after {
+      position: absolute;
+      display: flex;
+      margin-top: 8px;
+      content: "";
+      height: 1px;
+      text-decoration: solid;
+      background-color: #1d1d1d;
+      width: 0;
+      transition: 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
