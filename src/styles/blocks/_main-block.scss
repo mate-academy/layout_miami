@@ -1,39 +1,42 @@
 .main {
   &__content {
-    display: flex;
-    flex-direction: column;
+    --content-padding: 60px 20px 120px;
+
+    @extend %flexDirectionColumn;
     justify-content: center;
-    max-width: 1260px;
-    padding: 60px 20px 120px;
+    max-width: $containerWidth;
+    padding: var(--content-padding);
     margin: auto;
     box-sizing: content-box;
 
-    color: #fff;
+    color: $white;
 
     @include onTablet {
-      padding: 120px 75px;
+      --content-padding: 120px 75px;
     }
 
     @include onDesktop {
-      padding: 180px 120px;
+      --content-padding: 180px 120px;
     }
   }
 
   &__entry {
+    --enty-padding-bot: 80px;
+
     margin: auto;
-    padding-bottom: 80px;
+    padding-bottom: var(--enty-padding-bot);
     max-width: 920px;
 
     @include onTablet {
       display: grid;
       grid-template-columns: repeat(2,1fr);
       gap: 24px;
-      padding-bottom: 120px;
+      --enty-padding-bot: 120px;
     }
 
     @include onDesktop {
       grid-template-columns: 1fr 1.5fr;
-      padding-bottom: 160px;
+      --enty-padding-bot: 160px;
     }
   }
 
@@ -55,7 +58,7 @@
 
     text-align: center;
 
-    font-weight: 500;
+    font-weight: $fontWeight500;
     font-size: 32px;
     line-height: 32px;
 
@@ -72,9 +75,9 @@
   }
 
   &__entry-text {
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 24px;
+    font-family: $fontFamilyInter;
+    font-weight: $fontWeight500;
+    font-size: 1.5rem;
     line-height: 140%;
   }
 
@@ -82,20 +85,19 @@
     width: 100%;
     object-position: center;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform $transitionDuration;
 
     &:hover {
       transform: scale(1.1);
     }
-
   }
 
   &__bike-title {
     padding: 32px 0 8px;
 
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: $fontWeight700;
+    font-size: 1.5rem;
     line-height: 140%;
   }
 
@@ -103,15 +105,15 @@
     padding: 16px 0 8px;
 
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: $fontWeight700;
+    font-size: 1.5rem;
     line-height: 140%;
   }
 
   &__bike-description {
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: $fontWeight400;
+    font-size: 1rem;
     line-height: 140%;
 
     @include onDesktop {
@@ -122,8 +124,8 @@
   &__bike-price {
     padding: 16px 0 40px;
 
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: $fontWeight700;
+    font-size: 1.5rem;
     line-height: 140%;
 
     @include onDesktop {
@@ -132,17 +134,17 @@
   }
 
   &__details-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 80px;
+    --details-margin-bot: 80px;
+    @extend %flexDirectionColumn;
+    margin-bottom: var(--details-margin-bot);
     gap: 40px;
 
     @include onTablet {
-      margin-bottom: 120px;
+      --details-margin-bot: 120px;
     }
 
     @include onDesktop {
-      margin-bottom: 180px;
+      --details-margin-bot: 180px;
     }
   }
 
@@ -167,7 +169,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform $transitionDuration;
 
     &:hover {
       transform: scale(1.03);
