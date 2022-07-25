@@ -1,0 +1,192 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 20px 90px;
+  margin: 0 auto;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+
+  background: url(../images/photos/header.png) no-repeat center;
+  background-size: cover;
+  height: 100vh;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(../images/phone.svg) no-repeat center;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    &--position {
+      height: 35px;
+      width: 35px;
+      margin-right: 30px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    align-self: center;
+    letter-spacing: -1.5px;
+  }
+}
+
+.position-container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  background-image: url(../images/MyBiKE_phone_size.svg);
+  width: 130px;
+  height: 38px;
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+label {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: $label-size;
+  height: $label-size;
+  cursor: pointer;
+
+  & circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: $primary;
+    stroke-width: $label-weight* 0.6;
+    stroke-dasharray: 284;
+    stroke-dashoffset: 284;
+    stroke-linecap: round;
+    transition: 0.4s ease;
+  }
+}
+
+.hamburger {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 63%;
+  height: 63%;
+
+  &::before,
+  & .center,
+  &::after {
+    --tx: 0;
+    --rt: 0deg;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: $label-weight;
+    border-radius: 0.3em;
+    background: $primary;
+    transform-origin: right;
+    transition: $bounce 0.1s;
+  }
+
+  & .center {
+    right: 0;
+    transition: $bounce, width $ease;
+    transition-delay: 0.3s;
+  }
+
+  &::before {
+    top: 0;
+    transform: translate(var(--tx), 100%) rotate(var(--rt));
+  }
+
+  &::after {
+    bottom: 0;
+    transform: translate(var(--tx), -100%) rotate(var(--rt));
+  }
+}
+
+#toggle:checked {
+  & ~ label circle {
+    stroke-dashoffset: 0;
+    transition-delay: 0.1s;
+  }
+
+  & ~ label .hamburger::before,
+  & ~ label .hamburger::after {
+    --tx: -15%;
+    --rt: 45deg;
+    transition: $bounce 0.1s;
+  }
+
+  & ~ label .hamburger::before {
+    --ty: 15%;
+    --rt: -45deg;
+  }
+
+  & ~ label .hamburger .center {
+    width: 0;
+    right: calc($label-size * -0.16);
+    transition: width $ease, right $bounce;
+  }
+}
+
+@media (min-width: 744px) {
+  .header {
+    padding: 36px 72px 130px;
+    &__phone {
+      &--position {
+        margin-right: 40px;
+      }
+      &:hover::before {
+        transform: translate(-70%, 60%);
+        width: max-content;
+        color: #292929;
+        content: "+1 234 555-55-55";
+      }
+    }
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  .logo {
+    background-image: url(../images/MyBiKE.svg);
+    width: 187px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 36px 120px 122px;
+    &__phone {
+      &--position {
+        margin-right: 50px;
+      }
+    }
+    &__title {
+      font-size: 80px;
+    }
+  }
+}
