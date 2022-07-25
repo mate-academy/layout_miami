@@ -25,6 +25,18 @@
       }
     }
 
+    @include onMobile {
+      &__item {
+        @for $start from 1 through 6 {
+          @for $end from $start through 6 {
+            &#{$start}-#{$end}-m {
+              grid-column: #{$start} / #{$end + 1}
+            }
+          }
+        }
+      }
+    }
+
     @include onTablet {
     &__item{
       @for $start from 1 through 6 {
@@ -49,20 +61,9 @@
         @for $end from $start through 12 {
           &#{$start}-#{$end}-d {
             grid-column: #{$start} / #{$end + 1};
-            }
           }
         }
       }
     }
-    @include onMobile {
-      &__item {
-        @for $start from 1 through 6 {
-          @for $end from $start through 6 {
-            &#{$start}-#{$end}-m {
-              grid-column: #{$start} / #{$end + 1}
-            }
-          }
-        }
-      }
-    }
+  }
 }
