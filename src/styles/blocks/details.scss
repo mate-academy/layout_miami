@@ -1,41 +1,31 @@
 .details {
   &__photos {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 16px;
 
     @include onTablet {
-
-      flex-grow: 2 / 1;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
     }
 
-    @include onDesktop {
-      flex-grow: 2/1;
+    &--last {
+      @include onTablet {
+        grid-template-columns: 1fr 2fr;
+      }
     }
   }
 
   &__photo {
-    min-height: 130px;
-    max-height: 187px;
+    width: 100%;
+    height: 100%;
+
     object-fit: cover;
     object-position: center;
     transition: transform 0.3s;
 
     &:hover {
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 744px) {
-      width: 128px;
-    }
-
-    @include onTablet {
-      max-height: 187px;
-    }
-
-    @include onDesktop {
-      max-height: 321px;
+      transform: scale(1.04);
     }
   }
 
