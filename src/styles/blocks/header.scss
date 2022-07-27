@@ -1,0 +1,158 @@
+.container {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.header {
+  background-image: url(../images/photos/hero_phone.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/photos/hero_desktop.png);
+    background-position: auto;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/hero_desktop.png);
+    background-position: left;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    height: 100vh;
+    padding: 40px 20px 94px;
+
+    @include onTablet {
+      padding: 52px 72px 40px;
+    }
+
+    @include onDesktop() {
+      padding: 52px 120px 64px;
+    }
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    height: 16px;
+    width: 130px;
+
+    @include onTablet {
+      height: 24px;
+      width: 190px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    font-display: auto;
+    gap: 30px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__phone-icon {
+    display: block;
+    background-image: url(../images/phone_icon.svg);
+    height: 18px;
+    width: 18px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        color: #292929;
+        opacity: 0;
+        transform: translate(-100%, 50%);
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+      color: purple;
+    }
+
+  }
+
+  &__menu-icon {
+    display: block;
+    height: 18px;
+    width: 18px;
+
+    background-image: url(../images/menu-icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 0.3s linear;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-icon_hover.svg);
+    }
+  }
+
+  &__sound-pic {
+    width: 32px;
+    height: 27px;
+
+    @include onTablet {
+      width: 63px;
+      height: 76px;
+    }
+  }
+
+  &__key-message {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    padding-top: 16px;
+
+    @include onTablet {
+      padding-top: 40px;
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      padding-top: 32px;
+      font-size: 48px;
+    }
+  }
+}
