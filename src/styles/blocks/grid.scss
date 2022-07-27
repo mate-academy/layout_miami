@@ -1,29 +1,30 @@
 .grid {
   display: grid;
-  // grid-template-columns: repeat(2, 1fr);
   grid-template-columns: repeat(12, 1fr);
   column-gap: 20px;
 
-  @include onDesktop {
-    // grid-template-columns: repeat(12, 1fr);
+  @include onTablet {
     column-gap: 24px;
   }
 
-  // &--12 {
-  //   grid-template-columns: repeat(12, 1fr);
-  // }
+  // оно возможно не нужно если я ниже 744 ставлю блок вместо гридов
+  // &--card {
+  //   gap: 48px 20px;
 
-  // подумай как его лучше назвать и куда закинуть
-  // и стоит ли его модификатором делать --mobile
-  // &--mobile {
-  //   display: block;
-  //   grid-template-columns: repeat(12, 1fr);
-  //   @include onTablet {
-  //     display: grid;
+  //   @include onDesktop {
+  //     column-gap: 24px;
   //   }
   // }
 
-  &--tablet {
+  &--col-md-2 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &--d-block {
     display: block;
 
     @include onTablet {
@@ -31,10 +32,18 @@
     }
   }
 
+  &--d-md-block {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
   &__item {
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--sm-#{$start}-#{$end} {
+        &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
       }

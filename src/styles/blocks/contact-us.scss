@@ -1,0 +1,62 @@
+.contact-us {
+  // при экране 744 обертка не дает ее детям разделится
+  // и упасть друг под друга если на ней флекс
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      display: block;
+      flex-direction: row;
+    }
+  }
+
+  &__info {
+    display: inline-flex;
+    flex-direction: column;
+    // нужна ширина чтобы не делать 3 колонки
+    max-width: 237px;
+
+    @include onDesktop {
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &__title {
+    // можно тут хелпер использовать
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+
+    font-size: 14px;
+    font-weight: 400;
+    // line-height: 27px;
+  }
+
+  &__tel {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    font-weight: 700;
+    color: $dark-light;
+
+    text-decoration: none;
+  }
+
+  &__place {
+    margin-bottom: 48px;
+
+    font-weight: 700;
+    color: $dark-light;
+    text-decoration: none;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+}
