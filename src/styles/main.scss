@@ -1,44 +1,130 @@
-.page {
-  font-family: "Inter", sans-serif;
+@import "./blocks/mixin";
+@import "./utils/variables";
+@import "./blocks/reset.scss";
+@import "./blocks/top-actions.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/page.scss";
+@import "./blocks/footer.scss";
+@import "./blocks/grid.scss";
+@import "./blocks/why_buy_direct_from_Bose.scss";
+@import "./blocks/category.scss";
+@import "./blocks/button.scss";
 
-  &__body {
-    margin: 0;
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 20px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
   }
 }
 
 .header {
-  background-image: url(../images/photos/bose.jpg);
-  background-size: contain;
-  // background-position: center;
-  height: 100vh;
+  background-image: url(../images/photos/header_for_mobile.jpg);
 
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/menu.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include onDesktop {
+    background-image: url(../images/photos/bose.jpg);
+    // height: 720px;
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
 
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
+  }
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 65px;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 32px;
+    font-style: italic;
+    font-weight: 800;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/decor_header.svg);
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        content: "";
+        display: block;
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/Sound_waves.svg);
+        margin-bottom: 32px;
+      }
     }
   }
 
   &__call {
-    width: 18px;
-    height: 18px;
+    &-tel {
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
 
-    background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-}
+          display: block;
+          width: max-content;
+          padding-right: 12px;
 
-.logo {
-  &__image {
-    height: 18px;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #292929;
+
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
   }
 }
