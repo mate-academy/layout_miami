@@ -3,16 +3,29 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  &--count--3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+  }
+
+  @include onDeskTop {
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+  }
+
   &--adaptation {
     display: block;
 
     @include onTablet {
-      grid-template-columns: repeat(12, 1fr);
       display: grid;
     }
   
     @include onDeskTop {
-      grid-template-columns: repeat(12, 1fr);
       display: grid;
     }
   }
@@ -22,6 +35,16 @@
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--adaptation-#{$start}-#{$end} {
+          @include onDeskTop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }

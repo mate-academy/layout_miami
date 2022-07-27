@@ -1,0 +1,57 @@
+.exhibitions {
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 255px;
+    margin-bottom: 24px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 185px;
+      padding-bottom: 0;
+    }
+
+    @include onDeskTop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: left;
+    transition: transform 0.5s ease;
+    
+    @include onDeskTop {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &-title {
+    font-size: 24px;
+    line-height: 30px;
+    color: #d12d35;
+    display: block;
+  }
+
+  &-date {
+    font-size: 16px;
+    line-height: 27px;
+
+    @include font-parameters ($font-family, 400, normal);
+
+    margin-bottom: 48px;
+  }
+}
