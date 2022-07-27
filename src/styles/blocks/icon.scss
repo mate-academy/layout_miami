@@ -1,0 +1,69 @@
+.icon {
+  &__info {
+    color: #fff;
+    font-size: 16px;
+    line-height: 27px;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    align-items: flex-end;
+    transform: translate(-100%, -50%);
+    padding-right: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    pointer-events: none;
+  }
+
+  &--menu-opener {
+    @include widthHeight (18px, 12px);
+
+    background-image: url(../images/menu.svg);
+    
+    @include backgroundParam (cover, no-repeat, center);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+
+      @include backgroundParam (cover, no-repeat, center);
+    }
+
+    @include onTablet {
+      @include widthHeight (24px, 16px);
+    }
+
+    @include onDeskTop {
+      @include widthHeight (24px, 16px);
+    }
+  }
+
+  &--phone {
+    @include widthHeight (18px, 18px);
+
+    background-image: url(../images/call.svg);
+    background-repeat: no-repeat;
+    text-decoration: none;
+
+    @include onDeskTop {
+      @include widthHeight (24px, 24px);
+
+      &:hover .icon__info {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--cross {
+    // text-align: start;
+    background-image: url(../images/cross.svg);
+
+    @include widthHeight (16px, 16px);
+    @include backgroundParam (cover, no-repeat, center);
+
+    @include onDeskTop {
+      @include widthHeight (21px, 21px);
+    }
+  }
+}
