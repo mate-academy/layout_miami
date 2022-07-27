@@ -10,27 +10,45 @@
   &__right {
     display: flex;
     justify-content: flex-end;
+    align-content: center;
   }
 
   &__tel {
-    background-image: url(../images/phone.svg);
-    background-repeat: no-repeat;
-    width: var(--hight-top);
-    height: var(--hight-top);
-    margin-right: 30px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 2px;
+    display: flex;
+    &--number {
+      display: inline;
+      margin-right: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: var(--hight-top);
+      letter-spacing: 2px;
+      width: max-content;
+      text-align: center;
+      color: $main-font-color;
+      opacity: 0;
+    }
+    &--icon {
+      width: var(--hight-top);
+      height: var(--hight-top);
+      padding-right: 30px;
+      cursor: pointer;
+      @include screenUp744 {
+        padding-right: 40px;
+      }
+    }
     @include screenUp1260 {
-      &:hover::before {
-        content:"+1 234 555-55-55";
-        display: block;
-        position: relative;
-        right: 700%;
-        width: max-content;
-        color: $main-font-color;
-        line-height:var(--hight-top);
+      &:hover &--number {
+        opacity: 1;
+      }
+    }
+  }
+
+
+  @include screenUp1260 {
+   .part__icon-phone:hover~part__tel {
+      .part__tel {
+        opacity: 1;
       }
     }
   }
@@ -38,12 +56,12 @@
   &__menu {
     width: var(--hight-top);
     height: var(--hight-top);
-    &--background{
+    &--background {
       &--open {
         background-image: url(../images/icon-open.svg);
         background-repeat: no-repeat;
         background-position: center;
-        &:hover{
+        &:hover {
           background-image: url(../images/icon-hover.svg);
         }
       }
