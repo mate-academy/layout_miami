@@ -1,7 +1,160 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: 'Inter', sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include desktop {
+    padding: 0 120px;
+  }
+}
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__utils{
+      display: flex;
+
+    }
+
+}
+
+.header {
+  background-image: url("../images/photos/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+
+  }
+
+  &__nav {
+    &__utils{
+      display: flex;
+
+    }
+  }
+
+
+
+  &__menu-open {
+    display: block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url("../images/photos/menu.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      width: 18px;
+      height: 12px;
+      background-image: url("../images/photos/menu_hover.png");
+    }
+
+    @include desktop {
+      width: 24px;
+      height: 18px;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+
+    background-image: url("../images/photos/phone.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include desktop {
+      width: 24px;
+      height: 24px;
+      text-decoration: none;
+      &::before{
+        content: "+1 234 555-55-55";
+        font-weight: 700;
+        font-size: 12px;
+        color: #292929;
+
+        position: relative;
+        top: 50%;
+        letter-spacing: 2px;
+        text-align: center;
+        display: block;
+
+        opacity: 0;
+
+        width: max-content;
+        padding-right: 12px;
+
+        transform: translate(-100%, -50%);
+        pointer-events: none;
+
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__logo {
+
+    &__image {
+      height: 17px;
+
+      @include desktop {
+        height: 24px;
+        width: 190px;
+      }
+    }
+  }
+
+  &__thing{
+    width: 32px;
+    height: 27px;
+    margin: 0;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include desktop {
+      font-size: 48px;
+    }
+  }
 }
