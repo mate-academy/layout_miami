@@ -43,17 +43,18 @@
     margin-bottom: 4px;
   }
   &__text {
+    position: relative;
     font-weight: 700;
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+
+    @include itemsHover(-3px, $main-text-color-dark);
   }
   &__form {
     flex: 0 0 100%;
     margin-left: auto;
-    & > * {
-      border: none;
-    }
+
     @include customRes(650px) {
       flex-basis: 50%;
     }
@@ -72,21 +73,27 @@
     font-family: "Cinzel", serif;
     font-weight: 400;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 22px;
 
     background-color: #f8f8fa;
-
     color: $main-text-color-dark;
+
+    border: 1px solid transparent;
+
+    &:focus {
+      border: 1px solid $main-text-color-dark;
+      outline: none;
+    }
 
     &::placeholder {
       color: #7e7e83;
     }
 
-    &:hover::placeholder {
+    &:focus::placeholder {
       color: $main-text-color-dark;
     }
 
-    &:focus::placeholder {
+    &:hover::placeholder {
       color: $main-text-color-dark;
     }
 
