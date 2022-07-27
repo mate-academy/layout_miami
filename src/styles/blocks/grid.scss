@@ -1,0 +1,38 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+  &__desktop-up744 {
+    display: block;
+    @include screenUp744 {
+      display: grid;
+    }
+    &--flex{
+      display: flex;
+      width:100%;
+      justify-content: space-between;
+
+      @include screenUp744 {
+        display: grid;
+      }
+    }
+  }
+  &__desktop-up1260 {
+    display: block;
+    @include screenUp1260 {
+      display: grid;
+    }
+  }
+
+  @include screenUp744(){
+    &__item {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12{
+          &--#{$start}--#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+  }
+}
