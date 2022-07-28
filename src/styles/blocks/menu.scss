@@ -1,5 +1,7 @@
 .menu {
   background-color: $accent-main;
+  z-index: 1;
+
   &__call-block {
     padding-bottom: 8px;
   }
@@ -11,7 +13,10 @@
 
   &__list {
     list-style: none;
-    margin: 0 0 32px;
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
   }
 
   &__item {
@@ -21,9 +26,11 @@
       margin-bottom: 0;
     }
   }
+
   &__top {
     @include top-actions;
   }
+
   &__link {
     display: inline-block;
     padding-bottom: 8px;
@@ -53,8 +60,7 @@
     text-decoration: none;
 
     &--action {
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding: 8px 0;
       border-bottom: 1px solid transparent;
       transition: border-color 0.5s;
       &:hover {
