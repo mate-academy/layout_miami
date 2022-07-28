@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  &__item {
+    &-img {
+      &_desktop {
+        display: none;
+        @include onDeskTop {
+          display: block;
+        }
+      }
+      &_mobile {
+        @include onDeskTop {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include onDeskTop {
+    grid-template-columns: 3fr 1fr;
+    column-gap: 24px;
+
+    &__item {
+
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+
+          &--desktop-#{$start}-#{$end} {
+            @include onDeskTop {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
+    &_type2 {
+      grid-template-columns: repeat(3, 1fr);
+      @include onDeskTop {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &_type3 {
+      @include onDeskTop {
+        grid-template-columns: 1fr 3fr;
+      }
+    }
+
+    &_type4 {
+      display: block;
+      @include onDeskTop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
