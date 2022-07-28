@@ -1,24 +1,18 @@
 .header {
-  font-family: "Cinzel", serif;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url(../images/header.jpg);
+  background-image: url(../images/header.png);
+  @include position-background;
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    box-sizing: border-box;
-    height: 100vh;
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include top-position;
     padding: 25px 20px 0;
+
+    @include onTablet {
+      padding: 30px 70px 0;
+    }
+
+    @include onDesktop {
+      padding: 50px 120px 0;
+    }
   }
 
   &__menu {
@@ -26,68 +20,26 @@
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-  }
 
-  &__call {
-    text-decoration: none;
-    background-image: url(../images/phone.svg);
-
-    @include onDesktop() {
-      &::before {
-        content: "+1 212-535-7710";
-        transform: translateX(-100%);
-
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 27px;
-        color: #fff;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+    @include onTablet {
+      gap: 60px;
     }
   }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__title {
     display: flex;
     align-items: center;
     padding-bottom: 330px;
     margin: 0 auto;
-
     text-align: center;
     font-weight: 700;
     font-size: 40px;
-
     line-height: 100%;
     letter-spacing: -1.5px;
-
-    color: #fff;
+    color: $colorWhite;
 
     @include onDesktop {
       font-size: 80px;
       line-height: 80px;
-    }
-
-    @include onTablet {
-      font-size: 64px;
-      line-height: 64px;
     }
   }
 }

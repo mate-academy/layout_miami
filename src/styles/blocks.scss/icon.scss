@@ -1,14 +1,68 @@
 .icon {
-  display: block;
-  height: 18px;
-  width: 18px;
+  @include position-background;
 
-  @include onTablet() {
-    height: 24px;
-    width: 24px;
+  &--menu-call {
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    background-image: url(../images/phone.png);
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 212-535-7710";
+        transform: translateX(-100%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+  &--menu-opener {
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.png);
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+
+    transition: background-image 0.3s;
+    &:hover {
+      background-image: url(../images/menu-close.png);
+    }
+  }
+
+  &--menu-close {
+    width: 16px;
+    height: 16px;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    background-image: url(../images/menu-close.png);
+  }
 }
