@@ -1,6 +1,5 @@
 .menu {
   position: fixed;
-  flex-direction: column;
   height: 100vh;
   top: 0;
   left: 0;
@@ -19,7 +18,24 @@
   }
 
   &__container {
+    --container-padding: 0 20px;
+
     @extend %flexDirectionColumn;
+
+    padding: var(--container-padding);
+    min-height: 100vh;
+
+    @include onTablet {
+      --container-padding: 0 72px;
+    }
+
+    @include onDesktop {
+      max-width: 780px;
+    }
+
+    @include onDesktopL {
+      max-width: $containerWidth;
+    }
 
     &-top {
       display: flex;
