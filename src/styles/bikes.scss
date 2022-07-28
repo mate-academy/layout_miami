@@ -1,0 +1,64 @@
+.bikes {
+  text-align: center;
+
+  @include onTablet {
+    text-align: left;
+  }
+
+  &__photo {
+    --max-width: 280px;
+    --max-height: 228px;
+    width: var(--max-width);
+    height: var(--max-height);
+    transition: transform 1s;
+
+    @include onTablet {
+      display: flex;
+      margin: 0 auto;
+      --max-width: 392px;
+      --max-height: 316px;
+    }
+
+    @include onDesktop {
+      --max-width: 324px;
+      --max-height: 264px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__title {
+    text-align-last: left;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: (34 / 24) * 100%;
+    color: $white-color;
+    padding-bottom: 8px;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: (22.4 / 16) * 100%;
+    color: $white-color;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: (34 / 24) * 100%;
+    color: $white-color;
+
+    &::before {
+      content: "$";
+    }
+  }
+}
