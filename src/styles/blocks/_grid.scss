@@ -1,32 +1,40 @@
 .grid {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 130px);
+  grid-template-columns: repeat($phone-column-count, 130px);
   column-gap: 20px;
 
   @include onTablet {
-    grid-template-columns: repeat(6, 80px);
+    grid-template-columns: repeat($tablet-column-count, 80px);
     column-gap: 24px;
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 63px);
+    grid-template-columns: repeat($desktop-column-count, 63px);
     column-gap: 24px;
   }
 
   &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
+    @for $start from 1 through $phone-column-count {
+      @for $end from $start through $phone-column-count {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+      }
+    }
 
+    @for $start from 1 through $tablet-column-count {
+      @for $end from $start through $tablet-column-count {
         &--tablet-#{$start}-#{$end} {
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
 
+    @for $start from 1 through $desktop-column-count {
+      @for $end from $start through $desktop-column-count {
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
