@@ -1,6 +1,35 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin formEffects {
+  &::placeholder {
+    color: $form-color;
+  }
+
+  &:hover {
+    border: 1px solid $form-border;
+
+    &::placeholder {
+      color: $dark;
+    }
+  }
+
+  &:focus {
+    border: 1px solid $dark;
+    border-radius: 0;
+  }
+}
+
+@mixin icon-size ($width, $height) {
+  width: $width;
+  height: $height;
 }

@@ -1,0 +1,51 @@
+.icon {
+  display: inline-block;
+
+  @extend %background-rules;
+
+  &--burger {
+    @include icon-size (18px, 12px);
+    margin-left: 30px;
+
+    background-image: url("/images/menu.svg");
+
+    @include onTablet {
+      @include icon-size (24px, 16px);
+      margin-left: 64px;
+      transition: background-image 0.3s;
+    }
+
+    &:hover {
+      background-image: url("/images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    @include icon-size (18px, 18px);
+
+    background-image: url("/images/phone.svg");
+
+    @include onTablet {
+      @include icon-size (24px, 24px);
+      margin-left: 0;
+    }
+
+    @include onDesktop {
+      margin-left: 20px;
+
+      &:hover + .nav-menu__contacts--hidden {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--cross {
+    @include icon-size (16px, 16px);
+
+    background-image: url("/images/cross.svg");
+
+    @include onDesktop {
+      @include icon-size (22px, 22px);
+    }
+  }
+}
