@@ -1,0 +1,58 @@
+.exhibit {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 324px;
+    margin-bottom: 24px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        height: 186px;
+        padding-bottom: 0;
+      }
+
+      @include onDecktop {
+        height: 324px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &:first-child {
+      object-position: -10px;
+    }
+
+    &--not-visible {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDecktop {
+        display: block;
+      }
+    }
+  }
+
+  &__subtitle {
+    color: $accent-color;
+  }
+
+  &__data {
+    font-weight: 400;
+    color: $main-dark;
+    margin-bottom: 48px;
+  }
+}
