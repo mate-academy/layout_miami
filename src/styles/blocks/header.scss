@@ -53,58 +53,64 @@
     }
   }
 
-  // &__icons {
-  //   height: 46px;
-  //   width: 66px;
-
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-
-  //   @include onTablet {
-  //     height: 65px;
-  //     width: 110px;
-  //   }
-
-  //   @include onDesktop {
-  //     height: 65px;
-  //     width: 110px;
-  //   }
-  // }
-
   &__call {
     text-decoration: none;
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue\a+1 212-535-7710";
+        white-space: pre;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -70%);
 
-    // @include onDesktop {
-    //   &::before {
-    //     content: "The Met Fifth Avenue\a
-    //      +1 212-535-7710\aThe Met Cloisters\a +1 212-923-3700";
-    //     white-space: pre;
-    //     position: relative;
-    //     top: 50%;
-    //     transform: translate(-100%, -50%);
+        display: block;
+        width: 210px;
+        padding-right: 20px;
 
-    //     display: block;
-    //     width: 210px;
-    //     padding-right: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        text-align: end;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
 
-    //     font-weight: 700;
-    //     font-size: 16px;
-    //     line-height: 27px;
-    //     text-transform: uppercase;
-    //     text-align: end;
-    //     color: #fff;
-    //     opacity: 0;
-    //     pointer-events: none;
+        transition: 0.5s;
+      }
 
-    //     transition: 0.5s;
-    //   }
-    // }
+      &::after {
+        content: "\aThe Met Cloisters\a +1 212-923-3700";
+        white-space: pre;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -70%);
 
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
+        display: block;
+        width: 210px;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        text-align: end;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.5s;
       }
     }
-  }
 
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
