@@ -2,8 +2,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 20px 90px;
+  padding: 29px 20px 90px;
   margin: 0 auto;
+
+  @include onTablet {
+    padding: 36px 72px 130px;
+  }
+
+  @include onDesktop {
+    padding: 36px 120px 122px;
+  }
 
   font-weight: 700;
   font-size: 12px;
@@ -14,24 +22,62 @@
   height: 100vh;
 
   &__nav {
-    display: flex;
+    --nav-cell-size: 18px;
+    display: grid;
     align-items: center;
     justify-content: space-between;
+    grid-template-columns: 1fr var(--nav-cell-size) var(--nav-cell-size);
+    gap: 30px;
+
+    @include onTablet {
+      --nav-cell-size: 24px;
+      gap: 40px;
+    }
   }
 
   &__phone {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    padding-bottom: 100%;
     background: url(../images/phone.svg) no-repeat center;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 2px;
 
-    &--position {
-      height: 35px;
-      width: 35px;
-      margin-right: 30px;
+    @include onTablet {
+      &::before {
+        transform: translate(-70%, 100%);
+        width: max-content;
+        color: #292929;
+        content: "+1 234 555-55-55";
+
+        opacity: 0;
+        pointer-events: none;
+        transition-duration: 0.4s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu-btn {
+    background-image: url(../images/menu-btn_small.svg);
+    width: 18px;
+    height: 12px;
+
+    @include onTablet {
+      background-image: url(../images/menu-btn_large.svg);
+      width: 24px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
     }
   }
 
@@ -41,152 +87,120 @@
     line-height: 100%;
     align-self: center;
     letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
-}
-
-.position-container {
-  display: flex;
-  align-items: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .logo {
   background-image: url(../images/MyBiKE_phone_size.svg);
   width: 130px;
   height: 38px;
-}
 
-.checkbox {
-  position: absolute;
-  display: none;
-}
-
-label {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: $label-size;
-  height: $label-size;
-  cursor: pointer;
-
-  & circle {
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke: $primary;
-    stroke-width: $label-weight* 0.6;
-    stroke-dasharray: 284;
-    stroke-dashoffset: 284;
-    stroke-linecap: round;
-    transition: 0.4s ease;
-  }
-}
-
-.hamburger {
-  position: absolute;
-  display: grid;
-  place-items: center;
-  width: 63%;
-  height: 63%;
-
-  &::before,
-  & .center,
-  &::after {
-    --tx: 0;
-    --rt: 0deg;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: $label-weight;
-    border-radius: 0.3em;
-    background: $primary;
-    transform-origin: right;
-    transition: $bounce 0.1s;
-  }
-
-  & .center {
-    right: 0;
-    transition: $bounce, width $ease;
-    transition-delay: 0.3s;
-  }
-
-  &::before {
-    top: 0;
-    transform: translate(var(--tx), 100%) rotate(var(--rt));
-  }
-
-  &::after {
-    bottom: 0;
-    transform: translate(var(--tx), -100%) rotate(var(--rt));
-  }
-}
-
-#toggle:checked {
-  & ~ label circle {
-    stroke-dashoffset: 0;
-    transition-delay: 0.1s;
-  }
-
-  & ~ label .hamburger::before,
-  & ~ label .hamburger::after {
-    --tx: -15%;
-    --rt: 45deg;
-    transition: $bounce 0.1s;
-  }
-
-  & ~ label .hamburger::before {
-    --ty: 15%;
-    --rt: -45deg;
-  }
-
-  & ~ label .hamburger .center {
-    width: 0;
-    right: calc($label-size * -0.16);
-    transition: width $ease, right $bounce;
-  }
-}
-
-@media (min-width: 744px) {
-  .header {
-    padding: 36px 72px 130px;
-    &__phone {
-      &--position {
-        margin-right: 40px;
-      }
-      &:hover::before {
-        transform: translate(-70%, 60%);
-        width: max-content;
-        color: #292929;
-        content: "+1 234 555-55-55";
-      }
-    }
-    &__title {
-      font-size: 64px;
-    }
-  }
-
-  .logo {
+  @include onTablet {
     background-image: url(../images/MyBiKE.svg);
     width: 187px;
     height: 56px;
   }
 }
 
-@media (min-width: 1024px) {
-  .header {
-    padding: 36px 120px 122px;
-    &__phone {
-      &--position {
-        margin-right: 50px;
-      }
+.cross {
+  background-image: url(../images/cross_small.svg);
+  width: 16px;
+  height: 16px;
+
+  @include onTablet {
+    background-image: url(../images/cross_large.svg);
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateX(100%);
+  transition: transform 0.4s;
+
+  &:target {
+    transform: translateX(0);
+  }
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  height: 100vh;
+  background-color: $c-gray;
+  padding: 24px 20px;
+
+  @include onTablet {
+    padding: 36px 72px;
+  }
+
+  @include onDesktop {
+    padding: 36px 120px;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 16px;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onDesktop {
+      grid-template-columns: 1fr 22px;
     }
-    &__title {
-      font-size: 80px;
+  }
+
+  &__item {
+    text-decoration: none;
+    color: #1d1d1d;
+
+    &:not(&:first-child) {
+      margin-top: 32px;
+    }
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &--phone {
+      margin-top: 40px;
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--book-test {
+      margin-top: 16px;
+      font-size: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+      width: max-content;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    text-decoration: none;
+    color: #1d1d1d;
+
+    &:hover {
+      border-color: #1d1d1d;
     }
   }
 }
