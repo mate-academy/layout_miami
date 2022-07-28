@@ -1,7 +1,166 @@
+@import "reset";
 @import "utils";
 @import "fonts";
-@import "typography";
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Poppins", sans-serif;
+
+  &__body {
+    cursor: url("../images/cursor.svg"), auto;
+  }
+}
+
+a:hover {
+  cursor: url("../images/cursor-hover.svg"), auto;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.logo {
+  &:hover {
+    cursor: url("../images/cursor-hover.svg"), auto;
+  }
+  &__img {
+    height: 38px;
+    @media (min-width: 600px) {
+      height: 56px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--menu {
+    background: url("../images/menu.svg") center/cover no-repeat;
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background: url("../images/phone.svg") center/cover no-repeat;
+  }
+
+  &--cross {
+    background: url("../images/cross.svg") center/cover no-repeat;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  background: #e5e5e5 url("../images/header.png") center/cover;
+  display: none;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 29px 0 88px;
+    box-sizing: border-box;
+
+    @include onTablet {
+      padding: 36px 0 122px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 130px;
+    }
+
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 700;
+    color: #292929;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+
+  &__nav--wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 72px;
+
+    @include onTablet {
+      width: 96px;
+    }
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        color: #292929;
+        padding-right: 20px;
+
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        position: relative;
+        //top: 50%;
+        transform: translate(-100%, 0);
+
+        pointer-events: none;
+
+        opacity: 0;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-desk.png");
+  }
+}
+
+.menu {
+  &__content {
+    padding: 29px 0 0;
+  }
 }
