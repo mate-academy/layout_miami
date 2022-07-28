@@ -8,12 +8,30 @@
     column-gap: 24px;
   }
 
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--tablet {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      padding: 48px;
+    }
+  }
+
   &--desktop {
     display: block;
 
     @include onDesktop {
       display: grid;
     }
+
+    @include onTablet {
+      display: grid;
+    }
+
   }
 
   &__item {
@@ -21,6 +39,16 @@
       @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
