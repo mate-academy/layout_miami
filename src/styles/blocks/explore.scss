@@ -1,57 +1,76 @@
 .explore {
 
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(1, 1fr);
-
-  &__box {
-    display: grid;
-    flex-direction: column;
-
+  &__body {
 
     @include onDesktop {
-      grid-template-columns: repeat(3, minmax(310px, 1fr));
-      gap: $column-gap;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+    @include onDesktop {
+      flex: 33%;
+      margin: 0;
+      flex-shrink: 1;
+    }
+  }
+  &__image {
+    min-width: 100%;
+    margin-bottom: 24px;
+    flex-shrink: 1;
+
+    @include onTablet {
+      margin-bottom: 32px;
     }
 
-  }
-
-  &__name {
-    margin: 24px 0 4px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-    color: $main-red;
-  }
-
-  &__info {
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-  }
-
-  &__card {
-
-    display: block;
-    align-items: center;
-
+    @include onDesktop {
+      max-height: 320px;
+    }
   }
 
   &__img {
-    display: flex;
-    width: 280px;
-    height: 277px;
+    display: block;
+    width: 100%;
+    transition: transform 0.3s;
 
-
-    @include onTablet {
-      height: 387px;
-      width: 390px;
+    &:hover {
+      transform: scale(105%);
     }
-
-    @include onDesktop {
-      height: 320px;
-      width: 324px;
-    }
-
   }
+
+  &__name {
+
+      margin: 0 0 4px;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+      color: $main-red;
+
+      @include onDesktop {
+        display: block;
+        height: 64px;
+      }
+    }
+
+    &__info {
+      font-family: "Roboto", sans-serif;
+      text-align: center;
+    }
 }
