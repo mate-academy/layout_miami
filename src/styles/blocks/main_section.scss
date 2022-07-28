@@ -1,31 +1,42 @@
-.main {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  background-color: #292929;
-  color: #fff;
-  padding: 0 20px;
-  margin: 0 auto;
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 
-  @include onTablet {
-    padding: 0 72px;
-  }
+  &__main {
+    display: grid;
+    // grid-template-columns: repeat(2, minmax(130));
+    // grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    justify-items: center;
+    background-color: #292929;
+    color: #fff;
+    padding: 0 20px;
+    margin: 0 auto;
 
-  @include onDesktop {
-    padding: 0 120px;
-  }
-
-  &__description {
     @include onTablet {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      padding: 0 72px;
     }
+
+    @include onDesktop {
+      padding: 0 120px;
+    }
+  }
+
+  &__section {
+    &--description {
+      text-align: left;
+      grid-area: 1 / -1;
+    }
+
     &--title {
       margin-top: 60px;
-      @include onTablet {
-        margin-top: 120px;
-      }
+      // grid-area: 1 / -1;
+      font-weight: 500;
       font-size: 32px;
+      letter-spacing: -1.5px;
+      color: #fff;
+
+      text-align: center;
 
       @include onTablet {
         font-size: 48px;
@@ -34,136 +45,139 @@
       @include onDesktop {
         font-size: 64px;
       }
-
-      font-weight: 500;
-      line-height: 100%;
-      letter-spacing: -1.5px;
-      text-align: left;
     }
 
     &--text {
       margin-top: 32px;
-
+      font-size: 24px;
       @include onTablet {
         margin-top: 120px;
       }
-
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 140%;
     }
-  }
-
-  &__compare {
-    &--title {
-      margin-top: 80px;
-      font-weight: 500;
-      font-size: 32px;
-      text-align: center;
-      letter-spacing: -1.5px;
-
-      &::before {
-        content: "Recommended";
-
-        @include onTablet {
-          content: "Compare Bikes";
-          font-size: 48px;
-        }
-
-        @include onDesktop {
-          font-size: 64px;
-        }
-      }
-    }
-
-    .item-container {
-      display: grid;
-      @include onDesktop {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .item {
-      &__image {
-        &--size {
-          margin-top: 40px;
-          width: 280px;
-          height: 228px;
-
-          @include onTablet {
-            margin-top: 48px;
-            width: 392px;
-            height: 316px;
-          }
-
-          @include onDesktop {
-            width: 324px;
-            height: 264px;
-          }
-        }
-      }
-
-      &__title {
-        margin-top: 32px;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 140%;
-
-      }
-
-      &__description {
-        margin-top: 8px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 140%;
-      }
-
-      &__price {
-        margin-top: 16px;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 140%;
-      }
-    }
-  }
-
-  &__details {
-    display: grid;
-    grid-template-columns: repeat(2, 130px);
-    gap: 20px;
-
-    @include onTablet {
-      grid-template-columns: repeat(6, 80px);
-      gap: 24px;
-    }
-
-    @include onDesktop {
-      grid-template-columns: repeat(12, 63px);
-    }
-  }
-
-  .details {
-    &__title {
-      grid-column: 1 / -1;
-      margin-top: 92px;
-      font-weight: 500;
-      font-size: 32px;
-      text-align: center;
-      letter-spacing: -1.5px;
-
-      &::before {
-        content: "Recommended";
-
-        @include onTablet {
-          content: "The Details";
-          font-size: 48px;
-        }
-
-        @include onDesktop {
-          font-size: 64px;
-        }
-      }
-    }
-
   }
 }
+
+.description-title {
+  @include onTablet {
+    margin-top: 120px;
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
+  }
+}
+
+.compare {
+  justify-items: center;
+
+  &__img {
+    margin-top: 48px;
+    width: 100%;
+  }
+
+  &__title {
+    margin-top: 32px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+  &__description {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  &__price {
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  grid-auto-flow: column;
+  justify-items: center;
+
+  grid-template-areas: "title title"
+    "img-1 img-2"
+    "feature-unlock feature-unlock"
+    "description-unlock description-unlock"
+    "img-3 img-4"
+    "feature-lights feature-lights"
+    "description-lights description-lights"
+    "img-5 img-6"
+    "feature-hydraulic feature-hydraulic"
+    "desctiption-hydraulic desctiption-hydraulic";
+  gap: 20px;
+  &__img {
+    margin-top: 40px;
+    @include onTablet {
+      margin-top: 48px;
+    }
+
+    width: 100%;
+    height: 130px;
+
+    &--1 {
+      grid-area: img-1;
+    }
+    &--2 {
+      grid-area: img-2;
+    }
+    &--3 {
+      grid-area: img-3;
+    }
+    &--4 {
+      grid-area: img-4;
+    }
+    &--5 {
+      grid-area: img-5;
+    }
+    &--6 {
+      grid-area: img-6;
+    }
+  }
+
+  &__feature {
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+
+    &--unlock {
+      grid-area: feature-unlock;
+    }
+    &--lights {
+      grid-area: feature-lights;
+    }
+    &--hydraulic {
+      grid-area: feature-hydraulic;
+    }
+  }
+
+  &__description {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    &--unlock {
+      grid-area: description-unlock;
+    }
+    &--lights {
+      grid-area: description-lights;
+    }
+    &--hydraulic {
+      grid-area: desctiption-hydraulic;
+    }
+  }
+}
+
+.title-position {
+  grid-area: title;
+}
+// details needs to be adaptive to PC and tab
