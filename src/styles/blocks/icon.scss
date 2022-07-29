@@ -1,32 +1,76 @@
 .icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 
-  @include onTablet {
+  &__logo {
     height: 24px;
-    width: 24px;
-  }
+    width: 193px;
+    background-image: url("./../images/logo.svg");
 
-  &--menu {
-    background-image: url(../images/menu-opener.svg);
-
-    &:hover {
-      background-image: url(../images/menu_opener-hover.svg);
+    @include on320px {
+      height: 17px;
+      width: 130px;
     }
   }
 
-  &--phone {
-    background-image: url(../images/call.svg);
+  &__call {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 40px;
 
+    height: 24px;
+    width: 24px;
+
+    background-image: url("./../images/call.svg");
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+    color: $color-black;
+    text-align: center;
+
+    @include on320px {
+      margin-right: 30px;
+      height: 18px;
+      width: 18px;
+    }
+
+    &::before {
+      @include callIcon;
+      transition: all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      @include callIcon;
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
-  &--cross {
-    background-image: url(../images/cross.svg);
+  &__menu {
+    display: block;
+    height: 19px;
+    width: 24px;
+    background-image: url("./../images/menu.svg");
+    transition: background-image 0.2s;
 
+    @include on320px {
+      height: 12px;
+      width: 18px;
+    }
+
+    &:hover {
+      background-image: url("./../images/menu_hover.svg");
+    }
+  }
+
+  &__remove {
+    display: block;
+    height: 24px;
+    width: 24px;
+    background-image: url("./../images/remove.svg");
   }
 }
