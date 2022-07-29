@@ -33,6 +33,17 @@
   &__section {
     padding-top: 60px;
     margin-bottom: 20px;
+
+    @include onTablet {
+      padding-top: 120px;
+      margin-bottom: 20px;
+    }
+
+    @include onDesktop {
+      padding-top: 140px;
+      margin-bottom: 20px;
+    }
+
   }
 
   &__section-title {
@@ -40,6 +51,43 @@
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
+    text-align: center;
+
+    padding-bottom: 48px;
+
+    &--move {
+      padding-bottom: 32px;
+
+      @include onTablet {
+        text-align: left;
+      }
+    }
+
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+
+  }
+
+  &__section-subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__section-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    &--move {
+      font-weight: 500;
+      font-size: 24px;
+    }
   }
 }
 
@@ -288,6 +336,53 @@ a:hover {
 
       padding-bottom: 8px;
       border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  @include onTablet {
+    &__item-tab {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  @include onDesktop {
+    &__item-desk {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
   }
 }
