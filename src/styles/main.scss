@@ -1,7 +1,644 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+@mixin top-actions {
+  --icon-width: 18px;
 
-body {
-  background: $c-gray;
+  width: 100%;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  justify-items: start;
+
+  @include onDesktop {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+
+$bike-photo-height: 100vw / 3.2;
+$headerTopPadding: 29px;
+$colorGray: #e5e5e5;
+
+.page {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  scroll-behavior: smooth;
+  background-color: #1d1d1d;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+
+    transform: translateX(100%);
+    transition: transform 300ms;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 80px;
+
+    @include onDesktop {
+      margin-bottom: 180px;
+    }
+
+    &:first-child {
+      margin-bottom: 60px;
+
+      @include onDesktop {
+        margin-bottom: 160px;
+      }
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 48px;
+
+      @include onDesktop {
+        font-size: 64px;
+      }
+
+      &:first-child {
+        margin-bottom: 36px;
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  &__image {
+    height: 38px;
+
+    @include onDesktop {
+      height: 56px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat ;
+
+  &--phone {
+    background-image: url("../images/call.svg");
+  }
+
+  &__tooltip {
+    display: block;
+    width: max-content;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    padding-right: 20px;
+    transform: translateY(-50%);
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #292929;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 300ms;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--cross {
+    grid-column-start: 3;
+    background-image: url("../images/cross.svg");
+  }
+}
+
+.top-actions {
+  @include top-actions;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url("../images/bg_img.png");
+
+  &-top {
+    @include top-actions;
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+
+    @include onDesktop {
+      padding-bottom: 128px;
+    }
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onDesktop {
+      font-size: 80px;
+      letter-spacing: -1.5px;
+      color: #1d1d1d;
+    }
+  }
+
+}
+
+.menu {
+  background-color: $colorGray;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    margin: 0 0 48px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+  }
+  &__call {
+    width: max-content;
+    display: block;
+    text-decoration: none;
+    font-weight: 700;
+    color: #1d1d1d;
+    text-transform: uppercase;
+
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.about {
+  &__content {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+  &__title {
+    text-align: left;
+    grid-column: 1 / 5;
+
+  }
+  &__paragraph {
+    grid-column: 7 / 13;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
+
+.details {
+  &__bike {
+    margin-bottom: 48px;
+  }
+}
+
+.bike {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &__item {
+    &-first {
+      grid-column: 1 / 7;
+    }
+
+    &-second {
+      grid-column: 7 / 13;
+    }
+
+    &-text {
+      grid-column: 1 / 13;
+    }
+
+    &-button {
+      grid-column: 1 / 13;
+
+      @include onTablet {
+        grid-column: 3 / 11;
+      }
+
+      @include  onDesktop {
+        grid-column: 5 / 9;
+      }
+
+    }
+    @include onTablet {
+      &-1-4 {
+        grid-column: 1 / 5;
+      }
+
+      &-1-8 {
+        grid-column: 1 / 9;
+      }
+
+      &-5-12 {
+        grid-column: 5 / 13;
+      }
+
+      &-9-12 {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: #{$bike-photo-height};
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1d1d1d;
+
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 40px;
+
+  transition: all 300ms;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+.models {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 25%;
+    @include onDesktop {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      column-gap: 24px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__item {
+    margin-bottom: 40px;
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.model {
+  width: 50vw;
+  @include onDesktop {
+    max-width: 319px;
+  }
+  &__photo {
+    margin-bottom: 32px;
+    width: 100%;
+  }
+
+  &__name {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &__description {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
+
+.contact-us {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  &__item {
+    &-first {
+      grid-column: 1 / 13;
+
+      @include onTablet {
+        grid-column: 1 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 6;
+      }
+    }
+
+    &-second {
+      grid-column: 1 / 13;
+
+      @include onTablet {
+        grid-column: 7 / 13;
+      }
+
+      @include  onDesktop {
+        grid-column: 8 / 13;
+      }
+    }
+  }
+
+  &__info {
+    margin-bottom: 24px;
+
+    &-title {
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: #fff;
+    }
+
+    &-link {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 140%;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__button {
+    margin-bottom: 48px;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+
+    &-last {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.form-field {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 48px;
+  background-color: #f8f8fa;
+  border-radius: 40px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 20px;
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    border-color: #292929;
+    outline: none;
+  }
+
+  &-textarea {
+    height: 148px;
+    border-radius: 16px;
+    resize: none;
+    font-family: inherit;
+  }
+}
+
+.footer {
+  background-image: url("../images/footer_bg.png");
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+
+  @include onDesktop {
+    height: 555px;
+  }
 }
