@@ -24,6 +24,30 @@
 
   &__details {
     display: none;
+    width: max-content;
+    transform: translate(-100%, -80%);
+    padding-right: 20px;
+    text-align: end;
+    text-transform: uppercase;
+    color: $colorWhite;
+    font-weight: 700;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms;
+
+    @include onDesktop {
+      display: block;
+
+      &:first-child {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &:hover &__details {
+    opacity: 1;
+    pointer-events: all;
   }
 
   &--menu {
@@ -46,33 +70,5 @@
 
   &--cross {
     background-image: url("../images/cross.svg");
-  }
-
-  @include onDesktop {
-    &__details {
-      display: block;
-      width: max-content;
-      position: relative;
-      transform: translateX(-100%);
-      padding-right: 20px;
-      top: -40px;
-      text-align: end;
-      text-transform: uppercase;
-      color: $colorWhite;
-      font-weight: 700;
-      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms;
-
-      &:first-child {
-        margin-bottom: 8px;
-      }
-    }
-
-    &:hover &__details {
-      opacity: 1;
-      pointer-events: all;
-    }
   }
 }
