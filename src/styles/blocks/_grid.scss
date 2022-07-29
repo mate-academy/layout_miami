@@ -8,7 +8,21 @@
     column-gap: 24px;
   }
 
-  &--desktop {
+  &--bodhistava {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    @include onTablet {
+      grid-template-columns: repeat(8, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDecktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &--tablet {
     display: block;
 
     @include onTablet {
@@ -16,7 +30,27 @@
     }
   }
 
+  &--desktop {
+    display: block;
+
+    @include onDecktop {
+      display: grid;
+    }
+  }
+
   &__item {
+    @include onTablet {
+      &--not-visible {
+        display: none;
+      }
+    }
+
+    @include onDecktop {
+      &--not-visible {
+        display: block;
+      }
+    }
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {

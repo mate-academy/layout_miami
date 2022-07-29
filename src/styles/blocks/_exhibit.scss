@@ -2,8 +2,9 @@
   &__photo-container {
     position: relative;
     width: 100%;
+
     box-sizing: border-box;
-    max-height: 324px;
+    max-height: 320px;
     margin-bottom: 24px;
 
     &::after {
@@ -12,7 +13,7 @@
       padding-bottom: 100%;
 
       @include onTablet {
-        height: 186px;
+        height: 284px;
         padding-bottom: 0;
       }
 
@@ -31,8 +32,14 @@
     object-fit: cover;
     object-position: center;
 
-    &:first-child {
-      object-position: -10px;
+    $position:
+      "right",
+      "left";
+
+    @each $side in $position {
+      &--#{$side} {
+        object-position: #{$side};
+      }
     }
 
     &--not-visible {
