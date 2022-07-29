@@ -3,10 +3,23 @@
   background-size: cover;
   background-position: center;
 
-  @include onDesktop {
+  @media (min-width: 460px) {
     background-image: url(../images/photos/header-img.png);
-    background-size: cover;
-    background-position: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 66px;
+
+    @include onDesktop {
+      width: 88px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__title {
@@ -39,6 +52,11 @@
       font-size: 48px;
       line-height: 48px;
     }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
   }
 
   &__content {
@@ -58,9 +76,10 @@
     text-decoration: none;
 
     @include onDesktop {
-      &:hover::before {
+      &::before {
         content: "+1 234 555-55-55";
         position: relative;
+        opacity: 0;
         top: 50%;
         transform: translate(-100%,-50%);
         font-weight: 700;
@@ -72,6 +91,12 @@
         width: max-content;
         color: #292929;
         padding-right: 12px;
+        transition: 0.2s linear;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
       }
     }
   }
