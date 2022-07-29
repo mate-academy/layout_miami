@@ -9,6 +9,20 @@
     cursor: url("../images/cursor-hover.svg"), auto;
     background: #1d1d1d;
     color: #fff;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #292929;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #b9b9b9;
+      border-radius: 4px;
+      border: 2px solid #292929;
+    }
   }
 
   &__menu {
@@ -89,6 +103,18 @@
       font-size: 24px;
     }
   }
+
+  $section--padding:
+    8,
+    16,
+    24,
+    32;
+
+  @each $p in $section--padding {
+    &__section--padding_#{$p} {
+      padding-bottom: #{$p}px;
+    }
+  }
 }
 
 a:hover {
@@ -130,12 +156,11 @@ a:hover {
   }
   &__img {
     height: 38px;
-    @media (min-width: 600px) {
+
+    @include onTablet {
       height: 56px;
     }
   }
-
-  //z-index: 2;
 
 }
 
@@ -384,5 +409,31 @@ a:hover {
         }
       }
     }
+  }
+}
+
+.compare-item {
+  margin: 0 auto 40px;
+  width: 100%;
+  grid-column: 2 / span 4;
+
+  @include onTablet {
+    margin-bottom: 48px;
+  }
+
+  @include onDesktop {
+    grid-column: span 4;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}
+
+.scale {
+  transition: transform 100ms linear;
+
+  &:hover {
+    transform: scale(1.02);
   }
 }
