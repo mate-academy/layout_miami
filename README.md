@@ -6,9 +6,11 @@ Implementation of an informational landing about bicycles.
 
 TECHNOLOGIES
 
-HTML5
-SCSS
-JavaScript
+*HTML5
+
+*SCSS
+
+*JavaScript
 
 
 [DEMO_LINK](https://VitmixG.github.io/layout_miami/)
