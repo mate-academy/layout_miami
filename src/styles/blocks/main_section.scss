@@ -4,7 +4,6 @@
 
   &__main {
     display: grid;
-    grid-auto-rows: auto;
     justify-items: center;
     background-color: #292929;
     color: #fff;
@@ -23,7 +22,6 @@
   &__section {
     &--description {
       text-align: left;
-      grid-area: 1 / -1;
     }
 
     &--title {
@@ -64,10 +62,18 @@
   }
 
   &__footer {
-    background-image: url(../images/photos/footer.png);
+    background-image: url(../images/photos/footer_mobile.png);
+    height: 200px;
+    @include onTablet {
+      background-image: url(../images/photos/footer_tablet.png);
+      height: 480px;
+    }
+    @include onDesktop {
+      background-image: url(../images/photos/footer.png);
+      height: 555px;
+    }
     background-size: cover;
     background-position: top right;
-    height: 200px;
     width: 100%;
   }
 }
@@ -81,199 +87,4 @@
   @include onDesktop {
     font-size: 64px;
   }
-}
-
-.compare {
-  justify-items: center;
-
-  &__img {
-    margin-top: 48px;
-    width: 100%;
-  }
-
-  &__title {
-    margin-top: 32px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 140%;
-  }
-  &__description {
-    margin-top: 8px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-  }
-  &__price {
-    margin-top: 16px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 140%;
-  }
-}
-
-.details {
-  display: grid;
-  grid-template-columns: repeat(2, 130px);
-  grid-auto-flow: column;
-  justify-items: center;
-
-  grid-template-areas: "title title"
-    "img-1 img-2"
-    "feature-unlock feature-unlock"
-    "description-unlock description-unlock"
-    "img-3 img-4"
-    "feature-lights feature-lights"
-    "description-lights description-lights"
-    "img-5 img-6"
-    "feature-hydraulic feature-hydraulic"
-    "desctiption-hydraulic desctiption-hydraulic";
-  gap: 20px;
-  &__img {
-    margin-top: 40px;
-    @include onTablet {
-      margin-top: 48px;
-    }
-
-    width: 100%;
-    height: 130px;
-
-    &--1 {
-      grid-area: img-1;
-    }
-    &--2 {
-      grid-area: img-2;
-    }
-    &--3 {
-      grid-area: img-3;
-    }
-    &--4 {
-      grid-area: img-4;
-    }
-    &--5 {
-      grid-area: img-5;
-    }
-    &--6 {
-      grid-area: img-6;
-    }
-  }
-
-  &__feature {
-    margin-top: 16px;
-    font-weight: 700;
-    font-size: 24px;
-    text-align: left;
-
-    &--unlock {
-      grid-area: feature-unlock;
-    }
-    &--lights {
-      grid-area: feature-lights;
-      font-family: "Inter", sans-serif;
-    }
-    &--hydraulic {
-      grid-area: feature-hydraulic;
-    }
-  }
-
-  &__description {
-    margin-top: 8px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-
-    &--unlock {
-      grid-area: description-unlock;
-    }
-    &--lights {
-      grid-area: description-lights;
-    }
-    &--hydraulic {
-      grid-area: desctiption-hydraulic;
-    }
-  }
-}
-
-.title-position {
-  grid-area: title;
-}
-// details needs to be adaptive to PC and tab
-
-.contacts {
-  padding-bottom: 120px;
-  &__input {
-
-    background-color: #f8f8fa;
-    border-radius: 40px;
-    height: 48px;
-    width: 100%;
-    outline: none;
-    padding-left: 16px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-
-    &::placeholder {
-      color: #7e7e83;
-    }
-
-    &:hover {
-      border: 1px solid #d5d7de;
-    }
-
-    &:focus {
-      border: 1px solid #292929;
-    }
-
-    &--name {
-      margin-top: 48px;
-    }
-
-    &--email {
-      margin-top: 16px;
-    }
-
-    &--message {
-      margin-top: 16px;
-      padding: 14px 16px;
-      height: max-content;
-      resize: none;
-      min-height: 148px;
-      border-radius: 16px;
-
-      font-family: "Poppins", sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-
-  &__button {
-    margin-top: 32px;
-    @extend %button-styles;
-  }
-
-  &__info {
-    margin-top: 24px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-    color: #fff;
-
-    &--phone {
-      margin-top: 48px;
-    }
-  }
-
-  &__data {
-    margin-top: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 140%;
-    color: #fff;
-  }
-  // p:last-child {
-  //   padding-bottom: 120px;
-  // }
 }
