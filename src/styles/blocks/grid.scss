@@ -4,29 +4,37 @@
   column-gap: 20px;
 
   &--second {
+    display: grid;
     grid-template-columns: repeat((3,1fr));
   }
 
   &--third {
+    display: grid;
     grid-template-columns: repeat(1,1fr);
   }
 
-  @include onDesctop {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
-  }
-
   @include onTablet {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
-  &--desktop {
-    display: block;
-  }
-
   @include onDesctop {
     display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--mobile {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+
+    @include onDesctop {
+      display: grid;
+    }
   }
 
   &__item {
@@ -37,7 +45,7 @@
         }
   
         &--tablet-#{$start}-#{$end} {
-          @include onDesctop {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
@@ -58,4 +66,22 @@
       }
     }
   }
+
+  &--unvisible-tablet {
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &--visible-tablet {
+    display: none;
+    
+    @include onTablet {
+      display: grid;
+    }
+  }
+}
+
+.test {
+  display: grid;
 }
