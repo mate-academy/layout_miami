@@ -5,30 +5,54 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+
+    &--trio {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 25px;
+    }
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 25px;
+    }
+
   }
+
   &__title {
     margin-top: 24px;
     margin-bottom: 48px;
   }
 
   &__photo {
-    padding: 0;
+    padding-bottom: 0;
   }
 
   &__photo-container {
-    max-height: 320px;
-    width: 100%;
-    box-sizing: border-box;
     position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 250px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      padding-bottom: 100%;
+      display: block;
+    }
+    @include onDesktop {
+      padding-bottom: 0;
+    }
   }
 
   &__image {
-    height: 100%;
     width: 100%;
-  }
-
-  &--trio {
-    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__photo-big {
@@ -92,14 +116,5 @@
     @include onDesktop {
       grid-column: 9 / 13;
     }
-  }
-
-  @include onTablet {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 25px;
-  }
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
-    gap: 25px;
   }
 }
