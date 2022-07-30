@@ -2,16 +2,21 @@
   &__item {
     display: grid;
     justify-content: center;
-    gap: 1.5rem;
     margin-bottom: 4rem;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
 
-    &--ear,
-    &--speaker {
-      grid-template-columns: minmax(200px, 2fr) 1fr;
-    }
+    @include devices("tablet") {
+      gap: 1.5rem;
 
-    &--glass {
-      grid-template-columns: 1fr 2fr;
+      &--ear,
+      &--speaker {
+        grid-template-columns: 2fr 1fr;
+      }
+  
+      &--glass {
+        grid-template-columns: 1fr 2fr;
+      }
     }
   }
 
@@ -32,11 +37,12 @@
     width: 100%;
   }
 
-  @media only screen and (max-width: 500px) {
-    &__item {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+  // @media only screen and (max-width: 500px) {
+  //   &__item {
+  //     grid-template-columns: 1fr 1fr;
+  //   }
+  // }
+    
 
   &__button-wrapper {
     text-align: center;
