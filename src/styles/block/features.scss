@@ -1,0 +1,58 @@
+.features {
+  &__photos-container {
+    position: relative;
+    width: 100%;
+    max-height: $photo-fatures-heigth-mobile;
+    margin-bottom: 16px;
+    overflow: hidden;
+    
+    @include onTablet {
+      height: $photo-fatures-heigth-tablet;
+    }
+    
+    @include onDesktop {
+      max-height: $photo-fatures-heigth-desktop;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 100%;
+      }
+    }
+  }
+
+  &__name {
+    margin-bottom: 8px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+
+    &--inter {
+      @include font-family ($font-family-second, 400);
+    }
+  }
+
+  &__bike-photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

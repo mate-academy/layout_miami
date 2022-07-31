@@ -1,31 +1,40 @@
 .header {
-  
-  background-image: url(../images/photos/header-bike.png);
-  min-width: 315px;
-  min-height: 323px;
+
+  padding: $headerTopPadding 0 0;
 
   @include onTablet {
-    min-height: 510px;
+    padding: $headerTopPaddingTablet 0 0;
   }
 
   @include onDesktop {
-    min-height: 598px;
-    
+    padding: $headerTopPaddingDesktop 0 0;
   }
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
+  min-width: 315px;
+  min-height: 323px;
+  
+  @include onTablet {
+    min-height: 510px;
+  }
+  
+  @include onDesktop {
+    min-height: 598px;
+  }
+  
+  background-image: url(../images/photos/header-bike.png);
+  @extend %background-img-settings;
+
+  &__top {
+    @include top-actions;
+  }
 
   &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $headerTopPadding 0 0 ;
-
-    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 160px;
+    box-sizing: border-box;
+    height: 100vh;
     
     @include onTablet() {
       gap: 265px;
@@ -58,42 +67,9 @@
 
     @include onDesktop {
       font-size: 80px;
+      color: $color-dark-grey;
     }
 
     color: $color-grey;
   }
-
-  &__call {
-    box-sizing: border-box;
-    color: $color-grey;
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        opacity: 0;
-        width: max-content;
-        padding-right: 40px;
-
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: $color-grey;
-
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
-
 }

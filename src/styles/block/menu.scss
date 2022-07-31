@@ -1,19 +1,24 @@
 .menu {
-  background-color: #e5e5e5;
-
-  &__top {
-    margin-bottom: 40px;
+  box-sizing: border-box;
+  padding: $headerTopPadding 0 0;
+  
+  @include onTablet {
+    padding: $headerTopPaddingTablet 0 0;
   }
   
-  &__content {
-    box-sizing: border-box;
-    padding: $headerTopPadding 0;
-    height: 100vh;
+  @include onDesktop {
+    padding: $headerTopPaddingDesktop 0 0;
+  }
+  
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $light-gray;
 
-    & .top-actions {
-      grid-template-columns: 1fr var(--icon-width);
-      
-    }
+  &__top {
+    @include top-actions;
+    grid-template-columns: 1fr var(--icon-width);
+    // gap: 0;
+    margin-bottom: 40px;
   }
 
   &__list {
@@ -26,16 +31,9 @@
     list-style: none;
   }
 
-  // &__item {
-
-  // }
-
   &__link {
     border-bottom: 1px solid transparent;
-    text-decoration: none;
-    color: $color-dark-grey;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
+    @include font-family($font-family-second, 700);
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
@@ -52,11 +50,8 @@
     display: block;
     width: max-content;
 
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    color: $color-dark-grey;
+    @include font-family($font-family-second, 700);
     text-transform: uppercase;
-    text-decoration: none;
 
     &--phone {
       margin-bottom: 16px;
