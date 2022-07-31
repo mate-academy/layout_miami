@@ -1,6 +1,20 @@
 .presentation {
   &__photo-container {
     width: 100%;
+
+    &--tablet {
+      display: none;
+
+      @include onTablet {
+        display: grid;
+      }
+    }
+
+    &--mobile {
+      @include onTablet {
+        display: none;
+      }
+    }
   }
 
   &__image {
@@ -15,7 +29,11 @@
     margin-bottom: 48px;
   }
 
-  &__title--onDesktop {
+  &--onDesktop {
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
     @include onDesktop {
       margin-bottom: 48px;
     }
@@ -41,18 +59,18 @@
     line-height: 140%;
     color: #fff;
   }
-}
 
-.presentation__image--mobile {
-  @include onDesktop {
-    display: none;
+  &__image--mobile {
+    @include onDesktop {
+      display: none;
+    }
   }
-}
 
-.presentation__image--desktop {
-  display: none;
+  &__image--desktop {
+    display: none;
 
-  @include onDesktop {
-    display: block;
+    @include onDesktop {
+      display: block;
+    }
   }
 }
