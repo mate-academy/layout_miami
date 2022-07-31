@@ -11,3 +11,12 @@ bar.addEventListener('click', () => {
 barX.addEventListener('click', () => {
   menu.classList.toggle('display-flex');
 });
+
+// disable page scrolling under the menu
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('body--with-menu');
+  } else {
+    document.body.classList.remove('body--with-menu');
+  }
+});
