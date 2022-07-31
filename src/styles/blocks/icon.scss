@@ -1,0 +1,65 @@
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablets {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--menu {
+    transform: scaleX(-1);
+    background-image: url(../images/menu.svg);
+    transition: background-image 300ms;
+    margin-left: 30px;
+
+    @include onTablets {
+      margin-left: 40px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    margin-left: auto;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
