@@ -1,0 +1,81 @@
+.header {
+  background-size: cover;
+  background-position: top;
+  background-image: url(../images/bike_header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: $header-top-padding;
+    box-sizing: border-box;
+    height: 100vh;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 30px;
+    transform: translateY(-25%);
+
+    @include onTablet {
+      gap: 36px;
+    }
+
+    @include onDesktop() {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        color: $color-light-black;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    margin: 0 auto;
+    padding-bottom: 88px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: $color-light-black;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+      font-size: 64px;
+      line-height: 64px;
+      color: $color-dark;
+    }
+
+    @include onDesktop() {
+      padding-bottom: 122px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
