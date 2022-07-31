@@ -1,41 +1,65 @@
 .header {
-  background-image: url(../images/header.jpg);
-  background-size: cover;
-  background-position: center;
+  padding: 52px 0 64px;
+  height: 720px;
+  box-sizing: border-box;
 
-  &__top {
-    @include top-actions;
+  background-image: url("./../images/header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+
+  @include on744px {
+    height: 800px;
+    background-image: url("./../images/header.jpg");
   }
-  &__content {
+
+  @include on320px {
+    padding-top: 40px;
+    height: 500px;
+
+    background-image: url("./../images/header_small.jpg");
+    background-position: left;
+  }
+
+  &-content {
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: space-between;
-
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $headerTopPadding 0 80px;
   }
 
   &__title {
-    font-size: 46px;
-    line-height: 40px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -1px;
+    justify-self: end;
 
-    @include onDesktop {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 48px;
+
+    @include on744px {
+      font-size: 40px;
+    }
+
+    @include on320px {
+      font-size: 32px;
     }
 
     &::before {
       content: "";
       display: block;
-      width: 40px;
-      height: 2px;
-      background-color: #fff;
-      margin-bottom: 24px;
+      padding-top: 42px;
+
+      width: 63px;
+      height: 73px;
+
+      background-image: url("../images/Sound-waves.svg");
+      background-repeat: no-repeat;
+
+      @include on320px {
+        padding-top: 16px;
+        height: 27px;
+        background-image: url("../images/sound-waves-phone.svg");
+      }
     }
   }
 }
