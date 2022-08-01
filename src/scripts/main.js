@@ -1,6 +1,6 @@
 'use strict';
 
-window.addEventListener('hashchanger', () => {
+window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
   } else {
