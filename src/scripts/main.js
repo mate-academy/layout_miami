@@ -1,9 +1,11 @@
 'use strict';
 
-window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#menu') {
-    document.body.classList.add('page__body--with-menu');
-  } else {
-    document.body.classList.remove('page__body--with-menu');
-  }
+const myForm = document.querySelector('form');
+
+myForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const inputs = document.querySelectorAll('.form-field');
+inputs.forEach((input) => {
+  input.value = '';
+});
 });
