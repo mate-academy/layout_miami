@@ -14,10 +14,6 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#id-subm').addEventListener('click', function(event) {
-  event.preventDefault();
-}, false);
-
 const firstSector = document.getElementById('firstSector');
 const aboutUs = document.getElementById('about-us');
 
