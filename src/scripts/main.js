@@ -7,3 +7,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+// eslint-disable-next-line no-unused-vars
+function myFunction() {
+  document.getElementById('contacts-form').reset();
+}
