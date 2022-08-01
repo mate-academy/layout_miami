@@ -7,3 +7,7 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page--with-menu');
   }
 });
+
+document.getElementById("checkbox").addEventListener("click", function(event) {
+  event.preventDefault()
+});
