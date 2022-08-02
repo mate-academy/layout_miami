@@ -1,0 +1,115 @@
+.page {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 350ms;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 80px;
+
+    &:nth-child(2) {
+      margin-bottom: 120px;
+    }
+
+    @include onTablet {
+      margin-bottom: 70px;
+    }
+  }
+
+  &__section-title {
+    box-sizing: border-box;
+    max-width: 280px;
+    margin: 0 auto 48px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $textColor;
+    text-align: center;
+    white-space: pre-line;
+
+    @include onTablet {
+      max-width: 498px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 24px;
+  }
+
+  &__picture {
+    margin-bottom: 12px;
+    transition: transform 350ms;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.1, 1.1);
+        z-index: 1;
+      }
+    }
+  }
+
+  &__image {
+    flex-grow: 2;
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include onTablet {
+      height: 187px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 0 40px;
+
+    font-weight: 700;
+    line-height: 140%;
+    color: $textColor;
+
+    @include onTablet {
+      margin-bottom: 64px;
+      font-size: 24px;
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+}
