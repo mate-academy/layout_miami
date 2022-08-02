@@ -2,72 +2,15 @@
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.getElementById('main').setAttribute('style', 'display: none;');
-    document.getElementById('header').setAttribute('style', 'margin: 0;');
-    document.getElementById('footer').setAttribute('style', 'display: none;');
+    document.body.classList.add('page__body--with-menu');
   } else {
-    document.getElementById('main').setAttribute('style', 'display: block;');
-    document.getElementById('header').setAttribute('style', 'margin: 120');
-    document.getElementById('footer').setAttribute('style', 'display: block;');
+    document.body.classList.remove('page__body--with-menu');
   }
 });
 
-const firstSector = document.getElementById('firstSector');
-const aboutUs = document.getElementById('about-us');
+const form = document.getElementById('form');
 
-function moveOn() {
-  setTimeout(function() {
-    aboutUs.scrollIntoView(
-      {
-        block: 'start', behavior: 'smooth',
-      });
-  },
-  10);
-}
-firstSector.addEventListener('click', moveOn);
-
-const secondSector = document.getElementById('secondSector');
-const compateBikes = document.getElementById('compate-bikes');
-
-function moveOn1() {
-  setTimeout(function() {
-    compateBikes.scrollIntoView(
-      {
-        block: 'start', behavior: 'smooth',
-      });
-  },
-  10);
-}
-secondSector.addEventListener('click', moveOn1);
-
-const thirdSector = document.getElementById('thirdSector');
-const details = document.getElementById('details');
-
-function moveOn2() {
-  setTimeout(function() {
-    details.scrollIntoView(
-      {
-        block: 'start', behavior: 'smooth',
-      });
-  },
-  10);
-}
-thirdSector.addEventListener('click', moveOn2);
-
-const fourthSector = document.getElementById('fourthSector');
-const contacts = document.getElementById('contacts');
-
-function moveOn3() {
-  setTimeout(function() {
-    contacts.scrollIntoView(
-      {
-        block: 'start', behavior: 'smooth',
-      });
-  },
-  10);
-}
-fourthSector.addEventListener('click', moveOn3);
-
-document.querySelector('#id-subm').addEventListener('click', function(event) {
+form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
-}, false);
+  form.reset();
+});
