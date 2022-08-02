@@ -7,3 +7,12 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+// stop form refreshing page on submit
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  e.target.reset();
+}
+);
