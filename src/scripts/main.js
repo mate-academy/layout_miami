@@ -3,13 +3,11 @@
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.getElementById('main').setAttribute('style', 'display: none;');
-    // eslint-disable-next-line max-len
-    document.getElementById('header').setAttribute('style', 'margin-bottom: 0;');
+    document.getElementById('header').setAttribute('style', 'margin: 0;');
     document.getElementById('footer').setAttribute('style', 'display: none;');
   } else {
     document.getElementById('main').setAttribute('style', 'display: block;');
-    // eslint-disable-next-line max-len
-    document.getElementById('header').setAttribute('style', 'margin-bottom: 120px');
+    document.getElementById('header').setAttribute('style', 'margin: 120');
     document.getElementById('footer').setAttribute('style', 'display: block;');
   }
 });
@@ -69,3 +67,7 @@ function moveOn3() {
   10);
 }
 fourthSector.addEventListener('click', moveOn3);
+
+document.querySelector('#id-subm').addEventListener('click', function(event) {
+  event.preventDefault();
+}, false);
