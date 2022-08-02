@@ -8,7 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// eslint-disable-next-line no-unused-vars
-function myFunction() {
-  document.getElementById('contacts-form').reset();
-}
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  form.reset();
+});
