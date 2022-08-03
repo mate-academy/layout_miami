@@ -27,11 +27,10 @@
       height: 24px;
     }
 
-    &:hover::before {
-      content: "+1 234 555-55-55";
-      position: relative;
+    &::before {
+      content: "";
       display: block;
-      width: max-content;
+      position: relative;
       top: 50%;
       transform: translate(-100%, -50%);
       padding-right: 20px;
@@ -40,6 +39,19 @@
       line-height: 16px;
       letter-spacing: 2px;
       text-transform: uppercase;
+      opacity: 0;
+      max-height: 18px;
+
+      @include onDesktop {
+        height: 24px;
+      }
+    }
+
+    &:hover::before {
+      content: "+1 234 555-55-55";
+      width: max-content;
+      opacity: 1;
+      transition: opacity, 0.5s;
     }
   }
 
