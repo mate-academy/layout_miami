@@ -10,4 +10,5 @@ window.addEventListener('hashchange', () => {
 
 document.querySelector('#form').addEventListener('submit', (event) => {
   event.preventDefault();
+  document.querySelector('#form').reset();
 });
