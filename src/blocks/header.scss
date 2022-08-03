@@ -4,6 +4,10 @@
   background-size: cover;
   background-position: center;
 
+  &__top {
+    @include top-actions;
+  }
+
   &__content {
     box-sizing: border-box;
     display: flex;
@@ -34,53 +38,30 @@
   }
 
   &__call {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
     @include onDesktop {
-      &::before {
-        content: "The Met Fifth Avenue +1 212-535-7710";
-        width: 190px;
-        display: block;
-
-        color: #fff;
-        font-size: 16px;
-        line-height: 27px;
-        text-align: end;
-        font-weight: bold;
-        position: absolute;
-        top: 24px;
-        padding-right: 20px;
-        padding-bottom: 10px;
-        transform: translate(-100%);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &::after {
-        content: "The Met Cloisters +1 212-923-3700";
-        width: 160px;
-        display: block;
-
-        color: #fff;
-        font-size: 16px;
-        line-height: 27px;
-        text-align: end;
-        font-weight: bold;
-        text-decoration: none;
-        position: relative;
-        top: 50%;
-        padding-right: 20px;
-        transform: translate(-100%);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
+      &:hover &-info {
         opacity: 1;
         pointer-events: all;
       }
-      &:hover::after {
-        opacity: 1;
-        pointer-events: all;
-      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: right;
+
+      width: max-content;
+      position: relative;
+      transform: translate(-100%, -40%);
+      padding-right: 20px;
+      opacity: 0;
+      pointer-events: none;
+      background-image: none;
+      transition: opacity 0.3s;
     }
   }
 
