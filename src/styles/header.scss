@@ -1,0 +1,85 @@
+.header {
+  background-image: url(../images/background.jpg);
+  @extend %background-references;
+
+  &__content {
+    --padding-content-bottom: 18vh;
+    padding-top: 29px;
+    padding-bottom: var(--padding-content-bottom);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone {
+    --size-phone: 18px;
+    margin-right: 30px;
+    background-image: url(../images/phone.svg);
+    display: block;
+    width: var(--size-phone);
+    height: var(--size-phone);
+    @extend %background-references;
+    text-decoration: none;
+
+    @include onTablet {
+      --size-phone: 24px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: max-content;
+        height: 16px;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        padding-right: 12px;
+        pointer-events: none;
+        font-weight: 700;
+        color: #292929;
+        font-size: 12px;
+        line-height: 16 / 12 * 100%;
+        letter-spacing: 2px;
+        transition: opacity 1s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__burger {
+    background-image: url(../images/burger.svg);
+    transition: backgroun-image, 1s;
+
+    &:hover {
+      background-image: url(../images/burger-hover.svg);
+    }
+  }
+
+  &__title {
+    --font--size-title: 36px;
+    text-align: center;
+    font-weight: 700;
+    font-size: var(--font--size-title);
+    letter-spacing: -1.5px;
+    line-height: var(--font--size-title);
+    color: #292929;
+
+    @include onTablet {
+      --font--size-title: 60px;
+    }
+
+    @include onDesktop {
+      --font--size-title: 80px;
+    }
+  }
+}

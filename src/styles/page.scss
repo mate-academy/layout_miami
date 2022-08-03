@@ -1,0 +1,111 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform, 0.6s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__burger {
+    --burger-width: 18px;
+    --burger-height: 12px;
+    display: block;
+    width: var(--burger-width);
+    height: var(--burger-height);
+    @extend %background-references;
+
+    @include onTablet {
+      --burger-width: 24px;
+      --burger-height: 16px;
+    }
+  }
+
+  &__section {
+    --padding-bottom-section: 80px;
+    --padding-top-section: 60px;
+
+    &:not(:first-child) {
+      padding-bottom: var(--padding-bottom-section);
+    }
+
+    &--top {
+      padding-top: var(--padding-top-section);
+      padding-bottom: var(--padding-bottom-section);
+    }
+
+    @include onTablet {
+      --padding-top-section: 120px;
+      --padding-bottom-section: 120px;
+    }
+
+    @include onDesktop {
+      --padding-bottom-section: 160px;
+    }
+  }
+
+  &__section-title {
+    --font-size-section-title: 32px;
+    font-size: var(--font-size-section-title);
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    font-weight: 500;
+    text-align: center;
+    color: $white-color;
+    margin-bottom: 48px;
+
+    &--relative {
+      position: relative;
+      z-index: 1;
+    }
+
+    @include onTablet {
+      --font-size-section-title: 48px;
+    }
+
+    @include onDesktop {
+      --font-size-section-title: 64px;
+    }
+  }
+
+  &__section-info {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: (20 / 14) * 100%;
+    color: $white-color;
+    padding-bottom: 8px;
+  }
+
+  &__section-link {
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: (23 / 16) * 100%;
+    color: $white-color;
+    padding-bottom: 24px;
+    transition: color 1s;
+
+    @include onDesktop {
+      &:hover {
+        color: $hover-menu-color;
+      }
+    }
+  }
+}
