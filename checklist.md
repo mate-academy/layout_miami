@@ -18,7 +18,7 @@
     ```css
     .menu {
       /* Move these rules from .menu__content */
-      box-sizing: border-box;
+
       height: 100vh;
       padding: 24px 0;
 

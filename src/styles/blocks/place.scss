@@ -1,0 +1,70 @@
+.place {
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    &--absolute {
+      position: absolute;
+      object-position: left;
+    }
+
+    &--container {
+      cursor: zoom-in;
+      transition: transform 0.3s,
+        box-shadow 0.3s,
+        border-radius 0.3s;
+
+      &:hover {
+        box-shadow: 0 13px 37px rgba(22, 21, 21, 0.35);
+        transform: scale(1.05);
+        border-radius: 10px;
+      }
+      &-reletive {
+        position: relative;
+        width: 100%;
+        max-height: 160px;
+        overflow: hidden;
+        &::after {
+          display: block;
+          padding-bottom: 100%;
+          content: "";
+        }
+        @include onTablet {
+          max-height: 190px;
+        }
+
+        @include onDesktop {
+          max-height: 320px;
+        }
+      }
+    }
+
+    @include onTablet {
+      height: 190px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__description {
+    &-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+
+      color: $colorRedPrimery;
+    }
+    &-text {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 27px;
+      color: #161616;
+      margin-bottom: 0;
+    }
+  }
+}
