@@ -1,6 +1,34 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin onImageHover {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+@mixin imageHover {
+  transform: scale(110%);
+  border-color: aqua ;
+}
+
+@mixin absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
