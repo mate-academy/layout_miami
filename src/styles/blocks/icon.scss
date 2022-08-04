@@ -59,10 +59,25 @@
   &--phone {
     background-image: url(../images/call.svg);
 
-    &:hover + .icon__tooltip{
-      opacity: 1;
-      pointer-events: all;
-      transition-duration: 0.5s;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        padding-right: 20px;
+        pointer-events: none;
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: #1d1d1d;
+        opacity: 0;
+        transition-duration: 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 
