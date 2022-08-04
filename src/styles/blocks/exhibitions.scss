@@ -1,0 +1,76 @@
+.exhibition {
+  margin-bottom: 48px;
+
+  &__name {
+    font-weight: 700;
+    color: $colorRed;
+  }
+
+  &__gallery {
+    @include grid;
+    margin-bottom: 24px;
+  }
+
+  &__picture {
+    object-fit: cover;
+    object-position: left;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__button {
+    max-width: 390px;
+    margin: 0 auto;
+  }
+}
+
+.picture {
+  &--1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: 2fr 1fr;
+      gap: $gridGap;
+    }
+  }
+
+  &--2 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gridGap;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $gridGap;
+    }
+  }
+
+  &--3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: 1fr 2fr;
+      gap: $gridGap;
+    }
+  }
+}
+
+.none {
+  @include onTablet {
+    display: none;
+  }
+  @include onDesktop {
+    display: grid;
+  }
+}
