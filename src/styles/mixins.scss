@@ -1,0 +1,34 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onPad {
+  @media (min-width: 599px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onPhone {
+  @media (max-width: 599px) {
+    @content;
+  }
+
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  gap: 30px;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+
+  @include onPad {
+    --icon-width: 24px;
+  }
+}

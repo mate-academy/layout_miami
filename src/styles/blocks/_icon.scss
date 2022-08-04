@@ -1,0 +1,63 @@
+.icon {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-decoration: none;
+
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      height: 12px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: #292929;
+      transform: translate(-100%, -50%);
+      padding-right: 12px;
+      opacity: 0;
+      transition: 200ms;
+      pointer-events: none;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu-open {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    width: 89%;
+    padding-bottom: 89%;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &--column--3 {
+    grid-column: 3;
+  }
+}
