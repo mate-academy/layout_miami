@@ -1,0 +1,102 @@
+.bike {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &__item {
+    &-first {
+      grid-column: 1 / 7;
+    }
+
+    &-second {
+      grid-column: 7 / 13;
+    }
+
+    &-text {
+      grid-column: 1 / 13;
+    }
+
+    &-button {
+      grid-column: 1 / 13;
+
+      @include onTablet {
+        grid-column: 3 / 11;
+      }
+
+      @include  onDesktop {
+        grid-column: 5 / 9;
+      }
+
+    }
+    @include onTablet {
+      &-1-4 {
+        grid-column: 1 / 5;
+      }
+
+      &-1-8 {
+        grid-column: 1 / 9;
+      }
+
+      &-5-12 {
+        grid-column: 5 / 13;
+      }
+
+      &-9-12 {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__photo-container {
+    @include hover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: #{$bike-photo-height};
+    overflow: hidden;
+
+    &:hover {
+      border-radius: 10px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
