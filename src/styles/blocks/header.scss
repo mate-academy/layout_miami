@@ -1,62 +1,101 @@
+$headerTopPadding: 30px;
+$colorGrey: #c2c2c2;
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 29px 20px 88px;
-  background-position: center;
-  background-size: cover;
   background-image: url(/images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  &__nav {
+  &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-  }
 
-  &__menu-block {
-    display: flex;
-  }
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 90px;
 
-  &__menu-opener {
-    display: block;
-    margin-left: 30px;
-    width: 18px;
-    height: 12px;
-    background-image: url(/images/icon_menu.svg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include onTab {
+      padding: 35px 0 130px;
+    }
 
-    &:hover {
-      background-image: url(/images/icon-menu-hover.svg);
+    @include onDesktop {
+      padding: 35px 0 120px;
     }
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
+    text-decoration: none;
+    margin-right: 30px;
 
-    background-image: url(/images/phone.svg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include onDesktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        transform: translate(-100%, 30%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-family: Poppins, sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__title {
-    text-align: center;
-    font-weight: 700;
+    margin: 0 auto;
+
+    font-family: Poppins, sans-serif;
     font-size: 36px;
-    color: #292929;
+    line-height: 36px;
+    font-weight: bold;
     letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onTab {
+      font-size: 64px;
+      line-height: 100%;
+      color: #1d1d1d;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 100%;
+      color: #1d1d1d;
+    }
   }
 }
 
 .logo {
-  &__image {
+
+  &__img {
     height: 40px;
+    width: 130px;
+
+    @include onTab {
+      height: 55px;
+      width: 190px;
+    }
+
+    @include onDesktop {
+      height: 55px;
+      width: 190px;
+    }
   }
 }
