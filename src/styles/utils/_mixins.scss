@@ -1,6 +1,41 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin top-actions {
+  --icon-width: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+
+  @include media-desktop {
+    --icon-width: 32px;
+  }
+}
+
+@mixin font-face($font-name, $file-name, $weight, $style) {
+  @font-face {
+    font-family: $font-name;
+    src: url("../fonts/#{$file-name}.woff2") format("woff2");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
   }
 }

@@ -1,0 +1,84 @@
+.header {
+  height: 100vh;
+  background-color: $header-bg-color;
+  background-image: url("../images/bike-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 88px;
+
+    @include media-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include media-desktop {
+      padding-bottom: 122px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__btns {
+    display: flex;
+  }
+
+  &__call {
+    position: relative;
+    margin-right: 24px;
+
+    @include media-tablet {
+      margin-right: 32px;
+    }
+
+    @include media-desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        width: max-content;
+        top: 50%;
+        left: -8px;
+        transform: translate(-100%, -50%);
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $base-color;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity $transition-duration;
+      }
+
+      @include hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    color: $base-color;
+    text-align: center;
+
+    @include media-tablet {
+      font-size: 64px;
+    }
+
+    @include media-desktop {
+      font-size: 80px;
+    }
+  }
+}
