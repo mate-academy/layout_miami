@@ -1,0 +1,68 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--bodhistava {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    @include onTablet {
+      grid-template-columns: repeat(8, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDecktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDecktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include onTablet {
+      &--not-visible {
+        display: none;
+      }
+    }
+
+    @include onDecktop {
+      &--not-visible {
+        display: block;
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end+1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+  }
+}

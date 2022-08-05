@@ -4,3 +4,39 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDecktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin topActions {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 70px;
+  align-items: center;
+  justify-items: space-between;
+
+  @include onDecktop {
+    grid-template-columns: 1fr 80px;
+  }
+}
+
+
+
+
+@mixin links($color: #fff ) {
+  @extend %links;
+
+    &:hover {
+      border-color: $color;
+    }
+}
+
