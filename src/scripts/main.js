@@ -8,6 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.getElementById('checkbox').addEventListener('click', function(event) {
-  event.preventDefault();
-});
+document.getElementById('send-button').addEventListener('click',
+  function(event) {
+    event.preventDefault();
+  });
