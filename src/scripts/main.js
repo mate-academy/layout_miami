@@ -7,3 +7,10 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+function stopDefAction(evt) {
+  evt.preventDefault();
+}
+
+document.getElementById('my-checkbox').addEventListener(
+  'click', stopDefAction, false);
