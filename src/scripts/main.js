@@ -8,9 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
+const checker = document.querySelector('.form');
 
-document.getElementById('my-checkbox').addEventListener(
-  'click', stopDefAction, false);
+checker.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  checker.reset();
+});
