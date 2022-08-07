@@ -1,0 +1,158 @@
+
+.gallery {
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    &--trio {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 25px;
+    }
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 25px;
+    }
+
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  &__photo {
+    padding-bottom: 0;
+  }
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+
+    object-position: center;
+    object-fit: cover;
+
+    &::after {
+      content: "";
+      padding-bottom: 100%;
+      display: block;
+    }
+    @include onDesktop {
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photo-big {
+    @include onTablet {
+      grid-column: 1 / 5;
+    }
+    @include onDesktop {
+      grid-column: 1 / 8;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-big-reverse {
+    @include onTablet {
+      grid-column: 4 / 9;
+    }
+    @include onDesktop {
+      grid-column: 4 / 13;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-small {
+    @include onTablet {
+      grid-column: 5 / 9;
+    }
+    @include onDesktop {
+      grid-column: 8 / 13;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-small-reverse {
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+    @include onDesktop {
+      grid-column: 1 / 4;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-first {
+    @include onTablet {
+      grid-column: 1 / 3;
+    }
+    @include onDesktop {
+      grid-column: 1 / 5;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-second {
+    @include onTablet {
+      grid-column: 3 / 5;
+    }
+    @include onDesktop {
+      grid-column: 5 / 9;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__photo-third {
+    @include onTablet {
+      grid-column: 5 / 7;
+    }
+    @include onDesktop {
+      grid-column: 9 / 13;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+}
