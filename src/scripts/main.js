@@ -1,6 +1,6 @@
 'use strict';
 
-const checker = document.querySelector('.form');
+const checker = document.querySelector('form');
 
 checker.addEventListener('submit', function(event) {
   event.preventDefault();
