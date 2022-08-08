@@ -23,43 +23,26 @@
       transform: scale(120%);
     }
 
-    &-container {
-      position: relative;
+  }
 
-      box-sizing: border-box;
-      width: 100%;
-      padding-bottom: 0;
+  &__category {
+    width: 100%;
 
-      @include on320px {
-        width: 100%;
+    object-fit: cover;
+    object-position: center;
 
-        &::after {
-          content: "";
-          display: block;
-          padding-bottom: 100%;
-        }
-      }
+    &:hover {
+      transform: scale(105%);
     }
 
-    &--category {
-      width: 100%;
-
+    @include on744px {
+      height: 250px;
       object-fit: cover;
-      object-position: center;
+    }
 
-      &:hover {
-        transform: scale(105%);
-      }
-
-      @include on744px {
-        height: 250px;
-        object-fit: cover;
-      }
-
-      @include on320px {
-        height: 100%;
-        position: absolute;
-      }
+    @include on320px {
+      height: 100%;
+      position: absolute;
     }
   }
 
@@ -72,17 +55,17 @@
 
   &__type {
     font-weight: 400;
+  }
 
-    &--category {
-      margin-top: -18px;
+  &__type-category {
+    margin-top: -18px;
 
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
 
-      @include on320px {
-        font-size: 16px;
-      }
+    @include on320px {
+      font-size: 16px;
     }
   }
 
@@ -115,4 +98,63 @@
       color: white;
     }
   }
+
+  &__item-c-1,
+  &__item-c-3,
+  &__item-c-6 {
+    flex-basis: calc(66.6% - 24px);
+  }
+
+  &__item-c-2,
+  &__item-c-4,
+  &__item-c-5 {
+    flex-basis: calc(33.3%);
+  }
+
+  &__item-b {
+    flex-basis: 33%;
+    padding-left: calc(33% + 24px);
+  }
+
+  @include on744px {
+    &__item-b {
+      flex-basis: 68%;
+      padding-left: 16%;
+    }
+  }
+
+  @include on320px {
+
+    &__item-c-1,
+    &__item-c-3,
+    &__item-c-6,
+    &__item-c-2,
+    &__item-c-4,
+    &__item-c-5 {
+      flex-basis: calc(50% - 24px);
+    }
+
+    &__item-b {
+      flex-basis: 100%;
+      padding-left: 0;
+    }
+  }
 }
+
+.product-container {
+   position: relative;
+
+   box-sizing: border-box;
+   width: 100%;
+   padding-bottom: 0;
+
+   @include on320px {
+     width: 100%;
+
+     &::after {
+       content: "";
+       display: block;
+       padding-bottom: 100%;
+     }
+   }
+ }
