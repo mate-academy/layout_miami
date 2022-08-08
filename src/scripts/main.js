@@ -15,3 +15,13 @@ function stopDefAction(evt) {
 document.getElementById('send').addEventListener(
   'click', stopDefAction, false
 );
+
+function resField(evt) {
+  document.querySelector('#name').value = '';
+  document.querySelector('#mail').value = '';
+  document.querySelector('#textarea').value = '';
+}
+
+document.getElementById('send').addEventListener(
+  'click', resField, false
+);
