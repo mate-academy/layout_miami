@@ -36,12 +36,15 @@
     align-items: center;
   }
 
+  &__top {
+    @include top-actions;
+  }
+
   &__call {
     cursor: pointer;
     text-decoration: none;
     color: #fff;
 
-    @include onDesktop() {
       &-info {
         display: flex;
         flex-direction: column;
@@ -57,11 +60,12 @@
         background-image: none;
         transition: opacity 0.3s;
       }
-    }
 
     &:hover &-info {
-      opacity: 1;
-      pointer-events: all;
+      @include onDesktop {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
 
     @include onLaptop() {
