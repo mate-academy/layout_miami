@@ -3,6 +3,32 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  text-decoration: none;
+
+  &__tooltip {
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+
+    width: max-content;
+    position: relative;
+    transform: translate(-100%, -40%);
+    padding-right: 20px;
+    opacity: 0;
+    pointer-events: none;
+    background-image: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 
   &--menu {
     width: 18px;
@@ -32,6 +58,11 @@
     width: 18px;
     height: 18px;
     background-image: url(../images/phone.svg);
+
+    @include onLaptop() {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &--cross {
