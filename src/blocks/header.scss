@@ -1,0 +1,95 @@
+.header {
+  background-image: url("../images/photos/title-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 42vh;
+
+    padding-top: $headerTopPaddingMobile;
+
+    @include onTablet {
+      padding-top: $headerTopPaddingTablet;
+    }
+
+    @include onDesktop {
+      padding-top: $headerTopPaddingTablet;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    width: 66px;
+    justify-content: space-between;
+
+    @include onTablet {
+      width: 110px;
+    }
+  }
+
+  &__call {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+
+    @include onDesktop {
+      &:hover &-info {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: right;
+
+      width: max-content;
+      position: relative;
+      transform: translate(-100%, -40%);
+      padding-right: 20px;
+      opacity: 0;
+      pointer-events: none;
+      background-image: none;
+      transition: opacity 0.3s;
+
+      &--hover {
+        border-bottom: 1px solid transparent;
+        transition: border-color, 0.3s;
+        &:hover {
+          border-color: #fff;
+        }
+      }
+    }
+  }
+
+  &__title {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
