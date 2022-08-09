@@ -3,12 +3,12 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  @include OnDesctopBig {
+  @include OnDesctop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
 
-  @include OnDesctopSmall {
+  @include OnTablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
@@ -16,26 +16,26 @@
   &--desctop {
     display: block;
 
-    @include OnDesctop {
+    @include OnDesctopAndTablet {
       display: grid;
     }
   }
 
   &__item {
-    @include OnDesctopBig {
+    @include OnDesctop {
       @for $start from 1 through 12 {
         @for $end from $start through 12 {
-          &--desctop-big-#{$start}-#{$end} {
+          &--on-desctop-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @include OnDesctopSmall {
+    @include OnTablet {
       @for $start from 1 through 6 {
         @for $end from $start through 6 {
-          &--desctop-small-#{$start}-#{$end} {
+          &--on-tablet-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
