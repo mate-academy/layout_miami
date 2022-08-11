@@ -13,3 +13,9 @@ const form = document.getElementById('form');
 form.addEventListener('click', (event) => {
   event.preventDefault();
 });
+
+form.addEventListener('click', (event) => {
+  event.preventDefault();
+form.reset();
+
+});
