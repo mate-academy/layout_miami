@@ -8,10 +8,13 @@ const links = document.querySelectorAll('a');
 
 bar.addEventListener('click', () => {
   menu.classList.toggle('show-menu');
+
+  menu.classList.remove('hide-menu');
 });
 
 barX.addEventListener('click', () => {
   menu.classList.toggle('show-menu');
+  menu.classList.add('hide-menu');
 });
 
 const form = document.getElementById('form');
@@ -32,6 +35,9 @@ window.addEventListener('hashchange', () => {
 
 links.forEach(link => {
   link.addEventListener('click', () => {
-    menu.classList.remove('show-menu');
+    if (menu.classList.contains('show-menu')) {
+      menu.classList.add('hide-menu');
+      menu.classList.remove('show-menu');
+    }
   });
 });
