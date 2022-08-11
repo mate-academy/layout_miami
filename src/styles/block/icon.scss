@@ -1,0 +1,75 @@
+@import "../utils/mixins";
+
+.icon {
+  --icon-width: 18px;
+  --icon-height: 18px;
+  
+  position: relative;
+  display: block;
+  width: var(--icon-width);
+  height: var(--icon-height);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  
+  @include onTheTablet {
+    --icon-width: 24px;
+    --icon-height: 24px;
+  }
+
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+      text-decoration: none;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+   
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $colorText;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  
+  &--menu {
+    background-image: url(../images/photos/Menu.svg);
+    
+    @include onTheTablet {
+      background-image: url(../images/photos/Menu_tablet.svg);
+    }
+  
+    @include onDesktop {
+      &:hover {
+        background-image: url(../images/photos/Menu_hover.svg);
+      }
+    }
+  }
+  
+  &--phone {
+    background-image: url(../images/photos/Phone.svg);
+  }
+  
+  &--cross {
+    background-image: url(../images/photos/cross.svg);
+  }
+}
