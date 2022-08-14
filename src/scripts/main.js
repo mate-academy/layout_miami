@@ -9,6 +9,14 @@ window.addEventListener('hashchange', () => {
 });
 
 document.querySelector('#button_form-submit')
-  .addEventListener('click', function(event) {
-    event.preventDefault();
-  });
+  .addEventListener('click', (event) => {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (name !== 0 && email !== 0 && message !== 0) {
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+    }
+  }, false);
