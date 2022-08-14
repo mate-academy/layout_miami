@@ -10,13 +10,13 @@ window.addEventListener('hashchange', () => {
 
 document.querySelector('#button_form-submit')
   .addEventListener('click', (event) => {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let message = document.getElementById('message').value;
 
     if (name !== 0 && email !== 0 && message !== 0) {
-      document.getElementById('name').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('message').value = '';
+      name = '';
+      email = '';
+      message = '';
     }
   }, false);
