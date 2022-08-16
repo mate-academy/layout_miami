@@ -1,11 +1,78 @@
 .icon {
-  display: block;
+  --icon-size: 18px;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
 
-  @include OnTabletAndMore {
-    width: 24px;
+  &__menu {
+    width: var(--icon-size);
+    height: calc(var(--icon-size) / 3 * 2);
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/menu.svg);
+
+    @include OnTabletAndMore {
+      --icon-size: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__phone {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/phone.svg);
+
+    @include OnTabletAndMore {
+      --icon-size: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__close {
+    width: calc(var(--icon-size) * 0.88);
+    height: calc(var(--icon-size) * 0.88);
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/close.svg);
+
+    @include OnTabletAndMore {
+      --icon-size: 20px;
+    }
+
+    @include OnDesktop {
+      --icon-size: 24px;
+    }
   }
 }
