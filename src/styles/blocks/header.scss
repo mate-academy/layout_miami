@@ -1,0 +1,44 @@
+.header {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 25px 120px 80px;
+
+    @include onMobile {
+      padding: 25px 20px 80px;
+    }
+
+    &-front {
+      justify-content: space-between;
+      background: url(../images/header_bg.jpg) no-repeat center / cover;
+    }
+
+    &-back {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateX(-100%);
+      transition: transform 1s;
+      background-color: #0075ff;
+
+      @include onMobile {
+        transition: transform 0.5s;
+      }
+
+      &:target {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__title::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 40px;
+    margin-bottom: 24px;
+    background-color: #fff;
+  }
+}
