@@ -1,0 +1,64 @@
+.bikecard {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+  font-style: normal;
+  line-height: 140%;
+  color: $lightText;
+
+  &__photo-container {
+    display: block;
+    align-self: center;
+    margin-bottom: 32px;
+    width: 280px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    display: block;
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+    
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  @include forTablet{
+    &__photo-container {
+      width: 392px;
+    }
+  }
+
+
+  @include forDesktop {
+    @for $start from 1 to $comparing-num {
+      &:nth-child(#{$start}) {
+        grid-column: #{$start} / #{$start};
+      }
+    }
+
+    &__photo-container {
+      width: 324px;
+    }
+  }
+}
