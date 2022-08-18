@@ -1,6 +1,36 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
+
+@mixin photoPosition($index) {
+  @if $index == 1 {
+    grid-template-columns: 2fr 1fr;
+  } @else if $index == 2 {
+    grid-template-columns: 1fr 1fr;
+  } @else {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@mixin text(
+  $size, 
+  $space, 
+  $color, 
+  $height: $size, 
+  $weight: 700
+) {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    color: $color;
+    letter-spacing: $space;
+  }
+
+@mixin image ($size, $name, $format) {
+  background-image: url(../images/#{$name}.#{$format});
+  background-size: $size;
+  background-position: center;
+  background-repeat: no-repeat;
 }

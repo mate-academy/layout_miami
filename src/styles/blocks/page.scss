@@ -1,0 +1,64 @@
+.page {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  @include text(16px, normal, #3E3E3E, 27px, 400);
+
+  scroll-behavior: smooth;
+
+  &__body {
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    
+    transition: transform $duration;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__container {
+    @extend %container;
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: $large-gap-1;
+    
+    @include text(36px, -1.5px, #000);
+    text-align: center;
+
+
+
+    @include onDesktop {
+      margin-bottom: 60px;
+
+      @include text(48px, -1.5px, #000);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: $small-gap-1 auto 0;
+
+      @include image (contain, crown, svg);
+    }
+  }
+}
