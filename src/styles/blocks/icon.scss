@@ -1,10 +1,40 @@
 .icon {
+  position: relative;
   --icon-size: 18px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #292929;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.5s;
+  }
+
+  &:hover &__tooltip {
+    @include OnTabletAndMore {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 
   &__menu {
     width: var(--icon-size);
@@ -32,31 +62,6 @@
 
     @include OnTabletAndMore {
       --icon-size: 24px;
-
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: #292929;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
     }
   }
 
