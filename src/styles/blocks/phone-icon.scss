@@ -1,38 +1,20 @@
 .phone-icon {
+  position: relative;
   width: 24px;
   height: 24px;
-  text-decoration: none;
+  animation: rotate 1s linear infinite alternate backwards;
 
   @include onMobile {
     width: 18px;
     height: 18px;
   }
+}
 
-  &::before {
-    content: "+1 234 555-55-55";
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    padding-right: 12px;
-    transform: translate(-100%, -50%);
-    width: max-content;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 133%;
-    color: $main-black;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 350ms ;
-
-    @include onTablet {
-      display: none;
-    }
+@keyframes rotate {
+  from {
+    transform: rotate(0);
   }
-
-  &:hover::before {
-    opacity: 1;
-    pointer-events: all;
+  to {
+    transform: rotate(20deg);
   }
 }

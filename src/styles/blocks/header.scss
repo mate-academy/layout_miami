@@ -8,7 +8,7 @@
     background-position: 48% 30%;
 
   }
-  
+
   @include onMobile {
     background-image: url(../images/header-image-mobile.png);
     background-position: 75%;
@@ -27,10 +27,11 @@
     }
   }
 
-  &__phone-icon {
+  &__phone-link {
     position: absolute;
     top: 52px;
     right: 185px;
+    text-decoration: none;
 
     @include onTablet {
       right: 95px;
@@ -40,14 +41,40 @@
       top: 43px;
       right: 70px;
     }
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      padding: 12px;
+      transform: translate(-100%, -50%);
+      width: max-content;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 133%;
+      color: $main-black;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 350ms;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &__menu-opener {
     position: absolute;
     top: 57px;
     right: 120px;
-    width: 24px;
-    height: 19px;
 
     @include onTablet {
       right: 45px;
