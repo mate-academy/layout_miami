@@ -1,0 +1,56 @@
+.product {
+  &__photo {
+    margin-bottom: 16px;
+  }
+
+  &__img-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include media(onTable, onDesktop) {
+      padding-bottom: 0;
+    }
+
+    @include onTable {
+      height: 188px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--right {
+      @media (max-width: 600px) {
+        object-position: -120px;
+      }
+    }
+  }
+  &__text {
+    margin: 0;
+    font-weight: 700;
+    color: $font-color;
+    text-decoration: none;
+    
+    @include media(onTable, onDesktop) {
+      font-size: 24px;
+    }
+  }
+}
