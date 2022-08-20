@@ -1,0 +1,50 @@
+.icon {
+  position: relative;
+  width: 24px;
+  height: 100%;
+
+  @include onMobile {
+    width: 18px;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    display: block;
+    width: max-content;
+    padding-right: $one-line;
+    @extend %text-tooltip;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity $duration;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    @include image (contain, menu, svg);
+    transform: rotate(180deg);
+
+    transition: all $duration;
+
+    &:hover {
+      @include image (contain, menu_hover, svg);
+    }
+  }
+
+  &--phone {
+    @include image (contain, phone, svg);
+  }
+
+  &--cross {
+    @include image (contain, cross, svg);
+  }
+}
