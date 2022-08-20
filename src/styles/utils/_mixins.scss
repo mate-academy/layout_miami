@@ -22,3 +22,42 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@mixin flex ($direction: row, $gap: false, $align: false) {
+  display: flex;
+  justify-content: space-between;
+
+  @if $direction  != row {
+    flex-direction: $direction;
+  }
+
+  @if $gap {
+    gap: $gap
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+}
+
+@mixin content-position ($block) {
+  box-sizing: border-box;
+  height: 100vh;
+
+  @if $block == "header" {
+    @include flex (column);
+    padding: $header-padding-big 0 20vh;
+
+    @include onMobile {
+      padding: $header-padding-small 0 20vh;
+    }
+  }
+
+  @else {
+    padding: $header-padding-big 0 $header-padding-big;
+
+    @include onMobile {
+      padding: $header-padding-small 0;
+    }
+  }
+}
