@@ -1,0 +1,104 @@
+.gallery-places {
+  box-sizing: content-box;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include on-desktop {
+    padding: 0 40px;
+  }
+
+  &__grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    @each $name, $grid-column in $desktop-image-grid {
+      &--desktop-#{$name} {
+        @include on-desktop {
+          grid-column: #{$grid-column};
+        }
+      }
+    }
+  }
+
+  &__photo {
+    position: relative;
+    max-height: 256px;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.2) translateY(-20%);
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      z-index: 100;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-location {
+    margin: 16px 0 32px;
+
+    @include on-desktop {
+      margin: 24px 0 40px;
+    }
+
+    &-link {
+      font-weight: 700;
+      text-decoration: none;
+      color: #0075ff;
+    }
+  }
+
+  &__button {
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    border: 2px solid #0075ff;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      cursor: pointer;
+
+      & :first-child {
+        color: #fff;
+      }
+    }
+
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+      width: 150px;
+    }
+
+    &-link {
+      font-weight: 700;
+      text-decoration: none;
+      color: #0075ff;
+    }
+  }
+}
