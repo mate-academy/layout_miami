@@ -1,7 +1,224 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "blocks/page";
+@import "blocks/icon";
+@import "blocks/logo";
+@import "blocks/footer";
 
-body {
-  background: $c-gray;
+h1,
+h2,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr 18px;
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    grid-template-columns: 24px 1fr 24px;
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 100vh;
+  background-color: $blue-color;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+
+  &__content {
+    height: 100vh;
+    //CONTAINER MIXIN:
+    @include container;
+
+    @include onDesktop {
+      padding: 24px 40px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 50px;
+  }
+
+  &__item {
+    color: $color-white;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-white;
+
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+  }
+}
+//HEADER BLOCK: =================================
+
+.header {
+  background-image: url("../images/photos/header.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+
+    //CONTAINER MIXIN:
+    @include container;
+  }
+
+  &__menu-checkbox {
+    display: none;
+  }
+
+  &__tel {
+
+    @include icon-square(18px);
+
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+
+        color: $color-white;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        opacity: 0;
+        pointer-events: none;
+
+      }
+      &:hover {
+        &::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    @include onDesktop {
+      @include icon-square(24px);
+    }
+  }
+
+  &__title {
+    color: $color-white;
+    font-weight: 700;
+    letter-spacing: -1px;
+    font-size: 40px;
+    line-height: 40px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 40px;
+      background-color: $color-white;
+
+      margin-bottom: 24px;
+    }
+
+    @include onDesktop {
+      letter-spacing: -1.5px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__menu-checkbox:checked ~ .nav {
+    transform: translateX(0%);
+  }
+}
+
+.main {
+  @include container;
+
+  &__section {
+    margin-bottom: 64px;
+  }
+
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-top: 50px;
+
+  @include onDesktop {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  &__title {
+    width: max-content;
+
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #000;
+    //margin: 0 auto 42px;
+    margin-bottom: 42px;
+  }
+
+  &__content {
+    @include onDesktop {
+      max-width: 500px;
+    }
+  }
+
+  &__title-last {
+    color: $blue-color;
+  }
+
+  &__subtitle {
+    display: inline-block;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: $blue-color;
+
+    margin-bottom: 16px;
+  }
+
+  &__paragraph {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: #3e3e3e;
+  }
 }
