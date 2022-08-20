@@ -17,31 +17,31 @@
     column-gap: 24px;
   }
   
-  &--desktop {
-    display: block;
-
-    @include onLaptop {
-      display: grid;
-    }
-  }
-
   &--laptop {
-    display: block;
-
     @include onLaptop {
       display: grid;
     }
   }
 
-  
+  &--desktop {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
 
   &__item {
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
-
+      }
+    }
+    
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
         &--laptop-#{$start}-#{$end} {
           @include onLaptop {
             grid-column: #{$start} / #{$end + 1};
@@ -52,10 +52,6 @@
 
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
             display: grid;
