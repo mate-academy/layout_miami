@@ -23,17 +23,21 @@
   background-repeat: no-repeat;
 }
 
-@mixin flex ($direction: row, $gap: false) {
-  display: flex;
-  justify-content: space-between;
-
-  @if $direction  !=row {
-    flex-direction: $direction;
-  }
-
-  @if $gap {
-    gap: $gap
-  }
+@mixin flex (
+  $direction: row,
+  $gap: 0,
+  $content: space-between
+  ) {
+    display: flex;
+    justify-content: $content;
+  
+    @if $direction  !=row {
+      flex-direction: $direction;
+    }
+  
+    @if $gap !=0 {
+      gap: $gap
+    }
 }
 
 @mixin content-position ($block) {
@@ -50,7 +54,7 @@
   }
 
   @else {
-    padding: $header-padding-big 0 $header-padding-big;
+    padding: $header-padding-big 0;
 
     @include onMobile {
       padding: $header-padding-small 0;
