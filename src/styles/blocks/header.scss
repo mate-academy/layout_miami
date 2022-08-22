@@ -5,10 +5,23 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  
+
+  @include minQ($OversizeScreenWidth) {
+    padding: 72px 180px 250px;    
+  }
+
+  @include maxQ($ipadWidth) {
+    padding: 36px 10px 100px; 
+  }
+
+  @include maxQ($iPhoneWidth) {
+    padding: 29px 10px 100px;
+    position: relative;
+  }
 
   &__content-wrapper {
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -20,15 +33,13 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-
   }
 
   &__icons-wrapper {
     display: flex;
-    width: 95px;
     justify-content: space-between;
-  
-
+    position: relative;
+    
   }
   
   &__logo {
@@ -37,49 +48,137 @@
     height: 56px;
     top: 30px;
     color: #1d1d1d;
+
+    @include minQ($OversizeScreenWidth){
+      width: 400px;
+      height: 110px;  
+    }
+
+    @include maxQ($ipadWidth) {
+      width: 187px;
+      height: 56px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 130px;
+      height: 38px; 
+    }
   }
 
   &__slogan {
+    display: flex;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 80px;
     letter-spacing: -1.5px;
+    
+    @include minQ($OversizeScreenWidth){
+      font-size: 160px;
+    }
+
+    @include maxQ($ipadWidth) {
+      font-size: 64px; 
+    }
+
+    @include maxQ($iPhoneWidth) {
+      font-size: 36px; 
+      margin: 0;
+      padding: 0;
+    }
 
   }
 
   &__phone-svg {
-    height: 24px;
-    width: 24px;
-   
+    height:$phoneSymbolSize;
+    width: $phoneSymbolSize;
+    transition-duration: $transitionDuration;
+
+    @include minQ($OversizeScreenWidth){
+      height: $phoneSymbolSize * 2.5;
+      width: $phoneSymbolSize * 2.5;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      height: 18px;
+      width: 18px;
+    }
+    
   }
   
   &__phone-svg:hover:before {
     content: "+1 234 555-55-55";
+    letter-spacing: 4px;
+    font-stretch: expanded;
     font-size: 13px;
     font-weight: 700;
     position: absolute;
-    right: 18%;
-    top: 8.5%;
+    right: 120%;
+    top: 0%;
     white-space: nowrap;
+    transition-duration: $transitionDuration;
+
+    @include minQ($OversizeScreenWidth){
+      height: $phoneSymbolSize * 2.5;
+      width: $phoneSymbolSize * 2.5;
+      font-size: 26px;
+      right: 280%;
+      top: 10%;
+    }
+    
+    @include maxQ($ipadWidth) {
+      content: "";
+    }
+
+    @include maxQ($iPhoneWidth) {
+      content: "";
+    }
   }
 
   &__menu-svg {
     background-image: url(../images/Vector224.svg);
     background-repeat: no-repeat;
-    height: 16px;
-    width: 24px;
+    height: $phoneSymbolSize;
+    width: $phoneSymbolSize;
+    background-size: cover;
+    background-position: 50%;
+    background-color: transparent;
+    margin-left: 40px;
+    cursor: pointer;
 
-    display: block;
+    transition-duration: $transitionDuration;
 
-    transition-duration: 300ms;
+    @include minQ($OversizeScreenWidth){
+      height: $phoneSymbolSize * 2.8;
+      width: $phoneSymbolSize *  2;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      height: 18px;
+      width: 18px;
+    }
   }
 
   &__menu-svg:hover {
-    background-image: url(../images/VectorHover.png);
+    background-image: url(../images/VectorHover.svg);
     background-repeat: no-repeat;
+    background-size: cover;
   
     width: 24px;
-    height: 16px;
+    height: 24px;
+
+
+    @include minQ($OversizeScreenWidth){
+      height: $phoneSymbolSize * 2.8;
+      width: $phoneSymbolSize *  2;
+    }
+
+    @include minQ($OversizeScreenWidth){
+     content: "";
+    }
+
+    @include maxQ($iPhoneWidth) {
+     content: "";
+    }    
 
   }
 }
