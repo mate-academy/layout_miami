@@ -1,51 +1,22 @@
 .contacts {
-  margin-bottom: 64px;
-  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
   @include on-desktop {
-    max-width: 1020px;
-    margin: 0 auto;
-    margin-bottom: 104px;
-    padding: 0 40px;
-
-  }
-
-  &__title {
-    margin-top: 64px;
-    margin-bottom: 53px;
-
-    @include on-desktop {
-      margin-top: 104px;
-      margin-bottom: 80px;
-    }
-
-    &::after {
-      content: "";
-      display: block;
-      margin: 0 auto;
-      margin-top: 5px;
-      height: 16px;
-      width: 23px;
-      background: url(../images/crown.svg) no-repeat, center / cover;
-    }
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    @include on-desktop {
-      flex-direction: row;
-      width: 1020px;
-      gap: 198px;
-    }
+    flex-direction: row;
+    width: 1020px;
+    gap: 198px;
   }
 
   &__requisites {
     display: flex;
     flex-direction: column;
 
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-around;
+    }
     @include on-desktop {
       flex-direction: row;
       gap: 111px;
@@ -61,16 +32,17 @@
 
     &-link {
       display: block;
-      text-decoration: none;
-      color: #3e3e3e;
       margin-bottom: 24px;
+      @include links-dark;
     }
-
   }
 
   &__form {
     flex-grow: 2;
-    max-width: 411px;
+
+    @include on-desktop {
+      max-width: 411px;
+    }
 
     &-item {
       display: block;
@@ -83,15 +55,14 @@
       font-size: 14px;
       line-height: 20px;
       padding: 14px 0 14px 17px;
-      color: #000;
+      color: $c-black;
       outline: none;
-
-      &:hover {
+      @include transition-hover {
         border-color: #ccd0e0;
       }
 
       &:focus {
-        border-color: #0075ff;
+        border-color: $c-blue;
       }
 
       &::placeholder {
@@ -108,21 +79,22 @@
     &-button {
       width: 100%;
       height: 56px;
-      background-color: #005ecc;
+      background-color: $c-blue;
       border-color: transparent;
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
       border-radius: 8px;
       font-weight: 700;
       font-size: 16px;
       text-align: center;
-      color: #fff;
+      color: $c-white;
       cursor: pointer;
-
-      &:hover {
+      @include transition-hover {
+        background-color: $c-darkBlue;
         box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
       }
 
       &:focus {
+        background-color: $c-darkBlue;
         box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
       }
     }

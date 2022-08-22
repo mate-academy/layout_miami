@@ -5,45 +5,44 @@
   align-items: center;
 
   &__hamburger {
-    display: inline-block;
-    width: 24px;
-    height: 16px;
-    background: url(../images/menu.svg) no-repeat center / cover;
-    transition: background-image 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      background: url(../images/menu_hover.svg) no-repeat center / cover;
+    @include icon ("../images/menu.svg");
+    @include transition-hover {
+      background-image: url(../images/menu_hover.svg);
     }
   }
 
   &__close {
-    display: inline-block;
-    width: 24px;
-    height: 16px;
-    background: url(../images/cross.svg) no-repeat center / cover;
-    cursor: pointer;
+    @include icon ("../images/cross.svg");
   }
 
   &__phone {
-    display: flex;
-    align-items: center;
+    @include icon ("../images/phone.svg");
+    height: 24px;
     justify-self: end;
-    gap: 10px;
+
+    @include on-desktop {
+      position: relative;
+    }
 
     &-number {
       display: none;
 
       @include on-desktop {
         display: block;
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: max-content;
+        padding-right: 20px;
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
-        color: #fff;
-        transition: opacity 0.3s;
+        color: $c-white;
         opacity: 0;
         pointer-events: none;
+        @include transition;
       }
     }
 

@@ -1,13 +1,4 @@
 .gallery-places {
-  box-sizing: content-box;
-  max-width: 1020px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @include on-desktop {
-    padding: 0 40px;
-  }
-
   &__grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -31,18 +22,16 @@
     position: relative;
     max-height: 256px;
     overflow: hidden;
-    transition: all 0.5s;
+    @include transition-hover {
+      transform: scale(1.2) translateY(-20%);
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+      z-index: 100;
+    }
 
     &:after {
       content: "";
       display: block;
       padding-bottom: 100%;
-    }
-
-    &:hover {
-      transform: scale(1.2) translateY(-20%);
-      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
-      z-index: 100;
     }
   }
 
@@ -63,9 +52,7 @@
     }
 
     &-link {
-      font-weight: 700;
-      text-decoration: none;
-      color: #0075ff;
+      @include links;
     }
   }
 
@@ -73,13 +60,13 @@
     height: 56px;
     line-height: 56px;
     text-align: center;
-    border: 2px solid #0075ff;
+    border: 2px solid $c-blue;
     border-radius: 8px;
+    cursor: pointer;
 
-    &:hover {
-      background-color: #005ecc;
+    @include transition-hover {
+      background-color: $c-darkBlue;
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
-      cursor: pointer;
 
       & :first-child {
         color: #fff;
@@ -96,9 +83,7 @@
     }
 
     &-link {
-      font-weight: 700;
-      text-decoration: none;
-      color: #0075ff;
+      @include links;
     }
   }
 }
