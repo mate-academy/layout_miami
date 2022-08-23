@@ -7,3 +7,7 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('my-bike__body--with-menu');
   }
 });
+
+document.addEventListener('submit', function(event) {
+  event.preventDefault();
+});

@@ -38,7 +38,7 @@
       flex-direction: $direction;
     }
   
-    @if $gap  !=0 {
+    @if $gap !=0 {
       gap: $gap
     }
 }
@@ -65,4 +65,31 @@
   }
 }
 
+@mixin grid-cols ($col-1,
+  $col-2,
+  $col-3: false
+) {
+    grid-template-columns: #{$col-1}fr #{$col-2}fr;
 
+    @if $col-3 {
+      grid-template-columns: #{$col-1}fr #{$col-2}fr #{$col-3}fr;
+    }
+
+    @if $col-1 ==$col-2 {
+      grid-template-columns: repeat(2, #{$col-1}fr);
+    }
+
+    @if $col-2 ==$col-3 {
+      grid-template-columns: repeat(3, #{$col-1}fr);
+    }
+}
+
+@mixin grid (
+  $col-1, 
+  $col-2, 
+  $col-3: false
+) {
+    display: grid;
+    gap: $page-small-gap;
+    @include grid-cols($col-1, $col-2, $col-3);
+}
