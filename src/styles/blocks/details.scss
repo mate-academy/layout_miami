@@ -1,46 +1,106 @@
 .details {
-  display: grid;
-  grid-template-columns: 792px 444px;
-  grid-template-rows: 256px 471px;
 
-  gap: 0 24px;
+  width: $maxContentWidth;
+  display: grid;
+
+  grid-template-columns: (2);
+  grid-template-rows: minmax(672px 324px);
 
   grid-template-areas: "h1 h1" "pl pr";
+  grid-gap: 0 24px;
+  padding: 0 120px;
+
+  @include maxQ($ipadWidth) {
+    padding: 0 72px;
+    grid-template-columns: (392px 184px);
+  }
+
+  @include maxQ($iPhoneWidth) {
+    padding: 0 20px;
+    grid-template-columns: (130px 130px);
+  }
 
   &__headline {
     grid-area: h1;
-    position: relative;
-    left: 455px;
-    width: 498px;
+    width: 100%;
     height: 64px;
     @extend %content-headline;
-    top: 144px;
-  }
-
-  &__left {
+    margin-top: 144px;
     position: relative;
-    left: 120px;
+    justify-self: center;
+
+    @include maxQ($ipadWidth) {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+      line-height: 100%;
+
+      position: relative;
+      left: 176px;
+      bottom: 44px;
+    }
   }
 
   &__pic_1l {
-    position: relative;
+    grid-area: pl;
     width: 672px;
     height: 321px;
+
+    @include maxQ($ipadWidth) {
+      width: 392px;
+      height: 187px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 130px;
+      height: 130px;
+    }
+  }
+
+  &__pic_1r {
+    grid-area: pr;
+    width: 324px;
+    height: 3200px;
+
+    @include maxQ($ipadWidth) {
+      width: 184px;
+      height: 187px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 130px;
+      height: 130px;
+    }
   }
 
   &__feature {
-    grid-area: pl;
-    position: relative;
     @extend %header-text;
+    position: relative;
     top: 6px;
 
+    @include maxQ($ipadWidth) {
+      width: 600px;
+      height: 34px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+      height: 34px;
+    }
   }
   
   &__text {
-    grid-area: pl;
+    width: 600px;
+    height: 66px;
     position: relative;
-    width: 672px;
     top: 8px;
     @extend %description-text;
+
+    @include maxQ($ipadWidth) {
+      width: 600px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+    }
   }
 }

@@ -1,28 +1,69 @@
 .comparison {
-  display: grid;
-  grid-template-columns: 444px 324px 444px;
-  grid-template-rows: 64px 415px;
+  padding: 0 120px;
 
-  gap: 0 24px;
-
-  grid-template-areas: "h1 h1 h1" "pl pm pr";
+  @include maxQ($ipadWidth) {
+    padding: 0;
+  }
 
   &__headline {
-    grid-area: h1;
-    position: relative;
-    left: 405px;
-    @extend %content-headline;
+
+    display: flex;
+    justify-content: center;
+    padding-top: 160px;
+    padding-bottom: 48px;
+
+    @extend %headlineFormat;
+
+    @include maxQ($ipadWidth) {
+      padding: 120px 10px 100px;
+      font-size: 48px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      padding: 120px 10px 100px;
+      font-size: 32px;
+      line-height: 8px;
+    }
+  }
+
+  &__product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0;
+    gap: 0 24px;
+    grid-template-areas: "pl pm pr";
+
+    @include maxQ($ipadWidth) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+  
+    }
+  }
+
+  &__left {
+    @include maxQ($ipadWidth) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   
-  &__left {
-    position: relative;
-    left: 120px;
-    width: 324px;
-  }
   &__pic-left {
     grid-area: pl;
     position: relative;
     height: 264px;
+
+    @include maxQ($ipadWidth) {
+      position: static;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+      height: 228px;
+      margin: 0 20px;
+    }
   }
 
   &__model {
@@ -30,6 +71,16 @@
     position: relative;
     height: 34px;
     @extend %header-text;
+
+    @include maxQ($ipadWidth) {
+      position: static;
+      margin-top: 32px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      position: static;
+      margin-left: 20px;
+    }
   }
 
   &__text {
@@ -39,6 +90,18 @@
     width: 324px;
     top: 8px;
     @extend %description-text;
+
+    @include maxQ($ipadWidth) {
+      position: static;
+      height: 66px;
+      width: 324px;
+      margin-top: 8px;
+    }
+    @include maxQ($iPhoneWidth) {
+      position: static;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
   }
   
   &__price {
@@ -47,6 +110,17 @@
     height: 34px;
     top: 16px;
     @extend %header-text;
+
+    @include maxQ($ipadWidth) {
+      position: static;
+      padding-bottom: 16px;
+      height: 34px;
+      margin-top: 16px;
+    }
+    @include maxQ($iPhoneWidth) {
+      position: static;
+      margin-left: 20px;
+    }
   }
 
   &__pic-mid {
@@ -54,6 +128,12 @@
     position: relative;
     height: 264px;
     width: 324px;
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+      height: 228px;
+      margin: 0 20px;
+    }
   }
 
   &__pic-right {
@@ -61,5 +141,11 @@
     position: relative;
     height: 264px;
     width: 324px;
+  }
+
+  @include maxQ($iPhoneWidth) {
+    width: 280px;
+    height: 228px;
+    margin: 0 20px;
   }
 }
