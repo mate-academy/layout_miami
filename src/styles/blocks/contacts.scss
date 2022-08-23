@@ -1,0 +1,41 @@
+.contacts {
+  display: grid;
+  grid-template-columns: 5fr 2fr 5fr;
+  gap: $page-small-gap;
+
+  @include onTablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include onMobile {
+    display: block;
+
+    &__form {
+      margin-bottom: $page-big-gap;
+    }
+  }
+
+  &__info {
+    grid-column: -1 / -2;
+  }
+
+  &__info-item {
+    &:not(:last-child) {
+      margin-bottom: $page-small-gap;
+    }
+  }
+
+  &__info-title {
+    margin-bottom: $half-line;
+    @extend %text-contacts;
+  }
+
+  &__info-link {
+    transition: all $duration;
+
+    &:hover {
+      transform: scale(1.07);
+      text-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+    }
+  }
+}
