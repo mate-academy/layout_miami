@@ -5,10 +5,38 @@
   background-size: contain;
   background-repeat: no-repeat;
 
+  text-decoration: none;
+
   &--tel {
     background-image: url("../images/phone.svg");
-  }
 
+    @include icon-square(18px);
+
+    @include onDesktop {
+      @include icon-square(24px);
+    }
+  }
+  &__tooltip {
+    opacity: 0;
+    pointer-events: none;
+
+    @include onDesktop {
+      display: block;
+      position: relative;
+      width: max-content;
+      top: 50%;
+      transform: translate(-150%, -50%);
+      padding-right: 20px;
+
+      color: $color-white;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      transition: opacity $transition-duration,
+        transform $transition-duration;
+    }
+  }
   &--menu {
     background-image: url("../images/menu.svg");
     transition-duration: 0.4s;
@@ -23,13 +51,20 @@
       @include icon-square(24px);
     }
   }
-
   &--cross {
     background-image: url("../images/cross.svg");
     @include icon-square(18px);
 
     @include onDesktop {
       @include icon-square(24px);
+    }
+  }
+
+  &:hover > &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(-100%, -50%);
     }
   }
 }

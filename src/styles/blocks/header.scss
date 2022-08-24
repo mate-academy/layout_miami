@@ -7,6 +7,10 @@ $checkbox-target: ".page__nav";
   background-size: cover;
   background-repeat: no-repeat;
 
+  &__top-nav {
+    @include top-nav;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -25,47 +29,6 @@ $checkbox-target: ".page__nav";
 
   &__menu-checkbox {
     display: none;
-  }
-
-  &__tel {
-    @include icon-square(18px);
-
-    @include onDesktop {
-      @include icon-square(24px);
-    }
-
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        display: block;
-        width: max-content;
-        position: relative;
-        top: 50%;
-        transform: translate(-150%, -50%);
-        padding-right: 20px;
-
-        color: $color-white;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 700;
-
-        opacity: 0;
-        pointer-events: none;
-
-        transition: opacity $transition-duration,
-          transform $transition-duration;
-
-      }
-      &:hover {
-        &::before {
-          opacity: 1;
-          pointer-events: all;
-          transform: translate(-100%, -50%);
-        }
-      }
-    }
   }
 
   &__title {
