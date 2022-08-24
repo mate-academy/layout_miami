@@ -8,13 +8,21 @@
     column-gap: 24px;
   }
 
-  &__item {
-    &--1-4 {
-      grid-column: 1 / 5;
-    }
+  &--desktop {
+    display: block;
 
-    &--7-12 {
-      grid-column: 7 / 13;
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
     }
   }
 }
