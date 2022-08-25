@@ -1,4 +1,6 @@
 # Miami landing page
+[DEMO LINK](https://grafit-off.github.io/layout_miami/)
+
 In this task, you will learn how to implement a landing page. To do that:
 
 - watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
