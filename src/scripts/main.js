@@ -86,4 +86,8 @@ window.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('header--scroll');
     }
   });
+
+  document.querySelector('.contacts__form').addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
 });
