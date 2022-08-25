@@ -1,0 +1,40 @@
+.nav {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: var(--icon-width) var(--icon-width);
+  justify-content: center;
+  align-items: center;
+  gap: 63px;
+
+  @include onDesktop() {
+    --icon-width: 24px;
+
+    &--call {
+      &::before {
+        content: "The_Met_Fifth_Avenue"
+          " +1_212-535-7710"
+          " The_Met_Cloisters"
+          " +1_212-923-3700";
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        position: absolute;
+        top: 50%;
+        width: 201px;
+        padding-right: 20px;
+        transform: translate(-100%, -50%);
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s linear;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
