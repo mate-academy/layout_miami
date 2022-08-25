@@ -3,16 +3,23 @@
 
   @extend %btn-reset;
 
-  position: relative;
-
   flex: 0 0 auto;
 
   display: block;
 
-  width: 24px;
-  height: 20px;
+  padding: 5px;
+  padding-right: 0;
 
   transition: transform $transition-props;
+
+  &__container {
+    position: relative;
+
+    display: block;
+
+    width: 24px;
+    height: 20px;
+  }
 
   &__line {
     position: absolute;
@@ -35,8 +42,8 @@
     }
   }
 
-  &::before,
-  &::after {
+  &__container::before,
+  &__container::after {
     content: "";
     position: absolute;
     left: 0;
@@ -48,31 +55,31 @@
 
     transition: $burger-lines-transition;
   }
-  &::before {
+  &__container::before {
     top: 0;
   }
-  &::after {
+  &__container::after {
     bottom: 0;
   }
 
   &:hover {
     transform: rotate(-90deg);
 
-    &::after,
-    &::before,
+    &__container::after,
+    &__container::before,
     #{$root}__line--top,
     #{$root}__line--bottom {
       left: 50%;
       transform: translateX(-50%);
     }
 
-    &::after {
+    #{$root}__container::after {
       width: 60%;
 
       @include wave-animation(60, 0.5s);
     }
 
-    &:before {
+    #{$root}__container::before {
       width: 20%;
       @include wave-animation(20, 0.8s);
     }
@@ -94,12 +101,12 @@
   &--active &__line {
     transform: scale(0);
   }
-  &--active:before {
+  &--active #{$root}__container::before {
     top: 9px;
 
     transform: rotate(45deg);
   }
-  &--active:after {
+  &--active #{$root}__container::after {
     bottom: 9px;
 
     transform: rotate(-45deg);
@@ -109,8 +116,8 @@
     &:hover {
       transform: rotate(0);
 
-      &::after,
-      &::before,
+      #{$root}__container::after,
+      #{$root}__container::before,
       #{$root}__line--top,
       #{$root}__line--bottom {
         left: 0;
@@ -118,7 +125,7 @@
         animation: none;
       }
 
-      &::after {
+      #{$root}__container::after {
         bottom: 9px;
 
         width: 100%;
@@ -126,7 +133,7 @@
         transform: rotate(-45deg);
       }
 
-      &:before {
+      #{$root}__container::before {
         top: 9px;
 
         width: 100%;
