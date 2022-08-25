@@ -10,21 +10,53 @@
     column-gap: 24px;
   }
 
-  @for $start from 1 through 6 {
-    @for $end from $start through 6 {
-      &--tablet-#{$start}-#{$end} {
-        @include onTablet {
-          grid-column: #{$start} / #{$end + 1};
+  &__item {
+    &:hover  .details__image {
+      transform: scale(1.5) translateX(37.5%);
+
+      @include onTablet {
+        transform: scale(1.5) translateX(17%);
+      }
+    }
+
+    &:hover  .details__image--right {
+      transform: scale(1.5) translateX(-37.5%);
+
+      @include onTablet {
+        transform: scale(1.5) translateX(-72%);
+      }
+    }
+
+    &:hover .details__image--last {
+      @include onTablet {
+        transform: scale(1.5) translateX(72%);
+      }
+    }
+
+    &:hover .details__image--last-right {
+      transform: scale(1.5) translateX(-37.5%);
+
+      @include onTablet {
+        transform: scale(1.5) translateX(-17%);
+      }
+    }
+    
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
-  }
-
-  @for $start from 1 through 12 {
-    @for $end from $start through 12 {
-      &--desktop-#{$start}-#{$end} {
-        @include onDesktop {
-          grid-column: #{$start} / #{$end + 1};
+  
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
