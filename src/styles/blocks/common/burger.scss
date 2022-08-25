@@ -1,0 +1,149 @@
+.burger {
+  $root: &;
+
+  @extend %btn-reset;
+
+  position: relative;
+
+  flex: 0 0 auto;
+
+  display: block;
+
+  width: 24px;
+  height: 20px;
+
+  transition: transform $transition-props;
+
+  &__line {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    border-radius: 2px;
+
+    background-color: $color-dark;
+
+    transition: $burger-lines-transition;
+
+    &--top {
+      top: 6px;
+    }
+    &--bottom {
+      bottom: 6px;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: $color-dark;
+
+    transition: $burger-lines-transition;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+
+  &:hover {
+    transform: rotate(-90deg);
+
+    &::after,
+    &::before,
+    #{$root}__line--top,
+    #{$root}__line--bottom {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      width: 60%;
+
+      @include wave-animation(60, 0.5s);
+    }
+
+    &:before {
+      width: 20%;
+      @include wave-animation(20, 0.8s);
+    }
+    #{$root}__line {
+      &--top {
+        width: 40%;
+
+        @include wave-animation(40, 0.6s);
+      }
+
+      &--bottom {
+        width: 80%;
+
+        @include wave-animation(80, 0.2s);
+      }
+    }
+  }
+
+  &--active &__line {
+    transform: scale(0);
+  }
+  &--active:before {
+    top: 9px;
+
+    transform: rotate(45deg);
+  }
+  &--active:after {
+    bottom: 9px;
+
+    transform: rotate(-45deg);
+  }
+
+  &--active {
+    &:hover {
+      transform: rotate(0);
+
+      &::after,
+      &::before,
+      #{$root}__line--top,
+      #{$root}__line--bottom {
+        left: 0;
+        transform: translate(0);
+        animation: none;
+      }
+
+      &::after {
+        bottom: 9px;
+
+        width: 100%;
+
+        transform: rotate(-45deg);
+      }
+
+      &:before {
+        top: 9px;
+
+        width: 100%;
+
+        transform: rotate(45deg);
+      }
+      #{$root}__line {
+        &--top {
+          width: 100%;
+          transform: scale(0);
+        }
+
+        &--bottom {
+          width: 100%;
+          transform: scale(0);
+        }
+      }
+    }
+  }
+}

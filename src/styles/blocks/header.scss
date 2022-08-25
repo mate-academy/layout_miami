@@ -1,0 +1,95 @@
+.header {
+  border-bottom: 1px solid transparent;
+
+  transition: border-bottom $transition-props,
+    background-color $transition-props;
+
+  &--scroll {
+    border-bottom: 1px solid $color-dark;
+    background-color: $color-water;
+  }
+
+  &__container {
+    @extend %container;
+
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  &__home-link {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__logo {
+    width: 190px;
+    height: 24px;
+
+    object-fit: contain;
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  &__column {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tel {
+    @extend %link-reset;
+    position: relative;
+
+    display: block;
+
+    @include square(20px);
+
+    margin-right: 28px;
+
+    @include mediamin(768px) {
+      margin-right: 40px;
+    }
+
+    @include mediamin(1024px) {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translate(-100%, -50%);
+
+        transition: opacity $transition-props, visibility $transition-props;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &__tel-svg {
+    @include square(20px);
+
+    fill: $color-dark;
+  }
+}
