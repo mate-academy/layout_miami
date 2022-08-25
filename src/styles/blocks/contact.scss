@@ -1,0 +1,135 @@
+.contact {
+
+  &__headline {
+    @extend %contact-headline;
+    margin-bottom: 48px;
+  }
+
+  &__container {
+    display: grid;
+    height: 100%;
+
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 24px;
+
+    padding: 0 120px;
+
+    @include maxQ($ipadWidth) {
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 0 24px;
+      padding: 0 72px;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 0 24px;
+      padding: 0 20px;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / 6;
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 4;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  &__input {
+    display: block;
+    @extend %contact-input-form;
+  
+    &-name {
+      height: 48px;
+    }
+    
+    &-email {
+      height: 48px;
+    }
+
+    &-message {
+      height: 148px;
+      margin-bottom: 32px;
+      border-radius: 16px;
+      padding-top: 14px;
+
+      &::placeholder {
+        font-weight: 400;
+        color: #7e7e83;
+        align-self: flex-start;
+      }
+    }
+  }
+  
+  &__send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+    width: 100%;
+    height: 56px;
+    border-radius: 40px;
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    @extend %contact-details-header;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1d1d1d;
+  }
+
+  &__details {
+    grid-column: 8 /13;
+    @extend %contact-details-header;
+
+    @include maxQ($ipadWidth) {
+      grid-column: 4 / 6;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+    }
+      
+    &-phone {
+      @extend %contact-details-header;    
+      font-size: 14px;
+      font-weight: 400;
+      @include maxQ($iPhoneWidth) {
+        margin-top: 48px;
+      }
+    }
+      
+    &-number {
+      @extend %contact-details-header;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    &-email {
+      @extend %contact-details-header;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &-email_address {
+      @extend %contact-details-header;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &-address {
+      @extend %contact-details-header;
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+    &-address_details {
+      @extend %contact-details-header;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+  }
+}
