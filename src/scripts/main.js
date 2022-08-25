@@ -19,6 +19,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if (this.scrollWidth) {
         document.body.style.paddingRight = `${this.scrollWidth}px`;
+
+        document.querySelectorAll('[data-fixed-padding]').forEach((el) => {
+          el.style.paddingRight = `${this.scrollWidth}px`;
+        });
       }
 
       this.btn.classList.add('burger--active');
@@ -34,6 +38,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if (this.scrollWidth) {
         document.body.style.paddingRight = null;
+
+        document.querySelectorAll('[data-fixed-padding]').forEach((el) => {
+          el.style.paddingRight = null;
+        });
       }
 
       document.body.classList.remove('page__content--lock');
