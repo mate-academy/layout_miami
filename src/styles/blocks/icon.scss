@@ -1,4 +1,6 @@
 .icon {
+  position: relative;
+
   width: 100%;
   padding-bottom: 100%;
 
@@ -7,6 +9,38 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    width: max-content;
+
+    padding-right: 20px;
+
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $smooth-transition;
+  }
+
+  &:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 
   &--menu {
     background-image: url(/images/menu.svg);
