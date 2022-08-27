@@ -193,27 +193,53 @@ a:active {
   margin-bottom: 32px;
 }
 
+.menu .underline {
+  position: relative;
+  background-color: transparent;
+}
+
+.menu .underline::before,
+.menu .underline::after {
+  position: absolute;
+  top: calc(100% + 8px);
+  bottom: 0;
+  display: block;
+  height: 2px;
+  width: 0;
+  background-color: #1d1d1d;
+  content: "";
+}
+
+.menu .underline::before {
+  left: 0;
+}
+
+.menu .underline::after {
+  right: 0;
+  transition: width 0.5s;
+}
+
+.menu .underline:hover::before {
+  width: 100%;
+  transition: width 0.5s;
+}
+
+.menu .underline:hover::after {
+  background-color: transparent;
+  width: 100%;
+}
+
 .menu__tel {
   margin-bottom: 16px;
 }
 
 .menu__tel:hover {
-  color: #fff;
+  color: rgb(77, 78, 100);
 }
 
 .menu__book {
   position: relative;
   display: inline;
-}
-
-.menu__book::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 0;
-  top: calc(100% + 8px);
-  left: 0;
-  border: 1px solid #1d1d1d;
 }
 
 .top-actions__call-icon {
@@ -224,12 +250,6 @@ a:active {
   background-size: cover;
   height: 24px;
   width: 24px;
-}
-@media (max-width: 599.9px) {
-  .top-actions__call-icon {
-    height: 18px;
-    width: 18px;
-  }
 }
 
 .menu .top-actions__call-icon {
@@ -245,13 +265,6 @@ a:active {
   height: 24px;
   width: 24px;
   margin-left: 40px;
-}
-@media (max-width: 599.9px) {
-  .top-actions__menu-icon {
-    height: 18px;
-    width: 18px;
-    margin-left: 30px;
-  }
 }
 
 .menu .top-actions__menu-icon {
@@ -316,6 +329,21 @@ a:active {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+}
+
+@media (max-width: 599.9px) {
+  .top-actions__call-icon {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+@media (max-width: 599.9px) {
+  .top-actions__menu-icon {
+    height: 18px;
+    width: 18px;
+    margin-left: 30px;
+  }
 }
 
 .top-actions__phone-number--hidden {
@@ -420,7 +448,7 @@ a:active {
 
 .card__image:hover {
   margin-top: 20px;
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: 150;
 }
 
@@ -481,7 +509,7 @@ a:active {
 
 .detail__image:hover {
   padding-bottom: 120px;
-  transform: scale(1.1);
+  transform: scale(1.05);
   z-index: 150;
 }
 
