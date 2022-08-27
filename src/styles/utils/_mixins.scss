@@ -1,6 +1,40 @@
+@mixin onTablet {
+  @media (min-width: 640px) and (max-width: 1023.5px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
+
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 24px;
+  display: grid;
+  grid-template-columns: (
+    1fr
+    var(--icon-width)
+    var(--icon-width)
+    var(--icon-width)
+  );
+  justify-items: start;
+  align-items: center;
+
+  @include onTablet {
+    --icon-width: 32px;
+  }
+
+  @include onDesktop {
+    --icon-width: 32px;
   }
 }
