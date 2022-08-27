@@ -1,3 +1,6 @@
+# Landing
+- [DEMO LINK](https://illia-sosnytskyi.github.io/layout_miami/)
+___
 # Miami landing page
 In this task, you will learn how to implement a landing page. To do that:
 
