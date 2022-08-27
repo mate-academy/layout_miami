@@ -2,7 +2,7 @@
 @import "typography";
 
 .page {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   &__body {
     margin: 0;
@@ -11,17 +11,44 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 24px 20px 80px;
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40 px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
 
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
   background-image: url(../images/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
 
   &__nav {
     display: flex;
@@ -30,14 +57,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -45,14 +65,36 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        color: #fff;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__title {
@@ -61,6 +103,12 @@
     line-height: 40px;
     color: #fff;
     letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1px;
+    }
 
     &::before {
       content: "";
@@ -76,5 +124,9 @@
 .logo {
   &__image {
     height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
   }
 }
