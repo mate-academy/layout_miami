@@ -17,6 +17,8 @@
     margin-left: 9%;
     display: grid;
 
+    max-width: $maxContentWidth;
+
     grid-template-columns: 59% 28.5%;
     
     grid-template-areas: "h1 h1" "pl pr";
@@ -33,6 +35,12 @@
   
   &__pic_1l {
     grid-area: pl;
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($imageScaling);
+    }
+
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
       height: 130px;
@@ -41,6 +49,12 @@
 
   &__pic_1r {
     grid-area: pr;
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($imageScaling);
+    }
+
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
       height: 130px;
@@ -51,6 +65,7 @@
     @extend %header-text;
     position: relative;
     top: 6px;
+    z-index: 10;
   
 
     @include maxQ($ipadWidth) {

@@ -15,7 +15,7 @@
     padding: 0 120px;
 
     @include maxQ($ipadWidth) {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 0 24px;
       padding: 0 72px;
     }
@@ -28,10 +28,12 @@
   }
 
   &__form {
-    grid-column: 1 / 6;
+    grid-column: 1 / 7;
+    width: 100%;
+    flex-basis: 50%;
 
     @include maxQ($ipadWidth) {
-      grid-column: 1 / 4;
+      grid-column: 1 / 1;
     }
     
     @include maxQ($iPhoneWidth) {
@@ -73,19 +75,43 @@
     width: 100%;
     height: 56px;
     border-radius: 40px;
-    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    box-shadow: 1px 4px 16px;
     @extend %contact-details-header;
     font-size: 16px;
     font-weight: 700;
     color: #1d1d1d;
+
+    grid-column: 1 / 6;
+
+    transition-duration: $transitionDuration;
+
+    &:hover {
+      background-color: $c-grey;
+      color: $c-white;
+      border: 3px solid $c-white;
+    }
+  
+    &:active {
+      color: $c-white;
+      background-color: $c-primaryColor;
+    }
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 7;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+      width: 100%;
+    }
   }
 
   &__details {
-    grid-column: 8 /13;
+    grid-column: 8/13;
     @extend %contact-details-header;
 
     @include maxQ($ipadWidth) {
-      grid-column: 4 / 6;
+      grid-column: 2 / 2;
     }
     
     @include maxQ($iPhoneWidth) {

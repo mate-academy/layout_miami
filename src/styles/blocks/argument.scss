@@ -1,66 +1,74 @@
 .argument {
-  display: grid;
-  grid-template-columns: 45% 55%;
-  grid-template-areas: "slogan text";
-  @include limitContentWidth;
-  
+  padding: 0 120px;
+
+  max-width: $maxContentWidth;
+   
   @include maxQ($ipadWidth) {
-    grid-template-columns: 50% 50%;
-    grid-template-areas: "slogan text";
+    padding: 0 72px;
   }
 
   @include maxQ($iPhoneWidth) {
-    display: flex;
-    flex-direction: column;
-    margin-left: 6.25%;
+    padding: 0 20px;
   }
 
-  &__slogan {
-    grid-area: slogan;
-    font-family: "Poppins", sans-serif;
-    font-size: 64px;
-    color: #fff;
-    
-    margin-top: 20%;
-    margin-left: 120px;
+  &__content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 24px;
   
     @include maxQ($ipadWidth) {
-      font-size: 48px;
-      letter-spacing: -1.5px;
-      margin-left: 72px;
-      margin-top: 110px;
+      grid-template-columns: repeat(6, 1fr);
     }
 
     @include maxQ($iPhoneWidth) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 0;
+    }
+  }
+
+  &__slogan {
+    grid-column: 1 / 5;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 64px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 3;
+      font-size: 48px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
       font-size: 32px;
-      margin-left: 0;
-      margin-top: 60px;
     }
   }
 
   &__text {
-    grid-area: text;
-    width: 70%;
+    grid-column: 6 / 12;
 
     font-family: "Inter", sans-serif;
     font-size: $phoneSymbolSize;
     line-height: 140%;
-    color: #fff;
- 
-    margin-top: 20%;
+    color: $c-white;
 
     @include maxQ($ipadWidth) {
+      grid-column: 4 / 6;
+      
       font-size: 24px;
       font-weight: 500;
       line-height: 140%;
-      margin-top: 120px;
+      width: 100%;
     }
   
     @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
       font-size: 24px;
       font-weight: 500;
       line-height: 140%;
-      width: 85%;
+      width: 100%;
       margin-top: 32px;
     }
   }
