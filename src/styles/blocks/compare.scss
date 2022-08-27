@@ -1,0 +1,57 @@
+.compare {
+  &__inner {
+    display: grid;
+    grid-template-columns: 280px;
+    grid-gap: 40px;
+    justify-content: center;
+    
+
+    @include tablet {
+      grid-template-columns: 392px;
+      grid-gap: 48px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+
+
+    &:hover {
+      .compare__img {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__img {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 32px;
+    
+    transition: transform 0.3s;
+
+    @include tablet {
+      max-width: 392px
+    }
+  }
+
+  &__name {
+    @extend %subtitle;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    flex-grow: 1;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %subtitle;
+  }
+}

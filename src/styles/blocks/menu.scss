@@ -1,12 +1,86 @@
 .menu {
+  color: $c-main;
   background-color: $c-gray;
-  
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
   &__inner {
     min-height: 100vh;
     padding: 28px 0;
 
     @include tablet {
       padding: 36px 0;
+    }
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__link {
+    @extend %menu-links;
+
+    position: relative;
+    display: inline-block;
+    padding: 8px 0;
+
+    font-size: 22px;
+    line-height: 22px;
+
+    &::after {
+      content: "";
+      display: block;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      height: 1px;
+      background-color: $c-main;
+
+      transform: scale(0);
+
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1)
+      }
+    }
+  }
+
+  &__call {
+    @extend %menu-links;
+
+    &--phone {
+      display: none;
+      line-height: 27px;
+      margin-bottom: 16px;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &--action {
+      display: inline-block;
+      padding-bottom: 8px;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      border-bottom: 1px solid $c-main;
     }
   }
 }
