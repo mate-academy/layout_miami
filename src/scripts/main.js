@@ -7,3 +7,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--menu');
   }
 });
+
+document.querySelector('#send').addEventListener('click', (event) => {
+  document.getElementById('output').innerHTML
+  += 'Sorry! There is no destination to send info.';
+  event.preventDefault();
+}, false);
