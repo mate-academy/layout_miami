@@ -45,4 +45,113 @@
       }
     }
   }
+
+  &__menu {
+    @include square($icon-size);
+
+    @include onTablet {
+      @include square($icon-size-desktop);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      height: 2px;
+      background-color: #000;
+      transition: all 0.3s ease;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #000;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 2px;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+
+    &--top {
+      top: 5px;
+      transition: all 0.3s;
+    }
+
+    &--bottom {
+      bottom: 5px;
+      transition: all 0.3s;
+    }
+
+    @include onTablet {
+      &--top {
+        top: 7px;
+      }
+
+      &--bottom {
+        bottom: 7px;
+      }
+    }
+  }
+
+  &--menu-opener {
+    position: relative;
+    transition: transform 0.3s;
+    @include onDesktop {
+      &:hover {
+
+        .nav__line {
+          &--top {
+            rotate: 90deg;
+            left: 19px;
+            top: 10px;
+          }
+
+          &--bottom {
+            rotate: 90deg;
+            left: -8px;
+            bottom: 12px;
+          }
+        }
+      }
+
+      &:hover::before {
+        rotate: -55deg;
+        left: 12px;
+        top: 8px;
+      }
+
+      &:hover::after {
+        left: -1px;
+        bottom: 13px;
+        rotate: 55deg;
+      }
+    }
+
+  }
+
+  &--menu-closer {
+    position: relative;
+
+    &::before {
+      top: 45%;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      bottom: 45%;
+      transform: rotate(-45deg);
+    }
+  }
 }
