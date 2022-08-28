@@ -68,10 +68,34 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  class Debounce {
+    constructor(time = 100, functions = () => { }) {
+      this.time = time;
+      this.functions = functions;
+      this.timeOut = null;
+    }
+
+    init() {
+      clearTimeout(this.timeOut);
+
+      this.timeOut = setTimeout(() => {
+        this.functions();
+      }, this.time);
+    }
+  }
+
   const header = document.querySelector('.header');
   const headerMenu = document.querySelector('.nav');
   const burgerBtn = document.querySelector('.burger');
   const myBurger = new Burger(burgerBtn, headerMenu);
+  const addClassOnScroll = () => {
+    if (window.pageYOffset > 0) {
+      header.classList.add('header--scroll');
+    } else {
+      header.classList.remove('header--scroll');
+    }
+  };
+  const debounceFunc = new Debounce(100, addClassOnScroll);
 
   headerMenu.addEventListener('click', (e) => {
     if (e.target.classList.contains('nav__link')) {
@@ -80,11 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 0) {
-      header.classList.add('header--scroll');
-    } else {
-      header.classList.remove('header--scroll');
-    }
+    debounceFunc.init();
   });
 
   document.querySelector('.contacts__form').addEventListener('submit', (e) => {
