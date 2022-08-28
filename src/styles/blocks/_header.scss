@@ -22,7 +22,7 @@
     right: 0;
     bottom: 0;
     height: 100vh;
-    transition: all 0.5s;
+    @include transition;
     transform: translateX(-100%);
 
     &:target {
@@ -38,7 +38,7 @@
   &__menu-opener {
     width: 18px;
     height: 12px;
-    transition: background-image 0.3s;
+    @include transition;
     background-image: url(../images/menu.svg);
 
     @include onTablet {
@@ -52,8 +52,10 @@
   }
 
   &__call {
+    position: relative;
     display: block;
     margin-right: 30px;
+    text-decoration: none;
 
     &-icon {
       width: 18px;
@@ -62,6 +64,33 @@
       @include onTablet {
         width: 24px;
         height: 24px;
+      }
+    }
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        opacity: 0;
+        visibility: hidden;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        @include transition;
+        text-transform: uppercase;
+        
+        color: $page-color-second;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -84,6 +113,8 @@
 .menu {
   font-family: "Inter", sans-serif;
   background-color: #e5e5e5;
+  overflow-y: auto;
+  z-index: 1;
 
   &__top {
     display: flex;
@@ -134,7 +165,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.3s;
+    @include transition;
     text-decoration: none;
     color: $page-color-first;
 
