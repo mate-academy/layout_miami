@@ -1,0 +1,102 @@
+.header {
+  background-image: url(../images/4797e08c5190fa39cbf17ad5a0adaa3d.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: $headerTopPaddingMobile;
+
+    @include onTablet {
+      padding-top: $headerTopPaddingTable;
+    }
+
+    @include onDesktop {
+      padding-top: $headerTopPaddingDesktop;
+    }
+  }
+
+  &__info {
+    --icon-width: 18px;
+    --icon-gap: 30px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include onTablet {
+      --icon-width: 24px;
+      --icon-gap: 63px;
+    }
+  }
+
+  &__info-nav {
+    display: grid;
+    justify-content: flex-end;
+    grid-template-columns: var(--icon-width) var(--icon-width);
+    gap: var(--icon-gap);
+
+    @include onDesktop {
+      grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+    }
+  }
+
+  &__phone--on-desktop {
+    display: none;
+
+    @include onDesktop {
+      &:nth-child(n) {
+        display: flex;
+        flex-direction: column;
+        color: $colorWhite;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: end;
+        text-transform: uppercase;
+        order: -1;
+        opacity: 0;
+        transition: opacity 1s;
+        transform: translateX(40px);
+      }
+
+      & :nth-child(2) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__phone {
+    @include onDesktop {
+      &:hover ~ :nth-child(n) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 130px;
+    color: #fff;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      margin-top: 140px;
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      margin-top: 60px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
