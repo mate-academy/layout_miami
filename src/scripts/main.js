@@ -11,3 +11,8 @@ window.addEventListener('hashchange', () => {
 document.querySelector('.button').addEventListener('click', (event) => {
   event.preventDefault();
 }, false);
+
+document.querySelector('.button--primary')
+  .addEventListener('click', (event) => {
+    event.preventDefault();
+  }, false);
