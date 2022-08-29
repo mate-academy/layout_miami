@@ -7,9 +7,15 @@
   box-sizing: border-box;
 }
 
-.page{
+.page {
   // font-family: 'Inter', sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header {
@@ -26,62 +32,72 @@
     padding: 29px 20px 88px;
 
     @include onTablet {
-      padding: 36px 0px 130px;
+      padding: 36px 0 130px;
       max-width: 600px;
     }
 
     @include onDesctop {
-      padding: 36px 0px 122px;
+      padding: 36px 0 122px;
       max-width: 1020px;
     }
   }
 
-  &__title {
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 36px;
-    color: rgba(41, 41, 41, 1);
-    letter-spacing: -1.5px;
-    text-align: center;
-
-    @include onTablet {
-      font-size: 64px;
-      line-height: 64px;
-      color: rgba(29, 29, 29, 1);
-    }
-
-    @include onDesctop {
-      font-size: 80px;
-      line-height: 80px;
-    }
-  }
-}
-
-.container {
+  &__interactive-icons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
 
-.nav {
-  display: flex;
-  align-items: center;
+    & :first-child {
+      margin-right: 30px;
+    }
 
-  & :first-child {
-    margin-right: 30px;
+    @include onTablet {
+      & :first-child {
+        margin-right: 40px;
+      }
+    }
   }
 
   &__call {
     display: block;
+
     height: 18px;
     width: 18px;
+
+    text-decoration: none;
+    color: #292929;
 
     background-image: url(../images/phone.svg);
     @extend %background-image;
 
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+
+      display: block;
+      padding-right: 12px;
+      width: max-content;
+
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-100%, -50%);
+      transition: opacity $animation-duration;
+    }
+
     @include onTablet {
       height: 24px;
       width: 24px;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -94,15 +110,36 @@
     background-image: url(../images/menu.svg);
     @extend %background-image;
 
+    transition: background-image $animation-duration;
+
     @include onTablet {
       width: 24px;
       height: 16px;
     }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      transform: rotate(180deg);
+    }
   }
 
-  @include onTablet {
-    & :first-child {
-      margin-right: 40px;
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    color: #292929;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+      color: rgba(29, 29, 29, 1);
+    }
+
+    @include onDesctop {
+      font-size: 80px;
+      line-height: 80px;
     }
   }
 }
