@@ -1,0 +1,40 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+   @include onDescktop {
+    column-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .grid__item--button {
+    width: 280px;
+    margin: 0 auto;
+
+    @include onDescktop {
+      width: 150px;
+    }
+  }
+
+
+  &--desktop {
+    display: block;
+
+    @include onDescktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDescktop {
+          grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}

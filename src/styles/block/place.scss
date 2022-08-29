@@ -1,0 +1,50 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    max-height: 256px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &::after {
+      display: block;
+      content: "";
+      padding-bottom: 100%;
+    }
+
+    @include onDescktop {
+      height: 256px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo-container:hover {
+    transform: scale(1.05);
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDescktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-blue;
+    font-weight: bold;
+  }
+}
