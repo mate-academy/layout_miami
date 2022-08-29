@@ -7,3 +7,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const button = document.querySelector('.form');
+
+button.submit(function(e) {
+  e.preventDefault();
+});
