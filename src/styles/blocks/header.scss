@@ -1,8 +1,8 @@
 .header {
-  padding: 52px 120px 64px;
   height: 100vh;
 
-  max-width: $maxContentWidth;
+  display: flex;
+  justify-content: space-between;
 
   background-image: url(../images/Header.png);
   background-repeat: no-repeat;
@@ -20,11 +20,15 @@
   }
 
   &__content-wrapper {
+    padding: 36px 120px 64px;
+    max-width: $maxContentWidth;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 100%;
 
     @include limitContentWidth;
   }
@@ -48,11 +52,6 @@
     top: 30px;
     color: #1d1d1d;
 
-    @include minQ($OversizeScreenWidth) {
-      width: 400px;
-      height: 110px;
-    }
-
     @include maxQ($ipadWidth) {
       width: 187px;
       height: 56px;
@@ -71,10 +70,6 @@
     font-size: 80px;
     letter-spacing: -1.5px;
     padding-bottom: 12%;
-    
-    @include minQ($OversizeScreenWidth) {
-      font-size: 160px;
-    }
 
     @include maxQ($ipadWidth) {
       font-size: 64px;
@@ -113,7 +108,8 @@
     right: 120%;
     top: 0%;
     white-space: nowrap;
-    transition-duration: $transitionDuration;
+    transition: transform $transitionDuration;
+  
 
     @include minQ($OversizeScreenWidth) {
       height: $phoneSymbolSize * 2.5;
