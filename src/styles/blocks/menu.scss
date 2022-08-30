@@ -1,3 +1,83 @@
 .menu {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 32px 24px 0 20px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+
   background-color: $c-gray;
+
+  transform: translateX(100%);
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include onTablet {
+    padding: 36px 76px 0 72px;
+  }
+
+  @include onDesktop {
+    padding: 36px 120px 0 124px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+    padding-top: 44px;
+    list-style: none;
+    font-size: 22px;
+    line-height: 22px;
+
+    @include onDesktop {
+      padding-top: 48px;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  &__link,
+  &__phone-action {
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $c-black;
+  }
+
+  &__link {
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s;
+
+    &:hover {
+      border-bottom-color: $c-black;
+    }
+  }
+
+  &__phone-number {
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 27px;
+    text-decoration: none;
+    color: $c-black;
+  }
+
+  &__phone-action {
+    width: max-content;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $c-black;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
