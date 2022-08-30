@@ -3,43 +3,28 @@
   background-position: center;
   background-image: url(../images/header.jpg);
 
-  &__container {
-    @include container;
-  }
-
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     height: 100vh;
-    padding: 24px 0 80px;
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    @include hover(background-image, url(../images/menu_hover.svg));
+    padding: $headerTopPadding 0 80px;
   }
 
   &__call {
+    position: relative;
     text-decoration: none;
-    background-image: url(../images/phone.svg);
+
     @include onDesktop {
       &:before {
         content: "+1 234 555-55-55";
-        display: block;
-        position: relative;
-        transform: translate(-100%, -50%);
-        top: 50%;
+        display: flex;
+        transform: translate(-80%, -50%);
         padding-right: 20px;
         width: max-content;
+        position: absolute;
+        top: 50%;
 
         color: $c-white;
         font-weight: 700;
@@ -48,9 +33,11 @@
         letter-spacing: 2px;
         pointer-events: none;
         opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
       }
 
       &:hover::before {
+        transform: translate(-100%, -50%);
         opacity: 1;
         pointer-events: all;
       }
