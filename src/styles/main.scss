@@ -192,19 +192,6 @@
   }
 }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
-
-  &:target {
-    transform: translateX(0);
-  }
-}
-
 .footer {
   height: 205px;
   padding-bottom: 24px;
@@ -219,5 +206,73 @@
   @include onDesktop {
     height: 360px;
     padding-bottom: 36px;
+  }
+}
+
+.page {
+  .page__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    &--title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 36px;
+      letter-spacing: -1.5px;
+      color: #000;
+
+      &::after {
+        content: "";
+        text-align: center;
+        display: block;
+        margin: 5px auto 0;
+        background-image: url(../images/crown.svg);
+        background-position: top;
+        background-repeat: no-repeat;
+        width: 23px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--1-4 {
+      grid-column: 1 / 5;
+    }
+
+    &--7-12 {
+      grid-column: 7 / 13;
+    }
   }
 }
