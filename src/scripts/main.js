@@ -8,8 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// document.querySelector('#send').addEventListener('click', (event) => {
-//   document.getElementById('output').innerHTML
-//   += 'Sorry! There is no destination to send info.';
-//   event.preventDefault();
-// }, false);
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  form.reset();
+});
