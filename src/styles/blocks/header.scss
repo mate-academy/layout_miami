@@ -1,0 +1,124 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  width: 100%;
+  padding-bottom: 100%;
+  display: block;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  display: grid;
+  grid-template-columns: $icon-width 1fr $icon-width;
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    $icon-width: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    box-sizing: border-box;
+    padding: $headerTop 0 80px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        pointer-events: none;
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 50%);
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        line-height: 16px;
+        opacity: 0;
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
