@@ -1,6 +1,70 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin transition-hover {
+  transition: all 0.8s;
   &:hover {
-    #{$_property}: $_toValue;
+    @content;
+  }
+}
+
+@mixin transition {
+  transition: all 0.8s;
+}
+
+@mixin content-size {
+  box-sizing: content-box;
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+  margin-bottom: 64px;
+  @include on-desktop {
+    padding: 0 40px;
+    margin-bottom: 104px;
+  }
+}
+
+@mixin icon ($bcg-img) {
+  display: inline-block;
+  width: 24px;
+  height: 16px;
+  background: url($bcg-img) no-repeat center / cover;
+  cursor: pointer;
+}
+
+@mixin nav-links ($font-size, $line-height) {
+  font-weight: 700;
+  font-size: #{$font-size}px;
+  line-height: #{$line-height}px;
+  align-items: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $c-white;
+  text-decoration: none;
+}
+
+@mixin links {
+  text-decoration: none;
+  font-weight: 700;
+  color: $c-blue;
+  @include transition-hover {
+    color: $c-darkGray;
+  }
+}
+
+@mixin links-dark {
+  text-decoration: none;
+  color: $c-darkGray;
+  @include transition-hover {
+    color: $c-blue;
   }
 }

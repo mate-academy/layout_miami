@@ -1,0 +1,45 @@
+.header {
+  &__front {
+    background: url(../images/header_bg.jpg) no-repeat center / cover;
+  }
+
+  &__back {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    background-color: $c-blue;
+    overflow-y: auto;
+    @include transition;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__content {
+    @include content-size;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 25px 0 80px;
+
+    &--back {
+      justify-content: start;
+    }
+  }
+
+  &__title::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 40px;
+    margin-bottom: 24px;
+    background-color: $c-white;
+  }
+}
