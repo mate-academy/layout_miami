@@ -21,33 +21,33 @@
   &--phone {
     background-image: url(../images/phone.svg);
     position: relative;
+  }
 
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    padding-right: 20px;
+    width: max-content;
+    transform: translateY(-50%);
 
-        position: absolute;
-        top: 50%;
+    color: $color-white;
+    font-size: 12px;
+    font-weight: $bold-font;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    line-height: 16px;
 
-        display: block;
-        padding-right: 20px;
-        width: max-content;
-        transform: translate(-100%, -50%);
+    pointer-events: none;
 
-        color: $color-white;
-        font-size: 12px;
-        font-weight: $bold-font;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
+    transition: opacity $smooth-transition;
+  }
 
-        transition: opacity $smooth-transition;
-      }
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 }
