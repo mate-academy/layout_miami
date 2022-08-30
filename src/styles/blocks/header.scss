@@ -1,14 +1,20 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  height: 100vh;
-  padding: 24px 20px 80px;
-
   background-size: cover;
   background-position: center;
   background-image: url(../images/header.jpg);
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 24px 0 80px;
+  }
 
   &__nav {
     display: flex;
@@ -17,26 +23,38 @@
   }
 
   &__menu-opener {
-    display: block;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    @include sizing(12px, 18px);
     background-image: url(../images/menu.svg);
 
-    @include hover(
-      background-image,
-      url(../images/menu_hover.svg)
-    );
+    @include hover(background-image, url(../images/menu_hover.svg));
   }
 
   &__call {
-    display: block;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    @include sizing(18px, 18px);
+    text-decoration: none;
     background-image: url(../images/phone.svg);
+    @include onDesktop {
+      &:before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        transform: translate(-100%, -50%);
+        top: 50%;
+        padding-right: 20px;
+        width: max-content;
+
+        color: $c-white;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__title {
@@ -46,10 +64,17 @@
     letter-spacing: -1px;
     color: $c-white;
 
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
     &::before {
       content: "";
       display: block;
-      @include sizing(2px, 40px);
+      height: 2px;
+      width: 40px;
       background-color: $c-white;
       margin-bottom: 24px;
       border-radius: 8px;
