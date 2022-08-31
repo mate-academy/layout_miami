@@ -1,7 +1,5 @@
 'use strict';
 
-const form = document.getElementById('contacts-form');
-
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
@@ -10,8 +8,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function handleForm(event) {
-  event.preventDefault();
-}
+const form = document.getElementById('contacts-form');
 
-form.addEventListener('submit', handleForm);
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+});
