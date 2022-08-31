@@ -1,32 +1,38 @@
 .details-2 {
+  display: flex;
+  justify-content: center;
 
-  max-width: $maxContentWidth;
-  
   &__product-container {
+    max-width: $maxContentWidth;
     display: grid;
-    grid-template-columns: 28.5% 59%;
+    grid-template-columns: 324px 672px;
     grid-template-areas: "pl pr";
     gap: 0 24px;
 
-    margin-left: 9%;
+    @include maxQ($ipadWidth) {
+      grid-template-columns: 184px 395px;
+    }
 
     @include maxQ($iPhoneWidth) {
       grid-template-columns: 130px 130px;
-
       grid-gap: 0 20px;
-      margin-left: 6.25%;
     }
   }
 
   &__pic_1l {
     grid-area: pl;
-    
     transition: transform $transitionDuration;
+    height: 320px;
 
     &:hover {
       transform: scale($imageScaling);
     }
-
+    
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+    }
+    
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
       height: 130px;
@@ -35,11 +41,16 @@
   
   &__pic_1r {
     grid-area: pr;
-
     transition: transform $transitionDuration;
+    height: 320px;
 
     &:hover {
       transform: scale($imageScaling);
+    }
+
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
     }
 
     @include maxQ($iPhoneWidth) {
@@ -47,7 +58,6 @@
       height: 130px;
     }
   }
-  
 
   &__feature {
     position: relative;

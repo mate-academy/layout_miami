@@ -1,55 +1,39 @@
 .header {
   height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
+  background-image: url(../images/Header.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 
   &__content-wrapper {
-    padding: 36px 120px 64px;
-    max-width: $maxContentWidth;
-
-    background-image: url(../images/Header.png);
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-
-    @include maxQ($ipadWidth) {
-      padding: 52px 72px 40px;
-      background-image: url(../images/Header-iPad.png);
-    }
-
-    @include maxQ($iPhoneWidth) {
-      padding: 40px 20px 94px;
-      background-image: url(../images/Header-iPad.png);
-    }
-
+    padding: 36px 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     height: 100%;
-    width: 100%;
+    width: 100vw;
+    max-width: $maxContentWidth;
 
-    @include limitContentWidth;
+    @include maxQ($ipadWidth) {
+      padding: 52px 72px 40px;
+    }
+  
+    @include maxQ($iPhoneWidth) {
+      padding: 40px 20px 94px;
+    }
   }
-
+  
   &__topline-content {
     display: flex;
-    width: 100%;
     justify-content: space-between;
-  }
-
-  &__icons-wrapper {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
   }
   
   &__logo {
     display: block;
     width: 187px;
-    height: 56px;
-    top: 30px;
-    color: #1d1d1d;
 
     @include maxQ($ipadWidth) {
       width: 187px;
@@ -61,35 +45,25 @@
       height: 38px;
     }
   }
-
-  &__slogan {
+  
+  &__icons-wrapper {
     display: flex;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-size: 80px;
-    letter-spacing: -1.5px;
-    padding-bottom: 25%;
-
-    @include maxQ($ipadWidth) {
-      font-size: 64px;
-      padding-bottom: 30px;
-    }
-
-    @include maxQ($iPhoneWidth) {
-      font-size: 36px;
-      padding-bottom: 90px;
-    }
+    //justify-content: space-between;
+    //position: relative;
+    align-items: center;
+    gap: 40px;
   }
 
   &__phone-svg {
-    height: $phoneSymbolSize;
-    width: $phoneSymbolSize;
+    display: block;
+    height: 24px;
+    width: 24px;
     transition-duration: $transitionDuration;
 
-    @include minQ($OversizeScreenWidth) {
-      height: $phoneSymbolSize * 2.5;
-      width: $phoneSymbolSize * 2.5;
-    }
+    background-image: url(../images/Vector24.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     
     @include maxQ($iPhoneWidth) {
       height: 18px;
@@ -108,15 +82,6 @@
     top: 0%;
     white-space: nowrap;
     transition: transform $transitionDuration;
-  
-
-    @include minQ($OversizeScreenWidth) {
-      height: $phoneSymbolSize * 2.5;
-      width: $phoneSymbolSize * 2.5;
-      font-size: 26px;
-      right: 280%;
-      top: 10%;
-    }
     
     @include maxQ($ipadWidth) {
       content: "";
@@ -128,22 +93,16 @@
   }
 
   &__menu-svg {
-    background-image: url(../images/Vector224.svg);
-    background-repeat: no-repeat;
+    display: block;
     height: $phoneSymbolSize;
     width: $phoneSymbolSize;
-    background-size: cover;
-    background-position: 50%;
-    background-color: transparent;
-    margin-left: 40px;
-    cursor: pointer;
-
     transition-duration: $transitionDuration;
 
-    @include minQ($OversizeScreenWidth) {
-      height: $phoneSymbolSize * 2.8;
-      width: $phoneSymbolSize *  2;
-    }
+    background-image: url(../images/Vector224.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
 
     @include maxQ($iPhoneWidth) {
       height: 18px;
@@ -153,19 +112,30 @@
 
   &__menu-svg:hover {
     background-image: url(../images/VectorHover.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
   
-    width: 24px;
-    height: 24px;
+    @include maxQ($iPhoneWidth) {
+      content: "";
+    }
+  }
 
-    @include minQ($OversizeScreenWidth) {
-      height: $phoneSymbolSize * 2.8;
-      width: $phoneSymbolSize *  2;
+  &__slogan {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12%;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    letter-spacing: -1.5px;
+
+    @include maxQ($ipadWidth) {
+      font-size: 64px;
+      padding-bottom: 25%;
     }
 
     @include maxQ($iPhoneWidth) {
-      content: "";
+      font-size: 36px;
+      padding-bottom: 90px;
     }
   }
 }

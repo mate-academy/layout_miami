@@ -1,7 +1,7 @@
 .details {
+  display: flex;
+  justify-content: center;
 
-  max-width: $maxContentWidth;
- 
   &__headline {
     @extend %content-headline;
     margin-top: 144px;
@@ -16,32 +16,38 @@
   }
 
   &__product-container {
-    margin-left: 9%;
     display: grid;
 
     max-width: $maxContentWidth;
 
-    grid-template-columns: 59% 28.5%;
+    grid-template-columns: 672px 324px;
     
     grid-template-areas: "h1 h1" "pl pr";
     grid-gap: 0 24px;
-  
+ 
+    @include maxQ($ipadWidth) {
+      grid-template-columns: 392px 184px; 
+    }
+
     @include maxQ($iPhoneWidth) {
       grid-template-columns: 130px 130px;
-
       grid-gap: 0 20px;
-      margin-left: 6.25%;
     }
-  
   }
   
   &__pic_1l {
     grid-area: pl;
     transition: transform $transitionDuration;
+    height: 320px;
 
     &:hover {
       transform: scale($imageScaling);
     }
+
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+    } 
 
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
@@ -52,10 +58,16 @@
   &__pic_1r {
     grid-area: pr;
     transition: transform $transitionDuration;
+    height: 320px;
 
     &:hover {
       transform: scale($imageScaling);
     }
+    
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+    } 
 
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
@@ -69,7 +81,6 @@
     top: 6px;
     z-index: 10;
   
-
     @include maxQ($ipadWidth) {
       width: 600px;
       height: 34px;
