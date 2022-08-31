@@ -1,14 +1,42 @@
 .icon {
   display: block;
-  width: 100%;
-  padding-bottom: 100%;
+  width: 18px;
+  height: 18px;
+
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
 
   @include onTablet {
-    // width: 24px;
-    // height: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__tooltip {
+    display: none;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+
+    width: max-content;
+    padding-right: 40px;
+    text-align: end;
+
+    color: $colorWhite;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      display: block;
+      opacity: 1;
+    }
   }
 
   &--menu {

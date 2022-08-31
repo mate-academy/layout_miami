@@ -1,4 +1,20 @@
 .about {
+
+  &__block {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+      align-items: baseline;
+    }
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
   &__title {
     font-size: 32px;
     line-height: 32px;
@@ -19,6 +35,13 @@
     @include onTablet {
       font-size: 48px;
       line-height: 48px;
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      grid-column: 1 / 6;
     }
   }
 
@@ -29,5 +52,14 @@
     font-size: 24px;
     text-decoration: none;
     color: $colorBlack;
+  }
+
+  &__info {
+    @include onTablet {
+      grid-column: 4 / 9;
+    }
+    @include onDesktop {
+      grid-column: 6 / 13;
+    }
   }
 }
