@@ -1,7 +1,67 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/_mixins.scss";
+@import "./blocks/typography.scss";
+@import "./blocks/card.scss";
+@import "./blocks/buttons.scss";
+@import "./blocks/contact.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/header.scss";
+@import "./blocks/main.scss";
+@import "./blocks/footer.scss";
+@import "./utils/icons.scss";
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: #1d1d1d;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+textarea,
+input,
+button {
+  outline: none;
+  border: none;
 }
