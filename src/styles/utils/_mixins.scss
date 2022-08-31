@@ -1,5 +1,5 @@
 @mixin onTablet {
-  @media (min-width: 640px) and (max-width: 1023.5px) {
+  @media (min-width: 640px) and (max-width: 1024px) {
     @content;
   }
 }
@@ -19,22 +19,34 @@
 }
 
 @mixin top-actions {
-  --icon-width: 24px;
+  $icon-width: 24px;
   display: grid;
   grid-template-columns: (
     1fr
-    var(--icon-width)
-    var(--icon-width)
-    var(--icon-width)
+    $icon-width
+    $icon-width
+    $icon-width
   );
   justify-items: start;
   align-items: center;
 
   @include onTablet {
-    --icon-width: 32px;
+    $icon-width: 32px;
+    grid-template-columns: (
+      1fr
+      $icon-width
+      $icon-width
+      $icon-width
+    );
   }
 
   @include onDesktop {
-    --icon-width: 32px;
+    $icon-width: 32px;
+    grid-template-columns: (
+      1fr
+      $icon-width
+      $icon-width
+      $icon-width
+    );
   }
 }
