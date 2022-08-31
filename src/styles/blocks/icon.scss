@@ -1,0 +1,61 @@
+.icon {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  padding-bottom: 100%;
+  text-decoration: none;
+  color: $colorGray;
+  position: relative;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 12px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-speed ;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  
+ 
+  &--menu {
+    background-image: url(../images/menu.svg);
+    
+    @include onTablet {
+      background-image: url(../images/big_menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+
+      @include onTablet {
+        background-image: url(../images/big_menu_hover.svg);
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    grid-column: 3 / 4;
+  }
+}
