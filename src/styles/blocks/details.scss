@@ -17,28 +17,51 @@
 
   &__product-container {
     display: grid;
-
+    padding: 0 120px;
     max-width: $maxContentWidth;
 
-    grid-template-columns: 672px 324px;
-    
-    grid-template-areas: "h1 h1" "pl pr";
+    grid-template-columns: repeat(12, 1fr);
     grid-gap: 0 24px;
  
     @include maxQ($ipadWidth) {
-      grid-template-columns: 392px 184px; 
+      grid-template-columns: repeat(6, 1fr);
+      padding: 0 72px;
     }
 
     @include maxQ($iPhoneWidth) {
       grid-template-columns: 130px 130px;
       grid-gap: 0 20px;
+      padding: 0 20px;
+    }
+  }
+
+  &__left {
+    grid-column: 1 / 9;
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 5;
+    }
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  &__right {
+    grid-column: 9 / 13;
+    
+    @include maxQ($ipadWidth) {
+      grid-column: 5 / 7;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-column: 2 / 2;
     }
   }
   
   &__pic_1l {
-    grid-area: pl;
     transition: transform $transitionDuration;
-    height: 320px;
+    height: 245px;
+    max-width: 100%;
 
     &:hover {
       transform: scale($imageScaling);
@@ -47,19 +70,19 @@
     @include maxQ($ipadWidth) {
       object-fit: cover;
       height: 187px;
-    } 
+    }
 
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
       height: 130px;
+      width: 130px;
     }
   }
 
   &__pic_1r {
-    grid-area: pr;
     transition: transform $transitionDuration;
-    height: 320px;
-
+    height: 245px;
+    
     &:hover {
       transform: scale($imageScaling);
     }
@@ -67,11 +90,12 @@
     @include maxQ($ipadWidth) {
       object-fit: cover;
       height: 187px;
-    } 
+    }
 
     @include maxQ($iPhoneWidth) {
       object-fit: cover;
       height: 130px;
+      width: 130px;
     }
   }
 
