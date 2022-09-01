@@ -1,4 +1,5 @@
 @import "../utils/vars";
+@import "../utils/mixins";
 
 .header {
   height: 100vh;
@@ -16,32 +17,28 @@
   &__menu-opener {
     display: block;
 
-    height: 12px;
-    width: 18px;
+    @include square (18px, 12px);
 
     cursor: pointer;
 
     @media (min-width: $brakepoint) {
-      width: 24px;
-      height: 18px;
+      @include square (24px, 16px);
     }
 
     background-image: url(../images/menu.svg);
     background-size: cover;
+    background-position: center;
 
-    &:hover {
-      background-image: url(\images\menu_hover.svg);
-    }
+    @include hover (background-image, url(\images\menu_hover.svg));
 
-    &:target .nav{
+    &:target .nav {
       transform: translateX(0);
     }
   }
 
   &__phone {
     display: block;
-    height: 18px;
-    width: 18px;
+    @include square (18px, 18px);
 
     background-image: url(../images/phone.svg);
     background-size: cover;
@@ -65,7 +62,7 @@
 
         color: #fff;
 
-        transition: transform 10s linear;
+        transition: transform 10s linear 1s;
       }
 
       &:hover &-tip {
@@ -95,7 +92,6 @@
   &__title {
     font-size: 46px;
     line-height: 40px;
-    font-weight: 700;
     letter-spacing: -1px;
     color: #fff;
 
@@ -108,6 +104,3 @@
     }
   }
 }
-
-
-
