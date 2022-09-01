@@ -84,10 +84,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const header = document.querySelector('.header');
-  const headerMenu = document.querySelector('.nav');
-  const burgerBtn = document.querySelector('.burger');
-  const myBurger = new Burger(burgerBtn, headerMenu);
   const addClassOnScroll = () => {
     if (window.pageYOffset > 0) {
       header.classList.add('header--scroll');
@@ -95,6 +91,13 @@ window.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('header--scroll');
     }
   };
+
+  const header = document.querySelector('.header');
+  const headerMenu = document.querySelector('.nav');
+  const burgerBtn = document.querySelector('.burger');
+  const myBurger = new Burger(burgerBtn, headerMenu);
+  const form = document.querySelector('.contacts__form');
+  const fields = document.querySelectorAll('.contacts__field');
   const debounceFunc = new Debounce(100, addClassOnScroll);
 
   headerMenu.addEventListener('click', (e) => {
@@ -107,7 +110,11 @@ window.addEventListener('DOMContentLoaded', () => {
     debounceFunc.init();
   });
 
-  document.querySelector('.contacts__form').addEventListener('submit', (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    fields.forEach((el) => {
+      el.value = '';
+    });
   });
 });
