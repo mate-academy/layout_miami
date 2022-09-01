@@ -1,7 +1,10 @@
 .page {
-  // font-family: 'Inter', sans-serif;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+
+  &__body--with-menu {
+    overflow: hidden;
+  }
 
   &__menu {
     position: fixed;
@@ -10,7 +13,7 @@
     right: 0;
 
     transform: translateX(100%);
-    transition: transform 0.3s;
+    transition: transform $animation-duration;
 
     &:target {
       transform: translateX(0);
@@ -18,15 +21,15 @@
   }
 
   &__main {
-    background-color: #1d1d1d;
+    background-color: $c-black-1d;
   }
 
   &__section:not(:last-child) {
     margin-bottom: 80px;
+  }
 
-    &:first-child {
-      padding-top: 60px;
-    }
+  &__section:first-child {
+    padding-top: 60px;
 
     @include onTablet {
       margin-bottom: 120px;
@@ -45,14 +48,34 @@
     }
   }
 
+  &__section:last-child {
+    padding-bottom: 120px;
+
+    @include onDesctop {
+      &:last-child {
+        padding-bottom: 180px;
+      }
+    }
+  }
+
   &__section-title {
     margin-bottom: 48px;
 
     font-size: 32px;
-    font-weight: 500;
     line-height: 32px;
+    font-weight: 500;
     letter-spacing: -1.5px;
     text-align: center;
-    color: #fff;
+    color: $c-main-text;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesctop {
+      font-size: 64px;
+      line-height: 64px;
+    }
   }
 }
