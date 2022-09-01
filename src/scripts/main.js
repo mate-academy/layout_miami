@@ -8,6 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// document.getElementById('form').addEventListener('submit', function(event) {
-//   event.preventDefault();
-// });
+const form = document.querySelector('form');
+ const inputs = document.querySelectorAll('.form-field');
+ const textarea = document.querySelector('.form-field--textarea');
+
+ form.addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   inputs.forEach(function(elem) {
+     elem.value = '';
+   });
+
+   textarea.value = '';
+ });
