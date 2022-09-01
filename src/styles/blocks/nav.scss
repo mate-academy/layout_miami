@@ -1,0 +1,77 @@
+.nav {
+  @extend %flex-center;
+  justify-content: space-between;
+
+  &__menu-block {
+    @extend %flex-center;
+  }
+
+  &__menu-open {
+    display: block;
+    height: 12px;
+    width: 18px;
+    cursor: pointer;
+
+    background-image: url(../images/menu.svg);
+    @extend %cover-center-no-repeat;
+
+    @include onTablet {
+      height: 16px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__phone-hover {
+    width: max-content;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: #fff;
+
+    text-align: right;
+    padding-right: 20px;
+
+    top: 24px;
+    position: absolute;
+    transform: translateX(-100%);
+    opacity: 0;
+
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+
+    & > :first-child {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    height: 18px;
+    width: 18px;
+    text-decoration: none;
+
+    margin-right: 30px;
+
+    background-image: url(../images/phone.svg);
+    @extend %cover-center-no-repeat;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+
+    &:hover {
+      @include onDesktop {
+        .nav__phone-hover {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
