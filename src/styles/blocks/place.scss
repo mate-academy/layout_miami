@@ -1,0 +1,87 @@
+.place {
+
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: #161616;
+
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &-flex {
+      box-sizing: border-box;
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-hidden {
+      @media (min-width: 744px) and (max-width:1023px) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+    }
+
+    &-tablet {
+      @include tablet {
+        height: 286px;
+        padding-bottom: 0;
+      }
+    }
+    @include tablet {
+      height: 186px;
+      padding-bottom: 0;
+      &-tablet {
+        height: 286px;
+        padding-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 25%;
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: #d12d35;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
