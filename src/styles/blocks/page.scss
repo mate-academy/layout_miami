@@ -4,6 +4,7 @@
 
 .page {
   font-family: "Roboto", sans-serif;
+  font-style: normal;
   font-size: 16px;
   color: $c-gray;
   scroll-behavior: smooth;
@@ -16,7 +17,12 @@
 
     transform: translate(-100%);
 
-    transition: $anim-time cubic-bezier(0, 1.01, 0.45, 0.99);
+    transition: (
+      transform
+      $anim-time
+      cubic-bezier(0, 1.01, 0.45, 0.99)
+    );
+
     &:target {
       transform: translate(0);
     }
@@ -31,10 +37,18 @@
   }
 
   &__section-title {
+    margin-bottom: 32px;
+
+    color: $c-black;
     font-size: 36px;
     font-weight: bold;
     letter-spacing: -1.5px;
     text-align: center;
+
+    @include onDesktop {
+      font-size: 48px;
+      margin-bottom: 60px;
+    }
 
     &::after {
       content: "";
