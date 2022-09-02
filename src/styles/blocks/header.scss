@@ -77,23 +77,28 @@
     text-decoration: none;
 
     @include onDesktop {
-      &:hover {
-        &::before {
-          content: "+1 234 555-55-55";
-          display: block;
-          position: relative;
-          top: 50%;
-          padding-right: 12px;
-          transform: translate(-100%, -50%);
+      &::before {
+        pointer-events: none;
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        padding-right: 12px;
+        transform: translate(-100%, -50%);
 
-          opacity: 1;
-          width: max-content;
-          font-weight: 700;
-          font-size: 12px;
-          color: $dark-color;
-          line-height: 16px;
-          letter-spacing: 2px;
-        }
+        opacity: 0;
+        width: max-content;
+        font-weight: 700;
+        font-size: 12px;
+        color: $dark-color;
+        line-height: 16px;
+        letter-spacing: 2px;
+        transition: opacity $transition-time;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
       }
     }
   }
