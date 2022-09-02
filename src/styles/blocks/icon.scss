@@ -1,0 +1,73 @@
+.icon {
+  &__info {
+    color: #fff;
+    font-size: 16px;
+    line-height: 27px;
+
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    align-items: flex-end;
+    transform: translate(-100%, -50%);
+    padding-right: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    pointer-events: none;
+  }
+
+  &--menu-opener {
+    @include widthHeight (18px, 12px);
+
+    background-image: url(../images/menu.svg);
+    
+    @include backgroundParam (cover, no-repeat, center);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+
+      @include backgroundParam (cover, no-repeat, center);
+
+    }
+
+    @include onTablet {
+      @include widthHeight (24px, 16px);
+    }
+
+    @include onDeskTop {
+      @include widthHeight (24px, 16px);
+    }
+  }
+
+  &--phone {
+    text-decoration: none;
+    @include widthHeight (18px, 18px);
+    
+
+    background-image: url(../images/call.svg);
+    @include backgroundParam (100%, no-repeat, center);
+
+    @include onTablet {
+      @include widthHeight (22px, 22px);
+    }
+
+    @include onDeskTop {
+      @include widthHeight (24px, 24px);
+
+      &:hover .icon__info {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+
+    @include widthHeight (16px, 16px);
+    @include backgroundParam (cover, no-repeat, center);
+
+    @include onDeskTop {
+      @include widthHeight (21px, 21px);
+    }
+  }
+}
