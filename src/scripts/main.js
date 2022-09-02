@@ -22,3 +22,9 @@ window.addEventListener('hashchange', () => {
     checkbox.checked = false;
   }
 });
+
+const submitBtn = document.querySelector('button[name=submit]');
+
+submitBtn.addEventListener('click', () => {
+  window.location.reload();
+});
