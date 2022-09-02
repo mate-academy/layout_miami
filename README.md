@@ -6,4 +6,4 @@ Mock-up:
 https://cutt.ly/4CpF6rE
 
 Demo:
-https://mejeezz.github.io/layout_creativeBakery/
+https://mejeezz.github.io/layout_miami
