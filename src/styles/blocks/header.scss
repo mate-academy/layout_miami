@@ -9,6 +9,7 @@
   background-position: center;
 
   &__nav {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,6 +48,13 @@
 
     &-tip {
       display: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      transition: transform 0.4s cubic-bezier(0,1.9,.65,.74),
+      opacity 0.5s linear;
     }
 
     @media (min-width: $brakepoint) {
@@ -56,18 +64,22 @@
       }
 
       &-tip {
-        position: relative;
-        display: none;
+        display: block;
+        position: absolute;
+        top: 37px;
+        right: 44px;
+
+        opacity: 0;
+
         width: max-content;
 
         color: #fff;
-
-        transition: transform 10s linear 1s;
+        transform: translateY(-80px);
       }
 
-      &:hover &-tip {
-        display: block;
-        transform: translate(-150px);
+      &:hover>&-tip{
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }
