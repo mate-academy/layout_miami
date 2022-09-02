@@ -1,6 +1,59 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 455px) {
+    @content;
+  }
+}
+
+@mixin customRes($res) {
+  @media (min-width: $res) {
+    @content;
+  }
+}
+
+@mixin icon {
+  --icons-size: 24px;
+  --phone-margin: 24px;
+  flex-shrink: 0;
+  width: var(--icons-size);
+  height: var(--icons-size);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    --icons-size: 32px;
+  }
+}
+
+@mixin itemsHover($bottom-shift, $bgc) {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: $bottom-shift;
+    left: 50%;
+    right: 50%;
+    height: 1px;
+    background-color: $bgc;
+    transition: left 0.3s, right 0.3s;
+  }
+
+  &:hover::after {
+    left: 0;
+    right: 0;
+  }
+}
+
+@mixin hoverToImages {
+  @include onDesktop {
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
