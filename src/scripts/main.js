@@ -11,7 +11,7 @@ window.addEventListener('hashchange', () => {
 const form = document.querySelector('.contacts__form');
 const inputs = document.querySelectorAll('.form-field');
 
-form.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   inputs.forEach(i => {
