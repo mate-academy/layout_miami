@@ -8,7 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#consultationButton').addEventListener('click',
-  (event) => {
-    event.preventDefault();
+const inputs = document.querySelectorAll('.form-field');
+
+const submit = document.querySelector('#consultationButton');
+
+function handle(event) {
+  event.preventDefault();
+
+  inputs.forEach(input => {
+    input.value = '';
   });
+}
+
+submit.addEventListener('click', handle);
