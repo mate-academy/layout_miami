@@ -1,33 +1,25 @@
 .header {
-  background: url("../images/img/headerBG.jpg") center/cover no-repeat;
+  background: url("../images/img/mainbg_tablet_desktop.jpg") center/cover no-repeat;
 
-
-
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    padding: 36px 0 110px;
+    padding: $header-top-padding 0 22vh;
 
-    @media (min-width: 744px) {
-      padding: 29px 0 130px;
-    }
-
-    @media (min-width: 1260px) {
-      padding: 36px 0 130px;
+    @include onTablet {
+      padding-top: $header-padding-desktop;
     }
   }
-
-
 
   &__logo-link {
     line-height: 0;
   }
 
-
-
   &__phone {
+
+    transition: opacity 1s;
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
@@ -45,6 +37,7 @@
         display: block;
         width: max-content;
         pointer-events: none;
+        transition: opacity $transition-duration;
       }
 
       &:hover::before {
@@ -61,5 +54,15 @@
     letter-spacing: -1.5px;
     text-align: center;
     color: $title-color;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 }
