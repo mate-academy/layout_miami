@@ -8,6 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('.contact-us__form').addEventListener('submit', (e) => {
-  e.preventDefault();
-});
+const form = document.querySelector('.contact-us__form');
+const inputs = document.querySelectorAll('.js-input');
+
+function hundler(event) {
+  event.preventDefault();
+
+  inputs.forEach(input => {
+    input.value = '';
+  });
+}
+
+form.addEventListener('submit', hundler);
