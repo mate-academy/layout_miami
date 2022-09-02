@@ -8,10 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(_submit) {
-  _submit.preventDefault();
+const form = document.querySelector('.form');
+const inputs = document.querySelectorAll('.js-input');
+
+function handler(event) {
+  event.preventDefault();
+
+  inputs.forEach(input => {
+    input.value = '';
+  });
 }
 
-document.getElementById('submit').addEventListener(
-  'click', stopDefAction, false
-);
+form.addEventListener('submit', handler);
