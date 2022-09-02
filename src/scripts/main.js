@@ -7,3 +7,14 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const form = document.querySelector('.contacts__form');
+const inputs = document.querySelectorAll('.form-field');
+
+form.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  inputs.forEach(i => {
+    i.value = '';
+  });
+});
