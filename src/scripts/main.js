@@ -1,7 +1,6 @@
 'use strict';
 
 const formInputs = document.querySelectorAll('.form__input');
-const textArea = document.querySelector('.form__textarea');
 
 document.querySelector('.form').addEventListener('submit', (event) => {
   event.preventDefault();
@@ -9,8 +8,6 @@ document.querySelector('.form').addEventListener('submit', (event) => {
   for (const input of formInputs) {
     input.value = '';
   }
-
-  textArea.value = '';
 }, false);
 
 window.addEventListener('hashchange', () => {
