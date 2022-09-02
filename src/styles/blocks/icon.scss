@@ -1,0 +1,72 @@
+.icon {
+  --icon-width: 18px;
+
+  display: block;
+  position: relative;
+  width: var(--icon-width);
+  height: var(--icon-width);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-decoration: none;
+
+
+  @include onDesktop {
+    --icon-width: 24px;
+
+    width: var(--icon-width);
+    height: var(--icon-width);
+  }
+
+  &--burger {
+    background-image: url(../images/burger.svg);
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../images/burger-hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/call.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        padding-right: 20px;
+        pointer-events: none;
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: #292929;
+        opacity: 0;
+        transition-duration: 0.5s;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+}
