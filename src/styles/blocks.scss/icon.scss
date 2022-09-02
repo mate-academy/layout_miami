@@ -1,0 +1,73 @@
+.icon {
+  @include position-background;
+
+  &--menu-call {
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop() {
+      &::before {
+        content: "The Met Fifth Avenue\a"
+          + "+1 212-535-7710\a"
+          + "The Met Cloisters\a"
+          + "+1 212-923-3700";
+        transform: translateX(-100%);
+
+        display: block;
+        width: max-content;
+        height: max-content;
+        padding-right: 20px;
+
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        white-space: pre-wrap;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu-opener {
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.svg);
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+
+    transition: background-image 0.3s;
+    &:hover {
+      background-image: url(../images/menu-close.svg);
+    }
+  }
+
+  &--menu-close {
+    width: 16px;
+    height: 16px;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    background-image: url(../images/menu-close.svg);
+  }
+}
