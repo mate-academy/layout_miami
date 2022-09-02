@@ -1,0 +1,73 @@
+.icon {
+  display: block;
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  transition: all 0.3s;
+
+  // cross-platforms
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  // handset-icon
+  &--handset {
+    background-image: url(../images/icons/handset.svg);
+  }
+
+  &__tooltip {
+    display: none;
+  }
+
+  @include onDesktop {
+    &__tooltip {
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: max-content;
+
+      padding-right: 40px;
+
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $colorFormFont;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+
+    &:hover &__tooltip {
+      opacity: 1;
+
+      pointer-events: all 0.3s;
+    }
+  }
+
+  // menu-icon
+  &--menu {
+    background-image: url(../images/icons/menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/menuHover.svg);
+    }
+  }
+}
