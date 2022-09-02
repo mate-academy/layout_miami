@@ -1,6 +1,31 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin phonePseudoSettings {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 700;
+  line-height: 27px;
+  display: block;
+  text-align: end;
+  padding-right: 25px;
+
+  transform: translate(-100%, -80%);
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+@mixin hoverPhonePseudoSettings {
+  opacity: 1;
+  pointer-events: all;
 }
