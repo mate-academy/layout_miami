@@ -1,0 +1,88 @@
+@import "../utils";
+
+.menu {
+  background: #e5e5e5;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateX(100%);
+  transition: transform $time;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__list {
+    margin-top: 44px;
+    margin-bottom: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  .underline {
+    position: relative;
+    background-color: transparent;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: calc(100% + 8px);
+      bottom: 0;
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: $dark-gray-color;
+      content: "";
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+      transition: width $time;
+    }
+
+    &:hover::before {
+      width: 100%;
+      transition: width $time;
+    }
+
+    &:hover::after {
+      background-color: transparent;
+      width: 100%;
+    }
+  }
+
+  &__tel {
+    margin-bottom: 16px;
+
+    &:hover {
+      color: rgb(77, 78, 100);
+    }
+  }
+
+  &__book {
+    position: relative;
+    display: inline;
+  }
+
+  .top-actions__call-icon {
+    visibility: hidden;
+  }
+
+  .top-actions__menu-icon {
+    background-image: url(../images/menu-icon-close.svg);
+
+    &:hover {
+      background-image: url(../images/menu-icon-close.svg);
+    }
+  }
+}

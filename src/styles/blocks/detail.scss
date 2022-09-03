@@ -1,0 +1,63 @@
+@import "../utils";
+
+.detail {
+  @include onDesktop {
+    padding-bottom: 48px;
+  }
+
+  @include onTablet {
+    padding-bottom: 48px;
+  }
+
+  @include onMobile {
+    padding-bottom: 40px;
+  }
+
+  &__name {
+    padding-top: 32px;
+    padding-bottom: 8px;
+  }
+
+  &__image-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    //max-height: 320px;
+    min-height: 100%;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      //height: 320px;
+      height: (0.22 * 100vw);
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      //height: 320px;
+      height: (0.22 * 100vw);
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition: all $time;
+
+    &:hover {
+      padding-bottom: 120px;
+      transform: scale(1.05);
+      z-index: 150;
+    }
+  }
+}
