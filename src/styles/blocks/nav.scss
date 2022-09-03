@@ -10,6 +10,15 @@
     background-repeat: no-repeat;
     background-color: #0000;
     background-size: cover;
+
+    &:hover {
+      background-image: url("/images/menu_hover.svg");
+    }
+
+    @include on-desktop () {
+      width: 24px;
+      height: 16px;
+    }
   }
 
   &__call {
@@ -19,5 +28,31 @@
     background-repeat: no-repeat;
     background-color: #0000;
     background-size: cover;
+    text-decoration: none;
+
+    @include on-desktop () {
+      width: 24px;
+      height: 24px;
+    }
+
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      width: max-content;
+      display: block;
+      padding-right: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      @include font-style (700, 12px, 16px, #fff);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }
