@@ -8,11 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
+const form = document.querySelector('.form');
 const inputs = document.querySelectorAll('.form-field');
 
-const submit = document.querySelector('#consultationButton');
-
-function handle(event) {
+function handler(event) {
   event.preventDefault();
 
   inputs.forEach(input => {
@@ -20,4 +19,4 @@ function handle(event) {
   });
 }
 
-submit.addEventListener('click', handle);
+form.addEventListener('submit', handler);
