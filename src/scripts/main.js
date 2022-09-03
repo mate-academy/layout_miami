@@ -23,8 +23,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submitBtn = document.querySelector('button[name=submit]');
+const form = document.querySelector('.contact__form');
+const inputs = document.querySelectorAll('.js-input');
 
-submitBtn.addEventListener('click', () => {
-  window.location.reload();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  inputs.forEach((i) => {
+    i.value = '';
+  });
 });
