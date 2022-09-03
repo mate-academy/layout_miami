@@ -1,3 +1,4 @@
+// mixins for easy cross-platforming
 @mixin onTablet {
   @media (min-width: 744px) {
     @content;
@@ -7,5 +8,33 @@
 @mixin onDesktop {
   @media (min-width: 1260px) {
     @content;
+  }
+}
+// mixin were you set grid and columns counter
+@mixin setGrid($columnsTablet, $columnsDesktop) {
+  @include onTablet {
+    display: grid;
+
+    grid-template-columns: repeat($columnsTablet, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    display: grid;
+
+    grid-template-columns: repeat($columnsDesktop, 1fr);
+    column-gap: 24px;
+  }
+}
+// mixins were you can change columns position
+@mixin gridTablet($start, $finish) {
+  @include onTablet() {
+    grid-column: #{$start} / #{$finish};
+  }
+}
+
+@mixin gridDesktop($start, $finish) {
+  @include onDesktop() {
+    grid-column: #{$start} / #{$finish};
   }
 }
