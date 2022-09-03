@@ -1,0 +1,120 @@
+.header {
+  background-size: cover;
+  background-image: url(../images/photos/header.jpg);
+
+  @media (max-width: 1285px) {
+    background-position: center;
+  }
+
+  &__container {
+    height: 100vh;
+    padding: 40px 20px 94px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      padding: 52px 30px 40px;
+    }
+
+    @include onDesktop {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 52px 40px 64px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phone-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__phone {
+    margin-right: 30px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-color;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/menu_small.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include onDesktop {
+      background-image: url(../images/menu.svg);
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $main-color;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/phone_wave.svg);
+      background-position: center;
+      background-size: cover;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        background-image: url(../images/phone_wave_desktop.svg);
+        height: 78px;
+        width: 66px;
+      }
+
+      @include onDesktop {
+        background-image: url(../images/phone_wave_desktop.svg);
+        height: 78px;
+        width: 66px;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
