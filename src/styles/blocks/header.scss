@@ -1,40 +1,78 @@
 .header {
+  max-width: 1260px;
   box-sizing: border-box;
+  @include flex-setter;
+
+  margin: 0 auto;
   height: 100vh;
-  margin-bottom: 120px;
+  margin-bottom: $blocks-margin-bottom;
 
   background-image: url(/images/photos/header.jpg);
+
+  @include onTablet {
+    background-image: url(/images/photos/bg-medium.png);
+  }
+
+  @include onMobile {
+    background-image: url(/images/photos/bg-small.png);
+  }
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
+  &__article {
+    width: 85%;
+    margin: 0 auto;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__items {
+    @include flex-setter;
+    align-items: center;
+  }
+
   &__section {
-    padding: 52px 136px;
-    margin-bottom: 376px;
+    padding-top: 52px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   &__title {
-    font-size: 48px;
-    font-weight: 800;
+    font-size: $f-size-lg;
+    font-weight: $weight-bolder;
     font-style: italic;
     margin-top: 32px;
+
+    @include onTablet {
+      font-size: 40px;
+      margin-top: 40px;
+    }
+
+    @include onMobile {
+      font-size: 32px;
+      margin-top: 16px;
+    }
   }
 
   &__bottom {
-    padding: 52px 136px;
+    padding-bottom: $gap-lg;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
+    @include onTablet {
+      padding-bottom: 40px;
+    }
   }
 
 }
 
 .icon {
-  display: flex;
+  @include flex-setter;
+  align-items: center;
   gap: 40px;
   text-decoration: none;
 
