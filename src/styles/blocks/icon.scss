@@ -10,6 +10,7 @@
   background-position: center;
   background-repeat: no-repeat;
   text-decoration: none;
+  transition: transform $transition-speed;
 
   @include notMobile {
     --size: 24px;
@@ -30,7 +31,11 @@
     opacity: 0;
     pointer-events: none;
 
-    transition: opacity $transition-speed;
+    transition: opacity $transition-speed, color $transition-speed;
+
+    &:hover {
+      color: $hover-gray;
+    }
 
     &--top {
       top: -50%;
@@ -50,10 +55,9 @@
   &--call {
     grid-column: 3/4;
     background-image: url(../images/phone.svg);
-    transition: transform $transition-speed;
 
     &:hover {
-      transform: scale(1.2);
+      transform: $scale;
     }
   }
 
@@ -68,7 +72,7 @@
 
   &--cross {
     background-image: url(../images/cross.svg);
-    transition: transform $transition-speed;
+
 
     &:hover {
       transform: rotate(90deg);
