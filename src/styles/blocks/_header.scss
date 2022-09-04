@@ -9,6 +9,7 @@
     height: 100vh;
     box-sizing: border-box;
     padding: 30px 0 88px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +82,7 @@
         width: max-content;
         padding-right: 12px;
 
-        color: #292929;
+        color: $gray-color;
         font-weight: 700;
         font-size: 12px;
         letter-spacing: 2px;
@@ -108,7 +109,7 @@
   }
 
   &__title {
-    color: #292929;
+    color: $gray-color;
     font-size: 36px;
     line-height: 36px;
     font-weight: 700;
@@ -126,7 +127,7 @@
   }
 
   &__nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -134,6 +135,15 @@
     height: 100vh;
 
     background-color: #e5e5e5;
+
+    overflow-y: auto;
+
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateY(0);
+    }
   }
 
   &__cross {
@@ -155,13 +165,11 @@
     display: inline-block;
     box-sizing: border-box;
 
-    font-family: "Inter", sans-serif;
+    @extend %nav-font-property;
+
     font-size: 22px;
     line-height: 100%;
     letter-spacing: 2px;
-    font-weight: 700;
-    text-decoration: none;
-    color: #1d1d1d;
     text-transform: uppercase;
 
     border-bottom: 1px solid transparent;
@@ -169,7 +177,7 @@
     transition: border-color 0.3s;
 
     &:hover {
-      border-color: #1d1d1d;
+      border-color: $dark-gray-color;
     }
   }
 
@@ -178,10 +186,8 @@
 
     display: inline-block;
 
-    text-decoration: none;
-    color: #1d1d1d;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
+    @extend %nav-font-property;
+
     font-size: 16px;
     line-height: 27px;
   }
@@ -192,14 +198,12 @@
 
     display: inline-block;
 
+    @extend %nav-font-property;
+
     text-transform: uppercase;
-    text-decoration: none;
-    color: #1d1d1d;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
     font-size: 12px;
     letter-spacing: 2px;
 
-    border-bottom: 1px solid #1d1d1d;
+    border-bottom: 1px solid $dark-gray-color;
   }
 }
