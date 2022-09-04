@@ -1,69 +1,54 @@
 .pictures {
-  &__container {
-    position: relative;
+  &__bottom {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
     width: 100%;
+    height: 100%;
     max-height: 320px;
 
-    &::after {
-      content: "";
-      display: block;
-      padding-bottom: 100%;
-    }
+    object-fit: cover;
+    @include hover(transform, scale(1.05));
 
-    @include onTablet {
-      height: 186px;
-      padding-bottom: 0;
-    }
-
-    @include onDesktop {
-      height: 320px;
-      padding-bottom: 0;
-    }
-
-    &--explore {
-      min-height: 277px;
-
-      @include onTablet {
-        height: 387px;
-        max-height: 387px;
-      }
-
-      @include onDesktop {
-        height: 320px;
-      }
-    }
-
-    &--small {
-      min-height: 87px;
-
-      @include onTablet {
-        height: 284px;
-      }
-
-      @include onDesktop {
-        height: 320px;
-      }
-    }
-
-    &--3 {
-      min-height: 87px;
-
+    &--hide {
       @include onTablet {
         display: none;
       }
 
       @include onDesktop {
-        display: block;
+        display: grid;
       }
+    }
+
+    &--left {
+      object-position: 20%;
+    }
+
+    &--right {
+      object-position: right;
     }
   }
 
-  &__photo {
-    position: absolute;
+  &__photo-explore {
     width: 100%;
     height: 100%;
+  }
 
-    object-fit: cover;
-    object-position: center;
+  &--explore {
+    max-height: 387px;
+    max-width: 392px;
+    margin: 0 auto 24px;
+
+    @include onTablet {
+      margin: 0 auto 32px;
+    }
+
+    @include onDesktop {
+      max-height: 320px;
+      margin-bottom: 32px;
+    }
+
+    @include hover(transform, scale(1.05));
   }
 }
