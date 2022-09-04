@@ -8,13 +8,20 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-let myForm = document.querySelector('.my-form');
+const myForm = document.querySelector('.my-form');
 
-  const sendButton = document.getElementById('send-button');
-  sendButton.addEventListener('click', function(event) {
+const sendButton = document.getElementById('clicks');
+
+sendButton.addEventListener('click', function(event) {
+  const userEmail = document.getElementById('email').value;
+  const userName = document.getElementById('name').value;
+
+  if (
+    userEmail && userName
+    && /^[\w-]+@([\w-]+)+[\w-]{2,4}$/g.test(userEmail)) {
     event.preventDefault();
     myForm.reset();
-  });
+  }
+});
 
-  myForm.addEventListener('send-button', sendButton);
-  
+myForm.addEventListener('clicks', sendButton);
