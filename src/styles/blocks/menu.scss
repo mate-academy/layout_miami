@@ -3,13 +3,21 @@
   z-index: 1;
 
   &__top {
-    margin-bottom: 55px;
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 55px;
+    }
   }
 
   &__list {
     list-style: none;
     padding: 0;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
   }
 
   &__item {
@@ -35,6 +43,24 @@
     text-decoration: none;
 
     @include hover(border-color, $color-white);
+
+    &--hidden {
+      display: none;
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: inline-block;
+      }
+    }
+
+    &--visible {
+      @include onDesktop {
+        display: none;
+      }
+    }
   }
 
   &__contacts {
@@ -57,6 +83,8 @@
     text-transform: uppercase;
     text-decoration: none;
     padding-bottom: 8px;
-    border-bottom: 1px solid $color-white;
+    border-bottom: 1px solid transparent;
+
+    @include hover(border-color, $color-white);
   }
 }
