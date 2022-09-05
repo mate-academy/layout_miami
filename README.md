@@ -1,18 +1,31 @@
-# Miami landing page
-In this task, you will learn how to implement a landing page. To do that:
+# Bose Landing Page
+In this project, a landing page for the Bose online store was implemented. It includes a responsive design for the devices with the screen width of 320px, 744px and more than 1020px.
 
-- watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
-  - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
-- choose a landing page design from the list below;
-- implement it block by block, adopt and deploy to show your current progress at any time;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
-- push, deploy and add the correct `DEMO_LINK` to your Pull Request.
-```
-- [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-```
+The Landing page consists of:
 
-The designs to choose from:
+- header;
+- navigation menu;
+- Testimonials section;
+- Categoty section;
+- About section;
+- Contacts section;
+- footer.
+
+The link to the design mock-up:
 - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)  
+
+The link to the Landing page:
+- [DEMO LINK](https://ifuride.github.io/layout_miami/)
+
+Technologies and languages used in the project:
+- HTML;
+- CSS;
+- JavaScript;
+- BEM;
+- SASS.
+
+
+
+
+
+
