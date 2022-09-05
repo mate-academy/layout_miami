@@ -1,1 +1,112 @@
-// 
+.testimonials {
+  &__title {
+    margin: 0 auto 58px;
+  }
+}
+
+.testimonials-container {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  
+  @include onMobile {
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 324px;
+  }
+  
+  &__photo {
+    width: 150px;
+    height: 150px;
+    
+    border-radius: 50%;
+    
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    
+    cursor: pointer;
+  
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  &__link-image {
+    margin-bottom: 28px;
+
+    @include onMobile {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    border-bottom: 2px solid transparent;
+    transition: text-shadow 0.3s;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      left: -35px;
+      transform: translateY(-35px);
+
+      background-image: url(/images/facebook_f_logo.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition-property: transform, opacity;
+      transition-duration: 0.3s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    
+    // &::after {
+    //   content: "";
+    //   display: block;
+    //   height: 2px;
+    //   background-color: $color-blue;
+    //   transform: scale(0);
+      
+    //   transition: scale, 0.3s;
+    // }
+
+    // &:hover::after {
+    //   transform: scale(1);
+    // }
+  }
+
+  &__position {
+    font-size: 14px;
+    color: #9fadc2;
+  }
+
+  &__description {
+    text-align: center;
+  }
+}
