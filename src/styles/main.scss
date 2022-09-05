@@ -1,7 +1,135 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesctop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Roboto", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+
+    @include onDesctop {
+      height: 80px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 20px;
+
+  @include onDesctop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include onDesctop {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.header {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../images/header.png);
+
+  &__title {
+    font-size: 46px;
+    font-weight: bold;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    @include onDesctop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 24px;
+      border-radius: 8px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 20px 0 80px;
+    height: 100vh;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onDesctop {
+      &::before {
+        display: block;
+        content: "+1 234 555-55-55";
+
+        padding-right: 20px;
+        position: relative;
+        transform: translate(-100%, -50%);
+        top: 50%;
+        width: max-content;
+
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: #fff;
+        opacity: 0;
+
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
 }
