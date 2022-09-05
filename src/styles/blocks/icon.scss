@@ -1,0 +1,49 @@
+.icon {
+  display: block;
+  @include square($iconSizeOnMobile);
+  @include imageProperties;
+
+  @include onTablet {
+    @include square($iconSizeOnTablet);
+  }
+
+  &__tooltip {
+    display: none;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+
+    width: max-content;
+    padding-right: 40px;
+    text-align: end;
+    color: $colorWhite;
+    @include textProperties;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/Menu_icon.png);
+  }
+
+  &--menu:hover {
+    background-image: url(../images/Menu-hover_icon.png);
+  }
+
+  &--phone {
+    background-image: url(../images/Phone_icon.png);
+  }
+
+  &--cross {
+    background-image: url(../images/Cross_icon.png);
+  }
+}

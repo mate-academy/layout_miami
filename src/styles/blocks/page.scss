@@ -1,0 +1,50 @@
+html {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+.page {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $transitionTime linear;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: $sectionMarginBottomMobile;
+
+    @include onTablet {
+      margin-bottom: $sectionMarginBottomTablet;
+    }
+  }
+
+  &__section-title {
+    @include propertyForInlineCenter(32px);
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: $colorBlack;
+
+    @include onTablet {
+      @include propertyForInlineCenter(48px);
+    }
+  }
+}
