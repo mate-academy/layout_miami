@@ -18,3 +18,9 @@ phone.addEventListener('mouseenter', () => {
 phone.addEventListener('mouseleave', () => {
   tooltip.classList.remove('header__tooltip--isVisiable');
 });
+
+menu.addEventListener('focusout', () => {
+  menuLink.classList.add('header__menu');
+  menuLink.classList.remove('header__menu--close');
+  menu.classList.remove('menu--open');
+});
