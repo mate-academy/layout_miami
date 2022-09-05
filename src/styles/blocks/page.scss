@@ -1,7 +1,16 @@
 .page {
-  &__body{
+  scroll-behavior: smooth;
   font-family: "Roboto", sans-serif;
-  margin: 0;
+  font-size: 16px;
+  line-height: 27px;
+  color: $color-page;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -14,6 +23,44 @@
 
     &:target {
       transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 36px;
+
+      text-align: center;
+      letter-spacing: -1.5px;
+
+      color: $color-title;
+
+      @include onDesktop {
+        margin-bottom: 56px;
+        font-size: 48px;
+        line-height: 48px;
+
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: 23px;
+        height: 16px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 4px auto 0;
+        background-image: url(../images/crown.svg);
+      }
     }
   }
 }
