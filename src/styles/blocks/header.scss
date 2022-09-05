@@ -1,55 +1,62 @@
 .header {
-  height: 100vh;
   position: relative;
+  padding: 40px 20px 94px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 
   background-image: url(../images/bose.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   overflow: hidden;
-
-  &__nav {
-    width: 100%;
-  }
-
-  &__content {
-    position: absolute;
-    bottom: 80px;
-    margin-left: 20px;
-
-    @include for-tablet {
-      margin-left: 72px;
-    }
-
-    @include for-desktop {
-      margin-left: 120px;
-    }
-  }
-
-  &__title-img {
-    width: 63px;
-    height: 76px;
-
-    background-image: url(../images/sound-waves-mini.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    @include for-tablet {
-      background-image: url(../images/sound-waves.svg);
-    }
-  }
+  transition: padding $transition-time;
 
   &__title {
+    position: relative;
     margin-top: 32px;
 
-    font-family: $font-stack;
     font-style: italic;
     font-weight: 800;
     font-size: 48px;
     color: $main-black;
-
     line-height: 100%;
     align-items: center;
     letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+      width: $sound-wave-mini-width;
+      height: $sound-wave-mini-height;
+
+      background-image: url(../images/sound-waves-mini.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @include for-tablet {
+        margin-bottom: 40px;
+        width: $sound-wave-width;
+        height: $sound-wave-height;
+
+        background-image: url(../images/sound-waves.svg);
+      }
+
+      @include for-desktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  @include for-tablet {
+    padding: 52px 72px 40px;
+  }
+
+  @include for-desktop {
+    padding: 52px 120px 64px;
   }
 }

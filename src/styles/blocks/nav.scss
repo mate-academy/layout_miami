@@ -2,39 +2,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 20px 0;
 
-  &__logo,
   &__buttons {
     display: flex;
     align-items: center;
-    gap: 40px;
+    column-gap: 24px;
+
+    @include for-tablet {
+      column-gap: 32px;
+    }
   }
 
-  &__menu {
-    transform: translateX(100%);
+  &__icons {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
   }
 
-  &__menu--open {
-    transform: translateX(0);
-  }
-
-  &__link {
-    padding: 10px 0;
-  }
-
-  &__link-phone {
+  &__phone-icon {
     position: relative;
+    background-image: url(../images/phone.svg);
 
     &:before {
+      content: "+1 234 5555-55-55";
       position: absolute;
       right: 45px;
       padding: 5px 0;
       opacity: 0;
       width: max-content;
 
-      content: attr(data-hover);
-      font-family: $font-stack;
       font-weight: 700;
       font-size: 12px;
       line-height: 16px;
@@ -51,18 +54,8 @@
     }
   }
 
-  &__phone-icon {
-    height: 32px;
-    width: 32px;
-  }
-
-  &__burger-menu {
-    height: 32px;
-    width: 32px;
+  &__menu-icon {
     background-image: url(../images/burger-menu.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
     transition: background $transition-time;
 
     &:hover {
@@ -70,11 +63,11 @@
     }
   }
 
-  @include for-tablet {
-    padding: 50px 72px 0;
+  &__menu {
+    transform: translateX(100%);
   }
 
-  @include for-desktop {
-    padding: 50px 120px 0;
+  &__menu--open {
+    transform: translateX(0);
   }
 }
