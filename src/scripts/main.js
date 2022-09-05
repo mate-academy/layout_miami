@@ -1,7 +1,6 @@
 'use strict';
 
 const checkbox = document.querySelector('.nav__checkbox');
-const nav = document.querySelector('.nav');
 const form = document.querySelector('.contact__form');
 const hero = document.querySelector('.hero');
 
@@ -31,4 +30,9 @@ checkbox.addEventListener('click', () => {
   } else {
     hero.style.setProperty('width', '100%');
   }
+});
+
+window.addEventListener('hashchange', () => {
+  checkbox.checked = false;
+  document.body.classList.remove('page__body--with-menu');
 });
