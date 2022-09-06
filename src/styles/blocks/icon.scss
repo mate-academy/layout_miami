@@ -6,6 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
 
   @include onDesktop {
     width: 24px;
@@ -16,10 +17,8 @@
     background-image: url(../images/menu.svg);
 
     @include onDesktop {
-      &:hover {
-        background-image: url(/images/menu_hover.svg);
-        cursor: pointer;
-      }
+
+      @include hover(background-image, url(/images/menu_hover.svg));
     }
   }
 
@@ -51,6 +50,8 @@
 
       opacity: 0;
       pointer-events: none;
+
+      transition: opacity $transition-duration;
     }
 
     &:hover::before {
