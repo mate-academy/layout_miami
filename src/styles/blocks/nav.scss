@@ -1,0 +1,94 @@
+//NAV BLOCK:
+
+.nav {
+  display: block;
+  height: 100vh;
+  background-color: $blue-color;
+
+  transition: transform $transition-duration;
+  transition-timing-function: ease;
+
+  &__top-nav {
+    @include top-nav;
+  }
+
+  &__content {
+    height: 100vh;
+
+    //CONTAINER MIXIN:
+    @include container;
+    padding: 24px 20px;
+
+    @include onDesktop {
+      padding: 24px 40px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    list-style: none;
+    margin-top: 50px;
+  }
+
+  &__item {
+    display: inline-block;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-white;
+
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    transition: border-color $transition-duration;
+
+    &:hover {
+      border-color: $color-white;
+    }
+  }
+
+  &__calls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+  }
+
+  &__call-link {
+    position: relative;
+    display: inline;
+    width: max-content;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+
+    color: $color-white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &::after {
+      content: "call to order";
+      position: absolute;
+      bottom: -140%;
+      left: 0;
+      width: max-content;
+      border-bottom: 1px solid $color-white;
+      padding-bottom: 8px;
+    }
+
+    &--border {
+      border-bottom: 1px solid $color-white;
+    }
+  }
+}

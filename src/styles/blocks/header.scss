@@ -1,0 +1,70 @@
+//HEADER BLOCK:
+$checkbox-target: ".header__nav";
+
+.header {
+  background-image: url("../images/photos/header.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__top-nav {
+    @include top-nav;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+
+    //CONTAINER MIXIN:
+    @include container;
+    padding: 24px 20px;
+
+    @include onDesktop {
+      padding: 24px 40px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transform: translateX(-100%);
+  }
+
+  &__menu-checkbox {
+    display: none;
+  }
+
+  &__title {
+    color: $color-white;
+    font-weight: 700;
+    letter-spacing: -1px;
+    font-size: 40px;
+    line-height: 40px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 40px;
+      background-color: $color-white;
+
+      margin-bottom: 24px;
+    }
+
+    @include onDesktop {
+      letter-spacing: -1.5px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+  /* stylelint-disable */
+  &__menu-checkbox:checked ~ #{$checkbox-target} {
+    transform: translateX(0%);
+  }
+}

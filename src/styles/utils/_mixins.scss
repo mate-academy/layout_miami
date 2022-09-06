@@ -4,3 +4,43 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin placeholder {
+  font-family: "Roboto", sans-serif;
+}
+
+@mixin icon-square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin container {
+  box-sizing: border-box;
+  max-width: 1020px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@mixin top-nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px 1fr 18px;
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    grid-template-columns: 24px 1fr 24px;
+  }
+}
