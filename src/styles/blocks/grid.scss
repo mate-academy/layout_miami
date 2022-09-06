@@ -1,0 +1,92 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 20px;
+
+  &--first {
+    display: grid;
+    grid-template-columns: repeat((2, 1fr));
+  }
+
+  &--second {
+    display: grid;
+    grid-template-columns: repeat((3,1fr));
+  }
+
+  &--third {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--mobile {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+
+    @include onDesctop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 7 {
+      @for $end from $start through 6 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+  
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 13 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desctop-#{$start}-#{$end} {
+          @include onDesctop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &--unvisible-tablet {
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &--visible-tablet {
+    display: none;
+    
+    @include onTablet {
+      display: grid;
+    }
+  }
+}
+
+.test {
+  display: grid;
+}
