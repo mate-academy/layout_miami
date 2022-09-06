@@ -1,0 +1,118 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.header {
+  height: 100vh;
+  background-image: url(../images/header-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    display: block;
+
+    @include square (18px, 12px);
+
+    cursor: pointer;
+
+    @media (min-width: $brakepoint) {
+      @include square (24px, 16px);
+    }
+
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+
+    @include hover (background-image, url(\images\menu_hover.svg));
+
+    &:target .nav {
+      transform: translateX(0);
+    }
+  }
+
+  &__phone {
+    display: block;
+    @include square (18px, 18px);
+
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+
+    text-decoration: none;
+
+    &-tip {
+      display: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      transition: transform 0.4s cubic-bezier(0,1.9,.65,.74),
+      opacity 0.5s linear;
+    }
+
+    @media (min-width: $brakepoint) {
+      & {
+        height: 24px;
+        width: 24px;
+      }
+
+      &-tip {
+        display: block;
+        position: absolute;
+        top: 37px;
+        right: 44px;
+
+        opacity: 0;
+
+        width: max-content;
+
+        color: #fff;
+        transform: translateY(-80px);
+      }
+
+      &:hover>&-tip{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__title-wrap {
+    position: relative;
+    padding-top: 26px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+
+      width: 40px;
+      height: 2px;
+
+      border-radius: 8px;
+      background-color: #fff;
+    }
+  }
+
+  &__title {
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #fff;
+
+    @media (min-width: $brakepoint) {
+      & {
+        font-size: 80px;
+        line-height: 80px;
+        letter-spacing: -1.5px;
+      }
+    }
+  }
+}
