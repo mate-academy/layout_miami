@@ -1,7 +1,7 @@
 # Miami landing page
 In this task, you will learn how to implement a landing page. To do that:
 
-- watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
+- watch the lesson videos
   - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
 - choose a landing page design from the list below;
 - implement it block by block, adopt and deploy to show your current progress at any time;
