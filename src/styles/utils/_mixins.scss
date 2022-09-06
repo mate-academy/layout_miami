@@ -4,14 +4,26 @@
   }
 }
 
-@mixin top-actions {
-  --icon-width: 18px;
+@mixin positionedImage($url) {
+  background-size: cover;
+  background-position: center;
+  background-image: $url;
+}
+
+@mixin topActions {
   display: grid;
-  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
-  justify-items: center;
+  grid-template-columns: 18px 1fr 18px;
   align-items: center;
+  justify-items: center;
 
   @include onDesktop {
-    --icon-width: 24px;
+    grid-template-columns: 24px 1fr 24px;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $anim-time;
+  &:hover {
+    #{$_property}: $_toValue;
   }
 }

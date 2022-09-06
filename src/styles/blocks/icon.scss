@@ -1,45 +1,44 @@
 .icon {
-  position: relative;
   display: block;
+  position: relative;
   width: 100%;
   padding-bottom: 100%;
 
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   text-decoration: none;
 
   &__tooltip {
-
+    display: flex;
     position: absolute;
-    right: 100%;
-    padding-right: 20px;
     top: 50%;
-    transform: translateY(-50%);
-
-    display: block;
+    transform: translate(-80%, -50%);
+    padding-right: 20px;
     width: max-content;
 
+    color: $c-white;
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
-    color: #fff;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0;
     pointer-events: none;
-
-    transition: opasity $duration-of-transition;
+    opacity: 0;
+    transition: opacity $anim-time, transform $anim-time;
   }
 
-  &:hover &__tooltip {
-    opacity: 1;
-    pointer-events: all;
+  @include onDesktop {
+    &:hover &__tooltip {
+      transform: translate(-100%, -50%);
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--menu {
     background-image: url(../images/menu.svg);
 
+    transition: $anim-time;
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
