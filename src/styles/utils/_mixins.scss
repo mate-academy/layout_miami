@@ -4,3 +4,31 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin navigation {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: $icon-size-mobile 1fr $icon-size-mobile;
+
+  @include onDesktop {
+    grid-template-columns: $icon-size-desktop 1fr $icon-size-desktop;
+  }
+}
+
+@mixin landscape {
+  @media (max-height: 500px) {
+    @content;
+  }
+}
