@@ -1,0 +1,57 @@
+.gallery {
+  box-sizing: content-box;
+
+  &__item {
+    margin-bottom: 48px;
+  }
+
+  &__picture-container {
+    @include forGallery(188px);
+
+    &--none {
+      @include forGallery(0);
+    }
+
+    &--square {
+      @include onTablet {
+        padding-bottom: 0;
+        height: 288px;
+      }
+      @include onDesktop {
+        padding-bottom: 0;
+        height: 320px;
+      }
+    }
+  }
+
+  &__picture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    &--left {
+      object-position: center left;
+    }
+    &--right {
+      object-position: center right;
+    }
+    @include onDesktop {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $mainColor;
+  }
+}
