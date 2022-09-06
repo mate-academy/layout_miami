@@ -1,0 +1,75 @@
+.page {
+  font-family: Roboto, sans-serif;
+  scroll-behavior: smooth;
+
+  font-size: 16px;
+  line-height: 27px ;
+  color: #3e3e3e;
+
+  &__body {
+    margin: 0;
+    background: $c-gray;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+
+    &:target {
+      animation: focus 2s;
+    }
+
+  }
+
+  &__section-title {
+    margin-bottom: 32px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+
+    @include onDesktop {
+      margin-bottom: 60px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: #000;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: 5px auto 0;
+
+      background-image: url(../images/crown.svg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+}
