@@ -1,0 +1,76 @@
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+  }
+
+  &__image {
+    height: 38px;
+
+    @include tablet {
+      height: 56px;
+    }
+
+    @include desktop {
+      height: 56px;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include tablet {
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    background-image: url(../images/phone_icon.svg);
+    text-decoration: none;
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        color: $third-text-colour;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        @include text(12px, 700, 16px);
+
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+        width: max-content;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/menu_icon.svg);
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/menu_hover_icon.svg);
+    }
+  }
+
+  &__cross {
+    background-image: url(../images/cross.svg);
+  }
+}
