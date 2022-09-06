@@ -14,7 +14,7 @@
     position: absolute;
     right: 100%;
     pointer-events: none;
-    display: block;
+    display: none;
     padding-right: 12px;
     top: 50%;
     transform: translateY(-50%);
@@ -27,11 +27,17 @@
     line-height: 16px;
     letter-spacing: 2px;
     transition: opacity $transition-time;
+
+    @include onDesktop {
+      display: block;
+    }
   }
 
   &:hover &__tooltip {
-    pointer-events: all;
-    opacity: 1;
+    @include onDesktop {
+      pointer-events: all;
+      opacity: 1;
+    }
   }
 
   &--menu {
