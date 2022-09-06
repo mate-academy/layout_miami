@@ -1,0 +1,89 @@
+.header {
+  background-image: url("../images/header_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  padding: 25px 20px;
+
+  @include onTablet {
+    padding: 50px 72px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-call {
+    display: block;
+
+    background-image: url("../images/phone.svg");
+    background-repeat: no-repeat;
+
+    height: 18px;
+    width: 18px;
+    margin-right: 33px;
+
+    text-decoration: none;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        width: 201px;
+        padding-bottom: 4px;
+
+        @include phonePseudoSettings;
+      }
+
+      &::after {
+        content: "The Met Cloisters +1 212-923-3700";
+        width: 172px;
+        padding-top: 4px;
+
+        @include phonePseudoSettings;
+      }
+
+      &:hover {
+        &::after {
+          @include hoverPhonePseudoSettings;
+        }
+
+        &::before {
+          @include hoverPhonePseudoSettings;
+        }
+      }
+    }
+  }
+
+  &__title {
+    color: $white;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    margin-top: 129px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+
+      margin-top: 160px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+
+      margin-top: 80px;
+    }
+  }
+}
