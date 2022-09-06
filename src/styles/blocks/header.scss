@@ -1,88 +1,89 @@
 .header {
-  max-width: 1260px;
-  box-sizing: border-box;
-  @include flex-setter;
-
-  margin: 0 auto;
-  height: 100vh;
-  margin-bottom: $blocks-margin-bottom;
-
-  background-image: url(/images/photos/header.jpg);
+  background-image: url(../../src/images/bg-small.png);
+  background-size: cover;
+  background-position: center;
 
   @include onTablet {
-    background-image: url(/images/photos/bg-medium.png);
+    background-image: url(../../src/images/bg-medium.png);
   }
 
-  @include onMobile {
-    background-image: url(/images/photos/bg-small.png);
+  @include onBigScreen {
+    background-image: url(../../src/images/header.jpg);
   }
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 
-  &__article {
-    width: 85%;
-    margin: 0 auto;
-    height: inherit;
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
   }
 
-  &__items {
-    @include flex-setter;
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr $gap-lg + ($icon-size-sm*2);
+    justify-items: space-between;
     align-items: center;
+
+    @include onTablet {
+      grid-template-columns: 1fr $gap-lgr + ($icon-size-md*2);
+    }
   }
 
-  &__section {
-    padding-top: 52px;
+  &__top-links {
+    display: grid;
+    grid-template-columns: $icon-size-sm $icon-size-sm;
+
+    align-items: center;
+    gap: $gap-lg;
+
+    @include onTablet {
+      grid-template-columns: $icon-size-md $icon-size-md;
+      gap: $gap-lgr;
+    }
+  }
+
+  &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__bottom-wave {
+    background-image: url(../../src/images/wave-sm.svg);
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 16px;
+    height: 27px;
+    width: 32px;
+
+    @include onTablet {
+      background-image: url(../../src/images/wave-bg.svg);
+      height: 76px;
+      width: 63px;
+    }
   }
 
   &__title {
-    font-size: $f-size-lg;
-    font-weight: $weight-bolder;
     font-style: italic;
-    margin-top: 32px;
+    font-weight: $weight-bolder;
+    font-size: $f-size-m;
+    letter-spacing: -1.5px;
+
+    color: $dark-color;
 
     @include onTablet {
-      font-size: 40px;
-      margin-top: 40px;
+      font-size: $f-size-lg;
     }
 
-    @include onMobile {
-      font-size: 32px;
-      margin-top: 16px;
+    @include onBigScreen {
+      font-size: $f-size-lgr;
     }
   }
 
-  &__bottom {
-    padding-bottom: $gap-lg;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    @include onTablet {
-      padding-bottom: 40px;
-    }
-  }
-
-}
-
-.icon {
-  @include flex-setter;
-  align-items: center;
-  gap: 40px;
-  text-decoration: none;
-
-  &__hover {
-    visibility: hidden;
-  }
-
-  &__phone:hover {
-    .icon__hover {
-      visibility: visible;
-    }
-  }
 }
