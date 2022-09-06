@@ -1,0 +1,80 @@
+.icon {
+  --size: 18px;
+
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  transition: transform $transition-speed;
+
+  @include notMobile {
+    --size: 24px;
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    text-align: end;
+    font-weight: bold;
+    color: $mainWhite;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $transition-speed, color $transition-speed;
+
+    &:hover {
+      color: $hover-gray;
+    }
+
+    &--top {
+      top: -50%;
+      transform: translateY(-50%);
+    }
+
+    &--bot {
+      top: 75%;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--call {
+    grid-column: 3/4;
+    background-image: url(../images/phone.svg);
+
+    &:hover {
+      transform: $scale;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    transition: background-image $transition-speed;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+}
