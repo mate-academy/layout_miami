@@ -3,15 +3,20 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  &--special {
+  &__squares {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 8px;
-  }
+    gap: 8px;
 
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
   }
 
   @include onTablet {
@@ -19,34 +24,46 @@
     column-gap: 24px;
   }
 
+  @include onDesktop {
+    column-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   &--desktop {
     display: block;
 
-    @include onDesktop {
+    @include onTablet {
       display: grid;
     }
 
-    @include onTablet {
+    @include onDesktop {
       display: grid;
     }
   }
 
-  &--tablet-special {
-    display: block;
+  &--about-timetable {
+    grid-template-columns: repeat(2, max-content);
+  }
 
-    @include onDesktop {
-      display: grid;
-    }
+  &--contacts {
+    row-gap: 48px;
+  }
 
-    @include onTablet {
-      display: block;
-    }
+  &__bottom {
+    margin-bottom: 48px;
+  }
+
+  &__bottom-last {
+    margin-bottom: 40px;
+  }
+
+  &--explore {
+    row-gap: 48px;
   }
 
   &__item {
-
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
@@ -55,14 +72,6 @@
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
-        }
-      }
-    }
-
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
         }
 
         &--desktop-#{$start}-#{$end} {
@@ -73,21 +82,9 @@
       }
     }
 
-    &--least {
+    &--row {
       @include onTablet {
-        display: none;
-      }
-
-      &--least {
-        @include onDesktop {
-          display: none;
-        }
-      }
-    }
-
-    &--contact-row {
-      @include onTablet {
-        grid-row: 1 / span 2;
+        grid-row: 2 / 4;
       }
     }
   }

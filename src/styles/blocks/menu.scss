@@ -1,24 +1,28 @@
 .menu {
-  background-color: $colorRed;
+  background-color: $color-red;
+  z-index: 1;
 
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $headerTopPadding 0;
+  &__top {
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 55px;
+    }
   }
 
   &__list {
     list-style: none;
-    margin: 0 0 48px;
     padding: 0;
-  }
+    margin-bottom: 32px;
 
-  &__top {
-    margin-bottom: 48px;
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
   }
 
   &__item {
     margin-bottom: 24px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -28,41 +32,59 @@
     display: inline-block;
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
-    color: #fff;
-    text-decoration: none;
+
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: border-color 0.3s;
 
-    &:hover {
-      border-color: #fff;
+    color: $color-white;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include hover(border-color, $color-white);
+
+    &--hidden {
+      display: none;
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: inline-block;
+      }
     }
+
+    &--visible {
+      @include onDesktop {
+        display: none;
+      }
+    }
+  }
+
+  &__contacts {
+    opacity: 1;
+    pointer-events: all;
+    position: initial;
+    transform: unset;
+    text-align: left;
+    margin-bottom: 16px;
   }
 
   &__call {
     width: max-content;
-    display: block;
-    text-decoration: none;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+
+    color: $color-white;
     text-transform: uppercase;
-    color: #fff;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
 
-    &--phone {
-      margin-bottom: 16px;
-      font-size: 16px;
-      line-height: 27px;
-    }
-
-    &--action {
-      font-size: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #fff;
-    }
+    @include hover(border-color, $color-white);
   }
 }
