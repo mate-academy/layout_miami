@@ -1,0 +1,55 @@
+.place {
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+
+    box-sizing: border-box;
+    max-height: 256px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 256px;
+      padding-bottom: 0;
+    }
+
+    transition: transform 0.3s linear, box-shadow 0.3s linear;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__text {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 27px;
+    color: $c-gray;
+  }
+}
