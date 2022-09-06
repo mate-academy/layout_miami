@@ -8,6 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#form').addEventListener('submit', (event) => {
+const form = document.querySelector('#form');
+const inputs = document.querySelectorAll('.form-field');
+
+function handler(event) {
   event.preventDefault();
-}, false);
+
+  inputs.forEach(input => {
+    input.value = '';
+  });
+}
+
+form.addEventListener('submit', handler);
