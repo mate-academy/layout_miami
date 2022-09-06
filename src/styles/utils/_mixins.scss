@@ -1,10 +1,8 @@
-@mixin text($size, $weight, $height, $color) {
-  font-size: $size;
+@mixin text($weight, $height, $color) {
   font-weight: $weight;
   line-height: $height;
   color: $color;
 }
-
 
 @mixin onDesktop {
   @media (min-width: 1024px) {
@@ -13,14 +11,35 @@
 }
 
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1023px) {
     @content;
   }
 }
 
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin grid-col($times, $unit, $gap) {
+  grid-template-columns: repeat($times, $unit);
+  column-gap: $gap;
+}
+
+@mixin figure($height, $width) {
+  height: $height;
+  width: $width;
+}
+
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $duration;
   &:hover {
     #{$_property}: $_toValue;
   }
 }
+
+@mixin top-actions {
+  @extend %flex-between;
+}
+

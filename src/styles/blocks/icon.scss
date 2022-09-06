@@ -1,0 +1,55 @@
+.icon {
+  display: block;
+  @include figure(18px, 18px);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--close {
+    background-image: url(/images/icons/close.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/menu.svg);
+
+    @include onDesktop {
+      &:hover {
+        background-image: url(/images/icons/menu-hover.svg);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(/images/icons/phone.svg);
+    position: relative;
+    text-decoration: none;
+    margin-right: 40px;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      width: max-content;
+      @include text(700, 16px, $c-black);
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding-right: 20px;
+    }
+
+    &:hover::before {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
