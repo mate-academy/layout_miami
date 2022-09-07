@@ -1,15 +1,15 @@
 'use strict';
 
 const openMenuBtn = document.querySelector('.icon--menu');
-const closeMenuBtn = document.querySelector('.menu__close-btn');
-const navMenu = document.querySelector('.nav__menu');
+const closeMenuBtn = document.querySelector('.icon--close');
+const nav = document.querySelector('.nav');
 
 const openMenu = () => {
-  navMenu.classList.add('nav__menu--open');
+  nav.classList.add('page__nav--open');
 };
 
 const closeMenu = () => {
-  navMenu.classList.remove('nav__menu--open');
+  nav.classList.remove('page__nav--open');
 };
 
 openMenuBtn.addEventListener('click', openMenu);
