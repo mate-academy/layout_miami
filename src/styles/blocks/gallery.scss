@@ -9,17 +9,27 @@
     @include for-tablet {
       grid-template-columns: 2fr 1fr;
     }
-  }
 
-  &__images--reverse {
-    @include for-tablet {
-      grid-template-columns: 1fr 2fr;
+    &--reverse {
+      @include for-tablet {
+        grid-template-columns: 1fr 2fr;
+      }
     }
   }
 
+  &__img-container {
+    overflow: hidden;
+  }
+
   &__img {
-    width: 100%;
     height: 320px;
+    object-fit: cover;
+    transition: transform $transition-time;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__category-name {
@@ -31,7 +41,6 @@
   }
 
   &__btn {
-    display: block;
     margin: 40px auto 0;
     width: 100%;
 
