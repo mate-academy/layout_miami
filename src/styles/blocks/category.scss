@@ -1,0 +1,47 @@
+.category {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: $category-height;
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+      @include onDesktop {
+        height: $category-height;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      height: auto;
+    }
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(105%);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-color;
+
+    @include onDesktop {
+      font-size: 24px;
+    }
+  }
+}
