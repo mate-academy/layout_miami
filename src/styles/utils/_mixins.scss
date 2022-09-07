@@ -1,6 +1,25 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin mediamax($width) {
+  @media (max-width: $width) {
+    @content;
   }
+}
+
+@mixin mediamin($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin circle($size) {
+  @include square(($size));
+  border-radius: 50%;
+}
+
+@mixin wave-animation($width, $delay) {
+  animation: wave-#{$width} 0.5s ease $delay infinite alternate;
 }
