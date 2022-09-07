@@ -1,0 +1,108 @@
+.details {
+
+  &__content-wrapper {
+    @include limitContentWidth;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    text-align: center;
+
+    @include tabletBreakpoint {
+      font-size: 48px;
+    }
+
+    @include desktopBreakpoint {
+      font-size: 64px;
+    }
+  }
+
+  &__photo-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-top: 40px;
+
+    @include tabletBreakpoint {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      padding-top: 48px;
+    }
+
+    @include desktopBreakpoint {
+      padding-top: 48px;
+    }
+  }
+
+  &__photo {
+    @include scaleOnHover;
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    @include tabletBreakpoint {
+      height: 187px;
+
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--cols--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include desktopBreakpoint {
+      height: 320px;
+    }
+
+    &:hover {
+      @include noOverflow;
+    }
+  }
+
+  &__title {
+    @include noOverflow;
+    margin-top: 16px;
+  }
+
+  &__description {
+    @include fontParams(16px, 400);
+    margin-top: 8px;
+    max-width: 672px;
+  }
+
+  &__explore-button {
+    @include fontParams(16px, 700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    transition: box-shadow $transition-duration;
+    margin-top: 40px;
+    border-radius: 40px;
+    height: 56px;
+    width: 280px;
+    background-color: $white;
+    text-align: center;
+    color: $theme-black;
+
+    @include tabletBreakpoint {
+      margin-top: 48px;
+      height: 56px;
+      width: 392px;
+    }
+
+    &:hover {
+      box-shadow: 1px 4px 16px $button-hover-white;
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px $button-active-white;
+    }
+
+  }
+
+}

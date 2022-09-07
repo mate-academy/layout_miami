@@ -1,6 +1,47 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin limitContentWidth {
+  margin: 0 auto;
+  max-width: 1260px;
+}
+
+@mixin tabletBreakpoint {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
   }
+}
+
+@mixin desktopBreakpoint {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin fontParams($font-size, $font-weight, $letter-spacing: normal) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin marginBetweenSections($mobile, $tablet, $desktop) {
+  margin-top: $mobile;
+
+  @include tabletBreakpoint {
+    margin-top: $tablet;
+  }
+
+  @include desktopBreakpoint {
+    margin-top: $desktop;
+  }
+}
+
+@mixin scaleOnHover {
+  transition: transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+@mixin noOverflow {
+  position: relative;
+  z-index: 1;
 }
