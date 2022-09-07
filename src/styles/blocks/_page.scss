@@ -1,0 +1,58 @@
+.page {
+  font-family: "Roboto", sans-serif;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $transition-duration;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 32px;
+
+    @include title-text;
+    text-align: center;
+
+    color: $black-color;
+
+    @include onDesktop {
+      margin-bottom: 56px;
+      @include desktop-title-text;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 23px;
+      height: 16px;
+      margin: 4px auto 0;
+      background-image: url(../images/crown.svg);
+      @include icons-positioning;
+    }
+  }
+}
