@@ -1,0 +1,55 @@
+.place {
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: $photo-container-height;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+    }
+
+    @include onDasktop {
+      height: $photo-container-height;
+      padding-bottom: 0;
+    }
+
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: $place-photo-size;
+    width: $place-photo-size;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDasktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    color: $color-blue;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-blue-hov;
+    }
+  }
+}
