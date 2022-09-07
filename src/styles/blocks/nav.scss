@@ -1,0 +1,184 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__items {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+
+    display: block;
+    @include square($icon-size);
+
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onTablet {
+      @include square($icon-size-desktop);
+    }
+
+    @include onTablet {
+      &:hover .nav__call {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__call {
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    padding-right: 20px;
+
+    display: block;
+    width: max-content;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $c-dark-text;
+
+    opacity: 0;
+
+    transition: opacity $transition-time;
+
+    pointer-events: none;
+  }
+
+  &__menu {
+    @include square($icon-size);
+
+    @include onTablet {
+      @include square($icon-size-desktop);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      height: 2px;
+
+      background-color: $c-dark-text;
+
+      transition: all $transition-time;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+
+      background-color: $c-dark-text;
+
+      transition: all $transition-time;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 2px;
+
+    background-color: $c-dark-text;
+
+    transition: all $transition-time;
+
+    &--top {
+      top: 5px;
+
+      transition: all $transition-time;
+    }
+
+    &--bottom {
+      bottom: 5px;
+
+      transition: all $transition-time;
+    }
+
+    @include onTablet {
+      &--top {
+        top: 7px;
+      }
+
+      &--bottom {
+        bottom: 7px;
+      }
+    }
+  }
+
+  &__menu--opener {
+    position: relative;
+
+    transition: transform $transition-time;
+
+    @include onDesktop {
+      &:hover {
+        .nav__line {
+          &--top {
+            left: 12px;
+            top: 10px;
+
+            rotate: 90deg;
+          }
+
+          &--bottom {
+            left: -8px;
+            bottom: 12px;
+
+            rotate: 90deg;
+          }
+        }
+
+        &::before {
+          left: 6px;
+          top: 10px;
+
+          rotate: -65deg;
+        }
+
+        &::after {
+          left: -3px;
+          bottom: 12px;
+
+          rotate: 65deg;
+        }
+      }
+    }
+  }
+
+  &__menu--closer {
+    position: relative;
+
+    &::before {
+      top: 45%;
+
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      bottom: 45%;
+      
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.page {
+  font-family: "Poppins", sans-serif;
+
+  scroll-behavior: smooth;
+
+  &__content {
+    color: $c-white;
+  }
+
+  &__content--with-menu {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform $transition-time, visibility $transition-time;
+
+    &:target {
+      visibility: visible;
+      transform: translateX(0);
+    }
+  }
+
+  &__main {
+    padding-top: 80px;
+    padding-bottom: 120px;
+
+    background-color: $c-dark;
+  }
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 80px;
+
+      @include onTablet {
+        margin-bottom: 120px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 160px;
+      }
+    }
+  }
+
+  &__section-title {
+    @include font-h2;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    margin-bottom: 48px;
+
+    color: #fff;
+    text-align: center;
+  }
+}
