@@ -1,0 +1,49 @@
+.my-bike {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  @extend %text-main;
+  background-color: $main-color-dark;
+
+  scroll-behavior: smooth;
+
+  &__body {
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    
+    transition: transform $duration;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__main {
+    @extend %container;
+  }
+
+  &__section {
+    margin-bottom: 180px;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+
+    @include onMobile {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__section-title {
+    @extend %text-section-title;
+    margin-bottom: $page-big-gap;
+  }
+}

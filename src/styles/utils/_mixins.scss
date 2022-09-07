@@ -1,6 +1,95 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin image ($size, $name, $format) {
+  background-image: url(../images/#{$name}.#{$format});
+  background-size: $size;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin flex (
+  $direction: row,
+  $gap: 0,
+  $content: space-between
+) {
+    display: flex;
+  
+    @if $content  !=start {
+      justify-content: $content;
+    }
+  
+    @if $direction  !=row {
+      flex-direction: $direction;
+    }
+  
+    @if $gap !=0 {
+      gap: $gap
+    }
+}
+
+@mixin content-position ($block) {
+  box-sizing: border-box;
+  height: 100vh;
+
+  @if $block =="header" {
+    @include flex (column);
+    padding: $header-padding-big 0 20vh;
+
+    @include onMobile {
+      padding: $header-padding-small 0 20vh;
+    }
+  }
+
+  @else {
+    padding: $header-padding-big 0;
+
+    @include onMobile {
+      padding: $header-padding-small 0;
+    }
+  }
+}
+
+@mixin grid-cols ($col-1,
+  $col-2,
+  $col-3: false
+) {
+    grid-template-columns: #{$col-1}fr #{$col-2}fr;
+
+    @if $col-3 {
+      grid-template-columns: #{$col-1}fr #{$col-2}fr #{$col-3}fr;
+    }
+
+    @if $col-1 ==$col-2 {
+      grid-template-columns: repeat(2, #{$col-1}fr);
+    }
+
+    @if $col-2 ==$col-3 {
+      grid-template-columns: repeat(3, #{$col-1}fr);
+    }
+}
+
+@mixin grid (
+  $col-1, 
+  $col-2, 
+  $col-3: false
+) {
+    display: grid;
+    gap: $page-small-gap;
+    @include grid-cols($col-1, $col-2, $col-3);
 }
