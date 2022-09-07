@@ -1,0 +1,70 @@
+.icon {
+  display: block;
+  @include square($headers-svg-small);
+  @include image-cover;
+  fill: $page-color;
+
+  @include onTablet {
+    @include square($headers-svg-big);
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+    background-size: 18px;
+
+    @include onTablet {
+      background-size: 24px;
+    }
+
+    @include onDesktop {
+      &:hover .icon__tooltip {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu-opener {
+    background-image: url(../images/menu.svg);
+    background-size: 18px 12px;
+
+    will-change: background-image;
+    transition: background-image $transition-time ease-in-out;
+
+    @include onTablet {
+      background-size: 24px 18px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+      background-size: 12px 18px;
+
+      @include onTablet {
+        background-size: 18px 24px;
+      }
+    }
+  }
+
+  &--menu-close {
+    background-image: url(../images/menu-close.svg);
+    background-size: 16px 16px;
+
+    @include onDesktop {
+      background-size: 22px 22px;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    transform: translateX(-100%);
+    padding-top: $headers-svg-big / 4;
+    padding-right: 8px;
+    letter-spacing: 2px;
+    color: $page-color;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $transition-time;
+  }
+}

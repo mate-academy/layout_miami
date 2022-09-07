@@ -1,6 +1,48 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin image-bgd {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin image-contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin image-cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin square($x) {
+  height: $x;
+  width: $x;
+}
+
+@mixin container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 94px;
+  max-width: 1260px;
+  @include onTablet {
+    padding: 48px 72px 40px;
+  }
+  @include onDesktop {
+    padding: 48px 120px 64px;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 720px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
   }
 }

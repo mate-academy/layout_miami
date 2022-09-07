@@ -1,4 +1,60 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%title-font {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+
+  @include onTablet {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  @include onDesktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+%two-col-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+%form-font {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+%form-style {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  background-color: #f8f8fa;
+  border-radius: 40px;
+  color: inherit;
+  transition: border-color $transition-time, color $transition-time;
+
+  &::placeholder {
+    @extend %form-font;
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:hover::placeholder {
+    color: $page-color;
+  }
+
+  &:target {
+    border-color: $page-color;
+  }
+}
+
+%button {
+  text-align: center;
+  align-self: center;
+  width: 100%;
 }

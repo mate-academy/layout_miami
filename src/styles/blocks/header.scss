@@ -1,0 +1,66 @@
+.header {
+  background-image: url(/images/header-small.png);
+  @include image-bgd;
+
+  @media (min-width: 450px) {
+    background-image: url(/images/header.png);
+  }
+  @media (min-width: 720px) {
+    background-image: url(/images/header-big.png);
+    background-position: top center;
+  }
+
+  &__container {
+    @include container;
+    height: 100vh;
+    justify-content: space-between;
+  }
+
+  &__top {
+    @extend %two-col-grid;
+    align-items: baseline;
+  }
+
+  &__title {
+    @extend %title-font;
+    font-style: italic;
+    font-weight: 800;
+
+    &::before {
+      content: "";
+      background-image: url(../images/wave.svg);
+      @include image-contain;
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        background-image: url(../images/Sound-waves.svg);
+        width: 64px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__logo-link {
+    grid-column: 1 / 2;
+  }
+
+  &__contacts-menu {
+    grid-column: 2 / 3;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: $headers-svg-small;
+
+    @include onTablet {
+      gap: $headers-svg-big;
+    }
+  }
+}
