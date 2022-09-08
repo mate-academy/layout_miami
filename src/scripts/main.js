@@ -17,3 +17,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+document.querySelector('input[name="tel"]')
+  .addEventListener('input', event => {
+    event.target.value = event.target.value
+      .split('').filter(c => !isNaN(+c)).join('');
+  });
