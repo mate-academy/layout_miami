@@ -1,0 +1,75 @@
+.now-on-view {
+  margin-bottom: 78px;
+  @include onTablet {
+    margin-bottom: 90px;
+  }
+
+  &__gallery {
+    margin-bottom: 40px;
+  }
+
+  &__products {
+    margin-bottom: 16px;
+    @include useGrid (2, 20px);
+
+    @include onTablet {
+      @include useGrid (6, $gap-md);
+    }
+
+    @include onBigScreen {
+      @include useGrid (12, $gap-md);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &-right {
+      object-position: 75%;
+    }
+
+    &-container {
+      position: relative;
+      width: 100%;
+
+      max-height: 320px;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onTablet {
+        height: 187px;
+        padding-bottom: 0;
+      }
+
+      @include onBigScreen {
+        height: 320px;
+        padding-bottom: 0;
+      }
+    }
+
+  }
+
+  &__description {
+    font-weight: $weight-bold;
+    font-size: $f-size-sm;
+    line-height: 140%;
+
+    color: $dark-color;
+
+    @include onTablet {
+      font-size: $f-size-md;
+    }
+
+  }
+}
