@@ -1,23 +1,46 @@
-@mixin onDesktop {
-  @media (min-width: 1024px) {
+@mixin onMobile {
+  @media (min-width: 300px) and (max-width: 1023px) {
     @content;
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 600px) and (max-width: 1023px) {
-    @content;
+@mixin link-after-hover ($color) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    
+    content: "";
+    display: block;
+    height: 2px;
+    border-radius: 8px;
+    
+    background-color: #{$color};
+    transform: scale(0);
+    
+    transition: scale, 0.3s;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    transform: scale(1);
   }
 }
 
-@mixin font-family ($f-family, $f-weigth) {
-  font-family: $f-family, sans-serif;
-  font-weight: $f-weigth;
-}
-
-@mixin top-actions {
-  box-sizing: border-box;
+@mixin flex ($flex-direction) {
   display: flex;
-  justify-content: space-between;
-  align-items: center ;
+  flex-direction: #{$flex-direction};
+}
+
+@mixin flex-gap ($gap) {
+  display: flex;
+  gap: #{$gap};
+}
+
+@mixin size-square ($size) {
+  width: #{$size};
+  height: #{$size};
 }

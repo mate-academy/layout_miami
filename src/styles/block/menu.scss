@@ -1,70 +1,27 @@
 .menu {
-  box-sizing: border-box;
-  padding: $headerTopPadding 0 0;
-  
-  @include onTablet {
-    padding: $headerTopPaddingTablet 0 0;
-  }
-  
-  @include onDesktop {
-    padding: $headerTopPaddingDesktop 0 0;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
-  overflow-y: auto;
-  background-color: $light-gray;
+  width: 100%;
 
-  &__top {
-    @include top-actions;
-    margin-bottom: 40px;
+  background-color: $color-blue;
+
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+
+  &:target {
+    transform: translateX(0);
   }
+  
 
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin: 0 0 40px;
-    padding: 0;
-    
-    list-style: none;
+  &__content {
+    @include flex (column);
+    gap: 48px;
   }
 
   &__link {
-    border-bottom: 1px solid transparent;
-    @include font-family($font-family-second, 700);
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: $color-dark-grey;
-    }
-  }
-  
-  &__call {
-    display: block;
-    width: max-content;
-
-    @include font-family($font-family-second, 700);
-    text-transform: uppercase;
-
-    &--phone {
-      margin-bottom: 16px;
-
-      font-size: 16px;
-      line-height: 27px;
-
-    }
-
-    &--action {
-      border-bottom: 1px solid $color-dark-grey;
-
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-    }
+    font-weight: 700;
+    color: $color-wite;
   }
 }

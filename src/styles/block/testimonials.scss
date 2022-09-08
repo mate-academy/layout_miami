@@ -1,0 +1,93 @@
+.testimonials {
+  &__title {
+    margin: 0 auto 58px;
+  }
+
+  &__container {
+    position: relative;
+    @include flex-gap (24px);
+
+    justify-content: space-between;
+    
+    @include onMobile {
+      align-items: center;
+      align-content: center;
+      flex-direction: column;
+      gap: 48px;
+    }
+  }
+
+  &__section {
+    @include flex (column);
+    align-items: center;
+    gap: 4px;
+    width: 324px;
+  }
+
+  &__photo {
+    @include size-square (150px);
+
+    border-radius: 50%;
+    
+    transition-property: transform, box-shadow;
+    transition-duration: 0.3s;
+    
+    cursor: pointer;
+  
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    transition: text-shadow 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -35px;
+      
+      display: block;
+      @include size-square (20px);
+
+      transform: translateY(-35px);
+
+      background: url(/images/facebook_f_logo.svg) no-repeat center / cover;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition-property: transform, opacity;
+      transition-duration: 0.3s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+
+  &__link-image {
+    margin-bottom: 28px;
+
+    @include onMobile {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__job-title {
+    font-size: 14px;
+    color: #9fadc2;
+  }
+
+  &__description {
+    text-align: center;
+  }
+}
