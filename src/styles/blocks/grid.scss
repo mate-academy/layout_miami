@@ -1,0 +1,34 @@
+.grid {
+  display: block;
+
+  @include onTablet {
+    @include useGrid (6, $gap-md);
+  }
+
+  @include onBigScreen {
+    @include useGrid (12, $gap-md);
+  }
+
+  &__item {
+
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--onTablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onBigScreen {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--onBigScreen-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
