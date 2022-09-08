@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $columnStart from 1 through 12 {
+      @for $columnEnd from $columnStart through 12 {
+        &--#{$columnStart}-#{$columnEnd} {
+          grid-column: #{$columnStart} / #{$columnEnd + 1};
+        }
+
+        &--desktop-#{$columnStart}-#{$columnEnd} {
+          @include onDesktop {
+            grid-column: #{$columnStart} / #{$columnEnd + 1};
+          }
+        }
+      }
+    }
+}
+}
