@@ -1,6 +1,46 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onMobile {
+  @media (min-width: 300px) and (max-width: 1023px) {
+    @content;
   }
+}
+
+@mixin link-after-hover ($color) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    
+    content: "";
+    display: block;
+    height: 2px;
+    border-radius: 8px;
+    
+    background-color: #{$color};
+    transform: scale(0);
+    
+    transition: scale, 0.3s;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin flex ($flex-direction) {
+  display: flex;
+  flex-direction: #{$flex-direction};
+}
+
+@mixin flex-gap ($gap) {
+  display: flex;
+  gap: #{$gap};
+}
+
+@mixin size-square ($size) {
+  width: #{$size};
+  height: #{$size};
 }
