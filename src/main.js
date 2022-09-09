@@ -9,7 +9,12 @@ window.addEventListener('hashchange', () => {
 });
 
 const contactForm = document.querySelector('.contact-us--form');
+const contactIntupts = document.querySelectorAll('.form-field');
 
 contactForm.addEventListener('submit', (event) => {
   event.preventDefault();
+
+  contactIntupts.forEach(i => {
+    i.value = '';
+  });
 });
