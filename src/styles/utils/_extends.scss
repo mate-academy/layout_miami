@@ -4,8 +4,66 @@
   align-items: center;
 }
 
-%background-center {
+%bg-image {
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+}
+
+%background-top-right {
+  @extend %bg-image;
+  background-position: right top;
+}
+
+%background-center {
+  @extend %bg-image;
+  background-position: center;
+}
+
+%header-top-container {
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-rows: 96px 1fr;
+  grid-template-columns: 1fr 1fr;
+
+  padding: 0 20px;
+}
+
+%header-top-logo {
+  grid-area: logo;
+  display: grid;
+  align-content: center;
+}
+
+%header-top-icons {
+  grid-area: icons;
+
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 4px;
+}
+
+%grids {
+  display: block;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+%section-title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  color: #fff;
 }
