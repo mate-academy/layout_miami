@@ -1,0 +1,104 @@
+.menu {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  visibility: hidden;
+
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #e8eff9;
+
+  @include devices("tablet") {
+    padding: 3rem 4.5rem;
+  }
+
+  @include devices("desktop") {
+    padding: 3rem 8.5rem;
+  }
+
+  &__x-wrapper {
+    cursor: pointer;
+  }
+
+  
+  &__link-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    &--call {
+      margin-top: 5rem;
+      position: relative;
+      font-size: 0.7rem;
+      &::before {
+        position: absolute;
+        content: "+48 737 895 912";
+        bottom: 2rem;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  &__link {
+    font-size: 1.4rem;
+    padding-bottom: 5px;
+    color: inherit;
+    
+    &:hover {
+      border-bottom: 1px solid #000;
+    }
+    &--call {
+      font-size: 0.8rem;
+    }
+  }
+  
+  &__logo-wrapper {
+    margin-bottom: 3rem;
+  }
+
+  &__logo {
+    width: 130px;
+    @include devices("tablet") {
+      width: 100%;
+    }
+  }
+}
+
+.show-menu {
+  visibility: visible;
+  opacity: 0;
+  animation: fadeIn 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hide-menu {
+  visibility: visible;
+  opacity: 1;
+  animation: fadeOut 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
