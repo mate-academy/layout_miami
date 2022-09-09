@@ -1,7 +1,7 @@
 # Miami landing page
 In this task, you will learn how to implement a landing page. To do that:
 
-- watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
+- watch the lesson videos
   - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
 - choose a landing page design from the list below;
 - implement it block by block, adopt and deploy to show your current progress at any time;
@@ -14,5 +14,5 @@ In this task, you will learn how to implement a landing page. To do that:
 
 The designs to choose from:
 - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
+- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
