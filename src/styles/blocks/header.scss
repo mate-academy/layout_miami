@@ -1,0 +1,126 @@
+@import "./../utils/mixins";
+@import "./../fonts";
+@import "../utils/vars";
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 36px 120px 120px 122px;
+
+  background-image: url("/images/photo_bike/header_img.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  &__wrapper {
+    margin: 0 auto;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 1020px;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call-toggler {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin-right: 32px;
+    background-image: url("/images/photo_bike/call.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      letter-spacing: 2px;
+      width: 140px;
+      padding-right: 12px;
+      opacity: 0;
+      pointer-events: none;
+
+      @include fontParams(12px, 16px, 700);
+      font-family: "Poppins", sans-serif;
+      color: #292929;
+      transition: $transitionDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__menu-toggler {
+    width: 32px;
+    height: 32px;
+
+    cursor: pointer;
+    border: none;
+
+    background-color: transparent;
+    background-image: url("/images/photo_bike/toggler-normal.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: $transitionDuration;
+
+    &:hover {
+      background-image: url("/images/photo_bike/toggler-hover.png");
+    }
+  }
+
+  &__content {
+    color: $secondaryColor;
+    font-size: 80px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1.5px;
+  }
+
+  @media (max-width: $tabletWidth) {
+    padding: 36px 72px 19vh;
+
+    &__content {
+      @include fontParams (64px, 100%, 700);
+      letter-spacing: -1.5px;
+    }
+  }
+
+  @media (max-width: $mobileWidth) {
+    padding: 29px 20px 19vh;
+
+    &__logo img {
+      width: 130px;
+      height: 38px;
+    }
+
+    &__call {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__content {
+      @include fontParams (36px, 100%, 700);
+      letter-spacing: -1.5px;
+    }
+  }
+}

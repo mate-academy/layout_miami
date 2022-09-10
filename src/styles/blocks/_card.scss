@@ -1,0 +1,78 @@
+@import "./../utils/vars";
+@import "./../utils/mixins";
+
+.card {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+
+  &__sport-bike {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/5;
+  }
+
+  &__town-bike {
+    display: flex;
+    flex-direction: column;
+    grid-column: 5/9;
+  }
+
+  &__agile-bike {
+    display: flex;
+    flex-direction: column;
+    grid-column: 9/-1;
+  }
+
+  &__name {
+    margin-top: 32px;
+    @include fontParams (24px, 140%, 700);
+  }
+
+  &__info {
+    margin-top: 8px;
+    @include fontParams (16px, 140%, 400);
+  }
+
+  &__price {
+    margin-top: 16px;
+    @include fontParams (24px, 140%, 700);
+  }
+
+  @media (max-width: $tabletWidth) {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 42px;
+    column-gap: 24px;
+
+    &__sport-bike {
+      grid-column: 2/6;
+    }
+
+    &__town-bike {
+      grid-column: 2/6;
+    }
+
+    &__agile-bike {
+      grid-column: 2/6;
+    }
+  }
+
+  @media (max-width: $mobileWidth) {
+    grid-template-columns: repeat(2, 1fr);
+
+    &__sport-bike {
+      grid-column: 1/-1;
+    }
+
+    &__town-bike {
+      grid-column: 1/-1;
+    }
+
+    &__agile-bike {
+      grid-column: 1/-1;
+    }
+  }
+}
