@@ -1,0 +1,56 @@
+.nav__menu {
+  @include size(50px, 50px);
+  @include displayProperty(flex, center);
+  
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: $transition-effect;
+  
+  &-bar {
+    @include size(30px, 3px);
+    background-color: $white-color;
+    transition: $transition-effect;
+  }
+
+  &:hover &-bar {
+    width: 15px;
+    transition: $transition-effect;
+  }
+
+  &-bar::before,
+  &-bar::after {
+    content: "";
+    position: absolute;
+    @include size(30px, 3px);
+    background-color: $white-color;
+    transition: $transition-effect;
+  }
+
+  &-bar::before {
+    transform: translateY(-8px);
+  }
+
+  &-bar::after {
+    transform: translateY(8px);
+  }
+
+  &.open &-bar {
+    transform: translateX(-50px);
+    background-color: transparent;
+    transition: $transition-effect;
+  }
+
+  &.open &-bar::before {
+    transform: rotate(45deg) translate(35px, -35px);
+    background-color: $main-color;
+    transition: $transition-effect;
+  }
+
+  &.open &-bar::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+    background-color: $main-color;
+    transition: $transition-effect;
+  }
+}
