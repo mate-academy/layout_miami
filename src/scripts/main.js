@@ -14,3 +14,5 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
   form.reset();
 });
+
+document.getElementById('formfield').reset();
