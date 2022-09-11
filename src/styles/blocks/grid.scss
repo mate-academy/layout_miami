@@ -33,5 +33,23 @@
         }
       }
     }
+
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--mobile--#{$start}--#{$end} {
+          @include onMobile {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &--mobile {
+    @include onMobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+    }
   }
 }
