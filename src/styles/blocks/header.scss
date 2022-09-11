@@ -1,0 +1,100 @@
+.header {
+  background-image: url("../images/header_320x500.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 0 20px;
+
+  @include onTablet {
+    background-image: url("../images/header_744x800.jpg");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header_1260x720.jpg");
+  }
+
+  &__content {
+    @extend %content-styles;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-call {
+    margin-left: auto;
+    margin-right: 30px;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: $color-text;
+    text-decoration: none;
+
+    background-image: url("../images/icon-phone-call.svg");
+
+    &:hover {
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          display: block;
+          transform: translate(-100%, -50%);
+          width: max-content;
+          padding-right: 12px;
+        }
+      }
+    }
+  }
+
+  &__menu-icon {
+    background-image: url("../images/icon-burger-menu.svg");
+
+    &:hover {
+      background-image: url("../images/icon-burger-menu-hover.svg");
+
+      @include onDesktop {
+        background-image: url("../images/icon-burger-menu-hover-desktop.svg");
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 35px;
+      height: 30px;
+      margin-bottom: 16px;
+      background-image: url("../images/favicon.svg");
+      background-position: center;
+      background-size: cover;
+
+      @include onTablet {
+        width: 64px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url("../images/sound-waves.svg");
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
