@@ -1,0 +1,70 @@
+.feature {
+
+  &__images {
+    @include useGrid(2, 20px);
+
+    @include onTablet {
+      @include useGrid($countColumnTablet, $gapGridElements);
+    }
+
+    @include onDesktop {
+      @include useGrid($countColumnDesktop, $gapGridElements);
+    }
+
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &-container {
+      position: relative;
+      width: 100%;
+
+      box-sizing: border-box;
+      max-height: 130px;
+
+      overflow: hidden;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onTablet {
+        max-height: 188px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        max-height: 320px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__description {
+
+    &-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+      color: $colorWhite;
+
+      margin: 0 0 8px;
+    }
+
+    &-paragraph {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: $colorWhite;
+    }
+  }
+}
