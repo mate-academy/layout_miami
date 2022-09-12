@@ -32,4 +32,10 @@ navList.addEventListener('click', e => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+
+  form.name.value = '';
+  form.email.value = '';
+  form.message.value = '';
+
+  window.alert('Submitted');
 });
