@@ -1,9 +1,16 @@
-'use strict';
+"use strict";
 
-window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#menu') {
-    document.body.classList.add('page__body--with-menu');
-  } else {
-    document.body.classList.remove('page__body--with-menu');
-  }
-});
+// PREVENT PAGE RELOAD WHEN SUBMIT //
+
+const form = document.querySelector(".contact__form");
+const inputs = document.querySelectorAll(".contact__field");
+
+function handler(event) {
+  event.preventDefault();
+
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+}
+
+form.addEventListener("submit", handler);
