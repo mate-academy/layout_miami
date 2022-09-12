@@ -1,0 +1,50 @@
+.details {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 321px;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+      z-index: 1;
+      transform: scale(1.05);
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+      cursor: zoom-in;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDestop {
+      height: 321px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    @include onDestop {
+      max-width: 67%;
+    }
+  }
+}

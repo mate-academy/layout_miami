@@ -1,0 +1,101 @@
+.header {
+  background: center / cover url("../images/header.png");
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 36px 0 122px;
+    }
+
+    @include onDestop {
+      padding: 36px 0 130px;
+    }
+  }
+
+  &__title {
+    align-self: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: $color-dark-grey;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDestop {
+      font-size: 80px;
+    }
+
+  }
+
+  &__content-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    background-image: url("../images/phone.svg");
+    text-decoration: none;
+
+    @include onTablet {
+      &::before {
+        position: absolute;
+        width: max-content;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+        content: "+1 234 555-55-55";
+        color: $color-dark-grey;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__menu-opener {
+    width: 18px;
+    height: 12px;
+    background-image: url("../images/menu.svg");
+    transition: background-image 0.5s;
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-image: url("../images/menu-hover.svg");
+    }
+  }
+}
