@@ -6,6 +6,7 @@ const menuClose = document.querySelector('.header__menu-closer');
 const nav = document.querySelector('.header__nav');
 const navLogo = document.querySelector('.header__logo');
 const navList = document.querySelector('.header__nav-list');
+const form = document.querySelector('.contact-section__form');
 
 menuOpen.addEventListener('click', () => {
   nav.style.left = '0';
@@ -27,4 +28,8 @@ navList.addEventListener('click', e => {
     nav.style.left = '';
     body.style.overflow = '';
   }
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
 });
