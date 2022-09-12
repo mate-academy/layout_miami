@@ -9,25 +9,102 @@ p {
   margin: 0;
 }
 
-html {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
+.page {
+  &__body {
+    margin: 0;
+  }
 }
+
+.logo {
+  &__image {
+    height: $header-logo-height-mobile;
+
+    @include onDesktop() {
+      height: $header-logo-height-desktop;
+    }
+  }
+}
+
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop() {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  padding-bottom: 100%;
+  width: 100%;
+
+  background-size: cover;
+  text-decoration: none;
+
+  &--phone {
+    background: url(../images/Icon-Phone-call.svg) no-repeat center;
+    margin-left: auto;
+    margin-right: 30px;
+  }
+
+  &--menu {
+    background: url(../images/Icon-Burger-menu.svg) no-repeat center;
+
+    @include onDesktop() {
+      background: url(../images/Icon-Burger-menu.svg) no-repeat center;
+      background-size: cover;
+
+      &:hover {
+        background-image: url(../images/Icon-Burger-menu-hover.svg);
+        background-size: cover;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../images/close-icon.svg);
+  }
+
+  &__tooltip {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%,-50%);
+    color: #292929;
+    width: max-content;
+    padding-right: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
 
 body {
   background: $gray;
 }
 
-ul {
-  padding: 0;
-}
+.header {
+  background: url(../images/photos/header_background_mobile.jpg) no-repeat center;
+  background-size: cover;
 
-.grid__container {
-  display: grid;
-  grid-template-columns: repeat(12, $desktop-coll-width);
-  align-content: space-between;
-  column-gap: $desktop-column-gap;
-}
+  @include onDesktop() {
+    background: url(../images/photos/header__background.jpg) no-repeat center;
+    background-size: cover;
+  }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
 
 .page {
   &__header {
@@ -36,5 +113,26 @@ ul {
 
   &__nav {
     height: 100vh;
+  }
+}
+
+.recommended {
+  display: flex;
+  justify-content: center;
+  height: 100%vh;
+
+  box-sizing: border-box;
+  padding: 120px 120px 0;
+
+  &__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    color: #292929;
+    grid-column: 4 / 10;
   }
 }
