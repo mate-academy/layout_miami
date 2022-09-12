@@ -1,7 +1,15 @@
 .testimonials {
+  &__content {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, $desktop-coll-width);
+      gap: $desktop-column-gap;
+    }
+  }
 
   &__title {
-    text-align: start;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
@@ -13,11 +21,14 @@
     @include onTablet {
       font-size: 40px;
       line-height: 40px;
+      grid-column: 1 / 3;
     }
 
     @include onDesktop {
       font-size: 48px;
       line-height: 48px;
+      grid-column: 1 / 5;
+      margin: 0;
     }
   }
 
@@ -25,6 +36,14 @@
     padding-left: 0;
     margin-bottom: 40px;
     list-style: none;
+
+    @include onTablet {
+      grid-column: 4 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / 8;
+    }
   }
 
   &__item {
@@ -38,9 +57,25 @@
     }
   }
 
-  &__description {
+  &__paragraph {
     line-height: 27px;
     font-weight: 400;
     font-size: 16px;
+
+    @include onTablet {
+      grid-column: 4 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / 10;
+    }
+  }
+
+  &__description {
+    @include onDesktop {
+      grid-column: 6 / 10;
+    }
   }
 }
+
+
