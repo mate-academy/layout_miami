@@ -1,0 +1,81 @@
+.header {
+  background-image: url("../images/cover-bg.png");
+  background-repeat: no-repeat;
+  background-position: 85% 70%;
+  background-size: cover;
+  margin-bottom: 120px;
+
+  &__container {
+    height: 80vh;
+
+    @include paddingMobile;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include mediaTablet {
+    @include paddingTablet;
+    background-position: center;
+  }
+
+  @include mediaDesktop {
+    background-position: center;
+    height: 100vh;
+    padding: 0;
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__phone {
+    height: 18px;
+    position: relative;
+
+    @include mediaDesktop {
+      &::after {
+        content: "+1 234 5555-55-55";
+        display: block;
+        color: $c-white;
+        width: max-content;
+        position: absolute;
+        right: 45px;
+        top: 0;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  &__top--right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 90px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include mediaTablet {
+      margin-bottom: 130px;
+    }
+
+    @include mediaDesktop {
+      margin-bottom: 100px;
+    }
+  }
+}
