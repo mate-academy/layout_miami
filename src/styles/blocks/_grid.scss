@@ -1,0 +1,59 @@
+.grid {
+  @media (max-width: 744px) {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0 24px;
+
+    @for $s from 1 through 7 {
+      @for $e from 1 through 7 {
+        &-item-#{$s}-#{$e} {
+          grid-column: #{$s} / #{$e};
+        }
+      }
+    }
+  }
+}
+
+.grid-desk {
+  @include mediaDesktop {
+    width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 24px;
+
+    @for $start from 1 through 12 {
+      @for $end from 1 through 12 {
+        &-item-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+    }
+  }
+}
+
+.grid-tablet {
+  @include mediaTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 24px;
+
+    @for $s from 1 through 7 {
+      @for $e from 1 through 7 {
+        &-item-#{$s}-#{$e} {
+          grid-column: #{$s} / #{$e};
+        }
+
+      }
+    }
+  }
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  @include mediaDesktop {
+    padding-top: 36px;
+  }
+}
