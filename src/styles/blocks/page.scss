@@ -1,25 +1,42 @@
 .page {
   box-sizing: border-box;
   margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  max-width: var(--pageMaxWidth);
+
+  &--with-menu {
+    overflow: hidden;
+  }
 
   &__hero {
-    height: var(--heroHeight);
+    max-width: var(--pageMaxWidth);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    background: url("../../src/images/photos/header.png") no-repeat center;
-    background-size: 100% 100%;
-
+    margin: 0 auto;
     margin-bottom: var(--sectionsVerticleGap);
     padding: var(--heroVerticlePadding) var(--pageHorizontalPadding);
+  }
+
+  &__background {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: url("../../src/images/photos/header.png") no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
   }
 
   &__mainWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // max-width: 1260px;
+    align-self: center;
+    max-width: 1260px;
     margin: 0 var(--pageHorizontalPadding);
     row-gap: var(--sectionsVerticleGap);
   }
@@ -29,16 +46,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: $mobile) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
     &--row {
       flex-direction: row;
       gap: var(--pageGatter);
       padding-right: 174px;
+
+      @media (max-width: $mobile) {
+        flex-direction: column;
+        padding-right: 20px;
+      }
     }
   }
 
   &__menu {
     visibility: hidden;
-    animation: fade-out-bottom 500ms ease-out, fadeVisibility 500ms ease-out;
+    animation: fade-out-top 500ms ease-out, fadeVisibility 500ms ease-out;
     box-sizing: border-box;
     position: absolute;
     top: 0;
@@ -57,11 +85,13 @@
   }
 
   &__footer {
-    display: flex;
+    margin-top: $pageWhiteSpace;
     height: var(--footerHeight);
+    width: 100vw;
+    position: absolute;
+    left: 0;
     background: url("../../src/images/photos/footer.png") no-repeat center;
     background-size: 100% 100%;
-    margin-top: $pageWhiteSpace;
   }
 
   @media (max-width: 744px) {
@@ -80,6 +110,7 @@
     --contentWidth: var(--contentWidth_Tab);
     --footerHeight: var(--footerHeight_Tab);
     --formMarginRight: var(--formMarginRight_Tab);
+    --contactRightSpace: var(--contactRightSpace_Tab);
   }
 
   @media (max-width: 320px) {
@@ -102,5 +133,6 @@
     --logoHight: var(--logoHight_Mob);
     --titleFontSize: var(--titleFontSize_Mob);
     --menuItemGap: var(--menuItemGap_Mob);
+    --contactRightSpace: var(--contactRightSpace_Mob);
   }
 }

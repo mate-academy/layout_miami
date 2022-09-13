@@ -9,6 +9,7 @@ menuLink.addEventListener('click', () => {
   menuLink.classList.toggle('header__menu--close');
   menuLink.classList.toggle('header__menu');
   menu.classList.toggle('menu--open');
+  document.body.classList.toggle('page--with-menu');
 });
 
 phone.addEventListener('mouseenter', () => {
@@ -23,4 +24,5 @@ menu.addEventListener('focusout', () => {
   menuLink.classList.add('header__menu');
   menuLink.classList.remove('header__menu--close');
   menu.classList.remove('menu--open');
+  document.body.classList.toggle('page--with-menu');
 });
