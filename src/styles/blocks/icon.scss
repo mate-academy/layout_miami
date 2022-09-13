@@ -1,0 +1,70 @@
+.icon {
+  display: flex;
+  align-items: center;
+  gap: $icon-gap-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: $icon-gap-tablet;
+  }
+
+  &__tooltip {
+    cursor: pointer;
+    color: $color-white;
+
+    width: max-content;
+    transform: translate(-100%);
+    padding-right: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  &--phone {
+    transition: $icon-transform-time;
+
+    @include icon-properties(no-repeat, center, url("/images/icons/tel.svg"));
+
+    text-decoration: none;
+
+    &:hover {
+      transform: $icon-scale;
+
+      .icon__tooltip {
+        @media (min-width: $breakpoint-tablet) {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    transition: $icon-transform-time;
+    @include icon-properties(no-repeat, center, url("/images/icons/menu.svg"));
+
+    &:hover {
+      cursor: pointer;
+      background-image: url("/images/icons/menu-hover.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: $icon-scale;
+    }
+  }
+
+  &--cross {
+    transition: $icon-transform-time;
+    @include icon-properties(
+      no-repeat,
+      center,
+      url("/images/icons/menu-close.png")
+    );
+    background-size: contain;
+
+    &:hover {
+      transform: $icon-scale;
+    }
+  }
+}
