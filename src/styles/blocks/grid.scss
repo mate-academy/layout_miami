@@ -1,0 +1,34 @@
+.grid {
+  display: block;
+
+  @include onTablet {
+    @include useGrid (6, $gap-dt);
+  }
+
+  @include onDesktop {
+    @include useGrid (12, $gap-dt);
+  }
+
+  &__item {
+
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--onTablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--onDesktop-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
