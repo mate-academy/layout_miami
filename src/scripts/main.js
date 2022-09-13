@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page--with-nav');
   }
 });
+
+const formButton = document.querySelector('#form-submit');
+
+formButton.addEventListener('click', submit);
+
+function submit(event) {
+  event.preventDefault();
+
+  document.querySelector('#form-input-name').value = '';
+  document.querySelector('#form-input-email').value = '';
+  document.querySelector('#form-input-message').value = '';
+}
