@@ -1,6 +1,40 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
   }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions($numIcons) {
+  $icons-width: getIconsContainerSize(
+    $numIcons,
+    $sizeIconsSmall,
+    $gapHeaderIconsSmall
+  );
+
+  display: grid;
+  grid-template-columns: 1fr $icons-width;
+  justify-items: space-between;
+  align-items: center;
+
+  @include onTablet {
+    $icons-width: getIconsContainerSize(
+      $numIcons,
+      $sizeIconsLarge,
+      $gapHeaderIconsLarge
+    );
+
+    grid-template-columns: 1fr $icons-width;
+  }
+}
+
+@mixin useGrid($columnCount, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columnCount, 1fr);
+  gap: $gap;
 }
