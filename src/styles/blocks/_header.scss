@@ -32,6 +32,27 @@
 
   &__phone {
     height: 18px;
+    position: relative;
+
+    @include mediaDesktop {
+      &::after {
+        content: "+1 234 5555-55-55";
+        display: block;
+        color: $c-white;
+        width: max-content;
+        position: absolute;
+        right: 45px;
+        top: 0;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+
   }
 
   &__top--right {
