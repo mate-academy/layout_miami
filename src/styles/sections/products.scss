@@ -17,8 +17,17 @@
     margin-bottom: 40px;
   }
 
-  &__photos-title {
+  &__photos-link {
+    display: inline-flex;
     margin-top: 16px;
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    transition: color $transition, border-color $transition;
+
+    &:hover {
+      border-color: $color-gray-4;
+      color: $color-gray-4;
+    }
 
     .animated & {
       @include animate(fadeUp, 1.5s, 0s);
@@ -26,8 +35,11 @@
   }
 
   &__img-wrapper {
+    @include hover(scale, 1.02);
+
     position: relative;
     padding-bottom: 100%;
+    cursor: pointer;
 
     .animated & {
       @include animate(fade, 1.5s, 0s);

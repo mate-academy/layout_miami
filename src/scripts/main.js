@@ -4,12 +4,21 @@
 const body = document.body;
 const burgerMenu = document.querySelector('.burger-menu');
 const nav = document.querySelector('.nav');
+const navLinks = document.querySelectorAll('a[href^="#"]');
 
 const burgerMenuToggle = () => {
   burgerMenu.classList.toggle('burger-menu--is-active');
   nav.classList.toggle('nav--is-active');
   body.classList.toggle('page__body--with-menu');
 };
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    burgerMenu.classList.remove('burger-menu--is-active');
+    nav.classList.remove('nav--is-active');
+    body.classList.remove('page__body--with-menu');
+  });
+});
 
 burgerMenu.addEventListener('click', burgerMenuToggle);
 // #endregion
