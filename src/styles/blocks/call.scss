@@ -1,0 +1,33 @@
+.call {
+  @include iconSize($icon-size);
+
+  position: relative;
+  color: inherit;
+
+  @include onTablet {
+    @include iconSize($icon-size-desktop);
+  }
+
+  &__text {
+    display: none;
+  }
+
+  @include onDesktop {
+    &__text {
+      display: block;
+      width: max-content;
+      position: absolute;
+      right: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity $transition;
+    }
+
+    &:hover .call__text {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
