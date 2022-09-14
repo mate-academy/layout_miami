@@ -9,7 +9,7 @@ In this task, you will learn how to implement a landing page. To do that:
 - check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
 - push, deploy and add the correct `DEMO_LINK` to your Pull Request.
 ```
-- [DEMO LINK](https://ShkarupaDenys.io/layout_miami/) 
+- [DEMO LINK](https://ShkarupaDenys.github.io/layout_miami/) 
 ```
 
 The designs to choose from:
