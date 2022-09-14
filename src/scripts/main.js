@@ -9,6 +9,7 @@ menubtn.addEventListener('click', () => {
     menubtn.classList.add('open');
     menuOpen = true;
     menuList.style.left = '0';
+    menuList.style.backgroundColor = '#e5e5e5';
     menuList.style.opacity = '1';
     menuList.style.transition = '2s all';
 
