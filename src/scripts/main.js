@@ -19,6 +19,6 @@ const form = document.querySelector('.contact__form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  form.submit();
   e.target.reset();
-  window.scrollTo(0, 0);
 });
