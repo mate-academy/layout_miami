@@ -1,0 +1,77 @@
+.icon {
+  width: $icon-size-mini;
+  height: $icon-size-mini;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: background-image $transition-time;
+
+  &__tooltip {
+    display: none;
+    width: max-content;
+    transform: translate(-100%, 50%);
+    padding-right: 8px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    letter-spacing: 2px;
+    text-align: center;
+    color: $main-black;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity $transition-time;
+
+    @include for-desktop {
+      display: block;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone-mini.svg);
+
+    @include for-tablet {
+      background-image: url(../images/icon-phone.svg);
+    }
+  }
+
+  &--phone:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-size: cover;
+    background-image: url(../images/icon-menu-mini.svg);
+
+    @include for-tablet {
+      background-image: url(../images/icon-menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/icon-menu-mini-hover.svg);
+
+      @include for-tablet {
+        background-image: url(../images/icon-menu-hover.svg);
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close-mini.svg);
+
+    @include for-tablet {
+      background-image: url(../images/icon-close.svg);
+    }
+  }
+
+  @include for-tablet {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
