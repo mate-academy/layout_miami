@@ -1,9 +1,9 @@
 'use strict';
 
-document.querySelectorAll('.contact-us__form')
-  .addEventListener('submit', (e) => {
-    e.preventDefault();
-  });
+document.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
