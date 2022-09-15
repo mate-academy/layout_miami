@@ -15,10 +15,8 @@ const closeMenu = () => {
 openMenuBtn.addEventListener('click', openMenu);
 closeMenuBtn.addEventListener('click', closeMenu);
 
-const form = document.querySelector('.contact__form');
-
-form.addEventListener('submit', (e) => {
+document.addEventListener('submit', (e) => {
   e.preventDefault();
-  form.submit();
   e.target.reset();
+  window.scrollTo(0, 0);
 });
