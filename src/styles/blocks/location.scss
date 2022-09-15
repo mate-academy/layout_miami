@@ -1,0 +1,53 @@
+.location {
+
+  &__images {
+    @include useGrid (2, 20px);
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      @include useGrid (12, 24px);
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+
+    &--container {
+      position: relative;
+      width: 100%;
+
+      max-height: 256px;
+      box-sizing: border-box;
+
+      overflow: hidden;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onDesktop {
+        height: 256px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__description {
+
+    &-link {
+      font-weight: 700;
+      color: $colorBlue;
+      text-decoration: none;
+    }
+  }
+}
