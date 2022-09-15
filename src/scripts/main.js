@@ -1,9 +1,12 @@
 'use strict';
 
-// document.querySelectorAll('.contact-us__form')
-//   .addEventListener('submit', (e) => {
-//     e.preventDefault();
-//   });
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function handleSubmit(event) {
+  event.preventDefault();
+
+  form.reset();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
@@ -13,9 +16,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector('.contact__form');
+// const form = document.querySelector('.contact__form');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  form.reset();
-});
+// form.addEventListener('submit', function(event) {
+//   event.preventDefault();
+//   form.reset();
+// });
