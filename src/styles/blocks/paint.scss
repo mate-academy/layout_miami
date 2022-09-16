@@ -1,0 +1,78 @@
+.paint {
+  &__article {
+    margin-bottom: 48px;
+  }
+
+  &__picture-container {
+    @include pictures($max-height-desk);
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(110%);
+    }
+
+    @include onTab {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: $max-height-desk;
+      padding-bottom: 0;
+    }
+
+    &--delete {
+      @include onTab {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: grid;
+      }
+    }
+
+    &--not-normal {
+      @include onTab {
+        height: 284px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: $max-height-desk;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__picture {
+    @include picture-position(left);
+
+    @include onTab {
+      object-position: center;
+    }
+  }
+
+  &__link-container {
+    margin-top: 24px;
+  }
+
+  &__link {
+    line-height: 27px;
+    color: $color-red;
+
+    border-bottom: 1px solid transparent;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $color-red;
+    }
+  }
+
+  &__description {
+    font-weight: 400;
+    line-height: 27px;
+    color: $color-black;
+  }
+}

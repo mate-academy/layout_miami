@@ -1,0 +1,45 @@
+.grid {
+  display: block;
+
+  &--normal {
+    @include grid(20px, 2);
+  }
+
+  &--not-normal {
+    @include grid(8px, 3);
+  }
+
+  @include onTab {
+    @include grid(24px, 6);
+  }
+
+  @include onDesktop {
+    @include grid(24px, 12);
+  }
+
+  &__item {
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tab-#{$start}-#{$end} {
+          @include onTab {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    &--row {
+      grid-row: 1 / 3;
+    }
+  }
+}
