@@ -1,5 +1,4 @@
 # Bose Landing Page
-## Description:
+## Description: Landing page for Bose created using HTML, CSS and SASS.
 
-Landing page for Bose created using HTML, CSS and SASS.
 - [DEMO LINK](https://WebsterManyanga.github.io/layout_miami/)
