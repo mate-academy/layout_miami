@@ -1,0 +1,48 @@
+.page {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  font-family: var(--font), serif;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
+  color: var(--main-black-color);
+  background-color: var(--main-background-color);
+
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  &__body {
+    margin: 0;
+    min-block-size: var(--body-min-block-size);
+    font-size: var(--body-font-size);
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    transform: translateX(-100%);
+
+    transition: transform var(--duration) var(--function);
+
+    &:target {
+      transform: translateX(0%);
+    }
+  }
+
+  &__section {
+    margin-block-end: var(--section-margin-block-end);
+
+    @include onDesktop {
+      margin-block-end: var(--section-desktop-margin-block-end);
+    }
+  }
+}

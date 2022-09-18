@@ -1,0 +1,44 @@
+.actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 0 var(--actions-gap);
+  justify-content: space-between;
+  align-items: center;
+
+  @include onDesktop {
+    gap: 0 var(--actions-desktop-gap);
+    margin-block-end: var(--actions-desktop-margin-block-end);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__info-list {
+    display: none;
+
+    @include onDesktop {
+      position: absolute;
+
+      display: flex;
+      align-items: flex-end;
+
+      transform: translateX(calc(-1 * 100% - var(--actions-info-list-gap)));
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition: visibility var(--duration) var(--function),
+        opacity var(--duration) var(--function);
+    }
+  }
+
+  &__top:hover > &__info-list {
+    cursor: default;
+    opacity: 1;
+    visibility: visible;
+  }
+}
