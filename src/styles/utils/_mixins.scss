@@ -1,6 +1,67 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
   &:hover {
-    #{$_property}: $_toValue;
+    #{$property}: $toValue;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin burgerMenuSize($size) {
+  width: $size;
+  height: $size;
+
+  @include onDesktop {
+    &:not(.burger-menu--is-active) {
+      &:hover {
+        .burger-menu__wrap {
+          rotate: 90deg;
+        }
+
+        .burger-menu__line {
+          &:nth-child(1) {
+            width: $size / 1.5;
+          }
+
+          &:nth-child(3) {
+            width: $size / 1.7;
+          }
+
+          &:nth-child(4) {
+            width: $size / 2;
+          }
+        }
+      }
+    }
+  }
+
+  &__line {
+    width: $size / 1.333;
+    height: $size / 10;
+    border-radius: $size / 16;
+  }
+}
+
+@mixin iconSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin animate($name, $duration, $delay) {
+  opacity: 0;
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
 }

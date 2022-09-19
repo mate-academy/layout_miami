@@ -1,0 +1,57 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  padding-bottom: 94px;
+  position: relative;
+
+  &:before {
+    @extend %backgroundCentered;
+    @include animate(fade, 2s, 0s);
+
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    background-image: url("../images/hero/hero-bg.png");
+  }
+
+  @include onTablet {
+    padding-bottom: 40px;
+
+    &::before {
+      background-image: url("../images/hero/hero-bg-md.png");
+    }
+  }
+
+  @include onDesktop {
+    padding-bottom: 64px;
+
+    &::before {
+      background-image: url("../images/hero/hero-bg-xl.png");
+    }
+  }
+
+  &__equalizer {
+    @include animate(fadeUp, 1.5s, 0s.1s);
+
+    display: flex;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__heading {
+    @include animate(fadeUp, 1.5s, 0s.2s);
+  }
+}

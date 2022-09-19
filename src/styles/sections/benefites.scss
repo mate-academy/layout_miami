@@ -1,0 +1,37 @@
+.benefites {
+  padding-top: 120px;
+
+  &__heading {
+    margin-bottom: 32px;
+
+    .animated & {
+      @include animate(fadeUp, 1.5s, 0s);
+    }
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        .animated & {
+          @include animate(fadeUp, 1.5s, calc(#{$i}s / 10));
+        }
+      }
+    }
+  }
+
+  &__desription {
+    line-height: 27px;
+
+    .animated & {
+      @include animate(fadeUp, 1.5s, 0.5s);
+    }
+  }
+}

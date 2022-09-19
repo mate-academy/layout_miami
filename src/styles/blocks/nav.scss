@@ -1,0 +1,90 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-secondary;
+  height: 100vh;
+  padding-top: 111px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition;
+
+  &--is-active {
+    opacity: 1;
+    visibility: visible;
+
+    .nav__item {
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          @include animate(fadeUp, 1.2s, calc(#{$i}s / 10));
+        }
+      }
+    }
+
+    .nav__tel {
+      @include animate(fadeUp, 1.2s, 0.6s);
+    }
+
+    .nav__order {
+      @include animate(fadeUp, 1.2s, 0.7s);
+    }
+  }
+
+  @include onTablet {
+    padding-top: 132px;
+  }
+
+  @include onDesktop {
+    padding-top: 152px;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    letter-spacing: 2px;
+
+    &:not(:last-child) {
+      margin-bottom: 23px;
+    }
+  }
+
+  &__link,
+  &__tel,
+  &__order {
+    color: inherit;
+    display: block;
+    text-transform: uppercase;
+    width: max-content;
+    transition: border-color $transition, letter-spacing $transition;
+  }
+
+  &__link {
+    padding-bottom: 8px;
+  }
+
+  &__link,
+  &__tel {
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__tel {
+    margin-bottom: 15px;
+  }
+
+  &__order {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-primary;
+    letter-spacing: 2px;
+
+    &:hover {
+      letter-spacing: 1.5px;
+    }
+  }
+}
