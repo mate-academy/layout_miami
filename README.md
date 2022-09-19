@@ -7,7 +7,6 @@
   <img src="https://img.shields.io/badge/-css-blue" alt="css">
   <img src="https://img.shields.io/badge/-scss-red" alt="scss">
   <img src="https://img.shields.io/badge/-javascript-yellow" alt="javascript">
-  <img src="https://img.shields.io/badge/-gulp-red" alt="gulp">
 </p>
 
 <p align="center">
