@@ -43,5 +43,20 @@ const form = document.querySelector('.contact-us__form');
 
 form.onsubmit = (e) => {
   e.preventDefault();
+
+  const name = document.querySelector('[name="name"]');
+  const email = document.querySelector('[name="email"]');
+  const message = document.querySelector('[name="message"]');
+
+  alert(
+    `The form is successfully submitted:
+    Name: ${name.value}
+    Email: ${email.value}
+    ${message.value && 'Message :' + message.value}`
+  );
+
+  name.value = '';
+  email.value = '';
+  message.value = '';
 };
 // #endregion
