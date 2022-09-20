@@ -1,6 +1,42 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTable {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin media($keys...) {
+  @each $key in $keys {
+    @if ($key == onTable) {
+      @include onTable {
+        @content;
+      }
+
+    }
+    @else if ($key == onDesktop) {
+      @include onDesktop {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin topAction {
+  --icon-width: 18px;
+   
+  display: grid;
+  grid-template-columns: var(--icon-width) var(--icon-width);
+  grid-gap: 30px;
+  justify-content: center;
+  align-items: center;
+
+  @include media(onTable, onDesktop) {
+    --icon-width: 24px;
+    grid-gap: 40px;
   }
 }
