@@ -7,9 +7,19 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
+  
+  padding: $headerTopPadding 120px 122px;
+
+  @include maxQ($ipadWidth) {
+    padding: 52px 72px 40px;
+  }
+
+  @include maxQ($iPhoneWidth) {
+    padding: 40px 20px 94px;
+  }
 
   &__content-wrapper {
-    padding: 36px 120px;
+ 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,14 +27,7 @@
     width: 100vw;
     max-width: $maxContentWidth;
     box-sizing: border-box;
-
-    @include maxQ($ipadWidth) {
-      padding: 52px 72px 40px;
-    }
-  
-    @include maxQ($iPhoneWidth) {
-      padding: 40px 20px 94px;
-    }
+    
   }
   
   &__topline-content {
@@ -70,28 +73,38 @@
       height: 18px;
       width: 18px;
     }
-  }
   
-  &__phone-svg:hover::before {
-    content: "+1 234 555-55-55";
-    letter-spacing: 4px;
-    font-stretch: expanded;
-    font-size: 13px;
-    font-weight: 700;
-    position: relative;
-    right: 800%;
-    top: 0%;
-    white-space: nowrap;
-    color: #000;
-    transition-duration: $transitionDuration;
+    &::before {
+      content: "+1 234 555-55-55";
+    
+      position: relative;
+      
+      right: 800%;
+    
+      letter-spacing: 4px;
+      font-stretch: expanded;
+      font-size: 13px;
+      font-weight: 700;
+    
+      white-space: nowrap;
+      color: #000;
+      transition-duration: $transitionDuration;
+      pointer-events: none;
+      opacity: 0;
 
     
-    @include maxQ($ipadWidth) {
-      content: "";
+      @include maxQ($ipadWidth) {
+        content: "";
+      }
+
+      @include maxQ($iPhoneWidth) {
+        content: "";
+      }
     }
 
-    @include maxQ($iPhoneWidth) {
-      content: "";
+    &:hover::before {
+      pointer-events: all;
+      opacity: 1;
     }
   }
 
@@ -115,7 +128,12 @@
 
   &__menu-svg:hover {
     background-image: url(../images/VectorHover.svg);
-  
+    z-index: 10;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+ 
+
     @include maxQ($iPhoneWidth) {
       content: "";
     }
@@ -124,7 +142,7 @@
   &__slogan {
     display: flex;
     justify-content: center;
-    padding-bottom: 12%;
+    padding-bottom: 9%;
 
     font-family: "Poppins", sans-serif;
     font-weight: 700;
