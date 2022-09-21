@@ -23,10 +23,6 @@
     padding: 0;
   }
 
-  &__item:not(:last-child) {
-    margin-bottom: 32px;
-  }
-
   &__link {
     text-decoration: none;
     text-transform: uppercase;
@@ -35,10 +31,30 @@
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
+    position: relative;
+
+    &:before {
+      content: " ";
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+      position: absolute;
+      bottom: 0;
+      opacity: 0;
+      transition: all 0.5s;
+    }
   }
 
-  &__link:hover {
-    border-bottom: 1px solid #fff;
+  &__item {
+    width: fit-content;
+
+    &:hover .nav__link:before {
+      opacity: 1;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
   }
 
   &__call {
