@@ -1,6 +1,5 @@
 'use strict';
 
-const formBtn = document.querySelector('.button--primary');
 const formField = document.querySelector('#formField');
 
 window.addEventListener('hashchange', () => {
@@ -11,7 +10,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-formBtn.addEventListener('click', (e) => {
+formField.addEventListener('submit', buttonClick);
+
+function buttonClick(e) {
   e.preventDefault();
   formField.reset();
-});
+}
