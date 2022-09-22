@@ -1,7 +1,123 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Poppins", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 30px ;
+  }
+}
+
+.icon {
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.header {
+  background-image: url(../images/photos/bg2.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    background-image: url(../images/photos/bg.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 34px 0 130px;
+
+    @include onDesktop {
+      padding: 34px 0 130px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 56px;
+  }
+
+  &__active {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__call {
+    background-image: url(../images/icons/phone.svg);
+    margin-right: 40px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: #292929;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/icons/Vectorclose.png);
+
+    &:hover {
+      background-image: url(../images/icons/Vectoropen.png);
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
 }
