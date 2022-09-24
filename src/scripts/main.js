@@ -13,9 +13,16 @@ const formButton = document.querySelector('#form-submit');
 formButton.addEventListener('click', submit);
 
 function submit(event) {
-  event.preventDefault();
 
-  document.querySelector('#form-input-name').value = '';
-  document.querySelector('#form-input-email').value = '';
-  document.querySelector('#form-input-message').value = '';
+  const name = document.querySelector('#form-input-name');
+  const email = document.querySelector('#form-input-email');
+  const message = document.querySelector('#form-input-message');
+  
+  if (name.value !== '' && email.value !== '' && message.value !== '') {
+    event.preventDefault();
+
+    name.value = '';
+    email.value = '';
+    message.value = '';
+  }
 }
