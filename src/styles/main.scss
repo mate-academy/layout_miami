@@ -1,7 +1,189 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Cinzel", serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 25px 20px;
+
+  @include onTablet {
+    padding: 50px 120px 0;
+  }
+
+  @include onDesktop {
+    padding: 50px 120px 0;
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  background-image: url(../images/met.svg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__box {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 60px;
+    }
+
+    @include onDesktop {
+      gap: 60px;
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    white-space: pre-wrap;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+  
+    @include onDesktop {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop {
+
+      &::before {
+      
+        content: "The Met Fifth Avenue" +
+          "\A +1 212-535-7710" + 
+          "\A \A The Met Cloisters" + 
+          "\A +1 212-923-3700";
+        opacity: 0;
+        color: #fff;
+        display: block;
+        width: max-content;
+        transform: translate(-100%, -25%);
+        padding-right: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+    width: 18px;
+    height: 12px;
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+    
+    @include onDesktop {
+      width: 24px;
+      height: 16px;
+    }
+  
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      transition: 0.3s;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-top: 129px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 100%;
+      padding-top: 83px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 100%;
+      padding-top: 83px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    display: block;
+    width: 64px;
+    height: 46px;
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+}
+
+.icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat ;
+  display: block;
 }
