@@ -4,6 +4,19 @@
     line-height: 140%;
   }
 
+  &__title {
+    text-align: center;
+    margin: 0 0 48px;
+
+    @include onTablet {
+      margin: 0 0 64px;
+    }
+
+    @include onDesktop {
+      margin: 0 0 48px;
+    }
+  }
+
   &__images {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -28,6 +41,24 @@
     display: block;
     width: 100%;
     height: 130px;
+    transition: transform 0.3s;
+
+    &:hover {
+
+      transform: scale(1.1);
+    }
+
+    @include onTablet {
+      &:last-child:hover {
+        transform: scale(1.1) translateX(20px);
+      }
+    }
+
+    &:nth-child(odd) {
+      &:hover {
+        transform: scale(1.1) translateX(-20px);
+      }
+    }
 
     @include onTablet {
       height: 190px;
@@ -86,21 +117,10 @@
   }
 
   &__button {
-    display: block;
-    width: 100%;
-    height: 56px;
-    border-radius: 40px;
-    background: #fff;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 56px;
-    text-decoration: none;
-    text-align: center;
-    color: $color-black;
     margin: 0 auto 80px;
 
     @include onTablet {
-      margin: 0 auto 120 px;
+      margin: 0 auto 120px;
       width: 400px;
     }
 
