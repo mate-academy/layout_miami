@@ -1,0 +1,64 @@
+.page {
+  @extend %cinzel;
+  color: $color-dark;
+
+  &__body {
+    margin: 0;
+
+      &--with-menu {
+        overflow: hidden;
+      }
+    }
+
+  &__menu {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform $transition-duration + 0.2s;
+    overflow: scroll;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__title,
+  &__greeter {
+    text-align: center;
+    @extend %cinzel;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      margin: 0 auto 48px;
+      font-size: 48px;
+      line-height: 48px;
+      max-width: 400px;
+    }
+
+    @include onDesktop {
+      margin: 0 auto 48px;
+      max-width: 500px;
+    }
+
+    &--now {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__greeter {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 48px;
+  }
+}
