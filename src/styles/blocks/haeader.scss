@@ -1,0 +1,95 @@
+.header {
+  background: url("/images/photos/header-bike.png");
+  @include background-position;
+
+  &__container {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: $header-top-padding;
+    padding-bottom: 88px;
+
+    @include onIpad() {
+      height: 100vh;
+      padding-top: 36px;
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop() {
+      height: 90vh;
+      padding-bottom: 122px;
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__call {
+    height: 18px;
+    margin-right: 30px;
+
+    @include onIpad() {
+      height: 24px;
+      margin-right: 40px;
+    }
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $dark-text-color;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-time;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    height: 12px;
+    transition: background-image $transition-time, transform $transition-time;
+
+    @include onIpad() {
+      height: 24px;
+    }
+
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    color: $dark-color;
+    line-height: 100%;
+    text-align: center;
+
+    @include onIpad() {
+      font-size: 64px;
+      color: $dark-color;
+    }
+
+    @include onDesktop() {
+      font-size: 80px;
+    }
+  }
+}

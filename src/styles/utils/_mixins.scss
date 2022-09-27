@@ -1,6 +1,89 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin input-hover {
+  &:hover,
+  &:focus {
+    box-shadow: $box-shadow;
+    border: none;
   }
+}
+
+@mixin placeholder {
+  &::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7e7e83;
+  }
+}
+
+@mixin onIpad {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin container-padding ($size) {
+  padding-left: ($size);
+  padding-right: ($size);
+}
+
+@mixin uppercase-bold {
+  display: block;
+  width: max-content;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $dark-color;
+}
+
+@mixin icon-transform {
+  transition-delay: 0;
+  transition-property: transform;
+  transition-duration: $transition-time;
+  transition-timing-function: linear;
+
+  &:hover {
+    transform: scale($scale-icon);
+  }
+}
+
+@mixin img-transform {
+  transition: transform $transition-time;
+
+  &:hover {
+    transform: scale($scale-img);
+  }
+}
+
+@mixin text-shadow {
+  transition: text-shadow $transition-time;
+
+  &:hover {
+    text-shadow: 0 0 10px $dark-color;
+  }
+}
+
+@mixin grid-cycle ($screen, $columns) {
+  @for $start from 1 through $columns {
+    @for $end from $start to $columns {
+      &--#{$screen}-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+@mixin icon ($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin background-position {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

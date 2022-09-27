@@ -1,0 +1,78 @@
+.menu {
+  font-family: Inter, serif;
+  background-color: $menu-color;
+  padding-top: $header-top-padding;
+
+  @include onIpad {
+    padding-top: 36px;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 44px;
+
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+  }
+
+  &__cross {
+    display: block;
+    @include icon ($cross-size);
+    margin-right: 4px;
+    background-image: url(./images/cross.svg);
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    @include uppercase-bold;
+
+    &::after {
+      content: "";
+      margin-top: 8px;
+      display: block;
+      height: 1px;
+      background-color: $dark-color;
+      opacity: 0;
+      transition: opacity $transition-time;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__number {
+    @include uppercase-bold;
+    margin-bottom: 16px;
+    @include text-shadow;
+  }
+
+  &__test-link {
+    @include uppercase-bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+    @include text-shadow;
+
+    &::after {
+      content: "";
+      margin-top: 8px;
+      bottom: 0;
+      display: block;
+      height: 1px;
+      background-color: $dark-color;
+    }
+  }
+}
