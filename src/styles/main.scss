@@ -12,6 +12,10 @@ $colorBlue: #0075f0;
 
 .page {
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 27px;
+  color:#3e3e3e;
   scroll-behavior: smooth;
 
   &__body {
@@ -33,16 +37,26 @@ $colorBlue: #0075f0;
 
   &__section {
     margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
     
   }
 
   &__section-title {
+    margin-bottom: 32px;
+
     font-weight: bold;
     font-size: 36px;
     line-height: 36px;
     text-align: center;
     letter-spacing: -1.5px;
     color: #000;
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
 
     &::after {
       content: "";
@@ -279,3 +293,160 @@ body {
   }
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat (2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat (12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.about {
+  &__title {
+    margin: 0 0 48px;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+    align-items: center;
+    letter-spacing: -1.5px;
+    color: #000;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__title-link {
+    text-decoration: none;
+    color: $colorBlue;
+  }
+
+  &__subtitle {
+    display: block;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    text-decoration: none;
+    color: $colorBlue;
+    margin-bottom: 16px;
+  }
+
+  &__paragraph {
+    margin: 0 0 27px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 27px;
+    color: #3e3e3e;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--important {
+      font-weight: bold;
+    }
+  }
+}
+
+.place {
+
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+
+    width: 100%;
+    padding-bottom: 100%;
+    max-height: 256px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 256px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $colorBlue;
+    font-weight: bold;
+  }
+}
+
+.gallery {
+  &__place {
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 56px;
+  text-decoration: none;
+
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: bold;
+  color: $colorBlue;
+  border-radius: 8px;
+  border: 2px solid $colorBlue;
+
+}
