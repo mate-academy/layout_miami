@@ -10,3 +10,10 @@ opener.addEventListener('click', () => {
 cross.addEventListener('click', () => {
   document.body.classList.remove('page__body--with-menu');
 });
+
+const form = document.querySelector('#form');
+
+form.addEventListener("submit", (e) => {
+  form.reset();
+  e.preventDefault();
+});
