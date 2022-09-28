@@ -5,7 +5,12 @@
     @include useGrid (12, 24px);
   }
 
+  @include onTablet {
+    @include useGrid (6, 24px);
+  }
+
   &__item {
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         @include onDesktop {
@@ -15,13 +20,13 @@
         }
       }
     }
-  }
 
-  @for $start from 1 through 6 {
-    @for $end from $start through 6 {
-      @include onTablet {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        @include onTablet {
+          &--tablet--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
