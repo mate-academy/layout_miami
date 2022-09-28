@@ -1,0 +1,70 @@
+.icon {
+  display: block;
+  position: relative;
+  width: var(--icon-width);
+  height: var(--icon-width);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: default;
+  text-decoration: none;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    border: none;
+    transition: all 0.3s;
+
+    @include onIPad {
+      background-image: url(../images/menu-full.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hovered.svg);
+
+      @include onIPad {
+        background-image: url(../images/menu-full-hover.svg);
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/close.svg);
+  }
+
+  &__tooltip {
+    opacity: 0;
+
+    @include onDesktop {
+      display: block;
+      width: max-content;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-right: 12px;
+      color: #292929;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}

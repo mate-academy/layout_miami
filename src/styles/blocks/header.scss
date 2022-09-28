@@ -1,0 +1,71 @@
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    height: 100vh;
+    padding-top: $headerTopPadding;
+    padding-bottom: 94px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+
+    @include onIPad {
+      padding-bottom: 40px;
+      $headerTopPadding: 52px;
+    }
+  }
+
+  &__nav-wrap {
+    display: grid;
+    grid-template-columns: var(--icon-width) var(--icon-width);
+    align-items: center;
+    --icon-gap-width: 30px;
+    column-gap: var(--icon-gap-width);
+
+    @include onIPad {
+      --icon-gap-width: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    color: $mainTextColor;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    @include onIPad {
+      font-size: 40px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-image: url(../images/decor.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onIPad {
+        background-image: url(../images/decor-sw.svg);
+        width: 63px;
+        height: 76px;
+      }
+    }
+  }
+}
