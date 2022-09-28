@@ -1,0 +1,31 @@
+.sounds {
+  background-image: url("/images/Sound.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 27px;
+
+  @include onTablet {
+    background-image: none;
+    display: grid;
+    grid-template-columns: repeat(10, 3px);
+    align-items: center;
+    width: 57px;
+    height: 76px;
+    gap: 3px;
+
+    @each $name,
+      $sound in $sounds {
+      &__sound-#{$name} {
+        height: #{$sound}px;
+      }
+    }
+  }
+}
+
+.sound {
+  display: block;
+  width: 3px;
+  background-color: $colorGray;
+  border-radius: 2px;
+}
