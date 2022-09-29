@@ -7,3 +7,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--no-scroll');
   }
 });
+
+let preventEvent;
+
+preventEvent.addEventListener('click', function(event) {
+  event.preventDefault();
+});
