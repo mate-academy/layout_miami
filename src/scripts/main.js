@@ -12,4 +12,16 @@ const form = document.getElementById('form');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
+
+  const firstNameInput = document.getElementById('name');
+
+  firstNameInput.value = '';
+
+  const emailInput = document.getElementById('email');
+
+  emailInput.value = '';
+
+  const messageInput = document.getElementById('message');
+
+  messageInput.value = '';
 });
