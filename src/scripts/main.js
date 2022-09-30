@@ -1,10 +1,11 @@
 'use strict';
 
-const form = document.querySelector('.form');
+const form = document.getElementById('form');
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
-  event.target.reset();
+
+  form.reset();
 });
 
 window.addEventListener('hashchange', () => {
