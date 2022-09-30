@@ -1,0 +1,61 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+@import "../utils/extends";
+
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 675px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--opacity {
+      @media (max-width: 1024px) {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--fit {
+      object-position: 20% 50%; 
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 400;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $redsite;
+    text-decoration: none;
+  }
+}
