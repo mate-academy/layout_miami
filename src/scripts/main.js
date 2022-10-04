@@ -1,9 +1,13 @@
 'use strict';
 
-const forButton = document.getElementById('form-button');
+const form = document.getElementById('form');
 
-forButton.addEventListener('click', function(e) {
-  e.preventDefault();
+form.addEventListener('submit', function handleSubmit(event) {
+  event.preventDefault();
+
+  form.reset();
+
+  window.location.href = window.location.hostname;
 });
 
 window.addEventListener('hashchange', () => {
