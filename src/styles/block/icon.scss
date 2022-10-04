@@ -1,0 +1,85 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+@import "../utils/extends";
+
+.logo {
+  &__image {
+    width: 64px;
+    height: 45px;
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+}
+
+.icons {
+  align-items: center;
+  display: grid;
+  grid-template-columns: $iconWidth $iconGap $iconWidth;
+
+  @include onDesktop {
+    grid-template-columns: $iconWidthD $iconGap $iconWidthD;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  position: relative;
+
+  &--menu {
+    background-image: url(/images/menu.png);
+
+    &:hover {
+      background-image: url(/images/menuact.png);
+    }
+  }
+
+  &--phone {
+    background-image: url(/images/call.png);
+  }
+
+  &--cross {
+    background-image: url(/images/cross.png);
+  }
+
+  &__tooltip {
+    display: block;
+
+    text-decoration: none;
+  
+    position: absolute;
+    right: 100%;
+    width: max-content;
+  
+    top: $top;
+    padding: 24px 20px 0;
+  
+    text-align: right;
+  
+    text-transform: uppercase;
+    color: $white;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+    pointer-events: none;
+  
+    opacity: 0;
+  }
+  
+  &:hover &__tooltip {
+    @include onDesktop {
+      transition: opacity 0.3s;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
