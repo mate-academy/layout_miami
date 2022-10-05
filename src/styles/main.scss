@@ -17,6 +17,48 @@
   &__body {
     margin: 0;
   }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 100px;
+
+    @include onDesktop {
+      margin-bottom: 140px;
+    }
+  }
+
+  &__section-title {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #161616;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
 }
 
 .container {
@@ -25,7 +67,7 @@
   padding: 25px 20px;
 
   @include onTablet {
-    padding: 50px 120px 0;
+    padding: 50px 72px 0;
   }
 
   @include onDesktop {
@@ -87,9 +129,7 @@
     }
 
     @include onDesktop {
-
       &::before {
-      
         content: "The Met Fifth Avenue" +
           "\A +1 212-535-7710" + 
           "\A \A The Met Cloisters" + 
@@ -134,7 +174,7 @@
   
     &:hover {
       background-image: url(../images/menu_hover.svg);
-      transition: 0.3s;
+      transition: 0.3s ease transform;
     }
   }
 
@@ -186,4 +226,385 @@
   background-position: center;
   background-repeat: no-repeat ;
   display: block;
+}
+
+.nav {
+  background-color: #d12d35;
+  box-sizing: border-box;
+  height: 100vh;
+
+  @include onDesktop {
+    height: 100vh;
+  }
+
+  &__menu-cross {
+    background-image: url(../images/cross.svg);
+    width: 16px;
+    height: 16px;
+  
+    @include onTablet {
+      width: 22px;
+      height: 22px;
+    }
+
+    @include onDesktop {
+      width: 22px;
+      height: 22px;
+    }
+  }
+   
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    margin: 0 0 32px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+  
+    border-bottom: 1px solid transparent;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 1s;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &__call {
+    display: block;
+    padding-bottom: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__call-text {
+    padding: 8px 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    width: max-content;
+  }
+}
+
+.schedule {
+  &__title {
+    margin: 0;
+    padding-bottom: 32px;
+    text-align: left;
+  }
+
+  &__title-link {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: normal;
+    color: #d12d35;
+    text-decoration: none;
+  }
+
+  &__subtitle {
+    margin: 0;
+    padding-bottom: 16px;
+    text-align: left;
+  }
+}
+
+.work-days {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #161616;
+
+  &:not(:last-child) {
+    padding-bottom: 24px;
+  }
+
+  &__time {
+    display: inline-block;
+    padding-right: 25px;
+
+  }
+
+  &__days {
+    display: inline-block;
+    font-weight: 400;
+  }
+
+  &__closed {
+    font-weight: 400;
+  }
+
+  &__closed-title {
+    padding-top: 8px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+  
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--wide-screen {
+    display: flex;
+    justify-content: center;
+    
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--mobile-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.adaptive {
+  position: relative;
+  transition: 1s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__1row {
+    padding: 0 0 100%;
+    @include onTablet {
+      padding-bottom: 47.5%;
+    }
+  }
+
+  &__img-1row {
+    position: absolute;
+    object-fit: cover;
+    object-position: 20%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      object-position: 50%;
+    }
+  }
+
+  &__2row {
+    flex: 1 1 33%;
+    padding: 0 0 31%;
+
+    @include onTablet {
+      padding-bottom: 100%;
+    }
+
+    &--display_none {
+      display: block;
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: grid;
+      }
+    }
+  }
+
+  &__img-2row {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__3row {
+    padding: 0 0 100%;
+    @include onTablet {
+      padding-bottom: 48%;
+    }
+  }
+
+  &__img-3row {
+    position: absolute;
+    object-fit: cover;
+    object-position: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      object-position: 50%;
+    }
+  }
+
+  &__4row {
+    padding: 0 0 100%;
+  }
+
+  &__img-4row {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      object-position: 50%;
+    }
+  }
+}
+
+.now-on-view {
+  &__title {
+    margin: 0;
+    padding-bottom: 8px;
+  }
+
+  &__title-subtext {
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+    color: #161616;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 48px;
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+    color: #d12d35;
+    text-decoration: none;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    color: #161616;
+    margin: 0;
+  }
+}
+
+.button {
+  display: flex;
+  flex: 1 1 100%;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  background-color: #d12d35;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+  text-decoration: none;
+
+  &--primary {
+    cursor: pointer;
+    border: none;
+    
+    &:hover {
+      background-color: #ae1c23;
+    }
+  
+    &:active {
+      background-color: #eb343d;
+    }
+  }
+}
+
+.footer {
+  background-image: url(../images/footer.svg);
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    height: 360px;
+  }
+
+  @include onDesktop {
+    height: 360px;
+  }
 }
