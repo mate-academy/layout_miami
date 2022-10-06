@@ -3,11 +3,15 @@
 const form = document.getElementById('form');
 
 form.addEventListener('submit', function handleSubmit(event) {
+  event.preventDefault();
+
   form.reset();
 
-  window.location.replace(window.location.origin + window.location.pathname);
-
-  event.preventDefault();
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
 });
 
 window.addEventListener('hashchange', () => {
