@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  color: $c-gray;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: $c-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $c-blue;
+    border-radius: 4px;
+    width: 8px;
+    box-shadow: 0 2px 10px $c-black;
+  }
+
+  &__body {
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transform: translate(-100%);
+
+    transition: (
+      transform
+      $anim-time
+      cubic-bezier(0, 1.01, 0.45, 0.99)
+    );
+
+    &:target {
+      transform: translate(0);
+    }
+  }
+
+  &__section {
+    line-height: 27px;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 32px;
+
+    color: $c-black;
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: bold;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      margin-bottom: 60px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      margin: 4px auto 0;
+      width: 23px;
+      height: 16px;
+
+      @include positionedImage(url(../images/crown.svg));
+    }
+  }
+}
