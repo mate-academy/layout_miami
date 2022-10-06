@@ -6,8 +6,10 @@ window.addEventListener('hashchange', () => {
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
-})
+});
 
-button.onclick = function(event) {
+const form = document.getElementById('form');
+form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
-}
+  form.reset();
+});
