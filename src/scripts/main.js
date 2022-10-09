@@ -4,7 +4,9 @@ const form = document.querySelector('form');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      document.body.style.overflow = 'hidden';
+    }, 200);
   } else {
     document.body.style.overflow = '';
   }
