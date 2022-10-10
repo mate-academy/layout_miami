@@ -6,7 +6,7 @@ window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     setTimeout(() => {
       document.body.style.overflow = 'hidden';
-    }, 200);
+    }, 220);
   } else {
     document.body.style.overflow = '';
   }
