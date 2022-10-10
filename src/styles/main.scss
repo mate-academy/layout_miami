@@ -1,7 +1,78 @@
 @import "utils";
-@import "fonts";
+@import "utils/vars";
+@import "utils/mixins";
 @import "typography";
+@import "blocks/header";
+@import "blocks/menu";
 
-body {
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  list-style: none;
+}
+
+.page {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.page__body {
   background: $c-gray;
+  background-image: url(../images/miami.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 20px;
+
+  @media (min-width: 361px) {
+    background-size: cover;
+    background-position: top center;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  .page__title {
+    padding: 0;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 80px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    justify-self: flex-end;
+    margin-bottom: 80px;
+
+    &::before {
+      display: block;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: -24px;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 46px;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -1px;
+    }
+  }
 }
