@@ -1,0 +1,128 @@
+.header {
+  width: 100vw;
+    
+  background-image: url(../images/header/header-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  @include forMobile {
+    background-position: 90%;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $HeaderTopPadding 0 203px;
+  }
+    
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  &__logo-image {
+    width: 187px;
+    height: 56px;
+  
+    @include forMobile {
+      width: 130px;
+      height: 38px;
+    }
+  }
+  
+  &__phone {
+    display: block;
+    width: 24px;
+    height: 24px;
+  
+    background-image: url(../images/header/header-logo-phone.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-decoration: none;
+  
+    &::before {
+      content: "+1 234 555-55-55";
+  
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+  
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      color: #575151;
+      transition: opacity 0.3s;
+  
+      @include forTablet {
+        display: none;
+      }
+  
+      @include forMobile {
+        display: none;
+      }
+    }
+  
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  
+    @include forMobile {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  &__burger {
+    display: block;
+    width: 24px;
+    height: 16px;
+  
+    background-image: url(../images/header/header-logo-menuicon.svg);
+    background-size: cover;
+
+    @include hover (background-image, url(../images/header/burger-hover.svg));
+  
+    @include forMobile {
+      width: 18px;
+      height: 12px;
+    }
+  }
+  
+  &__title {
+    font-weight: 700;
+    font-size: 80px;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-align: center;
+  
+    @include forTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  
+    @include forMobile {
+      font-size: 36px;
+      line-height: 36px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
