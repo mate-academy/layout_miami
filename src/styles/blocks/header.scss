@@ -1,6 +1,10 @@
 .header {
   background: url(../images/photos/header-mobile.jpg) no-repeat center/cover;
 
+  @include onTablet() {
+    background: url(../images/photos/header-tablet.jpg) no-repeat center/ cover;
+  }
+
   @include onDesktop() {
     background: url(../images/photos/header-desktop.jpg) no-repeat center/ cover;
   }
@@ -18,11 +22,6 @@
     }
   }
 
-  // &__call {
-  //   grid-column: 3 / -2;
-  //   position: relative;
-  // }
-
   &__title {
     margin: 0;
     font-style: italic;
@@ -32,7 +31,7 @@
     color: #292929;
     letter-spacing: -1.5px;
 
-    @include onDesktop {
+    @include onTablet {
       font-size: 48px;
       line-height: 48px;
     }
@@ -44,11 +43,15 @@
     width: 32px;
     height: 27px;
 
-    @include onDesktop() {
+    @include onTablet() {
       background: url(../images/Waves.svg) no-repeat center / cover;
       margin-bottom: 32px;
       width: 63px;
       height: 76px;
+    }
+
+    @include onDesktop() {
+      margin-bottom: 40px;
     }
   }
 
@@ -59,7 +62,6 @@
   }
 
   &__call {
-    // margin-right: 24px;
     text-decoration: none;
     grid-column: 3 / -2;
     position: relative;
@@ -68,18 +70,20 @@
       &::before {
         content: "+1 234 555-55-55";
         position: absolute;
-        // position: relative;
-        transform: translate(-100%, -50%);
         top: 50%;
+
         display: block;
-        padding-right: 20px;
         width: max-content;
+        padding-right: 20px;
+
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         color: #292929;
         letter-spacing: 2px;
         text-transform: uppercase;
+
+        transform: translate(-100%, -50%);
         opacity: 0;
         pointer-events: none;
       }
