@@ -1,7 +1,171 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+h1 {
+  margin: 0;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+
+  &__body {
+    margin: 0;
+    background-color: black;
+    color: white;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 23px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  height: 38px;
+
+  @include onTablet {
+    height: 56px;
+  }
+
+  &__image {
+    width: 130px;
+
+    @include onTablet {
+      width: 187px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-image: url(../images/cover.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onMobile {
+    background-position-x: 85%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 34px 36px 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        
+        color: #292929;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        text-transform: uppercase;
+        
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: white;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
 }
