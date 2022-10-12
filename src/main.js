@@ -4,6 +4,7 @@ const contact = document.getElementById('contact-form');
 
 function handleForm(event) {
   event.preventDefault();
+  event.target.reset();
 }
 
 contact.addEventListener('submit', handleForm);
