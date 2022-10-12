@@ -1,0 +1,76 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
+  }
+
+  &__title {
+    margin-top: 125px;
+
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+    //place it in center not using margin-top?
+
+    @include onTablet() {
+      margin-top: 150px;
+      font-size: 64px;
+    }
+
+    @include onDesktop() {
+      margin-top: 80px;
+      font-size: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    //set size for this icon here because it has
+    //bigger height because of pseudoelement before
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 212-535-7710";
+        // The Met Fifth Avenue \A
+        // +1 212-535-7710 \A
+        // The Met Cloisters \A
+        // +1 212-923-3700
+        white-space: pre-wrap;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: right;
+        color: #fff;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        opacity: 0;
+        pointer-events: none;
+        //there 8px between 2 dif numbers ?
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
