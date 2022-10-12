@@ -1,7 +1,191 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Inter", sans-serif;
+  color: #292929;
+
+  &__body,
+  h1 {
+    margin: 0;
+  }
+}
+
+.logo {
+  pointer-events: none;
+
+  &__image {
+    display: block;
+    width: 130px;
+    height: 16px;
+    pointer-events: all;
+
+    @include tablet {
+      width: 190px;
+      height: 24px;
+    }
+  }
+}
+
+.conteiner {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 20px;
+
+  @include tablet {
+    padding: 0 40px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include tablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/people/header-mob.jpg);
+
+  @include tablet {
+    background-image: url(../images/people/header-tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/people/header.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include tablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto auto;
+    gap: 30px;
+
+    @include onDesktop {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/icon-phone.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        color: #292929;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/icon-menu_mob.svg);
+
+    @include tablet {
+      background-image: url(../images/icon-menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/icon-menu_mob_hover.svg);
+
+      @include tablet {
+        background-image: url(../images/icon-menu_hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: url(../images/icon-wave.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include tablet {
+        content: url(../images/icon-sound-waves.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
 }
