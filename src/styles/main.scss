@@ -2,6 +2,184 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+a,
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin onDeskTop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+///////
+.page {
+  font-family: "Poppins", sans-serif;
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 23px;
+
+  @include onTablet {
+    max-width: 1020px;
+    padding: 0 72px;
+  }
+
+  @include onDeskTop {
+    max-width: 1260px;
+    padding: 0 120px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    background-position: center;
+  }
+
+  @include onDeskTop {
+    background-position: center;
+  }
+
+  background-repeat: no-repeat;
+  background-image: url(../images/Cover_photo.svg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 23px 0 88px;
+
+    @include onDeskTop {
+      padding: 23px 0 203px;
+    }
+  }
+
+
+
+  &__menu-icons {
+    display: flex;
+    height: 100%;
+
+    width: 66px;
+    @include onTablet {
+      width: 76px;
+    }
+
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    @include onDeskTop {
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDeskTop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        color: #fff;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &__title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDeskTop {
+      font-size: 80px;
+    }
+
+    color: #fff;
+  }
+}
+
+.logo {
+  display: flex;
+  align-content: center;
+  &__image {
+    width: 130px;
+    height: 38px;
+
+    @include onTablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
 }
