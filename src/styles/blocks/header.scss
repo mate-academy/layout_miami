@@ -6,14 +6,11 @@
   &__content {
     display: flex;
     flex-direction: column;
-
-    box-sizing: border-box;
-    height: 100vh;
     padding: $headerTopPadding 0;
   }
 
   &__title {
-    margin-top: 125px;
+    margin: 125px 0 0;
 
     font-size: 40px;
     line-height: 100%;
@@ -21,7 +18,6 @@
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
-    //place it in center not using margin-top?
 
     @include onTablet() {
       margin-top: 150px;
@@ -39,13 +35,11 @@
     position: relative;
 
     @include onDesktop() {
-      &::before {
-        content: "The Met Fifth Avenue \A +1 212-535-7710";
-        //\A The Met Cloisters \A +1 212-923-3700
+      &::before,
+      &::after {
         white-space: pre-wrap;
         position: absolute;
         top: 50%;
-        transform: translate(-100%, -50%);
 
         display: block;
         width: max-content;
@@ -60,10 +54,20 @@
         text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
         opacity: 0;
         pointer-events: none;
-        //there 8px between 2 dif numbers ?
       }
 
-      &:hover::before {
+      &::before {
+        content: "The Met Fifth Avenue\A +1 212-535-7710";
+        transform: translate(-100%, calc(-100% - 8px));
+      }
+
+      &::after {
+        content: "The Met Cloisters\A +1 212-923-3700";
+        transform: translate(-100%);
+      }
+
+      &:hover::before,
+      &:hover::after {
         opacity: 1;
         pointer-events: all;
       }
