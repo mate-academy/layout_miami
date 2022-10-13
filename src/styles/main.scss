@@ -7,7 +7,13 @@ h1 {
 }
 
 @mixin onDesktop {
-  @media (min-width: 1024px) {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktopLarge {
+  @media (min-width: 1260px) {
     @content;
   }
 }
@@ -28,7 +34,7 @@ h1 {
     height: 38px;
     vertical-align: bottom;
 
-    @media (min-width: 1024px) {
+    @include onDesktop {
       width: 187px;
       height: 56px;
     }
@@ -40,9 +46,26 @@ h1 {
   max-width: 1020px;
   padding: 0 23px;
 
-  @media (min-width: 1024px) {
-    padding: 0 120px;
+  @include onDesktop {
+    padding: 0 40px;
   }
+
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  text-decoration: none;
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
 }
 
@@ -61,6 +84,14 @@ h1 {
     box-sizing: border-box;
     height: 100vh;
     padding: 29px 0 88px;
+
+    @include onDesktop {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktopLarge {
+      padding: 36px 0 203px;
+    }
   }
 
   &__nav {
@@ -77,30 +108,20 @@ h1 {
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
     height: 12px;
-
     background-image: url(../images/imagesBike/nav_icons/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      height: 16px;
+    }
 
     &:hover {
-      background-image: url(../images/menu_hover.svg);
+      background-image: url(../images/menu_hover_left.svg);
     }
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-
     background-image: url(../images/imagesBike/nav_icons/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
   }
 
   &__title {
@@ -110,7 +131,10 @@ h1 {
     font-size: 36px;
     line-height: 100%;
     letter-spacing: -1.5px;
-
     color: #fff;
+
+    @include onDesktop {
+      font-size: 64px;
+    }
   }
 }
