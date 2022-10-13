@@ -1,4 +1,5 @@
 'use strict';
+
 // Ищем нужные элементы во всём документе
 const toggler = document.querySelector('#toggler');
 const menu = document.querySelector('.menu');
