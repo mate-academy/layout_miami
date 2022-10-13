@@ -4,6 +4,11 @@
 @import "typography";
 @import "blocks/header";
 @import "blocks/menu";
+@import "blocks/about";
+@import "blocks/title";
+@import "blocks/gallery";
+@import "blocks/testimonials.scss";
+@import "blocks/contact.scss";
 
 * {
   margin: 0;
@@ -11,28 +16,50 @@
   text-decoration: none;
   background-repeat: no-repeat;
   list-style: none;
+  scroll-behavior: smooth;
 }
 
 .page {
   font-family: "Roboto", sans-serif;
 }
 
-.container {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
 .page__body {
-  background: $c-gray;
-  background-image: url(../images/miami.jpg);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 0 20px;
+  background-color: $c-gray;
+
+  &--with-menu {
+    overflow: hidden;
+  }
 
   @media (min-width: 361px) {
     background-size: cover;
     background-position: top center;
+  }
+
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding-bottom: 64px;
+
+    @media (min-width: 361px) {
+      padding-bottom: 104px;
+    }
+  }
+
+  .wrapper {
+    background-image: url(../images/miami.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-bottom: 64px;
+
+    @media (min-width: 361px) {
+      margin-bottom: 104px;
+    }
   }
 
   .header-container {
@@ -40,6 +67,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    padding-top: 25px;
   }
 
   .page__title {
@@ -75,4 +103,66 @@
       letter-spacing: -1px;
     }
   }
+
+  .button {
+    background: $blue;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  .button-alt {
+    color: $blue;
+    padding: 20px 0;
+    border: 2px solid $blue;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      background: #005ecc;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  .footer {
+    .container {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 206px;
+      background-image: url(../images/footer-bg.jpg);
+      padding-bottom: 35px;
+
+      @media (min-width: 361px) {
+        height: 360px;
+      }
+    }
+
+    &__logo {
+      display: block;
+      @include icon(82px, 48px, "../images/logo.png");
+
+      @media (min-width: 361px) {
+        width: 130px;
+        height: 76px;
+      }
+    }
+  }
+
 }
