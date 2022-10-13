@@ -9,3 +9,10 @@ toggler.addEventListener('click', function() {
   // переключаем класс menu--hidden (если есть - убираем, если нет - добавляем)
   menu.classList.toggle('menu--hidden');
 });
+
+const togglerClose = document.querySelector('#toggler_close');
+
+togglerClose.addEventListener('click', function() {
+  // переключаем класс menu--hidden (если есть - убираем, если нет - добавляем)
+  menu.classList.toggle('menu--hidden');
+});
