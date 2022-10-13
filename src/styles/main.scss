@@ -16,6 +16,11 @@
   }
 }
 
+$headerTopPaddingM: 29px;
+$lightGrey: #c2c2c2;
+$darkGrey: #1d1d1d;
+$white: #fff;
+
 h1 {
   margin: 0;
 }
@@ -27,6 +32,20 @@ h1 {
     margin: 0;
     background-color: black;
     color: white;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
   }
 }
 
@@ -69,6 +88,20 @@ h1 {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+  &--call {
+    background-image: url(../images/call.svg);
+  }
+  &--close {
+    background-image: url(../images/close.svg);
+  }
 }
 
 .header {
@@ -87,7 +120,7 @@ h1 {
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 29px 0 88px;
+    padding: $headerTopPaddingM 0 88px;
 
     @include onTablet {
       padding: 34px 36px 130px;
@@ -98,29 +131,13 @@ h1 {
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   &__buttons {
     display: flex;
     gap: 30px;
   }
 
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu-hover.svg);
-    }
-  }
-
   &__call {
     text-decoration: none;
-
-    background-image: url(../images/phone.svg);
 
     @include onDesktop {
       &::before {
@@ -134,7 +151,7 @@ h1 {
         width: max-content;
         padding-right: 12px;
         
-        color: #292929;
+        color: $white;
         letter-spacing: 2px;
         font-size: 12px;
         font-weight: 700;
@@ -166,6 +183,85 @@ h1 {
 
     @include onDesktop {
       font-size: 80px;
+    }
+  }
+}
+
+.menu-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  background-color: $lightGrey;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPaddingM 0;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    color: $darkGrey;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+
+    transition: border-color 0.5s;
+
+    &:hover {
+      border-color: $darkGrey;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $darkGrey;
+
+    text-decoration: none;
+
+    &--phone {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    &--book {
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $darkGrey;
     }
   }
 }
