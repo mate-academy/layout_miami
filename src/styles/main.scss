@@ -21,8 +21,11 @@ $lightGrey: #c2c2c2;
 $darkGrey: #1d1d1d;
 $white: #fff;
 
-h1 {
+h1,
+a,
+p {
   margin: 0;
+  padding: 0;
 }
 
 .page {
@@ -30,7 +33,7 @@ h1 {
 
   &__body {
     margin: 0;
-    background-color: black;
+    background-color: $darkGrey;
 
     color: white;
   }
@@ -48,19 +51,52 @@ h1 {
       transform: translateX(0);
     }
   }
+
+  &__section {
+    &-title {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 32px;
+      text-align: center;
+      letter-spacing: -1.5px;
+      text-transform: capitalize;
+      color: $white;
+
+      @include onTablet {
+        font-size: 48px;
+        line-height: 100%;
+      }
+
+      @include onDesktop {
+        font-size: 64px;
+        line-height: 100%;
+      }
+    }
+  }
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1020px;
-  padding: 0 23px;
+  padding: 0 20px;
+
+  @include onTablet {
+    max-width: 600px;
+    padding: 0 72px;
+  }
 
   @include onDesktop {
-    padding: 0 40px;
+    max-width: 1020px;
+    padding: 0 120px;
   }
 }
 
 .logo {
+  height: 38px;
+
+  @include onTablet {
+    height: 56px;
+  }
+
   &__image {
     width: 130px;
     height: 38px;
@@ -71,6 +107,8 @@ h1 {
     }
 
     &--menu {
+      height: 38px;
+
       @include onTablet {
         width: 130px;
         height: 38px;
@@ -110,9 +148,11 @@ h1 {
       background-image: url(../images/menu-hover.svg);
     }
   }
+
   &--call {
     background-image: url(../images/call.svg);
   }
+
   &--close {
     background-image: url(../images/close.svg);
   }
@@ -141,7 +181,7 @@ h1 {
     padding: $headerTopPaddingM 0 88px;
 
     @include onTablet {
-      padding: 34px 36px 130px;
+      padding: 34px 0 130px;
     }
 
     @include onDesktop {
@@ -168,14 +208,14 @@ h1 {
         display: block;
         width: max-content;
         padding-right: 12px;
-        
+
         color: $white;
         letter-spacing: 2px;
         font-size: 12px;
         font-weight: 700;
         line-height: 16px;
         text-transform: uppercase;
-        
+
         opacity: 0;
         pointer-events: none;
       }
@@ -301,5 +341,88 @@ h1 {
 
   @include onDesktop {
     height: 555px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--responsive {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    &--block1 {
+      &--title {
+        @include onTablet {
+          grid-column: 1 / 4;
+        }
+
+        @include onDesktop {
+          grid-column: 1 / 5;
+        }
+      }
+
+      &--content {
+        @include onTablet {
+          grid-column: 4 / 7;
+        }
+
+        @include onDesktop {
+          grid-column: 6 / 12;
+        }
+      }
+
+    }
+  }
+}
+
+.move-free {
+  margin-top: 60px;
+
+  @include onTablet {
+    margin-top: 120px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    margin: 0 0 32px;
+
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+  }
+
+  &__content {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
   }
 }
