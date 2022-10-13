@@ -1,16 +1,30 @@
-.header {
-
-  background: url("../images/photos/header-320.svg") no-repeat center;
-  background-size: cover;
+.container {
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 1260px;
 
   @include onTablet {
-    background: url("../images/photos/header-760.svg") no-repeat center;
-    background-size: cover;
+    padding: 0 72px;
   }
 
   @include onDesktop {
-    background: url("../images/photos/header-1260.svg") no-repeat center;
-    background-size: cover;
+    padding: 0 120px;
+  }
+}
+
+.header {
+
+  background-image: url("../images/photos/header-320.svg");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    background-image: url("../images/photos/header-744.svg");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/photos/header-1260.svg");
   }
 
   &__content {
@@ -21,87 +35,54 @@
     height: 100vh;
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-top: 36px;
-
-    @include onTablet {
-      padding-top: 48px;
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    justify-content: flex-start;
-
-  }
-
-  &__icon {
-    &:first-child {
-      margin-right: 28px;
-
-      @include onTablet {
-        margin-right: 36px;
-      }
-
-      @include onDesktop {
-        margin-right: 40px;
-      }
-    }
-  }
-
-  &__title {
+  &__slogan {
     position: relative;
-    margin: 0;
     padding-bottom: 94px;
-    font-family: "Inter", sans-serif;
-    font-style: italic;
+
     font-weight: 800;
+    font-style: italic;
     font-size: 32px;
     line-height: 100%;
-    color: $text-color;
-
     letter-spacing: -1.5px;
+    white-space: nowrap;
 
     @include onTablet {
-      font-weight: 800;
-      font-size: 40px;
-      line-height: 100%;
-
       padding-bottom: 40px;
     }
 
     @include onDesktop {
-      font-weight: 800;
-      font-size: 48px;
-      line-height: 100%;
-
-      letter-spacing: -1.5px;
-      padding-top: 64px;
+      padding-bottom: 64px;
     }
 
-    &:before {
-      display: block;
+    &::before {
       content: "";
-      background: url("../images/wave.svg") no-repeat center;
+      display: block;
+      margin-bottom: 16px;
+
       width: 32px;
       height: 27px;
-      padding-bottom: 16px;
+
+      background: url("../images/wave.svg") no-repeat center;
 
       @include onTablet {
-        background: url("../images/waves-big.svg") no-repeat top;
-        background-size: contain;
+        background: url("../images/slogan-tablet.svg") no-repeat center;
+        margin-bottom: 40px;
         width: 63px;
         height: 76px;
-        padding-bottom: 40px;
       }
 
       @include onDesktop {
-        padding-bottom: 32px;
+        background: url("../images/slogan-tablet.svg") no-repeat center;
+        margin-bottom: 32px;
       }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
     }
   }
 }
