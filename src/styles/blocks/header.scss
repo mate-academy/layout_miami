@@ -1,27 +1,32 @@
 .header {
-  padding: 40px 20px 94px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-
   background-image: url(../images/background_320.png);
   background-size: cover;
 
-  @media (min-width: $tabletSize) {
+  @include onTablet {
     background-image: url(../images/background_744.png);
-    padding: 52px 72px 40px;
   }
 
-  @media (min-width: $bigScreenSize) {
+  @include onDesktop {
     background-image: url(../images/background_1260.png);
-    padding: 52px 136px 64px;
   }
 
-  &__nav {
+  &__content {
+    margin: 0 auto;
+    padding: 40px 20px 94px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
+
+    @include onTablet {
+      padding: 52px 72px 40px;
+      max-width: 744px;
+    }
+
+    @include onDesktop {
+      padding: 52px 120px 64px;
+      max-width: 1260px;
+    }
   }
 
   &__title {
@@ -31,11 +36,11 @@
     line-height: 100%;
     letter-spacing: -1.5px;
 
-    @media (min-width: $tabletSize) {
+    @include onTablet {
       font-size: 40px;
     }
 
-    @media (min-width: $bigScreenSize) {
+    @include onDesktop {
       font-size: 48px;
     }
 
@@ -50,13 +55,13 @@
       background-image: url(../images/decor_h1_320.svg);
       background-size: cover;
 
-      @media (min-width: $tabletSize) {
+      @include onTablet {
         margin-bottom: 40px;
 
-        width: 66px;
+        width: 63px;
         height: 76px;
         background-image: url(../images/decor_h1_744.svg);
-        background-size: cover;
+
       }
     }
   }

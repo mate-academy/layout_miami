@@ -1,31 +1,68 @@
 .nav {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto $iconSmall $iconSmall;
+  gap: 30px;
+
+  @include onTablet {
+    grid-template-columns: 1fr $iconMiddle $iconMiddle;
+    gap: 40px;
+  }
 
   &__phone {
-    margin-right: 30px;
-
-    height: 18px;
-    width: 18px;
+    display: block;
+    @include icons ($iconSmall);
+    text-decoration: none;
     background-image: url(../images/phone_black.svg);
-    background-size: cover;
 
-    @media (min-width: $tabletSize) {
-      margin-right: 40px;
-      height: 24px;
-      width: 24px;
+    @include onTablet {
+      width: $iconMiddle;
+      height: $iconMiddle;
+    }
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+      padding: 12px;
+      width: max-content;
+      font-size: 12px;
+      letter-spacing: 2px;
+      transform: translate(-100%, -25%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        pointer-events: all;
+
+      }
     }
   }
 
   &__menu-opener {
-    height: 12px;
-    width: 18px;
+    border: none;
+    background: none;
+    @include icons ($iconSmall);
     background-image: url(../images/menu.svg);
-    background-size: cover;
+    transition: 0.3s;
+    cursor: pointer;
 
-    @media (min-width: $tabletSize) {
-      height: 18px;
-      width: 24px;
+    @include onTablet {
+      width: $iconMiddle;
+      height: $iconMiddle;
+      background-image: url(../images/menu_tablet.svg);
+
+      // &:hover {
+      //   background-image: url(../images/menu_hover.svg);
+      // }
+    }
+
+    &--cross {
+      width: 16px;
+      height: 16px;
+      background-image: url(../images/cross.svg);
     }
   }
 }
