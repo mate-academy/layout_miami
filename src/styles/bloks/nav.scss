@@ -1,0 +1,82 @@
+.nav {
+  @include onMob-HeaderPading();
+  display: block;
+  height: 100vh;
+  width: 100%;
+  @include flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $nav-bg;
+  align-content: flex-start;
+  transition: left 0.5s;
+  transition-timing-function: ease-in-out;
+  @include onTablet() {
+    @include onTablet-HeaderPading();
+  }
+
+  @include onDesktop() {
+    @include onDesktop-HeaderPading();
+  }
+
+  &__logo-img {
+    display: block;
+    @include logoMobSize();
+    margin-bottom: 54px;
+
+    @include onTablet() {
+      @include logoTabletSize();
+    }
+
+    @include onDesktop() {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__list {
+    flex-basis: 100%;
+    align-items: flex-start;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $base-color;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+  }
+
+  &__link:hover {
+    border-bottom: 2px solid $base-color;
+  }
+
+  &__link-tel {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__link-order {
+    padding-bottom: 8px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    border-bottom: 2px solid $base-color;
+  }
+
+  &-hidden {
+    display: block;
+    left: -100%;
+    transition-timing-function: ease-in-out;
+  }
+}

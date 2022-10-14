@@ -1,0 +1,130 @@
+.header {
+  display: block;
+  height: 100vh;
+  background: url(./../images/header__320.png) left top no-repeat;
+  background-size: cover;
+  @include onTablet() {
+    background: url(./../images/header__720.png) center top no-repeat;
+    background-size: cover;
+  }
+
+  @include onDesktop() {
+    background: url(./../images/header__1200.png) center top no-repeat;
+    background-size: cover;
+  }
+
+  &__container {
+    @include onMob-HeaderPading();
+    height: 100%;
+    @include flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include onTablet() {
+      @include onTablet-HeaderPading();
+    }
+    @include onDesktop() {
+      @include onDesktop-HeaderPading();
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    @include logoMobSize();
+    background-size: cover;
+    @include onTablet() {
+      @include logoTabletSize();
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &__container {
+      display: flex;
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    display: block;
+    height: 18px;
+    width: 18px;
+    background: url(./../images/phone.png) center center no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+    @include onTablet() {
+      @include icone();
+    }
+  }
+
+  &__call:hover::before {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    left: -150px;
+    top: 5px;
+    width: 150px;
+    height: 16px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $base-color;
+  }
+
+  &__menu-openner {
+    margin-top: 3px;
+    height: 12px;
+    width: 16px;
+    display: block;
+    background: url(./../images/close.png) center center no-repeat;
+    background-size: cover;
+    z-index: 5;
+    border: none;
+    cursor: pointer;
+    @include onTablet() {
+      margin-top: 0;
+      @include icone();
+      background-size: cover;
+    }
+  }
+
+  &__menu-close {
+    background: url(./../images/menu.png) center center no-repeat;
+  }
+
+  &__menu-close:hover {
+    background: url(./../images/menu_hover.png) center center no-repeat;
+  }
+
+  &__h1 {
+    position: relative;
+    flex-basis: 100%;
+    align-self: flex-end;
+    text-align: center;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $base-color;
+    @include onTablet() {
+      text-align: left;
+      font-size: 40px;
+    }
+
+    &::before {
+      content: url(./../images/h1_before_320.png);
+      position: absolute;
+      top: -35px;
+      @include onTablet() {
+        content: url(./../images/h1_before_720.png);
+        position: absolute;
+        top: -85px;
+        height: 76px;
+        width: 63px;
+      }
+    }
+  }
+}
