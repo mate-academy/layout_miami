@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 32px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &__item {
+    &--mobile {
+      @include gridLoop;
+    }
+
+    &--tablet {
+      @include onTablet {
+        @include gridLoop;
+      }
+    }
+
+    &--desktop {
+      @include onDesktop {
+        @include gridLoop;
+      }
+    }
+  }
+}
