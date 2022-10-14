@@ -1,0 +1,84 @@
+.header {
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet() {
+    background-position: center;
+  }
+
+  background-image: url(../images/header.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 $headerBottomPadding;
+
+    @include onTablet() {
+      $headerTopPadding: 34px;
+      $headerBottomPadding: 130px;
+    }
+
+    @include onDesktop() {
+      $headerTopPadding: 36px;
+      $headerBottomPadding: 203px;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onTablet() {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onTablet() {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
