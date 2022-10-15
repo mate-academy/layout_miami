@@ -1,0 +1,88 @@
+.header {
+  height: 100vh;
+
+  background-image: url(../images/photos/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    gap: 128px;
+
+    @include onTablet {
+      gap: 140px;
+    }
+
+    @include onDesktop {
+      gap: 85px;
+    }
+  }
+
+  &__icons {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+
+    @include onBigScreen {
+      gap: 60px;
+    }
+  }
+
+  &__phone {
+    position: absolute;
+    transform: translate(-100%, -50%);
+    padding: 24px 20px 0 0;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: end;
+    gap: 8px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s;
+
+    &-number {
+      text-align: right;
+      width: max-content;
+
+      text-transform: uppercase;
+      text-decoration: none;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+      color: $c-white;
+    }
+  }
+
+  @include onDesktop {
+    &__phone:hover {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &__call:hover + &__phone {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    margin: 0 auto;
+    text-align: center;
+
+    color: $c-white;
+
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
