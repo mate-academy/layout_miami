@@ -6,29 +6,37 @@
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
     gap: 24px;
-    max-width: 744px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
-    max-width: 1260px
   }
 
-  @for $start from 1 through 12 {
-    @for $span from 1 through 12 {
-      &__item--#{$start}_#{$span} {
-        grid-column: $start / span $span;
-      }
+  &--tablet {
+    display: block;
 
-      &__item--tablet-#{$start}_#{$span} {
-        @include onTablet {
-        grid-column: $start / span $span;
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $span from 1 through 12 {
+        &--#{$start}-#{$span} {
+          grid-column: $start / span $span;
         }
-      }
 
-      &__item--desktop-#{$start}_#{$span} {
-        @include onDesktop {
-        grid-column: $start / span $span;
+        &--tablet_#{$start}-#{$span} {
+          @include onTablet {
+            grid-column: $start / span $span;
+          }
+        }
+
+        &--desktop_#{$start}-#{$span} {
+          @include onDesktop {
+            grid-column: $start / span $span;
+          }
         }
       }
     }
