@@ -26,10 +26,14 @@
   }
 
   &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+    &--tablet {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            @include onTablet {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
         }
       }
     }
@@ -44,6 +48,13 @@
           }
         }
       }
+    }
+    &--after {
+      margin-bottom: 48px;
+    }
+
+    &--last {
+      margin-bottom: 60px;
     }
   }
 }
