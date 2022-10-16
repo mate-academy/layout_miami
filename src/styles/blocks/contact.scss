@@ -10,10 +10,18 @@
 
   &__form {
     @include grid;
-    grid-template-areas: "phone  phone"
+    grid-template-areas: "pn  pn"
       "email email"
-      "adress adress"
-      "container-input container-input";
+      "adr adr"
+      "c-i c-i";
+
+    @media (min-width: 551px) {
+      grid-template-areas: "pn  pn pn  pn adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i";
+    }
   }
 
   &__label {
@@ -39,7 +47,7 @@
 
   &__phone-label {
     position: relative;
-    grid-area: phone;
+    grid-area: pn;
     margin-bottom: 24px;
 
     &-link {
@@ -71,7 +79,7 @@
 
   &__address-label {
     position: relative;
-    grid-area: adress;
+    grid-area: adr;
     margin-bottom: 32px;
 
     &-link {
@@ -93,7 +101,7 @@
   }
 
   .container-form {
-    grid-area: container-input;
+    grid-area: c-i;
 
     & > *:hover {
       border-color: #ccd0e0;
@@ -151,30 +159,27 @@
     }
   }
 
-  @media (min-width: 361px) {
+  @media (min-width: 550px) {
     & {
       padding-bottom: 120px;
     }
 
-    &__phone-label {
-      grid-column: 1 / 5;
+    &__pn-label {
+      grid-row: 1;
       margin-bottom: 24px;
     }
 
     &__mail-label {
-      grid-column: 1 / 5;
       grid-row: 2;
       margin-bottom: 0;
     }
 
     &__address-label {
-      grid-column: 5 / span 4;
       grid-row: 1 / span 2;
       margin-bottom: 0;
     }
 
     .container-form {
-      grid-column: 9 / span 4;
       grid-row: 1 / span 4;
     }
 

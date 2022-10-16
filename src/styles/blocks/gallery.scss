@@ -9,7 +9,7 @@
   &__title {
     margin-bottom: 55px;
 
-    @media (min-width: 361px) {
+    @media (max-width: 550px) {
       margin-bottom: 80px;
     }
 
@@ -18,7 +18,7 @@
   &__item {
     margin-bottom: 32px;
 
-    @media (min-width: 361px) {
+    @media (max-width: 550px) {
       margin-bottom: 40px;
     }
   }
@@ -30,42 +30,48 @@
     height: 131px;
     margin-bottom: 16px;
 
-    @media (min-width: 361px) {
-      height: 256px;
+    @media (max-width: 550px) {
+      height: min-content;
       margin-bottom: 24px;
     }
   }
 
   &__photo {
     width: calc(50% - 10px);
+    object-fit: cover;
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s;
 
-    &:hover {
-      transform: scale(1.2);
+    @media (max-width: 550px) {
+      & {
+        width: calc(50% - 10px);
+        min-width: 131px;
+        height: 131px;
+      }
+      
+      &:hover {
+        transform: scale(1.2);
+      }
     }
 
-    @media (min-width: 361px) {
+    &:hover {
+      transform: scale(1.05);
+    }
 
-      &:hover {
-        transform: scale(1.05);
-      }
+    &--1,
+    &--6 {
+      flex-grow: 1;
+    }
 
-      &--1,
-      &--6 {
-        flex-grow: 1;
-      }
+    &--2,
+    &--5 {
+      width: calc(33%);
+    }
 
-      &--2,
-      &--5 {
-        width: calc(33%);
-      }
-
-      &--3,
-      &--4 {
-        width: calc(50%);
-      }
+    &--3,
+    &--4 {
+      width: calc(50%);
     }
   }
 
@@ -87,7 +93,7 @@
     font-size: 16px;
     line-height: 14px;
 
-    @media (min-width: 361px) {
+    @media (max-width: 550px) {
       width: 150px;
       margin: 0 auto;
     }

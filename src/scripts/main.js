@@ -10,4 +10,5 @@ window.addEventListener('hashchange', () => {
 
 document.querySelector('.contact__button').addEventListener('click', e => {
   e.preventDefault();
+  document.querySelector('.contact__form').reset();
 });
