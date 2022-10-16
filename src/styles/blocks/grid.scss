@@ -1,0 +1,41 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDeskTop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+
+    &--phone {
+      @include grid;
+    }
+
+    &--tab {
+      @include onTablet {
+        @include grid;
+      }
+    }
+
+    &--desk {
+      @include onDeskTop {
+        @include grid;
+      }
+    }
+  }
+}
