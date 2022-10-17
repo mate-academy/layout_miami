@@ -1,11 +1,41 @@
 .icon {
   display: block;
+  position: relative;
   width: 100%;
   padding-bottom: 100%;
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    opacity: 0;
+    padding-right: 12px;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text-main-color;
+    width: max-content;
+    display: block;
+
+    pointer-events: none;
+
+    transition: opacity $transition-time;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &--menu {
     background-image: url(../images/burger-menu.svg);
