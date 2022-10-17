@@ -1,0 +1,52 @@
+.benefits {
+  margin-bottom: 40px;
+
+  &__image {
+
+    $details__image:
+      "1" url(../images/details_1.svg),
+      "2" url(../images/details_2.svg),
+      "3" url(../images/details_3.svg),
+      "4" url(../images/details_4.svg),
+      "5" url(../images/details_5.svg),
+      "6" url(../images/details_6.svg);
+
+    @each $number, $image in $details__image {
+      &--picture-#{$number} {
+        background-image: $image;
+      }
+    }
+
+    min-width: 130px;
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+    margin: 0 auto 16px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onTablet {
+      height: 187px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include titleFontStyleSmaller();
+  }
+
+  &__text {
+    @include paragraphCardsStyle();
+  }
+
+  @include onTablet {
+    margin-bottom: 48px;
+  }
+}
