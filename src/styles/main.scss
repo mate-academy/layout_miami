@@ -1,7 +1,138 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: 'Cinzel', serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.svg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 20px 0 288px;
+
+    @include onDesktop {
+      padding-bottom: 482px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    color: #fff;
+
+    letter-spacing: -1.5px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 111px;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    &::before {
+        content: "The Met Fifth Avenue";
+        // content: "+1 212-535-7710";
+        // content: "The Met Cloisters";
+        // content: "+1 212-923-3700";
+        display: block;
+        color: #fff;
+        width: 190px;
+        padding-right: 20px;
+        transform: translateX(-100%);
+        opacity: 1;
+      }
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710 The Met Cloisters +1 212-923-3700";
+        display: block;
+        color: #fff;
+        width: max-content;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.logo {
+  &__image {
+    width: 64px;
+    height: 46px;
+
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
 }
