@@ -1,0 +1,84 @@
+.header {
+  background-image: url(../images/bg-320.png);
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    background-image: url(../images/bg-744.png);
+    background-position: inherit;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/bg-1024.png);
+    background-position: inherit;
+  }
+
+  &__content {
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding: 29px 0 200px;
+    }
+
+    @include onTablet {
+      padding: 29px 0 130px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 75%);
+
+        content: "+1 234 555-55-55";
+        width: max-content;
+        display: block;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+
+        transition: 0.5s;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+  }
+
+  &__title {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
