@@ -1,0 +1,71 @@
+@import "../utils/mixins";
+
+.icon {
+  display: block;
+  position: relative;
+
+  @include mobileIcon;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include onDesktop {
+    @include desktopIcon;
+  }
+
+  &__tooltip {
+    display: block;
+    width: 230px;
+
+    position: absolute;
+    right: 100%;
+    bottom: 50%;
+    transform: translateY(50%);
+
+    padding-right: 20px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    color: #fff;
+    text-decoration: none;
+    text-align: right;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    margin-right: 30px;
+
+    text-decoration: none;
+
+    background-image: url(../images/phone.svg);
+
+    @include onTablet() {
+      margin-right: 63px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
