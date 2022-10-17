@@ -1,13 +1,21 @@
-// 'use strict';
+'use strict';
 
-// const iconMenu = document.querySelector('#toggler');
-// // const iconCross = document.querySelector('.icon--cross');
-// const menu = document.querySelector('.menu');
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
+  }
+});
 
-// iconMenu.addEventListener('click', function() {
-//   menu.classList.toggle('.menu--hidden');
-// });
+const iconMenu = document.querySelector('#toggler');
+const iconCross = document.querySelector('.icon--cross');
+const menu = document.querySelector('.menu__content');
 
-// // iconCross.addEventListener('click', function() {
-// //   menu.classList.remove('.menu--hidden');
-// // });
+iconMenu.addEventListener('click', function() {
+  menu.classList.toggle('menu--hidden');
+});
+
+iconCross.addEventListener('click', function() {
+  menu.classList.remove('menu--hidden');
+});
