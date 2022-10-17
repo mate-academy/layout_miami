@@ -1,0 +1,107 @@
+.header {
+  position: relative;
+
+  background-image: url("../images/header-bg-phone.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    background-image: url("../images/header-bg-tablet.png");
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-bg-desktop.png");
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    max-height: 711px;
+    padding: 29px 0 88px;
+  }
+
+  &__logo {
+    width: 130px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  &__menu {
+    display: flex;
+    gap: $iconSizeSmall;
+  }
+
+  &__link {
+    display: block;
+    width: $iconSizeSmall;
+    height: $iconSizeSmall;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include onDesktop {
+      width: $iconSize;
+      height: $iconSize;
+    }
+
+    &--call {
+      background-image: url("../images/phone.svg");
+      position: relative;
+
+      &:hover::after {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        right: $iconSizeSmall + 8px;
+        transform: translate(0, -50%);
+
+        width: max-content;
+
+        color: $primaryColor;
+        text-decoration: none;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+    }
+
+    &--burger {
+      background-image: url("../images/menu.svg");
+
+      &:hover {
+        background-image: url("../images/menu_hover.svg");
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    margin: 0 auto;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
