@@ -8,18 +8,12 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const btn = document.getElementById('btn');
+const form = document.getElementById('my-form');
 
-btn.addEventListener('click', function handleClick(event) {
+form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
 
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const messageInput = document.getElementById('message');
-
-  nameInput.value = '';
-  emailInput.value = '';
-  messageInput.value = '';
+  form.reset();
 });
 
 // const iconMenu = document.querySelector('#toggler');
