@@ -23,18 +23,20 @@
   &__item {
     @for $start from 1 through 12 {
       @for $span from 1 through 12 {
-        &--#{$start}-#{$span} {
-          grid-column: $start / span $span;
-        }
 
-        &--tablet_#{$start}-#{$span} {
-          @include onTablet {
+        @include onTablet {
+          &--tablet_#{$start}-#{$span} {
             grid-column: $start / span $span;
           }
         }
+      }
+    }
 
-        &--desktop_#{$start}-#{$span} {
-          @include onDesktop {
+    @for $start from 1 through 12 {
+      @for $span from 1 through 12 {
+
+        @include onDesktop {
+          &--desktop_#{$start}-#{$span} {
             grid-column: $start / span $span;
           }
         }
