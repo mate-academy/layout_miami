@@ -1,11 +1,21 @@
 'use strict';
 
-// const outputElement = document.getElementById("info");
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
+  };
+});
 
-// const smallDevice = window.matchMedia('(min-width: 576px)');
+const checkbox = document.getElementById('button-send');
+const inputs = document.getElementsByClassName('contacts__field');
 
-// smallDevice.addListener(handleDeviceChange);
+checkbox.addEventListener('click', clearInput);
 
-// function handleDeviceChange(e) {
-//   console.log(e);
-// }
+function clearInput(e) {
+  for (const input of inputs) {
+    input.value = '';
+  }
+  e.preventDefault();
+}
