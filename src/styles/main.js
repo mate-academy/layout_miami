@@ -5,5 +5,24 @@ const menu = document.querySelector('.menu');
 
 toggler.addEventListener('click', function() {
   menu.classList.toggle('menu--active');
-  toggler.classList.toggle('icon--menu-opener--active');
 });
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
+    menu.classList.remove('menu--active');
+  }
+});
+
+const checkbox = document.querySelector('#send');
+
+checkbox.addEventListener('click', checkboxClick, false);
+
+function checkboxClick(event) {
+  const warn = 'Doesn`t work in test version!<br>';
+
+  document.getElementById('output').innerHTML += warn;
+  event.preventDefault();
+}
