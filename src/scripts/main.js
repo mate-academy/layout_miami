@@ -1,18 +1,18 @@
 'use strict';
 
-// Ищем нужные элементы во всём документе
-const toggler = document.querySelector('#toggler');
-const menu = document.querySelector('.menu');
-
-// ждём клики на toggler
-toggler.addEventListener('click', function() {
-  // переключаем класс menu--hidden (если есть - убираем, если нет - добавляем)
-  menu.classList.toggle('menu--hidden');
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--menu');
+  } else {
+    document.body.classList.remove('page__body--menu');
+  }
 });
 
-const togglerClose = document.querySelector('#toggler_close');
+const form = document.querySelector('#form');
 
-togglerClose.addEventListener('click', function() {
-  // переключаем класс menu--hidden (если есть - убираем, если нет - добавляем)
-  menu.classList.toggle('menu--hidden');
-});
+form.addEventListener('submit', buttonClick, false);
+
+function buttonClick(event) {
+  event.preventDefault();
+  form.reset();
+};
