@@ -1,6 +1,69 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+@mixin titleFontStyle {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -1.5px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+@mixin titleFontStyleSmaller {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  color: #fff;
+}
+
+@mixin paragraphCardsStyle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #fff;
+}
+
+@mixin topMargin ($size) {
+  margin-top: #{$size - 40px};
+  padding-top: 40px;
+}
+
+@mixin topActions {
+  --iconWidth: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--iconWidth) var(--iconWidth);
+  gap: 30px;
+  align-items: center;
+
+  &--menu {
+    grid-template-columns: 1fr var(--iconWidth);
+    margin-bottom: 44px;
+  }
+
+  @include onTablet {
+    --iconWidth: 24px;
+    gap: 40px;
   }
 }
