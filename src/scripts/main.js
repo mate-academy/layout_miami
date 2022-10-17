@@ -13,13 +13,11 @@ const btn = document.getElementById('btn');
 btn.addEventListener('click', function handleClick(event) {
   event.preventDefault();
 
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const messageInput = document.getElementById('message');
+  const inputs = document.querySelectorAll('#name', 'email', 'message');
 
-  nameInput.value = '';
-  emailInput.value = '';
-  messageInput.value = '';
+  inputs.forEach(input => {
+    input.value = '';
+  });
 });
 
 // const iconMenu = document.querySelector('#toggler');
