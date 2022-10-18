@@ -20,7 +20,7 @@
     }
   
     @include onDesktop {
-      padding: 36px 0 203px ;
+      padding: 36px 0 203px;
     }
   }
 
@@ -51,25 +51,36 @@
   }
 
   &__call {
+    position: relative;
     text-decoration: none;
 
-    &:hover::before {
-      content: "+1 234 555-55-55";
-      
-      position: relative;
-      top: 25%;
-      transform: translateX(-100%);
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        
+        position: absolute;
+        left: -170px;
+        top: 25%;
 
-      display: block;
-      width: max-content;
-      padding-right: 12px;
+        opacity: 0;
 
-      color: #fff;
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+  
+        color: #fff;
+  
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
 
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 100;
+      }
     }
   }
 }
