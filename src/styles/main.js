@@ -21,8 +21,5 @@ const checkbox = document.querySelector('#send');
 checkbox.addEventListener('click', checkboxClick, false);
 
 function checkboxClick(event) {
-  const warn = 'Doesn`t work in test version!<br>';
-
-  document.getElementById('output').innerHTML += warn;
   event.preventDefault();
 }
