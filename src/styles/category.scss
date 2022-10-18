@@ -1,0 +1,62 @@
+.category {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 130px;
+    height: 130px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+
+      max-height: 187px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+
+      max-height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    text-decoration: none;
+
+    @include mainTextBig;
+
+    color: $colorText;
+
+    @include onTablet {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+}
