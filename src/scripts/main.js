@@ -13,5 +13,5 @@ const submit = document.querySelector('#form-submit');
 submit.addEventListener('click', submitClick, false);
 
 function submitClick(event) {
-  event.preventDefault();
+  document.getElementById('form').reset();
 }
