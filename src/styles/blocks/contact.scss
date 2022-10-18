@@ -1,0 +1,204 @@
+.contact {
+  font-family: $font;
+  background-color: $c-gray;
+
+  &__title {
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 53px;
+  }
+
+  &__form {
+    @include grid;
+    grid-template-areas: "pn  pn"
+      "email email"
+      "adr adr"
+      "c-i c-i";
+
+    @media (min-width: 551px) {
+      grid-template-areas: "pn  pn pn  pn adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i"
+        "email email email email adr adr adr adr c-i c-i c-i c-i";
+    }
+  }
+
+  &__label {
+
+    & > * {
+      width: 100%;
+      font-family: inherit;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 27px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+    }
+
+    display: block;
+    color: #9fadc2;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+  }
+
+  &__phone-label {
+    position: relative;
+    grid-area: pn;
+    margin-bottom: 24px;
+
+    &:hover > input {
+      color: $blue;
+    }
+
+    &-link {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      color: transparent;
+      position: absolute;
+      bottom: 0;
+      height: 50%;
+    }
+  }
+
+  &__mail-label {
+    position: relative;
+    grid-area: email;
+    margin-bottom: 24px;
+    &:hover > input {
+      color: $blue;
+    }
+
+    &-link {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      color: transparent;
+      position: absolute;
+      bottom: 0;
+      height: 50%;
+    }
+  }
+
+  &__address-label {
+    position: relative;
+    grid-area: adr;
+    margin-bottom: 32px;
+    &:hover > * {
+      color: $blue;
+    }
+
+    &-link {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      color: transparent;
+      position: absolute;
+      top: 15%;
+      height: 50%;
+    }
+  }
+
+  &__address-example {
+    margin: 0;
+    height: 85px;
+    overflow: hidden;
+    resize: none;
+  }
+
+  .container-form {
+    grid-area: c-i;
+
+    & > *:hover {
+      border-color: #ccd0e0;
+    }
+
+    & > *:focus {
+      outline-color: $blue;
+      color: #000;
+    }
+  }
+
+  &__user-input {
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 14px;
+    border: 2px solid transparent;
+    background-color: #f7f8ff;
+
+    &::placeholder {
+      color: #8f99a8;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__address-user {
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    background-color: #f6f8ff;
+    border-radius: 8px;
+    width: 100%;
+    font-family: $font;
+    padding: 14px 17px;
+    resize: none;
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+
+  &__button {
+    background-color: $blue;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 14px;
+    border-radius: 8px;
+    padding: 21px;
+    width: 100%;
+    border: transparent;
+
+    &:hover {
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+  }
+
+  @media (min-width: 550px) {
+    & {
+      padding-bottom: 120px;
+    }
+
+    &__pn-label {
+      grid-row: 1;
+      margin-bottom: 24px;
+    }
+
+    &__mail-label {
+      grid-row: 2;
+      margin-bottom: 0;
+    }
+
+    &__address-label {
+      grid-row: 1 / span 2;
+      margin-bottom: 0;
+    }
+
+    .container-form {
+      grid-row: 1 / span 4;
+    }
+
+    &__title {
+      margin-bottom: 93px;
+    }
+
+    &-form {
+      padding-bottom: 0;
+    }
+  }
+}

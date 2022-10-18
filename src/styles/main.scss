@@ -1,7 +1,178 @@
 @import "utils";
-@import "fonts";
+@import "utils/vars";
+@import "utils/mixins";
 @import "typography";
+@import "blocks/header";
+@import "blocks/menu";
+@import "blocks/about";
+@import "blocks/title";
+@import "blocks/gallery";
+@import "blocks/testimonials.scss";
+@import "blocks/contact.scss";
 
-body {
-  background: $c-gray;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+.page {
+  font-family: "Roboto", sans-serif;
+}
+
+.page__body {
+  background-color: $c-gray;
+
+  &--with-menu {
+    overflow: hidden;
+  }
+
+  @media (max-width: 550px) {
+    background-size: cover;
+    background-position: top center;
+  }
+
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding-bottom: 64px;
+
+    @media (max-width: 550px) {
+      padding-bottom: 104px;
+    }
+  }
+
+  .wrapper {
+    background-image: url(../images/miami.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-bottom: 64px;
+
+    @media (max-width: 550px) {
+      margin-bottom: 104px;
+    }
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding-top: 25px;
+  }
+
+  .page__title {
+    padding: 0;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 80px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    justify-self: flex-end;
+    margin-bottom: 80px;
+
+    &::before {
+      display: block;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: -24px;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 46px;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -1px;
+    }
+  }
+
+  .button {
+    background: $blue;
+    box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  .button-alt {
+    color: $blue;
+    padding: 20px 0;
+    border: 2px solid $blue;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 150px;
+    margin: 0 auto;
+
+    @media (max-width: 550px) {
+      width: 100%;
+    }
+
+    &:hover {
+      color: #fff;
+      background: #005ecc;
+      border-color: #005ecc;
+      box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+    }
+
+    &:active {
+      background: #005ecc;
+      box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+    }
+  }
+
+  .footer {
+    background-image: url(../images/footer-bg.jpg);
+    background-size: cover;
+
+    .container {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 35px;
+      height: 360px;
+
+      @media (max-width: 550px) {
+        height: 206px;
+        padding-bottom: 26px;
+      }
+    }
+
+    &__logo {
+      display: block;
+      @include icon(130px, 76px, "../images/logo.png");
+
+      @media (max-width: 550px) {
+        width: 82px;
+        height: 48px;
+      }
+    }
+  }
+
 }
