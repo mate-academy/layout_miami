@@ -6,7 +6,6 @@
 
   @include onDesktop {
     background-image: url(../images/header_desktop.jpg);
-    max-width: 1260px;
   }
 
   @include onTablet {
@@ -14,6 +13,8 @@
   }
 
   &__content {
+    margin-bottom: 120px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -28,6 +29,19 @@
 
     @include onTablet {
       padding: $headerTopPaddingTablet 0 $headerBottomPaddingTablet;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 0 30px;
+
+    @include onTablet {
+      gap: 0 40px;
     }
   }
 
@@ -70,64 +84,6 @@
         width: $soundIconWidthDesktop;
         height: $soundIconHeightDesktop;
         margin-bottom: 40px;
-      }
-    }
-  }
-
-  &__call {
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, 20%);
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        color: $mainTextColor;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-
-    @include onTablet {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, 50%);
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        color: $mainTextColor;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
       }
     }
   }
