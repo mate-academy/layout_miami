@@ -1,0 +1,130 @@
+.container {
+  padding: $headerTopPadding 20px;
+  margin: 0 auto;
+  max-width: 1020px;
+
+  @include onTablet {
+    padding: 50px 72px;
+  }
+
+  @include onDesktop {
+      padding: 50px 120px;
+  }
+}
+
+.top-actions {
+  display: grid;
+  grid-template-columns: 1fr ($iconGap + 2 * $iconSize);
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    grid-template-columns: 1fr ($iconGapDesk + 2 * $iconSizeDesk);
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.png);
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+
+      &::before {
+        content: '+1 212-535-7710';
+        position: relative;
+        top: 50%;
+        transform: translate(-115%, -50%);
+        
+        display: block;
+        width: max-content;
+        
+        color: #fff;
+        font-family: 'Cinzel', serif;
+        font-size: 16px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 100;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 200px;
+
+    font-family: 'Cinzel';
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5;
+
+    color: #fff;
+    text-align: center;
+
+    @include onTablet {
+      margin-top: 256px;
+
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      margin-top: 200px;
+
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, $iconSize);
+  gap: $iconGap;
+
+  @include onTablet {
+    grid-template-columns: repeat(2, $iconSizeDesk);
+    gap: $iconGapDesk;
+  }  
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    padding-bottom: 0;
+  }  
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+  }
+
+  &--call {
+    background-image: url(../images/call.svg);
+  }
+}
