@@ -8,14 +8,15 @@ window.addEventListener('hashchange', () => {
   };
 });
 
-const checkbox = document.getElementById('button-send');
 const inputs = document.getElementsByClassName('contacts__field');
+const forms = document.getElementById('contacs-form');
 
-checkbox.addEventListener('click', clearInput);
+forms.addEventListener('submit', clearInput);
 
 function clearInput(e) {
+  e.preventDefault();
+
   for (const input of inputs) {
     input.value = '';
   }
-  e.preventDefault();
 }
