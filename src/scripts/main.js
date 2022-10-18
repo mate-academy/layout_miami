@@ -1,8 +1,14 @@
 'use strict';
 
-const form = document.querySelector('.contacts__form');
+document.documentElement.style.setProperty('--scrollbar-width',
+  (window.innerWidth - document.documentElement.clientWidth) + 'px');
 
-form.addEventListener('submit', event => event.preventDefault());
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function handleSubmit(event) {
+  event.preventDefault();
+  form.reset();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
