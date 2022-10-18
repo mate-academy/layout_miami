@@ -4,3 +4,67 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onDeskTop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin phone-container {
+  max-width: 600px;
+  padding: 0 23px;
+}
+
+@mixin tablet-container {
+  max-width: 1020px;
+  padding: 0 72px;
+}
+
+@mixin desktop-container {
+  max-width: 1260px;
+  padding: 0 120px;
+}
+
+@mixin grid {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $mid-column $mid-column;
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    grid-template-columns: 1fr $big-column $big-column;
+    gap: 40px;
+  }
+}
+
+@mixin description-font {
+  font-weight: $thin-font;
+  font-size: $thin-font-size;
+  line-height: 140%;
+
+  color: #fff;
+}
+
+@mixin formfield {
+  font-weight: $thin-font;
+  font-size: 14px;
+  line-height: 20px;
+}
