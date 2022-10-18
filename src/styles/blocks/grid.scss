@@ -1,0 +1,141 @@
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  &--why-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+  }
+
+  &--contact-us {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  &__item {
+
+    &--contact-data {
+      @include onTablet {
+        grid-column: 4 / -1;
+      }
+
+      @include onDesktop {
+        grid-column: 8 / -1;
+      }
+    }
+
+    &--center {
+      grid-column: 1 / -1;
+      width: 100%;
+      position: relative;
+
+      @include onTablet {
+        grid-column: #{($tablet-columns-count / 6) + 1} /
+          #{($tablet-columns-count / 6) * 5 + 1};
+
+      }
+
+      @include onDesktop {
+        grid-column: #{($desktop-columns-count / 3) + 1} /
+          #{($desktop-columns-count / 3) * 2 + 1};
+        justify-self: center;
+      }
+    }
+
+    &--bigger-left {
+      @include onTablet {
+        grid-column: 1 / #{($tablet-columns-count / 3) * 2 + 1};
+      }
+
+      @include onDesktop {
+        grid-column: 1 / #{($desktop-columns-count / 3) * 2 + 1};
+      }
+    }
+
+    &--bigger-right {
+      @include onTablet {
+        grid-column: #{($tablet-columns-count / 3) + 1} / -1;
+      }
+
+      @include onDesktop {
+        grid-column: #{($desktop-columns-count / 3) + 1} / -1;
+      }
+    }
+
+    &--lower-right {
+      @include onTablet {
+        grid-column: #{($tablet-columns-count / 3) * 2 + 1} / -1;
+      }
+
+      @include onDesktop {
+        grid-column: #{($desktop-columns-count / 3) * 2 + 1} / -1;
+      }
+    }
+
+    &--lower-left {
+      @include onTablet {
+        grid-column: 1 / #{($tablet-columns-count / 3)  + 1} ;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / #{($desktop-columns-count / 3) + 1} ;
+      }
+    }
+
+    &--equal-left {
+      @include onTablet {
+        grid-column: 1 / #{($tablet-columns-count / 2)  + 1} ;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / #{($desktop-columns-count / 2)} ;
+      }
+    }
+
+    &--equal-right {
+      @include onTablet {
+        grid-column: #{($tablet-columns-count / 2)  + 1} / -1 ;
+      }
+
+      @include onDesktop {
+        grid-column: #{($desktop-columns-count / 2)} / -3;
+      }
+    }
+  }
+}

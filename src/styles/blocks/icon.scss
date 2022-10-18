@@ -1,0 +1,80 @@
+.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--call {
+    background-image: url("../images/phone.svg");
+    text-decoration: none;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        color: $text-color;
+        position: relative;
+        display: block;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+
+        width: max-content;
+        padding-right: 12px;
+
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none;
+
+        transition: opacity 2s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet {
+      &:hover &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu-opener {
+    background-image: url("../images/menu.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 12px;
+    align-self: center;
+
+    @include onTablet {
+      background-image: url("../images/menu-big.svg");
+      height: 18px;
+    }
+
+    &:hover {
+      background-image: url("../images/menu-hover.svg");
+      transform: rotate(90deg);
+
+      @include onTablet {
+        background-image: url("../images/menu-big-hover.svg");
+        transform: rotate(0);
+        height: 18px;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
