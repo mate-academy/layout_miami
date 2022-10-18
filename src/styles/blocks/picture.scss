@@ -1,0 +1,81 @@
+.picture {
+  &__photo-shell {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    &--photos-3 {
+      @include onTablet {
+        height: 284px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+      }
+    }
+
+    &--hidden {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--position-left {
+      object-position: 20%;
+    }
+
+    &--position-right {
+      object-position: right;
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__paragraph {
+    margin: 0;
+
+    &--color-red {
+      font-weight: 700;
+      color: $colorRed;
+    }
+  }
+}
