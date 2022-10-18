@@ -1,0 +1,50 @@
+.details {
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__photo-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+    }
+
+    @include onTablet {
+      height: 188px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: $animationTime;
+    }
+  }
+}
