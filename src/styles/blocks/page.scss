@@ -1,0 +1,84 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $transition-time;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__menu--open {
+    transform: translateX(0%);
+    transition: transform $transition-time;
+  }
+
+  &__main {
+    background-color: $color-of-links;
+  }
+
+  &__section {
+    margin-bottom: 90px;
+
+    @include onTablet {
+      margin-bottom: 130px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 160px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 120px;
+
+      @include onDesktop {
+        padding-bottom: 180px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 48px;
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    text-align: center;
+
+    letter-spacing: -1.5px;
+
+    color: $text-main-color;
+
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+  }
+}
