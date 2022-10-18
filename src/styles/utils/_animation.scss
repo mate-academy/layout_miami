@@ -1,0 +1,37 @@
+$fade:
+  fade-in-right (100%, 0, 0) (0, 0, 0),
+  fade-out-right (0, 0, 0) (-100%, 0, 0),
+  fade-in-left (-100%, 0, 0) (0, 0, 0),
+  fade-out-left (0, 0, 0) (-100%, 0, 0),
+  fade-in-top (0, 0, 0) (0, 100%, 0),
+  fade-out-top (0, 0, 0) (0, -100%, 0),
+  fade-in-bottom (0, 100%, 0) (0, 0, 0),
+  fade-out-bottom (0, 0, 0) (0, 100%, 0);
+
+@each $name, $start, $end in $fade {
+  @keyframes #{$name} {
+    0% {
+      transform: translate3d($start);
+    }
+
+    100% {
+      transform: translate3d($end);
+    }
+  }
+}
+
+$fadeInOpacity:
+  fadein 0 1,
+  fadeout 1 0;
+
+@each $name, $start, $end in $fadeInOpacity {
+  @keyframes #{$name} {
+    0% {
+      opacity: $start;
+    }
+
+    100% {
+      opacity: $end;
+    }
+  }
+}

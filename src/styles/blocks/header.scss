@@ -1,0 +1,117 @@
+.header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--padding-X) var(--padding-Y);
+  height: var(--header-height);
+  background: url("../../src/images/photos/hero.png") no-repeat center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: 130px;
+    height: 16px;
+  }
+
+  &__icons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  &__icon {
+    display: block;
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__phone {
+    background-image: url("../../src/images/phone_icon_black.svg");
+
+    &:hover {
+      &::after {
+        display: inline-block;
+        content: "+1 234 555-55-55";
+        color: $primary;
+        @include typography($weight-7, $size-12, $size-16);
+        width: max-content;
+        transform: translateX(-100%);
+        padding-right: 12px;
+      }
+    }
+  }
+
+  &__menu {
+    position: relative;
+    z-index: 10;
+
+    &:hover {
+      background-image: url("../../src/images/sound_wave_hover.svg");
+    }
+
+    &--open {
+      background-image: url("../../src/images/menu_icon_black.svg");
+    }
+
+    &--close,
+    &--close:hover {
+      background-image: url("../../src/images/menu_cross_black.svg");
+    }
+  }
+
+  &__title-wrapper {
+    user-select: none;
+  }
+
+  &__sound-wave {
+    display: inline-block;
+    width: 32px;
+    height: 27px;
+  }
+
+  &__title {
+    @include typography($weight-8, $size-32, $size-32);
+  }
+
+  @media (min-width: $tab) {
+    padding: var(--padding-X_tab) var(--padding-Y_tab);
+    height: var(--header-height_tab);
+
+    &__sound-wave {
+      content: url("../../src/images/sound_waves.svg");
+      width: 63px;
+      height: 76px;
+    }
+
+    &__title {
+      @include typography($weight-8, $size-40, $size-40);
+    }
+
+  }
+
+  @media (min-width: $desktop) {
+    padding: var(--padding-X_desktop) var(--padding-Y_desktop);
+    height: var(--header-height_desktop);
+
+    &__title {
+      @include typography($weight-8, $size-48, $size-48);
+    }
+  }
+}

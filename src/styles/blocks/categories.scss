@@ -1,0 +1,78 @@
+.categories {
+  margin: 0 auto;
+  width: 100%;
+  animation: fade-in-left 1s ease-out;
+  display: grid;
+  justify-content: center;
+  column-gap: 24px;
+
+  grid-template-areas: "area1 area2"
+    "area3 area3"
+    "area4 area5"
+    "area6 area6"
+    "area7 area8"
+    "area9 area9"
+    "area10 area10";
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+
+    border-radius: 10px;
+    transition: transform 1s ease;
+
+    &:hover {
+      transform: scale(104%);
+    }
+
+    &:hover + img {
+      transform: scale(90%);
+    }
+  }
+
+  @for $index from 1 through 10 {
+    & > :nth-child(#{$index}) {
+      grid-area: area#{$index};
+    }
+  }
+
+  &__title {
+    margin-top: 15px;
+    margin-bottom: 35px;
+
+    @include typography($weight-7, $size-16, $size-22);
+  }
+
+  &__btn {
+    width: 280px;
+    justify-self: center;
+  }
+
+  @media (min-width: $tab) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-areas: "area1 area1 area2"
+      "area1 area1 area2"
+      "area3 area3 area3"
+      "area4 area4 area5"
+      "area4 area4 area5"
+      "area6 area6 area6"
+      "area7 area8 area8"
+      "area7 area8 area8"
+      "area9 area9 area9"
+      "area10 area10 area10";
+
+    // replacing img
+    @for $index from 1 through 6 {
+      &__img:nth-of-type(#{$index}) {
+        content: url("../../src/images/photos/product#{$index}.png");
+      }
+    }
+
+    &__title {
+      @include typography($weight-7, $size-24, $size-34);
+      transition: font-size 300ms ease;
+    }
+  }
+}
