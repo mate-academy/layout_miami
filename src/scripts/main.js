@@ -10,10 +10,19 @@ window.addEventListener('hashchange', () => {
 // I've added the fuction below but it dont
 // send a form instead to prevent reload
 
+// function stopDefAction(evt) {
+//   evt.preventDefault();
+// }
+
+// document.getElementById('form').addEventListener(
+//   'submit', stopDefAction, false
+// );
+
+const form = document.getElementById('form');
+
+form.addEventListener('submit', stopDefAction, false);
+
 function stopDefAction(evt) {
   evt.preventDefault();
+  form.reset();
 }
-
-document.getElementById('form').addEventListener(
-  'submit', stopDefAction, false
-);
