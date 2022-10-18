@@ -1,15 +1,10 @@
 'use strict';
 
 const toggler = document.querySelector('.toggler');
-const closer = document.querySelector('.closer');
 const menu = document.querySelector('.burger-menu');
 
 // ждём клики на toggler
 toggler.addEventListener('click', function() {
-  menu.classList.toggle('burger-menu--hidden');
-});
-
-closer.addEventListener('click', function() {
   menu.classList.toggle('burger-menu--hidden');
 });
 
@@ -18,5 +13,6 @@ window.addEventListener('hashchange', () => {
     document.body.classList.add('wrapper--with-menu');
   } else {
     document.body.classList.remove('wrapper--with-menu');
+    menu.classList.toggle('burger-menu--hidden');
   }
 });
