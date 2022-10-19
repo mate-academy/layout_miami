@@ -8,22 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const nameTextbox = document.getElementById('name__text-box');
+const form = document.getElementById('form');
 
-nameTextbox.addEventListener('keypress', checkName, false);
-
-const emailTextbox = document.getElementById('email__text-box');
-
-emailTextbox.addEventListener('keypress', checkName, false);
-
-const textareaTextbox = document.getElementById('textarea__text-box');
-
-textareaTextbox.addEventListener('keypress', checkName, false);
-
-function checkName(evt) {
-  const charCode = evt.charCode;
-
-  if (charCode !== 0) {
-    evt.preventDefault();
-  }
-}
+form.addEventListener('submit', function handleSubmit(event) {
+  event.preventDefault();
+  form.reset();
+});
