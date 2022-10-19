@@ -1,0 +1,91 @@
+.detail {
+  &__photos {
+    display: flex;
+    margin-bottom: 16px;
+    width: 100%;
+    gap: 26px;
+  }
+
+  &__photo-container {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    width: 130px;
+    max-width: 100%;
+    height: 130px;
+    max-height: 187px;
+    flex-grow: 1;
+    overflow: hidden;
+    transition: transform $animation-time;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    @include onTablet() {
+      &:first-child {
+        flex-grow: 5;
+      }
+
+      &:last-child {
+        flex-grow: 2;
+      }
+    }
+
+    @include onTablet() {
+      height: 187px;
+      max-height: 320px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop() {
+      height: 320px;
+    }
+  }
+
+  &:nth-last-child(2) &__photo-container {
+    @include onTablet() {
+      &:first-child {
+        flex-grow: 2;
+      }
+
+      &:last-child {
+        flex-grow: 5;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__content {
+    max-width: 672px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    &__title {
+      margin-bottom: 8px;
+
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+
+      &--inter {
+        font-family: $font-inter;
+      }
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+    max-width: 324px;
+  }
+}
