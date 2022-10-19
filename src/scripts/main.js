@@ -8,10 +8,11 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submitButton = document.getElementById('submit-button');
+const form = document.getElementById('form')
 
-function submitReloadPrevent(event) {
+function submitForm(event) {
   event.preventDefault();
+  form.reset();
 }
 
-submitButton.addEventListener('click', submitReloadPrevent);
+form.addEventListener('submit', submitForm);
