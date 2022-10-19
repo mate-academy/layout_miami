@@ -7,6 +7,9 @@
   //   grid-template-columns: repeat(6, 1fr);
   //   column-gap: 24px;
   // }
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
@@ -24,6 +27,13 @@
       @for $end from 1 through 12 {
         &--#{$start}-#{$end } {
           grid-column: #{$start} / #{$end +1};
+        }
+
+        &--desktop--#{$start}-#{$end } {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end +1};
+          }
+
         }
       }
     }
