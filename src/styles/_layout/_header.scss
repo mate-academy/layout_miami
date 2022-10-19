@@ -1,0 +1,76 @@
+.header {
+  height: 100vh;
+  padding: 40px 0 94px;
+
+  box-sizing: border-box;
+
+  background-image: url(../images/header_mobile.png);
+  @extend %background-image;
+
+  @include onTablet() {
+    background-image: url(../images/header_tablet.png);
+    padding: 52px 0 40px;
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/header_desktop.png);
+    padding: 52px 0 64px;
+  }
+
+  &__call {
+    position: relative;
+
+    text-decoration: none;
+
+    &:hover {
+      &::before {
+        width: 139px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100% ,-50%);
+        padding-right: 12px;
+
+        content: "+1 234 555-55-55";
+        color: $darkGray;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &__tittle {
+    color: $darkGray;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    &::before {
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      display: block;
+
+      content: "";
+      background-image: url(../images/title-decoration_mobile.svg);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+
+        background-image: url(../images/title-decoration_tablet.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
