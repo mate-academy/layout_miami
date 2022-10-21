@@ -1,13 +1,15 @@
-# Miami landing page
 
-In this task, you will learn how to implement a landing page. To do that:
+In this task, I created "Miami" landing page with help of knowlage HTML, SCSS, Java Script.
+- Every bloks of HTML code has own SCSS file in 'blocks' folder.
+- I used Variables and Mixins in each file of styles.
+- The speed of animations on the page are same.
+- Placeholders in the forms help you what need to enter.
+- There is no horizontal scrolling when you use mobile devices.
+- The links in the top menus lead to the corresponding blocks of page.
+- All buttons, menu items and forms work correct.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+- [DEMO LINK](https://M-Grisha.github.io/layout_miami/) 
+
+- [THE DESIGN](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A121) 
+
+- [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
