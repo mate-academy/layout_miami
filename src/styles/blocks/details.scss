@@ -45,42 +45,56 @@
     }
   }
 
+  &__images--reverse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    @include onTablet {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
   &__image {
     transition: transform 0.5s;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     &--big {
-      width: 130px;
-      height: 130px;
+      grid-column-start: 1;
+      grid-column-end: 2;
+
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
 
-      @include onTablet {
-        width: 392px;
-        height: 187px;
-      }
+    &--big-reverse {
+      grid-column-start: 2;
+      grid-column-end: 3;
 
-      @include onDesktop {
-        width: 672px;
-        height: 321px;
-      }
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     &--small {
-      width: 130px;
-      height: 130px;
+      grid-column-start: 2;
+      grid-column-end: 3;
+
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
 
-      @include onTablet {
-        width: 184px;
-        height: 187px;
-      }
+    &--small-reverse {
+      grid-column-start: 1;
+      grid-column-end: 2;
 
-      @include onDesktop {
-        width: 324px;
-        height: 321px;
-      }
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
