@@ -1,8 +1,11 @@
 .page {
+  scroll-behavior: smooth;
+
   &__body {
-    font-family: "Poppins", sans-serif;
+    font-family: $fontPrimary;
     font-size: 16px;
     line-height: 140%;
+    background-color: $colorBackgroundPrimary;
     color: $colorPrimary;
 
     &--with-menu {
@@ -21,6 +24,58 @@
 
     &:target {
       transform: translateX(0);
+    }
+  }
+
+  &__main {
+    --footerHeight: 200px;
+
+    min-height: calc(100vh - var(--footerHeight));
+    padding: 60px 0 120px;
+
+    & > :not(:last-child) {
+      margin-bottom: 80px;
+    }
+
+    @include onTablet {
+      --footerHeight: 480px;
+
+      & > :not(:last-child) {
+        margin-bottom: 120px;
+      }
+    }
+
+    @include onDesktop {
+      --footerHeight: 555px;
+
+      & > :not(:last-child) {
+        margin-bottom: 140px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 48px;
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+
+    &--contact-us {
+      @include onDesktop {
+        font-size: 48px;
+        font-weight: 700;
+      }
     }
   }
 }
