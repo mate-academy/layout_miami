@@ -1,0 +1,48 @@
+.location {
+  &__images {
+    @include useGrid(2, 20px);
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      @include useGrid(12, 24px);
+      margin-bottom: 24px;
+    }
+  }
+
+  &__wrapper-image {
+    position: relative;
+
+    max-height: 256px;
+    overflow: hidden;
+
+    &::after {
+      display: block;
+      padding-top: 100%;
+      content: "";
+    }
+
+    transition: transform 0.25s linear;
+
+    &--rotate-right:hover {
+      transform: rotate(5deg);
+    }
+
+    &--rotate-left:hover {
+      transform: rotate(-5deg);
+    }
+  }
+
+  &__image {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__description-link {
+    font-weight: 700;
+    color: $blue-color;
+  }
+}
