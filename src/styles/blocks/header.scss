@@ -28,8 +28,7 @@
   }
 
   &__phone {
-
-    &:hover:before {
+    &::before {
       content: "+1 234 555-55-55";
       position: absolute;
       transform: translateX(-100%) translateY(50%);
@@ -41,6 +40,10 @@
       font-size: 12px;
       line-height: 16px;
 
+      opacity: 0;
+
+      transition: opacity 0.3s;
+
       @include onTablet {
         content: "";
       }
@@ -48,6 +51,10 @@
       @include onPhone {
         content: "";
       }
+    }
+
+    &:hover:before {
+      opacity: 1;
     }
   }
 
