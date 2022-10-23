@@ -1,7 +1,174 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+.page {
+  font-family: "Cinzel", serif;
 
-body {
-  background: $c-gray;
+  &__body {
+    margin: 0;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+$colourRed: #d12d35;
+
+.container {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 85px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+  
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+  
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+  --space-width: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--space-width) var(--icon-width);
+  align-items: center;
+
+  @include onTablet {
+    --icon-width: 24px;
+    --space-width: 63px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 288px;
+
+    @include onTablet {
+      padding: 50px 0 456px;
+    }
+  
+    @include onDesktop {
+      padding: 17px 0 482px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        white-space: pre-wrap;
+        text-align: end;
+        content: "The Met Avenue\0a+1 212-535-7710\0aThe Met Cloisters\0a+1 212-923-3700";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop() {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.menu {
+  background-color: $colourRed;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0;
+
+    @include onTablet {
+      padding: 50px 0;
+    }
+  }
 }
