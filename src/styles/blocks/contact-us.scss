@@ -18,10 +18,21 @@
     & > span {
       @include font-style($font-size: 14px, $color: $lightGrey);
     }
+  }
 
-    & > p {
-      margin-top: 8px;
-      @include font-style($line-height: 27px, $color: $mainGrey);
+  &__link {
+    display: block;
+    margin-top: 3px;
+    padding: 5px 0;
+    transition: color $animationTime;
+
+    @include font-style(
+      $line-height: 27px,
+      $color: $mainGrey
+    );
+
+    &:hover {
+      color: $mainBlue;
     }
   }
 
@@ -41,10 +52,13 @@
 
   &__form > input:not(input:last-child),
   &__form > textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 280px;
     background: #f7f8ff;
     padding-left: 17px;
     border: 2px solid $lightGrey2Transparent;
-    transition: 200ms border-color;
+    transition: border-color $animationTime;
     outline: none;
     @include font-style(
       $font-size: 14px,
@@ -72,12 +86,10 @@
   }
 
   &__form-name {
-    width: 280px;
     height: 48px;
   }
 
   &__form-email {
-    width: 280px;
     height: 48px;
     margin-top: 16px;
 
@@ -85,29 +97,29 @@
 
   &__form-message {
     font-family: inherit;
-    width: 280px;
     height: 144px;
     margin-top: 16px;
     padding-top: 14px;
   }
 
   &__form-submit {
+    box-sizing: border-box;
     margin-top: 32px;
-    width: 280px;
+    width: 100%;
+    min-width: 280px;
     height: 56px;
     background: $mainBlue;
     box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+    cursor: pointer;
+    transition: $animationTime;
     @include font-style(
       $font-weight: 700,
       $line-height: 14px,
       $color: #fff
     );
-    cursor: pointer;
-    transition: 200ms;
 
     &:hover {
       background: $darkBlue;
-      border: 2px solid $darkBlue;
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
     }
   }

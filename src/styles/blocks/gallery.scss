@@ -3,6 +3,9 @@
   &__item {
     box-sizing: border-box;
     margin-top: 32px;
+    @include on-desktop() {
+      margin-top: 40px;
+    }
   }
 
   &__image {
@@ -12,15 +15,40 @@
     border-radius: 8px;
     object-fit: cover;
     object-position: 50%;
+    transition: transform $animationTime;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+      transform: scale(1.04);
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 100%;
+    max-height: 256px;
   }
 
   &__description {
+    margin-top: 16px;
+
+    @include on-desktop() {
+      margin-top: 24px;
+    }
     @include font-style($line-height: 27px);
   }
 
   &__place-link {
     font-weight: 700;
     color: $mainBlue;
+    text-decoration: none;
+  }
+
+  &__place-index {
+    display: block;
+    @include on-desktop() {
+      display: inline;
+    }
   }
 
   &__view-all {
@@ -28,7 +56,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     width: 280px;
     height: 56px;
     border: 2px solid $mainBlue;
@@ -46,8 +73,8 @@
     }
 
     & > a {
-      color: inherit;
       width: 85px;
+      color: inherit;
       text-align: center;
       text-decoration: none;
       padding: 21px 41px;
@@ -58,6 +85,16 @@
       border: 2px solid $darkBlue;
       box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
       color: #fff;
+    }
+  }
+
+  &__view-all-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include on-desktop {
+      width: max-content;
     }
   }
 }
