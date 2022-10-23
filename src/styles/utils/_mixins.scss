@@ -4,3 +4,46 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin hoverFlex($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover > img {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin textSize($size) {
+  font-size: $size;
+  line-height: $size;
+}
+
+@mixin top-action {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: flex-start;
+  gap: 30px;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+@mixin fontSize($size) {
+  font-size: $size;
+  line-height: $size;
+}
