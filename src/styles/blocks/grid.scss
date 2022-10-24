@@ -1,0 +1,62 @@
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onPhone {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  // &__tablet {
+  //   display: grid;
+
+  //   @include onTablet {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  // }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+
+          @include onTablet {
+            grid-column: unset;
+          }
+
+          @include onPhone {
+            grid-column: unset;
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--phone-#{$start}-#{$end} {
+          @include onPhone {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
