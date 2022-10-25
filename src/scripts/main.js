@@ -16,7 +16,7 @@ const navClose = document.querySelector('.nav__link-close');
 
 navClose.addEventListener('click', function() {
   menu.classList.remove('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 // menu logo options
@@ -24,7 +24,7 @@ const logo = document.querySelector('.nav__logo-close');
 
 logo.addEventListener('click', function() {
   menu.classList.remove('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 // submit button
@@ -39,7 +39,7 @@ const closemenu = document.querySelector('.nav__menu-openner');
 
 closemenu.addEventListener('click', function() {
   menu.classList.toggle('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 // munu hiden options
@@ -50,20 +50,20 @@ const navlinkFour = document.querySelector('.nav__link-four');
 
 navlinkOne.addEventListener('click', function() {
   menu.classList.toggle('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 navlinkTwo.addEventListener('click', function() {
   menu.classList.toggle('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 navlinkThree.addEventListener('click', function() {
   menu.classList.toggle('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });
 
 navlinkFour.addEventListener('click', function() {
   menu.classList.toggle('nav-hidden');
-  body.classList.remove('page__body--with-menu'); // вот это
+  body.classList.remove('page__body--with-menu');
 });

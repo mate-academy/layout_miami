@@ -52,11 +52,16 @@
     background-size: cover;
     cursor: pointer;
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+    @media (min-width:744px) {
+      width: 24px;
+      height: 24px;
+    }
+
   }
 
-  &__call:hover::before {
+  &__call:before {
     content: "+1 234 555-55-55";
     position: absolute;
     left: -150px;
@@ -69,19 +74,25 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: $base-color;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+
+  &__call:hover::before {
+    opacity: 1;
   }
 
   &__menu-openner {
-    margin-top: 2px;
+    // margin-top: 2px;
     height: 18px;
     width: 24px;
     display: block;
     background: url(./../images/menu.svg) center center no-repeat;
-    //z-index: 5;
     border: none;
     cursor: pointer;
     @include onTablet() {
-      margin-top: 4;
+      margin-top: 4px;
       height: 18px;
       width: 24px;
       background-size: cover;
@@ -89,7 +100,7 @@
   }
 
   &__menu-openner:hover {
-    margin-top: 2px;
+    // margin-top: 2px;
     height: 18px;
     width: 24px;
     background: url(./../images/menu_hover.svg) center center no-repeat;
