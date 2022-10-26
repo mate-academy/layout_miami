@@ -1,5 +1,13 @@
 'use strict';
 
+const submit = document.querySelector('.formsubmit');
+
+submit.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  submit.reset();
+});
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
