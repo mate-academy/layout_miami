@@ -2,23 +2,21 @@
   display: block;
 
   @include onTablet {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(6, 1fr);
+    @include useGrid (6,24px);
   }
 
   @include onDesktop {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(12, 1fr);
+    @include useGrid (12,24px);
   }
   &__item {
 
     @include onDesktop {
       @for $start from 1 through 12 {
         @for $end from $start through 12 {
-          &--desktop-#{$start}-#{$end} {
-            grid-column: #{$start} / #{$end + 1};
+          @include onDesktop {
+            &--desktop-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
       }
@@ -27,8 +25,10 @@
     @include onTablet {
       @for $start from 1 through 6 {
         @for $end from $start through 6 {
-          &--tablet-#{$start}-#{$end} {
-            grid-column: #{$start} / #{$end + 1};
+          @include onTablet {
+            &--tablet-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
           }
         }
       }
