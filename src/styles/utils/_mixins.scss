@@ -1,9 +1,12 @@
-// @mixin hover($_property, $_toValue) {
-//   transition: #{$_property} 0.3s;
-//   &:hover {
-//     #{$_property}: $_toValue;
-//   }
-// }
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s ease-in-out;
+
+  @include onDesktop {
+    &:hover {
+      #{$_property}: $_toValue;
+    }
+  }
+}
 
 @mixin onDesktop {
   @media (min-width: 1024px) {
@@ -25,7 +28,7 @@
 
 @mixin useGrid ($columnCount, $gap) {
   display: grid;
-  gap: $gap;
+  column-gap: $gap;
   grid-template-columns: repeat($columnCount, 1fr);
 }
 

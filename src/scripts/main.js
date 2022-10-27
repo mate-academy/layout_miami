@@ -7,3 +7,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--no-scroll');
   }
 });
+
+const form = document.querySelector('#contact-form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+});
