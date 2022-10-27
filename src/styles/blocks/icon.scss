@@ -1,4 +1,6 @@
 .icon {
+  position: relative;
+
   display: block;
   width: 100%;
   padding-bottom: 100%;
@@ -6,6 +8,33 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $darkGrey;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &--menu {
     background-image: url(../images/menu.svg);
@@ -20,7 +49,6 @@
   }
 
   &--cross {
-    grid-column: - 2 / - 1;
     background-image: url(../images/cross.svg);
   }
 }
