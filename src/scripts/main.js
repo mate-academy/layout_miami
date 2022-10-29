@@ -7,10 +7,3 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
-
-
-  document.addEventListener('submit', Event => {
-    resetFunction();
-    Event.preventDefault();
-  });
-
