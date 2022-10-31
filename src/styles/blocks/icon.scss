@@ -1,0 +1,62 @@
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 10px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      transform: rotate(180deg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    grid-column-start: 3;
+    background-image: url(../images/cross_dark.svg);
+  }
+
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-right: 12px;
+
+      transition: opacity 0.3s;
+
+      display: block;
+
+      width: max-content;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &:hover &__tooltip {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
