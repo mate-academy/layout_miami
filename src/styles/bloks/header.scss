@@ -1,0 +1,138 @@
+.header {
+  display: block;
+  height: 100vh;
+  background: url(./../images/header__320.png) left top no-repeat;
+  background-size: cover;
+  @include onTablet() {
+    background: url(./../images/header__720.png) center top no-repeat;
+    background-size: cover;
+  }
+
+  @include onDesktop() {
+    background: url(./../images/header__1200.png) center top no-repeat;
+    background-size: cover;
+  }
+
+  &__container {
+    @include onMob-HeaderPading();
+    height: 100%;
+    @include flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include onTablet() {
+      @include onTablet-HeaderPading();
+    }
+    @include onDesktop() {
+      @include onDesktop-HeaderPading();
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    @include logoMobSize();
+    background-size: cover;
+    @include onTablet() {
+      @include logoTabletSize();
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &__container {
+      display: flex;
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    display: block;
+    background: url(./../images/phone.svg) center center no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    @media (min-width:744px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (min-width:744px) {
+    &__call:before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      left: -150px;
+      top: 5px;
+      width: 150px;
+      height: 16px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $base-color;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &__call:hover::before {
+    opacity: 1;
+  }
+
+  &__menu-openner {
+    height: 18px;
+    width: 24px;
+    display: block;
+    background-image: url(./../images/menu.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-image 0.15s linear;
+    @include onTablet() {
+      margin-top: 4px;
+      height: 18px;
+      width: 24px;
+      background-size: cover;
+    }
+  }
+
+  &__menu-openner:hover {
+    background-image: url(./../images/menu_hover.svg);
+  }
+
+  &__h1 {
+    position: relative;
+    flex-basis: 100%;
+    align-self: flex-end;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $base-color;
+    text-align: left;
+    @include onTablet() {
+      text-align: left;
+      font-size: 40px;
+    }
+
+    &::before {
+      content: url(./../images/h1_before_320.png);
+      position: absolute;
+      top: -35px;
+      @include onTablet() {
+        content: url(./../images/h1_before_720.png);
+        position: absolute;
+        top: -85px;
+        height: 76px;
+        width: 63px;
+      }
+    }
+  }
+}

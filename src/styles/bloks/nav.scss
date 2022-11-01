@@ -1,0 +1,104 @@
+.nav {
+  @include onMob-HeaderPading();
+  display: none;
+  height: 100vh;
+  @include flex;
+  align-content: flex-start;
+  align-self: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background-color: $nav-bg;
+  transition: left 0.3s;
+  transition-timing-function: ease-in-out;
+  @include onTablet() {
+    @include onTablet-HeaderPading();
+  }
+
+  @include onDesktop() {
+    @include onDesktop-HeaderPading();
+  }
+
+  &__logo-img {
+    display: inline-block;
+    @include logoMobSize();
+    margin-bottom: 54px;
+
+    @include onTablet() {
+      @include logoTabletSize();
+    }
+
+    @include onDesktop() {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__list {
+    display: block;
+    flex-basis: 100%;
+    align-items: flex-start;
+    width: 50%;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $base-color;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+  }
+
+  &__link:hover {
+    border-bottom: 2px solid $base-color;
+  }
+
+  &__link-tel {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__link-order {
+    padding-bottom: 8px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    border-bottom: 2px solid $base-color;
+  }
+
+  &-hidden {
+    // display: block;
+    left: 0%;
+    transition-timing-function: ease-in-out;
+  }
+  &__menu-openner {
+    display: inline-block;
+    margin-top: 2px;
+    height: 21px;
+    width: 21px;
+
+    background: url(./../images/close.svg) center center no-repeat;
+    border: none;
+    cursor: pointer;
+    @include onTablet() {
+      height: 21px;
+      width: 21px;
+      background-size: cover;
+    }
+  }
+
+  &__with-menu {
+    overflow: hidden;
+  }
+}
