@@ -1,4 +1,4 @@
-# Miami landing page
+# BOSE landing page - [Demo](https://yegorkochetkov.github.io/layout_bose/)
 
 In this task, you will learn how to implement a landing page. To do that:
 
