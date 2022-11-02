@@ -1,0 +1,99 @@
+.header {
+  position: relative;
+  height: 100vh;
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 25px;
+  overflow-x: hidden;
+  
+
+  &__top-panel {
+    width: 80%;
+    max-width: 1260px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    justify-items: center;
+    align-items: center;
+
+    color: $white;
+  }
+
+  &__burger-menu {
+    justify-self: start;
+
+    &-toggler::before {
+      @include headerIcon("../images/toggle_on.svg");
+      transition: background-image 0.2s;
+    }
+
+    &-toggler:hover::before {
+      @include headerIcon("../images/toggle_off.svg");
+    }
+  }
+
+  &__tel {
+    justify-self: end;
+
+    &-button {
+      @include headerIcon("../images/icon-phone.svg");
+      font-size: 12px;
+      font-weight: 700;
+      color: $white;
+      transition: content 2s;
+
+      &::before {
+        position: relative;
+        top: -100px;
+        right: 110px;
+        z-index: -1;
+        white-space: nowrap;
+        content: "+1 234 555-55-55";
+        transition: top 1s, z-index 1s;
+      }
+
+      &:hover::before {
+        z-index: 0;
+        top: 6px;
+
+        @media (max-width: $breakPointMobile) {
+          z-index: -1;
+        }
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 50px;
+    color: $white;
+    font-size: 80px;
+    line-height: 80px;
+    font-weight: 700;
+
+    @media (max-width: $breakPointMobile) {
+      left: 20px;
+      font-size: 46px;
+      line-height: 40px;
+    }
+
+    @media (max-height: $breakPointMobile ) {
+      left: 20px;
+      font-size: 46px;
+      line-height: 40px;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      position: relative;
+      bottom: 24px;
+      background-color: $white;
+      width: 40px;
+      height: 2px;
+      border-radius: 1px;
+    }
+  }
+}
