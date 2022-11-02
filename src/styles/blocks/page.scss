@@ -1,7 +1,52 @@
 .page {
   font-family: "Inter", Helvetica, sans-serif;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    color: $color-primary;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__section-title {
+    margin: 0 0 48px;
+    font-size: 32px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+    
+    @include onTablet {
+      margin-bottom: 64px;
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
   }
 }

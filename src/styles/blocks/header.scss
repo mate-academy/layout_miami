@@ -1,84 +1,36 @@
 .header {
   height: 100vh;
-  display: flex;
-  justify-content: center;
   background-size: cover;
   background-position: 35% top;
-  background-image: url(/images/photos/header-image-small.png);
+  background-image: url("/images/photos/header-image-small.png");
   color: $color-primary;
- 
+
   @include onTablet {
     background-position: center;
   }
 
-  &__container {
-    flex-grow: 1;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 40px 20px 94px;
-
-    @include onTablet {
-      padding: 52px 72px 40px;
-    }
-
-    @include onDesctop {
-      max-width: 1024px;
-      padding: 52px 40px 64px;
-    }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__icon-container {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-
-    @include onTablet {
-      gap: 40px;
-    }
-  }
-
-  &__menu-opener {
-    background-image: url(/images/menu-open.svg);
-
-    &:hover {
-      background-image: url(/images/menu-hover.svg);
-    }
-
-  }
-
   &__call {
-    background-image: url(/images/call.svg);
     text-decoration: none;
+    position: relative;
 
-    &:hover {
-      &::before {
-        content: "+1 234 555-55-55";
-        opacity: 0;
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        margin-left: -12px;
-        display: block;
-        width: max-content;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 133%;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: $color-primary;
+    &:hover::before {
+      content: "+1 234 555-55-55";
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      margin-left: -12px;
+      display: block;
+      width: max-content;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 133%;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $color-primary;
     
-        @include onDesctop {
-          opacity: 1;
-        }
+      @include onDesktop {
+        opacity: 1;
       }
     }
   }
@@ -92,19 +44,18 @@
     letter-spacing: -1.5px;
 
     &::before {
-      display: block;
       content: "";
+      display: block;
       height: 27px;
       width: 32px;
       margin-bottom: 16px;
       background-image: url(/images/title-before.svg);
       background-position: center;
       background-size: contain;
+      background-repeat: no-repeat;
 
       @include onTablet {
-        content: "";
         background-image: url(/images/title-before--big.svg);
-        background-repeat: no-repeat;
         height: 70px;
         width: 60px;
         margin-bottom: 32px;
@@ -115,7 +66,7 @@
       font-size: 40px;
     }
 
-    @include onDesctop {
+    @include onDesktop {
       font-size: 48px;
     }
   }
