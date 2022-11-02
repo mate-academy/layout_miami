@@ -1,0 +1,57 @@
+.menu {
+  background-color: $background-color;
+  height: 100vh;
+  overflow-y: auto;
+  &__item {
+    list-style: none;
+    margin: 0 0 32px 40px;
+    @include font-bold;
+    font-size: 22px;
+    line-height: 22px;
+    color: $primary-text;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &:last-child {
+      font-size: 16px;
+      line-height: 27px;
+      position: relative;
+      &::after {
+        content: "call to order";
+        @include font-bold;
+        font-size: 12px;
+        line-height: 16px;
+        position: absolute;
+        top: 27px + 16px;
+        left: 0px;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -10px;
+      height: 2px;
+      background-color: $primary-text;
+      @include transition-vendor($transition);
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 2px;
+      background-color: $primary-text;
+    }
+  }
+}
