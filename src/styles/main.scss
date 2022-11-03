@@ -1,7 +1,546 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 600px) and (max-width: 1019px) {
+    @content;
+  }
 
-body {
-  background: $c-gray;
+}
+
+@mixin onBigScrin {
+  @media (min-width: 1020px) /*and (max-width: 1260px)*/ {
+    @content;
+  }
+}
+
+$headerTopPadding: 29px;
+$colorTextDark:#1d1d1d;
+$gridOnDesktop: 6;
+$gridOnBigScrin: 12;
+$titlesectionsmall: 32px;
+$titlesection: 48px;
+$titlesectionbig: 64px;
+$content-width: 280px;
+$content-width-desktop: 392px;
+$content-width-bigScrin: 324px;
+
+%title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+p,
+h2 {
+  margin: 0;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  background: $colorTextDark;
+  scroll-behavior: smooth;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 48px;
+
+    @include onDesktop {
+      margin-bottom: 120px;
+
+    }
+    @include onBigScrin {
+      margin-bottom: 164px;
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: $titlesectionsmall;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      text-transform: capitalize;
+      text-align: center;
+      margin-bottom: 48px;
+
+      @include onDesktop {
+        font-size: $titlesection;
+
+      }
+      @include onBigScrin {
+        font-size: $titlesectionbig;
+      }
+    }
+  }
+}
+
+/*Специфічний елемент для обмеження ширини*/
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 23px;
+
+  @include onBigScrin {
+    padding: 0 120px;
+
+  }
+
+  @include onDesktop {
+    padding: 0 72px;
+  }
+}
+
+.logo {
+  &__img {
+    height: 38px;
+    width: 130px;
+  }
+
+  @include onDesktop {
+    height: 56px;
+    width: 187px;
+  }
+
+  @include onBigScrin {
+    height: 56px;
+    width: 187px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  --icon-width: 18px;
+  --gap: 30px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+
+  @include onDesktop {
+    --icon-width: 24px;
+    --gap: 40px;
+  }
+
+  @include onBigScrin {
+    --icon-width: 24px;
+    --gap: 40px;
+  }
+
+  &__block {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+
+    &--phone {
+      background-image: url(../images/call.svg);
+    }
+
+    &--menu {
+      background-image: url(../images/menu.svg);
+
+      &:hover {
+        background-image: url(../images/menu-hover.svg);
+      }
+    }
+
+    &--cross {
+      background-image: url(../images/cross.svg);
+    }
+  }
+}
+
+.header {
+  background-image: url(../images/photos/Cover_photo.png);
+  background-position: top right 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onDesktop {
+    background-size: cover;
+    background-position: center;
+  }
+
+  @include onBigScrin {
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+
+    @include onDesktop {
+      padding-bottom: 130px;
+    }
+
+    @include onBigScrin {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onBigScrin {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        min-width: 140px;
+        padding-right: 12px;
+        opacity: 0;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    display: block;
+    text-align: center;
+    margin: 0;
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+    @include onBigScrin {
+      font-size: 80px;
+    }
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  background-color: #e5e5e5;
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    display: block;
+    list-style: none;
+    margin: 0 0 40px;
+    padding: 0;
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    color: $colorTextDark;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorTextDark;
+    }
+  }
+
+  &__call {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $colorTextDark;
+
+    &--phone {
+      width: 155px;
+      margin-bottom: 16px;
+
+    }
+
+    &--reserve {
+      width: 140px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $colorTextDark;
+
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onDesktop {
+    grid-template-columns: repeat($gridOnDesktop, 1fr);
+    column-gap: 24px;
+
+  }
+
+  @include onBigScrin {
+    grid-template-columns: repeat($gridOnBigScrin, 1fr);
+    column-gap: 24px;
+  }
+
+  &--onBigScrin {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+    @include onBigScrin {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include onBigScrin {
+      @for $start from 1 through $gridOnBigScrin {
+        @for $end from $start through $gridOnBigScrin {
+          &--big-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+
+          }
+        }
+      }
+    }
+    @include onDesktop {
+      @for $start from 1 through $gridOnDesktop {
+        @for $end from $start through $gridOnDesktop {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end +1};
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.about {
+  &__title {
+    margin: 60px 0 32px;
+    font-weight: 500;
+    font-size: $titlesectionsmall;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      margin: 60px 0 0;
+      font-size: $titlesection;
+    }
+    @include onBigScrin {
+      margin: 60px 0 0;
+      font-size: $titlesectionbig;
+    }
+  }
+  &__text {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    @include onDesktop {
+      margin-top: 60px;
+      font-size: 23px;
+      line-height: 32px;
+    }
+    @include onBigScrin {
+      margin-top: 60px;
+      font-size: 23px;
+      line-height: 32px;
+    }
+  }
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+
+  @include onDesktop {
+    flex-direction: column;
+  }
+  @include onBigScrin {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 0 auto;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 40px;
+  margin: 0 auto;
+
+  &__image {
+    margin-bottom: 32px;
+    width: $content-width;
+    height: 228px;
+
+    @include onDesktop {
+      height: 316px;
+      width: $content-width-desktop;
+    }
+    @include onBigScrin {
+      width: $content-width-bigScrin;
+      height: 264px;
+    }
+
+  }
+
+  &__product {
+    @extend %title;
+
+    &:last-child {
+      margin: 0;
+    }
+
+  }
+
+  &__description {
+    margin: 0 0 16px;
+    width: $content-width;
+
+    @include onDesktop {
+      width: $content-width-desktop;
+    }
+    @include onBigScrin {
+      width: $content-width-bigScrin;
+    }
+  }
+
+}
+
+.bike {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 187px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onBigScrin {
+      height: 320px;
+      padding-bottom: 0;
+      max-height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @extend %title;
+
+  }
+
+  &__description {
+    margin: 0 0 40px;
+
+    @include onDesktop {
+      margin: 0 0 48px;
+    }
+
+    @include onBigScrin {
+      margin: 0 0 48px;
+    }
+
+  }
+}
+
+.footer {
+  background-image: url(../images/photos/footer.png);
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: cover;
+  background-position: right 30%;
+
+  @include onDesktop {
+    height: 480px;
+    background-size: cover;
+    background-position: right 20%;
+  }
+
+  @include onBigScrin {
+    height: 555px;
+    background-size: cover;
+  }
 }
