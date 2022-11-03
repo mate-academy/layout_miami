@@ -1,3 +1,17 @@
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+h1,
+h2,
+h3,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
 
 .page {
   font-family: "Poppins", sans-serif;
@@ -7,25 +21,68 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 34px 20px 130px;
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
 
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  height: 38px;
+}
+
+.icons-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header {
   background-image: url(../images/header.png);
   background-position: right;
   background-size: cover;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 34px 0 130px;
+  }
+
   &__title {
     font-weight: 700;
-    font-size: 64px;
+    font-size: 36px;
     line-height: 100%;
     letter-spacing: -1.5px;
     text-align: center;
     color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
 
   &__nav {
@@ -35,14 +92,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -50,21 +100,32 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
-}
-
-.logo {
-  height: 38px;
-
-  // &__image {
-  //   height: 38px;
-  // }
 }
