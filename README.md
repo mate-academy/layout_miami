@@ -1,4 +1,4 @@
-# Miami landing page
+# Bose landing page
 
 In this task, you will learn how to implement a landing page. To do that:
 

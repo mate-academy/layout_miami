@@ -1,3 +1,9 @@
+@mixin mobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (min-width: 744px) {
     @content;
@@ -10,12 +16,25 @@
   }
 }
 
-// @mixin column-cycle {
-//   @for $start from 1 through 12 {
-//     @for $end from $start through 12 {
-//       &--#{$start}-#{$end} {
-//         grid-column: #{$start} / #{$end + 1};
-//       }
-//     }
-//   }
-// }
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: 30px;
+
+  @include tablet {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+
+@mixin column-cycle($last) {
+  @for $start from 1 through $last {
+    @for $end from $start through $last {
+      &--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
