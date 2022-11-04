@@ -4,11 +4,16 @@
   }
 }
 
+$headerTopPadding: 34px;
+$colorGray: #e5e5e5;
+$colorBackground: #1d1d1d;
+
 h1,
 h2,
 h3,
 ul,
-p {
+p,
+body {
   margin: 0;
   padding: 0;
 }
@@ -17,7 +22,7 @@ p {
   font-family: "Poppins", sans-serif;
   &__body {
     margin: 0;
-    background-color: #1d1d1d;
+    // background-color: #1d1d1d;
   }
 }
 
@@ -31,30 +36,16 @@ p {
   }
 }
 
-.logo {
-  height: 38px;
-}
+.top-actions {
+  --icon-width: 18px;
 
-.icons-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-}
-
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: 30px;
 
   @include onDesktop {
-    width: 24px;
-    height: 24px;
+    --icon-width: 24px;
   }
-
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .header {
@@ -69,7 +60,7 @@ p {
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 34px 0 130px;
+    padding: $headerTopPadding 0 130px;
   }
 
   &__title {
@@ -85,23 +76,8 @@ p {
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__call {
     text-decoration: none;
-    background-image: url(../images/phone.svg);
 
     @include onDesktop {
       &::before {
@@ -127,5 +103,50 @@ p {
         pointer-events: all;
       }
     }
+  }
+}
+
+.logo {
+  height: 38px;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
+  &--cross-black {
+    background-image: url(../images/cross-black.svg);
+  }
+}
+
+.menu {
+  color: $colorBackground;
+  background-color: $colorGray;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
   }
 }
