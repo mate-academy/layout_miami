@@ -9,6 +9,12 @@ window.addEventListener('hashchange', function() {
 });
 
 document.querySelector('.contacts__button')
-.addEventListener('click', function(e) {
-  e.preventDefault();
-});
+  .addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const docs = document.querySelectorAll('.contacts__input');
+
+    docs.forEach(doc => {
+      doc.value = '';
+    });
+  });
