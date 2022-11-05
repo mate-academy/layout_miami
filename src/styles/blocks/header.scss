@@ -12,10 +12,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    padding: 40px 0 94px;
+    padding: $header-top-padding 0 94px;
 
-    @include onPads {
-      padding: 52px 0 40px;
+    @include onTabs {
+      padding: $header-top-padding-onTablets 0 40px;
     }
 
     @include onDesktop {
@@ -23,44 +23,17 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__link-logo {
-    display: block;
-    height: 16px;
-
-    @include onPads {
-      height: 24px;
-    }
-  }
-
-  &__logo {
-    width: 130px;
-    height: 16px;
-
-    @include onPads {
-      width: 190px;
-      height: 24px;
-    }
-  }
-
   &__links {
     display: flex;
     gap: 20px;
 
-    @include onPads {
+    @include onTabs {
       gap: 32px;
     }
   }
 
   &__link-phone {
     text-decoration: none;
-
-    background-image: url("../images/Icon-Phone-call.svg");
 
     @include onDesktop {
       &::before {
@@ -79,7 +52,7 @@
         color: $main-color;
 
         opacity: 0;
-        transition: opacity 0.5s;
+        @include transition(opacity);
         pointer-events: none;
       }
 
@@ -91,7 +64,7 @@
   }
 
   &__link-menu {
-    background-image: url("../images/Icon-Burger-menu.svg");
+    @include transition(background-image);
 
     &:hover {
       background-image: url("../images/Icon-Burger-menu-hover.svg");
@@ -106,7 +79,7 @@
 
     color: $main-color;
 
-    @include onPads {
+    @include onTabs {
       @include fontSize (40px, 40px);
     }
 
@@ -125,7 +98,7 @@
       background-image: url("../images/Sound-waves-small.svg");
       @include background_image();
 
-      @include onPads {
+      @include onTabs {
         width: 63px;
         height: 76px;
         margin-bottom: 40px;
