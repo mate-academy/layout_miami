@@ -1,4 +1,4 @@
-// @import "utils";
+@import "utils";
 // @import "fonts";
 // @import "typography";
 
@@ -10,17 +10,37 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 34px 20px 88px;
+.icon {
+  display: block;
+  width: 18px;
 
+  @include onDesktop {
+    width: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
   background-size: cover;
   background-position: right;
   background-image: url(../images/Cover_photo.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
 
   &__title {
     font-size: 36px;
@@ -28,6 +48,11 @@
     font-weight: 700;
     color: #fff;
     letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 
   &__nav {
@@ -41,17 +66,21 @@
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+
+    @include onDesktop {
+      gap: 40px;
+    }
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
     height: 12px;
 
+    @include onDesktop {
+      height: 16px;
+    }
+  
+
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -59,22 +88,65 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
     height: 18px;
 
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      height: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 }
 
 .logo {
   height: 38px;
 
+  @include onDesktop {
+    height: 56px;
+  }
+
   &__image {
     height: 38px;
+
+    @include onDesktop {
+      height: 56px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
   }
 }
 
