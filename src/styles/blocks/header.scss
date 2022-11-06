@@ -1,0 +1,90 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 288px;
+
+    @include onDesktop {
+      padding: $headerTopPadding 0 482px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 66px;
+    height: 100%;
+
+    @include onDesktop {
+      width: 111px;
+    }
+  }
+
+  &__menu-call {
+    text-decoration: none;
+    
+
+    @include onDesktop {
+      height: 24px;
+      width: 24px;
+
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        content: $calltext;
+        white-space: pre-wrap;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        margin-bottom: 8px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}

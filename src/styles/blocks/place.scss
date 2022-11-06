@@ -1,0 +1,80 @@
+.place {
+  &__photos {
+    width: 100%;
+    max-height: 320px;
+  }
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: 0.5s;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onLaptop {
+      height: 214px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-1:hover {
+      transform: translateX(-10px) scale(1.1);
+    }
+
+    &-2:hover {
+      transform: translateX(10px) scale(1.1);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    @include onLaptop {
+      max-height: 214px;
+    }
+
+    @include onDesktop {
+      max-height: 100%;
+    }
+
+   
+  }
+
+  &__description {
+    margin-top: 24px;
+
+    &--name {
+      color: $colorRed;
+    }
+  }
+
+  &__hidden {
+    display: block;
+
+    @include onLaptop {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+}
