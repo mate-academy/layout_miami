@@ -17,7 +17,7 @@ document.querySelector('.contacts__button')
     const valueEmail = document.querySelector('.contacts__input--email').value;
 
     if (!valueEmail || !valueName || !valueText) {
-      alert('All fields are required!!');
+      window.alert('All fields are required!!');
     }
 
     const docs = document.querySelectorAll('.contacts__input');
