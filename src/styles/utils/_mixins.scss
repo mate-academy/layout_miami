@@ -1,3 +1,9 @@
+@mixin top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin onDesktop {
   @media (min-width: 1260px) {
     @content;
@@ -7,5 +13,29 @@
 @mixin onTablet {
   @media (min-width: 744px) {
     @content;
+  }
+}
+
+@mixin gridOnDesktop {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--desktop-#{$start}-#{$end} {
+        @include onDesktop {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin gridOnTablet {
+  @for $start from 1 through 6 {
+    @for $end from $start through 6 {
+      &--tablet-#{$start}-#{$end} {
+        @include onTablet {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
   }
 }
