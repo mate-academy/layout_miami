@@ -1,9 +1,9 @@
 .header {
-  display: grid;
-  grid-template-areas: "logo icon"
-    "title title";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  height: 100vh;
+  min-height: 100vh;
 
   background-image: url("../images/photos/header-mobile.jpg");
   background-position: 0 0;
@@ -13,14 +13,38 @@
 
   padding: 40px 20px;
 
+  @include query("medium") {
+    background-image: url("../images/photos/header.jpg");
+
+    padding: 52px 90px;
+  }
+
+  &__upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
   &__img {
     width: 130px;
+
+    @include query("medium") {
+      width: 190px;
+    }
+
+    // @include query("large") {
+    //   width: 200px;
+    // }
   }
 
   &__icon {
     display: flex;
     justify-content: flex-end;
-    grid-area: icon;
+
   }
 
   &__phone {
@@ -38,6 +62,11 @@
 
     margin-right: 30px;
 
+    @include query("medium") {
+      width: 24px;
+      height: 24px;
+    }
+
   }
 
   &__toggler {
@@ -53,16 +82,23 @@
 
     cursor: pointer;
 
+    @include query("medium") {
+      width: 24px;
+      height: 24px;
+    }
+
   }
 
   &__title {
-    grid-area: title;
-    padding-top: 250px;
-
     font-weight: $fw-bold;
-    font-size: $fs-xxxlarge;
+    font-size: $fs-3xlarge;
     line-height: 1;
     letter-spacing: -1.5px;
+
+    @include query("medium") {
+      font-size: $fs-4xlarge;
+
+    }
 
     &::before {
       content: "";
@@ -74,6 +110,13 @@
       background-position: center;
       background-repeat: no-repeat;
       margin-bottom: 20px;
+
+      @include query("medium") {
+        width: 63px;
+        height: 76px;
+
+        background-image: url("../images/sound-waves.svg");
+      }
     }
 
   }
