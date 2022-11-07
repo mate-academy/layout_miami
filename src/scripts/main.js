@@ -18,6 +18,8 @@ document.querySelector('.contacts__button')
 
     if (!valueEmail || !valueName || !valueText) {
       window.alert('All fields are required!!');
+      return;
+      
     }
 
     const docs = document.querySelectorAll('.contacts__input');
