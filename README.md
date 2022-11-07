@@ -1,13 +1,13 @@
 # Miami landing page
 
-In this task, you will learn how to implement a landing page. To do that:
+- main links for preview, Figma mockup and checklist:
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+  - [DEMO LINK](https://yaroslav-furhala.github.io/layout_miami/)
+  - [MIAMI landing Figma](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+  - [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+
+- brief description of the project:
+  in this project, a website was developed that displays all the popular and most visited places of Miami, with a brief description, navigation for finding them, and up-to-date reviews;
+
+- technologies that were used:
+  during the development of this project, the BEM structure was followed and preprocessors SASS were used. The semantic structure of the site was also observed and elements such as forms, links to the main page of the site and media requests were used to modify the site for the mobile and desktop versions;
