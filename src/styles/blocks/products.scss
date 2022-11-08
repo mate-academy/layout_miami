@@ -3,6 +3,14 @@
 
   color: $color-primary;
 
+  @include query("medium") {
+    padding: 120px 176px 128px;
+  }
+
+  @include query("large") {
+    padding: 120px;
+  }
+
   &__title {
     margin: 0 auto;
 
@@ -10,6 +18,14 @@
     font-weight: $fw-bold;
     letter-spacing: -1.5px;
     text-align: center;
+
+    @include query("medium") {
+      font-size: $fs-4xlarge;
+    }
+
+    @include query("large") {
+      font-size: $fs-5xlarge;
+    }
   }
 
   &__list {
@@ -17,6 +33,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include query("large") {
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
   }
 
   &__item {
@@ -24,26 +45,42 @@
     flex-direction: column;
 
     margin-top: 48px;
+
+    @include query("large") {
+      margin-right: 24px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
-  &__subtitle {
-    margin-top: 32px;
+  &__img {
+    width: 80%;
+    margin: auto;
 
+    @include query("medium") {
+      width: 100%;
+    }
+  }
+
+  &__text {
     font-size: $fs-normal;
     font-weight: $fw-bold;
-  }
+    line-height: $fs-xlarge;
 
-  &__category {
-    margin-top: 8px;
+    &--subtitle {
+      margin: 32px 0 0;
+    }
 
-    font-size: $fs-normal;
-    font-weight: $fw-normal;
-  }
+    &--category {
+      margin: 8px 0 0;
 
-  &__price {
-    margin-top: 12px;
+      font-weight: $fw-normal;
+    }
 
-    font-size: $fs-normal;
-    font-weight: $fw-bold;
+    &--price {
+      margin: 12px 0 0;
+    }
   }
 }
