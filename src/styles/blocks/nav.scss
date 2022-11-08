@@ -1,6 +1,10 @@
 .nav {
   padding: 40px 20px 0;
 
+  @include query("medium") {
+    padding: 52px 90px;
+  }
+
   &--active {
     transform: translateX(0);
   }
@@ -17,6 +21,7 @@
   }
 
   &__link {
+    position: relative;
     font-family: $ff-primary;
     font-size: $fs-xlarge;
     font-weight: $fw-bold;
@@ -25,6 +30,25 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: $fs-xlarge;
+    padding: 8px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-primary;
+      @include transition (width, 250ms);
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
   }
 
   &__contact {
