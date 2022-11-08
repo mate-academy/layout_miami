@@ -1,0 +1,77 @@
+.icon {
+  position: relative;
+
+  display: block;
+  @include header-icon-size(#{$header-icon-size});
+
+  text-decoration: none;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    $header-icon-size: 32px;
+    width: $header-icon-size;
+    height: $header-icon-size;
+  }
+
+  @include onDesktop {
+    $header-icon-size: 32px;
+    width: $header-icon-size;
+    height: $header-icon-size;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    width: max-content;
+    padding-right: 8px;
+
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #{$page-main-color};
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--phone {
+    background-image: url(../images/Icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-burger-menu.svg);
+
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/Icon-burger-menu-hover.svg);
+    }
+
+    @include onTablet {
+      background-image: url(../images/Icon-big-burger-menu.svg);
+    }
+
+    @include onDesktop {
+      background-image: url(../images/Icon-big-burger-menu.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/Icon-cross-close.svg);
+  }
+}
