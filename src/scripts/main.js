@@ -8,10 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submitButton = document.querySelector('#submit');
+const btn = document.getElementById('btn');
 
-submitButton.addEventListener('click', reloaded, false);
-
-function reloaded(event) {
+btn.addEventListener('click', function handleClick(event) {
   event.preventDefault();
-};
+
+  const inputs = document.querySelectorAll('#name, #email, #message');
+
+  inputs.forEach(input => {
+    input.value = '';
+  });
+});
