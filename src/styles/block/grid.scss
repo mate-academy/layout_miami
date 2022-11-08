@@ -1,0 +1,110 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+    }
+
+    @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 24px;
+    }
+    
+    &--desktop {
+        display: block;
+
+        &-tablet {
+            display: block;
+
+            @include onTablet {
+                display: grid;
+                grid-auto-flow: dense;
+            }
+        }
+
+        @include onDesktop {
+            display: grid;
+        }
+    }
+
+    &__item {
+        @for $startM from 1 through 2 {
+            @for $endM from $startM through 2 {
+                &--#{$startM}-#{$endM} {
+                    grid-column: #{$startM} / #{$endM  + 1};
+                }
+            }
+        }
+
+        @for $startT from 1 through 6 {
+            @for $endT from $startT through 6 {
+                &--#{$startT}-#{$endT} {
+                    grid-column: #{$startT} / #{$endT  + 1};
+                }
+
+                &--tablet-#{$startT}-#{$endT} {
+                    @include onTablet {
+                        grid-column: #{$startT} / #{$endT  + 1};
+                    }
+                }
+            }
+        }
+
+        @for $startD from 1 through 12 {
+            @for $endD from $startD through 12 {
+                &--#{$startD}-#{$endD} {
+                    grid-column: #{$startD} / #{$endD  + 1};
+                }
+
+                &--desktop-#{$startD}-#{$endD} {
+                    @include onDesktop {
+                        grid-column: #{$startD} / #{$endD  + 1};
+                    }
+                }
+            }
+        }
+    }
+
+    &__info {
+
+        @include onTablet {
+            grid-template-rows: 250px;
+        }
+
+        @include onDesktop {
+            grid-template-rows: 431px;
+        }
+
+    }
+}
+
+.grid-mid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+
+    @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 24px;
+    }
+
+    &__item {
+        @for $start from 1 through 12 {
+            @for $end from $start through 12 {
+                &--#{$start}-#{$end} {
+                    grid-column: #{$start} / #{$end  + 1};
+                }
+
+                &--desktop-#{$start}-#{$end} {
+                    @include onDesktop {
+                        grid-column: #{$start} / #{$end  + 1};
+                    }
+                }
+            }
+        }
+    }
+
+}
