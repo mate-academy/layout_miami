@@ -1,11 +1,6 @@
 .header {
   background-image: url("../images/photos/header__photo.png");
-  @include background_image();
-  background-position: 5%;
-
-  @media (max-width: 743px) {
-    background-position: 35%;
-  }
+  @include background-image-properties();
 
   &__content {
     display: flex;
@@ -36,24 +31,11 @@
     }
   }
 
-  &__link-phone {
-
-  }
-
-  &__link-menu {
-    @include transition(background-image);
-
-    &:hover {
-      background-image: url("../images/Icon-Burger-menu-hover.svg");
-    }
-  }
-
   &__title {
+    @include fontSize (32px, 32px);
     font-style: italic;
     font-weight: 800;
-    @include fontSize (32px, 32px);
     letter-spacing: -1.5px;
-
     color: $main-color;
 
     @include onTabs {
@@ -73,12 +55,15 @@
       margin-bottom: 16px;
 
       background-image: url("../images/Sound-waves-small.svg");
-      @include background_image();
+      @include background-image-properties ();
+
+      @include transition (background-image);
 
       @include onTabs {
         width: 63px;
         height: 76px;
         margin-bottom: 40px;
+
         background-image: url("../images/Sound-waves.svg");
       }
 
