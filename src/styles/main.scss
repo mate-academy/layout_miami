@@ -1,65 +1,47 @@
+@import "./utils/variables";
 @import "./utils/mixins";
 @import "./utils/normalise.scss";
 
-.page {
-  font-family: "Cinzel", serif;
-  // font-family: 'Roboto', sans-serif;
+@import "./blocks/icon.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/numbers.scss";
 
-  &__body {
-    margin: 0;
-  }
-}
+// .page {
+//   // font-family: 'Roboto', sans-serif;
+
+//   &__body {
+//     margin: 0;
+//   }
+// }
 
 .container {
-  max-width: 1020px;
+  max-width: 1060px; //включно з падінгами
   padding: 0 20px;
   margin: 0 auto;
 
   @include onDesctope {
-    max-width: 1020px;
+    max-width: 1100px;
     padding: 0 40px;
   }
 
   @include onTablet {
-    max-width: 600px;
+    max-width: 680px;
     padding: 0 40px;
   }
 }
 
-.logo {
-  color: #fff;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 80%;
-  text-align: center;
-  letter-spacing: -1.5px;
-}
+.top-actions {
+  position: relative;
 
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  @include onDesctope {
-    width: 24px;
-    height: 24px;
-  }
-
-  @include onTablet {
-    width: 24px;
-    height: 24px;
-  }
-
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .header {
   padding-top: 25px;
 
   @include onDesctope {
-    padding-top: 42px;
+    padding-top: 32px;
   }
 
   height: 100vh;
@@ -68,54 +50,22 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  &__nav {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
+  &__top {
     margin-bottom: 129px;
-
   }
 
   &__buttons {
     display: flex;
     gap: 30px;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/Vector-f.svg);
-
-    &:hover {
-      background-image: url(../images/Vector-s.svg);
-    }
-  }
-
-  &__call {
-    background-image: url(../images/phone.svg);
-  }
-
-  &__logo {
-    height: 46px;
 
     @include onDesctope {
-      height: 65px;
-      width: 87px;
-    }
-  }
-
-  &__logo-img {
-    height: 46px;
-
-    @include onDesctope {
-      height: 65px;
-      width: 87px;
+      gap: 60px;
     }
   }
 
   &__title {
-
     color: #fff;
     font-weight: 700;
     font-size: 40px;
@@ -132,15 +82,10 @@
   &__contacts {
     position: absolute;
     text-align: end;
-    right: -85px; // не розумію як позиціонується елемент.
-    //  мав би відносно header__nav
-    top: -27px;
-    color: #fff;
-    transform: translateX(-100%);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    opacity: 0;
+    right: 127px;
+    top: -22px;
+
+    // opacity: 0;
     // pointer-events: none;
 
     &:hover {
@@ -148,16 +93,80 @@
       // pointer-events: all;
     }
   }
+
+  &__buttons:hover ~ .header__contacts {
+    //підібрати селектор
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
-&__buttons:hover ~ &__contacts {
-  //підібрати селектор
-  opacity: 1;
-  pointer-events: all;
-}
+.menu {
+  background-color: $main-color;
+  height: 100vh;
+  padding-top: 25px;
 
-.numbers {
-  &__info:first-child {
+  @include onDesctope {
+    padding-top: 42px;
+  }
+
+  &__top {
+    margin-bottom: 40px;
+
+    @include onDesctope {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__item {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 32px;
+
+    @include onDesctope {
+      &:last-child {
+        margin-bottom: 48px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: $header-font-color;
+    text-transform: uppercase;
+
+    @include onDesctope {
+      &:hover::after {
+        display: block;
+        position: absolute;
+        top: 35px;
+        width: 100%;
+        height: 1px;
+
+        content: "";
+
+        background-color: $header-font-color;
+      }
+    }
+
+  }
+
+  &__contacts {
     margin-bottom: 8px;
   }
+
+  &__call {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $header-font-color;
+    letter-spacing: 2px;
+    padding: 8px 0;
+    border-bottom: 1px solid $header-font-color;
+  }
+
 }
