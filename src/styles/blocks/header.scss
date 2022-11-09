@@ -1,0 +1,122 @@
+.header {
+  background-size: cover;
+  background-position: center top;
+  background-image: url(../images/header_phone.jpg);
+
+  @include onTablet {
+    background-image: url(../images/header_tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header_desktop.jpg);
+  }
+
+  &_top {
+    @include top-actions;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+    height: 100vh;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+  
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &_logo {
+    &_img {
+      width: 130px;
+
+      @include onTablet {
+        width: 190px;
+      }
+    
+      @include onDesktop {
+        width: 190px;
+      }
+    }
+  }
+
+  &_img {
+    display: flex;
+    gap: 30px;
+
+    &_phone {
+      text-decoration: none;
+
+      @include onDesktop {
+        &::before {
+          content: "+1 234 5555-55-55";
+          position: relative;
+          top: 50%;
+          display: block;
+          color: #292929;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          width: max-content;
+          transform: translate(-100%, -50%);
+          padding-right: 20px;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &_title {
+    &_img {
+      display: block;
+      width: 32px;
+      height: 27px;
+      border: 3px solid #292929;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+    
+      @include onDesktop {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 32px;
+      }
+    }
+
+    &_text {
+      font-style: italic;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      color: #292929;
+
+      @include onTablet {
+        font-size: 40px;
+      }
+    
+      @include onDesktop {
+        font-size: 48px;
+      }
+    }
+  }
+}
