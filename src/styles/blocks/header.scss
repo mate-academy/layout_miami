@@ -1,44 +1,84 @@
 .header {
-  background-image: url(../images/header-bg.jpg);
+  background-image: url(../images/header-mobile.jpg);
   background-size: cover;
-  background-position: top;
+  background-position: 0 -2px;
   background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/header-tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-desktop.jpg);
+  }
 
   &__content {
     height: 100vh;
-    padding-top: 25px;
   }
 
   &__nav {
     display: flex;
     justify-content: space-between;
+    padding-top: 25px;
     margin-bottom: 129px;
+
+    @include onTablet {
+      padding-top: 50px;
+      margin-bottom: 141px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 83px;
+    }
   }
 
+  &__logo {
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
   &__buttons {
+    position: relative;
     display: flex;
     gap: $icon-size;
     align-items: center;
-  }
 
-  &__call {
-    background-image: url(../images/phone.svg);
-  }
+    @include onTablet {
+      gap: 59px;
+    }
 
-  &__menu-opener {
-    background-image: url(../images/menu-open.svg);
-
-    &:hover {
-      background-image: url(../images/menu-open-hover.svg);
+    @include onDesktop {
+      gap: 55px;
     }
   }
+
+  &__contact {
+    position: absolute;
+    top: -8px;
+    left: -217px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  &__phone:hover + &__contact {
+    opacity: 1;
+  }
+
   &__title {
-    font-family: $title;
     font-weight: 700;
     font-size: 40px;
     color: #fff;
     text-align: center;
     line-height: 100%;
+
+    @include onTablet {
+      font-size: 64px;
+      letter-spacing: -1.5px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
 
 }
