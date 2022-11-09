@@ -2,8 +2,33 @@
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
+    window.scrollTo(0, 0);
     document.body.classList.add('body--scroll-off');
   } else {
     document.body.classList.remove('body--scroll-off');
+  }
+
+  if (window.location.hash === '#About_Us') {
+    const location = document.querySelector('#About_Us').offsetTop;
+
+    window.scrollTo(0, location - 100);
+  }
+
+  if (window.location.hash === '#Compare_Bikes') {
+    const location = document.querySelector('#Compare_Bikes').offsetTop;
+
+    window.scrollTo(0, location - 100);
+  }
+
+  if (window.location.hash === '#Details') {
+    const location = document.querySelector('#Details').offsetTop;
+
+    window.scrollTo(0, location - 100);
+  }
+
+  if (window.location.hash === '#Contacts') {
+    const location = document.querySelector('#Contacts').offsetTop;
+
+    window.scrollTo(0, location - 100);
   }
 });
