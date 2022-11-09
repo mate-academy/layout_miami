@@ -1,6 +1,29 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin font ($size) {
+  font-size: $size;
+  line-height: $size;
+}
+
+@mixin top-actions {
+  --icon-width: 26px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: left;
+  align-items: center;
+  gap: 40px;
+
+  @include onTablet {
+    --icon-width: 32px;
   }
 }
