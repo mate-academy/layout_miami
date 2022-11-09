@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  padding-inline: 20px;
-  padding-top: 0;
+  padding: 0 20px 120px;
 
   color: $color-primary;
 
@@ -26,9 +24,13 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+    gap: 20px;
     padding-bottom: 16px;
     margin-top: 40px;
+
+    @include query("medium") {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__img {
@@ -41,27 +43,70 @@
 
     &--1 {
       background-image: url("../images/photos/girl-black-headphones.jpg");
+      @include query("medium") {
+        width: 100%;
+        grid-column: 1/3;
+      }
+
+      @include query("large") {
+        width: 600px;
+        height: 300px;
+        grid-column: 1/3;
+      }
     }
 
     &--2 {
       background-image: url("../images/photos/girl-taking-photo.jpg");
+      @include query("large") {
+        width: 100%;
+        height: 300px;
+      }
     }
 
     &--3 {
       background-image: url("../images/photos/girl-speaker.jpg");
+      @include query("medium") {
+        width: 100%;
+        grid-column: 1/3;
+      }
+
+      @include query("large") {
+        width: 600px;
+        height: 300px;
+        grid-column: 1/3;
+      }
     }
 
     &--4 {
       background-image: url("../images/photos/product-4.jpg");
+      @include query("large") {
+        width: 100%;
+        height: 300px;
+      }
     }
 
     &--5 {
       background-image: url("../images/photos/man-glasses.jpg");
+      @include query("large") {
+        width: 100%;
+        height: 300px;
+      }
     }
 
     &--6 {
       background-image: url("../images/photos/girl-glasses.jpg");
       background-position: right;
+      @include query("medium") {
+        width: 100%;
+        grid-column: 2/4;
+        background-position: center;
+      }
+
+      @include query("large") {
+        width: 600px;
+        height: 300px;
+        grid-column: 2/4;
+      }
     }
   }
 
@@ -72,6 +117,9 @@
   }
 
   &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 280px;
     height: 56px;
 
@@ -91,6 +139,14 @@
     cursor: pointer;
 
     @include transition(all, 450ms);
+
+    @include query("medium") {
+      width: 392px;
+    }
+
+    @include query("large") {
+      width: 324px;
+    }
 
     &:hover {
       background-color: $color-light;
