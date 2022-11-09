@@ -1,10 +1,27 @@
 .advantage {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 
   color: $color-primary;
 
   padding-bottom: 110px;
+
+  @include query("medium") {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: end;
+    gap: 24px;
+
+    padding-bottom: 96px;
+  }
+
+  @include query("large") {
+    grid-template-columns: repeat(2, minmax(0, 400px));
+    justify-items: start;
+    justify-content: start;
+    gap: 24px;
+
+    padding-bottom: 120px;
+  }
 
   &__title {
     margin: 0;
@@ -13,6 +30,14 @@
     font-weight: $fw-bold;
     font-size: $fs-3xlarge;
     letter-spacing: -1.5px;
+
+    @include query("medium") {
+      font-size: $fs-4xlarge;
+    }
+
+    @include query("large") {
+      font-size: $fs-5xlarge;
+    }
   }
 
   &__points {
@@ -40,5 +65,4 @@
     line-height: 1.69;
     font-weight: $fw-normal;
   }
-
 }
