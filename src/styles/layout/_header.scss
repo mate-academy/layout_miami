@@ -51,6 +51,18 @@
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      background-image: url(../images/Icon-Sound-waves-mobile.svg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 
@@ -64,11 +76,64 @@
 @include onTablet {
   .header {
     background-image: url(../images/header/Header-photo-tablet.jpg);
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__phone::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 8px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: #292929;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &__phone:hover::before {
+      opacity: 1;
+    }
+
+    &__title {
+      font-size: 40px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 35px;
+        background-image: url(../images/Icon-Sound-waves.svg);
+      }
+    }
+  }
+
+  .logo {
+    height: 24px;
+    &__img {
+      width: 190px;
+    }
   }
 }
 
 @include onDesktop {
   .header {
     background-image: url(../images/header/Header-photo-desktop.jpg);
+
+    &__title {
+      font-size: 48px;
+    }
   }
 }
