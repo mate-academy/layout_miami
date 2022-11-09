@@ -1,7 +1,164 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/mixins";
+@import "./utils/normalise.scss";
 
-body {
-  background: $c-gray;
+.page {
+  font-family: 'Cinzel', serif;
+  // font-family: 'Roboto', sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesctope {
+    max-width: 1020px;
+    padding: 0 40px;
+  }
+
+  @include onTablet {
+    max-width: 600px;
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 80%;
+  text-align: center;
+  letter-spacing: -1.5px;
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesctope {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  padding-top: 25px;
+
+  @include onDesctope {
+    padding-top: 42px;
+  }
+
+  height: 100vh;
+  background-image: url(../images/header-picture.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__nav {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 129px;
+
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/Vector-f.svg);
+
+    &:hover {
+      background-image: url(../images/Vector-s.svg);
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+  }
+
+  &__buttons:hover~&__contacts {
+    //підібрати селектор
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include onDesctope {
+      height: 65px;
+      width: 87px;
+    }
+  }
+
+  &__logo-img {
+    height: 46px;
+
+    @include onDesctope {
+      height: 65px;
+      width: 87px;
+    }
+  }
+
+  &__title {
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onDesctope {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+
+
+  &__contacts {
+    position: absolute;
+    text-align: end;
+    right: -85px; // не розумію як позиціонується елемент. мав би відносно header__nav
+    top: -27px;
+    color: #fff;
+    transform: translateX(-100%);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    opacity: 0;
+    // pointer-events: none;
+
+    &:hover {
+      opacity: 1;
+      // pointer-events: all;
+    }
+  }
+}
+
+.numbers {
+  &__info:first-child {
+    margin-bottom: 8px;
+  }
 }
