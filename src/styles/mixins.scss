@@ -1,0 +1,29 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 24px;
+  display: grid;
+
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width) var(--icon-width);
+  justify-items: left;
+  align-items: center;
+  margin-bottom: 44px;
+
+  @include onDesktop {
+    --icon-width: 32px;
+  }
+
+  &__item {
+    @for $start from 1 through 5 {
+      @for $end from $start through 5 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
