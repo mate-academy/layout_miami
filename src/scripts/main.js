@@ -8,14 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const btn = document.getElementById('btn');
+const form = document.getElementById('my_form');
 
-btn.addEventListener('click', function handleClick(event) {
+form.addEventListener('submit', function handleSubmit(event) {
   event.preventDefault();
-
-  const inputs = document.querySelectorAll('#name, #email, #message');
-
-  inputs.forEach(input => {
-    input.value = '';
-  });
+  form.reset();
 });
