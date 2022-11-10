@@ -1,3 +1,4 @@
+
 .header {
   background-image: url(../images/cover_photo.jpg);
   background-position: right center;
@@ -8,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 29px 0 88px;
+    padding: $headerTopPadding 0 88px;
     height: 100vh;
 
     @include onTablet {
@@ -21,17 +22,10 @@
   }
 
   &__call {
-    width: 18px;
-    height: 18px;
-
-    background-image: url(../images/phone.svg);
 
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
-
-        position: relative;
-        top: 50%;
 
         display: block;
         width: max-content;
@@ -43,7 +37,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
 
-        transform: translate(-100%, -50%);
+        transform: translate(-100%, 75%);
         opacity: 0;
         color: #fff;
 
@@ -55,25 +49,6 @@
         pointer-events: all;
       }
     }
-  }
-
-  &__menu-opener {
-    width: 18px;
-    height: 12px;
-
-    background-image: url(../images/menu.svg);
-
-    transition: background-image 300ms;
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__icons-wrapper {
@@ -103,14 +78,37 @@
 .icon {
   display: block;
 
+  width: 100%;
+  padding-bottom: 100%;
+
   background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-size: cover;
 
   cursor: pointer;
 
-  @include onTablet {
-    height: 24px;
-    width: 24px;
+  //   @include onTablet {
+  //   height: 24px;
+  //   width: 24px;
+  // }
+
+  &--menu {
+
+    background-image: url(../images/menu.svg);
+
+    transition: background-image 300ms;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/menu_cross.svg);
+    order: 2;
   }
 }
