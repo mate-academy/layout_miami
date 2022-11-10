@@ -1,7 +1,8 @@
 .header {
   background-image: url(../images/header-mobile.jpg);
   background-size: cover;
-  background-position: 0 -2px;
+  background-position-x: center;
+  background-position-y: -2px;
   background-repeat: no-repeat;
 
   @include onTablet {
@@ -54,14 +55,21 @@
   }
 
   &__contact {
+    display: none;
     position: absolute;
-    top: -8px;
+    top: -27px;
     left: -217px;
-    opacity: 0;
-    transition: opacity 1s ease;
+    width: 217px;
   }
-  &__phone:hover + &__contact {
-    opacity: 1;
+
+  @include onDesktop {
+
+    &__phone:hover > &__contact {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      padding-right: 16px;
+    }
   }
 
   &__title {
