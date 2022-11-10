@@ -1,5 +1,7 @@
 'use strict';
 
+const formButton = document.querySelector('#formButton');
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     window.scrollTo(0, 0);
@@ -35,4 +37,8 @@ window.addEventListener('hashchange', () => {
 
     window.scrollTo(0, location - screenHeight);
   }
+});
+
+formButton.addEventListener('click', (event) => {
+  event.preventDefault();
 });
