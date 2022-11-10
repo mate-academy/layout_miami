@@ -10,25 +10,29 @@ window.addEventListener('hashchange', () => {
 
   if (window.location.hash === '#About_Us') {
     const location = document.querySelector('#About_Us').offsetTop;
+    const screenHeight = window.innerHeight / 100 * 5;
 
-    window.scrollTo(0, location - 100);
+    window.scrollTo(0, location - screenHeight);
   }
 
   if (window.location.hash === '#Compare_Bikes') {
     const location = document.querySelector('#Compare_Bikes').offsetTop;
+    const screenHeight = window.innerHeight / 100 * 5;
 
-    window.scrollTo(0, location - 100);
+    window.scrollTo(0, location - screenHeight);
   }
 
   if (window.location.hash === '#Details') {
     const location = document.querySelector('#Details').offsetTop;
+    const screenHeight = window.innerHeight / 100 * 5;
 
-    window.scrollTo(0, location - 100);
+    window.scrollTo(0, location - screenHeight);
   }
 
   if (window.location.hash === '#Contacts') {
     const location = document.querySelector('#Contacts').offsetTop;
+    const screenHeight = window.innerHeight / 100 * 5;
 
-    window.scrollTo(0, location - 100);
+    window.scrollTo(0, location - screenHeight);
   }
 });
