@@ -1,6 +1,32 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin pseudo($location: before, $top: 0, $width: 0) {
+  &::#{$location} {
+    content: "";
+    top: $top;
+    width: $width;
+    position: relative;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    color: $colorWhite;
+    display: block;
+    padding-right: 20px;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: right;
+    text-transform: uppercase;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    pointer-events: none;
+    @content;
   }
 }
