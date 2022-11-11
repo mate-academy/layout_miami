@@ -1,0 +1,51 @@
+.place {
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 8px;
+
+    object-fit: cover;
+    object-position: center;
+
+    &-container {
+      position: relative;
+      width: 100%;
+      max-height: 256px;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      transition: transform 300ms;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include onDesktop {
+        height: 256px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      margin-bottom: 24px;
+
+    }
+  }
+
+  &__link {
+    font-weight: bold;
+    @include link;
+  }
+}
