@@ -7,6 +7,8 @@ const menuClose = document.querySelector('#close');
 const phone = document.querySelector('.icon--phone');
 const tooltip = document.querySelector('#tooltip');
 
+const form = document.querySelector('.contact__form');
+
 phone.addEventListener('mouseenter', () => {
   tooltip.classList.remove('display-none');
 
@@ -28,4 +30,16 @@ menuOpen.addEventListener('click', () => {
 
 menuClose.addEventListener('click', () => {
   menu.classList.remove('toggle-menu');
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
+  }
 });
