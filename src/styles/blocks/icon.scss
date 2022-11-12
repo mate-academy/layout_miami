@@ -1,0 +1,57 @@
+.icon {
+  position: relative;
+
+  display: block;
+  @include icon-size ($icon-size);
+
+  text-decoration: none;
+
+  @include background-image-properties ();
+
+  @include onTabs {
+    @include icon-size ($icon-size-bigger);
+  }
+
+  &--phone {
+    background-image: url("../images/Icon-Phone-call.svg");
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 16px;
+
+    @include fontSize (12px, 16px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-color;
+
+    opacity: 0;
+    @include transition(opacity);
+    pointer-events: none;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url("../images/Icon-Burger-menu.svg");
+
+    @include transition(background-image);
+
+    &:hover {
+      background-image: url("../images/Icon-Burger-menu-hover.svg");
+    }
+  }
+
+  &--cross {
+    background-image: url("../images/Icon-Close.svg");
+  }
+}
