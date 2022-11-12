@@ -1,0 +1,60 @@
+.container {
+  max-width: 1020;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: $headerTopPaddingBig 40px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: $headerTopPaddingBig 120px;
+  }
+}
+
+.header {
+  background-image: url(../images/met/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    box-sizing: border-box;
+    // serve per togliere lo scroll verticale dopo che abbiamo aggiunto
+    //il padding cioè conta il padding dentro il 100vh
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPaddingSmall 0;
+    //hor 0 perché mettiamo padding al container
+  }
+
+  &__top {
+    @include topActions;
+    grid-template-columns: 1fr $icon-width $icon-width;
+
+    @media (min-width: 744px) {
+      grid-template-columns: 1fr $icon-width-tablet $icon-width-tablet;
+    }
+
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 450px;
+
+    @media (min-width: 744px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @media (min-width: 1020px) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}

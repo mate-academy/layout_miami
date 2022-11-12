@@ -1,0 +1,55 @@
+.icon {
+  position: relative;
+  display: block;
+  //senza block non si vedrebbe perché di natura è un inline element
+  width: 100%;
+  padding-bottom: 100%;
+  text-decoration: none;
+  //attenzione qui
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
+  &__tooltip {
+    position: absolute;
+    display: block;
+    width: max-content;
+    top: -50%;
+    color: #fff;
+    font-weight: 700px;
+    font-size: 16px;
+    line-height: 27px;
+    transform: translateX(-100%);
+    padding-right: 20px;
+    opacity: 0; //incredibile
+    transition: opacity 0.3s;
+    pointer-events: none;
+    //per far uscire la scritta solo quando hover sull'icona
+
+    @media (max-width: 743px) {
+      display: none;
+    }
+  }
+
+  &:hover &__tooltip {
+    pointer-events: all;
+    //così il numero rimane dopo aver fatto l'hover
+    opacity: 1;
+  }
+}
