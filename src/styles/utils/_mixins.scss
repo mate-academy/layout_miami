@@ -36,6 +36,10 @@
   }
 }
 
+@mixin transition($type, $time) {
+  transition: $type $time cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @mixin toggler($img) {
   &__toggler {
     border: none;
@@ -50,6 +54,8 @@
 
     cursor: pointer;
 
+    @include transition(background-image, 300ms);
+
     &:hover {
       @if ($img == "open-menu.svg") {
         background-image: url("../images/hover-menu.svg");
@@ -61,10 +67,6 @@
       height: 24px;
     }
   }
-}
-
-@mixin transition($type, $time) {
-  transition: $type $time cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @mixin button {
