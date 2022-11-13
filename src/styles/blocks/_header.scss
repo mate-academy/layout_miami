@@ -1,6 +1,11 @@
 .header {
   background: url("../images/header.jpg") no-repeat center right 12% / cover;
   padding: 0 20px;
+  margin-bottom: 60px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
 
   &__content {
     height: 100vh;
@@ -34,20 +39,48 @@
     display: flex;
   }
 
+  &__phone-tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $transition-time;
+  }
+
   &__phone {
     background: url("../images/phone.svg") no-repeat center;
+    position: relative;
     @extend %icon-size;
+
+    &:hover &-tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     @include onTablet {
       width: 32px;
       height: 32px;
     }
+
   }
 
   &__menu-opener {
     background: url("../images/menu.svg") no-repeat center;
     @extend %icon-size;
     margin-left: 24px;
+    transition: background $transition-time;
 
     @include onTablet {
       width: 32px;
