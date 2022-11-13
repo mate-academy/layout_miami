@@ -1,11 +1,11 @@
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (min-width: 678px) {
     @content;
   }
 }
 
 @mixin onDesktop {
-  @media (min-width: 1260px) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -15,12 +15,58 @@
   color: inherit;
 }
 
+@mixin top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @mixin trans($property) {
   transition: $property 0.4s;
 }
 
 @mixin useGrid($colCount) {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat($colCount, 1fr);
   gap: 24px;
+}
+
+@mixin allPaddingsX($mobile, $tablet, $desktop) {
+  padding: 0 $mobile;
+
+  @include onTablet() {
+    padding: 0 $tablet;
+
+    @include onDesktop() {
+      padding: 0 $desktop;
+    }
+  }
+}
+
+@mixin allPaddingsY(
+  $mobTop,$mobBot,
+  $tabTop, $tabBot,
+  $desTop, $desBot
+  ) {
+  padding: $mobTop 0 $mobBot;
+
+  @include onTablet() {
+    padding: $tabTop 0 $tabBot;
+
+    @include onDesktop() {
+      padding: $desTop 0 $desBot;
+    }
+  }
+}
+
+@mixin allFontSize($mobile, $tablet, $desktop) {
+  font-size: $mobile;
+
+  @include onTablet() {
+    font-size: $tablet;
+
+    @include onDesktop() {
+      font-weight: $desktop;
+    }
+  }
 }

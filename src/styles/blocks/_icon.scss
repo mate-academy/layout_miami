@@ -3,13 +3,12 @@
   height: 18px;
   width: 18px;
 
-  transition: all 0.4s;
-
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   @include link;
+  @include trans(all);
 
   @include onTablet {
     height: 24px;
@@ -26,7 +25,6 @@
 
     &::before {
       content: "+1 234 555-55-55";
-      display: block;
       transform: translate(-100%, -50%);
       position: absolute;
       top: 50%;
@@ -44,13 +42,20 @@
     }
 
     &:hover::before {
-      opacity: 1;
-      pointer-events: all;
+      @include onDesktop {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 
   &--cross {
     background-image: url("../images/cross.svg");
+    width: 16px;
+
+    @include onDesktop {
+      width: 20px;
+    }
   }
 
   &--menu {

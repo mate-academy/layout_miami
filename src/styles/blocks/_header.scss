@@ -1,15 +1,20 @@
 .header {
-  height: 100vh;
   box-sizing: border-box;
 
   background-image: url("../images/photos/Cover_photo.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: right;
+
+  @include onTablet {
+    background-position: top;
+  }
+
+  @include onDesktop {
+    background-position: center;
+  }
 
   &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include top;
   }
 
   &__nav {
@@ -23,16 +28,24 @@
     flex-direction: column;
     justify-content: space-between;
 
-    height: 100vh;
-    padding-top: 28px;
     box-sizing: border-box;
+    height: 100vh;
 
-    @include onTablet {
-      padding-top: 34px;
-    }
-
-    @include onDesktop {
-      padding-top: 36px;
-    }
+    @include allPaddingsY(
+      28px, 88px,
+      34px, 130px,
+      36px, 202px
+    );
   }
+
+  &__title {
+    align-self: center;
+    margin: 0;
+
+    @include allFontSize(36px, 64px, 80px);
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+  }
+
 }

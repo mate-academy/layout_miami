@@ -1,5 +1,93 @@
 .menu {
-  height: 100vh;
-  box-sizing: border-box;
+  position: fixed;
+  transform: translateX(100%);
+  top: 0;
+  left: 0;
+  right: 0;
+
   background-color: #e5e5e5;
+  overflow: hidden;
+
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $colorDark;
+
+  @include trans(transform);
+
+  @include onDesktop {
+    font-weight: 700;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+
+    @include allPaddingsY(
+      28px, 0,
+      34px, 0,
+      36px, 0
+    );
+  }
+
+  &__top {
+    @include top;
+    height: max-content;
+    margin-bottom: 44px;
+
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
+
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    display: block;
+    width: max-content;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid transparent;
+
+    @include trans(border-color);
+    @include link;
+
+    &:hover {
+      border-color: $colorDark;
+    }
+  }
+
+  &__number {
+    display: block;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    @include link;
+  }
+
+  &__call {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $colorDark;
+
+    font-size: 12px;
+    line-height: 16px;
+    @include link;
+  }
 }
