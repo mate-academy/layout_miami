@@ -1,0 +1,168 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header-340.png);
+
+  @include onTablet {
+    background-image: url(../images/header-744.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-1260.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 50px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 50px 0 55px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $icon-size-mobile;
+
+    @include onTablet {
+      gap: $icon-size-tablet;
+    }
+
+    @include onDesktop {
+      gap: $icon-size-desktop;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $main-text-color;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity $animation-duration;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+
+      height: 27px;
+      width: 32px;
+
+      background-position: center;
+      background-size: cover;
+      background-image: url(../images/small-sound-waves.svg);
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+  }
+
+  &__sound-waves {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+
+    height: 76px;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  @for $number from 1 through 11 {
+    &__wave-#{$number} {
+      height: 100%;
+      width: 3px;
+
+      border-radius: 20px;
+      background-color: $main-text-color;
+
+      animation: waves 2s ease-in-out infinite;
+      transform-origin: center;
+
+      @keyframes waves {
+        50% {
+          height: 20%;
+        }
+
+        100% {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @each $wave-number, $animation-delay in $waves-animation-delay {
+    &__wave-#{$wave-number} {
+      animation-delay: $animation-delay;
+    }
+  }
+}
