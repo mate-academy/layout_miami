@@ -1,7 +1,134 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/vars";
+@import "./utils/mixins";
+@import "./utils/extends";
 
-body {
-  background: $c-gray;
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesctop {
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  @include onDesctop {
+    height: 32px;
+    width: 32px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo {
+  &__image {
+    display: block;
+    height: 38px;
+
+    @include onDesctop {
+      height: 56px;
+    }
+  }
+}
+
+.header {
+  background-image: url("../images/photos/bg-header.jpg");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 29px 0 88px;
+  }
+
+  &__nav-wrapper {
+    display: flex;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    margin-left: 24px;
+
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &__call {
+    background-image: url("../images/phone.svg");
+    text-decoration: none;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onDesctop {
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
 }
