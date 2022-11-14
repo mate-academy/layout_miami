@@ -1,11 +1,11 @@
 1. Add a favicon /
 2. Don’t forget to add a title for the whole web page (it could be the name of your landing) /
-3. All Logos on the page should be links to home page
+3. All Logos on the page should be links to home page /
 4. Change text color on hover for phone, email and address
 5. When you click on phone icon or phone number in contacts section, make sure that there is no 404 error, make it a real link to start a call on device
-6. Same when you click on logo. There shouldn't be any error.
+6. Same when you click on logo. There shouldn't be any error. /
 7. When clicking on any location / address - prevent errors and make it to open location in Google Maps
-8. Pictures in Gallery should increase on hover
+8. Pictures in Gallery should increase on hover /
 9. Location-related addresses / links should open google maps in a new tab `target="_blank"`
 10. Apply `:hover` effect for images on page (testimonials / gallery, other sections).
 11. Make sure everything looks neat on mobile and without horizontal scrolling
