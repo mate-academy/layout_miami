@@ -31,42 +31,49 @@
   gap: 24px;
 }
 
-@mixin allPaddingsX($mobile, $tablet, $desktop) {
-  padding: 0 $mobile;
+@mixin allPaddingsX($onMobile, $onTablet, $onDesktop) {
+  padding: 0 $onMobile;
 
   @include onTablet() {
-    padding: 0 $tablet;
+    padding: 0 $onTablet;
 
     @include onDesktop() {
-      padding: 0 $desktop;
+      padding: 0 $onDesktop;
     }
   }
 }
 
 @mixin allPaddingsY(
-  $mobTop,$mobBot,
-  $tabTop, $tabBot,
-  $desTop, $desBot
+  $mobileTop,$mobileBottom,
+  $tabletTop, $tabletBottom,
+  $desktopTop, $desktopBottom
 ) {
-  padding: $mobTop 0 $mobBot;
+  padding: $mobileTop 0 $mobileBottom;
 
   @include onTablet() {
-    padding: $tabTop 0 $tabBot;
+    padding: $tabletTop 0 $tabletBottom;
 
     @include onDesktop() {
-      padding: $desTop 0 $desBot;
+      padding: $desktopTop 0 $desktopBottom;
     }
   }
 }
 
-@mixin allFontSize($mobile, $tablet, $desktop) {
-  font-size: $mobile;
+@mixin allFontSize($onMobile, $onTablet, $onDesktop) {
+  font-size: $onMobile;
 
   @include onTablet() {
-    font-size: $tablet;
+    font-size: $onTablet;
 
     @include onDesktop() {
-      font-size: $desktop;
+      font-size: $onDesktop;
     }
+  }
+}
+
+@mixin hoverShadow {
+  &:hover {
+    font-weight: 700;
+    text-shadow: -1px 1px rgba(0, 0, 0, 0.5);
   }
 }

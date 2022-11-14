@@ -1,5 +1,5 @@
-1. Add a favicon
-2. Don’t forget to add a title for the whole web page (it could be the name of your landing)
+1. Add a favicon /
+2. Don’t forget to add a title for the whole web page (it could be the name of your landing) /
 3. All Logos on the page should be links to home page
 4. Change text color on hover for phone, email and address
 5. When you click on phone icon or phone number in contacts section, make sure that there is no 404 error, make it a real link to start a call on device
