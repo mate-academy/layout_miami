@@ -1,0 +1,93 @@
+.icons {
+  display: flex;
+  align-items: center;
+  
+  &__icon {
+    display: block;
+    width: $mob-icon-size;
+    height: $mob-icon-size;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &:last-child() {
+      margin-left: $mob-menu-icon-margin;
+
+      @include onTablet {
+        margin-left: $desk-menu-icon-margin;
+      }
+    }
+
+    @include onTablet {
+      width: $desk-icon-size;
+      height: $desk-icon-size;
+    }
+
+    &--call {
+      // height: 18px;
+      background-image: url("../images/phone-icon.svg");
+      color: $main-color;
+      
+      &--desktop {
+        @include onDesktop {
+          &::before {
+            content: "+1 234 555-55-55";
+            position: relative;
+            top: 50%;
+            
+            display: block;
+            padding-right: 12px;
+            width: max-content;
+            transform: translate(-90%, -50%);
+            opacity: 0;
+            
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            pointer-events: none;
+          }
+
+          &:hover::before {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-100%, -50%);
+          }
+        }
+      }
+    }
+    
+    &--menu-opener {
+      height: 12px;
+      background-image: url("../images/menu-icon.svg");
+      
+      @include onTablet {
+        height: 19px;
+        background-image: url("../images/menu-desk-icon.svg");
+
+        transition: background-image 0.4s ease;
+        
+        &:hover {
+          height: 24px;
+          background-image: url("../images/menu-hover-icon.svg");
+        }
+      }
+
+    }
+
+    &--cross {
+      background-image: url("../images/cross.svg");
+      height: 16px;
+      width: 16px;
+      grid-column: 3;
+
+      @include onDesktop {
+        height: 21px;
+        width: 21px;
+      }
+    }
+  }
+}
