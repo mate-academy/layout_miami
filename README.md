@@ -1,8 +1,6 @@
 # Miami landing page
 In this task, you will learn how to implement a landing page. To do that:
-
-- watch [the lesson videos](https://mate.academy/learn/css-advanced/css-advanced-landing#/video)
-  - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
+- Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
 - choose a landing page design from the list below;
 - implement it block by block, adopt and deploy to show your current progress at any time;
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
@@ -14,3 +12,22 @@ The designs to choose from:
 - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
 - [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+
+## Github flow
+1. **Fork** the repo.
+2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
+3. Run `npm install` (or just `npm i`).
+4. Run `npm start`.
+5. Open one more terminal window for the next steps.
+6. `git checkout -b develop` - to create new branch and switch on it.
+7. Write you code in `src` folder.
+8. Run `npm run lint` and fix code style errors.
+9. Run `npm run deploy` to deploy your solution to `gh-pages`.
+10. `git add . && git commit -m 'solution'` to save your changes.
+11. `git push origin develop` - to send you code for PR.
+12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
+13. Replace `<your_account>` with your Github username in the
+  [DEMO LINK](https://kamal-tufekcic.github.io/layout_dia/).
+14. Copy `DEMO LINK` to the PR description.
+
+> To update you PR repeat steps 7-11.
