@@ -1,0 +1,96 @@
+.menu {
+  height: 100vh;
+
+  background-color: #e5e5e5;
+  font-weight: 600;
+
+  @include onDesktop {
+    font-weight: 700;
+  }
+  &__content {
+    padding: $mobileContentTopPadding 0 0 0;
+
+    @include onTablet {
+      padding: $tabletContentTopPadding 0 0 0;
+    }
+
+    @include onDesktop {
+      padding: $desktopContentTopPadding 0 0 0;
+    }
+  }
+
+  &__top-line {
+    @extend %topLine;
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 7px;
+
+    font-size: 22px;
+    line-height: 1;
+    color: $menuLinkColor;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    overflow: hidden;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      display: block;
+      height: 1px;
+      background-color: $menuLinkColor;
+
+      transform: translateX(-100%);
+      transition: transform $transitionSetup;
+    }
+
+    &:hover {
+      position: relative;
+    }
+
+    &:hover::after {
+      transform: translateX(0);
+    }
+  }
+
+  &__tel {
+    display: block;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 1.68;
+    color: $menuLinkColor;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__book-link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $menuLinkColor;
+
+    font-size: 12px;
+    line-height: 1.33;
+    color: $menuLinkColor;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}

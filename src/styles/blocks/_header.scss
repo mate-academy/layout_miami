@@ -13,21 +13,19 @@
     justify-content: space-between;
 
     min-height: 100vh;
-    padding: 29px 0 88px;
+    padding: $mobileContentTopPadding 0 88px;
 
     @include onTablet {
-      padding: 34px 0 130px;
+      padding: $tabletContentTopPadding 0 130px;
     }
 
     @include onDesktop {
-      padding: 36px 0 203px;
+      padding: $desktopContentTopPadding 0 203px;
     }
   }
 
   &__top-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend %topLine;
   }
 
   &__controls {
@@ -39,63 +37,8 @@
     }
   }
 
-  &__controls-link {
-    display: inline-block;
-    width: 18px;
-    height: 38px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    @include onTablet {
-      width: 24px;
-    }
-
-    &--tel-link {
-      background-image: url(../images/phone.svg);
-
-      @include onDesktop {
-        &::before {
-          content: "+1 234 555-55-55";
-
-          position: absolute;
-          right: 100%;
-          top: 50%;
-          transform: translateY(50%);
-
-          display: block;
-          width: max-content;
-          padding-right: 12px;
-
-          font-size: 12px;
-          color: #fff;
-          font-weight: 700;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          text-decoration: none;
-
-          opacity: 0;
-
-          transition: opacity $transitionSetup;
-        }
-
-        &:hover {
-          position: relative;
-        }
-
-        &:hover::before {
-          opacity: 1;
-        }
-      }
-    }
-
-    &--menu-opener {
-      background-image: url(../images/menu.svg);
-      transition: background-image $transitionSetup;
-      &:hover {
-        background-image: url(../images/menu_hover.svg);
-      }
-    }
+  &__controls-item {
+    line-height: 0;
   }
 
   &__title {
