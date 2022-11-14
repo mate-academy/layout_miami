@@ -7,3 +7,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__menu--skroll');
   }
 });
+
+const form = document.querySelector('.unload');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
