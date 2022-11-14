@@ -1,3 +1,5 @@
+import AOS from 'aos';
+
 'use strict';
 
 AOS.init({
