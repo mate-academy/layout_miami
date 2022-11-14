@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .page {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -14,6 +19,20 @@
 
   &__body {
     margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
   }
 }
 
@@ -40,6 +59,24 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    margin-left: 24px;
+
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
 }
 
 .logo {
@@ -51,6 +88,12 @@
       height: 56px;
     }
   }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header {
@@ -65,31 +108,14 @@
     justify-content: space-between;
 
     height: 100vh;
-    padding: 29px 0 88px;
+    padding: $header-padding-top 0 88px;
   }
 
   &__nav-wrapper {
     display: flex;
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    margin-left: 24px;
-
-    background-image: url("../images/menu.svg");
-
-    &:hover {
-      background-image: url("../images/menu_hover.svg");
-    }
-  }
-
   &__call {
-    background-image: url("../images/phone.svg");
     text-decoration: none;
 
     @include onDesctop {
@@ -129,6 +155,74 @@
     @include onDesctop {
       font-size: 80px;
       line-height: 100%;
+    }
+  }
+}
+
+.menu {
+  background-color: #c2c2c2;
+
+  &__content {
+    height: 100vh;
+    padding: $header-padding-top 0;
+  }
+
+  &__list {
+    margin-top: 44px;
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:first-of-type) {
+      margin-top: 24px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    text-decoration: none;
+    color: #1d1d1d;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    color: #1d1d1d;
+
+    &--phone {
+      margin-top: 40px;
+
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--action {
+      margin-top: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
     }
   }
 }
