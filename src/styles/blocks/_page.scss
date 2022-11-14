@@ -1,7 +1,19 @@
+%nav-decoration {
+  content: "";
+  position: absolute;
+  top: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  transition: transform $transition-duration;
+}
+
 .page {
   font-family: "Poppins", sans-serif;
   color: $color-text-main;
 
+  // Position of Navigation
   &__nav {
     position: fixed;
     top: 0;
@@ -9,20 +21,35 @@
     right: 0;
 
     transform: translateX(-100%);
+    transition: transform $transition-duration ease-out 0.6s;
 
-    transition: transform $transition-duration ease-out;
+    &::before {
+      @extend %nav-decoration;
+      z-index: 1;
+
+      background-color: rgb(95, 96, 66);
+    }
+
+    &::after {
+      @extend %nav-decoration;
+      z-index: 2;
+
+      background-color: rgb(63, 40, 68);
+      transition-delay: 0.3s;
+    }
 
     &--opened {
       transform: translateX(0%);
+
+      &::before,
+      &::after {
+        transform: translate(100%);
+      }
     }
   }
 
   &__main {
-    padding: 60px 0 120px;
-
-    @include onTablet {
-      padding-top: 120px;
-    }
+    padding-bottom: 120px;
 
     @include onDesktop {
       padding-bottom: 180px;
@@ -85,42 +112,51 @@
     font-weight: 400;
   }
 
+  // Move free
+  &__move-free {
+    padding-top: 60px;
+    
+    @include onTablet {
+      padding-top: 120px;
+    }
+  }
+
   // Compare Bikes
   &__compare-bikes {
-    margin-top: 92px;
+    padding-top: 92px;
 
     @include onTablet {
-      margin-top: 132px;
+      padding-top: 132px;
     }
 
     @include onDesktop {
-      margin-top: 164px;
+      padding-top: 164px;
     }
   }
 
   // The Details
   &__details {
-    margin-top: 92px;
+    padding-top: 92px;
 
     @include onTablet {
-      margin-top: 120px;
+      padding-top: 120px;
     }
 
     @include onDesktop {
-      margin-top: 144px;
+      padding-top: 144px;
     }
   }
 
   // Contact us
   &__contact-us {
-    margin-top: 80px;
+    padding-top: 80px;
 
     @include onTablet {
-      margin-top: 120px;
+      padding-top: 120px;
     }
 
     @include onDesktop {
-      margin-top: 180px;
+      padding-top: 180px;
     }
   }
 }
