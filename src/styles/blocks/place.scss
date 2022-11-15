@@ -1,0 +1,85 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 186px;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    @include onIpad {
+      height: 186;
+      padding-bottom: 0;
+    }
+  
+    @include onDesktop {
+      min-height: 320px;
+      padding-bottom: 0;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &--second {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 86px;
+      overflow: hidden;
+
+      @include onIpad {
+        min-height: 284px;
+      }
+
+      @include onDesktop {
+        min-height: 320px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      border-radius: 10%;
+
+      &:first-child {
+        border-radius: 5%;
+      }
+
+      &:last-child {
+        border-radius: 5%;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__special {
+    display: block;
+
+    @include onIpad {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__text {
+    font-weight: bold;
+    color: $colorRed;
+  }
+}
