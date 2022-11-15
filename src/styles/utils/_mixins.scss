@@ -31,18 +31,6 @@
   gap: 24px;
 }
 
-@mixin allPaddingsX($onMobile, $onTablet, $onDesktop) {
-  padding: 0 $onMobile;
-
-  @include onTablet() {
-    padding: 0 $onTablet;
-
-    @include onDesktop() {
-      padding: 0 $onDesktop;
-    }
-  }
-}
-
 @mixin allPaddingsY(
   $mobileTop,$mobileBottom,
   $tabletTop, $tabletBottom,
@@ -52,10 +40,23 @@
 
   @include onTablet() {
     padding: $tabletTop 0 $tabletBottom;
+  }
+  
+  @include onDesktop() {
+    padding: $desktopTop 0 $desktopBottom;
+  }
 
-    @include onDesktop() {
-      padding: $desktopTop 0 $desktopBottom;
-    }
+}
+
+@mixin allMarginsY($onMobile, $onTablet, $onDesktop) {
+  margin: 0 0 $onMobile;
+
+  @include onTablet() {
+    margin-bottom: $onTablet;
+  }
+
+  @include onDesktop() {
+    margin-bottom: $onDesktop;
   }
 }
 
@@ -64,16 +65,9 @@
 
   @include onTablet() {
     font-size: $onTablet;
-
-    @include onDesktop() {
-      font-size: $onDesktop;
-    }
   }
-}
 
-@mixin hoverShadow {
-  &:hover {
-    font-weight: 700;
-    text-shadow: -1px 1px rgba(0, 0, 0, 0.5);
+  @include onDesktop() {
+    font-size: $onDesktop;
   }
 }

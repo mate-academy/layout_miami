@@ -1,16 +1,31 @@
 .container {
   margin: 0 auto;
-  @include allPaddingsX(20px, 72px, 120px);
+  padding: 0 20px;
 
-  &--card:not(:nth-child(n+3)) {
-    margin-bottom: 40px;
+  @include onTablet() {
+    padding: 0 72px;
+  }
 
-    @include onTablet {
-      margin-bottom: 48px;
+  @include onDesktop() {
+    padding: 0 120px;
+  }
+
+  &--card {
+    @include allMarginsY(40px, 48px, 48px);
+
+    &-row {
+      @include onDesktop {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(3) {
+        margin-bottom: 0;
+      }
     }
+  }
 
-    @include onDesktop {
-      margin-bottom: 0;
-    }
+  &--image {
+    @include useGrid(2);
+    margin-bottom: 16px;
   }
 }

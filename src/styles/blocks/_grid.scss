@@ -1,7 +1,8 @@
 .grid {
+  @include onTablet {
+    @include useGrid(6);
 
-  &__tablet {
-    @include onTablet {
+    &__tablet {
       @for $start from 1 through 6 {
         @for $end from $start through 6 {
           &--#{$start}-#{$end} {
@@ -12,8 +13,10 @@
     }
   }
 
-  &__desktop {
-    @include onDesktop {
+  @include onDesktop {
+    @include useGrid(12);
+
+    &__desktop {
       @for $start from 1 through 12 {
         @for $end from $start through 12 {
           &--#{$start}-#{$end} {

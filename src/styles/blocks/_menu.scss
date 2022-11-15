@@ -1,21 +1,17 @@
 .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
   overflow-y: auto;
-  transform-origin: top right;
-  transform: rotate3d(1, 1, 0, -90deg);
-  background-color: #e5e5e5;
 
   font-size: 22px;
   line-height: 22px;
   letter-spacing: 2px;
   font-weight: 600;
   text-transform: uppercase;
+
+  background-color: #e5e5e5;
   color: $colorDark;
 
+  transform-origin: top right;
+  transform: rotate3d(1, 1, 0, 90deg);
   @include trans(transform);
 
   @include onDesktop {
@@ -38,14 +34,9 @@
   }
 
   &__top {
-    @include top;
     height: max-content;
-    margin-bottom: 44px;
-
-    @include onDesktop {
-      margin-bottom: 48px;
-    }
-
+    @include top;
+    @include allMarginsY(44px, 48px, 48px);
   }
 
   &__list {
@@ -83,8 +74,11 @@
     letter-spacing: 0;
 
     @include link;
-    @include hoverShadow;
     @include trans(text-shadow);
+
+    &:hover {
+      text-shadow: -1px -1px $colorDark;
+    }
   }
 
   &__call {
@@ -95,7 +89,10 @@
     line-height: 16px;
 
     @include link;
-    @include hoverShadow;
     @include trans(text-shadow);
+
+    &:hover {
+      text-shadow: -1px -1px $colorDark;
+    }
   }
 }

@@ -7,3 +7,7 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--no-scroll');
   }
 });
+
+document.getElementById('form').addEventListener('submit', (event) => {
+  event.preventDefault();
+});
