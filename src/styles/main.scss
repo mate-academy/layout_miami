@@ -2,6 +2,141 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesctop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: Poppins, sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+
+  &__image {
+    height: 38px;
+    width: 130px;
+  }
+
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 23px;
+
+  @include onDesctop() {
+    padding: 0 120px;
+  }
+}
+
+.header {
+  height: 100vh;
+  padding-top: 28px;
+
+  background-position: bottom 0 right 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../images/MyBike_header_img.svg);
+
+  &__content {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__call {
+    margin-right: 30px;
+    background-image: url(../images/phone_MyBike.png);
+
+    @include onDesctop() {
+      width: 24px;
+      height: 24px;
+
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 25%;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        transform: translateX(-100%);
+        color: #fff;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu_MyBike.png);
+
+    transition: 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg) ;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1.5px;
+    // margin-bottom: 88px;
+
+    @include onDesctop() {
+      font-size: 80px;
+    }
+  
+  }
+
 }
