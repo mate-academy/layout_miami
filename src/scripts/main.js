@@ -15,3 +15,15 @@ sendButton.addEventListener('click', formSubmit, false);
 function formSubmit(event) {
   event.preventDefault();
 }
+
+const menu = document.querySelector('.menu');
+const openMenu = document.querySelector('#openMenu');
+const closeMenu = document.querySelector('#closeMenu');
+
+openMenu.addEventListener('click', () => {
+  menu.classList.add('page__menu--active');
+});
+
+closeMenu.addEventListener('click', () => {
+  menu.classList.remove('page__menu--active');
+});
