@@ -1,0 +1,109 @@
+.header {
+  background-image: url(../images/small-back.svg);
+  background-repeat: no-repeat;
+  background-position:  left center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @include forTablets {
+    background-image: url(../images/medium-back.svg);
+  }
+
+  @include forDesktop {
+    background-image: url(../images/big-back.svg);
+    background-position: center top;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include forTablets {
+      padding-bottom: 50px 0 40px;
+    }
+
+
+    @include forDesktop {
+      padding: 50px 0 64px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-number {
+    position: relative;
+    transform: translateX(-50px);
+
+    @include forDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+
+        display: block;
+        width: max-content;
+        padding-right: 10px;
+        transform: translate(-100%, -50%);
+
+        line-height: 16px;
+        font-size: 12px;
+        letter-spacing: 2px;
+
+        color:#292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    font-size: 32px;
+    line-height: 32px;
+
+    @include forTablets {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include forDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: url(../images/Sound.svg);
+      display: block;
+      height: 32px;
+      width: 27px;
+      margin-bottom: 16px;
+
+      @include forTablets {
+        content: url(../images/sound-waves.svg);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 40px;
+      }
+
+      @include forDesktop{
+        content: url(../images/sound-waves.svg);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
