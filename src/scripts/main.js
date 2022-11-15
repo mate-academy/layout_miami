@@ -7,3 +7,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--no-scroll');
   }
 });
+
+const sendButton = document.querySelector('.button--send');
+
+sendButton.addEventListener('click', formSubmit, false);
+
+function formSubmit(event) {
+  event.preventDefault();
+}
