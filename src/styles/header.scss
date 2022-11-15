@@ -1,0 +1,126 @@
+.header {
+  background-image: url(../images/header320.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/header744.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header1260.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+  }
+
+  // &__nav {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
+
+  &__bottoms {
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    margin-right: 40px;
+    text-decoration: none;
+
+    // @include onTablet {
+    //   width: 24px;
+    //   height: 24px;
+    // }
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%);
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  // @include onDesktop {
+  //   display: block;
+  //   width: 24px;
+  //   height: 24px;
+  // }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    color: #292929;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
+    }
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/wave.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 20px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
+
+      &::before {
+        width: 60px;
+        height: 70px;
+        margin-bottom: 40px;
+        background-image: url(../images/sound-waves.svg);
+      }
+    }
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 100%;
+    }
+  }
+}
