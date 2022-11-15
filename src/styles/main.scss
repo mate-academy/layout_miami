@@ -1,11 +1,18 @@
-@import "utils";
-@import "typography";
-
 @mixin forDesktop {
   @media (min-width: 1024px) {
     @content;
   }
 
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 .page {
@@ -15,6 +22,19 @@
   &__body {
     margin: 0;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
 }
 
 .container {
@@ -23,7 +43,7 @@
   padding: 0 20px;
 
   @include forDesktop {
-    margin: 0;
+    margin: 0 auto;
     padding: 0 120px;
   }
 }
@@ -102,13 +122,13 @@
         display: block;
         width: max-content;
         padding-right: 20px;
-  
+
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
         text-transform: uppercase;
-  
+
         opacity: 0;
         transform: translateX(-100%);
         color: #fff;
@@ -149,6 +169,101 @@
     @include forDesktop {
       height: 56px;
       width: 187px;
+    }
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-close {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 12px;
+    top: 3px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/close.svg);
+
+    @include forDesktop {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__list {
+    margin-top: 40px;
+  }
+
+  &__item:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  &__link {
+    border-bottom: 1px solid transparent;
+    padding-bottom: 8px;
+    width: max-content;
+
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #1d1d1d;
+
+    &:hover {
+      transition: border-color 0.3s;
+      border-color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    width: max-content;
+
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 27px;
+    /* identical to box height, or 169% */
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+
+    color: #1d1d1d;
+
+    &--phone {
+      margin-top: 40px;
+    }
+
+    &--action {
+      margin-top: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
     }
   }
 }
