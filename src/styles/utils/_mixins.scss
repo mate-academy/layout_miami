@@ -1,4 +1,4 @@
-@mixin container {
+@mixin grid-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -43,5 +43,30 @@
 
   @include onTablet {
     margin-bottom: 140px;
+  }
+}
+
+@mixin title {
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  position: relative;
+  width: fit-content;
+
+  @include notMobile {
+    font-size: 48px;
+    line-height: 48px;
+    width: fit-content;
+  }
+}
+
+@mixin columns ($tablet-start, $tablet-end, $desctop-start, $desctop-end) {
+
+  @include onTablet {
+    grid-column: #{$tablet-start} / #{$tablet-end + 1};
+  }
+
+  @include onDesktop {
+    grid-column: #{$desctop-start} / #{$desctop-end + 1};
   }
 }
