@@ -1,15 +1,45 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 34px 20px 88px;
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
 
+  @include for-tablet {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  display: block;
   background-position: 85% 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(../images/header_and_footer_photos/header_photo.png);
+
+  @include for-tablet {
+    background-position: center;
+  }
+
+  @include for-desktop {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    align-items: center;
+    height: 100vh;
+    padding: 34px 0 150px;
+
+    @include for-tablet {
+      padding: 34px 0 190px;
+    }
+
+    @include for-desktop {
+      padding: 40px 0 250px
+    }
+  }
 
   &__nav {
     display: flex;
@@ -20,20 +50,26 @@
 
   &__menu-wraper {
     display: flex;
+    gap: 30px;
   }
 
   &__call {
     display: block;
-    width: 24px;
-    height: 24px;
-
+    @include menu-and-call-size (24px);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(../images/icons_and_logo/call_icon.svg);
 
     color: #fff;
-    margin-right: 30px;
+
+    @include for-tablet {
+      @include menu-and-call-size (30px);
+
+    //   &:hover {
+
+    //   }
+    }
   }
 
   &__menu-opener {
@@ -43,16 +79,16 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(../images/icons_and_logo/menu_bar.svg);
-    height: 24px;
-    width: 24px;
+    @include menu-and-call-size (24px);
     color: #fff;
-    margin-right: 23px;
-    -webkit-transform: scaleX(-1);
-    transition: 0.3s;
+    transition: background-image 0.3s;
 
     &:hover {
-      -webkit-transform: scaleX(-1);
       background-image: url(../images/icons_and_logo/menu_bar_hover.svg)
+    }
+
+    @include for-tablet {
+      @include menu-and-call-size (30px);
     }
   }
 
@@ -64,5 +100,13 @@
     letter-spacing: -1.5px;
     user-select: none;
     grid-area: text;
+
+    @include for-tablet {
+      font-size: 64px;
+    }
+
+    @include for-desktop {
+      font-size: 80px;
+    }
   }
 }
