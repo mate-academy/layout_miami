@@ -1,0 +1,35 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon: 24px;
+  display: grid;
+
+  grid-template-columns: 1fr var(--icon) var(--icon) var(--icon);
+  justify-items: left;
+  align-items: center;
+  margin-bottom: 44px;
+
+  @include onTablet {
+    --icon: 32px;
+  }
+
+  &__item {
+    @for $start from 1 through 5 {
+      @for $end from $start through 5 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
