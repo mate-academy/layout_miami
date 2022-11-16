@@ -1,8 +1,16 @@
-@mixin onDesktop {
-  @media (min-width: 1020px) {
+@mixin onTablet {
+  @media (min-width: 744px) {
     @content;
   }
 }
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+$header-top-padding: 40px;
+$color-lightblue: #E5E5E5;
 
 .page {
   font-family: "Inter", sans-serif;
@@ -14,14 +22,66 @@
 
 .logo {
   &__image {
-    // height: ;
+    width: 130px;
   }
+
+  @include onTablet() {
+    &__image {
+      width: 190px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  color: #292929;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-active.svg);
+    }
+
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  gap: 30px;
+
+  @include onDesktop() {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+.top-actions--two-colums {
+  grid-template-columns: 1fr var(--icon-width);
 }
 
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0 40px;
+  padding: 0 20px;
 
   @include onDesktop() {
     padding: 0 60px;
@@ -31,7 +91,16 @@
 .header {
   background-size: cover;
   background-position: center;
-  background-image: url(../images/baground-image.png);
+  background-repeat: no-repeat;
+  background-image: url(../images/baground-image-mobile.png);
+
+  @include onTablet() {
+    background-image: url(../images/baground-image.png);
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/baground-image.png);
+  }
 
   &__content {
     display: flex;
@@ -40,7 +109,7 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 52px 0 40px;
+    padding: $header-top-padding 0 94px;
 
     @include onDesktop() {
       padding: 52px 0 64px;
@@ -48,67 +117,43 @@
   }
 
   &__title {
-    font-family: "Inter";
     font-style: italic;
     font-weight: 800;
-    font-size: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+    font-size: 32px;
     line-height: 100%;
     color: #292929;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/decorate-mobile.svg);
+      background-repeat: no-repeat;
+      padding-bottom: 16px;
+    }
 
     @include onDesktop() {
       font-size: 48px;
       letter-spacing: -1.5px;
+      &::before {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/decorate.svg);
+        padding-bottom: 40px;
+      }
     }
-    &::before {
-      content: "";
-      display: block;
-      width: 63px;
-      height: 76px;
-      background-image: url(../images/cross.svg);
-      background-repeat: no-repeat;
-      padding-bottom: 40px;
-    }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &-group {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-  }
-
-  &__menu-opener {
-    display: inline-block;
-    width: 24px;
-    height: 19px;
-    margin-left: 40px;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu-active.svg);
-    }
   }
 
   &__call {
     text-decoration: none;
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(../images/phone.svg);
 
     @include onDesktop() {
       &::before {
@@ -134,6 +179,72 @@
         opacity: 1;
         pointer-events: all;
       }
+    }
+  }
+}
+
+.menu {
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $header-top-padding 0 ;
+  }
+
+  &-top {
+    margin-bottom: 55px;
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+  &__link {
+    width: max-content;
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #292929;
+    transition: border-color 0.3s;
+    &:hover {
+      border-color:  #292929;;
+    }
+  }
+
+  &__call {
+    width: max-content;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #292929;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+
+      border-bottom: 1px solid #292929;
+
+
     }
   }
 }
