@@ -40,5 +40,18 @@ window.addEventListener('hashchange', () => {
 });
 
 formButton.addEventListener('click', (event) => {
-  event.preventDefault();
+  const reg
+  = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  const form = document.forms[0];
+  const name = form.name.value.replace(/ /g, '');
+  const email = form.email.value.replace(/ /g, '');
+  const message = form.message.value.replace(/ /g, '');
+
+  const validValue = email.match(reg);
+
+  if (name && email && message && validValue) {
+    event.preventDefault();
+    form.reset();
+  }
 });
