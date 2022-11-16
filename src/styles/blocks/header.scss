@@ -1,0 +1,100 @@
+.header {
+  height: 100vh;
+  padding-top: 25px;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-top: 32px;
+  }
+
+  background-image: url(/images/photos/header_mobile.jpg);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: -2px;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(/images/photos/header_tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(/images/photos/header_desktop.jpg);
+  }
+
+  &__content {
+    margin-bottom: 129px;
+  }
+
+  &__nav {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @include onDesktop {
+      gap: 60px;
+    }
+  }
+
+  &__contacts {
+    position: absolute;
+    right: 100px;
+    margin-top: 24px;
+
+    color: $white-color;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+
+    text-align: end;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-time $transition-style;
+
+    &:hover {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  &__phone:hover ~ &__contacts {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__title {
+    position: relative;
+    align-items: center;
+    top: 200px;
+
+    @include onTablet {
+      top: 256px;
+    }
+
+    @include onDesktop {
+      top: 198px;
+    }
+
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    text-align: center;
+    color: $white-color;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
