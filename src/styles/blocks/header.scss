@@ -1,14 +1,40 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  height: 100vh;
-  padding: 25px 20px 288px;
-
   background-size: cover;
   background-position: center;
   background-image: url(../images/header.jpg) ;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 25px 0 288px;
+
+    @include onDecktop {
+      padding: 50px 0 482px;
+    }
+
+    @include onTablet {
+      padding: 50px 0 456px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 63px;
+
+    @include onDecktop {
+      width: 111px;
+    }
+
+    @include onTablet {
+      width: 111px;
+    }
+  }
 
   &__title {
     margin: 0;
@@ -19,6 +45,16 @@
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
+
+    @include onDecktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
   }
 
   &__nav {
@@ -28,13 +64,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 18px;
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -42,13 +72,29 @@
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
-
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDecktop() {
+      &::before {
+        content: "The Met Fifth Avenue";
+        position: relative;
+        top: 50%;
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
   }
 }
