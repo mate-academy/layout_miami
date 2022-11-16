@@ -11,7 +11,9 @@ window.addEventListener('hashchange', () => {
 const loginForm = document.querySelector('.contacts__form');
 
 loginForm.addEventListener('submit', login);
+document.getElementById('form').reset();
 
 function login(e) {
   e.preventDefault();
+  document.getElementById('form').reset();
 }
