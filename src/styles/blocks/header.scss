@@ -1,0 +1,119 @@
+
+.header {
+  padding: 24px 0;
+  height: 100vh;
+  background-image: url(../images/metimgs/headermax.png);
+  @extend %background-imgs;
+
+  &__top-actions {
+    margin-bottom: 128px;
+
+    @include onDesktop {
+      margin-bottom: 108px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone {
+    $phone-size: 18px;
+    cursor: pointer;
+
+    height: $phone-size;
+    width: $phone-size;
+    background-image: url(../images/metimgs/phone.svg);
+    @extend %background-imgs;
+
+    margin-right: 28px;
+
+    @include onTablet {
+      $phone-size: 24px;
+
+      margin-right: 64px;
+    }
+
+    &--number {
+      display: block;
+      width: max-content;
+      opacity: 0;
+      position: absolute;
+      padding-right: 20px;
+      text-align: right;
+      pointer-events: none;
+      color: #fff;
+      transition: opacity 0.3s;
+
+      &-1 {
+        transform: translate(-100%, -70%);
+      }
+
+      &-2 {
+        transform: translate(-100%, 30%);
+      }
+    }
+
+    @include onDesktop {
+      &:hover {
+        .header__phone--number {
+          opacity: 1;
+          pointer-events: all;
+          padding-left: 4px;
+          border-left: 2px solid transparent;
+          border-radius: 3px;
+
+          &-1 {
+            transition: opacity color 0.3s;
+
+            &:hover {
+              color: #d12d35;
+
+            }
+          }
+          &-2 {
+            transition: opacity color 0.3s;
+
+            &:hover {
+              color: #d12d35;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__burger-menu {
+    --burger-menu-size: 12px;
+    height: var(--burger-menu-size);
+    width: calc(1.5 * var(--burger-menu-size));
+    background-image: url(../images/metimgs/menu.svg);
+
+    @include onTablet {
+      --burger-menu-size: 16px;
+    }
+
+    &:hover {
+      background-image: url(../images/metimgs/menu_hover.svg);
+      @extend %background-imgs;
+    }
+  }
+
+  &__title {
+    --font-size: 40px;
+
+    color: #fff;
+    font-size: var(--font-size);
+    line-height: var(--font-size);
+    text-align: center;
+
+    @include onTablet {
+      --font-size: 64px;
+    }
+
+    @include onDesktop {
+      --font-size: 80px;
+    }
+  }
+}
