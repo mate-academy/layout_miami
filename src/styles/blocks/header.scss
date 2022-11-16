@@ -1,0 +1,144 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+
+  background-image: url("../images/photos/header-mobile.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(140%);
+
+  padding: 40px 20px 90px;
+
+  @include query("medium") {
+    background-image: url("../images/photos/header.jpg");
+
+    padding: 52px 90px 40px;
+  }
+
+  @include query("large") {
+    background-image: url("../images/photos/header.jpg");
+
+    padding: 52px 90px 64px;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    transform: translateX(100%);
+
+    @include transition(transform, 250ms);
+
+    min-height: 100vh;
+
+    background-color: $color-secondary;
+
+  }
+
+  @include top;
+
+  &__phone {
+    border: none;
+    width: 18px;
+    height: 18px;
+
+    background-color: transparent;
+    background-image: url("../images/phone.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+
+    margin-right: 30px;
+
+    @include query("medium") {
+      width: 24px;
+      height: 24px;
+    }
+
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    @include query("large") {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+
+        width: max-content;
+
+        margin: 5px 50px;
+
+        font-size: $fs-xsmall;
+        line-height: 16px;
+        font-weight: 700;
+        color: $color-primary;
+        letter-spacing: 2px;
+        opacity: 0;
+        transform: translateX(-100%);
+
+        transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+          transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  @include toggler("open-menu.svg");
+
+  &__title {
+    font-weight: $fw-bold;
+    font-size: $fs-3xlarge;
+    line-height: 1;
+    letter-spacing: -1.5px;
+
+    @include query("medium") {
+      font-size: $fs-4xlarge;
+
+    }
+
+    @include query("large") {
+      font-size: $fs-5xlarge;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+
+      background-image: url("../images/wave.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      margin-bottom: 20px;
+
+      @include query("medium") {
+        width: 63px;
+        height: 76px;
+
+        background-image: url("../images/sound-waves.svg");
+      }
+    }
+
+  }
+
+}

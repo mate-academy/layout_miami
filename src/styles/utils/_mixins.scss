@@ -1,6 +1,109 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin query($bp-size) {
+  @if ($bp-size == "medium") {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  @else if ($bp-size == "large") {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+@mixin top {
+  &__upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__img {
+    width: 130px;
+
+    @include query("medium") {
+      width: 190px;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@mixin transition($type, $time) {
+  transition: $type $time cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin toggler($img) {
+  &__toggler {
+    border: none;
+    width: 18px;
+    height: 18px;
+
+    background-color: transparent;
+    background-image: url("../images/#{$img}");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+
+    @include transition(background-image, 300ms);
+
+    &:hover {
+      @if ($img == "open-menu.svg") {
+        background-image: url("../images/hover-menu.svg");
+      }
+    }
+
+    @include query("medium") {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 56px;
+
+  margin-top: 40px;
+  padding: 0 48px;
+
+  border: 3px solid $color-primary;
+  border-radius: 40px;
+
+  background-color: $color-primary;
+  color: $color-light;
+
+  font-size: $fs-normal;
+  font-weight: $fw-bold;
+  line-height: 1.69;
+
+  cursor: pointer;
+  @include transition(all, 450ms);
+
   &:hover {
-    #{$_property}: $_toValue;
+    background-color: $color-light;
+    color: $color-primary;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+    background-color: #111;
+    color: $color-light;
   }
 }
