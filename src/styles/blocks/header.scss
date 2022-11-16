@@ -1,0 +1,98 @@
+.header {
+  background-size: cover;
+  background-position: 20%;
+  background-image: url(../images/header-back-img.jpg);
+
+  @include onIpad {
+    background-position: left;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    font-style: italic;
+    line-height: 100%;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onIpad {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+
+      margin-bottom: 16px;
+
+      background-size: cover;
+      background-position: center;
+
+      background-image: url(../images/header-music-line.svg);
+
+      @include onIpad {
+        background-image: url(../images/Sound-waves-hover.svg);
+        width: 63px;
+        height: 76px;
+      }
+    }
+  }
+
+  &__links {
+    width: 88px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &:before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        color: black;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover:before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+}
