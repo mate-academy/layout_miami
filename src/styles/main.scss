@@ -1,8 +1,139 @@
-.page {
-  font-family: "Inter", sans-serif;
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
 }
 
-.page__body {
-  margin: 0;
-  padding: 0;
+.page {
+  font-family: "Inter", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+  &__image {
+    // height: ;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 40px;
+
+  @include onDesktop() {
+    padding: 0 60px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/baground-image.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 52px 0 40px;
+
+    @include onDesktop() {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__title {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 100%;
+    color: #292929;
+
+    @include onDesktop() {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 63px;
+      height: 76px;
+      background-image: url(../images/cross.svg);
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    display: inline-block;
+    width: 24px;
+    height: 19px;
+    margin-left: 40px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-active.svg);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 5555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: #292929;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
 }
