@@ -8,6 +8,7 @@ const navIconClose = document.querySelector('.icon--nav-close');
 const navLinks = document.querySelectorAll('.nav__link');
 const navTestRide = document.querySelector('.nav__test-ride');
 const goToTop = document.querySelector('.go-to-top');
+const contactForm = document.querySelector('.contact-form');
 
 const menuBtns = [navLogo, navIconOpen, navIconClose, navTestRide, ...navLinks];
 
@@ -24,4 +25,9 @@ window.addEventListener('scroll', () => {
   } else {
     goToTop.classList.remove('go-to-top--show');
   }
+});
+
+contactForm.addEventListener('submit', event => {
+  event.preventDefault();
+  contactForm.reset();
 });
