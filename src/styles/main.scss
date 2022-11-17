@@ -1,12 +1,18 @@
-* {
-  box-sizing: border-box;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
 }
 
-h1 {
+h1,
+p,
+a {
   margin: 0;
+  text-decoration-line: none;
 }
 
 .page {
+  box-sizing: border-box;
   font-family: Cinzel, serif;
 
   &__body {
@@ -14,16 +20,47 @@ h1 {
   }
 }
 
-.header {
+.logo {
   display: flex;
-  flex-direction: column;
 
-  height: 100vh;
-  padding: 25px 20px 0;
+  &__img {
+    height: 46px;
+    width: 64px;
 
+    @include onTablet {
+      height: 65px;
+      width: 87px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+}
+
+.header {
   background-size: cover;
   background-position: center;
   background-image: url(../images/header1260.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    padding: 25px 0 0;
+
+    @include onTablet {
+      padding: 50px 0 0;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -38,17 +75,53 @@ h1 {
     margin-right: 3px;
   }
 
+  &__contacts {
+    display: none;
+    pointer-events: none;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      margin-right: 20px;
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-transform: uppercase;
+
+      color: #fff;
+    }
+  }
+
+  &__phone-number {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    color: inherit;
+  }
+
+  &__contacts-name {
+    margin-bottom: 8px;
+  }
+
   &__call {
     display: block;
 
     margin-right: 30px;
     width: 18px;
     height: 18px;
-  
-    background-image: url(../images/Icon-Phone-call.svg);
 
-    /*&:hover {
-    }*/
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+      margin-right: 63px;
+    }
+
+    background-image: url(../images/Icon-Phone-call.svg);
+    background-repeat: no-repeat;
   }
 
   &__menu-open {
@@ -56,7 +129,13 @@ h1 {
     width: 18px;
     height: 12px;
 
+    @include onTablet {
+      height: 16px;
+      width: 24px;
+    }
+
     background-image: url(../images/Icon-Burger-menu.svg);
+    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/Icon-Burger-menu-hover.svg);
@@ -75,12 +154,10 @@ h1 {
     letter-spacing: -1.5px;
 
     color: #fff;
-  }
-}
 
-.logo {
-  &__img {
-    width: 64px;
-    height: 46px;
+    @include onTablet {
+      margin-top: 141px;
+      font-size: 64px;
+    }
   }
 }
