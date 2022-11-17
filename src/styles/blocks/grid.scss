@@ -1,26 +1,67 @@
 .grid {
   display: block;
 
-  // @include onTablet {
-  //   display: grid;
-  //   grid-template-columns: repeat(6, 1fr);
-  //   gap: 24px;
-  // }
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0 24px;
+  }
 
   @include onDesktop {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
+    gap: 0 24px;
   }
 
   &__item {
 
-    &--1-4 {
-      grid-column: 1 / 5;
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+    @include onMobile {
+      @for $start from 1 through 2 {
+        @for $end from $start through 2 {
+          &--mobile-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
 
-    &--6-11 {
-      grid-column: 6 / 14;
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+
+    }
+
+    &-museum-hours {
+      line-height: 32px;
+      letter-spacing: -1.5px;
+
+      font-weight: bold;
+      font-size: 32px;
+      color: $mainDark;
+
+      &::before {
+        display: block;
+        content: "Plan your visit";
+        line-height: 140%;
+
+        font-weight: bold;
+        font-size: 12px;
+        color: $menuColor;
+      }
     }
   }
 }
