@@ -1,0 +1,127 @@
+.header {
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url(../images/header-mobile-640.jpg);
+
+  @include onTablet {
+    background-image: url(../images/header-tablet-1488.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-desktop-2520.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // padding: 40px 20px;
+  }
+
+  &__call {
+    margin-right: 30px;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        content: '+1 234 555-55-55';
+
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu-mobile.svg);
+
+    @include onTablet {
+      background-image: url(../images/menu-tablet-desktop.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu-mobile-hover.svg);
+
+      @include onTablet {
+        width: 24px;
+        height: 24px;
+        background-image: url(../images/menu-tablet-desktop-hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      content: "";
+
+      background-image: url(../images/sound-waves-mobile.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 32px;
+        background-image: url(../images/sound-waves-tablet-desktop.svg);
+      }
+    }
+  }
+}
