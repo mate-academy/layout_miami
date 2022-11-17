@@ -19,6 +19,7 @@ body {
 }
 
 .container {
+  margin: 0 auto;
   max-width: 1020px;
   padding: 0 20px;
 
@@ -33,12 +34,22 @@ body {
   &__body {
     margin: 0;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
 }
 
 .icon {
-  display: block;
-  position: absolute;
-  left: 93%;
   width: 18px;
   height: 18px;
 
@@ -52,17 +63,19 @@ body {
   }
 
   &--menu {
-    position: absolute;
-    left: 93%;
-    display: block;
-
     width: 18px;
     height: 12px;
 
     background-image: url("../images/Vector.svg");
 
+    @include onDesktop {
+      width: 24px;
+      height: 16px;
+    }
+
     &:hover {
-      background-image: url("../images/vector_close.svg");
+      background-image: url("../images/Vector_transform.png");
+      transition: 0.3s;
     }
   }
 
@@ -76,13 +89,45 @@ body {
 }
 
 .header {
-  position: relative;
   width: 100%;
 
   background-size: cover;
   background-position: right;
   background-image: url("../images/Cover_photo.png");
   background-repeat: no-repeat;
+
+  &__call {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        padding-right: 20px;
+        width: max-content;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
 
   &__content {
     display: flex;
@@ -91,6 +136,14 @@ body {
 
     height: 100vh;
     padding: $headerTopPadding 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
   }
 
   &__title {
@@ -117,45 +170,9 @@ body {
 
 .top-actions {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  &__call {
-    position: absolute;
-    left: 83%;
-    margin-right: 30px;
-    display: block;
-    width: 18px;
-    height: 18px;
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 5555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        padding-right: 20px;
-        width: max-content;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
+  padding: 0 auto;
 }
 
 .logo {
@@ -233,5 +250,16 @@ body {
       padding-bottom: 8px;
       border-bottom: 1px solid #1d1d1d;
     }
+  }
+}
+
+.footer {
+  height: 200px;
+  background-image: url("../images/Screenshot\ 2022-01-14\ at\ 11.50\ 1\ \(1\).png");
+  background-size: cover;
+  background-position: center;
+
+  @include onDesktop {
+    height: 555px;
   }
 }
