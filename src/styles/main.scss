@@ -2,6 +2,12 @@
 @import "fonts";
 @import "typography";
 
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Inter", sans-serif;
   &__body {
@@ -9,50 +15,119 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.logo {
+  &__image {
+    width: 130px;
+    height: 16px;
 
-  box-sizing: border-box;
-  padding: 40px 20px 94px;
+    @include onDesktop() {
+      width: 190px;
+      height: 24px;
+    }
+  }
+}
+
+.container {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onDesktop() {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop() {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+
   background-image: url(../images/photos/header_logo.png);
   background-position: center;
   background-size: cover;
 
-  height: 100vh;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 40px 0 64px;
+    height: 100vh;
+  }
 
   &__nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
+    @include onDesktop() {
+      background-image: url(../images/menu-big.svg);
+      height: 18.67px;
+    }
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 13px;
 
     &:hover {
+      @include onDesktop() {
+        background-image: url(../images/menu-big_hover.svg);
+        height: 24px;
+      }
+      height: 13px;
       background-image: url(../images/menu_hover.svg);
     }
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
-    position: relative;
-    // margin-left: 81px;
-
+    margin-right: 30px;
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        padding-right: 12px;
+        width: max-content;
+
+        color: #292929;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 24px;
+        text-transform: uppercase;
+        opacity: 0;
+
+        transform: translateX(-100%);
+        pointer-events: none;
+        transition: 0.1s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__right-panel {
+    display: flex;
+    align-items: center;
   }
 
   &__title {
@@ -62,6 +137,11 @@
     line-height: 100%;
     color: #292929;
     letter-spacing: -1.5px;
+
+    @include onDesktop() {
+      font-size: 48px;
+      line-height: 100%;
+    }
 
     &::before {
       display: block;
@@ -76,12 +156,5 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-  }
-}
-
-.logo {
-  &__image {
-    width: 130px;
-    height: 16px;
   }
 }
