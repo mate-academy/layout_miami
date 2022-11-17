@@ -8,6 +8,8 @@
   }
 }
 
+$headerTopPadding: 29px;
+
 * {
   box-sizing: border-box;
 }
@@ -34,9 +36,42 @@ body {
 }
 
 .icon {
+  display: block;
+  position: absolute;
+  left: 93%;
+  width: 18px;
+  height: 18px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   @include onDesktop {
     width: 24px;
     height: 24px;
+  }
+
+  &--menu {
+    position: absolute;
+    left: 93%;
+    display: block;
+
+    width: 18px;
+    height: 12px;
+
+    background-image: url("../images/Vector.svg");
+
+    &:hover {
+      background-image: url("../images/vector_close.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/vector_close.svg");
   }
 }
 
@@ -55,7 +90,7 @@ body {
     justify-content: space-between;
 
     height: 100vh;
-    padding: 29px 0;
+    padding: $headerTopPadding 0;
   }
 
   &__title {
@@ -78,31 +113,13 @@ body {
       letter-spacing: -1.5px;
     }
   }
+}
 
-  &__nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu--opener {
-    position: absolute;
-    left: 93%;
-    display: block;
-
-    width: 18px;
-    height: 12px;
-
-    background-image: url("../images/Vector.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url("../images/vector_close.svg");
-    }
-  }
+.top-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   &__call {
     position: absolute;
@@ -112,11 +129,6 @@ body {
     width: 18px;
     height: 18px;
     text-decoration: none;
-
-    background-image: url("../images/phone.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     @include onDesktop {
       &::before {
@@ -133,7 +145,7 @@ body {
         line-height: 16px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: #fff;
         opacity: 0;
         pointer-events: none;
       }
@@ -155,5 +167,71 @@ body {
   @include onDesktop {
     width: 187px;
     height: 56px;
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
+  }
+
+  &__top {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    color: #1d1d1d;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+    }
   }
 }
