@@ -1,0 +1,114 @@
+.header {
+  background-image: url(../images/header-mini.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    background-image: url(../images/header-big.png);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 20px 94px;
+
+    @include onDesktop {
+      padding: 52px 100px 64px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    height: 12px;
+
+    background-image: url(../images/menu-op-mini.svg);
+
+    @include onDesktop {
+      height: 19px;
+      background-image: url(../images/menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu.hover.svg);
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        opacity: 0;
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        width: max-content;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding-right: 12px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    &::before {
+      content: "";
+      display: block;
+      background-image: url(../images/sound-mini.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      color: #292929;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/sound-waves.svg);
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
