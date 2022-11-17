@@ -1,5 +1,8 @@
 .icon {
+  position: relative;
+
   display: block;
+  text-decoration: none;
 
   @include icon-size-mobile;
 
@@ -13,6 +16,37 @@
 
   @include onDesktop {
     @include icon-size-desktop;
+  }
+
+  &__tooltip {
+    position: absolute;
+
+    width: max-content;
+
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: $icon-size-mobile;
+
+    @include onTablet {
+      margin-right: $icon-size-tablet;
+    }
+
+    @include onDesktop {
+      margin-right: $icon-size-desktop;
+    }
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-text-color;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $animation-duration;
   }
 
   &__menu {
@@ -31,5 +65,10 @@
 
   &__phone {
     background-image: url(../images/phone-icon.svg);
+  }
+
+  &__phone:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 }
