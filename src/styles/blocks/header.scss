@@ -1,0 +1,78 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/jpg/header_bg.jpg);
+
+  &__content {
+    box-sizing: border-box;
+    padding: 30px 0 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+
+    @include onTablet {
+      padding: 30px 0 120px;
+      height: 100vh;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    gap: 30px;
+    display: flex;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__phone {
+    text-decoration: none;
+
+    @include onDeskTop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        color: $c-dark-light;
+
+        pointer-events: none;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    @include font-Poppins-700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $c-dark-light;
+    margin: 0 auto;
+
+    @include onTablet {
+      font-size: 64px;
+      color: $c-dark-dark;
+    }
+
+    @include onDeskTop {
+      font-size: 80px;
+    }
+  }
+}
