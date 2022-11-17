@@ -1,9 +1,5 @@
 @import "utils";
 
-* {
-  box-sizing: border-box;
-}
-
 .page {
   font-family: "Poppins", sans-serif;
 
@@ -13,22 +9,87 @@
   }
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  height: 38px;
+  width: 130px;
+
+  @include onDesktop {
+    height: 56px;
+    width: 187px;
+  }
+
+  @include onTablet {
+    height: 56px;
+    width: 187px;
+  }
+}
+
+.icon {
+  display: block;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+}
+
 .header {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top right;
+  background-position: 90%;
 
   background-image: url(../images/photos/header.jpg);
 
-  &__content {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 88px;
+  @include onDesktop {
+    background-image: url(../images/photos/header.jpg);
+    background-position: top;
   }
 
-  &__icons {
+  @include onTablet {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding-bottom: 88px;
+
+    @include onDesktop {
+      padding-bottom: 15%;
+    }
+
+    @include onTablet {
+      padding: 40px 0 130px;
+    }
+  }
+
+  &__icons-wrapper {
     display: flex;
     align-items: center;
   }
@@ -41,15 +102,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    text-decoration: none;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -57,16 +110,9 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
     margin-right: 30px;
 
     background-image: url(../images/call.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    text-decoration: none;
 
     &::before {
       content: "+1 234 555-55-55";
@@ -93,16 +139,21 @@
   }
 
   &__title {
-    font-size: 40px;
-    line-height: 100%;
+    font-size: 36px;
+    line-height: 36px;
     font-weight: 700;
     color: #fff;
     letter-spacing: -1.5px;
     text-align: center;
-  }
-}
 
-.logo {
-  height: 38px;
-  width: 130px;
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    @include onTablet {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
 }
