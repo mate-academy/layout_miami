@@ -1,0 +1,141 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.header {
+  @include backgroundImage("../images/background-headerSmall.png");
+  @include onMedium {
+    background-image: url("../images/background-headerMedium.png");
+  }
+  @include onDesktop {
+    background-image: url("../images/background-headerLarge.png");
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+
+  color: $colorMain;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  &__nav-item {
+    width: max-content;
+
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
+
+  &__title {
+    @include onMedium {
+      margin-bottom: 40px;
+
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @include onDesktop {
+      margin-bottom: 64px;
+
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    margin: 0 0 94px;
+    padding: 0;
+
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+
+    letter-spacing: -1.5px;
+
+    &::before {
+      @include backgroundImage("../images/titleBefore.svg");
+      @include onMedium {
+        margin-bottom: 40px;
+        background-image: url("../images/titleBeforeLarge.svg");
+
+        width: 63px;
+        height: 76px;
+      }
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+      display: block;
+      content: "";
+
+      width: 32px;
+      height: 27px;
+
+      margin-bottom: 16px;
+    }
+  }
+
+  &__menu-opener {
+    @include backgroundImage("../images/menuSmall.svg");
+    @include onMedium {
+      width: 24px;
+      height: 20px;
+
+      background-image: url("../images/menuLarge.svg");
+    }
+    @include onDesktop {
+      &:hover {
+        background-image: url("../images/menu-hover.svg");
+      }
+    }
+
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__call {
+    @include backgroundImage("../images/phone.svg");
+    @include onMedium {
+      width: 24px;
+      height: 24px;
+
+      margin-right: 40px;
+    }
+    @include onDesktop {
+      &:hover::before {
+        content: "+1 234 555-55-55";
+
+        position: relative;
+        top: 50%;
+
+        display: block;
+        width: max-content;
+        height: max-content;
+
+        padding-right: 20px;
+
+        font-size: 12px;
+        line-height: 100%;
+        font-weight: 700;
+
+        transform: translate(-100%, -50%);
+        color: $colorMain;
+      }
+    }
+
+    display: block;
+    margin-right: 30px;
+    width: 18px;
+    height: 18px;
+
+    text-decoration: none;
+  }
+}
