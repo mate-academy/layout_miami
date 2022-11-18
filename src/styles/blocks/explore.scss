@@ -13,21 +13,6 @@
     }
   }
 
-  &__block--1 {
-    max-width: 100%;
-    @include columns(2, 4, 1, 4);
-  }
-
-  &__block--2 {
-    max-width: 100%;
-    @include columns(2, 4, 5, 8);
-  }
-
-  &__block--3 {
-    max-width: 100%;
-    @include columns(2, 4, 9, 12);
-  }
-
   &__title {
     max-width: 280px;
     margin: 0 auto 40px;
@@ -46,13 +31,67 @@
     }
   }
 
+  &__block--1 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 1, 4);
+  }
+
+  &__block--2 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 5, 8);
+  }
+
+  &__block--3 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 9, 12);
+  }
+
   &__picture {
-    max-width: 100%;
+    display: block;
+    width: 100%;
     margin-bottom: 24px;
 
     @include notMobile {
       margin-bottom: 32px;
     }
+
+    transition: filter 0.5s;
+
+    &:hover {
+      filter: blur(3px);
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: 60%;
+    right: 10%;
+    left: 10%;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: #fff;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity 0.5s;
+
+    @include onDesktop {
+      top: 50%;
+    }
+  }
+
+  &__picture:hover ~ &__text {
+    opacity: 1;
   }
 
   &__capture {
@@ -69,5 +108,9 @@
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     line-height: 27px;
+
+    @include notMobile {
+      margin: 0 auto;
+    }
   }
 }

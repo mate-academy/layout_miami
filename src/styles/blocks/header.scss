@@ -1,4 +1,6 @@
 .header {
+  position: relative;
+  overflow: hidden;
   height: 100vh;
   padding-top: 25px;
 
@@ -6,9 +8,22 @@
     padding-top: 32px;
   }
 
-  background-image: url(../images/header.jpg);
-  background-size: cover;
-  background-position: top;
+  &::after {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    background: url(../images/header.jpg) top;
+    background-size: cover;
+
+    animation: transform 20s infinite;
+    animation-timing-function: linear;
+  }
 
   &__top-actions {
     margin-bottom: 129px;
@@ -70,5 +85,15 @@
       font-size: 80px;
       line-height: 80px;
     }
+  }
+}
+
+@keyframes transform {
+  0% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
