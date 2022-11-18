@@ -8,12 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const button = document.querySelectorAll('.button');
+const button = document.querySelector('.button');
 
 function Defaultp(event) {
   event.preventDefault();
 };
 
-button.forEach(buttonItem => {
-  buttonItem.addEventListener('click', Defaultp);
-});
+button.addEventListener('click', Defaultp);
