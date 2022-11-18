@@ -23,29 +23,30 @@
       margin-right: 40px;
     }
 
-    &::before {
-      content: "+1 234 555-55-55";
-      transform: translate(-100%, -50%);
-      position: absolute;
-      top: 50%;
-      margin-left: -12px;
-      width: max-content;
-
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-
-      opacity: 0;
-      pointer-events: none;
-      @include trans(opacity);
-    }
-
-    &:hover::before {
-      @include onTablet {
+    @include onTablet {
+      &:hover .icon__tooltip {
         opacity: 1;
+        pointer-events: all;
       }
     }
+  }
+
+  &__tooltip {
+    position: absolute;
+    transform: translate(-100%, -50%);
+    top: 50%;
+    padding-right: 12px;
+    
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    @include link;
+
+    opacity: 0;
+    pointer-events: none;
+    @include trans(opacity);
   }
 
   &--cross {
