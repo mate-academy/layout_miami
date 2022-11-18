@@ -1,0 +1,50 @@
+.view {
+  &__gallery {
+    display: grid;
+    row-gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 12px;
+
+    &--3-column {
+      grid-template-columns: auto auto auto;
+    }
+  }
+
+  &__image {
+    @include widthHeight(100%, 100%);
+    max-height: 320px;
+    object-fit: cover;
+    scale: 100%;
+
+    @include hover(scale) {
+      scale: 110%;
+      z-index: 1;
+    }
+
+    &--position-left {
+      object-position: top 0px left -40px;
+
+      @include onTablet {
+        object-position: unset;
+      }
+    }
+
+    &--position-right {
+      object-position: top right;
+
+      @include onTablet {
+        object-position: unset;
+      }
+    }
+  }
+
+  &__title-desc {
+    @include sizeLine(16px, 27px);
+    color: $main-color;
+  }
+}

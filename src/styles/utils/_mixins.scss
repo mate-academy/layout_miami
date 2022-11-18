@@ -1,6 +1,35 @@
-@mixin hover($_property, $_toValue) {
+@mixin hover($_property) {
   transition: #{$_property} 0.3s;
+
   &:hover {
-    #{$_property}: $_toValue;
+    @content;
   }
+}
+
+@mixin widthHeight($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin sizeLine($size, $line) {
+  font-size: $size;
+  line-height: $line;
+}
+
+@mixin onTablet() {
+  @media (min-width: 764px) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin useGrid($colCount, $gap) {
+  display: grid;
+  grid-template-columns: repeat($colCount, 1fr);
+  gap: $gap;
 }
