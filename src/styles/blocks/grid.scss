@@ -1,21 +1,18 @@
 .grid {
-  display: block;
+  // display: block;
 
   @include onDesktop {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
+    @include useGrid(12, 24px);
+    
   }
 
   &__item {
-
     align-items: center;
     &--6-11 {
       font-style: normal;
       font-weight: 500;
       font-size: 23px;
       line-height: 140%;
-
       color: #fff;
       padding-bottom: 32px;
 
@@ -24,10 +21,23 @@
       }
     }
 
+    // &--1-4 {
+    //   @include onDesktop {
+    //   }
+    // }
+
+    // &--5-8 {
+    //   @include onDesktop {
+
+    //   }
+    // }
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+        @include onDesktop {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
