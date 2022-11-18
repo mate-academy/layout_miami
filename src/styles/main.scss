@@ -32,9 +32,93 @@ li {
 * {
   box-sizing: border-box;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+.card {
+  transition: transform 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:hover &__product-price {
+    color: tomato;
+  }
+  &:hover &__product-name {
+    color: tomato;
+  }
+  &__product-image {
+    margin-bottom: 32px;
+    width: 280px;
+    height: 228px;
+  }
+  &__product-name {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    transition: color 0.3s;
+  }
+  &__product-description {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  &__product-price {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    transition: color 0.3s;
+  }
+  @keyframes move {
+    0% {
+
+    }
+
+  }
+}
+
+
+
+
 
 .page {
   font-family: "Poppins", sans-serif;
+  color: #fff;
+  background-color: #1d1d1d;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
@@ -53,9 +137,40 @@ li {
       transform: translateX(0);
     }
   }
+
+  &__section {
+    margin-bottom: 92px;
+    color: #fff;
+    &-title {
+      width: 100%;
+      margin-bottom: 48px;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      text-align: center;
+      @include onTablet {
+        font-size: 48px;
+      }
+      @include onDesktop {
+        font-size: 64px;
+      }
+      &__first {
+        margin-bottom: 32px;
+        text-align: start;
+      }
+    }
+    &-item {
+      font-weight: 500;
+      font-size: 23px;
+      line-height: 140%;
+    }
+  }
 }
 
+
 .container {
+  margin: 0 20px 0;
 
   @include onTablet {
     max-width: 600px;
@@ -89,18 +204,20 @@ li {
   background-position: top right;
 
   @include onDesktop {
-    background-image: url(../images/photos/bikepicture1260.jpg);
+    background-image: url(../images/photos/bikepicture12600.jpg);
     background-position: top;
   }
 
   &__content {
     display: flex;
     height: 100vh;
+    margin-bottom: 60px;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 88px;
     @include onTablet {
       padding-bottom: 130px;
+      margin-bottom: 120px;
     }
     @include onDesktop {
       padding-bottom: 203px;
@@ -119,6 +236,21 @@ li {
     color: #fff;
     letter-spacing: -1.5px;
     text-align: center;
+    opacity: 0;
+    animation-name: show;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    transition: opacity 1s;
+
+    @keyframes show {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
     @include onTablet {
       font-size: 64px;
