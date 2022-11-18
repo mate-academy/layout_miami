@@ -26,10 +26,9 @@ const hiddenHeader = document.querySelectorAll('.hidden--header');
 
 hiddenHeader.forEach((el) => observer.observe(el));
 
-const checkbox = document.querySelector('#form-submit');
+const form = document.querySelector('#form-submit');
 
-checkbox.addEventListener('click', buttonClick, false);
-
-function buttonClick(event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-}
+  form.reset();
+});
