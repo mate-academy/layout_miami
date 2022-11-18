@@ -1,0 +1,116 @@
+.explore {
+  text-align: center;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__title {
+    max-width: 280px;
+    margin: 0 auto 40px;
+
+    @include columns(2, 4, 4, 9);
+    @include title;
+
+    @include onDesktop {
+      margin-bottom: 48px;
+      max-width: 500px;
+    }
+
+    @include onTablet {
+      margin-bottom: 48px;
+      max-width: 392px;
+    }
+  }
+
+  &__block--1 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 1, 4);
+  }
+
+  &__block--2 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 5, 8);
+  }
+
+  &__block--3 {
+    position: relative;
+    width: 100%;
+
+    @include columns(2, 4, 9, 12);
+  }
+
+  &__picture {
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+
+    @include notMobile {
+      margin-bottom: 32px;
+    }
+
+    transition: filter 0.5s;
+
+    &:hover {
+      filter: blur(3px);
+      cursor: pointer;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    left: 10%;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: #fff;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity 0.5s;
+
+    @include onDesktop {
+      top: 50%;
+    }
+  }
+
+  &__picture:hover ~ &__text {
+    opacity: 1;
+  }
+
+  &__capture {
+    margin: 0 auto 4px;
+
+    font-size: 24px;
+    line-height: 34px;
+    color: $main-color;
+  }
+
+  &__description {
+    margin: 0 auto 48px;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+
+    @include onDesktop {
+      margin: 0 auto;
+    }
+  }
+}
