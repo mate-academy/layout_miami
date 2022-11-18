@@ -1,7 +1,7 @@
 'use strict';
 
-const button = document.getElementById('form-submit');
+const form = document.getElementById('contact-form');
 
-button.addEventListener('click', (e) => {
+form.addEventListener('submit', e => {
   e.preventDefault();
 });
