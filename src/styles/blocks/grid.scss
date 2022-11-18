@@ -14,6 +14,43 @@
   }
 
   &__item {
+    @include onMobile {
+      @for $start from 1 through 3 {
+        @for $end from $start through 3 {
+          &--row-mobile-#{$start}-#{$end} {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onTablet {
+      @for $start from 1 through 3 {
+        @for $end from $start through 3 {
+          &--row-tablet-#{$start}-#{$end} {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      @for $start from 1 through 3 {
+        @for $end from $start through 3 {
+          &--row-desktop-#{$start}-#{$end} {
+            grid-row: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 3 {
+      @for $end from $start through 3 {
+        &--row-#{$start}-#{$end} {
+          grid-row: #{$start} / #{$end + 1};
+        }
+      }
+    }
 
     @include onTablet {
       @for $start from 1 through 6 {
@@ -24,6 +61,7 @@
         }
       }
     }
+
     @include onMobile {
       @for $start from 1 through 3 {
         @for $end from $start through 3 {
@@ -55,9 +93,14 @@
       }
     }
 
+    &--row-align {
+      grid-row: 1 / 2;
+    }
+
     &-museum-hours {
       line-height: 32px;
       letter-spacing: -1.5px;
+      margin: 0 0 32px;
 
       font-weight: bold;
       font-size: 32px;
