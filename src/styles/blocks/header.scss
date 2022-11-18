@@ -3,12 +3,17 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
-  @include onDesktop {
-    background-image: url(../images/header-big.png);
+  @include onTablet {
+    background-image: url(../images/header-middle.png);
     height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-big.png);
   }
 
   &__content {
@@ -17,7 +22,11 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 40px 20px 94px;
+    padding: 40px 23px 94px;
+
+    @include onTablet {
+      padding: 52px 70px 40px;
+    }
 
     @include onDesktop {
       padding: 52px 100px 64px;
@@ -27,23 +36,6 @@
   &__container {
     display: flex;
     align-items: center;
-  }
-
-  &__menu-opener {
-    height: 12px;
-
-    background-image: url(../images/menu-op-mini.svg);
-
-    @include onDesktop {
-      height: 19px;
-      background-image: url(../images/menu.svg);
-    }
-
-    &:hover {
-      background-image: url(../images/menu.hover.svg);
-      background-size: contain;
-      background-position: center;
-    }
   }
 
   &__call {
@@ -69,6 +61,8 @@
         text-transform: uppercase;
         padding-right: 12px;
         pointer-events: none;
+
+        transition: opacity 0.3s;
       }
 
       &:hover::before {
@@ -98,9 +92,9 @@
       color: #292929;
     }
 
-    @include onDesktop {
-      font-size: 48px;
-      line-height: 48px;
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
       letter-spacing: -1.5px;
 
       &::before {
@@ -108,6 +102,14 @@
         height: 76px;
         background-image: url(../images/sound-waves.svg);
         margin-bottom: 40px;
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+
+      &::before {
+        margin-bottom: 32px;
       }
     }
   }
