@@ -1,7 +1,50 @@
 .card {
-  display: block;
   margin: 0 auto;
   max-width: 392px;
+  height: 100%;
+  transition: transform 0.3s ease;
+  
+  @include onDesktop {
+    &:hover {
+      transform: translateY(-5%);
+    }
+
+    &:hover &__button {
+      opacity: 1;
+      width: 50%;
+    }
+    
+    &:hover &__img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include onDesktop {
+      display: flex;
+      opacity: 0;
+      margin-top: 16px;
+      width: 20%;
+      height: 45px;
+      transition: opacity 0.3s ease,
+        width 0.5s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+      &:hover {
+        background-color: #fff;
+        color: $main-color;
+      }
+  
+      &:active {
+        background-color: #111;
+        border-color: #111;
+        color: #fff;
+      }
+    }
+  }
 
   &:not(:last-child) {
     margin-bottom: 48px;

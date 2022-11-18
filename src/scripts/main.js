@@ -12,15 +12,24 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
     }
-    // } else {
-    //    entry.target.classList.remove('show');
-    // }
   });
 });
 
 const hiddenElements = document.querySelectorAll('.hidden');
+
 hiddenElements.forEach((el) => observer.observe(el));
 
 const hiddenHeader = document.querySelectorAll('.hidden--header');
+
 hiddenHeader.forEach((el) => observer.observe(el));
+
+const checkbox = document.querySelector('#form-submit');
+
+checkbox.addEventListener('click', buttonClick, false);
+
+function buttonClick(event) {
+  event.preventDefault();
+}
