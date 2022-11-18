@@ -1,66 +1,58 @@
 .location {
 
   &__images {
-    @include useGrid(2, 0 20px);
+    @include useGrid(2, 20px);
 
     &--mobile {
-      @include useGrid(3, 0 8px);
+      @include useGrid(3, 8px);
     }
 
     @include onTablet {
-      @include useGrid(6, 0 24px);
+      @include useGrid(6, 24px);
     }
 
     @include onDesktop {
-      @include useGrid(12, 0 24px);
+      @include useGrid(12, 24px);
     }
 
   }
 
   &__image {
-    position: absolute;
     height: 100%;
     width: 100%;
 
     object-fit: cover;
-    object-position: 15%;
+    object-position: center;
+
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--move-left {
+      @include onMobile {
+        object-position: -25px;
+      }
+    }
+
+    &--move-right {
+      object-position: right;
+    }
 
     &-container {
-      position: relative;
+      height: 100%;
       width: 100%;
-      margin-bottom: 24px;
+      max-height: 320px;
 
-      &::after {
-        display: block;
-        padding-bottom: 100%;
-        content: "";
+      &--2 {
 
         @include onTablet {
-          height: 186px;
-          padding-bottom: 0;
+          max-height: 288px;
         }
 
         @include onDesktop {
-          height: 320px;
-          padding-bottom: 0;
-        }
-      }
-
-      &--2 {
-        &::after {
-          display: block;
-          padding-bottom: 100%;
-          content: "";
-
-          @include onTablet {
-            height: 288px;
-            padding-bottom: 0;
-          }
-
-          @include onDesktop {
-            height: 320px;
-            padding-bottom: 0;
-          }
+          max-height: 320px;
         }
 
       }
@@ -70,24 +62,22 @@
 
         @include onMobile {
           margin-bottom: 24px;
+          max-height: 400px;
         }
 
-        &::after {
-          display: block;
-          padding-bottom: 100%;
-          content: "";
+        @include onTablet {
+          max-height: 390px;
+        }
 
-          @include onTablet {
-            height: 390px;
-            padding-bottom: 0;
-          }
+        @include onDesktop {
+          max-height: 320px;
         }
       }
     }
 
     &-description {
-      @include onMobile {
-        grid-column: 1 / 3;
+      @include onDesktop {
+        grid-row: 2 / 2;
       }
 
       &-title {
@@ -99,6 +89,7 @@
           line-height: 140%;
 
           text-align: center;
+
         }
       }
 
@@ -113,6 +104,10 @@
           text-align: center;
         }
       }
+    }
+
+    &--last-element {
+      margin-bottom: 40px;
     }
   }
 }
