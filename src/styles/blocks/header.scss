@@ -1,10 +1,9 @@
 .header {
   padding-top: 36px;
-  min-height: 710px;
   background-image: url("../images/photos/Cover_photo.png");
   background-size: cover;
   background-attachment: fixed;
-  background-position: 0 -100px;
+  background-position: center -100px;
   background-repeat: no-repeat;
 
   &__content {
@@ -21,19 +20,38 @@
   }
 
   &__logo {
-    grid-column: 1 / 4;
+    width: 190px;
     align-items: center;
+
+    & img {
+      width: 100%;
+    }
+
+    @include onMobile {
+      width: 130px;
+    }
   }
 
   &__heading {
     align-self: center;
-    width: max-content;
+    width: 100%;
     margin-bottom: 200px;
 
     font-family: inherit;
     font-size: 80px;
     line-height: 80px;
     font-weight: 700;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      margin-bottom: 130px;
+    }
+
+    @include onMobile {
+      font-size: 36px;
+      margin-bottom: 90px;
+    }
   }
 
   &__buttons {
@@ -41,64 +59,5 @@
     grid-column: 11 / 13;
     align-items: center;
     justify-self: end;
-  }
-}
-
-.icon {
-  position: relative;
-  display: block;
-  width: 24px;
-  height: 24px;
-  margin-right: 40px;
-
-  text-decoration: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &__info {
-    position: absolute;
-    width: 150px;
-    right: 30px;
-    top: 20%;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    opacity: 0;
-    pointer-events: none;
-
-    transition: opacity 0.3s;
-  }
-
-  &:hover &__info {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  &--phone {
-    background-image: url(../images/icons/Vector-3.svg);
-    background-size: cover;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: scale(130%);
-    }
-  }
-
-  &--menu {
-    background-image: url(../images/icons/Vector.svg);
-    background-size: contain;
-    background-position: 50%;
-
-    transition: background-image 0.3s;
-
-    &:hover {
-      background-image: url(../images/icons/Vector-1.svg);
-    }
   }
 }
