@@ -1,6 +1,73 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: 678px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@mixin top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin trans($property) {
+  transition: $property 0.5s;
+}
+
+@mixin useGrid($colCount) {
+  display: grid;
+  grid-template-columns: repeat($colCount, 1fr);
+  gap: 24px;
+}
+
+@mixin allPaddingsY(
+  $mobileTop,$mobileBottom,
+  $tabletTop, $tabletBottom,
+  $desktopTop, $desktopBottom
+) {
+  padding: $mobileTop 0 $mobileBottom;
+
+  @include onTablet() {
+    padding: $tabletTop 0 $tabletBottom;
+  }
+  
+  @include onDesktop() {
+    padding: $desktopTop 0 $desktopBottom;
+  }
+
+}
+
+@mixin allMarginsY($onMobile, $onTablet, $onDesktop) {
+  margin: 0 0 $onMobile;
+
+  @include onTablet() {
+    margin-bottom: $onTablet;
+  }
+
+  @include onDesktop() {
+    margin-bottom: $onDesktop;
+  }
+}
+
+@mixin allFontSize($onMobile, $onTablet, $onDesktop) {
+  font-size: $onMobile;
+
+  @include onTablet() {
+    font-size: $onTablet;
+  }
+
+  @include onDesktop() {
+    font-size: $onDesktop;
   }
 }
