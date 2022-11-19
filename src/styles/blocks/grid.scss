@@ -1,0 +1,27 @@
+.grid {
+  display: block;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  &__item {
+    @for $startcol from 1 through 12 {
+      @for $endcol from $startcol through 12 {
+        @include onTablet {
+          &--#{$startcol}-#{$endcol} {
+            grid-column: #{$startcol} / #{$endcol + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__time {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0;
+  }
+}
