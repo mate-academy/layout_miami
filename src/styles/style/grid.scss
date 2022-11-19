@@ -10,12 +10,13 @@
 
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
   }
 
   &--desktop {
     display: block;
 
-    @include onDesktop {
+    @include onTablet {
       display: grid;
     }
   }
@@ -25,7 +26,7 @@
       @for $end from $start through 6 {
         &--tablet-#{$start}-#{$end} {
           @include onTablet {
-            grid-column: #{$start} / #{$end} + 1;
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
@@ -34,7 +35,9 @@
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end} + 1;
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
