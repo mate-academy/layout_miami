@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   --icon--size: 18px;
 
   display: block;
@@ -7,6 +8,37 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+    position: absolute;
+    bottom: 50%;
+    transform: translate(-100%, 50%);
+
+    display: block;
+    width: max-content;
+
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    opacity: 0;
+    padding-right: 20px;
+    pointer-events: none;
+
+    transition: opacity $duration;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   @include onTablet {
     --icon--size: 24px;
@@ -18,11 +50,12 @@
     &:hover {
       background-image: url(../images/menuhover.png);
     }
-
   }
 
   &--call {
     background-image: url(../images/telephone.svg);
+    text-decoration: none;
+    color: #fff;
   }
 
   &--cross {
