@@ -1,45 +1,53 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 40px 20px 90px;
-
   background-size: cover;
   background-position: center;
-  background-image: url(../../src/images/bg_image1.png);
+  background-image: url(../images/bg_image.jpg);
+  background-position: 20%;
 
-  &__nav {
+  &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-  }
+    height: 100vh;
+    padding: $header-top-padding 0 90px;
 
-  &__menu-opener {
-    display: inline-block;
-    height: 12px;
-    width: 18px;
+    @include onTablet{
+      padding: 50px 0 40px;
+   }
 
-    background-image: url(../../src/images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url(../../src/images/menu_hover.svg);
+    @include onDesctop {
+      padding: 52px 0 64px;
     }
   }
 
   &__call {
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    margin-right: 30px;
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -40%);
 
-    background-image: url(../../src/images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      color: #292929;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      opacity: 0;
+      pointer-events: none;
+
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &__title {
@@ -47,15 +55,40 @@
     font-style: italic;
     font-weight: 800;
     color: #292929;
-    line-height: 32px;
     letter-spacing: -1.5px;
 
     &::before {
       display: block;
-      content: url(../../src/images/sound_curl.svg);
+      content: url(../images/sound_curl.svg);
       width: 32px;
       height: 27px;
       margin-bottom: 16px;
+
+      @include onTablet {
+        content: url(../images/sound_waves.svg);
+        width: 63px;
+        height: 76px;
+      }
     }
+
+    @include onDesctop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet{
+    max-width: 600px;
+    padding: 0;
+  }
+
+  @include onDesctop {
+    max-width: 1020px;
+    padding: 0;
   }
 }
