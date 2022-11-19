@@ -20,3 +20,9 @@ for (let i = 0; i < navLinks.length; i++) {
     menu.classList.remove('show');
   });
 }
+
+const button = document.querySelector('.button-submit');
+
+button.addEventListener('click', (e) => {
+  e.preventDefault();
+});
