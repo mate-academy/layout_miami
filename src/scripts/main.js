@@ -1,4 +1,5 @@
 'use strict';
+
 const form = document.querySelector('form');
 
 window.addEventListener('hashchange', () => {
