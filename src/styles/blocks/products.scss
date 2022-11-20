@@ -1,4 +1,4 @@
-.products {
+.product {
 
   &__images {
     @include useGrid (2, 20px);
@@ -10,19 +10,42 @@
 
     @include onDesktop {
       @include useGrid (12, 24px);
-      
+
     }
   }
 
   &__image {
-    height: 130px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 
-    @include onTablet {
-      height: 187px;
-    }
+    &-container {
+      position: relative;
+      width: 100%;
 
-    @include onDesktop {
-      height: 320px;
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onTablet {
+        height: 187px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 0;
+      }
     }
+  }
+
+  &__description {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
   }
 }
