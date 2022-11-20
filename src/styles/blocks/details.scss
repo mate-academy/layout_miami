@@ -1,0 +1,96 @@
+.details {
+  padding: 92px $mobilePaddingX 0;
+
+  @include tablet {
+    padding: 120px $tabletPaddingX 0;
+  }
+
+  @include desktop {
+    padding: 144px $desktopPaddingX 0;
+  }
+
+  &__wrapper {
+    @include limitContentWitdth;
+  }
+
+  &__title {
+    margin: 0 auto 48px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    margin-bottom: 16px;
+
+    @include tablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__photo {
+    grid-column: unset;
+
+    height: 100%;
+    width: 100%;
+
+    @include tablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--cols--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+
+    display: block;
+
+    height: 100%;
+    width: 100%;
+
+    object-fit: fill;
+    object-position: center;
+
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 1;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr);
+    margin: 16px 0 40px;
+
+    @include tablet {
+      margin-bottom: 48px;
+      grid-template-columns: 600px;
+    }
+
+    @include desktop {
+      grid-template-columns: 672px;
+    }
+
+    &-heading {
+      @include fontParams(24px, 140%, 700);
+    }
+
+    &-text {
+      margin-top: 8px;
+      @include fontParams(16px, 140%);
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+}

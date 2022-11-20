@@ -1,6 +1,34 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin fontParams($fontSize, $fontLineHeight, $fontWeight: 400) {
+  font-size: $fontSize;
+  line-height: $fontLineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin limitContentWitdth {
+  margin: 0 auto;
+  max-width: $maxContentWidthDesktop;
+}
+
+@mixin formHover {
   &:hover {
-    #{$_property}: $_toValue;
+    border: 1px solid #d5d7de;
+  }
+
+  &:focus {
+    background-color: #f8f8fa;
+    border: 1px solid #292929;
+    outline: none;
   }
 }
