@@ -1,66 +1,48 @@
 .menu {
+  display: flex;
+  flex-direction: column;
+
   height: 100vh;
   box-sizing: border-box;
-  padding: 40px 24px 120px 20px ;
-  background-color: #e5e5e5;
+  padding: 40px 24px 120px;
 
-  @include onTablet() {
-    padding: 52px 76px 331px 72px;
+  background: #e8eff9;
+
+  @include onTablet {
+    padding: 56px 76px 331px;
   }
 
-  @include onDesktop() {
-    padding: 48px 125px 211px 120px;
+  @include onDesktop {
+    padding: 53px 125px 211px;
   }
 
-  &__content {
+  &__nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 54px;
+    margin-bottom: 55px;
 
-    @include onTablet() {
+    @include onTablet {
       margin-bottom: 56px;
     }
 
-    @include onDesktop() {
+    @include onDesktop {
       margin-bottom: 80px;
-    }
-  }
-
-  &__logo {
-    display: block;
-    width: 130px;
-    height: 16px;
-  }
-
-  &__logo-image {
-    position: absolute;
-    left: 20px;
-    top: 40px;
-
-    @include onTablet() {
-      left: 72px;
-      top: 52px;
-
-      width: 190px;
-      height: 24px;
-    }
-
-    @include onDesktop() {
-      left: 120px;
-      top: 48px;
     }
   }
 
   &__cross {
     display: block;
-    width: 16px;
     height: 16px;
+    width: 16px;
 
     background-image: url(../images/menu__cross.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    @extend %backgroundSettings;
+
+    @include onDesktop {
+      height: 22px;
+      width: 22px;
+    }
   }
 
   &__list {
@@ -84,10 +66,10 @@
     line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #292929;
 
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
+    color: #292929;
 
     transition: border-color 0.3s;
 
@@ -100,21 +82,23 @@
     display: block;
     width: max-content;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
     color: #292929;
 
     &--phone {
       margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 27px;
     }
 
     &--action {
       padding-bottom: 8px;
       border-bottom: 1px solid #292929;
+
       font-size: 12px;
       line-height: 16px;
+      letter-spacing: 2px;
     }
   }
 }
