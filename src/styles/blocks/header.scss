@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  min-height: 500px;
   height: 100vh;
 
   &__cover {
@@ -37,25 +36,42 @@
     background-size: cover;
   }
 
-  &__number {
-    align-self: center;
-    color: transparent;
-  }
-
   &__phone {
+    position: relative;
+
+    display: block;
     @include square(18px);
+    padding: 20px 0;
     align-self: center;
     justify-self: end;
     background-image: url("/images/Vector-3.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
 
-    &::before {
-      display: none;
-      content: "+1 234 555-55-55";
+    &-floating_number {
       position: absolute;
+
+      display: none;
+      width: max-content;
+      top: 10%;
+      right: 20px;
+      padding: 10px 12px 10px 0;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
       color: white;
-      width: 145px;
-      right: 120px;
-      top: 7px;
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity 0.5s;
+    }
+
+    &:hover &-floating_number {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -65,6 +81,7 @@
     height: 12px;
     align-self: center;
     background-image: url("/images/Vector.svg");
+    cursor: pointer;
     transition: 0.3s;
 
     &:hover {
