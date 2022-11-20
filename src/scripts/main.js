@@ -7,3 +7,12 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--no-scroll');
   }
 });
+
+// document.getElementById('submitButton')
+//   .addEventListener('submit', submitForm);
+
+// function submitForm(event) {
+//   event.preventDefault();
+
+//   return false;
+// }
