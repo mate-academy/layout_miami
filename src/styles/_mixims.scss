@@ -3,3 +3,34 @@
     @content;
   }
 }
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  column-gap: 24px;
+
+  @include onTablet {
+    --icon-width: 32px;
+    column-gap: 32px;
+  }
+
+  @include onDesktop {
+    --icon-width: 32px;
+    column-gap: 32px;
+  }
+}
+
+@mixin transform-imgs {
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transform: scale(1.1);
+}
