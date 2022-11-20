@@ -8,13 +8,12 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const sendButton = document.querySelector('.button--send');
+const form = document.getElementById('form');
 
-sendButton.addEventListener('click', formSubmit, false);
-
-function formSubmit(event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-}
+  form.reset();
+});
 
 const menu = document.querySelector('.menu');
 const openMenu = document.querySelector('#openMenu');
