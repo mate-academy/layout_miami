@@ -1,6 +1,6 @@
 'use strict';
 
-const addRule = ((style) => {
+const addRule = (function(style) {
   const sheet = document.head.appendChild(style).sheet;
 
   return function(selector, css) {
@@ -13,14 +13,18 @@ const addRule = ((style) => {
   };
 })(document.createElement('style'));
 
-$('.header__phone').mouseenter(() => {
-  addRule('.header__phone:before', {
+const headerMenu = document.querySelector('.header__menu');
+const humburgerMenuCancel
+  = document.querySelector('.humburger-menu__cancel');
+
+headerMenu.addEventListener('click', function() {
+  addRule('.humburger-menu', {
     display: 'block',
   });
 });
 
-$('.header__phone').mouseleave(() => {
-  addRule('.header__phone:before', {
+humburgerMenuCancel.addEventListener('click', () => {
+  addRule('.humburger-menu', {
     display: 'none',
   });
 });
