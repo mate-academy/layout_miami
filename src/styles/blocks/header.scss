@@ -1,9 +1,18 @@
 .header {
-  background-image: url(../images/header.jpg);
+  background-image: url(../images/mobile-header.jpg);
 
   background-size: cover;
   background-position: center;
-  margin: 0;
+  margin: 0 0 120px;
+  height: 100vh;
+
+  @include onTablet {
+    background-image: url(../images/header.jpg);
+  }
+
+  &__top {
+    @include top-actions;
+  }
 
   &__content {
     display: flex;
@@ -11,33 +20,6 @@
     justify-content: space-between;
     height: 100vh;
     padding: $headerTopPadding 0 94px;
-  }
-  &__call {
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        display: block;
-        width: max-content;
-        color: #292929;
-        opacity: 0;
-        padding-right: 12px;
-        pointer-events: none;
-      }
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
   }
 
   &__title {
@@ -47,6 +29,14 @@
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #292929;
+    padding-bottom: 64px;
+
+    @include onTablet {
+      font-size: $titleSizeTablet;
+    }
+    @include onDesktop {
+      font-size: $titleSizeDesktop;
+    }
 
     &::before {
       content: "";
@@ -58,6 +48,13 @@
       background-size: contain;
       background-repeat: no-repeat;
       margin-bottom: 16px;
+
+      @include onTablet {
+        background-image: url(../images/sound_pc.svg);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 35px;
+      }
     }
 
     @include onDesktop {
