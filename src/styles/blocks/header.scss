@@ -4,6 +4,10 @@
   background-position: right;
   background-repeat: no-repeat;
 
+  @include onTablet {
+    background-position: center;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -11,40 +15,18 @@
 
     height: 100vh;
     padding: $header-padding-top 0 88px;
+
+    @include onTablet {
+      padding: 36px 0 88px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__nav-wrapper {
     display: flex;
-  }
-
-  &__call {
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        width: max-content;
-        padding-right: 8px;
-
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px;
-        letter-spacing: 2px;
-        
-        color: #fff;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
   }
 
   &__title {
@@ -53,6 +35,10 @@
     line-height: 100%;
     letter-spacing: -1.5px;
     text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
 
     @include onDesktop {
       font-size: 80px;
