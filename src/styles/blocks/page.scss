@@ -4,6 +4,12 @@
 
   scroll-behavior: smooth;
 
+  &__body {
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
   &__menu {
     position: fixed;
     top: 0;
@@ -11,7 +17,8 @@
     right: 0;
 
     transform: translateX(-100%);
-    transition: transform 0.3s;
+
+    @include transition (transform);
 
     &:target {
       transform: translateX(0);
@@ -24,8 +31,7 @@
     &-title {
       margin-bottom: 48px;
 
-      font-size: 32px;
-      line-height: 32px;
+      @include fontSize (32px, 32px);
       text-align: center;
       letter-spacing: -1.5px;
       color: $main-color;
@@ -33,13 +39,11 @@
       @include onTablet {
         margin-bottom: 64px;
 
-        font-size: 40px;
-        line-height: 40px;
+        @include fontSize (40px, 40px);
       }
 
       @include onDesktop {
-        font-size: 48px;
-        line-height: 48px;
+        @include fontSize (48px, 48px);
       }
     }
   }

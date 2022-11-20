@@ -1,7 +1,6 @@
 .header {
-  background-size: cover;
-  background-position: center;
   background-image: url(../images/header_small.jpg);
+  @include image-properties;
 
   @include onTablet {
     background-image: url(../images/header_mid.jpg);
@@ -16,12 +15,11 @@
     flex-direction: column;
     justify-content: space-between;
 
-    box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0 94px;
+    padding: $header-top-padding 0 94px;
 
     @include onTablet {
-      padding: 52px 0 40px;
+      padding: $header-top-padding-inTablet 0 40px;
     }
 
     @include onDesktop {
@@ -33,33 +31,43 @@
     @include top-actions;
   }
 
+  &__buttons {
+    display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
   &__title {
     font-style: italic;
     font-weight: 800;
-    font-size: 32px;
-    line-height: 100%;
-    color: #292929;
+    @include fontSize (32px, 32px);
+    color: $main-color;
 
     letter-spacing: -1.5px;
 
     @include onTablet {
-      font-size: 40px;
-
+      @include fontSize (40px, 40px);
     }
 
     @include onDesktop {
-      font-size: 48px;
+      @include fontSize (48px, 48px);
     }
 
     &::before {
       content: "";
+
       display: block;
-      background-size: cover;
-      background-position: center;
-      background-image: url(../images/wave.svg);
       width: 32px;
       height: 27px;
       margin-bottom: 16px;
+
+      background-image: url(../images/wave.svg);
+      @include image-properties ();
+
+      @include transition (background-image);
 
       @include onTablet {
         width: 63px;
@@ -70,38 +78,6 @@
 
       @include onDesktop {
         margin-bottom: 32px;
-      }
-    }
-  }
-
-  &__call {
-    text-decoration: none;
-    margin-right: 35px;
-
-    @include onTablet {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: #292929;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
       }
     }
   }
