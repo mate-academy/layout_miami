@@ -1,1 +1,1 @@
-- [DEMO LINK](https://YanaEvaGonchar.github.io/layout_miami/)
+- [The MET](https://YanaEvaGonchar.github.io/layout_miami/)
