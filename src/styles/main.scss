@@ -1,36 +1,110 @@
-// @import "utils";
-// @import "fonts";
-// @import "typography";
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+
+}
 
 .page {
-  background-color: gray;
   font-family: "Poppins", sans-serif;
+  font-style: normal;
 
   &__body {
     margin: 0;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 72px;
+  margin: 0 auto;
+
+  @include onDesktop() {
+    padding: 0 124px;
+  }
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
   background-image: url(../images/header-background.png);
-  height: 100vh;
   background-size: cover;
   background-position: center;
-  padding: 34px 72px 130px;
+
+  @include onDesktop() {
+    background-image: url(../images/header-desktop.png);
+    background-position: 20% 10%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 34px 0 130px;
+  }
 
   &__nav {
     display: flex;
     justify-content: space-between;
   }
 
-  &__link {
+  &__icon {
     display: flex;
     justify-content: space-between;
     gap: 40px;
+  }
+
+  &__call {
+    display: block;
+    background-image: url(../images/phone-logo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 24px;
+    width: 24px;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 555-55-55";
+
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+      color: #fff;
+      padding-right: 12px;
+
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &__menu-opener {
@@ -42,7 +116,7 @@
     background-position: center;
 
     &:hover {
-      background-image: url(../images/menu-logo-hover.svg);
+      background-image: url(../images/menu-hover.svg);
     }
   }
 
@@ -50,10 +124,97 @@
     font-weight: 700;
     font-size: 64px;
     line-height: 100%;
-    display: flex;
-    align-items: center;
     color: #fff;
     letter-spacing: -1.5px;
     text-align: center;
+
+    @include onDesktop() {
+      font-size: 80px;
+    }
+  }
+}
+
+.menu {
+  background-color: #c2c2c2;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 34px 0 130px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  &__close {
+    display: block;
+    height: 16px;
+    width: 24px;
+    background-image: url(../images/menu-cross.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0 0 40px;
+    list-style-type: none;
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:nth-child() {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    color: #1d1d1d;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+
+  }
+
+  &__call {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+    max-width: max-content;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+    }
   }
 }
