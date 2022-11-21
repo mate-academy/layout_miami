@@ -21,8 +21,9 @@ for (let i = 0; i < navLinks.length; i++) {
   });
 }
 
-const button = document.querySelector('.button-submit');
+const form = document.querySelector('.form');
 
-button.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
+  form.reset();
 });
