@@ -1,0 +1,73 @@
+.bicycles {
+
+  &__images {
+    @include useGrid(2, 20px);
+
+    @include onDesktop {
+      @include useGrid(12, 24px);
+    }
+
+    &__image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      // height: 130px;
+      // width: 130px;
+      // display: block;
+
+      object-fit: cover;
+      object-position: center;
+
+      margin-bottom: 16px;
+
+      transition: transform 1s;
+      &:hover {
+        transform: scale(2);
+      }
+
+      @include onDesktop {
+        width: 324px; //////////////
+        height: 321px;
+      }
+
+      &-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+
+        max-height: 321px;
+        // display: block;
+        // width: 100%;
+        box-sizing: border-box;
+
+        &::after {
+          padding-bottom: 100%;
+          content: "";
+          display: block;
+        }
+
+        @include onDesktop {
+          height: 321px;
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    &__description {
+      &-title {
+        margin: 0 0 8px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &-text {
+        font-size: 16px;
+        margin-bottom: 40px;
+
+        @include onDesktop {
+          margin-bottom: 48px;
+        }
+      }
+    }
+  }
+}
