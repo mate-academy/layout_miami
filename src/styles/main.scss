@@ -1,3 +1,9 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Poppins", sans-serif;
 
@@ -7,18 +13,108 @@
   }
 }
 
+.logo {
+  height: 38px;
+  width: 130px;
+
+  @include onTablet() {
+    height: 56px;
+    width: 186px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 20px;
+
+  @include onTablet() {
+    padding: 0 72px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  @include onTablet() {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__tooltip {
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    transition: opacity 500ms;
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--menu {
+    height: 12px;
+    background-image: url(../images/menu.svg);
+
+    @include onTablet() {
+      height: 18px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  padding: 29px 23px 88px 20px;
-  height: 100vh;
-
   background-image: url(../images/header_bg.png);
   background-size: cover;
   background-position: right;
+
+  @include onTablet() {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 29px 0 88px;
+    height: 100vh;
+  }
 
   &__nav {
     display: flex;
@@ -31,30 +127,10 @@
     align-items: center;
     gap: 30px;
     margin-right: 3px;
-  }
 
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
+    @include onTablet() {
+      gap: 40px;
     }
-  }
-
-  &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-    background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 
   &__title {
@@ -64,14 +140,9 @@
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #fff;
-  }
-}
 
-.logo {
-  height: 38px;
-
-  &__image {
-    width: 130px;
-    height: 38px;
+    @include onTablet() {
+      font-size: 64px;
+    }
   }
 }
