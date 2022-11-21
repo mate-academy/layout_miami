@@ -1,6 +1,62 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin forDesktop {
+  @media (min-width:1260px) {
+    @content;
+  }
+}
+
+@mixin forTablets {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin forSmallTablets {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin top-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin gridForDesktop {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--desktop-#{$start}-#{$end} {
+        @include forDesktop {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin gridForTablet {
+  @for $start from 1 through 6 {
+    @for $end from $start through 6 {
+      &--tablet-#{$start}-#{$end} {
+        @include forTablets {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin blockContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include forTablets {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include forDesktop {
+    grid-template-columns: repeat(12, 1fr);
   }
 }

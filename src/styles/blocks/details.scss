@@ -1,0 +1,80 @@
+.details {
+  line-height: 140%;
+
+  &__content {
+    @include blockContent;
+    row-gap: 8px;
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+    max-height: 187px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include forTablets {
+      @include gridForTablet;
+    }
+
+    @include forDesktop {
+      max-height: 320px;
+      @include gridForDesktop;
+    }
+
+    &:hover {
+      cursor: zoom-in;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    grid-column: 1/ -1;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+
+    font-weight: 400;
+    font-size: 16px;
+
+    @include forDesktop {
+      @include gridForDesktop;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include forTablets {
+      @include gridForTablet;
+    }
+
+    @include forDesktop {
+      @include gridForDesktop;
+    }
+  }
+}
