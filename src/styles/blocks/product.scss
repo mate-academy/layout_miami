@@ -1,0 +1,57 @@
+.product {
+  max-width: 400px;
+  grid-column: 1 / 13;
+  margin: 0 auto 42px;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  color: $mainColor;
+
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      @include onDesktop {
+        grid-column: #{($i - 1) * 4 + 1} / #{$i * 4 + 1};
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &--sporty-4 {
+    background-image: url(/src/images/photos/sporty4.png);
+  }
+
+  &--rit-st {
+    background-image: url(/src/images/photos/rideST.png);
+  }
+
+  &--agileR3 {
+    background-image: url(/src/images/photos/AgileRide.png);
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      height: 101px;
+      margin: 0;
+    }
+  }
+}
