@@ -5,7 +5,7 @@
 
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
+    column-gap: 20px;
   }
 
   &--desktop {
@@ -17,53 +17,14 @@
   }
 
   &__item {
-    // @for $start from 1 through 12 {
-    //   @for $end from $start through 12 {
-    //     &--#{$start}-#{$end} {
-    //       grid-column: #{start} / #{end + 1};
-    //     }
-
-    //     &--desktop-#{$start}-#{$end} {
-    //       @include onDesktop {
-    //         grid-column: #{start} / #{end + 1};
-    //       }
-    //     }
-    //   }
-    // }
-    &--1-4 {
-      grid-column: 1 / 4;
-    }
-
-    &--1-5 {
-      grid-column: 1 / 5;
-    }
-
-    &--1-8 {
-      grid-column: 1 / 8;
-    }
-
-    &--5-8 {
-      grid-column: 5 / 8;
-    }
-
-    &--5-12 {
-      grid-column: 5 / 12;
-    }
-
-    &--6-12 {
-      grid-column: 6 / 12;
-    }
-
-    &--6-11 {
-      grid-column: 6 / 11;
-    }
-
-    &--8-10 {
-      grid-column: 8 / 10;
-    }
-
-    &--9-12 {
-      grid-column: 9 / 12;
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
   }
 }
