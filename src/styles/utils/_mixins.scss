@@ -4,3 +4,30 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin top-actions {
+  --top-height: 18px;
+
+  display: grid;
+
+  grid-template-columns: 1fr var(--top-height) var(--top-height);
+  grid-template-rows: var(--top-height);
+  gap: 30px;
+  align-items: center;
+
+  @include mediumScreens() {
+    --top-height: 24px;
+  }
+}
+
+@mixin mediumScreens {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin largeScreens {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
