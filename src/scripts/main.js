@@ -16,6 +16,7 @@ const addRule = (function(style) {
 const headerMenu = document.querySelector('.header__menu');
 const humburgerMenuCancel
   = document.querySelector('.humburger-menu__cancel');
+const navList = document.querySelector('.nav__list');
 
 headerMenu.addEventListener('click', function() {
   addRule('.humburger-menu', {
@@ -24,6 +25,12 @@ headerMenu.addEventListener('click', function() {
 });
 
 humburgerMenuCancel.addEventListener('click', () => {
+  addRule('.humburger-menu', {
+    display: 'none',
+  });
+});
+
+navList.addEventListener('click', () => {
   addRule('.humburger-menu', {
     display: 'none',
   });
