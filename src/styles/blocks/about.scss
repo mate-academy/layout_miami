@@ -2,12 +2,14 @@
   &__content {
     @include onTablet {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+
+      @include grid(6);
+
       column-gap: 24px;
     }
 
     @include onDesktop {
-      grid-template-columns: repeat(12, 1fr);
+      @include grid(12);
     }
   }
 
@@ -23,13 +25,13 @@
     @include onTablet {
       margin-bottom: 0;
 
-      grid-column: 1 / 4;
+      @include gridItemsPosition(1, 4);
 
       font-size: 48px;
     }
 
     @include onDesktop {
-      grid-column: 1 / 6;
+      @include gridItemsPosition(1, 6);
 
       font-size: 64px;
     }
@@ -42,11 +44,11 @@
     color: #fff;
 
     @include onTablet {
-      grid-column: 4 / span 3;
+      @include gridItemsPosition(4, 7);
     }
 
     @include onDesktop {
-      grid-column: 6 / 12;
+      @include gridItemsPosition(6, 12);
     }
   }
 }
