@@ -1,0 +1,100 @@
+.header {
+  background-image: url(../images/Bose/320.png);
+
+  @include onTablets {
+    background-image: url(../images/Bose/744.png);
+  }
+  @include onDesktop {
+    background-image: url(../images/Bose/1260.jpg);
+  }
+
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+    box-sizing: border-box;
+    @include onTablets {
+      padding: 52px 0 40px;
+    }
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__logo {
+    &-image {
+      height: 16px;
+      @include onTablets {
+        height: 24px;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        font-weight: bold;
+        width: max-content;
+        padding-right: 12px;
+        color: $mainColor;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: inherit;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+
+    @include onTablets {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-image: url(../images/Bose/wave.png);
+      width: 32px;
+      height: 27px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 16px;
+      @include onTablets {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/Bose/waves1260.png);
+      }
+    }
+  }
+}
