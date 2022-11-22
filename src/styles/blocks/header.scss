@@ -1,0 +1,268 @@
+.header {
+  position: relative;
+  background: url("../images/Cover_photo.jpg") no-repeat;
+  background-size: cover;
+  background-position: 90%;
+  height: 100vh;
+
+  @media (min-width: 744px) {
+    background-position: center;
+  }
+
+  @media (min-width: 1260px) {
+    background-position: center 40%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 28px 0 88px;
+
+    @media (min-width: 744px) {
+      padding: 34px 0 130px;
+    }
+
+    @media (min-width: 1260px) {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .call-container {
+    display: flex;
+    align-items: center;
+
+    .icon-call {
+      background: url("../images/call.svg") center center no-repeat;
+      background-size: contain;
+      position: relative;
+
+      width: 18px;
+      height: 18px;
+
+      text-decoration: none;
+      margin-right: 30px;
+
+      .icon-tooltip {
+        display: none;
+      }
+
+      @media (min-width: 744px) {
+        width: 24px;
+        height: 24px;
+
+        .icon-tooltip {
+          position: absolute;
+          top: 50%;
+          transform: translate(-100%,-50%);
+          display: block;
+
+          width: max-content;
+          padding-right: 12px;
+
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+
+          color: $main-color;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity $transition-duration;
+        }
+
+        &:hover .icon-tooltip {
+          pointer-events: all;
+          opacity: 1;
+        }
+      }
+
+
+    }
+
+    .open-toggler {
+      background: url("../images/hamburger.svg") center center no-repeat;
+      background-size: contain;
+      position: relative;
+
+      width: 18px;
+      height: 12px;
+
+      @media (min-width: 744px) {
+        width: 24px;
+        height: 16px;
+      }
+
+      @media (min-width: 1260px) {
+        &:hover {
+          background-image: url("../images/hamburger-hover.svg");
+        }
+      }
+    }
+
+    .close-toggler {
+      background: url("../images/close.svg") center center no-repeat;
+      background-size: contain;
+      position: relative;
+
+      width: 16px;
+      height: 16px;
+
+      @media (min-width: 744px) {
+        width: 24px;
+        height: 16px;
+      }
+
+      @media (min-width: 744px) {
+        width: 21.33px;
+        height: 21.33px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @media (min-width: 744px) {
+      font-size: 64px;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: 80px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 29px 0;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: #c2c2c2;
+    transition: all $transition-duration;
+    transform: scale(0);
+
+    @media (min-width: 744px) {
+      padding: 36px 0;
+    }
+
+    &.show {
+      transform: scale(1);
+      // position: fixed;
+    }
+
+    .nav {
+      padding-top: 44px;
+
+      &__list {
+        display: grid;
+        gap: 24px;
+
+        margin-bottom: 40px;
+        list-style: none;
+      }
+
+      &__link {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 22px;
+        padding-bottom: 8px;
+
+        color: #1d1d1d;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-bottom: 1px solid transparent;
+
+        @media (min-width: 1260px) {
+          &:hover {
+            border-color: #1d1d1d;
+          }
+
+        }
+      }
+
+      &__contact {
+        display: flex;
+        flex-direction: column;
+
+        &-call {
+          padding-bottom: 8px;
+          margin-bottom: 8px;
+          width: max-content;
+
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 27px;
+
+          color: #1d1d1d;
+          text-decoration: none;
+          text-transform: uppercase;
+          border-bottom: 1px solid transparent;
+
+          @media (min-width: 1260px) {
+            &:hover {
+              border-color: #1d1d1d;
+            }
+          }
+        }
+
+        &-book {
+          width: max-content;
+          padding-bottom: 8px;
+
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+
+          color: #1d1d1d;
+          letter-spacing: 2px;
+          text-decoration: none;
+          text-transform: uppercase;
+
+          border-bottom: 1px solid #1d1d1d;
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  width: 130px;
+  height: 38px;
+  transition: all $transition-duration;
+
+  &:hover {
+    @extend %hover_scale;
+  }
+
+  &__image {
+    width: 130px;
+    height: 38px;
+  }
+
+  @media (min-width: 1260px) {
+    width: 187px;
+    height: 56px;
+
+    &__image {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
