@@ -1,0 +1,84 @@
+.header {
+  background-image: url(../images/header_small.jpg);
+  @include image-properties;
+
+  @include onTablet {
+    background-image: url(../images/header_mid.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $header-top-padding 0 94px;
+
+    @include onTablet {
+      padding: $header-top-padding-inTablet 0 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    @include fontSize (32px, 32px);
+    color: $main-color;
+
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      @include fontSize (40px, 40px);
+    }
+
+    @include onDesktop {
+      @include fontSize (48px, 48px);
+    }
+
+    &::before {
+      content: "";
+
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/wave.svg);
+      @include image-properties ();
+
+      @include transition (background-image);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/Sound-waves.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
