@@ -5,52 +5,70 @@
   &__content {
     padding: $headerTopPadding 0;
 
-    @include onDesktop {
-      padding-top: 52px;
-    }
-
     @include onTablet {
       padding-top: 52px;
     }
   }
 
   &__top {
+    @include top-actions;
     margin-bottom: 54px;
+
+    &--opened {
+      grid-template-columns: 1fr 18px;
+      gap: 0;
+
+      @include onTablet {
+        grid-template-columns: 1fr 32px;
+        align-items: center;
+      }
+    }
   }
 
   &__list {
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
   }
 
   &__item {
-    margin-bottom: 24px;
 
     &:last-child {
-      margin-bottom: 0;
+      margin-bottom: 40px;
     }
   }
 
   &__link {
-    text-transform: uppercase;
+    position: relative;
     display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 1px solid transparent;
 
+    text-transform: uppercase;
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-    color: #292929;
+    color: $primaryBlack;
 
-    transition: border-bottom-color 0.5s;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: -8px;
+      height: 1px;
 
-    &:hover {
-      border-bottom-color: #292929;
+      background-color: $primaryBlack;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    &:hover::after {
+      opacity: 1;
     }
   }
 
   &__call {
-    color: #292929;
+    color: $primaryBlack;
     text-transform: uppercase;
     display: block;
 
@@ -71,7 +89,7 @@
       line-height: 16px;
       letter-spacing: 2px;
 
-      border-bottom: 1px solid #292929;
+      border-bottom: 1px solid $primaryBlack;
     }
   }
 }
