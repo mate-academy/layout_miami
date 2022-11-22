@@ -1,0 +1,131 @@
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.header {
+  background-image: url(../images/header-mobile.jpg);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    background-image: url(../images/header-tablet.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-desktop.jpg);
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 88px;
+
+    @include onTablet {
+      padding: 34px 72px 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 120px 200px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__logo {
+    background-image: url(../images/Logo.svg);
+    width: 130px;
+    height: 38px;
+
+    @include onTablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+    text-decoration: none;
+    width: 18px;
+    height: 18px;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        width: max-content;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    width: 18px;
+    height: 12px;
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+  }
+}
