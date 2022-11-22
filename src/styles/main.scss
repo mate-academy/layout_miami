@@ -1,3 +1,9 @@
+@mixin onDesktop {
+  @media (min-width:1024px) {
+    @content;
+  }
+}
+
 h1 {
   margin: 0;
 }
@@ -10,45 +16,95 @@ h1 {
   }
 }
 
+.container {
+  max-width: 1024px;
+  padding: 40px 20px 94px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 50px 50px 64px 130px;
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100vh;
   background-image: url(../images/photos/image4.png);
   background-size: cover;
-  background-position: center;
-  padding-bottom: 94px ;
+  background-position: 70% 40%;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    background-image: url(../images/photos/image3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
   &__content {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
   }
 
   &__call {
-    display: block;
-    height: 24px;
-    width: 24px;
     background-image: url(../images/Icon-Phone-call.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        width: max-content;
+        display: block;
+        padding-right: 10px;
+        top: 50%;
+        transform: translate(-100%, 50%);
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+
+    @include onDesktop {
+      background-image: url(../images/Icon-Burger-menu-desk.svg);
+    }
   }
 
   &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 20px 0;
   }
 
   &__nav-buttons {
     display: flex;
     gap: 24px;
+
+    @include onDesktop {
+      display: flex;
+      gap: 32px;
+    }
   }
   
   &__title {
-    padding-left: 20px;
     font-style: italic;
     font-weight: 800;
     font-size: 32px;
@@ -56,36 +112,47 @@ h1 {
     letter-spacing: -1.5px;
     color: #292929;
 
+    @include onDesktop {
+      font-size: 48px;
+    }
+
     &::before {
       content: url(../images/Vector1.svg);
       display: block;
       height: 27px;
       width: 32px;
       margin-bottom: 16px;
-    }
-  }
 
-  &__menu-opener {
-    display: block;
-    border: none;
-
-    background: none;
-    background-image: url(../images/Icon-Burger-menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    height: 24px;
-    width: 24px;
-
-    &:hover {
-      background-image: url(../images/Icon-Burger-menu-hover.svg);
+      @include onDesktop {
+        content: url(../images/Sound-waves.svg);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 32px;
+      }
     }
   }
 }
 
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .logo {
-  &__phone {
-    height: 16px;
+  width: 120px;
+  height: 16px;
+  
+  @include onDesktop {
+    width: 190px;
+    height: 24px;
   }
 }
