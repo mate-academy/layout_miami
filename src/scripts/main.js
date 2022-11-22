@@ -19,6 +19,7 @@ const headerMenuLogo = document.querySelector('.humburger-menu__logo');
 const humburgerMenuCancel
   = document.querySelector('.humburger-menu__cancel');
 const navList = document.querySelector('.nav__list');
+const form = document.querySelector('.form');
 
 headerMenu.addEventListener('click', function() {
   addRule('.humburger-menu', {
@@ -42,4 +43,8 @@ headerMenuLogo.addEventListener('click', () => {
   addRule('.humburger-menu', {
     display: 'none',
   });
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 });
