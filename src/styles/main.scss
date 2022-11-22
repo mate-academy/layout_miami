@@ -62,18 +62,20 @@
 }
 
 .details {
+  padding: 0 8vw;
 
   &__container {
     display: grid;
-    grid-template-columns: 280px;
-    justify-content: center;
+    max-width: 1020px;
+    margin: 0 auto;
 
     &-explore {
       display: block;
       height: 56px;
       width: 100%;
-      max-width: 390px;
-      margin-bottom: 32%;
+      margin: 0 auto;
+      max-width: 411px;
+      margin-bottom: 20vh;
       border-radius: 40px;
       line-height: 56px;
       text-align: center;
@@ -81,86 +83,47 @@
       font-size: 16px;
       background-color: white;
       color: black;
+      text-decoration: none;
     }
   }
 
   &__auto-unlock {
-    margin-bottom: 40px;
-
-    //@include gallery-small("/images/photos/auto-unlock-1.png", "/images/photos/auto-unlock-2.png");
-
-    &-image-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    &-image1 {
-      @include square(130px);
-      background-image: url("/images/photos/auto-unlock-1.png");
-    }
-
-    &-image2 {
-      @include square(130px);
-      background-image: url("/images/photos/auto-unlock-2.png");
-    }
+    @include gallery-small(
+      "/images/photos/auto-unlock-1.png",
+      "/images/photos/auto-unlock-2.png",
+      repeat(2, 1fr), 20px, 40px
+    );
   }
 
   &__range {
-    margin-bottom: 40px;
-
-    &-image-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    &-image1 {
-      @include square(130px);
-      background-image: url("/images/photos/range&integrated-lights-1.png");
-    }
-
-    &-image2 {
-      @include square(130px);
-      background-image: url("/images/photos/range&integrated-lights-2.png");
-    }
+    @include gallery-small(
+      "/images/photos/range&integrated-lights-1.png",
+      "/images/photos/range&integrated-lights-2.png",
+      repeat(2, 1fr), 20px, 40px
+    );
   }
 
   &__hydraulic {
-    margin-bottom: 40px;
-
-    &-image-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    &-image1 {
-      @include square(130px);
-      background-image: url("/images/photos/hydraulic-disc-brakes.png");
-    }
-
-    &-image2 {
-      @include square(130px);
-      background-image: url("/images/photos/lightweight.png");
-    }
+    @include gallery-small(
+      "/images/photos/hydraulic-disc-brakes.png",
+      "/images/photos/lightweight.png",
+      repeat(2, 1fr), 20px, 40px
+    );
   }
 }
 
 .contact {
   &__container {
     display: grid;
-      grid-template-columns: repeat(1, 280px);
-      justify-content: center;
-      margin-bottom: 16px;
+    grid-template-columns: repeat(1, 280px);
+    justify-content: center;
+    margin-bottom: 16px;
   }
 
   &__details {
 
-    &-phone, &-email {
+    &-phone,
+    &-email {
       margin-bottom: 24px;
     }
 
@@ -176,6 +139,11 @@
       font-weight: 500;
       line-height: 140%;
     }
+  }
+
+  .contact__button {
+    margin-bottom: 48px;
+    width: 100%;
   }
 }
 
@@ -202,7 +170,6 @@
   line-height: 20px;
 }
 
-
 .contact__name:focus,
 .contact__email:focus,
 .contact__message:focus {
@@ -211,20 +178,169 @@
 }
 
 @media (min-width: 400px) {
+  .header__cover {
+    background-image: url("/images/photos/mikkel-bech-744x628.png");
+  }
+
   .header__phone-floating_number {
     display: block;
   }
 }
 
 @media (min-width: 744px) {
-  .header__cover {
-    background-image: url("/images/photos/mikkel-bech-744x628.png");
+  .header {
+    &__logo {
+      @include size(187px, 56px);
+    }
+
+    &__phone {
+      @include square(24px);
+    }
+
+    &_menu {
+      @include size(24px, 16px);
+    }
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  .move-free {
+    grid-template-columns: repeat(2, 288px);
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+
+  .bikes-compare {
+    &__container {
+      grid-template-columns: repeat(1, 320px);
+    }
+  }
+
+  .details {
+    &__auto-unlock {
+      &-image-container {
+        grid-template-columns: 2fr 1fr;
+        height: 25vh;
+      }
+
+      &-image1 {
+        background-image: url("../images/photos/auto-unlock-392-1.png");
+      }
+      &-image2 {
+        background-image: url("../images/photos/auto-unlock-392-2.png");
+      }
+    }
+
+    &__range {
+      &-image-container {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      &-image1 {
+        background-image: url("../images/photos/range-392-1.png");
+      }
+      &-image2 {
+        background-image: url("../images/photos/range-392-2.png");
+      }
+    }
+
+    &__hydraulic {
+      &-image-container {
+        grid-template-columns: 1fr 2fr;
+      }
+
+      &-image1 {
+        background-image: url("../images/photos/brakes-392.png");
+      }
+      &-image2 {
+        background-image: url("../images/photos/tightweight-392.png");
+      }
+    }
+  }
+
+  .contact {
+    &__container {
+      grid-template-columns: repeat(2, 288px);
+      column-gap: 24px;
+    }
+  }
+
+  .page__footer {
+    background-image: url("../images/photos/footer-744x480.png");
   }
 }
 
-
 @media (min-width: 1260px) {
+  .header {
+    &__cover {
+      background-image: url("/images/photos/mikkel-bech-1260x711.png");
+    }
+
+    &__footer {
+      background-image: url("../images/photos/footer-1260x554.png");
+    }
+
+    &__title {
+      font-size: 80px;
+    }
+  }
+
+  .contact {
+    &__container {
+      grid-template-columns: repeat(2, 411px);
+      column-gap: 200px;
+    }
+  }
+
+  .move-free {
+    grid-template-columns: repeat(2, 490px);
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  .bikes-compare {
+    &__container {
+      grid-template-columns: repeat(3, 320px);
+      column-gap: 24px;
+    }
+  }
+
+  &__auto-unlock {
+    &-image1 {
+      background-image: url("../images/photos/auto-unlock-672-1.png");
+    }
+    &-image2 {
+      background-image: url("../images/photos/auto-unlock-672-2.png");
+    }
+  }
+
+  &__range {
+    &-image1 {
+      background-image: url("../images/photos/range-672-1.png");
+    }
+    &-image2 {
+      background-image: url("../images/photos/range-672-2.png");
+    }
+  }
+
+  &__hydraulic {
+    &-image1 {
+      background-image: url("../images/photos/brakes-672.png");
+    }
+    &-image2 {
+      background-image: url("../images/photos/lightweight-672.png");
+    }
+  }
+}
+
+@media (min-width: 1440px) {
   .header__cover {
-    background-image: url("/images/photos/mikkel-bech-1260x711.png");
+    background-image: url("../images/photos/Cover_photo.png");
   }
 }

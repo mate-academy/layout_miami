@@ -21,15 +21,34 @@
   background-image: url($bike-url);
 }
 
-@mixin gallery-small($photo-url1, $photo-url2) {
-  @include square(130px);
-  margin-bottom: 16px;
+@mixin gallery-small($photo-url1, $photo-url2, $g-template-c, $gap-c, $mb) {
+  margin-bottom: $mb;
+
+  &-image-container {
+    position: relative;;
+    display: grid;
+    grid-template-columns: $g-template-c;
+    column-gap: $gap-c;
+    margin-bottom: 16px;
+    height: 130px;
+    max-height: 310px;
+  }
 
   &-image1 {
+    min-width: 100px;
+    height: 100%;
     background-image: url($photo-url1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
   }
 
   &-image2 {
+    min-width: 100px;
+    height: 100%;
     background-image: url($photo-url2);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
   }
 }
