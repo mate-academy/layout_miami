@@ -1,0 +1,98 @@
+.header {
+  height: 100vh;
+  padding-top: 25px;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-top: 32px;
+  }
+
+  background-image: url(/images/photos/header_desktop.jpg);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: -2px;
+  background-repeat: no-repeat;
+
+  &__nav {
+    position: relative;
+    align-items: center;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 63px;
+    }
+  }
+
+  &__contacts {
+    position: absolute;
+    right: 107px;
+    padding-right: 20px;
+    padding-top: 10px;
+
+    text-align: end;
+
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+    visibility: hidden;
+
+    @include onTablet {
+      visibility: visible;
+    }
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-time $transition-style;
+
+    &:hover {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  &__phone:hover ~ &__contacts {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__title {
+    position: relative;
+    align-items: center;
+    top: 25vh;
+
+    @include onTablet {
+      top: 25vh;
+    }
+
+    @include onDesktop {
+      top: 30vh;
+    }
+
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    text-align: center;
+    color: $white-color;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
