@@ -1,0 +1,30 @@
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin useGrid($columns_count, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns_count, 1fr);
+  gap: $gap;
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet() {
+    --icon-width: 24px;
+  }
+}
