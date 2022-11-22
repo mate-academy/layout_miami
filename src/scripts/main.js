@@ -8,11 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// document.getElementById('submitButton')
-//   .addEventListener('submit', submitForm);
+const form = document.getElementById('form');
 
-// function submitForm(event) {
-//   event.preventDefault();
-
-//   return false;
-// }
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  form.reset();
+});
