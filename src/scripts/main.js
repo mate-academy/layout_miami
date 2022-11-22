@@ -14,6 +14,8 @@ const addRule = (function(style) {
 })(document.createElement('style'));
 
 const headerMenu = document.querySelector('.header__menu');
+const headerMenuLogo = document.querySelector('.humburger-menu__logo');
+
 const humburgerMenuCancel
   = document.querySelector('.humburger-menu__cancel');
 const navList = document.querySelector('.nav__list');
@@ -31,6 +33,12 @@ humburgerMenuCancel.addEventListener('click', () => {
 });
 
 navList.addEventListener('click', () => {
+  addRule('.humburger-menu', {
+    display: 'none',
+  });
+});
+
+headerMenuLogo.addEventListener('click', () => {
   addRule('.humburger-menu', {
     display: 'none',
   });
