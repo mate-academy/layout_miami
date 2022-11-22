@@ -1,6 +1,47 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: 30px;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+@mixin btn-contact-size($size) {
+  width: $btn-contact-size;
+  height: $btn-contact-size;
+}
+@mixin btn-contact-size-hover($size) {
+  width: $btn-contact-size-hover;
+  height: $btn-contact-size-hover;
+}
+
+@mixin btn-contact-position($position) {
+  right: $btn-contact-position-right-bottom;
+  bottom: $btn-contact-position-right-bottom;
+}
+
+@mixin btn-contact-position-bg($position) {
+  top: $btn-contact-position-bg-top-left;
+  left: $btn-contact-position-bg-top-left;
+}
+
+@mixin btn-contact-position-img($position) {
+  top: $btn-contact-position-img-top-left;
+  left: $btn-contact-position-img-top-left;
 }
