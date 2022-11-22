@@ -1,22 +1,33 @@
 .menu {
+  overflow-y: auto;
+  height: 100vh;
+  padding: $headerTopPadding 0;
+
   background-color: $mainAccent;
 
-  &__content {
-    height: 100vh;
-    padding: $headerTopPadding 0;
+  @include onTablet {
+    padding: 32px 0;
+  }
 
-    @include onDesktop {
-      padding: 32px 0;
-    }
+  @include onDesktop {
+    padding: 32px 0;
   }
 
   &__top {
     @include top-actions;
-    margin-bottom: 40px;
+    
+    grid-template-columns: 1fr $smallIconSide;
+
+    @include onTablet() {
+      grid-template-columns: 1fr $bigIconSide;
+    }
 
     @include onDesktop {
+      grid-template-columns: 1fr $bigIconSide;
       margin-bottom: 55px;
     }
+
+    margin-bottom: 40px;
   }
 
   &__list {
@@ -24,6 +35,10 @@
     padding: 0;
 
     list-style: none;
+
+    @include onTablet {
+      margin: 0 0 32px;
+    }
 
     @include onDesktop {
       margin: 0 0 48px;
@@ -41,15 +56,15 @@
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
 
+    font-weight: 700;
     font-size: 22px;
     line-height: 22px;
-    font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 2px;
     color: #fff;
 
-    transition: border-color 0.3s;
+    transition: border-color 0.5s;
 
     &:hover {
       border-color: #fff;

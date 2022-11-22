@@ -1,3 +1,9 @@
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: 1260px) {
     @content;
@@ -11,16 +17,13 @@
   justify-items: left;
   align-items: center;
 
-  @include onDesktop {
+  @include onTablet {
     grid-template-columns: 1fr $bigIconSide $bigIconSide;
     gap: 0 63px;
   }
 
-  &--menu {
-    grid-template-columns: 1fr $smallIconSide;
-
-    @include onDesktop {
-      grid-template-columns: 1fr $bigIconSide;
-    }
+  @include onDesktop {
+    grid-template-columns: 1fr $bigIconSide $bigIconSide;
+    gap: 0 63px;
   }
 }
