@@ -17,6 +17,14 @@
   &__content {
     height: 100vh;
     padding: $header-mob-padding-top 0;
+
+    @include horizontal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding-bottom: 0;
+    }
   }
 
   &__list {
@@ -24,6 +32,11 @@
     padding: 0;
 
     list-style: none;
+
+    @include horizontal {
+      @include top-actions;
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
@@ -31,6 +44,9 @@
       margin-bottom: 24px;
     }
 
+    @include horizontal {
+      margin-bottom: 24px;
+    }
   }
 
   &__link {
@@ -47,6 +63,12 @@
     &:hover {
       border-color: $black-color;
     }
+
+    @include horizontal {
+      padding: 0;
+
+      letter-spacing: 0.5px;
+    }
   }
 
   &__call {
@@ -56,6 +78,13 @@
     text-transform: uppercase;
 
     color: $black-color;
+
+    @include horizontal {
+      &-container {
+        @include top-actions;
+        justify-content: space-around;
+      }
+    }
 
     &--phone {
       margin-bottom: 16px;
@@ -72,6 +101,12 @@
       letter-spacing: 2px;
 
       border-bottom: 1px solid $black-color;
+
+      @include horizontal {
+        font-size: 16px;
+        line-height: 27px;
+        margin-bottom: 16px;
+      }
     }
   }
 }
