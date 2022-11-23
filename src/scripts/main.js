@@ -20,6 +20,9 @@ const humburgerMenuCancel
   = document.querySelector('.humburger-menu__cancel');
 const navList = document.querySelector('.nav__list');
 const form = document.querySelector('.form');
+const contactName = document.querySelector('.contact__name');
+const contactEmail = document.querySelector('.contact__email');
+const contactMessage = document.querySelector('.contact__message');
 
 headerMenu.addEventListener('click', function() {
   addRule('.humburger-menu', {
@@ -46,5 +49,9 @@ headerMenuLogo.addEventListener('click', () => {
 });
 
 form.addEventListener('submit', (e) => {
+  contactName.value = '';
+  contactEmail.value = '';
+  contactMessage.value = '';
+
   e.preventDefault();
 });
