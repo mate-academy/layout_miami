@@ -6,17 +6,23 @@
   &__content {
     display: flex;
     flex-direction: column;
-  
     box-sizing: border-box;
     height: 100vh;
 
     padding: 29px 0 88px;
+
+    @include forMinHeight {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 
   &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 44px;
   }
 
   &__menu-close {
@@ -36,18 +42,26 @@
   }
 
   &__list {
-    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @include forMinHeight {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
-  &__item:not(:first-child) {
-    margin-top: 30px;
+  &__item {
+    margin-bottom: 32px;
   }
 
   &__link {
     border-bottom: 1px solid transparent;
     padding-bottom: 8px;
     width: max-content;
-
     font-weight: 600;
     font-size: 22px;
     line-height: 22px;
@@ -66,27 +80,28 @@
   }
 
   &__call {
+    border-bottom: 1px solid transparent;
     width: max-content;
+    padding-bottom: 8px;
 
     font-weight: 600;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 27px;
-    /* identical to box height, or 169% */
-
-    display: flex;
-    align-items: center;
     text-transform: uppercase;
 
     color: $mainColor;
 
     &--phone {
-      margin-top: 40px;
+      margin-top: 8px;
     }
 
     &--action {
       margin-top: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid $mainColor;
+    }
+    
+    &:hover {
+      transition: border-color 0.3s;
+      border-color: $mainColor;
     }
   }
 }
