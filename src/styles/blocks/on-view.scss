@@ -1,9 +1,27 @@
 .on-view {
+  &__content {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
   &__title {
     margin: 0 auto 48px;
     width: 280px;
 
     text-align: center;
+
+    @include onTablet {
+      width: 390px;
+    }
 
     @include onDesktop {
       width: 325px;
@@ -38,6 +56,16 @@
 
     &--last {
       margin-bottom: 40px;
+    }
+  }
+
+  &__button {
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
     }
   }
 }
