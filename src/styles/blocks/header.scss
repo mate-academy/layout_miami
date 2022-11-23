@@ -1,0 +1,122 @@
+.header {
+  @extend %backgroundImg;
+  background-image: url(../images/header-bike-mobile.jpg);
+
+  @include forTablet {
+    background-image: url(../images/header-bike.jpg);
+  }
+
+  @include forDesktop {
+    background-image: url(../images/header-bike.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include forTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include forDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__elements {
+    display: flex;
+  }
+
+  &__menu-opener {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 12px;
+    top: 3px;
+    @extend %backgroundImg;
+    background-image: url(/images/menu.png);
+
+    transition: 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu-hover.png);
+    }
+
+    @include forDesktop {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+
+    background-image: url(../images/phone.png);
+    @extend %backgroundImg;
+
+    text-decoration: none;
+
+    @include forDesktop {
+      width: 24px;
+      height: 24px;
+
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 25%;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        transform: translateX(-100%);
+        color: $secondaryColor;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    /* identical to box height, or 36px */
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: $secondaryColor;
+
+    @include forTablet {
+      font-size: 64px;
+    }
+
+    @include forDesktop {
+      font-size: 80px;
+    }
+  }
+}
