@@ -1,0 +1,150 @@
+.header {
+  background-size: cover;
+  background-position-x: 20%;
+  background-image: url(../images/header-744.png);
+
+  @media (max-height: 500px) {
+    background-position: left;
+    background-image: url(../images/header-1260.png);
+  }
+
+  @include onTablet {
+    background-position-x: 25%;
+    background-image: url(../images/header-1260.png);
+  }
+
+  @include onDesktop {
+    background-position-x: 0;
+    background-image: url(../images/header-1260.png);
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 80px;
+
+    @media (max-height: 500px) {
+      padding-bottom: 45px;
+    }
+
+    @include onTablet {
+      padding: 50px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 50px 0 55px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $icon-size-mobile;
+
+    @include onTablet {
+      gap: $icon-size-tablet;
+    }
+
+    @include onDesktop {
+      gap: $icon-size-desktop;
+    }
+  }
+
+  &__bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @media (max-height: 500px) {
+      font-size: 24px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+  }
+
+  &__sound-waves {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+
+    width: max-content;
+
+    height: 38px;
+
+    @include onTablet {
+      display: flex;
+      height: 76px;
+      width: max-content;
+    }
+
+    @include onTablet {
+      display: flex;
+      height: 76px;
+      width: max-content;
+    }
+
+    @for $number from 1 through 11 {
+      &:hover .header__wave-#{$number} {
+        animation-play-state: paused;
+      }
+    }
+  }
+
+  @for $number from 1 through 11 {
+    &__wave-#{$number} {
+      height: 100%;
+      width: 3px;
+
+      border-radius: 20px;
+      background-color: $main-text-color;
+
+      animation: waves 2s ease-in-out infinite;
+
+      transform-origin: center;
+
+      &--active {
+        animation-play-state: running;
+      }
+
+      @keyframes waves {
+        50% {
+          height: 20%;
+        }
+
+        100% {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @each $wave-number, $animation-delay in $waves-animation-delay {
+    &__wave-#{$wave-number} {
+      animation-delay: $animation-delay;
+    }
+  }
+}
