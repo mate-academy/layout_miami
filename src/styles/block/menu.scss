@@ -1,14 +1,21 @@
 .menu {
   background-color: $pinkColor;
+  overflow-y: auto;
 
   &__content {
     box-sizing: border-box;
     height: 100vh;
     padding: $headerTopPadding 0;
+
+    @include onDesktop {
+      padding-top: 50px;
+    }
   }
 
   &__top {
+    @include top-actions;
     margin-bottom: 40px;
+    grid-template-columns: 1fr var(--icon-width);
   }
 
   &__list {
@@ -52,7 +59,7 @@
     text-transform: uppercase;
     color: #fff;
     text-decoration: none;
-    
+
     &--phone {
       margin-bottom: 8px;
     }
@@ -66,8 +73,14 @@
       font-size: 12px;
       line-height: 16px;
       letter-spacing: 2px;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid transparent;
       background-size: 100%;
+
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: #fff;
+      }
     }
   }
 }
