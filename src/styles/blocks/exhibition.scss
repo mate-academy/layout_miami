@@ -1,5 +1,19 @@
 .exhibition {
+  &__photos {
+    margin-bottom: 24px;
+  }
+
   &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+
+    &--extended {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+    }
+
     @include onTablet {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -105,6 +119,13 @@
       height: 320px;
       padding-bottom: 0;
     }
+
+    &--extended {
+      @include onTablet {
+        height: 284px;
+        padding-bottom: 0;
+      }
+    }
   }
 
   &__photo {
@@ -114,18 +135,21 @@
 
     transition: transform 0.5s;
 
+    &--extended {
+      @include onTablet {
+        height: 284px;
+      }
+    }
+
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
     }
   }
 
-  &__photos {
-    margin-bottom: 24px;
-  }
-
   &__link {
     display: block;
+    
     font-weight: 700;
     text-decoration: none;
     color: $mainAccent;
