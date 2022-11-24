@@ -13,30 +13,29 @@
     column-gap: 24px;
   }
 
-  &--desktop {
+  &--tablet-desktop {
     display: block;
 
-    @include onDesktop {
+    @include onTablet {
       display: grid;
     }
   }
 
   &__item {
-
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @include onTablet {
-      @for $start from 1 through 6 {
-        @for $end from $start through 6 {
-          &--on-tablet--#{$start}-#{$end} {
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
