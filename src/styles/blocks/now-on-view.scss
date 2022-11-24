@@ -1,0 +1,74 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.exhibition {
+  &__picture-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 186px;
+    overflow: hidden;
+
+    transition: transform 300ms;
+
+    @include onTablet {
+      max-height: 320px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--hidden {
+      display: none;
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__picture {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--position-1 {
+      object-position: 20%;
+    }
+
+    &--position-2 {
+      object-position: right;
+    }
+  }
+
+  &__pictures {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include link-text;
+    color: $accent-main-color;
+  }
+}
+
+.now-on-view {
+  &__exhibition {
+    margin-bottom: 48px;
+  }
+}

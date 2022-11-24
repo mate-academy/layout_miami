@@ -1,0 +1,78 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/welcome.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 288px;
+
+    @include onTablet {
+      padding: 50px 0 456px;
+    }
+
+    @include onDesktop {
+      padding: 50px 0 482px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        @include call-icon-details;
+      }
+
+      &:hover::before {
+        @include hover-call-icon-details;
+      }
+
+      &::after {
+        @include call-icon-details;
+        content: "The Met Cloisters +1 212-923-3700";
+        width: 172px;
+        padding-top: 8px;
+
+      }
+
+      &:hover::after {
+        @include hover-call-icon-details;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: $main-text-color;
+    text-align: center;
+    transition: all 300ms;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
