@@ -1,0 +1,85 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.header {
+  @include backgroundImage("../images/background-headerSmall.png");
+  @include onMedium {
+    background-image: url("../images/background-headerMedium.png");
+  }
+  @include onDesktop {
+    background-image: url("../images/background-headerLarge.png");
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+
+  color: $colorMain;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    justify-items: end;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  &__nav-item {
+    width: max-content;
+
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
+
+  &__title {
+    @include onMedium {
+      margin-bottom: 40px;
+
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @include onDesktop {
+      margin-bottom: 64px;
+
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    margin: 0 0 94px;
+    padding: 0;
+
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+
+    letter-spacing: -1.5px;
+
+    &::before {
+      @include backgroundImage("../images/titleBefore.svg");
+      @include onMedium {
+        margin-bottom: 40px;
+        background-image: url("../images/titleBeforeLarge.svg");
+
+        width: 63px;
+        height: 76px;
+      }
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+      display: block;
+      content: "";
+
+      width: 32px;
+      height: 27px;
+
+      margin-bottom: 16px;
+    }
+  }
+}
