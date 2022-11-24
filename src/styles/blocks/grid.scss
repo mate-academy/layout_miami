@@ -1,0 +1,68 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include forTablets {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include forDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include forDesktop {
+      display: grid;
+    }
+  }
+
+  &--tablets {
+    display: block;
+
+    @include forTablets {
+      display: grid;
+    }
+  }
+
+  &__icon {
+    height: 280px;
+    width: 280px;
+    padding-bottom: 32px;
+    transition: transform 0.4s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include forTablets {
+      height: 320px;
+      width: 320px;
+    }
+
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--tablets-#{$start}-#{$end} {
+          @include forTablets {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include forDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
