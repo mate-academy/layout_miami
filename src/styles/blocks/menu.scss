@@ -1,0 +1,129 @@
+.menu {
+  overflow-y: auto;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 100vh;
+
+  background-color: #c2c2c2;
+
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__content {
+    padding: 29px 0 88px;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 32px;
+
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: inline-block;
+    padding-bottom: 8px;
+
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1d1d1d;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: #1d1d1d;
+      opacity: 0;
+      transform: translateX(-100%);
+
+      transition: transform 0.5s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #1d1d1d;
+
+    @include onDesktop() {
+      font-weight: 700;
+    }
+
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      position: relative;
+
+      font-size: 12px;
+      line-height: 16px;
+      padding-bottom: 8px;
+      letter-spacing: 2px;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 1px;
+
+        background-color: #1d1d1d;
+        opacity: 1;
+        transform: translateX(0);
+
+        transition: transform 0.5s;
+      }
+
+      &:hover::after {
+        opacity: 0;
+        transform: translateX(-100%);
+
+        transition: 0.5s;
+      }
+    }
+  }
+}
