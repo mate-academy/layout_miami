@@ -1,0 +1,135 @@
+.header {
+  background-image: url(../images/photos/bikepicture320.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+
+  @include onDesktop {
+    background-image: url(../images/photos/bikepicture12600.jpg);
+    background-position: top;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+
+    margin-bottom: 60px;
+    padding-bottom: 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+      margin-bottom: 120px;
+    }
+    @include onDesktop {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__interaction {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 700;
+    color: var(--secondary-color);
+    letter-spacing: -1.5px;
+    text-align: center;
+    opacity: 0;
+
+    animation-name: show;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    transition: opacity 0.5s;
+
+    @keyframes show {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+
+    @include onTablet {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+
+    background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        color: var(--secondary-color);
+
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+      margin-right: 40px;
+    }
+  }
+}
