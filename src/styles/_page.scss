@@ -1,0 +1,75 @@
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $mainBgColor;
+    overflow-x: hidden;
+  }
+
+  &__body:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__title {
+    margin: 0 0 40px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+      line-height: 100%;
+    }
+  }
+
+  &__header {
+    margin-bottom: 30px;
+    @include onTablet {
+      margin-bottom: 90px;
+    }
+  }
+
+  &__section {
+    max-width: $maxWidth;
+
+    margin: 0 auto 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+
+    @include onTablet {
+      margin-bottom: 44px;
+      padding-top: 44px;
+      padding-bottom: 44px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 54px;
+      padding-top: 54px;
+      padding-bottom: 54px;
+    }
+  }
+}
