@@ -8,13 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const button = document.querySelector('.contacts__button');
-const input = document.querySelector('.contacts__field');
+const form = document.querySelector('form');
+const inputs = document.querySelectorAll('.form-field');
 
-button.addEventListener('submit', (e) => {
-  e.preventDefault();
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-  input.forEach(elem => {
+  inputs.forEach(elem => {
     elem.value = '';
   });
 });
