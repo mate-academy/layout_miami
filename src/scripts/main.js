@@ -5,3 +5,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const subscribeForm = document.querySelector('form--js');
+subscribeForm.addEventListener('submit', e => {
+  e.preventDefault();
+  e.target.reset();
+});
