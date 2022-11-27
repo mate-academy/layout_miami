@@ -9,7 +9,12 @@ window.addEventListener('hashchange', () => {
 });
 
 const button = document.querySelector('.contacts__button');
+const input = document.querySelector('.contacts__field');
 
-button.addEventListener('click', (e) => {
+button.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  input.forEach(elem => {
+    elem.value = '';
+  });
 });
