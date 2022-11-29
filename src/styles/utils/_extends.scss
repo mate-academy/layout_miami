@@ -1,4 +1,119 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+.grid {
+  display: grid;
+
+  @include onMobile {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+
+    box-sizing: border-box;
+    padding: 0 72px;
+    &__tablet {
+      @include position(6);
+    }
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    box-sizing: border-box;
+    padding: 0 120px;
+
+    &__desktop {
+      @include position(12);
+    }
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include onMobile {
+    grid-column: 0 / 1;
+    height: 38px;
+    width: 130px;
+  }
+
+  @include onTablet {
+    height: 56px;
+    width: 187px;
+  }
+
+  @include onDesktop {
+    height: 56px;
+    width: 187px;
+  }
+}
+
+.position_header {
+  @include onMobile {
+    height: 96px;
+  }
+
+  @include onTablet {
+    height: 124px;
+  }
+
+  @include onDesktop {
+    height: 124px;
+  }
+}
+
+.little_element {
+  @include onMobile {
+    @include size(18px);
+  }
+
+  @include onTablet {
+    @include size(24px);
+  }
+
+  @include onDesktop {
+    @include size(24px);
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+  font-style: normal;
+  color: $color_dark;
+  font-weight: 600;
+  width: max-content;
+  text-transform: uppercase;
+
+  &:hover::after {
+    content: "";
+    position: relative;
+    bottom: -9px;
+    background: #000;
+    height: 1px;
+  }
+}
+
+.first_message {
+  font-weight: 700;
+  line-height: 100%;
+
+  @include onMobile {
+    font-size: 36px;
+  }
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onDesktop {
+    font-size: 80px;
+  }
 }
