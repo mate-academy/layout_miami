@@ -26,6 +26,16 @@ phone.addEventListener('mouseover', () => {
   headerContacts.classList.add('header__contacts--active');
 });
 
+phone.addEventListener('mouseleave', () => {
+  let timeout = setTimeout(() => {
+    headerContacts.classList.remove('header__contacts--active');
+  }, 300);
+
+  headerContacts.addEventListener('mouseover', () => {
+    clearTimeout(timeout);
+  });
+});
+
 headerContacts.addEventListener('mouseleave', () => {
   headerContacts.classList.remove('header__contacts--active');
 });
