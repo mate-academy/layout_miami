@@ -1,116 +1,127 @@
 .menu {
-  position: sticky;
-  padding: 49px 22px;
-
   background-color: $color-menu;
-  height: 100vh;
 
-  @include onTablet {
-    padding: 36px 73px;
-    height: 100vh;
-  }
+  font-weight: 600;
+  overflow-y: auto;
 
   @include onDesktop {
-    padding: 48px 122px;
+    font-weight: 700;
   }
 
-  &__img-logo {
-    display: block;
-    width: 130px;
-    height: 38px;
-
-    @include onDesktop {
-      width: 187px;
-      height: 56px;
-    }
-  }
-
-  &__img-icon {
-    @include square(16px);
-
-    background-image: url(../images/close.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    @include onDesktop {
-      @include square(22px);
-    }
-  }
-
-  &__nav {
+  &__top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 44px;
   }
 
-  &__item-link {
-    position: relative;
-    display: block;
-    max-width: max-content;
+  &__content {
+    height: 100vh;
+    padding: 29px 0;
 
-    margin-bottom: 32px;
+    @include horizontal {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 22px;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #1d1d1d;
-
-    &:last-child {
-      margin-bottom: 40px;
+      padding-bottom: 0;
     }
 
-    @include onDesktop {
-      &:hover {
-        text-decoration: underline;
+    &__icon {
+      display: block;
+      background-image: url("../images/close.png");
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__list {
+    margin-bottom: 40px;
+    padding: 0;
+
+    list-style: none;
+
+    @include horizontal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 10px;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
+    @include horizontal {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #000;
+    transition-property: border-color;
+
+    &:hover {
+      border-color: #000;
+    }
+
+    @include horizontal {
+      padding: 0;
+
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    text-transform: uppercase;
+
+    color: #000;
+
+    @include horizontal {
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: space-around;
       }
     }
-  }
 
-  &__telephone {
-    margin-bottom: 16px;
+    &--phone {
+      margin-bottom: 16px;
 
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 27px;
-    text-transform: uppercase;
+      font-size: 16px;
+      line-height: 27px;
+    }
 
-    color: $dark-color-text;
-  }
+    &--action {
+      padding-bottom: 8px;
 
-  &__text {
-    position: relative;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
 
-    display: inline-block;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
+      border-bottom: 1px solid #000;
 
-    letter-spacing: 2px;
-    text-transform: uppercase;
+      @include horizontal {
+        padding: 0;
 
-    color: $dark-color-text;
-
-    &::before {
-      position: absolute;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      content: "";
-      top: 150%;
-
-      height: 1px;
-      background: #1d1d1d;
-      border-radius: 1px;
-      width: 100%;
-
-      align-self: center;
+        font-size: 16px;
+        line-height: 27px;
+        margin-bottom: 16px;
+      }
     }
   }
 }
