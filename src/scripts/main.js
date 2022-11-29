@@ -26,6 +26,6 @@ phone.addEventListener('mouseover', () => {
   headerContacts.classList.add('header__contacts--active');
 });
 
-document.body.addEventListener('click', () => {
+headerContacts.addEventListener('mouseleave', () => {
   headerContacts.classList.remove('header__contacts--active');
 });
