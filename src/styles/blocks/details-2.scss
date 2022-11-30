@@ -1,0 +1,122 @@
+.details-2 {
+  display: flex;
+  justify-content: center;
+
+  &__product-container {
+    max-width: $maxContentWidth;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 120px;
+    gap: 0 24px;
+
+    @include maxQ($ipadWidth) {
+      grid-template-columns: repeat(6, 1fr);
+      padding: 0 72px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-template-columns: 130px 130px;
+      grid-gap: 0 20px;
+    }
+  }
+
+  &__left {
+    grid-column: 1 / 5;
+    min-height: 415px;
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 3;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  &__right {
+    grid-column: 5 / 13;
+   
+    @include maxQ($ipadWidth) {
+      grid-column: 3 / 7;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-column: 2 / 2;
+    }
+  }
+  
+  &__pic_1l {
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($imageScaling);
+    }
+    
+    @include maxQ($ipadWidth) {
+      grid-column: 9 / 13;
+      object-fit: cover;
+      height: 187px;
+    }
+    
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+      object-fit: cover;
+      height: 130px;
+    }
+  }
+  
+  &__pic_1r {
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale($imageScaling);
+    }
+
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      object-fit: cover;
+      height: 130px;
+    }
+  }
+
+  &__feature {
+    position: relative;
+    top: 6px;
+    width: 250%;
+    @extend %header-text;
+    z-index: 10;
+
+    @include maxQ($ipadWidth) {
+      width: 600px;
+      height: 34px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 310%;
+      height: 110px;
+      font-size: 24px;
+    }
+  }
+  
+  &__text {
+    height: 150px;
+    width: 280%;
+    position: relative;
+    top: 8px;
+    @extend %description-text;
+    
+    @include maxQ($ipadWidth) {
+      width: 310%;
+      height: 200px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 213%;
+      height: 200px;
+    }
+  }
+}

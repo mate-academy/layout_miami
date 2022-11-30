@@ -1,0 +1,140 @@
+.details {
+  display: flex;
+  justify-content: center;
+
+  &__headline {
+    @extend %content-headline;
+    margin-top: 135px;
+    margin-bottom: 48px;
+    text-align: center;
+
+    @include maxQ($ipadWidth) {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+      line-height: 100%;
+    }
+  }
+
+  &__product-container {
+    display: grid;
+    padding: 0 120px;
+    max-width: $maxContentWidth;
+
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 24px;
+ 
+    @include maxQ($ipadWidth) {
+      grid-template-columns: repeat(6, 1fr);
+      padding: 0 72px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-template-columns: 130px 130px;
+      grid-gap: 0 20px;
+      padding: 0 20px;
+    }
+  }
+
+  &__left {
+    grid-column: 1 / 9;
+    min-height: 300px;
+   
+
+    @include maxQ($ipadWidth) {
+      grid-column: 1 / 5;
+
+    }
+    @include maxQ($iPhoneWidth) {
+      grid-column: 1 / 1;
+    }
+  }
+
+  &__right {
+    grid-column: 9 / 13;
+    
+    @include maxQ($ipadWidth) {
+      grid-column: 5 / 7;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      grid-column: 2 / 2;
+    }
+  }
+  
+  &__pic_1l {
+    transition: transform $transitionDuration;
+
+    object-fit: cover;
+
+    &:hover {
+      transform: scale($imageScaling);
+    }
+
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+
+    }
+
+    @include maxQ($iPhoneWidth) {
+      object-fit: cover;
+      height: 130px;
+      width: 130px;
+    }
+  }
+
+  &__pic_1r {
+    transition: transform $transitionDuration;
+
+    
+    &:hover {
+      transform: scale($imageScaling);
+    }
+    
+    @include maxQ($ipadWidth) {
+      object-fit: cover;
+      height: 187px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      object-fit: cover;
+      height: 130px;
+      width: 130px;
+    }
+  }
+
+  &__feature {
+    @extend %header-text;
+    position: relative;
+    top: 6px;
+    z-index: 10;
+  
+    @include maxQ($ipadWidth) {
+      width: 700px;
+      height: 34px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+      height: 70px;
+    }
+  }
+  
+  &__text {
+    width: 135%;
+    min-height: 90px;
+    position: relative;
+    top: 8px;
+    @extend %description-text;
+
+    @include maxQ($ipadWidth) {
+      width: 150%;
+      min-height: 140px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 280px;
+      height: 165px;
+    }
+  }
+}

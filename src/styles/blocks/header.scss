@@ -1,0 +1,162 @@
+.header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  background-image: url(../images/Header.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  
+  padding: $headerTopPadding 120px 122px;
+
+  @include maxQ($ipadWidth) {
+    padding: 52px 72px 40px;
+  }
+
+  @include maxQ($iPhoneWidth) {
+    padding: 40px 20px 94px;
+  }
+
+  &__content-wrapper {
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100vw;
+    max-width: $maxContentWidth;
+    box-sizing: border-box;
+    
+  }
+  
+  &__topline-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__logo {
+    display: block;
+    width: 187px;
+
+    @include maxQ($ipadWidth) {
+      width: 187px;
+      height: 56px;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      width: 130px;
+      height: 38px;
+    }
+  }
+  
+  &__icons-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__phone-svg {
+    display: block;
+    height: 24px;
+    width: 24px;
+    transition-duration: $transitionDuration;
+
+    background-image: url(../images/Vector24.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    text-decoration: none;
+    
+    @include maxQ($iPhoneWidth) {
+      height: 18px;
+      width: 18px;
+    }
+  
+    &::before {
+      content: "+1 234 555-55-55";
+    
+      position: relative;
+      
+      right: 800%;
+    
+      letter-spacing: 4px;
+      font-stretch: expanded;
+      font-size: 13px;
+      font-weight: 700;
+    
+      white-space: nowrap;
+      color: #000;
+      transition-duration: $transitionDuration;
+      pointer-events: none;
+      opacity: 0;
+
+    
+      @include maxQ($ipadWidth) {
+        content: "";
+      }
+
+      @include maxQ($iPhoneWidth) {
+        content: "";
+      }
+    }
+
+    &:hover::before {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &__menu-svg {
+    display: block;
+    height: $phoneSymbolSize;
+    width: $phoneSymbolSize;
+    transition-duration: $transitionDuration;
+
+    background-image: url(../images/Vector224.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+
+    @include maxQ($iPhoneWidth) {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  &__menu-svg:hover {
+    background-image: url(../images/VectorHover.svg);
+    z-index: 10;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+ 
+
+    @include maxQ($iPhoneWidth) {
+      content: "";
+    }
+  }
+
+  &__slogan {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 9%;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    letter-spacing: -1.5px;
+
+    @include maxQ($ipadWidth) {
+      font-size: 64px;
+      padding-bottom: 25%;
+    }
+
+    @include maxQ($iPhoneWidth) {
+      font-size: 36px;
+      padding-bottom: 90px;
+    }
+  }
+}
