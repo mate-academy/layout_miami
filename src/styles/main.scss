@@ -1,7 +1,158 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width:1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: 'Inter', sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0px 20px;
+
+  @include onDesktop {
+    padding: 0px 100px;
+  }
+}
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/header.svg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 52px 0 64px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+    margin-left: 40px;
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onDesktop {
+      width: 24px;
+      height: 19px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: auto;
+
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onDesktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    margin-top: 48px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+    color: #292929;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
+
+$width-margin-voice: 3px;
+$background-color-voice: #292929;
+
+@mixin voice {
+  width: $width-margin-voice;
+  margin-right: $width-margin-voice;
+  background: $background-color-voice;
+}
+
+.voice {
+  display: block;
+  background-image: url(../images/voice-phone.svg);
+  background-repeat: no-repeat;
+  background-image: none;
+
+  &__list {
+    @include voice;
+    display: flex;
+    align-items: center;
+
+    $voice:
+    '1' 10px,
+    '2' 20px,
+    '3' 26px,
+    '4' 44px,
+    '5' 32px,
+    '6' 64px,
+    '7' 76px,
+    '8' 44px,
+    '9' 30px,
+    '10' 22px,
+    '11' 10px;
+
+    @each $num, $height in $voice {
+      &__#{$num}-number-#{$num} {
+        height: $height;
+        @include voice;
+      }
+    }
+  }
+
+  @include onDesktop {
+    background-image: none;
+  }
+}
+
+.logo {
+  &__image {
+    height: 17px;
+    width: 130px;
+
+    @include onDesktop {
+      height: 24px;
+      width: 190px;
+    }
+  }
 }
