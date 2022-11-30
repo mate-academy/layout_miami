@@ -1,6 +1,30 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin section-title($align, $size, $wight) {
+  text-align: $align;
+  font-size: $size;
+  font-weight: $wight;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --w-icon: 24px;
+
+  display: grid;
+  column-gap: var(--w-icon);
+
+  @include tablet {
+    --w-icon: 32px;
   }
 }
