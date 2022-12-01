@@ -13,5 +13,10 @@ const myForm = document.getElementById('form');
 myForm.addEventListener('submit', function formСleaning(event) {
   event.preventDefault();
 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
   myForm.reset();
 });
