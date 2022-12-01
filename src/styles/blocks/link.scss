@@ -6,29 +6,22 @@
   text-transform: uppercase;
   text-decoration: none;
 
+  &::after {
+    @extend %after;
+  }
+
+  @include onDesktop {
+    &:hover,
+    &:focus {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
   &--menu {
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-
-    @include onDesktop {
-      &::after {
-        content: "";
-        display: block;
-        margin-top: 8px;
-    
-        border-bottom: 1px solid $c-white;
-        opacity: 0;
-        
-        transition: opacity, $duration;
-      }
-    
-      &:hover,
-      &:focus {
-        &::after {
-          opacity: 1;
-        }
-      }
-    }
   }
 }

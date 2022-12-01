@@ -27,7 +27,7 @@ phone.addEventListener('mouseover', () => {
 });
 
 phone.addEventListener('mouseleave', () => {
-  let timeout = setTimeout(() => {
+  const timeout = setTimeout(() => {
     headerContacts.classList.remove('header__contacts--active');
   }, 300);
 
@@ -38,4 +38,10 @@ phone.addEventListener('mouseleave', () => {
 
 headerContacts.addEventListener('mouseleave', () => {
   headerContacts.classList.remove('header__contacts--active');
+});
+
+const form = document.getElementById('contacts-form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 });
