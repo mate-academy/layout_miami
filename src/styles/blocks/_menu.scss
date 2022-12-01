@@ -1,0 +1,139 @@
+.menu {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+  background-color: $mercuryColor;
+
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+
+  overflow: auto;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__container {
+    --container-padding: 0 20px;
+
+    margin: 0 auto;
+
+    @extend %flexDirectionColumn;
+
+    padding: var(--container-padding);
+    min-height: 100vh;
+
+    @include onTablet {
+      --container-padding: 0 72px;
+    }
+
+    @include onDesktop {
+      max-width: 876px;
+    }
+
+    @include onDesktopL {
+      max-width: $containerWidth;
+      padding: 0;
+    }
+
+    &-top {
+      display: flex;
+      align-items: center;
+      position: sticky;
+      z-index: 4;
+      top: 0;
+      height: 100px;
+      background-color: $mercuryColor;
+      overflow: hidden;
+
+      @include onTablet {
+        height: 130px;
+      }
+    }
+  }
+
+  &__cross {
+    transform: translateY(-20%);
+    margin-left: auto;
+    background-image: url(../images/cross.svg);
+
+    @include onDesktop {
+      top: 50px;
+    }
+  }
+
+  &__list {
+    @extend %flexDirectionColumn;
+    gap: 32px;
+    padding-bottom: 40px;
+    list-style: none;
+
+  }
+
+  &__link {
+    position: relative;
+    font-size: 1.38rem;
+    color: $DarkJungleGreen;
+    text-decoration: none;
+    font-weight: $fontWeight700;
+    line-height: 22px;
+    font-family: $fontFamilyInter;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &-tel {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      line-height: 27px;
+      transition: 0.2s;
+
+      &:hover {
+        text-shadow: 1px 2px 5px black;
+        color: white;
+      }
+    }
+
+    &-book-test {
+      font-size: 0.75rem;
+      line-height: 16px;
+
+      &::after {
+        position: relative;
+        content: " ";
+        display: flex;
+        height: 1px;
+        top: 8px;
+        width: 141px;
+        background: $DarkJungleGreen;
+        border-radius: 8px;
+        text-decoration: solid;
+
+      }
+    }
+  }
+
+  &__item-link {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      display: flex;
+      margin-top: 8px;
+      content: "";
+      height: 1px;
+      text-decoration: solid;
+      background-color: $DarkJungleGreen;
+      width: 0;
+      transition: $transitionDuration;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}

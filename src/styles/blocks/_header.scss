@@ -1,0 +1,108 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: $bgrHeader;
+
+  &__title {
+    font-weight: $fontWeight700;
+    font-size: 2.25rem;
+    text-align: center;
+    line-height: 100%;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @media (min-width: 426px) {
+      font-size: 3rem;
+      color: $DarkJungleGreen;
+    }
+
+    @include onTablet {
+      font-size: 4rem;
+      color: $DarkJungleGreen;
+    }
+
+    @include onDesktop {
+      font-size: 5rem;
+    }
+  }
+
+  &__content {
+    --container-padding: 29px 20px 88px;
+
+    @extend %flexDirectionColumn;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    min-height: 480px;
+
+    margin: 0 auto;
+    max-width: $containerWidth;
+    padding: var(--container-padding);
+
+    @include onTablet {
+      --container-padding: 36px 72px 130px;
+      min-height: 630px;
+    }
+
+    @include onDesktopL {
+      min-height: 100vh;
+      --container-padding: 36px 0 150px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__icons {
+    display: flex;
+    transform: translateY(20%);
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+    transition: $transitionDuration ease;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        transform: translate(-100%,30%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: $fontWeight700;
+        font-size: 0.75rem;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+
+        transition: 0.5s ease;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
