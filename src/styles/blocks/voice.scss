@@ -1,0 +1,21 @@
+.voice {
+  display: block;
+  background-repeat: no-repeat;
+  background-image: url(../images/voice-phone.svg);
+
+  @include onDesktop {
+    background-image: none;
+
+    &__list {
+      display: flex;
+      align-items: center;
+
+      @each $num, $height in $voice {
+        &__#{$num}-number-#{$num} {
+          height: $height;
+          @include voice;
+        }
+      }
+    }
+  }
+}
