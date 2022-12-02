@@ -24,27 +24,36 @@ const contactName = document.querySelector('.contact__name');
 const contactEmail = document.querySelector('.contact__email');
 const contactMessage = document.querySelector('.contact__message');
 
-headerMenu.addEventListener('click', function() {
+headerMenu.addEventListener('click', () => {
+  window.location.hash = '#menu';
+
   addRule('.humburger-menu', {
-    display: 'block',
+    visibility: 'visible',
+    opacity: 1,
+    transition: 'visibility 0.3s, opacity 0.3s linear',
   });
 });
 
 humburgerMenuCancel.addEventListener('click', () => {
+  window.location.hash = '';
+
   addRule('.humburger-menu', {
-    display: 'none',
+    visibility: 'hidden',
+    opacity: 0,
   });
 });
 
 navList.addEventListener('click', () => {
   addRule('.humburger-menu', {
-    display: 'none',
+    visibility: 'hidden',
+    opacity: 0,
   });
 });
 
 headerMenuLogo.addEventListener('click', () => {
   addRule('.humburger-menu', {
-    display: 'none',
+    visibility: 'hidden',
+    opacity: 0,
   });
 });
 
@@ -54,4 +63,12 @@ form.addEventListener('submit', (e) => {
   contactMessage.value = '';
 
   e.preventDefault();
+});
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
+  }
 });
