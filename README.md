@@ -10,5 +10,5 @@
 - JS
 - Figma
 
-- [DEMO LINK]](https://HelenShamshurina.github.io/themet/)
+- [DEMO LINK]](https://helenshamshurina.github.io/TheMet/)
 - [Mockup](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
