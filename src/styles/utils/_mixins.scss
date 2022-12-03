@@ -4,3 +4,36 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin active($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:active {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 25px 0 0;
+}
+
+@mixin marginBottom($_value) {
+  &:not(:last-child) {
+    margin-bottom: $_value;
+  }
+}
