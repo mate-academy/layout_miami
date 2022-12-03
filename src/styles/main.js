@@ -1,0 +1,16 @@
+window.addEventListener('hashchange', () => {
+	if (window.location.hash === '#menu') {
+		document.body.classList.add ('page__body--with-menu');
+	} else {
+		document.body.classList.remove('page_body--with-menu');
+	}
+});
+
+const form = document.guerySelector('#form');
+
+form.addEventListener ('submit, onSubmit, false');
+
+function onSubmit (event) {
+	event.preventDefault();
+	form.reset ();
+};
