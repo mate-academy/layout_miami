@@ -52,6 +52,8 @@ function addedAnimationForSection() {
 }
 
 window.addEventListener('scroll', () => {
-  addedAnimationForSection();
+  if (document.documentElement.clientWidth >= 1024) {
+    addedAnimationForSection();
+  }
   addedFooterAnimation();
 });
