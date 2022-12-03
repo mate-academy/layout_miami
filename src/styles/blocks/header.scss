@@ -1,11 +1,18 @@
 .header {
-  background-image: url(../images/bg-image-320.jpg);
+  background-image: url(../images/bg-image-744.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: 36em 100%;
+  background-position: top 0 left 23%;
+
+  animation: headerAnimation 1s;
+
+  @media (min-width: 500px) {
+    background-size: cover;
+    background-position: top -25px left 23%;
+  }
 
   @include onTablet {
-    background-image: url(../images/bg-image-744.jpg);
+    background-position: center;
   }
 
   @include onDesktop {
@@ -19,14 +26,14 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: $header-top-pading 0 94px;
+    padding: $header-top-pading 0 50px;
 
     @include onTablet {
-      padding: 52px 0 40px;
+      padding: 52px 0 30px;
     }
 
     @include onDesktop {
-      padding-bottom: 30px;
+      padding-bottom: 64px;
     }
   }
 
@@ -51,6 +58,9 @@
 
     @include onDesktop {
       width: 498px;
+    }
+
+    @media (min-width: 1240px) {
       font-size: 48px;
     }
 
@@ -63,6 +73,7 @@
       background-image: url(../images/Vector-1.svg);
       background-repeat: no-repeat;
       background-position: center;
+      animation: pulse 1.8s linear infinite;
 
       @include onTablet {
         width: 63px;
@@ -71,5 +82,35 @@
         background-image: url(../images/Sound-waves.svg);
       }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes headerAnimation {
+  0% {
+    opacity: 0.25;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
