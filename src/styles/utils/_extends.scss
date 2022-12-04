@@ -2,7 +2,7 @@
   display: grid;
 
   @include onMobile {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
     column-gap: 20px;
 
     box-sizing: border-box;
@@ -10,7 +10,7 @@
   }
 
   @include onTablet {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(80px, 1fr));
     column-gap: 24px;
 
     box-sizing: border-box;
@@ -21,7 +21,7 @@
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(63px, 1fr));
     column-gap: 24px;
     box-sizing: border-box;
     padding: 0 120px;
@@ -92,10 +92,17 @@
   width: max-content;
   text-transform: uppercase;
 
+  &::after {
+    content: "";
+    position: relative;
+    top: 10px;
+    height: 1px;
+  }
+
   &:hover::after {
     content: "";
     position: relative;
-    bottom: -9px;
+    top: 10px;
     background: #000;
     height: 1px;
   }
@@ -104,9 +111,10 @@
 .first_message {
   font-weight: 700;
   line-height: 100%;
+  letter-spacing: -1.5px;
 
   @include onMobile {
-    font-size: 36px;
+    font-size: 34px;
   }
 
   @include onTablet {
@@ -115,5 +123,32 @@
 
   @include onDesktop {
     font-size: 80px;
+  }
+}
+
+.button {
+  cursor: pointer;
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+.for_contact {
+  display: block;
+  margin-top: 24px;
+  text-decoration: none;
+  color: $color_other;
+
+  & > :nth-of-type(1) {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  & > :nth-of-type(2) {
+    font-size: 16px;
+    font-weight: 500;
   }
 }
