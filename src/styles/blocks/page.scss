@@ -1,0 +1,52 @@
+.page {
+  @extend %fonts;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__section {
+    &--main {
+      background-color: $secondary-color;
+    }
+
+    &-title {
+      margin: 92px 0 48px;
+      font-weight: 500;
+      line-height: 32px;
+      font-size: 32px;
+      letter-spacing: -1.5px;
+      text-align: center;
+      @include onTablet {
+        margin: 125px 0 64px;
+        font-size: 48px;
+        line-height: 100%;
+      }
+      @include onDesktop {
+        margin: 144px 0 48px;
+        font-size: 64px;
+      }
+    }
+  }
+
+  &__menu {
+    background-color: #c2c2c2;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    transition: transform $transition;
+    overflow-y: auto;
+    &:target {
+      transition: all $transition;
+      transform: translateX(0);
+    }
+  }
+}
