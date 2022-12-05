@@ -6,17 +6,8 @@ window.addEventListener('hashchange', () => {
 	}
 });
 
-const form = document.guerySelector('#form');
-
-form.addEventListener ('submit, onSubmit, false');
-
-function onSubmit (event) {
-	event.preventDefault();
-	form.reset ();
-};
-
-const form = document.querySelector(‘#form’);
-form.addEventListener(‘submit’, onSubmit, false);
+const form = document.querySelector('#form');
+form.addEventListener('submit', onSubmit, false);
 function onSubmit(event) {
   event.preventDefault();
   form.reset();
