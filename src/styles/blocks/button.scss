@@ -1,0 +1,57 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $accent-main;
+  color: $background;
+  text-decoration: none;
+  height: 56px;
+  font-weight: $font-weight-l;
+  font-size: 16px;
+  line-height: 27px;
+  counter-reset: $background;
+
+  transition: background-color 0.5s;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 20px;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__position {
+    @include onTablet {
+      grid-column: 2/6;
+    }
+
+    @include onDesktop {
+      grid-column: 5/9;
+    }
+  }
+
+  &:hover {
+    background-color: #ae1c23;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: #eb343d;
+  }
+  &--submit {
+    border: 2px solid transparent;
+    font-family: inherit;
+  }
+}

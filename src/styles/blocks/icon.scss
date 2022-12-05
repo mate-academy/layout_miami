@@ -1,0 +1,61 @@
+.icon {
+  background-repeat: no-repeat;
+  &--menu-open {
+    width: 24px;
+    height: 18px;
+    background-image: url(../images/menu.svg);
+
+    @include onDesktop() {
+      width: 32px;
+      height: 26px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  &--cross {
+    background-image: url(../images/cross.svg);
+    width: 32px;
+    height: 26px;
+  }
+  &__tooltips {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    width: max-content;
+    right: 100px;
+    padding-top: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+
+  @include onDesktop {
+    &:hover ~ &__tooltips {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &--phone {
+    padding-right: 24px;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+    @include onDesktop() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &__text {
+    font-weight: $font-weight-l;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+  }
+}
