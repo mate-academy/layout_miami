@@ -7,3 +7,10 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  contactForm.reset();
+});
