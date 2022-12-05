@@ -44,4 +44,5 @@ const form = document.getElementById('contacts-form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  form.reset();
 });
