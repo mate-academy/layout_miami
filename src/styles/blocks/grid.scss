@@ -22,17 +22,25 @@
 
   &__item {
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--tablet-#{$start}-#{$end} {
-          @include onTablet {
-            grid-column: #{$start} / #{$end+1};
+    &--tablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &-#{$start}-#{$end} {
+            @include onTablet {
+              grid-column: #{$start} / #{$end+1};
+            }
           }
         }
+      }
+    }
 
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
-            grid-column: #{$start} / #{$end+1};
+    &--desktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &-#{$start}-#{$end} {
+            @include onDesktop {
+              grid-column: #{$start} / #{$end+1};
+            }
           }
         }
       }
