@@ -12,8 +12,9 @@ window.addEventListener('hashchange', () => {
   onWindowHashChange();
 });
 
-const button = document.querySelector('.button--send');
+const form = document.querySelector('.form');
 
-button.addEventListener('click', (event) => {
-  event.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
 });
