@@ -1,18 +1,17 @@
 .icon {
   position: relative;
-  display: block;
   width: $icon-width-phone;
   height: $icon-width-phone;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-decoration: none;
 
   @include onTablet {
     width: $icon-width-desktop;
     height: $icon-width-desktop;
   }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
 
   &__tooltip {
     position: absolute;
@@ -36,16 +35,22 @@
     transition: opacity 0.3s;
   }
 
-  &:hover &__tooltip {
-    opacity: 1;
-    pointer-events: all;
+  @include onTablet {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--menu {
-    background-image: url(../images/menu.png);
+    background-image: url(../images/menu.svg);
 
     &:hover {
-    background-image: url(../images/menu-hover.svg);
+      background-image: url(../images/menu-hover.svg);
+    }
+
+    @include onTablet {
+      background-image: url(../images/menu-desktop.svg);
     }
   }
 
