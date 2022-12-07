@@ -1,4 +1,4 @@
-# Miami landing page
+# BOSE landing page
 
 - [DEMO LINK](https://BZOzyurt.github.io/layout_miami/)
 ```
