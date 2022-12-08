@@ -1,0 +1,63 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/welcome.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 0;
+    // gap: 129px;
+
+    @include onTablet {
+      padding: 50px 0 0;
+    }
+
+    @include onDesktop {
+      padding: 50px 0 0;
+    }
+  }
+
+  &__call {
+    transform: translateX(-30px);
+
+    @include onDesktop {
+      &:hover ~ .top-actions--phones {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet() {
+      transform: translateX(-60px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: $main-text-color;
+    text-align: center;
+    transition: all 300ms;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
