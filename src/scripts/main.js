@@ -8,10 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submit = document.querySelector('#submit');
+const myForm = document.getElementById('form');
 
-submit.addEventListener('click', submitClick, false);
-
-function submitClick(event) {
+myForm.addEventListener('submit', function formCleaning(event) {
   event.preventDefault();
-}
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
+  myForm.reset();
+});
