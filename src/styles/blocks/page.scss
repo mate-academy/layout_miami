@@ -1,7 +1,65 @@
 .page {
   font-family: Cinzel, sans-serif;
+  scroll-behavior: smooth;
 
-  &__body {
-    margin: 0;
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform, 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__header {
+    margin-bottom: $margin-section-mobile;
+
+    @include onTablet {
+      margin-bottom: $margin-section-desktop;
+    }
+  }
+
+  &__section {
+    margin-bottom: $margin-section-mobile;
+
+    @include onTablet {
+      margin-bottom: $margin-section-desktop;
+    }
+  }
+
+  &__section-title {
+    text-align: center;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $color-dark;
+    font-weight: 700;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+    &:not(:first-child) {
+      text-align: left;  //selector for first section-title
+
+    }
+  }
+
+  &__section-paragraph {
+    line-height: 27px;
+    color: $color-dark;
+
+    &--bold {
+      font-weight: 700;
+    }
+
+    &--red {
+      color: $color-red;
+    }
   }
 }
