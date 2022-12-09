@@ -1,0 +1,49 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat($amount-column-mobile, 1fr);
+  column-gap: $gap-column-mobile;
+
+  @include onTablet {
+    grid-template-columns: repeat($amount-column-tablet, 1fr);
+    column-gap: $gap-column-tablet;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat($amount-column-desktop, 1fr);
+    column-gap: $gap-column-desktop;
+  }
+
+  &__item--mobile {
+    @for $start from 1 through $amount-column-mobile {
+      @for $end from $start through $amount-column-mobile {
+        &-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  &__item--tablet {
+    @for $start from 1 through $amount-column-tablet {
+      @for $end from $start through $amount-column-tablet {
+        &-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__item--desktop {
+    @for $start from 1 through $amount-column-desktop {
+      @for $end from $start through $amount-column-desktop {
+        &-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
