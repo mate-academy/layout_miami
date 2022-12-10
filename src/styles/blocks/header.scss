@@ -1,0 +1,70 @@
+.header {
+  background-image: url(../images/image_bacground-full-size.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPadding 0 288px;
+
+    @include onDevice(tablet) {
+      padding: 50px 0 456px;
+    }
+
+    @include onDevice(desktop) {
+      padding-bottom: 482px;
+    }
+  }
+
+  &__call {
+
+    @include onDevice(tablet) {
+      text-decoration: none;
+      height: var(--icon-width);
+
+      &::before {
+        content: "#{$call-1}\A#{$phone-1}\A\A#{$call-2}\A#{$phone-2}";
+        white-space: pre;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 20px;
+        width: max-content;
+
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 700;
+        text-align: end;
+        color: $colorWhite;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    color: $colorWhite;
+    letter-spacing: -1.5px;
+
+    @include onDevice(tablet) {
+      font-size: 64px;
+    }
+
+    @include onDevice(desktop) {
+      font-size: 80px;
+    }
+  }
+}
