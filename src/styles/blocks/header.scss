@@ -1,0 +1,133 @@
+@mixin onSmallDesktop {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onBigDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 29px 20px 88px;
+
+  background-image: url(../images/bike-320px.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include onSmallDesktop {
+    background-image: url(../images/bike-744px.png);
+    padding: 34px 72px 130px;
+  }
+
+  @include onBigDesktop {
+    background-image: url(../images/bike-1260px.png);
+    padding: 36px 120px 203px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    &--image {
+      height: 38px;
+
+      @include onSmallDesktop {
+        height: 56px;
+      }
+    }
+  }
+
+  &__menu-opener {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onSmallDesktop {
+      width: 24px;
+      height: 16px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    position: relative;
+    right: 30px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onSmallDesktop {
+      width: 24px;
+      height: 24px;
+      right: 40px;
+    }
+
+    @include onBigDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        transform: translateX(-100%);
+        display: inline-block;
+        width: max-content;
+        padding-right: 12px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: #fff;
+
+    @include onSmallDesktop {
+      font-size: 64px;
+    }
+
+    @include onBigDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.menu {
+  height: 100vh;
+  background-color: #c2c2c2;
+}
