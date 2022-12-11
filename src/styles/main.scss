@@ -2,6 +2,18 @@
 @import "fonts";
 @import "typography";
 
+@mixin onDesktop {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Poppins", sans-serif;
 
@@ -14,19 +26,43 @@ body {
   background: $c-gray;
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 29px 20px 88px;
-
-  background-image: url(../images/bicycle1.svg);
-  background-position: right;
+.icon {
+  display: block;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/bicycle1.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onDesktop {
+    background-image: url(../images/bicycle2.svg);
+  }
+
+  @include onLaptop {
+    background-image: url(../images/bicycle3.svg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+  }
 
   &__nav {
     display: flex;
@@ -40,12 +76,6 @@ body {
     transform: translateY(-25%);
 
     &--menu-opener {
-      display: block;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 18px;
-      height: 12px;
       background-image: url(../images/menu.svg);
 
       &:hover {
@@ -54,15 +84,33 @@ body {
     }
 
     &--call {
-      transform: translateY();
-      display: block;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 18px;
-      width: 18px;
-
+      text-decoration: none;
       background-image: url(../images/phone.svg);
+
+      @include onLaptop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          display: block;
+          width: max-content;
+
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          color: #fff;
+          padding-right: 12px;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
     }
   }
 
@@ -74,6 +122,29 @@ body {
     align-items: center;
     text-align: center;
     letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+
+    @include onLaptop {
+      font-size: 80px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onDesktop {
+    max-width: 600px;
+    padding: 0 72px;
+  }
+
+  @include onLaptop {
+    max-width: 1020px;
+    padding: 0 120px;
   }
 }
 
@@ -81,5 +152,10 @@ body {
   &__image {
     height: 38px;
     width: 130px;
+
+    @include onDesktop {
+      height: 56px;
+      width: 187px;
+    }
   }
 }
