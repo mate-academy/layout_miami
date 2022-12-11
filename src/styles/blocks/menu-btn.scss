@@ -1,0 +1,44 @@
+.menu-btn {
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &--span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: $main-accent;
+    border-radius: 25px;
+    transition: all 0.3s;
+
+    &:not(:last-child) {
+      margin-bottom: 3px;
+    }
+
+    @include onTablet {
+      width: 26px;
+      height: 3px;
+    }
+  }
+
+  &:hover > &--span:nth-of-type(1) {
+    transform: scaleX(-0.5) translateX(-9px);
+  }
+
+  &:hover > &--span:nth-of-type(3) {
+    transform: scaleX(-0.7) translateX(-3px);
+  }
+
+  &.active > &--span:nth-of-type(1) {
+    display: none;
+  }
+  &.active > &--span:nth-of-type(2) {
+    transform: translate(-55%, 128%) rotate(45deg);
+    background-color: $menu-text-color;
+  }
+  &.active > &--span:nth-of-type(3) {
+    transform: translate(-57%, -100%) rotate(-45deg);
+    background-color: $menu-text-color;
+  }
+}
