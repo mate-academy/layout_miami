@@ -1,0 +1,84 @@
+.menu {
+  background-color: $menuBgColor;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 29px;
+  }
+
+  &--cross {
+    @include transition(background-image, $transitionDuration)
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 44px 0 40px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $menuColor;
+
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 1px;
+      background-color: $menuColor;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      @include transition(width, $transitionDuration);
+
+    }
+
+    @include onDesktop {
+      font-weight: 700;
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__call {
+    align-self: baseline;
+
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $menuColor;
+
+    &--phone {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    &--action {
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $menuColor;
+    }
+
+    @include onDesktop {
+      font-weight: 700;
+    }
+  }
+}

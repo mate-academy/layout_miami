@@ -1,0 +1,78 @@
+.header {
+  background: right / cover no-repeat url("../images/photos/1/1_1_mobile.jpg");
+
+  @include onTablet {
+    background-image: url("../images/photos/1/1_1_tablet.jpg");
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url("../images/photos/1/1_1.jpg");
+  }
+
+  &__content {
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 203px;
+    }
+  }
+
+  &--call {
+    margin-right: 24px;
+
+    @include onTablet {
+      margin-right: 32px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: $phoneNumber;
+        width: max-content;
+        padding-right: 8px;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+
+        position: relative;
+        top: 50%;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, -50%);
+        @include transition(opacity, $transitionDuration);
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
