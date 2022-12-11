@@ -4,3 +4,32 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin content {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 600px;
+
+  @include onDesktop() {
+    max-width: 1020px;
+  }
+}
+
+@mixin onTablet() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin flex($direction, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
