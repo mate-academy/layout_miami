@@ -1,14 +1,15 @@
 .header {
-  background-image: url(../images/header-background-mobile.png);
-  @extend %background-properties;
-  background-position: top;
+  background-image: url(../images/photos/header-background-mobile.png);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   @include onTablet {
-    background-image: url(../images/header-background-tablet.png);
+    background-image: url(../images/photos/header-background-tablet.png);
   }
 
   @include onDesktop {
-    background-image: url(../images/header-background-desktop.png);
+    background-image: url(../images/photos/header-background-desktop.png);
   }
 
   &__content {
@@ -18,15 +19,20 @@
 
     height: 100vh;
     box-sizing: border-box;
-    padding: 40px 0 94px;
-
-    @include onDesktop {
-      padding-bottom: 64px;
-    }
+    padding: $headerTopPadding 0 94px;
 
     @include onTablet {
       padding-bottom: 40px;
     }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+
   }
 
   &__title {
@@ -35,7 +41,7 @@
     font-size: 32px;
     line-height: 32px;
     letter-spacing: -1.5px;
-    color: $text-color;
+    color: $mainColor;
 
     @include onTablet {
       font-size: 40px;
@@ -50,7 +56,7 @@
     &::before {
       content: "";
       display: block;
-      margin-bottom: 16px;
+      margin-bottom: 26px;
       width: 32px;
       height: 27px;
       background-image: url(../images/echo-waves.svg);
@@ -58,41 +64,28 @@
       @include onTablet {
         width: 63px;
         height: 76px;
+        margin-bottom: 50px;
         background-image: url(../images/sound-waves.svg);
       }
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__attributes {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    @include onTablet {
-      gap: 40px;
-    }
-  }
-
   &__call {
+    position: relative;
     text-decoration: none;
 
     &::before {
       content: "+1 234 5555-55-55";
-      position: relative;
+      position: absolute;
       top: 50%;
+      transition: all 0.45s;
       transform: translate(-100%, -50%);
 
       display: block;
       width: max-content;
-      padding-right: 12px;
+      padding-right: 15px;
 
-      color: $text-color;
+      color: $mainColor;
       font-weight: bold;
       font-size: 12px;
       line-height: 16px;
