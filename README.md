@@ -42,11 +42,6 @@ To deploy this project run
 
 ```
 
-
-## Features
-
-- Pixel Perfect Landing page
-
 ## 🛠 Skills
 HTML and CSS.
 
