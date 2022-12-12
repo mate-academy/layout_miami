@@ -1,22 +1,16 @@
 .header {
-  background: right / cover no-repeat url("../images/photos/1/1_1_mobile.jpg");
+  margin-bottom: 120px;
+  background: right / cover no-repeat url("../images/photos/1/1_1.jpg");
 
   @include onTablet {
-    background-image: url("../images/photos/1/1_1_tablet.jpg");
     background-position: center;
   }
 
-  @include onDesktop {
-    background-image: url("../images/photos/1/1_1.jpg");
-  }
-
   &__content {
+    @include flex(space-between, stretch, column);
+
     height: 100vh;
     padding: 29px 0 88px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     @include onTablet {
       padding-bottom: 130px;
@@ -39,9 +33,8 @@
         content: $phoneNumber;
         width: max-content;
         padding-right: 8px;
-        font-weight: 700;
-        font-size: 12px;
-        letter-spacing: 2px;
+
+        @include font(12px, 700, 2px);
         text-transform: uppercase;
         color: #fff;
 
@@ -50,7 +43,7 @@
         opacity: 0;
         pointer-events: none;
         transform: translate(-100%, -50%);
-        @include transition(opacity, $transitionDuration);
+        @include transition(opacity, $primaryTransitionDuration);
       }
 
       &:hover::before {
@@ -61,11 +54,10 @@
   }
 
   &__title {
-    font-weight: 700;
-    font-size: 36px;
+    @include font(36px, 700, -1.5px);
     text-align: center;
-    letter-spacing: -1.5px;
     color: #fff;
+    cursor: default;
 
     @include onTablet {
       font-size: 64px;
