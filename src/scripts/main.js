@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const toTopBtn = document.getElementById('topButton');
+
+toTopBtn.style.display = 'none';
+
+document.querySelector('body').onscroll = function() {
+  if (window.scrollY > 1000) {
+    toTopBtn.style.display = 'block';
+  } else {
+    toTopBtn.style.display = 'none';
+  }
+};
