@@ -3,6 +3,11 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  &--3-photos {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+  }
+
   @include onDevice(tablet) {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
@@ -23,25 +28,24 @@
 
   &__item {
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}--#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--tablet-#{$start}--#{$end} {
-          @include onDevice(tablet) {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
-
-        &--desktop-#{$start}--#{$end} {
-          @include onDevice(desktop) {
+    @include onDevice(tablet) {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}--#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
+    @include onDevice(desktop) {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}--#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
   }
 }

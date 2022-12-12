@@ -3,6 +3,14 @@
   background-size: cover;
   background-position: center;
 
+  &__top {
+    @include top-actions;
+
+    &--header {
+      position: relative;
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -16,38 +24,6 @@
 
     @include onDevice(desktop) {
       padding-bottom: 482px;
-    }
-  }
-
-  &__call {
-
-    @include onDevice(tablet) {
-      text-decoration: none;
-      height: var(--icon-width);
-
-      &::before {
-        content: "#{$call-1}\A#{$phone-1}\A\A#{$call-2}\A#{$phone-2}";
-        white-space: pre;
-        display: block;
-        position: absolute;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        padding-right: 20px;
-        width: max-content;
-
-        font-size: 16px;
-        line-height: 27px;
-        font-weight: 700;
-        text-align: end;
-        color: $colorWhite;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
     }
   }
 
