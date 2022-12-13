@@ -1,5 +1,7 @@
-
-- [DEMO LINK](https://bradleymatjie.github.io/layout_miami/) 
+DEMO
+- [DEMO LINK](https://bradleymatjie.github.io/layout_miami/)
+-THE DESIGN: 
+- [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
 ```
 
 Project is created with:
@@ -23,7 +25,4 @@ Project is created with:
 ``` bash
   npm start
 
-
-THE DESIGN:
-- [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
 
