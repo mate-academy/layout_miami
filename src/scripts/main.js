@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+function smth(event) {
+  inputs.forEach(el => {
+    el.value = '';
+  });
+  event.preventDefault();
+}
+
+const form = document.getElementById('form');
+const inputs = document.querySelectorAll('.form-field');
+
+form.addEventListener('submit', smth);
