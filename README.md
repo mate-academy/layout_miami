@@ -1,6 +1,7 @@
 DEMO
 - [DEMO LINK](https://bradleymatjie.github.io/layout_miami/)
-- THE DESIGN: 
+
+THE DESIGN: 
 - [MYBIKE landing](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
 ```
 
