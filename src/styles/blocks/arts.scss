@@ -2,8 +2,8 @@
   &__photos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 24px;
-    margin-bottom: 24px;
+    column-gap: $smallMargin;
+    margin-bottom: $smallMargin;
 
     @include onTablet() {
       grid-template-columns: repeat(6, 1fr);
@@ -16,8 +16,8 @@
     &--middle {
       display: flex;
       justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 24px;
+      gap: $smallMargin;
+      margin-bottom: $smallMargin;
     }
   }
 
@@ -37,14 +37,6 @@
       padding-bottom: 0;
       height: 185px;
 
-      &--first {
-        grid-column: 1 / 5;
-      }
-
-      &--second {
-        grid-column: 5 / 7;
-      }
-
       &--third,
       &--four {
         height: 284px;
@@ -53,38 +45,14 @@
       &--five {
         display: none;
       }
-
-      &--six {
-        grid-column: 1 / 3;
-      }
-
-      &--seven {
-        grid-column: 3 / 7;
-      }
     }
 
     @include onDesktop() {
       padding-bottom: 0;
       height: 320px;
 
-      &--first {
-        grid-column: 1 / 8;
-      }
-
-      &--second {
-        grid-column: 8 / 13;
-      }
-
       &--five {
         display: block;
-      }
-
-      &--six {
-        grid-column: 1 / 5;
-      }
-
-      &--seven {
-        grid-column: 5 / 13;
       }
     }
   }
@@ -101,45 +69,22 @@
     color: $colorMainAccent;
   }
 
-  &__button-container {
-    @include onTablet() {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
-    }
-
-    @include onDesktop() {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
-    }
-  }
-
   &__button {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
     text-decoration: none;
     color: $colorWhite;
     background-color: $colorMainAccent;
-    padding: 15px 0;
-    width: 100%;
-    display: block;
     text-align: center;
-
-    transition: background-color 0.5s;
-
-    @include onTablet() {
-      grid-column: 2 / 6;
-    }
-
-    @include onDesktop() {
-      grid-column: 5 / 9;
-    }
+    transition: background-color $timeTransition;
 
     &:hover {
-      background-color: #ae1c23;
+      background-color: $colorButtonHover;
     }
 
     &:active {
-      background-color: #eb343d;
+      background-color: $colorButtonActive;
     }
   }
 }
