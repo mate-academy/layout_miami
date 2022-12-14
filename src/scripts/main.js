@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const toTopBtn = document.getElementById('topButton');
+const toTopBtn = document.querySelector('.js-top-button');
 
 toTopBtn.style.display = 'none';
 
