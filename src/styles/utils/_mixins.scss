@@ -1,6 +1,33 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} 0.3s linear;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin backgroundImage($image-address) {
+  background-image: url($image-address);
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin nav-panel {
+  display: grid;
+  align-items: center;
+  padding-top: 25px;
+  @include onTablet {
+    padding-top: 50px;
   }
 }

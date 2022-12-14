@@ -1,0 +1,58 @@
+.icon {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    padding-right: 20px;
+    width: max-content;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity 0.3s;
+  }
+
+  &__link {
+    display: block;
+    color: $color-white;
+    text-align: right;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    line-height: 27px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include hover(color, $color-red-light);
+
+    &:first-child {
+      margin-bottom: 8px;
+    }
+  }
+
+  @include onTablet {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+
+    @include hover(background-image, url("../images/menu_hover.svg"));
+  }
+
+  &--call {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
+}
