@@ -1,0 +1,80 @@
+.header {
+  background-size: cover;
+  background-position: center right;
+  background-image: url(../images/header.svg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 80px;
+  }
+
+  &__top-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $color-white;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: on;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    color: $color-white;
+    letter-spacing: -1.5px;
+
+    @include onDesktop() {
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
+}
