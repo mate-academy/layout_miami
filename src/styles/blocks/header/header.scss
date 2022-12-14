@@ -2,6 +2,7 @@
   @include flex (space-between, stretch);
   flex-direction: column;
   max-width: 1400px;
+  min-height: 500px;
   width: 100vw;
   height: 100vh;
   padding: 20px 20px 40px;
@@ -39,23 +40,19 @@
 
     transition: font-size 0.5s ease-in;
 
-  }
-  &__link:hover {
-    color: inherit;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 20px;
+      height: 20px;
 
-  }
-  &__link::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 20px;
-    height: 20px;
+      background-image: url(../images/icons/phone-call-icon.svg);
+      @include bg-cover;
 
-    background-image: url(../images/icons/phone-call-icon.svg);
-    @include bg-cover;
+      cursor: pointer;
 
-    cursor: pointer;
-
+    }
   }
   &__burger-menu {
     cursor: pointer;
@@ -65,6 +62,12 @@
 
     background-image: url(../images/icons/open-menu-icon.svg);
     @include bg-cover;
+
+    transition: background-image 0.3s ease;
+
+    &:hover {
+      background-image: url(../images/icons/menu-hover-icon.svg);
+    }
   }
 
   &__title {
@@ -72,44 +75,83 @@
 
     font-style: italic;
     font-weight: 800;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 32px;
+    line-height: 1;
     letter-spacing: -1.5px;
 
     color: #292929;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      width: 32px;
+      height: 27px;
+
+      background-image: url(../images/icons/sound-waves-320.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 
-  &__title::before {
-    content: "";
-    position: absolute;
-    top: -40px;
-    width: 32px;
-    height: 27px;
-
-    background-image: url(../images/icons/sound-waves-320.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
 }
 
 @media screen and (min-width: 320px) {
   .header {
     background-image: url(../images/intro-bg-744.jpg);
+    background-size: 100% 100%;
   }
-
 }
+
+@media screen and (min-width: 400px) {
+  .header__link:hover {
+    color: inherit;
+    font-size: 12px;
+
+  }
+}
+
 @media screen and (min-width: 744px) {
   .header {
     background-image: url(../images/intro-bg-1260.jpg);
+    background-position: center;
+    padding: 20px 72px 40px;
+    min-height: 800px;
 
-    &__link:hover {
-      font-size: 0.75rem;
+    &__title {
+      font-size: 40px;
+
+      &::before {
+        top: -100px;
+        background-image: url(../images/icons/sound-waves.png);
+        width: 63px;
+        height: 76px;
+      }
     }
   }
 
 }
+
 @media screen and (min-width: 1260px) {
   .header {
+    padding: 40px 120px;
     background-image: url(../images/intro-bg-1440.jpg);
+    background-size: 100% 100%;
+    min-height: 720px;
+
+    &__title {
+      font-size: 48px;
+    }
+
+    &__link::after {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__burger-menu {
+      width: 30px;
+      height: 30px;
+      margin-left: 36px;
+    }
   }
 }
