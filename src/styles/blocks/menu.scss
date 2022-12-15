@@ -1,0 +1,86 @@
+.menu {
+  background-color: $menuBgColor;
+  overflow-y: auto;
+
+  &__content {
+    height: 100vh;
+    padding-top: 29px;
+
+    @extend %flexColumn;
+
+  }
+
+  &__top-actions {
+    @include topActions;
+  }
+
+  &__list {
+    margin: 44px 0 40px;
+    @extend %flexColumn;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    color: $primaryColor;
+
+    position: relative;
+
+    @include font(22px, 600, 2px);
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 1px;
+      background-color: $primaryColor;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      transition: width $menuTransitionDuration;
+    }
+
+    @include onDesktop {
+      font-weight: 700;
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__call {
+    align-self: baseline;
+
+    text-transform: uppercase;
+    color: $primaryColor;
+
+    @include font(12px, 600);
+
+    @include onDesktop {
+      font-weight: 700;
+    }
+
+    &--phone {
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        font-size: 16px;
+      }
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid $primaryColor;
+      letter-spacing: 2px;
+    }
+  }
+}
