@@ -11,13 +11,13 @@
 
   &__tooltip {
     text-decoration: none;
-    height: var(--icon-width);
+    height: object-fit;
 
     display: block;
     position: absolute;
-    right: 100%;
-    top: -150%;
-    transform: translateY(-35%);
+    right: 0;
+    transform: translate(-5%, -35%);
+    top: 0;
     padding-right: 20px;
     width: max-content;
 
@@ -25,24 +25,33 @@
     line-height: 27px;
     font-weight: 700;
     text-align: end;
-    color: $colorWhite;
     opacity: 0;
     pointer-events: none;
 
     transition: opacity 0.3s;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &:hover &__tooltip {
+    cursor: pointer;
     opacity: 1;
     pointer-events: all;
   }
 
   &__tooltip-text {
-    margin-bottom: 8px;
+    padding-bottom: 8px;
 
     &:last-child {
-      margin-bottom: 0;
+      padding-bottom: 0;
     }
+  }
+
+  &__tooltip-link {
+    text-decoration: none;
+    color: $colorWhite;
   }
 
   &--menu {
@@ -51,6 +60,7 @@
 
   &--call {
     background-image: url(../images/phone.svg);
+    cursor: pointer;
   }
 
   &--cross {
