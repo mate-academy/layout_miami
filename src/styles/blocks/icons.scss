@@ -1,7 +1,7 @@
 .icon {
   display: block;
-  width: var(--icon-width);
-  padding-bottom: 100%;
+  width: $icon-width;
+  height: $icon-width;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,11 +11,37 @@
   &--menu {
     background-image: url(../images/menu.svg);
     grid-column-end: end;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
   }
 
   &--phone {
     background-image: url(../images/phone.svg);
     grid-column-end: 3;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 5555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      width: max-content;
+      display: block;
+      padding-right: 8px;
+      opacity: 0;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--close {
