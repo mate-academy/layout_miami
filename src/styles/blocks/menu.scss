@@ -1,20 +1,22 @@
 .menu {
   background-color: $menuBgColor;
+  overflow-y: auto;
 
   &__content {
-    @extend %flexColumn;
-
     height: 100vh;
     padding-top: 29px;
+
+    @extend %flexColumn;
+
   }
 
-  &--cross {
-    transition: background-image $primaryTransitionDuration;
+  &__top-actions {
+    @include topActions;
   }
 
   &__list {
-    @extend %flexColumn;
     margin: 44px 0 40px;
+    @extend %flexColumn;
   }
 
   &__item {
@@ -26,24 +28,24 @@
   &__link {
     display: inline-block;
     padding-bottom: 8px;
-    @include font(22px, 600, 2px);
     text-transform: uppercase;
-    color: $menuPrimaryColor;
+    color: $primaryColor;
 
     position: relative;
+
+    @include font(22px, 600, 2px);
 
     &::after {
       content: "";
       width: 0;
       height: 1px;
-      background-color: $menuPrimaryColor;
+      background-color: $primaryColor;
 
       position: absolute;
       bottom: 0;
       left: 0;
 
       transition: width $menuTransitionDuration;
-
     }
 
     @include onDesktop {
@@ -58,23 +60,27 @@
   &__call {
     align-self: baseline;
 
-    @include font(12px, 600);
     text-transform: uppercase;
-    color: $menuPrimaryColor;
+    color: $primaryColor;
+
+    @include font(12px, 600);
+
+    @include onDesktop {
+      font-weight: 700;
+    }
 
     &--phone {
       margin-bottom: 16px;
-      font-size: 16px;
+
+      @include onDesktop {
+        font-size: 16px;
+      }
     }
 
     &--action {
       padding-bottom: 8px;
-      border-bottom: 1px solid $menuPrimaryColor;
+      border-bottom: 1px solid $primaryColor;
       letter-spacing: 2px;
-    }
-
-    @include onDesktop {
-      font-weight: 700;
     }
   }
 }

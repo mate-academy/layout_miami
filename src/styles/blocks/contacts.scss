@@ -1,6 +1,10 @@
 .contacts {
   margin-bottom: 120px;
 
+  @include onDesktop {
+    margin-bottom: 182px;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -10,29 +14,31 @@
     }
   }
 
-  &__info {
-    margin-top: 48px;
+  &--input {
+    margin-bottom: 48px;
 
     @include onTablet {
-      margin-top: 0;
+      margin-bottom: 0;
     }
-    &-item {
-      &:not(:last-child) {
-        margin-bottom: 24px;
-      }
+  }
+
+  &__info {
+    &:not(:last-child) {
+      margin-bottom: 24px;
     }
 
     &-title {
-      font-weight: 400;
       font-size: 14px;
-      color: #fff;
       margin-bottom: 8px;
     }
 
     &-link {
       font-weight: 500;
-      font-size: 16px;
-      color: #fff;
+      transition: color $primaryTransitionDuration;
+
+      &:hover {
+        color: rgb(209, 192, 192);
+      }
     }
   }
 }
