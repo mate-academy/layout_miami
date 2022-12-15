@@ -18,10 +18,12 @@
 
     @include onLaptop {
       display: grid;
+      align-items: center;
     }
 
     @include onDesktop {
       display: grid;
+      align-items: center;
     }
   }
 
@@ -31,19 +33,19 @@
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+
+        &--laptop-#{$start}-#{$end} {
+          @include onLaptop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
       }
     }
   }
 }
-
-//   @include onLaptop {
-//   &__item--laptop {
-//     @for $start from 1 through 6 {
-//       @for $end from $start through 6 {
-//         &--laptop-#{$start}-#{$end} {
-//           grid-column: #{$start} / #{$end + 1};
-//         }
-//       }
-//     }
-//   }
-// }
