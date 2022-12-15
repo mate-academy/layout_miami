@@ -1,0 +1,75 @@
+.category {
+  padding-bottom: 115px;
+
+  &__item {
+    margin-bottom: 16px;
+    transition: transform 0.3s;
+
+    &:hover {
+      box-shadow: 5px -5px $main-black;
+      transform: translateY(-1%);
+      border: 1px $main-black;
+    }
+  }
+
+  &__image-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    max-height: 321px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 257px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 321px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--speaker {
+      object-position: 70% 70%;
+    }
+
+    &--cactus {
+      object-position: 80% 50%;
+    }
+  }
+
+  &__description {
+    display: block;
+    grid-column: 1 / 5;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+    @include onTablet {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  &__link {
+    position: absolute;
+    display: block;
+    color: $main-black;
+  }
+}
