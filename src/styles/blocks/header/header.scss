@@ -1,17 +1,18 @@
 .header {
-  @include flex (space-between, stretch);
-  flex-direction: column;
-  max-width: 1400px;
-  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
   width: 100vw;
   height: 100vh;
-  padding: 20px 20px 40px;
+  max-width: 1440px;
+  max-height: 500px;
+  padding: 30px 20px 16px;
 
   background-image: url(../images/intro-bg-320.jpg);
   @include bg-cover;
 
   &__navbar-mobile {
-    @include flex (center, center);
+    @include flex (center, start);
   }
 
   &__logo {
@@ -27,7 +28,7 @@
   &__link {
     position: relative;
     @include flex (center, center);
-    height: 100%;
+    padding-top: 6px;
     padding-right: 30px;
 
     text-decoration: none;
@@ -36,24 +37,25 @@
     letter-spacing: 2px;
     white-space: nowrap;
 
-    color: transparent;
+    color: inherit;
 
     transition: font-size 0.5s ease-in;
+    cursor: pointer;
 
     &::after {
       content: "";
       position: absolute;
       right: 0;
+      top: 0;
+
       width: 20px;
       height: 20px;
 
       background-image: url(../images/icons/phone-call-icon.svg);
       @include bg-cover;
-
-      cursor: pointer;
-
     }
   }
+
   &__burger-menu {
     cursor: pointer;
     width: 24px;
@@ -81,6 +83,8 @@
 
     color: #292929;
 
+    align-self: flex-end;
+
     &::before {
       content: "";
       position: absolute;
@@ -99,24 +103,27 @@
 @media screen and (min-width: 320px) {
   .header {
     background-image: url(../images/intro-bg-744.jpg);
-    background-size: 100% 100%;
   }
 }
 
 @media screen and (min-width: 400px) {
   .header__link:hover {
-    color: inherit;
     font-size: 12px;
+  }
+}
+@media screen and (min-width: 550px) {
+  .header {
+    padding: 20px 72px 40px;
+
+    background-image: url(../images/intro-bg-1260.jpg);
+    background-position: center;
 
   }
 }
 
 @media screen and (min-width: 744px) {
   .header {
-    background-image: url(../images/intro-bg-1260.jpg);
-    background-position: center;
-    padding: 20px 72px 40px;
-    min-height: 800px;
+    max-height: 800px;
 
     &__title {
       font-size: 40px;
@@ -129,7 +136,6 @@
       }
     }
   }
-
 }
 
 @media screen and (min-width: 1260px) {
@@ -137,10 +143,11 @@
     padding: 40px 120px;
     background-image: url(../images/intro-bg-1440.jpg);
     background-size: 100% 100%;
-    min-height: 720px;
+    max-height: 720px;
 
     &__title {
       font-size: 48px;
+
     }
 
     &__link::after {
