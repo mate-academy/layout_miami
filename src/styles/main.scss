@@ -2,6 +2,151 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+$headerTopPadding: 29px;
+
+.page {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    margin-left: -30px;
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      margin-left: -40px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.png);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: url(../images/Cover_photo.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $headerTopPadding 0 88px;
+    height: 100vh;
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+
+  &__content {
+    padding: $headerTopPadding 0;
+  }
+}
+
+.logo {
+  &__image {
+    width: 130px;
+    height: 40px;
+
+    @include onDesktop {
+      width: 185px;
+      height: 55px;
+    }
+  }
 }
