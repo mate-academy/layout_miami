@@ -1,17 +1,38 @@
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 30px 20px;
+
+  @include onDesktop {
+    padding: 35px 124px 0;
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  height: 100vh;
-
-  box-sizing: border-box;
-  
-  padding: 30px 20px 88px;
-
   background-size: cover;
-  background-position: center;
-  background-image: url(../images/header-img.jpg);
+  background-position: 88%;
+  background-repeat: no-repeat;
+  background-image: url(../images/heeaaader.jpg);
+
+  @include onDesktop {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 0 0 88px;
+
+    @include onDesktop {
+      padding-bottom: 200px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -28,23 +49,41 @@
   &__call {
     margin-right: 30px;
 
-    width: 18px;
-    height: 18px;
+    text-decoration: none;
+
+    @include onDesktop {
+      margin-right: 40px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
 
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 
   &__menu-opener {
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -61,6 +100,11 @@
     letter-spacing: -1.5 px;
     color: #fff;
     white-space: nowrap;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 }
 
@@ -68,5 +112,24 @@
 
   &__img {
     height: 38px;
+
+    @include onDesktop {
+      height: 56px;
+    }
   }
+}
+
+
+.icon {
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
