@@ -1,41 +1,41 @@
 .header {
-  background-size: cover;
-  background-position: bottom right;
   background-image: url(../images/Cover_photo.png);
-  margin-bottom: 60px;
-
-  @include onTablet {
-    background-position: center;
-    margin-bottom: 100px;
-  }
-
-  @include onDesktop {
-    background-position: center;
-    margin-bottom: 200px;
-  }
+  background-position: center;
+  background-size: cover;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0 88px;
+    box-sizing: border-box;
+
+    @include onPhone {
+      padding: 29px 0 24px;
+    }
+
+    @include onTablet {
+      padding: 36px 0 66px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 123px;
+    }
   }
 
   &__icons-container {
     display: flex;
     gap: 30px;
- 
+  
     @include onTablet {
       gap: 40px;
     }
-
+  
     @include onDesktop {
       gap: 40px;
     }
   }
-
+  
   &__call {
     text-decoration: none;
         
@@ -45,7 +45,7 @@
         position: relative;
         top: 50%;
         transform: translate(-100%, -50%);
-
+  
         display: block;
         width: max-content;
         padding-right: 20px;
@@ -59,14 +59,14 @@
         opacity: 0;
         pointer-events: none;
       }
-
+  
       &:hover::before {
         opacity: 1;
         pointer-events: all;
       }
     }
   }
-
+  
   &__title {
     font-weight: 700;
     font-size: 36px;
@@ -74,13 +74,29 @@
     color: #fff;
     letter-spacing: -1.5px;
     text-align: center;
-
-    @include onDesktop {
-      font-size: 64px;
+  
+    transition: all $transition-time;
+  
+    &:hover {
+      text-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
     }
-
+  
     @include onDesktop {
+      font-weight: 700;
       font-size: 80px;
+      line-height: 100%;
+    }
+  
+    @include onTablet {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 100%;
+    }
+  
+    @include onPhone {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 100%;
     }
   }
 }
