@@ -1,0 +1,36 @@
+@mixin onTablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: $header-padding-top 0 $header-padding-bottom;
+
+  @include onTablet {
+    padding: $header-padding-top-tablet 0 $header-padding-bottom-tablet;
+  }
+
+  @include onDesktop {
+    padding-bottom: $header-padding-bottom-desktop;
+  }
+}
+
+@mixin header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,82 @@
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+
+  text-decoration: none;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-color: transparent; // remove bg color from body
+  border: none; // remove default border from button
+
+  @include onTablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  &--burger-menu {
+    height: 12px;
+    margin-left: 30px;
+
+    background-image: url("../images/icons/burger-menu-mobile.svg");
+
+    @include onTablet {
+      height: 18px;
+      margin-left: 40px;
+      background-image: url("../images/icons/burger-menu-desktop.svg");
+    }
+
+    &:hover {
+      background-image: url("../images/icons/burger-menu-hover.svg");
+    }
+  }
+
+  &--call {
+    background-image: url("../images/icons/phone-call.svg");
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%; // of its parent element
+        transform: translate(-100%, -50%); // of the pseudo-element itself
+
+        display: block;
+        width: max-content; // or white-space: nowrap;
+        padding-right: 12px;
+
+        color: $color-black;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none; // show up only when hover over the icon itself
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      &:hover::before {
+        // makes sure that hovered pseudo-element stays visible
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--close {
+    height: 16px;
+    width: 16px;
+
+    background-image: url("../images/icons/close.svg");
+
+    @include onDesktop {
+      height: 21px;
+      width: 21px;
+    }
+  }
+}
