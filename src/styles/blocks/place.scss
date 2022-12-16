@@ -1,0 +1,68 @@
+.place {
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    @include onDesktop {
+      @include hover (transform, scale(1.05));
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--left-fit {
+      object-position: 30% 50%;
+    }
+
+    &--top-fit {
+      object-position: 50% 10%;
+    }
+
+    &--right-fit {
+      object-position: right 50%;
+
+      @include onTablet {
+        object-position: center;
+      }
+    }
+  }
+
+  &__paragraph {
+    margin: 0;
+  }
+
+  &__title {
+    color: $colorRed;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
