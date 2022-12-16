@@ -4,11 +4,13 @@ const form = document.querySelector('.form');
 
 const [...inputs] = document.querySelectorAll('.form__input');
 
-const textArea = document.querySelector('form__input--textarea')
+const textArea = document.querySelector('.form__input--textarea')
 
 const [first, second] = [...inputs];
 
 console.log(first.value);
+
+console.log(textArea.value);
 
 form.addEventListener("submit", prevent, false);
 
