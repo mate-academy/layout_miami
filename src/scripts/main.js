@@ -8,8 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submit = document.body.querySelector(".form-field");
+const form = document.body.querySelector('.form-field');
+const names = form.querySelector('.name');
+const email = form.querySelector('.email');
+const message = form.querySelector('.message');
 
-submit.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
+  names.value = "";
+  email.value = "";
+  message.value = "";
   event.preventDefault();
-})
+});
