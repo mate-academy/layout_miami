@@ -10,7 +10,7 @@ window.addEventListener('hashchange', () => {
 
 const submit = document.querySelector('#submit');
 
-submit.addEventListener('click', submitClick, false);
+submit.addEventListener('click', submitClick);
 
 function submitClick(event) {
   event.preventDefault();
