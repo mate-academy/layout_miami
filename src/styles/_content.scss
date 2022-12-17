@@ -1,0 +1,347 @@
+.page_main {
+  &__menu {
+    position: fixed;
+    box-sizing: border-box;
+    background-color: $color_menu;
+    height: 100vh;
+    width: 100vw;
+
+    @include onMobile {
+      padding: 0 20px;
+    }
+
+    @include onTablet {
+      padding: 0 72px;
+    }
+
+    @include onDesktop {
+      padding: 0 120px;
+    }
+
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+    transition-property: all;
+
+    &:target {
+      transform: translateX(0);
+    }
+
+    .menu_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @extend .position_header;
+
+      .menu_icon {
+        background-image: url("../images/MyBiKE_black.svg");
+        @extend .icon;
+      }
+
+      .menu_cross {
+        background-image: url("../images/cross.svg");
+
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @extend .little_element;
+
+        &:hover {
+          transform: scale(1.2, 1.2);
+        }
+      }
+    }
+
+    .menu_text {
+      justify-content: center;
+      height: max-content;
+      padding: 16px 0;
+
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      @extend .text;
+
+      &-phone {
+        font-size: 16px;
+        line-height: 27px;
+        margin-top: 25px;
+
+        @extend .text;
+      }
+
+      &-ride {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 16px;
+
+        @extend .text;
+      }
+    }
+  }
+
+  &__front {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    object-fit: contain;
+    background-position: center top;
+
+    @include onMobile {
+      background-image: url("../images/menu_320.png");
+      height: 133vw;
+    }
+
+    @include onTablet {
+      background-image: url("../images/menu_744.png");
+      height: 84vw;
+    }
+
+    @include onDesktop {
+      background-image: url("../images/menu_1260.png");
+      height: 56vw;
+    }
+
+    & > * {
+
+      grid-column: 1 / -1;
+      align-self: center;
+      justify-self: center;
+      @extend .first_message;
+    }
+  }
+
+  &__introduction {
+    padding-bottom: 120px;
+    height: max-content;
+    background-color: $color_dark;
+    font-weight: 400;
+
+    @include onTablet {
+      padding-top: 120px;
+    }
+
+    @include onDesktop {
+      padding-top: 120px;
+    }
+
+    .introduction__name {
+      letter-spacing: -1.5px;
+
+      @include onMobile {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        padding: 60px 0 16px;
+        font-size: 32px;
+      }
+
+      @include onTablet {
+        font-size: 48px;
+      }
+
+      @include onDesktop {
+        font-size: 64px;
+      }
+    }
+
+    .introduction__text {
+      @include onMobile {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        font-size: 23px;
+      }
+
+      @include onTablet {
+        font-size: 23px;
+      }
+
+      @include onDesktop {
+        font-size: 23px;
+      }
+    }
+  }
+
+  &__examples {
+    background-color: $color_dark;
+
+    .example {
+      justify-self: center;
+      font-weight: 500;
+
+      @include onMobile {
+        grid-column: 1 / -1;
+        font-size: 32px;
+      }
+
+      @include onTablet {
+        font-size: 48px;
+      }
+
+      @include onDesktop {
+        font-size: 64px;
+      }
+
+      &__one,
+      &__two,
+      &__three {
+        @include onMobile {
+          grid-column: 1 / -1;
+        }
+      }
+      &__image {
+        width: 100%;
+        padding: 32px 0;
+        @include animation(1.2);
+      }
+
+      &__name {
+        font-weight: 700;
+        font-size: 24px;
+      }
+
+      &__info {
+        font-size: 16px;
+        padding: 8px 0;
+      }
+
+      &__price {
+        font-weight: 700;
+        font-size: 24px;
+        padding: 8px 0;
+      }
+
+    }
+  }
+
+  &__the_details {
+    .the_details {
+      font-weight: 500;
+      justify-self: center;
+      @include onMobile {
+        grid-column: 1 / -1;
+        font-size: 32px;
+        padding: 92px 0 48px;
+      }
+
+      @include onTablet {
+        font-size: 48px;
+        padding: 120px 0 64px;
+      }
+
+      @include onDesktop {
+        font-size: 64px;
+        padding: 144px 0 48px;
+      }
+
+      &__photo_first,
+      &__photo_second {
+        object-fit: cover;
+        object-position: center;
+        padding-bottom: 8px;
+
+        @include onMobile {
+          @include size(40vw);
+          @include animation(1.02);
+        }
+
+        @include onTablet {
+          height: 25vw;
+          @include animation(1.1);
+        }
+
+        @include onDesktop {
+          height: 26vw;
+          @include animation(1.02);
+        }
+      }
+
+      &__name {
+        grid-column: 1 / -1;
+        font-size: 24px;
+        font-weight: 700;
+        padding: 8px 0;
+      }
+
+      &__info {
+        grid-column: 1 / -1;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 8px 0 50px;
+      }
+
+      &__button {
+        @extend .button;
+        @include onMobile {
+          grid-column: 1 / -1;
+        }
+
+        text-align: center;
+        padding: 1em 0;
+
+        margin: 48px 0;
+
+        text-decoration: none;
+        color: $color_dark;
+        font-weight: 700;
+        font-size: 16px;
+        border: 1px solid;
+        border-color: transparent;
+        border-radius: 40px;
+        background-color: $color_other;
+      }
+    }
+  }
+
+  &__contact_us {
+    padding-bottom: 120px;
+    .contact_us__text {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 500;
+      margin: 120px 0 24px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+
+      @include onMobile {
+        grid-column: 1 / -1;
+      }
+
+      &__input {
+        resize: none;
+        padding: 1em 16px;
+        border-radius: 20px;
+        border-color: $color_dark;
+        background-color: $color_other;
+        margin: 8px 0;
+      }
+
+      &__button {
+        padding: 1em 0;
+        margin: 8px 0;
+        border-radius: 20px;
+        border-color: transparent;
+        background-color: $color_other;
+        @extend .button;
+      }
+
+      &__information {
+        @include onMobile {
+          grid-column: 1 / -1;
+        }
+      }
+
+      &__phone {
+        @extend .for_contact;
+      }
+
+      &__email {
+        @extend .for_contact;
+      }
+
+      &__address {
+        @extend .for_contact;
+      }
+    }
+  }
+}

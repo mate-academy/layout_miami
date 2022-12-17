@@ -1,6 +1,49 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  // @media (min-width: 600px) and (max-width: 743px) {
+  //   padding: 0;
+  // }
+
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+
+}
+
+@mixin onDesktop {
+  // @media (min-width: 1020px) and (max-width: 1259px) {
+  //   padding: 0;
+  // }
+
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin position($number) {
+  @for $start from 1 through $number {
+    @for $end from $start through $number {
+      &--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+@mixin size($number) {
+  height: $number;
+  width: $number;
+}
+
+@mixin animation($scale) {
+  transition: transform 0.8s;
+  transition-property: all;
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale(#{$scale}, #{$scale});
   }
 }

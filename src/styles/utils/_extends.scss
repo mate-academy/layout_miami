@@ -1,4 +1,170 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+.grid {
+  display: grid;
+
+  @include onMobile {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    column-gap: 20px;
+
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(6, minmax(80px, 1fr));
+    column-gap: 24px;
+
+    box-sizing: border-box;
+    padding: 0 72px;
+    &__tablet {
+      @include position(6);
+    }
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, minmax(63px, 1fr));
+    column-gap: 24px;
+    box-sizing: border-box;
+    padding: 0 120px;
+
+    &__desktop {
+      @include position(12);
+    }
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include onMobile {
+    grid-column: 0 / 1;
+    height: 38px;
+    width: 130px;
+  }
+
+  @include onTablet {
+    height: 56px;
+    width: 187px;
+  }
+
+  @include onDesktop {
+    height: 56px;
+    width: 187px;
+  }
+}
+
+.position_header {
+  @include onMobile {
+    height: 96px;
+  }
+
+  @include onTablet {
+    height: 124px;
+  }
+
+  @include onDesktop {
+    height: 124px;
+  }
+}
+
+.little_element {
+  transition: transform 0.3s;
+  transition-property: all;
+  @include onMobile {
+    @include size(18px);
+  }
+
+  @include onTablet {
+    @include size(24px);
+  }
+
+  @include onDesktop {
+    @include size(24px);
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+  font-style: normal;
+  color: $color_dark;
+  font-weight: 600;
+  width: max-content;
+  text-transform: uppercase;
+
+  &::after {
+    content: "";
+    position: relative;
+    top: 10px;
+    height: 1px;
+    transition: transform 0.5s;
+    transition-property: all;
+  }
+
+  &:hover::after {
+    content: "";
+    position: relative;
+    top: 10px;
+    background: #000;
+    height: 1px;
+  }
+}
+
+.first_message {
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+  @include onMobile {
+    font-size: 34px;
+  }
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onDesktop {
+    font-size: 80px;
+  }
+}
+
+.button {
+  cursor: pointer;
+  transition: transform 0.3s;
+  transition-property: all;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+.for_contact {
+  display: block;
+  margin-top: 24px;
+  text-decoration: none;
+  color: $color_other;
+
+  transition: transform 0.3s;
+  transition-property: all;
+
+  & > :nth-of-type(1) {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  & > :nth-of-type(2) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    text-shadow: 1px 1px 2px rgba(232, 232, 240, 0.64),
+      0 0 1em rgba(232, 232, 240, 0.64),
+      0 0 0.2em rgba(232, 232, 240, 0.64);
+  }
 }
