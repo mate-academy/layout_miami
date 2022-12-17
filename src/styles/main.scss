@@ -3,16 +3,41 @@
 @import "typography";
 
 @mixin onDesktop {
-  @media (min-width: 744px) {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onIPad {
+  @media (min-width: 744px) and (max-width: 1023px) {
     @content;
   }
 }
 
 $headerTopPadding: 29px;
 
+.logo {
+  &__image {
+    width: 130px;
+    height: 40px;
+
+    @include onDesktop {
+      width: 185px;
+      height: 55px;
+    }
+
+    @include onIPad {
+      width: 185px;
+      height: 55px;
+    }
+
+  }
+}
+
 .page {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
@@ -31,6 +56,29 @@ $headerTopPadding: 29px;
       transform: translateX(0);
     }
   }
+
+  &__section {
+    padding-bottom: 92px;
+    background-color: #1d1d1d;
+
+    @include onDesktop {
+      padding-bottom: 164px;
+    }
+
+    @include onIPad {
+      padding-bottom: 132px;
+    }
+  }
+
+  &__section-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5;
+    color: #fff;
+  }
 }
 
 .container {
@@ -39,6 +87,10 @@ $headerTopPadding: 29px;
   padding: 0 20px;
 
   @include onDesktop {
+    padding: 0 40px;
+  }
+
+  @include onIPad {
     padding: 0 40px;
   }
 }
@@ -67,9 +119,14 @@ $headerTopPadding: 29px;
     @include onDesktop {
       margin-left: -40px;
     }
+
+    @include onIPad() {
+      margin-left: -40px;
+    }
   }
 
   &--cross {
+    margin-left: 24px;
     background-image: url(../images/cross.svg);
   }
 }
@@ -87,7 +144,7 @@ $headerTopPadding: 29px;
 
 .header {
   background-size: cover;
-  background-position: right;
+  background-position: center;
   background-repeat: no-repeat;
   background-image: url(../images/Cover_photo.png);
 
@@ -109,7 +166,10 @@ $headerTopPadding: 29px;
 
     @include onDesktop {
       font-size: 80px;
-      line-height: 80px;
+    }
+
+    @include onIPad {
+      font-size: 64px;
     }
   }
 
@@ -215,14 +275,170 @@ $headerTopPadding: 29px;
   }
 }
 
-.logo {
-  &__image {
-    width: 130px;
-    height: 40px;
+.footer {
+  height: 200px;
+  background-image: url(../images/FooterPicture.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onDesktop {
+    height: 550px;
+  }
+
+  @include onIPad {
+    height: 480px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  padding-top: 48px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onIPad {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
 
     @include onDesktop {
-      width: 185px;
-      height: 55px;
+      display: grid;
+    }
+
+    @include onIPad {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    // &--1-4 {
+    //   grid-column: 1 / 4;
+
+    //   @include onIPad {
+    //     &--1-4 {
+    //       grid-column: 1 / 3;
+    //     }
+    //   }
+    // }
+
+    // &--7-12 {
+    //   grid-column: 6 / 11;
+
+    //   @include onIPad {
+    //     grid-column: 4 / 6;
+    //   }
+    // }
+  }
+}
+
+.about {
+  &__title {
+    margin-bottom: 32px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+
+    @include onIPad {
+      font-size: 48px;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
+
+.compare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  &__block {
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &__item {
+
+    @include onDesktop {
+      margin-right: 24px;
+    }
+  }
+
+  &__name {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__about {
+    margin: 0 0 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__price {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__photo {
+    margin-bottom: 32px;
+    width: 280px;
+    height: 228px;
+
+    @include onDesktop {
+      width: 324px;
+      height: 264px;
+    }
+
+    @include onIPad {
+      width: 392px;
+      height: 316px;
     }
   }
 }
