@@ -19,3 +19,12 @@ document.querySelector('body').onscroll = function() {
     toTopBtn.style.display = 'none';
   }
 };
+
+const form = document.querySelector('form');
+
+function submit(event) {
+  event.preventDefault();
+  form.reset();
+}
+
+form.addEventListener('submit', submit);
