@@ -1,0 +1,67 @@
+.header {
+  background-image: url(../images/photos/header.png);
+  @include bg-position(cover, 85%, no-repeat);
+
+  &__content {
+    height: 100vh;
+    box-sizing: border-box;
+
+    @include flex(flex, space-between, center);
+    flex-direction: column;
+  }
+
+  &__top-items {
+    @include flex(flex, space-between, center);
+  }
+
+  &__call {
+    margin-right: 30px;
+    position: relative;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-30px, -50%);
+      width: max-content;
+
+      color: $main-color;
+      @include font-styles(700, 0.75rem, 1.33);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @media (min-width: 744px) {
+      margin-right: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 88px;
+    color: $main-color;
+    @include font-styles(700, 2.25rem, 1);
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @media (min-width: 744px) {
+      margin-bottom: 130px;
+      font-size: 4rem;
+    }
+
+    @media (min-width: 1020px) {
+      margin-bottom: 203px;
+      font-size: 5rem;
+    }
+  }
+}
+
