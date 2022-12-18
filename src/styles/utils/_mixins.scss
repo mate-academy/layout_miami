@@ -1,6 +1,59 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content
   }
 }
+
+@mixin onIPad {
+  @media (min-width: 744px) {
+    @content
+  }
+}
+
+@mixin media {
+  .onIpod {
+    @media (min-width: 744px) {
+      @content
+    }
+  }
+
+  .onDesktop {
+    @media (min-width: 1024px) {
+      @content
+    }
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns:
+  1fr
+  1fr
+  // var(--icon-width)
+  // var(--icon-width)
+  ;
+  align-items: center;
+
+  @include onIPad() {
+    --icon-width: 24px;
+  }
+}
+
+@mixin iconSize {
+  width: 18px;
+  height: 18px;
+
+  @include onIPad {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@mixin useGrid ($colCount, $gap) {
+  display: grid;
+  grid-template-columns: repeat($colCount, 1fr);
+  gap: $gap;
+}
+
