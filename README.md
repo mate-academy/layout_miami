@@ -1,6 +1,6 @@
 # MyBike landing page
 
-This project is a landing page about bikes. Created using HTML, CSS, JavaScript and BEM.
+This project is a landing page about bikes. Created using HTML, SCSS, JavaScript and BEM.
 
 - [DEMO LINK](https://andrii-kovalskyi02.github.io/layout_miami/)
 
