@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector('.тутКласНаФормі');
+const form = document.querySelector('.button--contacts');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
