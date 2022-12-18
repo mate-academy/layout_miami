@@ -28,18 +28,18 @@
   }
 
   &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
         &--laptop-#{$start}-#{$end} {
           @include onLaptop {
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
 
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
@@ -49,9 +49,3 @@
     }
   }
 }
-
-// @media (min-width: 600px) and (max-width: 1020px) {
-//   .grid__item--laptop-2-5 {
-//     grid-column: 2 / 6 ;
-//   }
-// }
