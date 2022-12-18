@@ -1,0 +1,87 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+  margin-bottom: 120px;
+
+  @media (max-width: 320px) {
+    background-position: calc(100vh - 150px);
+    margin-bottom: 60px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    box-sizing: border-box;
+    height: calc(100vh - 60px);
+
+    padding: map-get($headerContent-padding, "320px");
+
+    @include onLaptop {
+      padding: map-get($headerContent-padding, "744px");
+      height: 628px;
+    }
+
+    @include onDesctop {
+      padding: map-get($headerContent-padding, "1024px");
+      height: 711px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+
+    color: $color-white;
+
+    @include onLaptop {
+      font-size: 64px;
+    }
+
+    @include onDesctop {
+      font-size: 80px;
+    }
+  }
+
+  &__call {
+    @include onDesctop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        width: max-content;
+        position: relative;
+        display: block;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        padding-right: 12px;
+
+        color: $color-white;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 300ms linear;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
