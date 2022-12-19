@@ -1,7 +1,4 @@
 .grid {
-  display: flex;
-  flex-direction: column;
-
   @media (min-width: 744px) {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -15,8 +12,20 @@
   &__item {
     @for $start from 1 through 12 {
       @for $end from 1 through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+        &--tablet-#{$start}-#{$end} {
+          @media (min-width: 744px) {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from 1 through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @media (min-width: 1260px) {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
