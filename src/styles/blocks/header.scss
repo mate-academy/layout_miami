@@ -1,51 +1,134 @@
 .header {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  height: 100vh;
+  height: 500px;
 
   padding: 40px 20px 94px;
 
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-image: url(../images/photos/header-image-2.png);
 
+  @include onTablet {
+    background-image: url(../images/photos/header-image-medium.png);
+
+    height: 100vh;
+    background-size: cover;
+    padding: 52px 72px 40px;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-image-large.png);
+    padding: 52px 120px 64px;
+  }
+
   &__nav {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  &__menu-opener {
-    display: block;
-    background-image: url(../images/menu-icon.svg);
-    width: 18px;
-    height: 12px;
-    margin-right: -45px;
+  &__call {
+    @include iconSizesPosition(url(../images/phone.svg),$icon-size)
 
-    &:hover {
+    @include onTablet {
+    @include iconSizesPosition(url(../images/phone.svg),$icon-size-large)
+    }
+    
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        min-width: max-content;
 
-      background-image: url(
-        ../images/menu-icon-hover.svg
-      );
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+
+        color: $c-font-main;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+          pointer-events: all;
+          opacity: 1;
+        }
     }
   }
 
-  &__call {
-    display: block;
-    background-image: url(../images/phone.svg);
-    width: 18px;
-    height: 18px;
+  &__menu-opener {
+    @include iconSizesPosition(url(../images/menu-icon.svg), $icon-size);
+
+    @include onTablet {
+      @include iconSizesPosition(url(../images/menu-icon.svg),$icon-size-large)
+      }
+
+    @include onDesktop {
+        &:hover {
+          background-image: url(../images/menu-icon-hover.svg
+          );
+        }
+      }
   }
+
 
   &__title {
     font-weight: 800px;
     font-style: italic;
 
     font-size: 32px;
+    line-height: 32px;
+
     letter-spacing: -1.5px;
     color: $c-font-main;
+
+    &::before {
+      display: block;
+      content: '';
+
+      margin-bottom:16px;
+      width: 32px;
+      @include iconSizesPosition(url(../images/wave-small.svg),27px)
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+
+      &::before {
+        display: block;
+        content: '';
+
+        margin-bottom:16px;
+        width: 63px;
+        @include iconSizesPosition(url(../images/wave-large.svg),76px)
+      }
+
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
   }
 
+}
+
+.container {
+  display: inline-grid;
+  grid-template-columns: repeat(2, $icon-size);
+  gap: 40px;
+  align-items: center;
 }
