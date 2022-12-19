@@ -13,6 +13,26 @@
     column-gap: 24px;
   }
 
+  &--phone {
+    @media (max-width: 744px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &--laptop {
+    display: flex;
+
+    @include onLaptop {
+      display: flex;
+    }
+
+    @include onDesctop {
+      display: grid;
+    }
+  }
+
   &--desktop {
     display: block;
 
@@ -27,11 +47,20 @@
   }
 
   &__item {
-
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onLaptop {
+            grid-column: #{($start + 1) / 2} / #{($end / 2) + 1};
+          }
+
+          @include onDesctop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
