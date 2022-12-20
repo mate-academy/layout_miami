@@ -19,6 +19,33 @@
 
   &--phone {
     background-image: url(../images/icons/phone.png);
+    text-decoration: none;
+    color: inherit;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        transform: translateX(-100%);
+
+        @include flex (center, center);
+        padding-right: 10px;
+        width: max-content;
+        height: 100%;
+
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-duration ease-in-out;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &--close {
