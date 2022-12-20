@@ -1,18 +1,11 @@
 .header {
-  padding: 0 20px;
-
   background-image: url("../images/header-bg.jpg");
   background-position: 90%;
   background-repeat: no-repeat;
   background-size: cover;
 
   @include media-tablet {
-    padding: 0 72px;
     background-position: center;
-  }
-
-  @include media-desktop {
-    padding: 0 120px;
   }
 
   &__content {
@@ -34,9 +27,7 @@
   }
 
   &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend %top-actions;
   }
 
   &__actions {
@@ -51,22 +42,34 @@
 
   &__call {
     position: relative;
-    @include block-size(24px, 24px);
-    background-image: url("../images/phone.svg");
 
-    @include media-tablet {
-      @include block-size(32px, 32px);
-    }
-  }
+    @include media-desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        width: max-content;
+        padding-right: 10px;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity, 0.3s;
+      }
 
-  &__menu-burger {
-    @include block-size(24px, 24px);
-    background-image: url("../images/menu.svg");
-
-    @include hover(background-image, url("../images/menu_hover.svg"));
-
-    @include media-tablet {
-      @include block-size(32px, 32px);
+      &:hover {
+        &::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
     }
   }
 
