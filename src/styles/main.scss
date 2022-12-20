@@ -1,7 +1,105 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
 .page {
   &__body {
     font-family: Poppins, sans-serif;
 
     margin: 0;
   }
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  ;
+
+  padding: 0 20px;
+
+  @include onDesktop() {
+    padding: 0 40px;
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @include onDesktop() {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/bike-phone.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 38px;
+    width: 130px;
+
+    @include onDesktop() {
+      height: 56px;
+      width: 187px;
+    }
+  }
+
+  &__call {
+    background-image: url(../images/call.svg);
+  }
+
+  &__menu-open {
+    background-image: url(../images/close-menu.svg);
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.footer {
+  height: 100vh;
+
+  background-image: url(../images/footer.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
