@@ -1,0 +1,71 @@
+.features {
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include onDesktop {
+      width: 672px;
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 320px;
+    position: relative;
+    transition-duration: 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.04);
+      box-shadow: 1px 4px 16px rgba(211, 185, 147, 0.4);
+    }
+
+    @include onIpad {
+      height: 186px;
+      padding-bottom: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
