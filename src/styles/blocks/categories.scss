@@ -35,13 +35,37 @@
 
   &__img-wrapper {
     position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+
+      @include onTablet {
+        padding-top: 0;
+      }
+    }
   }
 
   &__img {
-    position: absolute;
-    // object-fit: cover;
-    // object-fit: center;
     @include fill-container;
+    object-fit: cover;
+    object-position: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+
+    &--position-right {
+      object-position: right;
+
+    }
   }
 
   &__title {
