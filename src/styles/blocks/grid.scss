@@ -3,6 +3,11 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+  }
+
   @include onDesktop() {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
@@ -16,20 +21,18 @@
   }
 
   &__item {
-
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
-      }
-    }
-    &--1-4 {
-      grid-column: 1 / 5;
-    }
 
-    &--6-12 {
-      grid-column: 6 / 13;
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop() {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
     }
   }
 }
