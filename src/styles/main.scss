@@ -1,7 +1,167 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+body,
+h1 {
+  margin: 0;
+}
+
+.page {
+  font-family: "Cinzel", serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_desktop.png);
+  height: 100vh;
+  padding-top: 25px;
+
+  @include onTablet {
+    padding-top: 50px;
+  }
+
+  @include onDesktop() {
+    padding-top: 50px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    background-image: url(../images/logo_met.png);
+    width: 64px;
+    height: 46px;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+    margin-right: 30px;
+
+    @include onTablet() {
+      margin-right: 63px;
+    }
+
+    @include onDesktop {
+      margin-right: 63px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__title {
+    padding-top: 128px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      padding-top: 140px;
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      padding-top: 84px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
 }
