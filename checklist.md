@@ -7,10 +7,10 @@
 7. When clicking on any location / address - prevent errors and make it to open location in Google Maps
 8. Pictures in Gallery should increase on hover
 9. Location-related addresses / links / images should open google maps in a new tab `target="_blank"`
-10. Apply `:hover` effect for images on page (testimonials / gallery, other sections).
+10. Apeopley `:hover` effect for images on page (testimonials / gallery, other sections).
 11. Make sure everything looks neat on mobile and without horizontal scrolling
 12. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
-13. Placeholders in the forms suggest what to enter; apply validation of the form fields (`required`, `email / tel etc.`), then it is clear in what format to enter the data
+13. Placeholders in the forms suggest what to enter; apeopley validation of the form fields (`required`, `email / tel etc.`), then it is clear in what format to enter the data
 14. Form shouldn't be submitted if some of the fields are not filled
 15. Page shouldn't be reloaded on form submit (https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
 16. Add a smooth scroll for the whole page
