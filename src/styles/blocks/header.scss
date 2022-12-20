@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
+
   height: 500px;
 
-  padding: 40px 20px 94px;
+  padding: $HeaderTopPadding 20px 94px;
 
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(../images/photos/header-image-2.png);
+  background-image: url(../images/photos/header-image-medium.png);
 
   @include onTablet {
     background-image: url(../images/photos/header-image-medium.png);
@@ -25,20 +25,8 @@
     padding: 52px 120px 64px;
   }
 
-  &__nav {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   &__call {
-    @include iconSizesPosition(url(../images/phone.svg),$icon-size)
 
-    @include onTablet {
-    @include iconSizesPosition(url(../images/phone.svg),$icon-size-large)
-    }
-    
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
@@ -62,27 +50,11 @@
       }
 
       &:hover::before {
-          pointer-events: all;
-          opacity: 1;
-        }
+        pointer-events: all;
+        opacity: 1;
+      }
     }
   }
-
-  &__menu-opener {
-    @include iconSizesPosition(url(../images/menu-icon.svg), $icon-size);
-
-    @include onTablet {
-      @include iconSizesPosition(url(../images/menu-icon.svg),$icon-size-large)
-      }
-
-    @include onDesktop {
-        &:hover {
-          background-image: url(../images/menu-icon-hover.svg
-          );
-        }
-      }
-  }
-
 
   &__title {
     font-weight: 800px;
@@ -96,11 +68,11 @@
 
     &::before {
       display: block;
-      content: '';
+      content: "";
 
-      margin-bottom:16px;
+      margin-bottom: 16px;
       width: 32px;
-      @include iconSizesPosition(url(../images/wave-small.svg),27px)
+      @include iconSizesPosition(url(../images/wave-small.svg),27px);
     }
 
     @include onTablet {
@@ -109,13 +81,12 @@
 
       &::before {
         display: block;
-        content: '';
+        content: "";
 
-        margin-bottom:16px;
+        margin-bottom: 16px;
         width: 63px;
-        @include iconSizesPosition(url(../images/wave-large.svg),76px)
+        @include iconSizesPosition(url(../images/wave-large.svg),76px);
       }
-
     }
 
     @include onDesktop {
@@ -126,9 +97,15 @@
 
 }
 
-.container {
+.top-actions {
+  width: 100%;
   display: inline-grid;
-  grid-template-columns: repeat(2, $icon-size);
-  gap: 40px;
+  grid-template-columns: 1fr $icon-size $icon-size;
+  justify-items: center;
   align-items: center;
+  gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: 1fr $icon-size-large $icon-size-large;
+  }
 }
