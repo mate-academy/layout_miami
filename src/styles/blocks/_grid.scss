@@ -2,18 +2,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
-  
-  &--tablet, &--desctop {
-    display: block;
-
-    @include tablet {
-      display: grid;
-    }
-
-    @include desctop {
-      display: grid;
-    }
-  }
 
   @include tablet {
     grid-template-columns: repeat(6, 1fr);
@@ -26,6 +14,14 @@
   }
 
   &__item {
+    @for $start from 1 through 2 {
+          @for $end from $start through 2 {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+
     @include tablet {
       &--tablet {
         @for $start from 1 through 6 {
