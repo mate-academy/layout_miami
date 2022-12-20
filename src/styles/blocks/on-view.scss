@@ -19,7 +19,6 @@
       font-size: 16px;
       line-height: 27px;
       font-weight: 400;
-      margin-bottom: 48px;
     }
   }
   &__painting {
@@ -27,6 +26,7 @@
     height: 130px;
     object-fit: cover;
     object-position: center;
+    margin-top: 48px;
 
     @include onTablet {
       height: 186px;
@@ -38,8 +38,42 @@
 
     &-container {
       margin: 0 auto;
+
+      &--square {
+        @include onPhone {
+          display: flex;
+          gap: 8px;
+        }
+
+        @include onTablet {
+          display: grid;
+          gap: 24px;
+        }
+      }
+    }
+
+    &-woman {
+      @include onPhone {
+        object-position: right;
+      }
+    }
+
+    &--square {
+      height: 88px;
+      width: 88px;
+
+      @include onTablet {
+        height: 288px;
+        width: 288px;
+      }
+
+      @include onDesktop {
+        height: 324px;
+        width: 324px;
+      }
     }
   }
+
   &__description {
     color: $c-red;
     margin-top: 24px;
@@ -50,6 +84,31 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 27px;
+    }
+  }
+  &__last-painting {
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: inline-block;
+    }
+  }
+  &__button {
+    color: $c-white;
+    background-color: $c-red;
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 38px 15px 65px;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+
+    @include onTablet {
+      padding: 15px 108px;
     }
   }
 }
