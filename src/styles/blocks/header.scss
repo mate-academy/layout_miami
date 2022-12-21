@@ -1,0 +1,67 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/Cover_photo.png);
+
+  &__content {
+    height: 100vh;
+    padding: $header-top-pading 0 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    align-self: center;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    &:hover {
+      cursor: default;
+    }
+
+    @include onDesktop {
+      &::before {
+        position: relative;
+        content: "+1 234 555-55-55";
+        padding-right: 12px;
+        display: block;
+        width: max-content;
+        color: #fff;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0;
+        transform: translate(-100%, 75%);
+        pointer-events: none;
+      }
+
+      &:hover {
+        cursor: default;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        cursor: default;
+      }
+    }
+  }
+}
