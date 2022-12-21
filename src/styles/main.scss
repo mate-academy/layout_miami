@@ -1,12 +1,10 @@
-
-
-@mixin onDesktop600 {
+@mixin onTablet {
   @media (min-width: 600px) {
     @content;
   }
 }
 
-@mixin onDesktop1020 {
+@mixin onDesktop {
   @media (min-width: 1020px) {
     @content;
   }
@@ -72,36 +70,37 @@ h1 {
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  max-width: 320px;
+  min-width: 320px;
 
-  @include onDesktop600 {
+  @include onTablet {
     max-width: 600px;
   }
 
-  @include onDesktop1020 {
+  @include onDesktop {
     max-width: 1020px;
   }
 }
 
 .top-actions {
   --icon-width: 18px;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr var(--icon-width) var(--icon-width);
-    justify-items: space-around;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: space-around;
     
-    align-items: center;
+  align-items: center;
 
-    @include onDesktop600 {
-      --icon-width: 24px;
-      gap: 40px;
-    }
+  @include onTablet {
+    --icon-width: 24px;
+    gap: 40px;
   }
-  
+}
+
 .header {
   background-image: url(../images/photos/1.png);
   background-size: cover;
-  background-position: center;
+  background-position: 26%;
+  background-repeat: no-repeat;
   
   &__content {
     display: flex;
@@ -113,9 +112,10 @@ h1 {
     padding-left: 24px;
     padding-right: 20px;
 
-    @include onDesktop600 {
+    @include onTablet {
       padding: 0;
       padding-top: 52px;
+      background-position: center;
     }
 
   }
@@ -125,15 +125,16 @@ h1 {
     font-weight: 800;
     font-size: 32px;
     line-height: 100%;
+    color: #292929;
     letter-spacing: -1.5px;
     margin-bottom: 94px;
 
-    @include onDesktop600 {
+    @include onTablet {
       font-size: 40px;
       margin-bottom: 40px;
     }
 
-    @include onDesktop1020 {
+    @include onDesktop {
       font-size: 48px;
       margin-bottom: 64px;
     }
@@ -146,14 +147,14 @@ h1 {
       height: 31px;
       margin-bottom: 16px;
 
-      @include onDesktop600 {
+      @include onTablet {
         background-image: url(../images/sound_waves.svg);
         width: 63px;
         height: 76px;
         margin-bottom: 40px;
       }
 
-      @include onDesktop1020 {
+      @include onDesktop {
         margin-bottom: 32px;
       }
     }
@@ -162,7 +163,7 @@ h1 {
   &__call {
     text-decoration: none;
 
-    @include onDesktop1020 {
+    @include onDesktop {
       
       &::before {
         content: "+1 234 555-55-55";
@@ -188,6 +189,15 @@ h1 {
       }
     }
   }
+
+  @include onTablet {
+    background-position: 20%;
+  }
+
+  @include onDesktop {
+    background-position: center;
+  }
+
 }
 
 .logo {
@@ -196,7 +206,7 @@ h1 {
     height: 17px;
     width: 130px;
 
-    @include onDesktop600 {
+    @include onTablet {
       height: 24px;
       width: 190px;
     }
@@ -209,14 +219,13 @@ h1 {
   &__content {
     height: 100vh;
     padding-top: 40px;
-    @include onDesktop600 {
-    padding-top: 52px;
+    @include onTablet {
+      padding-top: 52px;
     }
-
   }
 
   &__top {
-  margin-bottom: 54px;
+    margin-bottom: 54px;
   }
 
   &__list {
@@ -263,7 +272,7 @@ h1 {
     color: #292929;
 
     &--phone {
-    margin-bottom: 16px;
+      margin-bottom: 16px;
     }
 
     &--action {
@@ -273,5 +282,25 @@ h1 {
       padding-bottom: 8px;
       border-bottom: 1px solid #292929;
     }
+  }
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  height: 200px;
+  background-image: url(../images/photos/footer.jpg);
+  background-size: cover;
+  background-position: 40%;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    height: 400px;
+    background-position: center;
+  }
+
+  @include onDesktop {
+    height: 460px;
   }
 }
