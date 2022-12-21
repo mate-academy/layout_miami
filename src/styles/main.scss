@@ -1,3 +1,5 @@
+
+
 @mixin onDesktop600 {
   @media (min-width: 600px) {
     @content;
@@ -10,18 +12,8 @@
   }
 }
 
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  @include onDesktop600 {
-    width: 24px;
-    height: 24px;
-  }
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+h1 {
+  margin: 0;
 }
 
 .page {
@@ -29,26 +21,83 @@
   &__body {
     margin: 0;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateY(0);
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--call {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .container {
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  min-width: 320px;
-  padding: 0 20px;
+  max-width: 320px;
 
   @include onDesktop600 {
-    padding: 0 40px;
     max-width: 600px;
   }
 
   @include onDesktop1020 {
-    padding: 0 40px;
     max-width: 1020px;
   }
 }
 
+.top-actions {
+  --icon-width: 18px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+    justify-items: space-around;
+    
+    align-items: center;
+
+    @include onDesktop600 {
+      --icon-width: 24px;
+      gap: 40px;
+    }
+  }
+  
 .header {
   background-image: url(../images/photos/1.png);
   background-size: cover;
@@ -60,15 +109,15 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 40px 0 94px;
+    padding-top: 40px;
+    padding-left: 24px;
+    padding-right: 20px;
 
     @include onDesktop600 {
-      padding: 52px 0 40px;
+      padding: 0;
+      padding-top: 52px;
     }
-  
-    @include onDesktop1020 {
-      padding: 52px 0 64px;
-    }
+
   }
 
   &__title {
@@ -77,13 +126,16 @@
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
+    margin-bottom: 94px;
 
     @include onDesktop600 {
       font-size: 40px;
+      margin-bottom: 40px;
     }
 
     @include onDesktop1020 {
       font-size: 48px;
+      margin-bottom: 64px;
     }
 
     &::before {
@@ -107,34 +159,15 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__call {
-    position: absolute;
-    right: 74px;
-    background-image: url(../images/phone.svg);
     text-decoration: none;
 
-    @include onDesktop600 {
-      right: 104px;
-    }
-
     @include onDesktop1020 {
+      
       &::before {
         content: "+1 234 555-55-55";
         position: relative;
-        top: 50%;
+        top: 20px;
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
@@ -166,6 +199,79 @@
     @include onDesktop600 {
       height: 24px;
       width: 190px;
+    }
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+
+  &__content {
+    height: 100vh;
+    padding-top: 40px;
+    @include onDesktop600 {
+    padding-top: 52px;
+    }
+
+  }
+
+  &__top {
+  margin-bottom: 54px;
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    color: #292929;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #292929;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    align-items: center;
+    text-transform: uppercase;
+    color: #292929;
+
+    &--phone {
+    margin-bottom: 16px;
+    }
+
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #292929;
     }
   }
 }
