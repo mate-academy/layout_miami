@@ -11,11 +11,14 @@
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
   }
-
-  &--desktop {
-    display: block;
-    @include onTablet {
-      display: grid;
+  
+  &__item-mobile {
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
     }
   }
 
