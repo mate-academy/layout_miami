@@ -3,6 +3,10 @@
   max-width: 1020px;
   padding: 0 23px;
 
+  @include onTablet {
+    padding: 30px;
+  }
+
   @include onDesktop {
     padding: 0 40px;
   }
@@ -13,6 +17,11 @@
   width: 18px;
   height: 18px;
 
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
   @include onDesktop {
     width: 24px;
     height: 24px;
@@ -21,13 +30,35 @@
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    line-height: 12px;
+    transition: background-image 0.7s;
+
+    &:hover {
+      background-image: url(../images/hover_menu.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/close.svg);
+  }
 }
 
 .header {
-  background-size: 100%;
+  background-size: cover;
   background-image: url(../images/main-320.jpg);
   background-position: 100%;
   background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/main-788.jpg);
+  }
 
   @include onDesktop {
     background-image: url(../images/main-1260.jpg);
@@ -42,26 +73,9 @@
     padding: 30px 0 88px;
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    line-height: 12px;
-
-    &:hover {
-      background-image: url(../images/hover_menu.svg);
-    }
-  }
-
   &__call {
     margin-right: 30px;
-    background-image: url(../images/phone.svg);
     text-decoration: none;
-
 
     @include onDesktop() {
       &::before {
@@ -104,8 +118,93 @@
     color: #fff;
     line-height: 100%;
 
+    @include onTablet {
+      font-size: 64px;
+    }
+
     @include onDesktop {
       font-size: 80px;
+    }
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  background-color: #c2c2c2;
+  ;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    color: #1d1d1d;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
     }
   }
 }
