@@ -1,3 +1,5 @@
+@import "./utilite/reset.scss";
+
 @mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
@@ -12,6 +14,8 @@
 
 $headerTopPadding: 29px;
 $backgroundColorNav: #e5e5e5;
+$backgroundColorMain: #1d1d1d;
+$mainFontColor: #fff;
 
 .page {
   &__body {
@@ -32,6 +36,27 @@ $backgroundColorNav: #e5e5e5;
     &:target {
       transform: translateX(0);
     }
+  }
+
+  &__section {
+    margin-bottom: 92px;
+
+    &:first-child {
+      margin-bottom: 60px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+
+    color: $mainFontColor;
   }
 }
 
@@ -62,19 +87,19 @@ $backgroundColorNav: #e5e5e5;
   }
 
   &--phone {
-    background-image: url(../images/call.svg);
+    background-image: url(../images/Icon-Phone-call.svg);
   }
 
   &--menu {
-    background-image: url(../images/close-menu.svg);
+    background-image: url(../images/Icon-Burger-menu.svg);
 
     &:hover {
-      background-image: url(../images/open-menu.svg);
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
     }
   }
 
   &--cross {
-    background-image: url(../images/closed.svg);
+    background-image: url(../images/Icon-Close.svg);
   }
 }
 
@@ -85,10 +110,14 @@ $backgroundColorNav: #e5e5e5;
 }
 
 .header {
-  background-image: url(../images/bike-phone.jpeg);
+  background-image: url(../images/Cover_photo.jpeg);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
   background-size: cover;
+
+  @include onTablet() {
+    background-position: center;
+  }
 
   &__content {
     box-sizing: border-box;
@@ -101,7 +130,6 @@ $backgroundColorNav: #e5e5e5;
   }
 
   &__logo {
-    height: 38px;
     width: 130px;
 
     @include onDesktop() {
@@ -249,11 +277,48 @@ $backgroundColorNav: #e5e5e5;
   }
 }
 
-.footer {
-  height: 100vh;
+.main {
+  background-color: $backgroundColorMain;
+}
 
-  background-image: url(../images/footer.png);
+// .main-header {
+//   display: flex;
+//   flex-direction: column;
+
+//   padding: 0 20px;
+
+//   background-color: $backgroundColorMain;
+//   color: $mainFontColor;
+
+//   &__header {
+//     font-size: 32px;
+//     font-weight: 500;
+//     line-height: 32px;
+//     letter-spacing: -1.5px;
+//   }
+
+//   &__item {
+//     font-size: 23px;
+//     font-weight: 500;
+//     line-height: 32px;
+
+//   }
+
+// }
+
+.footer {
+  height: 200px;
+
+  background-image: url(../images/footer.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  @include onTablet {
+    height: 480px;
+  }
+
+  @include onDesktop {
+    height: 555px;
+  }
 }
