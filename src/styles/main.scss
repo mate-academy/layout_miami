@@ -2,6 +2,163 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+.page {
+  &__body {
+    margin: 0;
+    font-family: "Cinzel", serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    font-style: normal;
+    color: #161616;
+  }
+
+  &__section {
+    margin-bottom: 100px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onDesktop {
+      height: 65px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 20px;
+
+    @include onDesktop {
+      padding: 50px 20px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-wrapper {
+      margin-bottom: 129px;
+
+      @include onTablet {
+        margin-bottom: 141px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 83px;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    padding-right: 35px;
+    text-decoration: none;
+
+    @include onDesktop {
+      padding-right: 85px;
+    }
+
+    &::before {
+      content: "+1 212-923-3700";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+
+      opacity: 0;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+  }
 }
