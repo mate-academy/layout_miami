@@ -1,0 +1,60 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  @include onDekstop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  &--dekstop {
+    display: block;
+
+    @include onDekstop {
+      display: grid;
+    }
+  }
+
+  &__title {
+    @include title;
+    position: relative;
+    margin-top: 15px;
+
+    @include onDekstop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "Plan your visit";
+      color: $color-main;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 140%;
+      letter-spacing: normal;
+      top: -14px;
+      position: absolute;
+    }
+  }
+
+  &__down-title {
+    margin: 8px 0 0;
+  }
+
+  &__down-text {
+    margin: 0;
+    
+    &:not(:first-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
