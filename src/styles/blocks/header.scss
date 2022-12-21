@@ -1,17 +1,44 @@
 .header {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-image: url(../images/header-320.jpg);
 
-  &__container {
+  @include onTablet {
+    background-image: url(../images/header-744.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-1024.jpg);
+  }
+
+  &__content {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
-    padding: 29px 0 88px;
+    min-height: 100vh;
+    padding: 28px 0 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 200px;
+    }
   }
 
-  &__tittle {
+  &__top {
+    @include top-actions;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
     font-size: 36px;
     font-weight: 700;
     line-height: 36px;
@@ -23,27 +50,22 @@
       line-height: 64px;
     }
 
-  }
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu-close.svg);
     }
   }
 
   &__call {
     margin-right: 30px;
     text-decoration: none;
-    background-image: url(../images/phone.svg);
+
+    @include onTablet {
+      margin-right: 40px;
+      width: 24px;
+      height: 24px;
+    }
 
     @include onDesktop() {
       &::before {
@@ -68,6 +90,5 @@
         pointer-events: all;
       }
     }
-
   }
 }
