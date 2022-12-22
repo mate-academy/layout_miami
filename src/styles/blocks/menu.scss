@@ -1,13 +1,15 @@
 .menu {
+  position: fixed;
+  z-index: 1;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: $header-top-padding 0;
+  overflow-y: auto;
+
   background-color: $c-gray;
 
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $header-top-padding 0;
-  }
-
   &__top {
+    @include top-actions;
     margin-bottom: 44px;
   }
 
@@ -36,10 +38,12 @@
     line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: border-color 0.3s;
+
+    transition: all 0.3s;
 
     &:hover {
       border-color: #1d1d1d;
+      opacity: 0.6;
     }
   }
 
@@ -51,6 +55,12 @@
     text-transform: uppercase;
     color: #1d1d1d;
     text-decoration: none;
+
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.6;
+    }
 
     &--phone {
       margin-bottom: 16px;
