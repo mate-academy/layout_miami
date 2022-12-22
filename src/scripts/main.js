@@ -14,4 +14,10 @@ submitButton.addEventListener('submit', submitClick, false);
 
 function submitClick(event) {
   event.preventDefault();
+
+  const fieldsToClear = document.querySelectorAll('.clear');
+
+  for (const elem of fieldsToClear) {
+    elem.value = '';
+  }
 }
