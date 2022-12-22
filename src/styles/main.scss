@@ -2,8 +2,21 @@
 // @import "./normalize.scss";
 // @import "./utils";
 // @import "./typography";
-
 // @import "./blocks/container.scss";
+$main-color: #292929;
+$modal-background: #e8eff9;
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -15,22 +28,42 @@ h1 {
 
 .page {
   font-family: "Inter", sans-serif;
-
+  color: $main-color;
   &__body {
     margin: 0;
   }
 }
 
+.icon {
+  display: block;
+  width: 22px;
+  height: 18px;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    width: 24px;
+    height: 20px;
+  }
+
+  @include onDesctop {
+    width: 26px;
+    height: 22px;
+  }
+}
+
 .container {
   margin: 0 auto;
-  max-width: 1020px;
+  max-width: 1260px;
   padding: 0 20px;
 
-  @media (min-width: 744px) {
+  @include onTablet {
     padding: 0 72px;
   }
 
-  @media (min-width: 1024px) {
+  @include onDesctop {
     padding: 0 120px;
   }
 }
@@ -43,7 +76,7 @@ h1 {
   background-size: cover;
   background-position: center;
   
-  // @media (min-width: 744px) {
+  // @include onTablet {
   //   background-image: url(../images/background/background-header-tablet.jpg);
   //   background-position: center;
   //   background-size: cover;
@@ -58,66 +91,83 @@ h1 {
     padding-top: 40px;
     padding-bottom: 94px;
 
-    @media (min-width: 744px) {
+    @include onTablet {
       padding-top: 52px;
       padding-bottom: 40px;
     }
 
-    @media (min-width: 744px) {
+    @include onDesctop {
       padding-bottom: 64px;
     }
   }
 
-  &__nav {
+  &__bar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
-  &__nav-box {
+  &__bar-box {
     display: flex;
+    align-items: center;
     gap: 30px;
-  }
+    
+    &__call {
+      text-decoration: none;
+      background-image: url(../images/icons/phone-call.svg);
 
-  &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
+      @include onDesctop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
 
-    background-image: url(../images/icons/phone-call.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+          display: block;
+          width: max-content;
+          padding-right: 12px;
+          
+          color: $main-color;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          opacity: 0;
+          pointer-events: none;
+        }
 
-  }
-
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
-    background-image: url(../images/icons/burger-menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url(../images/icons/burger-menu-hover.svg);
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  
+    &__menu-opener {
+      background-image: url(../images/icons/burger-menu.svg);
+  
+      &:hover {
+        background-image: url(../images/icons/burger-menu-hover.svg);
+      }
     }
   }
 
   &__title {
     font-weight: 800;
     font-size: 32px;
-    line-height: 100%;
+    line-height: 32px;
     letter-spacing: -1.5px;
     font-style: italic;
 
-    @media (min-width: 744px) {
+    @include onTablet {
       font-size: 40px;
+      line-height: 40px;
     }
 
-    @media (min-width: 1024px) {
-      font-size: 44px;
+    @include onDesctop {
+      font-size: 48px;
+      line-height: 48px;
     }
   }
 
@@ -132,27 +182,34 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
 
-    @media (min-width: 744px) {
+    @include onTablet {
       background-image: url(../images/icons/sound.svg);
       width: 63px;
       height: 76px;
       margin-bottom: 40px;
     }
 
-    @media (min-width: 744px) {
+    @include onDesctop {
       margin-bottom: 32px;
     }
   }
 }
 
 .logo {
+  display: flex;
+
   &__image {
     width: 130px;
     height: 16px;
 
-    @media (min-width: 744px) {
-      width: 190px;
-      height: 24px;
+    @include onTablet {
+      width: 165px;
+      height: 22px;
+    }
+
+    @include onDesctop {
+      width: 200px;
+      height: 28px;
     }
   }
 }
