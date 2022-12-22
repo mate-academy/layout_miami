@@ -7,3 +7,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const defaultSubmit = document.querySelector('.contacts__field-button');
+
+defaultSubmit.addEventListener('click', addDefaultValue);
+
+function addDefaultValue(event) {
+  event.preventDefault();
+}
