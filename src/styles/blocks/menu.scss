@@ -1,15 +1,14 @@
 .menu {
   box-sizing: border-box;
   height: 100vh;
-  padding: $headerTopPadding 0;
+  padding: 40px 0;
 
   background-color: $colorMenu;
 
   overflow-y: auto;
 
-  &__close {
-    grid-template-columns: 1fr var(--icon-width);
-    gap: 0;
+  @include onLaptop {
+    padding: 52px 0;
   }
 
   &__top {
@@ -17,11 +16,14 @@
     margin-bottom: 56px;
   }
 
+  &__close {
+    grid-template-columns: 1fr var(--icon-width);
+  }
+
   &__list {
     margin: 0 0 40px;
     padding: 0;
     list-style: none;
-
   }
 
   &__item {
@@ -67,12 +69,25 @@
       margin-bottom: 16px;
       font-size: 16px;
       line-height: 27px;
+
+      transition: color 0.3s;
+
+      &:hover {
+        color: $fontGrey;
+      }
     }
 
     &--action {
       padding-bottom: 8px;
       letter-spacing: 2px;
       border-bottom: 1px solid $fontColor;
+
+      transition: all 0.3s;
+
+      &:hover {
+        color: $fontGrey;
+        border-color: $fontGrey;
+      }
     }
   }
 }
