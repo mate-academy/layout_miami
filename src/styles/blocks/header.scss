@@ -1,0 +1,167 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+$headerTopPadding: 54px;
+$colorGrey: #e5e5e5;
+
+.logo {
+  &__image {
+    width: 130px;
+    height: 16px;
+
+    @include onDesktop {
+      width: 190px;
+      height: 24px;
+    }
+  }
+}
+
+.container {
+  margin: 0;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--menu {
+    background-image: url("images/menu-icon.svg");
+
+    @include onDesktop {
+      &:hover {
+        background-image: url("images/menu-icon-hover.svg");
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url("images/phone-icon.svg");
+  }
+
+  &--cross {
+    background-image: url("images/close-icon.svg");
+  }
+}
+
+.header {
+  background-image: url("images/pictures/main-picture.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPadding 0 64px;
+  }
+
+  &__call {
+    margin-right: 40px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        color: #292929;
+        display: block;
+        width: max-content;
+        height: 24px;
+
+        // font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding-right: 12px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -25%);
+        opacity: 1;
+        pointer-events: all;
+        color: black;
+      }
+    }
+  }
+
+  &__menu-open {
+    background-image: url("images/menu-icon.svg");
+
+    @include onDesktop {
+      &:hover {
+        background-image: url("images/menu-icon-hover.svg");
+      }
+    }
+  }
+
+  &__pic {
+    display: flex;
+  }
+
+  &__title {
+    font-family: "Inter";
+    // font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url("images/sound-wave-mobile.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        width: 63px;
+        height: 76px;
+        background-image: url("images/sound-waves-desktop.svg");
+      }
+    }
+  }
+}
+
