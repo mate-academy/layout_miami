@@ -12,18 +12,18 @@
     grid-template-columns: repeat(12, 1fr);
   }
 
-  // &--desktop {
-  //   display: block;
+  &--phablet {
+    display: block;
 
-  //   @include onPhablet {
-  //     display: grid;
-  //   }
-  // }
+    @include onPhablet {
+      display: grid;
+    }
+  }
 
   &--desktop {
     display: block;
 
-    @include onDesktop {
+    @include onPhablet {
       display: grid;
     }
   }
@@ -31,17 +31,29 @@
   &__item {
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}--#{$end} {
+        &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+      }
+    }
+  }
 
-        &--phablet-#{$start}--#{$end} {
+  &__item--phablet {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$start}-#{$end} {
           @include onPhablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
+  }
 
-        &--desktop-#{$start}--#{$end} {
+  &__item--desktop {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$start}-#{$end} {
           @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
           }
