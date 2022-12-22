@@ -1,13 +1,15 @@
 .header {
   background-image: url(../images/photos/header-mobile.png);
   @include bg-img-properties;
+
   
   @media (min-width: 480px) {
-    background-image: url(../images/photos/header-tablet.png);
+    background-image: url(../images/photos/header-desktop.jpg);
   }
-  
-  @include onDesktop {
-    background-image: url(../images/photos/header-desktop.png);
+
+  &__top {
+    @include top-actions;
+    align-items: center;
   }
 
   &__content {
@@ -17,9 +19,14 @@
     justify-content: space-between;
     padding: $header-top-padding 0 94px;
 
+    @media (min-width: 390px) {
+      padding-bottom: 40px;
+    }
+
     @include onTablet {
       padding: 52px 0 40px;
     }
+
     @include onDesktop {
       padding: 52px 0 64px;
     }
@@ -74,18 +81,16 @@
     @include onTablet {
       font-size: 40px;
       &::before {
-        content: url(../images/sound-waves-desktop.svg);
-        width: 63px;
-        height: 76px;
-        margin-bottom: 40px;
+        display: none;
       }
     }
 
     @include onDesktop {
       font-size: 48px;
-      &::before {
-        margin-bottom: 32px;
-      }
     }
+  }
+
+  &__music {
+    margin-bottom: 32px;
   }
 }
