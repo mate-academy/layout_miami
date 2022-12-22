@@ -1,4 +1,7 @@
 .category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
   &__item {
     margin-bottom: 40px;
@@ -12,18 +15,27 @@
   &__wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   &__picture {
-    width: 40vw;
-    height: 40vw;
+    width: 130px;
+    height: 42vw;
+
+    flex-grow: 1;
+
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
 
     &:first-child {
       margin-right: 20px;
+    }
+
+    @include onTablet {
+      &:first-child {
+        margin-right: 24px;
+      }
     }
 
     @for $count from 1 through 6 {
@@ -33,10 +45,26 @@
     }
 
     @include onTablet {
+      width: 184px;
+      height: 187px;
+
       @for $count from 1 through 6 {
         &--#{$count} {
           background-image: url(../images/category-img/catqlogD-#{$count}.png);
         }
+      }
+
+      &--wide {
+        width: 392px;
+      }
+    }
+
+    @include onDesktop {
+      width: 324px;
+      height: 320px;
+
+      &--wide {
+        width: 672px;
       }
     }
   }
@@ -48,12 +76,18 @@
     font-size: 16px;
     line-height: 140%;
     color: #292929;
+
+    @include onTablet {
+      font-size: 24px;
+    }
   }
 
   &__button {
     display: block;
     width: 280px;
     height: 56px;
+
+    align-self: center;
 
     font-weight: 700;
     font-size: 16px;
@@ -64,6 +98,14 @@
 
     background: #292929;
     border-radius: 40px;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 324px;
+    }
   }
 
 }
