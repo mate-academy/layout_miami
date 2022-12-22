@@ -3,7 +3,7 @@
 // disable scrolling when the menu is open
 
 const burgerBtn = document.querySelector('#burger-menu');
-const closeBtn = document.querySelector('#closeBtn-btn');
+const closeBtn = document.querySelector('#close-btn');
 const menuArea = document.querySelectorAll('#menu > *');
 const menu = document.querySelector('.page__menu');
 
