@@ -1,0 +1,116 @@
+.header {
+  background-image: url("../images/header-mobile.png");
+  @include bg-img-properties;
+
+  @media (min-width: 480px) {
+    background-image: url("../images/header-tablet.png");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-desktop.png");
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $header-top-padding 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__phone {
+    margin-right: 30px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        color: $main-color;
+        padding-right: 12px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    transition: color 0.9s;
+    text-shadow: 0 1px 0 #ccc,
+      0 2px 0 #c9c9c9,
+      0 3px 0 #bbb,
+      0 4px 0 #b9b9b9,
+      0 5px 0 #aaa,
+      0 6px 1px rgba(0,0,0,0.1),
+      0 0 5px rgba(0,0,0,0.1),
+      0 1px 3px rgba(0,0,0,0.3),
+      0 3px 5px rgba(0,0,0,0.2),
+      0 5px 10px rgba(0,0,0,0.25),
+      0 10px 10px rgba(0,0,0,0.2),
+      0 20px 20px rgba(0,0,0,0.15);
+
+    animation: 3s alternate infinite color;
+
+    @keyframes color {
+      from {
+        color: $main-color;
+      }
+
+      to {
+        color: $light-blue;
+      }
+    }
+
+    &::before {
+      content: url(../images/wave-small.svg);
+      width: 32px;
+      height: 27px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      &::before {
+        content: url(../images/wave-big.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
