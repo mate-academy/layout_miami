@@ -1,7 +1,16 @@
 .header {
   background-size: cover;
-  background-position: center right;
-  background-image: url(../images/header.svg);
+  background-position: right;
+  background-image: url(../images/header-small.jpg);
+
+  @include onTablet {
+    background-position: center;
+    background-image: url(../images/header-small.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-cover-photo.jpg);
+  }
 
   &__content {
     display: flex;
@@ -10,58 +19,12 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: 29px 0 80px;
+    padding: $header-top-padding 0 80px;
   }
 
-  &__top-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-  }
-
-  &__call {
-    margin-right: 30px;
-    text-decoration: none;
-    background-image: url(../images/phone.svg);
-
-    @include onDesktop() {
-      &::before {
-        content: "+1 234 555-55-55";
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: $color-white;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: on;
-      }
-    }
-  }
-
-  &__menu-opener {
-    background-image: url(../images/icon-burger-menu.svg);
-
-    &:hover {
-      background-image: url(../images/icon-burger-menu-hover.svg);
-    }
+  &__actions {
+    @include top-panel;
+    grid-template-columns: 1fr var(--icon-width) var(--icon-width);
   }
 
   &__title {
@@ -71,6 +34,11 @@
     text-align: center;
     color: $color-white;
     letter-spacing: -1.5px;
+
+    @include onTablet() {
+      font-size: 64px;
+      line-height: 100%;
+    }
 
     @include onDesktop() {
       font-size: 80px;
