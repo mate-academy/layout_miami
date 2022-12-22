@@ -1,0 +1,102 @@
+.exhibition {
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $column-gap;
+    margin-bottom: $margin-small;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    &--section {
+      display: flex;
+      justify-content: space-between;
+      gap: $column-gap;
+      margin-bottom: $margin-small;
+    }
+  }
+  
+  &__photos-container {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      padding-bottom: 0;
+      height: 185px;
+
+      &--3,
+      &--4 {
+        height: 284px;
+      }
+
+      &--5 {
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      padding-bottom: 0;
+      height: 320px;
+
+      &--5 {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform $transition-time;
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__description-title {
+    color: $color-main;
+    margin: 0;
+  }
+  &__description-text {
+    margin: 0;
+  }
+  
+  &__button-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    width: 280px;
+    padding: 15px 0;
+    text-decoration: none;
+    color: $text-color;
+    background-color: $color-main;
+    text-align: center;
+    transition: background-color $transition-time;
+    outline: none;
+    margin: 40px 0 100px;
+    @include onTablet {
+      width: 392px;
+    }
+
+    &:hover {
+      background-color: $button-hover-c;
+    }
+
+    &:active {
+      background-color: $button-active-c;
+    }
+  }
+}

@@ -1,33 +1,27 @@
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
-  @include onDekstop {
+  @include onTablet {
+    display: grid;
+    gap: $column-gap;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
   }
-  &--dekstop {
-    display: block;
-
-    @include onDekstop {
-      display: grid;
-    }
-  }
-
+  
   &__title {
     @include title;
     position: relative;
     margin-top: 15px;
 
-    @include onDekstop {
-      font-size: 48px;
-      line-height: 48px;
+    @include onDesktop {
+      @include bigTitle;
     }
 
     &::before {
       content: "Plan your visit";
       color: $color-main;
-      font-weight: 700;
+      font-weight: $bold-font;
       font-size: 12px;
       line-height: 140%;
       letter-spacing: normal;
@@ -44,15 +38,27 @@
     margin: 0;
     
     &:not(:first-child) {
-      margin-bottom: 24px;
+      margin-bottom: $margin-small;
     }
   }
 
   &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
