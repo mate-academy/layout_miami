@@ -6,6 +6,7 @@ form.addEventListener('submit', submitClick, false);
 
 function submitClick(event) {
   event.preventDefault();
+  form.reset();
 }
 
 window.addEventListener('hashchange', () => {
