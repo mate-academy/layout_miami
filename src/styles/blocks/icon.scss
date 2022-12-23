@@ -1,0 +1,63 @@
+.icon {
+  display: block;
+  @include square($small-icon);
+
+  @include bg-cover;
+
+  @include onTablet {
+    @include square ($medium-icon);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/menu.svg);
+    transition: background-image $transition-duration ease-in-out;
+
+    &:hover {
+      background-image: url(../images/icons/menu-hover.svg);
+    }
+
+    @include onTablet {
+      background-image: url(../images/icons/menu-desktop.svg);
+
+      &:hover {
+        background-image: url(../images/icons/menu-hover-desktop.svg);
+      }
+    }
+  }
+
+  &--phone {
+    text-decoration: none;
+    color: inherit;
+
+    background-image: url(../images/icons/phone.svg);
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        transform: translateX(-100%);
+
+        @include flex (center, center);
+        padding-right: 10px;
+        width: max-content;
+        height: 100%;
+
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-duration ease-in-out;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/close.svg);
+  }
+}

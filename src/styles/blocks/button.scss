@@ -1,0 +1,49 @@
+.button {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 56px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__link {
+    @include flex (center, center);
+
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+
+    background-color: $text-primary-color;
+    border-radius: 40px;
+
+    transition: all $transition-duration ease-in-out;
+
+    &:hover {
+      color: $text-primary-color;
+
+      background-color: #fff;
+      border: 3px solid $text-primary-color;
+
+    }
+
+    &:active {
+      color: #fff;
+
+      background-color: #111;
+      border: none;
+    }
+
+    @include onTablet {
+      grid-area: 1 / 2 / 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-area: 1 / 5 / 2 / 9;
+    }
+  }
+}
