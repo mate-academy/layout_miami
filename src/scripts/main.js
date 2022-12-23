@@ -8,10 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const checkbox = document.querySelector('#button');
+const form = document.querySelector('#form');
+const formFields = document.querySelectorAll('.contacts__field');
 
-checkbox.addEventListener('click', checkboxClick, false);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-function checkboxClick(event) {
-  event.preventDefault();
-}
+  formFields.forEach(el => {
+    el.value = '';
+  });
+});
