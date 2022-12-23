@@ -8,14 +8,12 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const checkbox = document.querySelector('test');
+const loginForm = document.querySelector('.form__action');
 
-checkbox.addEventListener('click', checkboxClick, false);
+loginForm.addEventListener('submit', login);
+document.getElementById('form').reset();
 
-function checkboxClick(event) {
-  event.preventDefault();
-}
-
-document.getElementById('test').onclick = function(e) {
+function login(e) {
   e.preventDefault();
-};
+  document.getElementById('form').reset();
+}
