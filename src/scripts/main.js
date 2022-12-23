@@ -2,8 +2,9 @@
 
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('click', (event) => {
+contactForm.addEventListener('submit', (event) => {
   event.preventDefault();
+  contactForm.reset();
 });
 
 window.addEventListener('hashchange', () => {
