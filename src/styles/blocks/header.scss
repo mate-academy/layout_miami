@@ -1,0 +1,88 @@
+.header {
+  position: relative;
+  background-size: cover;
+  background-image: url(../images/b1-m.png);
+  background-position: 30% 40%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 0 0 40px;
+  }
+
+  &__title {
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+    color: #292929;
+    margin-left: 30px;
+    margin-top: 0;
+
+    @include onDeskTop {
+      font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      height: 27px;
+      content: "";
+      margin-bottom: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(../images/waves.png);
+
+      @include onDeskTop {
+        background-image: url(../images/waves_desktop.svg);
+        height: 76px;
+        margin-bottom: 32px;
+      }
+    }
+
+  }
+
+  &__call {
+    &::before {
+      font-family: "Inter", sans-serif;
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      color: #292929;
+      width: max-content;
+      display: block;
+      padding-right: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+      font-size: 16px;
+    }
+
+    @include onDeskTop {
+      width: $icon_big;
+      height: $icon_big;
+
+    }
+  }
+
+  &__menu-call {
+    grid-column-start: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
