@@ -39,3 +39,27 @@
   font-size: 16px;
   line-height: 27px;
 }
+
+@mixin media-gridColumns-forTablet ($index, $colums) {
+  @include onTablet {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$index}--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin media-gridColumns-forDesktop ($index, $colums) {
+  @include onDesktop {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$index}--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
