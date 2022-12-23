@@ -8,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const defaultSubmit = document.querySelector('.contacts__field-button');
+const defaultSubmit = document.querySelector('#form');
 
-defaultSubmit.addEventListener('click', addDefaultValue);
+defaultSubmit.addEventListener('submit', addDefaultValue);
 
 function addDefaultValue(event) {
   event.preventDefault();
