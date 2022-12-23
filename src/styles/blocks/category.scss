@@ -5,13 +5,11 @@
       margin-bottom: 64px;
     }
   }
-  &__photos {
-    margin-bottom: 16px;
-  }
   &__photo-container {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
+    margin-bottom: 16px;
     
 
     @include onTablet {
@@ -23,17 +21,25 @@
       padding-bottom: 0;
     }
   }
+
   &__photo {
     position: absolute;
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 4px;
+    transition: transform $transition-duration;
+    -webkit-filter: grayscale(40%);
+    &:hover {
+      z-index: 1;
+      transform: scale(1.1);
+      -webkit-filter: grayscale(0);
+    }
   }
+  
   &__title {
     font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
     color: $color-text;
     @include onTablet {
       font-size: 24px;
