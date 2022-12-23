@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector('.button--contacts');
+const form = document.querySelector('#contactForm');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
