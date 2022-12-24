@@ -8,10 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.getElementById('myForm');
+const btn = document.getElementById('btn');
 
-function handleForm(event) {
+btn.addEventListener('click', function handleClick(event) {
   event.preventDefault();
-}
 
-form.addEventListener('submit', handleForm);
+  const firstNameInput = document.getElementById('first_name');
+  const emailInput = document.getElementById('email');
+  const textAreaInput = document.getElementById('textarea');
+
+  firstNameInput.value = '';
+  emailInput.value = '';
+  textAreaInput.value = '';
+});
