@@ -1,7 +1,11 @@
 .page {
-  font-family: "Inter", Arial, sans-serif;
   max-width: 1920px;
   margin: 0 auto;
+
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: $primary-color;
 
   scroll-behavior: smooth;
 
@@ -11,6 +15,7 @@
 
   &__menu {
     position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
@@ -25,15 +30,23 @@
 
   &__section {
     margin-top: 120px;
+    position: relative;
+
+    transform: translateY(150px);
+    opacity: 0;
+    transition: transform 2s ease, opacity 1s ease;
+
+    &--active {
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
 
   &__section-title {
     margin: 0 0 48px;
 
-    font-weight: 700;
     font-size: 32px;
     text-align: center;
-    color: #292929;
 
     @include onTablet {
       font-size: 40px;

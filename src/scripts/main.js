@@ -35,3 +35,21 @@ clicableElements.forEach(element => {
     audioClick.play();
   });
 });
+
+window.addEventListener('scroll', reveal);
+
+function reveal() {
+  const sections = document.querySelectorAll('.page__section');
+
+  sections.forEach(section => {
+    const windowheight = window.innerHeight;
+    const revealtop = section.getBoundingClientRect().top;
+    const revealpoint = 150;
+
+    if (revealtop < windowheight - revealpoint) {
+      section.classList.add('page__section--active');
+    } else {
+      section.classList.remove('page__section--active');
+    }
+  });
+}
