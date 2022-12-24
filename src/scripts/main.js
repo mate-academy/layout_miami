@@ -16,3 +16,22 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const audioHover = document.querySelector('.audio__hover');
+const audioClick = document.querySelector('.audio__click');
+const menuLinks = document.querySelectorAll('.menu__link');
+
+menuLinks.forEach(link => {
+  link.addEventListener('mouseover', () => {
+    audioHover.play();
+  });
+});
+
+const clicableElements
+= document.querySelectorAll('.menu__link, .button, .icon');
+
+clicableElements.forEach(element => {
+  element.addEventListener('click', () => {
+    audioClick.play();
+  });
+});
