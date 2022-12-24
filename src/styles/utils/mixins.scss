@@ -5,7 +5,7 @@
 }
 
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (min-width: 600px) {
     @content;
   }
 }
@@ -18,21 +18,5 @@
 
   @include onTablet {
     grid-template-columns: 1fr $icon-width-desktop $icon-width-desktop;
-  }
-}
-
-@mixin grid {
-  @for $start from 1 through 12 {
-    @for $end from $start through 12 {
-      &--#{$start}-#{$end} {
-        grid-column: #{$start} / #{$end + 1};
-      }
-
-      &--desktop-#{$start}-#{$end} {
-        @include onDesktop {
-          grid-column: #{$start} / #{$end + 1};
-        }
-      }
-    }
   }
 }
