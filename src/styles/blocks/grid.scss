@@ -3,26 +3,43 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
+  @include onTablet {
+    grid-template-columns: $tablet;
+    column-gap: 24px;
+  }
+
   @include onDeskTop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: $deskTop;
     column-gap: 24px;
   }
 
   &--desktop {
     display: block;
 
-    @include onDeskTop {
+    @include onTablet {
       display: grid;
     }
   }
 
   &__item {
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }   
+        
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};;
+        &--desktop-#{$start}-#{$end} {
+          @include onDeskTop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
-      }  
+      }
     }
   }
 }
