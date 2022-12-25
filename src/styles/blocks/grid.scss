@@ -1,19 +1,33 @@
 .grid {
   display: block;
 
-  @include onDeskTop {
-   @include useGrid (12, 24px);
-  }
+  @include onTablet {
+    @include useGrid (6, 24 px);
+   }
 
   &__item {
-    @for $start from 1 through 12 {
-        @for $end from $start through 12 {
+    @for $start from 1 through 6 {
+        @for $end from $start through 6 {
             @include onTablet {
-              &--#{$start}-#{$end} {
+              &--tablet-#{$start}-#{$end} {
                 grid-column: #{$start} / #{$end + 1};
               }
             }
         }
+    }
+
+    @include onDeskTop {
+      @include useGrid (12, 24 px);
+     }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+          @include onDeskTop {
+            &--deskTop-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+      }
     }
   }
 }
