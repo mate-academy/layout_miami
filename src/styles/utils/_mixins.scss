@@ -1,6 +1,53 @@
+@mixin onDevice($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: 744px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == lg-desktop {
+    @media (min-width: 1260px) {
+      @content;
+    }
+  }
+}
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+
+  @include onDevice(tablet) {
+    --icon-width: 24px;
+    gap: 63px;
+  }
+}
+
+@mixin page-section-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include onDevice(tablet) {
+    font-size: 48px;
+    line-height: 48px;
   }
 }
