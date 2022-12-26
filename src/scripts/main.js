@@ -1,7 +1,12 @@
 'use strict';
 
+const form = document.querySelector('.form');
+
 document.querySelector('#form-submit')
-  .addEventListener('click', e => e.preventDefault());
+  .addEventListener('click', e => {
+    e.preventDefault();
+    form.classList.add('form--submitted');
+  });
 
 const page = document.querySelector('.page');
 const menu = document.querySelector('.menu');

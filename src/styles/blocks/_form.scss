@@ -1,7 +1,10 @@
 .form {
+  &--submitted :required:placeholder-shown {
+    box-shadow: 1px 4px 16px rgba(255, 0, 0, 0.64);
+  }
+
   &__input {
     box-sizing: border-box;
-
     width: 100%;
     padding: 14px 16px;
     background: #f8f8f8;
@@ -12,22 +15,26 @@
     font-size: 14px;
     line-height: 20px;
     color: #292929;
+    border: none;
 
-    border: 1px solid transparent;
+    transition: box-shadow 0.3s;
 
     &:hover {
-      border-color: #d5d7de;
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
     }
 
     &:focus {
-      border-color: #292929;
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+    }
+
+    &:not(:placeholder-shown):invalid {
+      box-shadow: 1px 4px 16px rgba(255, 0, 0, 0.64);
     }
 
     &--textarea {
       resize: none;
-      height: 120px;
+      min-height: 120px;
       border-radius: 16px;
-      margin-bottom: 32px;
     }
 
     &::placeholder {
@@ -40,5 +47,6 @@
 
   &__submit {
     width: 100%;
+    margin-top: 16px;
   }
 }
