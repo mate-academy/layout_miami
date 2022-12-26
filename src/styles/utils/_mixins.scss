@@ -1,6 +1,44 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin forTablet {
+  @media (min-width: 744px) {
+    @content;
   }
+}
+
+@mixin forDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin exhibit-mobile-columns ($number-of-columns) {
+  &__exhibit {
+    display: grid;
+    grid-template-columns: repeat($number-of-columns, 1fr);
+    column-gap: 8px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include forDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+}
+
+@mixin position-in-grid ($number-of-columns) {
+  @for $start from 1 through $number-of-columns {
+    @for $end from 1 through $number-of-columns {
+      &-#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end + 1};
+      }
+    }
+  }
+}
+
+@mixin size-photo-container ($height, $padding-bottom) {
+  height: $height;
+  padding-bottom: $padding-bottom;
 }
