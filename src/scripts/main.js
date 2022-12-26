@@ -8,16 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const btn = document.getElementById('btn');
+const btn = document.querySelector('#form');
 
-btn.addEventListener('click', function handleClick(event) {
+btn.addEventListener('submit', function handleClick(event) {
   event.preventDefault();
 
-  const firstNameInput = document.getElementById('first_name');
-  const emailInput = document.getElementById('email');
-  const textAreaInput = document.getElementById('textarea');
+  const formName = document.getElementById('first_name');
+  const formEmail = document.getElementById('email');
+  const formText = document.getElementById('textarea');
 
-  firstNameInput.value = '';
-  emailInput.value = '';
-  textAreaInput.value = '';
+  formName.value = '';
+  formEmail.value = '';
+  formText.value = '';
 });
