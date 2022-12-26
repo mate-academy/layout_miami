@@ -1,0 +1,50 @@
+@import "../utils/vars";
+@import "../utils/mixins.scss";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__link {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    color: $c-black;
+    width: 100%;
+    height: 56px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+    
+    @include onDesktop {
+      grid-column: 6 / 8;
+    }
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+    }
+  }
+}
