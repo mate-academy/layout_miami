@@ -1,7 +1,7 @@
 # The Met landing page
 
 This is my landing about The Metropolitan Museum of Art.
-On this page you can see work schedule, expositions prewiew, online expositions adresses and contacts of museum
+On this page you can see work schedule, expositions prewiew, online expositions, adress and contacts of museum
 
 # Main technologies:
   - html, scss, js
