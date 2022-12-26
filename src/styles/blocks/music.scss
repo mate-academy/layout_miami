@@ -1,0 +1,39 @@
+.music {
+  display: none;
+  @include onTablet {
+    height: 76px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    width: 3px;
+    background-color: $main-color;
+    border-radius: 2px;
+    margin-right: 3px;
+    animation: music 1s linear infinite;
+
+    @each $index, $height in $music-waves-height {
+      &-#{$index} {
+        height: #{$height}px;
+      }
+    }
+
+    @each $index, $delay in $music-delay {
+      &:nth-child(#{$index}) {
+        animation-delay: #{$delay};
+      }
+    }
+  }
+}
+
+@keyframes music {
+  0%,
+  100% {
+    transform: scale(0.5);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
