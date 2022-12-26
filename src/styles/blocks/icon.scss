@@ -1,0 +1,51 @@
+.icon {
+  display: block;
+
+  @include size($icon-width);
+  @include picturePosition(contain);
+
+  @include onTablet {
+    @include size($icon-width-td);
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    @include onTablet {
+      background-image: url(../images/menuXL.svg);
+    }
+
+    @include onDesktop {
+
+      transform: scale(1);
+      transition: background-image 0.5s, transform 0.5s;
+
+      &:hover {
+        background-image: url(../images/manu-hovered.svg);
+      }
+
+      &:active {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--close {
+    @include size ($icon-width-close);
+    grid-column: 3;
+    background-image: url(../images/menu-close.svg);
+
+    transform: scale(1);
+    transition: transform 0.3s;
+
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.category {
+  @include flexColumnCenter;
+
+  &__item {
+    margin-bottom: 40px;
+
+    @include flexColumnCenter;
+
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__picture {
+    width: 130px;
+    height: 42vw;
+
+    flex-grow: 1;
+
+    @include picturePosition(cover);
+    @include scale;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    @include onTablet {
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
+
+    @for $count from 1 through 6 {
+      &--#{$count} {
+        background-image: url(../images/category-img/catqlogM-#{$count}.png);
+      }
+    }
+
+    @include onTablet {
+      width: 184px;
+      height: 187px;
+
+      @for $count from 1 through 6 {
+        &--#{$count} {
+          background-image: url(../images/category-img/catqlogD-#{$count}.png);
+        }
+      }
+
+      &--wide {
+        width: 392px;
+      }
+    }
+
+    @include onDesktop {
+      width: 324px;
+      height: 320px;
+
+      &--wide {
+        width: 672px;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+
+    line-height: 140%;
+    text-decoration: none;
+    color: $primary-color;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+  }
+
+  &__button {
+    align-self: center;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 324px;
+    }
+  }
+
+}
