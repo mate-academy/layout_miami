@@ -1,4 +1,14 @@
 .bikes {
+  &__content {
+    margin-top: 48px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
   &__item {
     margin-bottom: 40px;
 
@@ -10,19 +20,43 @@
       margin-bottom: 0;
     }
   }
+
+  &__card-1 {
+    @include onDesktop {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__card-2 {
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__card-3 {
+    @include onDesktop {
+      grid-column: 9 / 13;
+    }
+  }
 }
 
 .bike {
   &__photo {
     width: 100%;
     margin-bottom: 32px;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(110%);
+    }
   }
 
   &__name {
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-    color: #fff;
+    color: $text-color;
   }
 
   &__text {
@@ -30,13 +64,13 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    color: #fff;
+    color: $text-color;
   }
 
   &__price {
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-    color: #fff;
+    color: $text-color;
   }
 }
