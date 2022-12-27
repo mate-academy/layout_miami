@@ -8,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const buttonForm = document.querySelector('#btn');
+const form = document.querySelector('form');
 
-buttonForm.addEventListener('sumbit', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   e.target.reset();
 });
