@@ -1,66 +1,64 @@
-.page {
-  &__body {
-    font-family: "Inter", sans-serif;
-  }
-
-}
-
 .header {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 52px 20px 40px;
-  background-image: url(../images/header.png);
-  background-size: cover;
+  display: block;
+  background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
+
+  @include onTablet {
+    background-image: url(../images/header-table-size.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-desktop-size.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+  }
+
+  &__top {
+    @include top-actions;
+  }
 
   &__title {
-    color: #292929;
-    font-size: 40px;
     font-style: italic;
-    letter-spacing: -1.5px;
     font-weight: 800;
-    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
 
     &::before {
-      content: "";
       display: block;
-      width: 3px;
-      background-color: #292929;
-      margin-bottom: 40px;
+      content: url(../images/header-title-line.svg);
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        content: url(../images/header-title-line-table.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
     }
   }
-
-  &__nav {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    display: block;
-    height: 18px;
-    width: 24px;
-    background-image: url(../../images/menu.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    &:hover {
-      background-image: url(../../images/menu_hover.svg);
-    }
-  }
-
-  &__phone {
-    display: block;
-    width: 24px;
-    height: 24px;
-    background-image: url(../../images/phone.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
 }
