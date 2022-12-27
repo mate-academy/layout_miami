@@ -43,8 +43,5 @@ textArea.addEventListener('input', () => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-
-  document.querySelectorAll('.form__input').forEach(input => {
-    input.value = '';
-  });
+  form.reset();
 });
