@@ -1,0 +1,215 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 23px;
+
+  @include onTablet {
+    padding: 30px;
+    max-width: 1020px;
+
+  }
+
+  @include onDesktop {
+    padding: 0 40px;
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    line-height: 12px;
+    transition: background-image 0.7s;
+
+    &:hover {
+      background-image: url(../images/hover_menu.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/close.svg);
+  }
+}
+
+.header {
+  background-size: cover;
+  background-image: url(../images/main-1260.jpg);
+  background-position: 85% 100%;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/main-744.jpg);
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/main-1260.jpg);
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 30px 0 88px;
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 30%);
+        color: $text-color;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__logo-images {
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop {
+      height: 56px;
+      width: 186px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    color: $text-color;
+    line-height: 100%;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  background-color: $menu-back-color;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    color: $menu-text-color;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #1d1d1d;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $menu-text-color;
+    text-decoration: none;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
