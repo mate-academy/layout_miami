@@ -10,6 +10,7 @@ window.addEventListener('hashchange', () => {
 
 const buttonForm = document.querySelector('#btn');
 
-buttonForm.addEventListener('click', (e) => {
+buttonForm.addEventListener('sumbit', (e) => {
   e.preventDefault();
+  e.reset();
 });
