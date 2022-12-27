@@ -1,15 +1,12 @@
 'use strict';
 
-const form = document.querySelector('.form');
-
-document.querySelector('#form-submit')
-  .addEventListener('click', e => {
-    e.preventDefault();
-    form.classList.add('form--submitted');
-  });
-
 const page = document.querySelector('.page');
 const menu = document.querySelector('.menu');
+const form = document.querySelector('.form');
+const textArea = document.querySelector('#form-textarea');
+const textareaResizer = document.querySelector('#textarea-resizer');
+
+// #region scrollbar adjustment
 
 const getScrollbarWidth = () => {
   const el = document.createElement('div');
@@ -36,4 +33,16 @@ window.addEventListener('hashchange', () => {
     page.style.paddingRight = `0`;
     page.style.overflowY = `visible`;
   }
+});
+
+//  #endregion
+
+document.querySelector('#form-submit')
+  .addEventListener('click', e => {
+    e.preventDefault();
+    form.classList.add('form--submitted');
+  });
+
+textArea.addEventListener('input', () => {
+  textareaResizer.innerText = textArea.value;
 });
