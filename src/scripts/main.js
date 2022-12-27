@@ -37,12 +37,14 @@ window.addEventListener('hashchange', () => {
 
 //  #endregion
 
-document.querySelector('#form-submit')
-  .addEventListener('click', e => {
-    e.preventDefault();
-    form.classList.add('form--submitted');
-  });
-
 textArea.addEventListener('input', () => {
   textareaResizer.innerText = textArea.value;
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  document.querySelectorAll('.form__input').forEach(input => {
+    input.value = '';
+  });
 });
