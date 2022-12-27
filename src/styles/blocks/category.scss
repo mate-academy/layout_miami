@@ -1,0 +1,72 @@
+.category {
+  &__photo-row {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 20px;
+
+    @include onDesktop {
+      column-gap: 24px;
+    }
+  }
+
+  &__image-wrapper {
+    width: 130px;
+    height: 130px;
+    display: block;
+    overflow: hidden;
+
+    @include onTablet {
+      &--size-long {
+        flex-grow: 1;
+        width: 392px;
+        height: 187px;
+      }
+
+      &--size-short {
+        flex-grow: 2;
+        width: 188px;
+        height: 187px;
+      }
+    }
+
+    @include onDesktop {
+      &--size-long {
+        flex-grow: 1;
+        max-width: 672px;
+        height: 320px;
+      }
+
+      &--size-short {
+        flex-grow: 2;
+        max-width: 324px;
+        height: 320px;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition-duration: $duration;
+
+    &:hover {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    margin: 16px 0 40px;
+
+    @include onTablet {
+      font-size: 24px;
+      margin: 16px 0 64px;
+    }
+  }
+}
