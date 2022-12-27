@@ -4,9 +4,14 @@ const buttonOpen = document.querySelector('.icon--menu-opener');
 const buttonClose = document.querySelector('.icon--cross');
 const modal = document.querySelector('.nav');
 const menuItem = document.querySelectorAll('.nav__link');
+const form = document.querySelector('form');
 
 buttonOpen.addEventListener('click', openMenu);
 buttonClose.addEventListener('click', closeMenu);
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
 
 menuItem.forEach(function(item) {
   item.addEventListener('click', closeMenu);
