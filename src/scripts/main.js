@@ -11,6 +11,7 @@ buttonClose.addEventListener('click', closeMenu);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  form.reset();
 });
 
 menuItem.forEach(function(item) {
