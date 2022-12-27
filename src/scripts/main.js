@@ -3,6 +3,7 @@
 const page = document.querySelector('.page');
 const menu = document.querySelector('.menu');
 const form = document.querySelector('.form');
+const fromSubmit = document.querySelector('#form-submit');
 const textArea = document.querySelector('#form-textarea');
 const textareaResizer = document.querySelector('#textarea-resizer');
 
@@ -43,5 +44,10 @@ textArea.addEventListener('input', () => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  form.classList.remove('form--failed-submit');
   form.reset();
+});
+
+fromSubmit.addEventListener('click', () => {
+  form.classList.add('form--failed-submit');
 });
