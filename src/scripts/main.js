@@ -12,5 +12,5 @@ const buttonForm = document.querySelector('#btn');
 
 buttonForm.addEventListener('sumbit', (e) => {
   e.preventDefault();
-  e.reset();
+  e.target.reset();
 });
