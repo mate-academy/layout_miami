@@ -24,16 +24,51 @@
 
 .icon {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 100%;
+  height: 100%;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    transition: background-image 0.3s, transform 0.3s;
+
+    @include onWidth1024px {
+      &:hover {
+        background-image: url(../images/menu-hover.svg);
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+  --gap-width: 20px;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: var(--gap-width);
+
   @include onWidth600px {
-    width: 24px;
-    height: 24px;
+    --icon-width: 24px;
+    --gap-width: 40px;
+  }
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width);
   }
 }
 
@@ -66,15 +101,8 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
   &__call {
     text-decoration: none;
-    background-image: url(../images/phone.svg);
 
     @include onWidth1024px {
       &::before {
@@ -100,24 +128,6 @@
       &:hover::before {
         opacity: 1;
         pointer-events: all;
-      }
-    }
-  }
-
-  &__menu-opener {
-    margin-left: 20px;
-    background-image: url(../images/menu.svg);
-
-    transition: background-image 0.3s, transform 0.3s;
-
-    @include onWidth600px {
-      margin-left: 40px;
-    }
-
-    @include onWidth1024px {
-      &:hover {
-        background-image: url(../images/menu-hover.svg);
-        transform: rotate(-90deg);
       }
     }
   }
@@ -153,9 +163,9 @@
 }
 
 .logo {
-  flex-grow: 1;
   &__image {
     height: 17px;
+    vertical-align: middle;
 
     @include onWidth600px {
       height: 24px;
@@ -168,7 +178,7 @@
   max-width: 1200px;
   padding: 0 20px;
 
-  @include onWidth1024px {
+  @include onWidth600px() {
     padding: 0 40px;
   }
 }
@@ -223,5 +233,11 @@
 
   &__line--height-76px {
     height: 76px;
+  }
+}
+
+.menu {
+  &__content {
+    padding: 40px 0;
   }
 }
