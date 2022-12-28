@@ -1,0 +1,82 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/photos/header-image-medium.png);
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-image-large.png);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 500px;
+    padding: $HeaderTopPadding 0 64px;
+
+    @include onTablet {
+      height: 800px;
+      padding: 52px 0 40px;
+    }
+    @include onDesktop {
+      height: 100vh;
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__title {
+    font-weight: 800px;
+    font-style: italic;
+
+    font-size: 32px;
+    line-height: 32px;
+
+    letter-spacing: -1.5px;
+    color: $c-font-main;
+
+    &::before {
+      display: block;
+      content: "";
+
+      margin-bottom: 16px;
+      width: 32px;
+      @include iconSizesPosition(url(../images/wave-small.svg),27px);
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+
+      &::before {
+        display: block;
+        content: "";
+
+        margin-bottom: 16px;
+        width: 63px;
+        @include iconSizesPosition(url(../images/wave-large.svg),76px);
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+}
+
+.top-actions {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr $icon-size $icon-size;
+  justify-items: center;
+  align-items: center;
+  gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: 1fr $icon-size-large $icon-size-large;
+  }
+}
