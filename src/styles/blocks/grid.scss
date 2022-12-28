@@ -13,22 +13,32 @@
     column-gap: 24px;
   }
 
-  &--desktop, 
-  &--tablet {
+  &--desktop {
     display: block;
 
     @include onDesktop {
-      box-sizing: border-box;
       display: grid;
     }
+  }
+  
+  &--tablet {
+    display: block;
 
     @include onTablet {
-      // box-sizing: border-box;
-      // display: grid;
+      display: grid;
     }
   }
 
   &__item {
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
