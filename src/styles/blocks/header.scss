@@ -1,0 +1,78 @@
+.header {
+  background-size: cover;
+  background-image: url(../images/image-phone.png);
+
+  @include onTablet {
+    background-image: url(../images/image-tablet.png);
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/image-desktop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    height: 100vh;
+  }
+
+  &__top {
+    grid-template-columns: $logoWidth-s auto $phoneWidth-s 30px $menuWidth-s;
+
+    @include onTablet {
+      grid-template-columns: $logoWidth-l auto $phoneWidth-l 30px $menuWidth-l;
+    }
+  }
+
+  &__title {
+    padding-top: 130px;
+    font-family: "Cinzel", serif;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+
+    color: #fff;
+
+    @include onTablet {
+      padding-top: 140px;
+      font-size: 64px;
+      line-height: 100%;
+    }
+
+    @include onDesktop {
+      padding-top: 83px;
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
+
+  &__menu {
+    grid-column: -2 / -1;
+  }
+
+  &__contacts {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: end;
+    gap: 8px;
+    text-align: right;
+    padding-right: $menuWidth-l + 20px + $phoneWidth-l + 20px;
+    transition: all 0.3s;
+  }
+
+  &__call {
+    grid-column: -4 / -3;
+    text-decoration: none;
+    z-index: 1;
+
+    &:hover + .header__contacts {
+      @include onDesktop {
+        display: flex;
+      }
+    }
+  }
+}
