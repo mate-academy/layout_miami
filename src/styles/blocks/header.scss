@@ -1,7 +1,11 @@
 .header {
-  background: $background-color 86% top / cover url(../images/photos/Header_photo.jpg);
+  background: $background-color no-repeat center / cover url(../images/photos/Header_photo_mob.jpg);
   @include on-tablet {
-    background-position: center;
+    background-image: url(../images/photos/Header_photo_tablet.jpg);
+  }
+
+  @include on-dekstop {
+    background: center / cover url(../images/photos/Header_photo_default.jpg);
   }
 
   &__content {
@@ -12,15 +16,16 @@
     padding: $header-top-padding
       0
       $header-bottom-padding;
+
     @include on-tablet {
       padding: $header-top-padding-on-tablet
         0
         $header-bottom-padding-on-tablet;
     }
+  }
 
-    @include on-dekstop {
-      padding-bottom: $header-bottom-padding-on-dekstop;
-    }
+  &__top {
+    @include top-actions;
   }
 
   &__icons {
@@ -28,43 +33,10 @@
     align-items: center;
   }
 
-  &__call {
-    text-decoration: none;
-
-    @include on-dekstop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
-
   &__title {
-    font-weight: 700;
     font-size: $font-size-for-title;
-    line-height: 100%;
     text-align: center;
     letter-spacing: -1.5px;
-    color: #fff;
     @include on-tablet {
       font-size: $font-size-for-title-on-tablet;
     }
