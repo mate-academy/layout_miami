@@ -1,17 +1,22 @@
 .icon {
+  position: relative;
   display: block;
   @include iconSize;
 
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
   &--menu {
+    transition: background-image 0.3s;
     background-image: url(../images/menu.svg);
-    transition: background-image 1.3s;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
+
+      @include onDesktop {
+        background-image: url(../images/menu_hover-desktop.svg);
+      }
     }
   }
 
@@ -29,20 +34,22 @@
     position: absolute;
     top: 50%;
     transform: translate(-100%, -50%);
-    padding-right: 20px;
-    color: #fff;
+    padding-right: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    color: $colorPrimary;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
   }
 
-  &:hover &__tooltip{
-    opacity: 1;
-    pointer-events: all;
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }
