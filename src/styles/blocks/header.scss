@@ -1,0 +1,112 @@
+.header {
+  background-image: url(../images/haeder_min.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include middle-screen {
+    background-image: url(../images/haeder.png);
+  }
+
+  &__content {
+    height: 100vh;
+    padding: 40px 0 94px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include middle-screen {
+      padding-top: 52px;
+      padding-bottom: 40px;
+    }
+
+    @include big-screen {
+      padding-bottom: 64px;
+    }
+  }
+  
+  &__call {
+    --phone-shift: -30px;
+    text-decoration: none;
+    grid-column-start: 3;
+    transform: translateX(var(--phone-shift));
+
+    @include middle-screen {
+      --phone-shift: -40px;
+    }
+
+    @include big-screen {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+        
+        opacity: 0;
+        pointer-events: none;
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    grid-column-start: 4;
+  }
+
+  &__title {
+    padding: 0;
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include middle-screen {
+      font-size: 40px;
+    }
+
+    @include big-screen {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/sound_waves_min.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include middle-screen {
+        background-image: url(../images/sound_waves.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include big-screen {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
