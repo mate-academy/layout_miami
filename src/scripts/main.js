@@ -19,3 +19,11 @@ const form = document.getElementById('form');
 const inputs = document.querySelectorAll('.form-field');
 
 form.addEventListener('submit', smth);
+
+// var $page = $('html, body');
+// $('a[href*="#"]').click(function() {
+//     $page.animate({
+//         scrollTop: $($.attr(this, 'href')).offset().top
+//     }, 400);
+//     return false;
+// });
