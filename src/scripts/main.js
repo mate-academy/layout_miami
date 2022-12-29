@@ -1,9 +1,14 @@
 'use strict';
 
 const submitForm = document.querySelector('.contacts__form');
+const input = document.querySelectorAll('.js-input');
 
 function onSubmit(event) {
   event.preventDefault();
+
+  for (const item of input) {
+    item.value = '';
+  }
 }
 
 submitForm.addEventListener('submit', onSubmit);
