@@ -6,6 +6,7 @@ const form = document.querySelector('.form');
 const fromSubmit = document.querySelector('#form-submit');
 const textArea = document.querySelector('#form-textarea');
 const textareaResizer = document.querySelector('#textarea-resizer');
+const toTop = document.querySelector('.to-top');
 
 // #region scrollbar adjustment
 
@@ -50,4 +51,14 @@ form.addEventListener('submit', e => {
 
 fromSubmit.addEventListener('click', () => {
   form.classList.add('form--failed-submit');
+});
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
+    toTop.classList.add('to-top--flipped');
+    toTop.href = '#';
+  } else {
+    toTop.classList.remove('to-top--flipped');
+    toTop.href = '#footer';
+  }
 });
