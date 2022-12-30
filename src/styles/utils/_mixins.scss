@@ -1,6 +1,23 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin background-image($url) {
+  background-image: url("#{$url}");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin onBigScreen {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onMediumScreen {
+  @media (min-width: 744px) and (max-width: 1023px) {
+    @content;
   }
 }

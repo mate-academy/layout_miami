@@ -1,0 +1,94 @@
+.header {
+  @include background-image("/images/header_background-320.png");
+
+  @include onBigScreen {
+    background-image: url("/images/header_background-1260.png");
+  }
+
+  @include onMediumScreen {
+    background-image: url("/images/header_background-744.png");
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0 94px;
+    height: 100vh;
+    @include onBigScreen {
+      padding: 52px 0 64px;
+    }
+
+    @include onMediumScreen {
+      padding: 52px 0 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    @include onBigScreen {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        transform: translate(-100%, -50%);
+        top: 50%;
+        opacity: 0;
+        width: max-content;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        padding-right: 8px;
+        letter-spacing: 2px;
+        color: #292929;
+        pointer-events: none;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $main-c;
+
+    @include onBigScreen {
+      font-size: 48px;
+    }
+
+    @include onMediumScreen {
+      font-size: 40px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+      @include size(32px, 27px);
+      @include background-image("/images/header_title_icon.svg");
+
+      @include onBigScreen {
+        @include size(63px, 76px);
+        margin-bottom: 32px;
+        background-image: url("/images/header_title_icon-1260.svg");
+      }
+
+      @include onMediumScreen {
+        @include size(63px, 76px);
+        margin-bottom: 40px;
+        background-image: url("/images/header_title_icon-1260.svg");
+      }
+    }
+  }
+}
