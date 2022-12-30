@@ -1,0 +1,46 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    gap: 40px;
+    --icon-width: 24px;
+  }
+
+  @include onDesktop {
+    gap: 40px;
+    --icon-width: 24px;
+  }
+}
+
+@mixin top-actions-menu {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width);
+  align-items: center;
+
+  @include onTablet {
+    --icon-width: 24px;
+  }
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
