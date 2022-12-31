@@ -1,6 +1,25 @@
-@mixin hover($_property, $_toValue) {
+@mixin onTablet {
+  @media (min-width: 610px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin transition ($_property, $_toValue) {
   transition: #{$_property} 0.3s;
   &:hover {
     #{$_property}: $_toValue;
   }
+}
+
+@mixin link ($_color, $_fontSize, $_lineHeight) {
+  text-decoration: none;
+  color: #{$_color};
+  font-size: $_fontSize;
+  line-height: $_lineHeight;
 }
