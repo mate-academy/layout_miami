@@ -10,4 +10,4 @@ window.addEventListener('hashchange', () => {
 
 function onFormSubmit() {
   event.preventDefault();
-} 
+}
