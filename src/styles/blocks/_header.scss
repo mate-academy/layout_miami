@@ -1,0 +1,86 @@
+.header {
+  background-size: cover;
+  background-position: right;
+  background-image: url("../images/photos/header-tablet.png");
+
+  @include onTablet {
+    background-position: center;
+    background-image: url("../images/photos/header-desktop.png");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/photos/header.png");
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+
+    padding-bottom: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      padding-bottom: 194px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 256px;
+    }
+  }
+
+  &__top {
+    @include topActions;
+  }
+
+  &__phone {
+    position: relative;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        padding-right: 12px;
+        transform: translate(-100%, -50%);
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}

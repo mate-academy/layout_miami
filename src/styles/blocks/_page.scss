@@ -1,0 +1,75 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) &__main {
+    visibility: hidden;
+  }
+
+  &__body {
+    background-color: #1d1d1d;
+  }
+
+  &__section {
+    margin-bottom: 48px;
+    @include top-padding;
+
+    @include onTablet {
+      margin-bottom: 80px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 160px;
+    }
+  }
+
+  &__section-title {
+    @include section-title;
+
+    text-align: center;
+    margin-bottom: 48px;
+
+    &--s {
+      @include onDesktop {
+        font-size: 48px;
+      }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include onTablet {
+      gap: 48px;
+    }
+  }
+
+  &__more-btn {
+    margin: 40px auto 0;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 48px;
+      width: 66%;
+    }
+
+    @include onDesktop {
+      width: 33%;
+    }
+  }
+}
