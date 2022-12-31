@@ -47,6 +47,7 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   form.classList.remove('form--failed-submit');
   form.reset();
+  textareaResizer.innerText = '';
 });
 
 fromSubmit.addEventListener('click', () => {
