@@ -54,11 +54,9 @@ fromSubmit.addEventListener('click', () => {
 });
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 200) {
-    toTop.classList.add('to-top--flipped');
-    toTop.href = '#';
+  if (window.scrollY > 400) {
+    toTop.classList.add('to-top--shown');
   } else {
-    toTop.classList.remove('to-top--flipped');
-    toTop.href = '#footer';
+    toTop.classList.remove('to-top--shown');
   }
 });

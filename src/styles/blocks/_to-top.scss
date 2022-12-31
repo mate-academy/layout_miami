@@ -1,20 +1,26 @@
 .to-top {
   display: none;
+  visibility: hidden;
   position: fixed;
   justify-content: center;
   align-items: center;
-  border-radius: 100%;
   width: 50px;
   height: 50px;
   right: 62px;
   margin-right: 0;
   margin-top: 0;
   bottom: 65px;
-  cursor: pointer;
+  border-radius: 100%;
   background-color: rgba(16, 15, 15, 0.75);
-  transition: transform 0.3s, opacity 0.3s;
+  cursor: pointer;
+  transform: rotate(0.5turn);
 
-  &__arrow {
+  opacity: 0;
+  transition: opacity 0.6s, visibility 0.6s;
+
+  &::after {
+    content: "";
+    display: block;
     width: 22px;
     height: 12px;
     background-image: url(../images/to-top.svg);
@@ -24,17 +30,12 @@
     display: flex;
   }
 
-  &--flipped {
-    transform: rotate(0.5turn);
+  &--shown {
+    visibility: visible;
+    opacity: 1;
   }
 
   &:hover {
     opacity: 0.75;
-  }
-
-  &__svg {
-    fill: #fff;
-    width: 22px;
-    height: 12px;
   }
 }
