@@ -1,6 +1,79 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin width-height($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+  transition: gap $animation-time, grid $animation-time;
+
+  @include onTablet {
+    gap: 40px;
+    --icon-width: 24px;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin sectionTitle {
+  font-weight: 500;
+  margin: 0 0 42px;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
+  }
+}
+
+@mixin sectionParagraph {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 140%;
+}
+
+@mixin sectionParagraphBold {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin useGrid($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  column-gap: $gap;
+}
+
+@mixin formText {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  padding: 14px 16px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-black-form;
+  background: $color-form-white;
 }
