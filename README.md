@@ -1,4 +1,5 @@
 MyBike - Landing Page
+
 The landing page for MyBike - Starter project.
 
 The project was created using:
@@ -15,5 +16,5 @@ Mobile (> 320px)
 Tablet 744px
 DEsktop 1260px
 
-[DEMO LINK](https://RomanHrytsiuk.github.io/layout_miami/)
-[MYBIKE LAYOUT](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+[DEMO LINK](https://romanhrytsiuk.github.io/MyBike-LAYOUT/) /
+[MyBike Layout](https://github.com/RomanHrytsiuk/MyBike-LAYOUT)
