@@ -5,10 +5,80 @@
 @import "./utils/mixins";
 
 .page {
-  background-color: rgb(163, 230, 224);
   font-family: Inter, sans-serif;
+}
 
-  // &__body {}
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    height: 17px;
+    width: 130px;
+
+    @include onTablet {
+      height: 24px;
+      width: 190px;
+    }
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  display: block;
+  width: $icon--max-size * 0.75;
+  height: $icon--max-size * 0.75;
+
+  @include onTablet {
+    width: $icon--max-size;
+    height: $icon--max-size;
+  }
+
+  &--menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &--menu-opener {
+    display: block;
+    height: $icon--max-size * 0.5;
+
+    @include onTablet {
+      height: $icon--max-size * 0.75;
+    }
+
+    @include background() {
+      background-image: url(../images/header/menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/header/menu-hover2.svg);
+    }
+  }
+
+  &--cross {
+    @include background() {
+      background-image: url(../images/header/cross.svg);
+    }
+  }
+
+  &--phone {
+    display: block;
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include background() {
+      background-image: url(../images/header/phone.svg);
+    }
+  }
 }
 
 .header {
@@ -24,74 +94,38 @@
     background-image: url(../images/header/header-desktop.png);
   }
 
-  &__nav {
+  &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-  }
-
-  &__menu {
-    display: flex;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    display: block;
-    height: 12px;
-    width: 18px;
-
-    @include onTablet {
-      height: 18px;
-      width: 24px;
-    }
-
-    @include background() {
-      background-image: url(../images/header/menu.svg);
-    }
-
-    &:hover {
-      background-image: url(../images/header/menu-hover.svg);
-    }
+    max-width: 1020px;
+    height: 100%;
+    margin: 0 auto;
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
-    margin-right: 30px;
-    text-decoration: none;
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      display: block;
+      width: max-content;
+      padding-right: 12px;
 
-    @include background() {
-      background-image: url(../images/header/phone.svg);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      color: $main-black--color;
+      opacity: 0;
+      pointer-events: none;
     }
 
-    @include onTablet {
-      height: 24px;
-      width: 24px;
-      margin-right: 40px;
-
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-
-        color: $main-black--color;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -127,14 +161,8 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
   height: 100vh;
-  max-width: 1020px;
   padding: 39px 20px 94px;
-  margin: 0 auto;
 
   @include onTablet {
     padding: 52px 76px 40px 72px;
@@ -145,16 +173,53 @@
   }
 }
 
-.logo {
-  display: flex;
-  align-items: center;
+.menu {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $main-black--color;
+  background-color: $menu--color;
 
-  &__img {
-    height: 17px;
-    width: 130px;
-    @include onTablet {
-      height: 24px;
-      width: 190px;
-    }
+  &__content {
+    display: block;
+    padding-bottom: 0;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+
+  &__top-actions {
+    margin-bottom: 55px;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    width: max-content;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+  }
+
+  &__phone-number {
+    display: block;
+    width: max-content;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__call {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $main-black--color;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
   }
 }
