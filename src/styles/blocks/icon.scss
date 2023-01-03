@@ -1,0 +1,62 @@
+.icon {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    text-decoration: none;
+
+    @include onDeskTop {
+        &:hover &__tooltip {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    &--menu-opener {
+        background-image: url(../images/icon-menu.svg);
+
+        @include onTablet {
+          background-image: url(../images/bose__menu__logo__desktop.dc739afe.svg);
+        }
+
+        @include hoverForTwoProps(
+          background-image, url(../images/icon-menu_hover.svg),
+          background-repeat, no-repeat);
+    }
+
+    &--menu-close {
+        background-image: url(../images/icon-close.svg);
+    }
+
+    &--phone{
+        background-image: url(../images/icon-phone.svg);
+    }
+
+    &__tooltip {
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        content: "+1 234 555-55-55";
+
+        width: max-content;
+        padding-right: 12px;
+        color: $main-color;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+}
