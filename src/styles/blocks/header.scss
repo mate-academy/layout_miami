@@ -1,0 +1,92 @@
+.header {
+  background-image: url(../images/header/header-320.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/header/header-744.png);
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/header/header-1260.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-top-padding 0 94px;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        right: 100%;
+        transform: translate(-100%, 50%);
+        width: max-content;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: $color-text;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-duration;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color-text;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      content: url(../images/sound-320.png);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        content: url(../images/Sound-waves.png);
+      }
+      @include onDesktop() {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
