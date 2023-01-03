@@ -1,20 +1,36 @@
 .menu {
   background-color: $colorRed;
+  position: fixed;
+  z-index: 1;
+  overflow-y: auto;
 
   &__content {
     box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0;
+    padding: 25px 0;
+    color: $colorWhite;
+
+    @include onTablet {
+      padding: 50px 0;
+    }
   }
 
   &__top {
     margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 55px;
+    }
   }
 
   &__list {
-    padding: 0;
     margin: 0 0 32px;
+    padding: 0;
     list-style: none;
+
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
   }
 
   &__item {
@@ -27,54 +43,60 @@
 
   &__link {
     display: inline-block;
-    padding: 8px 0;
-    border-bottom: 1px solid transparent;
-    color: #fff;
-    text-decoration: none;
+    padding: 0 0 8px;
+
+    color: $colorWhite;
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: border-color 500ms;
+    text-decoration: none;
+
+    border-bottom: 1px solid transparent;
+
+    transition: border-color $timeTransition;
 
     &:hover {
-      border-color: #fff;
+      border-color: $colorWhite;
     }
-
   }
 
-  .menu__call {
-    width: max-content;
+  &__call {
     display: block;
+    width: max-content;
+    margin-bottom: 8px;
     font-weight: 700;
-    letter-spacing: 2px;
+    color: $colorWhite;
     text-transform: uppercase;
-    color: #fff;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color $timeTransition;
+
+    &:nth-child(2) {
+      margin-bottom: 16px;
+    }
+
+    &:hover {
+      border-color: $colorWhite;
+    }
 
     &--phone {
       font-size: 16px;
       line-height: 27px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid transparent;
-      transition: border-color 500ms;
-
-      &:first-of-type {
-        margin-bottom: 7px;
-      }
-
-      &:hover {
-        border-bottom: 1px solid #fff;
-        // bosrder-color: #fff;
-      }
     }
 
-    &--cation {
+    &--action {
+      margin: 0;
+      padding-bottom: 8px;
       font-size: 12px;
       line-height: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid transparent;
+      transition: border-color $timeTransition;
+
+      &:hover {
+        border-color: $colorWhite;
+      }
     }
   }
 }
