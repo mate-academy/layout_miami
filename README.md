@@ -2,6 +2,7 @@
 # MyBike Landing Page
 
 Simple MyBike Landing page with Contact Us form.
+The layout is designed as per [the design](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1).
 
 ## Demo
 
@@ -18,7 +19,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd layout_miami
 ```
 
 Install dependencies
@@ -39,7 +40,7 @@ Start the server
 To deploy this project run
 
 ```bash
-
+  npm run deploy
 ```
 
 ## 🛠 Skills
