@@ -1,0 +1,76 @@
+.bikes {
+  &__inner {
+
+    @include Tablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include Desktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 40px;
+    grid-column: 2 / 6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include Desktop {
+      margin-bottom: 0;
+      display: block;
+
+      &:first-child {
+        grid-column: 1 / 5;
+      }
+
+      &:nth-child(2n) {
+        grid-column: 5 / 9;
+      }
+
+      &:last-child {
+        grid-column: 9 / 13;
+      }
+
+    }
+  }
+
+}
+
+.bike {
+  display: flex;
+  flex-direction: column;
+  line-height: 140%;
+  @include effect(transform, 0.5s);
+
+  &:hover {
+    transform: scale(1.12);
+  }
+
+  &__photo {
+    display: flex;
+    justify-self: center;
+    margin-bottom: 32px;
+    max-width: max-content;
+  }
+
+  &__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+  }
+
+  &__info {
+    margin: 0 0 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+
+  }
+}
