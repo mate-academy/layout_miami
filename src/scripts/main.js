@@ -7,3 +7,11 @@ window.addEventListener("hashchange", () => {
     document.body.classList.remove("page__body--with-menu");
   }
 });
+
+document
+  .getElementById("send-contacts-button")
+  .addEventListener("click", submitForm);
+
+function submitForm() {
+  document.getElementsByClassName("contacts__form")[0].reset();
+}
