@@ -34,20 +34,16 @@
 }
 
 .icon {
+  position: relative;
   display: block;
-  height: 18px;
-  width: 18px;
+  width: 100%;
+  padding-bottom: 100%;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   text-decoration: none;
-
-  @include onDesktop() {
-    height: 24px;
-    width: 24px;
-  }
 
   &--phone {
     background-image: url(../images/phone.svg);
@@ -61,8 +57,12 @@
     }
   }
 
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
   &__tooltip {
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translate(-100%, -50%);
 
@@ -87,6 +87,36 @@
   }
 }
 
+.top-actions {
+  --icon-width: 18px;
+
+  display:grid;
+  grid-template-columns:
+  var(--icon-width)
+  1fr
+  var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop() {
+    --icon-width: 24px;
+  }
+}
+
+.container-icon {
+  display: flex;
+    gap: 30px;
+
+  @include onDesktop() {
+    gap: 63px;
+  }
+}
+
+
+
+
+
+
 .header {
   background-image: url(../images/met/header_background.jpg);
   background-size: cover;
@@ -101,21 +131,6 @@
     height: 100vh;
     padding: 24px 0 288px;
   }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .container-icon {
-    display: flex;
-    gap: 30px;
-
-    @include onDesktop() {
-      gap: 63px;
-    }
-}
 
   &__title {
     font-weight: 700;
