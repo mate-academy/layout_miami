@@ -10,8 +10,7 @@ window.addEventListener('hashchange', () => {
 
 const form = document.getElementById('form');
 
-function handleForm(event) {
-  event.preventDefault();
-};
-
-form.addEventListener('submit', handleForm);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});
