@@ -1,0 +1,70 @@
+.icon {
+  position: relative;
+  display: block;
+  width: $icon-width-small;
+  height: $icon-width-small;
+
+  @include onDesktop {
+    width: $icon-width-big;
+    height: $icon-width-big;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+
+    @include onTablet {
+      height: $icon-height-small-option;
+    }
+  }
+
+  @include default-image-settings;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 20px;
+    display: block;
+    width: max-content;
+    color: $color-white;
+    text-shadow: $color-shadow-black-transparent;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: $color-shadow-black-transparent;
+    color: $color-white;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-grey-dark;
+      text-shadow: $color-shadow-glow;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/tel.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
