@@ -15,4 +15,4 @@ form.addEventListener('submit', buttonClick, false);
 function buttonClick(event) {
   event.preventDefault();
   form.reset();
-};
+}
