@@ -1,0 +1,90 @@
+.header {
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_mobile.jpg);
+
+  @include onDesktop {
+    background-image: url(../images/header_desktop.jpg);
+  }
+
+  @include onTablet {
+    background-image: url(../images/header_tab.jpg);
+  }
+
+  &__content {
+    margin-bottom: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPaddingMobile 0 $headerBottomPaddingMobile;
+
+    @include onDesktop {
+      padding: $headerTopPaddingTablet 0 $headerBottomPaddingDesktop;
+    }
+
+    @include onTablet {
+      padding: $headerTopPaddingTablet 0 $headerBottomPaddingTablet;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 0 30px;
+
+    @include onTablet {
+      gap: 0 40px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: $titleSizeMobile;
+    line-height: $titleSizeMobile;
+    letter-spacing: -1.5px;
+    color: $mainTextColor;
+
+    @include onDesktop {
+      font-size: $titleSizeDesktop;
+      line-height: $titleSizeDesktop;
+    }
+
+    @include onTablet {
+      font-size: $titleSizeTablet;
+      line-height: $titleSizeTablet;
+    }
+
+    &::before {
+      content: url(../images/icons/wave_mob.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        content: url(../images/icons/soundwave_icon.svg);
+        width: $soundIconWidthDesktop;
+        height: $soundIconHeightDesktop;
+        margin-bottom: 32px;
+      }
+
+      @include onTablet {
+        content: url(../images/icons/soundwave_icon.svg);
+        width: $soundIconWidthDesktop;
+        height: $soundIconHeightDesktop;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
