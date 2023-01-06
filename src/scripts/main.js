@@ -9,9 +9,20 @@ window.addEventListener("hashchange", () => {
 });
 
 document
+  .getElementsByClassName("contacts__form")[0]
+  .addEventListener("submit", handleForm);
+
+document
   .getElementById("send-contacts-button")
   .addEventListener("click", submitForm);
 
 function submitForm() {
   document.getElementsByClassName("contacts__form")[0].reset();
+  document.getElementById("name").required = false;
+  document.getElementById("email").required = false;
+  document.getElementById("message").required = false;
+}
+
+function handleForm(event) {
+  event.preventDefault();
 }
