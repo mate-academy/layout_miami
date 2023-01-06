@@ -26,22 +26,17 @@
 }
 
 .icon {
+  position: relative;
   display: block;
-  height: 18px;
-  width: 18px;
+  width: 100%;
+  padding-bottom: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   text-decoration: none;
 }
-@media (min-width: 1024px) {
-  .icon {
-    height: 24px;
-    width: 24px;
-  }
-}
 .icon--phone {
-  background-image: url(../images/phone.svg);
+  background-image: url(../src/images/phone.svg);
 }
 .icon--menu {
   background-image: url(../images/menu.svg);
@@ -49,8 +44,11 @@
 .icon--menu:hover {
   background-image: url(../images/menu_hover.svg);
 }
+.icon--cross {
+  background-image: url(../images/cross.svg);
+}
 .icon__tooltip {
-  position: relative;
+  position: absolute;
   top: 50%;
   transform: translate(-100%, -50%);
   color: #fff;
@@ -73,6 +71,29 @@
   pointer-events: all;
 }
 
+.top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .top-actions {
+    --icon-width: 24px;
+  }
+}
+
+.container-icon {
+  display: flex;
+  gap: 30px;
+}
+@media (min-width: 1024px) {
+  .container-icon {
+    gap: 63px;
+  }
+}
+
 .header {
   background-image: url(../images/met/header_background.jpg);
   background-size: cover;
@@ -85,20 +106,6 @@
   box-sizing: border-box;
   height: 100vh;
   padding: 24px 0 288px;
-}
-.header__nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header .container-icon {
-  display: flex;
-  gap: 30px;
-}
-@media (min-width: 1024px) {
-  .header .container-icon {
-    gap: 63px;
-  }
 }
 .header__title {
   font-weight: 700;
@@ -113,4 +120,9 @@
     font-size: 80px;
     line-height: 80px;
   }
+}
+
+.menu {
+  padding: 24px 0;
+  background-color: #D12D35;
 }
