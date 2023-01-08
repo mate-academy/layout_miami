@@ -1,9 +1,35 @@
 .icon {
+  position: relative;
   width: 24px;
   height: 24px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    padding-right: 8px;
+    transform: translateY(-50%);
+    width: max-content;
+    align-items: center;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &--menu {
     height: 28px;
@@ -26,9 +52,22 @@
 
   &--phone {
     background-image: url(../images/Icon-Phone-call.svg);
+    top: 1px;
+
+    @include onTablet {
+      top: 3px;
+    }
+
+    @include onDesktop {
+      top: 3px;
+    }
+
   }
+
+
 
   &--cross {
     background-image: url(../images/Icon-Close.svg);
   }
+
 }
