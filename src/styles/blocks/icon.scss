@@ -1,7 +1,6 @@
-$icon--mobile: 18px;
-$icon--tablet: 24px;
-
 .icon {
+  position: relative;
+
   display: block;
   width: $icon--mobile;
   height: $icon--mobile;
@@ -9,6 +8,32 @@ $icon--tablet: 24px;
   @include onTablet {
     width: $icon--tablet;
     height: $icon--tablet;
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 
   &--menu {
@@ -25,6 +50,8 @@ $icon--tablet: 24px;
     @include background() {
       background-image: url(../images/header/menu.svg);
     }
+
+    transition-duration: 0.3s;
 
     &:hover {
       height: 100%;
