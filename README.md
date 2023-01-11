@@ -1,5 +1,7 @@
 # Miami landing page
 
+[DEMO LINK](https://Mar4enkofff.github.io/layout_miami/)
+
 In this task, you will learn how to implement a landing page. To do that:
 
 - choose a landing page design from the list below;
