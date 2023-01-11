@@ -3,37 +3,37 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  @include onIpadMini {
-    grid-template-columns: repeat(6, 1fr);
+  @include onTablet {
+    grid-template-columns: repeat($columnsTablet, 1fr);
     column-gap: 24px;
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat($columnsDesktop, 1fr);
     column-gap: 24px;
   }
 
   &--tablet {
     display: block;
 
-    @include onIpadMini {
+    @include onTablet {
       display: grid;
     }
   }
 
   &__item {
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through $columnsTablet {
+      @for $end from $start through $columnsTablet {
         &--tablet-#{$start}-#{$end} {
-          @include onIpadMini {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
+    @for $start from 1 through $columnsDesktop {
+      @for $end from $start through $columnsDesktop {
         &--desktop-#{$start}-#{$end} {
           @include onDesktop {
             grid-column: #{$start} / #{$end + 1};

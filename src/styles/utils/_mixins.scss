@@ -1,4 +1,4 @@
-@mixin onIpadMini {
+@mixin onTablet {
   @media (min-width: 744px) {
     @content;
   }
@@ -14,7 +14,41 @@
   font-size: 12px;
   line-height: 16px;
   font-weight: 700;
+
+  color: $colorMainContent;
+
   text-transform: uppercase;
   text-decoration: none;
+}
+
+@mixin productCardMainText {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+
   color: $colorMainContent;
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+
+@mixin hoverAnimation {
+  cursor: pointer;
+  transition: all $transitionTime;
+
+  &:hover {
+    transform: scale(105%);
+  }
 }

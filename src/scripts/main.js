@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const formSubmit = document.querySelector('#contact-us-form');
+
+formSubmit.addEventListener('submit', formSubmitSuccess, false);
+
+function formSubmitSuccess(event) {
+  const warn = 'Thank you! Your form was submitted!<br>';
+
+  document.getElementById('output-box').innerHTML = warn;
+
+  event.preventDefault();
+}
