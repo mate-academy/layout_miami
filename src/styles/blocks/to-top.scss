@@ -1,0 +1,36 @@
+.to-top {
+  @include img-size (50px, 50px);
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: rgba(16, 15, 15, 0.5);
+  cursor: pointer;
+  transform: rotate(180deg);
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &::after {
+    content: "";
+    display: block;
+    @include img-size (22px, 12px);
+    background-image: url(../images/to-top.svg);
+  }
+
+  @include on-dekstop {
+    display: flex;
+  }
+
+  &--shown {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
