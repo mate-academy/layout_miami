@@ -17,5 +17,7 @@ function formSubmitSuccess(event) {
 
   document.getElementById('output-box').innerHTML = warn;
 
+  document.getElementById('contact-us-form').reset();
+
   event.preventDefault();
 }
