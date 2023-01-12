@@ -1,6 +1,54 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin menuMainText {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+
+  color: $colorMainContent;
+
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@mixin productCardMainText {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+
+  color: $colorMainContent;
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+
+@mixin hoverAnimation {
+  cursor: pointer;
+  transition: all $transitionTime;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale(105%);
   }
 }
