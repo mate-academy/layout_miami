@@ -1,0 +1,101 @@
+.header {
+  background-image: url(/images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__title {
+    align-items: center;
+    font-size: 32px;
+    line-height: 100%;
+    padding-bottom: 94px;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onDesktop {
+      font-size: 48px;
+      padding-bottom: 64px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: $soundWaveWidth;
+      height: $soundWaveHeight;
+      margin-bottom: 16px;
+      background-image: url(/images/waves-mobile.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include onDesktop {
+        width: $soundWaveWidthDesktop;
+        height: $soundWaveHeightDesktop;
+        background-image: url(/images/waves.svg);
+      }
+    }
+  }
+
+  &__icon {
+    &-tooltip {
+      display: none;
+
+      @include onDesktop {
+        position: absolute;
+        display: block;
+        width: max-content;
+        right: 100%;
+        top: 50%;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 16px;
+        padding-right: 10px;
+        color: #292929;
+        transform: translateY(-50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover &-tooltip {
+      color: #262626;
+      opacity: 1;
+      transition: opacity 0.3s;
+      pointer-events: all;
+    }
+
+    &-call {
+      margin-right: 30px;
+      background-image: url(/images/phone.svg);
+
+      @include onDesktop {
+        margin-right: 40px;
+      }
+    }
+
+    &-menu {
+      background-image: url(/images/menu.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        background-image: url(/images/menu_hover.svg);
+      }
+    }
+  }
+}
