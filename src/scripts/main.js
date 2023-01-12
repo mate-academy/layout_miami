@@ -7,6 +7,10 @@ const menu = document.querySelector('.nav');
 const links = document.querySelectorAll('.nav__list .nav__link');
 const form = document.querySelector('.contact-us__form');
 
+const nameInput = form.querySelector('.form__name');
+const emailInput = form.querySelector('.form__email');
+const commentInput = form.querySelector('.form__comment');
+
 menuOpen.addEventListener('click', (e) => {
   menu.classList.add('active');
   body.style.overflowY = 'hidden';
@@ -26,4 +30,7 @@ links.forEach((link) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  nameInput.value = '';
+  emailInput.value = '';
+  commentInput.value = '';
 });
