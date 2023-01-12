@@ -1,0 +1,98 @@
+.header {
+  background-image: url(../images/photos/girlHeadphone.png);
+  background-size: cover;
+  background-position: center;
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: $headerTopPadding 0;
+  }
+  
+  &__wrapper {
+    --button-width: 18px;
+
+    @include onTablet {
+      --button-width: 24px;
+    }
+  
+    display: grid;
+    grid-template-columns: repeat(2, var(--button-width));
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__call {
+    margin-right: 24px;
+    text-decoration: none;
+  
+    @include onDesktop {
+      margin-right: 36px;
+  
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 8px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+  
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+    
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+  
+    @include onDesktop {
+      font-size: 48px;
+    }
+  
+    &::before {
+      content: "";
+      display: block;
+      background-repeat: no-repeat;
+      height: 27px;
+      background-size: contain;
+      margin-bottom: 16px;
+      background-image: url(../images/mobileWaves.svg);
+
+      @include onTablet {
+        @include beforeElement;
+        margin-bottom: 40px;
+      }
+  
+      @include onDesktop {
+        background-image: url(../images/Soundwaves.png);
+        height: 76px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
