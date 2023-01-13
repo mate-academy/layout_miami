@@ -7,6 +7,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#send__btn').addEventListener('click', (e) => {
+document.querySelector('.contact-us__form').addEventListener('submit', (e) => {
   e.preventDefault();
+  e.target.reset();
 });
