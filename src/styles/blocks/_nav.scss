@@ -1,0 +1,131 @@
+.nav {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  background-color: #c2c2c2;
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(100%);
+
+  @include paddingMobile;
+  @include mediaTablet {
+    @include paddingTablet;
+  }
+
+  &__close-icon {
+    padding: $padding-icon;
+
+    &:hover {
+      display: block;
+      animation: 0.5s ease-in-out close-hover;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 44px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $c-dark;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+
+    @include mediaDesktop {
+      border-bottom: 2px solid transparent;
+      transition: border-color $transition-duration ease-in-out;
+
+      &:hover {
+        border-color: $c-dark;
+      }
+    }
+  }
+}
+
+.nav__info {
+  &__phone {
+    display: block;
+    width: max-content;
+    color: $c-dark;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom $transition-duration ease-in-out;
+
+    &:hover {
+      border-bottom: 2px solid $c-dark;
+    }
+  }
+
+  &__book {
+    font-weight: 600;
+    color: $c-dark;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+
+    &:hover {
+      animation: 0.5s ease-in-out close-hover;
+    }
+
+    &::after {
+      content: "";
+      left: 0;
+      right: 0;
+      top: 22px;
+      height: 2px;
+      width: 100%;
+      background: $c-dark;
+      position: absolute;
+    }
+  }
+}
+
+.active {
+  transform: translateX(0);
+}
+
+@keyframes close-hover {
+  0% {
+    transform: rotate(0);
+  }
+
+  35% {
+    transform-origin: center;
+    transform: rotate(10deg);
+  }
+
+  75% {
+    transform-origin: center;
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@include mediaDesktop {
+  .scale {
+    scale: 1.35;
+  }
+}

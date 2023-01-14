@@ -1,0 +1,114 @@
+.header {
+  background-image: url("../images/cover-bg.png");
+  background-repeat: no-repeat;
+  background-position: 85% 70%;
+  background-size: cover;
+  margin-bottom: 120px;
+
+  &__container {
+    height: 80vh;
+
+    @include mediaMobile {
+      height: 100vh;
+    }
+
+    @include mediaTablet {
+      height: 100vh;
+    }
+
+    @include paddingMobile;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include mediaTablet {
+    @include paddingTablet;
+    background-position: center;
+  }
+
+  @include mediaDesktop {
+    background-position: center;
+    height: 100vh;
+    padding: 0;
+  }
+
+  &__top {
+    @include top-actions;
+
+    &--right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      @include mediaMobile {
+        gap: 30px;
+      }
+
+      @include mediaTablet {
+        gap: 40px;
+      }
+    }
+  }
+
+  &__phone {
+    height: 18px;
+    position: relative;
+
+    @include mediaTablet {
+      &:hover {
+        padding: 0 0 0 200px;
+      }
+    }
+
+    @include mediaDesktop {
+      &:hover {
+        padding: 0 0 0 200px;
+      }
+
+      & img {
+        height: 24px;
+      }
+    }
+
+    @include mediaDesktop {
+      &::after {
+        content: "+1 234 5555-55-55";
+        display: block;
+        color: $c-white;
+        width: max-content;
+        position: absolute;
+        right: 45px;
+        top: -1px;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 90px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include mediaTablet {
+      margin-bottom: 130px;
+      font-size: 64px;
+    }
+
+    @include mediaDesktop {
+      margin-bottom: 90px;
+      font-size: 80px;
+    }
+  }
+}
