@@ -4,3 +4,44 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  };
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  };
+}
+
+@mixin menuText {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+
+  color: $mainColor;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@mixin top-actions {
+    --icon-width: 18px;
+
+    display: grid;
+    grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+    gap: 40px;
+    align-items: center;
+
+    @include onDesktop {
+      --icon-width: 24px;
+  }
+
+  @include onTablet{
+    --icon-width: 24px;
+}
+}
