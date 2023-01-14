@@ -14,17 +14,20 @@ const commentInput = form.querySelector('.form__comment');
 menuOpen.addEventListener('click', (e) => {
   menu.classList.add('active');
   body.style.overflowY = 'hidden';
+  document.getElementsByTagName('html')[0].style.overflowY = 'hidden';
 });
 
 menuClose.addEventListener('click', (e) => {
   menu.classList.remove('active');
   body.style.overflowY = 'visible';
+  document.getElementsByTagName('html')[0].style.overflowY = 'visible';
 });
 
 links.forEach((link) => {
   link.addEventListener('click', (e) => {
     menu.classList.remove('active');
     body.style.overflowY = 'visible';
+    document.getElementsByTagName('html')[0].style.overflowY = 'visible';
   });
 });
 
