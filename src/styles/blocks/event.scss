@@ -2,6 +2,10 @@
   font-size: 16px;
   line-height: 27px;
 
+  &:not(:last-child) {
+    margin-bottom: $section-margin-bottom;
+  }
+
   &--last {
     margin-bottom: 40px;
   }
@@ -21,8 +25,26 @@
 
   &__picture-container {
     max-height: 186px;
-
     @include picture-container();
+
+    @include onTablet() {
+      max-height: 320px;
+      height: 186px;
+    }
+
+    @include onDesktop() {
+      height: 320px;
+    }
+
+    &--small {
+      @include onMobile() {
+        min-width: 87px;
+      }
+
+      @include onTablet() {
+        height: 284px;
+      }
+    }
   }
 
   &__picture {
@@ -30,19 +52,6 @@
 
     &--small {
       height: 87px;
-    }
-
-    &--display-none {
-      @include onTablet() {
-        display: none;
-      }
-
-      @include onDesktop() {
-        display: grid;
-      }
-    }
-    @include onTablet() {
-      height: 320px;
     }
   }
 }
