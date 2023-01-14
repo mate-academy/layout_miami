@@ -14,9 +14,9 @@
   }
 
   &--tablet {
-    display: block;
+    // display: block;
 
-    @include onTablet {
+    @include fromTablet {
       display: grid;
     }
   }
@@ -33,16 +33,10 @@
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
-
-        &--desktop-#{$start}-#{$end} {
-          @include onDescktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
       }
     }
 
-    @media (min-width: 744px) and (max-width: 1020px) {
+    @include onTablet {
       @for $start from 1 through 6 {
         @for $end from $start through 6 {
           &-tablet--#{$start}-#{$end} {

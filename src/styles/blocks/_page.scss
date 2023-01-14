@@ -1,7 +1,6 @@
 .page {
   font-family: "Cinzel", serif;
-  font-size: 16px;
-  line-height: 1.69;
+  @include font (16px, 400, 1.69);
   color: $mainDark;
   scroll-behavior: smooth;
 
@@ -12,8 +11,12 @@
   }
 
   &__header {
-    height: 100vh;
-    margin-bottom: $sectionMarginBottom;
+    height: $headerHeight;
+    margin-bottom: $sectionMarginBottomPhone;
+
+    @include fromTablet {
+      margin-bottom: $sectionMarginBottomFromTablet;
+    }
   }
 
   &__menu {
@@ -30,9 +33,11 @@
   }
 
   &__section {
-    margin-bottom: $sectionMarginBottom;
+    margin-bottom: $sectionMarginBottomPhone;
 
-    @include onTablet {
+    @include fromTablet {
+      margin-bottom: $sectionMarginBottomFromTablet;
+
       &:last-child {
         margin-bottom: 150px;
       }

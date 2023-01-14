@@ -24,28 +24,53 @@
   &__photo-container {
     display: flex;
     gap: 24px;
-    max-height: 284px;
+    max-height: 320px;
     margin-bottom: 24px;
+
+    @include onTablet {
+      max-height: 284px;
+    }
   }
 
   &__photo {
-    flex-basis: fit-content;
+    max-height: 130px;
+    flex-grow: 1;
 
     @media (max-width: 744px) {
       flex-basis: 50%;
-      max-height: 130px;
+    }
+
+    @include onTablet {
+      max-height: 190px;
+    }
+
+    @include onDescktop {
+      max-height: 320px;
     }
 
     &--square {
-      @media (min-width: 744px) and (max-width: 1020px) {
-        flex-basis: 50%;
+      @include onTablet {
         max-height: 284px;
+      }
+    }
+
+    &--hidden {
+      @include onTablet {
+        display: none;
       }
     }
   }
 
-  &-2 {
-    padding: 0;
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: scale 0.5s;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 
   &__description-title {
@@ -60,24 +85,5 @@
     align-items: center;
     width: 324px;
     margin: 0 auto;
-  }
-}
-
-.photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: scale 0.5s;
-
-  &--hidden {
-    @media (min-width: 744px) and (max-width: 1020px) {
-      display: none;
-      position: absolute;
-    }
-  }
-
-  &:hover {
-    scale: 1.1;
   }
 }
