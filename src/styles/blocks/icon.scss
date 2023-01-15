@@ -8,8 +8,11 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
 
   &--call {
+    position: relative;
     background-image: url(../images/icons/phone-call.svg);
   }
 
@@ -25,7 +28,7 @@
     background-image: url(../images/icons/close.svg);
   }
 
-  @include onTablet() {
+  @include onTablet {
     --actions-icon-size: 24px;
 
     &--burger-menu {
@@ -37,34 +40,35 @@
     }
   }
 
-  @include onDesktop() {
-    &--call {
-      position: relative;
-      text-decoration: none;
+  &__tooltip {
+    display: none;
+  }
 
-      &::before {
-        content: "+1 234 555-55-55";
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-        position: absolute;
-        top: 50%;
-        transform: translate(-100%, -50%);
+  @include onDesktop {
+    &__tooltip {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
 
-        font-weight: 700;
-        font-size: 12px;
-        letter-spacing: 2px;
-        color: #292929;
-        opacity: 0;
-        pointer-events: none;
+      padding-right: 8px;
 
-        transition: opacity 0.3s;
-      }
+      display: block;
+      width: max-content;
 
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #292929;
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 }
