@@ -2,55 +2,116 @@
 @import "fonts";
 @import "typography";
 
+@mixin onDesktop {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 .page {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 
   &__body {
-  background: gray;
-  margin: 0;
-  box-sizing: border-box;
+    background: gray;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 744px;
+  padding: 30px 23px 88px 21px;
+
+  @include onDesktop {
+    padding: 34px 72px 130px;
   }
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 30px 23px 88px 20px;
   background-image: url(../images/back-mobile.png);
   background-size: cover;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
 
-  &__nav {
-    display: grid;
-    grid-template-columns: 1fr 48px 18px;
-    justify-content: space-between;
-    align-items: center;
-    
+  @include onDesktop {
+    background-image: url(../images/back-desktop.png);
+    background-position: top;
   }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    flex-grow: 1;
+  }
+
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
+    margin-left: 30px;
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
+
+    @include onDesktop {
+      margin-left: 40px;
+    }
   }
 
   &__tell {
-    display: block;
-    width: 18px;
-    height: 18px;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+      min-width: max-content;
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      padding-right: 12px;
+      opacity: 0;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+
+    @include onDesktop {
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
   }
 
   &__title {
@@ -60,13 +121,23 @@
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #fff;
+
+    @include onDesktop {
+      font-size: 64px;
+    }
   }
 }
 
 .logo {
   display: block;
+
   &__image {
     display: block;
-  }
-}
+    height: 38px;
 
+    @include onDesktop {
+      height: 56px;
+    }
+  }
+
+}
