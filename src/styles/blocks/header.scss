@@ -1,0 +1,111 @@
+.header {
+  background-image: url(../images/photos/header_img.png);
+  background-size: cover;
+  background-position: 25%;
+
+  @include onDesktop {
+    background-image: url(../images/photos/header.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+    height: 100vh;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__call {
+    position: relative;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        display: block;
+        width: max-content;
+        position: absolute;
+
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        padding-right: 12px;
+        line-height: 16px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+
+    line-height: 32px;
+    text-align: left;
+    letter-spacing: -1.5px;
+
+    &::before {
+      display: block;
+      content: url(/images/header_decor.svg);
+
+      height: 27px;
+      width: 32px;
+      margin-bottom: 16px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+
+      &::before {
+        display: block;
+        content: url(/images/waves.svg);
+
+        height: 76px;
+        width: 63px;
+        margin-bottom: 40px;
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+
+      &::before {
+        display: block;
+        content: url(/images/waves.svg);
+
+        height: 76px;
+        width: 63px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
