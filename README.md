@@ -1,4 +1,4 @@
-# Miami landing page
+# MyBike landing page
 
 In this task, I implemented a landing page, that represents a bicycle shop, using such technologies as JavaScript, HTML, CSS, BEM, SASS.
 
