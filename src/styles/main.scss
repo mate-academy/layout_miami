@@ -2,42 +2,65 @@
 @import "fonts";
 @import "typography";
 
-@mixin onDesktop {
+@mixin onTablet {
   @media (min-width: 744px) {
     @content;
   }
 }
 
-$headerTopPadding: 29px;
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+$headerPaddingTop: 30px;
+$whiteColor: #fff;
+$blackColor: #1d1d1d;
 
 .page {
   font-family: "Poppins", sans-serif;
 
   &__body {
-    background: gray;
     margin: 0;
     box-sizing: border-box;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
   }
 }
 
 .container {
   margin: 0 auto;
-  padding: 30px 23px 0 21px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
 
   @include onDesktop {
-    padding: 34px 72px 0 130px;
+    padding: 0 120px;
   }
 }
 
 .top-action {
   --icon-width: 18px;
+  --icon-gap: 30px;
   display: grid;
-  gap: 30px;
+  gap: var(--icon-gap);
   grid-template-columns: 1fr var(--icon-width) var(--icon-width);
   align-items: center;
 
-  @include onDesktop {
-    gap: 40px;
+  @include onTablet {
+    --icon-gap: 40px;
     --icon-width: 24px;
   }
 }
@@ -62,9 +85,11 @@ $headerTopPadding: 29px;
   &--phone {
     background-image: url(../images/phone.svg);
   }
-  // &--close {
 
-  // }
+  &--close {
+    background-image: url(../images/cross.svg);
+    grid-column: 3;
+  }
 }
 
 .header {
@@ -73,7 +98,7 @@ $headerTopPadding: 29px;
   background-position: right;
   background-repeat: no-repeat;
 
-  @include onDesktop {
+  @include onTablet {
     background-image: url(../images/back-desktop.png);
     background-position: top;
   }
@@ -82,14 +107,19 @@ $headerTopPadding: 29px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 744px;
+    max-width: 744px;    
+    height: 100vh;
+    padding-top: $headerPaddingTop;
     padding-bottom: 88px;
+    box-sizing: border-box;
 
-    @include onDesktop {
+    @include onTablet {
       padding-bottom: 130px;
     }
-    height: 100vh;
-    box-sizing: border-box;
+
+    @include onDesktop() {
+      padding-bottom: 200px;
+    }
   }
 
   &__phone {
@@ -104,7 +134,7 @@ $headerTopPadding: 29px;
       transform: translate(-100%, -50%);
       padding-right: 12px;
       opacity: 0;
-      color: #fff;
+      color: $whiteColor;
       font-weight: 700;
       font-size: 12px;
       line-height: 16px;
@@ -126,33 +156,34 @@ $headerTopPadding: 29px;
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -1.5px;
-    color: #fff;
+    color: $whiteColor;
+
+    @include onTablet {
+      font-size: 64px;
+    }
 
     @include onDesktop {
-      font-size: 64px;
+      font-size: 80px;
     }
   }
 }
 
-.logo {
+.logo__image {
   display: block;
+  height: 38px;
 
-  &__image {
-    display: block;
-    height: 38px;
-
-    @include onDesktop {
-      height: 56px;
-    }
+  @include onTablet {
+    height: 56px;
   }
-
 }
 
 .menu {
   background-color: #e5e5e5;
 
   &__content {
-    padding-bottom: 167px;
+    box-sizing: border-box;
+    padding-top: $headerPaddingTop;
+    height: 100vh;
   }
 
   &__top {
@@ -180,7 +211,7 @@ $headerTopPadding: 29px;
     border-bottom: 1px solid transparent;
 
     text-decoration: none;
-    color: #1d1d1d;
+    color: $blackColor;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 22px;
@@ -189,7 +220,7 @@ $headerTopPadding: 29px;
     transition: border-color 0.3s;
 
     &:hover {
-      border-color: #1d1d1d;
+      border-color: $blackColor;
     }
   }
 
@@ -199,7 +230,7 @@ $headerTopPadding: 29px;
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
-    color: #1d1d1d;
+    color: $blackColor;
 
     &--phone {
       font-size: 16px;
@@ -210,7 +241,7 @@ $headerTopPadding: 29px;
       font-size: 12px;
       line-height: 16px;
       padding-bottom: 16px;
-      border-bottom: 1px solid #1d1d1d;
+      border-bottom: 1px solid $blackColor;
     }
   }
 }
