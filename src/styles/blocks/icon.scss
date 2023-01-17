@@ -1,0 +1,73 @@
+.icon {
+  --actions-icon-size: 18px;
+
+  display: block;
+  width: var(--actions-icon-size);
+  padding-bottom: var(--actions-icon-size);
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &--call {
+    position: relative;
+    background-image: url(../images/icons/phone-call.svg);
+  }
+
+  &--burger-menu {
+    background-image: url(../images/icons/burger-menu-mobile.svg);
+
+    &:hover {
+      background-image: url(../images/icons/burger-menu-mobile-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/close.svg);
+  }
+
+  @include onTablet {
+    --actions-icon-size: 24px;
+
+    &--burger-menu {
+      background-image: url(../images/icons/burger-menu-desktop.svg);
+
+      &:hover {
+        background-image: url(../images/icons/burger-menu-desktop-hover.svg);
+      }
+    }
+  }
+
+  &__tooltip {
+    display: none;
+  }
+
+  @include onDesktop {
+    &__tooltip {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      padding-right: 8px;
+
+      display: block;
+      width: max-content;
+
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #292929;
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
