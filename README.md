@@ -7,9 +7,11 @@ information for business enquiries
 
 </h4>
 This landing has been realized using HTML&SCSS
+<br>
+
 Header, Menu, and 2 first sections (Recommended and Categories) has been implemented with
 the display: flex property
-The other 2 sections were positioned using display: grid property
+The other 2 sections were positioned using display: grid
 
 
 
