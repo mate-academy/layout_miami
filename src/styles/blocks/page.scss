@@ -1,4 +1,72 @@
 .page {
   font-family: "Inter", sans-serif;
   color: $colorGrey;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $colorGrey;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #5c5e61;
+      border-radius: 20px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    padding-top: 120px;
+
+    &:last-child {
+      padding-bottom: 120px;
+    }
+  }
+
+  &__section-title {
+    display: block;
+    margin-bottom: 48px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    &--left {
+      text-align: left;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
 }
