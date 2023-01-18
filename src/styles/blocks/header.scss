@@ -1,0 +1,65 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/bike-cover.png);
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        transform: translate(-100%, 75%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $colorBlackTiteText;
+        opacity: 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: $colorBlackTiteText;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 90px;
+
+    @include onDesktop {
+      padding-bottom: 120px;
+    }
+  }
+}
