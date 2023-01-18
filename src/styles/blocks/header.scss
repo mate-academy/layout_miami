@@ -5,17 +5,29 @@
   background-repeat: no-repeat;
 
   &__content {
+    --headerTopPadding: 40px;
+    --headerBottomPadding: 94px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0 94px;
+    padding: var(--headerTopPadding) 0 var(--headerBottomPadding);
+
+    @include onTablet {
+      --headerTopPadding: 52px;
+      --headerBottomPadding: 40px;
+    }
+
+    @include onDesktop {
+      --headerBottomPadding: 64px;
+    }
   }
 
   &__top {
     @include top-actions;
+    align-items: center;
   }
 
   &__icons {
@@ -25,22 +37,41 @@
   }
 
   &__title {
-    margin: 0;
     font-style: italic;
     font-weight: 800;
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
 
-    &-icon-box {
-      display: flex;
-      width: 32px;
-      margin-bottom: 16px;
+    width: max-content;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
     }
 
-    &-icon {
-      width: 100%;
-      height: 26px;
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    &::before {
+      content: url(../images/photos/header-title--icon.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        content: url(../images/photos/header-title-icon-hover.svg);
+        margin-bottom: 40px;
+        width: 63px;
+        height: 76px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
     }
   }
 }

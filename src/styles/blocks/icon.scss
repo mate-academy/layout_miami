@@ -1,15 +1,20 @@
 .icon {
   display: block;
   width: 18px;
+  height: 18px;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
   &--phone {
     position: relative;
-    height: 18px;
-    background: url(../images/photos/header-phone.svg);
+    background-image: url(../images/photos/header-phone.svg);
   }
 
   &__tooltip {
@@ -31,21 +36,24 @@
     pointer-events: none;
   }
 
-  &--phone:hover &__tooltip {
-    opacity: 1;
-    pointer-events: all;
+  @include onDesktop {
+    &--phone:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--menu {
     background-image: url(../images/photos/header-menu.svg);
-    height: 12px;
     margin-left: 30px;
-
     transition: 0.3s;
+
+    @include onTablet {
+      margin-left: 42px;
+    }
 
     &:hover {
       background-image: url(../images/photos/menu-icon--hover.svg);
-      height: 18px;
     }
   }
 }
