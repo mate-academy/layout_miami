@@ -1,0 +1,137 @@
+.header {
+  background-image: url(../images/photos/header.jpg);
+  background-repeat: no-repeat;
+  background-position-x: 35%;
+  background-size: cover;
+
+  @include onDesktop {
+    background-position-y: 55%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px 90px;
+    height: 100vh;
+
+    @include onTablet {
+      padding: 50px 70px 40px;
+    }
+
+    @include onDesktop {
+      padding: 50px 120px 60px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav-link-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link-phone {
+    margin-right: 30px;
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+    @extend %icon-position;
+    @include sizePhoneIcon (18px);
+
+    @include onTablet {
+      @include sizePhoneIcon (24px);
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        display: block;
+        padding-right: 10px;
+        width: max-content;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+        transition: $transition-duration;
+      }
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__link-menu {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu_small.svg);
+    transition: $transition-duration;
+    @extend %icon-position;
+
+    @include onTablet {
+      width: 24px;
+      height: 18px;
+      background-image: url(../images/menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover_small.svg);
+
+      @include onTablet {
+        background-image: url(../images/menu-hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 15px;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/wave_small.svg);
+      @extend %icon-position;
+
+      @include onTablet {
+        background-image: url(../images/wave.svg);
+        margin-bottom: 40px;
+        width: 63px;
+        height: 76px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
