@@ -7,3 +7,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--menu');
   }
 });
+
+const pageReload = document.querySelector("#form-reload");
+
+pageReload.addEventListener("submit", formReload, false);
+
+function formReload(event) {
+  event.preventDefault();
+}
