@@ -8,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const sendButton = document.querySelector('#button-send');
+const sendButton = document.querySelector('#form');
 
-sendButton.addEventListener('click', sendButtonClick, false);
+sendButton.addEventListener('submit', sendButtonClick, false);
 
 function sendButtonClick(event) {
   event.preventDefault();
