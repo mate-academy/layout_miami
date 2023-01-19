@@ -1,13 +1,13 @@
-# Miami landing page
+# MyBike
 
-In this task, you will learn how to implement a landing page. To do that:
+A brief description of a project:
+- Website was stylized on a bike`s theme.
+- It contains:
+  - 'header' with a logo, first-link for a call and second one for a menu.
+  - 'menu' with a list of links, which led to main`s sections and also links for a call.
+  - 'main' part with different sections, such as "about-us", "Bikes", "Details" and "Contact information".
+  - footer with a picture only.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+[DEMO LINK](https://Pavlo-Petrashevskyi.github.io/layout_miami/) - project.
+
+[MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1) - design
