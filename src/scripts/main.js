@@ -10,8 +10,11 @@ window.addEventListener('hashchange', () => {
 
 const sendButton = document.querySelector('#form');
 
-sendButton.addEventListener('submit', sendButtonClick, false);
-
-function sendButtonClick(event) {
+function stopDefAction(event) {
+  sendButton.reset();
   event.preventDefault();
 }
+
+sendButton.addEventListener(
+  'submit', stopDefAction, false
+);
