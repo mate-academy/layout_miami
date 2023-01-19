@@ -7,3 +7,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const form = document.getElementById('form');
+const button = document.getElementById('button');
+
+button.addEventListener('click', () => form.reset());
