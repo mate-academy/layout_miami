@@ -7,3 +7,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const sendButton = document.querySelector('#form');
+
+sendButton.addEventListener('submit', sendButtonClick, false);
+
+function sendButtonClick(event) {
+  event.preventDefault();
+}
