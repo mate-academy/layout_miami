@@ -1,0 +1,84 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-phone {
+    width: 18px;
+    height: 18px;
+    background-image: url(/images/Vector-3.svg);
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    transition: transform 0.3s;
+
+    @include onDesktop {
+      &:hover::before {
+        display: block;
+        position: relative;
+        top: 50%;
+        width: max-content;
+        content: "+1 234 5555-55-55";
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        padding-right: 20px;
+        color: $colorWhite;
+        transform: translate(-100%, -50%);
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__menu-tab {
+    margin-left: 30px;
+    background-size: cover;
+    background-position: center;
+    
+    &--opener {
+      width: 18px;
+      height: 12px;
+      background-image: url(/images/Vector.svg);
+      transition: background-image 0.3s;
+
+      &:hover {
+        background-image: url(/images/Vector-1.svg);
+      }
+
+      @include onTablet {
+        width: 24px;
+        height: 16px;
+        margin-left: 40px;
+      }
+    }
+    
+    &--cross {
+      background-image: url(/images/Vector-2.svg);
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+      
+      &:hover {
+        transform: scale(1.3);
+      }
+
+      @include onDesktop {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+}
