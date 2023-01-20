@@ -1,13 +1,17 @@
 .about {
-  margin: 0 0 92px;
   font-weight: 500;
 
-  @include onTablet {
-    margin: 0 0 132px;
-  }
+  &__content {
+    display: grid;
 
-  @include onDesktop {
-    margin: 0 0 164px;
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
   }
 
   &__title {
@@ -18,16 +22,25 @@
     @include onTablet {
       margin: 0;
       font-size: 48px;
+      grid-column: 1 / 4;
     }
 
     @include onDesktop {
-      margin: 0;
       font-size: 64px;
+      grid-column: 1 / 6;
     }
   }
 
   &__description {
     margin: 0;
     font-size: 23px;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / 12;
+    }
   }
 }
