@@ -1,4 +1,4 @@
-# Miami landing page
+# My Bike landing page
 Here is implemented a landing page. The landing is about bike shop where customer can watch variables of bikes and order a consultation. The page supports all devices and it is looks good in any type of screen resolution. Also, it has smooth user interaction.
 
 Used technologies: HTML5, CSS3, Saas, BEM.
