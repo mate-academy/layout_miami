@@ -13,7 +13,7 @@ cross.addEventListener('click', () => {
 
 const form = document.querySelector('#form');
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   form.reset();
   e.preventDefault();
 });
