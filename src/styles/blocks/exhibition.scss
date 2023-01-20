@@ -1,0 +1,106 @@
+.exhibition {
+
+  &__images {
+    @include useGrid (2, 20px);
+
+    &-small {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      @include onDisktop {
+        @include useGrid (12, 24px);
+      }
+
+      &--online {
+        @include onDisktop {
+          @include useGrid (12, 24px);
+        }
+      }
+    }
+
+    @include onDisktop {
+      @include useGrid (12, 24px);
+    }
+
+    &-online {
+      @include onDisktop {
+        // height: 320px;
+        width: 324px;
+      }
+    }
+
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s;
+
+    object-fit: cover;
+    object-position: center;
+
+    &-container {
+      position: relative;
+      width: 100%;
+
+      max-height: 320px;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onDisktop {
+        height: 320px;
+        padding-bottom: 0;
+      }
+    }
+
+    &:hover {
+      width: 105%;
+    }
+
+  }
+
+  &__discription {
+
+    &-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: $colorRed;
+
+      &--online {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+
+        text-align: center;
+
+        color: #d12d35;
+
+      }
+    }
+
+    &-subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 27px;
+      color: #000;
+
+      &--online {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27px;
+        margin-bottom: 48px;
+        text-align: center;
+        color: #161616;
+      }
+    }
+  }
+}
