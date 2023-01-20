@@ -14,4 +14,5 @@ sendButton.addEventListener('submit', sendButtonClick, false);
 
 function sendButtonClick(event) {
   event.preventDefault();
+  this.reset(); // эта строка добавляет функцию сброса на форму
 }
