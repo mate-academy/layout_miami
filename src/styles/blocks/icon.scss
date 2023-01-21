@@ -1,0 +1,79 @@
+.icon {
+  display: block;
+  width: 18px;
+
+  @include onTablet {
+    width: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  &--phone {
+    position: relative;
+    height: 18px;
+    background-image: url(../images/photos/header-phone.svg);
+
+    @include onTablet {
+      height: 24px;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-dark-gray;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  @include onDesktop {
+    &--phone:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/photos/header-menu.svg);
+    margin-left: 30px;
+    height: 12px;
+    transition: 0.3s;
+
+    &:hover {
+      background-image: url(../images/photos/menu-icon--hover.svg);
+    }
+
+    @include onTablet {
+      height: 20px;
+      margin-left: 40px;
+      background-image: url(../images/photos/iconMenuTablet.svg);
+    }
+
+  }
+
+  &--cross {
+    background-image: url(../images/photos/icon-cross.svg);
+    width: 16px;
+    height: 16px;
+
+    @include onDesktop {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.header {
+  background-image: url(../images/header-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/header-background-tablet.jpg);
+    background-position: top;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-background-desktop.jpg);
+    background-position: center;
+  }
+
+  &__content {
+    --headerTopPadding: 40px;
+    --headerBottomPadding: 94px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: var(--headerTopPadding) 0 var(--headerBottomPadding);
+
+    @include onTablet {
+      --headerTopPadding: 52px;
+      --headerBottomPadding: 40px;
+    }
+
+    @include onDesktop {
+      --headerBottomPadding: 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    width: max-content;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    &::before {
+      content: url(../images/photos/header-title--icon.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        content: url(../images/photos/header-title-icon-hover.svg);
+        margin-bottom: 40px;
+        width: 63px;
+        height: 76px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
