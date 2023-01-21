@@ -1,0 +1,94 @@
+.header {
+  background-position: 85%;
+  background-size: cover;
+  background-image: url(../images/Cover_bike.jpg);
+  margin-bottom: 60px;
+
+  @include onTablet {
+    background-position: center;
+    margin-bottom: 60px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 120px;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 130px 1fr 18px 24px;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 30px 0 90px;
+  }
+
+  &__call {
+    height: 18px;
+    width: 18px;
+    text-decoration: none;
+    background-image: url(../images/VectorCall.svg);
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+
+    @include onDesktop {
+      height: 24px;
+      width: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $text-color-main;
+        width: max-content;
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    color: #fff;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      margin-bottom: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      margin-bottom: 115px;
+    }
+  }
+}
