@@ -12,16 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 20px 90px;
-    height: 100vh;
-
-    @include onTablet {
-      padding: 50px 70px 40px;
-    }
-
-    @include onDesktop {
-      padding: 50px 120px 60px;
-    }
+    @extend %content-paddings;
   }
 
   &__nav {
@@ -29,42 +20,39 @@
     justify-content: space-between;
   }
 
-  &__nav-link-container {
+  &__nav-container {
     display: flex;
     align-items: center;
   }
 
-  &__link-phone {
+  &__call {
     margin-right: 30px;
     text-decoration: none;
     background-image: url(../images/phone.svg);
-    @extend %icon-position;
-    @include sizePhoneIcon (18px);
 
     @include onTablet {
-      @include sizePhoneIcon (24px);
       margin-right: 40px;
     }
 
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
-        position: relative;
         display: block;
-        padding-right: 10px;
-        width: max-content;
+        position: relative;
         top: 50%;
+        padding-right: 10px;
         transform: translate(-100%, -50%);
+        width: max-content;
         font-family: Inter, sans-serif;
         font-size: 12px;
         line-height: 16px;
         font-weight: 700;
-        color: #292929;
-        letter-spacing: 2px;
+        color: $color-main;
+        letter-spacing: $letter-spacing-link;
         text-transform: uppercase;
         opacity: 0;
         pointer-events: none;
-        transition: $transition-duration;
+        transition: opacity $transition-duration;
       }
     }
 
@@ -76,16 +64,11 @@
     }
   }
 
-  &__link-menu {
-    width: 18px;
-    height: 12px;
+  &__menu-opener {
     background-image: url(../images/menu_small.svg);
-    transition: $transition-duration;
-    @extend %icon-position;
+    transition: background-image $transition-duration;
 
     @include onTablet {
-      width: 24px;
-      height: 18px;
       background-image: url(../images/menu.svg);
     }
 
@@ -117,16 +100,17 @@
       content: "";
       display: block;
       margin-bottom: 15px;
-      width: 32px;
-      height: 27px;
       background-image: url(../images/wave_small.svg);
+
+      @include sizeIcon (32px);
+
       @extend %icon-position;
 
       @include onTablet {
-        background-image: url(../images/wave.svg);
         margin-bottom: 40px;
-        width: 63px;
-        height: 76px;
+        background-image: url(../images/wave.svg);
+
+        @include sizeIcon (76px);
       }
 
       @include onDesktop {
