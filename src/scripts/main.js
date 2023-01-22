@@ -2,6 +2,7 @@
 
 const menuOpener = document.querySelector('.icon--menu');
 const menuCloser = document.querySelector('.icon--cross');
+const menuLink = document.querySelectorAll('.menu__link');
 const page = document.querySelector('.page');
 
 menuOpener.addEventListener('click', () => {
@@ -10,4 +11,10 @@ menuOpener.addEventListener('click', () => {
 
 menuCloser.addEventListener('click', () => {
   page.style.overflow = 'visible';
+});
+
+menuLink.forEach(link => {
+  link.addEventListener('click', () => {
+    page.style.overflow = 'visible';
+  });
 });
