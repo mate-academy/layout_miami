@@ -4,12 +4,19 @@ const menuOpener = document.querySelector('.icon--menu');
 const menuCloser = document.querySelector('.icon--cross');
 const menuLink = document.querySelectorAll('.menu__link');
 const button = document.querySelector('.button');
+const nameOfPerson = document.querySelectorAll('.form__input')[0];
+const email = document.querySelectorAll('.form__input')[1];
+const message = document.querySelector('.form__textarea');
 const form = document.querySelector('.form');
 const page = document.querySelector('.page');
 
 button.addEventListener('click', (e) => {
-  e.preventDefault();
-  form.reset();
+  if (nameOfPerson.value.length !== 0
+      && message.value.length !== 0
+      && email.value.includes('@')) {
+    form.reset();
+    e.preventDefault();
+  }
 });
 
 menuOpener.addEventListener('click', () => {
