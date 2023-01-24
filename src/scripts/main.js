@@ -8,22 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
+const form = document.getElementById("contact-us-form");
 
-document.getElementById('contact-us-form').addEventListener(
-  'submit', stopDefAction, false
-);
-
-const btn = document.getElementById('btn');
-
-btn.addEventListener('click', function handleClick(event) {
-  event.preventDefault();
-
-  const inputs = document.querySelectorAll('#name, #email, #message');
-
-  inputs.forEach(input => {
-    input.value = '';
-  });
+form.addEventListener('submit', (e) => {
+  // действия с данными
+  e.preventDefault();
+  e.target.reset(); // очищаем форму
 });
