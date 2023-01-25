@@ -1,0 +1,127 @@
+.header {
+  background-image: url(/images/header-320.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onTablet {
+    background-image: url(/images/header-744.jpg);
+    background-position: 100%;
+  }
+
+  @include onDesktop {
+    background-image: url(/images/header-1024.jpg);
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__icon {
+    &-tooltip {
+      display: none;
+
+      @include onDesktop {
+        position: absolute;
+        display: block;
+        right: 100%;
+        top: 50%;
+        width: max-content;
+        padding-right: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 16px;
+        color: #292929;
+        transform: translateY(-50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover &-tooltip {
+      color: #262626;
+      opacity: 1;
+      transition: opacity 0.3s;
+      pointer-events: all;
+    }
+
+    &-call {
+      margin-right: 30px;
+      background-image: url(/images/phone.svg);
+
+      @include onTablet {
+        margin-right: 40px;
+      }
+
+      @include onDesktop {
+        margin-right: 40px;
+      }
+    }
+
+    &-menu {
+      background-image: url(/images/menu.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        background-image: url(/images/menu_hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    align-items: center;
+    margin: 0;
+    padding-bottom: 94px;
+    font-size: $titleSize;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onTablet {
+      padding-bottom: 40px;
+      font-size: $titleSizeTablet;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+      font-size: $titleSizeDesktop;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      margin-bottom: 16px;
+      width: $titleSize;
+      height: 28px;
+      background-image: url(/images/waves-mobile.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include onTablet {
+        width: 54px;
+        height: 66px;
+        background-image: url(/images/waves.svg);
+      }
+
+      @include onDesktop {
+        width: 64px;
+        height: 76px;
+        background-image: url(/images/waves.svg);
+      }
+    }
+  }
+}
