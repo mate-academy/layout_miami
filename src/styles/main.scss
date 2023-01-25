@@ -1,7 +1,150 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onTablet {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Cinzel", serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop() {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 25px 0;
+
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+
+  @include onTablet {
+    padding: 50px 0;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-align: center;
+    margin-top: 25vh;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    text-decoration: none;
+
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/phone.svg);
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        display: block;
+        width: 201px;
+        padding-right: 16px;
+
+        text-align: right;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+
+        transform: translate(-100%, -100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.wrap {
+  display: flex;
+  gap: 24px;
+
+  @include onTablet {
+    gap: 55px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onTablet() {
+      height: 65px;
+    }
+  }
 }
