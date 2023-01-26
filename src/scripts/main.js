@@ -8,7 +8,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const pageReload = document.querySelector('#form');
+const pageReload = document.querySelector('#form-reload');
 
 pageReload.addEventListener('submit', function formReload(event) {
   event.preventDefault();
