@@ -1,0 +1,105 @@
+.page {
+  font-family: "Cinzel", serif;
+  scroll-behavior: smooth;
+  
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 100px;
+
+    @include onTablet {
+      margin-bottom: 140px;
+    }
+  }
+    
+  &__section-title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    color: $color-main-dark;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &--first {
+      text-align: start;
+    }
+
+    &--first::before {
+      content: "Plan your visit";
+      display: block;
+      color: $color-rose;
+      font-size: 12px;
+      line-height: 17px;
+      margin-bottom: 2px;
+    }
+
+    &--margin-bottom {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__section-paragraph {
+    margin: 0;
+    line-height: 27px;
+    color: $color-main-dark;
+
+    &--bold {
+      font-weight: 700;
+    }
+
+    &--center {
+      padding-top: 8px;
+      text-align: center;
+    }
+
+    &--rose {
+      color: $color-rose;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    @include hover(transform, scale(1.1));
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 32px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+}
