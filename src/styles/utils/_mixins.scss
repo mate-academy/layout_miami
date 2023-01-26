@@ -5,7 +5,7 @@
 }
 
 @mixin onTablet {
-  @media (max-width: 1023px) {
+  @media (min-width: 744px) {
     @content;
   }
 }
@@ -30,11 +30,11 @@
 ) {
     display: flex;
   
-    @if $content  !=start {
+    @if $content != start {
       justify-content: $content;
     }
   
-    @if $direction  !=row {
+    @if $direction != row {
       flex-direction: $direction;
     }
   
@@ -49,18 +49,18 @@
 
   @if $block =="header" {
     @include flex (column);
-    padding: $header-padding-big 0 20vh;
+    padding:  $header-padding-small 0 20vh;
 
-    @include onMobile {
-      padding: $header-padding-small 0 20vh;
+    @include onTablet {
+      padding: $header-padding-big 0 20vh;
     }
   }
 
   @else {
-    padding: $header-padding-big 0;
+    padding: $header-padding-small 0;
 
-    @include onMobile {
-      padding: $header-padding-small 0;
+    @include onTablet {
+      padding: $header-padding-big 0;
     }
   }
 }
@@ -75,11 +75,11 @@
       grid-template-columns: #{$col-1}fr #{$col-2}fr #{$col-3}fr;
     }
 
-    @if $col-1 ==$col-2 {
+    @if $col-1 == $col-2 {
       grid-template-columns: repeat(2, #{$col-1}fr);
     }
 
-    @if $col-2 ==$col-3 {
+    @if $col-2 == $col-3 {
       grid-template-columns: repeat(3, #{$col-1}fr);
     }
 }

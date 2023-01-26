@@ -1,24 +1,23 @@
 .about {
-  @include grid(5, 6, 1);
+  @include onTablet {
+    @include grid(1, 1);
+  }
 
+  @include onDesktop {
+  @include grid-cols(5, 6, 1);
+  }
+  
   &__title {
     @extend %text-section-title;
     text-align: left;
+    margin-bottom: $double-line;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
   }
 
   &__paragraph {
     @extend %text-about;
-  }
-
-  @include onTablet {
-    @include grid-cols(1, 1)
-  }
-
-  @include onMobile {
-    display: block;
-
-    &__title {
-      margin-bottom: $double-line;
-    }
   }
 }
