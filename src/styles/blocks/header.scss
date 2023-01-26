@@ -1,0 +1,146 @@
+@import "./utils/mixins";
+@import "./utils/vars";
+
+.header {
+  height: 100vh;
+  position: relative;
+  background-image: url(../images/photos/header-background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include onTablet {
+      padding: 0 72px;
+    }
+
+    @include onDesctop() {
+      padding: 0 120px;
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    padding: $topPaddingSmall 0 0;
+
+    @include onTablet {
+      padding: $topPaddingBig 0 0;
+    }
+
+    @include onDesctop {
+      padding: $topPaddingBig 0 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-img {
+    width: 64px;
+    height: 46px;
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon-wrapper {
+    margin-right: 30px;
+    width: 18px;
+    height: 18px;
+
+    @include onTablet {
+      margin-right: 63px;
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesctop() {
+      margin-right: 63px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__icon-phone {
+    position: relative;
+    cursor: auto;
+  }
+
+  &__phone {
+    display: none;
+
+    @include onDesctop {
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      padding-right: 20px;
+
+      display: block;
+      cursor: pointer;
+      width: max-content;
+      text-align: end;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &__icon-phone:hover &__phone {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__title {
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      top: 40%;
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesctop() {
+      top: 35%;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
