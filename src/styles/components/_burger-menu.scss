@@ -1,0 +1,103 @@
+.burger-menu {
+  display: flex;
+  @include square(rem(24));
+  cursor: pointer;
+
+  @include small-breakpoint {
+    @include square(rem(24));
+  }
+
+  &__container {
+    margin: auto;
+    position: relative;
+    width: rem(18);
+    height: rem(12);
+
+    @include small-breakpoint {
+      width: rem(24);
+      height: rem(17);
+    }
+  }
+
+  &__line {
+    display: block;
+    position: absolute;
+    height: rem(2);
+    width: 100%;
+    opacity: 1;
+    left: 0;
+    border-radius: rem(2);
+    transform: rotate(0);
+    transition: top, transform, width, opacity, color;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease-in-out;
+    background-color: $color-main-light;
+
+    @include small-breakpoint {
+      height: rem(3);
+    }
+
+    &--1 {
+      top: 0;
+    }
+
+    &--2 {
+      top: 5px;
+
+      @include small-breakpoint {
+        top: 7px;
+      }
+    }
+
+    &--3 {
+      top: 10px;
+
+      @include small-breakpoint {
+        top: 14px;
+      }
+    }
+  }
+
+  &.opened &__line,
+  &.closed &__line {
+    width: 100%;
+  }
+
+  &.opened &__line {
+    background-color: $color-main-dark;
+  }
+
+  &.opened &__line--1 {
+    transform: rotate(45deg);
+    top: 5px;
+  }
+
+  &.opened &__line--2 {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  &.opened &__line--3 {
+    transform: rotate(-45deg);
+    top: 5px;
+  }
+
+  @include small-breakpoint {
+    &.opened &__line--1,
+    &.opened &__line--3 {
+      top: 7px;
+    }
+
+    &.closed:hover &__line--1 {
+      width: 70%;
+    }
+
+    &.closed:hover &__line--2 {
+      top: 7px;
+    }
+
+    &.closed:hover &__line--3 {
+      width: 50%;
+    }
+  }
+}
