@@ -1,28 +1,22 @@
 .nav {
-  display: flex;
   background-color: $color-accent-grey-light;
-  padding: rem(100) $page-side-padding-small 0;
 
-  @include small-breakpoint {
-    padding: rem(120) $page-side-padding-medium 0;
-  }
-
-  @include large-breakpoint {
-    padding: rem(160) $page-side-padding-large 0;
+  &__content {
+    @extend %topNavGap;
   }
 
   &__list {
     list-style: none;
     display: flex;
     flex-direction: column;
+    margin-top: rem(44);
 
-    @include medium-breakpoint {
+    @include medium-bp {
       min-width: $content-max-width-medium;
     }
 
-    @include large-breakpoint {
-      margin: 0 auto;
-      min-width: $content-max-width-large;
+    @include large-bp {
+      margin: rem(64) auto 0;
     }
   }
 
@@ -45,15 +39,21 @@
   }
 
   &__link {
+    position: relative;
     font-size: rem(22);
     @extend %fw600;
     text-transform: uppercase;
     color: $color-main-dark;
     letter-spacing: 2px;
-    transition: color $transition-duration ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: border, padding-bottom;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease;
 
     &:hover {
-      color: $color-accent-grey;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $color-main-dark;
     }
   }
 
@@ -63,22 +63,7 @@
 
   &__item:last-child &__link {
     font-size: rem(12);
-    line-height: rem(16);
-    margin-bottom: rem(8);
-    position: relative;
-
-    &::after {
-      content: "";
-      height: 1px;
-      width: 100%;
-      background-color: $color-main-dark;
-      position: absolute;
-      left: 0;
-      bottom: rem(-8);
-    }
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-main-dark;
   }
-}
-
-.main {
-  height: 50vh;
 }

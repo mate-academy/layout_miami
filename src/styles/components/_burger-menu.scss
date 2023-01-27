@@ -2,8 +2,11 @@
   display: flex;
   @include square(rem(24));
   cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
 
-  @include small-breakpoint {
+  @include small-bp {
     @include square(rem(24));
   }
 
@@ -13,7 +16,7 @@
     width: rem(18);
     height: rem(12);
 
-    @include small-breakpoint {
+    @include small-bp {
       width: rem(24);
       height: rem(17);
     }
@@ -33,7 +36,7 @@
     transition-timing-function: ease-in-out;
     background-color: $color-main-light;
 
-    @include small-breakpoint {
+    @include small-bp {
       height: rem(3);
     }
 
@@ -44,7 +47,7 @@
     &--2 {
       top: 5px;
 
-      @include small-breakpoint {
+      @include small-bp {
         top: 7px;
       }
     }
@@ -52,51 +55,51 @@
     &--3 {
       top: 10px;
 
-      @include small-breakpoint {
+      @include small-bp {
         top: 14px;
       }
     }
   }
 
-  &.opened &__line,
-  &.closed &__line {
+  &--opened &__line,
+  &--closed &__line {
     width: 100%;
   }
 
-  &.opened &__line {
+  &--opened &__line {
     background-color: $color-main-dark;
+
+    &--1 {
+      transform: rotate(45deg);
+      top: 5px;
+    }
+
+    &--2 {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    &--3 {
+      transform: rotate(-45deg);
+      top: 5px;
+    }
   }
 
-  &.opened &__line--1 {
-    transform: rotate(45deg);
-    top: 5px;
-  }
-
-  &.opened &__line--2 {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-
-  &.opened &__line--3 {
-    transform: rotate(-45deg);
-    top: 5px;
-  }
-
-  @include small-breakpoint {
-    &.opened &__line--1,
-    &.opened &__line--3 {
+  @include small-bp {
+    &--opened &__line--1,
+    &--opened &__line--3 {
       top: 7px;
     }
 
-    &.closed:hover &__line--1 {
+    &--closed:hover &__line--1 {
       width: 70%;
     }
 
-    &.closed:hover &__line--2 {
+    &--closed:hover &__line--2 {
       top: 7px;
     }
 
-    &.closed:hover &__line--3 {
+    &--closed:hover &__line--3 {
       width: 50%;
     }
   }
