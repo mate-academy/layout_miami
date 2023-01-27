@@ -1,6 +1,6 @@
 'use strict';
 
-const form = document.querySelector('.contact__form');
+const form = document.querySelector('.action');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
