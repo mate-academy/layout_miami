@@ -1,0 +1,111 @@
+.nav {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 29px 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: $color-menu;
+  text-transform: uppercase;
+  color: $color-main;
+  font-weight: 600;
+  transform: translateX(150%);
+  transition: 0.45s;
+
+  @include onTablet {
+    padding-top: 36px;
+  }
+
+  @include onDesktop {
+    padding-top: 48px;
+    font-weight: 700;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    margin-bottom: 44px;
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    // width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: transparent;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    &:hover {
+      &::after {
+        content: "";
+        background-color: $color-main;
+        transform: translateY(5px);
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-align: left;
+  }
+
+  &__call {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__phone {
+    line-height: 27px;
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-main;
+  }
+
+  .burger-container {
+    height: 18px;
+    display: flex;
+    align-items: center;
+  }
+}
