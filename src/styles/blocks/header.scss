@@ -28,6 +28,7 @@
   }
 
   &__icons {
+    position: relative;
     display: flex;
     column-gap: 30px;
 
@@ -52,7 +53,62 @@
     @include onDesctop {
       width: 24px;
       height: 24px;
+
+      &:hover + div {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
+  }
+
+  &__call {
+    width: max-content;
+    position: relative;
+  }
+
+  &__phone {
+    display: none;
+
+    @include onDesctop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      padding-right: 20px;
+
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+
+      text-align: end;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    }
+  }
+
+  &__phone-link {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+    &--margin {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__call:hover &__phone {
+    background-color: aqua;
   }
 
   &__title {
