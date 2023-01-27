@@ -10,6 +10,11 @@ window.addEventListener('hashchange', () => {
 
 const form = document.getElementById('bose-form-entries');
 
+// form.addEventListener('submit', (event) => {
+//   event.reset();
+// });
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
+  form.reset();
 });
