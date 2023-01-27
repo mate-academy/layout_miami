@@ -4,8 +4,12 @@
   background-position: center;
   background-image: url(../images/header-320.png);
 
+  @include onTablet {
+    background-image: url(../images/header-744.jpg);
+  }
+  
   @include onDesktop {
-    background-image: url(../images/header-1260-image.png);
+    background-image: url(../images/header-1260.png);
   }
 
   &__content {
@@ -15,11 +19,18 @@
     height: 100vh;
     padding: $headerTopPadding 0 94px;
     box-sizing: border-box;
-  
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
 
     @include onDesktop {
       padding: 52px 0 64px;
     }
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__title {
@@ -29,8 +40,13 @@
     font-size: 32px;
     font-weight: 800;
     line-height: 32px;
-    color: $colorBlack;
+    color: $mainColor;
     letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
 
     @include onDesktop {
       font-size: 48px;
@@ -49,11 +65,15 @@
       background-repeat: no-repeat;
       background-image: url(../images/wave.svg);
 
-      @include onDesktop {
+      @include onTablet {
         width: 63px;
         height: 76px;
-        margin-bottom: 32px;
+        margin-bottom: 40px;
         background-image: url(../images/Sound-waves.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
       }
     }
   }
@@ -67,39 +87,6 @@
     @include onDesktop {
       &:hover {
         background-image: url(../images/wave-hover.svg);
-      }
-    }
-  }
-
-  &__call {
-    position: relative;
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: absolute;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        padding-right: 20px;
-  
-        display: block;
-        width: max-content;
-        
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: $colorBlack;
-        
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
       }
     }
   }
