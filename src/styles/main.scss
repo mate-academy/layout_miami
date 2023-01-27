@@ -2,6 +2,20 @@
 @import "fonts";
 @import "typography";
 
+$duration: 0.3s;
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
 .page {
   font-family: Cinzel, serif;
   font-size: 16px;
@@ -18,8 +32,57 @@
   padding: 0 20px;
   margin: 0 auto;
 
-  @media (min-width: 1024px) {
-    padding: 0 40px;
+  @include onTablet {
+    padding: 25px 40px;
+  }
+
+  @include onDesktop {
+    padding: 25px 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: end;
+    text-transform: uppercase;
+    line-height: 27px;
+    display: block;
+    color: white;
+    width: max-content;
+    padding-right: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $duration;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 
@@ -50,13 +113,8 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    transition: background-image $duration;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -64,14 +122,9 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
     background-image: url(../images/phone.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin-right: 30px;
+    text-decoration: none;
   }
 
   &__title {
@@ -84,11 +137,31 @@
     letter-spacing: -1.5px;
     align-self: center;
     margin-top: 130px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 }
 
 .logo {
   &__image {
     height: 46px;
+
+    @include onTablet {
+      height: 65px;
+      width: 87px;
+    }
+
+    @include onDesktop {
+      height: 65px;
+      width: 87px;
+    }
   }
 }
