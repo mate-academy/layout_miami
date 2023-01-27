@@ -14,7 +14,6 @@
     }
 
     &__nav {
-      visibility: hidden;
       z-index: 10;
       position: absolute;
       top: 0;
@@ -23,6 +22,14 @@
       height: 100%;
       transform: translateX(100%);
       transition: transform $transition-duration ease-in-out;
+
+      &--visible {
+        visibility: visible;
+      }
+
+      &--hidden {
+        visibility: hidden;
+      }
     }
 
     &--nav-opened &__nav {
@@ -39,7 +46,84 @@
   }
 
   &-quote {
-    &__content {
+    &__paragraph {
+      @extend %fw500;
+      font-size: rem(23);
+      line-height: 140%;
+    }
+  }
+
+  &-compare {
+    margin-top: rem(92);
+
+    @include medium-bp {
+      margin-top: rem(132);
+    }
+
+    @include small-bp {
+      margin-top: rem(164);
+    }
+
+    &__products-container {
+      margin-top: rem(48);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(40);
+
+      @include small-bp {
+        gap: rem(48);
+      }
+
+      @include large-bp {
+        justify-content: center;
+        flex-direction: row;
+        gap: rem(24);
+      }
+    }
+
+    &__product {
+      width: 324px;
+      height: 454px;
+      display: flex;
+      flex-direction: column;
+
+      &-img {
+        width: 100%;
+      }
+
+      &-name {
+        margin-top: rem(32);
+        letter-spacing: 0;
+      }
+
+      &-description {
+        margin-top: rem(8);
+      }
+
+      &-price {
+        margin-top: rem(16);
+      }
+    }
+  }
+
+  &-details {
+    margin-top: rem(92);
+
+    @include medium-bp {
+      margin-top: rem(120);
+    }
+
+    @include small-bp {
+      margin-top: rem(144);
+    }
+  }
+
+  // &-contact {
+  // }
+
+  &__content {
+    &--quote {
       display: flex;
       flex-direction: column;
       gap: rem(32);
@@ -61,22 +145,13 @@
       }
     }
 
-    &__paragraph {
-      @extend %fw500;
-      font-size: rem(23);
-      line-height: 140%;
+    &--compare {
+    }
+
+    &--details {
     }
   }
 
-  &-compare {
-    margin-top: rem(92);
-
-    @include medium-bp {
-      margin-top: rem(132);
-    }
-
-    @include small-bp {
-      margin-top: rem(164);
-    }
+  &__heading {
   }
 }
