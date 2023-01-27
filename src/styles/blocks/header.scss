@@ -46,12 +46,42 @@
   }
 
   &__phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+
     &-link {
       display: block;
-      width: 18px;
+      width: var(--header-icon-size);
 
       @include onTablet {
         width: 24px;
+      }
+
+      &:hover {
+        & ~ div {
+          opacity: 1;
+          transform: translateY(0)
+            translateX(calc(-1 * (var(--header-icon-size) + 12px)));
+        }
+      }
+    }
+
+    &-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: $color-text;
+      position: absolute;
+      width: max-content;
+      right: 0;
+      transform: translateY(-50px)
+        translateX(calc(-1 * (var(--header-icon-size) + 12px)));
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.5s;
+
+      @include onDesktop {
+        display: block;
       }
     }
   }
