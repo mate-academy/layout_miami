@@ -5,6 +5,9 @@ const toggleNavigation = () => {
   document.querySelector('.burger').classList.toggle('burger--opened');
   document.querySelector('.nav').classList.toggle('nav--active');
 
+  document.querySelector('.page__body')
+    .classList.toggle('page__body--menu-opened');
+
   document.querySelector('.header__phone')
     .classList.toggle('header__phone--unvisible');
 };
