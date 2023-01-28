@@ -9,10 +9,25 @@ const toggleNavigation = () => {
     .classList.toggle('header__phone--unvisible');
 };
 
-document
-  .querySelector('.burger')
-  .addEventListener('click', toggleNavigation);
+const clickToToggleNav = element => {
+  document.querySelector(element).addEventListener('click', toggleNavigation);
+};
 
-document
-  .querySelector('.nav__link')
-  .addEventListener('click', toggleNavigation);
+clickToToggleNav('.burger');
+
+const anchors = document.querySelectorAll('.nav__link');
+
+for (const anchor of anchors) {
+  anchor.addEventListener('click', elem => {
+    elem.preventDefault();
+
+    toggleNavigation();
+
+    const blockID = anchor.getAttribute('href').slice(1);
+
+    document.getElementById(blockID).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  });
+}
