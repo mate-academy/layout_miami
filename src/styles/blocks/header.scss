@@ -1,0 +1,114 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/Cover_photo.png);
+
+  @include onPhone {
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/background-mobile.png);
+  }
+
+  @include onTablet {
+    background-image: url(../images/background-Tablet.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/background-desktop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+
+    @include onPhone {
+      padding: $headerTopPadding 0 24px 0;
+    }
+
+    @include onTablet {
+      padding: $headerTopPadding 0 74px;
+    }
+
+    @include onDesktop {
+      padding: $headerTopPadding 0 124px;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    font-style: bold;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+    letter-spacing: -1.5px;
+    transition: all $transition-time;
+
+    &:hover {
+      text-shadow: $box-shadow-hover;
+    }
+
+    @include onDesktop {
+      font-weight: 700;
+      font-size: 80px;
+    }
+
+    @include onTablet {
+      font-weight: 700;
+      font-size: 64px;
+    }
+
+    @include onPhone {
+      font-weight: 700;
+      font-size: 36px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    transition: all $transition-time;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-weight: 700;
+        font-style: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all $transition-time;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    @include onDesktop {
+      gap: 40px;
+    }
+  }
+}
