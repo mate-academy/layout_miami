@@ -20,7 +20,7 @@ const toggleNavigation = () => {
   }
 
   document.querySelector('.header__phone')
-    .classList.toggle('header__phone--unvisible');
+    .classList.toggle('header__phone--fixed');
 };
 
 const clickToToggleNav = element => {
