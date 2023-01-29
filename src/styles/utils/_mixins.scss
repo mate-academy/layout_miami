@@ -1,3 +1,9 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
@@ -5,14 +11,19 @@
 }
 
 @mixin top-actions {
-    display: grid;
-    grid-template-columns: 1fr #{$icon-width} #{$icon-width};
-    justify-items: start;
-    align-items: center;
-    gap: 30px;
-  
-    @include onDesktop {
-      grid-template-columns: 1fr 24px 24px;
-      gap: 40px;
-    }
+  display: grid;
+  grid-template-columns: 1fr #{$icon-width} #{$icon-width};
+  justify-items: start;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    grid-template-columns: 1fr 24px 24px;
+    gap: 40px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: 1fr 24px 24px;
+    gap: 40px;
+  }
 }

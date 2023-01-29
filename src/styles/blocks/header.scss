@@ -3,11 +3,15 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(../images/header_mobile.png);
+  
+  @include onTablet {
+    background-image: url(../images/header_tablet.png);
+  }
 
   @include onDesktop {
     background-image: url(../images/header_desktop.png);
   }
-  
+
   &__top {
     @include top-actions;
   }
@@ -46,7 +50,7 @@
       width: 32px;
       height: 27px;
 
-      background-image: url(../../src/images/header_wave.svg);
+      background-image: url(../images/header_wave.svg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -62,37 +66,5 @@
     }
   }
 
-  &__call {
-    text-decoration: none;
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, 100%);
-
-        display: block;
-        width: max-content;
-        padding-right: 12px;
- 
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: #292929;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-
-        pointer-events: none;
-
-        transition: all 0.3s;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
+  
 }
