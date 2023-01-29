@@ -5,8 +5,19 @@ const toggleNavigation = () => {
   document.querySelector('.burger').classList.toggle('burger--opened');
   document.querySelector('.nav').classList.toggle('nav--active');
 
-  document.querySelector('.page__body')
-    .classList.toggle('page__body--menu-opened');
+  const isMenuOpened = document
+    .querySelector('.page__body')
+    .classList.contains('page__body--menu-opened');
+
+  if (isMenuOpened) {
+    document.querySelector('.page__body')
+      .classList.toggle('page__body--menu-opened');
+  } else {
+    setTimeout(() => {
+      document.querySelector('.page__body')
+        .classList.toggle('page__body--menu-opened');
+    }, 300);
+  }
 
   document.querySelector('.header__phone')
     .classList.toggle('header__phone--unvisible');

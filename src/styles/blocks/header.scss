@@ -58,23 +58,6 @@
       opacity: 0;
     }
 
-    &-link {
-      display: block;
-      width: var(--header-icon-size);
-
-      @include onTablet {
-        width: 24px;
-      }
-
-      &:hover {
-        & ~ div {
-          opacity: 1;
-          transform: translateY(0)
-            translateX(calc(-1 * (var(--header-icon-size) + 12px)));
-        }
-      }
-    }
-
     &-number {
       font-size: 12px;
       font-weight: 700;
@@ -85,10 +68,27 @@
         translateX(calc(-1 * (var(--header-icon-size) + 12px)));
       display: none;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.5s;
+      transition: opacity 0.3s, transform 0.3s;
 
       @include onDesktop {
         display: block;
+      }
+    }
+
+    &-link {
+      display: block;
+      width: var(--header-icon-size);
+
+      @include onTablet {
+        width: 24px;
+      }
+
+      &:hover {
+        & ~ .header__phone-number {
+          opacity: 1;
+          transform: translateY(0)
+            translateX(calc(-1 * (var(--header-icon-size) + 12px)));
+        }
       }
     }
   }
