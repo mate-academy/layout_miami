@@ -1,0 +1,28 @@
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDecktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin contentPaddings(
+  $padding-headerMobile,
+  $padding-headerTablet,
+  $padding-headerDesktop
+) {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: $padding-headerMobile;
+
+  @include onTablet {
+    padding: $padding-headerTablet;
+  }
+  @include onDecktop {
+    padding: $padding-headerDesktop;
+  }
+}
