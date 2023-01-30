@@ -28,6 +28,7 @@ const clickToToggleNav = element => {
 };
 
 clickToToggleNav('.burger');
+clickToToggleNav('.nav__logo');
 
 const anchors = document.querySelectorAll('.nav__link');
 
