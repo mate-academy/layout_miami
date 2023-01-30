@@ -86,14 +86,22 @@
       display: flex;
       flex-direction: column;
 
-      max-width: rem(280);
+      max-width: 100%;
 
       @include small-bp {
-        max-width: rem(392);
+        max-width: getElementWidth(
+          4,
+          $content-col-width-medium,
+          $content-cols-gap-medium
+        );
       }
 
       @include large-bp {
-        max-width: rem(324);
+        max-width: getElementWidth(
+          4,
+          $content-col-width-large,
+          $content-cols-gap-medium
+        );
       }
 
       &-img {
@@ -117,11 +125,11 @@
   &-details {
     margin-top: rem(92);
 
-    @include medium-bp {
+    @include small-bp {
       margin-top: rem(120);
     }
 
-    @include small-bp {
+    @include medium-bp {
       margin-top: rem(144);
     }
 
@@ -139,8 +147,8 @@
 
     &__feature {
       display: grid;
-      grid-template-columns: repeat(2, min-content);
-      grid-template-rows: repeat(2, min-content);
+      grid-template-columns: repeat(2, minmax($content-col-width-small, 1fr));
+      grid-template-rows: 1fr min-content;
       gap: rem(16) rem(20);
 
       @include small-bp {
@@ -150,14 +158,10 @@
       }
 
       &-image {
-        @include square(rem(130));
+        height: 100%;
+        max-width: 100%;
         object-fit: cover;
         object-position: center;
-
-        @include small-bp {
-          width: 100%;
-          height: 100%;
-        }
 
         &--span-left {
           @include small-bp {
@@ -193,17 +197,116 @@
         line-height: 140%;
       }
     }
+
+    &__btn {
+      width: 100%;
+
+      @include small-bp {
+        width: getElementWidth(
+          4,
+          $content-col-width-medium,
+          $content-cols-gap-medium
+        );
+      }
+
+      @include large-bp {
+        width: getElementWidth(
+          4,
+          $content-col-width-large,
+          $content-cols-gap-medium
+        );
+      }
+    }
   }
 
   &-contact {
-    margin-top: rem(80);
-
-    @include medium-bp {
-      margin-top: rem(120);
-    }
+    margin: rem(80) 0 rem(120);
 
     @include small-bp {
-      margin-top: rem(180);
+      margin: rem(120) 0 rem(100);
+    }
+
+    @include medium-bp {
+      margin: rem(180) 0 rem(164);
+    }
+
+    &__form-container {
+      margin-top: rem(48);
+      display: flex;
+      flex-direction: column;
+      gap: rem(48);
+
+      @include medium-bp {
+        gap: $content-cols-gap-medium;
+        flex-direction: row;
+      }
+
+      @include large-bp {
+        gap: calc(
+          #{2 * $content-col-width-large + 3 * $content-cols-gap-medium}
+        );
+      }
+    }
+
+    &__form {
+      align-self: center;
+
+      width: 100%;
+
+      @include small-bp {
+        width: getElementWidth(
+          4,
+          $content-col-width-medium,
+          $content-cols-gap-medium
+        );
+      }
+
+      @include medium-bp {
+        width: getElementWidth(
+          3,
+          $content-col-width-medium,
+          $content-cols-gap-medium
+        );
+      }
+
+      @include large-bp {
+        width: getElementWidth(
+          5,
+          $content-col-width-large,
+          $content-cols-gap-medium
+        );
+      }
+    }
+
+    &__information {
+      width: getElementWidth(
+        2,
+        $content-col-width-small,
+        $content-cols-gap-small
+      );
+
+      @include medium-bp {
+        width: getElementWidth(
+          3,
+          $content-col-width-medium,
+          $content-cols-gap-medium
+        );
+      }
+
+      &-label {
+        font-size: rem(14);
+        margin-bottom: rem(8);
+
+        &:not(:first-child) {
+          margin-top: rem(24);
+        }
+      }
+
+      &-value {
+        font-size: rem(16);
+        @extend %fw500;
+        color: $color-main-light;
+      }
     }
   }
 
@@ -229,8 +332,6 @@
         margin-top: rem(140);
       }
     }
-
-    // &--compare {}
 
     &--details {
       display: flex;
