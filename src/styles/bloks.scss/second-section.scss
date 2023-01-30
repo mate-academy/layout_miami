@@ -1,13 +1,43 @@
 .exhibition {
-  margin: 0 20px;
+  
+  @include onPhone {
+    margin: 0 20px;
+  }
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 63px);
+    grid-template-rows: repeat(12);
+    column-gap: 24px;
+    margin: 0 72px;
+  }
 
   @include onDesctop {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: repeat(20);
     margin: 0 120px;
   }
 }
 
+/* #region Title */
+
 .title--2 {
-  text-align: center;
+
+  @include onPhone {
+    grid-column: 1/5;
+    grid-row: 1/1;
+    text-align: center;
+  }
+  
+  @include onTablet {
+    grid-area: 1/ 2/ 2/ 6;
+    text-align: center;
+  }
+  
+  @include onDesctop {
+    grid-area: 1/ 6/ 2/ 9;
+  }
 }
 
 .exhibition__description {
@@ -16,43 +46,75 @@
   font-size: 16px;
   line-height: 27px;
   color: #161616;
-  margin-bottom: 48px;
-}
+  margin: 0;
+  padding: 0;
 
-.exhibition__paint {
-  gap: 24px;
-  display: flex;
-  justify-content: space-around;
-  margin: 0 20px 24px;
-}
+  @include onPhone {
+    grid-column: 1/ 5;
+    grid-row: 2/ 2;
+    margin-bottom: 48px;
+  }
 
-.photo {
-  width: 100%;
-  height: 100%;
-  flex-grow: 1;
+  @include onTablet {
+    grid-column: 2 / 6;
+    grid-row: 2 / 2;
+  }
+
+  @include onDesctop {
+    grid-area: 2 / 5 / 3 / 10 ;
+  }
 }
+/* #endregion */
+
+/* #region First-block */
 
 .photo--1 {
+
   @include onPhone {
     width: 130px;
     height: 130px;
+    margin: 0 17px 24px 0;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  @include onTablet {
+    width: 392px;
+    height: 186px;
+    grid-column: 1 /4;
+    grid-row: 3 / 3;
+    margin-bottom: 24px;
+  }
+  
+  @include onDesctop {
+    width: 627px;
+    height: 324px;
+    grid-column: 1 /9;
+    grid-row: 4/ 5;
+    margin-bottom: 24px;
   }
 }
 
 .photo--2 {
+
   @include onPhone {
     width: 130px;
     height: 130px;
+    margin-bottom: 24px;
   }
-}
 
-.photo--5 {
   @include onTablet {
-    display: none;
+    width: 200px;
+    height: 186px;
+    grid-column: 6;
+    grid-row: 3 /3 ;
   }
 
   @include onDesctop {
-    display: block;
+    width: 320px;
+    height: 324px;
+    grid-column: 9/ 12;
+    grid-row: 4 /5;
   }
 }
 
@@ -62,10 +124,22 @@
   font-size: 16px;
   line-height: 27px;
   color: #d12d35;
-  margin-left: 24px;
+  padding: 0;
+  margin: 0;
+
+  @include onPhone {
+    grid-column: 1/5;
+    grid-row: 4/4 ;
+  }
+  
+  @include onTablet {
+    grid-column: 1 / 9;
+    grid-row: 4 / 5;
+  }
 
   @include onDesctop {
-    margin: 0 0 0 20px;
+    grid-column: 1 /16;
+    grid-row: 5 /6;
   }
 }
 
@@ -75,23 +149,256 @@
   font-size: 16px;
   line-height: 27px;
   color: #161616;
-  margin-left: 24px;
+
+  @include onPhone {
+    margin: 0 0 48px;
+  }
+  
+  @include onTablet {
+    grid-column: 1 / 9;
+    grid-row: 4 / 5;
+    margin: 20px 0 48px;
+  }
 
   @include onDesctop {
-    margin: 0  0 48px 20px;
-  }
-
-  &:last-child {
-    margin-bottom: 40px;
+    grid-column: 1 /16;
+    grid-row: 6 /6;
+    margin: 0 0 48px;
   }
 }
 
-.button-box--1 {
-  display: flex;
-  justify-content: center;
+/* #endregion  */
+
+/* #region Second-block */
+
+.exhibition__box {
+  @include onPhone {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include onTablet {
+    grid-row: 5/ 6;
+    grid-column: 1/ 2;
+    margin-right: 25px;
+  }
+
+  @include onDesctop {
+    grid-column: 1 / 6;
+    grid-row: 9 /10;
+  }
 }
 
-.button-send {
+.photo--3 {
+  
+  @include onPhone {
+    width: 88px;
+    height: 87px;
+    margin: 0 8px 24px 0;
+  }
+  
+  @include onTablet {
+    width: 288px;
+    height: 284px;
+    grid-column: 1 / 2;
+    grid-row: 7 / 8;
+    margin-right: 60px ;
+  }
+    
+  @include onDesctop {
+    width: 324px;
+    height: 320px;
+    grid-column: 1 / 6;
+    grid-row: 9 /10;
+    margin: 0 20px 24px 0;
+  }
+}
+
+.photo--4 {
+  
+  @include onPhone {
+    width: 88px;
+    height: 87px;
+    margin-right: 8px;
+  }
+  
+  @include onTablet {
+    width: 288px;
+    height: 284px;
+    grid-column: 5 / 6;
+    grid-row: 7 / 8;
+  }
+  
+  @include onDesctop {
+    width: 324px;
+    height: 320px;
+    grid-column: 5 / 10;
+    grid-row: 9 /10;
+    margin-right: 20px;
+  }
+}
+
+.photo--5 {
+  
+  @include onPhone {
+    width: 88px;
+    height: 87px;
+  }
+  
+  @include onTablet {
+    display: none;
+  }
+  
+  @include onDesctop {
+    display: block;
+    width: 324px;
+    height: 320px;
+    grid-column: 9 / 13;
+    grid-row: 9 /10;
+  }
+}
+
+.exhibition__info-2 {
+
+  @include onPhone {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+
+  @include onTablet {
+    grid-column: 1/8;
+    grid-row: 8 /8;
+  }
+
+  @include onDesctop {
+    grid-column: 1 / 10;
+    grid-row: 11/ 12;
+  }
+}
+
+.exhibition__text-2 {
+
+  @include onPhone {
+    margin: 0 0 48px;
+  }
+
+  @include onTablet {
+    grid-row: 9 /9;
+    margin-bottom: 48px;
+  }
+
+  @include onDesctop {
+    grid-column: 1 /10;
+    grid-row: 12/ 13;
+    margin-bottom: 38px;
+  }
+}
+
+/* #endregion */
+
+/* #region Third-block */
+
+.photo--6 {
+  @include onPhone {
+    width: 130px;
+    height: 130px;
+    margin: 0 17px 24px 0;
+  }
+
+  @include onTablet {
+    width: 184px;
+    height: 186px;
+    grid-row: 11/11;
+  }
+
+  @include onDesctop {
+    width: 324px;
+    height: 320px;
+    grid-column: 1 / 4;
+    grid-row: 13 /14;
+    margin-bottom: 24px;
+  }
+}
+
+.photo--7 {
+
+  @include onPhone {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 24px;
+  }
+
+  @include onTablet {
+    width: 380px;
+    height: 186px;
+    grid-row: 11/11;
+    grid-column: 4;
+    margin-bottom: 24px;
+  }
+
+  @include onDesctop {
+    height: 324px;
+    width: 665px;
+    grid-column: 5 /11;
+    grid-row: 13 /14;
+  }
+}
+
+.exhibition__info-3 {
+
+  @include onPhone {
+    grid-row: 9/10;
+    grid-column: 1/5;
+  }
+
+  @include onTablet {
+    grid-column: 1 / 9;
+    grid-row: 12 /13;
+  }
+    
+  @include onDesctop {
+    grid-column: 1 / 16;
+    grid-row: 15/ 15;
+  }
+}
+
+.exhibition__text-3 {
+
+  @include onTablet {
+    grid-row: 12 /13;
+    margin-bottom: 48px;
+  }
+
+  @include onDesctop {
+    grid-column: 1 /10;
+    grid-row: 16/ 16;
+    margin-bottom: 48px;
+  }
+}
+
+/* #endregion */
+
+/* #region Button */
+
+.exhibition__button-box {
+
+  @include onPhone {
+    grid-row: 11/12;
+    grid-column: 1/5;
+  }
+
+  @include onTablet {
+    grid-column: 3;
+    grid-row: 14/ 15;
+  }
+
+  @include onDesctop {
+    grid-column: 5;
+    grid-row: 17/ 18;
+  }
+}
+
+.exhibition__button {
   color: white;
   border: none;
   background-color: #d12d35;
@@ -101,6 +408,25 @@
   font-style: 16px;
   line-height: 27px;
   margin-bottom: 100px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+
+  &:checked {
+    background-color: #eb343d;
+  }
+
+  @include onPhone {
+    width: 350px;
+  }
+
+  @include onTablet {
+    width: 392px;
+    height: 56px;
+    margin-bottom: 140px;
+  }
 
   @include onDesctop {
     width: 320px;
@@ -108,3 +434,4 @@
     margin-bottom: 140px;
   }
 }
+/* #endregion */

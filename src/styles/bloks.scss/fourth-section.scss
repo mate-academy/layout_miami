@@ -1,52 +1,203 @@
 .contacts {
-  margin: 0 20px;
-}
 
-.contacts__full-box {
+  @include onPhone {
+
+    margin: 0 20px 100px;
+  }
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: repeat(12);
+    margin: 0 72px 140px;
+  }
 
   @include onDesctop {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 120px;
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: repeat(12);
+    margin: 0 120px 150px;
   }
 }
 
-.title--4 {
+.contacts__title {
   font-weight: 700;
   font-size: 48px;
   line-height: 48px;
   letter-spacing: -1.5px;
   text-align: center;
   margin: 0 0 48px;
+
+  @include onTablet {
+    grid-column: 4 / 10;
+    grid-row: 1/ 1;
+  }
+
+  @include onDesctop {
+    grid-column: 6 /11;
+    grid-row: 1/1;
+
+  }
+}
+
+.contacts__museum-name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+
+  @include onTablet {
+    grid-row: 2/2;
+    grid-column: 1 / 4;
+    margin: 0;
+  }
+
+  @include onDesctop {
+    grid-column: 1 /4;
+    grid-row: 2/3;
+  }
+  
+  &:nth-child(2n) {
+    
+    @include onTablet {
+      grid-row: 7/7;
+      grid-column: 1/6;
+      margin-top: 48px;
+    }
+
+    @include onDesctop {
+      grid-column: 5 /8;
+      grid-row: 2/3;
+      margin: 0;
+    }
+  }
 }
 
 .contacts__phone {
-  font-size: 14px;
   font-weight: 400;
+  font-size: 14px;
   line-height: 27px;
   color: #161616;
-  margin-bottom: 4px;
+
+  @include onTablet {
+    grid-row: 3/ 3;
+    grid-column: 1/ 4;
+    margin: 0;
+  }
+
+  &:nth-child(2n) {
+
+    @include onTablet {
+      grid-row: 8/9;
+      grid-column: 1/ 6;
+    }
+    
+    @include onDesctop {
+      grid-column: 5 /8;
+      grid-row: 3/4;
+    }
+  }
 }
 
 .contacts__phone-1 {
-  display: block;
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
   color: #3e3e3e;
   text-decoration: none;
 
-  &:last-child {
-    margin-bottom: 48px;
+  @include onTablet {
+    grid-row: 4 /4;
+    grid-column: 1/4;
+  }
+  
+  &:nth-child(2n) {
+    @include onTablet {
+      grid-row: 9/9;
+      grid-column: 1/6;
+    }
+
+    @include onDesctop {
+      grid-column: 5/8;
+      grid-row: 4 /5;
+    }
+  }
+}
+
+.contacts__adress {
+
+  @include onTablet {
+    grid-row: 5/5;
+    grid-column: 1/4;
+    margin: 14px 0 0;
+  }
+
+  &:nth-child(2n) {
+    @include onTablet {
+      grid-row: 10/10;
+      grid-column: 1/6;
+      margin: 14px 0 0;
+
+    }
+
+    @include onDesctop {
+      grid-column: 5/8;
+      grid-row: 5/6;
+    }
+  }
+}
+
+.contacts__adress-1 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #3e3e3e;
+  text-decoration: none;
+
+  @include onTablet {
+    grid-row: 6/6;
+    grid-column: 1/4;
+  }
+  
+  &:nth-child(2n) {
+    @include onTablet {
+      grid-row: 11/11;
+      grid-column: 1/4;
+    }
+
+    @include onDesctop {
+      grid-column: 5/9;
+      grid-row: 6/7;
+    }
+  }
+}
+
+.contacts__form {
+
+  @include onPhone {
+    margin-top: 24px;
+  }
+
+  @include onTablet {
+    grid-column: 6 /12;
+    grid-row: 2 /11;
+    margin: 0;
+  }
+
+  @include onDesctop {
+    grid-column: 10/12;
+    grid-row: 2 /15;
+    margin: 0;
   }
 }
 
 .contacts__inform {
+  box-sizing: border-box;
   display: block;
   margin: 0 0 16px;
   height: 48px;
   width: 280px;
   resize: none;
+  padding: 20px;
 
   @include onDesctop {
     width: 411px;
@@ -62,28 +213,51 @@
     font-size: 14px;
     line-height: 20px;
     color: #7e7e83;
-    padding: 14px 0 0 10px;
   }
-}
-
-.contacts__button-box {
-  display: flex;
-  margin-bottom: 100px;
 }
 
 .contacts__button-send {
   width: 285px;
   height: 56px;
-  left: 20px;
-  background: #ae1c23;
+  background: #d12d35;
   border: none;
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
   color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+
+  &:checked {
+    background-color: #eb343d;
+  }
+
+  @include onTablet {
+    width: 288px;
+    grid-column: 6/12;
+    grid-row: 8/9;
+  }
 
   @include onDesctop {
+    grid-column: 10/12;
+    grid-row: 14 /15;
     width: 420px;
     margin-bottom: 150px;
+  }
+}
+
+.contacts__form-2 {
+
+  @include onTablet {
+    grid-column: 6/ 12;
+    grid-row: 10/ 11;
+  }
+
+  @include onDesctop {
+    grid-column: 10/ 12;
+    grid-row: 15 /16;
   }
 }
