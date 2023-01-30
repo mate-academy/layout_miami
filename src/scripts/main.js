@@ -9,7 +9,7 @@ form.addEventListener('submit', (e) => {
 });
 
 window.addEventListener('hashchange', (e) => {
-  if (e.newURL === 'http://localhost:8080/#menu') {
+  if (window.location.hash === '#menu') {
     page.style.overflow = 'hidden';
   } else {
     page.style.overflow = 'visible';
