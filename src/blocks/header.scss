@@ -1,0 +1,119 @@
+.header {
+  background-image: url(../images/headerMobileSvg.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    background-image: url(../images/headersvd.svg);
+    background-position: top;
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding-top: 52px;
+    }
+  }
+
+  &__nav--link {
+    display: flex;
+  }
+
+  .logo {
+
+    &__image {
+      display: block;
+      height: 18px;
+      width: 130px;
+
+      @include onDesktop {
+        width: 190px;
+        height: 24px;
+      }
+    }
+
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop {
+      margin-right: 40px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $main-color;
+        opacity: 0;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        padding-right: 12px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    }
+  }
+
+  &__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $main-color;
+    letter-spacing: -1.5px;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    width: 274px;
+    height: 64px;
+
+    @include onTablet {
+      font-size: 40px;
+      width: 392px;
+      height: 80px;
+    }
+
+    @include onDesktop {
+      width: 498px;
+      height: 96px;
+      font-size: 48px;
+    }
+
+    &::before {
+      position: absolute;
+      bottom: 80px;
+      left: 6px;
+      content: url(../images/wavePhoneStyle.png);
+      height: 27px;
+      width: 32px;
+
+      @include onTablet() {
+        content: url(../images/SoundwavesSVG.svg);
+        bottom: 150px;
+      }
+
+      @include onDesktop {
+        content: url(../images/SoundwavesSVG.svg);
+        bottom: 170px;
+      }
+    }
+  }
+}
