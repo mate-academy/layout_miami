@@ -83,10 +83,18 @@
     }
 
     &__product {
-      width: 324px;
-      height: 454px;
       display: flex;
       flex-direction: column;
+
+      max-width: rem(280);
+
+      @include small-bp {
+        max-width: rem(392);
+      }
+
+      @include large-bp {
+        max-width: rem(324);
+      }
 
       &-img {
         width: 100%;
@@ -94,7 +102,6 @@
 
       &-name {
         margin-top: rem(32);
-        letter-spacing: 0;
       }
 
       &-description {
@@ -117,10 +124,88 @@
     @include small-bp {
       margin-top: rem(144);
     }
+
+    &__features-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: rem(40);
+
+      @include medium-bp {
+        gap: rem(48);
+      }
+    }
+
+    &__feature {
+      display: grid;
+      grid-template-columns: repeat(2, min-content);
+      grid-template-rows: repeat(2, min-content);
+      gap: rem(16) rem(20);
+
+      @include small-bp {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr min-content;
+        gap: rem(16) rem(24);
+      }
+
+      &-image {
+        @include square(rem(130));
+        object-fit: cover;
+        object-position: center;
+
+        @include small-bp {
+          width: 100%;
+          height: 100%;
+        }
+
+        &--span-left {
+          @include small-bp {
+            grid-column: 1 / 3;
+          }
+        }
+
+        &--span-right {
+          @include small-bp {
+            grid-column: 2 / 4;
+          }
+        }
+      }
+
+      &-text-container {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+
+        @include small-bp {
+          grid-column: 1 / 4;
+        }
+
+        @include large-bp {
+          grid-column: 1 / 3;
+        }
+      }
+
+      &-name {
+        margin-bottom: rem(8);
+      }
+
+      &-description {
+        line-height: 140%;
+      }
+    }
   }
 
-  // &-contact {
-  // }
+  &-contact {
+    margin-top: rem(80);
+
+    @include medium-bp {
+      margin-top: rem(120);
+    }
+
+    @include small-bp {
+      margin-top: rem(180);
+    }
+  }
 
   &__content {
     &--quote {
@@ -145,13 +230,13 @@
       }
     }
 
-    // &--compare {
-    // }
+    // &--compare {}
 
-    // &--details {
-    // }
+    &--details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(48);
+    }
   }
-
-  // &__heading {
-  // }
 }
