@@ -12,6 +12,7 @@ const form = document.getElementById('formId');
 
 function handleForm(event) {
   event.preventDefault();
+  event.target.reset();
 }
 
 form.addEventListener('submit', handleForm);
