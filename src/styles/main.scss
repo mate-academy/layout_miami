@@ -1,7 +1,131 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "./blocks/container.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/page.scss";
+@import "./blocks/footer.scss";
+@import "./blocks/grid.scss";
+@import "./blocks/about.scss";
+@import "./blocks/place.scss";
+@import "./blocks/gallery.scss";
+@import "./blocks/button.scss";
+@import "./blocks/testimonials.scss";
+@import "./blocks/contact-us.scss";
+@import "./blocks/form-field.scss";
 
-body {
-  background: $c-gray;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
+  }
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+.header {
+  padding: 24px 0 80px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 104px);
+    box-sizing: border-box;
+  }
+  /*зміни*/
+  &__title {
+    color: white;
+    font-size: 46px;
+    line-height: 40px;
+    font-weight: bold;
+    letter-spacing: -1px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 38px;
+      height: 2px;
+      background-color: white;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        content: "+1 234 5555-55-55";
+        opacity: 0;
+        color: #fff;
+        width: max-content;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+
+        pointer-events: none;
+
+        display: block;
+        padding-right: 20px;
+        position: relative;
+      }
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
 }
