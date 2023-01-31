@@ -11,3 +11,14 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const submitFormDisabled = document.querySelector('#submitFormDisabled');
+const formFields = document.querySelectorAll('.contacts__field');
+
+submitFormDisabled.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  formFields.forEach(input => {
+    input.value = '';
+  });
+});
