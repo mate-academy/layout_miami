@@ -26,3 +26,27 @@
     padding: $padding-headerDesktop;
   }
 }
+
+@mixin top-actions {
+  --icon-width: 18px;
+  --icon-indentation: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width)
+    var(--icon-indentation)
+    var(--icon-width);
+  justify-items: start;
+  align-items: center;
+
+  @include onTablet {
+    --icon-width: 24px;
+    --icon-indentation: 40px;
+  }
+}
+
+@mixin scaleOnHover ($scale) {
+  transition: transform $duration;
+  &:hover {
+    transform: scale($scale);
+  }
+}
