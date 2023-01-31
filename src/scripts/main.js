@@ -8,7 +8,7 @@ form.addEventListener('submit', (e) => {
   form.reset();
 });
 
-window.addEventListener('hashchange', (e) => {
+window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     page.style.overflow = 'hidden';
   } else {
