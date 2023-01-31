@@ -28,8 +28,28 @@
     margin-bottom: 8px;
   }
 
+  %hoverOrFocus {
+    color: $color-main;
+    text-shadow: -1px -1px white,
+      1px 1px white,
+      -1px 1px white,
+      1px -1px white;
+  }
+
   &__text {
     @include fontSizeLineHeight140(16px);
     font-weight: 500;
+
+    transition: color 0.3s, text-shadow 0.3s;
+
+    outline: none;
+
+    &:hover {
+      @extend %hoverOrFocus;
+    }
+
+    &:focus-visible {
+      @extend %hoverOrFocus;
+    }
   }
 }

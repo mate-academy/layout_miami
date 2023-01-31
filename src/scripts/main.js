@@ -20,6 +20,7 @@ const toggleTabIndex = () => {
 const toggleNavigation = () => {
   document.querySelector('.burger').classList.toggle('burger--closed');
   document.querySelector('.burger').classList.toggle('burger--opened');
+  document.querySelector('.burger').classList.toggle('outline-arrow--grey');
   document.querySelector('.nav').classList.toggle('nav--active');
 
   const isMenuOpened = document
@@ -79,9 +80,9 @@ const clearFormInput = () => {
 };
 
 document
-  .querySelector('.contact-form__submit')
-  .addEventListener('click', elem => {
+  .querySelector('.contact-form')
+  .addEventListener('submit', elem => {
     elem.preventDefault();
     clearFormInput();
-    // alert('Your message is sent');
+    window.alert('Your message was sent');
   });
