@@ -77,6 +77,15 @@ const clearFormInput = () => {
   }
 
   document.querySelector('.contact-form__message').value = '';
+
+  const toggleModal = () => {
+    document
+      .querySelector('.contact-form__modal')
+      .classList.toggle('contact-form__modal--active');
+  };
+
+  toggleModal();
+  setTimeout(toggleModal, 3000);
 };
 
 document
@@ -84,5 +93,4 @@ document
   .addEventListener('submit', elem => {
     elem.preventDefault();
     clearFormInput();
-    window.alert('Your message was sent');
   });
