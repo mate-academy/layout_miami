@@ -1,9 +1,18 @@
 .menu {
   background-color: #e5e5e5;
+
   &__blocks {
     box-sizing: border-box;
     padding-top: 48px;
     height: 100vh;
+
+    @include onTablet {
+      padding-top: 52px;
+    }
+
+    @include onPhone {
+      padding-top: 40px;
+    }
   }
 
   &__list {
@@ -16,8 +25,34 @@
   &__item {
     margin-bottom: 24px;
 
+    @include onPhone {
+      margin-bottom: 32px;
+    }
+
     &:last-child {
       margin-bottom: 40px;
+    }
+
+    &-galery::before {
+      content: "gallery";
+      position: relative;
+      box-sizing: border-box;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $colorBlack;
+      text-decoration: none;
+      padding-bottom: 8px;
+
+      @include onDesktop {
+        content: "now on view";
+      }
+
+      @include onPhone {
+        content: "now on view";
+      }
     }
 
     &-link {
@@ -58,7 +93,7 @@
     position: relative;
     width: fit-content;
     text-decoration: none;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
@@ -67,7 +102,6 @@
     text-transform: uppercase;
 
     color: #292929;
-    padding-bottom: 8px;
 
     &::after {
       content: "";
@@ -87,6 +121,12 @@
       transform: scaleX(1);
       transform-origin: bottom left;
     }
+
+    &-call {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
   }
 
   &__logos {
@@ -96,17 +136,39 @@
     justify-content: space-between;
     margin-bottom: 80px;
 
+    @include onTablet {
+      margin-bottom: 56px;
+    }
+
+    &-image {
+      width: 190px;
+
+      @include onPhone {
+        width: 130px;
+      }
+    }
+
     &-flex {
       display: flex;
       gap: 36px;
     
       &-menu {
         display: block;
-        width: 32px;
-        height: 32px;
+        width: 21px;
+        height: 21px;
         background-image: url(../images/menu_close.svg);
         background-repeat: no-repeat;
         background-position: center;
+
+        @include onTablet {
+          width: 16px;
+          height: 16px;
+        }
+  
+        @include onPhone {
+          width: 16px;
+          height: 16px;
+        }
       }
     }
   }
