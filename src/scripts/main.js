@@ -11,7 +11,4 @@ window.addEventListener('hashchange', () => {
 function stopDefAction(evt) {
   evt.preventDefault();
 }
-
-document.getElementById('button-send').addEventListener(
-  'click', stopDefAction, false
-);
+document.addEventListener('submit', stopDefAction);
