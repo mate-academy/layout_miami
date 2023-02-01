@@ -10,13 +10,12 @@ form.addEventListener('submit', (e) => {
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    for (let i = 0; i < 10; i++) {
-      history.back();
-    }
-
     page.style.overflow = 'hidden';
   } else {
-    console.log(window.location.origin)
     page.style.overflow = 'visible';
   }
 });
+
+window.onbeforeunload = function (evt) {
+  console.log("hello")
+}
