@@ -1,19 +1,29 @@
 'use strict';
 
-//  toggle nav__links tabindex when menu toggle
+//  toggle all clickable elements tabindex when toggle menu
 const toggleTabIndex = () => {
   const toggle = elem => {
     elem.tabIndex === -1 ? elem.tabIndex = 0 : elem.tabIndex = -1;
   };
 
-  const links = document.querySelectorAll('.nav__link');
+  const toggleCollection = (collection) => {
+    for (const elem of collection) {
+      if (elem.classList.contains('burger')) {
+        continue;
+      }
+      toggle(elem);
+    }
+  };
 
-  for (const link of links) {
-    toggle(link);
-  }
+  const links = document.getElementsByTagName('a');
+  const buttons = document.getElementsByTagName('button');
+  const inputs = document.getElementsByTagName('input');
+  const textareas = document.getElementsByTagName('textarea');
 
-  toggle(document.querySelector('.nav__logo'));
-  toggle(document.querySelector('.nav__call'));
+  toggleCollection(links);
+  toggleCollection(buttons);
+  toggleCollection(inputs);
+  toggleCollection(textareas);
 };
 
 // tollge navigation on click on desired buttons
