@@ -9,21 +9,13 @@
   }
 
   @include onTablet {
-      grid-template-columns: repeat(6, 1fr);
-      column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
   }
 
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-  }
-
-  &--desktop {
-    display: block;
-
-    @include onDesktop {
-      display: grid;
-    }
   }
 
   &__item {
@@ -39,20 +31,28 @@
       }
     }
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--mobile-#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+      }
+    }
 
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
 
-        &--tablet-#{$start}-#{$end} {
-          @include onTablet {
+    @include onDesktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
         }
@@ -60,3 +60,4 @@
     }
   }
 }
+
