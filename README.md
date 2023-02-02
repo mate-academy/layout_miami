@@ -1,18 +1,34 @@
-# Miami landing page
+<!-- # Miami landing page
+
 In this task, you will learn how to implement a landing page. To do that:
 
-- watch the lesson videos
-  - Here is the [the design](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3) from the videos
 - choose a landing page design from the list below;
-- implement it block by block, adopt and deploy to show your current progress at any time;
+  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
+  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+- watch the lesson videos and implement your page blocks similarly to the videos;
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
-- push, deploy and add the correct `DEMO_LINK` to your Pull Request.
-```
-- [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-```
+- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://olya-girnyak.github.io/layout_miami/)
+- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
+- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished; -->
 
-The designs to choose from:
-- [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)  
+Its a landing page for The Metropolitan Museum of Art in New York City, colloquially "the Met", is the largest art museum in the Americas and the most-visited museum in the United States.
+
+Technologies used in project:
+
+1. HTML markup;
+2. CSS:
+   - display: grid, flex, block
+   - the var() function
+   - tooltip
+   - transition
+   - transform
+   - media queries
+   - BEM methodology
+3. SASS:
+   - style rule - placeholder
+   - at-rule - @mixin
+   - flow control rule - @for
+
+[DEMO LINK](https://olya-girnyak.github.io/layout_miami/)
+[MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
