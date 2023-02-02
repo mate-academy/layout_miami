@@ -28,22 +28,24 @@ const toggleTabIndex = () => {
 
 // tollge navigation on click on desired buttons
 const toggleNavigation = () => {
-  document.querySelector('.burger').classList.toggle('burger--closed');
-  document.querySelector('.burger').classList.toggle('burger--opened');
-  document.querySelector('.burger').classList.toggle('outline-arrow--grey');
-  document.querySelector('.nav').classList.toggle('nav--active');
+  const burgerIcon = document.querySelector('.burger');
+  const menu = document.querySelector('.nav');
 
-  const isMenuOpened = document
-    .querySelector('.page__body')
-    .classList.contains('page__body--menu-opened');
+  burgerIcon.classList.toggle('burger--closed');
+  burgerIcon.classList.toggle('burger--opened');
+  burgerIcon.classList.toggle('outline-arrow--grey');
+  menu.classList.toggle('nav--active');
 
-  if (isMenuOpened) {
-    document.querySelector('.page__body')
-      .classList.toggle('page__body--menu-opened');
+  const body = document.querySelector('.page__body');
+  const header = document.querySelector('.header');
+
+  if (body.classList.contains('page__body--menu-opened')) {
+    body.classList.toggle('page__body--menu-opened');
+    header.classList.toggle('header--menu-opened');
   } else {
     setTimeout(() => {
-      document.querySelector('.page__body')
-        .classList.toggle('page__body--menu-opened');
+      body.classList.toggle('page__body--menu-opened');
+      header.classList.toggle('header--menu-opened');
     }, 300);
   }
 
@@ -87,15 +89,12 @@ const clearFormInput = () => {
   }
 
   document.querySelector('.contact-form__message').value = '';
+};
 
-  const toggleModal = () => {
-    document
-      .querySelector('.contact-form__modal')
-      .classList.toggle('contact-form__modal--active');
-  };
-
-  toggleModal();
-  setTimeout(toggleModal, 3000);
+const toggleModal = () => {
+  document
+    .querySelector('.contact-form__modal')
+    .classList.toggle('contact-form__modal--active');
 };
 
 document
@@ -103,4 +102,6 @@ document
   .addEventListener('submit', elem => {
     elem.preventDefault();
     clearFormInput();
+    toggleModal();
+    setTimeout(toggleModal, 3000);
   });
