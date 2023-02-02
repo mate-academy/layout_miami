@@ -104,3 +104,21 @@ document
     toggleModal();
     setTimeout(toggleModal, 3000);
   });
+
+// block animation when scrolling
+
+function onEntry(entry) {
+  entry.forEach(change => {
+    if (change.isIntersecting) {
+      change.target.classList.add('page__section--visible');
+    }
+  });
+}
+
+const options = { threshold: [0.2] };
+const observer = new window.IntersectionObserver(onEntry, options);
+const elements = document.querySelectorAll('.page__section');
+
+for (const elm of elements) {
+  observer.observe(elm);
+}
