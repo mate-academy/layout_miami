@@ -31,7 +31,6 @@ const toggleNavigation = () => {
   const burgerIcon = document.querySelector('.burger');
   const menu = document.querySelector('.nav');
 
-  burgerIcon.classList.toggle('burger--closed');
   burgerIcon.classList.toggle('burger--opened');
   burgerIcon.classList.toggle('outline-arrow--grey');
   menu.classList.toggle('nav--active');
