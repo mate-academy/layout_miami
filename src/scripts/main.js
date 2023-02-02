@@ -15,7 +15,3 @@ window.addEventListener('hashchange', () => {
     page.style.overflow = 'visible';
   }
 });
-
-window.onbeforeunload = function (evt) {
-  console.log("hello")
-}
