@@ -42,6 +42,7 @@
       left: 0;
       right: 0;
       bottom: 20%;
+      animation: HeadingSlideUp $transition-duration ease-in;
     }
   }
 
@@ -78,6 +79,7 @@
       @include large-bp {
         justify-content: center;
         flex-direction: row;
+        align-items: flex-start;
         gap: rem(24);
       }
     }
@@ -85,7 +87,7 @@
     &__product {
       display: flex;
       flex-direction: column;
-
+      transition: transform $transition-duration;
       max-width: 100%;
 
       @include small-bp {
@@ -102,6 +104,13 @@
           $content-col-width-large,
           $content-cols-gap-medium
         );
+      }
+
+      &:hover {
+        @include large-bp {
+          transform: scale(1.03);
+          cursor: pointer;
+        }
       }
 
       &-img {
@@ -162,6 +171,7 @@
         max-width: 100%;
         object-fit: cover;
         object-position: center;
+        transition: transform $transition-duration;
 
         &--span-left {
           @include small-bp {
@@ -173,6 +183,10 @@
           @include small-bp {
             grid-column: 2 / 4;
           }
+        }
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
 
@@ -198,7 +212,7 @@
       }
     }
 
-    &__btn {
+    &__button {
       width: 100%;
 
       @include small-bp {
@@ -306,6 +320,11 @@
         font-size: rem(16);
         @extend %fw500;
         color: $color-main-light;
+        transition: color $transition-duration ease-in;
+
+        &:hover {
+          color: $color-accent-grey-light;
+        }
       }
     }
   }
@@ -339,5 +358,15 @@
       align-items: center;
       gap: rem(48);
     }
+  }
+}
+
+@keyframes HeadingSlideUp {
+  from {
+    bottom: 0;
+  }
+
+  to {
+    bottom: 20%;
   }
 }
