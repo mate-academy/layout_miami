@@ -7,7 +7,9 @@
   scroll-behavior: smooth;
 
   &__body {
-    margin: 0;
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -18,7 +20,7 @@
 
     opacity: 0;
     transform: translateX(-100%);
-    transition: 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
 
     &:target {
       transform: translateX(0);
@@ -26,12 +28,19 @@
     }
   }
 
-  // &__main {
-  //   background-color: #E5E5E5;
-  // }
+  &__main {
+    padding: 120px 0;
+    background-color: #e5e5e5;
+
+    @include onTablet {
+      padding: 120px 0 100px;
+    }
+  }
 
   &__section {
-    margin-bottom: 120px;
+    &--gap-between {
+      margin-bottom: 120px;
+    }
 
     &-title {
       font-weight: 700;
