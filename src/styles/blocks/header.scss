@@ -1,0 +1,90 @@
+.header {
+  background-image: url(../images/photos/1.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-top-padding-on-phone 0 94px;
+
+    @include onTablet() {
+      padding: $header-top-padding-on-tablet 0 40px;
+    }
+
+    @include onDesctop() {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__logo {
+    justify-self: start;
+  }
+
+  &__call {
+    position: relative;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        width: max-content;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+
+        color: $color-dark-gray;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        pointer-events: none;
+
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu {
+    @include onDesctop {
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+        width: 20px;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 40px;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    color: $color-dark-gray;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 16px;
+
+      background-image: url(../images/header_decoration-v1.svg);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/header_decoration-v2.png);
+      }
+    }
+  }
+}
