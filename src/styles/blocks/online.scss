@@ -1,0 +1,106 @@
+@import "../utils/extends";
+@import "../utils/vars";
+
+.online {
+  &__title {
+    margin: 0 0 40px;
+    text-align: center;
+
+    @extend %sectionTitle;
+
+    @include onTablet {
+      margin: 0 0 48px;
+    }
+
+    @include onDesctop {
+      margin: 0 0 48px;
+    }
+  }
+
+  &__grid {
+    text-align: center;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesctop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 48px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      grid-column: 2 / -2;
+    }
+
+    @include onDesctop {
+      margin-bottom: 0;
+
+      &--1-5 {
+        grid-column: 1 / 5;
+      }
+
+      &--5-9 {
+        grid-column: 5 / 9;
+      }
+
+      &--9-13 {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &__photo {
+    margin-bottom: 24px;
+    min-height: 280px;
+    max-height: 450px;
+    overflow: hidden;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include onTablet {
+      height: 392px;
+    }
+
+    @include onDesctop {
+      height: 324px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__item-title {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: $colorAccent;
+  }
+
+  &__item-text {
+    margin: 0;
+    padding: 0 3px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  }
+}
