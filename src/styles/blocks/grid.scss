@@ -18,6 +18,35 @@
     column-gap: 24px;
   }
 
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__gap {
+    @include onTablet {
+      row-gap: 40px;
+      grid-template-rows: 200px 200px;
+    }
+  }
+
+  &__row {
+    @include onTablet {
+      grid-row: 1;
+    }
+  }
+
   &__item {
 
     &--hidden {
@@ -28,14 +57,6 @@
 
       @include onDesktop {
         display: block;
-      }
-    }
-
-    @for $start from 1 through 2 {
-      @for $end from $start through 2 {
-        &--mobile-#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
       }
     }
 
@@ -60,4 +81,3 @@
     }
   }
 }
-
