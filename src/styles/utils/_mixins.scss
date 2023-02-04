@@ -5,8 +5,14 @@
   }
 }
 
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
-  @media (min-width: 1024px) {
+  @media (min-width: 1020px) {
     @content;
   }
 }
@@ -18,6 +24,11 @@
   grid-template-columns: 1fr var(--icon-width) var(--icon-width);
   column-gap: 30px;
   align-items: center;
+
+  @include onTablet {
+    column-gap: 40px;
+    --icon-width: 24px;
+  }
 
   @include onDesktop {
     column-gap: 40px;
