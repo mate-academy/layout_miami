@@ -1,0 +1,80 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpeg);
+  background-repeat: no-repeat;
+
+  @include onMobile {
+    background-position: left -120px center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 $headerTopPadding;
+
+    @include onMobile {
+      max-height: 500px;
+    }
+
+    @include onTablet {
+      max-height: 800px;
+      $headerTopPadding: 48px;
+      padding: $headerTopPadding 0 $headerTopPadding;
+    }
+
+    @include onDesktop {
+      $headerTopPadding: 48px;
+      padding: $headerTopPadding 0 $headerTopPadding;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 30px;
+    line-height: 100%;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: $color-main;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 42px;
+      padding-bottom: 16px;
+    }
+
+    @media (max-width: 599px) {
+      padding-bottom: 52px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/decor-el-mobile.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/decor-el-desktop.svg);
+      }
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+}
