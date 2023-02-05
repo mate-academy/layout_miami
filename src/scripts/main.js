@@ -6,9 +6,13 @@ window.addEventListener('hashchange', () => {
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
-});
 
-function stopDefAction(evt) {
-  evt.preventDefault();
-}
-document.addEventListener('submit', stopDefAction);
+  const form = document.querySelector('form');
+
+  function stopDefAction(evt) {
+    evt.preventDefault();
+    form.reset();
+  }
+
+  form.addEventListener('submit', stopDefAction);
+});
