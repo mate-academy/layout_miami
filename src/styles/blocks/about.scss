@@ -1,38 +1,23 @@
 .about {
-
   &__content {
-    @include onDesktop {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+    @include onTablet {
+      @include gridTablet
     }
 
-    @include onTablet {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      column-gap: 24px;
+    @include onDesktop {
+      @include gridDesktop;
     }
   }
 
 
   &__title {
-    @include onDesktop {
-      grid-column: 1 / 6;
-    }
-
-    @include onTablet {
-      grid-column: 1 / 4;
-    }
+    @include difDevices(grid-column-start, 1, 1);
+    @include difDevices(grid-column-end, 4, 6);
   }
 
   &__text {
-    @include onDesktop {
-      grid-column: 6 / 12;
-    }
-
-    @include onTablet {
-      grid-column: 4 / 7;
-    }
+    @include difDevices(grid-column-start, 4, 6);
+    @include difDevices(grid-column-end, 7, 12);
 
     font-weight: 500;
     font-size: 23px;
