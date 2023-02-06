@@ -1,11 +1,76 @@
 .nav {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   height: 100vh;
-  background-color: $c-light-gray;
+  background-color: $c-light-grey;
 
-  &__top-actions {
+  &__wrapper {
     margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+    max-width: 1260px;
+  }
+
+  &__list {
+    margin-left: 20px;
+
+    @include onTablet {
+      margin-left: 74px;
+    }
+
+    @include onDesktop {
+      margin-left: 120px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+
+    &:first-child {
+      margin-top: 44px;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $c-dark-grey;
+
+    width: fit-content;
+    border-bottom: 1px solid transparent;
+
+    transition: border-bottom 0.4s;
+
+    &--underline,
+    &:hover {
+      border-bottom: 1px solid $c-dark-grey;
+    }
+
+    &--underline {
+      margin-top: 16px;
+      padding-bottom: 8px;
+
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+    }
+  }
+
+  &__bottom-links {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
   }
 }
