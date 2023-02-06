@@ -39,53 +39,14 @@
   }
 }
 
-.top-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &__image {
-    display: block;
-
-    @include iconSize(18px);
-
-    @include onTablet() {
-      @include iconSize(24px);
-    }
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    &--call {
-      background-image: url(../images/icons/call.svg);
-      margin-right: 30px;
-    }
-
-    &--menu-opener {
-      background-image: url(../images/icons/menu.svg);
-
-      &:hover {
-        background-image: url(../images/icons/menu-hover.svg);
-      }
-    }
-
-    &--cross {
-      background-image: url(../images/icons/cross.svg);
-    }
-  }
-}
-
 .header {
   @extend %headerPaddingSet;
 
   background: url(../images/background.jpg) center / cover;
+
+  &__top {
+    @include flexCenter;
+  }
 
   &__image {
     height: 46px;
@@ -116,12 +77,89 @@
   }
 }
 
+.numbers {
+  &__call {
+    @include iconStyle;
+
+    background-image: url(../images/icons/call.svg);
+  }
+
+  &__contacts {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: max-content;
+    padding-right: 20px;
+
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @include onDesktop {
+    &:hover &__contacts {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.contacts {
+  font-size: 16px;
+  line-height: 27px;
+  color: $c--white;
+  text-transform: uppercase;
+
+  &__phone {
+    display: block;
+    color: inherit;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__numbers {
+    position: relative;
+    margin-right: 30px;
+
+    @include onTablet {
+      margin-right: 60px;
+    }
+  }
+
+  &__image {
+    @include iconStyle;
+
+    &--menu-opener {
+      background-image: url(../images/icons/menu.svg);
+
+      &:hover {
+        background-image: url(../images/icons/menu-hover.svg);
+      }
+    }
+
+    &--cross {
+      background-image: url(../images/icons/cross.svg);
+    }
+  }
+}
+
 .menu {
   @extend %headerPaddingSet;
 
   background-color: $c--red;
 
   &__top {
+    @include flexCenter;
     margin-bottom: 40px;
   }
 
@@ -153,21 +191,5 @@
     line-height: 16px;
 
     @extend %menuLink;
-  }
-}
-
-.contacts {
-  font-size: 16px;
-  line-height: 27px;
-  color: $c--white;
-  text-transform: uppercase;
-
-  &__phone {
-    display: block;
-    color: inherit;
-
-    &:not(:last-child) {
-      margin-bottom: 8px;
-    }
   }
 }
