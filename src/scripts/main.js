@@ -1,39 +1,77 @@
 'use strict';
 
-// nav menu
-document.getElementById('openNavButton').addEventListener('click', () => {
-  document
-    .querySelector('.section-hero')
-    .classList.add('section-hero--nav-opened');
-  document.body.classList.add('page__body--with-menu');
-});
+// toggle tabIndexes for better accessability
+const toggleTabIndexes = (elements) => {
+  const toggleTabIndex = (element) => {
+    element.tabIndex === -1 ? (element.tabIndex = 0) : (element.tabIndex = -1);
+  };
 
-const closeNavElements = [
+  elements.forEach((element) => {
+    toggleTabIndex(element);
+  });
+};
+
+const navLinks = document.querySelectorAll('.nav__link');
+const navLogo = document.getElementById('navLogo');
+const openNavButton = document.getElementById('openNavButton');
+const closeNavButton = document.getElementById('closeNavButton');
+
+// toggle tab indexes of navigation elements on load
+toggleTabIndexes([...navLinks, navLogo, closeNavButton]);
+
+// toggle navigation
+const toggleNavigation = () => {
+  const body = document.querySelector('.page__body');
+  const hero = document.querySelector('.section-hero');
+
+  if (body.classList.contains('page__body--with-menu')) {
+    body.classList.toggle('page__body--with-menu');
+    hero.classList.toggle('section-hero--nav-opened');
+    openNavButton.focus();
+  } else {
+    hero.classList.toggle('section-hero--nav-opened');
+
+    setTimeout(() => {
+      body.classList.toggle('page__body--with-menu');
+      navLogo.focus();
+    }, 300);
+  }
+
+  const links = document.querySelectorAll('a');
+  const buttons = document.querySelectorAll('button');
+  const inputs = document.querySelectorAll('input');
+  const textareas = document.querySelectorAll('textarea');
+
+  toggleTabIndexes(links);
+  toggleTabIndexes(buttons);
+  toggleTabIndexes(inputs);
+  toggleTabIndexes(textareas);
+};
+
+const navToggleButtons = [
+  document.getElementById('openNavButton'),
   document.getElementById('closeNavButton'),
   ...document.querySelectorAll('.nav__link'),
 ];
 
-closeNavElements.forEach((elem) => {
-  elem.addEventListener('click', () => {
-    document.body.classList.remove('page__body--with-menu');
-
-    document
-      .querySelector('.section-hero')
-      .classList.remove('section-hero--nav-opened');
-  });
+navToggleButtons.forEach((button) => {
+  button.addEventListener('click', toggleNavigation);
 });
 
 // form validation
-
+const username = document.getElementById('username');
+const userEmail = document.getElementById('userEmail');
+const userMessage = document.getElementById('userMessage');
 const submitButton = document.getElementById('formSubmitButton');
+const errorMessageElement = document.getElementById('formErrorMessage');
+const successMessageElement = document.getElementById('formSuccessMessage');
 
 const emailIsValid = (email) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/g).test(email);
 };
 
 const displayFormError = (message) => {
-  const errorMessageElement = document.getElementById('formErrorMessage');
-
+  successMessageElement.style.display = 'none';
   errorMessageElement.innerText = message;
   errorMessageElement.style.display = 'block';
 
@@ -43,12 +81,21 @@ const displayFormError = (message) => {
   }, 5000);
 };
 
+const postSubmitActions = () => {
+  errorMessageElement.style.display = 'none';
+  successMessageElement.style.display = 'block';
+
+  [username, userEmail, userMessage].forEach((field) => {
+    field.value = '';
+  });
+
+  setTimeout(() => {
+    successMessageElement.style.display = 'none';
+  }, 2500);
+};
+
 const validate = (e) => {
   e.preventDefault();
-
-  const username = document.getElementById('username');
-  const userEmail = document.getElementById('userEmail');
-  const userMessage = document.getElementById('userMessage');
 
   if (username.value === '') {
     displayFormError('Please enter your username!');
@@ -77,6 +124,8 @@ const validate = (e) => {
 
     return false;
   }
+
+  postSubmitActions();
 
   return true;
 };
