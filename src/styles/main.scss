@@ -1,7 +1,173 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import "./reset.scss";
+@import "./normalize.scss";
 
-body {
-  background: $c-gray;
+@import "./utils/vars";
+@import "./utils/mixins";
+@import "./utils/extends";
+
+.page {
+  &__body {
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(+100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+}
+
+.container {
+  box-sizing: content-box;
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet() {
+    padding: 0 40px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__image {
+    display: block;
+
+    @include iconSize(18px);
+
+    @include onTablet() {
+      @include iconSize(24px);
+    }
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &--call {
+      background-image: url(../images/icons/call.svg);
+      margin-right: 30px;
+    }
+
+    &--menu-opener {
+      background-image: url(../images/icons/menu.svg);
+
+      &:hover {
+        background-image: url(../images/icons/menu-hover.svg);
+      }
+    }
+
+    &--cross {
+      background-image: url(../images/icons/cross.svg);
+    }
+  }
+}
+
+.header {
+  @extend %headerPaddingSet;
+
+  background: url(../images/background.jpg) center / cover;
+
+  &__image {
+    height: 46px;
+
+    @include onTablet() {
+      height: 65px;
+    }
+  }
+
+  &__title {
+    padding-top: 130px;
+
+    font-size: 40px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet() {
+      padding-top: 140px;
+      font-size: 64px;
+    }
+
+    @include onDesktop() {
+      padding-top: 85px;
+      font-size: 80px;
+    }
+  }
+}
+
+.menu {
+  @extend %headerPaddingSet;
+
+  background-color: $c--red;
+
+  &__top {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 100%;
+
+    @extend %menuLink;
+  }
+
+  &__contacts {
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    font-size: 12px;
+    line-height: 16px;
+
+    @extend %menuLink;
+  }
+}
+
+.contacts {
+  font-size: 16px;
+  line-height: 27px;
+  color: $c--white;
+  text-transform: uppercase;
+
+  &__phone {
+    display: block;
+    color: inherit;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
 }
