@@ -1,0 +1,152 @@
+.header {
+  background: url(./../images/header/image-4.png) center no-repeat;
+  background-size: cover;
+  padding: 40px 20px 94px;
+  height: 100%;
+  position: relative;
+
+  @include onTablet {
+    background: url(./../images/header/image-3.png) center no-repeat;
+    background-size: cover;
+    padding: 48px 40px;
+  }
+
+  @include onDesctop {
+    background: url(./../images/header/header.png) center no-repeat;
+    background-size: cover;
+    padding: 48px 40px 64px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
+    
+    @include onTablet {
+      min-height: 800px;
+    }
+    
+    @include onDesctop {
+      min-height: 720px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__contact-us {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__logo-image {
+    width: 130px;
+    height: 17px;
+    display: block;
+    
+    @include onTablet {
+      width: 190px;
+      height: 24px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    margin-right: 24px;
+    text-decoration: none;
+    position: relative;
+    background: url(./../images/header/Icon-Phone.png) center no-repeat;
+    background-size: $icon-size $icon-size;
+    @include square($icon-size);
+    transition: all 0.3s;
+    
+    @include onTablet {
+      background-size: $big-icon-size $big-icon-size;
+      @include square($big-icon-size);
+      margin-right: 32px;
+      
+      &::before {
+        content: "+1 234 555 55 55";
+        position: absolute;
+        left: -140px;
+        top: 0;
+        width: 139px;
+        padding: 10px 40px 10px 0;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-color;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    background: url(./../images/header/Icon-Burger-menu.png) center no-repeat;
+    background-size: $icon-size $icon-size;
+    @include square($icon-size);
+    transition: all 0.3s;
+    
+    @include onTablet {
+      background-size: $big-icon-size $big-icon-size;
+      @include square($big-icon-size);
+    }
+
+    &:hover {
+      background: url(./../images/header/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 0;
+    font-style: italic;
+    font-weight: 800;
+    
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesctop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: url(./../images/header/wave-small.png);
+      width: 32px;
+      height: 27px;
+      position: absolute;
+      top: -48px;
+      left: 0;
+
+      @include onTablet {
+        content: url(./../images/header/sound-waves.svg);
+        width: 63px;
+        height: 76px;
+        position: absolute;
+        top: -103px;
+        left: 0;
+      }
+
+      @include onDesctop {
+        position: absolute;
+        top: -98px;
+        left: 0;
+      }
+    }
+  }
+}
