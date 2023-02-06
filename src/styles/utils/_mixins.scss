@@ -4,3 +4,98 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}
+
+@mixin size($side1, $side2) {
+  width: $side1;
+  height: $side2;
+}
+
+@mixin bike-image($bike-url) {
+  @include size(280px, 228px);
+  margin-bottom: 32px;
+  background-image: url($bike-url);
+}
+
+@mixin gallery-small($photo-url1, $photo-url2, $g-template-c, $gap-c, $mb) {
+  margin-bottom: $mb;
+
+  &-image-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: $g-template-c;
+    column-gap: $gap-c;
+    margin-bottom: 16px;
+    height: 130px;
+    max-height: 310px;
+  }
+
+  &-image1 {
+    min-width: 100px;
+    height: 100%;
+    background-image: url($photo-url1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    @include hover-scale-image;
+  }
+
+  &-image2 {
+    min-width: 100px;
+    height: 100%;
+    background-image: url($photo-url2);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    @include hover-scale-image;
+  }
+}
+
+@mixin hover-scale-block {
+  transition: transform 0.5s;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    border-radius: 10px;
+  }
+}
+
+@mixin hover-scale-image {
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin input-style {
+  width: 100%;
+  border: 14px solid transparent;
+  border-radius: 40px;
+  margin-bottom: 16px;
+}
+
+@mixin input-placeholder-style {
+  &::placeholder {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+@mixin input-focus-style {
+  &:focus {
+    outline: none;
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin input-hover-style {
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+}
