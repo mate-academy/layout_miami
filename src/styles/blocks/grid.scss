@@ -1,15 +1,21 @@
 .grid {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  &--hidden {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+  }
 
   @include onTablet {
-    display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
   @include onDesktop {
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
   }
 
   &__item {
@@ -31,6 +37,16 @@
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
+
+    &--hidden {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
       }
     }
   }
