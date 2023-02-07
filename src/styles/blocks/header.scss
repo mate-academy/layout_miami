@@ -7,22 +7,15 @@
   &__content {
     box-sizing: border-box;
     height: 100vh;
-    padding: 20px 0;
+    padding: $header-phone-padding 0;
 
     @include onTablet {
-      padding: 50px 0;
+      padding: $header-table-padding 0;
     }
   }
 
-  &__nav {
-    display: grid;
-    grid-template-columns: 1fr 18px 18px;
-    gap: 30px;
-    align-items: center;
-
-    @include onTablet {
-      gap: 63px;
-    }
+  &__top {
+    @include top-actions;
   }
 
   &__title {
@@ -46,5 +39,53 @@
       line-height: 80px;
       padding-top: 83px;
     }
+    animation: show 0.9s ease-out;
+    animation-delay: 0.2s;
+  }
+
+  .header {
+    &__phones {
+      position: relative;
+
+      &-events {
+        display: none;
+        @include onDesktop {
+          display: block;
+          position: absolute;
+          width: max-content;
+          right: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          padding-right: 20px;
+          transition: opacity 0.5s;
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+
+      &:hover .header__phones-events {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &__event {
+    text-align: right;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
