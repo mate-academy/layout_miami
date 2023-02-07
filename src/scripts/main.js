@@ -7,3 +7,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+if (window.location.hash === '#menu') {
+  document.body.classList.remove('page__body--with-menu');
+  window.location.replace(window.location.pathname);
+}
