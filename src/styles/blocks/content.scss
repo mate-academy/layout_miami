@@ -1,16 +1,32 @@
 .content {
   height: 100vh;
 
-  background-image: url(../images/Cover_photo.jpg);
-  background-position: right 10% center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  &__container {
+    @include widthLimit;
 
-  @media (min-width: 450px) {
-    background-position: center;
+    margin: 0 auto;
+  }
+
+  &__container,
+  &__header,
+  &__nav {
+    @include paddings;
+  }
+
+  &__header-wrapper {
+    background-image: url(../images/Cover_photo.jpg);
+    background-position: right 10% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-width: 450px) {
+      background-position: center;
+    }
   }
 
   &__header {
+    @include widthLimit;
+
     margin: 0 auto;
   }
 
@@ -21,7 +37,7 @@
     left: 0;
     right: 0;
 
-    transform: translateX(-100%);
+    transform: translateX(100%);
     transition: transform 0.3s ease-out;
 
     &:target {
