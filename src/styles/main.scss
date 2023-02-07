@@ -2,6 +2,31 @@
 @import "fonts";
 @import "typography";
 
+@mixin onDesktop {
+  @media (min-width: 1060px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
+  }
+}
+
 .page {
   font-family: Inter, sans-serif;
   color: $c-general;
@@ -11,23 +36,36 @@
   }
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+  }
+}
+
 .header {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 40px 20px 94px;
-  height: 100vh;
   background-image: url(../images/banner-mobile.png);
   background-size: cover;
   background-position: left 25%;
 
+  @media (min-width: 1024px) {
+    background-image: url(../images/banner-desktop.png);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+  }
+
   &__menu-opener {
-    display: block;
-    height: 18px;
-    width: 18px;
-    background-repeat: no-repeat;
-    background-position: center;
     background-image: url(../images/icon-burger-mobile.svg);
 
     &:hover {
@@ -44,14 +82,15 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../images/logo-mobile.svg);
+
+    @media (min-width: 1024px) {
+      width: 180px;
+      height: 30px;
+      background-image: url(../images/logo-desktop.svg);
+    }
   }
 
   &__call {
-    display: block;
-    height: 18px;
-    width: 18px;
-    background-repeat: no-repeat;
-    background-position: center;
     background-image: url(../images/icon-phone-mobile.svg);
   }
 
@@ -59,11 +98,17 @@
     display: grid;
     align-items: center;
     grid-template-columns: repeat(2, 1fr);
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 2fr 1fr;
+    }
   }
 
   &__wrapper {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: end;
+    // justify-content: space-between;
   }
 
   &__title {
@@ -75,7 +120,7 @@
   }
 }
 
-.icon {
+.title-label {
   height: 42px;
   width: 42px;
 }
