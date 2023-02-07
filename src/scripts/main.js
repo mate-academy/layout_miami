@@ -1,6 +1,6 @@
 'use strict';
 
-const button = document.getElementById(form-submit-button);
+const button = document.getElementById('form-submit-button');
 
 button.addEventListener('click', event => {
   event.preventDefault();
@@ -13,5 +13,3 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   };
 });
-
-
