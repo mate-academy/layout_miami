@@ -26,40 +26,36 @@
     }
   }
 
-  &__nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-  }
-
-  &__menu-opener {
-    background-image: url(/images/menu.svg);
-    margin-left: 30px;
-
-    @include onTablet {
-      width: 24px;
-      height: 16px;
-      margin-left: 40px;
-    }
-
-    &:hover {
-      background-image: url(/images/menu_hover.svg);
-    }
-  }
-
   &__call {
-    background-image: url(/images/phone.svg);
+    text-decoration: none;
+    top: 50%;
 
-    @include onTablet {
-      width: 24px;
-      height: 24px;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+
+        position: relative;
+        top: 50%;
+        display: block;
+        padding-right: 20px;
+        width: max-content;
+        transform: translate(-100%, -50%);
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+
+        pointer-events: none;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
