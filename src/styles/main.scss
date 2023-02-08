@@ -1,7 +1,139 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: Poppins, sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 23px;
+
+  @include onDesktop() {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/photos/header.png);
+  background-size: cover;
+  background-position: right 13% center;
+  background-repeat: no-repeat;
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onDesktop() {
+      padding-bottom: 200px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    display: block;
+    height: 18px;
+    width: 18px;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    background-size: cover;
+    background-position: center;
+
+    @include onDesktop() {
+      width: 24px;
+      height: 24px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        width: max-content;
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: 2px;
+
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu--opener {
+    display: block;
+    height: 12px;
+    width: 18px;
+    margin-left: 30px;
+
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+
+    @include onDesktop() {
+      width: 24px;
+      height: 16px;
+      margin-left: 40px;
+
+      &:hover {
+        background-image: url(../images/menuHover.svg);
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    color: white;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+
+    text-align: center;
+
+    @include onDesktop() {
+      font-size: 80px;
+    }
+  }
+}
+
+.logo {
+  display: block;
+  width: 130px;
+
+  @include onDesktop() {
+    width: 187px;
+  }
 }
