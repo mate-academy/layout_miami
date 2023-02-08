@@ -1,6 +1,6 @@
-$input-padding: rem(14) rem(16);
-
 .contact-form {
+  --input-side-padding: 16px;
+  --input-text-color: #292929;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,23 +17,28 @@ $input-padding: rem(14) rem(16);
   }
 
   &__input {
-    width: 100%;
-    border: none;
-    padding: $input-padding;
+    outline: none;
+    transition: border-color $transition-duration;
+    border: 1px solid transparent;
     border-radius: rem(40);
+    width: 100%;
+    height: rem(48);
+    padding: 0 var(--input-side-padding);
+    background: $color-accent-light;
 
     &::placeholder {
       color: $color-accent-grey;
       font-size: rem(14);
     }
 
-    &:focus {
-      outline-color: $color-accent-grey;
+    &:hover {
+      border-color: #d5d7de;
     }
 
-    &:invalid {
-      outline-color: $color-form-invalid;
+    &:focus {
+      border-color: var(--input-text-color);
     }
+
   }
 
   &__input-message {
@@ -46,6 +51,7 @@ $input-padding: rem(14) rem(16);
       #{4 * $content-col-width-large + $content-cols-gap-medium}
     );
     border-radius: rem(16);
+    padding: rem(14) var(--input-side-padding);
   }
 
   &__send-button {
@@ -67,6 +73,7 @@ $input-padding: rem(14) rem(16);
 
   &__notification--error,
   &__notification--success {
+    color: $color-accent-light;
     position: absolute;
     top: 0;
     left: 50%;
@@ -74,14 +81,10 @@ $input-padding: rem(14) rem(16);
     width: 100%;
 
     text-align: center;
-  }
-
-  &__notification--error {
-    color: $color-form-invalid;
+    font-size: rem(14);
   }
 
   &__notification--success {
     display: none;
-    color: $color-form-success;
   }
 }
