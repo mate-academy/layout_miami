@@ -1,0 +1,110 @@
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 24px 0 94px;
+    height: 100vh;
+
+    @include onTablet {
+      padding-bottom: 30px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    color: #292929;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+    font-style: italic;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 100%;
+    }
+
+    @include onDekstop {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-size: cover;
+      background-image: url(../images/vaweformobile.svg);
+      margin-bottom: 16px;
+      background-position: bottom;
+
+      @include onTablet {
+        background-image: url(../images/sound.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menumobile.svg);
+
+    @include onTablet {
+      background-image: url(../images/menutablet.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/hovermenu.png);
+
+      @include onTablet {
+        background-image: url(../images/menutablethover.svg);
+      }
+    }
+  }
+
+  &__call {
+    background-image: url(../images/call.svg);
+    text-decoration: none;
+
+    margin-left: auto;
+    margin-right: 40px;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: #292929;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
