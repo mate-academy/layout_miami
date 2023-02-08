@@ -1,7 +1,159 @@
-@import "utils";
-@import "fonts";
-@import "typography";
-
+h1,
 body {
-  background: $c-gray;
+  margin: 0;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+.conteiner {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+    max-width: 600px;
+  }
+
+  @include onDesctop {
+    padding: 0 120px;
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+
+  @include onTablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-image: url(../images/photos/bg-header.jpg);
+  background-size: cover;
+  background-position-x: 85%;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 30px 0;
+    padding-bottom: 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesctop {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__img {
+    width: 130px;
+    height: 38px;
+
+    @include onTablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 0 30px;
+  }
+
+  &__phone {
+    text-decoration: none;
+    background-image: url(../images/phone-icon.svg);
+
+    @include onDesctop {
+      &::before {
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesctop {
+      font-size: 80px;
+    }
+  }
 }
