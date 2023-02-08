@@ -1,6 +1,91 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
+
+@mixin onPad {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+  --icon-gap: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+
+  height: min-content;
+
+  gap: var(--icon-gap);
+
+  @include onPad {
+    --icon-width: 24px;
+    --icon-gap: 63px;
+  }
+
+  @include onDesktop {
+    --icon-width: 24px;
+    --icon-gap: 63px;
+  }
+}
+
+@mixin page__section-title {
+  font-weight: bold;
+  font-size: $title-section-size;
+  line-height: $title-section-size;
+  text-align: center;
+  letter-spacing: -1.5px;
+  color: $color-main;
+
+  @include onPad {
+    font-size: $title-desk-section-size;
+    line-height: $title-desk-section-size;
+  }
+
+  @include onDesktop {
+    font-size: $title-desk-section-size;
+    line-height: $title-desk-section-size;
+  }
+}
+
+@mixin page__section-subtitle {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+@mixin page__section-subtitle--3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@mixin page__section-subtitle--4 {
+  font-weight: inherit;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+@mixin place-photos {
+  margin-bottom: 24px;
+}
+
+@mixin place-link {
+  font-weight: bold;
+  color: $color-main-red;
+  text-decoration: none;
+}
+
+@mixin hover_photo {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
