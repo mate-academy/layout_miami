@@ -8,17 +8,16 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const button = document.querySelector('.contactus__button');
-const inputName = document.querySelector('.contactus__input');
-const textarea = document.querySelector('.contactus__input--textarea');
-const email = document.querySelector('.contactus__input--email');
+const button = document.querySelector('.contactus__form');
+const inputName = document.querySelectorAll('.contactus__input');
 
-button.addEventListener('click', preventDefault);
+
+button.addEventListener('submit', preventDefault);
 
 function preventDefault(event) {
   event.preventDefault();
 
-  inputName.value = '';
-  email.value = '';
-  textarea.value = '';
+  inputName.forEach(input => {
+    input.value = '';
+  });
 }
