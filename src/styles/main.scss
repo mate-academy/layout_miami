@@ -123,18 +123,26 @@ $size-header-buttons-desktop: 32px;
     );
     justify-content: end;
     gap: 0 $size-header-buttons-mobile;
+
+    @include onTablet() {
+      grid-template-columns: (
+        $size-header-buttons-desktop $size-header-buttons-desktop
+      );
+      gap: 0 $size-header-buttons-desktop;
+    }
   }
 
   &__phone {
     background-image: url(../images/services/icon-phone.svg);
 
-    color: #fff;
+    color: transparent;
     font-size: 12px;
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
+    transition: color 1.3s;
 
     &:hover {
       @include onDesktop() {
@@ -148,11 +156,14 @@ $size-header-buttons-desktop: 32px;
           transform: translate(-100%, -50%);
         }
       }
+      color: #fff;
     }
   }
 
   &__menu--button-opener {
     background-image: url(../images/services/menu/icon-burger-menu.svg);
+
+    transition: background-image 2s;
 
     &:hover {
       background-image: url(../images/services/menu/icon-burger-menu-hover.svg);
