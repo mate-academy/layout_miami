@@ -1,0 +1,91 @@
+.header {
+  background-image: url(../images/banner-mobile.png);
+  background-size: cover;
+  background-position: left 25%;
+
+  @include onTablet {
+    background-position: bottom;
+    background-image: url(../images/banner-desktop.png);
+  }
+
+  @include onDesktop {
+    background-position: center 0%;
+    background-image: url(../images/banner-desktop.png);
+  }
+
+  &__content {
+    box-sizing: border-box;
+    padding: $mobile-header-top-padding 0 94px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+
+    @include onTablet {
+      padding: $desktop-header-top-padding 0 10px;
+    }
+
+    @include onDesktop {
+      padding: $desktop-header-top-padding 0 10px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 18px;
+    width: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/logo-mobile.svg);
+
+    @media (min-width: 1024px) {
+      width: 180px;
+      height: 30px;
+      background-image: url(../images/logo-desktop.svg);
+    }
+  }
+
+  &__call {
+    margin-left: -24px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        transition: 0.3s;
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        width: max-content;
+        padding-right: 15px;
+        content: "+1 234 555-55-55";
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $c-general;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
