@@ -1,25 +1,21 @@
 @import "utils";
 @import "typography";
+@import "./utils/_mixins";
+
+@import "./blocks/grid";
 
 $headerTopPadding: 24px;
-
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
-  }
-}
-
-@mixin onTablet {
-  @media (min-width: 599px) {
-    @content;
-  }
-}
+$c-main: #1d1d1d;
+$c-menu: #e5e5e5;
 
 * {
   box-sizing: border-box;
 }
 
 .page {
+  scroll-behavior: smooth;
+  background-color: $c-main;
+
   &__body {
     margin: 0;
     font-family: Poppins, sans-serif;
@@ -38,20 +34,58 @@ $headerTopPadding: 24px;
       transform: translateX(0);
     }
   }
+
+  &__section {
+    &-about {
+      margin: 60px 0 0;
+
+      @include onTablet {
+        margin: 120px 0 0;
+      }
+
+      @include onDesktop {
+        margin: 120px 0 0;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 32px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onDesktop {
+      margin: 0;
+      font-size: 60px;
+      line-height: 100%;
+    }
+  }
+
+  &__section-paragraph {
+    margin: 0;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    color: #fff;
+  }
 }
 
 .container {
   margin: 0 auto;
   padding: 0 20px;
 
-  @include onDesktop {
-    max-width: 1020px;
+  @include onTablet {
+    max-width: 744px;
     padding: 0 40px;
   }
 
-  @include onTablet {
-    max-width: 744px;
-    padding: 0 20px;
+  @include onDesktop {
+    max-width: 1020px;
+    padding: 0 40px;
   }
 }
 
@@ -96,12 +130,12 @@ $headerTopPadding: 24px;
     grid-template-columns: 18px 18px;
     gap: 24px;
 
-    @include onDesktop {
+    @include onTablet {
       grid-template-columns: 32px 32px;
       gap: 32px;
     }
 
-    @include onTablet {
+    @include onDesktop {
       grid-template-columns: 32px 32px;
       gap: 32px;
     }
@@ -111,13 +145,13 @@ $headerTopPadding: 24px;
     display: grid;
     grid-template-columns: 24px;
 
-    @include onDesktop {
-      height: 32px;
+    @include onTablet {
       grid-template-columns: 32px;
       gap: 32px;
     }
 
-    @include onTablet {
+    @include onDesktop {
+      height: 32px;
       grid-template-columns: 32px;
       gap: 32px;
     }
@@ -131,12 +165,12 @@ $headerTopPadding: 24px;
     height: 38px;
     width: 130px;
 
-    @include onDesktop {
+    @include onTablet {
       height: 56px;
       width: 187px;
     }
 
-    @include onTablet {
+    @include onDesktop {
       height: 56px;
       width: 187px;
     }
@@ -149,12 +183,12 @@ $headerTopPadding: 24px;
   background-repeat: no-repeat;
   background-image: url(../images/photos/header-pic.png);
 
-  @include onDesktop {
-    background-image: url(../images/photos/logo-pic-desk.png);
-  }
-
   @include onTablet {
     background-image: url(../images/photos/header-photo-tabl.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/logo-pic-desk.png);
   }
 
   &__content {
@@ -165,12 +199,12 @@ $headerTopPadding: 24px;
     height: 100vh;
     padding: $headerTopPadding 0 88px;
 
-    @include onDesktop {
-      padding: $headerTopPadding 0 200px;
-    }
-
     @include onTablet {
       padding: $headerTopPadding 0 130px;
+    }
+
+    @include onDesktop {
+      padding: $headerTopPadding 0 200px;
     }
   }
 
@@ -214,18 +248,18 @@ $headerTopPadding: 24px;
     color: #fff;
     text-align: center;
 
-    @include onDesktop {
+    @include onTablet {
       font-weight: 700;
-      font-size: 80px;
+      font-size: 64px;
       line-height: 100%;
       letter-spacing: -1.5px;
       color: #fff;
       text-align: center;
     }
 
-    @include onTablet {
+    @include onDesktop {
       font-weight: 700;
-      font-size: 64px;
+      font-size: 80px;
       line-height: 100%;
       letter-spacing: -1.5px;
       color: #fff;
@@ -235,7 +269,7 @@ $headerTopPadding: 24px;
 }
 
 .menu {
-  background-color: #e5e5e5;
+  background-color: $c-menu;
 
   &__content {
     height: 100vh;
@@ -317,12 +351,12 @@ $headerTopPadding: 24px;
   background-position: center;
   background-repeat: no-repeat;
 
+  @include onTablet {
+    height: 480px;
+  }
+
   @include onDesktop {
     height: 555px;
     background-image: url(../images/photos/footer-pic-desk.png);
-  }
-
-  @include onTablet {
-    height: 480px;
   }
 }
