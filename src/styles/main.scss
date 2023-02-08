@@ -1,7 +1,196 @@
-@import "utils";
-@import "fonts";
-@import "typography";
-
-body {
-  background: $c-gray;
+// reset
+body,
+ul,
+ol,
+li,
+a,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
+
+// #region Mixins
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+// #endregion Mixins
+
+// variables
+$c-gray: #1d1d1d;
+$size-header-buttons-mobile: 24px;
+$size-header-buttons-desktop: 32px;
+
+// #region Normalize
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.page {
+  font-family: "Poppins", Arial, sans-serif;
+
+  &__body {
+    background: $c-gray;
+  }
+}
+// #endregion Normalize
+
+// main by blocks
+// #region wrapper
+.wrapper {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include onTablet() {
+    padding: 0 40px;
+  }
+}
+// #endregion
+
+// #region Icon
+.icon {
+  display: block;
+  width: $size-header-buttons-mobile;
+  height: $size-header-buttons-mobile;
+  background-size: cover;
+  border-spacing: center;
+  background-repeat: no-repeat;
+
+  @include onTablet() {
+    width: $size-header-buttons-desktop;
+    height: $size-header-buttons-desktop;
+  }
+}
+// #endregion Icon
+
+// #region Header
+.header {
+  background-image: url(../images/content/first-page-background.svg);
+  background-repeat: no-repeat;
+  background-position: right -50px bottom;
+  background-size: cover;
+
+  @media (min-width: 500px) {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px 0 88px;
+
+    height: 100vh;
+
+    @include onTablet() {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop() {
+      padding-bottom: 204px;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: block;
+    width: max-content;
+    font-size: 0;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: (
+      $size-header-buttons-mobile $size-header-buttons-mobile
+    );
+    justify-content: end;
+    gap: 0 $size-header-buttons-mobile;
+  }
+
+  &__phone {
+    background-image: url(../images/services/icon-phone.svg);
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      @include onDesktop() {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          display: block;
+          width: max-content;
+          padding-right: 8px;
+          transform: translate(-100%, -50%);
+        }
+      }
+    }
+  }
+
+  &__menu--button-opener {
+    background-image: url(../images/services/menu/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/services/menu/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include onTablet() {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 100%;
+    }
+
+    @include onDesktop() {
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
+}
+// #endregion Header
+
+// #region logo blocks
+.logo {
+
+  &__image {
+    height: 38px;
+
+    @include onTablet() {
+      height: 56px;
+    }
+  }
+}
+// #endregion logo blocks
