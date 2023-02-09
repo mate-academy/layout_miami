@@ -46,10 +46,6 @@ $botPaddingHeaderMobile: 88px;
 $botPaddingHeaderTablet: 130px;
 $botPaddingHeaderDesktop: 204px;
 
-$botPaddingMenuMobile: 120px;
-$botPaddingMenuTablet: 168px;
-$botPaddingMenuDesktop: 204px;
-
 // #endregion Mixins
 
 // #region Normalize
@@ -57,15 +53,31 @@ $botPaddingMenuDesktop: 204px;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+// #endregion Normalize
 
+// #region block page
 .page {
   font-family: "Poppins", Arial, sans-serif;
 
   &__body {
     background: $c-main;
   }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    transform: translateY(-110%);
+
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateY(0);
+    }
+  }
 }
-// #endregion Normalize
+// #endregion page
 
 // main by blocks
 
@@ -238,25 +250,22 @@ $botPaddingMenuDesktop: 204px;
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     height: 100vh;
-    padding: $topPaddingHeaderMobile 0 $botPaddingMenuMobile;
-
-    @include onTablet() {
-      padding-bottom: $botPaddingMenuTablet;
-    }
-
-    @include onDesktop() {
-      padding-bottom: $botPaddingMenuDesktop;
-    }
-
+    padding: $topPaddingHeaderMobile 0 0;
   }
 
   &__nav {
+    margin-top: 44px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
+    @include onDesktop() {
+      margin-top: 48px;
+    }
   }
 
   &__item {
