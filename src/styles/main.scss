@@ -111,19 +111,30 @@ $botPaddingHeaderDesktop: 204px;
   &--menu {
     background-image: url(../images/services/menu/icon-burger-menu.svg);
 
-    transition: background-image 2s;
+    transition: background-image 2s, transform 0.5s;
 
     &:hover {
       background-image: url(../images/services/menu/icon-burger-menu-hover.svg);
+      transform: scale(1.2);
     }
   }
 
   &--phone {
     background-image: url(../images/services/icon-phone.svg);
+    // transition: transform 0.5;
   }
 
   &--close {
     background-image: url(../images/services/menu/icon-burger-menu-close.svg);
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.2);
+    }
   }
 }
 // #endregion Icon
@@ -181,7 +192,7 @@ $botPaddingHeaderDesktop: 204px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 1.3s;
+    transition: color 1.3s, transform 0.5s;
 
     &:hover {
       @include onDesktop() {
@@ -195,6 +206,8 @@ $botPaddingHeaderDesktop: 204px;
           transform: translate(-100%, -50%);
         }
       }
+
+      transform: scale(1.2);
       color: #fff;
     }
   }
@@ -243,7 +256,7 @@ $botPaddingHeaderDesktop: 204px;
 }
 // #endregion logo blocks
 
-//
+// #region menu
 .menu {
   background: #c2c2c2;
 
@@ -269,12 +282,18 @@ $botPaddingHeaderDesktop: 204px;
   }
 
   &__item {
+    transition: transform 0.5s;
+
     &:nth-child(-n + 4) {
       padding-bottom: 24px;
     }
 
     &:nth-last-child(2) {
       padding: 40px 0 16px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 
@@ -290,11 +309,12 @@ $botPaddingHeaderDesktop: 204px;
       content: "";
       display: block;
       position: relative;
-      top: 8px;
+      top: 4px;
       width: 100%;
       height: 1px;
       background-color: transparent;
-      transition: background-color 0.5s;
+      transition: background-color 0.5s, transform 0.5s;
+      transform: translateX(-1000%);
     }
 
     @include onDesktop() {
@@ -302,7 +322,10 @@ $botPaddingHeaderDesktop: 204px;
 
       &:hover {
         &::after {
+          // transition: background-color 0.5s, translate 5s;
+
           background-color: $c-main;
+          transform: translateX(0);
         }
       }
     }
@@ -324,6 +347,9 @@ $botPaddingHeaderDesktop: 204px;
       line-height: 16px;
       letter-spacing: 2px;
 
+      padding-bottom: 11px;
+      border-bottom: 1px solid #1d1d1d;
+
       @include onDesktop() {
         font-weight: 700;
       }
@@ -338,5 +364,23 @@ $botPaddingHeaderDesktop: 204px;
         background-color: $c-main;
       }
     }
+  }
+}
+// #endregion menu
+
+.footer {
+  background-image: url(../images/content/footer-background.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+
+  height: 200px;
+
+  @include onTablet() {
+    height: 480px;
+  }
+
+  @include onDesktop() {
+    height: 550px;
   }
 }
