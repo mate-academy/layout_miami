@@ -1,6 +1,35 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin hover($_property, $_toValue, $_duration: 0.3s) {
+  transition: #{$_property} #{$_duration};
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin fonts($size, $weight: 400, $height: 100%) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+}
+
+@mixin block-size ($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-justify ($justify_value: flex-start, $align_value: stretch) {
+  display: flex;
+  justify-content: $justify_value;
+  align-items: $align_value;
+}
+
+@mixin media-tablet {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $desktop-size) {
+    @content;
   }
 }

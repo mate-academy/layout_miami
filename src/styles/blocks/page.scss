@@ -1,0 +1,67 @@
+.page {
+  @extend %font-primary;
+
+  &__body {
+    background-color: $color-dark;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    visibility: hidden;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translate(100%);
+    transition: transform, 0.3s;
+
+    &:target {
+      visibility: visible;
+      transform: translate(0);
+    }
+  }
+
+  &__header {
+    margin-bottom: 60px;
+
+    @include media-tablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 90px;
+
+    &:last-of-type {
+      margin-bottom: 120px;
+    }
+
+    @include media-tablet {
+      margin-bottom: 130px;
+    }
+
+    @include media-desktop {
+      margin-bottom: 160px;
+    }
+  }
+
+  &__section-title {
+    @include fonts(32px, 500);
+    color: $color-light;
+    text-align: center;
+    letter-spacing: -1.5px;
+    margin: 0 0 48px;
+
+    @include media-tablet {
+      font-size: 48px;
+    }
+
+    @include media-desktop {
+      font-size: 64px;
+    }
+  }
+}
