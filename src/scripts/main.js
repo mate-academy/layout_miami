@@ -1,8 +1,6 @@
 'use strict';
 
-const button = document.getElementById('form-submit-button');
-
-button.addEventListener('click', event => {
+document.addEventListener('submit', event => {
   event.preventDefault();
 });
 
