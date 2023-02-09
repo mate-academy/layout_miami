@@ -1,5 +1,5 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $default-transition-duration;
   &:hover {
     #{$_property}: $_toValue;
   }
@@ -14,5 +14,23 @@
 @mixin onDesktop {
   @media (min-width: 1260px) {
     @content;
+  }
+}
+
+@mixin gridTemplateColumnsRepeat($repeatsCount) {
+  grid-template-columns: repeat($repeatsCount, 1fr);
+}
+
+@mixin topActions {
+  --icon-width: 18px;
+  --top-actions-gap: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: var(--top-actions-gap);
+
+  @include onTablet {
+    --icon-width: 24px;
+    --top-actions-gap: 40px;
   }
 }
