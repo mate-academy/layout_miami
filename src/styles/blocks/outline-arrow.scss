@@ -1,0 +1,45 @@
+.outline-arrow {
+  position: relative;
+
+  outline: none;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: rotate(-45deg) translateY(-50%);
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 3px;
+    border-bottom: 3px solid transparent;
+    border-right: 3px solid transparent;
+
+    transform-origin: top center;
+    transition: border-color 0.3s;
+
+    @include onTablet {
+      left: -30px;
+
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &:focus-visible {
+    &::after {
+      border-color: $color-text;
+    }
+  }
+
+  &--grey {
+    &:focus-visible {
+      &::after {
+        border-color: $color-main;
+      }
+    }
+  }
+}

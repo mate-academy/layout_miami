@@ -1,0 +1,110 @@
+.nav {
+  transform: translateX(150%);
+
+  padding: 29px 0;
+
+  text-transform: uppercase;
+  color: $color-main;
+  font-weight: 600;
+
+  background-color: $color-menu;
+
+  transition: transform 0.5s;
+
+  @include onTablet {
+    padding-top: 36px;
+  }
+
+  @include onDesktop {
+    padding-top: 48px;
+
+    font-weight: 700;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+    margin-bottom: 44px;
+
+    @include onDesktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: transparent;
+
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    &:hover {
+      &::after {
+        transform: translateY(5px);
+
+        background-color: $color-main;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+
+    @include fontSizeLineHeight100(22px);
+    letter-spacing: 2px;
+    text-align: left;
+  }
+
+  &__call {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+
+    width: max-content;
+  }
+
+  &__phone {
+    line-height: 27px;
+  }
+
+  &__text {
+    padding-bottom: 8px;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    border-bottom: 1px solid $color-main;
+  }
+}

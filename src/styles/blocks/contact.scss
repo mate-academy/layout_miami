@@ -1,0 +1,58 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  width: 100%;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    gap: 200px;
+  }
+
+  &__form {
+    flex-basis: 50%;
+  }
+
+  &__data {
+    flex-basis: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__small-title {
+    margin-bottom: 8px;
+  }
+
+  %hoverOrFocus {
+    color: $color-main;
+    text-shadow: -1px -1px white,
+      1px 1px white,
+      -1px 1px white,
+      1px -1px white;
+  }
+
+  &__text {
+    @include fontSizeLineHeight140(16px);
+
+    font-weight: 500;
+
+    transition: color 0.3s, text-shadow 0.3s;
+
+    outline: none;
+
+    &:hover {
+      @extend %hoverOrFocus;
+    }
+
+    &:focus-visible {
+      @extend %hoverOrFocus;
+    }
+  }
+}
