@@ -2,28 +2,19 @@
 
 //  toggle all clickable elements tabindex when toggle menu
 const toggleTabIndex = () => {
-  const toggle = elem => {
-    elem.tabIndex === -1 ? elem.tabIndex = 0 : elem.tabIndex = -1;
-  };
-
-  const toggleCollection = (collection) => {
-    for (const elem of collection) {
-      if (elem.classList.contains('burger')) {
-        continue;
-      }
-      toggle(elem);
-    }
-  };
-
   const links = document.getElementsByTagName('a');
   const buttons = document.getElementsByTagName('button');
   const inputs = document.getElementsByTagName('input');
   const textareas = document.getElementsByTagName('textarea');
 
-  toggleCollection(links);
-  toggleCollection(buttons);
-  toggleCollection(inputs);
-  toggleCollection(textareas);
+  const allElements = ([...links, ...buttons, ...inputs, ...textareas]);
+
+  for (const elem of allElements) {
+    if (elem.classList.contains('burger')) {
+      continue;
+    }
+    elem.tabIndex === -1 ? elem.tabIndex = 0 : elem.tabIndex = -1;
+  }
 };
 
 // tollge navigation on click on desired buttons
@@ -81,13 +72,13 @@ for (const anchor of anchors) {
 
 //  clearing the form input after click on submit
 const clearFormInput = () => {
-  const getField = document.querySelectorAll('.contact-form__field');
+  const allFields = [...document.querySelectorAll('.contact-form__field')];
 
-  for (const field of getField) {
+  allFields.push(document.querySelector('.contact-form__message'));
+
+  for (const field of allFields) {
     field.value = '';
   }
-
-  document.querySelector('.contact-form__message').value = '';
 };
 
 const toggleModal = () => {
