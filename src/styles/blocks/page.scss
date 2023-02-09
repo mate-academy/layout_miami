@@ -1,8 +1,18 @@
 .page {
   font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: $primary-font-color;
+  scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -12,10 +22,50 @@
     right: 0;
 
     transform: translateX(-100%);
-    transition: transform 0.3s;
+    transition: transform 0.4s ease-in-out;
 
     &:target {
       transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 120px;
+
+    &:nth-child(-3n + 3) {
+      margin-bottom: 110px;
+    }
+
+    @include onTablet {
+      &:nth-child(-3n + 3) {
+        margin-bottom: 96px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 48px;
+    font-weight: $font-weight-bold;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: $primary-font-color;
+
+    @include onTablet {
+      margin-bottom: 64px;
+
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &--position {
+      text-align: left;
     }
   }
 }
