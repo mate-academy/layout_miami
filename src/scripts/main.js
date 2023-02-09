@@ -1,8 +1,13 @@
 'use strict';
 
 const menuToggler = document.querySelector('.nav__link--burger-menu');
-const menu = document.querySelector('.header__menu');
+const menuTogglerClose = document.querySelector('.nav__link--close-menu');
 
-menuToggler.addEventListener('click', (event) => {
-  menu.classList.toggle('is-active');
-});
+const menu = document.querySelector('.menu');
+
+menuToggler.addEventListener('click', toggleMenu);
+menuTogglerClose.addEventListener('click', toggleMenu);
+
+function toggleMenu(event) {
+  menu.classList.toggle('menu--hidden');
+}
