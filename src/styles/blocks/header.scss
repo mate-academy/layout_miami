@@ -4,6 +4,8 @@
   background-repeat: no-repeat;
   background-position: 30% 0%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &__menu {
     display: flex;
@@ -37,15 +39,15 @@
   }
 
   &__phone-img {
-    max-width: $icon-size;
+    max-width: $icon-size-320;
     margin: 0;
   }
 
   &__toggle {
     position: relative;
     @extend %flex-position;
-    width: $icon-size;
-    height: $icon-size;
+    width: $icon-size-320;
+    height: $icon-size-320;
     background-repeat: no-repeat;
     transition: 0.3s ease;
     background-position: center;
@@ -58,7 +60,7 @@
   &__top-line {
     position: absolute;
     top: 2.5px;
-    width: 18px;
+    width: 100%;
     height: 0.15rem;
     border-radius: 20px;
     background-color: $border-color;
@@ -71,7 +73,7 @@
 
   &__center-line {
     position: absolute;
-    width: 18px;
+    width: 100%;
     top: 50%;
     transform: translateY(-50%);
     height: 0.15rem;
@@ -83,7 +85,7 @@
   &__bottom-line {
     position: absolute;
     bottom: 3px;
-    width: 18px;
+    width: 100%;
     height: 0.15rem;
     border-radius: 20px;
     background-color: $border-color;
@@ -101,15 +103,156 @@
     right: 0;
     bottom: 0;
   }
+
+  &__advertising {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
+    padding: 0 0 98px 23px;
+  }
+
+  &__vector {
+    background: url(/images/Header-vector.svg);
+    background-size: cover;
+    width: 32px;
+    height: 27px;
+  }
+
+  &__advice {
+    margin-top: 15px;
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    color: #292929;
+  }
+
+  @media (min-width: 744px) {
+    & {
+      background: url(/images/Header-background-1200px.png);
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    &__menu {
+      padding: 0 76px 0 72px;
+    }
+
+    &__logo-img {
+      max-width: 190px;
+    }
+
+    &__phone {
+      position: relative;
+
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        width: max-content;
+        font-size: 12px;
+        font-weight: 700;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -130px;
+        color: $border-color;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      &:hover::before {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &__phone-img {
+      max-width: $icon-size-744;
+      max-height: $icon-size-744;
+    }
+
+    &__toggle {
+      width: $icon-size-744;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 1px;
+        width: 100%;
+        height: 0.15rem;
+        border-radius: 20px;
+        background-color: $border-color;
+        transition: 0.3s ease;
+      }
+
+      &:hover::before {
+        width: 10px;
+      }
+    }
+
+    &__top-line {
+      top: 38%;
+      transform: translateY(-38%);
+    }
+
+    &__toggle:hover .header__top-line {
+      width: 16px;
+    }
+
+    &__center-line {
+      top: 69%;
+      transform: translateY(-69%);
+    }
+
+    &__bottom-line {
+      bottom: 0;
+    }
+
+    &__toggle:hover .header__bottom-line {
+      width: 18px;
+    }
+
+    &__advertising {
+      padding: 0 0 40px 72px;
+    }
+
+    &__vector {
+      background: url(/images/Sound-waves.svg);
+      background-size: cover;
+      width: 63px;
+      height: 76px;
+    }
+
+    &__advice {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    &__menu {
+      padding: 0 124px 0 120px;
+    }
+
+    &__advertising {
+      padding: 0 0 64px 120px;
+    }
+
+    &__advice {
+      font-size: 48px;
+    }
+  }
 }
 
 .nav {
   @extend %flex-position;
+  flex-direction: column;
   background-color: $menu-color;
 
-  .nav__container {
+  &__container {
     flex-grow: 1;
-    max-width: 876px;
   }
 
   &__head {
@@ -138,8 +281,8 @@
     flex-grow: 1;
 
     &-close {
-      width: $icon-size;
-      height: $icon-size;
+      width: $icon-size-320;
+      height: $icon-size-320;
     }
   }
 
@@ -184,6 +327,81 @@
 
     &:hover::before {
       width: 100%;
+    }
+  }
+
+  &__contacts {
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__contact-number {
+    width: max-content;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 5px;
+
+    color: $border-color;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: $border-color;
+      transition: 0.3s ease;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  &__contact-order {
+    width: max-content;
+    position: relative;
+    margin-top: 27px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $border-color;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 5px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: $border-color;
+      transition: 0.3s ease;
+    }
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 744px) {
+    &__container {
+      padding: 0 72px;
+    }
+
+    &__logo-img {
+      max-width: 190px;
+    }
+
+    &__button-close {
+      width: $icon-close-744;
+      height: $icon-close-744;
     }
   }
 }
