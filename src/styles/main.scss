@@ -2,6 +2,11 @@
 @import "fonts";
 @import "typography";
 
+$iconWidth: 18px;
+$headerTopPadding: 24px;
+$blue: #0075ff;
+
+
 @mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
@@ -17,18 +22,30 @@
 }
 
 .icon {
-  height: 18px;
-  width: 18px;
+  width: 100%;
+  padding-bottom: 100%;  
   display: block;
-
-  @include onDesktop {
-    height: 24px;
-    width: 24px;
-  }
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--menu {
+
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
 }
 
 .header {
@@ -59,23 +76,7 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  &__menu-opener {
-
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-  }
-
   &__call {
-    background-image: url(../images/phone.svg);
     text-decoration: none;
 
     @include onDesktop {
@@ -113,7 +114,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 24px 0px 80px;
+    padding: $headerTopPadding 0px 80px;
   }
 
 }
@@ -136,5 +137,27 @@
 
   @include onDesktop {
     padding: 0 40px;
+  }
+}
+
+.top-actions {
+  display: grid;
+  grid-template-columns: $iconWidth 1fr $iconWidth;
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    grid-template-columns: ($iconWidth + 6px) 1fr ($iconWidth + 6px);
+  }
+
+}
+
+.menu {
+  background-color: $blue;
+  height: 100vh;
+  box-sizing: border-box;
+
+  &--content {
+    padding: $headerTopPadding 0;
   }
 }
