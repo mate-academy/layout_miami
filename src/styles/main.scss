@@ -9,6 +9,16 @@ h2,
 h3,
 p {
   margin: 0;
+  padding: 0;
+}
+
+a {
+  font-size: 0;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
 
 // #region Mixins
@@ -25,10 +35,22 @@ p {
 }
 // #endregion Mixins
 
-// variables
-$c-gray: #1d1d1d;
+// #region variables
+$c-main: #1d1d1d;
 $size-header-buttons-mobile: 24px;
 $size-header-buttons-desktop: 32px;
+
+$topPaddingHeaderMobile: 32px;
+
+$botPaddingHeaderMobile: 88px;
+$botPaddingHeaderTablet: 130px;
+$botPaddingHeaderDesktop: 204px;
+
+$botPaddingMenuMobile: 120px;
+$botPaddingMenuTablet: 168px;
+$botPaddingMenuDesktop: 204px;
+
+// #endregion Mixins
 
 // #region Normalize
 * {
@@ -40,12 +62,13 @@ $size-header-buttons-desktop: 32px;
   font-family: "Poppins", Arial, sans-serif;
 
   &__body {
-    background: $c-gray;
+    background: $c-main;
   }
 }
 // #endregion Normalize
 
 // main by blocks
+
 // #region wrapper
 .wrapper {
   max-width: 1020px;
@@ -53,7 +76,7 @@ $size-header-buttons-desktop: 32px;
   padding: 0 20px;
 
   @include onTablet() {
-    padding: 0 40px;
+    padding: 0 72px;
   }
 }
 // #endregion
@@ -63,13 +86,32 @@ $size-header-buttons-desktop: 32px;
   display: block;
   width: $size-header-buttons-mobile;
   height: $size-header-buttons-mobile;
-  background-size: cover;
-  border-spacing: center;
-  background-repeat: no-repeat;
 
   @include onTablet() {
     width: $size-header-buttons-desktop;
     height: $size-header-buttons-desktop;
+  }
+
+  background-size: cover;
+  border-spacing: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/services/menu/icon-burger-menu.svg);
+
+    transition: background-image 2s;
+
+    &:hover {
+      background-image: url(../images/services/menu/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/services/icon-phone.svg);
+  }
+
+  &--close {
+    background-image: url(../images/services/menu/icon-burger-menu-close.svg);
   }
 }
 // #endregion Icon
@@ -81,7 +123,7 @@ $size-header-buttons-desktop: 32px;
   background-position: right -50px bottom;
   background-size: cover;
 
-  @media (min-width: 500px) {
+  @include onTablet() {
     background-position: center;
   }
 
@@ -90,30 +132,17 @@ $size-header-buttons-desktop: 32px;
     flex-direction: column;
     justify-content: space-between;
 
-    padding: 32px 0 88px;
+    padding: $topPaddingHeaderMobile 0 $botPaddingHeaderMobile;
 
     height: 100vh;
 
     @include onTablet() {
-      padding-bottom: 130px;
+      padding-bottom: $botPaddingHeaderTablet;
     }
 
     @include onDesktop() {
-      padding-bottom: 204px;
+      padding-bottom: $botPaddingHeaderDesktop;
     }
-  }
-
-  &__nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__logo {
-    display: block;
-    width: max-content;
-    font-size: 0;
   }
 
   &__buttons {
@@ -133,8 +162,6 @@ $size-header-buttons-desktop: 32px;
   }
 
   &__phone {
-    background-image: url(../images/services/icon-phone.svg);
-
     color: transparent;
     font-size: 12px;
     font-weight: 700;
@@ -157,16 +184,6 @@ $size-header-buttons-desktop: 32px;
         }
       }
       color: #fff;
-    }
-  }
-
-  &__menu--button-opener {
-    background-image: url(../images/services/menu/icon-burger-menu.svg);
-
-    transition: background-image 2s;
-
-    &:hover {
-      background-image: url(../images/services/menu/icon-burger-menu-hover.svg);
     }
   }
 
@@ -193,6 +210,14 @@ $size-header-buttons-desktop: 32px;
 }
 // #endregion Header
 
+// #region top actions
+.top-actions {
+  display: grid;
+  grid-template-columns: 1fr $size-header-buttons-mobile;
+  align-items: center;
+}
+//  #endregion
+
 // #region logo blocks
 .logo {
 
@@ -205,3 +230,104 @@ $size-header-buttons-desktop: 32px;
   }
 }
 // #endregion logo blocks
+
+//
+.menu {
+  background: #c2c2c2;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $topPaddingHeaderMobile 0 $botPaddingMenuMobile;
+
+    @include onTablet() {
+      padding-bottom: $botPaddingMenuTablet;
+    }
+
+    @include onDesktop() {
+      padding-bottom: $botPaddingMenuDesktop;
+    }
+
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__item {
+    &:nth-child(-n + 4) {
+      padding-bottom: 24px;
+    }
+
+    &:nth-last-child(2) {
+      padding: 40px 0 16px;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-main;
+
+    &::after {
+      content: "";
+      display: block;
+      position: relative;
+      top: 8px;
+      width: 100%;
+      height: 1px;
+      background-color: transparent;
+      transition: background-color 0.5s;
+    }
+
+    @include onDesktop() {
+      font-weight: 700;
+
+      &:hover {
+        &::after {
+          background-color: $c-main;
+        }
+      }
+    }
+
+    &--number {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 27px;
+      letter-spacing: 0;
+
+      @include onDesktop() {
+        font-weight: 700;
+      }
+    }
+
+    &--order {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      @include onDesktop() {
+        font-weight: 700;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: relative;
+        top: 8px;
+        width: 100%;
+        height: 1px;
+        background-color: $c-main;
+      }
+    }
+  }
+}
