@@ -69,12 +69,53 @@ $botPaddingHeaderDesktop: 204px;
     width: 100%;
 
     transform: translateY(-110%);
-
     transition: transform 0.5s;
 
     &:target {
       transform: translateY(0);
     }
+  }
+
+  &__section {
+    margin-bottom: 92px;
+
+    @include onTablet() {
+      margin-bottom: 120px;
+    }
+
+    @include onDesktop() {
+      margin-bottom: 160px;
+    }
+  }
+
+  &__section-title {
+    &:not(:first-child) {
+      margin-bottom: 48px;
+    }
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet() {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop() {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+
+  &__section-description {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: #fff;
   }
 }
 // #endregion page
@@ -85,7 +126,9 @@ $botPaddingHeaderDesktop: 204px;
 .wrapper {
   max-width: 1020px;
   margin: 0 auto;
+
   padding: 0 20px;
+  box-sizing: content-box;
 
   @include onTablet() {
     padding: 0 72px;
@@ -367,6 +410,46 @@ $botPaddingHeaderDesktop: 204px;
   }
 }
 // #endregion menu
+
+// #region Grid
+.grid {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  
+  @include onTablet() {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--tablet {
+    display: block;
+    @include onTablet() {
+      display: flex;
+    }
+  }
+
+  &--desktop {
+    display: block;
+    @include onDesktop() {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+// #region Grid
 
 .footer {
   background-image: url(../images/content/footer-background.svg);
