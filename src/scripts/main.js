@@ -8,10 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-let form = document.querySelector("#contacts_form")
+const form = document.querySelector('#contacts_form');
+const inputs = [...form.children];
 
 function submitHandler(submitEvent) {
   submitEvent.preventDefault();
+  inputs.forEach(element => {
+    element.value = ''
+  });
 }
 
-form.addEventListener("submit", submitHandler);
+form.addEventListener('submit', submitHandler);
+
