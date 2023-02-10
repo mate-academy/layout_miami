@@ -1,36 +1,27 @@
 .grid {
+  grid-template-columns: repeat(2, 1fr);
   display: grid;
   column-gap: 20px;
 
-  &--desktop {
-    display: block;
-
-    @include desktop744 {
-      display: grid;
-    }
-  }
-
-  @include desktop744 {
+  @include tablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
-  @include desktop1024 {
+  @include desktop {
     grid-template-columns: repeat(12, 1fr);
   }
 
-  &__item-phone {
-    @for $start from 1 through 2 {
-      @for $end from $start through 2 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-      }
+  &--display {
+    display: block;
+
+    @include tablet {
+      display: grid;
     }
   }
 
   &__item-tablet {
-    @include desktop744 {
+    @include tablet {
       @for $start from 1 through 6 {
         @for $end from $start through 6 {
           &--#{$start}-#{$end} {
@@ -42,7 +33,7 @@
   }
 
   &__item-desktop {
-    @include desktop1024 {
+    @include desktop {
       @for $start from 1 through 12 {
         @for $end from $start through 12 {
           &--#{$start}-#{$end} {
