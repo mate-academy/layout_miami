@@ -30,7 +30,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('.button').addEventListener('submit', function(event) {
+const form = document.querySelector('.form')
+
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-  document.querySelectorAll.forEach('.form-field').reset();
+  form.reset();
 });
