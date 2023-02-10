@@ -1,20 +1,11 @@
 
 .menu {
   display: block;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: #c2c2c2;
   color: $menu-color;
   fill: $menu-color;
 
   text-transform: uppercase;
-
-  &--hidden {
-    display: none;
-  }
 
   &__list {
     margin-bottom: 40px;
@@ -33,17 +24,24 @@
     font-size: 22px;
     letter-spacing: 2px;
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      transform: translateY(8px);
+      height: 2px;
+      display: block;
+      background-color: $menu-color;
+      transition-property: width;
+      transition-duration: 0.3s;
+    }
+
+
     &:hover {
-      &::after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        transform: translateY(8px);
-        height: 2px;
-        display: block;
-        background-color: $menu-color;
+      &::after {
+        width: 100%;
       }
     }
   }
