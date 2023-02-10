@@ -1,0 +1,65 @@
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    transition: all 0.3s;
+    display: none;
+
+    &--content {
+      margin-bottom: 8px;
+    }
+
+    @include onDesktop {
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      color: $white-color;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      text-transform: uppercase;
+
+      display: block;
+      width: max-content;
+      padding-right: 20px;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url(../images/the-met/menu.svg);
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/the-met/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/the-met/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/the-met/cross.svg);
+  }
+}
