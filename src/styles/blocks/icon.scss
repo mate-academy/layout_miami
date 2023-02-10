@@ -1,12 +1,43 @@
 .icon {
   display: block;
 
+  position: relative;
+
   width: 100%;
   padding-bottom: 100%;
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    padding-right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    // padding-right: 12px;
+    // transform: translate(-100%, 150%);
+
+    color: $c-white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &--menu {
     background-image: url(../images/menu.svg);
