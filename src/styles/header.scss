@@ -1,74 +1,25 @@
-.container {
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @include onIpad {
-    padding: 0 72px;
-  }
-
-  @include onDesktop {
-    padding: 0 120px;
-  }
-}
-
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  transition: 0.5s ease;
-
-  @include onIpad {
-    width: 24px;
-    height: 24px;
-  }
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  &--menu {
-    background-image: url(../images/default/icon-menu-def.svg);
-
-    &:hover {
-      background-image: url(../images/hover/icon-menu-hover.svg);
-    }
-  }
-
-  &--phone {
-    background-image: url(../images/default/icon-phone.svg);
-  }
-
-  &--cross {
-    background-image: url(../images/default/Icon-Close.svg);
-  }
-}
-
 .header {
   background-image: url(../images/photos/header/header-320.jpg);
-
-  min-width: 320px;
 
   @include onIpad {
     background-image: url(../images/photos/header/header-744.jpg);
 
-    height: 628px;
+    height: $header-and-menu-h;
   }
 
   @include onDesktop {
     background-image: url(../images/photos/header/header-1260.jpg);
-    height: 711px;
+    height: $header-and-menu-h;
   }
 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  @extend %background-properties;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+
+    height: $header-and-menu-h;
 
     padding: 29px 0 88px;
 
@@ -82,21 +33,18 @@
   }
 
   &__title {
-    color: rgba(255, 255, 255, 1);
-    font-size: 36px;
-    line-height: 36px;
+    color: $text-color-main;
+    @include mainTitleFont (36px);
     white-space: nowrap;
-    letter-spacing: -1.5px;
+    letter-spacing: $f-letter-space;
     text-align: center;
 
     @include onIpad {
-      font-size: 64px;
-      line-height: 64px;
+      @include mainTitleFont (64px);
     }
 
     @include onDesktop {
-      font-size: 80px;
-      line-height: 80px;
+      @include mainTitleFont (80px);
     }
   }
 
@@ -109,9 +57,8 @@
         top: 50%;
         transform: translate(-100%, -50%);
 
-        color: white;
-        font-size: 12px;
-        font-weight: 700;
+        color: $text-color-main;
+        @include fontProperties ($f-weight-main-titles, 12px);
         line-height: 16px;
         letter-spacing: 2px;
 
@@ -125,7 +72,7 @@
         opacity: 1;
         pointer-events: all;
 
-        animation: phone-anim 0.5s cubic-bezier(0.21, 0.61, 0.35, 1) both;
+        animation: phone-anim $anim-t cubic-bezier(0.21, 0.61, 0.35, 1) both;
 
         @keyframes phone-anim {
           0% {
@@ -144,34 +91,4 @@
       }
     }
   }
-}
-
-.logo {
-  display: flex;
-
-  &__image {
-    width: 130px;
-    height: 38px;
-
-    @include onIpad {
-      width: 187px;
-      height: 56px;
-    }
-  }
-}
-
-.menu-and-call {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-
-  @include onIpad {
-    gap: 40px;
-  }
-}
-
-.top-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

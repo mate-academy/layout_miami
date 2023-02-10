@@ -1,9 +1,19 @@
+:root {
+  scroll-behavior: smooth;
+}
+
 .page {
-  background: rgba(29, 29, 29, 1);
-  color: white;
+  background: $text-color-menu;
+  color: $text-color-main;
 
   font-family: "Poppins", sans-serif;
-  font-weight: 500;
+  font-weight: $f-weight-normal;
+
+  &__body {
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
 
   &__menu {
     position: fixed;
@@ -20,7 +30,15 @@
   }
 
   &__section {
-    margin-bottom: 160px;
+    margin-bottom: 80px;
+
+    @include onIpad {
+      margin-bottom: 120px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 160px;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -28,11 +46,14 @@
   }
 
   &__section-title {
-    font-weight: 500;
-    font-size: 32px;
+    &--details {
+      padding-bottom: 0;
+    }
+
+    @include fontProperties ($f-weight-normal, $f-size-h2);
 
     text-align: center;
-    letter-spacing: -1.5px;
+    letter-spacing: $f-letter-space;
     padding-bottom: 48px;
 
     @include onIpad {
@@ -45,26 +66,8 @@
   }
 
   &__section-subtitle {
-    font-weight: 500;
+    font-weight: $f-weight-normal;
     font-size: 23px;
     line-height: 140%;
-  }
-}
-
-.main {
-  padding: 60px 0 120px;
-
-  @include onIpad {
-    padding-top: 120px;
-  }
-
-  @include onDesktop {
-    padding-bottom: 182px;
-  }
-
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
 }
