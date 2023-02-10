@@ -1,0 +1,56 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin topPadding ($prop) {
+  $prop: 40px;
+  padding-top: $prop;
+
+  @include onTablet {
+    $prop: 52px;
+    padding-top: $prop;
+  }
+}
+
+@mixin botPadding ($prop) {
+  $prop: 94px;
+  padding-bottom: $prop;
+
+  @include onTablet {
+    $prop: 40px;
+    padding-bottom: $prop;
+  }
+
+  @include onDesktop {
+    $prop: 64px;
+    padding-bottom: $prop;
+  }
+}
+
+@mixin topActions {
+  --icon-width: 18px;
+  --icon-padding: 30px;
+
+  --tools-width: calc((var(--icon-width) * 2) + var(--icon-padding));
+  display: grid;
+  grid-template-columns: 1fr var(--tools-width);
+  align-items: center;
+
+  @include onTablet() {
+    --icon-width: 24px;
+    --icon-padding: 40px;
+  }
+}
+
+@mixin backgroundImage {
+  background-size: cover;
+  background-position: center;
+}

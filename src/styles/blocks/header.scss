@@ -1,0 +1,85 @@
+.header {
+  background-image: url(../images/header-background.png);
+  @include backgroundImage;
+
+  @include onTablet {
+    background-image: url(../images/background-image-medium.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-background-big.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include topPadding(0);
+    @include botPadding(0);
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  &__top {
+    @include topActions;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-image {
+    height: 16px;
+    width: 130px;
+
+    @include onTablet() {
+      height: 24px;
+      width: 190px;
+    }
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    @extend %fontBig;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/title-logo.svg);
+      background-size: cover;
+      background-position: center;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/title-logo-big.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
