@@ -1,0 +1,60 @@
+.header {
+  &__content {
+    @extend %topNavGap;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: rem(26);
+
+    @include small-bp {
+      gap: rem(32);
+    }
+  }
+
+  &__call {
+    position: relative;
+    @include square(rem(24));
+    @extend %bgCoverNoRepeat;
+    background-image: url(../images/phone.svg);
+    transition: transform, opacity;
+    transition-duration: $transition-duration;
+
+    @include small-bp {
+      @include square(rem(32));
+    }
+
+    &--nav-opened {
+      opacity: 0;
+    }
+
+    &-number {
+      display: none;
+      width: rem(140);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(-90%, -50%);
+      font-weight: 700;
+      font-size: rem(12);
+      letter-spacing: 2px;
+      color: $color-main-light;
+      opacity: 0;
+      transition: transform ease, opacity ease-in-out;
+      transition-duration: $transition-duration;
+
+      @include medium-bp {
+        display: block;
+      }
+    }
+
+    &:hover &-number,
+    &:focus &-number {
+      @include medium-bp {
+        opacity: 1;
+        transform: translate(-110%, -50%);
+      }
+    }
+  }
+}

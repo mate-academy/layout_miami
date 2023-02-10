@@ -1,0 +1,84 @@
+.contact-form {
+  --input-side-padding: 16px;
+  --input-text-color: #292929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(16);
+
+  position: relative;
+
+  & * {
+    font-family: inherit;
+  }
+
+  &__label {
+    width: inherit;
+  }
+
+  &__input {
+    outline: none;
+    transition: border-color $transition-duration;
+    border: 1px solid transparent;
+    border-radius: rem(40);
+    width: 100%;
+    height: rem(48);
+    padding: 0 var(--input-side-padding);
+    background: $color-accent-light;
+
+    &::placeholder {
+      color: $color-accent-grey;
+      font-size: rem(14);
+    }
+
+    &:hover {
+      border-color: #d5d7de;
+    }
+
+    &:focus {
+      border-color: var(--input-text-color);
+    }
+
+  }
+
+  &__input-message {
+    height: rem(148);
+    resize: none;
+    border-radius: rem(16);
+    padding: rem(14) var(--input-side-padding);
+  }
+
+  &__send-button {
+    width: 100%;
+    margin-top: rem(16);
+
+    @include medium-bp {
+      width: getElementWidth(
+        3,
+        $content-col-width-medium,
+        $content-cols-gap-medium
+      );
+    }
+
+    @include large-bp {
+      width: 100%;
+    }
+  }
+
+  &__notification--error,
+  &__notification--success {
+    color: $color-accent-light;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    width: 100%;
+
+    text-align: center;
+    font-size: rem(14);
+  }
+
+  &__notification--success {
+    display: none;
+  }
+}

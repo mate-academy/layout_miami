@@ -1,0 +1,55 @@
+// mixins
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+// breakpoints mixins
+@mixin smallest-bp {
+  @media only screen and (max-width: $small-bp) {
+    @content;
+  }
+}
+
+@mixin small-bp {
+  @media only screen and (min-width: $small-bp) {
+    @content;
+  }
+}
+
+@mixin medium-bp {
+  @media only screen and (min-width: $medium-bp) {
+    @content;
+  }
+}
+
+@mixin large-bp {
+  @media only screen and (min-width: $large-bp) {
+    @content;
+  }
+}
+
+@mixin larger-bp {
+  @media only screen and (min-width: $larger-bp) {
+    @content;
+  }
+}
+
+@mixin custom-min-width-bp($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin custom-max-width-bp($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
