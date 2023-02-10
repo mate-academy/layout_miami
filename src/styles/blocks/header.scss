@@ -16,39 +16,64 @@
 
   &__menu {
     display: flex;
+    align-items: center;
 
     &-call {
       margin-right: 30px;
 
       text-decoration: none;
 
-      @include onDesktop {
-        &::before {
-          content: "";
-          /*  "The Met Fifth Avenue +1 212-535-7710
-          The Met Cloisters +1 212-923-3700"; */
-          position: relative;
-          top: 50%;
-          transform: translate(-100%, -50%);
+      &-block {
+        position: relative;
 
+      }
+
+      &-info {
+        opacity: 0;
+        width: $width-max-content;
+
+        position: absolute;
+        top: -100%;
+        right: -1000%;
+
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+        transition: 0.4s ease-in;
+
+        &-link {
           display: block;
-          width: 201px;
-          padding-right: 20px;
 
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 27px;
-          text-transform: uppercase;
+          @include fontHeader;
           text-align: right;
-          color: #fff;
-          text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
-          opacity: 0;
-          pointer-events: none;
+
+          color: $white-color;
+          text-decoration: none;
+
+          &:first-child {
+            margin-bottom: $margin-bottom-paragraph;
+          }
+        }
+      }
+
+      @include onTablet {
+        & {
+          margin-right: $margin-right-icon;
+        }
+      }
+
+      @include onDesktop {
+        & {
+          margin-right: $margin-right-icon;
         }
 
-        &:hover::before {
-          opacity: 1;
-          pointer-events: all;
+        &-info:hover,
+        &:hover + &-info {
+          top: -100%;
+          right: 115%;
+
+          opacity: 100%;
+
+          transition: 0.4s ease-out;
         }
       }
     }
@@ -56,7 +81,7 @@
 
   &__title {
     position: absolute;
-    top: 35%;
+    top: 200px;
     right: 0;
     left: 0;
 
@@ -66,14 +91,12 @@
     color: #fff;
 
     @include onTablet {
-      top: 30%;
+      top: 256px;
 
       font-size: 64px;
     }
 
     @include onDesktop {
-      top: 23%;
-
       font-size: 80px;
     }
   }
