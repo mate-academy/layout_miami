@@ -8,9 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.getElementById('myForm');
+const pageReload = document.querySelector('#form-reload');
 
-function handleForm(event) {
+pageReload.addEventListener('submit', function formReload(event) {
   event.preventDefault();
-}
-form.addEventListener('submit', handleForm);
+
+  pageReload.reset();
+});
