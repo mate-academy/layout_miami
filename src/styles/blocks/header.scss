@@ -1,94 +1,144 @@
 .header {
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 50px 0;
+  background-image: url("../images/photos/header_photo.png");
   background-size: cover;
   background-position: center;
-  background-image: url(../images/photos/header_photo.png);
+  box-sizing: border-box;
+  height: 100vh;
 
-  &__nav {
+  &__content {
     display: flex;
-    box-sizing: border-box;
+    flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 80px;
-
-    @include onDesktop {
-      padding-bottom: 20px;
-    }
-
-    &-links {
-      display: flex;
-      align-items: center;
-    }
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 55vh;
   }
 
-  &__logo {
-    display: block;
-    font-weight: 700;
-    font-size: 40px;
-    color: $white-color;
-    text-decoration: none;
-  }
-
-  &__menu--opener {
-    display: block;
-    width: 24px;
-    height: 16px;
-    margin-left: 60px;
-
-    background-image: url(../images/menu_close.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:hover {
-      background-image: url(../images/menu_open.svg);
+  &__right-side {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    @include onTablet {
+      gap: 63px;
     }
   }
 
   &__call {
-    display: block;
-    width: 24px;
-    height: 24px;
-
-    background-image: url(../images/phone_icon.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     text-decoration: none;
-    @include onDesktop {
+
+    @include onDextop {
       &::before {
         display: block;
-        content: "The Met Fifth Avenue";
-        color: $white-color;
+        position: relative;
+        top: 50%;
+
         width: max-content;
-        transform: translateX(-100%);
+        transform: translate(-100%,-100%);
+        padding-right: 20px;
+        content: "The Met Fifth Avenue \A +1 212-535-7710";
+        white-space: pre;
+        text-align: right;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        color: #fff;
+        margin-bottom: 8px;
+
+        transition: opacity 1s;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &::after {
+        display: block;
+        position: relative;
+        top: 50%;
+
+        width: max-content;
+        transform: translate(-100%,-100%);
+        padding-right: 20px;
+
+        content: "The Met Cloisters \A +1 212-923-3700";
+        white-space: pre;
+
+        text-align: right;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        color: #fff;
+
+        transition: opacity 2s;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+
+      &:hover::after {
+        pointer-events: all;
         opacity: 1;
       }
     }
   }
 
   &__title {
-    display: flex;
-    justify-content: center;
+    font-style: normal;
     font-weight: 700;
-    font-size: 64px;
-    text-align: center;
+    font-size: 40px;
+    line-height: 100%;
     letter-spacing: -1.5px;
-    color: $white-color;
+    color: #fff;
+    text-align: center;
 
-    @include onDesktop {
+    animation-name: move;
+    animation-duration: 4s;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 100%;
+    }
+
+    @include onDextop {
       font-size: 80px;
+      line-height: 100%;
     }
   }
+}
 
-  .container {
-    margin: 0 auto;
-    max-width: 1020px;
-    padding: 0 60px;
+@keyframes move {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-    @include onDesktop {
-      padding: 0 30px;
-    }
+.logo {
+  width: 64px;
+  height: 46px;
+
+  @include onDextop {
+    width: 87px;
+    height: 65px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
   }
 }
