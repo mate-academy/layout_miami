@@ -1,11 +1,42 @@
 .icon {
   display: block;
+  position: relative;
+
+  text-decoration: none;
 
   &__element {
     @include nav-icon-size($mobile-nav-icon);
 
     @include onDesktop {
       @include nav-icon-size($destop-nav-icon);
+    }
+  }
+
+  &__tooltip {
+    display: block;
+    width: max-content;
+    right: 100%;
+    padding-right: 8px;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    opacity: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $main-color;
+
+    pointer-events: none;
+    transition: opacity 0.3s linear;
+  }
+
+  @include onTablet {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
