@@ -23,3 +23,11 @@ window.addEventListener('hashchange', function() {
     document.body.classList.remove('body-menu--opened');
   }
 });
+
+const FormPage = document.querySelector('#form');
+
+FormPage.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  FormPage.reset();
+});
