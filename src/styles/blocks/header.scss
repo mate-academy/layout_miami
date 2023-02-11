@@ -1,0 +1,78 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_desktop.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 20px;
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    font-weight: 800;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      background-image: url(../images/sound-wave-phone.svg);
+
+      content: "";
+      display: flex;
+      height: 27px;
+      width: 32px;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        background-image: url(../images/sound-waves.svg);
+        display: flex;
+        height: 76px;
+        width: 64px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
