@@ -9,3 +9,25 @@
     @content;
   }
 }
+
+@mixin grid (
+  $phone-start,
+  $phone-end,
+  $tablet-start,
+  $tablet-end,
+  $desktop-start,
+  $desktop-end
+  ) {
+  grid-column-start: $phone-start;
+  grid-column-end: $phone-end;
+
+  @include onTablet {
+    grid-column-start: $tablet-start;
+    grid-column-end: $tablet-end;
+  }
+
+  @include onDesktop {
+    grid-column-start: $desktop-start;
+    grid-column-end: $desktop-end;
+  }
+}
