@@ -1,0 +1,71 @@
+.icon {
+  @extend %icon-position;
+  @include sizeIcon (18px);
+
+  @include onTablet {
+    @include sizeIcon (24px);
+  }
+
+  &__phone {
+    position: relative;
+    margin: 0 30px 0 0;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onTablet {
+      margin: 0 40px 0 0;
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu_small.svg);
+    transition: background-image $transition-duration;
+
+    @include onTablet {
+      background-image: url(../images/menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu-hover_small.svg);
+
+      @include onTablet {
+        background-image: url(../images/menu-hover.svg);
+      }
+    }
+  }
+
+  &__menu-closer {
+    background-image: url(../images/close.svg);
+    @include sizeIcon (16px);
+
+    @include onDesktop {
+      @include sizeIcon (22px);
+    }
+  }
+
+  &__tooltip {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    padding: 0 12px 0 0;
+    transform: translateY(-50%);
+    width: max-content;
+    font-size: 12px;
+    line-height: 133%;
+    font-weight: 700;
+    color: $color-main;
+    letter-spacing: $letter-spacing-link;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-duration;
+  }
+
+  &:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
