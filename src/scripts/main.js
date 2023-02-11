@@ -15,3 +15,11 @@ closebutton.addEventListener('click', function() {
   menu.classList.remove('nav--open');
   menu.classList.add('nav--closed');
 });
+
+window.addEventListener('hashchange', function() {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('body-menu--opened');
+  } else {
+    document.body.classList.remove('body-menu--opened');
+  }
+});
