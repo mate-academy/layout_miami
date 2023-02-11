@@ -5,24 +5,44 @@
 }
 
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (min-width: 600px) {
     @content;
   }
 }
 
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
+$headerTopPadding: 40px;
 
-  @include onTablet {
-    height: 24px;
-    width: 24px;
-  }
+.icon {
+  --icon-header: 18px;
+  display: block;
+  width: var(--icon-header);
+  height: var(--icon-header);
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  @include onTablet {
+    --icon-header: 24px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    transition: transform 1s;
+
+    &:hover {
+      transform: rotate(360deg);
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/menu/cross.svg);
+  }
 }
 
 .page {
@@ -48,6 +68,12 @@
   }
 }
 
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header {
   width: 100%;
   background-size: cover;
@@ -62,7 +88,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     height: 100vh;
-    padding: 40px 0 94px;
+    padding: $headerTopPadding 0 94px;
     @include onTablet {
       padding-bottom: 40px;
     }
@@ -117,32 +143,14 @@
     }
   }
 
-  &__nav {
+  &__icon {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &-icon {
-      display: flex;
-    }
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    transition: transform 1s;
-
-    &:hover {
-      transform: rotate(360deg);
-      background-image: url(../images/menu-hover.svg);
-    }
   }
 
   &__call {
     margin-right: 30px;
 
     text-decoration: none;
-
-    background-image: url(../images/phone.svg);
 
     @include onDesktop {
       margin-right: 40px;
@@ -185,5 +193,15 @@
       width: 190px;
       height: 24px;
     }
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
   }
 }
