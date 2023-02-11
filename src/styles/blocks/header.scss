@@ -1,0 +1,142 @@
+.header {
+  background-image: url(../images/photos/header_photo-mini.svg);
+
+  @include break__medium {
+    background-image: url(../images/photos/header_photo.png);
+  }
+
+  background-size: cover;
+  background-position: right;
+
+  &__content {
+    height: 100vh;
+    padding: 28px 0 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include break__medium {
+      padding: 34px 0 130px;
+    }
+
+    @include break__vieports {
+      padding: 36px 0 200px;
+    }
+  }
+
+  &__call {
+    @include break__medium {
+      &::before {
+        content: "+1 234 555-55-55";
+        color: $text-color;
+        display: inline-block;
+        width: max-content;
+        transform: translateX(-100%);
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: fill;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include break__medium {
+      font-size: 64px;
+    }
+
+    @include break__vieports {
+      font-size: 80px;
+    }
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include break__medium {
+    padding: 0 72px;
+  }
+
+  @include break__vieports {
+    padding: 0;
+  }
+}
+
+.top-action {
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+  align-items: center;
+  gap: 30px;
+
+  @include break__medium {
+    gap: 40px;
+  }
+}
+
+.top-action-menu {
+  grid-template-columns: 1fr max-content;
+}
+
+.logo {
+  display: flex;
+  width: max-content;
+
+  &__image {
+    height: 38px;
+
+    @include break__medium {
+      height: 56px;
+    }
+  }
+}
+
+.icon {
+  width: $icon-size--small;
+  height: $icon-size--small;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @include break__medium {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
+}
