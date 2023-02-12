@@ -6,7 +6,7 @@ const refs = {
   modal: document.querySelector('#menu'),
   closeIfClickNavLink: document.querySelector('.nav__list'),
   menu: document.querySelector('.is-hidden'),
-  form: document.querySelector('.form')
+  form: document.querySelector('.form'),
 };
 
 refs.openModalBtn.addEventListener('click', toggleModal);
