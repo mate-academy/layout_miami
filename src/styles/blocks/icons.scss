@@ -1,0 +1,66 @@
+.icon {
+  position: relative;
+
+  display: block;
+  @include square(18px);
+
+  @include onDextop {
+    @include square(24px);
+  }
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    transform: translateY(-75%);
+    padding-right: 20px;
+
+    display: block;
+    width: max-content;
+
+    text-align: right;
+    @extend %main-text;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    color: $c-white;
+    margin-bottom: 8px;
+
+    transition: opacity 1s;
+    pointer-events: none;
+    opacity: 0;
+
+    &--second {
+      top: 0;
+      transform: translateY(40%);
+    }
+  }
+
+  @include onDextop {
+    &:hover &__tooltip {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/Vector.png");
+  }
+}
