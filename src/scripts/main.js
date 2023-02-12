@@ -21,6 +21,7 @@ window.addEventListener('hashchange', function() {
     document.body.classList.add('body-menu--opened');
   } else {
     document.body.classList.remove('body-menu--opened');
+    menu.classList.add('nav--closed');
   }
 });
 
