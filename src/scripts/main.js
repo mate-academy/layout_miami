@@ -1,4 +1,5 @@
-// 'use strict';
+/* eslint-disable  */
+'use strict';
 
 const form = document.querySelector('.contacts__form');
 const inputValue = document.querySelectorAll('.contacts__field');
@@ -19,7 +20,7 @@ form.addEventListener('submit', (event) => {
   });
 });
 
-/* eslint-disable  */
+
  AOS.init({
   // Global settings:
   disable: false,
