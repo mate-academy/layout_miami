@@ -2,6 +2,10 @@
   @extend %background-properties;
   background-image: url(../images/photos/background-main.png);
 
+  &__top {
+    @include topActions;
+  }
+
   &__content {
     @extend %header-properties;
 
@@ -29,16 +33,18 @@
       }
 
       &-info {
-        opacity: 0;
         width: $width-max-content;
 
         position: absolute;
-        top: -100%;
-        right: -1000%;
+        top: -125%;
+        right: -100%;
+
+        visibility: hidden;
+        opacity: 0;
 
         text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
 
-        transition: 0.3s ease-in;
+        @include transitionIn;
 
         &-link {
           display: block;
@@ -51,6 +57,10 @@
 
           &:first-child {
             margin-bottom: $margin-bottom-paragraph;
+          }
+
+          &:hover {
+            color: $accent-color-second;
           }
         }
       }
@@ -68,12 +78,13 @@
 
         &-info:hover,
         &:hover + &-info {
-          top: -100%;
+          top: -125%;
           right: 115%;
 
           opacity: 100%;
+          visibility: visible;
 
-          transition: 0.3s ease-out;
+          @include transitionOut;
         }
       }
     }
@@ -84,6 +95,17 @@
     top: 200px;
     right: 0;
     left: 0;
+    animation: title-animation 1s;
+
+    @keyframes title-animation {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 100;
+      }
+    }
 
     @extend %font-titles;
     font-size: 40px;

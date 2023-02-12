@@ -3,7 +3,7 @@
   column-gap: 20px;
 
   &--mobile-two {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat($grid-two-repeat, 1fr);
   }
 
   &--mobile-three {
@@ -21,12 +21,16 @@
   }
 
   &__item {
+    &--contacts {
+      @include onDesktop {
+        display: grid;
+        grid-template-columns: repeat($grid-two-repeat, 1fr);
+        column-gap: 24px;
+      }
+    }
+
     @for $start from 1 through 6 {
       @for $end from $start through 6 {
-        /* &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        } */
-
         &--tablet-#{$start}-#{$end} {
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};
