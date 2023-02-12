@@ -1,0 +1,94 @@
+.header {
+  background-image: url(../images/photos/header/header-320.jpg);
+
+  @include onTablet {
+    background-image: url(../images/photos/header/header-744.jpg);
+
+    height: $header-and-menu-h;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header/header-1260.jpg);
+    height: $header-and-menu-h;
+  }
+
+  @extend %background-properties;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: $header-and-menu-h;
+
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__title {
+    color: $text-color-main;
+    @include mainTitleFont (36px);
+    white-space: nowrap;
+    letter-spacing: $f-letter-space;
+    text-align: center;
+
+    @include onTablet {
+      @include mainTitleFont (64px);
+    }
+
+    @include onDesktop {
+      @include mainTitleFont (80px);
+    }
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        opacity: 0;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        color: $text-color-main;
+        @include fontProperties ($f-weight-main-titles, 12px);
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+
+        animation: phone-anim $anim-t cubic-bezier(0.21, 0.61, 0.35, 1) both;
+
+        @keyframes phone-anim {
+          0% {
+            letter-spacing: -0.5em;
+            opacity: 0;
+          }
+
+          40% {
+            opacity: 0.6;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
