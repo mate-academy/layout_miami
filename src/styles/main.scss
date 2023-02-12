@@ -77,7 +77,23 @@ $botPaddingHeaderDesktop: 204px;
   }
 
   &__section-title-about {
-    text-align: left;
+    margin-bottom: 48px;
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet() {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop() {
+      font-size: 64px;
+      line-height: 64px;
+    }
 
     @include onTablet() {
       margin-bottom: 0;
@@ -85,6 +101,7 @@ $botPaddingHeaderDesktop: 204px;
   }
 
   &__section-description-about {
+    text-align: left;
 
     @include onTablet() {
       width: 288px;
@@ -115,6 +132,8 @@ $botPaddingHeaderDesktop: 204px;
     line-height: 32px;
     letter-spacing: -1.5px;
     color: #fff;
+
+    text-align: center;
 
     @include onTablet() {
       font-size: 48px;
@@ -436,7 +455,6 @@ $botPaddingHeaderDesktop: 204px;
 
   @include onTablet() {
     grid-template-columns: repeat(6, 1fr);
-    column-gap: 24px;
   }
 
   @include onDesktop() {
@@ -445,10 +463,6 @@ $botPaddingHeaderDesktop: 204px;
 
   &__detail {
     margin-bottom: 40px;
-
-    // display: grid;
-    // grid-template-columns: repeat(2, 130px);
-    // gap: 0 20px;
   }
 
   &--tablet {
@@ -466,10 +480,28 @@ $botPaddingHeaderDesktop: 204px;
   }
 
   &__item {
+    @include onTablet() {
+      &--tablet {
+        @for $start from 1 through 6 {
+          @for $end from $start through 6 {
+            &-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1};
+            }
+          }
+        }
+      }
+    }
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop() {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
@@ -600,10 +632,17 @@ $botPaddingHeaderDesktop: 204px;
 
 // #region details
 .detail {
+  margin-bottom: 40px;
+
+  @include onTablet() {
+    margin-bottom: 48px;
+  }
 
   &__photo {
     width: 100%;
     height: 130px;
+
+    object-fit: cover;
 
     @include onTablet() {
       height: 187px;
@@ -612,5 +651,32 @@ $botPaddingHeaderDesktop: 204px;
     @include onDesktop() {
       height: 321px;
     }
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: $c-main;
+  background-color: #fff;
+  border-radius: 40px;
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
   }
 }
