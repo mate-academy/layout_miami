@@ -1,35 +1,38 @@
 .icon {
+  position: relative;
   display: block;
   width: 100%;
   padding-bottom: 100%;
-  background-size: cover;
+
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
   text-decoration: none;
 
-  @include onDesktop() {
-    &--phone::before {
-      content: "+1 234 555-55-55";
-      position: absolute;
-      transform: translateX(-110%);
-      top: 30%;
-      width: max-content;
-      opacity: 0;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fff;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
 
-    &--phone:hover:before {
-      pointer-events: all;
-      opacity: 1;
-    }
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    opacity: 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    pointer-events: all;
+    opacity: 1;
   }
 
   &--menu {
@@ -45,7 +48,7 @@
   }
 
   &--cross {
-    left: 220%;
+    left: 250%;
     background-image: url(../images/closelogo.png);
   }
 }
