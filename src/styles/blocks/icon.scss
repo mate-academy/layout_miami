@@ -2,8 +2,7 @@
   position: relative;
 
   display: block;
-  width: 24px;
-  height: 24px;
+  @include icons-mobile;
 
   background-size: cover;
   background-position: center;
@@ -28,7 +27,7 @@
     width: max-content;
     padding-right: 12px;
 
-    font-weight: $font-weight-bold;
+    @include font-wight-700;
     font-size: 12px;
     line-height: 16px;
     color: $primary-font-color;
@@ -37,12 +36,10 @@
     opacity: 0;
     pointer-events: none;
 
-    transition: opacity 0.3s;
+    transition: opacity $transition-timing;
   }
 
-  @media (min-width: 744px) {
-    //width: 18px;
-    //height: 20px;
+  @include onTablet {
 
     &:hover &__tooltip {
       opacity: 1;
@@ -53,16 +50,15 @@
   &--phone {
     background-image: url(../images/phone_.svg);
 
-    @media (min-width: 744px) {
-      height: 32px;
-      width: 32px;
+    @include onTablet {
+      @include icons-desktop;
     }
   }
 
   &--menu {
     background-image: url(../images/menu_mob_.svg);
 
-    transition: 0.3s;
+    transition: $transition-timing;
 
     &:hover {
       background-image: url(../images/menu_hover_mob_.svg);
@@ -71,8 +67,7 @@
     @include onTablet {
       background-image: url(../images/menu_.svg);
 
-      height: 32px;
-      width: 32px;
+      @include icons-desktop;
 
       &:hover {
         background-image: url(../images/menu_hover_.svg);
@@ -83,15 +78,14 @@
   &--cross {
     background-image: url(../images/cross_.svg);
 
-    transition: 0.3s;
+    transition: $transition-timing;
 
     &:hover {
       transform: rotate(180deg);
     }
 
     @include onTablet {
-      width: 32px;
-      height: 32px;
+      @include icons-desktop;
     }
   }
 }
