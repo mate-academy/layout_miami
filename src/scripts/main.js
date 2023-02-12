@@ -1,12 +1,26 @@
 'use strict';
 
-const menuBtn = document.querySelector('.icon--menu');
-const menuClose = document.querySelector('.icon--close');
+const form = document.querySelector('.registration__info');
+const nameOfForm = document.querySelector('.registration__name');
+const mesageOfForm = document.querySelector('.registration__message');
+const mailOfForm = document.querySelector('.registration__email');
 
-menuClose.addEventListener('click', () => {
-  document.body.classList.remove('page__body--width-menu');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  mailOfForm.value = '';
+  mesageOfForm.value = '';
+  nameOfForm.value = '';
 });
 
-menuBtn.addEventListener('click', () => {
-  document.body.classList.add('page__body--width-menu');
+if (window.location.hash !== '') {
+  document.body.classList.remove('page__body--width-menu');
+  window.location.replace(window.location.pathname);
+}
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--width-menu');
+  } else {
+    document.body.classList.remove('page__body--width-menu');
+  }
 });
