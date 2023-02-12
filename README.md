@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Implementation of a landing page according to [MYBIKE Figma Design](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+Responsive landing page implementated according to [MYBIKE Figma Design](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
 
 - The design 1440px
 - Desktop 1280px
