@@ -1,0 +1,91 @@
+.icon {
+  position: relative;
+
+  display: block;
+  @include icons-mobile;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    @include font-wight-700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $primary-font-color;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $transition-timing;
+  }
+
+  @include onTablet {
+
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone_.svg);
+
+    @include onTablet {
+      @include icons-desktop;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu_mob_.svg);
+
+    transition: $transition-timing;
+
+    &:hover {
+      background-image: url(../images/menu_hover_mob_.svg);
+    }
+
+    @include onTablet {
+      background-image: url(../images/menu_.svg);
+
+      @include icons-desktop;
+
+      &:hover {
+        background-image: url(../images/menu_hover_.svg);
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross_.svg);
+
+    transition: $transition-timing;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+
+    @include onTablet {
+      @include icons-desktop;
+    }
+  }
+}
