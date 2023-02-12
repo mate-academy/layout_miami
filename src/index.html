@@ -10,16 +10,8 @@
       crossorigin="anonymous"
     >
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
-    >
-
-    <link
-      rel="stylesheet"
-      referrerpolicy="no-referrer"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
-      integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
-      crossorigin="anonymous"
     >
     <title>MyBIKE</title>
     <link rel="stylesheet" href="./styles/index.scss">
@@ -31,8 +23,8 @@
     >
   </head>
   <body class="page__content content">
-    <header class="page__header header">
-      <div class="container">
+    <header class="page__header header" id="home">
+      <div class="container header__container">
         <a href="./index.html" class="header__home-link">
           <img
             class="header__logo logo"
@@ -44,10 +36,126 @@
             alt="MyBiKE"
           >
         </a>
+
+        <ul class="header__interface interface">
+          <li class="interface__item">
+            <a href="tel:+12345555555" class="interface__link">
+              <p class="interface__number">
+                +1 234 555-55-55
+              </p>
+              <svg class="interface__icon icon icon__phone">
+                <use href="./images/svg/sprite-icons-mybike.svg#icon-phone"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="interface__item">
+            <button class="interface__modal-btn" id="menu-open">
+              <svg class="interface__icon icon icon__burger icon__burger--unhovered">
+                <use href="./images/svg/sprite-icons-mybike.svg#icon-burger-menu"></use>
+              </svg>
+              <svg class="interface__icon icon icon__burger ">
+                <use href="./images/svg/sprite-icons-mybike.svg#icon-burger-menu-hovered"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
       </div>
 
-      <nav class="header__nav nav"></nav>
+
     </header>
+
+    <div class="modal is-hidden" id="menu">
+      <div class="container modal__container">
+        <button class="modal__close-btn" id="menu-close">
+          <svg class="modal__close-icon">
+            <use href="./images/svg/sprite-icons-mybike.svg#icon-close">
+          </svg>
+        </button>
+
+        <a
+          href="#"
+          class="nav__logo"
+          tabindex="-1"
+        >
+          <img
+            class="header__logo logo"
+            srcset="
+              ./images/logo/MyBiKE-dark.png 1x,
+              ./images/logo/MyBiKE-dark@2x.png 2x
+            "
+            src="./images/logo/MyBiKE-dark.png"
+            alt="MyBiKE"
+          >
+        </a>
+
+        <nav class="nav modal__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a
+                class="nav__link"
+                href="#home"
+                tabindex="-1"
+              >
+                Home
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a
+                class="nav__link"
+                href="#move"
+                tabindex="-1"
+              >
+                About us
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a
+                class="nav__link"
+                href="#compare"
+                tabindex="-1"
+              >
+                Compare bikes
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a
+                class="nav__link"
+                href="#details"
+                tabindex="-1"
+              >
+                Details
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a
+                class="nav__link"
+                href="#contact"
+                tabindex="-1"
+              >
+                Contacts
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <a
+          href="tel: +1234 5555-55-55"
+          class="nav__phone"
+          tabindex="-1"
+        >
+          +1 234 5555-55-55
+        </a>
+
+        <p class="nav__text">
+          Book a test ride
+        </p>
+      </div>
+    </div>
 
     <main class="main">
       <section class="banner">
@@ -56,7 +164,7 @@
         </h1>
       </section>
 
-      <section class="prompting">
+      <section class="prompting" id="move">
         <div class="container prompting__container">
           <h2 class="prompting__title">
             Move Free
@@ -67,7 +175,7 @@
         </div>
       </section>
 
-      <section class="compare">
+      <section class="compare" id="compare">
         <div class="container">
           <h2 class="compare__title">
             Compare Bikes
@@ -144,108 +252,126 @@
         </div>
       </section>
 
-      <section class="details">
+      <section class="page__section" id="details">
         <div class="container">
           <h2 class="details__title">
             The Details
           </h2>
-          <ul class="ditails__list">
-            <li class="details__item feature">
-              <div class="feature__photos">
+
+          <div class="details">
+            <div class="details__part">
+              <div class="details__image-container details__image-container--big">
                 <img
-                class="feature__img feature__img--big"
-                srcset="
-                  ./images/content-images/details/auto-unlock-1.jpg 1x,
-                  ./images/content-images/details/auto-unlock-1@2x.jpg 2x
-                "
-                src="./images/content-images/details/auto-unlock-1.jpg"
-                alt="Smartphone on bicycle handlebars"
+                  srcset="
+                    ./images/content-images/details/auto-unlock-1.jpg 1x,
+                    ./images/content-images/details/auto-unlock-1@2x.jpg 2x
+                  "
+                  src="./images/content-images/details/auto-unlock-1.jpg"
+                  alt="Bicycle handlebars"
+                  class="details__image"
                 >
+              </div>
+
+              <div class="details__image-container">
                 <img
-                class="feature__img feature__img--small"
                   srcset="
                     ./images/content-images/details/auto-unlock-2.jpg 1x,
                     ./images/content-images/details/auto-unlock-2@2x.jpg 2x
                   "
                   src="./images/content-images/details/auto-unlock-2.jpg"
                   alt="Bicycle handlebars"
+                  class="details__image"
                 >
               </div>
-              <h3 class="feature__title">
+
+              <h3 class="details__small-title">
                 Auto Unlock
               </h3>
-              <p class="feature__description">
-                The app senses when you're nearby to unlock automatically. GPS tracking so you know where your bike is and can track it anytime.
-              </p>
-            </li>
 
-            <li class="details__item feature">
-              <div class="feature__photos">
+              <p class="details__description">
+                The app senses when you're nearby to unlock automatically.
+                GPS tracking so you know where your bike is and can track it anytime.
+              </p>
+            </div>
+
+            <div class="details__part">
+              <div class="details__image-container details__image-container--big">
                 <img
-                  class="feature__img feature__img--big"
                   srcset="
-                    ./images/content-images/details/range-1.jpg 1x,
-                    ./images/content-images/details/range-1@2x.jpg 2x
+                  ./images/content-images/details/range-1.jpg 1x,
+                  ./images/content-images/details/range-1@2x.jpg 2x
                   "
                   src="./images/content-images/details/range-1.jpg"
                   alt="Back-light"
-                  >
-                <img
-                  class="feature__img feature__img--small"
-                  srcset="
-                    ./images/content-images/details/range-2.jpg 1x,
-                    ./images/content-images/details/range-2@2x.jpg 2x
-                  "
-                  src="./images/content-images/details/range-2.jpg"
-                  alt="Front-light"
+                  class="details__image"
                 >
               </div>
 
-              <h3 class="feature__title">
+              <div class="details__image-container">
+                <img
+                  srcset="
+                  ./images/content-images/details/range-2.jpg 1x,
+                  ./images/content-images/details/range-2@2x.jpg 2x
+                  "
+                  src="./images/content-images/details/range-2.jpg"
+                  alt="Back-light"
+                  class="details__image"
+                >
+              </div>
+
+              <h3 class="details__small-title">
                 Range & Integrated lights
               </h3>
-              <p class="feature__description">
-                The removable battery has up to 70km battery autonomy and weighs only 2.4 kg. Lights integrated into the frame give you always-on visibility day and night.
-              </p>
-            </li>
 
-            <li class="details__item feature">
-              <div class="feature__photos feature__photos--last">
+              <p class="details__description">
+                The removable battery has up to 70km battery autonomy and weighs only 2.4 kg.
+                Lights integrated into the frame give you always-on visibility day and night.
+              </p>
+            </div>
+
+            <div class="details__part">
+              <div class="details__image-container">
                 <img
-                  class="feature__img feature__img--small"
                   srcset="
                     ./images/content-images/details/hybroutic-disc-1.jpg 1x,
                     ./images/content-images/details/hybroutic-disc-1@2x.jpg 2x
                   "
                   src="./images/content-images/details/hybroutic-disc-1.jpg"
                   alt="Hand brake"
+                  class="details__image"
                 >
+              </div>
+
+              <div class="details__image-container details__image-container--big">
                 <img
-                  class="feature__img feature__img--big"
                   srcset="
                     ./images/content-images/details/hybroutic-disc-2.jpg 1x,
                     ./images/content-images/details/hybroutic-disc-2@2x.jpg 2x
                   "
                   src="./images/content-images/details/hybroutic-disc-2.jpg"
-                  alt="Bicycle footrest"
+                  alt="Hand brake"
+                  class="details__image"
                 >
               </div>
 
-              <h3 class="feature__title">
+              <h3 class="details__small-title">
                 Hydraulic disc brakes & Lightweight
               </h3>
-              <p class="feature__description">
-                Brakes with total stopping power the second you make contact. The removable battery has up to 70km battery autonomy and weighs only 2.4 kg. Lights integrated into the frame give you always-on visibility day and night.
+
+              <p class="details__description">
+                Brakes with total stopping power the second you make contact. The removable battery has up to 70km battery
+                autonomy and weighs only 2.4 kg. Lights integrated into the frame give you always-on visibility day and night.
               </p>
-            </li>
-          </ul>
-          <a href="#" class="details__explore">
-            Explore
-          </a>
+            </div>
+
+            <a href="#" class="details__explore button">
+              Explore
+            </a>
+          </div>
         </div>
       </section>
 
-      <section class="contact">
+      <section class="contact" id="contact">
         <h2 class="contact__title">
           Contact us
         </h2>
@@ -305,7 +431,11 @@
                 <p class="address__title">
                   Address
                 </p>
-                <a class="address__link" href="https://goo.gl/maps/VHJzW3VqvW3sntMM6">
+                <a
+                  class="address__link"
+                  href="https://goo.gl/maps/VHJzW3VqvW3sntMM6"
+                  target="_blank"
+                >
                   400 first ave.<br>suite 700<br>Minneapolis, MN 55401
                 </a>
               </li>
