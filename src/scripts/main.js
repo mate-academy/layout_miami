@@ -1,13 +1,18 @@
-// function onEntry(entry) {
-//   entry.forEach(change => {
-//     if (change.isIntersecting) {
-//       change.target.classList.add('animation');
-//     }
-//   });
-// }
-// let options = { threshold: [0.5] };
-// let observer = new IntersectionObserver(onEntry, options);
-// let elements = document.querySelectorAll('.header__title');
-// for (let elm of elements) {
-//   observer.observe(elm);
-// }
+'use strict';
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page--menu-opened');
+  } else {
+    document.body.classList.remove('page--menu-opened');
+  }
+});
+
+function stopDefAction(evt) {
+  evt.preventDefault();
+  document.getElementById('contacts_form').reset();
+}
+
+document.getElementById('contacts_form').addEventListener(
+  'submit', stopDefAction, false
+);
