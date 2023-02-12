@@ -1,10 +1,13 @@
 'use strict';
 
+const form = document.getElementById('formSubmit');
+
 function stopDefAction(e) {
   e.preventDefault();
+  form.reset();
 }
 
-document.getElementById('submitButton').addEventListener(
+document.getElementById('formSubmit').addEventListener(
   'submit', stopDefAction, false
 );
 
