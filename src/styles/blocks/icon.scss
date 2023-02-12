@@ -1,5 +1,7 @@
 .icon {
   --icon-width: 24px;
+
+  position: relative;
   display: block;
   width: var(--icon-width);
   height: var(--icon-width);
@@ -14,10 +16,44 @@
     background-image: url(../images/phone-call.svg);
     background-size: 18px;
     margin-right: 24px;
+    text-decoration: $text-decoration-none;
     
     @include onTablet {
       background-size: 24px;
       margin-right: 55px;
+    }
+  }
+
+  &__tooltip {
+    @include onDesktop {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: max-content;
+      padding-right: 20px;
+      color: $main-color;
+      font-weight: $font-weight-bold;
+      text-align: right;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      transition: opacity $transition-duration;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__number {
+    margin: 0 0 8px;
+
+    &:last-child {
+      margin: 0;
     }
   }
 
