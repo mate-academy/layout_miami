@@ -1,60 +1,53 @@
-.top-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .icons {
-  display: flex;
-  align-items: center;
+  @include center;
+  position: relative;
 
-  &-phone {
-    height: 18px;
-    width: 18px;
+  &__phone {
+    @include square($-side-of-icon);
   }
 
-  &-menu {
-    height: 18px;
-    width: 18px;
+  &__menu {
+    @include square($-side-of-icon);
     margin-left: 30px;
   }
 
-  &__call {
-    text-decoration: none;
+  &__tooltip {
+    display: none;
 
     @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
 
-        display: block;
-        width: max-content;
-        padding-right: 12px;
+      display: block;
+      width: max-content;
+      padding-right: 12px;
 
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #fff;
-        opacity: 0;
-        pointer-events: none;
-      }
+      @include bold-text;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $-c-white;
+      opacity: 0;
+      pointer-events: none;
 
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+      transition: opacity $-transform;
     }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 
 .icon {
   display: block;
-  width: 100%;
-  height: 100%;
+  @include square(100%);
+
+  text-decoration: none;
 
   &--menu {
     background-image: url(../images/menu.png);
@@ -67,14 +60,12 @@
   }
 
   &--phone {
-    background-image: url(../images/Vector.svg);
+    background-image: url(../images/phone.svg);
   }
 
   &--cross {
     background-image: url(../images/cross.svg);
   }
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  @include background-image;
 }
