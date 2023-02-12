@@ -1,11 +1,11 @@
-/* eslint-disable  */
+
 /**
  * *******************************************************
  * AOS (Animate on scroll) - wowjs alternative
  * made to animate elements on scroll in both directions
  * *******************************************************
  */
-
+/* eslint-disable  */
 import styles from './../sass/aos.scss';
 
 // Modules & helpers
@@ -124,8 +124,11 @@ const init = function init(settings) {
    * Set global settings on body, based on options
    * so CSS can use it
    */
-  document.querySelector('body').setAttribute('data-aos-easing', options.easing);
-  document.querySelector('body').setAttribute('data-aos-duration', options.duration);
+  document.querySelector('body')
+    .setAttribute('data-aos-easing', options.easing);
+
+  document.querySelector('body')
+    .setAttribute('data-aos-duration', options.duration);
   document.querySelector('body').setAttribute('data-aos-delay', options.delay);
 
   /**
@@ -150,8 +153,12 @@ const init = function init(settings) {
   /**
    * Refresh plugin on window resize or orientation change
    */
-  window.addEventListener('resize', debounce(refresh, options.debounceDelay, true));
-  window.addEventListener('orientationchange', debounce(refresh, options.debounceDelay, true));
+  window
+    .addEventListener('resize', debounce(refresh, options.debounceDelay, true));
+
+  window
+    .addEventListener('orientationchange', debounce(refresh, options
+      .debounceDelay, true));
 
   /**
    * Handle scroll event to animate elements on scroll
