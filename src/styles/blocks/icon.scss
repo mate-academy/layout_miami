@@ -1,0 +1,71 @@
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &-container {
+    --iconWidth: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, var(--iconWidth));
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      --iconWidth: 24px;
+      gap: 40px;
+    }
+  }
+  
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
