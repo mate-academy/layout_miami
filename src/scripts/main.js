@@ -7,3 +7,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--menu');
   }
 });
+
+const pageReload = document.querySelector('#reload');
+
+pageReload.addEventListener('submit', function reload(event) {
+  event.preventDefault();
+
+  pageReload.reset();
+});
