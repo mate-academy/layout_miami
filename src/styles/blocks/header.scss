@@ -30,17 +30,21 @@
 
       &-block {
         position: relative;
+
+        @include onDesktop {
+          &:hover > .header__menu-call-info > .header__menu-call-info-link {
+            display: block;
+            right: 115%;
+
+            opacity: 100%;
+
+            @include transitionOut;
+          }
+        }
       }
 
       &-info {
         display: block;
-        width: $width-max-content;
-
-        position: absolute;
-        top: -125%;
-        right: 50%;
-
-        opacity: 0;
 
         text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
 
@@ -50,6 +54,10 @@
 
         &-link {
           display: block;
+          width: $width-max-content;
+          position: absolute;
+          top: 70%;
+          right: 50%;
 
           @include fontHeader;
           text-align: right;
@@ -57,12 +65,11 @@
           color: $white-color;
           text-decoration: none;
 
+          opacity: 0;
+
           &:first-child {
             margin-bottom: $margin-bottom-paragraph;
-          }
-
-          &:hover {
-            color: $accent-color-second;
+            top: -125%;
           }
         }
       }
@@ -101,17 +108,5 @@
     @include onDesktop {
       font-size: 80px;
     }
-  }
-}
-
-@include onDesktop {
-  .header__menu-call-block:hover > .header__menu-call-info {
-    display: block;
-    top: -125%;
-    right: 115%;
-
-    opacity: 100%;
-
-    @include transitionOut;
   }
 }
