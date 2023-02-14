@@ -17,7 +17,6 @@
 @mixin semi-bold_500 ($size) {
   font-weight: 500;
   font-size: $size;
-  line-height: $size;
 }
 
 @mixin flex-center {
@@ -32,15 +31,20 @@
 }
 
 @mixin for-tablet {
-  @media (max-width: 744px) {
+  @media (max-width: 768px) {
     @content;
   }
 }
 
 @mixin for-phone {
-  @media (max-width: 320px) {
+  @media (max-width: 480px) {
     @content;
   }
+}
+
+@mixin s-picture-phone($size) {
+  width: $size;
+  height: $size;
 }
 
 @mixin box-shadow {
@@ -58,39 +62,62 @@
   }
 }
 
-@mixin form-inputs-style {
-  width: 93%;
-  height: 48px;
-  border-radius: 40px;
-  border: none;
-  background-color: #f8f8fa;
-  padding-left: 20px;
-  outline: none;
-  margin-bottom: 16px;
+@mixin titles {
+  @include semi-bold_500(64px);
+  letter-spacing: -1.5px;
+  color: $c-main-white-color;
 
-  @include box-shadow;
+  @include for-tablet {
+    @include semi-bold_500(48px);
+  }
+
+  @include for-phone {
+    @include semi-bold_500(32px);
+  }
 }
 
-@mixin margin-bottom ($size) {
-  margin-bottom: $size;
+@mixin s-image-size {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin form-input {
+  width: 411px;
+  height: 48px;
+  border-radius: 40px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  background-color: #f8f8fa;
+  font-family: $f-font-family;
+
+  @include for-tablet {
+    width: 288px;
+  }
 }
 
 @mixin link-decoration {
   text-decoration: none;
-  color: white;
+  color: $c-main-white-color;
+
+  &:active {
+    color: $c-main-white-color;
+  }
+
+  &:visited {
+    color: $c-main-white-color;
+  }
+
+  &::after {
+    color: $c-main-white-color;
+  }
 }
 
-@mixin s-phone-picture($size) {
-  width: $size;
-  height: $size;
+@mixin image-hover-scale($size) {
+  &:hover {
+    transform: scale($size);
+  }
 }
 
-@mixin s-tablet-picture-big {
-  width: 392px;
-  height: 187px;
-}
-
-@mixin s-tablet-picture-small {
-  width: 184px;
-  height: 187px;
+@mixin transition ($size) {
+  transition: transform $size;
 }

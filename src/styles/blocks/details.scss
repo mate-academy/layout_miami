@@ -1,125 +1,78 @@
 .details {
-
-  margin: auto;
-
+  @include flex-center;
+  flex-direction: column;
+  color: $c-main-white-color;
   @include for-tablet {
-    max-width: $s-max-width-tablet;
+    padding: 0 50px;
   }
 
   @include for-phone {
-    max-width: $s-max-width-phone;
+    padding: 0 25px;
   }
 
-  margin-bottom: 50px;
-  &-image {
-    display: flex;
-    justify-content: space-between;
+  &__title {
+    @include titles;
+  }
 
-    &-1 {
-      @include for-tablet {
-        @include s-tablet-picture-big;
-      }
+  &__image {
+    @include transition(0.3s);
+    @include image-hover-scale(1.07);
+    @include s-image-size;
 
-      @include for-phone {
-        @include s-phone-picture(130px);
-      }
+    @include for-phone {
+      @include s-picture-phone(130px);
+    }
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    @include for-phone {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $s-phone-gap;
     }
 
-    &-2 {
-      @include for-tablet {
-        @include s-tablet-picture-small;
-      }
-
+    &--oposite {
+      grid-template-columns: 1fr 2fr;
       @include for-phone {
-        @include s-phone-picture(130px);
-      }
-    }
-
-    &-3 {
-      @include for-tablet {
-        @include s-tablet-picture-big;
-      }
-
-      @include for-phone {
-        @include s-phone-picture(130px);
-      }
-    }
-
-    &-4 {
-      @include for-tablet {
-        @include s-tablet-picture-small;
-      }
-
-      @include for-phone {
-        @include s-phone-picture(130px);
-      }
-    }
-
-    &-5 {
-      @include for-tablet {
-        @include s-tablet-picture-small;
-      }
-
-      @include for-phone {
-        @include s-phone-picture(130px);
-      }
-    }
-
-    &-6 {
-
-      @include for-tablet {
-        @include s-tablet-picture-big;
-      }
-
-      @include for-phone {
-        @include s-phone-picture(130px);
+        grid-template-columns: repeat(2, 1fr);
+        gap: $s-phone-gap;
       }
     }
   }
 
-  &-title {
-    color: white;
+  &__text-1 {
     @include bold_700(24px);
-    @include padding-top-bottom(20px, 10px);
   }
 
-  &-text {
-    width: 680px;
-    color: white;
-    @include regular_400(16px);
-
-    @include for-tablet {
-      max-width: $s-max-width-tablet;
-    }
-
-    @include for-phone {
-      max-width: $s-max-width-phone;
-    }
+  &__text-2 {
+    max-width: 1024px;
+    padding-bottom: 48px;
   }
 
-  &-explore {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 56px;
-    background-color: #fff;
-    width: 362px;
-    height: 56px;
-    border-radius: 40px;
-    text-decoration: none;
-    color: $c-main-dark-color;
-    transition: box-shadow 0.3s ease-in-out;
+  &__button {
+    padding: 0 130px;
     @include bold_700(16px);
+    @include box-shadow;
+    background-color: $c-main-white-color;
+    text-decoration: none;
+    border-radius: 40px;
+    line-height: 56px;
 
     @include for-tablet {
-      width: 392px;
+      padding: 0 160px;
     }
 
     @include for-phone {
-      width: 298px;
-      margin-bottom: 30px;
+      padding: 0 90px;
+    }
+    &:active {
+      color: $c-main-dark-color;
     }
 
-    @include box-shadow;
+    &:visited {
+      color: $c-main-dark-color;
+    }
   }
 }
