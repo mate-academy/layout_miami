@@ -1,0 +1,123 @@
+.header {
+  background-image: url(../images/photos/header-mobile.jpg);
+  @include backgroundCenter;
+
+  @include onTablet {
+    background-image: url(../images/photos/header-720.jpg);
+    @include backgroundCenter;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-1024.jpg);
+    @include backgroundCenter;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 36px 0 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 203px;
+    }
+
+    &-bottom {
+      margin-bottom: 60px;
+
+      @include onTablet {
+        margin-bottom: 120px;
+      }
+
+    }
+  }
+
+  &__wrap {
+    @include flexBetween;
+    margin-top: (-10px);
+  }
+
+  &__menu-opener {
+    display: inline-block;
+    @include icon-size (18px, 12px);
+
+    @include onTablet {
+      @include icon-size (24px, 16px);
+    }
+
+    @include backgroundCenter;
+    background-image: url(../images/menu_open.svg);
+
+    &:hover {
+      background-image: url(../images/menu_open-hover.png);
+    }
+  }
+
+  &__call {
+    display: inline-block;
+    @include icon-size (18px, 18px);
+
+    @include onTablet {
+      @include icon-size (24px, 24px);
+    }
+
+    @include backgroundCenter;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+    margin-right: 30px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        color: #fff;
+        font-weight: bold;
+        @include text-size (12px, 16px);
+
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: -1.5px;
+    @include text-size (36px, 36px);
+
+    @include onTablet {
+      @include text-size (64px, 64px);
+    }
+
+    @include onDesktop {
+      @include text-size (80px, 80px);
+    }
+  }
+}
