@@ -13,6 +13,7 @@ window.addEventListener('hashchange', () => {
 const form = document.getElementById('#form');
 
 function handleForm(event) {
+  this.reset();
   event.preventDefault();
 }
 
