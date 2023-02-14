@@ -1,0 +1,35 @@
+.compare-bikes {
+  &__content {
+    @include onTablet {
+      display: grid;
+      @include gridTemplateColumnsRepeat(6);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      @include gridTemplateColumnsRepeat(3);
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    @include onTablet {
+      grid-column: 2 / span 4;
+
+      &:not(:last-child) {
+        margin-bottom: 48px;
+      }
+    }
+
+    @include onDesktop {
+      grid-column: auto;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
