@@ -1,0 +1,92 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/photos/header-pic.png);
+
+  @include onTablet {
+    background-image: url(../images/photos/header-photo-tabl.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/logo-pic-desk.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 200px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: max-content;
+        padding: 10px;
+        transform: translate(-100%, -50%);
+
+        font-weight: $fw-bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $c-main-txt;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 0;
+        pointer-events: all;
+        animation: appear 1s forwards;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: inherit;
+    font-weight: $fw-bold;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $c-main-txt;
+    text-align: center;
+
+    @include onTablet {
+      font-weight: $fw-bold;
+      font-size: 64px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      color: $c-main-txt;
+      text-align: center;
+    }
+
+    @include onDesktop {
+      font-weight: $fw-bold;
+      font-size: 80px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      color: $c-main-txt;
+      text-align: center;
+    }
+  }
+}
