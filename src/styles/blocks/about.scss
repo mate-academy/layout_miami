@@ -3,23 +3,33 @@
   &__container {
     display: grid;
     row-gap: 32px;
+    column-gap: 24px;
 
     @include md-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include md-desktop {
       grid-auto-flow: column;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 24px;
-
+      grid-template-columns: repeat(12, 1fr);
     }
   }
   // .about__title
   &__title {
     @extend %h1;
 
+    @include md-desktop {
+      grid-column: span 4;
+    }
   }
 
   &__text {
     font-weight: 500;
     font-size: 23px;
     line-height: 140%;
+
+    @include md-desktop{
+      grid-column: 6 / span 6;
+    }
   }
 }
