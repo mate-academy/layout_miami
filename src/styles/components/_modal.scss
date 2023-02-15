@@ -1,0 +1,65 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  padding-top: 29px;
+  background-color: #c2c2c2;
+
+  overflow-y: auto;
+
+  transform: translateX(0);
+  transition: transform $transition-props, opacity $transition-props;
+
+  @include for-tablet-up {
+    padding-top: 36px;
+  }
+
+  @include for-desktop-up {
+    padding-top: 48px;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__close {
+    &-btn {
+      position: absolute;
+      right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+
+      padding: 0;
+
+      background: none;
+
+      @include for-tablet-up {
+        right: 72px;
+      }
+
+      @include for-desktop-up {
+        right: 120px;
+      }
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+
+      fill: $main-background-color;
+    }
+  }
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateX(100%);
+
+  transition: transform $transition-props, opacity $transition-props;
+}

@@ -1,0 +1,131 @@
+.details {
+
+  &__part {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px 20px;
+    margin-bottom: 40px;
+
+    @include for-tablet-up {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+
+    width: 100%;
+    max-height: 150px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include for-tablet-up {
+      max-height: fit-content;
+      height: 187px;
+
+      &::after {
+        padding-bottom: 0;
+      }
+    }
+
+    @include for-desktop-up {
+      height: 320px;
+    }
+
+    &--big {
+      @include for-tablet-up {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform $transition-props;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__small-title {
+    grid-column: 1 / -1;
+    margin-bottom: -8px;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+  }
+
+  &__button {
+    margin: 0 auto;
+
+    @include for-tablet-up {
+      max-width: 392px;
+    }
+
+    @include for-desktop-up {
+      max-width: 324px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 48px;
+
+    @include font-dimension (500, 32px, 1);
+
+    text-align: center;
+
+    letter-spacing: -1.5px;
+    text-transform: capitalize;
+
+    @include for-tablet-up {
+      font-size: 48px;
+    }
+  }
+
+  &__explore {
+    display: block;
+
+    max-width: 278px;
+
+    margin: 40px auto 80px;
+    padding: 14.5px ;
+
+    @include font-dimension (700, 16px, 1.69);
+
+    text-align: center;
+
+    background-color: $text-and-icon-color;
+    color: $main-background-color;
+
+    border-radius: 40px;
+
+    @include for-tablet-up {
+      margin: 48px auto 120px;
+    }
+
+    transition: box-shadow $transition-props;
+
+    &:hover,
+    &:focus {
+      box-shadow: $box-shadow-input-hover;
+    }
+
+    &:active {
+      box-shadow: $box-shadow-input-active;
+    }
+  }
+}
