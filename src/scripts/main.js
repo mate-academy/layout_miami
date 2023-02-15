@@ -8,13 +8,19 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const checkbox = document.querySelector('.button--form');
+// const checkbox = document.querySelector('.button');
 
-checkbox.addEventListener('click', checkboxClick, false);
+// checkbox.addEventListener('click', checkboxClick, false);
 
-function checkboxClick(event) {
-  const warn = "preventDefault() won't let you check this!<br>";
+// function checkboxClick(event) {
+//   const warn = "preventDefault() won't let you check this!<br>";
 
-  document.getElementById('.button--form').innerHTML += warn;
+//   document.getElementById('.button').innerHTML += warn;
+//   event.preventDefault();
+// }
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-}
+  form.reset();
+});
