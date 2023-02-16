@@ -1,0 +1,87 @@
+.icon {
+  --icon-width: 24px;
+
+  position: relative;
+  display: block;
+  width: var(--icon-width);
+  height: var(--icon-width);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    --icon-width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/phone-call.svg);
+    background-size: 18px;
+    margin-right: 24px;
+    text-decoration: $text-decoration-none;
+    
+    @include onTablet {
+      background-size: 24px;
+      margin-right: 55px;
+    }
+  }
+
+  &__tooltip {
+    display: none;
+    
+    @include onDesktop {
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: -400%;
+      transform: translateY(-50%);
+      width: max-content;
+      padding-right: 20px;
+      color: $main-color;
+      font-weight: $font-weight-bold;
+      text-align: right;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      top: 50%
+    }
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__number {
+    margin: 0 0 8px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/burger-menu.svg");
+    background-size: 18px 12px;
+
+    @include onTablet {
+      background-size: 24px 16px;
+    }
+
+    &:hover {
+      background-image: url("../images/burger-menu-hover.svg");
+    }
+  }
+
+  &--cross {
+    background-image: url("../images/close.svg");
+    background-size: 16px;
+    
+    @include onDesktop {
+      background-size: 22px;
+    }
+  }
+}
