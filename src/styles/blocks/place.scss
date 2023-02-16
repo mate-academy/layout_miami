@@ -1,0 +1,82 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &-hidden {
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 284px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &-1 {
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 87px;
+      min-width: 87px;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    @include onPhone {
+      object-position: left;
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+
+    &-1 {
+      margin-bottom: 24px;
+
+      @include onPhone {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    color: $red-color;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
