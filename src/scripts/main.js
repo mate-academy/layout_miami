@@ -8,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.getElementById('submitButton').addEventListener('submitButton', dontGo).reset();
+document.getElementById('submitButton')
+  .addEventListener('submitButton', dontGo).reset();
 
 function dontGo(event) {
   event.preventDefault();
-
 }
