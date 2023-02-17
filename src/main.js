@@ -20,3 +20,13 @@ document.addEventListener('click', function(e) {
     e.preventDefault();
   }
 });
+
+document.addEventListener('click', function(e) {
+  const eClassList = e.target.classList;
+
+  if (eClassList.contains('exhibition__description-link')
+    || eClassList.contains('event__name')
+  ) {
+    e.preventDefault();
+  }
+});
