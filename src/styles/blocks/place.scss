@@ -1,0 +1,88 @@
+.place {
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 185px;
+
+    overflow: hidden;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(103%);
+      box-shadow: 5px 8px 14px #d2d1d8;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      max-height: 319px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    &--middle {
+
+      @include onMobile {
+        width: 88px;
+        height: 88px;
+      }
+
+      @include onTablet {
+        height: 284px;
+        max-height: 319px;
+      }
+  
+      @include onDesktop {
+        height: 320px;
+      }
+    }
+
+    &--hidden {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.5s;
+
+    &--left {
+      object-position: right;
+    }
+
+    
+  }
+
+  &__description {
+    margin-bottom: 48px;
+
+    &-title {
+      font-weight: $t-bold;
+      color: $c-red;
+    }
+  }
+}
