@@ -1,40 +1,29 @@
 .about {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  padding: 50px 0;
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    color: $c-main-white-color;
+    @include for-phone(701px) {
+      display: flex;
+      flex-direction: column;
+    }
 
-  @include for-tablet {
-    padding: 10px;
-  }
-  @include for-phone {
-    grid-template-columns: repeat(1, 1fr);
   }
 
   &__text-left {
-    color: $c-main-white-color;
-    @include semi-bold_500(64px);
-    @include for-tablet {
+    grid-column: 1 / span 7;
+    @include semi-bold_500(63px);
+    @include for-tablet(1052px) {
       @include semi-bold_500(48px);
     }
-    width: 50%;
-    @include for-phone {
+    @include for-phone(387px) {
       @include semi-bold_500(32px);
-      width: 100%;
-      padding: $s-padding-bottom;
     }
-
   }
 
   &__text-right {
-    color: $c-main-white-color;
-    width: 50%;
     @include semi-bold_500(23px);
-
-    @include for-tablet {
-      width: 100%;
-      padding: $s-padding-bottom;
-      line-height: 140%;
-    }
+    grid-column: 8 / span 10;
   }
 }

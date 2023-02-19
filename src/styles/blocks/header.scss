@@ -5,7 +5,7 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  @include for-phone {
+  @include for-phone(480px) {
     background-image: url(../styles/images/pictures/Cover_photo_phone.png);
     background-size: cover;
   }
@@ -18,13 +18,13 @@
     justify-content: space-between;
     margin: 0 auto;
 
-    @include for-tablet {
+    @include for-tablet(768px) {
       max-width: 600px;
       height: 100px;
       padding: 20px;
     }
 
-    @include for-phone {
+    @include for-phone(480px) {
       height: 100px;
       justify-content: center;
     }
@@ -33,7 +33,7 @@
   &__logo {
     @include flex-center;
     &-img {
-      @include for-tablet {
+      @include for-tablet(768px) {
         width: 130px;
       }
     }
@@ -41,18 +41,18 @@
   }
 
   &__text {
-    color: white;
+    color: $c-main-white-color;
     text-align: center;
     @include bold_700(80px);
-    padding-top: 100px;
+    padding-top: 250px;
 
-    @include for-tablet {
-      padding-top: 50px;
+    @include for-tablet(768px) {
+      padding-top: 320px;
       @include bold_700(66px);
     }
 
-    @include for-phone {
-      padding-top: 200px;
+    @include for-phone(480px) {
+      padding-top: 250px;
       @include bold_700(36px);
     }
   }
@@ -63,7 +63,7 @@
     text-decoration: none;
 
     &-img {
-      @include for-phone {
+      @include for-phone(480px) {
         width: 18px;
         margin-right: -15px;
       }
@@ -73,7 +73,7 @@
       opacity: 0;
       @include bold_700(12px);
       letter-spacing: 2px;
-      color: white;
+      color: $c-main-white-color;
       font-size: 12px;
       padding-right: 12px;
       transition: opacity 0.5s;
@@ -81,7 +81,7 @@
     &:hover &-number {
       opacity: 1;
 
-      @include for-phone {
+      @include for-phone(480px) {
         opacity: 0;
       }
     }
@@ -113,10 +113,10 @@
       left: 50%;
       border-radius: 50px;
       transform: translate(-50%, -50%);
-      background-color: white;
+      background-color: $c-main-white-color;
       transition: all 0.5s;
 
-      @include for-phone {
+      @include for-phone(480px) {
         height: 2px;
         width: 15px;
       }
@@ -125,7 +125,7 @@
     &-span:nth-of-type(2) {
       top: calc(50% - 8px);
 
-      @include for-phone {
+      @include for-phone(480px) {
         top: calc(50% - 6px);
       }
     }
@@ -133,7 +133,7 @@
     &-span:nth-of-type(3) {
       top: calc(50% + 8px);
 
-      @include for-phone {
+      @include for-phone(480px) {
         top: calc(50% + 6px);
       }
     }
@@ -142,27 +142,12 @@
       display: none;
     }
     &.active &-span:nth-of-type(2) {
-      top: 50%;
-      transform: translate(-50%, 0%) rotate(45deg);
-      background-color: $c-main-dark-color;
-    }
-
-    &.active:hover &-span:nth-of-type(2) {
-      left: 50%;
-      width: 24px;
+      opacity: 0;
     }
 
     &.active span:nth-of-type(3) {
-      top: 50%;
-      transform: translate(-50%, 0%) rotate(-45deg);
-      background-color: $c-main-dark-color;
+      opacity: 0;
     }
-
-    &.active:hover &-span:nth-of-type(3) {
-      left: 50%;
-      width: 24px;
-    }
-
   }
 
   &__hidden-menu {

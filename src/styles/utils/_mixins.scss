@@ -30,14 +30,14 @@
   padding-bottom: $bottom-size;
 }
 
-@mixin for-tablet {
-  @media (max-width: 768px) {
+@mixin for-tablet ($size) {
+  @media (max-width: $size) {
     @content;
   }
 }
 
-@mixin for-phone {
-  @media (max-width: 480px) {
+@mixin for-phone($size) {
+  @media (max-width: $size) {
     @content;
   }
 }
@@ -67,11 +67,11 @@
   letter-spacing: -1.5px;
   color: $c-main-white-color;
 
-  @include for-tablet {
+  @include for-tablet(768px) {
     @include semi-bold_500(48px);
   }
 
-  @include for-phone {
+  @include for-phone(480px) {
     @include semi-bold_500(32px);
   }
 }
@@ -90,7 +90,7 @@
   background-color: #f8f8fa;
   font-family: $f-font-family;
 
-  @include for-tablet {
+  @include for-tablet(768px) {
     width: 288px;
   }
 }

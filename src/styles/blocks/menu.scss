@@ -1,11 +1,11 @@
 .menu {
   padding: 48px 240px;
 
-  @include for-tablet {
+  @include for-tablet(768px) {
     padding: 48px 100px;
   }
 
-  @include for-phone {
+  @include for-phone(480px) {
     padding: 24px 20px;
   }
 
@@ -17,7 +17,7 @@
   &__item {
     margin-bottom: 32px;
 
-    @include for-phone {
+    @include for-phone(480px) {
       margin-bottom: 20px;
     }
   }
@@ -25,12 +25,12 @@
   &__logo {
     margin-bottom: 48px;
 
-    @include for-tablet {
+    @include for-tablet(768px) {
       margin-bottom: 35px;
       width: 130px;
     }
 
-    @include for-phone {
+    @include for-phone(480px) {
       margin-bottom: 20px;
     }
   }
@@ -41,7 +41,7 @@
     color: $c-main-dark-color;
     @include bold_700(22px);
 
-    @include for-tablet {
+    @include for-tablet(768px) {
       @include semi-bold_600(22px);
     }
 
@@ -51,7 +51,7 @@
       left: 0;
       width: 100%;
       opacity: 0;
-      height: 1.5px;
+      height: 1px;
       background-color: $c-main-dark-color;
       content: "";
       transition: opacity 0.7s;
@@ -70,6 +70,11 @@
     text-decoration: none;
     color: $c-main-dark-color;
     @include bold_700(16px);
+    transition: all 0.5s;
+
+    &:hover {
+      @include bold_700(22px);
+    }
   }
 
   &__number {
@@ -81,5 +86,20 @@
     border-bottom: 1px solid $c-main-dark-color;
     text-transform: uppercase;
     @include bold_700(16px);
+  }
+
+  &__close-button {
+    position: absolute;
+    right: 300px;
+    top: 60px;
+
+    @include for-tablet(1024px) {
+      right: 150px;
+    }
+
+    @include for-phone(481px) {
+      top: 30px;
+      right: 50px;
+    }
   }
 }
