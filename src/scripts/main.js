@@ -1,4 +1,5 @@
 'use strict';
+const form = document.querySelector('#contact-form');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
@@ -7,8 +8,6 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
-
-const form = document.querySelector('YOUR_FORM_SELECTOR');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
