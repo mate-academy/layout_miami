@@ -1,23 +1,50 @@
 .place {
-  &--gallery {
-    @include md-desktop {
-      @include grid-12;
+  &__pictures {
+    padding-bottom: 32px;
+    overflow: hidden;
+    display: flex;
+    column-gap: 20px;
+
+    @include md-tablet {
+      column-gap: 24px;
     }
   }
 
-  &__pictures {
-    padding-bottom: 32px;
+  &__photo-container {
 
-    @include md-desktop {
-      grid-column: span 12;
+    &--schrink {
+      @include md-tablet {
+        &--1 {
+          flex-shrink: 1;
+        }
+        &--2 {
+          flex-shrink: 2;
+        }
+      }
     }
+    position: relative;
+    padding: 0;
+
+    width: 100%;
+    max-height: 320px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
   }
 
   &__title {
-    @include md-desktop {
-      grid-row: 2/3;
-      grid-column: span 12;
-    }
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
@@ -26,13 +53,14 @@
   }
 
   &__text {
-    @include md-desktop {
-      grid-row: 3/4;
-      grid-column: span 8;
-    }
-
     line-height: 140%;
     padding-bottom: 16px;
+
+    &--gallery {
+      @include md-desktop {
+        width: 66%;
+      }
+    }
   }
 
   &__price {
@@ -40,5 +68,4 @@
     font-size: 24px;
     line-height: 140%;
   }
-
 }
