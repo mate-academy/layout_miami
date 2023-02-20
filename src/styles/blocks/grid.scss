@@ -1,15 +1,15 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat($mobGridColumns, 1fr);
   column-gap: 20px;
 
   @include onPad {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat($padGridColumns, 1fr);
     column-gap: 24px;
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat($desctopGridColumns, 1fr);
     column-gap: 24px;
   }
 
@@ -22,8 +22,8 @@
   }
 
   &__item {
-    @for $start from 1 through 2 {
-      @for $end from $start through 2 {
+    @for $start from 1 through $mobGridColumns {
+      @for $end from $start through $mobGridColumns {
         &--m-#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
@@ -31,8 +31,8 @@
     }
 
     @include onPad {
-      @for $start from 1 through 6 {
-        @for $end from $start through 6 {
+      @for $start from 1 through $padGridColumns {
+        @for $end from $start through $padGridColumns {
           &--p-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
@@ -41,8 +41,8 @@
     }
 
     @include onDesktop {
-      @for $start from 1 through 12 {
-        @for $end from $start through 12 {
+      @for $start from 1 through $desctopGridColumns {
+        @for $end from $start through $desctopGridColumns {
           &--d-#{$start}-#{$end} {
             grid-column: #{$start} / #{$end + 1};
           }
