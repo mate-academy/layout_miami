@@ -1,5 +1,64 @@
 .menu {
-  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: 100vh;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
   background-color: #c2c2c2;
+
+  &:target {
+    transform: translateX(0);
+  }
+ 
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+
+    &:first-child {
+      padding-top: 44px;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: max-content;
+    padding-bottom: 8;
+    margin-bottom: 24px;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    color: $black-text-color;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2;
+
+    &--call {
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    
+    @include onDescktop {
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $black-text-color;
+      }
+    }
+    
+    &--test-ride {
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 2px;
+      border-bottom: 1px solid $black-text-color;
+      text-transform: uppercase;
+    }
+  }
 }
