@@ -8,9 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.getElementById('submitButton')
-  .addEventListener('submitButton', dontGo).reset();
+const form = document.getElementById('form');
+const text = document.getElementById('text');
+const mail = document.getElementById('mail');
+const textarea = document.getElementById('textarea');
 
-function dontGo(event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-}
+  text.value = '';
+  mail.value = '';
+  textarea.value = '';
+});
