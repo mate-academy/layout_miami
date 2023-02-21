@@ -10,6 +10,10 @@
   }
 }
 
+$headerTopPaddingMobile: 40px;
+$headerTopPaddingDesktop: 52px;
+$colorBlue: #e8eff9;
+
 .page {
   font-family: "Inter", sans-serif;
 
@@ -28,18 +32,62 @@
   }
 }
 
+.logo {
+  &__image {
+    width: 130px;
+
+    @include onTablet {
+      width: 190px;
+    }
+  }
+}
+
 .icon {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 100%;
+  padding-bottom: 100%;
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
-  @include onTablet() {
-    width: 24px;
-    height: 24px;
+  &--menu {
+    background-image: url(../images/mobile-menu.svg);
+
+    @include onTablet {
+      background-image: url(../images/desktop-menu.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/mobile-menu_hover.svg);
+
+      @include onTablet {
+        background-image: url(../images/desktop-menu_hover.svg);
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+
+  gap: 30px;
+
+  @include onTablet {
+    --icon-width: 24px;
+
+    gap: 40px;
   }
 }
 
@@ -59,47 +107,26 @@
     justify-content: space-between;
 
     height: 100vh;
-    padding: 40px 0 94px;
+    padding: $headerTopPaddingMobile 0 94px;
     box-sizing: border-box;
 
     @include onDesktop {
-      padding: 52px 0 64px;
+      padding: $headerTopPaddingDesktop 0 64px;
     }
 
     @include onTablet {
-      padding: 52px 0 40px;
+      padding: $headerTopPaddingDesktop 0 40px;
     }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__logo-image {
-    width: 130px;
-
-    @include onTablet {
-      width: 190px;
-    }
-  }
-
-  &__icons-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
   }
 
   &__call {
-    background-image: url(../images/phone.svg);
     text-decoration: none;
+    position: relative;
 
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
-        position: relative;
+        position: absolute;
         top: 50%;
         transform: translate(-100%, -50%);
 
@@ -120,22 +147,6 @@
       &:hover::before {
         opacity: 1;
         pointer-events: all;
-      }
-    }
-  }
-
-  &__menu-opener {
-    background-image: url(../images/mobile-menu.svg);
-
-    @include onTablet {
-      background-image: url(../images/desktop-menu.svg);
-    }
-
-    &:hover {
-      background-image: url(../images/mobile-menu_hover.svg);
-
-      @include onTablet {
-        background-image: url(../images/desktop-menu_hover.svg);
       }
     }
   }
@@ -175,6 +186,19 @@
         background-size: contain;
         margin-bottom: 32px;
       }
+    }
+  }
+}
+
+.menu {
+  background-color: $colorBlue;
+  &__content {
+    height: 100vh;
+    box-sizing: border-box;
+    padding: $headerTopPaddingMobile 0;
+
+    @include onTablet {
+      padding: $headerTopPaddingDesktop 0;
     }
   }
 }
