@@ -1,5 +1,12 @@
 'use strict';
 
+const form = document.querySelector('.contacts__form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  form.reset();
+});
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
