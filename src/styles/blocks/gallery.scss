@@ -1,0 +1,50 @@
+.gallery {
+
+  &__photo-container {
+    width: 100%;
+    position: relative;
+    max-height: 340px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 180px;
+      padding-bottom: 0 ;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+  
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--mobile {
+      object-position: left;
+    }
+
+    &--square {
+      @media (min-width: 1260px) {
+        object-fit: contain;
+      }
+      @include onTabletGallery {
+        object-fit: contain;
+      }
+      // @include onDesktop {
+      //   object-fit: cover;
+      // }
+    }
+
+  }
+}
