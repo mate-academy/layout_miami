@@ -16,16 +16,53 @@
   }
 }
 
-@mixin textRegular {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 27px;
-  color: $main-dark;
+@mixin photoPosition {
+  position: absolute;
+  width: $photo-size;
+  height: $photo-size;
+  object-fit: cover;
 }
 
-@mixin textBold {
+@mixin  photoContainer {
+  position: relative;
+
+  box-sizing: border-box;
+  width: $photo-size;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+@mixin topActions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width-small $icon-width-small;
+  gap: 30px;
+  align-items: center;
+  height: min-content;
+  box-sizing: border-box;
+
+  @include onDesktopTablet {
+    display: grid;
+    grid-template-columns: 1fr $icon-width-big $icon-width-big;
+    gap: 62px;
+  }
+}
+
+@mixin tooltip {
+  position: absolute;
+
+  display: block;
+  width: max-content;
+
+  color: #fff;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 27px;
-  color: $main-dark;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 0.3s;
 }
