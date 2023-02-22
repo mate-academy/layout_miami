@@ -1,0 +1,83 @@
+.details {
+  margin-bottom: 40px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__images {
+    margin-bottom: 16px;
+
+    @include useGrid (2,20px);
+
+    @include onDesktop {
+      @include useGrid (12, 24px);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      max-height: 256px;
+      box-sizing: border-box;
+      transition: transform $transitionTime;
+
+      &:hover {
+        transform: scale($scaleImage);
+      }
+
+      &::after {
+        content: "";
+        padding-bottom: 100%;
+        display: block;
+
+      }
+
+      @include onDesktop {
+        height: 321px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__description {
+
+    @include onDesktop {
+      @include useGrid (12, 24px);
+      grid-template-rows: 34px 1fr;
+      row-gap: 8px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    margin: 0 0 8px;
+
+    @include onDesktop {
+      grid-column: 1/7;
+      grid-row: 1;
+      margin: 0;
+    }
+  }
+
+  &__info {
+    display: grid;
+    margin: 0;
+
+    @include onDesktop {
+      grid-column: 1/9;
+      grid-row: 2;
+    }
+  }
+}
