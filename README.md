@@ -1,12 +1,12 @@
-# Miami landing page
+ “ELEGANT” and “RELIABLE”, but “SHARP” and “FAST” are some of the words that come to mind when you hit a BIKE product landing page. 
 
-You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
+We found the geometry to be ideal for commuting putting you in a reasonably aero position for the street drive, although the front end is tall enough that you can see clearly when negotiating traffic. 
 
-- [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [the MYBIKE landing page](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [the MET landing page](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=0%3A1)  
-- [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+You are looking for the best perfomance bike?
+Just go and get it!
 
-Implement selected landing page following the lesson videos.
+[DEMO LINK](https://mttony.github.io/layout_miami/) 
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+[LAYOUT]https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?t=cSDUSmzWTbaGEUqy-0
+
+To build this page used: HTML, SCSS and JS.
