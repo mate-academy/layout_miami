@@ -1,0 +1,86 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.jpg);
+
+  @include onPhone {
+    background-position: 85%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+
+    @include onPhone {
+      padding: 29px 20px 88px;
+    }
+
+    @include onTablet {
+      padding: 36px 72px 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 120px 203px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(0%, -50%);
+
+        display: none;
+        width: max-content;
+        padding-right: 12px;
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $colorWhite;
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        display: block;
+        transform: translate(-100%, -50%);
+        transition: transform 0.5s, opacity 0.9s ease-in;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $colorWhite;
+
+    @include onPhone {
+      font-size: 36px;
+    }
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
