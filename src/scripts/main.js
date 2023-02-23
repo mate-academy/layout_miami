@@ -12,5 +12,5 @@ const formMod = document.querySelector('#form-submit');
 
 formMod.addEventListener('submit', (event) => {
   event.preventDefault();
-  formMod.reset()
+  formMod.reset();
 });
