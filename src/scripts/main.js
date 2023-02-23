@@ -19,5 +19,5 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
   resetForm();
 
-  window.alert(`Thank you, ${name}!\nForm is sumbited!`);
+  window.alert(`Thank you, ${name}!\nForm is submited!`);
 });
