@@ -1,0 +1,98 @@
+.header {
+  min-height: 100vh;
+  margin-bottom: 60px;
+  height: 100vh;
+
+  background-image: url(../images/myBIKE-header320.png);
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    height: 100vh;
+    margin-bottom: 120px;
+    background-position: top 10% center;
+  }
+
+  @include onDesktop {
+    height: 100vh;
+    background-image: url(../images/header-background.jpg);
+    background-position: top 20% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__content {
+    @include header__top;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__call {
+    text-decoration: none;
+    margin-right: 36px;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transition: translate 0.8s;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        color: $main-color;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.5s;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 88px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $main-color;
+
+    @include onTablet {
+      font-size: 64px;
+      margin: 0 0 130px;
+    }
+
+    @include onDesktop {
+      margin: 0 0 200px;
+      font-size: 80px;
+    }
+  }
+}
