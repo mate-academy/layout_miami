@@ -1,0 +1,109 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/girl-320px.jpg);
+  background-repeat: no-repeat;
+
+  @include onIpad {
+    padding: 50px 40px;
+    background-image: url(../images/photos/girl-744px.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/girl-1024px.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+  }
+
+  &__call {
+    height: 15px;
+    text-decoration: none;
+
+    @include onIpad {
+      width: 24px;
+      height: 21px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $just-black;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 80px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $just-black;
+    font-style: italic;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/music-waves-phone.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      @include onIpad {
+        width: 63px;
+        height: 70px;
+        padding-bottom: 40px;
+
+        background-image: url(../images/music-waves.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+
+    @include onIpad {
+      margin-bottom: 40px;
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 64px;
+      font-size: 46px;
+    }
+  }
+}
