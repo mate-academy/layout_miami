@@ -1,0 +1,93 @@
+.header {
+  background-image: url(../images/content/first-page-background.jpg);
+  background-repeat: no-repeat;
+  background-position: right -50px bottom;
+  background-size: cover;
+
+  @include onTablet() {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: $topPaddingHeaderMobile 0 $botPaddingHeaderMobile;
+
+    height: 100vh;
+
+    @include onTablet() {
+      padding-bottom: $botPaddingHeaderTablet;
+    }
+
+    @include onDesktop() {
+      padding-bottom: $botPaddingHeaderDesktop;
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: (
+      $size-header-buttons-mobile $size-header-buttons-mobile
+    );
+    justify-content: end;
+    gap: 0 $size-header-buttons-mobile;
+
+    @include onTablet() {
+      grid-template-columns: (
+        $size-header-buttons-desktop $size-header-buttons-desktop
+      );
+      gap: 0 $size-header-buttons-desktop;
+    }
+  }
+
+  &__phone {
+    color: transparent;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.5s, transform 0.5s;
+
+    &:hover {
+      @include onDesktop() {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          display: block;
+          width: max-content;
+          padding-right: 8px;
+          transform: translate(-100%, -50%);
+        }
+      }
+
+      transform: scale(1.2);
+      color: #fff;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include onTablet() {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 100%;
+    }
+
+    @include onDesktop() {
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.card {
+  max-width: 280px;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+
+    @include onTablet() {
+      margin-bottom: 48px;
+    }
+
+    @include onDesktop() {
+      margin-bottom: 0;
+    }
+  }
+
+  @include onTablet() {
+    max-width: 392px;
+  }
+
+  @include onDesktop() {
+    max-width: 324px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__image {
+    width: 280px;
+    height: 228px;
+
+    transition: transform 0.5s, box-shadow 0.5s, border-radius 0.5s;
+
+    &:hover {
+      border-radius: 10%;
+      transform: translateY(-20px);
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.8);
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+      cursor: pointer;
+    }
+
+    @include onTablet() {
+      width: 392px;
+      height: 316px;
+    }
+
+    @include onDesktop() {
+      width: 324px;
+      height: 256px;
+    }
+  }
+
+  &__title {
+    align-self: flex-start;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__description {
+    align-self: flex-start;
+
+    .card & {
+      margin-bottom: 16px;
+    }
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__price {
+    align-self: flex-start;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: #fff;
+  }
+}
