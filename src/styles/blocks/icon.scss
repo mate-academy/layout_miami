@@ -1,0 +1,59 @@
+.icon {
+  position: relative;
+  width: 18px;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include md-tablet {
+    width: 24px;
+  }
+  &__tooltip {
+    display: none;
+    @include md-desktop {
+      display: block;
+      position: absolute;
+
+      right: 100%;
+      top: 50%;
+
+      transform: translateY(-50%);
+      width: max-content;
+
+      padding-right: 12px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-duration;
+    }
+  }
+
+  &--phone:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+      transform: rotate(180deg);
+    }
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+}

@@ -4,3 +4,31 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin md-tablet() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin md-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin max-width($max-width) {
+  max-width: ($max-width + $padding-lr * 2) + px;
+}
+
+@mixin marginBottomSections ($mobile, $tablet, $desctop) {
+  margin-bottom: $mobile;
+
+  @include md-tablet {
+    margin-bottom: $tablet;
+  }
+
+  @include md-desktop {
+    margin-bottom: $desctop;
+  }
+}

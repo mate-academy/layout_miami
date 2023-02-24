@@ -1,0 +1,84 @@
+.place {
+  &__pictures {
+    padding-bottom: 32px;
+    overflow: hidden;
+    display: flex;
+    column-gap: 20px;
+
+    @include md-tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__photo-container {
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include md-tablet {
+      max-height: 320px;
+    }
+
+    @include md-tablet {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--schrink {
+      @include md-tablet {
+        &--1 {
+          flex-shrink: 1;
+        }
+        &--2 {
+          flex-shrink: 2;
+        }
+      }
+    }
+  }
+
+  &__img {
+    @include hover(transform, scale(1.03));
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    @include hover(transform, scale(1.03));
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+
+    padding-bottom: 8px;
+  }
+
+  &__text {
+    line-height: 140%;
+    padding-bottom: 16px;
+
+    &--gallery {
+      @include md-desktop {
+        width: 66%;
+      }
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
