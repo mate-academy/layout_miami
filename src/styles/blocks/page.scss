@@ -1,6 +1,10 @@
 .page {
   font-family: "Cinzel", serif;
   font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: $darkMainColor;
   scroll-behavior: smooth;
   
   &__body {
@@ -21,6 +25,21 @@
     }
   }
 
+  &__mob {
+    @include onTablet {
+      display: none;
+    }
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__tablet-desktop {
+    @include onMobile {
+      display: none;
+    }
+  }
+
   &__section {
     margin-bottom: 100px;
 
@@ -34,15 +53,34 @@
   }
 
   &__section-title {
+    margin-bottom: 48;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     text-align: center;
     letter-spacing: -1.5px;
     color: $darkMainColor;
-    // flex: none;
-    // order: 0;
-    align-self: stretch;
-    // flex-grow: 0;
+
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .page__section-subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: $darkMainColor;
+    margin: 8px auto 48px;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 290px;
+    }
   }
 }
