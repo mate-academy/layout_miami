@@ -1,0 +1,36 @@
+.icon {
+  display: block;
+  width: $icon-size;
+  height: $icon-size;
+
+  @include onTablet {
+    width: $icon-size-desk;
+    height: $icon-size-desk;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--opener {
+    background-image: url(../images/menu.svg);
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--call {
+    background-image: url(../images/phone.svg);
+    cursor: pointer;
+
+    @include onDesktop {
+      &:hover + .phones {
+        opacity: 1;
+        transform: translateX(0%);
+        pointer-events: all;
+      }
+    }
+  }
+}
