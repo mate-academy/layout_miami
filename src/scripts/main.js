@@ -1,11 +1,15 @@
 'use strict';
 
-window.addEventListener('hashchange', () => {
+const checkIsMenuOpen = () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
+};
+
+window.addEventListener('hashchange', () => {
+  checkIsMenuOpen();
 });
 
 window.addEventListener('scroll', () => {
@@ -38,3 +42,5 @@ formElement.addEventListener('submit', (event) => {
 
   window.alert('Sent successfully!');
 });
+
+checkIsMenuOpen();
