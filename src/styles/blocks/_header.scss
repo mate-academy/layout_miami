@@ -1,0 +1,73 @@
+.header {
+  background-image: url(../images/photos/3-mobile.jpg);
+  background-size: cover;
+  background-position: top;
+  
+  @include onDesktop {
+    background-image: url(../images/photos/3-desktop.jpg);
+  }
+  
+  @include onTablet {
+    background-image: url(../images/photos/3_laptop.jpg);
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-top-padding-mobile 0 $header-bottom-padding;
+    
+    @include onDesktop {
+      padding: $header-top-padding-desktop 0 $header-bottom-padding;
+    }
+  }
+  
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    text-align: center;
+  
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+
+  &__block {
+        
+    &--hover {
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      display: block;
+      width: max-content;
+      padding-right: 20px;
+      position: absolute;
+      top: 8%;
+      right: 25%;
+      transform: translateX(-10%);
+      pointer-events: none;
+      //transition: transform 1s;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: end;
+
+    }
+
+    @include onDesktop {
+        
+      &--call:hover &--hover {
+        opacity: 1;
+        pointer-events: all;
+        //transform: translateX(0%);
+        //transition: opacity 0.3s, transform 0.3s;
+
+      }
+    
+    }
+
+  }
+
+}
