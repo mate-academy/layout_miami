@@ -1,0 +1,72 @@
+.header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right 15% bottom;
+  background-image: url(../images/photos/Cover_photo_small.jpg);
+
+  @include onDesktop {
+    background-image: url(../images/photos/Cover_photo.jpg);
+  }
+
+  &__content {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPadding 0 90px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 200px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1-234-555-55-55";
+        position: absolute;
+        top: 50%;
+
+        width: max-content;
+        padding-right: 16px;
+
+        font-size: 12px;
+        color: $white-color;
+        letter-spacing: 2px;
+
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-time;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    color: $white-color;
+  }
+}
