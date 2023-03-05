@@ -1,0 +1,23 @@
+@mixin onTable {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin gridColumn ($grid-col, $name, $width) {
+  @for $start from 1 through $grid-col {
+    @for $end from 1 through $grid-col {
+      &--#{$name}-#{$start}-#{$end} {
+        @media (min-width: $width) {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}

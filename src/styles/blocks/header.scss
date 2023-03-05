@@ -1,0 +1,113 @@
+.header {
+  background-position: center;
+  background-size: cover;
+
+  background-image: url(../images/image320.png);
+
+  @include onTable {
+    background-image: url(../images/744px.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/headerimage.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+    height: 100vh;
+
+    @include onTable {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+
+    align-items: center;
+    letter-spacing: -1.5px;
+
+    color: $maincolor;
+
+    @include onTable {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: url(../images/320vector.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTable {
+        width: 63px;
+        height: 76px;
+        content: url(../images/Soundwaves.svg);
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @include onTable {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+
+        position: relative;
+        transform: translate(-100%, -50%);
+        top: 50%;
+        padding-right: 20px;
+        opacity: 0;
+
+        color: $maincolor;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
