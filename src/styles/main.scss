@@ -1,7 +1,163 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin oneDesktop1024 {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin oneDesktop744 {
+  @media screen and (min-width: 744px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin oneDesktopMin744 {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  background: #1d1d1d;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include oneDesktopMin744 {
+    max-width: 1024px;
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include oneDesktopMin744 {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/image/header.png);
+  background-size: cover;
+  background-position: 85%;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0 80px;
+
+    @include oneDesktop744 {
+      padding: 24px 0 70px;
+    }
+    @include oneDesktop1024 {
+      padding: 24px 0 130px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__logo {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+
+    @include oneDesktopMin744 {
+      font-size: 50px;
+    }
+  }
+
+  &__menu-opener {
+    margin-left: 30px;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include oneDesktopMin744 {
+      margin-left: 40px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    background-image: url(../images/phone.svg);
+
+    @include oneDesktop1024 {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase ;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include oneDesktop744 {
+      font-size: 64px;
+    }
+
+    @include oneDesktop1024 {
+      font-size: 80px;
+    }
+  }
+
+  @include oneDesktop744 {
+    background-position: center;
+  }
 }
