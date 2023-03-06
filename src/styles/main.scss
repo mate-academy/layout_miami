@@ -1,7 +1,144 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+}
+
+.page {
+  font-family: 'Poppins', sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+  display: inline-block;
+  text-decoration: none;
+  height: 100%;
+
+  &__image {
+    display: block;
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 100px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: center;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/photos/myBike-phone.jpg);
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+
+  @include onDesktop {
+    background-image: url(../images/photos/myBike-desktop.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0 88px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    background-image: url(../images/call.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: block;
+        color: #fff;
+        width: max-content;
+        padding-right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-openner {
+    background-image: url(../images/burger.svg);
+  }
+
+  &__title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      text-align: center;
+      padding-bottom: 115px;
+    }
+  }
 }
