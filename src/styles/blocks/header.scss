@@ -1,0 +1,102 @@
+.header {
+  @include imagePosition;
+
+  background-image: url(../images/background-image-phone.svg);
+
+  @include onTablet() {
+    background-image: url(../images/background-image-ipad.png);
+  }
+
+  @include onDecktop() {
+    background-image: url(../images/background-image-laptop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $header-top-padding 0 0;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    color: $main-color;
+    margin: 0;
+    padding-bottom: 94px;
+
+    @include onTablet() {
+      font-size: 40px;
+      line-height: 40px;
+      padding-bottom: 40px;
+    }
+
+    @include onTablet() {
+      font-size: 48px;
+      line-height: 48px;
+      padding-bottom: 64px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 38px;
+      height: 27px;
+      padding-bottom: 16px;
+
+      background-image: url(../images/wave-phones.svg);
+      background-repeat: no-repeat;
+
+      @include onTabletAndDesctop() {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/Sound_waves.svg);
+      }
+    }
+  }
+
+  &__container-corner {
+    display: flex;
+    gap: 24px;
+
+    @include onTabletAndDesctop {
+      gap: 31px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDecktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-color;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
