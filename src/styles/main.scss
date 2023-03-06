@@ -16,16 +16,40 @@ a {
   text-decoration: none;
 }
 
+.logo {
+  height: 56px;
+
+  @include SmartPhone() {
+    height: 38px;
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0 40px;
+  padding: 0 46px;
+
+  @include SmartPhone() {
+    padding: 0 16px;
+  }
 }
 
 .header {
-  background-image: url(../images/header_background2.png);
+  background-image: url(../images/header_background-1240.png);
   background-size: cover;
   background-position: center;
+
+  @include SmallDesktop() {
+    background-image: url(../images/header_background-744.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  @include SmartPhone() {
+    background-image: url(../images/header_background-320.png);
+    background-size: cover;
+    background-position: center;
+  }
 
   &__content-wrapper {
     display: flex;
@@ -42,7 +66,7 @@ a {
 
   &__nav {
     display: flex;
-    align-items: center
+    align-items: center;
   }
 
   &__call {
@@ -52,6 +76,37 @@ a {
     height: $icon-size;
     width: $icon-size;
     background-image: url(../images/phone.svg);
+
+    @include SmartPhone() {
+      height: 18px;
+      width: 18px;
+      background-image: url(../images/phone_18px.svg);
+    }
+
+    &::before {
+      @include displayBlock;
+
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      width: max-content;
+      padding-right: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transform: translate(-100%, -50%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &__menu {
@@ -62,6 +117,13 @@ a {
     height: 16px;
     width: $icon-size;
     background-image: url(../images/menu.svg);
+
+    @include SmartPhone() {
+      margin-left: 30px;
+      height: 12px;
+      width: 18px;
+      background-image: url(../images/menu_18px.svg);
+    }
   }
 
   &__title {
@@ -71,5 +133,15 @@ a {
     letter-spacing: -1.5px;
     text-align: center;
     color: #fff;
+
+    @include SmallDesktop() {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include SmartPhone() {
+      font-size: 36px;
+      line-height: 36px;
+    }
   }
 }
