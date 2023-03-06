@@ -1,0 +1,69 @@
+.place {
+  &__link {
+    font-weight: 700;
+    text-decoration: none;
+    color: $colorRed;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__text {
+    margin-bottom: 48px;
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    &--gap {
+      gap: 8px;
+    }
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__container {
+    flex-basis: 50%;
+
+    &--tablet-1 {
+      @include onTablet {
+        flex-basis: 66.67%;
+      }
+    }
+
+    &--tablet-2 {
+      @include onTablet {
+        flex-basis: 33.33%;
+      }
+    }
+
+    @media (min-width: 744px) and (max-width: 1020px) {
+      &--tablet-not {
+        position: fixed;
+        left: -100%;
+      }
+    }
+  }
+
+  &__photo {
+    display: block;
+    max-height: 184px;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+
+    @include onTablet {
+      max-height: 320px;
+    }
+
+    &:hover {
+      transform: scale(1.2, 1.2);
+    }
+  }
+}
