@@ -1,0 +1,117 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+.container {
+  max-width: 1024px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet() {
+    background-image: url(../images/header_744.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header_1024.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+  }
+
+  &__title {
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onDesktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onDesktop {
+      width: 24px;
+      height: 19px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 17px;
+
+    @include onTablet {
+      height: 24px;
+    }
+
+    @include onDesktop {
+      height: 24px;
+    }
+  }
+}
