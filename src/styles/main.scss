@@ -1,7 +1,111 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: 'Cinzel', serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/photos/image-header.jpg);
+
+  &__content {
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    background-position: center;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 20px 25px;
+  max-width: 1260px;
+
+  @include onTablet {
+    padding: 70px 55px;
+  }
+
+  @include onDesktop {
+    padding: 50px 120px;
+  }
+}
+
+.top__actions {
+  --iconWidth: 18px;
+
+  display: grid;
+  align-items: center;
+  gap: 30px;
+  grid-template-columns: 1fr var(--iconWidth) var(--iconWidth);
+
+  padding-bottom: 200px;
+
+  @include onTablet {
+    --iconWidth: 24px;
+
+    padding-bottom: 178px;
+    gap: 60px;
+  }
+
+  @include onDesktop {
+    --iconWidth: 24px;
+
+    padding-bottom: 145px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
 }
