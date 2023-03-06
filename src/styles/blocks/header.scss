@@ -1,0 +1,113 @@
+.header {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/header/header_s.png);
+
+  @include onTablet {
+    background-image: url(../images/header/header_m.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header/header_l.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPadding 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $font-color;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1;
+    font-style: italic;
+    font-weight: 800;
+    color: $font-color;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: url(../images/sound_wave/sound_s.svg);
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        content: url(../images/sound_wave/sound_l.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
