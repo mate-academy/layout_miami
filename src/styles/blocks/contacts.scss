@@ -3,20 +3,31 @@
   width: 100%;
   margin-bottom: 16px;
   padding: 14px 0 14px 16px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 40px;
 
   font-family: "Inter", sans-serif;
 
-  background-color: #f8f8fa;
+  background-color: $inputBackgroundColor;
   outline: none;
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
-    line-height: 140%;
 
-    color: #7e7e83;
+    color: $placeholderFontColor;
+  }
+
+  &:hover {
+    border: 1px solid $inputBorderColor;
+
+    &::placeholder {
+      color: $mainFontColor;
+    }
+  }
+
+  &:focus {
+    border: 1px solid $mainFontColor;
   }
 }
 
@@ -24,6 +35,10 @@
   &__form {
     display: block;
     margin-bottom: 30px;
+
+    &--visibility {
+      display: none;
+    }
 
     @include onTablet {
       margin-bottom: 0;
@@ -42,6 +57,8 @@
     margin-bottom: 32px;
     border-radius: 16px;
 
+    resize: none;
+
     @extend %inputStyles;
   }
 
@@ -49,9 +66,8 @@
     margin-bottom: 8px;
     font-weight: 400;
     font-size: 14px;
-    line-height: 140%;
 
-    color: #9fadc2;
+    color: $secondaryFontColor;
   }
 
   &__link {
@@ -59,8 +75,24 @@
     margin-bottom: 24px;
     font-weight: 400;
     font-size: 16px;
-    line-height: 140%;
 
-    color: #3e3e3e;
+    color: $secondaryLinkColor;
+
+    &:hover {
+      font-weight: 700;
+      color: $mainFontColor;
+    }
+  }
+
+  &__thanks {
+    display: none;
+    padding-bottom: 360px;
+  }
+
+  &__message {
+    font-weight: 700;
+    font-size: 24px;
+
+    color: $mainFontColor;
   }
 }
