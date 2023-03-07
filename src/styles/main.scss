@@ -4,6 +4,12 @@
   }
 }
 
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 .page {
   font-family: "Inter", sans-serif;
 
@@ -17,7 +23,7 @@
   &__image {
     height: 16px;
 
-    @include onDesktop {
+    @include onTablet {
       height: 24px;
     }
   }
@@ -25,11 +31,15 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1020px;
+  max-width: 1260px;
   padding: 0 20px;
 
   @include onDesktop {
-    padding: 0 40px;
+    padding: 0 120px;
+  }
+
+  @include onTablet() {
+    padding: 0 72px;
   }
 }
 
@@ -47,12 +57,40 @@
     width: 24px;
     height: 24px;
   }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/menu_hover.svg);
+  }
+}
+
+.top-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header {
   background-size: cover;
   background-position: center;
   background-image: url(../images/header__image.png);
+
+  @include onTablet() {
+    background-image: url(../images/header__image__tablet.png);
+  }
 
   @include onDesktop {
     background-image: url(../images/header__image__desk.png);
@@ -62,10 +100,19 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
     box-sizing: border-box;
     height: 100vh;
-    padding: 24px 0 80px;
+    padding: 42px 0 64px;
     padding-bottom: 94px;
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+
+    @include onTablet() {
+      padding-bottom: 40px;
+    }
   }
 
   &__title {
@@ -74,6 +121,11 @@
     letter-spacing: -1.5px;
     line-height: 100%;
     color: #292929;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 100%;
+    }
 
     &::before {
       margin-bottom: 16px;
@@ -84,32 +136,70 @@
       background-size: cover;
       background-position: center;
       background-image: url(../images/before__title.svg);
+
+      @include onTablet {
+        background-size: cover;
+        background-position: center;
+        background-image: url(../images/sound__waves.svg);
+      }
     }
   }
 
-  &__nav {
+  &__nav-icons {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    &-icons {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-      background-size: cover;
-      background-position: center;
-    }
+    gap: 30px;
   }
 
   &__call {
-    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop{
+      &::before {
+        content:'+1 234 555-55-55';
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+      }
+    }
+  }
+}
+
+
+.footer {
+  height: 200px;
+  background-image: url(../images/footer__image.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    height: 400px;
+    background-image: url(../images/footer__image__tablet.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  @include onDesktop {
+    height: 460px;
+    background-image: url(../images/footer__image__desk.png);
+    background-size: cover;
+    background-position: center;
   }
 }
