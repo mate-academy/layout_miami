@@ -1,147 +1,40 @@
 @import "utils";
-@import "fonts";
 @import "typography";
+@import "./blocks/container.scss";
+@import "./blocks/header.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/top-actions.icon-menu.scss";
+@import "./blocks/menu.scss";
+@import "./blocks/footer.scss";
 
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  background: $c-gray;
-  box-sizing: border-box;
-}
-
 a {
   text-decoration: none;
 }
 
-.logo {
-  height: 56px;
+.page {
+  font-family: "Poppins", sans-serif;
 
-  @include SmartPhone() {
-    height: 38px;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 1020px;
-  padding: 0 46px;
-
-  @include SmartPhone() {
-    padding: 0 16px;
-  }
-}
-
-.header {
-  background-image: url(../images/header_background-1240.png);
-  background-size: cover;
-  background-position: center;
-
-  @include SmallDesktop() {
-    background-image: url(../images/header_background-744.png);
-    background-size: cover;
-    background-position: center;
-  }
-
-  @include SmartPhone() {
-    background-image: url(../images/header_background-320.png);
-    background-size: cover;
-    background-position: center;
-  }
-
-  &__content-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    padding: 36px 0 150px;
-  }
-
-  &__top {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-  }
-
-  &__call {
-    @include displayBlock;
-    @include no-repeat;
-
-    height: $icon-size;
-    width: $icon-size;
-    background-image: url(../images/phone.svg);
-
-    @include SmartPhone() {
-      height: 18px;
-      width: 18px;
-      background-image: url(../images/phone_18px.svg);
-    }
-
-    &::before {
-      @include displayBlock;
-
-      content: "+1 234 555-55-55";
-      position: relative;
-      top: 50%;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      width: max-content;
-      padding-right: 16px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transform: translate(-100%, -50%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    &:hover::before {
-      opacity: 1;
-      pointer-events: all;
-    }
+  &__body {
+    background: $c-gray;
+    box-sizing: border-box;
   }
 
   &__menu {
-    @include displayBlock;
-    @include no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-    margin-left: 40px;
-    height: 16px;
-    width: $icon-size;
-    background-image: url(../images/menu.svg);
+    transform: translateX(-100%);
+    transition: transform $transition-duration;
 
-    @include SmartPhone() {
-      margin-left: 30px;
-      height: 12px;
-      width: 18px;
-      background-image: url(../images/menu_18px.svg);
-    }
-  }
-
-  &__title {
-    font-size: 80px;
-    font-weight: 700;
-    line-height: 80px;
-    letter-spacing: -1.5px;
-    text-align: center;
-    color: #fff;
-
-    @include SmallDesktop() {
-      font-size: 64px;
-      line-height: 64px;
-    }
-
-    @include SmartPhone() {
-      font-size: 36px;
-      line-height: 36px;
+    &:target {
+      transform: translateX(0);
     }
   }
 }
