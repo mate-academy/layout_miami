@@ -1,6 +1,6 @@
 'use strict';
 
-const button = document.querySelector('.button--submit');
+const form = document.querySelector('.contact-us__form');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
@@ -10,6 +10,6 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-button.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 });

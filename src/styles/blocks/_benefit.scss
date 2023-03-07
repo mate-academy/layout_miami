@@ -38,18 +38,41 @@
     &:hover {
       z-index: 2;
     }
-    
+
     @include hover(transform, scale(1.1));
   }
 
   &__link {
-    display: block;
+    position: relative;
+    display: inline-block;
     margin-bottom: 8px;
 
     font-size: 24px;
     line-height: 140%;
     color: $c-white;
     text-decoration: none;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+
+      background-color: $c-white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: 0.3s transform;
+    }
+    &:hover {
+      color: $c-white;
+
+      &:after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
   }
 
   &__text {

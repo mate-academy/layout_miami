@@ -11,13 +11,41 @@
   }
 
   &__info-link {
-    display: block;
+    position: relative;
+
+    display: flex;
+    width: max-content;
     margin-bottom: 24px;
+
     font-weight: 500;
     font-size: 16px;
     line-height: 140%;
     color: $c-white;
     text-decoration: none;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      
+      height: 1px;
+      width: 100%;
+
+      background-color: $c-white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: 0.3s transform;
+    }
+
+    &:hover {
+      color: $c-white;
+
+      &:after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
   }
   &__form {
     margin-bottom: 48px;
