@@ -1,6 +1,119 @@
-body,
-h1,
-h2,
-h3 {
-  margin: 0;
+// @import './utils/normalize.scss';
+// @import './utils/reset.scss';
+$colorWhite: #fff;
+@mixin onDesctop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Cinzel", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.icons {
+  display: flex;
+
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background: url(../images/photo/header.svg)center center/cover no-repeat;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__call {
+    margin-right: 30px;
+    
+    display: block;
+    height: 18px;
+    width: 18px;
+    background: url(../images/phone.svg) center center/cover no-repeat;
+
+    @include onTablet {
+      margin-right: 63px;
+      height: 24px;
+      width: 24px;
+    }
+  }
+  
+  &__menu-opener {
+    display: block;
+    height: 18px;
+    width: 18px;
+    background: url(../images/menu.svg) center center/cover no-repeat;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+    
+    &:hover {
+      background: url(../images/menu_hover.svg) center center/cover no-repeat;
+    }
+  }
+
+  &__title {
+    margin-top: 243px;
+
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: $colorWhite;
+
+    @include onTablet {
+      margin-top: 191px;
+      font-size: 67px;
+    }
+
+    @include onDesctop {
+      margin-top: 125px;
+      font-size: 80px;
+    }
+  }
+
+  &__logo-size {
+    width: 64px;
+    height: 46px;
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
 }
