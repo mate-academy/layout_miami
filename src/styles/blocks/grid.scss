@@ -1,0 +1,39 @@
+$columnCountDesktop:12;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat($columnCountDesktop, 1fr);
+  column-gap: 24px;
+
+  @include onIpad {
+    grid-template-columns: repeat($columnCountDesktop/2, 1fr);
+  }
+
+  &__item {
+    &--desktop {
+      @for $start from 1 through $columnCountDesktop {
+        @for $end from $start through $columnCountDesktop {
+          &-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+      }
+    }
+
+    &--ipad {
+      @include onIpad {
+        @for $start from 1 through $columnCountDesktop/2 {
+          @for $end from $start through $columnCountDesktop/2 {
+            &-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end+1};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include onMobile {
+    display: block;
+  }
+}
