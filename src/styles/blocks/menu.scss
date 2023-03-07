@@ -1,78 +1,16 @@
-.menu {
-  &--close {
-    display: none;
-  }
-
-  &--open {
-    display: block;
-  }
-
+.page__menu {
   position: absolute;
-  top: 0;
-  width: 100%;
-  background-color: $bg-color--light;
+  inset: 0;
   @include headerPlacement;
-  transition: display $transition-duration;
+  background-color: $bg-color--light;
 
-  &__contacts-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-weight: 700;
-  }
-
-  &__contact-link {
-    color: $text-color--dark;
-    text-decoration: none;
-  }
-}
-
-.link-phone {
-  line-height: 27px;
-}
-
-.link-booking {
-  @include fontStyle(12px, 700);
-  letter-spacing: 2px;
-  text-decoration: underline;
-  text-underline-offset: 8px;
+  font-weight: 700;
   text-transform: uppercase;
-}
 
-.nav {
-  &__list {
-    margin-bottom: 40px;
-  }
+  transform: translateY(-100%);
+  transition: transform $transition-duration;
 
-  &__item {
-    list-style: none;
-    margin-bottom: 32px;
-    @include fontStyle(22px, 700);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  &__link {
-    position: relative;
-    color: $text-color--dark;
-    text-decoration: none;
-
-    &:after {
-      position: absolute;
-      content: "";
-      border-bottom: 2.5px solid $text-color--dark;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin-bottom: -8px;
-      transform: scaleX(0);
-      transition: transform $transition-duration;
-    }
-
-    &:hover {
-      &:after {
-        transform: scaleX(1);
-      }
-    }
+  &:target {
+    transform: translateY(0);
   }
 }
