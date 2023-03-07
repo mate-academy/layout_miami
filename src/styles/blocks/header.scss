@@ -1,0 +1,96 @@
+.header {
+  height: 100vh;
+
+  background-position: center;
+  background-size: cover;
+  background-image: url("../images/header-mobile.jpg");
+
+  @include onTablet {
+    background-image: url("../images/header-tablet.jpg");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-desktop.jpg");
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-right {
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+
+  &__call {
+    position: relative;
+    text-decoration: none;
+    background-image: url("../images/phone.svg");
+
+    &-action {
+      position: absolute;
+      right: 100%;
+      padding-right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: block;
+      text-align: right;
+      width: max-content;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-duration;
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-transform: uppercase;
+      color: $white-color;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    }
+
+    @include onDesktop {
+      &:hover &-action {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url("../images/burger.svg");
+    margin-left: 30px;
+
+    @include onTablet {
+      margin-left: 63px;
+    }
+
+    &:hover {
+      background-image: url("../images/burger-hover.svg");
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $white-color;
+
+    text-align: center;
+    padding-top: 200px;
+
+    @include onTablet {
+      padding-top: 141px;
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      padding-top: 83px;
+      font-size: 80px;
+    }
+  }
+}
