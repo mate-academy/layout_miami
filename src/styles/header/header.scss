@@ -1,20 +1,27 @@
 .header {
-  box-sizing: border-box;
-
-  height: 100vh;
-
-  background-image: url(../images/header/header-mobile.svg);
   background-size: cover;
   background-position: center;
+  background-image: url(../images/header/header-mobile.svg);
 
   overflow: hidden;
+
+  @include onTablet {
+    background-image: url(../images/header/header-tablet.svg);
+  }
 
   @include onDesktop {
     background-image: url(../images/header/header-desktop.svg);
   }
 
-  @include onTablet {
-    background-image: url(../images/header/header-tablet.svg);
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 30px 0 88px;
+    height: 100vh;
   }
 
   &__nav {
@@ -25,48 +32,20 @@
 
   &__title {
     text-align: center;
-    margin: 0 88px 51px;
-
     font-weight: 700;
     font-size: 36px;
     letter-spacing: -1.5px;
     color: $colorWhite;
-    line-height: 100%;
+    line-height: 36px;
 
     @include onTablet {
       font-size: 64px;
-      margin-bottom: 130px;
+      line-height: 64px;
     }
 
     @include onDesktop {
       font-size: 80px;
-      margin-bottom: 200px;
+      line-height: 80px;
     }
-  }
-
-  &__content {
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    height: 100vh;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 320px;
-  padding: 0 25px;
-
-  @include onTablet {
-    max-width: 600px;
-    padding: 32px 70px;
-  }
-
-  @include onDesktop {
-    max-width: 1020px;
-    padding: 36 px 120px;
   }
 }
