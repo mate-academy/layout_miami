@@ -1,0 +1,68 @@
+.header {
+  background-image: url(../images/photos/header.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onTablet() {
+    background-image: url(../images/photos/header-tablet.png);
+  }
+
+  @include onMobile() {
+    background-image: url(../images/photos/header-mobile.png);
+  }
+
+  &__content {
+    height: 100vh;
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+
+    @media (min-width: 1020px) {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: absolute;
+        display: block;
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 12px;
+        color: $text-color;
+        padding-right: 12px;
+        width: max-content;
+        transform: translate(-100%, 120%);
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    color: $text-color;
+
+    align-items: center;
+    margin-top: 50vh;
+
+    @include onTablet() {
+      font-size: 64px;
+    }
+
+    @include onMobile() {
+      font-size: 36px;
+    }
+  }
+}
