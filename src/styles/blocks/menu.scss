@@ -1,0 +1,107 @@
+@import "../utils/variables.scss";
+
+%link-default-state {
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  color: $textColor;
+  transition: border-color $transitionTiming;
+  text-decoration: none;
+}
+
+%link-on-hover {
+  border-color: $textColor;
+}
+
+.menu {
+  background-color: $mainAccentColor;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    width: 130px;
+
+    @include onDesktop() {
+      width: 190px;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
+    box-sizing: border-box;
+
+    @include onTablet() {
+      padding: 50px 0 40px;
+    }
+
+    @include onDesktop() {
+      padding: 45px 0 64px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+
+  &__list {
+    list-style: none;
+    margin-bottom: 48px;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    color: $textColor;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    @extend %link-default-state;
+
+    &:hover {
+      @extend %link-on-hover;
+    }
+  }
+
+  &__call {
+    display: block;
+    padding-bottom: 16px;
+    width: max-content;
+
+    &-phone {
+      @extend %link-default-state;
+      margin-bottom: 16px;
+
+      &:hover {
+        @extend %link-on-hover;
+      }
+    }
+
+    &-action {
+      @extend %link-default-state;
+      letter-spacing: 2px;
+
+      &:hover {
+        @extend %link-on-hover;
+      }
+    }
+  }
+}
