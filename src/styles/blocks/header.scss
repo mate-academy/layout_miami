@@ -3,6 +3,10 @@
   background-position: top;
   background-image: url(../images/header_phone.svg);
 
+  @include onTablet {
+    background-image: url(../images/header_tablet.svg);
+  }
+
   @include onDesktop {
     background-image: url(../images/header_laptop.svg);
   }
@@ -30,7 +34,12 @@
     line-height: 40px;
     letter-spacing: -1.5px;
 
-    color: #FFFFFF;
+    color: $text-light;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
 
     @include onDesktop {
       font-size: 80px;
@@ -45,12 +54,12 @@
     @include onDesktop {
       &:hover::before {
         @include hoverText(10px);
-        content: 'The Met Fifth Avenue \a +1 212-535-7710';
+        content: "The Met Fifth Avenue \a +1 212-535-7710";
       }
 
       &:hover::after {
         @include hoverText(68px);
-        content: 'The Met Cloisters \a +1 212-923-3700';
+        content: "The Met Cloisters \a +1 212-923-3700";
       }
     }
   }
