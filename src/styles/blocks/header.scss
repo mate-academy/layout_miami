@@ -1,0 +1,101 @@
+.header {
+  background-image: url("../images/photos/header_background_s.png");
+  @extend %background;
+
+  @include onTablet {
+    background-image: url("../images/photos/header_background_m.png");
+  }
+  @include onDesktop {
+    background-image: url("../images/photos/header_background_l.png");
+  }
+
+  &__content {
+    height: 100vh;
+    padding: 40px 0 94px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    height: 18px;
+    width: 18px;
+    @extend %background;
+    text-decoration: none;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%,50%);
+        width: max-content;
+        display: block;
+        opacity: 0;
+        padding-right: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #000;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__text {
+    @include onTablet {
+      @include titleSize(40px);
+    }
+
+    @include onDesktop {
+      @include titleSize(48px);
+    }
+  }
+
+  &__title::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 27px;
+    background-image: url("../images/header_decor2.svg");
+    @extend %background;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      background-image: url("../images/header_decor.svg");
+      width: 63px;
+      height: 76px;
+      margin-bottom: 40px;
+    }
+    @include onDesktop {
+      background-image: url("../images/header_decor.svg");
+      margin-bottom: 32px;
+    }
+  }
+}
