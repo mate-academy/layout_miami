@@ -1,7 +1,116 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Inter", sans-serif;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.logo {
+  &__image {
+    height: 16px;
+
+    @include onDesktop {
+      height: 24px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  border: none;
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header__image.png);
+
+  @include onDesktop {
+    background-image: url(../images/header__image__desk.png)
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 24px 0 80px;
+    padding-bottom: 94px;
+  }
+
+  &__title {
+    font-style: italic;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    color: #292929;
+
+    &::before {
+      margin-bottom: 16px;
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-size: cover;
+      background-position: center;
+      background-image: url(../images/before__title.svg);
+    }
+  }
+
+  &__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    &-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+  }
 }
