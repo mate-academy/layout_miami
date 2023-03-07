@@ -1,0 +1,57 @@
+.header {
+  background-size: cover;
+  background-position: top;
+  background-image: url(../images/header_phone.svg);
+
+  @include onDesktop {
+    background-image: url(../images/header_laptop.svg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 50vh;
+
+    @include onDesktop {
+      padding: 50px 0 40vh;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+
+    color: #FFFFFF;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &:hover::before {
+        @include hoverText(10px);
+        content: 'The Met Fifth Avenue \a +1 212-535-7710';
+      }
+
+      &:hover::after {
+        @include hoverText(68px);
+        content: 'The Met Cloisters \a +1 212-923-3700';
+      }
+    }
+  }
+}
