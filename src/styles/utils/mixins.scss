@@ -1,0 +1,35 @@
+@mixin menu-and-call-size ($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin for-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 24px;
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  justify-items: start;
+  gap: 30px;
+
+  @include for-tablet {
+    --icon-width: 30px
+  }
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width) ;
+  }
+}
