@@ -1,3 +1,7 @@
+$top-margin: 44px;
+$link-padding-bottom: 8px;
+$item-bott-margin: 32px;
+
 .menu {
   background-color: $color-gray;
 
@@ -8,15 +12,19 @@
   }
 
   &__top {
-    margin-bottom: 44px;
+    margin-bottom: $top-margin;
   }
 
   &__list {
-    margin-bottom: 32px;
+    margin-bottom: $top-margin - $link-padding-bottom;
   }
 
   &__items {
-    margin-bottom: 24px;
+    margin-bottom: $item-bott-margin - $link-padding-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__link {
@@ -25,18 +33,22 @@
     text-transform: uppercase;
     font-weight: 600;
     @include font-size-equel-line(22px);
-    color: #1d1d1d;
-    padding-bottom: 8px;
-    border-bottom: #1d1d1d00 1px solid;
+    color: $color-dark;
+    padding-bottom: $link-padding-bottom;
+    border-bottom: transparent 1px solid;
 
     &:hover {
-      border-bottom: #1d1d1d 1px solid;
+      border-bottom: $color-dark 1px solid;
+    }
+
+    @include onDesctop {
+      font-weight: 700;
     }
   }
 
   &__call {
     display: block;
-    color: #1d1d1d;
+    color: $color-dark;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
@@ -44,13 +56,16 @@
 
     &--phone {
       margin-bottom: 16px;
-      line-height: 16px;
     }
 
     &--action {
-      border-bottom: #1d1d1d 1px solid;
-      padding-bottom: 8px;
+      border-bottom: $color-dark 1px solid;
+      padding-bottom: $link-padding-bottom;
       @include font-size-equel-line(12px);
+    }
+
+    @include onDesctop {
+      font-weight: 700;
     }
   }
 } 
