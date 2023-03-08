@@ -9,6 +9,7 @@
 
 .icon {
   display: inline-block;
+  position: relative;
   width: $size-icon-small;
   height: $size-icon-small;
 
@@ -34,5 +35,31 @@
 
   &--call {
     background-image: url(/images/icons/phone.svg);
+  }
+
+  &__tooltip {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: max-content;
+    padding-right: 20px;
+
+    text-align: right;
+    text-transform: uppercase;
+    color: $main-text-color;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }
