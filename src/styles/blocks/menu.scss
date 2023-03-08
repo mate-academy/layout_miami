@@ -15,6 +15,10 @@
   &__top {
     grid-template-columns: 1fr $icon-width;
     margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 55px;
+    }
   }
 
   &__list {
@@ -30,6 +34,8 @@
   }
 
   &__link {
+    @include font (22px, 22px, 2px);
+
     display: inline-block;
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
@@ -37,9 +43,6 @@
     width: max-content;
     text-decoration: none;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
     text-transform: uppercase;
     color: $text-light;
 
@@ -51,6 +54,7 @@
   }
 
   &__call {
+    @include font (16px, 27px);
     display: block;
 
     margin-bottom: 8px;
@@ -58,8 +62,6 @@
     width: max-content;
 
     font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
     text-transform: uppercase;
     text-decoration: none;
     color: $text-light;
@@ -69,11 +71,15 @@
     }
 
     &--actions {
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
+      @include font (12px, 16px, 2px);
       padding: 8px 0;
-      border-bottom: 1px solid $text-light;
+      border-bottom: 1px solid transparent;
+
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: $text-light;
+      }
     }
   }
 }

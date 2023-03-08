@@ -1,9 +1,24 @@
 .page {
+  @include font (16px, 27px);
   font-family: Cinzel, sans-serif;
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1020px;
+
+    @include onTablet {
+      padding: 0 70px;
+    }
+
+    @include onDesktop {
+      padding: 0 120px;
+    }
   }
 
   &__menu {
@@ -13,7 +28,6 @@
     right: 0;
 
     transform: translateX(-100%);
-
     transition: transform 0.3s;
 
     &:target {
@@ -31,47 +45,27 @@
       margin-bottom: 140px;
     }
 
+    &--sub-title {
+      font-weight: 400;
+      text-align: center;
+    }
+
     &--title {
-      margin-bottom: 8px;
-      font-weight: 700;
-      font-size: 32px;
-      line-height: 32px;
+      @include font (32px, 32px, -1.5px);
+      margin-bottom: 32px;
 
       text-align: center;
-      letter-spacing: -1.5px;
-
       color: $main-dark;
 
       @include onTablet {
+        margin-bottom: 48px;
         font-size: 48px;
         line-height: 48px;
       }
-    }
 
-    &--sub-title {
-      margin-bottom: 48px;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 27px;
-
-      text-align: center;
-    }
-
-    &--container {
-      display: block;
-      max-width: 1020px;
-      padding: 0 20px;
-
-      @include onTablet {
-        padding: 0 70px;
-      }
-
-      @include onDesktop {
-        padding: 0 120px;
+      & + .page__section--sub-title {
+        margin-bottom: 48px;
       }
     }
   }
-
-
-
 }
