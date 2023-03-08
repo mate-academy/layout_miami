@@ -8,7 +8,11 @@ $columnCountDesktop:12;
   @include onIpad {
     grid-template-columns: repeat($columnCountDesktop/2, 1fr);
   }
-  //need fix
+
+  @include onMobile {
+    grid-template-columns: 1fr 1fr;
+  }
+
   &__item {
     &--desktop {
       @for $start from 1 through $columnCountDesktop {
@@ -31,9 +35,17 @@ $columnCountDesktop:12;
         }
       }
     }
-  }
 
-  @include onMobile {
-    display: block;
+    &--mobile {
+      @include onMobile {
+        @for $start from 1 through 2 {
+          @for $end from $start through 2 {
+            &-#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end+1};
+            }
+          }
+        }
+      }
+    }
   }
 }
