@@ -1,19 +1,32 @@
 .header {
   position: relative;
-  background-image: url(../images/background.jpg);
+  background-image: url(../images/backgroundMob.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: 25% 25%;
   background-repeat: no-repeat;
 
-  /*  @include onMob {
-  background-image: url(../images/Group35.jpg);
-  } */
+  @include onTabl {
+    background-image: url(../images/backgroundTabl.jpg);
+  }
+
+  @include onPc {
+    background-image: url(../images/backgroundPc.jpg);
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 40px 94px;
+    padding: 40px 20px 94px;
     height: 100vh;
+
+    @include onTabl {
+      padding: 52px 72px 40px;
+    }
+
+    @include onPc {
+      padding: 48px 0 64px;
+    }
   }
 
   &__top,
@@ -23,17 +36,21 @@
     align-items: center;
   }
 
-  &--wrapper {
-    display: flex;
-  }
-
   &__call {
     position: relative;
     display: block;
     background-image: url(../images/call.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     width: 24px;
     height: 24px;
     margin-right: 24px;
+
+    @include onTabl {
+      width: 32px;
+      height: 32px;
+      margin-right: 36px;
+    }
 
     @include onPc {
       &::before {
@@ -60,12 +77,21 @@
   &__title {
     position: relative;
     font-style: italic;
-    font-weight: 800;
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #292929;
     padding-top: 43px;
+
+    @include onTabl {
+      padding-top: 116px;
+      font-size: 40px;
+    }
+
+    @include onPc {
+      padding-top: 108px;
+      font-size: 48px;
+    }
 
     &::before {
       content: " ";
@@ -75,30 +101,12 @@
       top: 0;
       width: 32px;
       height: 27px;
+
+      @include onTabl {
+        background-image: url(../images/vectorTabl.svg);
+        width: 63px;
+        height: 76px;
+      }
     }
-  }
-
-}
-
-.container {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  transition: background-image 0.3s ease 0s;
-
-  &--opener {
-    background-image: url(../images/Vector.svg);
-
-    &:hover {
-      background-image: url(../images/Vector_hover.svg);
-    }
-  }
-
-  &--closed {
-    background-image: url(../images/Icon-Close.svg);
   }
 }
