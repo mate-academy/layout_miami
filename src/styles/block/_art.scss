@@ -1,0 +1,61 @@
+.art {
+  &__painting-container {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    transition: 0.3s;
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+   
+    @include onPad {
+      height: 186px;
+      padding-bottom: 0;
+    }
+    
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+  
+  &__painting {
+    position: absolute;
+    @include size (100%, 100%);
+    object-fit: cover;
+    object-position: center ;
+
+    &-1-1--position {
+      object-position: top left;
+    }
+
+    &-3-2--position {
+      object-position: 50% 25%;
+    }
+
+  }
+
+  &__name-art {
+    text-align: left;
+    color: $color-red;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__description {
+    text-align: left;
+    color: $color-dark;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
