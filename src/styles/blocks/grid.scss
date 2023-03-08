@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 24px;
+
+  @include SmallDesktop {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include SmartPhone {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+  }
+
+
+  &--smartphone {
+    @include SmartPhone {
+      display: block;
+    }
+  }
+
+  &__item {
+    &--desktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 13 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1}
+          }
+        }
+      }
+    }
+
+    @include SmallDesktop {
+      &--smallDesktop {
+        @for $start from 1 through 6 {
+          @for $end from $start through 7 {
+            &--#{$start}-#{$end} {
+              grid-column: #{$start} / #{$end + 1}
+            }
+          }
+        }
+      }
+    }
+  }
+}
