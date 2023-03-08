@@ -1,10 +1,14 @@
 .header {
   background-size: cover;
   background-position: center;
-  background-image: url(../images/header320.png);
+  background-image: url("../images/header320.png");
+
+  @include onIpadMini {
+    background-image: url("../images/header744.png");
+  }
 
   @include onDesktop {
-    background-image: url(../images/header1260.png);
+    background-image: url("../images/header1260.png");
   }
 
   &__content {
@@ -22,7 +26,7 @@
     line-height: 100%;
     font-weight: 700;
     letter-spacing: -1.5px;
-    color: #fff;
+    color: $colorWhite;
     margin: 0 auto;
 
     @include onDesktop {
@@ -32,11 +36,12 @@
 
   &__call {
     text-decoration: none;
+    position: relative;
 
     @include onDesktop {
       &::before {
         content: "+1 234 555-55-55";
-        position: relative;
+        position: absolute;
         top: 50%;
         transform: translate(-100%, -50%);
 
@@ -50,7 +55,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         
-        color: #fff;
+        color: $colorWhite;
         opacity: 0;
         pointer-events: none;
 
