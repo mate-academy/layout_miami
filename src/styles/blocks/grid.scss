@@ -13,6 +13,13 @@
     column-gap: 24px;
   }
 
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
   &--desktop-tablet {
     display: block;
 
@@ -22,69 +29,23 @@
   }
 
   &__item {
-    &--left {
-      grid-column: 1 / 4;
-
-      @include onDesktop {
-        grid-column: 1/6;
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
       }
     }
 
-    &--right {
-      grid-column: 4 / 7;
-
-      @include onDesktop {
-        grid-column: 6/13;
-      }
-    }
-
-    &--big {
-      @include onTablet {
-        grid-column: 1 / 5;
-      }
-
-      @include onDesktop {
-        grid-column: 1 / 9;
-      }
-    }
-
-    &--small {
-      @include onTablet {
-        grid-column: 5 / 7;
-      }
-
-      @include onDesktop {
-        grid-column: 9 / 13;
-      }
-    }
-
-    &--small--last {
-      @include onTablet {
-        grid-column: 1 / 3;
-      }
-
-      @include onDesktop {
-        grid-column: 1 / 6;
-      }
-    }
-
-    &--big--last {
-      @include onTablet {
-        grid-column: 3 / 7;
-      }
-
-      @include onDesktop {
-        grid-column: 6 / 13;
-      }
-    }
-
-    &--center {
-      @include onTablet {
-        grid-column: 2 / 5;
-      }
-
-      @include onDesktop {
-        grid-column: 5 / 9;
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
       }
     }
   }
