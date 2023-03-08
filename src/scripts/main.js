@@ -2,8 +2,16 @@
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.querySelector('wrapper').classList.add('wrapper--with-menu');
+    document.body.classList.add('body--with-menu');
   } else {
-    document.querySelector('wrapper').classList.remove('wrapper--with-menu');
+    document.body.classList.remove('body--with-menu');
   }
+});
+
+// prevent default form submit
+
+const formButton = document.querySelector('.contact__button');
+
+formButton.addEventListener('click', function(e) {
+  e.preventDefault();
 });
