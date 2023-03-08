@@ -1,0 +1,76 @@
+@use "../utils/mixins" as *;
+@use "../utils/extends" as *;
+@use "../utils/vars" as *;
+
+.icon {
+  display: block;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__phone {
+    background-image: url(src/images/icons/phone.png);
+    width: 18px;
+    height: 18px;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__menu {
+    background-image: url(src/images/icons/Bose-menu-icon.png);
+    width: 18px;
+    transition: background-image 0.3s;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background-image: url(src/images/icons/menu-hover.png);
+    }
+
+    &:active {
+      background-image: url(src/images/icons/menu-open.png);
+    }
+  }
+
+  &__close {
+    background-image: url(src/images/icons/close-x.png);
+    width: 18px;
+
+    @include onTablet {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    transform: translate(-100%, -1.5%);
+    padding-right: 12px;
+    width: max-content;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    color: $text-colour;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+
+  }
+
+    &:hover  &__tooltip{
+      pointer-events: all;
+      opacity: 1;
+    }
+
+
+
+}

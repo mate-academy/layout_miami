@@ -1,0 +1,68 @@
+@use "../utils/vars" as *;
+@use "../utils/mixins" as *;
+@use "../utils/extends" as *;
+
+
+
+.products {
+
+  &__description {
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 64px;
+
+    &-end {
+      margin-bottom: 40px;
+    }
+
+    @include onTablet {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  &__button {
+    @include onTablet {
+      @include useGrid(6, 24px)
+    }
+
+    @include onDesktop {
+      @include useGrid(12, 20px)
+    }
+  }
+
+  &__gallery {
+    @include useGrid(2, 20px);
+    margin-bottom: 16px;
+
+    @include onTablet {
+      @include useGrid(6, 24px)
+    }
+
+    @include onDesktop {
+      @include useGrid(12, 20px)
+    }
+
+
+    &--image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: linear 0.3s;
+
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+    }
+
+    &--images {
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+
+    }
+  }
+}

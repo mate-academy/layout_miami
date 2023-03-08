@@ -1,0 +1,78 @@
+@use "../utils/mixins" as *;
+@use "../utils/extends" as *;
+@use "../utils/vars" as *;
+
+.header {
+  background-image: url(src/images/pictures/home-small.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 15%;
+
+
+  @include onDesktop {
+    background-image: url(src/images/pictures/home.jpg);
+    background-position: top;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+    justify-content: end;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+    grid-row: 2;
+
+    @include onTablet {
+    font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      background-image: url(src/images/sound-wave/music-line-small.png);
+      background-repeat: no-repeat;
+      height: 32px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+       height: 76px;
+       background-image: url(src/images/sound-wave/sound-waves.png);
+
+      }
+    }
+  }
+
+}
