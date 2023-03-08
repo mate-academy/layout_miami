@@ -4,7 +4,7 @@
   &__content {
     height: 100vh;
     padding: $headerTopPadding 0 112px;
-
+    
     @include onTablet {
       padding: 52px 0 323px;
     }
@@ -52,6 +52,22 @@
 
     &:hover {
       border-color: $font-color;
+    }
+
+    @include onTablet {
+      &--new-content {
+        display: none;
+      }
+    }
+
+    @each $content in recommended, categories {
+      &--#{$content} {
+        @include onTablet {
+          &::after {
+            content: "#{$content}";
+          }
+        }
+      }
     }
   }
 
