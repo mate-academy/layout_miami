@@ -1,0 +1,75 @@
+.page {
+  @include font (16px, 27px);
+  font-family: Cinzel, sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1020px;
+
+    @include onTablet {
+      padding: 0 70px;
+    }
+
+    @include onDesktop {
+      padding: 0 120px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    display: block;
+    justify-content: center;
+
+    margin-bottom: 100px;
+
+    @include onTablet {
+      margin-bottom: 140px;
+    }
+
+    &--sub-title {
+      font-weight: 400;
+      text-align: center;
+    }
+
+    &--title {
+      @include font (32px, 32px, -1.5px);
+      margin-bottom: 32px;
+
+      text-align: center;
+      color: $main-dark;
+
+      @include onTablet {
+        margin-bottom: 48px;
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      & + .page__section--sub-title {
+        margin-bottom: 48px;
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.header {
+  margin-bottom: 100px;
+  background-size: cover;
+  background-position: top;
+  background-image: url(../images/header_phone.svg);
+
+  @include onTablet {
+    margin-bottom: 140px;
+    background-image: url(../images/header_tablet.svg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header_laptop.svg);
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr $icon-width $icon-width;
+    align-items: center;
+    gap: 24px;
+
+    @include onTablet {
+      $icon-width: 24px;
+      grid-template-columns: 1fr $icon-width $icon-width;
+      gap: 55px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 50vh;
+
+    @include onTablet {
+      padding: 50px 0 55vh;
+    }
+  }
+
+  &__title {
+    @include font (40px, 40px, -1.5px);
+
+    align-items: center;
+    text-align: center;
+    color: $text-light;
+
+    @include onTablet {
+      @include font (64px, 64px);
+    }
+
+    @include onDesktop {
+      @include font (80px, 80px);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    position: relative;
+
+    @include onDesktop {
+      &:hover::before {
+        @include hoverText(10px);
+        content: "The Met Fifth Avenue \a +1 212-535-7710";
+      }
+
+      &:hover::after {
+        @include hoverText(68px);
+        content: "The Met Cloisters \a +1 212-923-3700";
+      }
+    }
+  }
+}

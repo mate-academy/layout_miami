@@ -1,0 +1,69 @@
+.exhibitions {
+
+  &__photo-container {
+    box-sizing: border-box;
+    position: relative;
+    max-width: 1020px;
+    height: 100%;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &:nth-child(2) {
+      @include onTablet {
+        width: 0;
+        height: 0;
+      }
+    }
+
+    @include onTablet {
+      padding-bottom: 0;
+      height: 286px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: left;
+
+    transition: transform 0.6s;
+
+    @include onTablet {
+      object-position: center;
+    }
+
+    &:hover {
+      transform: scale(120%);
+    }
+  }
+
+  &__description {
+    margin-bottom: 48px;
+
+    &:last-child {
+      margin: 40px;
+    }
+
+    &-text--important {
+      text-decoration: none;
+      font-weight: 700;
+      color: $accent-red;
+    }
+  }
+}
