@@ -9,6 +9,10 @@
     background-image: url("../images/photos/header_background_l.png");
   }
 
+  &__top {
+    @include top-actions;
+  }
+
   &__content {
     height: 100vh;
     padding: $headerTopPadding 0 94px;
@@ -16,45 +20,12 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
     @include onDesktop {
       padding: 52px 0 64px;
-    }
-  }
-
-  &__call {
-    height: 18px;
-    width: 18px;
-    @extend %background;
-    text-decoration: none;
-
-    @include onTablet {
-      width: 24px;
-      height: 24px;
-    }
-
-    @include onDesktop {
-
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%,-50%);
-        width: max-content;
-        display: block;
-        opacity: 0;
-        padding-right: 20px;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        color: #000;
-        pointer-events: none;
-        transition: opacity 0.3s ease-in-out;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
     }
   }
 
