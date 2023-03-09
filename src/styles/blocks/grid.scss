@@ -3,7 +3,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 24px;
 
-  @include SmallDesktop {
+  @include tablet {
     grid-template-columns: repeat(6, 1fr);
   }
 
@@ -11,7 +11,6 @@
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 20px;
   }
-
 
   &--smartphone {
     @include SmartPhone {
@@ -22,23 +21,33 @@
   &__item {
     &--desktop {
       @for $start from 1 through 12 {
-        @for $end from $start through 13 {
+        @for $end from $start through 12 {
           &--#{$start}-#{$end} {
-            grid-column: #{$start} / #{$end + 1}
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @include SmallDesktop {
-      &--smallDesktop {
+    @include tablet {
+      &--tablet {
         @for $start from 1 through 6 {
-          @for $end from $start through 7 {
+          @for $end from $start through 6 {
             &--#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1}
+              grid-column: #{$start} / #{$end + 1};
             }
           }
         }
+      }
+    }
+
+    @include SmartPhone {
+      &-smartphone--1 {
+        grid-column: 1 / 2;
+      }
+
+      &-smartphone--2 {
+        grid-column: 2 / 3;
       }
     }
   }

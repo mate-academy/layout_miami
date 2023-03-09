@@ -1,26 +1,31 @@
 .header {
   background-image: url(../images/header_background-1240px.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: 50%;
 
-  @include SmallDesktop() {
+  @include tablet {
     background-image: url(../images/header_background-744px.jpg);
-    background-size: cover;
     background-position: center;
+    background-size: cover;
   }
 
-  @include SmartPhone() {
+  @include SmartPhone {
     background-image: url(../images/header_background-320px.jpg);
-    background-size: cover;
     background-position: center;
+    background-size: cover;
   }
 
   &__content-wrapper {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
     padding: $content-top-padding 0 100px;
+  }
+
+  &__top {
+    @include top-actions
   }
 
   &__icons {
@@ -30,7 +35,7 @@
     align-items: center;
     gap: 30px;
 
-    @include SmartPhone() {
+    @include SmartPhone {
       gap: 10px;
     }
   }
@@ -43,7 +48,7 @@
     width: $icon-size;
     background-image: url(../images/phone.svg);
 
-    @include SmartPhone() {
+    @include SmartPhone {
       height: 18px;
       width: 18px;
       background-image: url(../images/phone_18px.svg);
@@ -66,6 +71,7 @@
       transform: translate(-100%, -50%);
       opacity: 0;
       pointer-events: none;
+      transition: opacity $transition-duration;
     }
 
     &:hover::before {
@@ -77,7 +83,8 @@
   &__menu-icon {
     background-image: url(../images/menu.svg);
 
-    @include SmartPhone() {
+    @include icon-menu;
+    @include SmartPhone {
       background-image: url(../images/menu_18px.svg);
     }
   }
@@ -89,12 +96,12 @@
     text-align: center;
     color: #fff;
 
-    @include SmallDesktop() {
+    @include tablet {
       font-size: 64px;
       line-height: 64px;
     }
 
-    @include SmartPhone() {
+    @include SmartPhone {
       font-size: 36px;
       line-height: 36px;
     }
