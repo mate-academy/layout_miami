@@ -8,20 +8,36 @@
 
     overflow: hidden;
 
+    transition: transform 0.5s linear;
+
     &::after {
       content: "";
       display: block;
       padding-bottom: 100%;
     }
 
-    @include onDesktop {
-      height: 320px;
-      padding-bottom: 0;
-    }
-
     @include onTablet {
       height: 186px;
       padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      min-height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--height {
+      @include onTablet {
+        min-height: 284px;
+      }
+
+      @include onDesktop {
+        min-height: 320px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
@@ -32,6 +48,18 @@
 
     object-fit: cover;
     object-position: center;
+
+    &--right {
+      object-position: top right;
+    }
+
+    &--left {
+      object-position: -10px;
+    }
+
+    &--top {
+      object-position: top;
+    }
   }
 
   &__photos {
