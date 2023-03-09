@@ -8,8 +8,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const btn = document.querySelector('#button-send');
+const form = document.getElementById('form');
 
-btn.onclick = (e) => {
-  e.preventDefault();
-};
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+});
