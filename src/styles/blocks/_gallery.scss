@@ -1,0 +1,62 @@
+.gallery {
+  &__row {
+    margin-bottom: 48px;
+  }
+
+  &__text {
+    text-align: center;
+    padding-bottom: 48px;
+  }
+  
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% 50%;
+
+    @include onTablet {
+      object-position: center;
+    }
+
+    &-notOnTablet {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    color: $main-accent-color-red;
+  }
+}
