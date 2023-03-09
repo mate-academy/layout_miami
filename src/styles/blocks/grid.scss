@@ -2,9 +2,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
-  margin: 0 72px;
+  margin: 0;
 
   @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
@@ -17,15 +22,38 @@
     }
   }
 
+  &--mobile {
+    @include onMobile {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
   &__item {
+    @for $start from 1 through 3 {
+      @for $end from $start through 3 {
+        &--tablet-row-#{$start}-#{$end} {
+          @include onTablet {
+            grid-template-rows: repeat(3, 1fr);
+            grid-row: #{$start} / #{$end + 1};
+          }
+
+          @include onDesktop {
+            grid-row: 1;
+          }
+        }
+      }
+    }
+
     @for $start from 1 through 6 {
       @for $end from $start through 6 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
@@ -34,27 +62,16 @@
 
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
   }
 
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
-  }
-
-  &--desktop {
-    display: block;
-
-    @include onDesktop {
-      display: grid;
-    }
-  }
-
-  &__subtitle {
+  &__benefits {
     margin-bottom: 16px;
     font-weight: 700;
     font-size: 16px;
