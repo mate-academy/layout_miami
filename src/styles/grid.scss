@@ -4,12 +4,12 @@
   column-gap: 20px;
 
   @include onTablet {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat($gridTabletColumnCount, 1fr);
     column-gap: 24px;
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat($gridDesktopColumnCount, 1fr);
     column-gap: 24px;
   }
 
@@ -31,8 +31,8 @@
 
   &__item {
 
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through $gridTabletColumnCount {
+      @for $end from $start through $gridTabletColumnCount {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
@@ -45,8 +45,8 @@
       }
     }
 
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
+    @for $start from 1 through $gridDesktopColumnCount {
+      @for $end from $start through $gridDesktopColumnCount {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
