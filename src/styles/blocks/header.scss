@@ -1,3 +1,30 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include OnDesktop-744 {
+    padding: 0 72px;
+  }
+
+  @include OnDesktop {
+    padding: 0 60px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  line-height: normal;
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .header {
   background-image: url(../images/header.svg);
   background-position: center;
@@ -6,7 +33,6 @@
 
   @include OnDesktop-744 {
     margin-bottom: 120px;
-    background-image: url(../images/header-744.svg);
   }
 
   &__content {
@@ -14,23 +40,12 @@
     justify-content: space-between;
     flex-direction: column;
 
+    box-sizing: border-box;
     height: 100vh;
     padding: 28px 20px 100px 24px;
 
     @include OnDesktop {
       padding: 36px 0 160px;
-    }
-
-    &-logo {
-      display: flex;
-      justify-content: space-between;
-      align-content: center;
-      align-items: center;
-    }
-
-    &-actions {
-      display: flex;
-      align-items: center;
     }
   }
 
@@ -53,21 +68,21 @@
       &::before {
         display: block;
         position: relative;
+        top: 50%;
         content: "+1 234 555-55-55";
         opacity: 0;
 
         width: max-content;
         padding-right: 12px;
-        margin-bottom: 20px;
-        transform: translate((-100%, 50%));
-        transition: opacity 0.3s ease;
+        transform: translate(-100%, -50%);
+        transition: opacity 0.3s;
 
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: $colorText;
+        color: #fff;
         pointer-events: none;
       }
 
@@ -78,7 +93,7 @@
     }
   }
 
-  &__nav-opener {
+  &__menu-opener {
     height: 12px;
     width: 18px;
     background-image: url(../images/menu.svg);
@@ -103,6 +118,7 @@
     font-size: 36px;
     line-height: 36px;
     letter-spacing: -1.5px;
+    color: #fff;
 
     @include OnDesktop {
       font-weight: 700;
