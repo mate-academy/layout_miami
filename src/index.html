@@ -48,7 +48,7 @@
       <div class="container">
         <div class="menu__content">
           <div class="top-actions">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
               <img
                 src="./images/logo-nav.svg"
                 alt="logo"
@@ -83,11 +83,11 @@
         </div>
       </div>
     </nav>
-    <main>
+    <main class="main">
       <section class="about" id="about">
         <div class="container">
           <div class="about__content">
-            <h2 class="about__title section__title">Move Free</h2>
+            <h2 class="about__title section-title">Move Free</h2>
             <p class="about__text">
               Shift your ride, not gears. Find the fastest way to move in the
               city as the bike adapts intuitively to power the speed you need.
@@ -97,7 +97,7 @@
       </section>
       <section class="compare" id="compare">
         <div class="container">
-          <h2 class="compare__title section__title">Compare Bikes</h2>
+          <h2 class="compare__title section-title">Compare Bikes</h2>
           <div class="compare__content">
             <div class="compare__block">
               <img
@@ -143,7 +143,7 @@
       </section>
       <section class="details" id="details">
         <div class="container">
-          <h2 class="details__title section__title">The Details</h2>
+          <h2 class="details__title section-title">The Details</h2>
           <div class="details__content">
             <div class="details__item">
               <div class="details__images">
@@ -232,18 +232,24 @@
       </section>
       <section class="contacts" id="contacts">
         <div class="container">
-          <h3 class="section__title contacts__title">Contact us</h3>
+          <h3 class="section-title contacts__title">Contact us</h3>
           <div class="contacts__content">
-            <form action="#" class="contacts__form">
+            <form
+              action="#"
+              class="contacts__form"
+              onsubmit="onFormSubmit();"
+              >
               <input
                 class="contacts__input"
                 type="text"
                 placeholder="Name"
+                required
               >
               <input
                 class="contacts__input"
                 type="email"
                 placeholder="Email"
+                required
               >
               <textarea
                 class="contacts__input contacts__input--text"
@@ -256,20 +262,28 @@
             </form>
             <div class="contacts__info">
               <div class="contacts__phone">
-                Phone <br >
-                <p class="contacts__info-text">+1 234 5555-55-55</p>
+                Phone
+                <a href="tel: +123455555555" class="contacts__info-link">
+                  +1 234 5555-55-55
+                </a>
               </div>
               <div class="contacts__email">
-                Email <br >
-                <p class="contacts__info-text">hello@miami.com</p>
+                Email
+                <a href="mailto: hello@miami.com" class="contacts__info-link">
+                  hello@miami.com
+                </a>
               </div>
               <div class="contacts__adress">
                 Address
-                <p class="contacts__info-text">
+                <a
+                  href="https://goo.gl/maps/AFp9FZEeMJorvNpU7"
+                  target="_blank"
+                  class="contacts__info-link"
+                >
                   400 first ave.<br >
                   suite 700 <br >
                   Minneapolis, MN 55401
-                </p>
+                </a>
               </div>
             </div>
           </div>
@@ -277,5 +291,19 @@
       </section>
     </main>
     <footer class="footer"></footer>
+
+    <script>
+      function onFormSubmit() {
+        event.preventDefault();
+      }
+
+      window.addEventListener("hashchange", () => {
+        if (window.location.hash === "#menu") {
+          document.body.classList.add("page__body--with-menu");
+        } else {
+          document.body.classList.remove("page__body--with-menu");
+        }
+      });
+    </script>
   </body>
 </html>
