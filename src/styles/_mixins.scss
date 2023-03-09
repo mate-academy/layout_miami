@@ -1,11 +1,11 @@
-@mixin onDesktop {
-  @media (min-width: 1024px) {
+@mixin onTablet {
+  @media (min-width: 744px) {
     @content;
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 744px) {
+@mixin onDesktop {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -16,4 +16,19 @@
   line-height: 34px;
 
   color: $colorWhite;
+}
+
+@mixin topActions {
+  --icon-width: 18px;
+  --icon-gap: 30px;
+  
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: var(--icon-gap);
+  align-items: center;
+  
+  @include onDesktop {
+    --icon-width: 24px;
+    --icon-gap: 40px;
+  }
 }
