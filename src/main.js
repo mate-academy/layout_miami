@@ -8,11 +8,11 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector('#form-id');
-const name1 = document.querySelector('#name');
-const email = document.querySelector('#email');
-const message = document.querySelector('#message');
-const submitSuccess = document.querySelector('.submit-success');
+const form = document.getElementById('#form-id');
+const name1 = document.getElementById('#name');
+const email = document.getElementById('#email');
+const message = document.getElementById('#message');
+const submitSuccess = document.getElementById('.submit-success');
 
 form.addEventListener('submit', (e) => {
   name1.value = '';
