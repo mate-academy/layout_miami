@@ -11,3 +11,11 @@ const checkForOpenMenu = () => {
 window.addEventListener('hashchange', () => {
   checkForOpenMenu();
 });
+
+const form = document.querySelector('.contacts-form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  form.reset();
+});
