@@ -1,9 +1,14 @@
 'use strict';
 
 const buttonContants = document.body.querySelector('.contacts__buttom');
+const inputs = document.querySelectorAll('.form-field');
 
 buttonContants.addEventListener('click', (event) => {
-  const inputs = document.querySelectorAll('.form-field');
+  for (const input of inputs) {
+    if (input.value.length === 0) {
+      return;
+    }
+  }
 
   event.preventDefault();
 
