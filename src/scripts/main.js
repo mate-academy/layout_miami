@@ -13,17 +13,13 @@ window.addEventListener('hashchange', () => {
 });
 
 const formElement = document.getElementById('form');
-const nameElement = document.getElementById('formName');
-const emailElement = document.getElementById('formEmail');
-const textareaElement = document.getElementById('formTextarea');
+// const nameElement = document.getElementById('formName');
+// const emailElement = document.getElementById('formEmail');
+// const textareaElement = document.getElementById('formTextarea');
 
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
-
-  nameElement.value = '';
-  emailElement.value = '';
-  textareaElement.value = '';
-
+  formElement.reset();
   window.alert('Form submitted!');
 });
 
