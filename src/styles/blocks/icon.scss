@@ -8,11 +8,11 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  text-decoration: none;
 
   &__tooltip {
     position: absolute;
     right: 100%;
+    top: 50%;
     transform: translateY(-50%);
 
     display: block;
@@ -20,13 +20,10 @@
     padding-right: 20px;
 
     text-align: end;
-    white-space: pre-wrap;
-
     text-transform: uppercase;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
+    text-decoration: none;
+
+    @include font-paragraph-bold;
     color: $white;
     text-shadow: 18px 4px 26px $secondaryGrayShadow;
 
@@ -34,11 +31,6 @@
     pointer-events: none;
 
     transition: opacity $transitionDuration;
-
-    &--second {
-      top: 210%;
-      transform: translateY(-50%);
-    }
   }
 
   &:hover &__tooltip {
@@ -48,8 +40,27 @@
     }
   }
 
+  &__link {
+    display: block;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include font-paragraph-bold;
+    color: $white;
+    text-shadow: 18px 4px 26px $secondaryGrayShadow;
+
+    transition: text-decoration $transitionDuration;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &--menu {
     background-image: url(../images/menu.svg);
+    
+    transition: background-image $transitionDuration;
 
     &:hover {
       background-image: url(../images/menu-hover.svg);

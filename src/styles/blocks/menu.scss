@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: space-between;
 
-    box-sizing: border-box;
     height: 100vh;
     padding: 24px 0 288px;
 
@@ -54,11 +53,8 @@
     display: inline-block;
     border-bottom: 1px solid transparent;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 22px;
-    color: $white;
+    @include font-menu;
+
     text-decoration: none;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -74,25 +70,33 @@
     display: block;
     width: max-content;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    text-transform: uppercase;
+    @include font-paragraph-bold;
     color: $white;
+    text-transform: uppercase;
     text-decoration: none;
 
     &--phone {
       margin-bottom: 8px;
+      border-bottom: 1px solid transparent;
+
+      transition: border-color $transitionDuration;
+
+      &:hover {
+        border-color: $white;
+      }
     }
 
     &--action {
       padding: 8px 0;
       border-bottom: 1px solid $white;
 
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
+      @include font-menu-call;
+
+      transition: border-color $transitionDuration;
+
+      &:hover {
+        border-color: transparent;
+      }
     }
   }
 }
