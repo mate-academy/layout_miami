@@ -1,20 +1,19 @@
+@import "./../utils/mixin";
+@import "./../utils/var";
+
 .icon {
   display: block;
-  width: 24px;
-  height: 24px;
-  
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: all 0.3s;
+  @include standardSizeSquare;
+    
+  @include centerPosition;
+  transition: $transalate-0-3s;
+
   @include onDesktop {
-    height: 32px;
-    width: 32px;
+    @include sizeSquare
   }
 
   @include onTablet {
-    height: 32px;
-    width: 32px;
+    @include sizeSquare
   }
 
   &--menu {
@@ -22,15 +21,11 @@
 
     @include onDesktop {
       background-image: url(../images/menu-desktop.svg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      @include centerPosition;
 
       &:hover {
         background-image: url(../images/menu_hover.svg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        @include centerPosition;
       }
     }
   }
