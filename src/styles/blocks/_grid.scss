@@ -22,6 +22,7 @@
     }
 
     @include onMob {
+
       &-onMob {
         @for $start from 1 through 2 {
           @for $end from $start through 2 {
@@ -35,7 +36,12 @@
     }
 
     @include onTabl {
-      grid-row: 1 / 2;
+      &:not(:last-child) {
+        & > .recommended__card {
+          margin-bottom: 48px;
+        }
+      }
+      /* grid-row: 1 / 2; */
 
       &-onTabl {
         @for $start from 1 through 6 {
@@ -50,6 +56,12 @@
     }
 
     @include onPc {
+      &:not(:last-child) {
+        & > .recommended__card {
+          margin-bottom: 0;
+          margin-right: 24px;
+        }
+      }
       grid-row: 1 / 2;
 
       &-onPc {
