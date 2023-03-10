@@ -1,0 +1,73 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: block;
+    margin: 0 auto;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    margin: 0 auto;
+
+    @for $start from 1 through 13 {
+      @for $end from $start through 13 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end};
+          }
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end};
+          }
+        }
+      }
+    }
+
+    &--subtitle {
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: $mainFontColor;
+    }
+
+    &--info {
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 16px;
+      color: $mainFontColor;
+    }
+
+    &--price {
+      font-size: 16px;
+      color: $mainFontColor;
+    }
+  }
+}
