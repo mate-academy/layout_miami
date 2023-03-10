@@ -4,6 +4,7 @@ const form = document.getElementById('contacts-form');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
+  form.reset();
 });
 
 window.addEventListener('hashchange', () => {
