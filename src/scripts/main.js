@@ -15,3 +15,10 @@ menuIcon.addEventListener('click', () => {
 menuClose.addEventListener('click', () => {
   handleOpenClose();
 });
+
+const form = document.querySelector('.contact__form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  form.reset();
+});
