@@ -6,4 +6,12 @@ window.addEventListener('hashchange', () => {
   } else {
     document.body.classList.remove('page__body--with-menu');
   }
+});
+
+const form = document.querySelector('.contact-us__form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  form.reset();
 })
