@@ -1,0 +1,112 @@
+.icon {
+  position: relative;
+
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  transition: opacity 0.3s;
+
+  &__tooltip {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: max-content;
+    padding-right: 12px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $colorWhite;
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    display: block;
+    pointer-events: all;
+
+    @include onPhone {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      filter: drop-shadow(2px 2px 2px $colorBlack);
+    }
+
+    &::before {
+      position: absolute;
+      padding: 30px;
+      top: -17px;
+      left: -17px;
+      content: "";
+
+      @include onPhone {
+        padding: 25px;
+        top: -15px;
+        left: -15px;
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+
+    transform: rotate(0deg);
+    animation: move 5s infinite;
+
+    &:hover {
+      filter: drop-shadow(2px 2px 2px $colorBlack);
+      animation: none;
+      // transition: opacity 0.1s;
+    }
+
+    @keyframes move {
+      10% {
+        transform: rotate(15deg);
+        filter: drop-shadow(3px 3px 3px $colorGreen);
+      }
+
+      20% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &--cross {
+    grid-column: -2 / -1;
+    background-image: url(../images/Vector.png);
+
+    &::before {
+      position: absolute;
+      padding: 30px;
+      top: -17px;
+      left: -17px;
+      content: "";
+
+      @include onPhone {
+        padding: 25px;
+        top: -15px;
+        left: -15px;
+      }
+    }
+  }
+}
