@@ -1,18 +1,33 @@
-@mixin oneDesktop1024 {
+@mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin oneDesktop744 {
+@mixin onTablet {
   @media screen and (min-width: 744px) and (max-width: 1023px) {
     @content;
   }
 }
 
-@mixin oneDesktopMin744 {
+@mixin minScreen744 {
   @media (min-width: 744px) {
     @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-content: space-between;
+  align-items: center;
+
+  @include minScreen744 {
+    --icon-width: 24px;
+    gap: 40px;
   }
 }
 
