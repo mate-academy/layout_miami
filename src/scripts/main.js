@@ -14,5 +14,6 @@ form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
+  form.reset();
   window.alert('Thank you! We will contact you soon!');
 }
