@@ -1,13 +1,13 @@
 .place {
   &__photo-container {
+    box-sizing: border-box;
     position: relative;
 
-    box-sizing: border-box;
     width: 100%;
     max-height: 320px;
     overflow: hidden;
 
-    &::after {                     /*!!!*/
+    &::after {
       content: "";
       display: block;
       padding-bottom: 100%;
@@ -19,8 +19,8 @@
     }
 
     @include onDesktop {
-      padding: 0;
       height: 320px;
+      padding: 0;
     }
   }
 
@@ -30,6 +30,12 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    @include transition;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 
   &__description {
@@ -42,6 +48,5 @@
     margin: $featureMarginTop 0 8px;
     
     @include bikeInfo;
-    /*марджіни тут*/
   }
 }

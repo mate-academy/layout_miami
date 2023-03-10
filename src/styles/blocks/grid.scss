@@ -6,7 +6,7 @@
 
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
-    column-gap: 20px;
+    column-gap: 24px;
   }
 
   @include onDesktop {
@@ -15,19 +15,24 @@
 
   &--desktop {
     display: block;
-
+    
+    
     @include onTablet {
-      display: grid;
-    }
-
-    @include onDesktop {
       display: grid;
     }
   }
 
   &__item {
+    &--first-bike {
+      @include onTablet {
+        grid-column: 2 / 6;
+      }
+    }
+
+    display: block;
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
+        
         &--tablet-#{$start}-#{$end} {
           @include onTablet {
             grid-column: #{$start} / #{$end + 1};

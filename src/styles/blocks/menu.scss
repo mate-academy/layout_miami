@@ -1,26 +1,29 @@
-$menuColor: #1d1d1d;
-
 .menu {
+  box-sizing: border-box;
+  height: 100vh;
   background-color: $colorGrey;
+  color: $mainColor;
+  overflow-y: auto;
 
   &__top {
     margin-bottom: 48px;
+    padding: 29px 0 0;
+
     @include topActions;
     grid-template-columns: 1fr var(--icon-width);
-    height: 56px;
-  }
 
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: 36px 0;
-    color: $menuColor;
+    @include onTablet {
+      padding: 40px 0 0;
+    }
+    
+    @include onDesktop {
+      padding: 36px 0 0;
+    }
   }
 
   &__list {
     margin: 0 0 40px;
     padding: 0;
-    
     list-style: none;
   }
 
@@ -29,34 +32,32 @@ $menuColor: #1d1d1d;
   }
 
   &__link {
-    display: inline-block;   
-    /*інлайнблокові елементи витісняють разом з падінгами*/
+    display: inline-block;
+   
     padding-bottom: 8px;
-    border-bottom: 1px solid transparent;  /*!!!*/
-
+    border-bottom: 1px solid transparent;
     text-decoration: none;
-    color: #1d1d1d;
+    color: $mainColor;
 
     font-weight: 600;
     font-size: 22px;
     line-height: 22px;
-
     letter-spacing: 2px;
     text-transform: uppercase;
 
     transition: border-color 0.3s;
 
     &:hover {
-      border-color: #1d1d1d;
+      border-color: $mainColor;
     }
   }
 
   &__call {
     display: block;
-    width: max-content;  /*!!!*/
+    width: max-content;
     font-weight: 600;
     text-transform: uppercase;
-    color: #1d1d1d;
+    color: $mainColor;
     text-decoration: none;
 
     &--phone {
@@ -70,7 +71,7 @@ $menuColor: #1d1d1d;
       line-height: 16px;
 
       padding-bottom: 8px;
-      border-bottom: 1px solid #1d1d1d;
+      border-bottom: 1px solid $mainColor;
     }
   }
 }
