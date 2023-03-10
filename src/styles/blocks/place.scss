@@ -1,16 +1,43 @@
 .place {
-  &__photo {
-    width: 100%;
-    margin-bottom: 16px;
-
-    @include hover(transform, scale(110%));
+  &__photo-container {
+    height: 320px;
 
     @include onMobile {
-      height: 100%;
+      position: relative;
+      width: 100%;
+      max-height: 130px;
+      box-sizing: border-box;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+
+    @include onTablet {
+      height: 187px;
+    }
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    padding-bottom: 0;
+    object-fit: cover;
+    object-position: center;
+
+    @include hover(transform, scale(105%));
+    border-radius: 5px;
+
+    @include onMobile {
+      position: absolute;
+      width: 100%;
     }
   }
 
   &__description {
+    margin-top: 16px;
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;

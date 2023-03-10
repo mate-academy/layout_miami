@@ -3,14 +3,18 @@
   grid-template-columns: repeat(12,1fr);
   column-gap: 24px;
 
-  &--mobile {
-    @include onMobile {
-      display: block;
-    }
+  @include onMobile {
+    grid-template-columns: repeat(2,1fr);
   }
 
   @include onTablet {
     grid-template-columns: repeat(6,1fr);
+  }
+
+  &--mobile {
+    @include onMobile {
+      display: block;
+    }
   }
 
   &__item {
@@ -21,5 +25,26 @@
         }
       }
     }
+
+    @include onTablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--tablet--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onMobile {
+      @for $start from 1 through 2 {
+        @for $end from $start through 2 {
+          &--mobile--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
   }
 }
