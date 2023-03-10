@@ -1,3 +1,5 @@
+@import "utils/mixins";
+
 .page {
   font-family: "Cinzel", serif;
 
@@ -6,16 +8,31 @@
   }
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 20px;
+
+  @include Tablet {
+    padding: 0 120px;
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  background-image: url(../images/photos/header_mobile.jpg);
-  height: 100vh;
+  background-image: url(../images/photos/header.jpg);
   background-size: cover;
   background-position: center;
-  padding: 25px 20px 288px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 288px;
+  }
+
 
   &__nav {
     display: flex;
@@ -61,8 +78,12 @@
 .icons {
   display: flex;
   justify-content: space-between;
-  width: 66px;
-  padding-right: 3px;
+  gap: 30px;
+
+  @include Tablet {
+    gap: 63px;
+  }
+
 }
 
 .logo {
