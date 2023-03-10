@@ -1,7 +1,322 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+$headerTopPadding: 29px;
+$menuBgColor: #e5e5e5;
+$transitionTime: 0.4s;
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  &__body {
+    background-color: #1d1d1d;
+    color: #fff;
+  }
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform $transitionTime;
+    &:target {
+      transform: translateX(0);
+    }
+  }
+  &__section-title {
+    font-weight: 500;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    margin-bottom: 32px;
+    @include onTablet {
+      font-size: 48px;
+    }
+    @include onDesktop {
+      font-size: 64px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 38px;
+
+    @include onDesktop {
+      height: 56px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+  @include onTablet {
+    padding: 0 72px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  &--menu {
+    background: url("../images/menu.svg") no-repeat 50%;
+    transition: background $transitionTime;
+    &:hover {
+      background: url("../images/menu_hover.svg") no-repeat 50%;
+    }
+  }
+  &--phone {
+    background: url("../images/phone.svg") no-repeat 50%;
+  }
+  &--cross {
+    background: url("../images/cross.svg") no-repeat 50%;
+    position: relative;
+    left: 50px;
+    @include onDesktop {
+      top: 5px;
+      left: 64px;
+    }
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: 30px;
+  align-items: center;
+  @include onDesktop {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
+
+.header {
+  background: url("../images/bg-small.png") no-repeat 50%;
+  background-size: cover;
+  @include onDesktop {
+    background: url("../images/bg-large.png") no-repeat 50%;
+    background-size: cover;
+  }
+  @include onTablet {
+    background: url("../images/bg-medium.png") no-repeat 50%;
+    background-size: cover;
+  }
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+  &__call {
+    text-decoration: none;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 75%);
+        display: block;
+        width: max-content;
+        pointer-events: none;
+        padding-right: 12px;
+        transition: opacity $transitionTime;
+
+        color: #fff;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        opacity: 0;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.menu {
+  background-color: $menuBgColor;
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
+  }
+  &__top {
+    margin-bottom: 48px;
+  }
+  &__list {
+    margin: 0 0 40px;
+  }
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+    transition: border-color $transitionTime;
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+  &__call {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    font-weight: 700;
+    color: #1d1d1d;
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+    }
+    &--action {
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
+
+.footer {
+  height: 200px;
+  background: url("../images/footer_bg.png") no-repeat 50%;
+  background-size: cover;
+  @include onDesktop {
+    height: 555px;
+    background-attachment: fixed;
+  }
+  @include onTablet {
+    height: 480px;
+  }
+}
+
+.about {
+  padding-top: 60px;
+  margin-bottom: 92px;
+  @include onTablet {
+    padding-top: 120px;
+    margin-bottom: 132px;
+  }
+  @include onDesktop {
+    padding-top: 120px;
+    margin-bottom: 164px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__text {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    @include onTablet {
+      max-width: 290px;
+    }
+    @include onDesktop {
+      max-width: 500px;
+    }
+  }
+}
+
+.compare-bikes {
+  &__title {
+    text-align: center;
+  }
+  &__content {
+    display: grid;
+    justify-content: center;
+    margin: 56px auto 144px;
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+  }
+  &__item {
+    max-width: 400px;
+    transition: transform $transitionTime;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__image-container {
+    text-align: center;
+  }
+  &__image {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+  &__subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+  &__price {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+  }
 }
