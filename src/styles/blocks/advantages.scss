@@ -1,4 +1,61 @@
 .advantages {
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $gapSmal;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: $gapBig;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__container--1-2 {
+    @include onTablet {
+      grid-column: 1 / 5;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__container--2-1 {
+    @include onTablet {
+      grid-column: 5 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 9 / 13;
+    }
+  }
+
+  &__container--1-1 {
+    @include onTablet {
+      grid-column: 1 / 3;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__container--2-2 {
+    @include onTablet {
+      grid-column: 3 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 13;
+    }
+  }
+
   &__photos {
     margin-bottom: 16px;
   }
@@ -29,7 +86,7 @@
       height: 320px;
     }
 
-    transition: transform 0.3s;
+    transition: transform $transition;
 
     &:hover {
       z-index: 1;
@@ -44,6 +101,8 @@
 
     object-fit: cover;
     object-position: center;
+
+    cursor: pointer;
   }
 
   &__title {
@@ -51,8 +110,4 @@
     font-weight: 700;
     font-size: 24px;
   }
-
-  // &__description {
-
-  // }
 }
