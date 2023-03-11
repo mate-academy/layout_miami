@@ -1,0 +1,54 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  
+  @include Tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include Desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+    
+    @include Tablet {
+      display: grid;
+    }
+    
+    @include Desktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+
+    &--tablet {
+      @include Tablet {
+        @include LoopGrid;
+      }
+    }
+
+    &--desktop {
+      @include Desktop {
+        @include LoopGrid;
+      }
+    }
+  }
+
+  &__action {
+    margin-bottom: 48px;
+
+    @include Tablet {
+      margin-bottom: 0;
+    }
+
+    @include Desktop {
+      margin-bottom: 0;
+    }
+  }
+}
