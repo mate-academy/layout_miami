@@ -8,7 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('#submit').addEventListener('click', function(event) {
-  document.getElementById('output-box').innerHTML += '';
+const submit = document.querySelector('#submit');
+
+submit.addEventListener('click', function handleClick(event) {
   event.preventDefault();
-}, false);
+
+  const inputs = document.querySelectorAll('.contact-us__field');
+
+  [...inputs].map(input => {
+    input.value = '';
+  });
+});
