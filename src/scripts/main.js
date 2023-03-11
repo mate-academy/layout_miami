@@ -5,7 +5,7 @@ const inputs = document.querySelectorAll('.form-field');
 
 buttonContants.addEventListener('click', (event) => {
   for (const input of inputs) {
-    if (input.value.length === 0) {
+    if (input.value.length < input.getAttribute('minlength')) {
       return;
     }
   }
