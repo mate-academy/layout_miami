@@ -1,6 +1,105 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: $desktopBreakPoint) {
+    @content;
   }
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletBreakPoint) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width-desktop $icon-width-desktop;
+  grid-column-gap: 30px;
+  align-items: center;
+
+  @include onTablet {
+    grid-template-columns: 1fr $icon-width-mobile $icon-width-mobile;
+    grid-column-gap: 60px;
+  }
+}
+
+@mixin font-header {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  color: $white;
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onDesktop {
+    font-size: 80px;
+  }
+}
+
+@mixin font-section-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  color: $mainDark;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+@mixin font-section-sub-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 125%;
+  color: $mainDark;
+}
+
+@mixin font-section-title-link {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: $accentMain;
+}
+
+@mixin font-paragraph-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 169%;
+  color: $mainDark;
+}
+
+@mixin font-paragraph-medium {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 169%;
+  color: $mainDark;
+}
+
+@mixin font-paragraph-small {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 193%;
+  color: $mainDark;
+}
+
+@mixin font-menu {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 100%;
+  color: $white;
+}
+
+@mixin font-menu-call {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: 2px;
 }
