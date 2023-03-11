@@ -1,21 +1,22 @@
 .catalog__products {
   display: grid;
-  grid-template-columns: repeat(1, minmax(280px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
   row-gap: 48px;
   place-items: center;
 
   @include onTablet {
-    grid-template-columns: repeat(1, minmax(392px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(3, minmax(324px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
   }
 }
 
 .catalog__product {
   color: $mainTextColor;
+  width: 100%;
 
   &--name {
     font-weight: 700;
@@ -36,8 +37,10 @@
 
     transition: transform 0.3s ease-in-out;
 
-    &:hover {
-      transform: scale(1.1);
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
