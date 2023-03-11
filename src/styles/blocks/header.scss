@@ -1,0 +1,98 @@
+@import "../utils/mixin";
+@import "../utils/var";
+
+.header {
+  background-image: url(../images/bg-photo/bg-photo.png);
+  background-size: cover;
+  background-position: center top;
+  
+  @include onTablet {
+    background-image: url(../images/bg-photo/bg-photo-tablet.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/bg-photo/bg-photo-desktop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 40px;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+    
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-image: url(../images/sound-waves-320.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 27px;
+      width: 32px;
+      margin-bottom: 16px;
+
+      @include onTablet {
+        @include soundWavesSize;
+        background-image: url(../images/sound-waves.svg);
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        @include soundWavesSize;
+        background-image: url(../images/sound-waves.svg);
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        padding-right: 8px;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: flex;
+        width: max-content;
+        align-items: center;
+        height: 70px;
+
+        color: $mainColor;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+        transition: $transalate-0-3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
