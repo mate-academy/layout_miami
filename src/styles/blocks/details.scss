@@ -13,6 +13,7 @@
   }
 
   &__img-container {
+    display: block;
     position: relative;
     width: 100%;
     max-height: 321px;
@@ -25,7 +26,10 @@
 
     @include onTablet {
       height: 187px;
-      padding-bottom: 0;
+
+      &::after {
+        padding-bottom: 0;
+      }
     }
 
     @include onDesktop {
@@ -40,11 +44,17 @@
 
     object-fit: cover;
     object-position: center;
+
+    transition: $animation-speed;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__title {
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: $bold-weight-txt;
+    font-size: 1.5rem;
     margin-bottom: 8px;
   }
 }

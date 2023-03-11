@@ -28,28 +28,53 @@ $item-bott-margin: 32px;
   }
 
   &__link {
+    position: relative;
     display: inline-block;
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-weight: 600;
-    @include font-size-equel-line(22px);
+    font-weight: $menu-wight-txt;
+    @include font-size-equel-line(1.4rem);
     color: $color-dark;
     padding-bottom: $link-padding-bottom;
-    border-bottom: transparent 1px solid;
 
-    &:hover {
-      border-bottom: $color-dark 1px solid;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background-color: $color-dark;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:hover::after {
+      animation-name: underlinet;
+      animation-duration: 0.5s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes underlinet {
+      from {
+        width: 0;
+        height: 0;
+      }
+
+      to {
+        height: 1px;
+        width: 100%;
+      }
     }
 
     @include onDesktop {
-      font-weight: 700;
+      font-weight: $bold-weight-txt;
     }
   }
 
   &__call {
     display: block;
     color: $color-dark;
-    font-weight: 600;
+    font-weight: $menu-wight-txt;
     line-height: 27px;
     text-transform: uppercase;
     text-decoration: none;
@@ -62,12 +87,12 @@ $item-bott-margin: 32px;
     &--action {
       border-bottom: $color-dark 1px solid;
       padding-bottom: $link-padding-bottom;
-      font-size: 12px;
+      font-size: 0.8rem;
       line-height: 16px;
     }
 
     @include onDesktop {
-      font-weight: 700;
+      font-weight: $bold-weight-txt;
     }
   }
 } 
