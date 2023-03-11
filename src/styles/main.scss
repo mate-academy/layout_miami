@@ -44,12 +44,38 @@ ul {
   padding: 0 120px;
   margin: 0 auto;
 
+  &-detailes {
+    margin-bottom: 180px;
+
+    @include onTab {
+      margin-bottom: 120px;
+    }
+
+    @include onMobile {
+      margin-bottom: 80px;
+    }
+  }
+
   &-header {
     margin-bottom: 120px ;
+
+    @include onMobile {
+      margin-bottom: 60px;
+    }
   }
 
   &-moveFree {
     margin-bottom: 164px;
+
+    @include onMobile {
+      margin-bottom: 92px;
+    }
+  }
+
+  @include onMobile {
+    &-contactUs {
+      margin-bottom: 0;
+    }
   }
 
   @include onTab {
@@ -343,6 +369,7 @@ ul {
   background-image: url("../images/footer.png");
   height: 555px;
   background-position: center;
+  background-size: cover;
 
   @include onTab {
     height: 480px;
@@ -355,25 +382,48 @@ ul {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 63px);
+  grid-template-columns: repeat(12, 1fr);
   column-gap: 24px;
   justify-content: center;
   
   @include onTab {
-    grid-template-columns: repeat(6, 80px);
-    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
   }
 
   @include onMobile() {
-    grid-template-columns: repeat(2, 128px);
-    column-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
   }
 
-  &__item {
+  &__item-desktop {
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
+  &__item-tab {
+    @include onTab {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__item-mob {
+    @include onMobile {
+      @for $start from 1 through 2 {
+        @for $end from $start through 2 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
@@ -387,6 +437,16 @@ ul {
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #fff;
+
+    @include onTab {
+      font-size: 48px;
+    }
+
+    @include onMobile {
+      font-size: 32px;
+      padding-bottom: 32px;
+      text-align: center;
+    }
   }
 
   &__paragraph {
@@ -400,30 +460,45 @@ ul {
 .compareBikes {
   padding-bottom: 144px;
 
+  @include onTab {
+    padding-bottom: 120px;
+  }
+
+  @include onTab {
+    padding-bottom: 92px;
+  }
+
   &__title {
+    padding-bottom: 56px;
+    
     font-weight: 500;
     font-size: 64px;
     line-height: 100%;
     text-align: center;
     letter-spacing: -1.5px;
     color: #fff;
-    margin-bottom: 56px;
+
+    @include onMobile {
+      font-size: 32px;
+    }
   }
 
   &__subtitle {
+    margin-bottom: 8px;
+
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
     color: #fff;
-    margin-bottom: 8px;
   }
 
   &__description {
+    margin-bottom: 16px;
+
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     color: #fff;
-    margin-bottom: 16px;
   }
 
   &__price {
@@ -431,21 +506,39 @@ ul {
     font-size: 24px;
     line-height: 140%;
     color: #fff;
+
+    @include onTab {
+      padding-bottom: 48px;
+    }
+
+    @include onMobile {
+      padding-bottom: 40px;
+    }
   }
 
   &__image {
-    height: 256px;
-    margin-bottom: 32px;
+    display: block;
+    width: 100%;
+
+    padding-bottom: 32px;
+    
+    object-fit: cover;
+    object-position: center;
   }
 }
 
 .detailes {
-  &__picture {
-    width: 100%;
-  }
-
   &__images {
     padding-bottom: 16px;
+  }
+
+  &__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
   }
 
   &__block {
@@ -454,27 +547,166 @@ ul {
 
   &__title {
     display: block;
+    padding-bottom: 48px;
+
     font-weight: 500;
     font-size: 64px;
     line-height: 100%;
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
-    padding-bottom: 48px;
+
+    @include onTab {
+      padding-bottom: 64px;
+    }
+
+    @include onMobile {
+      font-size: 32px;
+    }
   }
 
   &__subtitle {
+    padding-bottom: 8px;
+
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
     color: #fff;
-    padding-bottom: 8px;
   }
 
   &__text {
+    padding-bottom: 48px;
+
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     color: #fff;
+
+    @include onTab {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 40px;
+    border: 1px solid transparent;
+
+    &--link {
+      text-decoration: none;
+      color: #1d1d1d;
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.contactUs {
+  &__title {
+    padding-bottom: 48px;
+
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onMobile {
+      font-style: 32px;
+    }
+  }
+}
+
+.info {
+  &__text {
+    padding-bottom: 8px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #fff;
+  }
+
+  &__information {
+    padding-bottom: 24px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fff;
+
+    @include onMobile {
+      &:last-child {
+        padding-bottom: 120px;
+      }
+    }
+  }
+}
+
+.form-field {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+
+  background: #f8f8fa;
+  border-radius: 40px;
+  border: 1px solid transparent;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  outline: none;
+  color: #292929;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7e7e83;
+  }
+
+  &--textArea {
+    height: 148px;
+    resize: none;
+    margin-bottom: 32px;
+  }
+
+  &--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 182px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+    color: #1d1d1d;
+
+    @include onMobile {
+      margin-bottom: 48px;
+    }
+
+    &:hover {
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+    }
   }
 }
