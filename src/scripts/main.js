@@ -12,5 +12,5 @@ menuBtnOpen.addEventListener('click', function() {
 
 menuBtnClose.addEventListener('click', function() {
   menu.classList.remove('active');
-  scrollHidden.classList.add('active');
+  scrollHidden.classList.remove('active');
 });
