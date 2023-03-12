@@ -1,6 +1,6 @@
 .place {
   &__title {
-    padding: 8px 0 48px 0;
+    padding: 8px 0 48px;
     text-align: center;
     font-weight: 400;
     font-size: 16px;
@@ -11,15 +11,13 @@
     position: relative;
     box-sizing: border-box;
     width: 100%;
-
-
+    overflow: hidden;
 
     &::after {
       display: block;
       content: "";
       padding-bottom: 100%;
     }
-
 
     @include onTablet {
       height: 186px;
@@ -29,6 +27,11 @@
     @include onDekstop {
       height: 320px;
       padding-bottom: 0;
+
+      &:hover {
+        transition: transform 1.5s ease-in-out;
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -39,5 +42,34 @@
 
     object-fit: cover;
     object-position: center;
+
+    &-noTablet {
+      @include onTablet {
+        display: none;
+        height: 100%;
+      }
+
+      @include onDekstop {
+        display: grid;
+      }
+    }
+  }
+
+  &__description {
+    padding-top: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $color-text;
+
+    &-link {
+      text-decoration: none;
+      padding-bottom: 48px;
+      padding-top: 24px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: $colorRed;
+    }
   }
 }
