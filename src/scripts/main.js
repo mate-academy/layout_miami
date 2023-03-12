@@ -2,7 +2,7 @@
 
 const form = document.querySelector('.contact-us__form');
 
-form.addEventListener('click', e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
   form.reset();
 });
