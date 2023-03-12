@@ -5,8 +5,30 @@
   }
 }
 
-@mixin fontProperty($weight, $size, $height) {
+@mixin fontSize($size) {
+  font-size: $size;
+  line-height: $size;
+}
+
+@mixin fontShortSize($weight, $size) {
+  font-weight: $weight;
+  @include fontSize($size);
+}
+
+@mixin fontFullSize($weight, $size, $line) {
   font-weight: $weight;
   font-size: $size;
-  line-height: $height;
+  line-height: $line;
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
 }
