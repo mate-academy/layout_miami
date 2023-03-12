@@ -1,23 +1,60 @@
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
 
+  @include onTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
   background-size: cover;
   background-position: right;
   background-image: url(../images/Bike/Cover_photo.png);
 
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 28px 20px 88px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 28px 0 88px;
+
+    @include onTablet {
+      padding: 28px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 28px 0 200px;
+    }
+  }
 
   &__title {
+    display: flex;
+    justify-content: center;
     font-weight: 700;
     font-size: 36px;
     line-height: 36px;
     letter-spacing: -1.5px;
     color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 
   &__nav {
@@ -33,14 +70,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/Bike/opener.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/Bike/opener-hover.svg);
@@ -48,20 +78,45 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
     margin-right: 20px;
-
+    text-decoration: none;
     background-image: url(../images/Bike/call.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+  
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 }
 
 .logo {
   &__image {
     height: 40px;
+
+    @include onTablet {
+      height: 56px;
+    }
   }
 }
