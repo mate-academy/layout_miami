@@ -3,6 +3,11 @@
   grid-template-columns: repeat(2, 1fr );
   column-gap: 20px;
 
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr );
+    column-gap: 24px;
+  }
+
   @include OnDesktop {
     grid-template-columns: repeat(12, 1fr );
     column-gap: 24px;
@@ -11,17 +16,39 @@
   &--desktop {
     display: block;
 
+    @include onTablet {
+      display: grid;
+    }
+
     @include OnDesktop {
       display: grid;
     }
   }
 
+  &__item--phone-1-1{
+    @include onPhone {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__item--phone-1-2{
+    @include onPhone {
+      grid-column: 1 / 3;
+    }
+  }
+
+  @for $start from 1 through 6 {
+    @for $end from 1 through 6 {
+      @include onTablet {
+        &__item--tablet-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+
   @for $start from 1 through 12 {
     @for $end from 1 through 12 {
-      &__item--#{$start}-#{$end} {
-        grid-column: #{$start} / #{$end + 1};
-      }
-
       @include OnDesktop {
         &__item--desktop-#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};

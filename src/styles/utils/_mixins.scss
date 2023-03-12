@@ -1,13 +1,40 @@
+@mixin onPhone {
+  @media (max-width: 619px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 620px) {
+    @content;
+  }
+}
+
 @mixin OnDesktop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin onPhone {
-  @media (max-width: 744px) {
-    @content;
+@mixin grid {
+  display: grid;
+
+  @media (min-width: 620px) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
   }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin grid-phone {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include grid;
 }
 
 @mixin fontSize($size) {
