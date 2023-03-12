@@ -1,0 +1,68 @@
+.menu {
+  @extend %flexSpaceBetween;
+
+  &__icon {
+    @extend %bg-size-cover-repeat;
+
+    @include onTablets {
+      width:$header-average-icon-size;
+      height: $header-average-icon-size;
+    }
+
+    width: $header-small-icon-size;
+    height: $header-small-icon-size;
+    text-decoration: none;
+    background-image: url(../images/call.svg);
+
+    &--close {
+      background-image: url(../images/close.svg);
+    }
+
+    &--call {
+      @include onTablets {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          display: block;
+          width: max-content;
+          padding-right: 12px;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 2px;;
+          transform: translate(-100%, -50%);
+          opacity: 0;
+          transition: opacity 0.3s;
+          pointer-events: none;
+          color: $general-color;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    &--menu {
+      @include onTablets {
+        margin-left: 40px;
+        width: $header-average-icon-size;
+        height: 18.67px;
+        background-image: url(../images/menu_big.svg);
+      }
+
+      margin-left: 30px;
+      background-image: url(../images/menu.svg);
+      transition: background-image 0.5s;
+
+      &:hover {
+        @include onTablets {
+          background-image: url(../images/menu_hover-big.svg);
+          background-size: contain;
+        }
+        background-image: url(../images/small_menu_hover.svg);
+      }
+    }
+  }
+}
