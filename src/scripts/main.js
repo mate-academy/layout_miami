@@ -14,3 +14,12 @@ menuBtnClose.addEventListener('click', function() {
   menu.classList.remove('active');
   scrollHidden.classList.remove('active');
 });
+
+const scrollLink = document.getElementsByClassName('menu__link');
+
+for (let i = 0; i < scrollLink.length; i++) {
+  scrollLink[i].addEventListener('click', function() {
+    menu.classList.toggle('active');
+    scrollHidden.classList.toggle('active');
+  });
+}
