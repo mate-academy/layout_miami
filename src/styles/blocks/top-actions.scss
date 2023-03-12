@@ -1,0 +1,85 @@
+.top-actions {
+  --icon-width: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: var(--icon-width);
+  align-items: center;
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width);
+  }
+
+  @include onTablet {
+    --icon-width: 32px;
+  }
+
+  &__logo {
+    width: max-content;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 96px;
+    color: #fff;
+
+    &--color {
+      color: #1d1d1d;
+    }
+
+    @include onTablet {
+      font-size: 56px;
+      line-height: 122px;
+    }
+  }
+
+  &__number {
+    padding: 8px;
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  &__call {
+    width: 100%;
+    padding-bottom: 100%;
+    display: block;
+
+    background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+
+    &:hover .top-actions__number {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__btn {
+    margin-top: 4px;
+    width: var(--icon-width);
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    transition: background-image 0.6s;
+
+    &:hover {
+      background-image: url(../images/btn-hover.svg);
+      margin-top: 0;
+    }
+
+    &--open {
+      background-image: url(../images/btn.svg);
+    }
+
+    &--close {
+      background-image: url(../images/btn-close.svg);
+    }
+  }
+}
