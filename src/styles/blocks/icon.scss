@@ -1,15 +1,38 @@
 .icon {
+  position: relative;
   display: block;
   width: 18px;
   height: 18px;
 
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
 
   @include onTablet {
     width: 24px;
     height: 24px;
+  }
+
+  &__tooltip {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+    padding-right: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+
+  &__tooltip-item {
+    font-weight: 700;
+    text-align: end;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
   }
 
   &--menu {
@@ -22,6 +45,18 @@
 
   &--phone {
     background-image: url(../images/phone_mat.svg);
+
+    @include onTablet {
+      margin-right: 62px;
+    }
+
+    @include onDesktop {
+      
+      &:hover .icon__tooltip {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &--cross {
