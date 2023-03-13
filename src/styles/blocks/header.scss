@@ -1,15 +1,55 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 40px 20px 94px;
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
 
+  @include onTablet {
+    padding: 0 72px
+  }
+
+  @include onDesktop {
+    padding: 0 120px
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include TabletAndDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
   background-image: url(images/photos/header-mobile.jpg);
-  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+
+  @include TabletAndDesktop {
+    background-image: url(images/photos/header-desktop.jpg);
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
 
   &__title {
     font-style: italic;
@@ -23,9 +63,38 @@
       content: "";
       display: block;
       background-image: url(images/before-element.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       width: 32px;
       height: 27px;
       margin-bottom: 16px;
+
+      @include TabletAndDesktop {
+        content: "";
+        display: block;
+        background-image: url(images/before-waves.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
     }
   }
   
@@ -41,14 +110,7 @@
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url(images/menu-opener.png);
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url(images/menu-opener3.png);
 
     &:hover {
       background-image: url(images/menu-opener-hover.png);
@@ -57,13 +119,34 @@
 
   &__call {
     background-image: url(images/call.png);
-    display: block;
-    width: 18px;
-    height: 18px;
+    text-decoration: none;
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block; 
+        position: relative;
+        top: 50%;
+        width: max-content;
+        padding-right: 20px;
+        transform: translate(-100%, -50%);
+        
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }
 
@@ -72,5 +155,10 @@
   &__image {
     width: 130px;
     height: 18px;
+
+    @include TabletAndDesktop {
+      width: 190px;
+      height: 24px;
+    }
   }
 }
