@@ -1,6 +1,7 @@
 .gallery {
   &__row {
-    margin-bottom: 48px;
+    padding-bottom: 48px;
+    perspective: 300px;
   }
 
   &__text {
@@ -14,6 +15,11 @@
     max-height: 320px;
     margin-bottom: 24px;
     overflow: hidden;
+    transition: transform $transition-duration-speed;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &::after {
       content: "";
@@ -29,6 +35,7 @@
     @include onDesktop {
       height: 320px;
       padding-bottom: 0;
+      margin-bottom: 32px;
     }
   }
 
@@ -37,10 +44,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 100% 50%;
+    object-position: center;
 
     @include onTablet {
-      object-position: center;
+      object-fit: fill;
     }
 
     &-notOnTablet {
