@@ -7,5 +7,6 @@ document.querySelector('.logo').addEventListener('click', function(event) {
 
 document.querySelector('.contactForm')
   .addEventListener('submit', function(event) {
+    event.preventDefault();
     this.reset(); // очищення полів форми
   });
