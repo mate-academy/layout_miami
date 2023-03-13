@@ -1,0 +1,55 @@
+.product {
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+
+    &::after {
+      content: " ";
+      display: block;
+      padding-bottom: 100%;
+
+      @include onTabl {
+        height: 187px;
+        padding-bottom: 0;
+      }
+
+      @include onPc {
+        height: 320px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    line-height: 140%;
+    color: $basicFont;
+
+    @include onTabl {
+      font-size: 24px;
+    }
+
+    @include onPc {
+      font-size: 24px;
+    }
+  }
+}
