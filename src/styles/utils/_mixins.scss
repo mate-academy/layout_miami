@@ -4,3 +4,29 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin onIpadMini {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+  gap: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
