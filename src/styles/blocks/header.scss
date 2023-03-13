@@ -1,0 +1,82 @@
+.header {
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-image: url(../images/photo/header.svg);
+
+  @include onDesctop {
+    background-position: center;
+    background-image: url(../images/photo/header.svg);
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 460px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesctop {
+      padding: $headerTopPadding 0 460px;
+    }
+  }
+
+  &__icons-position {
+    display: flex;
+  }
+
+  &__phone {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+      margin-right: 40px;
+
+      &::before {
+        content: "The Met FifthAvenue\a" +
+          "+1 212-535-7710\a" +
+          "TheMet Cloisters\a" +
+          "+1 212-923-3700";
+        margin-top: 5px;
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        width: max-content;
+        white-space: pre;
+        padding-right: 20px;
+
+        font-weight: 700;
+        text-align: right;
+        text-transform: uppercase;
+        opacity: 0;
+        color: $colorWhite;
+        pointer-events: none;
+        transition-duration: 0.5s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+
+    text-align: center;
+    color: $colorWhite;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+  }
+}
