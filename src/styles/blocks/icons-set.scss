@@ -1,0 +1,75 @@
+.icons-set {
+  display: grid;
+  grid-gap: 24px;
+  height: $icon-size--small;
+
+  @include onTablet {
+    grid-gap: 32px;
+    height: $icon-size--big;
+  }
+
+  &--2-options {
+    grid-template-columns: repeat(2, $icon-size--small);
+
+    @include onTablet {
+      grid-template-columns: repeat(2, $icon-size--big);
+    }
+  }
+
+  &--1-option {
+    grid-template-columns: $icon-size--small;
+
+    @include onTablet {
+      grid-template-columns: $icon-size--big;
+    }
+  }
+
+  &__icon {
+    height: 100%;
+    background-size: cover;
+
+    transition-duration: $transition-duration;
+
+    &--menu {
+      background-image: url("../images/header/Icon-Burger-menu.svg");
+      transition: background-image $transition-duration;
+
+      &:hover {
+        background-image: url("../images/header/Icon-Burger-menu-hover.svg");
+      }
+    }
+
+    &--close {
+      background-image: url("../images/header/Icon-Close.svg");
+    }
+
+    &--call {
+      background-image: url("../images/header/Icon-Phone-call.svg");
+      text-decoration: none;
+
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          display: block;
+          width: max-content;
+          padding-right: 8px;
+          top: 50%;
+          transform: translate(-100%, 50%);
+
+          @include fontStyle(12px, 700);
+          color: $text-color--main;
+          letter-spacing: 2px;
+
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity $transition-duration;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
