@@ -1,5 +1,5 @@
 @mixin onTablet {
-  @media (min-width: 744px) {
+  @media (min-width: 744px) and (max-width: 1019.9px) {
     @content;
   }
 }
@@ -30,6 +30,9 @@
     @include onTablet {
       display: grid;
     }
+    @include onDesktop {
+      display: grid;
+    }
   }
 
   &--desktop {
@@ -42,9 +45,9 @@
   &__item {
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
+        // &--#{$start}-#{$end} {
+        //   grid-column: #{$start} / #{$end + 1};
+        // }
 
         @include onTablet {
           &-tablet--#{$start}-#{$end} {
@@ -67,6 +70,7 @@
   font-family: "Poppins", sans-serif;
   background-color: #1d1d1d;
   scroll-behavior: smooth;
+
   &__body {
     margin: 0;
   }
@@ -90,7 +94,7 @@
     @include onTablet {
       margin-bottom: 120px;
     }
-    @include onDesktop() {
+    @include onDesktop {
       margin-bottom: 164px;
     } //редагувати відступи під кожне розширення ??? (ніби готово)
 
@@ -144,6 +148,9 @@
     height: 38px;
 
     @include onTablet {
+      height: 56px;
+    }
+    @include onDesktop() {
       height: 56px;
     }
 
@@ -201,6 +208,9 @@
   align-items: center;
 
   @include onTablet {
+    --icon-width: 24px;
+  }
+  @include onDesktop() {
     --icon-width: 24px;
   }
 }
@@ -388,7 +398,7 @@
       }
     }
 
-    @include onDesktop() {
+    @include onDesktop {
       margin-bottom: 0;
     }
   }
@@ -515,12 +525,88 @@
 
   transition: all 0.3s;
 
+  cursor: pointer;
+
   &:hover {
     box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
   }
 
   &:active {
     box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+
+  &--send {
+    font-family: inherit;
+    border: 0;
+    margin: 0 0 48px;
+  }
+}
+
+.contacts {
+  &__info {
+    margin: 0 0 24px;
+
+    &-title {
+      margin: 0 0 8px;
+
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: #fff;
+    }
+
+    &-link {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 140%;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__field {
+    margin: 0 0 16px;
+
+    &--last {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.form__field {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 48px;
+
+  border: 1px solid transparent;
+  border-radius: 40px;
+  background-color: #f8f8fa;
+
+  font-family: inherit;
+
+  color: #292929;
+  padding: 14px 16px;
+
+  ::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7e7e83;
+  }
+
+  :hover {
+    border: 1px solid #d5d7de;
+  }
+
+  :focus {
+    border: 1px solid #292929;
+  }
+
+  &--textarea {
+    height: 148px;
+    resize: none;
+    font-family: inherit;
   }
 }
 
