@@ -1,6 +1,6 @@
 'use strict';
 
-const form = document.getElementsByClassName('contacts-form');
+const form = document.getElementById('form');
 
 function submitForm(event) {
   event.preventDefault();
