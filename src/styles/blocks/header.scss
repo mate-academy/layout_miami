@@ -1,0 +1,98 @@
+.header {
+  background-image: url(../images/photos/header_bg_320px.png);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 120px;
+
+  @include onTablet {
+    background-image: url(../images/photos/header_bg_744px.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header_bg_desktop.png);
+    background-position: center left 120px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    min-height: 500px;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      min-height: 800px;
+      padding-top: 52px;
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        display: block;
+        width: max-content;
+        content: "+1 234 555-55-55";
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $mainColor;
+        padding-right: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, 50%);
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-variation-settings: "slnt" -10;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      height: 27px;
+      width: 32px;
+      margin-bottom: 16px;
+      background-image: url(../images/sound_waves_mobile.svg);
+      background-size: cover;
+
+      @include onTablet {
+        height: 76px;
+        width: 63px;
+        margin-bottom: 40px;
+        background-image: url(../images/sound_waves.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
