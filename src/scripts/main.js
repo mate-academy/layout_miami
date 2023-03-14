@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const buttonsSubmit = document.querySelector('.form .button[type="submit"]');
+  const form = document.querySelector('.form');
 
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#menu') {
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  buttonsSubmit.addEventListener('click', (event) => {
-    buttonsSubmit.parentElement.reset();
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
+    form.reset();
   });
 });

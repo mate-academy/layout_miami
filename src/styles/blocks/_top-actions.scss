@@ -23,24 +23,11 @@
   }
 
   &__icons {
-    position: relative;
     display: flex;
     gap: 30px;
 
     @include mediaQueryTablet {
       gap: 63px;
-    }
-
-    &-phones {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(-100%, -50%);
-      width: max-content;
-      padding: 0 20px;
-      visibility: hidden;
-      opacity: 0;
-      transition: all $duration-transition;
     }
   }
 
@@ -59,11 +46,9 @@
     }
 
     &--phone {
+      position: relative;
       background-image: url("../images/phone-icon.svg");
 
-      &:hover {
-        scale: 1.2;
-      }
     }
 
     &--menu {
@@ -80,8 +65,51 @@
 
   }
 
-  &__icon--phone:hover ~ &__icons-phones {
+  &__icon--phone:hover &__phones {
     visibility: visible;
     opacity: 1;
+  }
+}
+
+.items-phones {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  transform: translate(0, 0);
+  width: 160px;
+  padding: 0 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all $duration-transition;
+
+  @include mediaQueryTablet {
+    top: 100%;
+    right: 0;
+    width: 250px;
+    transform: translate(0, -50%);
+  }
+
+  @include mediaQueryDesktop {
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    width: max-content;
+  }
+}
+
+.item-phones {
+
+  &__title {
+    @media (max-width: $breakpoint-tablet) {
+      margin: 0 0 3px;
+    }
+  }
+  &__title,
+  &__phone {
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 }
