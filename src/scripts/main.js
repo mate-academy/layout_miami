@@ -7,13 +7,3 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
-
-/* function validateForm() {
-  const a = document.forms['contactUs']['name'].value;
-
-  if (a == '') {
-    alert('Name must be filled out');
-
-    return false;
-  }
-} */
