@@ -18,6 +18,8 @@ const allItems = document.querySelectorAll('.form-field');
 formButton.addEventListener('click', function(e) {
   e.preventDefault();
 
+  const reqExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g;
+
   allItems.forEach(item => {
     if (!item.value) {
       item.classList.add('form--request');
@@ -26,11 +28,9 @@ formButton.addEventListener('click', function(e) {
     }
   });
 
-  const reqExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g;
-
   if (!reqExp.test(respond.value)) {
     respond.classList.add('form--request');
-  } else {
+  } else if (allItems[2].value) {
     respond.classList.remove('form--request');
     form.reset();
   }
