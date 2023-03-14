@@ -1,0 +1,35 @@
+@mixin onDesktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (
+    min-width: #{$tablet-width}
+  )and(
+    max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: #{$tablet-width - 1}) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: 30px;
+  justify-items: start;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+    gap: 40px;
+  }
+}
