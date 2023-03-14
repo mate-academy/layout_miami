@@ -1,7 +1,17 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $actionTime;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin top-actions {
+  display: flex;
+  justify-content: space-between;
+
+  &--action {
+    align-items: center;
+    gap: 30px;
   }
 }
 
@@ -31,4 +41,10 @@
   @media (min-width: 1024px) {
     @content;
   }
+}
+
+@mixin backgroundImage($position) {
+  background-size: cover;
+  background-position: $position;
+  background-repeat: no-repeat;
 }
