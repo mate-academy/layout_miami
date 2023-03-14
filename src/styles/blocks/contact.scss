@@ -12,7 +12,12 @@
 
 .contact {
   display: grid;
-  gap: 48px;
+  gap: 20px;
+
+  &__container {
+    display: grid;
+    gap: 48px;
+  }
 
   &__title {
     font-size: 32px;
@@ -41,6 +46,10 @@
     &:focus {
       box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
     }
+
+    &:not(:placeholder-shown):invalid {
+      box-shadow: 1px 4px 16px red;
+    }
   }
 
   &__textarea {
@@ -55,6 +64,10 @@
 
     &:focus {
       box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    }
+
+    &:not(:placeholder-shown):invalid {
+      box-shadow: 1px 4px 16px red;
     }
   }
 
@@ -99,11 +112,12 @@
   }
 
   @media (min-width: $media-tablet) {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
 
-    &__title,
-    &__image {
+    &__container {
+      column-gap: 24px;
+    }
+
+    &__title {
       grid-column: 1 / 3;
     }
 
@@ -121,8 +135,12 @@
   }
 
   @media (min-width: $media-desktop) {
-    column-gap: 18vw;
-
+    &__container {
+      column-gap: 200px;
+      max-width: 1260px;
+      width: 100%;
+      margin: 0 auto;
+    }
     &__image {
       height: 600px;
     }
