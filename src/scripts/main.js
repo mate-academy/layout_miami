@@ -11,6 +11,7 @@ window.addEventListener('hashchange', () => {
 const btn = document.querySelector('.button--send');
 const Name = document.querySelector('.name');
 const Email = document.querySelector('.email');
+const comment = document.querySelector('.textarea');
 
 // eslint-disable-next-line no-console
 btn.addEventListener('click', (e) => {
@@ -22,5 +23,6 @@ btn.addEventListener('click', (e) => {
     e.preventDefault();
     Name.value = '';
     Email.value = '';
+    comment.value = '';
   }
 });
