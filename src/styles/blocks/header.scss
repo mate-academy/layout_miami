@@ -1,4 +1,5 @@
 .container {
+  box-sizing: content-box;
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 20px;
@@ -17,25 +18,42 @@
   width: 100%;
   padding-bottom: 100%;
   
-  background-size:contain;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 
   &--menu {
-     background-image: url(images/menu-opener3.png);
+    background-image: url(images/mobile/burger-menu.png);
 
     &:hover {
-      background-image: url(images/menu-opener-hover.png);
+      background-image: url(images/mobile/burger-menu-hover.png);
+    }
+
+    @include onTablet {
+      background-image: url(images/tablet-desktop/burger-menu.png);
+
+      &:hover {
+      background-image: url(images/tablet-desktop/burger-menu-hover.png);
+      }
     }
   }
 
   &--call {
-      background-image: url(images/call.png);
+    background-image: url(images/mobile/phone.png);
+
+    @include onTablet {
+      background-image: url(images/tablet-desktop/phone.png);
+    }
   }
 
   &--cross {
-    background-image: url(images/cross.png);
+    background-image: url(images/mobile/cross.png);
+
+    @include onTablet {
+    background-image: url(images/tablet-desktop/cross.png);
+    }
   }
+
 }
 
 .header {
@@ -44,7 +62,7 @@
   background-repeat: no-repeat;
   background-position: top;
 
-  @include TabletAndDesktop {
+  @include onTablet {
     background-image: url(images/photos/header-desktop.jpg);
   }
   
@@ -83,7 +101,7 @@
       height: 27px;
       margin-bottom: 16px;
 
-      @include TabletAndDesktop {
+      @include onTablet {
         content: "";
         display: block;
         background-image: url(images/before-waves.png);
@@ -151,7 +169,7 @@
     width: 130px;
     height: 18px;
 
-    @include TabletAndDesktop {
+    @include onTablet {
       width: 190px;
       height: 24px;
     }
@@ -159,20 +177,12 @@
 }
 
 .top-actions {
-  // display: flex;
-  // justify-content: space-between;
-  // // align-items: center;
-
-  // &__right-block {
-  //   display: flex;
-  //   gap: 30px;
-  // }
   --icon-width: 18px;
   display: grid;
   grid-template-columns: 1fr var(--icon-width) var(--icon-width);
   column-gap: 30px;
 
-  @include TabletAndDesktop {
+  @include onTablet {
     --icon-width: 24px;
   }
 }
