@@ -1,4 +1,62 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    background: #F8F8FA;
+    border-radius: 40px;
+    border: 0;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 16px;
+
+    &::placeholder {
+      color: #7e7e83;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__textarea {
+    background: #F8F8FA;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    line-height: 48px;
+    padding-left: 16px;
+
+    &::placeholder {
+      color: #7e7e83;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      padding-top: 14px;
+    }
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+
+  &__button {
+    margin-bottom: 48px;
+  }
+
 }
