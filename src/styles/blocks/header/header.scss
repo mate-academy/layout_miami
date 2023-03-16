@@ -1,21 +1,49 @@
 .header {
+  --padding-top: 40px;
+  --padding-horizontal: 20px;
+  --height: 500px;
+  --margin-bottom-title: 95px;
+  --margin-bottom-before: 16px;
+
   @include grid-for-mobile;
   min-width: 320px;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: "navigation navigation" "title title";
   justify-content: space-between;
-  height: 100vh;
-  padding: $spacing-l $spacing-sm 95px;
+  height: var(--height);
+  padding: var(--padding-top) var(--padding-horizontal) 0;
   background-image: url("../../src/images/header.jpg");
   background-size: cover;
-  background-position: 38%;
+  background-position: 25%;
+
+  @include on-tablets {
+    --padding-top: 55px;
+    --padding-horizontal: 70px;
+    --height: 800px;
+    --margin-bottom-title: 40px;
+    --margin-bottom-before: 40px;
+
+    @include grid-for-tablets;
+  }
+
+  @include on-desktop {
+    --height: 720px;
+    --padding-top: 50px;
+    --padding-horizontal: 136px;
+    --margin-bottom-title: 65px;
+    --margin-bottom-before: 30px;
+  }
 
   &__navigation {
-    grid-area: navigation;
+    grid-column: span 2;
+
+    @include on-tablets {
+      grid-column: span 6;
+    }
   }
 
   &__title {
-    grid-area: title;
+    grid-column: span 2;
+    margin-bottom: var(--margin-bottom-title);
     align-self: flex-end;
 
     &::before {
@@ -25,26 +53,16 @@
       height: 25px;
       background-image: url("../../src/images/title_svg.svg");
       background-size: contain;
-      margin-bottom: $spacing-s;
-    }
-  }
-
-  @include on-tablets {
-    @include grid-for-tablets;
-    padding: 55px 70px 40px;
-
-    &__navigation {
-      grid-column: span 6;
+      margin-bottom: var(--margin-bottom-before);
     }
 
-    &__title {
+    @include on-tablets {
       grid-column: span 4;
 
       &::before {
         width: 63px;
         height: 76px;
         background-image: url("../../src/images/sound_waves.svg");
-        margin-bottom: $spacing-xl;
       }
     }
   }
