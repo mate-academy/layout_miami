@@ -1,0 +1,69 @@
+.details {
+
+  &__image-container {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 130px;
+    max-height: 187px;
+    margin-bottom: 16px;
+    transition: height $transition-time, max-height $transition-time ;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      max-height: 320px;
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 0;
+      }
+    }
+
+    @include onDescktop {
+      height: 320px;
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transition-time;
+
+    &:hover {
+      transform: scale(105%);
+      z-index: 9;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__description {
+    margin: 0 0 40px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+
+    @include onTablet {
+      margin: 0 0 48px;
+    }
+  }
+}
