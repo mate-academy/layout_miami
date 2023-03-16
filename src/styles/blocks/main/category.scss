@@ -1,0 +1,59 @@
+.category {
+  @include grid-for-mobile;
+
+  @include on-tablets {
+    @include grid-for-tablets;
+  }
+
+  &__square {
+    position: relative;
+    padding-top: 100%;
+    margin-bottom: 16px;
+
+    @include on-tablets {
+      padding-top: 200px;
+
+      &--big {
+        grid-column: span 4;
+      }
+
+      &--small {
+        grid-column: span 2;
+      }
+    }
+
+    @include on-desktop {
+      padding-top: 320px;
+    }
+  }
+
+  &__image {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+
+    &:not(:first-of-type) {
+      object-position: 90%;
+    }
+  }
+
+  &__title {
+    grid-column: span 2;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__button {
+    grid-column: span 2;
+
+    @include on-tablets {
+      grid-column: 2 / span 4;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / span 2;
+      grid-row: 3;
+    }
+  }
+}

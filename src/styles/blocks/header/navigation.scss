@@ -1,0 +1,123 @@
+.navigation {
+  @include grid-for-mobile;
+  justify-content: space-between;
+
+  &__logo {
+    width: 130px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-m;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-size: cover;
+
+    &--telephone {
+      position: relative;
+      font-weight: 700;
+      font-size: 12px;
+      text-decoration: none;
+      background-image: url("../../src/images/phone.svg");
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #000;
+        padding-right: 20px;
+        transition: all 1s;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      @include on-desktop {
+        &:hover {
+          &::before {
+            pointer-events: all;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &--menu {
+      transition: all 0.3s;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-size: cover;
+        background-image: url("../../src/images/menu.svg");
+
+        @include on-tablets {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &::after {
+        display: none;
+        content: "";
+        width: 18px;
+        height: 18px;
+        background-size: contain;
+        background-image: url("../../src/images/menu_hover.svg");
+
+        @include on-tablets {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &:hover {
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    &--close {
+      background-image: url("../../src/images/cross.svg");
+      justify-self: self-end;
+    }
+  }
+
+  @include on-tablets {
+    @include grid-for-tablets;
+
+    &__logo {
+      width: 190px;
+    }
+
+    &__controls {
+      grid-column: 6/7;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+
+      &--close {
+        grid-column: -1;
+      }
+    }
+  }
+}
