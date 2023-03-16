@@ -1,0 +1,89 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo-img {
+    display: block;
+
+    @include onMobile {
+      height: 38px;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    padding: 24px 4px;
+  }
+
+  &__call {
+    @extend %icon;
+
+    @include iconSquare(24px);
+
+    @include onMobile {
+      @include iconSquare(18px);
+    }
+
+    text-decoration: none;
+    background-image: url(../images/call-logo.svg);
+
+    &::before {
+      content: "+1 234 555-55-55";
+      display: block;
+      width: max-content;
+      padding-right: 20px;
+
+      position: relative;
+      top: 50%;
+      transform: translate(-100%,-50%);
+
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $colorTransitionTime;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__nav-menu-opener {
+    @extend %icon;
+
+    @include iconRect(24px);
+
+    @include onMobile {
+      @include iconRect(18px);
+    }
+
+    background-image: url(../images/menu-opener-logo.svg);
+    transition: background-image $transformTransitionTime;
+
+    &:hover {
+      background-image: url(../images/menu-opener-logo_hover.svg);
+    }
+  }
+
+  &__close {
+    @extend %icon;
+
+    @include iconSquare(24px);
+
+    @include onMobile {
+      @include iconSquare(18px);
+    }
+
+    background-image: url(../images/Icon-close.svg);
+  }
+}
