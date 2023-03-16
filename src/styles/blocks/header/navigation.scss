@@ -1,123 +1,58 @@
-.navigation {
-  @include grid-for-mobile;
-  justify-content: space-between;
+@mixin link-hover {
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: $main-color;
+  padding-bottom: 5px;
 
-  &__logo {
-    width: 130px;
+  &:hover {
+    border-bottom: 1px solid $main-color;
+  }
+}
+
+.navigation {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transform: translateX(100%);
+  background-color: #e8eff9;
+  padding: $spacing-l $spacing-sm 95px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
   }
 
   &__controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: $spacing-m;
+    margin-bottom: $spacing-xl;
   }
 
-  &__icon {
-    display: block;
-    width: 18px;
-    height: 18px;
-    background-size: cover;
+  &__list {
+    @include flex-column;
+    gap: $spacing-m;
+    margin-bottom: $spacing-xl;
+  }
 
-    &--telephone {
-      position: relative;
-      font-weight: 700;
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    @include link-hover;
+  }
+
+  &__phone {
+    line-height: 27px;
+
+    &--border {
       font-size: 12px;
-      text-decoration: none;
-      background-image: url("../../src/images/phone.svg");
-
-      &::before {
-        content: "+1 234 555-55-55";
-        display: block;
-        width: max-content;
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        color: #000;
-        padding-right: 20px;
-        transition: all 1s;
-        pointer-events: none;
-        opacity: 0;
-      }
-
-      @include on-desktop {
-        &:hover {
-          &::before {
-            pointer-events: all;
-            opacity: 1;
-          }
-        }
-      }
-    }
-
-    &--menu {
-      transition: all 0.3s;
-
-      &::before {
-        content: "";
-        display: block;
-        width: 18px;
-        height: 18px;
-        background-size: cover;
-        background-image: url("../../src/images/menu.svg");
-
-        @include on-tablets {
-          width: 24px;
-          height: 24px;
-        }
-      }
-
-      &::after {
-        display: none;
-        content: "";
-        width: 18px;
-        height: 18px;
-        background-size: contain;
-        background-image: url("../../src/images/menu_hover.svg");
-
-        @include on-tablets {
-          width: 24px;
-          height: 24px;
-        }
-      }
-
-      &:hover {
-        &::before {
-          display: none;
-        }
-
-        &::after {
-          display: block;
-        }
-      }
-    }
-
-    &--close {
-      background-image: url("../../src/images/cross.svg");
-      justify-self: self-end;
+      @include link-hover;
     }
   }
 
   @include on-tablets {
-    @include grid-for-tablets;
-
-    &__logo {
-      width: 190px;
-    }
-
-    &__controls {
-      grid-column: 6/7;
-    }
-
-    &__icon {
-      width: 24px;
-      height: 24px;
-
-      &--close {
-        grid-column: -1;
-      }
-    }
+    padding: 55px 70px 40px;
   }
 }
