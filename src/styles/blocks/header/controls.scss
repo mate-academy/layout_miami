@@ -1,22 +1,45 @@
 .controls {
+  --icon-width: 18px;
+  --icon-height:18px;
+  --logo-width: 130px;
+
   @include grid-for-mobile;
   justify-content: space-between;
 
+  @include on-tablets {
+    --icon-width: 24px;
+    --icon-height:24px;
+    --logo-width: 190px;
+  }
+
   &__logo {
-    width: 130px;
+    width: var(--logo-width);
   }
 
   &__icons {
     display: flex;
     justify-content: flex-end;
-    gap: $spacing-m;
+    gap: 30px;
+
+    @include on-tablets {
+      grid-column: 6/7;
+    }
   }
 
   &__icon {
-    display: block;
-    width: 18px;
-    height: 18px;
+    transition: all 0.3s;
+    width: var(--icon-width);
+    height: var(--icon-height);
     background-size: cover;
+
+    &--close {
+      background-image: url("../../src/images/cross.svg");
+      justify-self: self-end;
+
+      @include on-tablets {
+        grid-column: -1;
+      }
+    }
 
     &--telephone {
       position: relative;
@@ -53,34 +76,22 @@
     }
 
     &--menu {
-      transition: all 0.3s;
-
       &::before {
         content: "";
         display: block;
-        width: 18px;
-        height: 18px;
+        width: var(--icon-width);
+        height: var(--icon-height);
         background-size: cover;
         background-image: url("../../src/images/menu.svg");
-
-        @include on-tablets {
-          width: 24px;
-          height: 24px;
-        }
       }
 
       &::after {
-        display: none;
         content: "";
-        width: 18px;
-        height: 18px;
+        display: none;
+        width: var(--icon-width);
+        height: var(--icon-height);
         background-size: contain;
         background-image: url("../../src/images/menu_hover.svg");
-
-        @include on-tablets {
-          width: 24px;
-          height: 24px;
-        }
       }
 
       &:hover {
@@ -91,32 +102,6 @@
         &::after {
           display: block;
         }
-      }
-    }
-
-    &--close {
-      background-image: url("../../src/images/cross.svg");
-      justify-self: self-end;
-    }
-  }
-
-  @include on-tablets {
-    @include grid-for-tablets;
-
-    &__logo {
-      width: 190px;
-    }
-
-    &__icons {
-      grid-column: 6/7;
-    }
-
-    &__icon {
-      width: 24px;
-      height: 24px;
-
-      &--close {
-        grid-column: -1;
       }
     }
   }
