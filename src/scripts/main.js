@@ -1,4 +1,5 @@
 'use strict';
+// ---------side-navigation----------------
 
 let navIsActive = false;
 const menuIcon = document.querySelector('.header__icons-menu-icon');
@@ -25,3 +26,14 @@ menuIcon.addEventListener('click', openNav);
 navLinks.forEach(link => {
   link.addEventListener('click', openNav);
 });
+
+// -----------end----------------
+
+// ---------contact-form------------
+const form = document.querySelector('.contact__form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+});
+
+// -----------end-----------------
