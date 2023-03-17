@@ -8,11 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const form = document.querySelector(".contact-us__form");
-const userName = document.querySelector(".contact-us__field");
+const form = document.querySelector('.contact-us__form');
+const userName = document.querySelector('.contact-us__field');
 
-
-form.addEventListener('submit', (event) => {  
-  event.preventDefault();  
-  userName.value = '';  
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  userName.value = '';
 });
