@@ -1,14 +1,10 @@
 .section {
-  padding-top: 120px;
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
 
   &:first-child {
     align-items: center;
-  }
-
-  &:last-child {
-    padding-top: 100px;
   }
 
   &__title {
@@ -26,5 +22,61 @@
 
   &__article:not(:last-child) {
     margin-bottom: 32px;
+  }
+
+  @include tablet() {
+
+    display: grid;
+    grid-column: 1 / 7;
+
+    &__title {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    &:first-child {
+      display: flex;
+    }
+
+    &:nth-child(3) &__title {
+      grid-column: 1 / 4;
+    }
+
+    &:nth-child(3) &__article {
+      grid-column: 4 / 7;
+    }
+
+    &:last-child &__title {
+      grid-column: 3 / 5;
+    }
+
+    &:last-child {
+      gap: 24px;
+    }
+  }
+
+  @include desktop() {
+    grid-column: 1 / 13;
+
+    &__title {
+      font-size: 48px;
+    }
+
+    &__articles {
+      display: flex;
+      gap: 24px;
+    }
+
+    &:nth-child(3) &__title {
+      grid-column: 1 / 5;
+    }
+
+    &:nth-child(3) &__article {
+      grid-column: 7 / 13;
+    }
+
+    &:last-child &__title {
+      grid-column: 5 / 9;
+    }
   }
 }

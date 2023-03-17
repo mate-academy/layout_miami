@@ -1,22 +1,36 @@
 .menu {
-  background-color: #e8eff9;
-  padding: 0 20px;
+  background-color: $color-white-b;
+  padding: 37px 20px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  transition: transform 0.3s ease-in-out;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateY(-100%);
+
+  @include grid();
+
+  align-content: start;
+
+  &:target {
+    transform: translateY(0);
+  }
 
   &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 55px;
+    display: grid;
+    grid-column: span 2;
   }
 
   &__logo {
     width: 130px;
+    height: 16px;
+    grid-column: 1 / 2;
   }
 
   &__list {
     list-style: none;
+    grid-column: span 2;
   }
 
   &__item {
@@ -25,7 +39,7 @@
   }
 
   &__link {
-    color: #292929;
+    color: $color-main;
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
@@ -35,22 +49,78 @@
     text-decoration: none;
 
     &:hover {
-      border-bottom: 1px solid #292929;
+      border-bottom: 1px solid $color-main;
     }
   }
 
   &__contact {
+    grid-column: 1 / 3;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    padding-top: 8px;
+
+    &-call {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
   }
 
-  &__call {
-    font-size: 12px;
-    line-height: 16px;
-    align-self: flex-start;
+  &__link--close {
+    width: 16px;
+    height: 16px;
+    grid-column: 2 / 3;
+    justify-self: end;
   }
+
+  @include tablet() {
+    &__logo {
+      width: 190px;
+      height: 24px;
+    }
+
+    &__wrapper {
+      display: grid;
+      grid-column: span 6;
+    }
+
+    &__list {
+      grid-column: span 6;
+    }
+
+    &__contact {
+      grid-column: span 6;
+    }
+
+    &__link--close {
+      grid-column: 5 / 6;
+      justify-self: end;
+    }
+  }
+
+  @include desktop() {
+    &__wrapper {
+      display: grid;
+      grid-column: span 12;
+    }
+
+    &__list {
+      grid-column: span 12;
+    }
+
+    &__contact {
+      grid-column: span 12;
+    }
+
+    &__link--close {
+      grid-column: 12 / 13;
+      justify-self: end;
+    }
+
+    &__hamburger {
+      content: url(./../images/close_big.svg);
+    }
+  }
+
 }

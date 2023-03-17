@@ -1,7 +1,6 @@
 .nav {
   padding-top: 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 
   &__list {
@@ -16,25 +15,97 @@
 
   &__logo {
     width: 130px;
+    height: 16px;
   }
 
   &__hamburger {
-    background: transparent;
-    border: none;
     margin-left: 30px;
+    &-hidden {
+      @include visually-hidden();
+    }
 
     &-wrapper {
       display: flex;
+      align-items: center;
     }
 
     &::before {
-      content: url("./../images/menu.svg");
+      content: "";
+      background-image: url("./../images/menu.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 18px;
+      height: 12px;
+      display: inline-block;
     }
 
-    &::before:hover {
-      content: url("./../images/menu_hover.svg");
+    &::after {
+      content: "";
+      background-image: url("./../images/menu_hover.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 20px;
+      height: 24px;
+      display: none;
     }
 
   }
 
+  &__phone {
+    &-label {
+      color: $color-main;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      position: absolute;
+      transform: translateX(calc(-100% - 20px)) translateY(5px);
+    }
+
+    &:not(:hover) &-label {
+      @include visually-hidden();
+    }
+  }
+
+  @include tablet() {
+    &__logo {
+      width: 190px;
+      height: 24px;
+    }
+
+    &__hamburger-phone {
+      width: 24px;
+    }
+
+    &__hamburger {
+      &::before {
+        background-image: url("./../images/menu_big.svg");
+        width: 24px;
+        height: 20px;
+      }
+    }
+  }
+
+  @include desktop() {
+    &__hamburger {
+      &::before {
+        width: 24px;
+        height: 20px;
+        background-image: url("./../images/menu_big.svg");
+      }
+
+      &:hover {
+        margin-left: 34px;
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: inline-block;
+        }
+      }
+    }
+  }
 }
