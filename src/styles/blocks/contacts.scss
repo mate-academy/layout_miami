@@ -1,0 +1,71 @@
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+  gap: 50px;
+
+  @include onTablet() {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 120px;
+  }
+
+  &__input {
+    width: calc(100% - 40px);
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background-color: #f8f8fa;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    outline: none;
+    transition: color, border $transitionTiming;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    &:hover::placeholder,
+    &:focus::placeholder {
+      color: $textColor;
+    }
+
+    &:hover {
+      border-color: $hoverBorderColor;
+    }
+
+    &:focus {
+      border-color: $textColor;
+    }
+
+    &-textarea {
+      height: 150px;
+      font-family: "Inter", sans-serif;
+      color: $textColor;
+      border-radius: 16px;
+      background-color: #f8f8fa;
+      resize: none;
+    }
+  }
+
+  &__region {
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    color: #9fadc2;
+    padding-bottom: 8px;
+  }
+
+  &__info {
+    text-decoration: none;
+    color: $textColor;
+
+    &:hover {
+      color: #8a9fda;
+    }
+  }
+}
