@@ -1,0 +1,60 @@
+@import "../utils/variables.scss";
+
+.icon {
+  display: block;
+  height: $sizeIcon;
+  width: $sizeIcon;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    height: $sizeIconDesktop;
+    width: $sizeIconDesktop;
+  }
+
+  &-phone {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        display: block;
+        top: 50%;
+        width: max-content;
+        padding: 15px 20px 15px 0;
+        transition: all $transitionTiming * 1.5 ease-in-out;
+        transform: translate(-100%, -50%);
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1.33;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $textColor;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &-menu {
+    background-image: url(../images/icon-burger-menu.svg);
+    transition: all $transitionTiming * 1.5 ease-in-out;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross-black.svg);
+  }
+}
