@@ -1,4 +1,7 @@
 .place {
+  &__photos {
+
+  }
   &__title {
     padding: 8px 0 48px;
     text-align: center;
@@ -14,7 +17,8 @@
     overflow: hidden;
 
     &::after {
-      display: block;
+      display: grid;
+      grid-row: 1 / 3;
       content: "";
       padding-bottom: 100%;
     }
@@ -29,8 +33,8 @@
       padding-bottom: 0;
 
       &:hover {
-        transition: transform 1.5s ease-in-out;
-        transform: scale(1.2);
+        transition: transform 1.5s;
+        transform: scale(1.1);
       }
     }
   }
@@ -39,18 +43,26 @@
     position: absolute;
     height: 100%;
     width: 100%;
-
     object-fit: cover;
     object-position: center;
+
+    &-for-telephone {
+      @media (max-width:743px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
     &-noTablet {
       @include onTablet {
         display: none;
         height: 100%;
+        margin: 0;
       }
 
       @include onDekstop {
-        display: grid;
+        display: block;
+
       }
     }
   }

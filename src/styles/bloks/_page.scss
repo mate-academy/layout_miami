@@ -1,7 +1,9 @@
 * {
   margin: 0;
 }
-
+.wrapper {
+  display: flex;
+}
 .page {
   font-family: "Cinzel", serif;
   font-style: normal;
@@ -10,6 +12,10 @@
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -28,6 +34,13 @@
   &__section {
     margin-top: 100px;
 
+    &--input {
+      @include onTablet {
+        margin-top: 48px;
+        grid-row: 3 / 1;
+      }
+    }
+
     @include onTablet {
       margin-top: 140px;
     }
@@ -44,18 +57,11 @@
       letter-spacing: -1.5px;
       color: $color-text;
 
-      &::before {
-        content: "Plan your visit";
-        color: $colorRed;
-        font-style: normal;
-        font-weight: 700;
-        padding-bottom: 2px;
-        font-size: 12px;
-        line-height: 140%;
-        display: block;
-      }
-
       @include onTablet {
+        font-size: 48px;
+        line-height: 48px;
+      }
+      @include onDekstop {
         font-size: 48px;
         line-height: 48px;
       }
@@ -109,6 +115,11 @@
         font-size: 48px;
         line-height: 48px;
       }
+
+      @include onDekstop {
+        font-size: 48px;
+        line-height: 48px;
+      }
     }
 
     &-gallery {
@@ -129,6 +140,17 @@
     display: flex;
   }
 
+  &__time {
+    padding: 16px 0 ;
+  }
+
+  &__days {
+    padding: 15px 16px;
+    &--last-span{
+      padding-bottom: 24px;
+    }
+  }
+
   &__title {
     font-style: normal;
     font-weight: 700;
@@ -144,15 +166,14 @@
       color: $color-text;
     }
 
-    &-mini {
-      padding: 16px 0;
+    &--mini {
       font-style: normal;
       font-weight: 700;
       font-size: 24px;
       line-height: 30px;
     }
 
-    &-under {
+    &--under {
       font-weight: 700;
       font-size: 12px;
       line-height: 140%;
@@ -180,3 +201,4 @@
     }
   }
 }
+
