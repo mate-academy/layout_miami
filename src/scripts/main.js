@@ -7,3 +7,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  event.target.reset();
+});
