@@ -1,0 +1,87 @@
+.header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/photos/header_img_320.png);
+
+  @include onTablet {
+    background-image: url(../images/photos/header_744.png);
+  }
+
+  @include onDesctop {
+    background-image: url(../images/photos/header_1020.png);
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+    font-style: italic;
+    font-weight: 800;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesctop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      height: 27px;
+      width: 32px;
+      color: #292929;
+      background-image: url(../images/sound_320.png);
+      margin-bottom: 16px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onTablet {
+        background-image: url(../images/sound_744.png);
+        height: 76px;
+        width: 63px;
+      }
+    }
+  }
+
+  &__menu-opener {
+
+    @include onTablet {
+      background-image: url(../images/menu.png);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        color: #292929;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
