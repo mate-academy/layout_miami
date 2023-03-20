@@ -1,3 +1,5 @@
+Result: [DEMO LINK](https://yaroslav-kononenko.github.io/layout_miami/)
+
 # Miami landing page
 
 You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
