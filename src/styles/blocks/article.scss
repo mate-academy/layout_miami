@@ -1,9 +1,15 @@
 .article {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  filter: blur(5px);
+  transition: transform 1.5s;
 
   &__image {
     width: 280px;
     height: 280px;
     margin-bottom: 32px;
+    transition: transform $transition-speed ease-in-out;
   }
 
   &__text {
@@ -52,10 +58,21 @@
     &__image {
       width: 320px;
       height: 320px;
+
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
     }
 
     &__text--description {
       width: clamp(23ch, 70%, 45ch);
     }
   }
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
 }
