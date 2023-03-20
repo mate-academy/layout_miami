@@ -1,6 +1,6 @@
 # BOSE Landing Page
 
-[DEMO LINK](https://Zibi95.github.io/layout_miami/)
+[DEMO LINK](https://Zibi95.github.io/layout_bose/)
 
 This Landing Page was built as a simple example of a responsive and visually pleasing website using HTML and SCSS following BEM methodology.
 
