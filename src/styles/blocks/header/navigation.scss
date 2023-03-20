@@ -1,0 +1,58 @@
+@mixin link-hover {
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: $main-color;
+  padding-bottom: 5px;
+
+  &:hover {
+    border-bottom: 1px solid $main-color;
+  }
+}
+
+.navigation {
+  height: 100vh;
+  min-width: 320px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+  background-color: #e8eff9;
+  padding: var(--padding-top) var(--padding-horizontal) 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__controls {
+    margin-bottom: 55px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__list {
+    @include flex-column;
+    gap: 30px;
+    margin-bottom: $spacing;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    @include link-hover;
+  }
+
+  &__phone {
+    line-height: 27px;
+
+    &--border {
+      font-size: 12px;
+      @include link-hover;
+    }
+  }
+}

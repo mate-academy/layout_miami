@@ -1,0 +1,49 @@
+.header {
+  @include grid-for-mobile;
+  min-width: 320px;
+  grid-template-rows: 1fr 1fr;
+  justify-content: space-between;
+  height: var(--height);
+  padding: var(--padding-top) var(--padding-horizontal) 0;
+  background-image: url("../../src/images/header.jpg");
+  background-size: cover;
+  background-position: 25%;
+
+  @include on-tablets {
+    @include grid-for-tablets;
+  }
+
+  &__controls {
+    grid-column: span 2;
+
+    @include on-tablets {
+      grid-column: span 6;
+    }
+  }
+
+  &__title {
+    grid-column: span 2;
+    margin-bottom: var(--margin-bottom-title);
+    align-self: flex-end;
+
+    &::before {
+      display: block;
+      content: "";
+      width: 30px;
+      height: 25px;
+      background-image: url("../../src/images/title_svg.svg");
+      background-size: contain;
+      margin-bottom: var(--margin-bottom-before);
+    }
+
+    @include on-tablets {
+      grid-column: span 4;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        background-image: url("../../src/images/sound_waves.svg");
+      }
+    }
+  }
+}

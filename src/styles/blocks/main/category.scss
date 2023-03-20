@@ -1,0 +1,42 @@
+.category {
+  @include grid-for-mobile;
+
+  @include on-tablets {
+    @include grid-for-tablets;
+  }
+
+  &__square {
+    position: relative;
+    padding-top: var(--square-height);
+    margin-bottom: 15px;
+
+    @include on-tablets {
+      &--big {
+        grid-column: span 4;
+      }
+
+      &--small {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__image {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      border-radius: 50px;
+    }
+  }
+
+  &__title {
+    grid-column: span 2;
+    margin-bottom: $spacing;
+  }
+}

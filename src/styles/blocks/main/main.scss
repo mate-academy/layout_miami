@@ -1,0 +1,39 @@
+.main {
+  @include grid-for-mobile;
+  min-width: 320px;
+  max-width: 1260px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 120px 20px 0;
+
+  @include on-tablets {
+    @include grid-for-tablets;
+    padding: 120px 70px 0;
+    justify-content: center;
+  }
+
+  &__title {
+    grid-column: span 2;
+    margin-bottom: $spacing;
+
+    @include on-tablets {
+      grid-column: 2 / span 4;
+      margin-bottom: 65px;
+
+      &--left {
+        grid-column: 1 / span 3;
+      }
+    }
+  }
+
+  &__section {
+    grid-column: 1/-1;
+    margin-bottom: 120px;
+
+    @include on-tablets {
+      &--grid {
+        @include grid-for-tablets;
+      }
+    }
+  }
+}
