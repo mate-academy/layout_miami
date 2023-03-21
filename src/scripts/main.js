@@ -2,16 +2,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable strict */
 
-/* var form=document.getElementById("form");
-function submitForm(event) {
-  event.preventDefault();
-} */
-const submit = document.querySelector('#submit');
+const myform = document.querySelector('#form');
+myform.addEventListener('submit', submit, false);
 
-submit.addEventListener('click', submitClick, false);
-
-function submitClick(event) {
+function submit(event) {
   event.preventDefault();
+  myform.reset();
 }
 
 window.addEventListener('hashchange', () => {
