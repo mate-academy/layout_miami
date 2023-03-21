@@ -1,6 +1,68 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $transitions;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin top-actions {
+  --top-height: 18px;
+
+  display: grid;
+
+  grid-template-columns: 1fr var(--top-height) var(--top-height);
+  grid-template-rows: var(--top-height);
+  gap: 30px;
+  align-items: center;
+
+  @include mediumScreens() {
+    --top-height: 24px;
+  }
+}
+
+@mixin scroll-actions {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &--with-menu {
+    overflow: hidden;
+  }
+}
+
+@mixin sectionTitle {
+  margin-bottom: 48px;
+
+  text-align: center;
+
+  --size-font-section: 32px;
+  font-weight: 700;
+  font-size: var(--size-font-section);
+  line-height: var(--size-font-section);
+  letter-spacing: -1.5px;
+
+  @include mediumScreens {
+    margin-bottom: 64px;
+
+    --size-font-section: 40px;
+  }
+
+  @include mediumScreens {
+    --size-font-section: 48px;
+  }
+}
+
+@mixin mediumScreens {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin largeScreens {
+  @media (min-width: 1024px) {
+    @content;
   }
 }
