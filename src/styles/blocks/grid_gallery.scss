@@ -1,0 +1,158 @@
+.grid {
+  @include onTablets {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__image {
+    @extend %bg-size-cover-repeat;
+    display: inline-block;
+    margin-right: 20px;
+    width: 45%;
+    height: 130px;
+    transition: transform 0.3s, border-radius 0.3s;
+
+    &:nth-child(3n - 1) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      border-radius: 40px;
+      transform: scale(1.1);
+    }
+
+    @for $grid-col-start from 1 through 2 {
+      @for $grid-col-end from $grid-col-start through 2 {
+        &--#{$grid-col-start}-#{$grid-col-end} {
+          grid-column: #{$grid-col-start} / #{$grid-col-end + 1} ;
+        }
+      }
+    }
+
+    @include onTablets {
+      width: auto;
+      height: 187px;
+      margin-right: 0;
+
+      @for $grid-col-start from 1 through 6 {
+        @for $grid-col-end from $grid-col-start through 6 {
+          &--tablets-#{$grid-col-start}-#{$grid-col-end} {
+            @include onTablets {
+              grid-column: #{$grid-col-start} / #{$grid-col-end + 1} ;
+            }
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+
+      @for $grid-col-start from 1 through 12 {
+        @for $grid-col-end from $grid-col-start through 12 {
+          &--desktop-#{$grid-col-start}-#{$grid-col-end} {
+            grid-column: #{$grid-col-start} / #{$grid-col-end + 1} ;
+          }
+        }
+      }
+    }
+
+    &--earbuds {
+      background-image: url(../images/earbuds.png);
+    }
+
+    &--headphones {
+      background-image: url(../images/headphones.png);
+    }
+
+    &--speaker1 {
+      background-image: url(../images/speaker1.png);
+    }
+
+    &--speaker2 {
+      background-image: url(../images/speaker2.png);
+    }
+
+    &--blue-sunglass {
+      background-image: url(../images/blue_sunglassx.png);
+    }
+
+    &--black-sunglass {
+      background-image: url(../images/black_sunglass.png);
+    }
+  }
+
+  &__caption {
+    margin: 0 0 48px;
+    font-weight: 700;
+    line-height: 22px;
+
+    @for $grid-col-start from 1 through 12 {
+      @for $grid-col-end from $grid-col-start through 12 {
+        &--#{$grid-col-start}-#{$grid-col-end} {
+          grid-column: #{$grid-col-start} / #{$grid-col-end} ;
+        }
+      }
+    }
+
+    @include onTablets {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34px;
+    }
+  }
+
+  &__button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid transparent;
+    border-radius: 40px;
+    height: 56px;
+    padding: 0 48px;
+    font-weight: 700;
+    line-height: 27px;
+    background-color: $color-black;
+    color: $color-white;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $color-black;
+      background-color: $color-white;
+      color: $color-black;
+    }
+
+    &:active {
+      background-color: #111;
+      color: $color-white;
+    }
+
+    @include onTablets {
+      @for $grid-col-start from 1 through 6 {
+        @for $grid-col-end from $grid-col-start through 6 {
+          &--tablets-#{$grid-col-start}-#{$grid-col-end} {
+            @include onTablets {
+              grid-column: #{$grid-col-start} / #{$grid-col-end + 1} ;
+            }
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      @for $grid-col-start from 1 through 12 {
+        @for $grid-col-end from $grid-col-start through 12 {
+          &--desktop-#{$grid-col-start}-#{$grid-col-end} {
+            grid-column: #{$grid-col-start} / #{$grid-col-end + 1} ;
+          }
+        }
+      }
+    }
+  }
+}
