@@ -1,0 +1,61 @@
+.place {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__photo--container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 130px;
+    overflow: visible;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onIpad {
+      height: 187px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+      z-index: 2;
+    }
+
+    &--6 {
+      object-position: 85%;
+    }
+  }
+
+  &__description {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include onIpad {
+      font-size: 24px;
+    }
+  }
+}

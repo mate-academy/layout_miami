@@ -1,0 +1,131 @@
+.header {
+  background-image: url(../images/image-b.jpg);
+  background-size: cover;
+  background-position: 40%;
+  background-repeat: no-repeat;
+
+  @include onIpad {
+    background-image: url(../images/background-image.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPadding 20px 94px;
+
+    @include onIpad {
+      padding-bottom: 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/burger320.svg);
+    transition: 0.3s;
+
+    @include onIpad {
+      width: 32px;
+      height: 32px;
+      background-image: url(../images/burger-744.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    @include onDesktop {
+      &:hover {
+        background-image: url(../images/Icon-Burger-menu-hover1024.svg);
+      }
+    }
+  }
+
+  &-call {
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    background-image: url(../images/Vector.svg);
+
+    @include onIpad {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        color: $c-black;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        padding-right: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1.5px;
+    color: $c-black;
+
+    @include onIpad {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/Vector2.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 16px;
+
+      @include onIpad {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/Sound-waves.svg);
+      }
+    }
+  }
+}
