@@ -1,0 +1,62 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTab {
+    padding: 0 72px;
+  }
+
+  @include onDeskTop {
+    padding: 0 120px;
+  }
+
+  &--special {
+    @include forThreeRowInView(3);
+  }
+
+  @include onTab {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDeskTop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &__item {
+    @for $index-start-column from 1 through 2 {
+      @for $index-end-column from $index-start-column to 3 {
+        &--#{$index-start-column}-#{$index-end-column} {
+          grid-column: #{$index-start-column} / #{$index-end-column  + 1};
+        }
+      }
+    }
+  }
+
+  @include onTab {
+    &__item_tab {
+      display: block;
+      @for $index-start-column from 1 through 6 {
+        @for $index-end-column from $index-start-column to 7 {
+          &--#{$index-start-column}-#{$index-end-column} {
+            grid-column: #{$index-start-column} / #{$index-end-column  + 1};
+          }
+        }
+      }
+    }
+  }
+
+  @include onDeskTop {
+    &__item_desk {
+      @for $index-start-column from 1 through 12 {
+        @for $index-end-column from $index-start-column to 13 {
+          &--#{$index-start-column}-#{$index-end-column} {
+            grid-column: #{$index-start-column} / #{$index-end-column  + 1};
+          }
+        }
+      }
+    }
+  }
+}

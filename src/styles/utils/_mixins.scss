@@ -1,6 +1,46 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTab {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDeskTop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin forThreeRowInView($threeRow) {
+  grid-template-columns: repeat($threeRow, 1fr);
+  column-gap: 20px;
+
+  @include onDeskTop {
+    grid-template-columns: repeat($threeRow, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin forView($height) {
+  position: relative;
+  width: 100%;
+  gap: 20px;
+
+  overflow: hidden;
+  max-height: 320px;
+  margin-bottom: 24px;
+
+  @include onTab {
+    padding-bottom: 0;
+    height: $height;
+  }
+
+  @include onDeskTop {
+    height: 320px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
   }
 }
