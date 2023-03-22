@@ -1,4 +1,7 @@
 .grid {
+  display: flex;
+  flex-wrap: wrap;
+
   @include onTablets {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -6,14 +9,16 @@
   }
 
   @include onDesktop {
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
 
   &__image {
     @extend %bg-size-cover-repeat;
     display: inline-block;
+    flex-grow: 1;
     margin-right: 20px;
-    width: 45%;
+    min-width: 110px;
     height: 130px;
     transition: transform 0.3s, border-radius 0.3s;
 
@@ -88,6 +93,7 @@
   }
 
   &__caption {
+    flex-basis: 100%;
     margin: 0 0 48px;
     font-weight: 700;
     line-height: 22px;

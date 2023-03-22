@@ -10,8 +10,10 @@ window.addEventListener('hashchange', () => {
 
 const buttonForm = document.getElementsByClassName('form__button');
 const inputsForm = document.getElementsByClassName('form__input');
+const galleryButton = document.getElementsByClassName('grid__button');
 
 buttonForm[0].addEventListener('click', buttonNotReload);
+galleryButton[0].addEventListener('click', () => alert('gallery'));
 
 function buttonNotReload(event) {
   event.preventDefault();
