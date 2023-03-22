@@ -8,17 +8,12 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const buttonForm = document.getElementsByClassName('form__button');
-const inputsForm = document.getElementsByClassName('form__input');
 const galleryButton = document.getElementsByClassName('grid__button');
+const form = document.getElementsByClassName('form');
 
-buttonForm[0].addEventListener('click', buttonNotReload);
-galleryButton[0].addEventListener('click', () => alert('gallery'));
-
-function buttonNotReload(event) {
+form[0].addEventListener('submit', (event) => {
   event.preventDefault();
+  form[0].reset();
+});
 
-  for (let i = 0; i < inputsForm.length; i++) {
-    inputsForm[i].value = '';
-  }
-}
+galleryButton[0].addEventListener('click', () => alert('hi'));
