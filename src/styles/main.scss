@@ -1,24 +1,135 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", "Roboto", serif;
 
   &__body {
     margin: 0;
   }
 }
 
-.header {
-  background-image: url(../images/image-header.png);
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-    width: 18px;
-    height: 12px;
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
+.logo {
+  &__image {
+    height: 46px;
+
+    @include onDesktop {
+      height: 87px;
     }
   }
 }
 
-// .logo {
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
 
-// }
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.header {
+  background-image: url(../images/image-header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 0 288px;
+
+    @include onDesktop {
+      padding: 25px 0 482px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__right-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    margin-right: 27px;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      margin-right: 59px;
+      &::before {
+        content: "The Met Fifth Avenue\A+1 212-535-7710\A"
+          "The Met Cloisters\A+1 212-923-3700";
+        position: relative;
+        white-space: pre-wrap;
+        text-align: right;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
