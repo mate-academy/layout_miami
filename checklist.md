@@ -7,7 +7,7 @@
 7. When clicking on any location / address - prevent errors and make it to open location in Google Maps
 8. Pictures in Gallery should increase on hover
 9. Location-related addresses / links / images should open google maps in a new tab `target="_blank"`
-10. Apply :hover effect for images on page (testimonials / gallery, other sections).
+10. Apply `:hover` effect for images on page (testimonials / gallery, other sections).
 11. Make sure everything looks neat on mobile and without horizontal scrolling
 12. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
 13. Placeholders in the forms suggest what to enter; apply validation of the form fields (`required`, `email / tel etc.`), then it is clear in what format to enter the data
@@ -29,7 +29,7 @@
 
       ...
     ```
-15. To disable page scrolling under the menu add the next code
+18. To disable page scrolling under the menu add the next code
     ```css
     .page__body--with-menu {
       overflow: hidden;
@@ -44,5 +44,5 @@
       }
     });
     ```
-16. Remember to reset default margins for headings (h1, h2, h3, etc.).
+19. Remember to reset default margins for headings (h1, h2, h3, etc.).
 * Only for Miami: Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
