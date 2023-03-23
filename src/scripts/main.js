@@ -8,12 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const galleryButton = document.getElementsByClassName('grid__button');
 const form = document.getElementsByClassName('form');
 
 form[0].addEventListener('submit', (event) => {
   event.preventDefault();
   form[0].reset();
 });
-
-galleryButton[0].addEventListener('click', () => alert('hi'));
