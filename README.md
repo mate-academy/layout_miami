@@ -1,6 +1,6 @@
 # Miami landing page
 
-In this task, you will learn how to implement a landing page. To do that:
+In this task, you will learn how to implement a landing page. To do that:sdsds
 
 - choose a landing page design from the list below;
   - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
