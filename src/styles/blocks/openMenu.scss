@@ -1,4 +1,7 @@
 .openMenu {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -6,15 +9,54 @@
   transform: translateX(-100%);
 
   transition: transform 0.3s;
-
-  &:target {
-    transform: translate(0);
-  }
-
-  box-sizing: border-box;
   width: 320px;
   background-color: $c-main-accent;
   height: 100vh;
+
+  &:target {
+    transform: translate(0);
+    min-width: 320px;
+    width: 100vw;
+  }
+
+  &__lists {
+    @media (max-width: 743px) {
+      margin-top: 25px;
+      margin-left: 20px;
+    }
+    @media (min-width: 744px) {
+      margin-top: 32px;
+      margin-left: 72px;
+    }
+    @media (min-width: 1260px) {
+      margin-top: 32px;
+      margin-left: 121px;
+    }
+  }
+
+  &__cross {
+    display: none;
+    @media (max-width: 743px) {
+      width: 16px;
+      margin-top: 40px;
+      margin-right: 24px;
+    }
+
+    @media (min-width: 744px) {
+      width: 16px;
+      margin-top: 47px;
+      margin-right: 76px;
+    }
+    @media (min-width: 1260px) {
+      width: 21px;
+      margin-top: 53px;
+      margin-right: 125px;
+    }
+  }
+
+  &:target &__cross {
+    display: inline-block;
+  }
 
   &__upperList {
     display: flex;
