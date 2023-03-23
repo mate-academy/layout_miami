@@ -1,5 +1,4 @@
 .gallery {
-  margin-bottom: 48px;
 
   &__picture {
     display: grid;
@@ -8,12 +7,51 @@
     margin: 24px 0;
     min-height: 130px;
 
+    @media (min-width: 600px) {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      min-height: 186px;
+    }
+
+    @media (min-width: 1000px) {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      min-height: 20rem;
+    }
+
     &--3 {
       display: grid;
       grid-template-columns: repeat(3, 87px);
       gap: 8px;
       margin: 24px 0;
       min-height: 87px;
+      min-width: 87px;
+
+      @media (min-width: 600px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 284px;
+      }
+
+      @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        min-height: 284px;
+      }
+    }
+
+    &--rev {
+      @media (min-width:600px) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        min-height: 186px;
+      }
+
+      @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        min-height: 284px;
+      }
     }
   }
 
@@ -27,6 +65,30 @@
         background-repeat: no-repeat;
       }
     }
+
+    @media (min-width: 600px) {
+
+      min-height: 186px;
+      width: 100%;
+
+      @for $i from 1 through 7 {
+        &--#{$i} {
+          background-image: url(../images/photos/desktop/#{$i}.jpg);
+          background-repeat: no-repeat;
+        }
+      }
+
+      &--5 {
+        display: none;
+      }
+    }
+
+    @media (min-width:1000px) {
+      &--5 {
+        display: inline-block;
+      }
+    }
+
     /*
     &--1 {
       background-image: url(../images/photos/mobile/1.jpg);
