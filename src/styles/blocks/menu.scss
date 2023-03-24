@@ -1,13 +1,18 @@
 .menu {
   background-color: $color-white-b;
   padding: 37px 20px;
-  min-height: 100vh;
+  overflow-y: auto;
   position: fixed;
+  height: 100vh;
   transition: transform $transition-speed ease-in-out;
   top: 0;
   right: 0;
   left: 0;
   transform: translateY(-100%);
+
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
 
   @include grid();
 
@@ -47,9 +52,11 @@
     padding-bottom: 8px;
     text-transform: uppercase;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color $transition-speed;
 
     &:hover {
-      border-bottom: 1px solid $color-main;
+      border-color: $color-main;
     }
   }
 

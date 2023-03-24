@@ -53,20 +53,29 @@
 
   &__phone {
     &-label {
-      color: $color-main;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-
-      position: absolute;
-      transform: translateX(calc(-100% - 20px)) translateY(5px);
+      display: none;
     }
 
-    &:not(:hover) &-label {
-      @include visually-hidden();
+    @include desktop() {
+      &-label {
+        display: inline-block;
+        opacity: 0;
+        color: $color-main;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: opacity 2s;
+        position: absolute;
+        transform: translateX(calc(-100% - 20px)) translateY(5px);
+      }
+
+      &:hover &-label {
+        opacity: 1;
+      }
     }
+
   }
 
   @include tablet() {
