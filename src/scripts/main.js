@@ -2,7 +2,7 @@
 // ---------side-navigation----------------
 
 let navIsActive = false;
-const menuIcon = document.querySelector('.header__icons-menu-icon');
+const menuIcon = document.querySelector('.header__menu-icon');
 const navLinks = document.querySelectorAll('.sidenav__link');
 
 menuIcon.addEventListener('click', openNav);
