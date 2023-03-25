@@ -1,7 +1,265 @@
 @import "utils";
-@import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin inDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin inIpad {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+ 
+.header {
+  background-image: url(../images/header-mobile.png);
+  background-position: 40% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #292929;
+  
+
+  @include inIpad {
+    background-image: url(../images/header-ipad.png);
+  }
+
+  @include inDesktop {
+    background-image: url(../images/header-desktop.png);
+  }
+  
+  &__content {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 40px 0 96px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include inIpad {
+      font-size: 40px;
+    }
+
+    @include inDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      background-image: url(../images/sound-mobile.png);
+      height: 28px;
+      width: 32px;
+      display: block;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-bottom: 16px;
+
+      @include inIpad {
+        background-image: url(../images/sound-desktop.png);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include inIpad {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 50%);
+        top: 50%;
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        padding-right: 20px;
+      
+        color: initial;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+.page {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  margin: 0;
+  background-color: #e5e5e5;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+}
+
+.logo {
+  width: 130px;
+  grid-column: 1 / 2;
+
+  @include inIpad {
+    width: 100%;
+  }
+  &__img {
+    display: block;
+  }
+}
+
+.icon {
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+
+  &--phone {
+    background-image: url(../images/phone.png);
+    grid-column: 2 / 3;
+  }
+
+  &--menu {
+    grid-column: 3 / 4;
+    background-image: url(../images/menu.png);
+    
+    &:hover {
+      background-image: url(../images/menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/menu-close.png);
+    grid-column: 3 / 4;
+  }
+}
+
+.top__action {
+  $width--icon:18px;
+  display: grid;
+  grid-template-columns: 1fr $width--icon $width--icon;
+  column-gap: 27px;
+  align-items: center;
+
+  @include inIpad {
+    $width--icon:24px;
+    grid-template-columns: 1fr $width--icon $width--icon;
+  }
+}
+
+.container {
+  padding: 0 20px;
+  max-width: 1020px;
+  margin: 0 auto;
+
+  @include inIpad {
+    padding: 0 72px;
+  }
+}
+
+.menu {
+  background-color: #e8eff9;
+  height: 100vh;
+
+  &__content {
+    padding: 40px 0;
+
+    @include inIpad {
+      padding: 48px 0;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0 0 40px;
+  }
+
+  &__item {
+    list-style: none;
+    margin-bottom: 24px;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: initial;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    
+    &:hover {
+      border-color: initial;
+    }
+  }
+
+  &__top {
+    &--padding {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    display: block;
+    color: initial;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+    &--margin {
+      margin-bottom: 16px;
+    }
+
+    &--border {
+      padding-bottom: 8px;
+      border-bottom: 1px solid;
+      width: max-content;
+    }
+  }
 }
