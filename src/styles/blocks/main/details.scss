@@ -29,13 +29,62 @@
   }
 
   &__photo {
+    transition: 1s;
+
+    &:hover {
+      scale: (1.07);
+      cursor: zoom-in;
+    }
+
     &--big,
     &--small {
       margin-right: 24px;
     }
+
+    &--big,
+    &--small,
+    &--last {
+      @media (max-width: 650px) {
+        width: 324px;
+      }
+    }
   }
 
-  // @media (min-width: 745px) {
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 324px;
+    border-radius: 40px;
+    background-color: white;
+    transition: 1s;
+    animation: wiggle 2s linear infinite;
 
-  // }
+    &:hover {
+      background-color: $pressed-button-color;
+      scale: (1.1);
+      animation: none;
+    }
+
+    @media (max-width: 745px) {
+      & {
+        width: 500px;
+        height: 46px;
+      }
+    }
+
+    @media (max-width:650px) {
+      & {
+        scale: (0.9);
+      }
+    }
+  }
+
+  &__link {
+    color: $c-gray;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 60px;
+  }
 }
