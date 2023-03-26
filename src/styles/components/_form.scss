@@ -10,32 +10,41 @@
   }
 
   &__input {
-    padding: 14px 10px;
+    padding: 13px 10px;
     font-family: inherit;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: $from-input;
+    color: $txt-dark;
     text-transform: uppercase;
-    border: 0;
     background-color: $from-input-bg;
+    border: 1px solid $from-input-bg;
     outline: none;
+    transition: border 0.4s linear;
 
-    &.error + .paragraph--action {
-      display: block;
+    &--error {
+      border: 1px solid $red-pressed;
+    }
+
+    &::placeholder {
+      font-family: inherit;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: $from-input-placeholder;
+    }
+
+    &:focus {
+      border: 1px solid $txt-dark;
+    }
+
+    &:hover::placeholder {
+      color: $txt-dark;
     }
   }
-
-  &__input::placeholder {
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: $from-input;
-  }
-
+  
   &__textarea {
     min-width: 100%;
     width: 100%;
@@ -48,11 +57,24 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: $from-input;
+    color: $txt-dark;
     text-transform: uppercase;
-    border: 0;
     background-color: $from-input-bg;
+    border: 1px solid $from-input-bg;
     outline: none;
+    transition: border 0.4s linear;
+
+    &--error {
+      border: 1px solid $red-pressed;
+    }
+
+    &:focus {
+      border: 1px solid $txt-dark;
+    }
+
+    &:hover::placeholder {
+      color: $txt-dark;
+    }
   }
 
   &__btn {
@@ -69,12 +91,29 @@
     color: $txt-white;
     margin: 16px auto 0;
     padding: 12.5px 0;
+    transition: background-color 0.4s linear;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+
+    &:active {
+      background-color: $red-pressed;
+    }
   }
   
   &__error {
     display: none;
     color: red;
     font-size: 10px;
+    margin-top: -27px;
+    transform: translateY(13px);
+    animation: moveInTopFormError 0.4s linear;
+
+    &--show {
+      display: block;
+    }
   }
 }
 
