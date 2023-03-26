@@ -8,6 +8,14 @@ window.addEventListener('hashchange', () => {
   }
 });
 
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.documentElement.classList.add('page__body--with-menu');
+  } else {
+    document.documentElement.classList.remove('page__body--with-menu');
+  }
+});
+
 const form = document.querySelector('#form');
 
 form.addEventListener('submit', function(event) {
