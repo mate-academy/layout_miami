@@ -1,10 +1,5 @@
 .gallery {
   &__photos {
-    display: grid;
-    column-gap: 24px;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 40px 0 24px;
-
     @include onTablet {
       grid-template-columns: repeat(6, 1fr);
     }
@@ -12,6 +7,11 @@
     @include onDesktop {
       grid-template-columns: repeat(12, 1fr);
     }
+
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 40px 0 24px;
 
     &--middle {
       display: flex;
@@ -33,13 +33,14 @@
 
   &__photo {
     position: absolute;
+    transition: transform 0.3s;
     height: 100%;
     width: 100%;
     object-fit: cover ;
-    transition: transform 0.3s;
 
     &:hover {
       transform: scale(1.1);
+      z-index: 1;
     }
 
     &--1 {
@@ -52,9 +53,9 @@
 
     &--container {
       position: relative;
+      box-sizing: border-box;
       width: 100%;
       max-height: 130px;
-      box-sizing: border-box;
 
       @include onTablet {
         max-height: 186px;
@@ -66,8 +67,8 @@
 
       &::after {
         content: "";
-        padding-bottom: 100%;
         display: block;
+        padding-bottom: 100%;
       }
 
       &--1 {

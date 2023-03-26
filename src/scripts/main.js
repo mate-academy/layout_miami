@@ -1,6 +1,6 @@
 'use strict';
 
-const pageReload = document.querySelector('#form-reload');
+const pageReload = document.querySelector('#form');
 
 pageReload.addEventListener('submit', function formReload(event) {
   event.preventDefault();
