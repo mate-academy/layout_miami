@@ -12,6 +12,10 @@
     @content;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
  
 .header {
   background-image: url(../images/header-mobile.png);
@@ -127,6 +131,26 @@
     &:target {
       transform: translateX(0);
     }
+  }
+
+  &__section-title  {
+    text-align: center;
+    margin-bottom: 48px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+
+    @include inIpad {
+      font-size: 40px;
+    }
+
+    @include inDesktop {
+      font-style: 48px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 120px;
   }
 }
 
@@ -262,4 +286,163 @@
       width: max-content;
     }
   }
+}
+
+.footer {
+  background-image: url(../images/footer.png);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+
+  @include inIpad {
+    height: 400px;
+  }
+
+  @include inDesktop {
+    height: 480px;
+  }
+}
+
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include inIpad{
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include inDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--desktop {
+    display: block;
+
+    @include inIpad {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from 1 through 12 {
+        &--ipad--#{$start}-#{$end} {
+          @include inIpad {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+
+        &--desktop--#{$start}-#{$end} {
+          @include inDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.recommended {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__photo {
+    width: 100%;
+    
+    &-container {
+      max-width: 400px;
+      overflow: hidden;
+    }
+  }
+
+  &__name {
+    margin: 0 0 8px;
+  }
+
+  &__description {
+    margin-bottom: 12px;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: initial;
+  font-size: initial;
+}
+
+.categoria {
+  
+}
+
+.gallery {
+  &__photo-container {
+    max-height: 190px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-bottom: 100%;
+    } 
+
+    @include inDesktop {
+      min-height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  &__place {
+    margin-bottom: 40px;
+
+    @include inIpad {
+      margin-bottom: 64px;
+    }
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__description {
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
+
+.place {
+  &__photos {
+    margin-bottom: 16px;
+  }
+}
+
+.button {
+  height: 56px;
+  width: 100%;
+  background-color: #292929;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
 }
