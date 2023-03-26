@@ -13,7 +13,7 @@ const formInputMessage = document.querySelector('#message');
 const formInputNameError = document.querySelector('.form__error--name');
 const formInputEmailError = document.querySelector('.form__error--email');
 const formInputMessageError = document.querySelector('.form__error--message');
-const regexEmail = /^[-\w]+@([-\w]+\.)+[a-z]+$/i;
+const regexEmail = /^[-\w.]+@([-\w]+\.)+[a-z]+$/i;
 
 const removeClasses = () => {
   menuNavigation.classList.remove('nav--is-open');
@@ -50,6 +50,16 @@ const checkData = (e) => {
   } else {
     formInputMessage.classList.remove('form__textarea--error');
     formInputMessageError.classList.remove('form__error--show');
+  }
+
+  if (
+    name.trim() !== ''
+    && regexEmail.test(email.trim())
+    && message.trim() !== ''
+  ) {
+    formInputName.value = '';
+    formInputEmail.value = '';
+    formInputMessage.value = '';
   }
 };
 
