@@ -1,6 +1,123 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin bold_700 ($size) {
+  font-weight: 700;
+  font-size: $size;
+}
+
+@mixin semi-bold_600 ($size) {
+  font-weight: 600;
+  font-size: $size;
+  line-height: $size;
+}
+
+@mixin regular_400 ($size) {
+  font-weight: 400;
+  font-size: $size;
+}
+
+@mixin semi-bold_500 ($size) {
+  font-weight: 500;
+  font-size: $size;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin padding-top-bottom ($top-size, $bottom-size) {
+  padding-top: $top-size;
+  padding-bottom: $bottom-size;
+}
+
+@mixin for-tablet ($size) {
+  @media (max-width: $size) {
+    @content;
   }
+}
+
+@mixin for-phone($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin s-picture-phone($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin box-shadow {
+  &:hover {
+    box-shadow: $e-box-shadow-hover;
+  }
+
+  &:active {
+    box-shadow: $e-box-shadow-active;
+  }
+
+  &:focus {
+    box-shadow: $e-box-shadow-active;
+    outline: none;
+  }
+}
+
+@mixin titles {
+  @include semi-bold_500(64px);
+  letter-spacing: -1.5px;
+  color: $c-main-white-color;
+
+  @include for-tablet(768px) {
+    @include semi-bold_500(48px);
+  }
+
+  @include for-phone(480px) {
+    @include semi-bold_500(32px);
+  }
+}
+
+@mixin s-image-size {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin form-input {
+  width: 411px;
+  height: 48px;
+  border-radius: 40px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  background-color: #f8f8fa;
+  font-family: $f-font-family;
+
+  @include for-tablet(768px) {
+    width: 288px;
+  }
+}
+
+@mixin link-decoration {
+  text-decoration: none;
+  color: $c-main-white-color;
+
+  &:active {
+    color: $c-main-white-color;
+  }
+
+  &:visited {
+    color: $c-main-white-color;
+  }
+
+  &::after {
+    color: $c-main-white-color;
+  }
+}
+
+@mixin image-hover-scale($size) {
+  &:hover {
+    transform: scale($size);
+  }
+}
+
+@mixin transition ($size) {
+  transition: transform $size;
 }

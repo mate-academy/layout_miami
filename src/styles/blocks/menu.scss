@@ -1,0 +1,105 @@
+.menu {
+  padding: 48px 200px;
+
+  @include for-tablet(768px) {
+    padding: 48px 100px;
+  }
+
+  @include for-phone(480px) {
+    padding: 24px 20px;
+  }
+
+  &__list {
+    text-transform: uppercase;
+    padding: 0 0 35px;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    @include for-phone(480px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 48px;
+
+    @include for-tablet(768px) {
+      margin-bottom: 35px;
+      width: 130px;
+    }
+
+    @include for-phone(480px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $c-main-dark-color;
+    @include bold_700(22px);
+
+    @include for-tablet(768px) {
+      @include semi-bold_600(22px);
+    }
+
+    &::after {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      height: 1px;
+      background-color: $c-main-dark-color;
+      content: "";
+      transition: opacity 0.7s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__telephone {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    flex-direction: column;
+    text-decoration: none;
+    color: $c-main-dark-color;
+    @include bold_700(16px);
+    transition: all 0.5s;
+
+    &:hover {
+      @include bold_700(22px);
+    }
+  }
+
+  &__number {
+    padding-bottom: 20px;
+  }
+
+  &__book {
+    width: max-content;
+    border-bottom: 1px solid $c-main-dark-color;
+    text-transform: uppercase;
+    @include bold_700(16px);
+  }
+
+  &__close-button {
+    position: absolute;
+    right: 130px;
+    top: 60px;
+
+    @include for-tablet(1024px) {
+      right: 100px;
+    }
+
+    @include for-phone(481px) {
+      top: 30px;
+      right: 50px;
+    }
+  }
+}
