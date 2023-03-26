@@ -7,6 +7,13 @@ const navLinks = document.querySelectorAll('.sidenav__link');
 
 menuIcon.addEventListener('click', openNav);
 
+document.addEventListener('keydown', (e) => {
+  if (e.keyCode === 27) {
+    navIsActive = true;
+    openNav();
+  }
+});
+
 function openNav() {
   if (navIsActive) {
     document.querySelector('.sidenav').style.left = '100%';
