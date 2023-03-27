@@ -1,13 +1,37 @@
 .aside {
-  background-color: #e5e5e5;
-  grid-column: 1/ 2;
-  grid-row: 1 / 3;
+  background-color: $c-gray;
   padding-top: 4.8rem;
-
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
   display: none;
+
+  &--isEnable {
+    animation-name: menu-animation;
+    animation-duration: 1.5s;
+    display: block ;
+    background-color: $c-gray;
+    padding-top: 4.8rem;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .header {
+
   &__list-menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -33,6 +57,7 @@
     grid-column: 1 /2;
     width: 18.7rem;
     height: 5.6rem;
+    filter: brightness(8) invert(1);
   }
 
   &__item-menu-btn {
@@ -44,13 +69,18 @@
     align-self: center;
     width: 3.2rem;
     height: 3.2rem;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
   }
 
   &__item-menu {
     grid-column: 1 / 2;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #1d1d1d;
+    color: $c-black;
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
@@ -59,9 +89,22 @@
   }
 
   &__item-menu-describe {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:link {
+      color: $c-black;
+    }
+
+    &:visited {
+      color: $c-black;
+    }
     &:hover {
-      border-bottom: solid 1px #1d1d1d;
+      border-bottom: solid 1px rgb(29, 29,  0.5);
       cursor: pointer;
+      transition-delay: 0.1s;
+      opacity: 0.8;
+
     }
   }
 
@@ -79,11 +122,19 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    color: #1d1d1d;
+    color: $c-black;
     text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__book-link {
-    border-bottom: solid 1px #1d1d1d;
+    border-bottom: solid 1px $c-black;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
