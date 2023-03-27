@@ -1,59 +1,172 @@
 .section {
-  padding: 100px $side-padding 0;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 20px 0;
+
+  @include for-tablet() {
+    padding: 140px 72px 0;
+  }
+
+  &__container {
+    @include for-tablet() {
+      display: grid;
+      justify-items: start;
+      align-items: start;
+      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item-1 {
+    @include for-tablet() {
+      display: grid;
+      justify-items: start;
+      align-items: start;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+
+  &__item-2 {
+    @include for-tablet() {
+      display: grid;
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+  }
 
   .title {
     margin: 0;
   }
 
   &__wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     padding: 24px 0;
+
+    @include for-tablet() {
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &--2 {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      padding: 24px 0;
+
+      @include for-tablet() {
+        gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   }
 
   &__photo {
-    width: 130px;
     height: 130px;
     background-repeat: no-repeat;
+    background-size: cover;
+
+    @include for-tablet() {
+      height: 186px;
+    }
 
     &--1 {
       background-image: url(../images/photos/old-masters-mobile.jpg);
+      grid-column-start: 1;
+      grid-column-end: 2;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/old-masters-tablet.jpg);
+        grid-column-end: 3;
+      }
     }
 
     &--2 {
       background-image: url(../images/photos/old-masters-portrait-mobile.jpg);
+      grid-column-start: 2;
+      grid-column-end: 3;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/portrait-tablet.jpg);
+        grid-column-start: 3;
+        grid-column-end: 4;
+      }
     }
 
     &--3 {
       background-image: url(../images/photos/wisdom-mobile.jpg);
       height: 87px;
+      grid-column-start: 1;
+      grid-column-end: 2;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/wisdom-tablet.jpg);
+        height: 284px;
+      }
     }
 
     &--4 {
       background-image: url(../images/photos/compassion-mobile.jpg);
       height: 87px;
+      grid-column-start: 2;
+      grid-column-end: 3;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/compassion-tablet.jpg);
+        height: 284px;
+      }
     }
 
     &--5 {
       background-image: url(../images/photos/power-mobile.jpg);
       height: 87px;
+      grid-column-start: 3;
+      grid-column-end: 4;
+
+      @include for-tablet() {
+        display: none;
+      }
     }
 
     &--6 {
       background-image: url(../images/photos/clocks-mobile.jpg);
+      grid-column-start: 1;
+      grid-column-end: 2;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/clocks-tablet.jpg);
+      }
     }
 
     &--7 {
       background-image: url(../images/photos/figurines-mobile.jpg);
+      grid-column-start: 2;
+      grid-column-end: 3;
+
+      @include for-tablet() {
+        background-image: url(../images/photos/figurines-tablet.jpg);
+        grid-column-start: 2;
+        grid-column-end: 4;
+      }
     }
   }
 
   &--main__photo {
-    width: 280px;
+    justify-content: center;
+    width: auto;
     height: 277px;
     background-repeat: no-repeat;
+    background-size: cover;
     margin: 24px 0;
+
+    @include for-tablet() {
+      margin: 32px 104px;
+      height: 387px;
+    }
 
     &--8 {
       background-image: url(../images/photos/collections-mobile.jpg);
@@ -86,6 +199,8 @@
     }
 
     &--main {
+      display: flex;
+      justify-content: center;
       font-family: Roboto, Arial, Helvetica, sans-serif;
       font-size: 16px;
       font-weight: 400;
@@ -133,6 +248,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   padding: 15px 0;
   background-color: $c-accent-main;
   font-family: Cinzel, "Times New Roman", Times, serif;
@@ -144,9 +260,17 @@
   color: $c-white;
   text-decoration: none;
 
+  @include for-tablet() {
+    margin: 0 104px;
+  }
+
   &--send {
     width: 280px;
     transition: 0.2s all;
+
+    @include for-tablet {
+      margin: 0;
+    }
 
     &:hover {
       background-color: $c-dark-red;
