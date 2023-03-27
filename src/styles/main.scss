@@ -133,19 +133,22 @@ html {
     }
   }
 
-  &__section-title  {
+  &__section-title {
     text-align: center;
     margin-bottom: 48px;
     font-weight: 700;
     font-size: 32px;
     line-height: 100%;
+    margin: 0;
+    margin-bottom: 48px;
 
     @include inIpad {
       font-size: 40px;
+      margin-bottom: 64px;
     }
 
     @include inDesktop {
-      font-style: 48px;
+      font-size: 48px;
     }
   }
 
@@ -303,12 +306,12 @@ html {
   }
 }
 
-.grid { 
+.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  @include inIpad{
+  @include inIpad {
     column-gap: 24px;
     grid-template-columns: repeat(6, 1fr);
   }
@@ -317,13 +320,23 @@ html {
     grid-template-columns: repeat(12, 1fr);
   }
 
-  &--desktop {
+  &--ipad {
     display: block;
 
     @include inIpad {
       display: grid;
+      column-gap: 24px;
     }
   }
+
+  &--desktop {
+    display: block;
+
+    @include inDesktop {
+      display: grid;
+    }
+  }
+ 
 
   &__item {
     @for $start from 1 through 12 {
@@ -377,10 +390,6 @@ html {
   font-size: initial;
 }
 
-.categoria {
-  
-}
-
 .gallery {
   &__photo-container {
     max-height: 190px;
@@ -392,7 +401,7 @@ html {
       content: "";
       display: block;
       margin-bottom: 100%;
-    } 
+    }
 
     @include inDesktop {
       min-height: 320px;
@@ -435,14 +444,97 @@ html {
 .button {
   height: 56px;
   width: 100%;
+  box-sizing:border-box;
   background-color: #292929;
   border-radius: 40px;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
+  border: 3px solid transparent;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #fff;
+    color: initial;
+    border-color: initial;
+  }
+
+  &:active {
+    background-color: #111111;
+    color: #fff;
+  }
+}
+
+.about {
+  &__benefit {
+    font-weight: 700;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+
+.contact-us {
+  &__info {
+    margin-bottom: 24px;
+
+    &-title {
+      font-size: 14px;
+      color: #9fadc2;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__form {
+    margin-bottom: 30px;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+
+    &--textarea {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.form-field {
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  display: block;
+  background-color: #f8f8fa;
+  color: initial;
+  box-sizing:border-box;
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+ 
+
+  &::placeholder {
+    color: #7e7e83;
+    font-family: initial;
+  }
+
+  &:hover {
+    color: initial;
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    border-color: initial;
+  }
+
+  &--textarea {
+    resize: none;
+    height: 148px;
+  }
 }
