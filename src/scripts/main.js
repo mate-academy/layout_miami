@@ -8,13 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const checkbox = document.querySelector('#id-send');
+const form = document.querySelector('#form');
 
-checkbox.addEventListener('click', checkboxClick, false);
+form.addEventListener('submit', onFormSubmit);
 
-function checkboxClick(event) {
-  const warn = 'Thank you for the application!<br>';
-
-  document.getElementById('output-box').innerHTML += warn;
+function onFormSubmit(event) {
   event.preventDefault();
+  form.reset();
+  window.alert('Thank you for the application!');
+  // const warn = 'Thank you for the application!<br>';
+
+  // document.getElementById('output-box').innerHTML += warn;
 }
