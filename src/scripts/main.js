@@ -32,4 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
       getBody.classList.add('body');
     })
   );
+
+  const getBtn = document.querySelector('.btn');
+  const getForm = document.querySelector('#form');
+
+  getBtn.addEventListener('submit', submitBtn);
+
+  function submitBtn(e) {
+    e.preventDefault();
+    getForm.reset();
+  }
 });
