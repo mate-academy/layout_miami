@@ -1,14 +1,33 @@
 .header {
-  background-color: black;
-  background-image: url(../images/photos/bike.jpg);
+  @include grid();
+  grid-template-rows: 1fr 1fr;
+  padding: 30px 20px 88px;
+  min-height: 100vh;
+  background-image: url(../images/photos/background-header.jpg);
   background-position: 85%;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  background-color: black;
   box-sizing: border-box;
-  padding-bottom: 88px;
+
+  &__navigation {
+    align-self: start;
+    grid-column: 1/-1;
+    grid-row: 1/2;
+  }
+
+  &__title {
+    align-self: end;
+    justify-self: center;
+    grid-column: 1/-1;
+    grid-row: 2/3;
+  }
+
+  @include for-tablet() {
+    padding: 34px 20px 130px;
+  }
+
+  @include for-desktop() {
+    padding: 36px 20px 203px;
+  }
 }
