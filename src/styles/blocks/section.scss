@@ -7,6 +7,10 @@
     padding: 140px 72px 0;
   }
 
+  @include for-desktop() {
+    padding: 138px 120px 0;
+  }
+
   &__container {
     @include for-tablet() {
       display: grid;
@@ -14,6 +18,27 @@
       align-items: start;
       gap: 24px;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include for-desktop() {
+      grid-template-columns: repeat(5fr / 7fr);
+    }
+
+    &--2 {
+      display: flex;
+      flex-direction: column;
+
+      @include for-tablet() {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: min-content min-content;
+      }
+
+      @include for-desktop() {
+        grid-template-columns: 3fr 3fr 5fr;
+        grid-template-rows: min-content;
+        gap: 24px;
+      }
     }
   }
 
@@ -32,6 +57,49 @@
       display: grid;
       grid-column-start: 2;
       grid-column-end: 3;
+    }
+  }
+
+  &__item-3 {
+
+    @include for-desktop() {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__item-4 {
+    @include for-desktop() {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__item-5 {
+    @include for-desktop() {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__item-6 {
+    @include for-desktop() {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__item-7 {
+    @include for-desktop() {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__item-8 {
+    @include for-desktop() {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
     }
   }
 
@@ -62,16 +130,42 @@
         gap: 24px;
         grid-template-columns: repeat(2, 1fr);
       }
+
+      @include for-desktop() {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &--3 {
+      display: flex;
+      flex-direction: column;
+
+      @include for-desktop() {
+        display: grid;
+        justify-items: center;
+        align-items: start;
+        gap: 24px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: min-content min-content;
+        padding: 24px 0;
+      }
     }
   }
 
   &__photo {
+    display: grid;
     height: 130px;
     background-repeat: no-repeat;
     background-size: cover;
 
     @include for-tablet() {
       height: 186px;
+    }
+
+    @include for-desktop() {
+      height: 400px;
+      background-size: auto;
+      background-position: center center;
     }
 
     &--1 {
@@ -81,6 +175,11 @@
 
       @include for-tablet() {
         background-image: url(../images/photos/old-masters-tablet.jpg);
+        grid-column-end: 3;
+      }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/old-masters.jpg);
         grid-column-end: 3;
       }
     }
@@ -95,6 +194,10 @@
         grid-column-start: 3;
         grid-column-end: 4;
       }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/portrait.jpg);
+      }
     }
 
     &--3 {
@@ -106,6 +209,11 @@
       @include for-tablet() {
         background-image: url(../images/photos/wisdom-tablet.jpg);
         height: 284px;
+      }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/wisdom.jpg);
+        height: 400px;
       }
     }
 
@@ -119,6 +227,11 @@
         background-image: url(../images/photos/compassion-tablet.jpg);
         height: 284px;
       }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/compassion.jpg);
+        height: 400px;
+      }
     }
 
     &--5 {
@@ -130,6 +243,14 @@
       @include for-tablet() {
         display: none;
       }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/power.jpg);
+        display: block;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        height: 400px;
+      }
     }
 
     &--6 {
@@ -139,6 +260,10 @@
 
       @include for-tablet() {
         background-image: url(../images/photos/clocks-tablet.jpg);
+      }
+
+      @include for-desktop() {
+        background-image: url(../images/photos/clocks.jpg);
       }
     }
 
@@ -152,32 +277,38 @@
         grid-column-start: 2;
         grid-column-end: 4;
       }
-    }
-  }
 
-  &--main__photo {
-    justify-content: center;
-    width: auto;
-    height: 277px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 24px 0;
-
-    @include for-tablet() {
-      margin: 32px 104px;
-      height: 387px;
+      @include for-desktop() {
+        background-image: url(../images/photos/figurines.jpg);
+      }
     }
 
     &--8 {
       background-image: url(../images/photos/collections-mobile.jpg);
+
+      @include for-desktop {
+        background-image: url(../images/photos/collections.jpg);
+        width: 100%;
+        background-size: auto;
+      }
     }
 
     &--9 {
       background-image: url(../images/photos/travel-mobile.jpg);
+
+      @include for-desktop {
+        background-image: url(../images/photos/travel.jpg);
+        width: 100%;
+      }
     }
 
     &--10 {
       background-image: url(../images/photos/groups-mobile.jpg);
+
+      @include for-desktop {
+        background-image: url(../images/photos/groups.jpg);
+        width: 100%;
+      }
     }
   }
 
@@ -264,12 +395,21 @@
     margin: 0 104px;
   }
 
+  @include for-desktop() {
+    margin: 0 348px;
+  }
+
   &--send {
+    box-sizing: border-box;
     width: 280px;
     transition: 0.2s all;
 
     @include for-tablet {
       margin: 0;
+    }
+
+    @include for-desktop() {
+      width: 400px;
     }
 
     &:hover {
@@ -374,4 +514,36 @@
 
   }
 
+}
+
+.container__item-1 {
+  @include for-tablet() {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+}
+
+.container__item-2 {
+  @include for-tablet() {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  @include for-desktop() {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+}
+
+.container__item-3 {
+  @include for-tablet() {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+
+  @include for-desktop() {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
 }
