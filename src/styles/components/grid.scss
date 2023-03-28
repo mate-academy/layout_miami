@@ -1,0 +1,82 @@
+@mixin phone {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 600px) and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include phone {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+
+    @include tablet {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+    }
+
+    @include desktop {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 24px;
+    }
+
+    &--desktop {
+        display: block;
+
+        @include desktop {
+            display: grid;
+        }
+
+        @include tablet {
+            display: grid;
+        }
+    }
+
+    &__item {
+        @for $start from 1 through 12 {
+            @for $end from $start through 12 {
+                &--desktop-#{$start}-#{$end} {
+                    @include desktop {
+                        grid-column: #{$start} / #{$end + 1};
+                    }
+                }
+            }
+        }
+
+        @for $start from 1 through 4 {
+            @for $end from $start through 4 {
+                &--phone-#{$start}-#{$end} {
+                    @include phone {
+                        grid-column: #{$start} / #{$end };
+                    }
+                }
+            }
+        }
+
+        @for $start from 1 through 6 {
+            @for $end from $start through 6 {
+                &--tablet-#{$start}-#{$end} {
+                    @include tablet {
+                        grid-column: #{$start} / #{$end + 1};
+                    }
+                }
+            }
+        }
+    }
+}
