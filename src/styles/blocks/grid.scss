@@ -1,0 +1,94 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  &--special {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--widescreen {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__item-tablet {
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    &--none {
+      display: grid;
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: grid;
+      }
+    }
+  }
+
+  &__item-desktop {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &--contacts {
+    @include onTablet {
+      display: grid;
+      column-gap: 24px;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas: "title title" "place-1 form" "place-2 form";
+
+      @include onDesktop {
+        grid-template-areas: "title title title" "place-1 place-2 form";
+      }
+    }
+  }
+
+  &__contacts-title {
+    grid-area: title;
+  }
+
+  &__contacts-place-1 {
+    grid-area: place-1;
+  }
+
+  &__contacts-place-2 {
+    grid-area: place-2;
+  }
+
+  &__contacts-form {
+    grid-area: form;
+  }
+}
