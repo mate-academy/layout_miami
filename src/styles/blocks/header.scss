@@ -7,12 +7,27 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 100vh;
     padding: $header-top-padding 0;
     
+    @include onMobile {
+      height: 500px;
+    }
+  
+    @include onTablet {
+      height: 800px;
+    }
+  
+    @include onDesktop {
+      height: 100vh;
+    }
+
     :first-child {
       margin-bottom: auto;
     }
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__logo {
@@ -34,48 +49,15 @@
     }
   }
 
-  &__call {
-    @include onMobile {
-      margin-right: 10px;
-    }
-  
-    @include onTablet {
-      margin-right: 25px;
-    }
-  
-    @include onDesktop {
-      margin-right: 40px;
-
-      &:before {
-        content: "+1 234 5555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-
-        color: $main-color;
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-
-    text-decoration: none;
-  }
-
   &__sound-waves {
-  
+    @include onMobile {
+      margin-bottom: 5px;
+    }
+
+    @include onTablet {
+      margin-bottom: 20px;
+    }
+
     @include onDesktop {
       margin-bottom: 20px;
     }
