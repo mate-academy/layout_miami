@@ -13,6 +13,6 @@ On this page you can see work schedule, expositions prewiew, online expositions,
 
 # Source and demo:
   - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-  - [DEMO LINK](https://maasiimka.github.io/layout_miami/)
+  - [DEMO LINK](https://max-rozzhalovets.github.io/layout_miami/)
 
 Hope you like it, have a good day!
