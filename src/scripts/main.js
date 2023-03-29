@@ -16,7 +16,4 @@ function onFormSubmit(event) {
   event.preventDefault();
   form.reset();
   window.alert('Thank you for the application!');
-  // const warn = 'Thank you for the application!<br>';
-
-  // document.getElementById('output-box').innerHTML += warn;
 }
