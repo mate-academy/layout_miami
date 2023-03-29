@@ -1,0 +1,168 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  
+  @include onPhone {
+    width: 28px;
+    height: 28px;
+  }
+
+  @include onDesktop {
+    width: 32px;
+    height: 32px;
+  }
+}
+  
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+  
+  @include onPhone {
+    padding: 0 30px;
+  }
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+  
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onPhone {
+    background-image: url(../images/header_middle.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  @include onDesktop {
+    background-image: url(../images/header_big.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0;
+  }
+  
+  &__nav {
+    display: flex;
+    box-sizing: border-box;
+  
+    :first-child {
+      margin-right: auto;
+    }
+  }
+  
+  &__phone {
+    margin-right: 24px;
+    background-image: url(../images/phone.png);
+
+    @include onDesktop {
+      margin-right: 40px;
+  
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        height: 32px;
+        color: $mainColor;
+        width: max-content;
+        display: block;
+        transform: translateX(-100%);
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        position: relative;
+        top: 10px;
+        transition: 0.5s;
+      }
+  
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+  
+  &__menu-opener {
+    background-image: url(../images/menu.png);
+    transition: 0.3s;
+  
+    &:hover {
+      background-image: url(../images/menu_hover.png);
+    }
+
+  }
+  
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+  
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/SoundWaves_small.png);
+      background-size: cover;
+      background-position: center;
+    }
+
+    @include onPhone {
+      font-style: italic;
+      font-weight: 800;
+      font-size: 40px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+  
+      &::before {
+        content: "";
+        display: block;
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/SoundWaves_middle.png);
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  
+    @include onDesktop {
+      font-style: italic;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+  
+      &::before {
+        content: "";
+        display: block;
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/SoundWaves.png);
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+}
