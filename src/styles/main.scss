@@ -1,7 +1,336 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+$main-text-color: #fff;
+$bg-body-menu-text: #1d1d1d;
+$bg-menu-color: #c2c2c2;
+$icon-size: 18px;
+$desktop-icon-size: 24px;
+$pad-top-small: 20px;
+$pad-top-medium: 34px;
+$pad-top-big: 36px;
+$pad-left-right-small: 20px;
+$pad-left-right-medium: 72px;
+$pad-left-right-big: 120px;
 
-body {
-  background: $c-gray;
+%bg-image-center-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+@mixin iconSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin OnDesktop {
+  @media (min-width: 1115px) {
+    @content;
+  }
+}
+
+@mixin ExceptMobile {
+  @media (min-width: 578px) {
+    @content;
+  }
+}
+
+@mixin ForMobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+
+  &__body {
+    background-color: $bg-body-menu-text;
+    color: $main-text-color;
+  }
+
+  &__menu {
+    position: fixed;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+
+body,
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  @extend %bg-image-center-cover;
+
+  &--call {
+    background-image: url(../images/telephone.svg);
+  }
+
+  &--opener {
+    transition: all 0.35s linear;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      cursor: pointer;
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    grid-column-start: 3;
+  }
+}
+
+.logo {
+  width: 130px;
+  height: 40px;
+
+  @include ExceptMobile {
+    width: 185px;
+    height: 55px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 $pad-left-right-small;
+
+  @include ExceptMobile {
+    padding: 0 $pad-left-right-medium;
+  }
+
+  @include OnDesktop {
+    padding: 0 $pad-left-right-big;
+  }
+}
+
+.header {
+  background-image: url(../images/photos/Bike-4096x2893.jpg);
+  @extend %bg-image-center-cover;
+
+  @include ForMobile {
+    background-image: url(../images/photos/bike-small.jpeg);
+    background-position: bottom right -50px;
+  }
+
+  @include ExceptMobile {
+    background-image: url(../images/photos/bike-small.jpeg);
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $pad-top-small 0 88px;
+    height: 100vh;
+
+    @include ExceptMobile {
+      padding: $pad-top-medium 0 130px;
+    }
+
+    @include OnDesktop {
+      padding: $pad-top-big 0 203px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include OnDesktop() {
+      &::before {
+        content: "+1-234-555-55-55";
+        display: block;
+        width: max-content;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 15px;
+
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: $main-text-color;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.35s linear;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+
+    @include ExceptMobile {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include OnDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.header-top {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr $icon-size $icon-size;
+  gap: 30px;
+
+  @include ExceptMobile {
+    grid-template-columns: 1fr $desktop-icon-size $desktop-icon-size;
+    gap: 40px;
+  }
+}
+
+.menu {
+  background-color: $bg-menu-color;
+
+  &__content {
+    height: 100vh;
+    padding: $pad-top-small 0;
+
+    @include ExceptMobile {
+      padding: $pad-top-medium 0;
+    }
+
+    @include OnDesktop {
+      padding: $pad-top-big 0;
+    }
+  }
+
+  &__top {
+    margin-bottom: 45px;
+
+    @include OnDesktop {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: $bg-body-menu-text;
+    text-decoration: none;
+    transition: all 0.35s ease;
+
+    @include OnDesktop {
+      &:hover {
+        width: max-content;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $bg-body-menu-text;
+      }
+    }
+  }
+
+  &__call {
+    text-transform: uppercase;
+    display: block;
+    text-decoration: none;
+    color: $bg-body-menu-text;
+    font-weight: 600;
+
+    &--tel {
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+    }
+
+    &--book {
+      width: max-content;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $bg-body-menu-text;
+    }
+  }
+}
+
+.main {
+  margin-top: 60px;
+
+  &__section {
+    margin-bottom: 48px;
+  }
+
+  &__section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+  }
+}
+
+.footer {
+  margin: 0 auto;
+  background-image: url(../images/photos/footer-small.jpg);
+  background-size: cover;
+  background-position: top right;
+  height: 200px;
+
+  @media (min-width: 744px) {
+    background-image: url(../images/photos/footer-small.jpg);
+    height: 480px;
+  }
+
+  @media (min-width: 1090px) {
+    background-image: url(../images/photos/footer-small.jpg);
+    height: 555px;
+  }
+}
+
