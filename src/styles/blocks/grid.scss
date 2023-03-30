@@ -1,0 +1,76 @@
+.grid {
+  display: block;
+
+  &--mobile {
+    display: flex;
+    justify-content: space-between;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--tablet {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat($tabletColumns, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &--desktop {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat($desktopColumns, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__item {
+    &-mobile {
+      width: 27%;
+      @include onTablet {
+        width: 100%;
+      }
+    }
+
+    &-mobile-squre {
+      width: 46%;
+      @include onTablet {
+        width: 100%;
+      }
+    }
+
+    @include onTablet {
+      @for $start from 1 through $tabletColumns {
+        @for $end from $start through $tabletColumns {
+          &-tablet--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onDesktop {
+      @for $start from 1 through $desktopColumns {
+        @for $end from $start through $desktopColumns {
+          &-desktop--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onTablet {
+      &-tablet--none {
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      &-tablet--none {
+        display: inherit;
+      }
+    }
+  }
+}
