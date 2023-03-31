@@ -1,7 +1,139 @@
 @import "utils";
-@import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media  (min-width: 1024px) {
+    @content ;
+
+  }
+
+}
+
+.page {
+  &__body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-image: url(../images/header.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 29px 0 130px;
+    box-sizing: border-box;
+
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    &--opener {
+      margin-left: 30px;
+      display: block;
+      width: 18px;
+      height: 12px;
+      background-image: url(../images/menu.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 0.5s;
+
+      @include onDesktop {
+        margin-left: 40px;
+        width: 24px;
+        height: 16px;
+      }
+
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+    }
+    &--call {
+      height: 18px;
+      width: 18px;
+      display: block;
+      background-image: url(../images/phone.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onDesktop {
+        height: 24px;
+        width: 24px;
+
+        &::before {
+          content: "+1 234 555-55-55";
+          color: #fff;
+          display: block;
+          width: max-content;
+          padding-right: 20px;
+          font-family: "Poppins", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          position: relative;
+          transform: translate(-100%,-50%);
+          top: 50%;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between ;
+    align-items: center ;
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
 }
