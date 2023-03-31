@@ -1,6 +1,7 @@
-$main-text-color: #fff;
+$main-text-button-color: #fff;
 $bg-body-menu-text: #1d1d1d;
 $bg-menu-color: #c2c2c2;
+$placeholder-input: #7e7e83;
 $icon-size: 18px;
 $desktop-icon-size: 24px;
 $pad-top-small: 20px;
@@ -15,6 +16,44 @@ $pad-left-right-big: 120px;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@mixin title-text-main {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+
+    @include ExceptMobile {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include OnDesktop {
+      font-size: 64px;
+      line-height: 64px;
+  }
+}
+
+%section-font-size-weight {
+  font-size: 64px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+%p-article-font-size-weight {
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 400;
+}
+
+%h3-article-price-font-size-weight {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+}
+
+
 
 @mixin iconSize($size) {
   width: $size;
@@ -44,11 +83,12 @@ $pad-left-right-big: 120px;
 }
 
 .page {
+  scroll-behavior: smooth;
   font-family: "Poppins", sans-serif;
 
   &__body {
     background-color: $bg-body-menu-text;
-    color: $main-text-color;
+    color: $main-text-button-color;
   }
 
   &__menu {
@@ -72,6 +112,7 @@ $pad-left-right-big: 120px;
 body,
 h1,
 h2,
+h3,
 p,
 ul {
   margin: 0;
@@ -177,7 +218,7 @@ ul {
         line-height: 16px;
         font-weight: 700;
         letter-spacing: 2px;
-        color: $main-text-color;
+        color: $main-text-button-color;
         opacity: 0;
         pointer-events: none;
         transition: all 0.35s linear;
@@ -301,43 +342,187 @@ ul {
 
 .main {
   margin-top: 60px;
-
-  &__section {
-    margin-bottom: 48px;
-  }
-
-  &__section-title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 32px;
-    letter-spacing: -1.5px;
-  }
 }
 
 .grid {
-  // display: flex;
-  // flex-direction: column;
-
   @include OnDesktop {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-  }
 
-  // @include ExceptMobile {
-  //   display: grid;
-  //   grid-template-columns: repeat(6, 1fr);
-  //   column-gap: 24px;
-  // }
-
-  &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: $start / #{$end + 1};
+    &__item {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
+    }
+  }
+
+  &__title-mrgn-btm {
+    margin-bottom: 56px;
+  }
+}
+
+.about {
+  margin-bottom: 164px;
+  &__title {
+    @include title-text-main;
+ }
+
+ &__text {
+  font-size: 23px;
+  line-height: 32px;
+  font-weight: 500;
+ }
+}
+
+.compare-bikes {
+  margin-bottom: 144px;
+
+  &__title {
+    @include title-text-main;
+  }
+
+  &__img {
+    margin-bottom: 32px;
+  }
+
+  &__article-title {
+    margin-bottom: 8px;
+    @extend %h3-article-price-font-size-weight;
+  }
+
+  &__article-text {
+    @extend %p-article-font-size-weight;
+    margin-bottom: 16px;
+
+    &--height-section {
+      height: 69px;
+    }
+  }
+
+  &__article-price {
+    @extend %h3-article-price-font-size-weight;
+  }
+}
+
+.details {
+  margin-bottom: 180px;
+
+  &__title {
+    @include title-text-main;
+  }
+
+  &__article-title {
+    margin-bottom: 8px;
+    @extend %h3-article-price-font-size-weight;
+  }
+
+  &__img {
+    margin-bottom: 16px;
+  }
+
+  &__article-text {
+    margin-bottom: 48px;
+    @extend %p-article-font-size-weight;
+  }
+
+  &__explore-button {
+    display: block;
+    width: 100%;
+    height: 56px;
+    border-radius: 40px;
+    padding: 17px 132px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-decoration: none;
+    color: $bg-body-menu-text;
+    background-color: $main-text-button-color;
+  }
+}
+
+.contact-us {
+  margin-bottom: 180px;
+
+  &__title {
+    @include title-text-main;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 48px;
+    border-radius: 40px;
+    padding-left: 16px;
+    margin-bottom: 16px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $placeholder-input;
+    background-color: $main-text-button-color;
+    outline-style: none;
+    border: none;
+  }
+
+  &__text-area {
+    resize: none;
+    margin-bottom: 32px;
+    padding: 14px 16px;
+    width: 100%;
+    // min-height: 48px;
+    max-height: 148px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $placeholder-input;
+    border-radius: 16px;
+    outline-style: none;
+    border: none;
+
+    &:focus {
+      content: "";
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    height: 56px;
+    border-radius: 40px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $bg-body-menu-text;
+    background-color: $main-text-button-color;
+    outline-style: none;
+    border: none;
+  }
+
+  &__contacts {
+    margin-bottom: 24px;
+
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 500;
+  }
+
+  &__paragraph {
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -359,3 +544,9 @@ ul {
     height: 555px;
   }
 }
+
+  // @include ExceptMobile {
+  //   display: grid;
+  //   grid-template-columns: repeat(6, 1fr);
+  //   column-gap: 24px;
+  // }
