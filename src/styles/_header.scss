@@ -1,24 +1,16 @@
 @import "logo";
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
   height: 100vh;
-  padding: 40px 25px;
-
   background-image: url("../images/photos/header-320.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 0;
   transition: $duration * 2;
 
   @media (min-width: 744px) {
     & {
       background-image: url("../images/photos/header-744.png");
-      padding: 55px;
     }
   }
 
@@ -29,14 +21,25 @@
   }
 
   &__box {
+    position: fixed;
+    height: 50px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 33px;
+
+    @media (min-width: 744px) {
+      & {
+        padding: 50px;
+      }
+    }
   }
 
   &__nav {
     display: flex;
     align-items: center;
+    margin-right: 25px;
   }
 
   &__logo {
@@ -75,7 +78,6 @@
     @media (min-width: 744px) {
       & {
         @include size (24px, 24px);
-        margin-right: 40px;
       }
     }
   }
@@ -98,8 +100,8 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-
     }
+
     @media (min-width: 744px) {
       & {
         background: url("../images/photos/menu.png");
@@ -111,8 +113,10 @@
       }
     }
   }
+
   &__title {
     margin: 0;
+    padding-top: 400px;
 
     &::before {
       display: block;
@@ -127,6 +131,11 @@
     }
 
     @media (min-width: 744px) {
+      & {
+        padding-top: 370px;
+        padding-left: 50px;
+      }
+
       &::before {
         background-image: url("../images/photos/sound_waves-1260.png");
         @include size (63px, 76px);
@@ -137,7 +146,14 @@
     @media (min-width: 1260px) {
       & {
         padding-left: 100px;
+        padding-top: 500px;
       }
     }
   }
+}
+
+.header-scrolled {
+  z-index: 1;
+  background: #fff;
+  box-shadow: -1px 5px 5px 0 #ccc;
 }
