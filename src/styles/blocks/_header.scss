@@ -75,37 +75,46 @@
     }
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &--interaction {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      column-gap: 30px;
-
-      @include onTablet() {
-        column-gap: 40px;
-      }
-    }
-  }
-
   &__call {
-    background-image: url(../images/Phone.png);
-    width: 18px;
-    height: 18px;
+    // width: 18px;
+    // height: 18px;
+    text-decoration: none;
 
     @include onTablet {
       width: 24px;
       height: 24px;
     }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        color: #292929;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__menu-opener {
-    background-image: url(../images/Menu.png);
-    width: 18px;
+    // width: 18px;
     height: 12px;
 
     @include onTablet {
@@ -115,7 +124,9 @@
     }
 
     &:hover {
-      background-image: url(../images/menu_hover.svg);
+      background-image: url(../images/MenuOpOnHov.png);
+      width: 19px;
+      height: 24px;
     }
   }
 }
@@ -126,4 +137,16 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  &--phone {
+    background-image: url(../images/Phone.png);
+  }
+
+  &--menu {
+    background-image: url(../images/Menu.png);
+  }
+
+  &--cross {
+    background-image: url(../images/CrossIconMob.png);
+  }
 }
