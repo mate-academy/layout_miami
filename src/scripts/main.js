@@ -54,3 +54,11 @@ window.addEventListener('scroll', function() {
     header.classList.remove('header-scrolled');
   }
 });
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page-menu');
+  } else {
+    document.body.classList.remove('page-menu');
+  }
+});
