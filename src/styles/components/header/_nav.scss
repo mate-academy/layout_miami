@@ -1,0 +1,53 @@
+.nav {
+  width: 100%;
+
+  &__list-item {
+    margin-bottom: 16px;
+
+    text-indent: -80%;
+    opacity: 0;
+
+    &:last-child {
+      margin-bottom: 24px;
+    }
+
+    .header--open & {
+      transition: $transition;
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{$i / 10 + -0.1s };
+          text-indent: 0;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__list-link {
+    display: inline-block;
+    position: relative;
+    padding: 8px 0;
+
+    color: $clr-main;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    font-weight: 600;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: $clr-main;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      transition: $transition;
+    }
+
+    &:hover:after {
+      width: calc(100% + 4px);
+    }
+  }
+}
