@@ -20,6 +20,4 @@ function toggleBodyScroll() {
 
 FORM.addEventListener('submit', function(e) {
   e.preventDefault();
-
-  alert('prevent Form send as part of test work');
 });
