@@ -1,7 +1,339 @@
 @import "utils";
 @import "fonts";
 @import "typography";
+@import "./blocks/header.scss";
+@import "./reset.scss";
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Cinzel", serif;
+
+  &__section {
+    margin-bottom: 100px;
+  }
+
+  &__section-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    width: 100%;
+
+    @include onMedium {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onBig {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @include onMedium {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include onBig {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  &__desktop {
+    display: block;
+
+    @include onMedium {
+      display: grid;
+    }
+
+    @include onBig {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        @include onBig {
+          &--big-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        @include onMedium {
+          &--med-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.hours {
+  &__title {
+    text-align: left;
+    margin-bottom: 32px;
+    color: $main_dark;
+
+    &::before {
+      content: "Plan your visit";
+      word-spacing: 2px;
+      display: block;
+      color: $main-red;
+      margin-bottom: 2px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 140%;
+    }
+  }
+
+  &__location-holder {
+    margin-bottom: 24px;
+  }
+
+  &__location {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: $main_dark;
+  }
+
+  &__time-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__time {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main_dark;
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main_dark;
+    min-width: 160px;
+  }
+
+  &__time-additinal-container {
+    margin-top: 16px;
+  }
+}
+
+.now {
+  color: $main_dark;
+
+  &__title-holder {
+    margin-bottom: 48px;
+  }
+
+  &__subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  &__image-holder {
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: 20%;
+
+    @include onMedium {
+      aspect-ratio: auto;
+    }
+
+    @include onBig {
+      aspect-ratio: auto;
+    }
+  }
+}
+
+.container {
+  margin: 0 20px;
+  max-width: 1070px;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+
+  @include onMedium {
+    margin: 0 50px;
+  }
+
+  @media screen and (min-width: 1070px) {
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+}
+
+.top-bar {
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+
+  @include onMedium {
+    padding: 50px 0;
+  }
+
+  @include onBig {
+    padding: 50px 0;
+  }
+
+  &__title {
+    display: inline-block;
+    color: white;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 30px;
+
+    @include onMedium {
+      gap: 63px;
+    }
+
+    @include onBig {
+      gap: 63px;
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &-menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &-phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &-cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $main-red;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 15px;
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+    gap: 8px;
+  }
+
+  &__contact-text {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__bot-text {
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: white;
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 8px;
+      width: 118px;
+      height: 1px;
+      background-color: #fff;
+    }
+  }
+}
+
+.footer {
+  background-image: url(../images/image-1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+
+  @include onMedium {
+    height: 360px;
+  }
+
+  @include onBig {
+    height: 360px;
+  }
 }
