@@ -5,6 +5,26 @@
   }
 }
 
+@mixin animated-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-color: $c-black;
+    height: 1px;
+    width: 0%;
+    transition: width $anim-time ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
 @mixin visually-hidden() {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
