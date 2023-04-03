@@ -3,24 +3,24 @@
 
   &__list-item {
     margin-bottom: 16px;
+    transition: $transition;
 
-    text-indent: -80%;
+    text-indent: -20%;
     opacity: 0;
 
     &:last-child {
       margin-bottom: 24px;
     }
 
-    .header--open & {
-      transition: $transition;
-
-      @for $i from 1 through 5 {
-        &:nth-child(#{$i}) {
-          transition-delay: #{$i / 10 + -0.1s };
-          text-indent: 0;
-          opacity: 1;
-        }
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i / 10 + -0.1s };
       }
+    }
+
+    .header--open & {
+      text-indent: 0;
+      opacity: 1;
     }
   }
 
