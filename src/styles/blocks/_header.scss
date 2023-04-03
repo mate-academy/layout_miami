@@ -1,39 +1,52 @@
 .header {
   background: $c-blue-secondary url(../images/photos/hero-image-small.jpg) center top no-repeat;
   background-size: cover;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0 20px 94px;
+  min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // padding: 0 20px 94px;
+  // padding: 0 20px;
+  padding-bottom: 94px;
+
+  &__navigation {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    align-self: start;
+
+    @include medium-up {
+      grid-column: 1 / 7;
+    }
+
+    @include large-up {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    align-self: end;
+
+    @include medium-up {
+      grid-column: 1 / 7;
+    }
+
+    @include large-up {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include grid-system;
+  grid-template-rows: 1fr 1fr;
 
   @include medium-up {
-    height: 100vh;
+    padding-bottom: $grid-base * 5;
     background-image: url(../images/photos/hero-image-medium.jpg);
   }
 
   @include large-up {
+    padding-bottom: $grid-base * 8;
     background-image: url(../images/photos/hero-image.jpg);
-  }
-
-  &__title {
-    &::before {
-      content: url(../images/wave-small.svg);
-      display: block;
-      width: 36px;
-      height: 31px;
-      margin-bottom: $grid-base * 2;
-
-      @include medium-up {
-        content: url(../images/wave.svg);
-        width: 63px;
-        height: 76px;
-        margin-bottom: $grid-base * 5;
-      }
-
-      @include large-up {
-        margin-bottom: $grid-base * 4;
-      }
-    }
   }
 }
