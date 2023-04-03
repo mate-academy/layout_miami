@@ -15,4 +15,6 @@ submit.addEventListener('click', submitClick, false);
 function submitClick(event) {
   event.preventDefault();
   document.getElementById('myForm').reset();
+
+  return false;
 }
