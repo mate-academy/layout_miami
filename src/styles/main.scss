@@ -2,6 +2,349 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+.page {
+  scroll-behavior: smooth;
+
+  font-family: "Poppins", sans-serif;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+  background: $c-bg-main;
+  color: $c-txt-main;
+  text-align: center;
+}
+
+.contacts__address_block_link {
+
+  text-decoration: none;
+  color: inherit;
+
+  @include hover(text-shadow, "0 0 16px rgba(232, 232, 240, 0.4)");
+
+  &:active {
+    text-shadow: 0 0 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+.section {
+  @media (max-width: 500px) {
+    padding: 0 $padding500;
+  }
+}
+
+.header {
+  background-image: url('../images/png/00-cover.png');
+  background-size: cover;
+
+  background-position: center;
+
+  @media (max-width: 500px) {
+    height: 133vw;
+    background-position: right;
+  }
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__nav {
+
+    position: absolute;
+
+    @media (max-width: 500px) {
+      top: 29px;
+      height: 38px;
+
+      left: $padding500;
+      right: $padding500;
+      max-width: calc(100% - 2 * $padding500);
+
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav__item {
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &_logo {
+
+      @media (max-width: 500px) {
+        height: 38px;
+        width: 130px;
+      }
+
+      background-image: url('../images/MyBiKE_white.png');
+
+      @include hover(box-shadow, "1px 4px 16px rgba(232, 232, 240, 0.4)");
+
+      &:active {
+        box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+      }
+    }
+
+    .nav__buttons {
+
+      & > .nav__item {
+        @media (max-width: 500px) {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      &_call {
+
+        background-image: url('../images/call.svg');
+
+        @media (max-width: 500px) {
+          margin-right: 30px;
+        }
+
+        &:hover::after {
+          position: absolute;
+
+          @media (max-width: 500px) {
+            top: 100%;
+            right: 0;
+          }
+
+          width: max-content;
+          content: "+1 234 5555-55-55";
+
+          font-weight: 700;
+          font-size: 0.75rem;
+          color: $c-txt-main;
+        }
+      }
+
+      &_menu {
+
+        &--open {
+          background-image: url('../images/menu.svg');
+
+          &:hover {
+            background-image: url('../images/menu-hover.svg');
+          }
+        }
+      }
+
+    }
+
+
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+
+    bottom: 18.3%;
+
+    font-weight: 2.25rem;
+    font-weight: 700;
+  }
+}
+
+.move {
+  text-align: left;
+
+  display: flex;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+
+    margin-top: 3.75rem;
+  }
+}
+
+.compare, .details {
+
+  @media (max-width: 500px) {
+    margin-top: 5.75rem;
+  }
+
+}
+
+.contacts {
+
+  @media (max-width: 500px) {
+    margin-top: 5rem;
+  }
+
+}
+
+.article, .contacts__address {
+  text-align: left;
+}
+
+.article__title, .article__price {
+
+  text-align: left;
+
+  @media (max-width: 500px) {
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2.125rem;
+  }
+}
+
+.article__image {
+  @media (max-width: 500px) {
+    height: 228px;
+    width: 280px;
+  }
+}
+
+.section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.section__grid_img {
+  background-size: cover;
+
+  @media (max-width: 500px) {
+    height: 130px;
+    width: 130px;
+  }
+}
+
+.img4 {
+  background-image: url('../images/png/04-features1.png');
+  @media (max-width: 500px) {
+    background-position: center;
+  }
+}
+.img5 {
+  background-image: url('../images/png/05-features2.png');
+}
+.img6 {
+  background-image: url('../images/png/06-features3.png');
+  @media (max-width: 500px) {
+    background-position: center;
+  }
+}
+.img7 {
+  background-image: url('../images/png/07-features4.png');
+  @media (max-width: 500px) {
+    background-position: center;
+  }
+}
+.img8 {
+  background-image: url('../images/png/08-features5.png');
+}
+.img9 {
+  background-image: url('../images/png/09-features6.png');
+}
+
+.footer {
+  background-size: cover;
+  background-image: url('../images/png/10-footer.png');
+
+  @media (max-width: 500px) {
+    height: 200px;
+    background-position: -111px;
+  }
+
+}
+
+.contacts__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contacts__address {
+  margin-top: 3rem;
+  margin-bottom: 7.5rem;
+
+  &_block_title {
+    font-size: 0.875rem;
+    line-height: 1.225rem;
+    font-weight: 400;
+  }
+
+  &_block_link {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    font-weight: 500;
+  }
+}
+
+.contacts__address_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  background: $c-bg-input;
+
+  &:not(.contacts__form_message) {
+    height: 48px;
+    align-items: center;
+  }
+
+  display: flex;
+
+  // margin: 14px 16px;
+  font-size: 14px;
+
+  &::placeholder {
+    font-family: "Poppins", sans-serif;
+    color: $c-txt-pholder;
+    position: absolute;
+    left: 1rem;
+    top: 14px;
+    line-height: 20px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+}
+
+.contacts__form_message {
+  @media (max-width: 500px) {
+    height: 148px;
+  }
+}
+
+.input, .button {
+  border-radius: 40px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 56px;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+
+  background: $c-txt-main;
+
+  @include hover(box-shadow, "1px 4px 16px rgba(232, 232, 240, 0.4)");
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
 }
