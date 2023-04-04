@@ -20,4 +20,5 @@ function toggleBodyScroll() {
 
 FORM.addEventListener('submit', function(e) {
   e.preventDefault();
+  this.reset();
 });
