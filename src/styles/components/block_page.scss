@@ -1,16 +1,13 @@
-* {
-  box-sizing: border-box;
-}
-
 .page {
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  color: $c-gray;
+  @extend %page-font;
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+   
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -32,15 +29,38 @@
   }
 
   &__section-title {
-    margin-bottom: 48px;
+    @extend %page-font;
+    margin: 0 0 48px;
 
-    font-style: normal;
-    font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     text-align: center;
     letter-spacing: -1.5px;
     color: $c-gray;
+
+    @include onTablet {
+      margin-bottom: 64px;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 64px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__section-indent {
+  
+    @extend %page-font;
+
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    margin: 0 0 48px;
 
     @include onTablet {
       margin-bottom: 64px;
