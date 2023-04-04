@@ -1,0 +1,41 @@
+.gallery {
+  --number-of-photos: 3;
+
+  display: flex;
+
+  &__photo-container {
+    position: relative;
+    width: calc(100% / var(--number-of-photos));
+    padding-bottom: calc(100% / var(--number-of-photos));
+
+    flex-shrink: 1;
+
+    transition: transform $transitionDuration;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+
+      @include onTablet {
+        flex-shrink: 0;
+      }
+    }
+
+    &:hover {
+      transform: scale($scaleValue);
+      z-index: 1;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 98%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include onTablet {
+    --number-of-photos: 2;
+  }
+}
