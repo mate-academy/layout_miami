@@ -1,7 +1,7 @@
 # Bose - landing page
 
 > Simple landing page.
-> Live demo [_here_](https://mariuszgit.github.io/layout_miami/).
+> Live demo [_here_](https://mariuszgit.github.io/layout_miami/). :muscle:
 
 
 
