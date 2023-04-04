@@ -1,6 +1,5 @@
 .menu {
   background-color: $menu-background-color;
-  color: #1d1d1d;
 
   position: absolute;
   width: 100%;
@@ -25,36 +24,61 @@
 
   &__link {
     display: inline-block;
+    position: relative;
     text-decoration: none;
-    color: #1d1d1d;
+    color: $menu-text-color;
     font-weight: 500;
     font-size: 22px;
     letter-spacing: 2px;
     padding: 16px 0;
+
+    &::after {
+      content: "";
+      display: none;
+      width: 100%;
+      height: 1px;
+      background-color: $menu-text-color;
+      position: absolute;
+      left: 0;
+      bottom: 8px;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+
+    &:hover::after {
+      display: inline-block;
+    }
 
     @include onDesktop {
       font-weight: 700;
     }
   }
 
-  &__tel-link {
+  .link--tel {
+    width: max-content;
     font-size: 16px;
     line-height: 27px;
     font-weight: 600;
     padding: 8px 0;
+
+    &::after {
+      bottom: 0;
+    }
   }
 
-  &__book-link {
-    display: inline-block;
+  .link--book {
     width: max-content;
     letter-spacing: 2px;
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
-    color: #1d1d1d;
     padding: 8px 0;
-    text-decoration: none;
-    border-bottom: 1px solid #1d1d1d;
+
+    &::after {
+      bottom: 0;
+    }
   }
 
   &:target {
