@@ -1,0 +1,105 @@
+@import "utils/vars.scss";
+@import "utils/mixins.scss";
+
+.header {
+  background-image: url(../images/photos/header-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-desktop.png);
+  }
+
+  @include onTablet {
+    background-image: url(../images/photos/header-tablet.png);
+  }
+ 
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 40px 0 72px;
+  }
+
+  &__call {
+    height: 0;
+    background-size: contain;
+
+    @include onDesktop {
+      text-decoration: none;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 50%;
+        width: max-content;
+        padding-right: 15px;
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transform: translate(-100%, +50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include onTablet {
+      width: 24px;
+      // height: 24px;
+      margin-right: 40px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 29px;
+    font-style: italic;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 32px;
+      margin-bottom: 16px;
+      background-image: url(../images/wave.svg);
+
+      @include onDesktop {
+        background-image: url(../images/waves-strokes.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 35px;
+      }
+
+      @include onTablet {
+        background-image: url(../images/waves-strokes.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 35px;
+      }
+    }
+  }
+}
