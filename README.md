@@ -1,6 +1,6 @@
 # Bose - landing page
 
-> Online currency calculator.
+> Simple landing page.
 > Live demo [_here_](https://mariuszgit.github.io/layout_miami/).
 
 
