@@ -1,0 +1,108 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-image: url(../images/bikeMob.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    background-image: url(../images/bikeTabl.png);
+  }
+
+  @include onDestop {
+    background-image: url(../images/bikeDesk.png);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1020px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 23px 88px;
+
+    @include onTablet {
+      padding: 34px 72px 130px;
+    }
+
+    @include onDestop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 66px;
+
+    @include onTablet {
+      width: 88px;
+    }
+  }
+
+  &__phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+    text-decoration: none;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 5555-55-55";
+        display: block;
+        position: relative;
+        width: max-content;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 1.5px;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        transition-duration: $time;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    transition-duration: $time;
+    
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 100%;
+    }
+
+    @include onDestop {
+      font-size: 80px;
+      line-height: 100%;
+    }
+  }
+}
