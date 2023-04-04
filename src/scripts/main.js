@@ -8,13 +8,13 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const submit = document.querySelector('#submit');
+const submit = document.querySelector('#myForm');
 
 submit.addEventListener('click', submitClick, false);
 
 function submitClick(event) {
   event.preventDefault();
-  document.getElementById('myForm').reset();
+  event.target.reset();
 
   return false;
 }
