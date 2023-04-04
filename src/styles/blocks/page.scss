@@ -1,13 +1,11 @@
 .page {
-  font-family: $mainFontFamily;
-  scroll-behavior: smooth;
+  font-family: Cinzel, "Times New Roman", serif;
   font-size: 16px;
   line-height: 27px;
-  color: $colorMainDark;
+  color: #161616;
+  scroll-behavior: smooth;
 
   &__body {
-    margin: 0;
-
     &--with-menu {
       overflow: hidden;
     }
@@ -18,9 +16,9 @@
     top: 0;
     left: 0;
     right: 0;
-    transform: translateX(100%);
-    transition: transform 0.3s;
-    z-index: 1;
+
+    transform: translateX(-100%);
+    transition: transform $transitionDuration;
 
     &:target {
       transform: translateX(0);
@@ -29,25 +27,31 @@
 
   &__section {
     margin-bottom: 100px;
-    padding: 0 20px;
 
-    @include onTablet {
-      margin-bottom: 0 72px;
+    @include onTabletAndDesktop {
+      margin-bottom: 140px;
     }
   }
 
   &__section-title {
-    margin: 0 0 48px;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 32px;
-    text-align: center;
-    letter-spacing: -1.5px;
-    color: $colorMainDark;
+    @extend %title;
 
-    @include onTablet {
+    @include onTabletAndDesktop {
       font-size: 48px;
       line-height: 48px;
     }
+
+    &--with-subtitle {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-subtitle {
+    @extend %title;
+
+    letter-spacing: 0;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: normal;
   }
 }

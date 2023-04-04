@@ -1,40 +1,46 @@
 .menu {
-  background-color: $colorMainAccent;
+  box-sizing: border-box;
+  height: 100vh;
+  padding-top: $headerTopPaddingMobile;
 
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: $headerTopPadding 0;
+  background-color: $accentMain;
+  overflow-y: auto;
 
-    @include onTablet {
-      padding: 100px 12px;
-    }
+  @include onTabletAndDesktop {
+    padding-top: $headerTopPaddingTablet;
   }
 
   &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 40px;
   }
 
   &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 22px;
+    }
+  }
+
+  &__link,
+  &__action {
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
   }
 
   &__link {
     display: inline-block;
     padding-bottom: 8px;
-    border-bottom: 1px solid transparent;
-    font-weight: 700;
+    border-bottom: 2px solid transparent;
+
     font-size: 22px;
     line-height: 22px;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+
     transition: border-color 0.3s;
 
     &:hover {
@@ -42,39 +48,23 @@
     }
   }
 
-  &__item {
-    margin-bottom: 24px;
+  &__contacts {
+    margin-bottom: 16px;
+    text-align: left;
   }
 
-  &__call {
-    display: block;
-    width: max-content;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: transform  0.3s;
+  &__action {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
 
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &--phone {
-      margin-bottom: 8px;
-    }
-
-    &--action {
-      margin-top: 16px;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-      padding-bottom: 8px;
-
-      &:hover {
-        border-bottom: 1px solid #fff;
-      }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(100% + 8px);
+      width: 100%;
+      border: 1px solid #fff;
     }
   }
 }

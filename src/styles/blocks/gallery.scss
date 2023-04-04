@@ -1,30 +1,41 @@
 .gallery {
+  --number-of-photos: 3;
 
-  &__exhibition {
-    margin-bottom: 48px;
-  }
+  display: flex;
 
-  &__title {
-    margin: 0 0 8px;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 32px;
-    text-align: center;
-    letter-spacing: -1.5px;
-    color: $colorMainDark;
+  &__photo-container {
+    position: relative;
+    width: calc(100% / var(--number-of-photos));
+    padding-bottom: calc(100% / var(--number-of-photos));
 
-    @include onTablet {
-      font-size: 48px;
-    }
+    flex-shrink: 1;
 
-    &-under {
-      margin: 0 auto 48px;
-      max-width: 280px;
-      text-align: center;
+    transition: transform $transitionDuration;
+
+    &:not(:last-child) {
+      margin-right: 8px;
 
       @include onTablet {
-        max-width: 400px;
+        flex-shrink: 0;
       }
     }
+
+    &:hover {
+      transform: scale($scaleValue);
+      z-index: 1;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include onTablet {
+    --number-of-photos: 2;
   }
 }
