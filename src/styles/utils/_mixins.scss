@@ -1,11 +1,4 @@
-// @mixin hover($_property, $_toValue) {
-//   transition: #{$_property} 0.3s;
-//   &:hover {
-//     #{$_property}: $_toValue;
-//   }
-// }
-
-@mixin onDesctop {
+@mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
   }
@@ -15,23 +8,18 @@
   @media (min-width: 640px) {
     @content;
   }
+}
 
-  // @mixin sectionsTitleSize-onPhone {
-  //   font-size: $sectionsTitleSize;
-  //   line-height: $sectionsTitleSize;
-  // }
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width $icon-width;
+  align-items: center;
+  justify-items: start;
+  gap: 30px;
 
-  // @mixin sectionsTitleSize-onTablet {
-  //   $sectionsTitleSize: 40px;
-
-  //   font-size: $sectionsTitleSize;
-  //   line-height: $sectionsTitleSize;
-  // }
-
-  // @mixin sectionsTitleSize-onDesctop {
-  //   $sectionsTitleSize: 48px;
-
-  //   font-size: $sectionsTitleSize;
-  //   line-height: $sectionsTitleSize;
-  // }
+  @include onTablet {
+    $icon-width: 24px;
+    grid-template-columns: 1fr $icon-width $icon-width;
+    gap: 40px;
+  }
 }
