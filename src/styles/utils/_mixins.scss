@@ -1,18 +1,23 @@
+
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $transitions-time;
   &:hover {
     #{$_property}: $_toValue;
   }
 }
 
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
+@mixin breakpoint($keys-list) {
+  @each $key in $keys-list {
+    @if map-has-key($breakpoints, $key) {
+      $breakpoint-value: map-get($breakpoints, $key);
+
+      @media (min-width: #{$breakpoint-value}) {
+        @content;
+      }
+    }
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 744px) and (max-width: 1023px) {
-    @content;
-  }
+@mixin setImage($image, $color) {
+  background-image: url($image);
 }

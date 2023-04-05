@@ -1,10 +1,10 @@
 .header {
   background-size: cover;
-  background-position: right -52px center;
+  background-position: right $bg-img-offsetX center;
   background-repeat: no-repeat;
   background-image: url(../images/header-cover.jpg);
 
-  @media (min-width: 584px) {
+  @include breakpoint(s) {
     background-position: center center;
   }
 
@@ -14,14 +14,14 @@
     flex-direction: column;
     justify-content: space-between;
 
-    padding: 30px 0 88px;
+    padding: $header-top-padding 0 5.5rem;
 
-    @include onDesktop {
-      padding: 36px 0 202px;
+    @include breakpoint(tablet) {
+      padding: $header-top-padding + 0.25rem 0 8.3rem;
     }
 
-    @include onTablet {
-      padding: 34px 0 130px;
+    @include breakpoint(desktop) {
+      padding: $header-top-padding + 0.38rem 0 12.63rem;
     }
   }
 
@@ -30,7 +30,7 @@
 
     text-decoration: none;
 
-    @include onDesktop {
+    @include breakpoint(desktop) {
       &::before {
         content: "+1 234 555-55-55";
         position: absolute;
@@ -39,17 +39,18 @@
 
         display: block;
         width: max-content;
-        padding-right: 20px;
+        padding-right: 1.25rem;
 
         font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        color: #fff;
+        font-size: 0.75rem;
+        line-height: 1;
+        color: $c-elem-primary;
         letter-spacing: 2px;
         text-transform: uppercase;
         opacity: 0;
         pointer-events: none;
-        transition-duration: 0.3s;
+        transition: opacity $transitions-time;
+
       }
 
       &:hover::before {
@@ -61,19 +62,18 @@
 
   &__title {
     font-weight: 700;
-    font-size: 36px;
+    font-size: 2.25rem;
     line-height: 1;
     letter-spacing: -1.5px;
-    color: #fff;
+    color: $c-elem-primary;
 
     text-align: center;
 
-    @include onDesktop {
-      font-size: 80px;
+    @include breakpoint(tablet) {
+      font-size: 4rem;
     }
-
-    @include onTablet {
-      font-size: 64px;
+    @include breakpoint(desktop) {
+      font-size: 5rem;
     }
   }
 }
