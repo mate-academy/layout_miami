@@ -1,10 +1,15 @@
 .onview {
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    @include pageLink;
+    color: $colorRed;
+  }
+
   &__photo {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    object-fit: cover;
-    object-position: center;
+    @include photo;
 
     &--right {
       object-position: right;
@@ -12,49 +17,25 @@
   }
 
   &__photo-container {
-    width: 100%;
-    max-height: 320px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    transition: transform 1s;
+    @include photoContainer;
 
-    @include onDesktop {
-      height: 320px;
+    @include onTablet {
+      height: 270px;
       padding-bottom: 0;
     }
 
-    &::after {
-      content: "";
-      display: block;
-      padding-bottom: 100%;
-    }
-
-    @include onDesktop {
-      &:hover {
-        transform: scale(1.2);
-        opacity: 1;
-        z-index: 1;
+    &--sqv-photo {
+      @include onTablet {
+        padding-bottom: 100%;
       }
     }
   }
 
-  &__photos {
-    margin-bottom: 24px;
-  }
-
-  &__description {
+  &__paragraph {
     margin: 0 0 48px;
 
     &:last-child {
       margin: 0;
     }
-  }
-
-  &__link {
-    color: $colorRed;
-    text-decoration: none;
-    font-weight: 700;
-    cursor: pointer;
   }
 }
