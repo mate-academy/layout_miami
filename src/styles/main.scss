@@ -1,7 +1,754 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+$color-black: #1d1d1d;
+$color-text-link: #fff;
+$color-input: #292929;
 
-body {
-  background: $c-gray;
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin top-header-menu {
+  --icon-width: 18px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  column-gap: 30px;
+
+  @include onTablet {
+    --icon-width: 24px;
+    column-gap: 40px;
+  }
+}
+
+@mixin grid-properties-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+@mixin grid-properties-tablet {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 24px;
+}
+
+@mixin grid-properties-desktop {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.page {
+  font-family: Poppins, sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $color-black;
+    color: $color-text-link;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__header {
+    margin: 0 0 60px;
+
+    @include onTablet {
+      margin: 0 0 120px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 92px;
+
+    &:nth-child(3) {
+      margin-bottom: 80px;
+    }
+
+    &:last-child {
+      margin-bottom: 120px;
+    }
+    
+    @include onTablet {
+      margin-bottom: 120px;
+
+      &:first-child {
+        margin-bottom: 132px;
+      }
+
+      &:nth-child(3) {
+        margin-bottom: 120px;
+      }
+    }
+ 
+    @include onDesktop {
+      margin-bottom: 144px;
+
+      &:first-child {
+        margin-bottom: 164px;
+      }
+
+      &:nth-child(3) {
+        margin-bottom: 180px;
+      }
+
+      &:last-child {
+        margin-bottom: 182px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin: 0 0 48px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 100%;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+    }
+  }
+}
+
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: 85%;
+  background-image: url(../images/header_photo.jpg);
+
+  @include onTablet {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__top {
+    @include top-header-menu;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 38px;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+}
+
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-text-link;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover_b.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/menu-cross.svg);
+    grid-column: 3 / 4;
+  }
+}
+
+.menu {
+  background-color: #e5e5e5;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 29px 0;
+  }
+
+  &__top {
+    margin-bottom: 44px;
+    @include top-header-menu;
+  }
+
+  &__list {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 2px solid transparent;
+    color: $color-black;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-bottom 0.3s;
+
+    &:hover {
+      border-color: #777;
+    }
+  }
+
+  &__call {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-black;
+    display: block;
+    text-decoration: none;
+    width: max-content;
+
+    &--phone {
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      font-size: 12px;
+      line-height: 16px;
+      border-bottom: 1px solid $color-black;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.about {
+  &__content {
+    @include onTablet {
+      @include grid-properties-tablet;
+    }
+
+    @include onDesktop {
+      @include grid-properties-desktop;
+    }
+  }
+
+  &__title {
+    margin: 0 0 32px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+      font-size: 48px;
+      margin: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 5;
+      font-size: 64px;
+    }
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / 12;
+    }
+  }
+}
+
+.compare-bikes {
+  &__title {
+    text-transform: capitalize;
+
+    @include onDesktop {
+      margin: 0 0 56px;
+    }
+  }
+
+  &__bikes {
+    @include onTablet {
+      @include grid-properties-tablet;
+    }
+
+    @include onDesktop {
+      @include grid-properties-desktop;
+    }
+  }
+
+  &__about-bike {
+    margin: 0 0 40px;
+
+    &--bike_3 {
+      margin: 0;
+    }
+
+    @include onTablet {
+      margin: 0 0 48px;
+
+      &--bike_1 {
+        grid-column: 2 / 6;
+      }
+
+      &--bike_2 {
+        grid-column: 2 / 6;
+      }
+
+      &--bike_3 {
+        grid-column: 2 / 6;
+        margin: 0;
+      }
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+      
+      &--bike_1 {
+        grid-column: 1 / 5;
+      }
+
+      &--bike_2 {
+        grid-column: 5 / 9;
+      }
+
+      &--bike_3 {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &__photo-container {
+    margin-bottom: 32px;
+  }
+
+  &__photo {
+    width: 100%;
+  }
+
+  &__name {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__about {
+    margin: 0 0 16px;
+    line-height: 140%;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
+
+.details {
+  &__title {
+    text-transform: capitalize;
+
+    @include onTablet {
+      margin: 0 0 64px;
+    }
+
+    @include onDesktop {
+      margin: 0 0 48px;
+    }
+  }
+
+  &__detail {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.detail {
+
+  &__photos {
+    margin-bottom: 16px;
+    @include grid-properties-mobile;
+
+    @include onTablet {
+      @include grid-properties-tablet;
+    }
+
+    @include onDesktop {
+      @include grid-properties-desktop;
+    }
+  }
+
+  
+  &__grid-item {
+    @include onTablet {
+      &--auto-unlock--1 {
+        grid-column: 1 / 5;
+      }
+
+      &--auto-unlock--2 {
+        grid-column: 5 / 7;
+      }
+
+      &--range-lights--1 {
+        grid-column: 1 / 5;
+      }
+
+      &--range-lights--2 {
+        grid-column: 5 / 7;
+      }
+
+      &--hydraulics--1 {
+        grid-column: 1 / 3;
+      }
+
+      &--hydraulics--2 {
+        grid-column: 3 / 7;
+      }
+    }
+
+    @include onDesktop {
+      &--auto-unlock--1 {
+        grid-column: 1 / 9;
+      }
+
+      &--auto-unlock--2 {
+        grid-column: 9 / 13;
+      }
+
+      &--range-lights--1 {
+        grid-column: 1 / 9;
+      }
+
+      &--range-lights--2 {
+        grid-column: 9 / 13;
+      }
+
+      &--hydraulics--1 {
+        grid-column: 1 / 5;
+      }
+
+      &--hydraulics--2 {
+        grid-column: 5 / 13;
+      }
+    }
+  }
+
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        height: 187px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__name {
+    margin: 0 0 8px;
+    line-height: 140%;
+  }
+
+  &__description {
+    margin: 0;
+    line-height: 140%;
+  }
+
+  &__button {
+    @include onTablet {
+      @include grid-properties-tablet;
+    }
+
+    @include onDesktop {
+      @include grid-properties-desktop;
+    }
+  }
+
+  &__grid-button {
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 100%;
+  height: 56px;
+  color: $color-black;
+  background-color: #fff;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 48px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+.contact-us {
+  &__information {
+    @include onTablet {
+      @include grid-properties-tablet;
+    }
+
+    @include onDesktop {
+      @include grid-properties-desktop;
+    }
+  }
+
+  &__form {
+    margin: 0 0 48px;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+      margin: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__contacts {
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / 13;
+    }
+  }
+  
+  &__field {
+    margin: 0 0 16px;
+
+    &--last {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info {
+    margin: 0 0 24px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__info-title {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  &__info-link {
+    color: $color-text-link;
+    text-decoration: none;
+  }
+}
+
+.form-field {
+  box-sizing: border-box;
+  background: #f8f8fa;
+  border-radius: 40px;
+  width: 100%;
+  height: 48px;
+  display: block;
+  padding: 14px 16px;
+  color: $color-input;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:hover {
+    border: 1px solid #d5d7de;
+  }
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-input;
+  }
+
+  &--textarea {
+    font-family: inherit;
+    resize: none;
+    height: 148px;
+    border-radius: 16px;
+  }
+}
+
+.footer {
+  height: 217px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/footer.jpg);
+
+  @include onTablet {
+    height: 480px;
+  }
+
+  @include onDesktop {
+    height: 555px;
+  }
 }
