@@ -12,3 +12,12 @@ const toggleMenu = function() {
 
 menuOpener.addEventListener('click', toggleMenu);
 menuClose.addEventListener('click', toggleMenu);
+
+const form = document.querySelector('form');
+const formButton = document.querySelector('form button');
+
+function resertForm () {
+  form.reset();
+}
+
+formButton.addEventListener('click', resertForm);
