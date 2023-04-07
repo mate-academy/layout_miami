@@ -1,13 +1,10 @@
-# Miami landing page
+This project is a recreated web page of Bose Corporation, a manufacturing company that sells audio equipment. The outcome is visually appealing, easy to navigate, and focused on driving a specific action from users. A regular visitor can interact with a simple navigation menu, read short articles that fully explain the given content, explore new audio products, and fill out the contact form.
 
-In this task, you will learn how to implement a landing page. To do that:
+Used technologies:
+• HTML
+• CSS
+• SCSS
+• JavaScript
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+Preview: https://artem-ivashchenko.github.io/layout_miami/
+Mockup: https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1
