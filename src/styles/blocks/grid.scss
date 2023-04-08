@@ -1,0 +1,52 @@
+.grid {
+  @extend %flex-column;
+  @include breakpoint(tablet) {
+    @include gridTemplateSet(tablet);
+  }
+
+  @include breakpoint(desktop) {
+    @include gridTemplateSet(desktop);
+  }
+
+  &--about {
+    @include gridItemPosition(1) {
+      grid-column: 1 / 4;
+
+      @include breakpoint(desktop) {
+        grid-column: 1 / 5;
+      }
+    }
+
+    @include gridItemPosition(2) {
+      grid-column: 4 / 7;
+
+      @include breakpoint(desktop) {
+        grid-column: 6 / 12;
+      }
+    }
+  }
+
+  &--compare-bikes {
+    @include breakpoint(tablet) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @include breakpoint(desktop) {
+      display: grid;
+
+      @include gridItemPosition(1) {
+        grid-column: 1 / 5;
+      }
+
+      @include gridItemPosition(2) {
+        grid-column: 5 / 9;
+      }
+
+      @include gridItemPosition(3) {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+}

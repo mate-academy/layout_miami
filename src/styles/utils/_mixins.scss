@@ -6,6 +6,7 @@
   }
 }
 
+
 @mixin breakpoint($keys-list) {
   @each $key in $keys-list {
     @if map-has-key($breakpoints, $key) {
@@ -23,5 +24,22 @@
 
   @include breakpoint($breakpoints) {
     background-position: center center;
+  }
+}
+
+@mixin gridTemplateSet($device) {
+  display: grid;
+  grid-template-columns: repeat(
+    map-deep-get($grid-config, $device, columns),
+    map-deep-get($grid-config, $device, columns-width)
+  );
+
+  column-gap: map-deep-get($grid-config, $device, columns-gap);
+}
+
+
+@mixin gridItemPosition($item) {
+  & > .grid__item--#{$item} {
+    @content;
   }
 }
