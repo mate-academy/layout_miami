@@ -1,74 +1,74 @@
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @include onMedium {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include onBig {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  &--3-rows-mobile {
+    @include onMobile {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+  }
+
+  &__desktop {
+    display: block;
+
     @include onMedium {
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
+      display: grid;
     }
-  
+
     @include onBig {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
+      display: grid;
     }
-  
-    &--3-rows-mobile {
-      @include onMobile {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
+  }
+
+  &__big {
+    display: block;
+
+    @include onBig {
+      display: grid;
     }
-  
-    &__desktop {
-      display: block;
-  
+  }
+
+  &__item {
+    &--med-none {
       @include onMedium {
-        display: grid;
-      }
-  
-      @include onBig {
-        display: grid;
+        display: none;
       }
     }
-  
-    &__big {
-      display: block;
-  
+
+    &--big-none {
       @include onBig {
-        display: grid;
+        display: none;
       }
     }
-  
-    &__item {
-      &--med-none {
-        @include onMedium {
-          display: none;
-        }
-      }
-  
-      &--big-none {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
         @include onBig {
-          display: none;
-        }
-      }
-      @for $start from 1 through 12 {
-        @for $end from $start through 12 {
-          @include onBig {
-            &--big-#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
+          &--big-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
-      @for $start from 1 through 6 {
-        @for $end from $start through 6 {
-          @include onMedium {
-            &--med-#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
+    }
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        @include onMedium {
+          &--med-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
   }
+}
