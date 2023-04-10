@@ -1,0 +1,114 @@
+.contacts__grid {
+  display: block;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    &-item {
+      &--1-5 {
+        grid-template-columns: 1/4;
+      }
+
+      &--8-10 {
+        grid-template-columns: 4/6;
+      }
+    }
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+
+    &-item {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  &__input {
+    height: 48px;
+    box-sizing: border-box;
+    background: $input-background;
+    border: 1px solid $input-background;
+
+    color: $input-text;
+    border-radius: 40px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+
+    &::placeholder {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: $input-text;
+    }
+
+    &:hover {
+      border: 1px solid $input-border-hover;
+      color: $mainColor;
+
+      &::placeholder {
+        color: $mainColor;
+      }
+    }
+
+    &:active {
+      font-family: "Inter", sans-serif;
+      border: 1px solid $mainColor;
+      color: black;
+    }
+
+    &--textarea {
+      height: 148px;
+      resize: none;
+      border-radius: 16px;
+
+      &::placeholder {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $input-text;
+      }
+    }
+  }
+}
+
+.contact {
+  &__title {
+    color: $contacts-text;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: $mainColor;
+    margin-bottom: 24px;
+
+    &:hover {
+      color: lightblue;
+    }
+  }
+}

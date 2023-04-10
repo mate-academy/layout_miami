@@ -1,0 +1,59 @@
+.buy__grid {
+  display: block;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    &-item {
+      &--1-5 {
+        grid-template-columns: 1/4;
+      }
+
+      &--6-10 {
+        grid-template-columns: 4/6;
+      }
+    }
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+
+    &-item {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+.different__title {
+  text-align: start;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  &__part {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    justify-content: flex-start;
+  }
+
+  &__part-2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
