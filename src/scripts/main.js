@@ -9,6 +9,7 @@ window.addEventListener('hashchange', () => {
 });
 
 function handleSubmit(event) {
+  event.target.reset();
   event.preventDefault();
 }
 
