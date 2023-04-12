@@ -1,0 +1,61 @@
+.feature {
+
+  &__photo-container {
+    @include onTablet {
+      &--big {
+        flex: 2;
+      }
+      &--small {
+        flex: 1;
+      }
+    }
+    @include onDesktop {
+      max-height: 320px;
+    }
+    @extend %transition;
+    @extend %hover-scale;
+
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    max-height: 187px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+  }
+  &__photos {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    max-width: 670px;
+  }
+
+}
