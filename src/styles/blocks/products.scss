@@ -1,0 +1,59 @@
+.product {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 321px;
+    // min-height: 100px;
+    perspective: 400px;
+
+    @include onMobile {
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+
+    @include onDesktop {
+      padding-bottom: 0;
+      height: 321px;
+    }
+
+    @include onTablet {
+      padding-bottom: 0;
+      height: 187px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: translateZ(+25px);
+    }
+
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $colorGrey;
+
+  }
+
+  &__correction {
+    @include onMobile {
+      object-position: -112px;
+    }
+  }
+}
