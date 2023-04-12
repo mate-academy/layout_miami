@@ -1,0 +1,75 @@
+@import "utils/vars.scss";
+@import "utils/mixins.scss";
+
+.icon {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+
+  &__tooltip {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-5px);
+    height: 0;
+    background-size: contain;
+
+    width: max-content;
+    padding-right: 15px;
+    color: #292929;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s;
+   
+
+    @include onTablet {
+      width: 24px;
+      // height: 24px;
+      margin-right: 40px;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    @include onDesktop {
+      &:hover {
+        background-image: url(../images/menu-desktop-hover.svg);
+      }
+    }
+
+    &__hover {
+      background-image: url(../images/menu_hover.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    grid-column: 3;
+  }
+  
+}
