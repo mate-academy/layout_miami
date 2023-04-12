@@ -1,7 +1,182 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+@mixin smartphone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+.page {
+  &_body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+.icon {
+  display: grid;
+  width: var(--icon-width);
+  height: var(--icon-width);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    grid-column: -1;
+    justify-self: end;
+    background-image: url(../images/bose/icon-menu.svg);
+
+    @include desktop {
+      &:hover {
+        background-image: url(../images/bose/icon-menu-hover.svg);
+        cursor: url("../images/bose/cursor-mice.svg"), auto;
+      }
+    }
+  }
+
+  &--phone {
+    grid-column: -2;
+    background-image: url(../images/bose/icon-phone.svg);
+  }
+    
+  &--cross {
+    background-image: url(../images/bose/cross.svg);
+  }
+}
+
+.top-actions {
+  --icon-width: 24px;
+  display: grid;
+  grid-template-columns: repeat(12, var(--icon-width));
+  justify-content: space-between;
+  align-items: center;
+
+  @include smartphone {
+    --icon-width: 18px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/bose/header.png);
+  padding: 52px 40px 72px;
+
+  @include smartphone {
+    padding: 40px 20px 94px;
+    background-image: url(../images/bose/header-320.png);
+  }
+
+  @include desktop {
+    padding: 52px 120px 64px;
+    background-image: url(../images/bose/header-1020.jpg);
+  }
+
+  &_title {
+    width: 392px;
+    font-size: 40px;
+    line-height: 100%;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #292929;
+    margin: 0;
+
+    @include smartphone {
+      width: 274px;
+      font-size: 32px;
+    }
+
+    @include desktop {
+      width: 498px;
+      font-size: 48px;
+    }
+
+    &::before {
+      display: block;
+      content: url(../images/bose/sound-waves.svg);
+      width: 63px;
+      height: 76px;
+      margin-bottom: 40px;
+
+      @include smartphone {
+        content: url(../images/bose/sound-waves-320.svg);
+        width: 32px;
+        height: 27px;
+        margin-bottom: 16px;
+      }
+
+      @include desktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &_menu-opener {
+    @include desktop {
+      &:hover {
+        background-image: url(../images/bose/icon-menu-hover.svg);
+        cursor: url("../images/bose/cursor-mice.svg"), auto;
+      }
+    }
+  }
+
+  &_call {
+    text-decoration: none;
+
+    @include desktop {
+      margin-left: 30px;
+    }
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 25%;
+        right: 150px;
+
+        display: block;
+        width: max-content;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #292929;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        cursor: url("../images/bose/cursor-mice.svg"), auto;
+      }
+    }
+  }
+}
+
+.logo {
+  grid-column: 1 / -3;
+
+  &_image {
+    width: 190px;
+    height: 24px;
+
+    @include smartphone {
+      width: 130px;
+      height: 16px;
+    }
+  }
 }
