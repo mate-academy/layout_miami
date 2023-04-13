@@ -1,16 +1,11 @@
 .grid {
-  @extend %flex-column;
-  @include breakpoint(tablet) {
-    @include gridTemplateSet(tablet);
-  }
-
-  @include breakpoint(desktop) {
-    @include gridTemplateSet(desktop);
-  }
-
   &--about {
+    @include gridTemplateBreakpoints(tablet, desktop);
+
     @include gridItemPosition(1) {
-      grid-column: 1 / 4;
+      @include breakpoint(tablet) {
+        grid-column: 1 / 4;
+      }
 
       @include breakpoint(desktop) {
         grid-column: 1 / 5;
@@ -18,7 +13,9 @@
     }
 
     @include gridItemPosition(2) {
-      grid-column: 4 / 7;
+      @include breakpoint(tablet) {
+        grid-column: 4 / 7;
+      }
 
       @include breakpoint(desktop) {
         grid-column: 6 / 12;
@@ -27,15 +24,9 @@
   }
 
   &--compare-bikes {
-    @include breakpoint(tablet) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    @include gridTemplateBreakpoints(desktop);
 
     @include breakpoint(desktop) {
-      display: grid;
-
       @include gridItemPosition(1) {
         grid-column: 1 / 5;
       }
@@ -46,6 +37,89 @@
 
       @include gridItemPosition(3) {
         grid-column: 9 / 13;
+      }
+    }
+  }
+
+  &--detail {
+    @include gridTemplateBreakpoints(s, tablet, desktop);
+
+    &--1 {
+      @include gridItemPosition(1) {
+        @include breakpoint(tablet) {
+          grid-column: 1 / 5;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 1 / 9;
+        }
+      }
+
+      @include gridItemPosition(2) {
+        @include breakpoint(tablet) {
+          grid-column: 5 / 7;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 9 / 13;
+        }
+      }
+    }
+
+    &--2 {
+      @include gridItemPosition(1) {
+        @include breakpoint(tablet) {
+          grid-column: 1 / 5;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 1 / 9;
+        }
+      }
+
+      @include gridItemPosition(2) {
+        @include breakpoint(tablet) {
+          grid-column: 5 / 7;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 9 / 13;
+        }
+      }
+    }
+
+    &--3 {
+      @include gridItemPosition(1) {
+        @include breakpoint(tablet) {
+          grid-column: 1 / 3;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 1 / 5;
+        }
+      }
+
+      @include gridItemPosition(2) {
+        @include breakpoint(tablet) {
+          grid-column: 3 / 7;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 5 / 13;
+        }
+      }
+    }
+
+    &--button {
+      @include gridItemPosition(1) {
+        grid-column: 1 / -1;
+        @include breakpoint(tablet) {
+          grid-column: 2 / 6 ;
+        }
+
+        @include breakpoint(desktop) {
+          grid-column: 5 / 9;
+        }
       }
     }
   }
