@@ -1,0 +1,132 @@
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.top__actions {
+  --icon-width: 16px;
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  justify-items: left;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
+.icon {
+
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+    margin-left: -30px;
+
+    @include onDesktop {
+      margin-left: -40px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/crossDark.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    transition: background-image 0.5s;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+}
+
+.header {
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: right;
+  margin-bottom: 60px;
+
+  @include onDesktop {
+    background-position: center;
+    margin-bottom: 120px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPadding 0 130px;
+    box-sizing: border-box;
+  }
+
+  &--call {
+    text-decoration: none;
+
+    @include onDesktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        color: #fff;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        transform: translate(-100%,-50%);
+        top: 50%;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
