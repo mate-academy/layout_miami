@@ -1,0 +1,57 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_desk.jpg);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $headerTopPadding 0 51vh;
+
+    @include onTablet {
+      padding: $headerTopPaddingBig 0 54vh;
+    }
+  }
+  &__call {
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: 253px;
+        height: 154px;
+        background-image: url(../images/phone_hover.png);
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &__title {
+    align-self: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
