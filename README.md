@@ -1,6 +1,6 @@
 # Miami landing page
 
-A landing page was created as part of a front-end course at the meet academy, and the design of a wireless headphone store was chosen for implementation
+A landing page was created as part of a front-end course at the mate academy, and the design of a wireless headphone store was chosen for implementation
 
 Technologies used in the project:
 - SCSS
