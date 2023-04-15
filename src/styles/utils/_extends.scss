@@ -9,6 +9,7 @@
   font-size: 2rem;
   line-height: 1;
   letter-spacing: -1.5px;
+  text-transform: capitalize;
 
   @include breakpoint(tablet) {
     font-size: 3rem;
@@ -26,6 +27,13 @@
   line-height: 1.4;
 }
 
+%h4 {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
 %button {
   font-family: inherit;
   font-weight: 700;
@@ -33,7 +41,9 @@
 
   border-radius: 2.5rem;
   color: $c-elem-secondary;
-  background: #fff;
+  background-color: $c-elem-primary;
+  transition: box-shadow $transitions-time;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 1px 4px 16px rgba($c-shadow, 0.4);
@@ -41,6 +51,32 @@
 
   &:active {
     box-shadow: 1px 4px 16px rgba($c-shadow, 0.64);
+  }
+}
+
+%form-field {
+  font-family: inherit;
+  font-size: 0.88rem;
+  line-height: 1.25rem;
+  color: $c-fields-font;
+  background-color: #f8f8fa;
+  border-radius: 2.5rem;
+  border: 1px solid transparent;
+  transition: border-color $transitions-time;
+
+  &::placeholder {
+    font-family: inherit;
+    font-size: 0.88rem;
+    line-height: 1.25rem;
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    border-color: $c-fields-font;
   }
 }
 
@@ -61,17 +97,6 @@
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-}
-
-%ratio-1-1 {
-  display: block;
-  width: 100%;
-
-  &::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
 }
 
 %flex-column {

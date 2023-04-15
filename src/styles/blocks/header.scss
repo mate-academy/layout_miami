@@ -1,58 +1,31 @@
 .header {
   background-size: cover;
   background-repeat: no-repeat;
-  @include bgImgOffsetX($header-bg-img-offsetX, s);
+  @include bgImgOffsetX($header-bg-img-offsetX, bg-offset);
   background-image: url(../images/header-cover.jpg);
 
   &__content {
-    display: flex;
     height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
+    @include top-content;
+  }
 
-    padding: $header-top-padding 0 5.5rem;
-
-    @include breakpoint(tablet) {
-      padding: $header-top-padding + 0.25rem 0 8.3rem;
-    }
-
-    @include breakpoint(desktop) {
-      padding: $header-top-padding + 0.38rem 0 12.63rem;
-    }
+  &__top {
+    @include top-actions;
   }
 
   &__call {
-    position: relative;
+    padding: 0.19rem;
 
-    text-decoration: none;
+    @include breakpoint(tablet, desktop) {
+      padding: 0.25rem;
+    }
+  }
 
-    @include breakpoint(desktop) {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: absolute;
-        top: 50%;
-        transform: translate(-100%, -50%);
+  &__action {
+    padding: 0.19rem;
 
-        display: block;
-        width: max-content;
-        padding-right: 1.25rem;
-
-        font-weight: 700;
-        font-size: 0.75rem;
-        line-height: 1;
-        color: $c-text-primary;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity $transitions-time;
-
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+    @include breakpoint(tablet, desktop) {
+      padding: 0.25rem;
     }
   }
 
@@ -61,8 +34,6 @@
     font-size: 2.25rem;
     line-height: 1;
     letter-spacing: -1.5px;
-    color: $c-text-primary;
-
     text-align: center;
 
     @include breakpoint(tablet) {
