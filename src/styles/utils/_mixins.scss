@@ -5,14 +5,28 @@
   }
 }
 
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 600px) {
-    @content;
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width $icon-width;
+  justify-content: space-between;
+  justify-items: left;
+  align-items: center;
+  column-gap: 30px;
+
+  @include onTablet {
+    $icon-width: 24px;
+    column-gap: 40px;
   }
 }
