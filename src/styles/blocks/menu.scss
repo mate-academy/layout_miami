@@ -1,95 +1,85 @@
 .menu {
-  font-size: $header-font-size;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: $header-top-padding 0;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  overflow-y: auto;
+  background-color: #e5e5e5;
 
-  &__wrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
+  text-transform: uppercase;
 
-  &__logo {
-    width: 2.75em;
-  }
-  &__phone {
+  &__top {
+    margin-bottom: 48px;
 
-    &-label {
-      font-size: 16px;
-      letter-spacing: 1px;
-      margin-right: 20px;
-      visibility: hidden;
-      transition: visibility 0.5s;
-      transition-delay: 0.3s;
-      position: absolute;
-      align-self: center;
-      display: inline;
-      width: 100%;
-      right: 100%;
-      &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-        visibility: visible;
-      }
-
-    }
-    &-icon {
-      width: 0.4em;
-
-      &--disabled {
-        visibility: hidden;
-      }
-
-    }
-  }
-  &__burger-icon {
-    width: 0.5em;
-    &--exit {
-      width: 0.3em;
-      transition: width 0.3s;
-    }
-
-    &-transformed {
-      width: 0.5em;
-      display: none;
-    }
-
-  }
-
-  &__burger-wrapper:hover &__burger-icon-transformed {
-    display: block;
-  }
-  &__burger-wrapper:hover &__burger-icon {
-    display: none;
-  }
-
-  &__link:hover {
-    cursor: pointer;
-  }
-  &__link--phone {
-    width: 0.5em;
-    margin-right: 40px;
+    @include top-actions;
+    --icon-width: 16px;
+    grid-template-columns: 1fr var(--icon-width);
 
     @include onTablet {
-      margin-right: 80px;
-
+      --icon-width: 16px;
     }
+
     @include onDesktop {
-      margin-right: 100px;
-
+      --icon-width: 22px;
     }
   }
-  @include onTablet {
-    font-size: 64px;
+
+  &__list {
+    margin: 0 0 48px;
+
+    padding: 0;
+    list-style: none;
   }
 
-  @include onDesktop {
-    font-size: 80px;
+  &__item {
+    margin-bottom: 24px;
 
-    &__link--phone:hover + &__phone-label {
-      visibility: visible;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $color-black;
+
+    transition: border $transition-time;
+
+    &:hover {
+      border-color: $color-black;
+    }
+
+    @include onDesktop {
+      font-weight: 700;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    text-decoration: none;
+    font-weight: 600;
+    color: $color-black;
+
+    &--phone {
+      margin-bottom: 16px;
+      line-height: 27px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid $color-black;
+
+      @extend %font-small-spaced;
     }
   }
 }
