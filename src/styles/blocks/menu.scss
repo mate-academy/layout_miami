@@ -37,6 +37,7 @@
   }
 
   &__link {
+    position: relative;
     padding-bottom: 8px;
     display: inline-block;
     font-size: 22px;
@@ -46,6 +47,18 @@
     text-transform: uppercase;
     text-decoration: none;
     color: $main-light-color;
+
+    &::after {
+      @include menu-slider;
+      transform: scaleX(0);
+      transform-origin: bottom left;
+      transition: transform 0.5s;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   }
 
   &__call {
@@ -69,12 +82,24 @@
     }
 
     &--action {
+      position: relative;
       padding-bottom: 8px;
       font-size: 12px;
       line-height: 16px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
+
+      &::after {
+        @include menu-slider;
+        transform: scaleX(0);
+        transition: transform 0.5s;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
     }
   }
 }
