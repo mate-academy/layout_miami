@@ -18,3 +18,12 @@ window.addEventListener('hashchange', () => {
   navigation.classList.remove('container__nav--active');
   navigation.classList.add('container__nav--close');
 });
+
+const form = document.querySelector('#form');
+
+form.addEventListener('submit', onSubmit, false);
+
+function onSubmit(event) {
+  event.preventDefault();
+  form.reset();
+};

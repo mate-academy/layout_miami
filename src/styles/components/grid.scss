@@ -18,6 +18,13 @@
     column-gap: 24px;
   }
 
+  &--mobile-3c {
+    @include phone {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+    }
+  }
+
   &--desktop {
     display: block;
 
@@ -31,6 +38,25 @@
   }
 
   &__item {
+
+    &--phone-hidden {
+      @include phone {
+        display: none;
+      }
+    }
+
+    &--tablet-hidden {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--desktop-hidden {
+      @include desktop {
+        display: none;
+      }
+    }
+
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
