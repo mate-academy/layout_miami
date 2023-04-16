@@ -1,94 +1,64 @@
 .headstyle {
-  background-size: cover;
-  background-position: top center;
+  @extend %background-images;
+  background-image: url(../images/header-bose.png);
+
   height: 100vh;
-  background-image: url(/images/header-bose.png);
   margin-bottom: 120px;
 
-  @media (min-width: 744px) {
-    background-image: url(/images/header-bose-big.png);
+  @include onTablet {
+    background-image: url(../images/header-bose-big.png);
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__content {
     box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     height: 100%;
     padding-top: 40px;
   }
 
-  &__call {
-    text-decoration: none;
-
-    @media (min-width: 1260px) {
-      &::before {
-        content: "+1 234 5555-55-55";
-        opacity: 0;
-        transition: opacity 0.3s;
-
-        display: block;
-        width: max-content;
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-        padding-right: 12px;
-
-        color: #292929;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-        // cursor: pointer;
-      }
-    }
-  }
-
   &__title {
-    margin: 0;
     font-style: italic;
     font-weight: 800;
     font-size: 32px;
     line-height: 32px;
     letter-spacing: -1.5px;
-    color: #292929;
+    color: $chief-color;
+
+    margin: 0;
     padding-bottom: 94px;
 
-    @media (min-width: 744px) {
+    @include onTablet {
       font-size: 40px;
       padding-bottom: 40px;
     }
 
-    @media (min-width: 1260px) {
+    @include onDesktop {
       padding-bottom: 64px;
     }
 
     &::before {
-      content: url(/images/vawe-bose.png);
+      content: url(../images/image-sound-wave-small.svg);
       display: block;
       width: 32px;
       height: 27px;
-
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
       margin-bottom: 16px;
 
-      @media (min-width: 744px) {
-        content: url(/images/Sound-waves.png);
+      @include onTablet {
+        content: url(../images/image-sound-waves.svg);
         width: 63px;
         height: 76px;
         margin-bottom: 40px;
       }
 
-      @media (min-width: 1260px) {
-        content: url(/images/Sound-waves.png);
+      @include onDesktop {
         margin-bottom: 32px;
       }
     }

@@ -5,13 +5,13 @@
   column-gap: 20px;
 
   //ділимо на 6 колонок гріда екран під таблетку
-  @media (min-width: 744px) {
+  @include onTablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
   //ділимо на 12 колонок гріда екран під десктоп
-  @media (min-width: 1260px) {
+  @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
   }
@@ -23,34 +23,30 @@
 
     //при досягненні ширини таблетки запускається
     //зонування сторінки для елемента за допомогою гріда
-    @media (min-width: 744px) {
+    @include onTablet {
       display: grid;
     }
   }
 
-  //блоки, що зонуються - кожний має 3 модифікатори нумерації колонок
+  //блоки, що зонуються - кожний має 2 модифікатори нумерації колонок
   //ці модифікатори вмикаються залежно від ширини екрану
   &__item {
-    //створюю адресне зонування по колонкам гріда за дефолтом
-    //grid__item--(start)-(end)
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        //коли досягається ширина екрану 744рх - створюються елементи
-        //grid__item--tablet-(start)-(end)
+    //створюю адресне зонування по колонкам гріда для таблетки і десктопа
+    //grid__item--"пристрій"-(start)-(end)
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
         &--tablet-#{$start}-#{$end} {
-          @media (min-width: 744px) and (max-width: 1259px) {
+          @include onTablet {
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
 
-        //коли досягається ширина екрану 1260рх - створюються елементи
-        //grid__item--desktop-(start)-(end)
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
         &--desktop-#{$start}-#{$end} {
-          @media (min-width: 1260px) {
+          @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
           }
         }

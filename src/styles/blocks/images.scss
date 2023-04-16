@@ -1,26 +1,49 @@
 .images {
   display: block;
   width: 100%;
-  height: var(--image-width);
+  height: $image-width;
 
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  @extend %background-images;
+  text-decoration: none;
 
   &--phone {
-    background-image: url(/images/phone-bose.png);
+    background-image: url(../images/image-phone.svg);
   }
 
   &--menu {
-    background-image: url(/images/menu-opener-bose.png);
+    background-image: url(../images/image-menu-opener.svg);
 
     &:hover {
-      background-image: url(/images/menu-opener-hover-bose.png);
+      background-image: url(../images/image-menu-opener-hover.svg);
     }
   }
 
   &--cross {
-    background-image: url(/images/cross-bose.png);
-    --image-width: 16px;
+    background-image: url(../images/image-cross.svg);
+    $image-width: 16px;
+  }
+
+  &__tooltip {
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    display: block;
+    width: max-content;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    padding-right: 12px;
+
+    color: $chief-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    pointer-events: none;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 }
