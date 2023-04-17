@@ -1,0 +1,118 @@
+@import "../variables";
+@import "../mixins";
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header_320.jpg);
+
+  @include onDesktop {
+    background-image: url(../images/header_1024.jpg);
+  }
+
+  @include onTablet {
+    background-image: url(../images/header_744.jpg);
+    background-repeat: no-repeat;
+    background-position-x: 40%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 100px;
+
+    @include onDesktop {
+      padding: $headerTopPadding 0 55px;
+    }
+
+    @include onTablet {
+      padding: $headerTopPadding 0 40px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    
+    &--frontside {
+      display: grid;
+      grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+      gap: 30px;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $generalBlack;
+    margin: 0;
+
+    @include onTablet {
+      position: relative;
+      bottom: 118px;
+      font-size: 40px;
+      line-height: 40px;
+    }
+    
+    &::before {
+      position: relative;
+      left: 7px;
+
+      content: "";
+      background-image: url(../images/wave_mobil.svg);
+      
+      font-weight: bold;
+      display: block;
+      width: 36px;
+      height: 30px;
+
+      margin-bottom: 16px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    
+      &::before {
+        position: relative;
+        left: 7px;
+
+        content: "";
+        background-image: url(../images/sound_waves.svg);
+        
+        font-weight: bold;
+        display: block;
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 16px;
+      }
+    }
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    
+      &::before {
+        position: relative;
+        left: 7px;
+
+        content: "";
+        background-image: url(../images/sound_waves.svg);
+        
+        font-weight: bold;
+        display: block;
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
