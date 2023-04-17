@@ -7,8 +7,8 @@ Technologies used in the project:
 - JS
 - HTML
 
-  - [demo]
-  - [BOSE landing] (https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
+  - [demo](https://w315.github.io/layout_miami/)
+  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
 
 Instructions for launching:
 - clone the entire local repository project
