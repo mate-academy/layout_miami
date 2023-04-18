@@ -1,19 +1,28 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 40px 22px 94px;
-
   background-image: url(../images/background/header_background_mobile.jpg);
   background-size: cover;
   background-position: center;
 
-  &__nav {
+  @include onTablet {
+    background-image: url(../images/background/header_background_desktop.jpg);
+  }
+
+  &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
   }
 
   &__icons {
@@ -30,9 +39,12 @@
 
     transition: background-image 0.3s linear;
 
+    @include onTablet {
+      margin-left: 40px;
+    }
+
     &:hover {
       background-image: url(../images/icons/menu_hover.svg);
-      background-size: contain;
     }
   }
 
@@ -65,6 +77,19 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
+
+      @include onTablet {
+        margin-bottom: 40px;
+
+        height: 76px;
+        width: 63px;
+
+        background-image: url(../images/decorative/wave_tablet.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
     }
   }
 }
