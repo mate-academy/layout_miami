@@ -1,0 +1,59 @@
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-decoration: none;
+
+  &__tooltip {
+    width: max-content;
+    display: block;
+    position: absolute;
+    right: 100%;
+    transform: translateY(-40%);
+    padding-right: 20px;
+
+    color: #fff;
+    font-family: "Cinzel", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: right;
+    text-transform: uppercase;
+
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &:hover &__tooltip {
+    @include onTablet {
+      transition-delay: 0.4s;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--phone {
+    transition: all 0.3s;
+    background-image: url(../images/phone.svg);
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      cursor: pointer;
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+  &--cross {
+    grid-column-start: 3;
+    background-image: url(../images/cross.svg);
+  }
+}
