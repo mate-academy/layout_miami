@@ -1,3 +1,4 @@
+@import "mixins";
 @import "blocks/menu.scss";
 @import "blocks/footer.scss";
 @import "blocks/place.scss";
@@ -8,20 +9,11 @@
 @import "blocks/about.scss";
 @import "blocks/button.scss";
 @import "variables";
+@import "mixins";
 
-@mixin onDesktop {
-  @media (min-width: 1260px) {
-    @content;
-  }
-}
-
-@mixin onTablet {
-  @media (min-width: 644px) {
-    @content;
-  }
-}
 
 .page {
+  scroll-behavior: smooth;
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 
@@ -51,6 +43,7 @@
     padding-top: 120px;
     padding-bottom: 64px;
     text-align: center;
+    margin: 0;
   }
 }
 
@@ -63,11 +56,15 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1260px;
+ 
   padding: 0 20px;
 
   @include onDesktop {
     padding: 0 40px;
+  }
+
+  @include onTablet {
+  padding: 0 72px;
   }
 }
 
@@ -82,6 +79,12 @@
     background-image: url(../images/header.png);
   }
 
+  @include onTablet {
+    background-image: url(../images/header744.png);
+    background-repeat: no-repeat;
+    background-position-x: 40%;
+  }
+
   &__content {
     box-sizing: border-box;
     display: flex;
@@ -90,7 +93,12 @@
     height: 100vh;
     width: 100%;
     padding: 40px 0 72px;
+  
+
+  @include onTablet {
+    padding: 40px 0 40px;
   }
+}
 
   &__tittle {
     font-weight: 800;
@@ -103,6 +111,10 @@
       font-size: 48px;
     }
 
+    @include onTablet {
+      font-size: 40px;
+    }
+
     &::before {
       content: "";
       display: block;
@@ -111,7 +123,46 @@
       margin-bottom: 16px;
       background-image: url(../images/vawe.png);
     }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+
+      &::before {
+        position: relative;
+        left: 7px;
+
+        content: "";
+        background-image: url(../images/Sound_waves.png);
+
+        font-weight: bold;
+        display: block;
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 16px;
+      }
+    }
+
+    @include onTablet {
+      
+
+      &::before {
+        position: relative;
+        left: 7px;
+
+        content: "";
+        background-image: url(../images/Sound_waves.png);
+
+        font-weight: bold;
+        display: block;
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 16px;
+      }
   }
+}
 
   &__call {
     height: 18px;
