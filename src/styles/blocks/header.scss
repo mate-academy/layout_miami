@@ -1,0 +1,101 @@
+.header {
+  background-image: url(../images/header_320px.jpg);
+  background-position: center;
+  background-size: cover;
+
+  @include onTablet() {
+    background-image: url(../images/header__tablet.jpg);
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/header.jpg);
+  }
+
+  .header__content {
+    box-sizing: border-box;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0 94px;
+
+    @include onTablet() {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop() {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__conatainer {
+    display: flex;
+  }
+
+  &__phone {
+    position: relative;
+
+    margin-right: 30px;
+
+    @include onDesktop() {
+      &::before {
+        width: max-content;
+        padding-right: 20px;
+        position: absolute;
+        content: "+1 234 555-55-55";
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $mainColor;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    @include onTablet() {
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @include onDesktop() {
+      font-size: 48px;
+      line-height: 48px;
+    }
+    color: $mainColor;
+
+    &::before {
+      display: block;
+      position: relative;
+      bottom: 16px;
+      content: "";
+      background-image: url(../images/wave.svg);
+      background-position: center;
+      background-size: cover;
+      height: 27px;
+      width: 32px;
+
+      @include onTablet() {
+        background-image: url(../images/wave_2.svg);
+        bottom: 40px;
+        height: 76px;
+        width: 63px;
+      }
+    }
+  }
+}
