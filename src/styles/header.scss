@@ -8,20 +8,8 @@
   }
 }
 
-.top__actions {
-  --icon-width: 16px;
-  display: grid;
-  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
-  justify-items: left;
-  align-items: center;
-
-  @include onDesktop {
-    --icon-width: 24px;
-  }
-}
-
 .icon {
-
+  position: relative;
   display: block;
   width: 100%;
   padding-bottom: 100%;
@@ -29,6 +17,33 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    padding-right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: max-content;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &--phone {
     background-image: url(../images/phone.svg);
@@ -73,36 +88,8 @@
     box-sizing: border-box;
   }
 
-  &--call {
-    text-decoration: none;
-
-    @include onDesktop {
-
-      &::before {
-        content: "+1 234 555-55-55";
-        color: #fff;
-        display: block;
-        width: max-content;
-        padding-right: 20px;
-        font-family: "Poppins", sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        position: relative;
-        transform: translate(-100%,-50%);
-        top: 50%;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-    }
+  &__top {
+    @include top__actions;
   }
 
   &__title {
