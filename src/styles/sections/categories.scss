@@ -24,18 +24,13 @@
   }
 
   &__block {
-    display: grid;
-    grid-template-columns: repeat($columnTablet);
-    justify-content: space-between;
-    align-items: center;
+    @include top-actions;
     margin-bottom: 16px;
 
-    @include smartphone {
-      grid-template-columns: repeat($columnSmartphone);
-    }
-
-    @include desktop {
-      grid-template-columns: repeat($columnDesktop);
+    &:last-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -43,6 +38,12 @@
     width: 100%;
     height: 187px;
     object-fit: cover;
+
+    &:hover {
+      transition: transform 0.3s;
+      transform: scale(1.1);
+      cursor: pointer;
+    }
 
     @include smartphone {
       height: 130px;
@@ -63,6 +64,7 @@
 
     @include smartphone {
       font-size: 16px;
+      margin-bottom: 40px;
     }
 
     &:last-child {
@@ -71,23 +73,28 @@
   }
 
   &__button {
-    grid-column: 2 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 392px;
     height: 56px;
+    box-sizing: border-box;
     background-color: $textColor;
     border-radius: 40px;
+    color: #fff;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 169%;
     text-decoration: none;
-    text-align: center;
-    color: #fff;
     transition: all 0.3s;
-    
+
     &:hover {
       background-color: #fff;
       border: 3px solid $textColor;
       color: $textColor;
+      cursor: pointer;
     }
 
     &:active {
@@ -95,11 +102,11 @@
     }
 
     @include desktop {
-      grid-column: 5 / 9;
+      width: 324px;
     }
 
     @include smartphone {
-      grid-column: 1 / 5;
+      width: 100%;
     }
   }
 }
