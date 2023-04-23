@@ -1,6 +1,33 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onPhone {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  $icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr  $icon-width  $icon-width;
+  justify-items: left;
+  align-items: center;
+  grid-gap: 2rem;
+
+  @include onTablet {
+    $icon-width: 24px;
   }
 }
