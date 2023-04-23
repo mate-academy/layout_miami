@@ -1,0 +1,187 @@
+.exhibition {
+  padding: 0 20px;
+
+  @include forTablet {
+    padding: 0 40px;
+  }
+  @include forDesktop {
+    padding: 0 $desktopPaddingX;
+  }
+
+  &__wrapper {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1020px;
+    margin-bottom: 100px;
+    @include forTablet {
+      margin-bottom: 140px;
+    }
+  }
+
+  &__title-wrapper {
+    margin: 0 auto;
+    max-width: 1020px;
+
+  }
+
+  &__title {
+    text-align: center;
+    letter-spacing: $letterspace;
+    padding-bottom: 8px;
+    @include fontParams(32px, 32px, 700);
+    color: $c-black;
+
+    @include forTablet {
+      @include fontParams(48px, 48px, 700);
+    }
+  }
+
+  &__intro {
+    text-align: center;
+    padding-bottom: 48px;
+    @include fontParams(32px, 32px, 400);
+    color: $c-black;
+  }
+
+  &__section {
+    margin-bottom: 48px;
+
+    &-last {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    padding-bottom: 24px;
+
+    @include forTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    &__title {
+      @include fontParams(16px, 27px, 700);
+      color: $c-red;
+    }
+
+    &-mid {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+      padding-bottom: 24px;
+
+      @include forTablet {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 24px;
+      }
+
+      @include forDesktop {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 24px;
+      }
+
+      &-photo3 {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+
+        @include forTablet {
+          display: none;
+        }
+
+        @include forDesktop {
+          display: block;
+        }
+      }
+
+      &-image3 {
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        transition: transform $transitionduration;
+        &:hover {
+          transform: scale(1.1);
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  &__caption {
+    @include fontParams(16px, 27px, 400);
+    color: $c-black;
+  }
+
+  &__photo {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    @include forTablet {
+      height: 100%;
+      
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--cols--#{$start}-#{$end} {
+            grid-column: #{$start}  /#{$end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transitionduration;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 1;
+    }
+  }
+
+  &__button {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+   
+    background: $c-red;
+    color: $c-white;
+    padding: 16px 36px 16px 64px;
+    text-align: center;
+    transition: transform $transitionduration;
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:active {
+      background-color: #eb343d;
+    }
+
+    @include fontParams(16px, 27px, 700);
+
+    @include forTablet {
+      padding: 14px 100px;
+      width: max-content;
+     
+    }
+
+    @include forDesktop {
+      padding: 12px 72px;
+    }
+  }
+}

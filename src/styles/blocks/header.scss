@@ -1,0 +1,131 @@
+.header {
+  height: 100vh;
+  background-image: url("/images/header.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: $mobilePaddingY $mobilePaddingX 0;
+
+  @include forTablet {
+    padding: $tabletPaddingY $tabletPaddingX 0;
+  }
+
+  @include forDesktop {
+    padding-left: $desktopPaddingX;
+    padding-right: $desktopPaddingX;
+    padding-top: 42px;
+  }
+
+  &__content-wrapper {
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: $maxContentwidth;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $mobileTopsecBotpadd;
+    
+    @include forTablet {
+      padding-bottom: $tabletTopsecBotpadd;
+    }
+
+    @include forDesktop {
+      
+      padding-bottom: $desktopTopsecBotpadd;
+    }
+  }
+
+  &__menu-toggler {
+    display: block;
+    width: $mobileLinkWidth;
+    height: $mobileMenuheight;
+    border: none;
+    background-color: transparent;
+    background-image: url("/images/menu.png");
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: transform $transitionduration;
+    
+
+    &:hover {
+      background-image: url("/images/menu-hover.png");
+    }
+
+    @include forTablet {
+      width: $tabletLinkWidth;
+      height: $tabletMenuheight;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 64px;
+    height: 46px;
+    transition: transform $transitionduration;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include forTablet {
+      width: $tabletLogowidth;
+      height: $tabletLogoheight;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: $mobileColgap;
+
+    @include forTablet {
+      column-gap: 64px;
+    }
+  }
+  
+
+  &__call-link {
+    display: block;
+    width: $mobileLinkWidth;
+    height: $mobileLinkWidth;
+    background-image: url("/images/phone.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: transform $transitionduration;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include forTablet {
+      width: $tabletLinkWidth;
+      height: $tabletLinkWidth;
+    }
+
+    @include forDesktop {
+      display: none;
+    }
+    
+  }
+
+  &__title {
+    @include fontParams (40px, 40px, 700);
+    letter-spacing: $letterspace;
+    color: $c-white;
+    font-family: "Cinzel", serif;
+    text-align: center;
+    
+    @include forTablet {
+      @include fontParams(60px, 60px, 700);
+    }
+
+    @include forDesktop {
+      @include fontParams(80px, 80px, 700);
+    }
+  }
+}
