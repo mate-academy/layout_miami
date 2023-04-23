@@ -1,0 +1,162 @@
+.browse-bose {
+  padding: 0 $paddingXDesktop 120px ;
+
+  @include tabletLayout {
+    padding: 0 $paddingXTablet 120px;
+  }
+
+  @include mobileWideLayout {
+    padding: 0 $paddingXMobileWide 120px;
+  }
+
+  @include mobileLayout {
+    padding: 0 $paddingXMobile 120px;
+  }
+
+  &__wrapper {
+    @include limitContentWidthDesktop;
+
+    @include tabletLayout {
+      @include limitContentWidthTablet;
+    }
+
+    @include mobileLayout {
+      @include limitContentWidthMobile;
+    }
+  }
+
+  &__title {
+    margin-bottom: 64px;
+
+    text-align: center;
+  }
+
+  &__card {
+    margin-top: 64px;
+  }
+
+  &__collection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+
+    @include mobileLayout {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+
+    }
+  }
+
+  &__image {
+    z-index: 1;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    transition: transform $transitionDuration, box-shadow $transitionDuration;
+
+    &:hover {
+      z-index: 0;
+
+      object-position: center;
+      object-fit: cover;
+      box-shadow: 2px 4px 16px rgba(0, 128, 128, 0.5);
+
+      transform: scale(1.1);
+    }
+
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
+        &--col-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+
+      @include mobileLayout {
+        &--col320-1-2 {
+          grid-column: 1 / 2;
+        }
+
+        &--col320-2-3 {
+          grid-column: 2 / 3;
+        }
+      }
+    }
+  }
+
+  &__department {
+    margin-bottom: 40px;
+    padding-top: 16px;
+
+    @include fontParams(24px, 34px, 700);
+    color: $c-gray-default;
+
+    @include mobileLayout {
+      @include fontParams(16px, 22px, 700);
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+  }
+
+  &__button-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+
+    @include tabletLayout {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include mobileLayout {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+
+    @include fontParams (16px, 27px, 700);
+
+    display: flex;
+    grid-column: 2 / 3;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 100%;
+
+    background-color: #292929;
+    border: 3px solid transparent;
+    border-radius: 40px;
+
+    color: #fff;
+
+    transition: $transitionDuration;
+
+    @include tabletLayout {
+      grid-column: 2 / 6;
+    }
+
+    @include mobileLayout {
+      grid-column: 1 / 3;
+    }
+
+    &:hover {
+      border: 3px solid $c-gray-default;
+
+      color: $c-gray-default;
+
+      background-color: #fff;
+    }
+
+    &:active {
+      color: #fff;
+
+      background-color: #111;
+    }
+  }
+}

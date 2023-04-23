@@ -1,0 +1,93 @@
+.promo {
+  padding: 0 $paddingXDesktop 120px;
+
+  @include tabletLayout {
+    padding: 0 $paddingXTablet 120px;
+  }
+
+  @include mobileLayout {
+    padding: 0 $paddingXMobile 120px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    width: 100%;
+
+    @include limitContentWidthDesktop;
+
+    @include tabletLayout {
+      grid-template-columns: repeat(2, 1fr);
+
+      @include limitContentWidthTablet;
+    }
+
+    @include mobileWideLayout {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include mobileLayout {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+
+      @include limitContentWidthMobile;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 6;
+
+    @include fontParams(48px, 48px, 700);
+    letter-spacing: -1.5px;
+
+    @include tabletLayout {
+      grid-column: 1 / 2;
+
+      @include fontParams(40px, 40px, 700);
+    }
+
+    @include mobileWideLayout {
+      grid-column: 1 / 2;
+    }
+
+    @include mobileLayout {
+      grid-column: 1 / 2;
+      padding-bottom: 32px;
+      @include fontParams(32px, 32px, 700);
+    }
+  }
+
+  &__content {
+    grid-column: 6 / 11;
+
+    @include tabletLayout {
+      grid-column: 2 / 3;
+    }
+
+    @include mobileWideLayout {
+      grid-column: 1 / 2;
+    }
+
+    @include mobileLayout {
+      grid-column: 1 / 2;
+    }
+
+    @include fontParams(16px, 27px, 400);
+  }
+
+  &__points {
+    padding-bottom: 16px;
+    
+    line-height: 22px;
+    font-weight: 700;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__text {
+    padding-top: 40px ;
+  }
+}

@@ -1,0 +1,96 @@
+.recommended {
+  padding: 0 $paddingXDesktop 120px ;
+
+  @include tabletLayout {
+    padding: 0 $paddingXTablet 120px;
+  }
+
+  @include mobileWideLayout {
+    padding: 0 $paddingXMobileWide 120px;
+  }
+
+  @include mobileLayout {
+    padding: 0 $paddingXMobile 120px;
+  }
+
+  &__wrapper {
+    @include limitContentWidthDesktop;
+
+    @include tabletLayout {
+      @include limitContentWidthTablet;
+    }
+
+    @include mobileLayout {
+      @include limitContentWidthMobile;
+    }
+  }
+
+  &__title {
+    margin-bottom: 64px;
+    text-align: center;
+  }
+
+  &__product-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+
+    @include tabletLayout {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include mobileLayout {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 100%;
+
+    @include tabletLayout {
+      grid-column: 2 / 6;
+      margin-bottom: 40px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include mobileLayout {
+      grid-column: 1 /3;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+
+    object-position: center;
+    object-fit: cover;
+
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__product-title {
+    margin-top: 32px;
+
+    @include fontParams(16px, 22px, 700);
+  }
+
+  &__dept-section {
+    margin-top: 8px;
+
+    @include fontParams(16px, 22px);
+  }
+
+  &__price {
+    margin-top: 12px;
+
+    @include fontParams(16px, 22px, 700);
+  }
+}
