@@ -1,0 +1,71 @@
+.icon {
+  display: grid;
+  width: $iconWidthTablet;
+  height: $iconWidthTablet;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include smartphone {
+    width: $iconWidthSmartphone;
+    height: $iconWidthSmartphone;
+  }
+
+  &--menu {
+    height: $iconHeightTablet;
+    grid-column: -1;
+    justify-self: end;
+    background-image: url(../images/bose/icon-menu.svg);
+    transition: all 0.3s;
+
+    @include desktop {
+      &:hover {
+        background-image: url(../images/bose/icon-menu-hover.svg);
+      }
+    }
+  }
+
+  &--phone {
+    grid-column: -2;
+    background-image: url(../images/bose/icon-phone.svg);
+    text-decoration: none;
+    justify-self: center;
+
+    @include smartphone {
+      justify-self: end;
+      margin-right: 30px;
+    }
+
+    @include desktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: relative;
+        top: 25%;
+        right: 165px;
+        padding: 0 15px;
+        width: max-content;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $textColor;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--cross {
+    grid-column: -1;
+    background-image: url(../images/bose/cross.svg);
+  }
+}

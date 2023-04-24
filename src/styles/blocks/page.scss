@@ -1,0 +1,50 @@
+.page {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+    
+    @media (max-height: 450px) {
+      padding-bottom: 0;
+    }
+  }
+
+  &__section {
+    padding: 0 $sideIntendTablet;
+
+    @include smartphone {
+      padding: 0 $sideIntendSmartphone;
+    }
+
+    @include desktop {
+      padding: 0 $sideIntendDesktop;
+    }
+  
+    &:last-child {
+      margin-bottom: 100px;
+
+      @include smartphone {
+        margin-bottom: 120px;
+      }
+    }
+  }
+}
