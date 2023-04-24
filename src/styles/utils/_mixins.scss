@@ -4,3 +4,30 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin for-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin style-header(
+  $background-image-url,
+  $background-image-width,
+  $background-image-height,
+  $columns-count,
+  $column-width,
+  $horizontal-padding
+) {
+  height: $background-image-height * 100vw / $background-image-width;
+  grid-template-columns: repeat($columns-count, $column-width);
+  padding: 0 $horizontal-padding;
+
+  background-image: $background-image-url;
+}
