@@ -1,0 +1,113 @@
+.header {
+  @extend %background-properties;
+  background-image: url(../images/photos/background-main.png);
+
+  &__top {
+    @include topActions;
+  }
+
+  &__content {
+    @extend %header-properties;
+
+    @include onTablet {
+      padding: $padding-content 0;
+    }
+
+    @include onDesktop {
+      padding: $padding-content 0;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+
+    &-call {
+      display: block;
+      margin-right: 30px;
+
+      text-decoration: none;
+
+      &-block {
+        position: relative;
+      }
+
+      &-info {
+        display: block;
+
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+        background-image: none;
+
+        @include transitionIn;
+
+        &-link {
+          display: block;
+          padding-right: 20px;
+          width: $width-max-content;
+          position: absolute;
+          top: 70%;
+          right: 50%;
+
+          @include fontHeader;
+          text-align: right;
+
+          color: $white-color;
+          text-decoration: none;
+
+          opacity: 0;
+
+          &:first-child {
+            padding-bottom: $margin-bottom-paragraph;
+            top: -125%;
+          }
+        }
+      }
+
+      @include onTablet {
+        & {
+          margin-right: $margin-right-icon;
+        }
+      }
+
+      @include onDesktop {
+        & {
+          margin-right: $margin-right-icon;
+        }
+      }
+    }
+
+    &-call-block:hover > &-call-info > &-call-info-link {
+      @include onDesktop {
+        display: block;
+        right: 100%;
+
+        opacity: 1;
+
+        @include transitionOut;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    left: 0;
+
+    @extend %font-titles;
+    font-size: 40px;
+    line-height: 100%;
+    color: #fff;
+
+    @include onTablet {
+      top: 256px;
+
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
