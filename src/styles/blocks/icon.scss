@@ -6,6 +6,7 @@
   height: 18px;
   margin-right: 30px;
   background-repeat: no-repeat;
+  cursor: default;
   
   &--phone {
     background-image: url(../images/phone.svg);
@@ -19,28 +20,36 @@
   
   &__tooltips {
     position: absolute;
-    right: 255px;
-    
-    margin-right: 20px;
+    transform: translate(-100%, -50%);
+
     display: flex;
+    margin-left: -20px;
     flex-direction: column;
-    opacity: 1;
-    color: $colorWhite;
-    font-weight: bold;
+    align-items: flex-end;
     line-height: 27px;
+    font-weight: bold;
+    color: $colorWhite;
     letter-spacing: 1px;
-    transition: opacity 0.5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
   }
   
   &__text {
-    text-decoration: none;
-    color: $colorWhite;
+    width: max-content;
     text-align: end;
+    color: $colorWhite;
+    text-decoration: none;
+   
+    &:first-child {
+      margin-bottom: 8px;
+    }
   }
   
   &:hover &__tooltips {
     @include onDesktop {
       opacity: 1;
+      pointer-events: all;
     }
   }
 }
