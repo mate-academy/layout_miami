@@ -2,6 +2,172 @@
 @import "fonts";
 @import "typography";
 
-body {
-  background: $c-gray;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTable {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+.page {
+  font-family: "Inter", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+  &__image {
+    height: 17px;
+
+    @include onDesktop {
+      height: 24px;
+    }
+  }
+
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon-container {
+    display: flex;
+    gap: 30px;
+
+    &__call {
+      background-image: url(../images/phone.svg);
+      text-decoration: none;
+
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
+
+          display: block;
+          width: max-content;
+          padding-right: 12px;
+
+          font-weight: 700;
+          font-size: 12px;
+          color: #292929;
+          line-height: 16px;
+          letter-spacing: 2px;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    &__menu-opener {
+      background-image: url(../images/menu.svg);
+
+      @include onDesktop {
+        &:hover {
+          background-image: url(../images/menu_desktop_hover.svg);
+        }
+      }
+      &:hover {
+        background-image: url(../images/menu_desktop_hover.svg);
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    color: #292929;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onTable {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(../images/music.png);
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/sound_waves.png);
+        margin-bottom: 32px;
+      }
+
+      @include onTable {
+        background-image: url(../images/sound_waves.png);
+        margin-bottom: 40px;
+      }
+    }
+  }
 }
