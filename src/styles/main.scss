@@ -23,18 +23,22 @@ a {
 .container {
   margin: 0 auto;
   max-width: 1020px;
+  padding: 0 20px;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-  height: 100vh;
-  padding: 50px 120px 80px;
   background-image: url(../images/girl.jpg);
   background-size: cover;
   background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 50px 0 80px;
+  }
 
   &__nav {
     display: flex;
@@ -48,7 +52,6 @@ a {
   }
 
   &__phone {
-    display: block;
     width: 32px;
     height: 32px;
     margin-right: 36px;
@@ -56,6 +59,7 @@ a {
     background-image: url(../images/Icon-Phone-call.svg);
 
     &-number {
+      opacity: 0;
       position: relative;
       width: max-content;
       top: 50%;
@@ -64,12 +68,19 @@ a {
       font-weight: 700;
       font-size: 12px;
       line-height: 16px;
+      pointer-events: none;
+    }
+
+    &:hover &-number {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
   &__burger {
     width: 32px;
     height: 32px;
+    cursor: pointer;
     background-repeat: no-repeat;
     background-image: url(../images/Icon-Burger-menu.svg);
 
@@ -88,5 +99,49 @@ a {
     font-size: 48px;
     letter-spacing: -1.5px;
     color: #292929;
+  }
+}
+
+.recommended {
+  margin: 120px 0;
+
+  &__title {
+    font-weight: 700;
+    font-size: 48px;
+    text-align: center;
+  }
+
+  &__cards {
+    display: flex;
+    margin-top: 60px;
+  }
+}
+
+.product {
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  &__name {
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__about {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__price {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 }
