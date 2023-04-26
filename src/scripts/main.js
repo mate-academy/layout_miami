@@ -9,5 +9,9 @@ window.addEventListener('hashchange', () => {
 });
 
 window.addEventListener('submit', (event) => {
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('message').value = '';
+
   event.preventDefault();
 });
