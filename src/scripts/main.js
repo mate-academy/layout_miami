@@ -26,6 +26,7 @@ const scroll = document.querySelector('.upward');
 
 window.addEventListener('scroll', () => {
   scroll.classList.toggle('upward--active', window.scrollY > 500);
+  scroll.classList.toggle('upward--dark', window.scrollY > 4190);
 });
 
 scroll.addEventListener('click', () => {
