@@ -2,26 +2,41 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Inter", sans-serif;
+h1 {
   margin: 0;
 }
 
+a {
+  line-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.page {
+
+  &__body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+  }
+}
+
 .container {
-  padding: 0 150px;
   margin: 0 auto;
-  width: 100%;
+  max-width: 1020px;
 }
 
 .header {
-  padding: 50px 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  &__content {
+  height: 100vh;
+  padding: 50px 120px 80px;
+  background-image: url(../images/girl.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,70 +48,45 @@ body {
   }
 
   &__phone {
-    margin-right: 32px;
-    cursor: pointer;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-right: 36px;
+    background-repeat: no-repeat;
+    background-image: url(../images/Icon-Phone-call.svg);
+
+    &-number {
+      position: relative;
+      width: max-content;
+      top: 50%;
+      transform: translate(-100%,-50%);
+      padding-right: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 
   &__burger {
-    position: relative;
-    width: 24px;
-    height: 18px;
-    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-image: url(../images/Icon-Burger-menu.svg);
 
-    &-line {
-      position: absolute;
-      background-color: #292929;
-      border-radius: 2px;
-      width: 100%;
-      height: 3px;
-
-      &::after {
-        content: " ";
-        position: absolute;
-        background-color: inherit;
-        border-radius: 2px;
-        width: 100%;
-        height: 3px;
-        top: 5px;
-      }
-    }
-
-    &::before,
-    &::after {
-      content: " ";
-      background-color: #292929;
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      border-radius: 2px;
-    }
-
-    &::before {
-      bottom: 5px;
-    }
-
-    &::after {
-      bottom: 0;
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
     }
   }
-}
 
-.baner {
-  background: url(../images/girl.jpg) top center no-repeat;
-  background-size: contain;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-
-  &__content {
-    margin-bottom: 60px;
+  &__waves {
+    margin-bottom: 32px;
   }
 
   &__title {
-    max-width: 500px;
-    margin-top: 30px;
     font-style: italic;
     font-weight: 800;
     font-size: 48px;
+    letter-spacing: -1.5px;
+    color: #292929;
   }
 }
