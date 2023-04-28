@@ -1,6 +1,64 @@
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} $transition-duration;
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+
+  gap: 30px;
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width);
+  }
+
+  @include onTablet {
+    --icon-width: 24px;
+
+    gap: 40px;
+  }
+}
+
+@mixin button {
+  @extend %page;
+
+  font-size: 16px;
+  line-height: 27px;
+  background: $main-color-white;
+  color: $main-color-black;
+
+  width: 100%;
+  max-width: 392px;
+  height: 56px;
+  border-radius: 40px;
+  border-color: $main-color-white;
+  outline: none;
+  cursor: pointer;
+
+  margin: 0 auto;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
   }
 }

@@ -1,0 +1,58 @@
+.page {
+  background-color: $main-color-black;
+  scroll-behavior: smooth;
+
+  &__body {
+    color: $main-color-white;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $transition-duration;
+
+    &:target {
+      transform: translate(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 60px;
+
+    &--title {
+      margin-bottom: 48px;
+    }
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+
+    &:not(.header) {
+      margin-bottom: 92px;
+
+      &:last-child {
+        margin-bottom: 120px;
+
+        @include onDesktop {
+          margin-bottom: 168px;
+        }
+      }
+
+      @include onTablet {
+        margin-bottom: 120px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 144px;
+      }
+    }
+  }
+}
