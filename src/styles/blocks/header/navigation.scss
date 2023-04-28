@@ -1,0 +1,125 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 29px;
+
+  &__item {
+    padding-left: 30px;
+  }
+
+  &__phone {
+    display: flex;
+    padding-right: 30px;
+    &-number {
+      font-family: Poppins, sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: $font-size-1;
+      line-height: $line-height-sm;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $c-white;
+      position: absolute;
+      transform: translateX(calc(-100% - 12px)) translateY(5px);
+      transition: all 0.3s ease-in-out;
+      opacity: 1;
+    }
+
+    &-icon {
+      width: 18px;
+      height: 18px;
+
+      @include for-tablet() {
+        width: 24px;
+        height: 24px;
+      }
+
+      @include for-desktop() {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:not(:hover) &-number {
+      @include visually-hidden();
+      opacity: 0;
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+
+    &-image {
+      height: 38px;
+
+      @include for-tablet() {
+        height: 56px;
+        width: 187px;
+      }
+
+      @include for-desktop() {
+        height: 56px;
+        width: 187px;
+      }
+    }
+  }
+
+  &__burger {
+    &::before {
+      content: "";
+      background-image: url(../images/burger-small.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      width: 18px;
+      height: 12px;
+
+      @include for-tablet() {
+        background-image: url(../images/burger.svg);
+        width: 24px;
+        height: 24px;
+      }
+
+      @include for-desktop() {
+        background-image: url(../images/burger.svg);
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: none;
+      background-image: url(../images/burger-hover.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 18px;
+      height: 12px;
+
+      @include for-tablet() {
+        width: 24px;
+        height: 24px;
+      }
+
+      @include for-desktop() {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:hover {
+      &:before {
+        display: none;
+      }
+
+      &:after {
+        display: inline-block;
+      }
+    }
+
+    &__label {
+      @include visually-hidden();
+    }
+  }
+}
