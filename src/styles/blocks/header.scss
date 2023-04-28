@@ -4,6 +4,7 @@
   background-image: url(../images/photos/bike-header_680x480.webp);
   background-position-x: 85%;
   background-repeat: no-repeat;
+  background-size: cover;
 
   @include onTablet {
     background-image: url(../images/photos/bike-header_889x628.webp);
@@ -14,13 +15,20 @@
   @include onDesktop {
     background-image: url(../images/photos/bike-header_1260x711.webp);
     min-height: 710px;
+    background-position: center;
   }
 
-  &__content {
+  @media (min-width: 1440px) {
+    background-image: url(../images/photos/Cover_photo.jpg);
+  }
+
+  &__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+
+    @include header-menu-vertical-paddings;
   }
 
   &__head {
@@ -40,31 +48,31 @@
     background-image: url(../images/phone.svg);
     text-decoration: none;
     color: $light-text-color;
+    position: relative;
+  }
 
-    @include onDesktop {
-      &::before {
-        content: "+1 234 5555-55-55";
-        display: block;
-        position: relative;
-        transform: translate(-100%, -50%);
-        top: 50%;
-        padding-right: 30px;
-        width: max-content;
+  &__phone-tooltip {
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    transform: translate(-100%, -50%);
+    top: 50%;
+    padding: 30px;
+    width: max-content;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        text-align: right;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
+  }
 
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+  @include onTablet {
+    &__phone-link:hover &__phone-tooltip {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
