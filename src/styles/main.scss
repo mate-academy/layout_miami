@@ -83,14 +83,52 @@ img {
   }
 
   &__burger {
-    width: 32px;
-    height: 32px;
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 19px;
+    z-index: 3;
     cursor: pointer;
-    background-repeat: no-repeat;
-    background-image: url(../images/Icon-Burger-menu.svg);
+    transition: transform 0.3s linear;
+
+    & span {
+      position: absolute;
+      width: 100%;
+      background-color: #111111;
+      left: 0;
+      top: 8px;
+      height: 3px;
+      border-radius: 2px;
+    }
+
+    &::before,
+    &::after {
+      content: " ";
+      position: absolute;
+      background-color: #111111;
+      width: 100%;
+      height: 3px;
+      left: 0;
+      transition: 0.5s;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
 
     &:hover {
-      background-image: url(../images/Icon-Burger-menu-hover.svg);
+
+      &::before {
+        width: 80%;
+      }
+
+      &::after {
+        width: 50%;
+      }
     }
   }
 
@@ -225,6 +263,11 @@ img {
     background-color: #fff;
     color: #292929;
   }
+
+  &:active {
+    background-color: #111111;
+    color: #fff;
+  }
 }
 
 .about {
@@ -354,6 +397,15 @@ img {
   }
 }
 
+.footer {
+  background-image: url(../images/footer_img.jpg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+  margin-top: 40px;
+}
+
 @media (max-width: 525px) {
   .header {
     background-position: 33%;
@@ -362,8 +414,7 @@ img {
       max-width: 130px;
     }
 
-    &__phone,
-    &__burger {
+    &__phone {
       background-size: 24px;
       width: 24px;
       height: 24px;
