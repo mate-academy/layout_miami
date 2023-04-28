@@ -1,0 +1,72 @@
+.header {
+  height: 100vh;
+  padding: $headerTopPadding 0;
+
+  background-image: url(../images/header-bg.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    padding: 50px 0;
+  }
+
+  &__call-wrapper {
+    position: relative;
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    @include onDesktop {
+      &:hover + .header__phones-numbers {
+        z-index: 1;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phones-numbers {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+
+    padding-right: 20px;
+
+    text-align: right;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+    transition: z-index 0.3s, opacity 0.3s;
+
+    &:hover {
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+
+  &__menu-opener {
+    margin-left: 30px;
+  }
+
+  &__title {
+    --font-size: 40px;
+
+    margin-top: 129px;
+    font-weight: 700;
+    font-size: var(--font-size);
+    line-height: var(--font-size);
+    letter-spacing: -1.5px;
+    color: $white-color;
+    text-align: center;
+
+    @include onTablet {
+      --font-size: 64px;
+    }
+
+    @include onDesktop {
+      --font-size: 80px;
+    }
+  }
+}
