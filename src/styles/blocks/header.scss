@@ -41,31 +41,31 @@
     background-image: url(../images/phone.svg);
     text-decoration: none;
     color: $light-text-color;
+    position: relative;
+  }
 
-    @include onDesktop {
-      &::before {
-        content: "+1 234 5555-55-55";
-        display: block;
-        position: relative;
-        transform: translate(-100%, -50%);
-        top: 50%;
-        padding-right: 30px;
-        width: max-content;
+  &__phone-tooltip {
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    transform: translate(-100%, -50%);
+    top: 50%;
+    padding: 30px;
+    width: max-content;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        text-align: right;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        opacity: 0;
-        pointer-events: none;
-      }
+  }
 
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
+  @include onTablet {
+    &__phone-link:hover &__phone-tooltip {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
