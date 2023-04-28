@@ -10,6 +10,11 @@ window.addEventListener('hashchange', () => {
 
 function stopDefAction(evt) {
   evt.preventDefault();
+
+  document.getElementById('form-contact__name').value = '';
+  document.getElementById('form-contact__email').value = '';
+  document.getElementById('form-contact__message').value = '';
+  window.alert('Thanks for your message!');
 }
 
 document.getElementById('form-contact__button').addEventListener(
