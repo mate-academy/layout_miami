@@ -1,5 +1,6 @@
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
+
   &:hover {
     #{$_property}: $_toValue;
   }
@@ -7,11 +8,18 @@
 
 @mixin hoverScale($_x) {
   transition: all 0.3s;
+
   &:hover {
     scale: $_x;
     z-index: 1;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@mixin onExtraSmallMobile {
+  @media screen and (min-width: 250px) and (max-width: 350px) {
+    @content;
   }
 }
 
