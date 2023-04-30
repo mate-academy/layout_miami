@@ -8,15 +8,15 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-function stopDefAction(evt) {
-  evt.preventDefault();
+const form = document.querySelector('.form-contact__content');
 
-  document.getElementById('form-contact__name').value = '';
-  document.getElementById('form-contact__email').value = '';
-  document.getElementById('form-contact__message').value = '';
-  window.alert('Thanks for your message!');
-}
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-document.getElementById('form-contact__button').addEventListener(
-  'click', stopDefAction, false
-);
+  const emailInput = document.querySelector('.form-contact__email');
+
+  if (emailInput.checkValidity()) {
+    form.reset();
+    window.alert('Thanks for your message!');
+  }
+});
