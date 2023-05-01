@@ -1,0 +1,43 @@
+.exhibition {
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-wrapper {
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+
+    &::after {
+      display: block;
+      content: "";
+      padding-bottom: 100%;
+    }
+
+    &--bigger-size-on-tablet {
+      @include onTablet {
+        max-height: 280px;
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+      max-height: none;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__name {
+    font-weight: 700;
+    color: $red-color;
+  }
+}
