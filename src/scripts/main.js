@@ -22,8 +22,7 @@ function setProductImageSize() {
   });
 }
 
-const form = document.getElementById('my-form');
-
-form.addEventListener('submit', function(event) {
+document.getElementById('my-form').addEventListener('submit', (event) => {
   event.preventDefault();
+  document.getElementById('my-form').reset();
 });
