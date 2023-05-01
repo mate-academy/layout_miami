@@ -1,3 +1,5 @@
+@import "vars";
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
   &:hover {
@@ -23,17 +25,41 @@
   }
 }
 
-@mixin style-header(
-  $background-image-url,
-  $background-image-width,
-  $background-image-height,
-  $columns-count,
-  $column-width,
-  $horizontal-padding
-) {
-  height: $background-image-height * 100vw / $background-image-width;
+@mixin set-smartphone-height-and-grid {
+  @include set-height(320px, 500px);
+
+  @include set-grid(2, calc(50vw - #{$smartphone-horizontal-padding}),
+  $smartphone-horizontal-padding);
+}
+
+@mixin set-tablet-height-and-grid() {
+  justify-content: space-between;
+
+  @include set-height(744px, 800px);
+
+  @include set-grid(6, 80px, 72px);
+}
+
+@mixin set-desktop-height-and-grid() {
+  @include set-height(1260px, 720px);
+
+  @include set-grid(12, 63px, 120px);
+}
+
+@mixin set-height($background-width, $background-height) {
+  height: $background-height * 100vw / $background-width;
+}
+
+@mixin set-grid($columns-count, $column-width, $horizontal-padding) {
+  display: grid;
   grid-template-columns: repeat($columns-count, $column-width);
   padding: 0 $horizontal-padding;
+}
 
-  background-image: $background-image-url;
+@mixin divide-menu-rows($logo-bottom-distance) {
+  grid-template-rows: $logo-top-margin + $logo-height + $logo-bottom-distance
+    ($nav-items-count * $nav-item-height + ($nav-items-count - 1) *
+    $nav-items-gap + $nav-bottom-margin)
+    $menu-number-height + $menu-number-margin-bottom
+    $menu-call-height + $underline-gap;
 }

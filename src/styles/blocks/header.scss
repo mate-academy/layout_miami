@@ -4,46 +4,25 @@
 .header {
   width: 100%;
   box-sizing: border-box;
-  display: grid;
   grid-template-rows: 1fr 1fr;
   align-items: start;
 
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: url("../../src/images/photos/header-background/header-background-320.jpg");
 
-  @include style-header(
-    url("../../src/images/photos/header-background/header-background-320.jpg"),
-    320,
-    500,
-    2,
-    calc(50vw - #{$phone-header-horizontal-padding}),
-    $phone-header-horizontal-padding
-  );
+  @include set-smartphone-height-and-grid;
 
   @include for-tablet {
-    justify-content: space-between;
+    background-image: url("../../src/images/photos/header-background/header-background-744.jpg");
 
-    @include style-header(
-      url("../../src/images/photos/header-background/header-background-744.jpg"),
-      744,
-      800,
-      6,
-      80px,
-      72px
-    );
+    @include set-tablet-height-and-grid;
   }
 
   @include for-desktop {
-    justify-content: space-between;
+    background-image: url("../../src/images/photos/header-background/header-background-1260.jpg");
 
-    @include style-header(
-      url("../../src/images/photos/header-background/header-background-1260.jpg"),
-      1260,
-      720,
-      12,
-      63px,
-      120px
-    );
+    @include set-desktop-height-and-grid;
   }
 
   &__ {
@@ -100,16 +79,27 @@
     &menu {
       width: 18px;
       height: 12px;
-      margin-top: 3px;
+
+      background-image: url("../../src/images/menu.svg");
+      background-repeat: no-repeat;
 
       @include for-tablet {
         width: 24px;
         height: 19px;
-        margin-top: 0;
+        margin-top: 3px;
       }
 
-      @include for-desktop {
-        margin-top: 3px;
+      &:hover {
+        @include for-desktop {
+          background-image: url("../../src/images/menu-hover.svg");
+          margin-top: 0;
+        }
+      }
+
+      &-link {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
     }
 
