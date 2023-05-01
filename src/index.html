@@ -297,37 +297,31 @@
       let scrollPageMenu = document.querySelector(".page__body");
 
       burger.addEventListener("click", () => {
-        burger.classList.add("active");
-        menu.classList.add("active");
-        scrollPageMenu.classList.add("active");
+
+        burger.classList.toggle("active");
+        menu.classList.toggle("active");
+        scrollPageMenu.classList.toggle("active");
       });
 
       //ANCHORS
       let menuItems = document.querySelectorAll(".menu__item");
 
       for (let item of menuItems) {
-
         item.addEventListener("click", (e) => {
           e.preventDefault();
           const blockID = item.querySelector('a').getAttribute("href");
-
           let y = document.querySelector(blockID).getBoundingClientRect().top;
 
           burger.classList.remove("active");
           menu.classList.remove("active");
           scrollPageMenu.classList.remove("active");
 
-          console.log(y);
-
-         window.scrollTo({
-             top: y,
-             behavior: "smooth"
-         });
+          window.scrollTo({
+              top: y,
+              behavior: "smooth"
+          });
         });
-
-
       };
-
     </script>
   </body>
 </html>
