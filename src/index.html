@@ -28,6 +28,37 @@
               <div class="header__burger">
                 <span></span>
               </div>
+              <nav class="menu">
+                <div class="container">
+                  <a href="#" class="header__logo">
+                    <img src="./images/Logo.svg" alt="bose">
+                  </a>
+                  <ul class="menu__list">
+                    <li class="menu__item">
+                      <a href="#home" class="menu__link">home</a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="#recommended" class="menu__link">recommended</a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="#category" class="menu__link">categories</a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="#about" class="menu__link">how to buy</a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="#form" class="menu__link">contacts</a>
+                    </li>
+                  </ul>
+
+                  <div class="menu__contact">
+                    <div class="menu__contact-number">
+                      +1 234 5555-55-55
+                    </div>
+                    <a href="tel:+1 234 5555-55-55" class="menu__contact-link">call to order</a>
+                  </div>
+                </div>
+              </nav>
             </div>
           </div>
           <div class="header__bottom">
@@ -42,7 +73,7 @@
     </header>
 
     <main class="main">
-      <section class="recommended">
+      <section class="recommended" id="recommended">
         <div class="container">
           <div class="title recommended__title">
             Recommended
@@ -103,7 +134,7 @@
         </div>
       </section>
 
-      <section class="category">
+      <section class="category" id="category">
         <div class="container">
           <div class="title category__title">
             Browse Bose
@@ -167,7 +198,7 @@
         </div>
       </section>
 
-      <section class="about">
+      <section class="about" id="about">
         <div class="container">
 
           <div class="about__content">
@@ -194,7 +225,7 @@
         </div>
       </section>
 
-      <section class="form">
+      <section class="form" id="form">
         <div class="container">
           <div class="title form__title">Contact us</div>
           <div class="form__container">
@@ -256,8 +287,47 @@
           </div>
         </div>
       </section>
+
       <section class="footer">
       </section>
     </main>
+    <script>
+      let burger = document.querySelector(".header__burger");
+      let menu = document.querySelector(".menu");
+      let scrollPageMenu = document.querySelector(".page__body");
+
+      burger.addEventListener("click", () => {
+        burger.classList.add("active");
+        menu.classList.add("active");
+        scrollPageMenu.classList.add("active");
+      });
+
+      //ANCHORS
+      let menuItems = document.querySelectorAll(".menu__item");
+
+      for (let item of menuItems) {
+
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const blockID = item.querySelector('a').getAttribute("href");
+
+          let y = document.querySelector(blockID).getBoundingClientRect().top;
+
+          burger.classList.remove("active");
+          menu.classList.remove("active");
+          scrollPageMenu.classList.remove("active");
+
+          console.log(y);
+
+         window.scrollTo({
+             top: y,
+             behavior: "smooth"
+         });
+        });
+
+
+      };
+
+    </script>
   </body>
 </html>

@@ -11,16 +11,26 @@ a {
   color: #292929;
 }
 
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 img {
   max-width: 100%;
   min-width: 0;
 }
 
 .page {
-
   &__body {
     font-family: "Inter", sans-serif;
     margin: 0;
+
+    &.active {
+      overflow: hidden;
+    }
   }
 }
 
@@ -31,7 +41,6 @@ img {
 }
 
 .header {
-
   background-image: url(../images/girl.jpg);
   background-size: cover;
   background-position: left;
@@ -56,8 +65,8 @@ img {
   }
 
   &__phone {
-    width: 32px;
-    height: 32px;
+    width: 18px;
+    height: 18px;
     margin-right: 36px;
     background-repeat: no-repeat;
     background-image: url(../images/Icon-Phone-call.svg);
@@ -94,7 +103,7 @@ img {
     & span {
       position: absolute;
       width: 100%;
-      background-color: #111111;
+      background-color: #111;
       left: 0;
       top: 8px;
       height: 3px;
@@ -105,7 +114,7 @@ img {
     &::after {
       content: " ";
       position: absolute;
-      background-color: #111111;
+      background-color: #111;
       width: 100%;
       height: 3px;
       left: 0;
@@ -130,6 +139,20 @@ img {
         width: 50%;
       }
     }
+
+    &.active span {
+      opacity: 0;
+    }
+
+    &.active::after {
+      transform: translateY(-8px) rotate(45deg);
+      width: 100%;
+    }
+
+    &.active::before {
+      transform: translateY(8px) rotate(-45deg);
+      width: 100%;
+    }
   }
 
   &__waves {
@@ -146,6 +169,66 @@ img {
     font-size: 48px;
     letter-spacing: -1.5px;
     color: #292929;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #e8eff9;
+  width: 100%;
+  padding-top: 50px;
+  font-weight: 700;
+  transform: translateX(100%);
+  transition: 0.5s;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 80px 0 40px;
+  }
+
+  &__item {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 32px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__contact-number {
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__contact-link {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      bottom: -6px;
+      height: 2px;
+      background-color: #292929;
+    }
   }
 }
 
@@ -257,6 +340,7 @@ img {
   &__link {
     font-weight: 700;
     text-align: center;
+    max-width: 400px;
   }
 
   &:hover {
@@ -265,7 +349,7 @@ img {
   }
 
   &:active {
-    background-color: #111111;
+    background-color: #111;
     color: #fff;
   }
 }
@@ -374,6 +458,10 @@ img {
     &__content {
       padding: 50px 0;
     }
+
+    &__title {
+      font-size: 40px;
+    }
   }
 
   .title {
@@ -423,6 +511,10 @@ img {
     &__waves {
       background-image: url(../images/waves-mobile.svg);
       height: 27px;
+    }
+
+    &__title {
+      font-size: 32px;
     }
   }
 
