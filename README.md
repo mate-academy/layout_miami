@@ -1,13 +1,9 @@
-# Miami landing page
+# The MET landing page
 
-In this task, you will learn how to implement a landing page. To do that:
+This is the landing page for Metropolitan Museum of Art, one of the most visited museums in the world, the museum fund of which is more than 2 million exhibits from all corners of the world. Here you can view exhibition gallery guides, videos, articles, book a guided tour or book a virtual tour. The landing page also has a feedback form. This form allows users to create and send small messages.
+Іn this work I used HTML (Hyper Text Markup Language), CSS (Cascading Style Sheets) and  programming language JS (JavaScript).  Were also used the methodology ВЕМ, SСSS syntax of the SASS preprocessor, Semantic elements HTML. Created an Responsive web design using  Flex, Grid technology and Media queries.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+[DEMO LINK](https://odolga.github.io/layout_miami/)
+
+[MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+
