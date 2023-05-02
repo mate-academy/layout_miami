@@ -1,0 +1,103 @@
+.header {
+  background-image: url("../images/header-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 40%;
+
+  @include onTablet {
+    background-image: url("../images/header-bg.png");
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-bg-1024.png");
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $mobHeaderTopPadding 0 94px;
+
+    @include onTablet {
+      padding: $tabHeaderTopPadding 0 40px;
+    }
+
+    @include onDesktop {
+      padding: $deskHeaderTopPadding 0 64px;
+    }
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        color: $mainAccentColor;
+        opacity: 0;
+
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+
+    color: $mainAccentColor;
+
+    @include onTablet {
+      font-style: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+
+      margin-bottom: 16px;
+
+      background-image: url("../images/header-element-mobile.svg");
+
+      @include onTablet {
+        background-image: url("../images/sound-waves-header.svg");
+
+        width: 63px;
+        height: 76px;
+
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
