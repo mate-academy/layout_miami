@@ -8,10 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const button = document.querySelector('#send');
+let input = document.querySelector("form");
 
-button.addEventListener('click', buttonClick, false);
-
-function buttonClick(event) {
+input.addEventListener('submit', (event) => {
   event.preventDefault();
-}
+  alert('Form is sent!');
+});
