@@ -1,0 +1,102 @@
+.header {
+  background-size: cover;
+  background-image: url(../images/header_mobile.png);
+  background-position: center top;
+
+  @include onTablet() {
+    background-image: url(../images/header_720.png);
+  }
+
+  @include onDesktop() {
+    background-image: url(../images/header_desktop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: $headerTopPaddingMobile 20px 94px;
+    height: 100vh;
+
+    @include onTablet() {
+      padding: $headerTopPaddingTablet 40px 40px;
+    }
+
+    @include onDesktop() {
+      padding: $headerTopPaddingTablet 40px 64px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    color: $colorMainAccent;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet() {
+      font-size: 40px;
+    }
+
+    @include onDesktop() {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      background-image: url(../images/title_wave.svg);
+      background-size: cover;
+      @include onTablet() {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/Trackwaves.svg);
+      }
+    }
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        color: $colorMainAccent;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+    @include onTablet() {
+      margin-right: 40px;
+    }
+  }
+}
