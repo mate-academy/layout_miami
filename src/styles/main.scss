@@ -1,7 +1,143 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  font-family: "Inter", sans-serif;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.logo {
+  &__image {
+    height: 18px;
+
+    @include onDesktop {
+      height: 24px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0 20px;
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: 30% 70%;
+  background-image: url(../images/header_bg.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+  }
+
+  &__title {
+    color: #292929;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    align-items: center;
+    letter-spacing: -1.5px;
+
+    @include onDesktop {
+      font-size: 48px;
+      letter-spacing: -1.5px;
+    }
+
+    &::before {
+      content: "";
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: block;
+      background-image: url(../images/waves.svg);
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      @include onDesktop {
+        background-image: url(../images/1024_waves.svg);
+        height: 76px;
+        width: 63px;
+      }
+    }
+  }
+
+  &__nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu.svg);
+    @include onDesktop {
+      height: 24px;
+      width: 24px;
+      background-image: url(../images/1024_menu.svg);
+      &:hover {
+        height: 24px;
+        width: 24px;
+        background-image: url(../images/1024_menu_hover.svg);
+      }
+    }
+  }
+  &__call {
+    position: absolute;
+    right: 50px;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+
+    background-image: url(../images/phone.svg);
+    @include onDesktop {
+      height: 24px;
+      width: 24px;
+      right: 60px;
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        content: "+1 234 5555-55-55";
+        opacity: 0;
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #292929;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.icon {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
 }
