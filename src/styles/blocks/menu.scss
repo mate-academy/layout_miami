@@ -14,6 +14,7 @@
   &__close {
     width: 16px;
     height: 16px;
+
     background-image: url(../images/cross.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -28,9 +29,10 @@
     margin-bottom: 32px;
     list-style-type: none;
 
-    @include onDesktop {
-      &:first-child {
-        background-color: aqua;
+    &:last-of-type {
+
+      @include onDesktop {
+        margin-bottom: 48px;
       }
     }
   }
@@ -48,7 +50,31 @@
     font-weight: bold;
   }
 
-  &__contact:last-child {
-    margin: 8px 0 16px;
+  & > * > &__contact:nth-child(2n+1) {
+    margin-bottom: 8px;
+  }
+
+  & > * > &__contact:nth-child(2n) {
+    margin-bottom: 16px;
+  }
+
+  &__order {
+    position: absolute;
+
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(100% + 8px);
+
+      display: block;
+      width: 100%;
+      height: 1px;
+
+      background-color: $colorWhite;
+    }
   }
 }
