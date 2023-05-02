@@ -1,14 +1,25 @@
 .header {
-  height: 100vh;
-  padding: 28px 23px 88px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  background-image: url(../img/header-background-mobile.png);
-  background-position: center;
+  background-image: url(../img/Cover_photo.png);
+  background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 28px 0 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 203px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -18,7 +29,6 @@
   }
 
   &__menu-open {
-    @include icon;
     background-image: url(../img/Icon-Burger-menu.svg);
 
     &:hover {
@@ -28,14 +38,53 @@
 
   &__call {
     margin-left: auto;
-
     background-image: url(../img/Icon-Phone-call.svg);
-    @include icon;
+
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        color: #fff;
+        width: max-content;
+        opacity: 0;
+        padding-right: 20px;
+        position: relative;
+        top: 50%;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        transform: translate(-100%, -50%);
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__title {
     font-weight: 700;
     font-size: 36px;
+    line-height: 36px;
     text-align: center;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 }
