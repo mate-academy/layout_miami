@@ -1,0 +1,129 @@
+.header {
+  background-image: url("../images/header/bicycle.png");
+  background-position: 85%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+
+  @include onTablet {
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-position: center;
+  }
+  &__page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__name {
+    display: block;
+    width: 130px;
+    height: 38px;
+    background-image: url("../images/header/MyBike.png");
+    background-size: cover;
+
+    @include onTablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__phone {
+    display: block;
+    height: 18px;
+    width: 18px;
+    text-decoration: none;
+    background-image: url("../images/header/phone.png");
+
+    @include onTablet {
+      display: block;
+      height: 24px;
+      width: 24px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @include onDesktop {
+
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-white;
+
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 12px;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.5s ease;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    height: 12px;
+    width: 18px;
+    background-image: url("../images/header/menu.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include onTablet {
+      display: block;
+      height: 16px;
+      width: 24px;
+    }
+
+    @include onDesktop {
+      transition: background-image 0.3s ease;
+
+      &:hover {
+        background-image: url("../images/header/menu-opener-hover.png");
+      }
+    }
+  }
+
+  &__title {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    margin-bottom: 88px;
+
+    display: flex;
+    justify-content: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+      margin-bottom: 113px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      margin-bottom: 203px;
+    }
+  }
+}
