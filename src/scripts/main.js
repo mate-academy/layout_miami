@@ -1,4 +1,5 @@
-'use strict';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
@@ -19,4 +20,8 @@ form.addEventListener('submit', (event) => {
     form.reset();
     window.alert('Thanks for your message!');
   }
+});
+
+AOS.init({
+  duration: 1200,
 });
