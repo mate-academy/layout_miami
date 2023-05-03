@@ -5,7 +5,7 @@ const logo = document.querySelector('.logo__img');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.body.classList.add('page__body--with-menu');
+    document.documentElement.classList.add('page--with-menu');
 
     images.forEach(function(image) {
       if (!image.isEqualNode(logo)) {
@@ -13,7 +13,7 @@ window.addEventListener('hashchange', () => {
       }
     });
   } else {
-    document.body.classList.remove('page__body--with-menu');
+    document.documentElement.classList.remove('page--with-menu');
 
     images.forEach(function(image) {
       image.style.display = 'block';
