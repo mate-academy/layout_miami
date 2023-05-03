@@ -1,0 +1,52 @@
+.nav {
+  display: grid;
+  align-items: start;
+  justify-items: start;
+  grid-template-columns: 1fr repeat(2, $width-nav-button-mobile);
+  gap: $width-nav-button-mobile;
+
+  @include onTablet {
+    grid-template-columns: 1fr repeat(2, $width-nav-button-desktop);
+    gap: $width-nav-button-desktop;
+  }
+
+  &__logo {
+    display: inline-block;
+    text-align: center;
+
+    &-image {
+      display: block;
+      width: 130px;
+
+      @include onTablet {
+        width: 190px;
+      }
+    }
+  }
+
+  &__button {
+    @include square($width-nav-button-mobile);
+    border: 0;
+
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include onTablet {
+      @include square($width-nav-button-desktop);
+    }
+
+    &--menu {
+      background-image: url("../images/menu.svg");
+
+      &:hover {
+        background-image: url("../images/menu_hover.svg");
+      }
+    }
+
+    &--phone {
+      background-image: url("../images/phone.svg");
+    }
+  }
+}

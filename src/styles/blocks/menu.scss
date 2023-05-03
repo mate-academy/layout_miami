@@ -1,0 +1,29 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @extend .header;
+  max-height: unset;
+
+  background-image: none;
+  background-color: $c-menu;
+
+  overflow-y: hidden;
+  transition: transform $time-animations;
+  transform: translateY(-100%);
+
+  &--opened {
+    transform: translateY(0%);
+  }
+
+  &__nav {
+    grid-template-columns: 1fr $width-nav-button-mobile;
+
+    @include onTablet {
+      grid-template-columns: 1fr $width-nav-button-desktop;
+    }
+  }
+}
