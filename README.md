@@ -1,13 +1,8 @@
 # Miami landing page
 
-In this task, you will learn how to implement a landing page. To do that:
-
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://andrudenko.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+This is the landing page for Miami Condo Kings. Here present information about the company with gallery, testimonials and contact information.
+I am using the following technologies: HTML/CSS/SCSS/JS
+Next approaches are used: BEM, Mobile First, Responsive Design, Semantic HTML, Cross-Browser Compatibility.
+Landing link - https://andrudenko.github.io/layout_miami/
+Design link - https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?type=design&node-id=16033-3&t=pZ2V0tYf2nQri8vm-0
+PageSpeedTest link - https://pagespeed.web.dev/analysis/https-andrudenko-github-io-layout_miami/hthrbiq7qh?form_factor=mobile
