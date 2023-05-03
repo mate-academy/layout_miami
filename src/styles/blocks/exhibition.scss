@@ -1,0 +1,48 @@
+.exhibition {
+  display: block;
+
+  &--two-col-first-bigger {
+    @include exhibition(2);
+    gap: 24px 20px;
+
+    @include onTablet {
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  &--two-col-second-bigger {
+    @include exhibition(2);
+    gap: 24px 20px;
+
+    @include onTablet {
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+    }
+  }
+
+  &--three-col {
+    @include exhibition(3);
+    gap: 24px 8px;
+
+    @include onTablet {
+      @include exhibition(2);
+      gap: 24px;
+      .exhibition__image:nth-child(3) {
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      @include exhibition(3);
+      .exhibition__image:nth-child(3) {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    color: $metMainColor;
+    font-weight: 700;
+  }
+}
