@@ -1,28 +1,33 @@
+
+@import "../utils/mixins.scss";
+@import "../utils/variables.scss";
+
 .header {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  justify-content: space-between;
-  height: 100vh;
   background-image: url(../images/photos/background_header.png);
   background-size: cover;
   background-position: right;
-  padding: 28px 20px 88px;
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  @include onTablet {
+    background-position: center;
   }
 
-  &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-    background-image: url(../images/call.svg);
-    margin-right: 30px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-top-padding $header-horizontal-padding 88px;
 
+    @include onTablet {
+      padding: 34px 72px 130px;
+
+    }
+
+    @include onDesktop {
+      padding: 34px 120px 204px;
+
+    }
   }
 
   &-container {
@@ -30,23 +35,21 @@
     align-items: center;
   }
 
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu_hover.svg);
-    }
-
-  }
-
   &__tittle {
+    font-family: "Poppins", serif;
     font-weight: 700;
+    line-height: 100%;
     font-size: 36px;
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
   }
 }
