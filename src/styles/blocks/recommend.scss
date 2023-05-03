@@ -1,49 +1,38 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
+.recommended {
+  &__item {
+    margin-bottom: 48px;
 
-  @include onTablet {
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 24px;
-  }
-
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
-  }
-
-  &--desktop {
-    display: block;
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @include onTablet {
-      display: grid;
+      margin-bottom: 40px;
     }
 
     @include onDesktop {
-      display: grid;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.product {
+  &__photo {
+    margin-bottom: 32px;
+    width: 100%;
+    transition: transform $transition-time;
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 
-  &__item {
-    @for $start from 1 through 6 {
-      @for $end from 1 through 6 {
-        &--tablet-#{$start}-#{$end} {
-          @include onTablet {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
-      }
-    }
+  &__name {
+    margin: 0 0 8px;
+  }
 
-    @for $start from 1 through 12 {
-      @for $end from 1 through 12 {
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
-      }
-    }
+  &__type {
+    margin-bottom: 12px;
+    font-weight: 400;
   }
 }
