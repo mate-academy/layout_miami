@@ -1,6 +1,6 @@
 'use strict';
 
-const btnNavEl = document.querySelector('.navigation__icons--burger');
+const btnNavEl = document.querySelector('.icon--menu');
 const menuEl = document.querySelector('.menu');
 const menuClose = document.querySelector('.menu__navigation--close-button');
 

@@ -1,23 +1,69 @@
 @import "../utils/mixins";
 
 .header {
-  display: flex;
-  background-image: url("../images/background.jpg");
+  background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: aqua;
-  min-height: 100vh;
+  background-position: center;
 
-  &__content {
-    max-width: 1020px;
-    // margin: 0 auto;
+  @include onTablet() {
+    background-image: url(../images/background_big.jpg);
   }
 
-  @include onTablet {
-    background-image: url("../images/background_big.jpg");
-    background-position: center;
-    padding-bottom: 13rem;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 3rem 0 8.8rem;
+
+    @include onTablet {
+      padding: 3.4rem 0 13rem;
+    }
+
+    @include onDesktop {
+      padding: 3.6rem 0 20.4rem;
+    }
+  }
+
+  &__menu {
+    display: grid;
+    grid-template-columns: 1fr 6.6rem;
+    justify-items: space-between;
+    align-items: center;
+
+    @include onTablet() {
+      grid-template-columns: 1fr 8.8rem;
+    }
+  }
+
+  &__icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: space-between;
+    align-items: center;
+    gap: 3rem;
+
+    @include onTablet {
+      gap: 4rem;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 3.6rem;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 6.4rem;
+    }
+
+    @include onDesktop {
+      font-size: 8rem;
+    }
   }
 }
