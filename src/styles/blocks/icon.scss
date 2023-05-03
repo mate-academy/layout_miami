@@ -1,7 +1,6 @@
 .icon {
   display: block;
   width: 18px;
-  height: 18px;
 
   background-size: cover;
   background-position: center;
@@ -9,6 +8,45 @@
 
   @include onIpad {
     width: 24px;
-    height: 24px;
+  }
+
+  &__tooltip {
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+
+    display: block;
+    width: max-content;
+    padding: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--cross {
+    width: 16px;
+    height: 16px;
+
+    background-image: url(../images/cross.png);
+
+    @include onDesktop {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
