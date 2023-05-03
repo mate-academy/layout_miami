@@ -1,6 +1,88 @@
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
+
   &:hover {
     #{$_property}: $_toValue;
+  }
+}
+
+@mixin hoverScale($_x) {
+  transition: all 0.3s;
+
+  &:hover {
+    scale: $_x;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@mixin onSmallMobile {
+  @media screen and (min-width: 250px) and (max-width: 350px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin accent-header {
+  color: $accent-red;
+  font-weight: 700;
+}
+
+@mixin on-view {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin square-picture {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr 18px 18px;
+  justify-items: space-between;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet() {
+    gap: 63px;
+    grid-template-columns: 1fr 24px 24px;
+  }
+}
+
+@mixin picture-container {
+  position: relative;
+  width: 100%;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+
+    @include onDesktop() {
+      padding-bottom: 0;
+    }
   }
 }

@@ -1,0 +1,56 @@
+.header {
+  background-image: url(../images/bg-desc.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: $header-top-padding 0;
+
+    @include onTablet() {
+      padding-top: 50px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__top {
+    @include top-actions();
+  }
+
+  &__call {
+    position: relative;
+    height: 50px;
+    cursor: pointer;
+
+    &--mobile {
+      display: block;
+
+      @include onTablet() {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include onTablet() {
+        display: block;
+      }
+    }
+
+    @include onTablet() {
+      margin-right: 63px;
+
+      &:hover .call-for-order__container--header {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
