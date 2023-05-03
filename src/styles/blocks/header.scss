@@ -1,10 +1,11 @@
 .header {
-  background-image: url(../images/header_background.jpg);
+  background-image: url(../images/header.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: right;
 
-  &__top {
-    @include top-actions;
+  @include onDesktop {
+    background-image: url(../images/header-desktop.jpg);
+    background-position: center;
   }
 
   &__content {
@@ -14,29 +15,35 @@
 
     box-sizing: border-box;
     height: 100vh;
-    padding: $headerTopPadding 0 80px;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 36px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 202px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
   }
 
   &__title {
+    margin: 0;
     font-weight: 700;
-    font-size: 46px;
-    line-height: 40px;
-    letter-spacing: -1px;
-    color: #fff;
+    font-size: 36px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
 
-    @include onDesktop() {
-      font-size: 80px;
-      line-height: 80px;
-      letter-spacing: -1.5px;
+    @include onTablet {
+      font-size: 64px;
     }
 
-    &::before {
-      display: block;
-      content: "";
-      width: 40px;
-      height: 2px;
-      margin-bottom: 24px;
-      background-color: #fff;
+    @include onDesktop {
+      font-size: 80px;
     }
   }
 }
