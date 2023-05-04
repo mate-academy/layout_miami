@@ -6,6 +6,8 @@
   left: 0;
 
   @extend .header;
+  grid-template-rows: 32px 1fr 56px;
+  align-items: start;
   max-height: unset;
 
   background-image: none;
@@ -13,17 +15,61 @@
 
   overflow-y: hidden;
   transition: transform $time-animations;
-  transform: translateY(-100%);
+  transform: translateX(100%);
 
   &--opened {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
-  &__nav {
+  &__top-controls {
     grid-template-columns: 1fr $width-nav-button-mobile;
 
     @include onTablet {
       grid-template-columns: 1fr $width-nav-button-desktop;
+    }
+  }
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-height: 350px;
+  }
+
+  &__nav-list-link {
+    display: inline-block;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-font-default;
+
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid $c-primary;
+    }
+  }
+
+  &__call-item {
+    display: block;
+    width: fit-content;
+
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: $c-font-default;
+    text-transform: uppercase;
+
+    &--phone {
+      margin-bottom: 16px;
+    }
+
+    &--link {
+      border-bottom: 1px solid $c-primary;
     }
   }
 }
