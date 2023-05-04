@@ -39,9 +39,17 @@
     text-decoration: none;
     font-weight: 700;
     color: #3e3e3e;
+
+    transition: color $duration;
+
+    &:hover {
+      color: lighten($color: #3e3e3e, $amount: 20%);
+    }
   }
 
   &__form-field {
+    $bgColor: #f8f8fa;
+
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -51,10 +59,16 @@
     font-family: inherit;
     font-size: 14px;
     line-height: 20px;
-    background-color: #f8f8fa;
+    background-color: $bgColor;
     border: 1px solid transparent;
 
-    transition: border-color 0.3s;
+    transition: border-color $duration;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px $bgColor inset;
+    }
 
     &::placeholder {
       color: #7e7e83;
