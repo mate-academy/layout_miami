@@ -14,69 +14,90 @@
 }
 
 .logo {
+  display: block;
   height: 46px;
   width: 64px;
 
   @include onTablet {
-    height: 65px;
+    height: 55px;
     width: 87px;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
 .container {
-  height: 100vh;
   max-width: 1260px;
   margin: 0 auto;
-  padding: 24px;
-
-  @include onTablet {
-    padding: 50px 100px;
-  }
-
-  @include onDesktop {
-    padding: 50px 120px;
-  }
-
 }
 
 .icon {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: $mobile-icon-width;
+  height: $mobile-icon-width;
   @include center-background-image;
 
   @include onTablet {
-    width: 32px;
-    height: 32px;
+    width: $desktop-icon-width;
+    height: $desktop-icon-width;
   }
+
+  &--menu {
+    background-image: url("../images/utility/Icon-Burger-menu.svg");
+
+    &:hover {
+      background-image: url("../images/utility/Icon-Burger-menu-hover.svg");
+      }
+    }
+
+  &--phone {
+    background-image: url("../images/utility/Icon-Phone-call.svg");
+  }
+
+  &--close {
+    background-image: url("../images/utility/Icon-Close.svg");
+  }
+}
+
+.top-actions {
+    display: grid;
+    grid-template-columns: 1fr $phone-mobile-column-size $mobile-icon-width;
+
+    align-items: center;
+
+    @include onTablet {
+      grid-template-columns: 1fr $phone-desktop-column-size $desktop-icon-width;
+    }
+
+    &--menu{
+      grid-template-columns: 1fr $mobile-icon-width;
+
+    }
 }
 
 .header {
   background-image: url("../images/utility/Header.svg");
   @include center-background-image;
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 100px;
-  }
+  &__content {
+    height: 100vh;
+    padding: $header-mobile-padding;
 
-  &__more-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include onTablet {
+    padding: 50px 100px;
+    }
+
+    @include onDesktop {
+    padding: 50px 120px;
+    }
   }
 
   &__call {
 
-    margin-right: 30px;
-
-    background-image: url("../images/utility/Icon-Phone-call.svg");
-
     @include onDesktop {
-      margin-right: 60px;
-
       &::before {
         content: attr(data-title);
         white-space: pre-line;
@@ -103,17 +124,11 @@
     }
   }
 
-  &__menu-opener {
-    background-image: url("../images/utility/Icon-Burger-menu.svg");
-
-    &:hover {
-      background-image: url("../images/utility/Icon-Burger-menu-hover.svg");
-    }
-  }
-
   &__title {
+    display: block;
     align-self: center;
     text-align: center;
+    margin-top: 100px;
     font-weight: 700;
     font-size: 40px;
     line-height: 40px;
@@ -129,5 +144,12 @@
       font-size: 80px;
       line-height: 80px;
     }
+  }
+}
+
+.menu{
+  background-color: red;
+  &__content {
+    padding: $header-mobile-padding;
   }
 }
