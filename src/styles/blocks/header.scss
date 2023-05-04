@@ -1,0 +1,68 @@
+.header {
+  background-image: url("../images/utility/Header.svg");
+  @include center-background-image;
+
+  &__content {
+    height: 100vh;
+    padding: $header-mobile-padding;
+
+    @include onTablet {
+      @include header-tablet-paddings;
+    }
+
+    @include onDesktop {
+      @include header-desktop-paddings;
+    }
+  }
+
+  &__call {
+
+    @include onDesktop {
+      &::before {
+        content: attr(data-title);
+        white-space: pre-line;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, - 50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 16px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    display: block;
+    align-self: center;
+    text-align: center;
+    margin-top: 100px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
