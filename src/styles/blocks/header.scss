@@ -1,0 +1,98 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/header-mobile.jpg);
+
+  @include onTablet {
+    background-image: url(../images/header-744.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-1260.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPadding 0 80px;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    animation-name: move-title;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      transform: scale(0.8);
+    }
+  }
+
+  &__call {
+    margin-right: 25px;
+
+    @include onTablet {
+      margin-right: 32px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        position: relative;
+        top: 50%;
+
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+@keyframes move-title {
+  from {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
