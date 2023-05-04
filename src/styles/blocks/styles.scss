@@ -1,15 +1,59 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 .page {
   font-family: $main-font;
 }
 
-.header {
-  height: 100vh;
-  padding: 25px 20px;
+.logo {
+  height: 46px;
+  width: 64px;
 
+  @include onTablet {
+    height: 65px;
+    width: 87px;
+  }
+}
+
+.container {
+  height: 100vh;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 24px;
+
+  @include onTablet {
+    padding: 50px 100px;
+  }
+
+  @include onDesktop {
+    padding: 50px 120px;
+  }
+
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  @include center-background-image;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header {
   background-image: url("../images/utility/Header.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  @include center-background-image;
 
   &__nav {
     display: flex;
@@ -22,49 +66,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
   }
 
   &__call {
-    color: #fff;
-    align-self: center;
-    width: 24px;
-    height: 24px;
+
+    margin-right: 30px;
 
     background-image: url("../images/utility/Icon-Phone-call.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    position: relative;
+    @include onDesktop {
+      margin-right: 60px;
 
       &::before {
         content: attr(data-title);
         white-space: pre-line;
-        position: absolute;
-        top: -18px;
-        left: -195px;
-        visibility: hidden;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, - 50%);
 
-        font-size: 14px;
-        line-height: 16px;
+        display: block;
+        width: max-content;
+        padding-right: 16px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
       }
 
       &:hover::before {
-          visibility: visible;
-        }
+        opacity: 1;
+        pointer-events: all;
+      }
     }
-
+  }
 
   &__menu-opener {
-    display: block;
-    width: 24px;
-    height: 24px;
-
     background-image: url("../images/utility/Icon-Burger-menu.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url("../images/utility/Icon-Burger-menu-hover.svg");
@@ -72,19 +112,22 @@
   }
 
   &__title {
+    align-self: center;
     text-align: center;
+    font-weight: 700;
     font-size: 40px;
-    font-weight: 700px;
     line-height: 40px;
     letter-spacing: -1.5px;
     color: #fff;
-  }
-}
 
-.logo {
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
 
-  &__image {
-    height: 46px;
-    width: 64px;
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 }
