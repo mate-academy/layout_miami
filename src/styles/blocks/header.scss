@@ -1,31 +1,86 @@
 .header {
-  display: none;
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
-  height: 0;
-  &__content {
+  width: 100%;
+  @include flex-center;
+  display: flex;
+
+  &__container {
+    position: sticky;
+    top: 0;
     display: flex;
+    align-content: center;
     justify-content: space-between;
-  }
-  &__wrapper {
-    display: flex;
-  }
-  &__logo {
-    // @include h1;
-
-    font-weight: 700;
-    font-size: 38px;
-    color: $text-color;
-
+    width: 100%;
+    padding: 30px 20px;
     @media (min-width: 744px) {
-      & {
-        font-size: 54px;
-      }
+      width: 600px;
+    }
+    @media (min-width: 1260px) {
+      width: 1260px;
     }
   }
 
-  &__phone {
-    fill: white;
+  &__wrapper {
+    display: flex;
+    gap: 30px;
+
+    @media (min-width: 744px) {
+      gap: 40px;
+    }
+  }
+
+  &__logo {
+    @include logo;
+  }
+}
+
+.nav-opener {
+  @include flex-center;
+  overflow: hidden;
+  flex-direction: column;
+  gap: 6px;
+  width: 40px;
+  cursor: pointer;
+  &__item {
+    transition: all 1s;
+    width: 40px;
+    height: 5px;
+    background-color: white;
+  }
+
+  &:hover &__item--1 {
+    transform: translate(20px);
+  }
+  &:hover &__item--3 {
+    transform: translate(10px);
+  }
+}
+
+.phone {
+  @include flex-center;
+  transition: all 1s;
+  &__text {
+    transition: all 1s;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: 12px;
+    transform: translate(150%);
+  }
+
+  &__text-wrapper {
+    overflow: hidden;
+  }
+
+  &:hover &__text {
+    transform: translate(0);
   }
 }

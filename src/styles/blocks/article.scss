@@ -1,24 +1,47 @@
 .article {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  justify-content: space-around;
+  grid-template-columns: 1fr 1fr;
   gap: 5px;
+  justify-content: space-around;
+  grid-template-areas: "img-1 img-2"
+    "heading heading"
+    "text text";
 
   @media (min-width: 744px) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
+
+    grid-template-areas: "img-1 img-1 img-2"
+      "heading heading heading"
+      "text text text";
   }
+
+  @media (min-width: 1260px) {
+    grid-template-areas: "img-1 img-1 img-2"
+      "heading heading heading"
+      "text text none";
+  }
+
   &__img {
     width: 130px;
     height: 130px;
+
     @media (min-width: 744px) {
       width: 100%;
       height: 187px;
     }
+
     @media (min-width: 1260px) {
       height: 320px;
     }
+  }
+
+  &__img-1 {
+    grid-area: img-1;
+  }
+
+  &__img-2 {
+    grid-area: img-2;
   }
 
   &:nth-child(1) {
@@ -44,16 +67,29 @@
     .article__img-2 {
       @include bg-img("../images/article__img-5.jpg");
     }
+    @media (min-width: 744px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+
+      grid-template-areas: "img-1 img-2 img-2"
+        "heading heading heading"
+        "text text text";
+    }
+
+    @media (min-width: 1260px) {
+      grid-template-areas: "img-1 img-2 img-2"
+        "heading heading heading"
+        "text text none";
+    }
   }
 
   &__heading {
-    grid-column: 1/3;
-    grid-row: 2/3;
+    grid-area: heading;
     margin-top: 16px;
   }
 
   &__text {
-    grid-column: 1/3;
+    grid-area: text;
     margin-top: 8px;
   }
 }
