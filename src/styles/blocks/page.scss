@@ -1,12 +1,41 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
 * {
   box-sizing: border-box;
 }
 
+h2,
+h3 {
+  margin: 0;
+}
+
 .page {
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+
+  &__grid {
+    display: grid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
 
   &__body {
     margin: 0;
+
+    background-color: $color-text-dark;
+
+    &--with-menu {
+      overflow: hidden;
+    }
   }
 
   &__menu {
@@ -21,5 +50,70 @@
     &:target {
       transform: translateX(0);
     }
+  }
+
+  &__section {
+
+    &:first-child {
+      @include onTablet {
+        margin-bottom: 132px;
+      }
+      @include onDesktop {
+        margin-bottom: 164px;
+      }
+    }
+    margin-bottom: 92px;
+    display: grid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+
+    &-tittle {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+      margin-bottom: 48px;
+      text-align: center;
+
+      @include onTablet {
+        font-size: 48px;
+      }
+
+      @include onDesktop {
+        font-size: 64px;
+        margin-bottom: 56px;
+      }
+
+    }
+
+    &:first-child .page__section-tittle {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    &-subtittle {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #fff;
+    }
+
   }
 }
