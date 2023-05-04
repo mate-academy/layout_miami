@@ -16,9 +16,17 @@
 }
 
 .recommended {
-  &__photo {
-    width: 100%;
+  &__photo-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+
     margin-bottom: 32px;
+  }
+
+  &__photo {
+    grid-column: 2 / 4;
+    width: 100%;
 
     &:hover {
       transform: scale(1.2);
@@ -26,18 +34,25 @@
     }
   }
 
+  &__title {
+    @include onTable {
+      margin-left: 176px;
+    }
+  }
+
   &__name {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin: 0 auto 8px;
     font-weight: 700;
   }
 
   &__about {
-    margin-bottom: 12px;
+    margin: 0 auto 12px;
     font-weight: 400;
   }
 
   &__price {
+    margin: 0 auto;
     font-weight: 700;
   }
 }
