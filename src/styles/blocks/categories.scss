@@ -1,15 +1,21 @@
 .categories {
 
   &__container {
-    @include sectionsSideMargins;
+    @include sectionContainer;
   }
 
   &__title {
+    margin-bottom: 48px;
     @extend %sectionTitle-h2;
+    text-align: center;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
   }
 
   &__section {
-    margin-bottom: 40px;
+    margin-bottom: 64px;
 
     @include onTablet {
       margin-bottom: 64px;
@@ -23,7 +29,6 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: max-content;
     column-gap: 20px;
 
     align-content: center;
@@ -46,6 +51,10 @@
     padding-bottom: 100%;
     margin-bottom: 16px;
 
+    transform-origin: left;
+
+    transition: transform $transition-time;
+
     @include onTablet {
       height: 187px;
       padding-bottom: 0;
@@ -54,6 +63,11 @@
     @include onDesktop {
       height: 320px;
       padding-bottom: 0;
+
+      &:hover {
+        z-index: 1;
+        transform: scale(1.1);
+      }
     }
 
     &--1,
@@ -72,6 +86,7 @@
     &--2,
     &--4 {
       grid-column: 2/3;
+      transform-origin: right;
 
       @include onTablet {
         grid-column: 5/7;
@@ -96,9 +111,10 @@
 
     &--6 {
       grid-column: 2/3;
+      transform-origin: right;
 
       @include onTablet {
-        grid-column: 4/7;
+        grid-column: 3/7;
       }
 
       @include onDesktop {
@@ -115,30 +131,29 @@
   }
 
   &__names {
+    display: block;
+    width: max-content;
     font-weight: 700;
     font-size: 16px;
     line-height: 140%;
     color: $text-color;
+    text-decoration: none;
+
+    transform-origin: left;
+    transition: transform $transition-time;
 
     @include onTablet {
       font-size: 24px;
     }
+
+    @include onDesktop {
+      &:hover {
+        @include linkScaleUnderlineTransform;
+      }
+    }
   }
 
   &__button {
-    display: block;
     margin: auto;
-    height: 56px;
-    width: 324px;
-
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 56px;
-    text-align: center;
-    color: #fff;
-
-    background-color: $text-color;
-    border-radius: 40px;
   }
 }
