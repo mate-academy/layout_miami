@@ -1,0 +1,138 @@
+.place {
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    margin-bottom: 24px;
+
+    &--middle {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+    }
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    &--middle-first {
+      @include onTablet {
+        height: 284px;
+        grid-column: 1 / 4;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--middle-second {
+      @include onTablet {
+        height: 284px;
+        grid-column: 4 / 7;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        grid-column: 5 / 9;
+      }
+    }
+
+    &--middle-third {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+        height: 320px;
+        grid-column: 9 / 13;
+      }
+    }
+
+    &--first-large {
+      @include onTablet {
+        grid-column: 1 / 5;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--first-small {
+      @include onTablet {
+        grid-column: 5 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 9 / 13;
+      }
+    }
+
+    &--third-large {
+      @include onTablet {
+        grid-column: 3 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 13;
+      }
+    }
+
+    &--third-small {
+      @include onTablet {
+        grid-column: 1 / 3;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 5;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: $color-main-accent;
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $color-main-dark;
+  }
+ }
