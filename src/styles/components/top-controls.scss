@@ -50,7 +50,32 @@
     }
 
     &--phone {
+      position: relative;
       background-image: url("../images/phone.svg");
+
+      &::before{
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        top: 50%;
+        right: 150%;
+
+        display: inline-block;
+        width: max-content;
+
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $c-font-default;
+
+        opacity: 0;
+        transform: translateY(-50%);
+        transition: opacity $time-animations;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
     }
   }
 }
