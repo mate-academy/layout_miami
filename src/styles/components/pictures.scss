@@ -4,10 +4,26 @@
   column-gap: 20px;
   padding-bottom: 16px;
 
+  @include for-desktop() {
+    grid-template-columns: 3fr 1fr;
+    column-gap: 24px;
+  }
+
+  &--1 {
+    @include for-desktop() {
+    grid-template-columns: 1fr 3fr;
+    column-gap: 24px;
+    }
+  }
+
   &__item {
     width: 100%;
     position: relative;
     padding-top: 100%;
+
+    @include for-desktop() {
+      padding-top: 0;
+    }
   }
 
   &__image {
@@ -16,6 +32,18 @@
     height: 100%;
     position: absolute;
     object-fit: cover;
+
+    @include for-desktop() {
+      max-width: 672px;
+      height: 321px;
+    }
+
+    &--1 {
+      @include for-desktop() {
+        max-width: 324px;
+        height: 321px;
+      }
+    }
   }
 
   &__recommend {
