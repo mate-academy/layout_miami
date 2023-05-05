@@ -29,6 +29,3 @@ navList.addEventListener('click', function(event) {
   }
 });
 
-// openButton.addEventListener('click', function() {
-//   console.log('+');
-// });
