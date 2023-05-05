@@ -1,14 +1,29 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  height: 100vh;
-  padding: 29px 20px 88px;
-
   background-size: cover;
   background-position-x: right;
   background-image: url(../images/header-mob.jpg);
+
+  @include onTablet {
+    background-position: center;
+    background-image: url(../images/header.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 29px 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesctop {
+      padding: 36px 0 203px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -18,7 +33,6 @@
 
   &__right {
     display: flex;
-    align-content: center;
     justify-content: center;
     column-gap: 30px;
   }
@@ -27,24 +41,24 @@
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
-    line-height: 36px;
 
     align-items: center;
     text-align: center;
 
     color: #fff;
     letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesctop {
+      font-size: 80px;
+    }
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-
     background-image: url(../images/menu.svg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -52,13 +66,36 @@
   }
 
   &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-
+    text-decoration: none;
     background-image: url(../images/phone.svg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        padding-right: 12px;
+
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        width: max-content;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+
+      }
+    }
   }
 }
