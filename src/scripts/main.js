@@ -5,6 +5,7 @@ const closeButton = document.querySelector('#navCloseButton');
 const menuSection = document.querySelector('#menu');
 const navList = document.querySelector('#navList');
 const body = document.querySelector('body');
+const menuLogo = document.querySelector('#menuLogo');
 
 function openMenuBar() {
   menuSection.classList.add('menu--shown');
@@ -19,6 +20,8 @@ function closeMenuBar() {
 openButton.addEventListener('click', openMenuBar);
 
 closeButton.addEventListener('click', closeMenuBar);
+
+menuLogo.addEventListener('click', closeMenuBar);
 
 navList.addEventListener('click', function(event) {
   if (event.target.tagName === 'A') {
