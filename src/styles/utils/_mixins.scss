@@ -1,6 +1,43 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin iconSize($icon-width) {
+  width: $icon-width;
+  height: $icon-width;
+}
+
+@mixin iconStyle {
+  display: block;
+
+  @include iconSize(18px);
+
+  @include onTablet {
+    @include iconSize(24px);
+  }
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@mixin gridTemplate ($column-count, $column-gap) {
+  display: grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  column-gap: $column-gap;
+}
+
+@mixin linkOnHover {
   &:hover {
-    #{$_property}: $_toValue;
+    color: $c--red-hover;
+    transition: color 0.3s;
   }
 }
