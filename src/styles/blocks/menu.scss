@@ -6,29 +6,31 @@
   left: 0;
   top: 0;
   right: 0;
+  bottom: 0;
 
+  padding: 0 $smartphone-horizontal-padding;
   width: 100%;
-  display: grid;
+  height: 100%;
   box-sizing: border-box;
+  grid-template-rows: repeat(4, max-content);
 
-  background-color: #e5e5e5;
+  background-color: #e8eff9;
   transform: translateX(100%);
   transition: transform 1s;
+  overflow-y: scroll;
 
-  @include divide-menu-rows(55px);
-
-  @include set-smartphone-height-and-grid;
+  @include set-smartphone-grid;
 
   @include for-tablet {
-    @include set-tablet-height-and-grid;
+    padding: 0 $tablet-horizontal-padding;
 
-    @include divide-menu-rows(56px);
+    @include set-tablet-grid;
   }
 
   @include for-desktop {
-    @include set-desktop-height-and-grid;
+    padding: 0 $desktop-horizontal-padding;
 
-    @include divide-menu-rows(80px);
+    @include set-desktop-grid;
   }
 
   &:target {
@@ -54,12 +56,21 @@
     }
 
     &list {
+      margin-top: 23px;
       grid-column: 1 / -1;
       grid-row: 2;
+
+      @include for-tablet {
+        margin-top: 24px;
+      }
+
+      @include for-tablet {
+        margin-top: 48px;
+      }
     }
 
     &item {
-      margin-bottom: 32px;
+      margin-top: 32px;
     }
 
     &link {
@@ -78,6 +89,7 @@
     &number {
       grid-row: 3;
       grid-column: 1 / -1;
+      margin-top: 40px;
 
       font-size: 16px;
       line-height: 27px;
@@ -85,6 +97,7 @@
     }
 
     &call {
+      margin-top: 16px;
       grid-row: 4;
       grid-column: 1 / -1;
 
@@ -93,6 +106,8 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-underline-offset: $underline-gap;
+      color: $c-light-black;
+      margin-bottom: 30px;
     }
   }
 }

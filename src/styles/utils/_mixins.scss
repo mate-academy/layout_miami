@@ -25,11 +25,21 @@
   }
 }
 
+@mixin set-smartphone-grid {
+  @include set-grid(2, 50%);
+}
+
 @mixin set-smartphone-height-and-grid {
   @include set-height(320px, 500px);
 
-  @include set-grid(2, calc(50vw - #{$smartphone-horizontal-padding}),
-  $smartphone-horizontal-padding);
+  @include set-smartphone-grid;
+}
+
+@mixin set-tablet-grid {
+  @include set-grid(
+    $tablet-grid-columns,
+    $tablet-grid-coumn-width
+  );
 }
 
 @mixin set-tablet-height-and-grid() {
@@ -37,37 +47,49 @@
 
   @include set-height(744px, 800px);
 
+  @include set-tablet-grid;
+}
+
+@mixin set-desktop-grid {
   @include set-grid(
-    $tablet-grid-columns,
-    $tablet-grid-coumn-width,
-    $tablet-horizontal-padding
+    $desktop-grid-columns,
+    $desktop-grid-coumn-width
   );
 }
 
 @mixin set-desktop-height-and-grid() {
   @include set-height(1260px, 720px);
 
-  @include set-grid(
-    $desktop-grid-columns,
-    $desktop-grid-coumn-width,
-    $desktop-horizontal-padding
-  );
+  @include set-desktop-grid;
 }
 
 @mixin set-height($background-width, $background-height) {
   height: $background-height * 100vw / $background-width;
 }
 
-@mixin set-grid($columns-count, $column-width, $horizontal-padding) {
+@mixin set-grid($columns-count, $column-width) {
   display: grid;
   grid-template-columns: repeat($columns-count, $column-width);
-  padding: 0 $horizontal-padding;
+  justify-content: space-between;
 }
 
 @mixin divide-menu-rows($logo-bottom-distance) {
-  grid-template-rows: $logo-top-margin + $logo-height + $logo-bottom-distance
-    ($nav-items-count * $nav-item-height + ($nav-items-count - 1) *
-    $nav-items-gap + $nav-bottom-margin)
-    $menu-number-height + $menu-number-margin-bottom
-    $menu-call-height + $underline-gap;
+  // grid-template-rows: $logo-top-margin + $logo-height + $logo-bottom-distance
+  //   ($nav-items-count * $nav-item-height + ($nav-items-count - 1) *
+  //   $nav-items-gap + $nav-bottom-margin)
+  //   $menu-number-height + $menu-number-margin-bottom
+  //   $menu-call-height + $underline-gap;
+  grid-template-rows: repeat(4, max-content);
+}
+
+@mixin set-horizontal-padding {
+  padding: 0 $smartphone-horizontal-padding;
+
+  @include for-tablet {
+    padding: 0 $tablet-horizontal-padding;
+  }
+
+  @include for-desktop {
+    padding: 0 $desktop-horizontal-padding;
+  }
 }

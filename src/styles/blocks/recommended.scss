@@ -2,15 +2,7 @@
 @import "../utils/mixins";
 
 .recommended {
-  padding: 0 $smartphone-horizontal-padding;
-
-  @include for-tablet {
-    padding: 0 $tablet-horizontal-padding;
-  }
-
-  @include for-desktop {
-    padding: 0 $desktop-horizontal-padding;
-  }
+  @include set-horizontal-padding;
 
   &__ {
     &title {
@@ -37,14 +29,9 @@
 
     &soundbars {
       @include for-desktop {
-        grid-template-rows: ($desktop-soundbar-image-height +
-        $tablet-soundbar-image-margin-top)
-          ($soundbar-name-height-with-top-margin +
-        $soundbar-kind-height-with-top-margin +
-        $soundbar-price-height-with-top-margin);
-        justify-content: space-between;
+        grid-template-rows: repeat(2, max-content);
 
-        @include set-grid(12, 63px, 0);
+        @include set-desktop-grid;
       }
     }
 
@@ -90,12 +77,9 @@
 
     &details {
       @include for-tablet {
-        justify-content: space-between;
-        grid-template-rows: $soundbar-name-height-with-top-margin
-          $soundbar-kind-height-with-top-margin
-          $soundbar-price-height-with-top-margin;
+        grid-template-rows: repeat(3, max-content);
 
-        @include set-grid(6, 80px, 0);
+        @include set-tablet-grid;
       }
 
       @include for-desktop {
@@ -142,6 +126,7 @@
     }
 
     &price {
+      width: 280px;
       margin-top: 12px;
 
       font-size: 16px;
