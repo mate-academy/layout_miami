@@ -2,40 +2,21 @@
   position: fixed;
   top: 0;
   width: 100%;
-  @include flex-center;
-  display: flex;
-
-  &__container {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 30px 20px;
-    @media (min-width: 744px) {
-      width: 600px;
-    }
-    @media (min-width: 1260px) {
-      width: 1260px;
-    }
-  }
-
-  &__wrapper {
-    display: flex;
-    gap: 30px;
-
-    @media (min-width: 744px) {
-      gap: 40px;
-    }
-  }
 
   &__logo {
     @include logo;
   }
+  &__container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    & .header__logo {
+      flex: 1 1 70%;
+    }
+  }
 }
 
-.nav-opener {
+.menu-opener {
   @include flex-center;
   overflow: hidden;
   flex-direction: column;
@@ -57,12 +38,39 @@
   }
 }
 
+.menu-closer {
+  position: relative;
+  @include flex-center;
+  padding: 10px;
+  width: 40px;
+  cursor: pointer;
+  &__item {
+    position: absolute;
+    transition: all 0.5s;
+    width: 40px;
+    height: 5px;
+    background-color: black;
+  }
+  &__item-1 {
+    transform: rotate(45deg);
+  }
+  &__item-2 {
+    transform: rotate(-45deg);
+  }
+
+  &:hover &__item-1 {
+    transform: rotate(135deg);
+  }
+  &:hover &__item-2 {
+    transform: rotate(-135deg);
+  }
+}
+
 .phone {
   @include flex-center;
   transition: all 1s;
   &__text {
     transition: all 1s;
-
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
@@ -78,6 +86,9 @@
 
   &__text-wrapper {
     overflow: hidden;
+    @media (max-width: 744px) {
+      display: none;
+    }
   }
 
   &:hover &__text {

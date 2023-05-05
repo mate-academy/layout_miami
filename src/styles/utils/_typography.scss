@@ -3,15 +3,25 @@
 body,
 main,
 section,
+article,
 div,
-ul,
-li,
-input,
-button,
-p,
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+button,
+input,
+textarea,
+span,
+footer,
+ul,
+li,
+aside {
   font-family: "Poppins", sans-serif;
   font-style: normal;
 }
@@ -19,17 +29,13 @@ h3 {
 @mixin h1 {
   font-weight: 700;
   font-size: 36px;
-  color: $text-color;
-  @media (min-width: 744px) {
-    & {
-      font-size: 64px;
-    }
+  color: $white-color;
+  @include onPortable {
+    font-size: 64px;
   }
 
-  @media (min-width: 1260px) {
-    & {
-      font-size: 80px;
-    }
+  @include onDesktop {
+    font-size: 80px;
   }
 }
 
@@ -37,12 +43,14 @@ h3 {
   font-weight: 500;
   font-size: 32px;
   line-height: 32px;
+  text-align: center;
+  margin-bottom: 48px;
 
-  @media (min-width: 744px) {
+  @include onPortable {
     font-size: 48px;
     line-height: 100%;
   }
-  @media (min-width: 1260px) {
+  @include onDesktop {
     font-size: 64px;
   }
 }

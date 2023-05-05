@@ -2,7 +2,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  color: $text-color;
+  color: $white-color;
 }
 
 @mixin flex-center {
@@ -23,27 +23,34 @@
   padding: 0 48px;
   font-weight: 700;
   font-size: 16px;
-  background: #fff;
+  background: $white-color;
   border-radius: 40px;
   cursor: pointer;
   transition: all 1s;
 
   &:hover {
-    background-color: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    background: $white-color;
+    box-shadow: 1px 4px 16px $shadow-color;
+    border-radius: 40px;
+  }
+  &:active {
+    background: $white-color;
+    box-shadow: 1px 4px 16px $shadow-color;
+    border-radius: 40px;
   }
 }
 
 @mixin logo {
   font-weight: 700;
   font-size: 38px;
-  color: $text-color;
+  color: $white-color;
+  cursor: pointer;
 
-  @media (min-width: 744px) {
-    & {
-      font-size: 54px;
-    }
+  @include onPortable() {
+    font-size: 54px;
+  }
+  @include onDesktop() {
+    font-size: 80px;
   }
 
   &--black {
@@ -56,4 +63,16 @@
   border-radius: $border-radius;
   padding: $padding-X $padding-Y;
   color: $color;
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onPortable {
+  @media (min-width: 744px) {
+    @content;
+  }
 }
