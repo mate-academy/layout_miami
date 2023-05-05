@@ -1,15 +1,29 @@
 .contact-us {
-  // temp
-  width: 50%;
-  // temp
-  // &__heading {
+  display: grid;
+  grid-template-columns: inherit;
+  gap: inherit;
+  row-gap: 48px;
+  grid-column: 1/-1;
 
-  // }
+  padding-bottom: 120px;
+
+  &__heading {
+    text-align: center;
+    grid-column: 1/-1;
+  }
 
   &__form {
     display: flex;
     flex-direction: column;
+    grid-column: 1/-1;
+    @include onTablet {
+      grid-column: 1/ span 3;
+    }
+    @include onDesktop {
+      grid-column: 1/ span 6;
+    }
   }
+
   &__input {
     height: 48px;
     margin-bottom: 16px;
@@ -21,6 +35,15 @@
     background-color: $c-accent-light;
     border: 1px solid $c-accent-light;
     border-radius: 40px;
+
+    &--textarea {
+      height: 148px;
+      padding-top: 14px;
+      margin-bottom: 32px;
+
+      border-radius: 16px;
+      resize: none;
+    }
 
     &:hover {
       border-color: $c-input-border;
@@ -42,8 +65,14 @@
     }
 
   }
-  // &____info
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
   &__contact {
+    display: inline-block;
+    width: max-content;
     margin-bottom: 24px;
   }
   &__sign {
