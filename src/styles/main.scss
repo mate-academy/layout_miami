@@ -1,7 +1,11 @@
-// @import "utils";
+@import "utils/_mixins.scss";
 
 h1 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 .page {
@@ -12,14 +16,58 @@ h1 {
   }
 }
 
-.header {
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 25px 20px;
+.logo {
+  text-decoration: none;
+
+  &__image {
+    height: 46px;
+
+    @include onDesktop {
+      height: 65px;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+  }
 
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 25px 0;
+
+  @include onDesktop {
+    padding: 50px 0;
+  }
+
+  background-size: cover;
   background-image: url(../images/photos/header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
 
   &__title {
     color: #fff;
@@ -28,55 +76,72 @@ h1 {
     line-height: 40px;
     letter-spacing: -1.5px;
     text-align: center;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
   }
 
   &__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 130px;
+    margin-bottom: 135px;
 
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
   }
 
   &__links {
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @include onDesktop {
+      gap: 65px;
+    }
   }
 
   &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    padding: 3px;
     background-image: url(../images/menu.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
     }
   }
-
-  &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-    padding: 3px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-decoration: none;
-
-    background-image: url(../images/phone.svg);
-  }
 }
 
-.logo {
-  text-decoration: none;
+.icon--call {
+  background-image: url(../images/phone.svg);
 
-  &__image {
-    height: 46px;
+  .icon__all-numbers {
+    display: none;
+  }
+
+  @include onDesktop {
+    &:hover {
+      .icon__all-numbers {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: right;
+        font-weight: 700;
+        background-image: none;
+        padding-right: 20px;
+        line-height: 27px;
+        text-transform: uppercase;
+        color: #fff;
+        transform: translate(-100%, -40%);
+        width: max-content;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      }
+    }
+
+    .icon__item {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
