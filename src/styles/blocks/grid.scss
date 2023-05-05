@@ -1,12 +1,23 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    display: grid;
+  }
+
+  @include onDesctop {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
 
   &--tablet-desktop {
     display: block;
 
     @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
       display: grid;
     }
 
@@ -31,6 +42,78 @@
       @include onDesctop {
         grid-column: 7 / 12;
       }
+    }
+
+    &--button {
+      grid-column: 2 / 6;
+
+      @include onDesctop {
+        grid-column: 5 / 9;
+      }
+    }
+
+    &--st4 {
+      @include onTablet {
+        grid-column: 1 / 4;
+      }
+
+      @include onDesctop {
+        grid-column: 1 / 8;
+      }
+    }
+
+    &--end2 {
+      @include onTablet {
+        grid-column: 5 / 7;
+      }
+
+      @include onDesctop {
+        grid-column: 9 / 13;
+      }
+    }
+
+    &--st2 {
+      @include onTablet {
+        grid-column: 1 / 3;
+      }
+
+      @include onDesctop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--end4 {
+      @include onTablet {
+        grid-column: 3 / 7;
+      }
+
+      @include onDesctop {
+        grid-column: 5 / 13;
+      }
+    }
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 8px;
+
+  @include onTablet {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+
+    .grid-3__item--delate {
+      display: none;
+      // visibility: hidden;
+    }
+  }
+
+  @include onDesctop {
+    grid-template-columns: repeat(3, 1fr);
+
+    .grid-3__item--delate {
+      display: block;
     }
   }
 }
