@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   display: block;
 
   background-position: center;
@@ -9,6 +10,40 @@
 
   @include onTablet {
     @include square($bigIconSize);
+  }
+
+  &__tooltip {
+    display: none;
+    
+    @include onDesktop {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: block;
+      width: max-content;
+
+      padding-right: 8px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: $mainAccentColor;
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity, $transitionDuration;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 
   &--call {

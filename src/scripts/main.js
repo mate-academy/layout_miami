@@ -5,7 +5,6 @@ const closeButton = document.querySelector('#menuCloseButton');
 const menu = document.querySelector('#menu');
 const menuList = document.querySelector('.menu__list');
 const body = document.querySelector('.page__body');
-
 const openMenuClass = 'page__menu--open';
 const turnOffScrollClass = 'page__body--scroll-off';
 
