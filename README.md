@@ -3,10 +3,10 @@
   <h2>Demo link:</h2>
   <p>https://frontend112.github.io/layout_miami/</p>
   
-  <h2>design:</h2>
+  <h2>Design:</h2>
   <p>https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1</p>
 
-  <h2>description</h2>
+  <h2>Description</h2>
 
   <h3>html</h3>
   <ul>
