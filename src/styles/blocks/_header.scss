@@ -1,43 +1,70 @@
-.header {
-  height: 100vh;
-  padding: 24px 72px 130px;
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0 20px;
 
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.top-actions {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
   background-image: url(".././images/photos/header-bike-image.png");
   background-size: cover;
   background-position: center;
 
-  &__nav {
-    display: grid;
-    grid-template-columns: 1fr repeat(2, 20px);
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 40px 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-    justify-items: left;
+  &__buttons {
+    display: flex;
+
+    justify-content: center;
     align-items: center;
 
     gap: 40px;
   }
 
-  &__menu-opener {
-    display: block;
-    height: 16px;
-    width: 24px;
-    background-image: url(".././images/photos/openMenu-image.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
   &__call {
-    display: block;
-    height: 24px;
-    width: 24px;
-    background-image: url(".././images/photos/call-image.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &__title {
@@ -50,7 +77,12 @@
     text-align: center;
     letter-spacing: -1.5px;
 
-    color: #FFFFFF;
+    color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 100%;
+    }
   }
 }
 
@@ -59,5 +91,44 @@
   &__image {
     display: block;
     height: 56px;
+
+    &--dark {
+      display: block;
+      height: 56px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    height: 16px;
+    background-image: url(".././images/photos/openMenu-image.svg");
+  }
+
+  &--phone {
+    height: 24px;
+    background-image: url(".././images/photos/call-image.svg");
+  }
+
+  &--cross {
+    height: 16px;
+    width: 16px;
+    background-image: url(".././images/photos/cross-button.svg");
+  }
+}
+
+.menu {
+  background-color: $colorGray;
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
   }
 }
