@@ -5,6 +5,7 @@ const closeButton = document.querySelector('#navCloseButton');
 const menu = document.querySelector('#menu');
 const navList = document.querySelector('#navList');
 const page = document.querySelector('body');
+const form = document.querySelector('form');
 
 const openMenuClass = 'page__menu--open';
 const turnOffScrollClass = 'page--scroll-off';
@@ -27,4 +28,9 @@ navList.addEventListener('click', (e) => {
   if (e.target.tagName === 'A') {
     closeMenu();
   }
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  form.reset();
 });
