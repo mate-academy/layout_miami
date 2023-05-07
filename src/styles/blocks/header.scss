@@ -4,6 +4,10 @@
   background-size: cover;
   background-position: center;
 
+  &__top {
+    @include top-actions
+  }
+
   @include onTablet {
     background-image: url("../images/image-header-mid.png");
   }
@@ -11,13 +15,13 @@
   @include onDesktop {
     background-image: url("../images/image-header-big.png");
   }
+
   &__title {
     font-size: 32px;
     line-height: 32px;
     font-weight: 800;
     line-height: 100%;
     font-style: italic;
-    color: $main-color-grey;
     letter-spacing: -1.5px;
 
     @include onTablet {
@@ -63,40 +67,5 @@
     @include onDesktop {
       padding: $header-top-padding-tablet 0 64px;
     }
-  }
-
-  &__call {
-    @include onTablet {
-      width: 24px;
-      height: 24px;
-      margin-right: 40px;
-    }
-
-    @include onDesktop {
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-
-        display: block;
-        width: max-content;
-        padding-right: 12px;
-
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 16px;
-        color: $main-color-grey;
-        letter-spacing: 2px;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-
   }
 }
