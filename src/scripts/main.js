@@ -5,6 +5,7 @@ const menuOpen = document.querySelector('#menu-open');
 const navMenu = document.querySelector('#nav-menu');
 const logo = document.querySelector('#logo');
 const body = document.querySelector('body');
+const form = document.querySelector('#form');
 
 function BurgerMenuToggle() {
   navMenu.classList.toggle('page__menu--is-open');
@@ -15,8 +16,17 @@ function BurgerMenuToggle() {
 
 menuButton.addEventListener('click', BurgerMenuToggle);
 
-navMenu.addEventListener('click', (event) => {
-  if (event.target.tagName === 'A') {
+navMenu.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
     BurgerMenuToggle();
+  }
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if (form.checkValidity()) {
+    form.reset();
+    window.alert('Thank you, we will contact you shortly');
   }
 });
