@@ -1,15 +1,55 @@
 @import "../utils/vars";
+@import "../mixins.scss";
 
 .page {
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
 
   &__body {
     margin: 0;
-    background: $c-gray;
+    background:#1d1d1d;
   }
-}
 
-h1,
-a {
-  margin: 0;
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #c2c2c2;
+
+    transform: translateX(200%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translate(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 90px;
+    color: white;
+    text-align: center;
+
+    @include onDesktop {
+      margin-bottom: 130px;
+    }
+  }
+
+  &__section--title {
+    margin: 0 0 48px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-transform: capitalize;
+
+    @include onDesktop {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
 }
