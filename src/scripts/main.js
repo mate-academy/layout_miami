@@ -6,7 +6,7 @@ const body = document.querySelector('.page__body');
 const menuList = document.querySelector('.menu__list');
 const headerLogo = document.querySelector('#header__logo');
 
-const contactUsButton = document.querySelector('.contact-us-form__button');
+const contactUsForm = document.querySelector('.contact-us-form');
 
 headerLogo.addEventListener('click', function() {
   body.classList.remove('scroll-off');
@@ -26,8 +26,9 @@ menuList.addEventListener('click', function(e) {
   }
 });
 
-contactUsButton.addEventListener('click', submitReload, false);
+contactUsForm.addEventListener('submit', submitReload, false);
 
 function submitReload(event) {
   event.preventDefault();
+  contactUsForm.reset();
 }
