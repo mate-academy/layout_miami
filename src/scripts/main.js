@@ -6,6 +6,8 @@ const body = document.querySelector('.page__body');
 const menuList = document.querySelector('.menu__list');
 const headerLogo = document.querySelector('#header__logo');
 
+const contactUsButton = document.querySelector('.contact-us-form__button');
+
 headerLogo.addEventListener('click', function() {
   body.classList.remove('scroll-off');
 });
@@ -23,3 +25,9 @@ menuList.addEventListener('click', function(e) {
     body.classList.remove('scroll-off');
   }
 });
+
+contactUsButton.addEventListener('click', submitReload, false);
+
+function submitReload(event) {
+  event.preventDefault();
+}
