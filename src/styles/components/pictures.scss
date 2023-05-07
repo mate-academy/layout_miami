@@ -8,7 +8,7 @@
   @include for-tablet() {
     grid-template-columns: 3fr 2fr;
     column-gap: 24px;
-    max-width: 744px;
+    max-width: 620px;
   }
 
   @include for-desktop() {
@@ -30,19 +30,21 @@
     flex-direction: column;
     align-items: center;
     }
-  }
+  
 
   &--1 {
-    @include for-desktop() {
-    grid-template-columns: 1fr 3fr;
-    column-gap: 24px;
-    }
 
     @include for-tablet() {
       grid-template-columns: 1fr 3fr;
       column-gap: 24px;
       }
+
+    @include for-desktop() {
+    grid-template-columns: 1fr 3fr;
+    column-gap: 24px;
+    }
   }
+}
 
   &__image {
     width: 130px;
@@ -54,14 +56,14 @@
       height: 130px;
       object-fit: cover;
 
+      @include for-tablet() { 
+        width: 187px;
+        height: 187px;
+      }
+
       @include for-desktop() {
         height: 320px;
         width: 324px;
-      }
-
-      @include for-tablet() { 
-        width: 184px;
-        height: 187px;
       }
     }
 
@@ -93,17 +95,25 @@
     padding-bottom: 40px;
     text-align: left;
 
-    @include for-desktop() {
-    font-size: 24px;
-    line-height: 140%;
-    }
-
     @include for-tablet() {
       font-size: 24px;
       line-height: 140%;
     }
 
+    @include for-desktop() {
+    font-size: 24px;
+    line-height: 140%;
+    }
+
     &__wrapper {
+
+      @include for-tablet() {
+        display: flex;
+        width: 100%;
+        justify-content: left;
+        max-width: 744px;
+      }
+
       @include for-desktop() {
       display: flex;
       width: 100%;
@@ -114,12 +124,22 @@
   }
 
   &__gallery {
-    @include for-desktop() {
-      width: 100%; /* set a fixed width for the gallery container */
+
+    @include for-tablet() {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* center the gallery horizontally */
+      justify-content: center;
+      margin-top: 70px;
+    }
+
+    @include for-desktop() {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       margin-top: 70px;
     }
   }
