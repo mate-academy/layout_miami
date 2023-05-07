@@ -11,3 +11,9 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+// window.addEventListener('scroll', () => {
+//   const scrolled = window.scrollY;
+
+//   console.log(scrolled);
+// });
