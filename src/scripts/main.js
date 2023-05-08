@@ -1,6 +1,6 @@
 'use strict';
 
-const formButton = document.querySelector('#form-button');
+const formBlock = document.querySelector('.form');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
@@ -10,4 +10,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-formButton.addEventListener('click', (event) => event.preventDefault());
+formBlock.addEventListener('submit', (event) => {
+  formBlock.reset();
+  event.preventDefault();
+});
