@@ -28,3 +28,10 @@ navList.addEventListener('click', function(event) {
     closeMenu();
   }
 });
+
+const form = document.querySelector('.action');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});
