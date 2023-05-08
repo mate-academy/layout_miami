@@ -1,0 +1,127 @@
+.header {
+  display: flex;
+  min-height: 480px;
+  background-image: url(../images/photos/bike-header_680x480.webp);
+  background-position-x: 85%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onTablet {
+    min-height: 628px;
+    background-image: url(../images/photos/bike-header_889x628.webp);
+    background-position-x: center;
+  }
+
+  @include onDesktop {
+    min-height: 710px;
+    background-image: url(../images/photos/bike-header_1260x711.webp);
+    background-position: center;
+  }
+
+  @media (min-width: 1440px) {
+    background-image: url(../images/photos/Cover_photo.jpg);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    @include header-menu-vertical-paddings;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo,
+  &__phone-link,
+  &__navigation-button {
+    display: block;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  &__phone-link {
+    position: relative;
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+    color: $light-text-color;
+  }
+
+  &__phone-tooltip {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    transform: translate(-100%, -50%);
+    top: 50%;
+    padding: 30px;
+    width: max-content;
+    pointer-events: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+  }
+
+  @include onTablet {
+    &__phone-link:hover &__phone-tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__navigation-button {
+    background-image: url(../images/burger.svg);
+    padding-right: 0;
+
+    &.icon {
+      height: 12px;
+
+      @include onTablet {
+        height: 16px;
+      }
+    }
+
+    &:hover, &:focus {
+      background-image: url(../images/burger-hover.svg);
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__phone-icon {
+    fill: $light-text-color;
+  }
+
+  &__navigation-button-icon {
+    fill: $light-text-color;
+  }
+
+  &__logo-svg {
+    fill: $light-text-color;
+  }
+
+  &__welcome-text {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      text-align: center;
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
