@@ -4,6 +4,10 @@
   background-position-x: 40%;
   background-repeat: no-repeat;
 
+  &__top {
+    @include top-actions;
+  }
+
   @include onDesktop {
     background-position-x: 60%;
   }
@@ -28,12 +32,36 @@
   }
 
   &__title {
+    position: relative;
     font-style: italic;
     font-weight: 800;
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
     color: $colorDarkGrey;
+
+    &::before {
+      content: url("./../images/Vector 1.svg");
+      position: absolute;
+      bottom: 100%;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        content: url("./../images/Vector 2.svg");
+        width: 65px;
+        height: 75px;
+        margin-bottom: 32px;
+      }
+
+      @include onTablet {
+        content: url("./../images/Vector 2.svg");
+        width: 65px;
+        height: 75px;
+        margin-bottom: 40px;
+      }
+    }
 
     @include onDesktop {
       font-size: 48px;
