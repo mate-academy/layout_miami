@@ -27,7 +27,5 @@ form.addEventListener('submit', (event) => {
     input.value = '';
   });
 
-  setTimeout(() => {
-    window.alert('The form was sent');
-  });
+  window.scrollTo(0, 0);
 });
