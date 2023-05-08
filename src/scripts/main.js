@@ -27,3 +27,10 @@ menuList.addEventListener('click', function(event) {
     closeMenu();
   }
 });
+
+const formNotReload = document.querySelector('#form');
+
+formNotReload.addEventListener('submit', (event) => {
+  event.preventDefault();
+  event.target.reset();
+});
