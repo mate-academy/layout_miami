@@ -1,64 +1,56 @@
 .header {
-  background-size: cover;
-  background-position: center;
   background-image: url(../images/headernew.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   height: 100vh;
 
-  &__content {
-    display: flex;
-    flex-direction: column;
+  &__top {
+    @include top-actions;
+    margin-bottom: 100px;
+  }
 
-    height: 100vh;
-    padding: 25px 0;
+  &__buttons {
+    display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
   }
 
   &__title {
-    font-weight: 700px;
     font-size: 40px;
     line-height: 40px;
-    color: #fff;
-    letter-spacing: -1.5px;
+    font-weight: 700;
     text-align: center;
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+    color: $textColor;
 
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
+    @include onTablet {
+      font-size: 60px;
+      line-height: 60px;
+    }
 
     @include onDesktop {
       font-size: 80px;
       line-height: 80px;
     }
   }
-    &__button {
-      display: flex;
-      gap: 30px;
 }
 
-  &__call {
-    text-decoration: none;
+.footer {
+  height: 180px;
+  background-image: url(../images/footer.jpg);
+  background-size: cover;
+  background-position: center;
 
-    @include onDesktop {
-      &::before {
-        content: "+1 212-535-7710";
-        transform: translate(-100%, -50%);
-        padding-right: 20px;
-        position: relative;
-        top: 50%;
-
-        color: #fff;
-        text-transform: uppercase;
-        opacity: 0;
-        display: block;
-        width: max-content;
-        font-size: 16px;
-        padding-right: 20px;
-        pointer-events: none;
-      }
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
+  @include onTabletAndDesktop() {
+    height: 360px;
   }
 }
