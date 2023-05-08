@@ -5,6 +5,7 @@ const form = document.querySelector('.form-contact__content');
 const emailInput = document.querySelector('.form-contact__email');
 
 
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--menu');
@@ -19,7 +20,7 @@ form.addEventListener('submit', (event) => {
 
   if (emailInput.checkValidity()) {
     form.reset();
-    window.alert('Thanks for your message!');
+    window.scrollTo(0, 0);
   }
 });
 
