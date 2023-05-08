@@ -16,8 +16,8 @@
     height: 50%;
     top: 50%;
     transform: translateY(-50%);
+    display: none;
 
-    display: block;
     width: max-content;
     padding-right: 12px;
 
@@ -28,14 +28,31 @@
     text-transform: uppercase;
     font-weight: 700;
     pointer-events: none;
-
-    opacity: 0;
-    transition: opacity 0.3s;
   }
 
   &:hover &__tooltip {
-    opacity: 1;
-    pointer-events: all;
+    @include onTablet {
+      animation: fadeIn 0.3s ease-out;
+      display: inline;
+      pointer-events: all;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+
+    1% {
+      display: block;
+      opacity: 0;
+    }
+
+    100% {
+      display: block;
+      opacity: 1;
+    }
   }
 
   &--menu {
