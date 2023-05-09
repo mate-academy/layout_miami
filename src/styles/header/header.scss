@@ -1,29 +1,26 @@
-@import url("./header/header-animations.scss");
-
-$headerTopPadding: 23px;
-
-@mixin icons-preset($width, $height) {
-  height: $height;
-  width: $width;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-}
-
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
-  }
-}
+@import "./header/header-animations.scss";
 
 .container {
+  height: 100vh;
   max-width: 1920px;
 
+  box-sizing: border-box;
+
+  padding: $headerTopPadding
+    $headerRightLeftPadding 60px;
+
   @include onDesktop {
-    padding: 30px 120px;
+    padding: $headerTopPaddingOnDesk
+      $headerRightLeftPaddingOnDesk 150px;
     margin: 0 auto;
   }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .header {
@@ -33,30 +30,13 @@ $headerTopPadding: 23px;
   font-weight: 700;
   color: white;
 
-  &__content {
-    box-sizing: border-box;
-    padding: $headerTopPadding 23px 80px;
-    height: 100vh;
+  @include logoPreSet;
 
+  &__content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  &__logo-img {
-    width: 130px;
-
-    @include onDesktop {
-      width: 150px;
-    }
-
   }
 
   &__icons-container {
@@ -65,40 +45,24 @@ $headerTopPadding: 23px;
   }
 
   &__call {
-    display: flex;
-    align-items: center;
-    color: white;
-    background: url("../../src/images/phone.svg");
-    @include icons-preset(18px, 18px);
     margin-right: 20px;
     text-decoration: none;
-
     @include onDesktop {
-      @include icons-preset(24px, 24px);
       margin-right: 40px;
     }
   }
 
-  &__call &__phone-number {
+  &__phone-number {
     opacity: 0;
     display: none;
+    color: white;
 
     @include onDesktop {
-      @include icons-preset(24px, 24px);
       position: relative;
       top: 10%;
-      opacity: 0;
       font-size: 12px;
       white-space: nowrap;
     }
-  }
-
-  &__call &__tel-hint {
-    opacity: 0;
-    display: none;
-    text-align: center;
-    position: relative;
-    right: 150%;
   }
 
   &__call:hover &__phone-number {
@@ -110,37 +74,6 @@ $headerTopPadding: 23px;
       animation-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
       animation-direction: alternate;
       animation-fill-mode: forwards;
-    }
-  }
-
-  &__call:hover &__tel-hint {
-    @include onDesktop {
-      display: block;
-      position: relative;
-      animation-name: move-down-tel-hint;
-      animation-duration: 0.5s;
-      animation-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
-      animation-direction: alternate;
-      animation-fill-mode: forwards;
-    }
-  }
-
-  &__menu-opener {
-    background: url("../../src/images/menu.svg");
-    @include icons-preset(18px, 12px);
-    border: none;
-
-    @include onDesktop {
-      @include icons-preset(24px, 16px);
-    }
-  }
-
-  &__menu-opener:hover {
-    background: url("../../src/images/menu_hover.svg");
-    @include icons-preset(18px, 12px);
-
-    @include onDesktop {
-      @include icons-preset(24px, 16px);
     }
   }
 
@@ -158,12 +91,5 @@ $headerTopPadding: 23px;
     @include onDesktop {
       font-size: 88px;
     }
-  }
-}
-
-.menu {
-  background-color: #e5e5e5;
-  &_content {
-    padding: $headerTopPadding 72px 175px;
   }
 }
