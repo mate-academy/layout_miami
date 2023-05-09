@@ -1,5 +1,6 @@
 @import "../utils/vars";
 @import "../utils/mixins";
+@import "button-wrapper";
 
 .contact {
   background-color: $c-white;
@@ -8,20 +9,11 @@
 
   &__ {
     &title {
-      margin-top: 120px;
+      margin-top: $site-parts-top-margin;
 
-      font-size: 32px;
-      line-height: 100%;
       text-align: center;
-      letter-spacing: -1.5px;
 
-      @include for-tablet {
-        font-size: 40px;
-      }
-
-      @include for-tablet {
-        font-size: 48px;
-      }
+      @include style-title;
     }
 
     &content {
@@ -35,6 +27,8 @@
     }
 
     &form {
+      display: flex;
+      flex-direction: column;
       margin-top: 32px;
 
       @include for-tablet {
@@ -56,40 +50,38 @@
       box-sizing: border-box;
       padding-left: 16px;
       margin-top: 16px;
-
+      font-size: 14px;
+      font-weight: 400;
       background: #f8f8fa;
       border-radius: 40px;
-      border: 0;
+      color: $c-light-black;
+      line-height: 20px;
+
+      @include set-font-Inter;
 
       &::placeholder {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
         color: #7e7e83;
       }
 
-      @media (pointer: fine) {
-        &:hover {
-          border: 1px solid #d5d7de;
-        }
+      &:hover {
+        outline: 1px solid #d5d7de;
       }
 
       &:focus {
-        border: 1px solid $c-light-black;
-        color: $c-light-black;
+        outline: 1px solid $c-light-black;
       }
     }
 
     &message {
       padding-top: 14px;
       height: 148px;
+      z-index: 1;
 
       border-radius: 16px;
     }
 
     &send {
       margin-top: 32px;
-      width: 100%;
     }
 
     &information {
@@ -121,6 +113,12 @@
           font-size: 16px;
           line-height: 140%;
           color: #3e3e3e;
+
+          @include hover(color, #499eee);
+
+          &:nth-of-type(n) {
+            text-decoration: none;
+          }
         }
       }
     }

@@ -1,13 +1,21 @@
-# Miami landing page
+# Project description
+Project presents informations about Bose. Site contains header with navigation menu, recommended soundbars, categories of products, reasons why someone can buy products, contact form, informations and footer. Is designed for smartphone, tablet and desktop.
 
-In this task, you will learn how to implement a landing page. To do that:
+# Used technologioes
+Project is based on HTML, SASS and JavaScript.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://amadeuszandroid.github.io/layout_miami/)
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+# Site preview
+[Bose site](https://amadeuszandroid.github.io/layout_miami/)
+
+# Layout preview
+[Bose Figma](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
+
+# Run local project
+- Install ``` npm i```
+- Run ```npm start```
+- Site should automatically start at localhost:8080.
+
+# TODO
+- Menu close icon should be on the same position as menu icon, when site has scrollbar and navigation menu has not.
+- Form should have validation, even if inputs are invisibe (over viewport) and user clicks submit button.
+- Navigation menu should be scrolled on horizontal screen orintation on Chrome on Android device.

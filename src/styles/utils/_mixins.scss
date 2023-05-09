@@ -1,26 +1,32 @@
 @import "vars";
 
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+  @media (pointer: fine) {
+    transition: #{$_property} $animation-duration;
+    &:hover {
+      #{$_property}: $_toValue;
+    }
   }
 }
 
+@mixin increase-hover-scale {
+  @include hover(transform, scale(1.05));
+}
+
 @mixin for-tablet {
-  @media (min-width: 744px) {
+  @media (min-width: $tablet-width) {
     @content;
   }
 }
 
 @mixin for-desktop {
-  @media (min-width: 1260px) {
+  @media (min-width: $desktop-width) {
     @content;
   }
 }
 
 @mixin not-for-desktop {
-  @media (max-width: 1259px) {
+  @media (max-width: calc(#{$desktop-width} - 1px)) {
     @content;
   }
 }
@@ -30,7 +36,7 @@
 }
 
 @mixin set-smartphone-height-and-grid {
-  @include set-height(320px, 500px);
+  @include set-height($smartphone-width, 500px);
 
   @include set-smartphone-grid;
 }
@@ -45,7 +51,7 @@
 @mixin set-tablet-height-and-grid() {
   justify-content: space-between;
 
-  @include set-height(744px, 800px);
+  @include set-height($tablet-width, 800px);
 
   @include set-tablet-grid;
 }
@@ -58,7 +64,7 @@
 }
 
 @mixin set-desktop-height-and-grid() {
-  @include set-height(1260px, 720px);
+  @include set-height($desktop-width, 720px);
 
   @include set-desktop-grid;
 }
@@ -83,4 +89,23 @@
   @include for-desktop {
     padding: 0 $desktop-horizontal-padding;
   }
+}
+
+@mixin style-title {
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+  @include for-tablet {
+    font-size: 40px;
+  }
+
+  @include for-desktop {
+    font-size: 48px;
+  }
+}
+
+@mixin set-font-Inter {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
 }
