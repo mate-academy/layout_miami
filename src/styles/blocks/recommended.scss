@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
 
   @include onMobile {
     flex-direction: column;
@@ -27,23 +27,41 @@
     position: relative;
 
     box-sizing: border-box;
-    width: 100%;
-    max-height: 387px;
+    max-width: 100%;
+    max-height: 324px;
     overflow: hidden;
   
     margin-bottom: 32px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 350px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 324px;
+      padding-bottom: 0;
+    }
   }
 
   &__img {
     box-sizing: border-box;
+    position: relative;
     width: 100%;
     height: 100%;
 
     object-fit: cover;
     object-position: center;
+    transition: transform $transition-time;
 
     &:hover {
-      border: 2px solid $black-color;
+      transform: scale(0.90);
     }
   }
 
