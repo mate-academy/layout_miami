@@ -9,7 +9,6 @@ window.addEventListener('hashchange', () => {
 });
 
 const form = document.querySelector('.contact-us__form');
-console.log(form);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
