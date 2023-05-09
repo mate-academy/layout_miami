@@ -3,10 +3,10 @@
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
-    document.querySelector('.menu').style.zIndex = '1';
+    document.querySelector('.menu').classList.add('menu--opened');
   } else {
     document.body.classList.remove('page__body--with-menu');
-    document.querySelector('.menu').style.zIndex = '0';
+    document.querySelector('.menu').classList.remove('menu--opened');
   }
 });
 
