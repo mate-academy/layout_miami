@@ -1,0 +1,117 @@
+.header {
+  height: 100vh;
+
+  background-image: url("../images/backgrounds/header-320.jpg");
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url("../images/backgrounds/header-744.jpg");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/backgrounds/header-1260.jpg");
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+
+    @include onDesktop {
+      &::before {
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: $tablet_icon-size;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+
+    &::before {
+      content: "";
+      display: block;
+
+      width: 36px;
+      height: 32px;
+      margin-bottom: 16px;
+
+      background-image: url("../images/icons/waves_mobile.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onTablet {
+        width: 64px;
+        height: 76px;
+        margin-bottom: 40px;
+
+        background-image: url("../images/icons/waves_desktop.svg");
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+}
