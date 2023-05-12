@@ -23,7 +23,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 }
 
 .header {
@@ -54,6 +53,7 @@
   &__call {
     margin-right: 20px;
     text-decoration: none;
+
     @include onDesktop {
       margin-right: 40px;
     }
@@ -61,7 +61,6 @@
 
   &__phone-number {
     opacity: 0;
-    display: none;
     color: white;
 
     @include onDesktop {
@@ -69,18 +68,17 @@
       top: 10%;
       font-size: 12px;
       white-space: nowrap;
+      transition-duration: 0.5s;
+      transition-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
+      transition-delay: 0.2s;
     }
   }
 
   &__call:hover &__phone-number {
     @include onDesktop {
-      display: block;
-      position: relative;
-      animation-name: move-left-phone-number;
-      animation-duration: 0.5s;
-      animation-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
-      animation-direction: alternate;
-      animation-fill-mode: forwards;
+      cursor: pointer;
+      opacity: 1;
+      transform: translateX(-115px);
     }
   }
 
