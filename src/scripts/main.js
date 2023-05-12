@@ -12,4 +12,5 @@ const formDate = document.querySelector('form');
 
 formDate.addEventListener('submit', function(event) {
   event.preventDefault();
+  formDate.reset();
 });
