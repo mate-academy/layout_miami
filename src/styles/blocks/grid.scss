@@ -18,6 +18,10 @@
     @include onIpad {
       display: grid;
     }
+
+    @include onDesktop {
+      display: grid;
+    }
   }
 
   &__item {
@@ -26,15 +30,26 @@
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
+      }
+    }
 
-        &--desktop-#{$start}-#{$end} {
-          @include onDesktop {
-            grid-column: #{$start} / #{$end + 1};
-          }
-        }
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
 
         &--ipad-#{$start}-#{$end} {
           @include onIpad {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
           }
         }
