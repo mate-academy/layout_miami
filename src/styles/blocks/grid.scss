@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
-  justify-items: start;
+  // justify-items: start;
   align-items: flex-start;
+  justify-content: center;
 
   @include onTablet {
     grid-template-columns: repeat(6, 1fr);
@@ -29,13 +30,16 @@
 
   &--desktop-button {
     display: block;
+
     @include onDekstop {
       display: grid;
     }
+
     @include onTablet {
       display: grid;
     }
   }
+
   &__button {
     width: 100%;
   }
@@ -46,7 +50,14 @@
   }
 
   &--recommended {
-    justify-items: center;
+    display: block;
+    max-width: 397px;
+    margin: 0 auto;
+
+    @include onTablet {
+      display: grid;
+      max-width: none;
+    }
   }
 
   &__item {
@@ -55,6 +66,7 @@
         &--#{$startTablet}-#{$endTablet} {
           grid-column: #{$startTablet} / #{$endTablet};
         }
+
         &--tablet--#{$startTablet}-#{$endTablet} {
           @include onTablet {
             grid-column: #{$startTablet} / #{$endTablet};
@@ -68,6 +80,7 @@
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end};
         }
+
         &--desktop--#{$start}-#{$end} {
           @include onDekstop {
             grid-column: #{$start} / #{$end};

@@ -11,4 +11,8 @@ window.addEventListener('hashchange', () => {
 function stopDefAction(evt) {
   evt.preventDefault();
 }
-document.addEventListener('submit', stopDefAction);
+
+document.addEventListener('submit', function(event) {
+  stopDefAction(event);
+  event.target.reset();
+});
