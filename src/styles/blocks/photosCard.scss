@@ -1,0 +1,96 @@
+.photos-card {
+
+  &--margin-bottom {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__photo {
+    width: 46.5%;
+    object-fit: cover;
+
+    transition: transform 0.3s;
+
+    &--position-right {
+      object-position: right;
+    }
+
+    @include onTablet {
+      width: 100%;
+      height: 185px;
+
+      &:hover {
+        transform: scale(110%);
+      }
+
+      @include onDesktop {
+        height: 320px;
+      }
+    }
+    &:nth-child(1) {
+      grid-column: 1 / 5;
+
+      @include onDesktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &:nth-child(2) {
+      grid-column: 5 / 7;
+
+      @include onDesktop {
+        grid-column: 9 / -1;
+      }
+    }
+
+    &--grid-item {
+      &:nth-child(1) {
+        grid-column: 1 / 3;
+
+        @include onDesktop {
+          grid-column: 1 / 5;
+        }
+      }
+
+      &:nth-child(2) {
+        grid-column: 3 / 7;
+
+        @include onDesktop {
+          grid-column: 5 / -1;
+        }
+      }
+    }
+  }
+
+  &__name-category {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: $color-font;
+    text-decoration: none;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+  }
+}
