@@ -39,7 +39,6 @@
   }
 
   &__link {
-    display: inline-block;
     text-decoration: none;
     font-weight: 700;
     font-size: 22px;
@@ -48,16 +47,26 @@
     text-transform: uppercase;
     color: $color-font;
 
-    &:hover {
-      &::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 1px;
-        background-color: $color-font;
-        margin-top: 5px;
-      }
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $color-font;
+
+      position: absolute;
+      left: 0;
+      top: 115%;
+      
+      opacity: 0;
+      transition: all 0.3s;
     }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
   }
 
   &__phone {
