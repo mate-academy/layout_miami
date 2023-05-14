@@ -1,5 +1,16 @@
 'use strict';
 
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  this.reset();
+
+  const clearUrl = window.location.origin + window.location.pathname;
+
+  window.history.replaceState({}, document.title, clearUrl);
+});
+
 const openBtn = document.querySelector('.icon--menu');
 const closeBtn = document.querySelector('.icon--cross');
 const menuList = document.querySelector('.menu__list');
