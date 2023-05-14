@@ -1,5 +1,5 @@
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import 'aos/dist/aos.css';
 
 const form = document.querySelector('.form-contact__content');
 const emailInput = document.querySelector('.form-contact__email');
