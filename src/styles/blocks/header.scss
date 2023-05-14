@@ -1,58 +1,113 @@
+$headerTopPaddingMobile: 25px;
+$headerTopPaddingDesktop: 50px;
+
 .header {
   background-image: url("../images/back.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
-  &__nav {
+  &-wrapper {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &-wrapper {
-      display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 63px;
+    }
+
+    @include onDesktop {
+      gap: 63px;
     }
   }
+
   &__logo {
     width: 64px;
     height: 46px;
-  }
-  &__menu-opener {
-    display: block;
-    background-image: url("../images/menu.svg");
-    background-repeat: no-repeat;
 
-    height: 12px;
-    width: 18px;
-    &:hover {
-      background-image: url("../images/menu_hover.svg");
+    @include onDesktop {
+      width: 87px;
+      height: 65px;
     }
   }
-  &__phone {
-    padding-right: 30px;
-    display: block;
-    background-image: url("../images/phone.svg");
-    background-repeat: no-repeat;
-    transform: translateY(-25%);
-    height: 18px;
-    width: 18px;
-  }
+
   &__title {
     padding-top: 129px;
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     font-weight: 700;
     font-size: 40px;
     line-height: 40px;
-    color:white;
+    color: white;
     text-align: center;
+
+    @include onTablet {
+      padding-top: 141px;
+      font-size: 64px;
+      line-height: 64px;
+      letter-spacing: -1.5px;
+    }
+
+    @include onDesktop {
+      padding-top: 83px;
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
   }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 25px 20px;
+  padding: $headerTopPaddingMobile 20px;
 
-  @media (min-width:1024px) {
+  @include onDesktop {
+    padding-top: $headerTopPaddingDesktop;
+  }
 
+  @include onTablet {
+    padding: $headerTopPaddingDesktop 70px;
+  }
+  &_body {
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-decoration: none;
+  height: 18px;
+  width: 18px;
+  &--menu {
+    background-image: url("../images/menu.svg");
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/cross.svg");
+  }
+  @include onTablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  @include onDesktop {
+    height: 24px;
+    width: 24px;
   }
 }

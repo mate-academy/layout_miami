@@ -1,0 +1,140 @@
+.page {
+  scroll-behavior: smooth;
+  &__position {
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+  &__body {
+    font-family: "Cinzel", sans-serif;
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &_section {
+    margin-bottom: 100px;
+    &--first {
+      @include onPhone {
+        .page_section-title--first,
+        .page_timetable {
+          padding-top: 140px;
+          padding-left: 20px;
+        }
+      }
+
+      @include onTablet {
+        .page_section-title--first,
+        .page_timetable {
+          padding-top: 100px;
+          padding-left: 72px;
+        }
+      }
+      @include onDesktop {
+        .page_section-title--first,
+        .page_timetable {
+          padding-top: 140px;
+          padding-left: 20px;
+        }
+      }
+    }
+    &-title {
+      margin-bottom: 48px;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 32px;
+      text-align: center;
+      letter-spacing: -1.5px;
+      &--first {
+        position: relative;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 140%;
+        color: #d12d35;
+        &::after {
+          content: "Museum hours";
+          display: block;
+          position: absolute;
+          bottom: 10;
+          font-weight: 700;
+          font-size: 32px;
+          line-height: 32px;
+          color: black;
+        }
+      }
+    }
+  }
+  &_timetable {
+    display: block;
+  }
+  &_text {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    padding-bottom: 8px;
+    &:nth-child(3) {
+      padding-bottom: 16px;
+    }
+    &:nth-child(4) {
+      padding-bottom: 0;
+    }
+    &:nth-child(5n) {
+      font-weight: 400;
+      padding-bottom: 24px;
+    }
+    &-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      padding-bottom: 16px;
+      &:last-child {
+        padding-top: 24px;
+      }
+    }
+    &--1::after {
+      content: "Sun, Mon, Tue, Thu";
+      font-weight: 400;
+      padding-left: 25px;
+    }
+    &--2::after {
+      content: "Fri, Sat";
+      font-weight: 400;
+      padding-left: 25px;
+    }
+    &--3::after {
+      content: "Wen";
+      font-weight: 400;
+      padding-left: 57px;
+    }
+    &--4 {
+      font-weight: 700;
+      &::after {
+        content: "Thu - Tue";
+        font-weight: 400;
+        padding-left: 25px;
+      }
+    }
+    &--5::after {
+      content: "Wen";
+      font-weight: 400;
+      padding-left: 82px;
+    }
+
+    &--closed:last-child {
+      padding-bottom: 16px;
+    }
+  }
+  &--button {
+    margin-top: 40px;
+  }
+}
