@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+document
+  .getElementById('sendButton')
+  .addEventListener('click', checkAndClearForm);
+
+function checkAndClearForm() {
+  const formValid = document.getElementById('myForm');
+
+  if (formValid.checkValidity()) {
+    formValid.reset();
+  }
+}
