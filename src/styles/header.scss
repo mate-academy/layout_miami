@@ -1,0 +1,113 @@
+.header {
+  height: 100vh;
+  margin-bottom: 120px;
+
+  background-image: url(../images/photos/mob.jpg);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    background-image: url(../images/photos/tab.jpg);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header__background.jpg);
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        display: block;
+        transform: translate(-100%, 25%);
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $font-color;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: start;
+
+    font-size: $title-size--mobile;
+    font-weight: 800;
+    font-style: italic;
+
+    @include onTablet() {
+      font-size: $title-size--tablet;
+    }
+
+    @include onDesktop() {
+      font-size: $title-size--desktop;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      height: 27px;
+      width: 32px;
+      padding-bottom: 16px;
+
+      background-image: url(../images/sound_wave320.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onTablet() {
+        height: 76px;
+        width: 63px;
+        padding-bottom: 40px;
+
+        background-image: url(../images/bose__sound.svg);
+      }
+
+      @include onDesktop() {
+        height: 76px;
+        width: 63px;
+        padding-bottom: 32px;
+
+        background-image: url(../images/bose__sound.svg);
+      }
+    }
+  }
+}
