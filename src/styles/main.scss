@@ -1,7 +1,154 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-body {
-  background: $c-gray;
+.page {
+  &__body {
+    background: #eee;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include onDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: top;
+  background-image: url(../images/background.png);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 24px 94px 20px;
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__right-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__call {
+    background-image: url(../images/phone.png);
+    padding-right: 30px;
+    text-decoration: none;
+
+    @include onDesktop {
+      padding-right: 40px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        color: #292929;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/menu-opener.png);
+
+    &:hover {
+      background-image: url(../images/menu-opener-hover.png);
+    }
+  }
+
+  &__sign {
+    display: block;
+    background-image: url(../images/sing-small.png);
+    background-size: cover;
+    width: 32px;
+    height: 27px;
+
+    @include onDesktop {
+      background-image: url(../images/sing-big.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 76px;
+      width: 63px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    color: #292929;
+    margin: 21px 0 0;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+}
+
+.logo {
+  &__image {
+    height: 17px;
+
+    @include onDesktop {
+      height: 24px;
+    }
+  }
 }
