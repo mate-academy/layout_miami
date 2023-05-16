@@ -8,10 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const checkbox = document.querySelector('#submit-button');
+const form = document.querySelector('form');
 
-checkbox.addEventListener('click', checkboxClick, false);
-
-function checkboxClick(event) {
-  event.preventDefault();
-}
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});
