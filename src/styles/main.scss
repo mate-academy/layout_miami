@@ -1,7 +1,104 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+.page {
+  font-family:  "Popping", sans-serif;
 
-body {
-  background: $c-gray;
+  &__body {
+    margin: 0;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px){
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px){
+    @content;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 29px 20px;
+
+  background-image: url(../images/photos/Cover_photo.jpg);
+  background-position: 85%;
+  background-size: cover;
+
+  &__title {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    padding-bottom: 88px;
+  }
+
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    background-image: url(../images/call.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+}
+
+.logo {
+  &__images {
+    width: 130px;
+    height: 38px;
+
+    @include onDesktop() {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
+
+.footer {
+  background-image: url(../images/footer.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 200px;
 }
