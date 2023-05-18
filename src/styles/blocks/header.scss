@@ -1,0 +1,99 @@
+.header {
+  background-image: url(/images/photos/background-mobile.jpg);
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(/images/photos/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 200px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+
+    & :not(:last-child) {
+      margin-right: 30px;
+    }
+
+    @include onDesktop {
+      & :not(:last-child) {
+        margin-right: 40px;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #fff;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
