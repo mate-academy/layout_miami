@@ -1,0 +1,42 @@
+.compare {
+  &__bikes {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat($count-columns-tablet, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat($count-columns-desktop, 1fr);
+    }
+  }
+
+  &__bike {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+
+    @include onDesktop {
+      margin: 0;
+
+      &:first-child {
+        grid-column: 1 / 5;
+      }
+
+      &:nth-child(2) {
+        grid-column: 5 / 9;
+      }
+
+      &:last-child {
+        grid-column: 9 / 13;
+      }
+    }
+  }
+}
