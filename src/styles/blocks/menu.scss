@@ -9,12 +9,22 @@
 
   &__top {
     margin-bottom: 44px;
+    @include top-actions;
+
+    &--open {
+      grid-template-columns: 1fr var(--icon-width);
+
+      @include onIpad {
+        grid-template-columns: 1fr var(--icon-width);
+      }
+    }
   }
 
   &__list {
     margin: 0 0 40px;
     padding: 0;
     list-style: none;
+    
   }
   
   &__item {
@@ -23,14 +33,12 @@
     &:last-child {
       margin-bottom: 0;
     }
-    
   }
   
   &__link {
     display: inline-block;
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
-    
     
     color: $color-dark;
     font-weight: 600;
@@ -40,6 +48,8 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: border-color 0.3s;
+
+    cursor: default;
 
     &:hover {
       border-color: $color-dark;
