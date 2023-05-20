@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
   @include onTablets {
@@ -13,23 +13,20 @@
     column-gap: 24px;
   }
 
-  &--desktop {
-    display: block;
-
-    @include onTablets {
-      display: grid;
+  &__item {
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--mobile--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+      }
     }
   }
 
   &__item {
-
     @for $start from 1 through 6 {
-      @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--tablets-#{$start}-#{$end} {
+      @for $end from $start through 6 {
+        &--tablets--#{$start}-#{$end} {
           @include onTablets {
             grid-column: #{$start} / #{$end + 1};
           }
@@ -39,14 +36,9 @@
   }
 
   &__item {
-
     @for $start from 1 through 12 {
       @for $end from $start through 12 {
-        &--#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
-        }
-
-        &--desktop-#{$start}-#{$end} {
+        &--desktop--#{$start}-#{$end} {
           @include onDesktop {
             grid-column: #{$start} / #{$end + 1};
           }
