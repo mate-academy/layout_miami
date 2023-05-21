@@ -1,37 +1,48 @@
 .details {
   color: $mainWhite;
-
-  &__item {
-    margin-bottom: 48px;
-  }
+  box-sizing: border-box;
+  margin-bottom: 48px;
 
   &__photos-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
     margin-bottom: 16px;
   }
 
-  &__photo {
-    text-align: center;
-    height: 130px;
+  &__photo-wrapper {
+    position: relative;
 
-    &-1 {
-      flex-grow: 1;
-      background-color: aqua;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 130px;
 
-      @include onTablet {
-        flex-grow: 2;
-      }
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
     }
 
-    &-2 {
-      flex-grow: 1;
-      background-color: orange;
+    @include onTablet {
+      max-height: 187px;
+      padding-bottom: 0;
+    }
 
-      @include onTablet {
-        flex-grow: 1;
-      }
+    @include onDesktop {
+      max-height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 
@@ -42,7 +53,7 @@
     margin-bottom: 8px;
   }
 
-  &__description {
+  &__info {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
