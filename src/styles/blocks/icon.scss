@@ -1,0 +1,64 @@
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+
+  &__container {
+    display: block;
+    padding: 6px 3px;
+
+    @include onTabletAndDesktop {
+      padding: 8px 4px;
+    }
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url("../images/phone.svg");
+  }
+
+  &--menu-opener {
+    background-image: url("../images/menu.svg");
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  &--close {
+    background-image: url("../images/Vector.png");
+  }
+
+  &__menu {
+    position: absolute;
+    right: 100%;
+    bottom: 50%;
+    transform: translateY(-10%);
+    width: max-content;
+    padding-right: 16px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity $transitionDuration,
+      transform $transitionDuration;
+  }
+
+  &:hover &__menu {
+    opacity: 1;
+    transform: translateY(50%);
+    pointer-events: auto;
+    cursor: auto;
+  }
+
+  @include onTabletAndDesktop {
+    width: 24px;
+    height: 24px;
+  }
+}

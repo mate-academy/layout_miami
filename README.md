@@ -1,13 +1,48 @@
-# Miami landing page
+Layout Miami
+This repository contains the source code and assets for the Layout Miami website. The website showcases a collection of stunning and modern website layouts for inspiration and design ideas.
 
-In this task, you will learn how to implement a landing page. To do that:
+Features
+Browse through a curated collection of website layouts
+View detailed information about each layout, including the design concept, color schemes, and components used
+Filter layouts based on different categories and tags
+Get inspired by beautiful and creative website designs
+Technologies Used
+HTML5
+CSS3
+JavaScript
+React
+Redux
+React Router
+Getting Started
+To run the project locally, follow these steps:
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+Clone the repository: git clone https://github.com/olecsiy-gavrilyuk/layout_miami.git
+Navigate to the project directory: cd layout_miami
+Install the dependencies: npm install
+Start the development server: npm start
+Open your browser and visit http://localhost:3000 to view the website
+Folder Structure
+The project structure is organized as follows:
+
+src: Contains the source code files
+components: Reusable React components
+containers: React containers that connect components to the Redux store
+pages: Top-level components representing different pages of the website
+redux: Redux store, actions, and reducers
+assets: Images, icons, and other static assets
+styles: CSS stylesheets
+Contributing
+Contributions to this project are welcome. If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgements
+Special thanks to the creators and designers of the website layouts featured in this project. Their talent and creativity serve as inspiration for the web design community.
+
+Contact
+For any inquiries or questions, feel free to reach out to the project maintainer:
+
+Name: [Your Name]
+Email: [Your Email]
+You can also visit my personal website: [Your Website URL]
