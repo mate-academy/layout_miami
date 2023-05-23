@@ -1,10 +1,9 @@
 'use strict';
 
-window.addEventListener('hashchange', () =>  {
+window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--width-menu');
-  }
-  else {
+  } else {
     document.body.classList.remove('page__body--width-menu');
   }
 });
