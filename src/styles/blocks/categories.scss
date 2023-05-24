@@ -1,0 +1,101 @@
+.categories {
+  display: grid;
+  row-gap: 40px;
+
+  @include onDesktop {
+    row-gap: 64px;
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+      z-index: 10;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__button {
+    
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 10;
+    }
+  }
+}
+
+.button {
+  display: block;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background-color: $mainColor;
+
+  padding: 14px 0;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #e5e5e5;
+    color: $mainColor;
+    border-color: $mainColor;
+  }
+
+  &:active {
+    background-color: #111;
+    color: #fff;
+  }
+}
