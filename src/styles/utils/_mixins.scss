@@ -1,5 +1,17 @@
+@mixin onlyOnMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
 @mixin onTablet {
   @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onlyOnTablet {
+  @media (min-width: 744px) and (max-width: 1023px) {
     @content;
   }
 }
@@ -23,4 +35,16 @@
   grid-template-columns: 1fr var(--icon-width) var(--icon-width);
   align-items: center;
   column-gap: 30px;
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
 }
