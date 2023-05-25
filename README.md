@@ -16,6 +16,5 @@ Project is based on HTML, SASS and JavaScript.
 - Site should automatically start at localhost:8080.
 
 # TODO
-- Menu close icon should be on the same position as menu icon, when site has scrollbar and navigation menu has not.
-- Form should have validation, even if inputs are invisibe (over viewport) and user clicks submit button.
-- Navigation menu should be scrolled on horizontal screen orintation on Chrome on Android device.
+- Form should have validation, even if inputs are invisibe (over viewport) and user clicks submit button. https://stackoverflow.com/questions/54470841/html5-form-validation-out-of-view-not-getting-message-popup-mac-safari
+- Navigation menu should be scrolled on horizontal screen orintation on Chrome on Android device. https://stackoverflow.com/questions/10429833/incorrect-horizontal-scrolling-by-clicking-on-links-to-hash-anchors-in-google-ch

@@ -1,16 +1,12 @@
 @import "variables";
 
-@mixin hover($_property, $_toValue) {
-  @media (pointer: fine) {
-    transition: #{$_property} $animation-duration;
-    &:hover {
-      #{$_property}: $_toValue;
+@mixin increase-hover-scale {
+  &:hover {
+    @media (pointer: fine) {
+      transform: scale(1.05);
     }
   }
-}
 
-@mixin increase-hover-scale {
-  @include hover(transform, scale(1.05));
 }
 
 @mixin for-tablet {
@@ -21,12 +17,6 @@
 
 @mixin for-desktop {
   @media (min-width: $desktop-width) {
-    @content;
-  }
-}
-
-@mixin not-for-desktop {
-  @media (max-width: calc(#{$desktop-width} - 1px)) {
     @content;
   }
 }
@@ -80,9 +70,4 @@
   @include for-desktop {
     font-size: 48px;
   }
-}
-
-@mixin set-font-inter {
-  font-family: "Inter", sans-serif;
-  font-style: normal;
 }

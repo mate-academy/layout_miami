@@ -21,9 +21,6 @@ function submitClick(event) {
   event.preventDefault();
 }
 
-// #TODO Menu close icon should be on the same position as menu icon,
-// when site has scrollbar and navigation menu no.
-
 // #TODO Form should have validation, even if inputs are
 // invisibe (over viewport) and user clicks submit button.
 
