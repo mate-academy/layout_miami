@@ -19,4 +19,4 @@ function submitForm(event) {
   form.reset();
 }
 
-form.addEventListener('submit', submitForm);
+form.addEventListener('click', submitForm);
