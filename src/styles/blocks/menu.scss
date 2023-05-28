@@ -1,106 +1,121 @@
 .menu {
-  background-color: $color-grey;
+  background-color: #e5e5e5;
   height: 100vh;
 
+  /*position navigation-menu*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  &:target {
+    transform: translateX(0);
+  }
+  /*--------------------------*/
+
   &__name {
-    display: block;
-    width: 130px;
-    height: 38px;
-    background-image: url("../images/header/MyBike-black.png");
-    background-repeat: no-repeat;
+    background-image: url("../images/header/MyBiKE-black.png");
+    background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+
+    display: block;
+    height: 38px;
+    width: 130px;
 
     @include onDesktop {
-      width: 187px;
       height: 56px;
+      width: 187px;
     }
   }
 
   &__cross {
+    background-image: url("../images/header/cross.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     display: block;
     height: 16px;
     width: 16px;
-    background-image: url("../images/header/cross.png");
-    background-repeat: no-repeat;
-    background-size: cover;
 
-    @include onTablet {
-      width: 21;
-      height: 21;
+    @include onDesktop {
+      height: 21px;
+      width: 21px;
     }
   }
 
+  /*navigation elements*/
   &__nav {
+    margin-top: 44px;
+    margin-bottom: 40px;
+
     display: flex;
     flex-direction: column;
     gap: 32px;
-    margin: 44px 0 40px;
-  }
 
-  &__nav a:nth-child(n) {
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 22px;
-    width: max-content;
-    color: $color-dark;
-    text-decoration: none;
+    & a:nth-child(n) {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 22px;
 
-    @include onDesktop {
-      font-weight: 700;
+      width: max-content;
 
-      &:hover::after {
-        content: "";
-        display: block;
-        width: 100%;
-        border: 1px solid $color-dark;
-        position: relative;
-        top: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      color: #1D1D1D;
+
+      @include onDesktop {
+        font-weight: 700;
+
+        &:hover {
+          border-bottom: 1px solid #1D1D1D;
+          width: max-content;
+
+          cursor: url("../images/header/cursor.png"), auto;
+        }
       }
     }
   }
+  /*------------------------*/
 
   &__phone {
     display: block;
-    font-family: inherit;
+
+    margin-bottom: 16px;
+
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 27px;
-    color: $color-dark;
+    
+    text-transform: uppercase;
     text-decoration: none;
 
-    margin-bottom: 16px;
-
-    @include onDesktop {
-      font-weight: 700;
-    }
+    color: #1D1D1D;
   }
 
   &__test-book {
-    display: block;
-    font-family: inherit;
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
-    width: max-content;
     line-height: 16px;
-    letter-spacing: 2px;
-    color: $color-dark;
+
+    text-transform: uppercase;
     text-decoration: none;
+    letter-spacing: 2px;
 
-    @include onDesktop {
-      font-weight: 700;
-    }
-  }
+    color: #1D1D1D;
 
-  &__test-book::after {
-    content: "";
-    display: block;
-    width: 100%;
-    border: 1px solid $color-dark;
-    position: relative;
-    top: 8px;
+    border-bottom: 1px solid #1D1D1D;
+    padding-bottom: 8px;
   }
 }
