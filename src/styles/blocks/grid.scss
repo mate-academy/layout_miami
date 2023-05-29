@@ -1,0 +1,54 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include mediumScreen {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include largeScreen {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--desktop {
+    display: block;
+
+    @include mediumScreen {
+      display: grid;
+    }
+  }
+
+  &--large-desktop {
+    display: block;
+
+    @include largeScreen {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include mediumScreen {
+
+      @for $start from 1 through 6 {
+        @for $end from 1 through 6 {
+          &--medium--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include largeScreen {
+
+      @for $start from 1 through 12 {
+        @for $end from 1 through 12 {
+          &--large--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
