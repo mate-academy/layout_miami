@@ -8,28 +8,23 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const contactForm = document.getElementById('contactForm');
+const submitButton = document.getElementById('submitButton');
 
-contactForm.addEventListener('submit', function(event) {
+submitButton.addEventListener('click', submitForm);
+
+function submitForm(event) {
   event.preventDefault();
-});
 
-function submitForm() {
   const form = document.getElementById('contactForm');
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const messageInput = document.getElementById('message');
 
-  if (nameInput.value !== '' && emailInput.value !== ''
+  if (nameInput.value !== '' && emailInput.value.includes('@')
   && messageInput.value !== '') {
-    form.submit();
-
     form.reset();
   } else {
-    window.alert('Please fill in all fields.');
+    window.alert('Please fill in all fields.'
+    + ' Сheck the correctness of the entered email');
   }
 }
-
-const submitButton = document.getElementById('submitButton');
-
-submitButton.addEventListener('click', submitForm);
