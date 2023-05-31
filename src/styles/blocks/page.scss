@@ -1,0 +1,103 @@
+.page {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    // preventing from scrolling when on menu state
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $animationSpeed;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    padding-top: 120px;
+
+    &-title {
+      margin: 0 0 48px;
+
+      font-size: 32px;
+      line-height: 32px;
+      text-align: center;
+      letter-spacing: -1.5px;
+      color: $basicGrey;
+  
+      &--why-buy {
+        text-align: left;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 32px;
+  
+        @include onTablet {
+          max-width: 47%;
+          margin-right: 24px;
+        }
+        
+        @include onDesktop {
+          max-width: 40%;
+        }
+      }
+      
+      @include onTablet {
+        margin-bottom: 64px;
+        font-size: 40px;
+        line-height: 100%;
+      }
+      
+      @include onDesktop {
+        font-size: 48px;
+        line-height: 48px;
+      }
+    }
+    
+    &-item {
+      &--why-buy {
+        display: inline-block;
+        
+        @include onTablet {
+          max-width: 47%;
+        }
+        
+        @include onDesktop {
+          max-width: 40%;
+        }
+      }
+    }
+  }
+
+  &__paragraph {
+    margin: 0;
+
+    line-height: 27px;
+    color: $basicGrey;
+  }
+
+  &__link {
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-weight: 700;
+    line-height: 140%;
+    color: $basicGrey;
+    text-decoration: none;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+}
