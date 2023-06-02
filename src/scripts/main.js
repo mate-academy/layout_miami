@@ -12,5 +12,7 @@ const form = document.querySelector('.contact-us__form');
 
 function submitForm(event) {
   event.preventDefault();
+
+  form.reset();
 }
 form.addEventListener('submit', submitForm);
