@@ -3,40 +3,46 @@
 const form = document.querySelector('.form');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
-const messageInput = document.getElementById('message');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  if (!isValidName(nameInput.value.trim())) {
-    alert('Please enter a valid name');
-    return;
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return emailRegex.test(email);
   }
 
-  if (!emailInput.value.trim()) {
-    alert('Please enter your email');
+  function isValidName(name) {
+    const nameRegex = /^[a-zA-Z\s]*$/;
+
+    return nameRegex.test(name);
+  }
+
+  if (!isValidName(nameInput.value.trim())) {
+    alert('Please enter a valid name');
+
     return;
   }
 
   if (!isValidEmail(emailInput.value.trim())) {
     alert('Please enter a valid email');
+
     return;
   }
 
-  if (!messageInput.value.trim()) {
-    alert('Please enter a message');
-    return;
-  }
-  
   form.submit();
 });
 
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+const lenis = new Lenis();
+
+lenis.on('scroll', (e) => {
+  console.log(e);
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
 
-function isValidName(name) {
-  const nameRegex = /^[a-zA-Z\s]*$/;
-  return nameRegex.test(name);
-}
+requestAnimationFrame(raf);
