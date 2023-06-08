@@ -1,6 +1,19 @@
 .grid {
   display: grid;
 
+  &__flex-for-tablet {
+    display: flex;
+    justify-content: space-between;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+  }
+
   @include onMobile {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
@@ -14,10 +27,6 @@
   @include onDesktop {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-  }
-
-  &--tablet-none {
-    display: none;
   }
 
   &__item {
@@ -46,6 +55,12 @@
             grid-column: #{$start} / #{$end + 1};
           }
         }
+      }
+    }
+
+    &--tablet-none {
+      @include onTablet {
+        display: none;
       }
     }
   }
