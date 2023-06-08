@@ -1,0 +1,92 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  // justify-items: start;
+  align-items: flex-start;
+  justify-content: center;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDekstop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: inline-block;
+
+    @include onDekstop {
+      display: grid;
+    }
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--desktop-button {
+    display: block;
+
+    @include onDekstop {
+      display: grid;
+    }
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__title {
+    display: block;
+    justify-items: center;
+  }
+
+  &--recommended {
+    display: block;
+    max-width: 397px;
+    margin: 0 auto;
+
+    @include onTablet {
+      display: grid;
+      max-width: none;
+    }
+  }
+
+  &__item {
+    @for $startTablet from 1 through 12 {
+      @for $endTablet from 1 through 12 {
+        &--#{$startTablet}-#{$endTablet} {
+          grid-column: #{$startTablet} / #{$endTablet};
+        }
+
+        &--tablet--#{$startTablet}-#{$endTablet} {
+          @include onTablet {
+            grid-column: #{$startTablet} / #{$endTablet};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from 1 through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+
+        &--desktop--#{$start}-#{$end} {
+          @include onDekstop {
+            grid-column: #{$start} / #{$end};
+          }
+        }
+      }
+    }
+  }
+}
