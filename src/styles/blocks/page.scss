@@ -1,0 +1,83 @@
+.page {
+  @extend %page-text;
+  scroll-behavior: smooth;
+  
+  &__body {
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(100%);
+    transition: transform 0.7s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 80px;
+    color: $color-main-text;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 180px;
+    }
+
+    &:first-child {
+      @include onDesktop {
+        margin-bottom: 160px;
+      }
+    }
+
+    &:nth-child(2n) {
+      @include onDesktop {
+        margin-bottom: 144px;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 120px;
+      margin: 0;
+
+      @include onDesktop {
+        padding-bottom: 180px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin: 0;
+    padding-bottom: 48px;
+    @extend %section-title-text;
+
+    @include onTablet {
+      font-size: $font-size-8;
+      line-height: $line-height-5;
+    }
+
+    @include onDesktop {
+      font-size: $font-size-9;
+      line-height: $line-height-6;
+    }
+
+    &--desktop {
+      @include onDesktop {
+        font-family: $font-family-second;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
