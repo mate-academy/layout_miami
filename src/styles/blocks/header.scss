@@ -1,0 +1,101 @@
+.header {
+  background-image: url(../images/header-mobile.png);
+  background-position: 40% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #292929;
+  
+
+  @include inIpad {
+    background-image: url(../images/header-ipad.png);
+  }
+
+  @include inDesktop {
+    background-image: url(../images/header-desktop.png);
+  }
+  
+  &__content {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 40px 0 94px;
+    box-sizing: border-box;
+
+    @include inIpad {
+      padding: 52px 0 40px;
+    }
+
+    @include inDesktop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include inIpad {
+      font-size: 40px;
+    }
+
+    @include inDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      background-image: url(../images/sound-mobile.png);
+      height: 28px;
+      width: 32px;
+      display: block;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-bottom: 16px;
+
+      @include inIpad {
+        background-image: url(../images/sound-desktop.png);
+        height: 76px;
+        width: 63px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include inIpad {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        transform: translate(-100%, 50%);
+        top: 50%;
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        padding-right: 20px;
+      
+        color: initial;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.3s;
+      }
+    }
+  }
+}
