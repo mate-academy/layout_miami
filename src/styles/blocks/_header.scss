@@ -1,0 +1,70 @@
+.header {
+  background-image: url(../images/photos/3-desktop.jpg);
+  background-size: cover;
+  background-position: center;
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-top-padding-mobile 0 $header-bottom-padding;
+    
+    @include onTablet {
+      padding-top: $header-top-padding-desktop;
+    }
+  }
+  
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    text-align: center;
+    padding-top: 80px;
+  
+    @include onDesktop {
+      font-size: 80px;
+      padding-top: 40px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    position: relative;
+
+    &--call {
+      display: block;
+    }
+        
+    &--hover {
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      display: block;
+      width: max-content;
+      position: absolute;
+      top: -25px;
+      right: 85px;
+      transform: translateX(-10%);
+      pointer-events: none;
+      transition: $transition-duration-speed ease-out 5s;
+      text-align: end;
+    }
+
+    @include onDesktop {
+        
+      &:hover > &--hover {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateX(10%);
+        transition: opacity $transition-duration-speed,
+          transform $transition-duration-speed ease-out 0s;
+
+      }
+    
+    }
+
+  }
+
+}
