@@ -1,22 +1,11 @@
 .grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
 
-  &__flex-for-tablet {
-    display: flex;
-    justify-content: space-between;
-
-    @include onTablet {
-      flex-direction: column;
-    }
-
-    @include onDesktop {
-      flex-direction: row;
-    }
-  }
-
-  @include onMobile {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
+  &--3-column {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
   }
 
   @include onTablet {
@@ -30,6 +19,22 @@
   }
 
   &__item {
+    display: inherit;
+
+    @for $start from 1 through 2 {
+      @for $end from $start through 2 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+
+        &--mobile-#{$start}-#{$end} {
+          @include onMobile {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
     @for $start from 1 through 6 {
       @for $end from $start through 6 {
         &--#{$start}-#{$end} {
@@ -62,6 +67,23 @@
       @include onTablet {
         display: none;
       }
+    }
+  }
+
+  &__flex-for-tablet {
+    display: flex;
+    justify-content: space-between;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
     }
   }
 }
