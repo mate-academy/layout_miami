@@ -1,0 +1,49 @@
+.category {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transition-duration $transition-function;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+
+  &__photos {
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-14;
+    line-height: $font-size-32;
+  }
+}
