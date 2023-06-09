@@ -1,0 +1,119 @@
+.header {
+  height: 100vh;
+  width: calc(100vw - 17px);
+
+  background-size: cover;
+  background-position: right;
+  background-image: url(../images/mobile-header-background.png);
+
+  @include onTablet {
+    background-position: center;
+    background-image: url(../images/mybike-background.jpg);
+  }
+
+  &__content {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 30px 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include onDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu-opener {
+    @include icon();
+
+    height: 12px;
+
+    @include onTablet() {
+      height: 16px;
+    }
+
+    display: block;
+
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    display: block;
+    margin-right: 40px;
+
+    background-image: url(../images/phone.svg);
+
+    @include icon();
+
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        color: $main-color;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: $main-color;
+    text-align: center;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+}
