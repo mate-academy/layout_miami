@@ -1,0 +1,46 @@
+.page {
+  font-family: "Cinzel", serif;
+  @include font(16px, 400, 1.69);
+  color: $mainDark;
+  scroll-behavior: smooth;
+
+  &__body {
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__header {
+    height: $headerHeight;
+    margin-bottom: $sectionMarginBottomPhone;
+
+    @include fromTablet {
+      margin-bottom: $sectionMarginBottomFromTablet;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    transition: $transitionTime;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: $sectionMarginBottomPhone;
+
+    @include fromTablet {
+      margin-bottom: $sectionMarginBottomFromTablet;
+
+      &:last-child {
+        margin-bottom: 150px;
+      }
+    }
+  }
+}
