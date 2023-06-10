@@ -1,0 +1,59 @@
+.images {
+  display: block;
+  width: 100%;
+  height: $image-width;
+
+  @extend %background-images;
+  text-decoration: none;
+
+  &--phone {
+    background-image: url(../images/image-phone.svg);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/image-menu-opener.svg);
+
+    &:hover {
+      background-image: url(../images/image-menu-opener-hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/image-cross.svg);
+    $image-width: 16px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__tooltip {
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    display: block;
+    width: max-content;
+    position: relative;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    padding-right: 12px;
+
+    color: $chief-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    pointer-events: none;
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

@@ -1,0 +1,56 @@
+.grid {
+  //ділимо на 2 колонки гріда екран під мобайл
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  //ділимо на 6 колонок гріда екран під таблетку
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  //ділимо на 12 колонок гріда екран під десктоп
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  //цей модифікатор обмежує використання гріда
+  //і зонує елементи як блоки
+  &--screen {
+    display: block;
+
+    //при досягненні ширини таблетки запускається
+    //зонування сторінки для елемента за допомогою гріда
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  //блоки, що зонуються - кожний має 2 модифікатори нумерації колонок
+  //ці модифікатори вмикаються залежно від ширини екрану
+  &__item {
+    //створюю адресне зонування по колонкам гріда для таблетки і десктопа
+    //grid__item--"пристрій"-(start)-(end)
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
