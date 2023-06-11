@@ -1,0 +1,69 @@
+.icon {
+  --icon-size: 18px;
+
+  display: block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  padding: 3px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: all 0.3s;
+
+  @include onDesktop {
+    --icon-size: 24px;
+    padding: 4px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+
+    .icon__all-numbers {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    @include onDesktop {
+      &:hover {
+        .icon__all-numbers {
+          opacity: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          text-align: right;
+          font-weight: 700;
+          background-image: none;
+          padding-right: 20px;
+          line-height: 27px;
+          text-transform: uppercase;
+          color: #fff;
+          transform: translate(-100%, -40%);
+          width: max-content;
+          height: fit-content;
+          text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        }
+      }
+
+      .icon__item {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
