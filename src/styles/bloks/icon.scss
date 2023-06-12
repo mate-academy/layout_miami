@@ -1,10 +1,12 @@
 .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  background-repeat: no-repeat;
   height: 24px;
   width: 24px;
-  display: block;
-  background-image: url(../images/icon/Icon-Burger-menu.svg);
-  background-size: cover;
-
   @include hover(transform, scale(1.2));
 
   @include onTablet {
@@ -13,11 +15,44 @@
   }
 
   &--phone {
-    background-image: url(../images/icon/Icon-Phone-call.svg);
+    background-image: url(../images/icon/Icon-Phone-call18px.png);
+    text-decoration: none;
+  @include onDesktop {
+
+      &::before {
+        content: "+12345555555";
+        color: black;
+        width: max-content;
+        display: block;
+        padding-right: 10px;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        font-weight: $fontWeight700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &--menu {
-    background-image: url(../images/icon/Icon-Burger-menu.svg);
+    background-image: url(../images/icon/Icon-Burger-menu18px.png);
+    @include onDesktop {
+      background-image: url(../images/icon/Icon-Burger-menu.png);
+    }
+    &:hover {
+      @include hover(transform, scale(1.2));
+      background-image: url(../images/icon/Icon-Burger-menu-hover.svg);
+
+    }
   }
 
   &--close {
