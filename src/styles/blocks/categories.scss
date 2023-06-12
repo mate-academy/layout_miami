@@ -1,0 +1,99 @@
+.categories {
+  @include grid-block();
+  row-gap: 40px;
+
+  padding-bottom: 120px;
+
+  font-weight: 700;
+
+  @include onTablet {
+
+    row-gap: 64px;
+  }
+
+  &__heading {
+    grid-column: 1/-1;
+    text-align: center;
+
+    @include onTablet {
+      grid-column: 2/span 4;
+    }
+
+    @include onDesktop {
+      grid-column: 4/span 6;
+    }
+  }
+
+  &__showcase {
+    display: grid;
+    grid-template-columns: inherit;
+    gap: inherit;
+    row-gap: 16px;
+    grid-column: 1/-1;
+  }
+
+  &__image {
+    width: 130px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    cursor: pointer;
+    transition: transform $time-animations;
+
+    &--right {
+      object-position: 80% 0%;
+    }
+
+    &--large,
+    &--small {
+      grid-column: span 1;
+    }
+
+    @include onTablet {
+      &--large {
+        grid-column: span 4;
+        width: 392px;
+      }
+
+      &--small {
+        grid-column: span 2;
+        width: 184px;
+      }
+    }
+
+    @include onDesktop {
+      &--large {
+        grid-column: span 8;
+        width: 672px;
+
+      }
+
+      &--small {
+        grid-column: span 4;
+        width: 324px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    width: max-content;
+    color: $c-font-default;
+  }
+
+  &__button {
+    grid-column: 1/-1;
+
+    @include onTablet {
+      grid-column: 2/span 4;
+    }
+
+    @include onDesktop {
+      grid-column: 5/span 4;
+    }
+  }
+}

@@ -1,6 +1,26 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: $screen-tablet) {
+    @content;
   }
+}
+
+@mixin onDesktop {
+  @media (min-width: $screen-desktop) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin grid-block() {
+  display: grid;
+  grid-template-columns: inherit;
+  gap: inherit;
+  grid-column: 1/-1;
+
+  font-family: "Inter", sans-serif;
+  color: $c-font-default;
 }

@@ -1,0 +1,88 @@
+.top-controls {
+  display: grid;
+  align-items: start;
+  justify-items: start;
+  grid-template-columns: 1fr repeat(2, $width-nav-button-mobile);
+  gap: $width-nav-button-mobile;
+
+  @include onTablet {
+    grid-template-columns: 1fr repeat(2, $width-nav-button-desktop);
+    gap: $width-nav-button-desktop;
+  }
+
+  &__logo {
+    display: inline-block;
+    text-align: center;
+
+    &-image {
+      display: block;
+      width: 130px;
+
+      @include onTablet {
+        width: 190px;
+      }
+    }
+  }
+
+  &__button {
+    @include square($width-nav-button-mobile);
+    border: 0;
+
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include onTablet {
+      @include square($width-nav-button-desktop);
+    }
+
+    &--menu-open {
+      background-image: url("../images/menu.svg");
+      cursor: pointer;
+
+      &:hover {
+        background-image: url("../images/menu_hover.svg");
+      }
+    }
+
+    &--menu-close {
+      background-image: url("../images/cross.svg");
+      cursor: pointer;
+    }
+
+    &--phone {
+      position: relative;
+      background-image: url("../images/phone.svg");
+
+      @include onTablet {
+        &::before {
+          content: "+1 234 5555-55-55";
+          position: absolute;
+          top: 50%;
+          right: 100%;
+
+          display: inline-block;
+          width: max-content;
+          padding-right: 50%;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: $c-font-default;
+
+          opacity: 0;
+          transform: translateY(-50%);
+          transition: opacity $time-animations;
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+    }
+  }
+}
