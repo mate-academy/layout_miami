@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat($grid-coll / 3, 1fr);
+  gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat($grid-coll, 1fr);
+    column-gap: 24px;
+  }
+  
+  @include onDesktop {
+    grid-template-columns: repeat($grid-coll * 2 , 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include numbeCollumns ($grid-coll, "tablet", 744px);
+
+    @include numbeCollumns ($grid-coll * 2, "desktop", 1260px);
+  }
+}

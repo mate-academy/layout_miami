@@ -1,6 +1,37 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin top-actions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width $icon-width;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  @include onTablet {
+    $icon-width: 24px;
+    gap: 40px;
+    grid-template-columns: 1fr $icon-width $icon-width;
+  }
+}
+
+@mixin numbeCollumns ( $grid-coll, $tipe, $incl) {
+  @for $start from 1 through $grid-coll {
+    @for $end from 1 through $grid-coll {
+      &--#{$tipe}-#{$start}-#{$end} {
+        @media (min-width: $incl) {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
   }
 }
