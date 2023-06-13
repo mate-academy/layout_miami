@@ -1,0 +1,95 @@
+.menu {
+  font-size: $header-font-size;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__logo {
+    width: 2.75em;
+  }
+  &__phone {
+
+    &-label {
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-right: 20px;
+      visibility: hidden;
+      transition: visibility 0.5s;
+      transition-delay: 0.3s;
+      position: absolute;
+      align-self: center;
+      display: inline;
+      width: 100%;
+      right: 100%;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        visibility: visible;
+      }
+
+    }
+    &-icon {
+      width: 0.4em;
+
+      &--disabled {
+        visibility: hidden;
+      }
+
+    }
+  }
+  &__burger-icon {
+    width: 0.5em;
+    &--exit {
+      width: 0.3em;
+      transition: width 0.3s;
+    }
+
+    &-transformed {
+      width: 0.5em;
+      display: none;
+    }
+
+  }
+
+  &__burger-wrapper:hover &__burger-icon-transformed {
+    display: block;
+  }
+  &__burger-wrapper:hover &__burger-icon {
+    display: none;
+  }
+
+  &__link:hover {
+    cursor: pointer;
+  }
+  &__link--phone {
+    width: 0.5em;
+    margin-right: 40px;
+
+    @include onTablet {
+      margin-right: 80px;
+
+    }
+    @include onDesktop {
+      margin-right: 100px;
+
+    }
+  }
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onDesktop {
+    font-size: 80px;
+
+    &__link--phone:hover + &__phone-label {
+      visibility: visible;
+    }
+  }
+}
