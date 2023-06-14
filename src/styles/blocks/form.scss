@@ -1,3 +1,13 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .form {
   &__item {
     border-radius: 40px;
@@ -20,7 +30,8 @@
   }
 
   &__label {
-    font-style: normal;
-    font-weight: 400;
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
   }
 }
