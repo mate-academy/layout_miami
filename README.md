@@ -1,23 +1,9 @@
-# Miami landing page
-- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-
-## Instructions
-1. **Fork** the repo.
-2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
-3. Run `npm install` (or just `npm i`)
-4. Run `npm start`.
-5. Open one more terminal window for the next steps
-6. `git checkout -b develop` - to create new branch and switch on it
-7. Write you code in `src` folder
-8. Run `npm run lint` and fix code style errors.
-9. Run `npm run deploy` to deploy your solution to `gh-pages`
-10. `git add . && git commit -m 'solution'` to save your changes
-11. `git push origin develop` - to send you code for PR
-12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
-13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://MykolaButylkov.github.io/layout_miami/)
-14. Copy `DEMO LINK` to the PR description
-
-> To update you PR repeat steps 7-11
-
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+- choose a landing page design from the list below;
+  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
+  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+- watch the lesson videos and implement your page blocks similarly to the videos;
+- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
+- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://MykolaButylkov.github.io/layout_miami/)
+- after each next block do the same (add, commit and push the changes, and deploy the updated demo);
+- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
