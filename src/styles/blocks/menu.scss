@@ -1,0 +1,100 @@
+%link-default-state {
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  color: $text-color;
+  transition: border-color $transition-timing;
+}
+
+%link-on-hover {
+  border-color: $text-color;
+}
+
+.menu {
+  background-color: $main-accent-color;
+  overflow-y: auto;
+
+  &__logo {
+    width: 130px;
+
+    @include onDesktop() {
+      width: 190px;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0;
+    box-sizing: border-box;
+
+    @include onTablet() {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop() {
+      padding: 48px 0 64px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 54px;
+  }
+
+  &__list {
+    margin: 0 0 54px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    color: $text-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    @extend %link-default-state;
+
+    &:hover {
+      @extend %link-on-hover;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    font-size: 16px;
+
+    &--phone {
+      margin-bottom: 16px;
+      line-height: 27px;
+      @extend %link-default-state;
+
+      &:hover {
+        @extend %link-on-hover;
+      }
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      @extend %link-default-state;
+
+      &:hover {
+        @extend %link-on-hover;
+      }
+    }
+  }
+}
