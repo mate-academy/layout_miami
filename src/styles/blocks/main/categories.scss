@@ -1,0 +1,140 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+@import "button-wrapper";
+
+.categories {
+  @include set-horizontal-padding;
+
+  &__title {
+    margin: $site-parts-top-margin auto 0;
+    text-align: center;
+
+    @include style-title;
+
+    @include for-tablet {
+      width: 392px;
+      margin-top: 128px;
+    }
+
+    @include for-desktop {
+      width: 498px;
+    }
+  }
+
+  &__category {
+    width: 100%;
+    grid-template-rows: repeat(2, max-content);
+    margin-top: 48px;
+    column-gap: 20px;
+
+    @include set-smartphone-grid;
+
+    @include for-tablet {
+      @include set-tablet-grid;
+    }
+
+    @include for-desktop {
+      @include set-desktop-grid;
+    }
+  }
+
+  &__photo {
+    grid-row: 1;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    transition: transform $animation-duration;
+
+    @include increase-hover-scale;
+
+    @include for-tablet {
+      height: 187px;
+    }
+
+    @include for-desktop {
+      height: 320px;
+    }
+
+    :nth-of-type(odd) {
+      grid-column: 1;
+    }
+
+    :nth-of-type(even) {
+      grid-column: 2;
+    }
+  }
+
+  &__photo--1 {
+    @include for-tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__photo--2 {
+    @include for-tablet {
+      grid-column: 5 / -1;
+    }
+
+    @include for-desktop {
+      grid-column: 9 / -1;
+    }
+  }
+
+  &__photo--3 {
+    @include for-tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__photo--4 {
+    @include for-tablet {
+      grid-column: 5 / -1;
+    }
+
+    @include for-desktop {
+      grid-column: 9 / -1;
+    }
+  }
+
+  &__photo--5 {
+    @include for-tablet {
+      grid-column: 1 / 3;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__photo--6 {
+    @include for-tablet {
+      grid-column: 3 / -1;
+    }
+
+    @include for-desktop {
+      grid-column: 5 / -1;
+    }
+  }
+
+  &__name {
+    height: 22px;
+    margin-top: 16px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include for-tablet {
+      font-size: 24px;
+    }
+  }
+}

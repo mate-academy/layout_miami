@@ -1,6 +1,73 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@import "variables";
+
+@mixin increase-hover-scale {
   &:hover {
-    #{$_property}: $_toValue;
+    @media (pointer: fine) {
+      transform: scale(1.05);
+    }
+  }
+
+}
+
+@mixin for-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin set-smartphone-grid {
+  @include set-grid(2, 1fr);
+}
+
+@mixin set-tablet-grid {
+  @include set-grid(
+    $tablet-grid-columns,
+    $tablet-grid-column-width
+  );
+}
+
+@mixin set-desktop-grid {
+  @include set-grid(
+    $desktop-grid-columns,
+    $desktop-grid-column-width
+  );
+}
+
+@mixin set-grid($columns-count, $column-width) {
+  display: grid;
+  grid-template-columns: repeat($columns-count, $column-width);
+  justify-content: space-between;
+}
+
+@mixin set-horizontal-padding {
+  padding: 0 $smartphone-horizontal-padding;
+
+  @include for-tablet {
+    padding: 0 $tablet-horizontal-padding;
+  }
+
+  @include for-desktop {
+    padding: 0 $desktop-horizontal-padding;
+  }
+}
+
+@mixin style-title {
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+
+  @include for-tablet {
+    font-size: 40px;
+  }
+
+  @include for-desktop {
+    font-size: 48px;
   }
 }
