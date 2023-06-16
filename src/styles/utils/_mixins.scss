@@ -1,6 +1,44 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin page {
+  box-sizing: border-box;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin top {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
   }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin headerLogo {
+  font-size: $size40;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -1.5px;
+  color: $colorWhite;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@mixin menuHover {
+  content: "";
+  position: absolute;
+  top: calc(100% + 8px);
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $colorWhite;
 }

@@ -1,0 +1,84 @@
+.page {
+  font-family: "Cinzel", "Roboto", Helvetica, sans-serif;
+  color: $colorBlack;
+  font-weight: 400;
+  font-size: $size16;
+
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 100px;
+
+    @include onTablet {
+      margin-bottom: 140px;
+
+      &:last-child {
+        margin-bottom: 150px;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 8px;
+
+    font-size: $size32;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: $colorBlack;
+
+    @include onTablet {
+      font-size: $size48;
+    }
+     
+    &--before:before {
+      content: "Plan your visit";
+      display: block;
+      font-size: $size12;
+      letter-spacing: 0;
+      color: $colorRed;
+    }
+
+    &--margin-40 {
+      margin-bottom: 40px;
+
+      @include onTablet {
+        margin-bottom: 48px;
+      }
+    }
+  }
+  
+  &__section:first-child &__section-title:first-child {
+    text-align: start;
+    margin-bottom: 32px;
+  }
+
+  &__section-text {
+    margin-bottom: 48px;
+    color: $colorBlack;
+    text-align: center;
+  }
+
+  &__section-explore {
+    display: grid;
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+    }
+  }
+}

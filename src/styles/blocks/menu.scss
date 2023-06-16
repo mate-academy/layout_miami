@@ -1,0 +1,111 @@
+.menu {
+  @include page;
+  background-color: #d12d35;
+  color: $colorWhite;
+  font-weight: 700;
+ 
+  &__top {
+    @include top;
+  }
+
+  &__name {
+    @include headerLogo;
+    margin-bottom: 40px;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+  
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    transform: translateY(100%);
+ 
+    background-image: url(../images/cross.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onDesktop {
+      right: 76px;
+      width: 21px;
+      height: 21px;
+    }
+
+    @include onTablet {
+      right: 125px;
+    }
+  }
+
+  &__list {
+    position: relative;
+    margin-bottom: 32px;
+
+    list-style-type: none;
+
+    &--now-on-view {
+      @include onDesktop {
+        display: none;
+      }
+    }
+
+    &--gallery {
+      display: none;
+      
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &:last-of-type {
+      @include onDesktop {
+        margin-bottom: 48px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: $size22;
+    font-weight: 700;
+    color: $colorWhite;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      &:hover {
+        &::after {
+          @include menuHover;
+          top: 100%;
+        }
+      }
+    }
+  }
+
+  &__contact {
+    font-weight: 700;
+  }
+
+  & > * > &__contact:nth-child(2n+1) {
+    margin-bottom: 8px;
+  }
+
+  & > * > &__contact:nth-child(2n) {
+    margin-bottom: 16px;
+  }
+
+  &__order {
+    position: absolute;
+
+    font-size: $size12;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    &:hover {
+      &::after {
+        @include menuHover;
+      }
+    }
+  }
+}
