@@ -1,0 +1,73 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 280px;
+
+  @include for-tablet() {
+    width: 287px;
+    padding-right: 24px;
+  }
+
+  @include for-desktop() {
+    padding-right: 200px;
+    width: 408px;
+  }
+
+  &__input {
+    background: #F8F8FA;
+    border-radius: 40px;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 16px;
+
+    &::placeholder {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #7E7E83;
+    }
+  }
+
+  &__textarea {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    background: #F8F8FA;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    height: 148px;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-top: 14px;
+
+    &::placeholder {
+      color: #7E7E83;
+    }
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+}
