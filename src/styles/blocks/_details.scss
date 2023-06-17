@@ -1,0 +1,125 @@
+.details {
+  margin-bottom: 80px;
+
+  @include media-tablet {
+    margin-bottom: 120px;
+  }
+
+  @include media-desktop {
+    margin-bottom: 180px;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    margin-bottom: 40px;
+
+    @include media-tablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 130px;
+    gap: 20px;
+    margin-bottom: 16px;
+
+    @include media-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      grid-template-rows: 187px;
+    }
+
+    @include media-desktop {
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 320px;
+    }
+  }
+
+  &__photo {
+    overflow: hidden;
+
+    @include media-tablet {
+      &:first-child {
+        grid-column: 4 span;
+      }
+      &:last-child {
+        grid-column: 2 span;
+      }
+
+      .details__photos--reversed & {
+        &:first-child {
+          grid-column: 2 span;
+        }
+        &:last-child {
+          grid-column: 4 span;
+        }
+      }
+    }
+
+    @include media-desktop {
+      &:first-child {
+        grid-column: 8 span;
+      }
+      &:last-child {
+        grid-column: 4 span;
+      }
+
+      .details__photos--reversed & {
+        &:first-child {
+          grid-column: 4 span;
+        }
+        &:last-child {
+          grid-column: 8 span;
+        }
+      }
+    }
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      transition: transform $transition-duration;
+
+      @include hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  &__btn {
+    align-self: center;
+
+    @include media-tablet {
+      padding-left: 165px;
+      padding-right: 165px;
+      width: auto;
+    }
+
+    @include media-desktop {
+      padding-left: 131px;
+      padding-right: 131px;
+    }
+  }
+}

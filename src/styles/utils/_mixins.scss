@@ -1,6 +1,68 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+@mixin line($opacity: 0) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 1px;
+    background-color: $base-color;
+    opacity: #{$opacity};
+    transition: opacity $transition-duration;
+  }
+}
+
+@mixin icon-size($size) {
+  width: #{$size}px;
+  height: #{$size}px;
+}
+
+@mixin flex-sb-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin bg-cover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin font-face($font-name, $file-name, $weight, $style) {
+  @font-face {
+    font-family: $font-name;
+    src: url("../fonts/#{$file-name}.woff2") format("woff2");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
   }
 }
