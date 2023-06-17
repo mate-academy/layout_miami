@@ -1,0 +1,135 @@
+.header {
+  background-image: url(../images/photos/header.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPading 0 288px;
+
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+
+    & :not(:last-child) {
+      margin-right: 30px;
+    }
+
+    &__menu-opener {
+      height: 12px;
+      display: block;
+      transition: background-image 0.3s;
+
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      @include onDesktop {
+        height: 16px;
+      }
+    }
+
+    &__call {
+      height: 18px;
+      text-decoration: none;
+
+      &:hover {
+        background-image: url(../images/phone_hover.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      @include onDesktop {
+        height: 24px;
+
+        &::before {
+
+          content: "The Met Fifth Avenue +1 212-535-7710";
+
+          display: block;
+          transform: translate(-100%, -80%);
+          padding-right: 20px;
+          margin-right: 63px;
+          width: 210px;
+          height: 54px;
+
+          font-size: 16px;
+          line-height: 27px;
+          font-weight: 700;
+          opacity: 0;
+          pointer-events: none;
+
+          color: #fff;
+          text-align: right;
+          text-transform: uppercase;
+
+          transition: opacity 0.3s;
+        }
+
+        &::after {
+          content: "The Met Cloisters +1 212-923-3700";
+          display: block;
+          position: relative;
+          transform: translate(-100%, -70%);
+          padding-right: 20px;
+          width: 180px;
+
+          font-size: 16px;
+          line-height: 27px;
+          font-weight: 700;
+          opacity: 0;
+          pointer-events: none;
+
+          color: #fff;
+          text-align: right;
+          text-transform: uppercase;
+
+          transition: opacity 0.3s;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
