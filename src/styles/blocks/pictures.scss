@@ -1,12 +1,29 @@
+@use "../utils/mixins" as *;
+
 .pictures {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  @include grid();
 
   &__item {
     width: 100%;
     position: relative;
     padding-top: 100%;
+
+    @include for-desktop() {
+      grid-column: span 6;
+      padding-top: 320px;
+    }
+
+    &--small {
+      @include for-desktop() {
+        grid-column: span 4;
+      }
+    }
+
+    &--big {
+      @include for-desktop() {
+        grid-column: span 8;
+      }
+    }
   }
 
   &__image {
