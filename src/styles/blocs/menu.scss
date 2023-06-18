@@ -1,58 +1,71 @@
 .menu {
-  background-color: $colorCrossMenu;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 
-  &__content {
-    box-sizing: border-box;
-    padding: $headerTopPadding 0;
-    height: 100vh;
+  background-color: $colorCrossMenu;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
   }
 
   &__list {
-    margin: 54px 0 40px;
     padding: 0;
     list-style: none;
+
+    margin: 51px 0 40px;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+
+    @include onDesctop {
+      margin-top: 72px;
+    }
   }
 
   &__item {
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
   }
 
   &__link {
     display: inline-block;
-    padding: 8px;
-    border-bottom: 1px solid transparent;
+    position: relative;
 
     color: $text-color;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 22px;
-    font-weight: 700;
     line-height: 100%;
     letter-spacing: 2px;
 
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: $text-color;
-    }
+    @include hoverAfter (transform, $value-scale-after);
   }
 
   &__call {
     display: block;
     width: max-content;
 
-    font-weight: 700;
     text-decoration: none;
     color: $text-color;
+
     &--phone {
       margin-bottom: 16px;
-      font-size: 16px;
-      line-height: 139%;
+      position: relative;
+      
+      @extend %h3;
+
+      @include hoverAfter (transform, $value-scale-after);
     }
 
     &--action {
+      margin-bottom: 120px;
+
       text-transform: uppercase;
       font-size: 12px;
       line-height: 110%;
@@ -60,6 +73,10 @@
 
       padding-bottom: 8px;
       border-bottom: 1px solid $text-color;
+
+      @include onTablet {
+        margin-bottom: 330px;
+      }
     }
   }
 }
