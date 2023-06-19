@@ -22,6 +22,20 @@ The following technologies were used to develop the BOSE landing page:
 + CSS3: Used for styling and layout of the page.
 + JavaScript: Used for interactive elements and functionality.
 
+## Installation
+
+To run the BOSE landing page locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/pushkarskiyrodion/bose-landing-page.git`
+2. Navigate to the project directory: `cd bose-landing-page`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm start`
+5. Open your web browser and visit: `http://localhost:3000`
+
+## Usage
+
+Once the development server is running and you have accessed the landing page in your web browser, you can explore the BOSE landing page and interact with its features. Feel free to click on buttons, navigate through sections, and explore the content.
+
 #
 
 Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to [contact me](mailto:pushkarskiyrodion@gmail.com).
