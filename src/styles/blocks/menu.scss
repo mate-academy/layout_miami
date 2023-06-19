@@ -1,0 +1,96 @@
+.menu {
+  background-color: $menuBgColor;
+  height: 100vh;
+
+  &__content {
+    padding: $headerTopPadding 0;
+
+    @include onTablet {
+      padding-top: 52px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 54px;
+
+    &--opened {
+      grid-template-columns: 1fr 18px;
+      gap: 0;
+    
+      @include onTablet {
+        grid-template-columns: 1fr 32px;
+        align-items: center;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: $primary-black;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: -8px;
+      height: 1px;
+
+      background-color: $primary-black;
+      opacity: 0;
+      transition: opacity 0.5s;
+      
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+  }
+
+  &__call {
+    color: $primary-black;
+    text-transform: uppercase;
+    display: block;
+
+    &--phone {
+      margin-bottom: 16px;
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--action {
+      width: max-content;
+      padding-bottom: 8px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      border-bottom: 1px solid $primary-black;
+    }
+  }
+}
