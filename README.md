@@ -1,14 +1,23 @@
-# Miami landing page
+# BOSE Landing Page
 
-In this task, you will learn how to implement a landing page. To do that:
+Welcome to the BOSE landing page! This is a portfolio project showcasing a simple and elegant landing page design for an audio brand called BOSE. The landing page is designed to promote and sell speakers, headphones, and earbuds offered by BOSE.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://pushkarskiyrodion.github.io/layout_miami/)
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+Here is [DEMO LINK](https://pushkarskiyrodion.github.io/layout_miami/)
 
+## Features
+
+The BOSE landing page offers the following features:
+
++ Responsive design: The landing page is designed to be fully responsive and optimized for various screen sizes and devices.
++ Product showcase: The page provides a visually appealing display of speakers, headphones, and earbuds offered by BOSE.
++ Easy navigation: The sidebar allows users to quickly access different sections of the landing page, such as the product categories, about section, and contact information.
++ Call-to-action buttons: Prominent buttons are strategically placed to encourage users to explore the products and make a purchase.
+
+## Technologies Used
+The following technologies were used to develop the BOSE landing page:
+
++ HTML5: Used for the structure and content of the web page.
++ CSS3: Used for styling and layout of the page.
++ JavaScript: Used for interactive elements and functionality.
+
+Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to contact us at [pushkarskiyrodion@gmail.com].
