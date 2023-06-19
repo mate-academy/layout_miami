@@ -20,4 +20,6 @@ The following technologies were used to develop the BOSE landing page:
 + CSS3: Used for styling and layout of the page.
 + JavaScript: Used for interactive elements and functionality.
 
-Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to contact us at [pushkarskiyrodion@gmail.com].
+#
+
+Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to contact us [at](pushkarskiyrodion@gmail.com).
