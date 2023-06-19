@@ -1,0 +1,102 @@
+.header {
+  background-image: url(../images/photos/header-background-mobile.png);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/photos/header-background-tablet.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-background-desktop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    box-sizing: border-box;
+    padding: $headerTopPadding 0 94px;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 26px;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/echo-waves.svg);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 50px;
+        background-image: url(../images/sound-waves.svg);
+      }
+    }
+  }
+
+  &__call {
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      top: 50%;
+      transition: all 0.45s;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 15px;
+
+      color: $mainColor;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1px;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
