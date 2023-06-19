@@ -2,7 +2,9 @@
 
 Welcome to the BOSE landing page! This is a portfolio project showcasing a simple and elegant landing page design for an audio brand called BOSE. The landing page is designed to promote and sell speakers, headphones, and earbuds offered by BOSE.
 
-Here is [DEMO LINK](https://pushkarskiyrodion.github.io/bose-landing-page/)
+You can view the Figma design [here](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?type=design&node-id=0-1).
+
+Check out the [DEMO LINK](https://pushkarskiyrodion.github.io/bose-landing-page/) to see the live version of the BOSE landing page.
 
 ## Features
 
