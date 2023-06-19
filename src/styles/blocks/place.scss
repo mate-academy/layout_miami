@@ -1,0 +1,64 @@
+.place {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 186px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onIpad {
+      height: 186px;
+      padding-bottom: 0;
+      max-height: 320px;
+    }
+
+    @include onDekstop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--3-pictures {
+      @include onIpad {
+        height: 284px;
+        padding-bottom: 0;
+      }
+    }
+  }
+  
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+
+  &__photos {
+    margin: 0 0 24px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 27px;
+    color: $colorDark;
+  }
+
+  &__link {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    color: $colorRed;
+    text-decoration: none;
+  }
+}
