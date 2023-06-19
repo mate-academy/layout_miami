@@ -38,4 +38,4 @@ Once the development server is running and you have accessed the landing page in
 
 ## Feedback
 
-Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to [contact me](mailto:pushkarskiyrodion@gmail.com).
+Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to [contact me](mailto:pushkarskiyrodion@gmail.com). Your input is greatly appreciated!
