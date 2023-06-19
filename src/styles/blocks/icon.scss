@@ -1,0 +1,79 @@
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  &--phone {
+    background-image: url(../../src/images/icon-phone.svg);
+  }
+
+  &--menu {
+    background-image: url(../../src/images/icon-burger-menu_mobile.svg);
+
+    transition: all 0.3s;
+
+    @include onTablet {
+      background-image: url(../../src/images/icon-burger-menu_desktop&tableta.svg);
+    }
+
+    @include onDesktop {
+      background-image: url(../../src/images/icon-burger-menu_desktop&tableta.svg);
+    }
+
+    &:hover {
+      background-image: url(../../src/images/icon-burger-menu_mobile-hover.svg);
+
+      @include onTablet {
+        background-image: url(../../src/images/icon-burger-menu_desktop&tableta-hover.svg);
+      }
+
+      @include onDesktop {
+        background-image: url(../../src/images/icon-burger-menu_desktop&tableta-hover.svg);
+      }
+    }
+
+  }
+
+  &--close {
+    background-image: url(../../src/images/icon-close.svg);
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    color: $colorPrimary;
+    display: none;
+
+    width: max-content;
+    padding-right: 20px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    @include onTablet {
+      display: block;
+    }
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &:hover &__tooltip {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
