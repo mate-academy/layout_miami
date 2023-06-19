@@ -22,4 +22,4 @@ The following technologies were used to develop the BOSE landing page:
 
 #
 
-Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to contact us [at](pushkarskiyrodion@gmail.com).
+Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to [contact me](mailto:pushkarskiyrodion@gmail.com).
