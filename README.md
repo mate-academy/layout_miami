@@ -36,6 +36,6 @@ To run the BOSE landing page locally, follow these steps:
 
 Once the development server is running and you have accessed the landing page in your web browser, you can explore the BOSE landing page and interact with its features. Feel free to click on buttons, navigate through sections, and explore the content.
 
-#
+## Feedback
 
 Thank you for checking out the BOSE landing page. If you have any questions or feedback, please don't hesitate to [contact me](mailto:pushkarskiyrodion@gmail.com).
