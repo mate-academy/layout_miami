@@ -1,10 +1,20 @@
 @use "../utils/mixins" as *;
 
 .recommended {
+
   @include grid();
+
   &__speaker {
     margin-bottom: 48px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    transition: all calc($transition-timing);
     grid-column: span 2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @include for-desktop() {
       grid-column: span 4;
@@ -12,6 +22,11 @@
 
     @include for-tablet() {
       grid-column: 2 / 6;
+    }
+
+    &:hover {
+      border-color: $hover-border-color;
+      transform: scale(105%);
     }
   }
 }
