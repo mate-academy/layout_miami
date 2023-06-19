@@ -2,7 +2,7 @@
 
 Welcome to the BOSE landing page! This is a portfolio project showcasing a simple and elegant landing page design for an audio brand called BOSE. The landing page is designed to promote and sell speakers, headphones, and earbuds offered by BOSE.
 
-Here is [DEMO LINK](https://pushkarskiyrodion.github.io/layout_miami/)
+Here is [DEMO LINK](https://pushkarskiyrodion.github.io/bose-landing-page/)
 
 ## Features
 
