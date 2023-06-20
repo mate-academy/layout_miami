@@ -1,0 +1,53 @@
+
+.galery {
+  &__photo-container {
+    position: relative;
+    width: 100%;
+
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      padding-bottom: 0;
+      height: 187px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 0;
+      max-height: 320px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform $transitionTime ease-in-out;
+
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(105%);
+      z-index: 1;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 8px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: $whiteTextColor;
+  }
+}
