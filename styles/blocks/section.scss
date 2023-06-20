@@ -1,15 +1,20 @@
-.section {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  gap: 20px;
+@use '../utils/mixins.scss' as *;
 
-  &__title {
-    grid-column: span 2;
-    text-align: center;
-  }
+.section {
+  
+
+  @include grid();
 
   &__product {
-    padding-top: 40px;
+    grid-column: span 2;
+
+    @include for-mobile-big() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 4;
+    }
+    
   }
 }

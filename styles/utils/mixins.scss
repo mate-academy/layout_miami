@@ -1,3 +1,9 @@
+@mixin for-mobile-big() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 @mixin for-desktop() {
   @media (min-width: 1260px) {
     @content;
@@ -9,6 +15,11 @@
   justify-content: center;
   grid-template-columns: repeat(2, 130px);
   gap: 20px;
+
+  @include for-mobile-big() {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
 
   @include for-desktop() {
     grid-template-columns: repeat(12, 63px);
