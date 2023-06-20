@@ -1,4 +1,6 @@
 # Miami landing page
+Replace `<your_account>` with your Github username and copy the links to Pull Request description:
+[DEMO LINK](https://mykolahuryn.github.io/layout_miami/)
 
 In this task, you will learn how to implement a landing page. To do that:
 
