@@ -1,0 +1,83 @@
+.icon {
+  display: block;
+  height: 18px;
+  width: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-decoration: none;
+
+  @include onTablet() {
+    height: 24px;
+    width: 24px;
+  }
+
+  &__tooltip {
+    opacity: 0;
+  }
+
+  &--phone {
+      background-image: url(../images/phone.svg);
+      margin-right: 30px;
+
+      @include onTablet {
+        margin-right: 63px;
+      }
+  }
+
+  &--menu-opener {
+    height: 12px;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+
+    @include onTablet() {
+      height: 16px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    height: 16px;
+    width: 16px;
+
+    @include onTablet {
+      height: 22px;
+      width: 22px;
+    }
+  }
+
+  @include onDesktop() {
+    &__tooltip {
+      position: relative;
+      top: 50%;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: right;
+      color: $white-main;
+      display: block;
+      width: max-content;
+      transform: translate(-100%, -50%);
+      padding-right: 20px;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      line-height: 27px;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+
+      &-number:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &:hover &__tooltip {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
