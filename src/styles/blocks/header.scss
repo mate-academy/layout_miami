@@ -1,0 +1,106 @@
+.header {
+  margin-bottom: 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 35% 50%;
+  background-image: url("../images/photos/main.webp");
+
+  &__content {
+    height: 88vh;
+    padding: $headerTopPadding 20px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onTablet {
+      height: 100vh;
+      padding: $headerTopPadding 72px 72px;
+    }
+
+    @include onDesctop {
+      padding: $headerTopPadding 0 52px;
+    }
+  }
+
+  &__call {
+    position: relative;
+
+    &-number {
+      display: none;
+      position: absolute;
+      width: max-content;
+      padding: 5px 20px 5px 0;
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateY(90deg);
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $mainDarkColor;
+
+      transition-duration: 300ms;
+
+      @include onDesctop {
+        display: block;
+      }
+    }
+
+    &:hover {
+      .header__call-number {
+        transform: translate(-100%, -50%) rotateY(0deg);
+      }
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    position: relative;
+    padding-bottom: 24px;
+
+    transition-duration: 300ms;
+
+    @include onTablet {
+      padding-bottom: 32px;
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainDarkColor;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 16px;
+      width: 32px;
+      height: 27px;
+
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../images/title-decor.svg");
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+
+        background-image: url("../images/title-decor-tablet.svg");
+      }
+    }
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesctop {
+      font-size: 48px;
+    }
+  }
+}

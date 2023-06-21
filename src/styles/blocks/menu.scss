@@ -1,0 +1,89 @@
+.menu {
+  background-color: $menuBackground;
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 20px 70px;
+    .top-actions {
+      grid-template-columns: 1fr var(--icon-size);
+    }
+
+    @include onTablet {
+      padding: $headerTopPadding 72px 72px;
+    }
+
+    @include onDesctop {
+      padding: $headerTopPadding 0 70px;
+    }
+  }
+
+  &__top {
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0 0 48px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    color: $mainDarkColor;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $mainDarkColor;
+      opacity: 0;
+      transform: translateY(-8px) scaleX(0);
+
+      transition-duration: 300ms;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        transform: translateY(0) scaleX(1);
+      }
+    }
+  }
+
+  &__call {
+    display: block;
+    width: fit-content;
+    font-weight: 700;
+    color: $mainDarkColor;
+    &--phone {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+    &--action {
+      padding-bottom: 8px;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      border-bottom: 1px solid $mainDarkColor;
+    }
+  }
+}
