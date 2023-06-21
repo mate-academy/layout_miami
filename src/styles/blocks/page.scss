@@ -1,0 +1,66 @@
+.page {
+  font-family: "Cinzel", sans-serif;
+  scroll-behavior: smooth;
+    
+  
+  &__body {
+    margin: 0;
+    position: relative;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: transform $transition-time;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 50px;
+  }
+
+  &__section-title {
+    @include title;
+    text-align: center;
+
+    @include onTablet {
+      @include bigTitle;
+    }
+
+    &--before {
+      position: relative;
+      margin-bottom: 100px;
+      
+      &::after {
+        content: "Explore exhibition gallery guides, videos, articles and more";
+        position: absolute;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27px;
+        width: 280px;
+        letter-spacing: 0;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 40%);
+
+        @include onDesktop {
+          width: 325px;
+          top: 50%;
+          transform: translate(-50%, 50%);
+        }
+      }
+    }
+  }
+}
