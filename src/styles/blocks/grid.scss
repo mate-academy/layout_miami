@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+  &__h4 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: $main-color;
+    margin-bottom: 40px;
+  }
+  .grid_paragraph:not(:last-child) {
+    margin-bottom: 22px;
+  }
+  &__h5 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-color;
+  }
+}
