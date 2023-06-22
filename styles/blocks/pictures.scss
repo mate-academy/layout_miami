@@ -1,0 +1,69 @@
+@use '../utils/mixins.scss' as *;
+
+.pictures {
+
+  @include grid();
+
+  &__item {
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+
+    @include for-mobile-big() {
+      padding-top: 50%;
+    }
+
+    grid-column: span 1;
+
+    @include for-mobile-big() {
+      grid-column: span 3;
+
+      &--small {
+        grid-column: span 2;
+      }
+
+      &--big {
+        grid-column: span 4;
+      }
+    }
+
+    @include for-desktop() {
+      grid-column: span 6;
+
+      &--small {
+        grid-column: span 4;
+      }
+
+      &--big {
+        grid-column: span 8;
+      }
+    }
+
+  }
+
+  &__image {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: top center;
+
+    @include for-mobile-big() {
+      height: 100%;
+    }
+  }
+
+  &__image--covered {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: top left;
+
+    @include for-mobile-big() {
+      height: 100%;
+    }
+  }
+}
