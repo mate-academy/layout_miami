@@ -1,33 +1,3 @@
-.container {
-  margin: 0 auto;
-  max-width: 1020px;
-  padding: 0 20px;
-
-  @include onTablet {
-    padding: 0 70px;
-  }
-}
-
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-
-  @include onDesktop {
-    width: 24px;
-    height: 24px;
-  }
-
-  @include onTablet {
-    width: 24px;
-    height: 24px;
-  }
-  
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../images/menu.svg);
-}
-
 .header {
   height: 100vh;
   background-size: cover;
@@ -50,71 +20,25 @@
   
     box-sizing: border-box;
     height: 100vh;
-    padding: 40px 0 95px;
-
-    @include onDesktop {
-      padding: 50px 0 65px;
-    }
-
-    @include onTablet() {
-      padding: 50px 0 40px;
-    }
+    padding: $headerTopPadding 0 95px;
   }
 
-  &__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  &__top {
+    @include top-actions;
 
-  &__nav-buttons {
-    display: flex;
-    align-items: center;
-  }
-
-  &__menu-opener {
-    background-image: url(../images/menu.svg);
-
-    &:hover {
-      background-image: url(../images/menu-hover-phone.svg);
-
+    &--buttons {
+      display: grid;
+      grid-template-columns: repeat(2, var(--icon-width));
+      grid-column-gap: 30px;
+  
       @include onDesktop {
-        background-image: url(../images/menu_hover_desktop.svg);
+        --icon-width: 24px;  
+        grid-column-gap: 40px;
       }
-    }
-  }
-
-  &__call {
-    margin-right: 30px;
-    text-decoration: none;
-    background-image: url(../images/phone.svg);
-
-    @include onDesktop {
-      margin-right: 40px;
-
-      &::before {
-        content: "+1 234 555-55-55";
-        position: relative;
-        top: 50%;
-        transform: translate(-100%, -50%);
-
-        display: block;
-        width: max-content;
-        padding-right: 10px;
-
-        color: $text-color;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        pointer-events: all;
+      
+      @include onTablet {
+        --icon-width: 24px;  
+        grid-column-gap: 40px;
       }
     }
   }
@@ -125,7 +49,7 @@
     font-size: 32px;
     line-height: 32px;
     letter-spacing: -1.5px;
-    color: $text-color;
+    color: $main-color;
 
     @include onDesktop {
       font-size: 48px;
@@ -158,25 +82,5 @@
         margin-bottom: 40px;
       }
     }
-  }
-}
-
-.logo {
-  width: 130px;
-  height: 18px;
-  background-image: url(../images/logo.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  
-  @include onDesktop {
-    width: 190px;
-    height: 24px;
-  }
-
-  @include onTablet {
-    width: 190px;
-    height: 24px;
   }
 }
