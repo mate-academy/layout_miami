@@ -1,4 +1,19 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+}
+
 .form {
+  // &__item {
+
+  // }
+
   &__input {
     width: 280px;
     height: 48px;
@@ -13,5 +28,11 @@
     gap: 10px;
     border-radius: 8px;
     background: #f9f9f9;
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
   }
 }
