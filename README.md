@@ -4,4 +4,4 @@
 
 first I prepere header for mobile width - 320px
 
-i have problem with grid positioning
+i have problem with grid positioning.
