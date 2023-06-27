@@ -1,6 +1,65 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin callContentBefore {
+  position: relative;
+  display: block;
+  width: max-content;
+  text-align: end;
+  white-space: pre-wrap;
+
+  padding-right: 15px;
+  font-size: 16px;
+  line-height: 27px;
+
+  opacity: 0;
+  pointer-events: none;
+  color: $color-white;
+  text-transform: uppercase;
+  transition: 0.7s;
+  text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+}
+
+@mixin callContentHover {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@mixin timeStyle {
+  font-weight: $font-bold;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin media-gridColumns-forTablet ($index, $colums) {
+  @include onTablet {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$index}--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin media-gridColumns-forDesktop ($index, $colums) {
+  @include onDesktop {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &-#{$index}--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
   }
 }
