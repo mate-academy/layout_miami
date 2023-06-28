@@ -1,0 +1,102 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-image: url(../images/header_320.png);
+
+  @include onTablet {
+    background-image: url(../images/header_744.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header_1024.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $header-top-padding 0 34px;
+
+    @include onTablet {
+      padding: $header-top-padding 0 64px;
+    }
+
+    @include onDesktop {
+      height: 100vh;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    margin-right: 30px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        display: block;
+        width: max-content;
+
+        @include fontStyles(12px, 700);
+        line-height: 24px;
+        color: $c-dark;
+        text-decoration: none;
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        padding-right: 12px;
+      }
+    }
+  }
+
+  &__title {
+    @include fontStyles(32px, 800);
+    font-style: italic;
+    line-height: 100%;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    &::before {
+      content: "";
+      background-image: url(../../src/images/before_header.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        background-image: url(../../src/images/before_header_desktop.svg);
+        margin-bottom: 40px;
+      }
+
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+    }
+  }
+}

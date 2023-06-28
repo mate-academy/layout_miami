@@ -1,0 +1,53 @@
+.product {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 130px;
+    overflow: hidden;
+    transition: transform $translate-speed;
+
+    &:hover {
+      transform: scale($scale-property);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      max-height: 187px;
+    }
+
+    @include onDesktop {
+      max-height: 321px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    @include fontStyles(20px, 700);
+    line-height: 140%;
+    color: $c-dark;
+    text-decoration: none;
+  }
+}
