@@ -1,0 +1,105 @@
+.exhibition {
+  margin-bottom: 48px;
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  &__photos {
+    box-sizing: border-box;
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    &--container {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      max-height: 320px;
+      margin-bottom: 24px;
+
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+        pointer-events: none;
+      }
+
+      @include onTablet {
+        height: 284px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        padding-bottom: 0;
+      }
+
+      &-flex {
+        position: relative;
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 87px;
+        min-width: 87px;
+        overflow: hidden;
+      }
+    }
+
+    &--none {
+      display: block;
+
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &-flex {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transition-time ease-out;
+    cursor: pointer;
+
+    &--1 {
+      object-position: -70px 0;
+
+      @include onTablet {
+        object-position: center;
+      }
+    }
+
+    &--2 {
+      object-position: right;
+
+      @include onTablet {
+        object-position: center;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.04);
+      box-shadow: 5px 5px 3px 0 $hover-color;
+    }
+  }
+
+  &__description {
+    &--link {
+      font-weight: 700;
+      color: $main-accent-red;
+      cursor: pointer;
+    }
+  }
+}
