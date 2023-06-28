@@ -1,0 +1,64 @@
+.detail {
+
+  &__photos-container {
+    position: relative;
+
+    box-sizing: border-box;
+    min-width: 100%;
+    max-height: 321px;
+    min-height: 130px;
+    margin-bottom: 16px;
+
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 321px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition-duration: $transitionTime;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__info {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+
+    @extend %bold-text;
+  }
+
+  &__description {
+    margin: 0;
+  }
+}
