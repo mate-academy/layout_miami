@@ -1,0 +1,90 @@
+.show {
+  &__pictures {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 24px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__image-container {
+    box-sizing: border-box;
+
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    max-height: 185px;
+    overflow: hidden;
+
+    @include transition (transform, scale(105%));
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      width: 0;
+      max-height: 185px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      max-height: 320px;
+    }
+
+    &--flex-grow-2 {
+      @include onTablet {
+        flex-grow: 2;
+      }
+    }
+
+    &--width {
+      @include onTablet {
+        width: 0;
+        max-height: 280px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        max-height: 320px;
+      }
+    }
+
+    &:nth-of-type(3) {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--object-position {
+      object-position: 15%;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+
+    font-weight: 700;
+    @include link ($redColor, 16px, 27px);
+
+    @include transition (transform, scale(105%));
+  }
+}
