@@ -1,6 +1,24 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin top-panel {
+  --icon-width: 18px;
+
+  display: grid;
+  gap: 30px;
+  justify-items: space-between;
+  align-items: center;
+
+  @include onDesktop() {
+    --icon-width: 24px;
+    gap: 36px;
   }
 }
