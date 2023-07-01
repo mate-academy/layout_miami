@@ -1,9 +1,27 @@
+@use "../../styles/utils/mixins" as *;
+
 .pictures {
   @include grid();
 
+  @include for-tablet();
+
   &__item {
+    height: 130px;
     width: 100%;
     position: relative;
-    // padding-top: 100%;
+    object-fit: cover;
+    padding-bottom: 16px;
+
+    &--big {
+      @include for-tablet() {
+        grid-column: span 4;
+      }
+    }
+
+    &--small {
+      @include for-tablet() {
+        grid-column: span 2;
+      }
+    }
   }
 }
