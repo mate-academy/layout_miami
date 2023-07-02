@@ -1,0 +1,72 @@
+.icon {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--phone {
+    position: relative;
+    background-image: url("/images/Phone.svg");
+
+    @include icon($icon-width, 1);
+
+    @include onTablet() {
+      @include icon($icon-width / $icon-index, 1);
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $colorGray;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  &--phone:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url("../images/Vector_320.svg");
+    @include icon($icon-width, 2 / 3);
+
+    @include onTablet() {
+      background-image: url("../images/Vector.svg");
+      @include icon($icon-width / $icon-index, 0.75);
+    }
+
+    &:hover {
+      background-image: url("../images/Vector_hover_320.svg");
+      @include icon($icon-width, 2 / 3);
+
+      @include onTablet() {
+        background-image: url("../images/Vector_hover.svg");
+        @include icon($icon-width / $icon-index, 0.75);
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    @include icon($icon-width-cross, 1);
+
+    @include onDesktop() {
+      @include icon($icon-width-cross / $icon-index, 1);
+    }
+  }
+}
