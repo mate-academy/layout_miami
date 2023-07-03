@@ -1,3 +1,51 @@
+@use"../utils/mixins" as *;
+
 .burger {
   grid-column: 3 / 4;
+
+  &__label {
+    @include visually-hidden();
+  }
+
+  &::before {
+    content: "";
+    background-image: url(./images/Icon-Burger-menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    height: 18px;
+    width: 12px;
+
+    @include for-tablet() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: "";
+    background-image: url(./images/Icon-Burger-menu-hover.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 18px;
+    width: 12px;
+
+    @include for-tablet() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
 }

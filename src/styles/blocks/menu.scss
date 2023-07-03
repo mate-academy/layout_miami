@@ -1,0 +1,86 @@
+@use "../utils/mixins" as *;
+
+.menu {
+  z-index: 2;
+  background-color: #e5e6e8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  padding: 0 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  align-content: start;
+
+  &__navigation {
+    grid-template-columns: 32px;
+    height: 32px;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include for-tablet() {
+    padding: 0 72px;
+  }
+
+  @include for-desktop() {
+    padding: 0 120px;
+  }
+
+  &__paragraph {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #292929;
+
+    &:first-of-type {
+      padding-bottom: 16px;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid #292929;
+      width: 142px;
+    }
+  }
+}
+
+.close {
+  grid-column: 3 / 4;
+  background-position: center;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    @include for-tablet() {
+      width: 21px;
+      height: 21px;
+    }
+  }
+}
+
+.links {
+  &__link {
+    text-decoration: none;
+    font-family: $link-font-family;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: $font-color;
+
+    &:hover {
+      border-bottom: 1px solid #292929;
+    }
+  }
+
+  &__item {
+    padding-bottom: 32px;
+  }
+}
