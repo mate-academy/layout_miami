@@ -1,3 +1,5 @@
+@use "../utils/mixins" as*;
+
 .menu {
   position: fixed;
   top: 0;
@@ -9,8 +11,25 @@
   padding: 0 20px;
   min-height: 100vh;
 
+  @include grid();
+  row-gap: 0;
+
+  align-content: start;
+
   &:target {
     transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-600-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__paragraph {
@@ -22,6 +41,16 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 16px;
+
+    grid-column: span 2;
+
+    @include for-600-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__link {
@@ -35,12 +64,32 @@
     text-decoration: none;
     padding-bottom: 4px;
 
+    grid-column: span 2;
+
+    @include for-600-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+
     &:hover {
       border-bottom: 1px solid #1b2129;
     }
   }
 
   &__links {
-    margin-bottom: 40px;
+    margin-bottom: 16px;
+
+    grid-column: span 2;
+
+    @include for-600-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 }
