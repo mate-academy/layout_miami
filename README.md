@@ -10,6 +10,6 @@ In this task, you will learn how to implement a landing page. To do that:
   - [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 - watch the lesson videos and implement your page blocks similarly to the videos;
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
+- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://Vitafeldi.github.io/layout_miami/) 
 - after each next block do the same (add, commit and push the changes, and deploy the updated demo;
 - check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
