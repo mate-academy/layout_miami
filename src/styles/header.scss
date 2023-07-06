@@ -1,0 +1,192 @@
+.container {
+  max-width: 1020px;
+  padding: 0 20px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  @include onDeskTop {
+    padding: 0 40px;
+  }
+}
+
+.icon {
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+
+  @include onDeskTop {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__tooltip {
+    opacity: 0;
+
+    @include onDeskTop {
+      transition: all 0.3s ease 0s;
+      position: absolute;
+      opacity: 0;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      color: #292929;
+      width: max-content;
+      padding-right: 12px;
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+  }
+
+  @include onDeskTop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    margin-left: 30px;
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+    @include onDeskTop {
+      margin-left: 40px;
+    }
+  }
+
+  &--call {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+
+  @include onDeskTop {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.header {
+  background-image: url(../images/photos/bc-image.png);
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include onDeskTop {
+      padding: $headerTopPaddingOnDeskTop 0 122px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 48px;
+  }
+
+  &__image {
+    height: 38px;
+
+    @include onDeskTop {
+      height: 56px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    color: #1d1d1d;
+    letter-spacing: -1.5px;
+    text-align: center;
+    line-height: 36px;
+
+    @include onDeskTop {
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 80px;
+    }
+  }
+}
+
+.menu {
+  &__content {
+    height: 100vh;
+    padding: $headerTopPadding 0 122px;
+    @include onDeskTop {
+      padding-top: $headerTopPaddingOnDeskTop;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    font-family: "Inter", sans-serif;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    @include onDeskTop {
+      width: max-content;
+      padding-bottom: 8px;
+      transition: all 0.3s ease 0s;
+      border-bottom: 1px solid transparent;
+      &:hover {
+        border-color: #1d1d1d;
+      }
+    }
+  }
+
+  &__item:not(:last-of-type) {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: rgba(29, 29, 29, 1);
+  }
+
+  &__calls {
+    display: block;
+    font-family: "Inter", sans-serif;
+    width: max-content;
+    padding-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.35s ease 0s;
+    &:not(:last-of-type) {
+      margin-bottom: 16px;
+    }
+    &:hover {
+      border-color: rgba(29, 29, 29, 1);
+    }
+  }
+}
