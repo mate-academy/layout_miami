@@ -11,5 +11,7 @@ window.addEventListener('hashchange', ()=> {
 const form = document.getElementById("#form-footer");
 function submitForm(event){
   event.preventDefault();
+  form.reset();
 }
 form.addEventListener('submit', submitForm);
+console.log(form);
