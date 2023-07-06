@@ -8,7 +8,7 @@ window.addEventListener('hashchange', ()=> {
   }
 })
 
-var form=document.getElementById("#form");
+var form = document.getElementById("#form-footer");
 function submitForm(event){
   event.preventDefault();
 }
