@@ -1,0 +1,91 @@
+.top-actions {
+  --icon-width: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  gap: var(--icon-width);
+  align-items: center;
+
+  &--menu {
+    grid-template-columns: 1fr var(--icon-width);
+  }
+
+  @include onTablet {
+    --icon-width: 2rem;
+  }
+
+  &__logo {
+    width: max-content;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 6rem;
+    color: #fff;
+
+    &--color {
+      color: $color-main;
+    }
+
+    @include onTablet {
+      font-size: 3.5rem;
+      line-height: 7.5rem;
+    }
+  }
+
+  &__number {
+    padding: 0.5rem;
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    color: #fff;
+    opacity: 0;
+    transition: opacity $transition-speed;
+    pointer-events: none;
+    display: none;
+
+    @include onDesctop {
+      display: block;
+    }
+  }
+
+  &__call {
+    width: 100%;
+    padding-bottom: 100%;
+    display: block;
+
+    background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+
+    &:hover .top-actions__number {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__btn {
+    margin-top: 0.25rem;
+    width: var(--icon-width);
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    display: block;
+    transition: background-image 0.4s;
+
+    &--open {
+      background-image: url(../images/btn.svg);
+
+      &:hover {
+        background-image: url(../images/btn-hover.svg);
+        margin-top: 0;
+      }
+    }
+
+    &--close {
+      background-image: url(../images/btn-close.svg);
+    }
+  }
+}
