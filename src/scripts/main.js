@@ -8,7 +8,7 @@ window.addEventListener('hashchange', ()=> {
   }
 })
 
-const form = document.getElementById("#form-footer");
+const form = document.getElementById("form-footer");
 function submitForm(event){
   event.preventDefault();
   form.reset();
