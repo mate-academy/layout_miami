@@ -1,0 +1,54 @@
+.compare {
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__bike {
+    max-width: 280px;
+    margin: 0 auto;
+    perspective: 100px;
+
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    @include onTablet {
+      @include position(2, 5);
+      max-width: 390px;
+    }
+
+    @each $element, $start, $end in $bikePositionOnDesktop {
+      @include onDesktop {
+        &:nth-child(#{$element}) {
+          @include position($start, $end);
+        }
+      }
+    }
+  }
+
+  &__bike-image {
+    width: 100%;
+    margin-bottom: 32px;
+    transition: transform 0.3s;
+    transition-timing-function: linear;
+
+    &:hover {
+      transform: translate3d(0, -5%, 10px);
+    }
+  }
+
+  &__bike-title {
+    @extend %h3;
+    margin-bottom: 8px;
+  }
+
+  &__bike-description {
+    margin-bottom: 16px;
+  }
+
+  &__bike-price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
