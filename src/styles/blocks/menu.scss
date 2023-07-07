@@ -1,12 +1,16 @@
 .menu {
   box-sizing: border-box;
   height: 100vh;
-  padding: 0;
+  padding-top: 25px;
   margin-bottom: 32px;
 
   background-color: $accent-main;
   background-size: cover;
   background-position: center;
+
+  @include onTablet {
+    padding-top: 50px;
+  }
 
   &__top {
     @include top-actions;
@@ -72,7 +76,13 @@
       line-height: 16px;
       letter-spacing: 2px;
       padding-bottom: 8px;
-      border-bottom: 1px solid $white-main;
+      border-bottom: 1px solid transparent;
+
+      transition: border-color .3s;
+
+      &:hover {
+        border-color: $white-main;
+      }
     }
   }
 }
