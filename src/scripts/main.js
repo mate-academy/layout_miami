@@ -14,6 +14,9 @@ function submit(event) {
   event.preventDefault();
 
   form.reset();
+
+  // eslint-disable-next-line no-undef
+  alert('Your message is sent. Thank you!');
 }
 
 form.addEventListener('submit', submit);
