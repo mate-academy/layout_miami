@@ -8,6 +8,7 @@
     list-style: none;
   }
   &__link {
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     font-family: inherit;
@@ -16,5 +17,23 @@
     line-height: 22px;
     color: $base-color;
     letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $dark-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
