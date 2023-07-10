@@ -1,0 +1,47 @@
+.grid {
+  display: block;
+
+  @include Tablet {
+    
+    @include use-grid-tablet;
+  }
+
+  @include Desktop {
+    
+    @include use-grid-desktop;
+  }
+
+  &__item {
+    @include Tablet {
+      &--tablet {
+        @for $start from 1 through $tablet-columns {
+          @for $end from $start through $tablet-columns {
+            @include Tablet {
+              &-#{$start}-#{$end} {
+                grid-column: #{$start} / #{$end + 1};
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include Desktop {
+      &--desktop {
+        @for $start from 1 through $desktop-columns {
+          @for $end from $start through $desktop-columns {
+            @include Desktop {
+              &-#{$start}-#{$end} {
+                grid-column: #{$start} / #{$end + 1};
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    &--row {
+      grid-row: 1 / 3;
+    }
+  }
+}
