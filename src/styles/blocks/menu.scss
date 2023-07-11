@@ -1,14 +1,18 @@
-@use "../utils/mixins" as *;
+@import "../utils/mixins";
 
 .menu {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  overflow-y: auto;
+
+  /* Add this rule to add scroll when there is not enough space */
+
 
   @include grid;
   grid-template-rows: 72px 318px 38px;
-  
+
   @include for-tablet() {
     @include grid-tablet;
     grid-template-rows: 96px 342px 38px;
@@ -18,6 +22,8 @@
 
   transform: translateX(-100%);
   transition: transform 0.5s;
+
+
 
   &:target {
     transform: translateX(0);
@@ -30,8 +36,12 @@
 
   &__navigation {
     grid-column: 1 / -1;
+
+
   }
   &__list {
+
+
     grid-column: 1 / -1;
     &-item {
       grid-column: 1 / -1;
