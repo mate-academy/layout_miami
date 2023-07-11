@@ -1,0 +1,3 @@
+function onFormSubmit() {
+  event.preventDefault();
+}

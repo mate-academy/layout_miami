@@ -1,0 +1,70 @@
+@use "../utils/mixins" as *;
+
+.products-container {
+  @include grid;
+
+  @include for-tablet() {
+    @include grid-tablet;
+  }
+  grid-template-rows: auto;
+
+  &__img {
+
+    width: 130px;
+    height: 130px;
+
+    @include for-tablet() {
+      width: 288px;
+      height: 184px;
+    }
+  
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(110%);
+    }
+
+    &--left {
+      grid-column: 1 / 2;
+      object-fit: cover;
+      border-radius: 4px;
+      @include for-tablet() {
+        grid-column: 1 / 4;
+        object-fit: cover;
+        border-radius: none;
+      }
+    }
+
+    &--right {
+      grid-column: 2 / 3;
+      object-fit: cover;
+      border-radius: 4px;
+
+      @include for-tablet() {
+        grid-column: 4 / 6;
+        object-fit: cover;
+        border-radius: none;
+      }
+    }
+  }
+
+  &__product-description {
+    grid-column: 1 / -1;
+    margin: 8px 0 40px;
+    justify-content: start;
+
+    color: #1b2129;
+    font-size: 18px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include for-tablet() {
+      margin: 16px 0 56px;
+
+      font-size: 24px;
+
+    }
+  }
+}

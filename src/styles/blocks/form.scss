@@ -1,0 +1,118 @@
+@use "../utils/mixins" as *;
+
+.form {
+  @include grid;
+  @include for-tablet() {
+    @include grid-tablet;
+  }
+  &__item {
+    @include grid;
+    @include for-tablet() {
+      @include grid-tablet;
+    }
+    grid-column: 1 / -1;
+  }
+
+  &__input {
+    background: #f9f9f9;
+
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    grid-column: 1 / -1;
+    height: 48px;
+    margin-bottom: 8px;
+    padding: 14px 16px;
+
+    color: #1b2129;
+    font-size: 14px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    transition: all 0.3s;
+
+    @include for-tablet() {
+      margin-bottom: 16px;
+
+    }
+    &::placeholder {
+      color: #7e7e83;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      border-radius: 8px;
+      border: 1px solid #dbdbdb;
+      background: #f9f9f9;
+      color: #1b2129;
+
+      &::placeholder {
+        color: #1b2129;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid #f98921;
+      color: #1b2129;
+    }
+  }
+
+  &__textarea {
+    border-radius: 8px;
+    background: #f9f9f9;
+    border: 1px solid transparent;
+    grid-column: 1 / -1;
+    height: 148px;
+
+    color: #1b2129;
+    font-size: 14px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+
+    resize: none;
+    padding: 14px 16px;
+    transition: all 0.3s;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+    &:hover {
+      border-radius: 8px;
+      border: 1px solid #dbdbdb;
+      background: #f9f9f9;
+      color: #1b2129;
+
+      &::placeholder {
+        color: #1b2129;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid #f98921;
+      color: #1b2129;
+    }
+    margin-bottom: 32px;
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+
+  &__button {
+    margin-bottom: 48px;
+    grid-column: 1 / -1;
+    
+    @include for-tablet() {
+      margin-bottom: 80px;
+    }
+  }
+}
