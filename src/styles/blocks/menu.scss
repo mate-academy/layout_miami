@@ -2,17 +2,32 @@
   background-color: #d12d35;
   padding: 0 20px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   transform: translateX(200%);
   transition: transform 0.5s ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
+
+  @include for-desktop() {
+    @include grid();
+  }
 
   &:target {
     transform: translateX(0);
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 36px;
+
+    @include for-desktop() {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__paragraph {
@@ -23,6 +38,7 @@
     font-weight: 700;
     line-height: 27px;
     text-transform: uppercase;
+    margin-top: 8px;
   }
 
   &__call-link {
@@ -34,7 +50,6 @@
     line-height: 27px;
     text-transform: uppercase;
     text-decoration: none;
-    margin-bottom: 8px;
   }
 
   &__order-link {
@@ -57,6 +72,23 @@
   }
 
   &__links {
-    margin-bottom: 40px;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__navigation {
+    @include for-desktop() {
+      display: flex;
+      justify-content: space-between;
+      grid-column: span 12;
+    }
+  }
+
+  &__contact {
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 }
