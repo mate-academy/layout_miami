@@ -1,17 +1,10 @@
 .compare {
   margin-bottom: 92px;
   &__products {
-    display: grid;
-    row-gap: 40px;
+    @include pageGrid;
+      row-gap: 40px;
     @include onTablet {
       row-gap: 48px;
-      justify-items: center;
-    }
-    @include onDesktop {
-      grid-template-columns: repeat(3, 1fr);
-      row-gap: 48px;
-      column-gap: 24px;
-      justify-items: stretch;
     }
   }
   @include onTablet {
@@ -19,5 +12,15 @@
   }
   @include onDesktop {
     margin-bottom: 144px;
+  }
+
+  &__product{
+    grid-column: 1/-1;
+    @include onTablet {
+      grid-column: 2/6;
+    }
+    @include onDesktop {
+      grid-column: span 4;
+    }
   }
 }
