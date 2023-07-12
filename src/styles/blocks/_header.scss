@@ -1,13 +1,47 @@
 .header {
   min-height: 100vh;
   background-image: url(../images/mybike_header.jpg);
-  display: flex;
-  justify-content: space-between;
-
-  flex-direction: column;
-  padding: 0 20px 88px;
+  display: grid;
+  padding-top: 0;
+  padding-left: 20px;
+  padding-right: 20px;
   box-sizing: border-box;
   background-repeat: no-repeat;
   background-position: bottom 0 right -70px;
   background-size: cover;
+  grid-template-columns: 130px 130px;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  @media (min-width: 1020px) {
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: 2fr 1fr 1fr;
+    padding: 0;
+    background-position: right;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  &__navigation {
+    align-self: start;
+    grid-column: 1 / 3;
+    @media (min-width: 1020px) {
+      grid-column: 1 / 13;
+      grid-row: 1 / 2;
+      padding: 0;
+    }
+  }
+
+  &__title {
+    grid-column: -3 / -1;
+    align-self: center;
+    font-size: 36px;
+    @media (min-width: 1020px) {
+      font-size: 80px;
+      align-self: center;
+      grid-column: 1 / 13;
+      grid-row: 2 /3;
+    }
+
+  }
+
 }
