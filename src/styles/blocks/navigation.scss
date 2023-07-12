@@ -2,15 +2,63 @@
   display: flex;
   justify-content: space-between;
 
+  @include for-desktop() {
+    justify-content: unset;
+    position: relative;
+  }
+
   &__logo {
     margin-top: 25px;
+
+    @include for-desktop() {
+      width: 87px;
+      height: 65px;
+    }
   }
 
   &__icons {
     margin-top: 36px;
+
+    @include for-desktop() {
+      display: flex;
+      position: absolute;
+      right: 0;
+    }
   }
 
   &__icon {
     margin-left: 24px;
+
+    @include for-desktop() {
+      margin-left: 55px;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  &__burger {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../images/icon-burger-menu.svg");
+    background-size: cover;
+
+    &:hover {
+      background-image: url("../images/icon-burger-menu-hover.svg");
+    }
+
+    @include for-desktop() {
+      margin-left: 55px;
+      width: 35px;
+      height: 35px;
+    }
+
+    &--label {
+    @include visually-hidden();
+    }
+  }
+
+  &__phone:hover + .phone-numbers {
+    display: block;
   }
 }
