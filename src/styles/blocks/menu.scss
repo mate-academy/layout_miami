@@ -1,0 +1,70 @@
+@import "../utils/mixins.scss";
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  min-height: 100vh;
+  background-color: #e8eff9;
+  box-sizing: border-box;
+  padding: 28px 20px 40px;
+
+  @include grid();
+
+  align-content: start;
+  font-style: normal;
+  font-weight: 700;
+
+  &__navigation {
+    grid-column: span 2;
+    grid-row: 1 / 2;
+    align-self: start;
+
+    @include for-mobile-big() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__links {
+    margin-bottom: 40px;
+    grid-column: span 2;
+
+    @include for-mobile-big() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: $color-grey;
+  }
+
+  &__call-link {
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-block;
+    padding-top: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-grey;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-grey;
+  }
+}
