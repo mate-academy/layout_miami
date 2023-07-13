@@ -1,16 +1,37 @@
 .main {
   padding: 64px 20px;
   padding-bottom: 120px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 130px 130px;
   color: white;
   font-family: Poppins, Arial, Helvetica, sans-serif;
   font-size: 23px;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
+  gap: 20px;
+  justify-content: center;
+
+  @include for-mac() {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
 
   &__paragraph {
-    margin-top: 32px;
+    grid-column: 1 / 3;
+
+    @include for-mac() {
+      grid-column: 4 / 7;
+    }
+
+    @include for-desktop() {
+
+      grid-column: -2 / 6;
+    }
   }
 }
