@@ -9,8 +9,41 @@
   &__item {
     display: flex;
 
+    text-decoration: none;
+
     &-logo {
       height: 16px;
+    }
+
+    &-menu,
+    &-phone {
+      width: 24px;
+      height: 24px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    &-menu {
+      background-image: url(./../images/menu.svg);
+    }
+
+    &-phone {
+      background-image: url(./../images/phone.svg);
+    }
+
+    &-number {
+      margin-right: 8px;
+
+      display: none;
+      align-items: center;
+
+      color: #1b2129;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
   }
 
@@ -27,19 +60,36 @@
       &-logo {
         height: 24px;
       }
+
+      &-menu,
+      &-phone {
+        width: 32px;
+        height: 32px;
+      }
     }
 
     &__buttons {
       gap: 32px;
-
-      & img {
-        width: 32px;
-        height: 32px;
-      }
     }
   }
 
   @media (min-width: 1260px) {
     width: 1020px;
+
+    &__item {
+      flex-direction: row-reverse;
+
+      &-menu {
+        transition: background-image 0.3s;
+
+        &:hover {
+          background-image: url(./../images/menu_hover.svg);
+        }
+      }
+
+      &-phone:hover ~ .navigation__item-number {
+        display: flex;
+      }
+    }
   }
 }
