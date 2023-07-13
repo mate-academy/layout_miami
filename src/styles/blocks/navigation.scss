@@ -2,6 +2,11 @@
 
 .navigation {
   display: grid;
+  // justify-content: space-between;
+  // align-items: center;
+  // height: 100%;
+  // width: 100%;
+
   grid-template-columns: auto 24px 24px;
   gap: 24px;
   align-items: center;
@@ -11,6 +16,10 @@
   gap: 32px;
 }
 
+@include for-desktop() {
+  grid-template-columns: auto  32px 32px;
+  gap: 32px;
+}
 
   &__logo {
     background-image: url("../img/Logo.svg");
@@ -30,12 +39,56 @@
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-    background-size: contain;
+    background-size: cover;
+
+    &--show-number {
+      display: none;
+    }
 
     @include for-tablet() {
       width: 32px;
       height: 32px;
     }
+
+    @include for-desktop() {
+      width: 32px;
+      height: 32px;
+      position: relative;
+
+
+      &--show-number {
+        position: absolute;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        top: 8px;
+        right: 40px;
+        width: 150px;
+
+        color: #1B2129;
+        text-align: right;
+        font-size: 12px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        transform: scale(0);
+        transform-origin: right;
+
+        transition-property: transform;
+        transition-duration: 0.3s;
+
+
+      }
+      &:hover &--show-number {
+        transform: scale(1);
+      }
+    }
+
+
 
     &--hidden {
       width: 24px;
@@ -53,14 +106,25 @@
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-    background-size: contain;
+    background-size: cover;
 
     @include for-tablet() {
       width: 32px;
       height: 32px;
     }
+
     &--hidden {
       @include visually-hidden();
+    }
+
+    @include for-desktop() {
+      width: 32px;
+      height: 32px;
+      transition: background-image 0.3s;
+      background-image: url("../img/Icon-Burger-menu.svg");
+      &:hover {
+        background-image: url('../img/Icon-Burger-menu-hover.svg');
+      }
     }
   }
 
@@ -77,6 +141,3 @@
     }
   }
 }
-
-// <img src="../../img/Logo.svg" alt="Logo"
-//           />

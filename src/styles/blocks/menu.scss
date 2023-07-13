@@ -7,9 +7,6 @@
   right: 0;
   overflow-y: auto;
 
-  /* Add this rule to add scroll when there is not enough space */
-
-
   @include grid;
   grid-template-rows: 72px 318px 38px;
 
@@ -17,13 +14,17 @@
     @include grid-tablet;
     grid-template-rows: 96px 342px 38px;
   }
+
+  @include for-desktop() {
+    @include grid-desktop;
+    
+  }
+
   height: 100vh;
   background-color: #f9f9f9;
 
   transform: translateX(-100%);
   transition: transform 0.5s;
-
-
 
   &:target {
     transform: translateX(0);
@@ -36,17 +37,16 @@
 
   &__navigation {
     grid-column: 1 / -1;
-
-
   }
+
   &__list {
-
-
     grid-column: 1 / -1;
+
     &-item {
       grid-column: 1 / -1;
       margin-top: 32px;
     }
+
     &-link {
       text-decoration: none;
       color: #1b2129;
@@ -75,6 +75,7 @@
       color: #1b2129;
       margin-bottom: 16px;
     }
+
     &__call {
       color: #1b2129;
       font-size: 16px;
