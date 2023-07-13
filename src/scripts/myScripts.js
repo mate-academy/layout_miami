@@ -2,7 +2,8 @@
 
 // submit off
 // Gets a reference to the form element
-// document.getElementById("submitButton").addEventListener("submit", (e) => e.preventDefault());
+// document.getElementById("submitButton")
+// .addEventListener("submit", (e) => e.preventDefault());
 
 // const mybutton = document.getElementById("myBtn");
 
