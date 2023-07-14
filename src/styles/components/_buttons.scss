@@ -4,6 +4,45 @@
   position: relative;
   width: 2.4em;
 
+  &__btn {
+    display: block;
+    position: absolute;
+    height: 0.25em;
+    width: 2.4em;
+    background-color: $c-main;
+    border-radius: 16px;
+    transform-origin: center;
+    transition: width 0.3s cubic-bezier(0.45, 0.03, 0.52, 0.95);
+
+    &:nth-child(1) {
+      top: 4px;
+    }
+
+    &:nth-child(2) {
+      top: 10px;
+    }
+
+    &:nth-child(3) {
+      top: 16px;
+    }
+  }
+
+  .--hamburger-transform {
+
+    .hamburger__btn:nth-child(1) {
+      transform: rotate(-45deg) translate(-1px, 10px);
+    }
+
+    .hamburger__btn:nth-child(2) {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .hamburger__btn:nth-child(3) {
+      transform: rotate(45deg);
+    }
+  }
+
   &:hover {
     .hamburger__btn:nth-child(1) {
       width: 1.9em;
@@ -13,49 +52,9 @@
       width: 1.5em;
     }
   }
-
-  &__btn {
-    display: block;
-    position: absolute;
-    height: 0.25em;
-    width: 2.4em;
-    background-color: $c-main;
-    border-radius: 16px;
-    transform-origin: center;
-    transition: width 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-
-    &:nth-child(1) {
-      top: 4px;
-    }
-
-    &:nth-child(2) {
-     top: 10px;
-    }
-
-    &:nth-child(3) {
-     top: 16px;
-    }
-  }
-}
-
-.--hamburger-transform {
-
-  .hamburger__btn:nth-child(1) {
-    transform: rotate(-45deg) translate(-1px, 10px);
-  }
-
-  .hamburger__btn:nth-child(2) {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  .hamburger__btn:nth-child(3) {
-    transform: rotate(45deg);
-  }
 }
 
 // TO TOP BTN
-
 .btn {
   @extend %btn;
 
@@ -69,8 +68,31 @@
     opacity: 0.7;
     @include z-index(top-btn);
     @include hover(opacity, 0.9);
-    transition: right 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: right 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.95);
     cursor: pointer;
+  }
+
+  &__primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 48px;
+    border-radius: 8px;
+    background: $c-main;
+    color: $c-gray;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($body-bg-c, 5);
+      color: $c-main;
+      transition: all 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96)
+    }
+
+    @include for-mobile () {
+      font-size: 16px;
+      width: 100%;
+      height: 56px;
+    }
   }
 
   &__to_top.--toTop-visible {
