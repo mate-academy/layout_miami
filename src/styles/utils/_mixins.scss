@@ -1,6 +1,22 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
-  }
+@mixin font ($_weight, $_size, $_line-height, $_color,
+$_family: Manrope, $_background: Helvetica, $_generic: sans-serif
+) {
+  font-weight: $_weight;
+  font-size: $_size;
+  line-height: $_line-height;
+  color: $_color;
+  font-family: $_family, $_background, $_generic;
+}
+
+@mixin layout ($_grid-size, $_grid-columns, $_grid-gap) {
+  display: grid;
+  grid-template-columns: repeat($_grid-columns, $_grid-size);
+  gap: $_grid-gap;
+}
+
+
+@mixin image ($_url, $_height: 100%, $_size: cover, $_repeat: no-repeat, $_position: 50%) {
+  background: $_url $_repeat $_position;
+  background-size: $_size;
+  min-height: $_height;
 }
