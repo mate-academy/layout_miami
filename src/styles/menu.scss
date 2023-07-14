@@ -1,0 +1,144 @@
+.menu {
+  background-color: $colorFourth;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20vw;
+  position: fixed;
+  top: 0;
+  left: -500%;
+  transition: left 0.3s;
+  z-index: 9;
+  /*THIS was the solution to the nav links not working!
+  The menu was simply moving away too quickly! There goes
+  3 hours of my life troubleshooting*/
+  transition-delay: 0.1s;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    @include backgroundSetter();
+    background-image: url(../images/logo.png);
+    width: 190px;
+    height: 24px;
+  }
+
+  &__close {
+    @include backgroundSetter();
+    background-image: url(../images/Icon-Close.svg);
+    width: 32px;
+    height: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &s {
+      margin-top: 48px;
+    }
+  }
+
+  &__text {
+    margin-top: 32px;
+    font-weight: $fontWeightMed;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $colorPrimary;
+    position: relative;
+    display: table;
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 1px;
+      width: 0;
+      bottom: -6px;
+      left: 0;
+      background-color: $colorPrimary;
+      border-radius: 8px;
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &-sub {
+      margin-top: 40px;
+      font-weight: $fontWeightMed;
+      font-size: 16px;
+      line-height: 27px;
+      color: $colorPrimary;
+
+      &--1 {
+        margin-top: 16px;
+        font-weight: $fontWeightMed;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $colorPrimary;
+        position: relative;
+        display: table;
+
+        &::after {
+          position: absolute;
+          content: "";
+          height: 1px;
+          width: 0;
+          bottom: -6px;
+          left: 0;
+          background-color: $colorPrimary;
+          border-radius: 8px;
+          transition: width 0.3s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .menu {
+    padding: 50px 10vw;
+
+    &__logo {
+      width: 110px;
+      height: 14px;
+    }
+
+    &__close {
+      width: $icon-size-small;
+      height: $icon-size-small;
+    }
+
+    &__text {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 18px;
+      letter-spacing: 1px;
+
+      &-sub {
+        margin-top: 30px;
+        font-size: 12px;
+        line-height: 20px;
+
+        &--1 {
+          margin-top: 12px;
+          font-size: 10px;
+          line-height: 12px;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}

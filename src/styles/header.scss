@@ -1,0 +1,162 @@
+.head {
+  @include backgroundSetter();
+  transition: padding 0.2s, opacity 0.2s;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  opacity: 1;
+  padding: 50px 20vw;
+  flex-direction: column;
+  background-image: url(../images/headerimg.png);
+  position: relative;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  &__icons {
+    display: flex;
+    margin: 0;
+  }
+
+  &__logo {
+    @include backgroundSetter();
+    background-image: url(../images/logo.png);
+    width: 190px;
+    height: 24px;
+  }
+
+  &__menu {
+    @include backgroundSetter();
+    background-image: url(../images/Icon-menu.svg);
+    height: $icon-size;
+    width: $icon-size;
+    margin-left: 32px;
+    transition: background-image 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../images/Icon-menu-hover.svg);
+    }
+
+    &:focus {
+      cursor: default;
+
+      .menu {
+        left: 0;
+      }
+    }
+  }
+
+  &__contain {
+    display: flex;
+    flex-direction: row;
+
+    &-text {
+      line-height: 32px;
+      font-size: 12px;
+      font-weight: $fontWeightMed;
+      padding-right: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      * {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__contact {
+    @include backgroundSetter();
+    background-image: url(../images/Icon-Phone-call.svg);
+    height: $icon-size;
+    width: $icon-size;
+    cursor: pointer;
+  }
+
+  &__soundicon {
+    @include backgroundSetter();
+    background-image: url(../images/Soundwaves.svg);
+    height: 76px;
+    width: 63px;
+    position: absolute;
+    bottom: 196px;
+  }
+
+  &__text {
+    font-weight: $fontWeightHigh;
+    font-size: 48px;
+    line-height: 48px;
+    padding: 32px 0 0;
+    bottom: 64px;
+    position: absolute;
+  }
+}
+
+@media (max-width: 1099px) {
+  .head {
+    padding: 50px 10vw;
+    background-position: center 50px;
+    background-color: #d0dbed;
+
+    &__logo {
+      width: 158px;
+      height: 20px;
+    }
+
+    &__menu {
+      height: $icon-size-small;
+      width: $icon-size-small;
+      margin-left: $icon-size-small;
+    }
+
+    &__contact {
+      height: $icon-size-small;
+      width: $icon-size-small;
+    }
+
+    &__text {
+      font-size: 38px;
+    }
+  }
+}
+
+@media (max-width: 451px) {
+  .head {
+    padding: 50px 5vw;
+    background-position: center 50px;
+    background-color: #d0dbed;
+
+    &__logo {
+      width: 110px;
+      height: 14px;
+    }
+
+    &__menu {
+      height: $icon-size-smaller;
+      width: $icon-size-smaller;
+      margin-left: $icon-size-smaller;
+    }
+
+    &__contact {
+      height: $icon-size-smaller;
+      width: $icon-size-smaller;
+    }
+
+    &__contain-text {
+      line-height: 20px;
+      font-size: 8px;
+      padding-right: 4px;
+    }
+
+    &__text {
+      font-size: 30px;
+    }
+  }
+}
