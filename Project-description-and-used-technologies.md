@@ -8,3 +8,5 @@ Technologies used:
 HTML
 CSS/SCSS
 
+link: https://luk2asz.github.io/layout_miami/
+
