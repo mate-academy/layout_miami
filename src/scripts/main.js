@@ -11,3 +11,11 @@ btnNavEl.addEventListener('click', function() {
 menuClose.addEventListener('click', function() {
   menuEl.classList.remove('menu--active');
 });
+
+const menuLinks = document.querySelectorAll('.menu__link');
+
+menuLinks.forEach(function(link) {
+  link.addEventListener('click', function() {
+    menuEl.classList.remove('menu--active');
+  });
+});
