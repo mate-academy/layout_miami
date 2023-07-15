@@ -1,25 +1,37 @@
 .categories {
-  margin: 0 120px;
 
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 24px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+
   }
 
   &__image {
-    @media (max-width: 1260px) {
+    object-fit: cover;
+
+    @include mediumDevices {
       width: 392px;
       height: 187px;
+    }
+
+    @include smallDevices {
+      width: 130px;
+      height: 130px;
     }
   }
 
   &__image-small {
-    @media (max-width: 1260px) {
+    @include mediumDevices {
       width: 184px;
       height: 187px;
+    }
+
+    @include smallDevices {
+      width: 130px;
+      height: 130px;
     }
   }
 
@@ -27,18 +39,21 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 48px 0;
+    margin-bottom: 120px;
   }
 
   &__button {
     width: 324px;
     height: 56px;
-    padding: 0px 48px;
+    padding: 0 48px;
     border-radius: 40px;
     background: $main-text-color;
     color: white;
     transition: 0.5s;
-    margin-bottom: 100px;
+
+    @include smallDevices {
+      width: 288px;
+    }
   }
 
   &__button:hover {
@@ -53,13 +68,31 @@
   }
 
   &__h3 {
-    margin-bottom: 64px;
+    margin-top: 20px;
+    margin-bottom: 44px;
+    max-width: 530px;
+    color: $main-text-color;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+
+    @include smallDevices {
+      font-size: 16px;
+    }
   }
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 1170px;
+  max-width: 1024px;
   margin: 0 auto;
+
+  @include mediumDevices {
+    max-width: 600px;
+  }
+
+  @include smallDevices {
+    max-width: 284px;
+  }
 }
