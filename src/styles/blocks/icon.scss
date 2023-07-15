@@ -1,0 +1,71 @@
+.icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background: no-repeat center;
+  background-size: contain;
+
+  text-decoration: none;
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 12px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: opasity 0.3s;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    margin-left: -23px;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      transform: scale(-1, 1);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+    margin-left: -53px;
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+
+    @include onPhone {
+      margin-left: -8px;
+    }
+
+    @include onTablet {
+      margin-left: -7px;
+    }
+
+    @include onDesktop {
+      margin-left: -6px;
+    }
+  }
+}
