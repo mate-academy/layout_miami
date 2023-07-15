@@ -8,15 +8,24 @@ $_family: Manrope, $_background: Helvetica, $_generic: sans-serif
   font-family: $_family, $_background, $_generic;
 }
 
+@mixin image ($_url, $_height: 100%, $_size: cover,
+$_repeat: no-repeat, $_position: 50%) {
+  background: $_url $_repeat $_position;
+  background-size: $_size;
+  min-height: $_height;
+}
+
+// CSS GRID MIXINS
 @mixin layout ($_grid-size, $_grid-columns, $_grid-gap) {
   display: grid;
   grid-template-columns: repeat($_grid-columns, $_grid-size);
   gap: $_grid-gap;
 }
 
-@mixin image ($_url, $_height: 100%, $_size: cover,
-$_repeat: no-repeat, $_position: 50%) {
-  background: $_url $_repeat $_position;
-  background-size: $_size;
-  min-height: $_height;
+@mixin layoutItems($_columns-start: auto, $_columns-end: auto, $_rows-start: auto, $_rows-end: auto,
+$_justify-self: auto, $_align-self: auto) {
+  grid-column: #{$_columns-start}/$_columns-end;
+  grid-row: #{$_rows-start}/$_rows-end;
+  justify-self: $_justify-self;
+  align-self: $_align-self;
 }
