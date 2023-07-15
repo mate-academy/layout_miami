@@ -7,7 +7,7 @@
   transition: transform 1s ease-in-out;
   background: #c2c2c2;
   height: 100vh;
-  padding: 24px 20px;
+  z-index: 3;
   box-sizing: border-box;
   color: #1d1d1d;
   font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -24,6 +24,9 @@
 
     &:first-child {
       margin-top: 48px;
+      @include for-mac() {
+        margin-top: 44px;
+      }
     }
 
   }
@@ -40,7 +43,28 @@
     @include for-desktop() {
       font-weight: 700;
     }
+    display: inline-block;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: -8px;
+      left: 0;
+      background-color: #1d1d1d;
+      transform-origin: bottom right;
+      transition: transform 0.5s ease-out;
+    }
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
     &-book {
+      &::after {
+        width: 0;
+      }
       font-size: 12px;
       line-height: 16px;
       text-decoration: underline;
@@ -50,11 +74,6 @@
       @include for-desktop() {
         font-weight: 700;
       }
-    }
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
     }
   }
 
