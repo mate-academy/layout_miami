@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
   const className = 'header-transform';
 
-  const scrollPosition = 200; // Adjust this value as needed
+  const scrollPosition = 200;
 
   const toggleClassOnScroll = () => {
     if (window.scrollY >= scrollPosition) {
@@ -21,14 +21,23 @@ document.addEventListener('DOMContentLoaded', e => {
 
   window.addEventListener('scroll', toggleClassOnScroll);
 
-  // TOGGLING NAVIGATION
+  // TOGGLING NAVIGATION (OPEN/CLOSE) & PREVENT PAGE SCROLLNIG WHEN MENU IS OPEN
 
   const hamburgerBtn = document.querySelector('.hamburger');
   const menu = document.querySelector('.menu');
 
   hamburgerBtn.addEventListener('click', event => {
+    event.preventDefault();
     menu.classList.toggle('--menu-toggle');
     hamburgerBtn.classList.toggle('--hamburger-transform');
+
+    if (menu.classList.contains('--menu-toggle')) {
+      document.body.classList.add('page__body--with-menu');
+      document.body.style.removeProperty('overflow-x');
+    } else {
+      document.body.classList.remove('page__body--with-menu');
+      document.body.style.addProperty('overflow-x');
+    }
   });
 
   // SCROLL TO TOP ANIMATION
@@ -47,7 +56,7 @@ document.addEventListener('DOMContentLoaded', e => {
     scrollToTop();
   });
 
-  // Toggle class based on scroll positio
+  // TOGGLE CLASS BASED ON PAGE POSITION
 
   function toggleToTopButton() {
     if (window.scrollY > 200) {
