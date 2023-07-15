@@ -1,6 +1,104 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+
+@mixin breakpoint($keys-list...) {
+  @each $key in $keys-list {
+    @if map-has-key($breakpoints, $key) {
+      $breakpoint-value: map-get($breakpoints, $key);
+
+      @media (min-width: #{$breakpoint-value}) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin bgImgOffsetX ($offsetX, $breakpoints) {
+  background-position: right $offsetX center;
+
+  @include breakpoint($breakpoints) {
+    background-position: center center;
+  }
+}
+
+@mixin gridTemplateBreakpoints($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    @include breakpoint($breakpoint) {
+      display: grid;
+      grid-template-columns: repeat(
+        map-deep-get($grid-config, $breakpoint, columns),
+        map-deep-get($grid-config, $breakpoint, columns-width)
+      );
+
+      column-gap: map-deep-get($grid-config, $breakpoint, columns-gap);
+    }
+  }
+}
+
+@mixin gridItemsPosition() {
+  & > .grid__item {
+    @content;
+  }
+}
+
+@mixin gridItemPosition($item) {
+  & > .grid__item--#{$item} {
+    @content;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:after {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-bottom: ($height / $width) * 100%;
+    @content;
+  }
+
+  > .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin top-actions {
+  --icons-size: 1.5rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr repeat(2, var(--icons-size));
+  gap: 1.88rem;
+
+  @include breakpoint(tablet, desktop) {
+    --icons-size: 2rem;
+    gap: 2rem;
+  }
+}
+
+@mixin top-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1.88rem 0 5.5rem;
+
+  @include breakpoint(tablet) {
+    padding: 2.13rem 0 8.3rem;
+  }
+
+  @include breakpoint(desktop) {
+    padding: 2.25rem 0 12.63rem;
+  }
+}
+
+@mixin image-hover() {
+  transition: transform $transitions-time;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale(1.06);
   }
 }
