@@ -1,0 +1,50 @@
+@use "grid" as *;
+@use "../utils/vars" as *;
+
+@media (min-width: map-get($grid-breakpoints, xs))
+  and (max-width: map-get($grid-breakpoints, sm)) {
+  .grid-layout {
+    @include layout (100px, 2, 10px);
+    min-height: 100vh;
+  }
+
+  .header {
+    &__logo {
+      padding-left: 15px;
+      @include layoutItems (1, 2);
+      img {
+        height: 16px;
+      }
+    }
+
+    &__tel {
+      padding-right: 10px;
+      @include layoutItems (3, 3, $_justify-self: end);
+    }
+
+    &__tel-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__burger {
+      padding-right: 10px;
+      @include layoutItems (4, 4, $_justify-self: end);
+      a {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__burger-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__title {
+      @include layoutItems (1, 4, 2, 2, $_align-self: end);
+      font-size: 36px;
+      padding-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@use "grid" as *;
+@use "../utils/vars" as *;
+
+@media (min-width: map-get($grid-breakpoints, md))
+  and (max-width: map-get($grid-breakpoints, lg)) {
+  .grid-layout {
+    @include layout (80px, 6, 24px);
+    min-height: 100vh;
+  }
+  .header {
+    &__logo {
+      @include layoutItems (1, 2);
+    }
+
+    &__tel {
+      @include layoutItems (5, 5, $_justify-self: end);
+    }
+
+    &__burger {
+      @include layoutItems (6, 6, $_justify-self: start);
+    }
+
+    &__title {
+      @include layoutItems (1, 8, 2, 2, $_align-self: end);
+    }
+  }
+}
