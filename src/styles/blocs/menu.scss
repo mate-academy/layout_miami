@@ -1,0 +1,82 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: $colorCrossMenu;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__list {
+    padding: 0;
+    list-style: none;
+
+    margin: 51px 0 40px;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+
+    @include onDesctop {
+      margin-top: 72px;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+
+    color: $text-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 2px;
+
+    @include hoverAfter (transform, $value-scale-after);
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+
+    text-decoration: none;
+    color: $text-color;
+
+    &--phone {
+      margin-bottom: 16px;
+      position: relative;
+      
+      @extend %h3;
+
+      @include hoverAfter (transform, $value-scale-after);
+    }
+
+    &--action {
+      margin-bottom: 120px;
+
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 110%;
+      letter-spacing: 2px;
+
+      padding-bottom: 8px;
+      border-bottom: 1px solid $text-color;
+
+      @include onTablet {
+        margin-bottom: 330px;
+      }
+    }
+  }
+}

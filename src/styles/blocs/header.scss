@@ -1,0 +1,83 @@
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/bose/header-mobile.jpg);
+
+  @include onTablet {
+    background-image: url(../images/bose/header-tablet.jpg);
+  }
+  @include onDesctop {
+    background-image: url(../images/bose/header-desctop.jpg);
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesctop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding: 12px;
+
+        font-size: 12px;
+        color: $text-color;
+        line-height: 110%;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    @extend %h1;
+    margin-top: 282px;
+    padding-bottom: 94px;
+    font-size: 32px;
+
+    @include onTablet {
+      margin-top: 600px;
+      padding-bottom: 40px;
+      font-size: 40px;
+    }
+
+    @include onDesctop {
+      margin-top: 480px;
+      padding-bottom: 64px;
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      width: 32px;
+      height: 27px;
+      display: block;
+      margin-bottom: 16px;
+
+      background-size: cover;
+      background-image: url(../images/bose/icons/voice.svg);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/bose/icons/voice-desctop.svg);
+      }
+
+      @include onDesctop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
