@@ -1,25 +1,23 @@
-@use "grid" as *;
-@use "../utils/vars" as *;
-
 @media (min-width: map-get($grid-breakpoints, xs))
   and (max-width: map-get($grid-breakpoints, sm)) {
-  // Header mobile media XS
+
+  // Header Mobile Media XS
   .grid-layout {
     @include layout (100px, 2, 10px);
-    min-height: 100vh;
   }
   .header {
     &__logo {
-      padding-left: 15px;
       @include layoutItems (1, 2);
-      img {
-        height: 16px;
-      }
+      padding-left: 15px;
+    }
+
+    &__image {
+      height: 16px;
     }
 
     &__tel {
-      padding-right: 10px;
       @include layoutItems (3, 3, $_justify-self: end);
+      padding-right: 10px;
     }
 
     &__tel-icon {
@@ -28,12 +26,8 @@
     }
 
     &__burger {
-      padding-right: 10px;
       @include layoutItems (4, 4, $_justify-self: end);
-      a {
-        width: 16px;
-        height: 16px;
-      }
+      padding-right: 10px;
     }
 
     &__burger-icon {
@@ -46,5 +40,34 @@
       font-size: 36px;
       padding-left: 10px;
     }
+  }
+
+  // Recommended Mobile Media XS
+  .recommended {
+    max-width: 290px;
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__container {
+      flex-direction: column;
+    }
+  }
+
+  .recommended-item {
+    &__describe {
+      max-width: 100%;
+    }
+
+    &__image {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .recommended-item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 56px;
   }
 }

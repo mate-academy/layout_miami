@@ -1,13 +1,10 @@
-@use "grid" as *;
-@use "../utils/vars" as *;
-
 @media (min-width: map-get($grid-breakpoints, sm))
   and (max-width: map-get($grid-breakpoints, md)) {
   .grid-layout {
     @include layout (100px, 4, 40px);
-    min-height: 100vh;
   }
 
+  // Header Mobile and Tablet Media SM
   .header {
     &__logo {
       @include layoutItems (1, 2);
@@ -24,5 +21,30 @@
     &__title {
       @include layoutItems (1, 4, 2, 2, $_align-self: end);
     }
+  }
+
+   // Recommended Mobile and Tablet Media SM
+  .recommended {
+    max-width: 520px;
+
+    &__container {
+      flex-direction: column;
+    }
+  }
+
+  .recommended-item {
+    &__describe {
+      max-width: 100%;
+    }
+
+    &__image {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .recommended-item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 56px;
   }
 }
