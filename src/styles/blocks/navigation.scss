@@ -7,6 +7,7 @@
   align-items: center;
 
   &__item {
+    position: relative;
     display: flex;
 
     text-decoration: none;
@@ -34,16 +35,23 @@
     }
 
     &-number {
-      margin-right: 8px;
+      width: max-content;
+      margin-right: 20px;
+      padding: 10px 20px;
 
-      display: none;
-      align-items: center;
+      position: absolute;
+      top: 50%;
 
       color: #1b2129;
       font-family: Inter, Arial, sans-serif;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 2px;
+
+      transition: transform 0.3s linear;
+      transform-origin: right;
+
+      transform: translateY(-50%) scale(0);
     }
   }
 
@@ -80,11 +88,17 @@
       flex-direction: row-reverse;
 
       &-menu {
-        @include hover(background-image, url(./../images/menu_hover.svg));
+        &:hover {
+          background-image: url(./../images/menu_hover.svg);
+        }
+      }
+
+      &-number:hover {
+        transform: translateY(-50%) scale(1);
       }
 
       &-phone:hover ~ .navigation__item-number {
-        display: flex;
+        transform: translateY(-50%) scale(1);
       }
     }
   }
