@@ -1,17 +1,32 @@
 .gallery {
-  margin-top: 48px;
-  grid-column: 1 / 13;
-  grid-template-columns: repeat(12, 63px);
+
+  @include for-desktop() {
+    grid-column: 1 / 13;
+  }
+
+  @include for-tablet() {
+    grid-column: 1 / 7;
+  }
+
+  &__container {
+    @include for-desktop() {
+      grid-column: 4 / 10;
+    }
+
+    @include for-tablet() {
+      grid-column: 2 / 6;
+    }
+  }
 
   &__pictures {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: min-content;
-    column-gap: 20px;
+    margin-top: 48px;
 
     @include for-desktop() {
-      grid-template-columns: repeat(12, 63px);
-      column-gap: 24px;
+      @include grid();
+    }
+
+    @include for-tablet() {
+      @include grid-tablet();
     }
 
     &__item {
@@ -21,11 +36,27 @@
       object-position: 20%;
 
       @include for-desktop() {
+        grid-column: span 4;
+
         &--big {
           grid-column: span 8;
         }
         &--small {
           grid-column: span 4;
+        }
+      }
+
+      @include for-tablet() {
+        grid-column: span 3;
+        &:last-child {
+          display: none;
+        }
+
+        &--big {
+          grid-column: span 4;
+        }
+        &--small {
+          grid-column: span 2;
         }
       }
     }
@@ -44,7 +75,7 @@
     }
 
     &--light {
-      color: var(--main-dark, #161616);
+      color: #161616;
       font-family: "Cinzel", sans-serif;
       font-size: 16px;
       font-style: normal;
@@ -53,11 +84,13 @@
     }
   }
 
-  &__container {
-    grid-column: 4 / 10;
-  }
-
   &__button {
-    grid-column: 5 / 9;
+    @include for-desktop() {
+      grid-column: 5 / 9;
+    }
+
+    @include for-tablet() {
+      grid-column: 2 / 6;
+    }
   }
 }
