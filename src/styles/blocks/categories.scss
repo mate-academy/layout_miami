@@ -1,27 +1,53 @@
-@import "./category";
-
 .categories {
-  margin: 64px 20px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (max-width: 743px) {
-    gap: 40px;
+  gap: 64px;
 
-    & > :first-child {
-      margin-bottom: 8px;
+  &__item {
+
+    &-photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    &-photo {
+      cursor: pointer;
+      object-fit: cover;
+      @include hover(transform, 0.5, scale(1.1));
+      width: 130px;
+      height: 130px;
+
+      @media (min-width: 744px) {
+        width: 184px;
+        height: 184px;
+
+        &--big {
+          width: 392px;
+        }
+      }
+
+      @media (min-width: 1260px) {
+        width: 324px;
+        height: 324px;
+
+        &--big {
+          width: 672px;
+        }
+      }
     }
   }
-  @media (min-width: 744px) {
-    margin: 120px 72px 0;
-    gap: 64px;
-  }
-  @media (min-width: 1260px) {
-    margin: 120px 120px 0;
+
+  &__name {
+    margin-top: 16px;
+    color: $main-color;
+    @include interText(16px, 700);
   }
 
   &__button {
+    margin-top: 50px;
     cursor: pointer;
     border-radius: 40px;
     background: $main-color;
