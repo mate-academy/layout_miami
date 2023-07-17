@@ -1,0 +1,109 @@
+.banner {
+  background-image: url("../../src/images/Cover_photo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 90%;
+  min-height: 578px;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: flex-start;
+
+  position: relative;
+  overflow: hidden;
+
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    height: $banner__head-height;
+
+    gap: 10px;
+    padding: 30px 20px;
+
+    max-width: 1260px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  &__logo {
+    color: $color-white;
+    z-index: 1;
+
+    &--black {
+      color: $color-black;
+    }
+  }
+
+  &__phone {
+    justify-self: flex-end;
+    color: $color-white;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: rgb(190, 190, 190);
+    }
+  }
+
+  &__menu-btn-wrapper {
+    justify-self: flex-end;
+    z-index: 1;
+  }
+
+  &__menu-btn {
+    background: transparent;
+    border: none;
+    color: $color-white;
+
+    &::after {
+      content: url("../../src/images/menu-icon.svg");
+    }
+
+    &--close::after {
+      content: url("../../src/images/menu-icon-close.svg");
+    }
+  }
+
+  &__content {
+    align-self: flex-end;
+    justify-self: center;
+  }
+
+  &__title {
+    margin-bottom: 88px;
+
+    font-size: 36px;
+    color: $color-white;
+    text-align: center;
+  }
+
+  @media (min-width: $media-tablet) {
+    background-position: center;
+
+    &__head {
+      padding: 30px 50px;
+    }
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  @media (min-width: $media-desktop) {
+    min-height: 100vh;
+    &__head {
+      padding: 30px 100px;
+    }
+
+    &__title {
+      font-size: 80px;
+    }
+  }
+}
