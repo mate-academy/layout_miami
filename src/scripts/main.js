@@ -1,21 +1,21 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', e => {
-  const element = document.querySelector('#header');
+  const header = document.querySelector('#header');
 
-  const className = 'header-transform';
+  const headerTransform = 'header-transform';
 
   const scrollPosition = 200;
 
   const toggleClassOnScroll = () => {
     if (window.scrollY >= scrollPosition) {
-      element.classList.add(className);
+      header.classList.add(headerTransform);
     } else {
-      element.classList.remove(className);
+      header.classList.remove(headerTransform);
     }
 
     if (menu.classList.contains('--menu-toggle')) {
-      element.classList.remove(className);
+      header.classList.remove(headerTransform);
     }
   };
 
