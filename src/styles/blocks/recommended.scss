@@ -1,32 +1,52 @@
-@import "./recommendedItem";
-
 .recommended {
-  margin: 64px 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
 
   &__containter {
-    margin-top: 120px;
     display: grid;
-    grid-template-rows: auto;
     grid-template-columns: 280px;
     gap: 40px;
-  }
 
-  @media (min-width: 744px) {
-    margin: 64px 120px 0;
-
-    &__containter {
-      gap: 32px;
+    @media (min-width: 744px) {
       grid-template-columns: 392px;
     }
-  }
 
-  @media (min-width: 1260px) {
-    margin: 120px 120px 0 0;
-
-    &__containter {
+    @media (min-width: 1260px) {
       grid-template-columns: repeat(3, 324px);
       gap: 24px;
+
     }
   }
 
+  &-item {
+    cursor: pointer;
+    @include hover(transform, 0.5, scale(1.1));
+
+    &__photo {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 32px;
+    }
+
+    &__text {
+      color: $main-color;
+      @include interText;
+      margin: 8px 0;
+
+      &--bold {
+        font-weight: 700;
+      }
+
+      &--price {
+        margin: 12px 0 0;
+
+        &:before {
+          content: "$ ";
+        }
+      }
+    }
+  }
 }
