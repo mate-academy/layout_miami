@@ -1,0 +1,124 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+h2,
+h3 {
+  margin: 0;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  
+  scroll-behavior: smooth;
+
+  &__grid {
+    display: grid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__body {
+    margin: 0;
+
+    background-color: $color-text-dark;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+
+    &:first-child {
+      @include onTablet {
+        margin-bottom: 132px;
+      }
+      @include onDesktop {
+        margin-bottom: 164px;
+      }
+    }
+    margin-bottom: 92px;
+    display: grid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+
+    &-tittle {
+      margin-bottom: 48px;
+
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+      text-align: center;
+
+      color: #fff;
+
+      @include onTablet {
+        font-size: 48px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 56px;
+
+        font-size: 64px;
+      }
+
+    }
+
+    &:first-child .page__section-tittle {
+      margin-bottom: 32px;
+
+      text-align: left;
+    }
+
+    &-subtittle {
+      margin-bottom: 8px;
+
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+      color: #fff;
+    }
+
+    &-description {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #fff;
+    }
+  }
+}
