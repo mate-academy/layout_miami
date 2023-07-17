@@ -4,6 +4,30 @@
   position: relative;
   width: 2.4em;
 
+  .--hamburger-transform {
+
+    .hamburger__btn:nth-child(1),
+    .hamburger__btn:nth-child(2),
+    .hamburger__btn:nth-child(3) {
+      transition: rotate 0.3s $easing;
+      transform-origin: left center;
+    }
+
+    .hamburger__btn:nth-child(1) {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .hamburger__btn:nth-child(2) {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .hamburger__btn:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+
   &__btn {
     display: block;
     position: absolute;
@@ -12,7 +36,7 @@
     background-color: $c-main;
     border-radius: 16px;
     transform-origin: center;
-    transition: width 0.3s cubic-bezier(0.45, 0.03, 0.52, 0.95);
+    transition: width 0.3s $easing;
 
     &:nth-child(1) {
       top: 4px;
@@ -27,29 +51,17 @@
     }
   }
 
-  .--hamburger-transform {
-
+  &:hover {
     .hamburger__btn:nth-child(1) {
-      transform: rotate(-45deg) translate(-1px, 10px);
+      width: 1.2em;
     }
 
     .hamburger__btn:nth-child(2) {
-      transform: translateX(100%);
-      opacity: 0;
+      width: 1.7em;
     }
 
     .hamburger__btn:nth-child(3) {
-      transform: rotate(45deg);
-    }
-  }
-
-  &:hover {
-    .hamburger__btn:nth-child(1) {
-      width: 1.9em;
-    }
-
-    .hamburger__btn:nth-child(3) {
-      width: 1.5em;
+      width: 1.3em;
     }
   }
 }
