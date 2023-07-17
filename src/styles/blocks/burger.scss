@@ -1,0 +1,35 @@
+@use "./../utils/mixins";
+
+.burger {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    background-image: url("./../../src/images/hamburger.svg");
+    background-size: cover;
+  }
+
+  &::after {
+    display: none;
+    content: "";
+    background-image: url("./../../src/images/hamburger-hover.svg");
+    background-size: cover;
+    width: 18px;
+    height: 12px;
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden();
+  }
+}
