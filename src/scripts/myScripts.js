@@ -5,13 +5,7 @@ const submit = document.getElementById('myForm');
 
 submit.addEventListener('submit', (e) => e.preventDefault());
 
-//  CODE BELOW WORKS ONLY WHEN ISERTED DIRECTLY IN HTML
-//
-// function scrollToTop() {
-//   document.documentElement.scrollTop = 0;
-//   document.body.scrollTop = 0;
-// }
-
+// top scroll
 const mybutton = document.getElementById('myBtn');
 
 window.onscroll = function() {
@@ -27,6 +21,9 @@ function scrollFunction() {
   }
 }
 
+mybutton.addEventListener('click', (scrollToTop));
+
+// scroll lock
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('body--with-menu');
@@ -34,3 +31,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('body--with-menu');
   }
 });
+
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
