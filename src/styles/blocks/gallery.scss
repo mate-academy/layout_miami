@@ -1,4 +1,5 @@
 .gallery {
+  grid-column: 1 / 3;
 
   @include for-desktop() {
     grid-column: 1 / 13;
@@ -20,6 +21,18 @@
 
   &__pictures {
     margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    column-gap: 20px;
+
+    &--small {
+      @media (max-width: 743px) {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(3, 88px);
+        column-gap: 8px;
+      }
+    }
 
     @include for-desktop() {
       @include grid();
@@ -33,7 +46,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 20%;
+      // object-position: 20%;
+
+      grid-column: span 1;
 
       @include for-desktop() {
         grid-column: span 4;
