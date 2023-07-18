@@ -1,9 +1,11 @@
+@import "../utils/mixins";
+
 .header {
   background-color: black;
   background-image: url("./images/header-background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 50%;
   min-height: 100vh;
 
   box-sizing: border-box;
@@ -11,4 +13,24 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 100px;
+
+  @include for-desktop() {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: 198px 1fr;
+    gap: 24px;
+    grid-template-areas: "nav nav nav nav nav nav nav nav nav nav nav nav"
+      "title title title title title title title title title title title title";
+    justify-content: center;
+
+    &__navigation {
+      grid-area: nav;
+      align-self: self-start;
+      margin: 0 50px;
+    }
+
+    &__title {
+      grid-area: title;
+    }
+  }
 }
