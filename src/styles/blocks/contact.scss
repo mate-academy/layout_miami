@@ -1,56 +1,110 @@
-@import "./contact-data";
-@import "./contact-form";
-
 .contact {
-  box-sizing: border-box;
-  margin: 96px 20px 0;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  gap: 48px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 48px 24px;
 
   &__title {
-    grid-column: 1 / 3;
+    grid-column: 1 / 5;
     grid-row: 1 / 2;
   }
 
   &__form {
-    grid-column: 1 / 3;
+    width: 100%;
+    max-width: 288px;
+    grid-column: 1 / 5;
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 15px;
+
+    @media (min-width: 1260px) {
+      max-width: 411px;
+    }
+
+    &-input {
+      height: 48px;
+      color: $main-color;
+      border-radius: 40px;
+      @include interText(14px, 400);
+      @extend %contact-inputs;
+    }
+
+    &-textarea {
+      height: 148px;
+      color: $main-color;
+      border-radius: 16px;
+      @include interText(14px, 400);
+      @extend %contact-inputs;
+    }
+
+    &-button {
+      margin-top: 16px;
+      cursor: pointer;
+      border-radius: 40px;
+      background: $main-color;
+      height: 56px;
+      color: #fff;
+      text-align: center;
+      @include interText(16px, 700);
+      border: 3px solid $main-color;
+
+      &:hover {
+        background-color: #fff;
+        color: $main-color;
+      }
+
+      &:active {
+        background-color: #111;
+        color: #fff;
+      }
+    }
   }
 
-  &__data {
-    grid-column: 1 / 3;
+  &__list {
+    margin: 0 auto;
+    grid-column: 1 / 5;
     grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 24px;
+    gap: 52px;
 
+    &-item {
+      @each $title, $prop in $contact-labels {
+        &--#{$prop} {
+          & ::before {
+            content: "#{$title}";
+            position: absolute;
+            top: -24px;
+            left: 0;
+            @extend %contact-label;
+            @include interText(14px);
+          }
+        }
+      }
+    }
+
+    &-link {
+      color: $main-color;
+      @include interText(16px, 400);
+      @extend %contact-hidden-links;
+    }
   }
 
   @media (min-width: 744px) {
-    margin: 120px 72px 0;
-    gap: 24px;
-    &__title {
+
+    &__form {
       grid-column: 1 / 3;
-      grid-row: 1 / 2;
+      grid-row: 2 / 4;
     }
 
-    &__form {
-      width: 288px;
-      grid-column: 1 / 2;
-      grid-row: 2 / 3;
-    }
-
-    &__data {
-      grid-column: 2 / 3;
-      grid-row: 2 / 3;
-
+    &__list {
+      grid-column: 3 / 5;
+      grid-row: 2 / 4;
     }
   }
-  @media (min-width: 1260px) {
-    grid-gap: 32px 198px;
-    margin: 120px 120px 0;
 
-    &__form {
-      width: 411px;
-    }
-  }
 }
