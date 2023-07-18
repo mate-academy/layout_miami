@@ -1,65 +1,76 @@
-@import "./links";
-
 .menu {
+  box-sizing: border-box;
   background-color: $menu-bg-color;
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 100%;
-  bottom: 0;
-  z-index: 0;
-  transition: right 0.5s linear;
-  overflow-y: auto;
+  right: 0;
+  margin-left: 100%;
+  left: 0;
+  min-height: 100vh;
+  transition: margin-left 0.3s linear;
 
-  &__links {
+  &__list {
     padding: 32px 20px;
-  }
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 
-  &__call-link {
-    display: block;
-    margin: 40px 20px;
-  }
-
-  &__phone {
-    color: $main-color;
-    margin: 0 20px;
-    padding: 8px 0;
-
-    @include interText(16px, 700);
-    text-transform: uppercase;
-    text-decoration: none;
-
-    &--link {
-      margin-top: 16px;
-      display: inline;
-      @include interText(12px);
+    &-link {
+      position: relative;
+      @include interText(22px, 700);
+      color: $main-color;
       letter-spacing: 2px;
-      border-bottom: 1px solid $main-color;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      &--phone {
+        @include interText(16px, 700);
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      &--callText {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        border-bottom: 1px solid $main-color;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $main-color;
+        transition: width 0.3s linear;
+      }
+
+      &:hover {
+        &::after {
+          content: "";
+          width: 100%;
+        }
+      }
     }
   }
 
   @media(min-width: 744px) {
-    &__links {
-      padding: 32px 72px;
-    }
-
-    &__phone {
-      margin: 0 72px;
+    &__list {
+      padding: 56px 72px;
     }
   }
 
   @media(min-width: 1260px) {
-    &__links {
-      padding: 32px 120px;
-    }
-
-    &__phone {
-      margin: 0 120px;
+    &__list {
+      padding: 56px 120px;
     }
   }
 
   &:target {
-    right: 0;
+    margin-left: 0;
   }
 
 }

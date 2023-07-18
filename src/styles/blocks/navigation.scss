@@ -8,6 +8,53 @@
     display: flex;
     align-items: center;
 
+    &-number {
+      font-size: 16px;
+    }
+
+    &--phone {
+      position: relative;
+
+      & > :first-child {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -8px;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        transform: translateX(-100%);
+        color: $main-color;
+        @include interText(12px, 700);
+        letter-spacing: 2px;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+      }
+
+      &:hover {
+        & > :first-child {
+          opacity: 1;
+        }
+      }
+
+    }
+
+    &--hover {
+      & > :last-child {
+        display: none;
+      }
+
+      &:hover {
+        & > :last-child {
+          display: block;
+        }
+
+        & > :first-child {
+          display: none;
+        }
+      }
+    }
+
     &--last {
       grid-column-start: 3;
     }
