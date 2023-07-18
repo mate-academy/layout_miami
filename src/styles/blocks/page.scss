@@ -1,0 +1,79 @@
+.page {
+  height: 150px;
+  min-width: $page-width;
+  padding: 0;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  background-color: #fff;
+  border-radius: 5px;
+
+  box-shadow: 0 0 14px 1px #363636;
+
+  transition: transform 0.3s;
+
+  &:not(.coming-soon):hover {
+    transform: scale(1.05);
+  }
+
+  &__background {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: background-image 0.3s;
+
+    filter: blur(2px);
+
+    &--bang-olufsen {
+      background-image: url(../pages/bang-olufsen/images/header_background.jpg);
+    }
+
+    &--bose {
+      background-image: url(../pages/bose/images/header_background.jpg);
+    }
+
+    &--nothing {
+      background-image: url(../pages/nothing/images/header_background.jpg);
+    }
+
+    &--bike {
+      background-image: url(../pages/bike/images/header_background.jpg);
+    }
+
+    &--met {
+      background-image: url(../pages/met/images/header_background.jpg);
+    }
+  }
+
+  &__logo {
+    width: 70%;
+
+    z-index: 1;
+
+    &--small {
+      width: 40%;
+    }
+  }
+
+  &.coming-soon:hover .page__background {
+    background-image: url(../images/coming-soon.jpg);
+
+    filter: unset;
+
+    & + .page__logo {
+      display: none;
+    }
+  }
+
+  &.coming-soon:active {
+    pointer-events: none;
+  }
+}
