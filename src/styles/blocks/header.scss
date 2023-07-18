@@ -1,0 +1,68 @@
+@import "utils/variables.scss";
+@import "utils/mixins.scss";
+
+.header {
+  margin-bottom: 60px;
+
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header.jpg");
+    background-position: 40% 27%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+  }
+
+  &__actions {
+    --icon-width: 18px;
+
+    display: grid;
+    grid-template-columns: 1fr repeat(2, var(--icon-width));
+    justify-items: left;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, 75%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 0.2s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
