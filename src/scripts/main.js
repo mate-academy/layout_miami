@@ -2,7 +2,7 @@
 
 const btnNavEl = document.querySelector('.icon--menu');
 const menuEl = document.querySelector('.menu');
-const menuClose = document.querySelector('.menu__navigation--close-button');
+const menuClose = document.querySelector('.menu--close-button');
 
 btnNavEl.addEventListener('click', function() {
   menuEl.classList.add('menu--active');
