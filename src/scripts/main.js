@@ -2,8 +2,12 @@
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#nav') {
-    document.body.classList.add('page__body--with-menu');
+    const elementHtml = document.documentElement;
+
+    elementHtml.classList.add('page__html--with-menu');
   } else {
-    document.body.classList.remove('page__body--with-menu');
+    const elementHtml = document.documentElement;
+
+    elementHtml.classList.remove('page__html--with-menu');
   }
 });
