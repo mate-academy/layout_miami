@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('#header');
   const headerTransform = 'header-transform';
   const scrollPosition = 200;

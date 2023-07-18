@@ -1,9 +1,7 @@
+// UTILS
 @import "utils";
 @import "fonts";
 @import "typography";
-
-// LAYOUT
-@import "./layout/grid";
 
 // COMPONENTS
 @import "./components/cards";
@@ -12,6 +10,7 @@
 @import "./components/navigation";
 
 // SECTIONS
+@import "./layout/sections/hero";
 @import "./layout/sections/products";
 @import "./layout/sections/about";
 @import "./layout/sections/contact";
@@ -33,18 +32,29 @@ body {
   min-height: 100vh;
 }
 
-img {
+.img {
   width: 100%;
   object-fit: cover;
 }
 
-ul {
+ul[class*="list"] {
   list-style: none;
 }
 
-a {
+a[class*="link"] {
   text-decoration: none;
   color: inherit;
+}
+
+[class*="img_box"] {
+  overflow: hidden;
+  &:hover {
+    .img {
+      transform: scale(1.3) rotate(10deg);
+      transition: all 1s $easing;
+      cursor: zoom-in;
+    }
+  }
 }
 
 .section {
@@ -54,12 +64,19 @@ a {
 
 .section:not(.about__image),
 .header {
-  padding-left: 2em;
-  padding-right: 2em;
-}
 
-.hero {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  @include for-mobile () {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include for-tablets () {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  @include for-desktops () {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
 }
