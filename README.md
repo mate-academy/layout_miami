@@ -1,15 +1,9 @@
 # Miami landing page
 
-In this task, you will learn how to implement a landing page. To do that:
+ [DEMO LINK](https://NVlasenko.github.io/layout_miami/);
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-  - [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+-This project is a web page called "MyBike". It is dedicated to bicycles and provides information on various bicycle models, their specifications and prices. The page also includes sections "Move Free" describing the speed and adaptability of the bikes, "Compare Bikes" with the ability to compare different models and their features, "The Details" with detailed information about the features of the bikes, and "Contact us" to contact the team project.
+
+-Technologies used in the project include HTML, CSS, BEM and JavaScript. HTML is used to create the structure of the page, CSS is used for design and styling, BEM is based on the principle of dividing the interface into independent blocks, and JavaScript is used to add interactivity and event processing.
+
+-https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?type=design&node-id=41317-204&mode=design&t=c9OVL9ytmSS1rw60-0
