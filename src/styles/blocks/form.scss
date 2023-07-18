@@ -1,0 +1,50 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    background-color: #f8f8fa;
+    border-radius: 40px;
+    color: #7e7e83;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding-left: 16px;
+    border: 0;
+  }
+
+  &__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    height: 120px;
+    background-color: #f8f8fa;
+    border-radius: 16px;
+    color: #7e7e83;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 14px 16px;
+    border: 0;
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+}
