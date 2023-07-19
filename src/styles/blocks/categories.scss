@@ -1,0 +1,43 @@
+.categories {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+
+  &__item {
+
+    &-photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    &-photo {
+      cursor: pointer;
+      object-fit: cover;
+      @include hover(transform, 0.5, scale(1.1));
+
+      @each $min-width, $normal, $stretch in $category-sizes {
+        @media (min-width: $min-width) {
+          width: $normal;
+          height: $normal;
+
+          &--big {
+            width: $stretch;
+          }
+        }
+      }
+    }
+  }
+
+  &__name {
+    margin-top: 16px;
+    @include interText(16px, 700);
+  }
+
+  &__button {
+    margin-top: 50px;
+    @extend %button;
+  }
+}

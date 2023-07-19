@@ -1,0 +1,68 @@
+.menu {
+  box-sizing: border-box;
+  background-color: $menu-bg-color;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-left: 100%;
+  left: 0;
+  min-height: 100vh;
+  transition: margin-left 0.3s linear;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-link {
+      position: relative;
+      @include interText(22px, 700);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      &--phone {
+        @include interText(16px, 700);
+        text-transform: uppercase;
+      }
+
+      &--callText {
+        display: inline-block;
+        margin-top: 16px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        border-bottom: 1px solid $main-color;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -7px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $main-color;
+        transition: width 0.3s linear;
+      }
+
+      &:hover {
+        &::after {
+          content: "";
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @each $min, $top, $right in $menu-paddings {
+    @media (min-width: $min) {
+      &__list {
+        padding: $top $right;
+      }
+    }
+  }
+
+  &:target {
+    margin-left: 0;
+  }
+
+}

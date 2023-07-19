@@ -1,4 +1,75 @@
-%h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+%contact-label {
+  position: absolute;
+  left: 0;
+  top: -24px;
+  color: #9fadc2;
+}
+
+%contact-hidden-links {
+  position: relative;
+  color: $main-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: $main-color;
+    text-decoration: none;
+  }
+}
+
+%contact-inputs {
+  cursor: pointer;
+  box-sizing: border-box;
+  resize: none;
+  width: 100%;
+  padding: 14px 16px;
+  background: #f8f8fa;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  transition: all 0.3s linear;
+  & ::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border: 1px solid #d5d7de;
+    background: #f8f8fa;
+  }
+
+  &:focus {
+    border: 1px solid #292929;
+    background: #f8f8fa;
+  }
+}
+
+%button {
+  cursor: pointer;
+  border-radius: 40px;
+  background: $main-color;
+  @include interText(16px, 700);
+  width: 100%;
+  height: 56px;
+  color: #fff;
+  text-align: center;
+  border: 3px solid $main-color;
+  @extend %max-width;
+  transition: all 0.3s linear;
+
+  &:hover {
+    background-color: #fff;
+    color: $main-color;
+  }
+
+  &:active {
+    background-color: #111;
+    color: #fff;
+  }
+}
+
+%max-width {
+  @each $min-width, $width in $max-item-width {
+    @media (min-width: $min-width) {
+      max-width: $width;
+    }
+  }
 }

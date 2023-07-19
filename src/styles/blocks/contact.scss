@@ -1,0 +1,86 @@
+.contact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 48px 24px;
+
+  &__title {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+  }
+
+  &__form {
+    width: 100%;
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 16px;
+    @extend %max-width;
+
+    &-input {
+      height: 48px;
+      border-radius: 40px;
+      @include interText(14px, 400);
+      @extend %contact-inputs;
+    }
+
+    &-textarea {
+      height: 148px;
+      border-radius: 16px;
+      @include interText(14px, 400);
+      @extend %contact-inputs;
+    }
+
+    &-button {
+      margin-top: 16px;
+      @extend %button;
+    }
+  }
+
+  &__list {
+    margin: 0 auto;
+    grid-column: 1 / 5;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 24px;
+    gap: 52px;
+
+    &-item {
+      @each $title, $prop in $contact-labels {
+        &--#{$prop} {
+          & ::before {
+            content: "#{$title}";
+            position: absolute;
+            top: -24px;
+            left: 0;
+            @extend %contact-label;
+            @include interText(14px);
+          }
+        }
+      }
+    }
+
+    &-link {
+      @include interText(16px, 400);
+      @extend %contact-hidden-links;
+    }
+  }
+
+  @media (min-width: 744px) {
+
+    &__form {
+      grid-column: 1 / 3;
+      grid-row: 2 / 4;
+    }
+
+    &__list {
+      grid-column: 3 / 5;
+      grid-row: 2 / 4;
+    }
+  }
+
+}

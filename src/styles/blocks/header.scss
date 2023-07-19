@@ -1,0 +1,40 @@
+@import "./navigation";
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  background-position-x: center;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__image {
+    max-width: 48px;
+    height: auto;
+  }
+
+  @media (min-width: 1260px) {
+    background-position-y: center;
+
+    &__image {
+      max-width: 63px;
+    }
+  }
+
+  @each $min, $top, $right, $gap in $header-paddings {
+    @media (min-width: $min) {
+      padding: $top $right;
+      gap: $gap;
+    }
+  }
+}

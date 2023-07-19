@@ -1,0 +1,47 @@
+.recommended {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+
+  &__containter {
+    display: grid;
+    gap: 40px 24px;
+
+    @each $min-width, $cols, $size in $recommended-sizes {
+      @media (min-width: $min-width) {
+        grid-template-columns: repeat($cols, $size);
+      }
+    }
+  }
+
+  &-item {
+    cursor: pointer;
+    @include hover(transform, 0.5, scale(1.1));
+
+    &__photo {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 32px;
+    }
+
+    &__text {
+      color: $main-color;
+      @include interText;
+      margin: 8px 0;
+
+      &--bold {
+        font-weight: 700;
+      }
+
+      &--price {
+        margin: 12px 0 0;
+
+        &:before {
+          content: "$ ";
+        }
+      }
+    }
+  }
+}
