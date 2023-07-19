@@ -1,11 +1,68 @@
+@import "utils/variables.scss";
+@import "utils/mixins.scss";
+
 .page {
   font-family: Poppins, sans-serif;
   font-size: 16px;
   color: #fff;
 
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &--menu-open {
+    overflow: hidden;
+  }
+
   &__body {
     margin: 0;
     background-color: #1d1d1d;
     overflow-x: hidden;
+
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(200%);
+    transition: transform 0.4s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 80px;
+
+    @include onTablet {
+      margin-bottom: 130px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 150px;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 48px;
+
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+
+    text-align: center;
+    letter-spacing: -1.5px;
+    text-transform: capitalize;
+
+    @include onTablet {
+      font-size: $titleSizeTablet;
+    }
+
+    @include onDesktop {
+      font-size: $titleSizeDesktop;
+    }
   }
 }
