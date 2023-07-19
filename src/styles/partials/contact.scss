@@ -3,6 +3,10 @@
     @include on-tablet {
       @include grid(2);
     }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__title {
@@ -18,17 +22,16 @@
     margin-bottom: 4px;
   }
 
-  &__phone {
+  &__link {
+    display: inline-block;
     text-decoration: none;
     font-weight: 700;
     color: $color-main-light;
-  }
+    @include hover(color, $color-accent);
 
-  &__address {
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.4;
-    color: $color-main-light;
+    &--address {
+      line-height: 1.4;
+    }
   }
 
   &__row {
@@ -38,8 +41,21 @@
   &__information {
     margin-bottom: 48px;
 
-    @include on-tablet {
+    &:last-of-type {
+      @include on-tablet {
+        margin-bottom: 0;
+      }
+    }
+
+    @include on-desktop {
       margin-bottom: 0;
+    }
+  }
+
+  &__left {
+    @include on-desktop {
+      grid-column: span 2;
+      @include grid(2);
     }
   }
 }
