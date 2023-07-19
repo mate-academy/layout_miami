@@ -14,6 +14,14 @@
   transition: background-color 0.3s ease-in;
   cursor: url("../images/icons/icon-mice.svg"), auto;
 
+  &:hover {
+    background-color: $color-accent-dark;
+  }
+
+  &:active {
+    background-color: $color-accent-light;
+  }
+
   &--secondary {
     display: inline-block;
     color: inherit;
@@ -47,11 +55,55 @@
     }
   }
 
-  &:hover {
-    background-color: $color-accent-dark;
-  }
+  &--scroll {
+    position: fixed;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+    background-color: $color-accent;
+    background-image: url(../images/icons/icon-top.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $color-bright;
+    transition: background-color 0.3s ease-in,
+      background-position-y 0.3s ease-in;
 
-  &:active {
-    background-color: $color-accent-light;
+    &::before {
+      content: " ";
+      position: absolute;
+      z-index: -1;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 3px solid $color-accent;
+      border-radius: 50%;
+      transition: border-color 0.3s ease-in;
+    }
+
+    &:hover {
+      background-color: $color-accent-dark;
+      background-position-y: 0;
+
+      &::before {
+        border-color: $color-accent-dark;
+      }
+    }
+
+    &:active {
+      background-color: $color-accent-light;
+
+      &::before {
+        border-color: $color-accent-light;
+      }
+    }
   }
 }
