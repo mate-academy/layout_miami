@@ -1,3 +1,9 @@
+@mixin for-desktop() {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
 .header {
   /* layout */
   background-color: #220d0a;
@@ -10,6 +16,19 @@
   padding: 25px 20px 20px;
   box-sizing: border-box;
 
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+
+  &__navigation {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    align-self: start;
+  }
+
   &__title {
     text-align: center;
     position: absolute;
@@ -17,5 +36,21 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+
+    grid-column: 1 / 3;
+    grid-template-rows: 2 / 3;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+
+    &__navigation {
+      grid-column: 1 / 13;
+    }
+
+    &__title {
+      grid-column: 1 / 13;
+    }
   }
 }
