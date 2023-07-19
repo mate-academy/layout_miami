@@ -3,6 +3,7 @@
 
 .section {
   display: block;
+
   @include for-desktop() {
     display: grid;
     grid-template-columns: repeat(12, 63px);
@@ -19,6 +20,12 @@
         grid-column: 1 / 6;
       }
     }
+
+    &--default {
+      @include for-desktop() {
+        grid-column: 5 / 9;
+      }
+    }
   }
 
   &__title-flex {
@@ -33,7 +40,7 @@
   }
 
   &__cloisters {
-    grid-column: 6/ 13;
+    grid-column: 6 / 13;
   }
 
   &__description {
@@ -45,7 +52,23 @@
     line-height: 27px;
   }
 
-  &--more-to-explore > &__more-explore:last-child {
+  &__exhibition {
+    @include for-desktop() {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__more-explore {
+    @include for-desktop() {
+      grid-column: span 4;
+    }
+  }
+
+  &__bumper {
+    margin: 0;
+  }
+
+  & > &__more-explore:last-child {
     margin-bottom: 92px;
   }
 }
