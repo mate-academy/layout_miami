@@ -4,3 +4,21 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include for-desktop() {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+}
