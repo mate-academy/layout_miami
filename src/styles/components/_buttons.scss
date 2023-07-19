@@ -1,3 +1,50 @@
+// TO TOP BTN
+.btn {
+  @extend %btn;
+
+  &__to_top {
+    position: fixed;
+    bottom: 25%;
+    right: -100%;
+    width: 60px;
+    height: 60px;
+    background-color: darken($body-bg-c, 10);
+    opacity: 0.7;
+    @include z-index(top-btn);
+    @include hover(opacity, 0.9);
+    transition: right 0.3s $easing;
+    cursor: pointer;
+  }
+
+  &__primary {
+    width: auto;
+    background: $c-main;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($body-bg-c, 5);
+      color: $c-main;
+      transition: background-color 0.3s $easing;
+    }
+
+    @include for-mobile () {
+      font-size: 16px;
+      width: 100%;
+      padding: 16px 48px;
+    }
+
+    @include for-tablets () {
+      width: 100%;
+      padding: 20px 48px;
+    }
+  }
+// JS CLASS ADDED TO TO TOP BUTTON
+  &__to_top.--toTop-visible {
+    right: 5%;
+    box-shadow: $elements-shadow;
+  }
+}
+
 // HAMBURGER
 
 .hamburger {
@@ -64,48 +111,5 @@
     .hamburger__btn:nth-child(3) {
       width: 1.3em;
     }
-  }
-}
-
-// TO TOP BTN
-.btn {
-  @extend %btn;
-
-  &__to_top {
-    position: fixed;
-    bottom: 25%;
-    right: -100%;
-    width: 60px;
-    height: 60px;
-    background-color: darken($body-bg-c, 10);
-    opacity: 0.7;
-    @include z-index(top-btn);
-    @include hover(opacity, 0.9);
-    transition: right 0.3s $easing;
-    cursor: pointer;
-  }
-
-  &__primary {
-    width: auto;
-    background: $c-main;
-    // color: $c-gray;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($body-bg-c, 5);
-      color: $c-main;
-      transition: background-color 0.3s $easing;
-    }
-
-    @include for-mobile () {
-      font-size: 16px;
-      width: 100%;
-      padding: 16px 48px;
-    }
-  }
-
-  &__to_top.--toTop-visible {
-    right: 5%;
-    box-shadow: $elements-shadow;
   }
 }
