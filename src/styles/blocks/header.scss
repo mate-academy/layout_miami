@@ -1,10 +1,17 @@
 .header {
-  background-color: #000;
+  background-color: #c1c1c1;
+  background-blend-mode: multiply;
   background-image: url("../images/bg_image_mobile.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
   padding: 0 20px 80px;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
 
   @include for-tablet() {
     background-image: url("../images/bg_image.jpg");
@@ -12,6 +19,9 @@
     background-size: cover;
     min-height: 100vh;
     padding: 0 20px 80px;
+
+    @include grid-tablet();
+    align-items: center;
   }
 
   @include for-desktop() {
@@ -20,25 +30,56 @@
     background-size: cover;
     min-height: 100vh;
     padding: 0 20px 80px;
-  }
 
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  column-gap: 20px;
-
-  @include for-desktop() {
-    grid-template-columns: repeat(12, 63px);
-    column-gap: 24px;
+    @include grid();
+    align-items: center;
   }
 
   &__navigation {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
+    margin-top: 25px;
     align-self: start;
 
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-columns: repeat(4, 65px);
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    column-gap: 7px;
+
+    @include for-tablet() {
+      @include grid-tablet();
+      margin-top: 32px;
+      grid-column: 1 / 7;
+    }
+
     @include for-desktop() {
+      @include grid();
+      margin-top: 32px;
       grid-column: 1 / 13;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    &__item {
+      width: 24px;
+      height: 24px;
+
+      @include for-desktop() {
+        width: 32px;
+        height: 32px;
+      }
+
+      @include for-tablet() {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 
@@ -46,6 +87,10 @@
     grid-column: 1 / 3;
     grid-row: 2 / 3;
     align-self: start;
+
+    @include for-tablet() {
+      grid-column: 1 / 7;
+    }
 
     @include for-desktop() {
       grid-column: 1 / 13;
