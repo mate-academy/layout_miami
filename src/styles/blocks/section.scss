@@ -1,8 +1,39 @@
 @import "../utils/vars";
+@use "../utils/mixins";
 
 .section {
+  display: block;
+  @include for-desktop() {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
+
   &__title {
     text-align: center;
+
+    &--museum-hours {
+      justify-self: start;
+
+      @include for-desktop() {
+        grid-column: 1 / 6;
+      }
+    }
+  }
+
+  &__title-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &__fifth-avenue {
+    grid-column: 6 / 13;
+  }
+
+  &__cloisters {
+    grid-column: 6/ 13;
   }
 
   &__description {
