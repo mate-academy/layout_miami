@@ -3,17 +3,18 @@
 .pictures {
   @include grid();
 
+  @include for-tablet() {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   &__three-column {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
-  }
 
-  &__item--three {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    @include for-desktop() {
-      height: 320px;
+    @include for-tablet() {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
   }
 
@@ -27,6 +28,10 @@
       height: 320px;
     }
 
+    @include for-tablet() {
+      grid-column: span 1;
+    }
+
     &--small {
       @include for-desktop() {
         grid-column: span 4;
@@ -37,6 +42,30 @@
       @include for-desktop() {
         grid-column: span 8;
       }
+
+      @include for-tablet() {
+        grid-column: span 2;
+    }
+  }
+
+  &--three {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include for-desktop() {
+      height: 320px;
+    }
+
+    @include for-tablet() {
+      height: 280px;
+      object-fit: cover;
+    }
+  }
+
+  &--hidden {
+    @include for-tablet() {
+      display: none;
     }
   }
 
@@ -47,4 +76,5 @@
   &__item--left {
     object-position: 20% 80%;
   }
+}
 }

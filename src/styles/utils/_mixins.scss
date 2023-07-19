@@ -1,9 +1,8 @@
-// @mixin hover($_property, $_toValue) {
-//   transition: #{$_property} 0.3s;
-//   &:hover {
-//     #{$_property}: $_toValue;
-//   }
-// }
+@mixin for-tablet() {
+  @media (min-width: 720px) and (max-width: 1019px) {
+    @content;
+  }
+}
 
 @mixin for-desktop() {
   @media (min-width: 1020px) {
@@ -17,6 +16,12 @@
   grid-template-columns: repeat(2, 130px);
   grid-template-rows: 1fr;
   gap: 20px;
+
+  @include for-tablet() {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 24px;
+  }
 
   @include for-desktop() {
     grid-template-columns: repeat(12, 63px);

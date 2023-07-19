@@ -1,3 +1,5 @@
+@use "../utils/mixins" as *;
+
 .menu {
   position: fixed;
   top: 0;
@@ -8,15 +10,32 @@
   background-color: #d12d35;
   padding: 0 20px 20px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+
+  @include grid();
+
+  align-content: start;
 
   &:target {
     transform: translateX(0);
   }
 
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
   &__links {
     margin-bottom: 32px;
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__title {
@@ -25,6 +44,12 @@
     font-weight: 700;
     text-transform: uppercase;
     line-height: 27px;
+
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__paragraph {
@@ -33,6 +58,22 @@
     font-weight: 700;
     text-transform: uppercase;
     line-height: 27px;
+
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__close-icon {
+    width: 16px;
+    height: 16px;
+
+    @include for-desktop() {
+      width: 21.3px;
+      height: 21.3px;
+    }
   }
 
   &__call-link {
