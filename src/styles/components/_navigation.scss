@@ -16,6 +16,10 @@
     @include for-tablets () {
       padding: 12em 7.2em;
     }
+
+    @include for-desktops () {
+      padding: 12em;
+    }
   }
 
   &__list {
@@ -28,6 +32,7 @@
   }
 
   &__link {
+    position: relative;
     font-family: "SpaceGrotesk-Bold", sans-serif;
     overflow: hidden;
     color: $c-main;
@@ -35,9 +40,22 @@
     line-height: 2.2rem;
     font-weight: 700;
     letter-spacing: 2px;
-    position: relative;
     display: flex;
     flex-flow: column wrap;
+    width: fit-content;
+    transition: all .3s $easing;
+
+    &:hover:not(:nth-child(5)) {
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+        height: 1px;
+        width: 100%;
+        background-color: $c-main;
+      }
+    }
 
     &--phone,
     &--link {
@@ -63,7 +81,7 @@
 }
 
 .page__body--with-menu {
-  overflow-y: hidden !important;
+  overflow-y: hidden;
 
   .header {
     background-color: $menu-bg-c;

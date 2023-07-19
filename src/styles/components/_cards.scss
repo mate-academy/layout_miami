@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
 
+
   @include for-tablets () {
     flex-flow: column wrap;
   }
@@ -13,7 +14,6 @@
   }
 
   .card {
-
     @include for-mobile () {
       margin-top: 40px;
     }
@@ -22,9 +22,21 @@
       margin-bottom: 56px;
     }
 
+    @include for-desktops () {
+      width: 324px;
+      height: 510px;
+    }
+
     &__describe {
       padding-top: 24px;
       padding-bottom: 40px;
+
+      @include for-desktops () {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        padding-bottom: 0;
+      }
 
       &_title {
         font-family: "SpaceGrotesk-Bold", sans-serif ;
@@ -36,6 +48,11 @@
       &_text {
         padding-top: 8px;
         padding-bottom: 12px;
+        text-align: left;
+
+        @include for-desktops () {
+          padding-right: 44px;
+        }
       }
 
       &_price {
