@@ -1,0 +1,99 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form {
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 744px) {
+    min-width: 42%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 12%;
+
+  }
+
+  &__item {
+    padding: 0 20px 16px;
+
+  }
+
+  &__input {
+    background-color: $background-input-color;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 40px;
+    width: 100%;
+    padding-left: 16px;
+    border: 1px solid transparent;
+    color: $font-color;
+
+    &::placeholder {
+      font-family: $font-family;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0;
+      text-align: left;
+      color: $placeholder-color;
+    }
+
+    &:hover {
+      border: 1px solid $hover-border-color;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: $font-color;
+      }
+    }
+
+    &:focus {
+      border: 1px solid $font-color;
+
+    }
+  }
+
+  &__textarea {
+    background-color: $background-input-color;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    padding: 14px 16px;
+    min-height: 148px;
+    color: $font-color;
+
+    &::placeholder {
+      font-family: $font-family;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0;
+      text-align: left;
+      color: $placeholder-color;
+    }
+
+    &:hover {
+      border: 1px solid $hover-border-color;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: $font-color;
+      }
+    }
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+
+}
