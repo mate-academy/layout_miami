@@ -17,24 +17,15 @@
       cursor: pointer;
       object-fit: cover;
       @include hover(transform, 0.5, scale(1.1));
-      width: 130px;
-      height: 130px;
 
-      @media (min-width: 744px) {
-        width: 184px;
-        height: 184px;
+      @each $min-width, $normal, $stretch in $category-sizes {
+        @media (min-width: $min-width) {
+          width: $normal;
+          height: $normal;
 
-        &--big {
-          width: 392px;
-        }
-      }
-
-      @media (min-width: 1260px) {
-        width: 324px;
-        height: 324px;
-
-        &--big {
-          width: 672px;
+          &--big {
+            width: $stretch;
+          }
         }
       }
     }
@@ -48,24 +39,6 @@
 
   &__button {
     margin-top: 50px;
-    cursor: pointer;
-    border-radius: 40px;
-    background: $main-color;
-    width: 280px;
-    height: 56px;
-    color: #fff;
-    text-align: center;
-    @include interText(16px, 700);
-    border: 3px solid $main-color;
-
-    &:hover {
-      background-color: #fff;
-      color: $main-color;
-    }
-
-    &:active {
-      background-color: #111;
-      color: #fff;
-    }
+    @extend %button;
   }
 }

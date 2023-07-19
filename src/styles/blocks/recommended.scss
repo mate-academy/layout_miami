@@ -6,17 +6,12 @@
 
   &__containter {
     display: grid;
-    grid-template-columns: 280px;
-    gap: 40px;
+    gap: 40px 24px;
 
-    @media (min-width: 744px) {
-      grid-template-columns: 392px;
-    }
-
-    @media (min-width: 1260px) {
-      grid-template-columns: repeat(3, 324px);
-      gap: 24px;
-
+    @each $min-width, $cols, $size in $recommended-sizes {
+      @media (min-width: $min-width) {
+        grid-template-columns: repeat($cols, $size);
+      }
     }
   }
 
