@@ -20,6 +20,7 @@ function handleMenu() {
   const menu = document.getElementById('menu');
   const showMenuBtn = document.getElementById('show-menu-btn');
   const hideMenuBtn = document.getElementById('hide-menu-btn');
+  const menuLinks = document.querySelectorAll('.page-navigation__link');
 
   showMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -35,5 +36,13 @@ function handleMenu() {
     if (menu.classList.contains('menu__open')) {
       menu.classList.remove('menu__open');
     }
+  });
+
+  menuLinks.forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (menu.classList.contains('menu__open')) {
+        menu.classList.remove('menu__open');
+      }
+    });
   });
 }
