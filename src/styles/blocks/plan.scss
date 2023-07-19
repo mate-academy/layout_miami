@@ -1,15 +1,34 @@
 .plan {
   padding: 100px 20px;
 
-  color: #161616;
-  font-family: Cinzel, serif;
+  color: $main-text-black;
+  font-family: $main-font-family;
   font-size: 16px;
   font-style: normal;
   line-height: 27px;
   font-weight: 700;
 
+  @include for-tablet() {
+    margin: 0 72px;
+    @include grid-tablet();
+
+    &__paragraf {
+      grid-column: 1 / 2;
+    }
+
+    &__title {
+      grid-column: 1 / 2;
+    }
+
+    &__name,
+    &__hours,
+    &__closed {
+      grid-column: 2 / 3;
+    }
+  }
+
   &__paragraf {
-    color: #d12d35;
+    color: $main-text-red;
     font-size: 12px;
     line-height: 140%;
   }
@@ -43,11 +62,9 @@
   }
 
   @include for-desktop() {
-    display: grid;
-    grid-template-columns: repeat(12, 63px);
+    @include grid();
     gap: 0 24px;
     grid-column: 1 / 12;
-    justify-content: center;
 
     &__paragraf {
       grid-column: 1 / 6;

@@ -5,15 +5,42 @@
     @include grid();
   }
 
+  @include for-tablet() {
+    @include grid-tablet();
+    grid-template-rows: 1fr 1fr;
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
   &__address {
     @include for-desktop() {
       grid-column: span 3;
+    }
+
+    &__address--1 {
+      @include for-tablet() {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+    }
+
+    &__address--2 {
+      @include for-tablet() {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
     }
   }
 
   &__form {
     @include for-desktop() {
       grid-column: -6 / -1;
+    }
+
+    @include for-tablet() {
+      grid-column: 2 / 3;
+      max-width: 288px;
+      grid-row: 1 / 3;
     }
   }
 }
