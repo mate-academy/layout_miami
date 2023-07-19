@@ -11,6 +11,10 @@
   flex-direction: column;
   padding-left: 20px;
 
+  @include for-desktop() {
+    @include grid();
+  }
+
   &:target {
     transform: translateX(0);
   }
@@ -21,8 +25,12 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 27px; /* 168.75% */
     text-transform: uppercase;
+
+    @include for-desktop() {
+      grid-column: span 12;
+      margin: 0;
+    }
   }
 
   &__link {
@@ -38,5 +46,17 @@
     border-bottom: 1px solid white;
     text-decoration: none;
     padding-bottom: 8px;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__navigation {
+    @include for-desktop() {
+      display: flex;
+      justify-content: space-between;
+      grid-column: span 12;
+    }
   }
 }
