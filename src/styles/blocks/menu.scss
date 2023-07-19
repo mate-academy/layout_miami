@@ -4,25 +4,31 @@
   left: 0;
   right: 0;
   background-color: #e8eff9;
+  padding: 0 20px;
   height: 100vh;
   transform: translate(-100%);
   transition: transform 1s;
 
+  @include grid();
+
   &:target {
     transform: translate(0);
   }
+    &__navigation {
+      grid-column: 1 / 3;
+      @include for-desktop() {
+        grid-column: 1 / 12;
+      }
+    }
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px 72px;
-  }
 
-  &__main {
     &-list {
       list-style-type: none;
-      padding: 0 0 40px 121px;
+
+      grid-column: 1 / 3;
+      @include for-desktop() {
+        grid-column: 1 / 12;
+      }
     }
 
     &-item {
@@ -35,49 +41,47 @@
       margin-bottom: 32px;
     }
 
-    &-link {
-      text-decoration: none;
-      color: #292929;
-      padding-bottom: 8px;
-      border-bottom: 1px solid transparent;
+  &-link {
+    text-decoration: none;
+    color: #292929;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
 
-      &:hover {
-        border-bottom: 1px solid #292929;
-      }
-    }
-
-    &-order {
-      display: block;
-      width: 450px;
-      padding-left: 121px;
-    }
-
-    &-phone {
-      display: block;
-      margin-bottom: 16px;
-      color: #292929;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 27px;
-      text-transform: uppercase;
-    }
-
-    &-text {
-      display: block;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    &-text-link {
-      text-decoration: none;
-      color: #292929;
-      padding-bottom: 8px;
+    &:hover {
       border-bottom: 1px solid #292929;
     }
+  }
+  &-order {
+    grid-column: 1 / 3;
+      @include for-desktop() {
+        grid-column: 1 / 12;
+      }
+  }
+  &-phone {
+    display: block;
+    margin-bottom: 16px;
+    color: #292929;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+
+  &-text {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &-text-link {
+    text-decoration: none;
+    color: #292929;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #292929;
   }
 }
