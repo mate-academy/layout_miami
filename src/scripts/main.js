@@ -11,3 +11,10 @@ window.addEventListener('hashchange', () => {
     elementHtml.classList.remove('page__html--with-menu');
   }
 });
+
+const form = document.getElementById('myForm');
+
+function handleForm(event) {
+  event.preventDefault();
+}
+form.addEventListener('submit', handleForm);
