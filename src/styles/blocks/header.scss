@@ -4,13 +4,12 @@
   box-sizing: border-box;
   height: 100vh;
   width: 100%;
-  padding: 40px 20px;
+  background-position-x: center;
   background-image: url("../images/background.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 16px;
 
   &__nav {
     position: absolute;
@@ -24,18 +23,7 @@
     height: auto;
   }
 
-  @media (min-width: 744px) {
-    padding: 64px 72px;
-    gap: 40px;
-  }
-
-  @media (max-width: 1259px) {
-    background-position-x: center;
-  }
-
   @media (min-width: 1260px) {
-    gap: 32px;
-    padding: 72px 120px;
     background-position-y: center;
 
     &__image {
@@ -43,4 +31,10 @@
     }
   }
 
+  @each $min, $top, $right, $gap in $header-paddings {
+    @media (min-width: $min) {
+      padding: $top $right;
+      gap: $gap;
+    }
+  }
 }

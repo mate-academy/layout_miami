@@ -5,20 +5,14 @@
 
 .main {
   box-sizing: border-box;
-  max-width: 1260px;
+  max-width: $max-size-width;
   width: 100%;
-  padding: 64px 20px 96px;
   display: flex;
   flex-direction: column;
-  gap: 96px;
-
-  @media(min-width: 744px) {
-    padding: 120px 72px;
-    gap: 120px;
+  @each $min, $top, $right, $bottom, $left, $gap in $main-paddings {
+    @media (min-width: $min) {
+      gap: $gap;
+      padding: $top $right $bottom $left;
+    }
   }
-
-  @media(min-width: 1260px) {
-    padding: 120px;
-  }
-
 }

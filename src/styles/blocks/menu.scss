@@ -10,7 +10,6 @@
   transition: margin-left 0.3s linear;
 
   &__list {
-    padding: 32px 20px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -54,15 +53,11 @@
     }
   }
 
-  @media(min-width: 744px) {
-    &__list {
-      padding: 56px 72px;
-    }
-  }
-
-  @media(min-width: 1260px) {
-    &__list {
-      padding: 56px 120px;
+  @each $min, $top, $right in $menu-paddings {
+    @media (min-width: $min) {
+      &__list {
+        padding: $top $right;
+      }
     }
   }
 
