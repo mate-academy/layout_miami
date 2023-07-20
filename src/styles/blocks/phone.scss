@@ -1,26 +1,17 @@
 .phone {
+  grid-column: 3 / 4;
+  margin-left: auto;
 
-  &__icon {
-    grid-column: 3 / 4;
+  @include for-tablet() {
+    grid-column: 5 / 6;
+  }
 
-    @include for-tablet() {
-      grid-column: 5 / 6;
-    }
-
-    @include for-desktop() {
-      grid-column: 11/12;
-    }
-
-    margin-left: auto;
-    background-image: url("../images/phone.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  @include for-desktop() {
+    grid-column: 11/12;
   }
 
   &__numbers {
-    margin-top: 24px;
-    margin-right: 16px;
-
+    padding-right: 50px;
     color: #fff;
     font-family: "Cinzel", sans-serif;
     font-size: 16px;
@@ -29,7 +20,17 @@
     line-height: 27px; /* 168.75% */
     text-transform: uppercase;
     position: absolute;
-    transform: translateX(calc(-100% - 20px));
+    transform: translate(-90%, -50%);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+
+    &:hover {
+      visibility: visible;
+      transition: opacity 0.3s ease-in;
+      opacity: 1;
+    }
 
     &__link {
       color: #fff;
@@ -43,7 +44,17 @@
     }
   }
 
-  &:not(:hover) &__numbers {
-    @include visually-hidden();
+  &__icon {
+    display: block;
+    background-image: url("../images/phone.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:hover {
+      + .phone__numbers {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 }
