@@ -8,8 +8,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const button = document.querySelector('#button');
+const form = document.querySelector('#form');
 
-button.addEventListener('click', (event) => {
+form.addEventListener('click', (event) => {
   event.preventDefault();
 });
