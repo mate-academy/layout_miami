@@ -1,0 +1,66 @@
+.exhibition {
+  &__block {
+    margin-bottom: 48px;
+  }
+
+  &__photo-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition-duration: 1s;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+
+      &--bigger {
+        height: 284px;
+      }
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(105%);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--30 {
+      object-position: 30%;
+    }
+
+    &--100 {
+      object-position: 100%;
+    }
+  }
+
+  &__name {
+    @extend %small-text;
+    font-weight: 700;
+  }
+
+  &__date {
+    margin-bottom: 48px;
+
+    &--last {
+      margin-bottom: 40px;
+    }
+  }
+}
