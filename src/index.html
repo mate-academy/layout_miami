@@ -237,6 +237,7 @@
             type="text"
             class="form__text-field"
             placeholder="Name"
+            required
           >
           <label class="visually-hidden" for="email">
             Email
@@ -246,6 +247,7 @@
             type="email"
             class="form__text-field"
             placeholder="Email"
+            required
           >
           <label class="visually-hidden" for="message">
             Message
@@ -255,6 +257,7 @@
             class="form__text-field form__text-field--message"
             placeholder="Message"
             rows="7"
+            required
           ></textarea>
           <button
             type="submit"
@@ -316,6 +319,17 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.header__icon:last-child').addEventListener('click', openNav);
+
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        anchorLinks.forEach(function(link) {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
 
         document.getElementById('form').addEventListener('submit', function(event) {
           event.preventDefault();
