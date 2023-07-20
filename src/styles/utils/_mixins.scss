@@ -1,6 +1,40 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
-  }
+@mixin font ($_weight, $_size, $_line-height, $_color, $_letter-spacing: 0,
+$_family: Manrope, $_background: Helvetica, $_generic: sans-serif
+) {
+  font-weight: $_weight;
+  font-size: $_size;
+  line-height: $_line-height;
+  color: $_color;
+  font-family: $_family, $_background, $_generic;
+  letter-spacing: $_letter-spacing;
+}
+
+@mixin image ($_url, $_height: 100%, $_size: cover,
+$_repeat: no-repeat, $_position: 50%) {
+  background: $_url $_repeat $_position;
+  background-size: $_size;
+  min-height: $_height;
+}
+
+@mixin button ($_color: orange, $_height: 100%, $_width: 100%, $_radius: 0) {
+  border-radius: $_radius;
+  max-width: $_width;
+  max-height: $_height;
+  background-color: $_color;
+  cursor: pointer;
+}
+
+// CSS GRID MIXINS
+@mixin layout ($_grid-size, $_grid-columns, $_grid-gap) {
+  display: grid;
+  grid-template-columns: repeat($_grid-columns, $_grid-size);
+  gap: $_grid-gap;
+}
+
+@mixin layoutItems($_column-start: auto, $_column-end: auto,
+$_row-start: auto, $_row-end: auto, $_justify-self: auto, $_align-self: auto) {
+  grid-column: #{$_column-start}/$_column-end;
+  grid-row: #{$_row-start}/$_row-end;
+  justify-self: $_justify-self;
+  align-self: $_align-self;
 }
