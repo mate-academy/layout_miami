@@ -2,6 +2,6 @@
 
 const formButton = document.querySelector('.form__button');
 
-formButton.addEventListener('click', (event) => {
+formButton.addEventListener('submit', (event) => {
   event.preventDefault();
 });
