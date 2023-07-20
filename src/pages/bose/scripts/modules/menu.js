@@ -27,6 +27,8 @@ function redirect(event) {
   setTimeout(function() {
     document.body.style.overflowY = null;
 
-    window.location = url;
+    const element = document.getElementById(url);
+
+    element.scrollIntoView();
   }, 300);
 }

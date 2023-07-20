@@ -1,4 +1,4 @@
 'use strict';
 
-import './modules/contact-us.js';
 import './modules/menu.js';
+import './modules/contact-us.js';
