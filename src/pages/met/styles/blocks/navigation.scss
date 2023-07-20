@@ -1,6 +1,6 @@
 .navigation {
   width: 280px;
-  padding: 24px 0;
+  padding: 24px 0 0;
 
   display: flex;
   justify-content: space-between;
@@ -9,12 +9,7 @@
   &__item {
     position: relative;
     display: flex;
-
-    text-decoration: none;
-
-    &-logo {
-      height: 16px;
-    }
+    flex-direction: row-reverse;
 
     &-menu,
     &-phone {
@@ -46,18 +41,36 @@
       padding: 10px 20px;
 
       position: absolute;
+      text-align: end;
       top: 50%;
 
-      color: $c-gray;
-      font-family: Inter, Arial, sans-serif;
-      font-size: 0.75rem;
+      font-family: Cinzel, Georgia, serif;
       font-weight: 700;
-      letter-spacing: 2px;
+      line-height: 27px;
+      text-transform: uppercase;
 
       transition: transform 0.3s linear;
       transform-origin: right;
 
       transform: translateY(-50%) scale(0);
+    }
+
+    &-link {
+      margin-bottom: 8px;
+
+      display: flex;
+      justify-content: flex-end;
+
+      color: $c-white;
+      text-decoration: none;
+    }
+
+    &-number:hover {
+      transform: translateX(15%) scale(0.8);
+    }
+
+    &-phone:hover ~ .navigation__item-number {
+      transform: translateX(15%) scale(0.8);
     }
   }
 
@@ -68,14 +81,10 @@
 
   @include tablet {
     width: 600px;
-    padding: 32px 0;
+    padding: 50px 0 0;
 
     &__item {
       flex-direction: row-reverse;
-
-      &-logo {
-        height: 24px;
-      }
 
       &-menu,
       &-phone {
