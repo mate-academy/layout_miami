@@ -1,11 +1,38 @@
 .page {
   height: 150px;
-  min-width: $page-width;
+  width: $page-width;
   padding: 0;
+
+  // grid-column: 1;
+
+  @media (min-width: 744px) {
+    grid-column: 1;
+
+    &:nth-child(even) {
+      grid-column: 2;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    grid-column: 1;
+
+    @for $i from 2 through 3 {
+      &:nth-child(n + #{$i}) {
+        grid-column: #{$i};
+      }
+    }
+
+    @for $i from 4 through 6 {
+      &:nth-child(n + #{$i}) {
+        grid-column: #{$i - 3};
+      }
+    }
+  }
 
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   background-color: #fff;
   border-radius: 5px;
@@ -51,6 +78,10 @@
     &--met {
       background-image: url(../pages/met/images/header_background.jpg);
     }
+
+    &--miami {
+      background-image: url(../pages/miami/images/header_background.jpg);
+    }
   }
 
   &__logo {
@@ -58,8 +89,12 @@
 
     z-index: 1;
 
-    &--small {
+    &--met {
       width: 40%;
+    }
+
+    &--miami {
+      width: 55%;
     }
   }
 
