@@ -11,7 +11,7 @@ openMenuButton.addEventListener('click', function() {
 closeMenuButton.addEventListener('click', function() {
   menu.classList.remove('menu--active');
 
-  document.body.style.overflowY = 'auto';
+  document.body.style.overflowY = null;
 });
 
 const menuLinks = document.getElementsByClassName('menu__list-link');
@@ -25,7 +25,7 @@ function redirect(event) {
   const url = event.target.getAttribute('value');
 
   setTimeout(function() {
-    document.body.style.overflowY = 'auto';
+    document.body.style.overflowY = null;
 
     window.location = url;
   }, 300);
