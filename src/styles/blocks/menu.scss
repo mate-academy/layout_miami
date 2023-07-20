@@ -1,4 +1,5 @@
 @import "../utils/vars";
+@import "../utils/mixins";
 
 .menu {
   position: fixed;
@@ -9,22 +10,38 @@
   transition: transform 0.33s;
 
   background-color: $menu-background-color;
-  padding: 25px 20px 20px;
   min-height: 100vh;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+
+  @include grid();
 
   &:target {
     transform: translateX(0);
   }
 
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
   &__links {
-    margin-bottom: 40px;
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__museum {
     margin-bottom: 8px;
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__paragraph {
@@ -35,6 +52,11 @@
     font-weight: 700;
     line-height: 27px;
     text-transform: uppercase;
+    grid-column: span 2;
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
   }
 
   &__call-link {
@@ -49,6 +71,7 @@
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
     margin-top: 8px;
+    white-space: nowrap;
 
     &:hover {
       border-bottom: 1px solid $font-color-menu;
