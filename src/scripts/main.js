@@ -1,5 +1,6 @@
 'use strict';
 
+// scroll-block
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.documentElement.classList.add('page--menu-open');
