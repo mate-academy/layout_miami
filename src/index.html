@@ -9,7 +9,7 @@
     crossorigin ="google fonts">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/main.scss">
-    <script src="scripts/main.js" defer></script>
+    <script src="./scripts/main.js" defer></script>
     <link rel="icon" href="./images/photos/favicon.ico"
      type="image/x-icon">
   </head>
@@ -21,7 +21,7 @@
           <!-- <img class="header__top--icons-phone"
           src="./images/photos/Icon-Phone-call.png" alt="call"> -->
           <a href="tel:1234567890" class="header__top--icons-phone"></a>
-          <div class="header__top--icons-menu" onclick="showNav()"></div>
+          <div class="header__top--icons-menu"></div>
         </div>
       </div>
       <div class="header__down">
@@ -40,65 +40,24 @@
         onclick="hideNav()"></a>
       </div>
       <div class="nav__links">
-        <a class="nav__links-link" onclick="hideNav()"
-         href="#home"> Home</a>
-        <a class="nav__links-link" onclick="hideNav()"
-         href="#recommended">recommended</a>
-        <a class="nav__links-link" onclick="hideNav()"
-         href="#categorys">categories</a>
-        <a class="nav__links-link" onclick="hideNav()"
-         href="#howtobuy">How to buy</a>
-        <a class="nav__links-link" onclick="hideNav()"
-         href="#contact">Contacts</a>
+        <a class="nav__links-link" id="homeLink"
+        href="#home">Home</a>
+        <a class="nav__links-link" id="recommendedLink"
+        href="#recommended">recommended</a>
+        <a class="nav__links-link" id="categoriesLink"
+        href="#categorys">categories</a>
+        <a class="nav__links-link" id="howToBuyLink"
+        href="#howtobuy">How to buy</a>
+        <a class="nav__links-link" id="contactsLink"
+        href="#contact">Contacts</a>
       </div>
+
       <div class="nav__footer">
         <a href="tel:1234567890" class="nav__footer-num">+1 234 5555-55-55</a>
         <a class="nav__footer-txt" href="tel:1234567890">CALL TO ORDER</a>
         <div class="nav__footer-line"></div>
       </div>
     </nav>
-    <script>
-      function hideNav() {
-        var nav = document.querySelector('.nav');
-        nav.classList.remove('open');
-      }
-      function showNav() {
-      var nav = document.querySelector('.nav');
-      nav.classList.add('open');
-    }
-    function scrollToElement(element, duration) {
-    const targetPosition = element.getBoundingClientRect().top;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-      // Interpolacja (w tym przypadku funkcja kwadratowa)
-      t /= d;
-      return c * t * t + b;
-    }
-
-    requestAnimationFrame(animation);
-  }
-
-  // Dodaj obsługę przewijania przy użyciu spowolnionego smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      scrollToElement(target, 1000); // Spowolnione scrolowanie - 1000ms (1s)
-    });
-  });
-    </script>
-
     <section class="products" id="recommended">
       <h2 class="products-title">Recommended</h2>
       <div class="products__container">
