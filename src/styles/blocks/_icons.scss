@@ -1,0 +1,79 @@
+.icons {
+  display: flex;
+  align-items: center;
+
+  &--menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+    margin-left: 30px;
+    transition: background-image $transition-duration;
+
+    background-image: url(../images/header_menu.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include onTablet {
+      @include sizes-of-menu-opener();
+    }
+
+    &:hover {
+      background-image: url(../images/header_menu-hover.svg);
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include sizes-of-cross();
+    @include onDesktop() {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  &--call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/header_call.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    position: relative;
+
+    @include onTablet {
+      @include sizes-of-call();
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    padding-right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    display: block;
+    width: max-content;
+    opacity: 0;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    pointer-events: none;
+    transition: opacity $transition-duration;
+  }
+
+  &--call:hover &__tooltip {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: all;
+      transition: $transition-duration;
+    }
+  }
+}
