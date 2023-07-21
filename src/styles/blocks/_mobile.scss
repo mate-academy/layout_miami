@@ -3,6 +3,10 @@
   padding-inline: 20px;
 }
 
+.main {
+  // max-width: 320px;
+}
+
 .header {
   box-sizing: border-box;
   padding: 24px 20px 0;
@@ -30,6 +34,31 @@
     background-image: url("../images/svg/phone24.svg");
     width: 24px;
     height: 24px;
+
+    &:first-of-type::before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      right: calc(32px + 20px);
+      top: 25%;
+      color: gainsboro;
+      text-align: right;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transform: translateX(0);
+      transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:first-of-type:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
 
     &:last-of-type {
       background-image: url("../images/svg/burger24.svg");
@@ -246,6 +275,7 @@
     text-decoration: none;
     font-weight: 700;
     line-height: 27px;
+    outline: none;
   }
 
   &__text-field {
@@ -255,6 +285,7 @@
     font-size: 14px;
     line-height: 140%;
     cursor: text;
+    outline: none;
 
     &--message {
       border-radius: 16px;
