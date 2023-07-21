@@ -1,16 +1,17 @@
 .cards {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 24px;
+  justify-content: center;
+
+  @include for-mobile () {
+    grid-template-columns: 1fr;
+  }
 
   @include for-tablets () {
-    flex-flow: column wrap;
+    grid-template-columns: 1fr 1fr;
   }
 
-  @include for-desktops () {
-    gap: 24px;
-  }
 
   .card {
     @include for-mobile () {
@@ -22,8 +23,7 @@
     }
 
     @include for-desktops () {
-      width: 324px;
-      height: 510px;
+      height: auto;
     }
 
     &__describe {

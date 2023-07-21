@@ -29,6 +29,19 @@
     text-transform: uppercase;
     list-style: none;
     margin-bottom: 4rem;
+    // background:#fff;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    &:hover{
+      .menu__link:not(.phone-link) {
+        &::before {
+          left: 0;
+        }
+      }
+    }
   }
 
   &__link {
@@ -43,18 +56,16 @@
     display: flex;
     flex-flow: column wrap;
     width: fit-content;
-    transition: all 0.3s $easing;
 
-    &:hover:not(:nth-child(5)) {
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 1px;
-        height: 1px;
-        width: 100%;
-        background-color: $c-main;
-      }
+    &::before {
+      content: "";
+      position: absolute;
+      left: -100%;
+      bottom: 1px;
+      height: 1px;
+      width: 100%;
+      background-color: $c-main;
+      transition: left 0.3s $easing;
     }
 
     &--phone,
