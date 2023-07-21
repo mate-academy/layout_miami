@@ -3,6 +3,14 @@
 .pictures {
   @include grid();
 
+  &__item--right {
+    object-position: right;
+  }
+
+  &__item--left {
+    object-position: 20% 80%;
+  }
+
   @include for-tablet() {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -45,36 +53,28 @@
 
       @include for-tablet() {
         grid-column: span 2;
-    }
-  }
-
-  &--three {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    @include for-desktop() {
-      height: 320px;
+      }
     }
 
-    @include for-tablet() {
-      height: 280px;
+    &--three {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+
+      @include for-desktop() {
+        height: 320px;
+      }
+
+      @include for-tablet() {
+        height: 280px;
+        object-fit: cover;
+      }
+    }
+
+    &--hidden {
+      @include for-tablet() {
+        display: none;
+      }
     }
   }
-
-  &--hidden {
-    @include for-tablet() {
-      display: none;
-    }
-  }
-
-  &__item--right {
-    object-position: right;
-  }
-
-  &__item--left {
-    object-position: 20% 80%;
-  }
-}
 }
