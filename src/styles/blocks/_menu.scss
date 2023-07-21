@@ -13,8 +13,8 @@
 
 .closebtn {
   position: absolute;
-  right: 72px;
-  top: 48px;
+  right: 14px;
+  top: 30px;
 }
 
 .menu__content {
@@ -29,21 +29,33 @@
   color: $primary-color;
   font-size: 22px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 22px; /* 100% */
+  font-weight: 600;
+  line-height: 22px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  align-items: flex-start;
 
   &:last-child {
     gap: 16px;
     font-size: 16px;
-    line-height: 27px; /* 168.75% */
+    line-height: 27px;
   }
 
   .menu__item {
+    height: 100%;
+    position: relative;
 
-    &:hover {
-      text-decoration: underline;
+    &:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: $primary-color;
+      visibility: visible;
+      transform: scaleX(1);
+      transition: transform 0.3s ease-in-out;
     }
   }
 }
@@ -51,6 +63,11 @@
 @media (min-width: 1260px) {
   .closebtn {
     right: 120px;
+    top: 48px;
+  }
+
+  .menu__list {
+    font-weight: 700;
   }
 
   .menu__content {
@@ -61,6 +78,11 @@
 @media (min-width: 744px) and (max-width: 1259px) {
   .closebtn {
     right: 72px;
+    top: 48px;
+  }
+
+  .menu__list {
+    font-weight: 600;
   }
 
   .menu__content {
