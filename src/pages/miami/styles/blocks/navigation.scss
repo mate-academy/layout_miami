@@ -1,0 +1,86 @@
+.navigation {
+  width: 280px;
+  padding: 24px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    position: relative;
+    display: flex;
+
+    text-decoration: none;
+
+    &-menu,
+    &-phone {
+      width: 24px;
+      height: 24px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    &-menu {
+      cursor: pointer;
+
+      background-image: url(./../images/menu.svg);
+
+      &:hover {
+        background-image: url(./../images/menu_hover.svg);
+      }
+    }
+
+    &-phone {
+      background-image: url(./../images/phone.svg);
+    }
+
+    &-number {
+      width: max-content;
+      margin-right: 20px;
+      padding: 10px 20px;
+
+      position: absolute;
+      top: 50%;
+
+      color: $c-white;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+
+      transition: transform 0.3s linear;
+      transform-origin: right;
+
+      transform: translateY(-50%) scale(0);
+    }
+  }
+
+  @include tablet {
+    width: 600px;
+    padding: 32px 0;
+
+    &__item {
+      flex-direction: row-reverse;
+
+      &-menu,
+      &-phone {
+        width: 32px;
+        height: 32px;
+      }
+
+      &-number:hover {
+        transform: translateY(-50%) scale(1);
+      }
+
+      &-phone:hover ~ .navigation__item-number {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+  }
+
+  @include desktop {
+    width: 1020px;
+  }
+}

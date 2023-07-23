@@ -1,0 +1,81 @@
+.header {
+  /* stylelint-disable */
+  height: 100dvh;
+  /* stylelint-enable */
+
+  padding-bottom: 80px;
+  box-sizing: border-box;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat($grid-columns-mobile, $grid-width-mobile);
+  grid-column-gap: $grid-gap-mobile;
+
+  background-image: url(./../images/header_background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__navigation {
+    align-self: start;
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  &__container {
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 1;
+
+    &-line {
+      width: 40px;
+      height: 2px;
+      margin-bottom: 24px;
+
+      display: flex;
+
+      background-color: $c-white;
+      border-radius: 8px;
+    }
+
+    &-title {
+      color: $c-white;
+      font-family: Roboto, Helvetica, sans-serif;
+      font-size: 2.88rem;
+      font-weight: 700;
+      line-height: 40px;
+      letter-spacing: -1px;
+    }
+  }
+
+  @include tablet {
+    padding-bottom: 64px;
+
+    grid-template-columns: repeat($grid-columns-tablet, $grid-width-tablet);
+    grid-column-gap: $grid-gap-tablet;
+
+    &__container {
+      grid-column: 1 / 5;
+
+      &-title {
+        font-size: 3.5rem;
+        line-height: 50px;
+        letter-spacing: -1.15px;
+      }
+    }
+  }
+
+  @include desktop {
+    grid-template-columns: repeat($grid-columns-desktop, $grid-width-desktop);
+
+    &__container {
+      grid-column: 1 / 7;
+
+      &-title {
+        font-size: 5rem;
+        line-height: 80px;
+        letter-spacing: -1.5px;
+      }
+    }
+  }
+}
