@@ -9,7 +9,6 @@
     rel="icon"
     href="./images/favicon.jpg"
     type="image/jpg">
-    <!-- <script src="scripts/main.js" defer></script> -->
   </head>
   <body>
     <header class="header">
@@ -18,7 +17,7 @@
           <div class="header__menu">
             <a href="#" class="logo">
               <img
-                src="./images/logo_white.jpg"
+                src="./images/logo_white.svg"
                 alt="myBike logo"
                 class="logo__image"
               >
@@ -34,9 +33,24 @@
           <h1 class="header__title">Take the Streets</h1>
         </div>
       </div>
-      <div class="menu">
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const iconMenu = document.querySelector('.icon__menu');
+          const menu = document.querySelector('.menu');
+          const closeIcon = document.querySelector('.menu__close');
+
+          iconMenu.addEventListener('click', function() {
+            menu.classList.toggle('menu__active');
+          });
+
+          closeIcon.addEventListener('click', function() {
+            menu.classList.remove('menu__active');
+          });
+        });
+      </script>
+      <div id="menu" class="icon__menu menu">
         <nav class="menu__navigation">
-          <div class="menu__top">
+          <div class="menu__imp">
             <a href="#" class="logo">
               <img
                 class="menu__logo-image"
@@ -44,11 +58,13 @@
                 alt="myBike logo"
               >
             </a>
-            <img
-              src="./images/close.jpg"
-              alt="close button"
-              class="menu__top-button"
-            >
+            <a href="#menu">
+              <img
+                src="./images/close.jpg"
+                alt="close button"
+                class="menu__close"
+              >
+            </a>
           </div>
           <ul class="menu__list">
             <li class="menu__item">
@@ -58,7 +74,7 @@
               <a href="#about" class="menu__link"> about us </a>
             </li>
             <li class="menu__item">
-              <a href="#compare-bikes" class="menu__link"> compare bikes </a>
+              <a href="#bikes" class="menu__link"> compare bikes </a>
             </li>
             <li class="menu__item">
               <a href="#details" class="menu__link"> details </a>
@@ -79,12 +95,12 @@
         <div class="section__box">
           <div class="section__grid">
             <div class="section__grid-item">
-              <h2 class="section__page-title section__page-move">
+              <h2 class="section__page-title section__move">
                 Move Free
               </h2>
             </div>
             <div
-              class="section__grid-item section__grid-item-desktop section__grid-item-tablet"
+              class="section__grid-item section__grid-item-desktop section__grid-item-tab"
             >
               <p class="section__page-description">
                 Shift your ride, not gears. Find the fastest way to move in the
@@ -95,9 +111,9 @@
         </div>
       </section>
 
-      <section id="compare-bikes" class="section section-bikes">
+      <section id="bikes" class="section section-bikes">
         <div class="section__box">
-          <h2 class="page__section-title page__section-title-bikes">
+          <h2 class="section__page-title section__page-title-bikes">
             Compare bikes
           </h2>
           <div class="bikes">
@@ -322,7 +338,7 @@
         </div>
       </section>
     </main>
-    <footer class="peoples"></footer>
-    <script src="./scripts/main.js"></script>
+    <div class="peoples"></div>
+    <!-- <script src="./scripts/main.js"></script> -->
   </body>
 </html>

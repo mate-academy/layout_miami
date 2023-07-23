@@ -3,12 +3,12 @@
 .section {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 2fr);
     column-gap: 20px;
 
     &-desktop {
-      display: block;
-
+      display: grid;
+      grid-template-columns: repeat(4, 2fr);
       @include onDesktop {
         display: grid;
       }
@@ -18,41 +18,13 @@
       }
     }
 
-    @include onDesktop {
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
-    }
+    &__move {
+      display: block;
 
-    @include onTablet {
-      grid-template-columns: repeat(6, 1fr);
-      column-gap: 24px;
-    }
-
-    &-item {
-      @for $start from 1 through 12 {
-        @for $end from $start through 12 {
-          &-#{$start}-#{$end} {
-            grid-column: #{$start} / #{$end + 1};
-          }
-
-          &-desktop-#{$start}-#{$end} {
-            @include onDesktop {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
-      }
-    }
-
-    &-item-tab {
-      @include onTablet {
-        @for $start from 1 through 6 {
-          @for $end from $start through 6 {
-            &-#{$start}-#{$end} {
-              grid-column: #{$start} / #{$end + 1};
-            }
-          }
-        }
+      @include onTablet() {
+        display: grid;
+        grid-template-columns: repeat(4, 2fr);
+        gap: 2rem;
       }
     }
   }
