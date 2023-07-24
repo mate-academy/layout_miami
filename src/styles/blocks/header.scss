@@ -64,9 +64,15 @@
       line-height: 16px; /* 133.333% */
       letter-spacing: 2px;
       text-transform: uppercase;
-      transform: translateY(25%);
-      margin-right: -18px;
-      display: none;
+      display: inline;
+
+      position: absolute;
+      transform: translateX(calc(-100% - 8px)) translateY(+50%);
+
+      @media (max-width: 1060px) {
+        display: none;
+      }
+
     }
 
     &-icons {
@@ -87,6 +93,10 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+
+      &:not(:hover) .header__nav-number {
+        visibility: hidden;
+      }
 
       @media (min-width: 744px) {
         width: 32px;
@@ -119,15 +129,6 @@
 
       &:hover {
         background-image: url("../images/Icon-Burger-menu-hover.svg");
-      }
-
-      &:focus {
-        .header__menu {
-          transform: translateX(-100%);
-          position: absolute;
-
-          z-index: 1;
-        }
       }
     }
   }
