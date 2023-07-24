@@ -42,6 +42,11 @@ function scrollToElement(element, duration) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('closeLink').addEventListener('click', function(e) {
+    e.preventDefault();
+    hideNav();
+  });
+
   document.getElementById('homeLink').addEventListener('click', function(e) {
     e.preventDefault();
 
