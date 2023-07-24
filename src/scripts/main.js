@@ -1,8 +1,8 @@
 'use strict';
 
-const btn = document.getElementById('btn');
+const btn = document.getElementById('form');
 
-btn.addEventListener('click', e => e.preventDefault());
+btn.addEventListener('submit', e => e.preventDefault());
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
