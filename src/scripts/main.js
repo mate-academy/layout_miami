@@ -1,5 +1,8 @@
 'use strict';
 
+// import { gsap, Power2 } from 'gsap';
+// import { CSSRulePlugin } from 'gsap/all';
+
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('#header');
   const headerTransform = 'header-transform';
@@ -70,4 +73,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', toggleToTopButton);
+
+  // GSAP ANIMATIONS:
+  // Get references to DOM elements
+  // const image = document.getElementById('image');
+  // const container = document.getElementById('[class*="img_box"]');
+  // const after
+  // = window.getComputedStyle(container, '::after');
+  // const imageReveal = CSSRulePlugin.getRule(after);
+
+  // gsap.fromTo(
+  //   container,
+  //   {
+  //     css: {
+  //       visibility: 'visible',
+  //     },
+  //   },
+  //   {
+  //     duration: 0,
+  //     css: {
+  //       visibility: 'visible',
+  //     },
+  //   }
+  // );
+
+  // gsap.fromTo(
+  //   imageReveal,
+  //   {
+  //     width: '100%',
+  //   },
+  //   {
+  //     duration: 1.4,
+  //     width: '0%',
+  //     ease: 'power2.inOut',
+  //   }
+  // );
+
+  // gsap.fromTo(
+  //   image,
+  //   {
+  //     scale: 1.6,
+  //   },
+  //   {
+  //     duration: 1.4,
+  //     scale: 1,
+  //     ease: 'power2.inOut',
+  //     delay: -1.4,
+  //   }
+  // );
 });
