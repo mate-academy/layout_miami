@@ -1,0 +1,114 @@
+.header {
+  background-image: url(../images/header_background-1240px.jpg);
+  background-size: cover;
+  background-position: 50%;
+
+  @include tablet {
+    background-image: url(../images/header_background-744px.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  @include SmartPhone {
+    background-image: url(../images/header_background-320px.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__content-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $content-top-padding 0 150px;
+  }
+
+  &__top {
+    @include top-actions;
+    
+  }
+
+  &__icons {
+    display: grid;
+    grid-template-columns: $icon-size $icon-size;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    @include SmartPhone {
+      gap: 10px;
+    }
+  }
+
+  &__call-icon {
+    @include displayBlock;
+    @include no-repeat;
+
+    height: $icon-size;
+    width: $icon-size;
+    background-image: url(../images/phone.svg);
+
+    @include SmartPhone {
+      height: 18px;
+      width: 18px;
+      background-image: url(../images/phone_18px.svg);
+    }
+
+    &::before {
+      @include displayBlock;
+
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      color: #fff;
+      width: max-content;
+      padding-right: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: $letter-spacing-2px;
+      text-transform: uppercase;
+      transform: translate(-100%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-duration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__menu-icon {
+    background-image: url(../images/menu.svg);
+
+    @include icon-menu;
+    @include SmartPhone {
+      background-image: url(../images/menu_18px.svg);
+    }
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &__title {
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: #fff;
+
+    @include tablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include SmartPhone {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}
