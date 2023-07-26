@@ -1,0 +1,75 @@
+.header {
+  @extend %background-image-center;
+
+  background-image: url("../images/header-photos/header-image-phone.jpg");
+
+  @include onIpad {
+    background-image: url("../images/header-photos/header-image-ipad.jpg");
+  }
+
+  @include onDesktop {
+    background-image: url("../images/header-photos/header-image-desktop.jpg");
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $headerTopPadding 0 95px;
+
+    @include onIpad {
+      padding: $headerTopPaddingIpad 40px;
+    }
+
+    @include onDesktop {
+      padding: $headerTopPaddingDesktop 65px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $main-color;
+    font-style: italic;
+
+    @include onIpad {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @extend %background-image-center;
+      background-image: url("../images/sound-title.svg");
+
+    }
+
+    @include onIpad {
+      &::before {
+        width: 65px;
+        height: 75px;
+        margin-bottom: 40px;
+
+        background-image: url("../images/title-sound-waves.svg");
+      }
+    }
+
+    @include onDesktop {
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
