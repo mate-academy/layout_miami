@@ -1,0 +1,94 @@
+.header {
+  background-image: url(/images/photos/header-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 568px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+
+  &__menu {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+
+    &__buttons {
+      display: flex;
+      gap: 30px;
+
+      &__call {
+        position: relative;
+        transition-duration: 0.2s;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+
+        // &:hover {
+        //   color: gray;
+        // }
+        // disabled because color kinda doesnt fit
+      }
+
+      &__label {
+        text-align: right;
+        width: 210px;
+        position: absolute;
+        padding-right: 50px;
+        transform: translate(calc(-100% + 30px), -60%);
+        transition-timing-function: ease-out;
+        transition-duration: 0.2s;
+        z-index: 1;
+
+        &__phone-number {
+          border-bottom: 1px solid transparent;
+          margin-bottom: 8px;
+
+          &:hover {
+            border-bottom: 1px solid white;
+          }
+        }
+      }
+
+      &__call:not(:hover) + .header__menu__buttons__label {
+        transform: translate(calc(-100% + 30px), -200%);
+
+        &:hover {
+          transform: translate(calc(-100% + 30px), -60%);
+        }
+      }
+
+      &__menu {
+        color: white;
+        transition-duration: 0.2s;
+
+        // &:hover {
+        //   color: gray;
+        // }
+        // disabled because color kinda doesnt fit
+      }
+    }
+
+    @media (min-width: $medium-width) {
+      width: calc(100% - 144px);
+      padding-top: 50px;
+    }
+
+    @media (min-width: $large-width) {
+      width: calc(100% - 240px);
+    }
+  }
+
+  @media (min-width: $medium-width) {
+    height: 840px;
+  }
+
+  @media (max-width: $medium-width) {
+    &__text {
+      font-size: 12px;
+    }
+  }
+}
