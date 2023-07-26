@@ -1,12 +1,17 @@
 'use strict';
 
-// import { gsap, Power2 } from 'gsap';
-// import { CSSRulePlugin } from 'gsap/all';
-
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('#header');
   const headerTransform = 'header-transform';
   const scrollPosition = 200;
+  const menu = document.querySelector('.menu');
+  const navLink = document.querySelectorAll('.menu__link');
+
+  navLink.forEach(link => link.addEventListener('click', e => {
+    menu.classList.remove('--menu-toggle');
+    document.body.classList.remove('page__body--with-menu');
+    hamburgerBtn.classList.toggle('--hamburger-transform');
+  }));
 
   const toggleClassOnScroll = () => {
     if (window.scrollY >= scrollPosition) {
@@ -21,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // TOGGLING NAVIGATION (OPEN/CLOSE) & PREVENT PAGE SCROLLNIG WHEN MENU IS OPEN
 
   const hamburgerBtn = document.querySelector('.hamburger');
-  const menu = document.querySelector('.menu');
   const boxShadow = `0 0 2.2px rgba(0, 0, 0, 0.02),
   0 0 5.3px rgba(0, 0, 0, 0.03),
   0 0 10px rgba(0, 0, 0, 0.04),
@@ -73,52 +77,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', toggleToTopButton);
-
-  // GSAP ANIMATIONS:
-  // Get references to DOM elements
-  // const image = document.getElementById('image');
-  // const container = document.getElementById('[class*="img_box"]');
-  // const after
-  // = window.getComputedStyle(container, '::after');
-  // const imageReveal = CSSRulePlugin.getRule(after);
-
-  // gsap.fromTo(
-  //   container,
-  //   {
-  //     css: {
-  //       visibility: 'visible',
-  //     },
-  //   },
-  //   {
-  //     duration: 0,
-  //     css: {
-  //       visibility: 'visible',
-  //     },
-  //   }
-  // );
-
-  // gsap.fromTo(
-  //   imageReveal,
-  //   {
-  //     width: '100%',
-  //   },
-  //   {
-  //     duration: 1.4,
-  //     width: '0%',
-  //     ease: 'power2.inOut',
-  //   }
-  // );
-
-  // gsap.fromTo(
-  //   image,
-  //   {
-  //     scale: 1.6,
-  //   },
-  //   {
-  //     duration: 1.4,
-  //     scale: 1,
-  //     ease: 'power2.inOut',
-  //     delay: -1.4,
-  //   }
-  // );
 });
