@@ -1,7 +1,92 @@
+// UTILS
 @import "utils";
 @import "fonts";
 @import "typography";
 
+// COMPONENTS
+@import "./components/cards";
+@import "./components/header";
+@import "./components/buttons";
+@import "./components/navigation";
+
+// SECTIONS
+@import "./layout/sections/hero";
+@import "./layout/sections/products";
+@import "./layout/sections/about";
+@import "./layout/sections/contact";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  position: relative;
   background: $c-gray;
+  overflow-x: hidden;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+ul[class*="list"] {
+  list-style: none;
+}
+
+a[class*="link"] {
+  text-decoration: none;
+  color: inherit;
+}
+
+[class*="img_box"] {
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .img {
+      transform: scale(1.5) rotate(10deg);
+      transition: transform 1s $easing;
+      cursor: zoom-in;
+    }
+  }
+
+  // &::after {
+  //   position: absolute;
+  //   content: "";
+  //   width: 100%;
+  //   height: 100%;
+  //   background: $body-bg-c;
+  //   top: 0;
+  //   right: 0;
+  // }
+}
+
+.section {
+  width: 100%;
+}
+
+.section:not(.about__image),
+.header {
+
+  @include for-mobile () {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include for-tablets () {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  @include for-desktops () {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
 }

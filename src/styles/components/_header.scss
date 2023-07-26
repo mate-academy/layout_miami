@@ -1,0 +1,78 @@
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  @include z-index(header);
+
+  &__nav-icons {
+    display: flex;
+    cursor: pointer;
+    @include z-index(navicons);
+
+    &--link {
+      position: relative;
+
+      .img {
+        width: fit-content;
+      }
+
+      @include for-tablets () {
+        &:hover {
+          .tooltip {
+            display: inline-block;
+          }
+        }
+      }
+
+      @include for-desktops () {
+        &:hover {
+          .tooltip {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  @include for-mobile () {
+    .header {
+      &__nav-icons {
+        .hamburger {
+          margin-left: 24px;
+        }
+      }
+    }
+  }
+
+  @include for-tablets () {
+    .header {
+      padding: 32px 72px;
+      &__nav-icons {
+        .hamburger {
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+
+  @include for-desktops () {
+    .header {
+      padding: 35px 120px;
+      &__nav-icons {
+        .hamburger {
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+}
+
+.header-transform {
+  background-color: $body-bg-c;
+  transition: background-color 0.5s $easing;
+  box-shadow: $elements-shadow;
+}
