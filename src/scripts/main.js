@@ -17,4 +17,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     window.alert('Please fill in all the fields');
     event.preventDefault();
   }
+
+  event.preventDefault();
+  this.reset();
 });
