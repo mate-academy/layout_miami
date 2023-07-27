@@ -1,0 +1,136 @@
+
+.header {
+  height: 100vh;
+
+  background-image: url(../images/image-header.png);
+  background-position: center;
+  background-size: cover ;
+  background-repeat: no-repeat;
+
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: max-content;
+    align-items: center;
+    padding-top: 25px;
+
+    @include onTablet {
+      padding-top: 50px;
+    }
+
+    &--logo {
+      color: #fff;
+      text-decoration: none;
+
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 80%;
+      letter-spacing: -1.5px;
+
+      @include onDesktop {
+        font-size: 40px;
+      }
+    }
+
+    &__buttons {
+      position: relative;
+      display: flex;
+      gap: 30px;
+      justify-content: end;
+      align-items: center;
+
+      @include onTablet {
+        gap: 60px;
+      }
+
+      &__tel-icon--hover {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        text-align: right;
+        color: #fff;
+        opacity: 0;
+        transform: translateX(-70%);
+
+        &:hover {
+          opacity: 1;
+        }
+
+        @include onDesktop {
+          display: flex;
+          opacity: 0;
+        }
+
+        &__first--tel {
+          display: block;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+
+      &__tel-icon {
+        display: block;
+        height: 18px;
+        width: 18px;
+
+        background-image: url(../images/phone.svg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &:hover + .header__nav__buttons__tel-icon--hover {
+          opacity: 1;
+        }
+        @include onTablet {
+          height: 24px;
+          width: 24px;
+        }
+
+      }
+
+      &__menu-icon {
+        display: block;
+        height: 12px;
+        width: 18px;
+
+        background-image: url(../images/menu.svg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include onTablet {
+          height: 16px;
+          width: 24px;
+        }
+
+        &:hover {
+          background-image: url(../images/menu_hover.svg);
+        }
+      }
+    }
+  }
+
+  &__title {
+    align-items: center;
+    color: #fff;
+
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    margin-top: 200px;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
