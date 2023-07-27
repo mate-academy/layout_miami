@@ -7,3 +7,14 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+document.querySelector('form').addEventListener('submit', function(event) {
+  const nameInput = this.elements['name'];
+  const emailInput = this.elements['email'];
+  const messageInput = this.elements['message'];
+
+  if (!nameInput.value || !emailInput.value || !messageInput.value) {
+    window.alert('Please fill in all the fields');
+    event.preventDefault();
+  }
+});
