@@ -1,0 +1,95 @@
+.header {
+  background-image: url(../images/head.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__call {
+    position: relative;
+    display: flex;
+  }
+
+  &__contacts {
+    width: max-content;
+
+    padding-right: 20px;
+
+    flex-direction: column;
+    display: none;
+
+    position: absolute;
+    top: -100%;
+    right: 100%;
+
+    transform: translateY(-10%);
+
+    @include onDesktop {
+      &:hover {
+        display: flex;
+      }
+    }
+
+  }
+
+  &__icon:hover ~ &__contacts {
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $white-text-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: end;
+
+    margin-bottom: 8px;
+
+    width: 100%;
+
+    transition-duration: 0.5s;
+
+    &:hover {
+      color: $white-link-color-hover;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    padding: $content-padding-top 0;
+
+    height: 100vh;
+
+    @include onTablet {
+      padding: $content-padding-top-tablet 0;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    color: $white-text-color;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+  }
+}
