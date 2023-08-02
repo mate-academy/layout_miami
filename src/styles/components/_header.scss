@@ -1,0 +1,96 @@
+@import "./header/logo";
+@import "./header/menu";
+@import "./header/nav";
+@import "./header/phone";
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 29px;
+  transition: $transition;
+
+  @include media(sm) {
+    padding-top: 36px;
+  }
+
+  &--open {
+    background-color: $clr-grey;
+    overflow-y: auto;
+
+    @include media(xl) {
+      padding-top: 48px;
+    }
+  }
+
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .header--open & {
+      @include media(xl) {
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &__buttons {
+    align-items: stretch;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    display: block;
+    color: $white;
+
+    background-color: transparent;
+    background-image: url("../images/icons/menu.svg");
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: $transition;
+
+    height: 18px;
+    margin-left: 30px;
+    width: 18px;
+
+    &:hover {
+      background-image: url("../images/icons/menu_hover.svg");
+    }
+
+    .header--open & {
+      background-image: url("../images/icons/cross.svg");
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    @include media(sm) {
+      height: 24px;
+      margin-left: 40px;
+      width: 24px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: $transition;
+    transition-delay: 1s;
+
+    .header--open & {
+      transition-delay: 0s;
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}

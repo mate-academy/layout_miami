@@ -1,0 +1,46 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: map-get($gutter, "xs");
+
+  @include media(sm) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: map-get($gutter, "sm");
+  }
+
+  @include media(xl) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: map-get($gutter, "xl");
+  }
+
+  &__item {
+    @for $i from 1 through 2 {
+      @for $end from $i through 2 {
+        &--xs--#{$i}-#{$end} {
+          grid-column: #{$i} / #{$end + 1};
+        }
+      }
+    }
+
+    @include media(sm) {
+      @for $i from 1 through 6 {
+        @for $end from $i through 6 {
+          &--sm--#{$i}-#{$end} {
+            grid-column: #{$i} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include media(xl) {
+
+      @for $i from 1 through 12 {
+        @for $end from $i through 12 {
+          &--xl--#{$i}-#{$end} {
+            grid-column: #{$i} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
