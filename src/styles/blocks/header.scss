@@ -1,0 +1,74 @@
+.header {
+  @include backgroundImage(top);
+  background-image: url(../images/header.webp);
+
+  @include onTablet {
+    background-image: url(../images/header-tab.webp);
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header-desc.webp);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 94px;
+
+    @include onTablet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__icons {
+    @include top-actions;
+  }
+
+  &__title {
+    font-style: italic;
+    @include fontShortSize(800, 32px);
+    letter-spacing: -1.5px;
+    color: $colorText;
+
+    @include onTablet {
+      @include fontSize(40px);
+    }
+
+    @include onDesktop {
+      @include fontSize(48px);
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+      @include backgroundImage(center);
+      background-image: url(../images/sound.webp);
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/sound-big.webp);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
