@@ -1,0 +1,75 @@
+.icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+
+  background-size: cover;
+  background-position: center;
+
+  transition: all 0.3s;
+
+  @include forTablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--menu {
+    background-image: url("/images/menu-basic.svg");
+    @include forTablet {
+      background-image: url("/images/menu-big.svg");
+    }
+
+    &:hover {
+      background-image: url("/images/menu-hover.svg");
+      @include forTablet {
+        background-image: url("/images/menu-big_hover.svg");
+        background-size: cover;
+      }
+    }
+  }
+
+  &__tooltip {
+    opacity: 0;
+    @include forDesktop {
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+
+      width: max-content;
+      font-size: 12px;
+      font-weight: $font-weight-bold;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      padding-right: 12px;
+      color: $c-basic;
+
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &:hover &__tooltip {
+    @include forDesktop {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--phone {
+    background-image: url("/images/phone.svg");
+    margin-right: 30px;
+
+    @include forTablet{
+      margin-right: 40px;
+    }
+  }
+
+  &--cross {
+    background-image: url(/images/menu-closer.svg);
+    width: 24px;
+    height: 24px;
+  }
+}
