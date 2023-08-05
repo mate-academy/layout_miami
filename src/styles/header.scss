@@ -1,0 +1,104 @@
+.container {
+  height: 100vh;
+  max-width: 1920px;
+
+  box-sizing: border-box;
+
+  padding: $headerTopPadding
+    $rightLeftPadding 60px;
+
+  @include onDesktop {
+    padding: $headerTopPaddingOnDesk
+      $rightLeftPaddingOnDesk 150px;
+    margin: 0 auto;
+  }
+
+  @include onTablet {
+    padding: $headerTopPadding
+      $rightLeftPaddingOnTablet 60px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  background-image: url("../images/photos/Cover_photo.jpg");
+  background-size: cover;
+  background-position: right;
+  font-weight: 700;
+  color: white;
+
+  @include onDesktop {
+    background-position: center;
+  }
+
+  @include logoPreSet;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__icons-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__call {
+    margin-right: 20px;
+    text-decoration: none;
+
+    @include onDesktop {
+      margin-right: 40px;
+    }
+  }
+
+  &__phone-number {
+    opacity: 0;
+    color: white;
+
+    @include onDesktop {
+      position: relative;
+      top: 10%;
+      font-size: 12px;
+      white-space: nowrap;
+      transition-duration: 0.5s;
+      transition-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
+      transition-delay: 0.2s;
+    }
+  }
+
+  &__call:hover &__phone-number {
+    @include onDesktop {
+      cursor: pointer;
+      opacity: 1;
+      transform: translateX(-115px);
+    }
+  }
+
+  &__title {
+    font-size: 25px;
+    margin: 0 auto;
+    position: relative;
+    bottom: -80px;
+    opacity: 0;
+    animation-name: move-top-title;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.18, 0.57, 0.65, 1.6);
+    animation-fill-mode: forwards;
+
+    @include onDesktop {
+      font-size: 88px;
+    }
+
+    @include onTablet {
+      font-size: 50px;
+    }
+  }
+}
