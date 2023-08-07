@@ -1,0 +1,74 @@
+.exhibition {
+
+  &__intro {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  display: block;
+  text-align: center;
+  color: $mainColor;
+  margin-bottom: 48px;
+  }
+
+  &__event {
+    margin-bottom: 48px;
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    width: 100%;
+    position: relative;
+    max-height: 320px;
+    overflow: hidden;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(110%);
+      z-index: 1;
+
+      @include onDesktop {
+        transform: scale(110%);
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__photo--old-masters {
+    object-position: 30%;
+  }
+
+  &__photo--sculptures {
+    object-position: 100%;
+  }
+
+  &__description-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+
+    color: $accentMainColor;
+  }
+}
