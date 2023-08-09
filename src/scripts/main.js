@@ -1,16 +1,20 @@
 'use strict';
 
-document.getElementById('myForm').addEventListener('submit', formSubmit, false);
+const form = document.getElementById('myForm');
 
-function formSubmit(event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  const formData = new FormData(this);
-  let outputMessage = 'Form Data:\n';
+  form.reset();
+});
 
-  formData.forEach((value, key) => {
-    outputMessage += `${key}: ${value}\n`;
-  });
+const iconPhone = document.querySelector('.icon--phone');
+const hiddenTel = document.querySelector('.icon__additional--phone');
 
-  console.log(outputMessage);
-}
+iconPhone.addEventListener('mouseenter', () => {
+  hiddenTel.style.display = 'block';
+});
+
+iconPhone.addEventListener('mouseleave', () => {
+  hiddenTel.style.display = 'none';
+});
