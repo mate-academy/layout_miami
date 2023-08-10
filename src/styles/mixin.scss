@@ -1,17 +1,23 @@
 @mixin forDesktop {
-  @media (min-width:1260px) {
+  @media only screen and (min-width: 80em) {
     @content;
   }
 }
 
 @mixin forTablets {
-  @media (min-width: 744px) {
+  @media only screen and (min-width: 64em) {
     @content;
   }
 }
 
 @mixin forSmallTablets {
-  @media (min-width: 640px) {
+  @media only screen and (min-width: 48em) {
+    @content;
+  }
+}
+
+@mixin forMobile {
+  @media only screen and (min-width: 40em) {
     @content;
   }
 }
@@ -50,6 +56,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
+  @include forMobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @include forTablets {
     grid-template-columns: repeat(6, 1fr);
