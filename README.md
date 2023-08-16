@@ -19,14 +19,6 @@ You can preview the implemented design via [this link](https://zynk.tech/landing
 
 To cpature more details about the design, check the [Figma layout](https://github.com/zynkd/layout_miami/tree/develop)
 
-## Preview
-
-To see a quick preview of the project follow this [Link to Preview](#).
-
-## Layout
-
-For details about the layout design, follow this [Link to layout](#).
-
 ## Some additional information about the implementation
 
 1. **Responsive Design**: A design that is compatible with various screen resolutions, providing an optimal viewing experience across a wide range of devices.
