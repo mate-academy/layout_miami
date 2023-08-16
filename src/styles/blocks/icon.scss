@@ -1,0 +1,67 @@
+.icon {
+  display: block;
+  @include phone-size(24px);
+
+  @include onTablet {
+    @include phone-size(32px);
+  }
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__tooltip {
+    margin-right: 25px;
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+    position: relative;
+    top: 50%;
+
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    transition: opacity $transitionSpeed linear;
+
+  }
+
+  @include onTablet {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+    cursor: pointer;
+    transition: background-image 0.3s linear;
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+
+    margin-right: 24px;
+
+    @include onTablet {
+      margin-right: 32px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+    cursor: pointer;
+  }
+}
