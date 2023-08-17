@@ -1,5 +1,7 @@
 The MET landing page.
-[DEMO LINK]
+
+[DEMO LINK](https://olehmahera.github.io/The_Met_landing/)
+
 [FIGMA MOCKUP](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 
 Welcome to the MET Landing Page project! This project is a web page designed based on the design in Figma, utilizing HTML, SCSS, and JavaScript. The page follows a semantic HTML structure, incorporates SCSS as a preprocessor for styling, and implements a JavaScript menu. The project also adheres to the BEM (Block-Element-Modifier) methodology for better code organization and maintainability.
