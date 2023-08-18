@@ -1,0 +1,119 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin contactGrid {
+  --columns: 1;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 2;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 2;
+    column-gap: 150px;
+  }
+}
+
+@mixin style-Button {
+  border: 3px solid #292929;
+  border-radius: $borderRadius40;
+  background-color: $buttonBackground;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $buttonColorHover;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $backGroundWhite;
+    color: $main-text-color;
+  }
+
+  &:active {
+    background-color: $buttonBackground;
+    color: $buttonColorHover;
+  }
+}
+
+@mixin titleStyle {
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+}
+
+@mixin subtitleStyle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@mixin waves {
+  height: 57px;
+  width: 48px;
+  margin-bottom: 16px;
+}
+
+@mixin icon24 {
+  height: 24px;
+  width: 24px;
+
+}
+@mixin icon32 {
+  height: 32px;
+  width: 32px;
+}
