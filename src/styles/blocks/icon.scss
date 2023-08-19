@@ -12,22 +12,38 @@
     width: 32px;
   }
 
-  &__additional--phone {
-    display: none;
-    color: #292929;
-    text-align: center;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-    padding-top: 10px;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-
   &--phone {
+    position: relative;
     background-image: url(../images/icons/phone.svg);
+
+    &__additional {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+      color: #292929;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+
+    &:hover &__additional {
+      opacity: 1;
+      pointer-events: all;
+
+      @include smallDevices {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
   }
 
   &--menu {

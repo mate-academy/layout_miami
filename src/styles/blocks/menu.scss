@@ -5,8 +5,18 @@
   font-weight: 700;
   text-transform: uppercase;
 
-  &__content {
-    @include contentPaddingInline;
+  &__container {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1260px;
+
+    @include mediumDevices {
+      padding-inline: 75px;
+    }
+
+    @include smallDevices {
+      padding-inline: 15px;
+    }
   }
 
   &__phone-number {
@@ -16,6 +26,16 @@
     line-height: 27px;
     color: inherit;
     text-decoration: none;
+  }
+
+  &__link--block {
+    &:hover {
+      transform: scale(1.05);
+      .menu__phone-number {
+        transform: translateX(2%);
+      }
+    }
+
   }
 
   &__call-to-order {
@@ -28,6 +48,8 @@
     letter-spacing: 2px;
     color: inherit;
     text-decoration: none;
+
+    @include hover(transform, scale(1.05));
   }
 
   &__nav {
