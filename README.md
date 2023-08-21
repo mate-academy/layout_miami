@@ -40,6 +40,6 @@ To start the application, follow these instructions:
 npm start
 ```
 
-2. Access the application in your web browser at `http://localhost:3000/`.
+2. Access the application in your web browser at `http://localhost:8080/`.
 
 ___
