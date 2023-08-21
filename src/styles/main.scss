@@ -1,7 +1,151 @@
 @import "utils";
-@import "fonts";
-@import "typography";
+@import "./utils/mixins";
+// @import "fonts";
+// @import "typography";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background: $c-gray;
+  display: flex;
+  justify-content: center;
+  font-family: "Cinzel", serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: rgb(86, 56, 56);
+  background-image: url(../images/background-main.jpg);
+  padding: 25px 20px;
+  height: 100vh;
+  min-width: 320px;
+
+  @include tablet {
+    background-image: url(../images/bcg-tablet.jpg);
+    background-size: 100vw;
+    padding: 50px 72px;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+  }
+
+  @include desktop {
+    background-image: url(../images/bcg-desktop.jpg);
+    background-size: 100vw;
+    padding: 50px 120px;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      height: 75vh;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &__icon--menu {
+    all: unset;
+    background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 24px;
+    width: 24px;
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      cursor: pointer;
+    }
+
+    @include tablet {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  &__phone {
+    all: unset;
+    background-image: url(../images/phone.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 24px;
+    width: 24px;
+    margin-right: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include tablet {
+      height: 32px;
+      width: 32px;
+      margin-right: 55px;
+    }
+  }
+
+  &__h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: $white;
+    top: 200px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 64px;
+    }
+
+    @include desktop {
+      font-size: 80px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+}
+
+.logo__img {
+  height: 46px;
+  width: 64px;
+
+  @include tablet {
+    height: 65px;
+    width: 87px;
+  }
+}
+
+.phone__link {
+  display: block;
+  text-decoration: none;
+  top: 50%;
+  width: max-content;
+  transform: translateX(-100%);
+  padding-right: 16px;
+  color: $white;
+  font-weight: 700;
+}
+
+.link--2 {
+  padding-top: 8px;
+  transform: translateX(-115%);
 }
