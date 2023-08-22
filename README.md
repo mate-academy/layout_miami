@@ -1,13 +1,17 @@
-# Miami landing page
+# BOSE landing page
 
-In this task, you will learn how to implement a landing page. To do that:
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://annholovko.github.io/layout_miami/)
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+
+https://github.com/annholovko/layout_BOSE/assets/113480768/654fb147-8e43-4713-b6e5-fe005c0b48b2
+
+
+
+
+This langing is made with using of HTML, SCSS, BEM and JS
+
+This project provides the ability to see the usage of semantic HTML, flex, grid, animations and transitions, also AOS library is used there.
+Figma mockup of landing page you can see [there](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&mode=design)
+
+
+[DEMO link](https://annholovko.github.io/layout_BOSE/)
+
