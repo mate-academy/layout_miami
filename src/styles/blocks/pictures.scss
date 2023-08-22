@@ -32,20 +32,36 @@
     position: absolute;
     object-fit: cover;
     border-radius: 4px;
+    transition: border-radius 1s, transform 1s;
+
+    &:hover {
+      border-radius: 10px;
+      border: 1px solid $border-picture-color;
+      transform: scale(1.19);
+      z-index: 1;
+      position: absolute;
+
+      @include for-744-width() {
+        transform: scale(1.09);
+      }
+
+      @include for-desktop() {
+        transform: scale(1.15);
+      }
+    }
 
     &--small {
       @include for-744-width() {
         height: auto;
         position: static;
-        transition: border-radius 1s, transform 1s;
       }
 
       &:hover {
-        border-radius: 10px;
-        border: 1px solid $border-picture-color;
         transform: scale(1.2);
-        z-index: 1;
-        position: absolute;
+
+        @include for-744-width() {
+          transform: scale(1.2);
+        }
 
         @include for-desktop() {
           transform: scale(1.12);
@@ -65,6 +81,13 @@
 
       @include for-desktop() {
         height: 460px;
+      }
+
+      &:hover {
+        transform: none;
+        border-radius: none;
+        border: none;
+        position: relative;
       }
     }
   }
