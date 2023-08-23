@@ -1,0 +1,59 @@
+@mixin onTablet {
+  @media screen and (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media screen and (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin details-photo-1 {
+  grid-column: span 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 130px;
+
+  @include onTablet {
+    height: 187px;
+    grid-column: 1 / 5;
+  }
+  @include onDesktop {
+    height: 321px;
+    grid-column: 1 / 9;
+  }
+}
+
+@mixin details-photo-2 {
+  grid-column: span 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 130px;
+
+  @include onTablet {
+    height: 187px;
+    grid-column: 5 / -1;
+  }
+  @include onDesktop {
+    height: 321px;
+    grid-column: 9 / -1;
+  }
+}
