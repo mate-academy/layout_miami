@@ -1,5 +1,6 @@
 @import "utils";
 @import "./utils/mixins";
+@import "./utils/extends";
 // @import "fonts";
 // @import "typography";
 
@@ -25,14 +26,15 @@ p {
 .header {
   background-color: rgb(86, 56, 56);
   background-image: url(../images/background-main.jpg);
-  padding: 25px 20px;
-  height: 100vh;
+  padding: 36px 20px;
+  min-height: 100vh;
   min-width: 320px;
+  position: relative;
 
   @include tablet {
     background-image: url(../images/bcg-tablet.jpg);
     background-size: 100vw;
-    padding: 50px 72px;
+    padding: 66px 72px;
     min-width: 100vw;
     background-repeat: no-repeat;
   }
@@ -40,8 +42,7 @@ p {
   @include desktop {
     background-image: url(../images/bcg-desktop.jpg);
     background-size: 100vw;
-    padding: 50px 120px;
-    min-width: 100vw;
+    padding: 66px 120px;
     background-repeat: no-repeat;
   }
 
@@ -50,26 +51,18 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    @include tablet {
-      height: 75vh;
-    }
   }
 
   &__nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
   }
 
   &__icon--menu {
-    all: unset;
+    @extend %icon;
     background-image: url(../images/menu.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 24px;
-    width: 24px;
 
     &:hover {
       background-image: url(../images/menu_hover.svg);
@@ -77,19 +70,14 @@ p {
     }
 
     @include tablet {
-      height: 32px;
-      width: 32px;
+      height: $icon-large;
+      width: $icon-large;
     }
   }
 
   &__phone {
-    all: unset;
+    @extend %icon;
     background-image: url(../images/phone.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 24px;
-    width: 24px;
     margin-right: 24px;
 
     &:hover {
@@ -97,8 +85,8 @@ p {
     }
 
     @include tablet {
-      height: 32px;
-      width: 32px;
+      height: $icon-large;
+      width: $icon-large;
       margin-right: 55px;
     }
   }
@@ -107,11 +95,12 @@ p {
     font-size: 40px;
     font-weight: 700;
     color: $white;
-    top: 200px;
+    margin-top: 100px;
     text-align: center;
 
     @include tablet {
       font-size: 64px;
+      margin-top: 150px;
     }
 
     @include desktop {
@@ -125,8 +114,7 @@ p {
 }
 
 .logo__img {
-  height: 46px;
-  width: 64px;
+  @extend %met-logo-small;
 
   @include tablet {
     height: 65px;
@@ -134,7 +122,7 @@ p {
   }
 }
 
-.phone__link {
+.links {
   display: block;
   text-decoration: none;
   top: 50%;
@@ -143,9 +131,135 @@ p {
   padding-right: 16px;
   color: $white;
   font-weight: 700;
+  position: absolute;
 }
 
-.link--2 {
-  padding-top: 8px;
-  transform: translateX(-115%);
+.phone {
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $white;
+    text-transform: uppercase;
+
+    &--2 {
+      margin-top: 8px;
+    }
+  }
+
+  &__links {
+    padding: 10px 16px;
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+    width: max-content;
+    transform: translate(-100%, -40%);
+    transition: opacity 300ms;
+  }
+
+  &__img:hover .phone__links {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.page__menu {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  // transform: translateX(100%);
+  // &:target {
+  //   transform: translateX(0);
+  // }
+}
+
+.menu {
+  background-color: $red-main;
+  padding: 25px 20px;
+
+  @include tablet {
+    padding: 32px 72px;
+  }
+
+  @include desktop {
+    padding: 32px 121px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @include desktop {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__logo {
+    @extend %met-logo-small;
+  }
+
+  &__close-icon {
+    @extend %icon;
+    background-image: url(../images/cross.svg);
+
+    @include desktop {
+      display: block;
+      width: $icon-large;
+      height: $icon-large;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0 0 32px;
+    padding: 0;
+
+    @include desktop {
+      margin: 0 0 48px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: uppercase;
+    letter-spacing: $menu-letter-spacing;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: white;
+    }
+
+    @include tablet {
+      line-height: 42px;
+    }
+  }
+
+  &__phones {
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: $menu-letter-spacing;
+
+  }
+
+  &__order {
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: $menu-letter-spacing;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
