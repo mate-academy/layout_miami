@@ -1,0 +1,160 @@
+.masterpiece {
+  &__row {
+    margin: 0 0 $headerTopPadding;
+    display: grid;
+    @include gridCellpone;
+
+    @include onTablet {
+      display: grid;
+      @include gridTablet;
+    }
+
+    @include onDesktop {
+      display: grid;
+      @include gridDesktop;
+    }
+
+    &--2 {
+      grid-template-columns: repeat(3, 1fr);
+
+      @include onTablet {
+        @include gridTablet;
+      }
+
+      @include onDesktop {
+        @include gridDesktop;
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--1 {
+      @include onTablet {
+        grid-column: 1 / 5;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--2 {
+      @include onTablet {
+        grid-column: 5 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 9 / 13;
+      }
+    }
+
+    &--3 {
+      @include onTablet {
+        grid-column: 1 / 4;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--4 {
+      @include onTablet {
+        grid-column: 4 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 9;
+      }
+    }
+
+    &--5 {
+      @include onTablet {
+        width: 0;
+        height: 0;
+      }
+      @include onDesktop {
+        width: 100%;
+        height: 100%;
+        grid-column: 9 / 13;
+      }
+    }
+
+    &--6 {
+      @include onTablet {
+        grid-column: 1 / 3;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--7 {
+      @include onTablet {
+        grid-column: 3 / 7;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 13;
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: left top;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__inscription {
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0;
+    font-weight: 700;
+    font-size: $table-font-size;
+    line-height: $line-height;
+    color: $mainColor;
+
+    &--small {
+      cursor: default;
+      margin: 0 0 48px;
+      font-weight: 400;
+      color: $black;
+
+      &:last-child {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

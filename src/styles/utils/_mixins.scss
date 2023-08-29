@@ -1,6 +1,91 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin list {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-transform: uppercase;
+  text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+}
+
+@mixin menuList {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@mixin underline {
+  width: max-content;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #fff;
+}
+
+@mixin gridCellpone {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+@mixin gridTablet {
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 24px;
+}
+
+@mixin gridDesktop {
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+@mixin contactUsBold {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: $black;
+}
+
+@mixin contactUs {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 27px;
+  color: $black;
+}
+
+@mixin topActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin topActionsSide {
+  --icon-width: 18px;
+
+  position: relative;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: var(--icon-width) var(--icon-width);
+  gap: 30px;
+
+  @include onTablet {
+    gap: 60px;
+    --icon-width: 24px;
   }
 }
