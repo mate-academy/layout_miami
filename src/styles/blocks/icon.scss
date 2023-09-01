@@ -1,0 +1,58 @@
+.icon {
+  position: relative;
+
+  display: block;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__tooltip {
+    position: absolute;
+    right: 0;
+    bottom: -50%;
+
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    font-size: 10px;
+    line-height: 133%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color--primary-light;
+
+    opacity: 0;
+
+    transition: opacity $transition-duration ease;
+
+    pointer-events: none;
+
+    @include tabletScreen {
+      padding-right: 12px;
+      font-size: 12px;
+      right: 100%;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--menu {
+    background-image: url("../images/icons/icon--menu.svg");
+
+    @include hoverTransition(background-image, url("../images/icons/icon--menu-hover.svg"));
+  }
+
+  &--phone {
+    background-image: url("../images/icons/icon--phone.svg");
+  }
+
+  &--cross {
+    background-image: url("../images/icons/icon--cross.svg");
+  }
+}
