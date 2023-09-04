@@ -1,21 +1,30 @@
-// 'use strict';
+'use strict';
 
-// const btnNavEl = document.querySelector('.icon--menu');
-// const menuEl = document.querySelector('.menu');
-// const menuClose = document.querySelector('.menu--close-button');
+document.addEventListener('DOMContentLoaded', function() {
+  const iconMenu = document.querySelector('.icon__menu');
+  const menu = document.querySelector('.menu');
+  const closeIcon = document.querySelector('.menu__close');
+  const closeItems = document.querySelectorAll('.menu__close');
 
-// btnNavEl.addEventListener('click', function() {
-//   menuEl.classList.add('menu--active');
-// });
+  iconMenu.addEventListener('click', function() {
+    menu.classList.add('menu__active');
+  });
 
-// menuClose.addEventListener('click', function() {
-//   menuEl.classList.remove('menu--active');
-// });
+  closeIcon.addEventListener('click', function() {
+    menu.classList.remove('menu__active');
+  });
 
-// const menuLinks = document.querySelectorAll('.menu__link');
+  closeItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      menu.classList.remove('menu__active');
+    });
+  });
+});
 
-// menuLinks.forEach(function(link) {
-//   link.addEventListener('click', function() {
-//     menuEl.classList.remove('menu--active');
-//   });
-// });
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page-with-menu');
+  } else {
+    document.body.classList.remove('page-with-menu');
+  }
+});

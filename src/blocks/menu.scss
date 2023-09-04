@@ -1,8 +1,13 @@
 @import "./vars.scss";
 
+.page-with-menu {
+  overflow: hidden;
+}
+
 .menu {
   position: fixed;
   padding: 20px;
+  padding-left: 72px;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,20 +15,24 @@
   background-color: $white;
   transition: transform 0.5s;
   transform: translateX(-100%);
-  overflow: hidden;
 
-  &.menu__active {
+  &__active {
     transform: translateX(0);
-    overflow: hidden;
   }
 
   &__x {
-    padding: 50px;
-    padding-right: 150px;
-  }
+    padding: 40px;
+    padding-right: 125px;
 
-  &__navigation {
-    overflow: hidden;
+    @include onTablet() {
+      padding: 50px;
+      padding-right: 200px;
+    }
+
+    @include onDesktop() {
+      padding: 50px;
+      padding-right: 200px;
+    }
   }
 
   &__imp {
@@ -35,7 +44,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     list-style: none;
     margin-bottom: 4rem;
   }
@@ -44,8 +53,8 @@
     color: $black;
     text-decoration: none;
     font-weight: 600;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 22px;
+    line-height: 22px;
     letter-spacing: 2px;
   }
 
@@ -64,11 +73,14 @@
 
   &__number {
     margin-bottom: 1.6rem;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   &__book {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 12px;
+    line-height: 16px;
     letter-spacing: 2px;
     border-bottom: 1px solid $black;
   }
