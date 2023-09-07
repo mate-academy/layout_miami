@@ -1,39 +1,48 @@
 .header {
-  box-sizing: border-box;
-  height: 100vh;
-  background-image: url(/images/header-bg-mobile.svg);
+  background-image: url(images/header-background.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  color: #FFFFFF;
+  background-position: top center;
+  min-height: 100vh;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+  grid-template-rows: 1fr 1fr;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include grid();
 
-  &__content {
-    height: 100vh;
+  @include for-744-width() {
+    padding: 0 72px 64px;
+  }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  @include for-desktop() {
+    padding: 0 120px 64px;
+  }
 
-  &__title {
-    margin: 0;
-    font-weight: 700px;
-    font-size: 36px;
-    line-height: 100%;
+  &__navigation {
+    align-self: start;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
 
-    @include onTablet {
-      font-size: 40px;
+    @include for-744-width() {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
     }
   }
 
-  &__bottom {
-    padding-bottom: 40px;
+  &__title {
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
 
-    @include onTablet {
-      padding-bottom: 64px;
-   }
+    @include for-744-width() {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
+    }
   }
- }
 }
