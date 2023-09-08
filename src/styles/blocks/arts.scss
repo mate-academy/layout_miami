@@ -1,0 +1,97 @@
+.arts {
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $smallMargin;
+    margin-bottom: $smallMargin;
+
+    @include onTablet() {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include onDesktop() {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &--middle {
+      display: flex;
+      justify-content: space-between;
+      gap: $smallMargin;
+      margin-bottom: $smallMargin;
+    }
+  }
+
+  &__photos-container {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet() {
+      padding-bottom: 0;
+      height: 185px;
+
+      &--third,
+      &--four {
+        height: 284px;
+      }
+
+      &--five {
+        display: none;
+      }
+    }
+
+    @include onDesktop() {
+      padding-bottom: 0;
+      height: 320px;
+
+      &--five {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    cursor: pointer;
+    transition: transform $timeTransition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__desription-title {
+    color: $colorMainAccent;
+  }
+
+  &__button {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    text-decoration: none;
+    color: $colorWhite;
+    background-color: $colorMainAccent;
+    text-align: center;
+    transition: background-color $timeTransition;
+    outline: none;
+
+    &:hover {
+      background-color: $colorButtonHover;
+    }
+
+    &:active {
+      background-color: $colorButtonActive;
+    }
+  }
+}
