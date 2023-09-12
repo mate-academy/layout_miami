@@ -1,0 +1,178 @@
+%nav-decoration {
+  content: "";
+  position: absolute;
+  top: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  transition: transform $transition-duration;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  color: $color-text-main;
+
+  background-color: $color-dark-gray;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    
+    &--menu-opened {
+      overflow: hidden;
+    }
+  }
+
+  // Position of Navigation
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    transform: translateX(-100%);
+    transition: transform $transition-duration ease-out 0.6s;
+
+    &::before {
+      @extend %nav-decoration;
+      z-index: 1;
+
+      background-color: $color-greenish-accent;
+    }
+
+    &::after {
+      @extend %nav-decoration;
+      z-index: 2;
+
+      background-color: $color-purple-accent;
+      transition-delay: 0.3s;
+    }
+
+    &--opened {
+      transform: translateX(0%);
+
+      &::before,
+      &::after {
+        transform: translate(100%);
+      }
+    }
+  }
+
+  &__main {
+    padding-bottom: 120px;
+
+    @include onDesktop {
+      padding-bottom: 180px;
+    }
+  }
+
+  // For Explore & Send buttons
+  &__button {
+    display: block;
+    height: 56px;
+
+    text-align: center;
+    font-size: 16px;
+    line-height: 56px;
+    font-weight: 700;
+    color: $color-dark-gray;
+
+    border-radius: 56px;
+    background-color: $color-text-main;
+
+    transition: box-shadow $transition-duration,
+      color $transition-duration;
+
+    &:hover {
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      color: $color-purple-accent;
+      box-shadow: 1px 10px 16px $color-greenish-accent;
+    }
+  }
+
+  // h2
+  &__section-title {
+    text-align: center;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+
+  // h4
+  &__article-title {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 700;
+  }
+
+  // Most common text on page
+  &__general-text {
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+  }
+
+  // Move free
+  &__move-free {
+    padding-top: 60px;
+    
+    @include onTablet {
+      padding-top: 120px;
+    }
+  }
+
+  // Compare Bikes
+  &__compare-bikes {
+    padding-top: 92px;
+
+    @include onTablet {
+      padding-top: 132px;
+    }
+
+    @include onDesktop {
+      padding-top: 164px;
+    }
+  }
+
+  // The Details
+  &__details {
+    padding-top: 92px;
+
+    @include onTablet {
+      padding-top: 120px;
+    }
+
+    @include onDesktop {
+      padding-top: 144px;
+    }
+  }
+
+  // Contact us
+  &__contact-us {
+    padding-top: 50px;
+
+    @include onTablet {
+      padding-top: 90px;
+    }
+
+    @include onDesktop {
+      padding-top: 150px;
+    }
+  }
+}
