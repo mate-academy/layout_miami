@@ -1,0 +1,115 @@
+@use "../styles/utils/mixins" as *;
+@import "../styles/fonts";
+
+.menu {
+  @include grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.17, 0.89, 0.32, 1.27);
+  margin-top: 0;
+  row-gap: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #c2c2c2;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    grid-column: 1 / 3;
+
+    @include for-ipad {
+      grid-column: 1 / 7;
+      padding: 36px 0;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+      padding: 36px 0;
+    }
+  }
+
+  &__list {
+    height: 180px;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    grid-column: 1 / 3;
+
+    @include for-ipad {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__item {
+    padding-bottom: 32px;
+  }
+
+  &__link {
+    color: #1d1d1d;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+      margin-top: 8px;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / 3;
+
+    @include for-ipad {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__number {
+    padding: 8px 0 16px;
+    margin: 0;
+    height: 27px;
+    color: #1d1d1d;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  &__test {
+    height: 16px;
+    color: #1d1d1d;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    margin: 0;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+      width: 139px;
+      padding: 0;
+    }
+  }
+}
