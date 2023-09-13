@@ -1,0 +1,46 @@
+.pictures {
+  @include grid();
+
+  &-item {
+
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+
+    &-small {
+      grid-column: span 1;
+
+      @include for-desktop() {
+        grid-column: span 4;
+
+      }
+    }
+
+    &-big {
+      grid-column: span 1;
+
+      @include for-desktop() {
+        grid-column: span 8;
+        padding-top: 324px;
+      }
+    }
+
+  }
+
+  &-image {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    transition: transform 1s;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 1;
+      @media (min-width: 1260px) {
+        transform: scale(1);
+      }
+    }
+  }
+}
