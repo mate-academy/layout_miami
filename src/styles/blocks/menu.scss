@@ -1,4 +1,9 @@
 .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
   @include grid();
   justify-content: center;
   align-content: start;
@@ -6,10 +11,15 @@
   min-height: 100vh;
   background-color: $color-white;
 
+  &:target {
+    transform: translateX(0);
+  }
+
   &__header {
     grid-column: span 2;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 24px 0;
     box-sizing: border-box;
   }
@@ -44,6 +54,20 @@
       display: inline-block;
       border-bottom: 1px solid $color-black;
       padding-bottom: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &--logo {
+      width: 152px;
+      height: 16px;
+    }
+
+    &--close {
+      width: 24px;
+      height: 24px;
     }
   }
 }
