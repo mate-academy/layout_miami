@@ -1,14 +1,42 @@
 .burger {
-  width: 24px;
-  height: 24px;
-  color: black;
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("../pictures/Icon-Burger-menu.svg");
+    background-size: cover;
+    display: inline-block;
 
-  @include for-tablet() {
-    width: 32px;
-    height: 32px;
+    @include for-tablet() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("../pictures/Icon-Burger-menu-hover.svg");
+    background-size: cover;
+    display: none;
+
+    @include for-tablet() {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &:hover {
-    background-image: url("../pictures/Icon-Burger-menu-hover.svg");
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden();
   }
 }
