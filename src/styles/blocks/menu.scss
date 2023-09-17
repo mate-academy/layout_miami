@@ -4,13 +4,18 @@
   left: 0;
   right: 0;
   transform: translateX(-100%);
-  @include grid();
   justify-content: center;
   align-content: start;
   color: $color-black;
   min-height: 100vh;
   background-color: $color-white;
   transition: transform 0.3s ease-in-out;
+  @include grid();
+  @include for-tablet() {
+    grid-template-columns: repeat( 6, 80px);
+    gap: 24px;
+    grid-column: span 6;
+  }
 
   &:target {
     transform: translateX(0);
@@ -23,10 +28,18 @@
     align-items: center;
     padding: 24px 0;
     box-sizing: border-box;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
   }
 
   &__item {
     grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
   }
 
   &__title {
@@ -39,6 +52,10 @@
     text-align: left;
     padding-bottom: 30px;
     color: $color-black;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
   }
 
   &__paragraph {
