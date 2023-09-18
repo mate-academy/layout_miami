@@ -1,0 +1,119 @@
+.page__menu {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  width: 100%;
+  transition: transform 0.25s;
+  transform: translateX(-200%);
+
+  &:target {
+    transform: translateX(0);
+  }
+}
+
+.menu {
+  background-color: $red-main;
+  padding: 35px 20px;
+
+  @include tablet {
+    padding: 50px 72px;
+  }
+
+  @include desktop {
+    padding: 50px 121px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    @include desktop {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__logo {
+    @extend %met-logo-small;
+  }
+
+  &__close-icon {
+    @extend %icon;
+    background-image: url(../images/cross.svg);
+
+    @include tablet {
+      width: $icon-large;
+      height: $icon-large;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0 0 32px;
+    padding: 0;
+
+    @include desktop {
+      margin: 0 0 48px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: uppercase;
+    letter-spacing: $menu-letter-spacing;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: white;
+    }
+
+    @include tablet {
+      line-height: 42px;
+    }
+  }
+
+  &__phones {
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: $menu-letter-spacing;
+  }
+
+  .phone__link {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  &__call {
+    display: block;
+    width: max-content;
+    border-bottom: 1px solid white;
+  }
+
+  &__order {
+    all: unset;
+    display: block;
+    width: max-content;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: $menu-letter-spacing;
+
+    &:hover {
+      cursor: pointer;
+
+      & .phone__link {
+        opacity: 1;
+      }
+    }
+  }
+}

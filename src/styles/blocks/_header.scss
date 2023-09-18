@@ -1,0 +1,139 @@
+.header {
+  position: relative;
+  background-color: rgb(86, 56, 56);
+  background-image: url(../images/background-main.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 32px 20px;
+  min-height: 100vh;
+  min-width: 320px;
+  margin-bottom: 140px;
+
+  @include tablet {
+    background-image: url(../images/bcg-tablet.jpg);
+    padding: 32px 72px;
+    background-repeat: no-repeat;
+  }
+
+  @include desktop {
+    background-image: url(../images/bcg-desktop.jpg);
+    padding: 30px 120px;
+  }
+
+  &__content {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon--menu {
+    @extend %icon;
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      cursor: pointer;
+    }
+
+    @include tablet {
+      height: $icon-large;
+      width: $icon-large;
+    }
+  }
+
+  &__phone {
+    @extend %icon;
+    background-image: url(../images/phone.svg);
+    margin-right: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include tablet {
+      height: $icon-large;
+      width: $icon-large;
+      margin-right: 55px;
+    }
+  }
+
+  &__h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: $white;
+    margin-top: 100px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 64px;
+      margin-top: 150px;
+    }
+
+    @include desktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.logo__img {
+  @extend %met-logo-small;
+  @include tablet {
+    height: 65px;
+    width: 87px;
+  }
+}
+
+.links {
+  display: block;
+  text-decoration: none;
+  top: 50%;
+  width: max-content;
+  transform: translateX(-100%);
+  padding-right: 16px;
+  color: $white;
+  font-weight: 700;
+  position: absolute;
+}
+
+.phone {
+  &__link {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: $white;
+    text-transform: uppercase;
+
+    &--2 {
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__links {
+    padding: 10px 16px;
+    text-align: right;
+    opacity: 0;
+    pointer-events: none;
+    width: max-content;
+    transform: translate(-100%, -40%);
+    transition: opacity 300ms;
+  }
+
+  &__img:hover .phone__links {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

@@ -1,0 +1,129 @@
+.contacts {
+  margin-bottom: 48px;
+
+  &__grid-container {
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 75px;
+      grid-template-areas: "box1 form" "box2 form";
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "box1 box2 form";
+    }
+  }
+
+  &__content {
+    margin-bottom: 48px;
+    max-width: 27ch;
+  }
+
+  &__content--box-1 {
+    grid-area: box1;
+  }
+
+  &__content--box-2 {
+    grid-area: box2;
+  }
+
+  &__subheading {
+    margin-bottom: 16px;
+  }
+
+  &__phone-address {
+    font-size: 14px;
+    line-height: 27px;
+  }
+
+  &__phone {
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 27px;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1) translate(5%);
+    }
+  }
+
+  &__address {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+}
+
+.form {
+  grid-area: form;
+
+  &__fields {
+    width: 100%;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+    background-color: #f8f8fa;
+    height: 48px;
+    border: 2px solid #f8f8fa;
+    width: 100%;
+    font-family: inherit;
+    color: black;
+    padding-left: 10px;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #d5d7de;
+    }
+
+    &:focus {
+      cursor: text;
+      border: 2px solid rgb(154, 169, 184);
+      outline: none;
+    }
+  }
+
+  &__message {
+    background-color: #f8f8fa;
+    height: 144px;
+    width: 100%;
+    border: 2px solid #f8f8fa;
+    margin-bottom: 32px;
+    font-family: inherit;
+    color: black;
+    padding-left: 10px;
+    resize: none;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #d5d7de;
+    }
+
+    &:focus {
+      cursor: text;
+      border: 2px solid rgb(154, 169, 184);
+      outline: none;
+    }
+  }
+
+  &__send {
+    @extend %button;
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    margin-bottom: 100px;
+  }
+}
+
+::placeholder {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: inherit;
+  color: #7e7e83;
+}
