@@ -7,3 +7,8 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('no-scroll');
   }
 });
+
+document.addEventListener('submit', function(event) {
+  event.preventDefault();
+  event.target.reset();
+});
