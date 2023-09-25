@@ -1,0 +1,75 @@
+.icon {
+  display: block;
+  @include iconsSmall();
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+    margin-right: 24px;
+
+    @include onTablet() {
+      margin-right: 55px;
+    }
+
+    @include onDesktop() {
+      margin-right: 55px;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/Icon-Close.svg);
+  }
+
+  &__call-info {
+    display: none;
+    text-decoration: none;
+   
+    @include onDesktop() {
+      display: block;
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -100%);
+      text-align: right;
+
+      color: $color-white;
+      padding-right: 16px;
+      width: max-content;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-transform: uppercase;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+  }
+
+  &:hover &__call-info {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @include onTablet() {
+    @include iconsBig();
+  }
+
+  @include onDesktop() {
+    @include iconsBig();
+  }
+}
