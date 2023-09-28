@@ -7,7 +7,10 @@
   text-decoration: none;
 
   &:hover {
-    width: 190px;
+
+    @include for-medium() {
+      width: 190px;
+    }
   }
 
   &__icon {
@@ -30,13 +33,14 @@
     position: relative;
     top: -50px;
   }
-
-  &:not(:hover) &__label {
-    @include visually-hidden();
-  }
-
   &:hover &__label {
     transform: translateY(50px);
     transition: transform 0.3s ease-in;
+  }
+
+  @include for-medium() {
+    &:not(:hover) &__label {
+      @include visually-hidden();
+    }
   }
 }
