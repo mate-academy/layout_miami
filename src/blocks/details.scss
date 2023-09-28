@@ -1,0 +1,111 @@
+@use "../styles/utils/mixins" as *;
+@use "../styles/fonts";
+
+.details {
+  &__photo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in;
+    }
+
+    &--small {
+
+      @include for-medium {
+        width: 184px;
+        height: 187px;
+      }
+
+      @include for-large {
+        width: 324px;
+        height: 320px;
+
+      }
+
+    }
+
+    &--big {
+
+      @include for-medium {
+        width: 392px;
+        height: 187px;
+      }
+
+      @include for-large {
+        width: 672px;
+        height: 321px;
+      }
+    }
+  }
+
+  &__images {
+    @include grid;
+  }
+
+  &__place {
+    grid-column: span 1;
+
+    &--small {
+      @include for-medium {
+        grid-column: span 2;
+      }
+
+      @include for-large {
+        grid-column: span 4;
+      }
+    }
+
+    &--big {
+      @include for-medium {
+        grid-column: span 4;
+      }
+
+      @include for-large {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__content {
+    @include grid;
+    row-gap: 0;
+  }
+
+  &__function {
+    color: $white;
+    font-size: 24px;
+
+    font-weight: 700;
+    line-height: 140%;
+    margin: 16px 0 8px;
+
+    @include setting-elements-on-all-grid();
+  }
+
+  &__description {
+    color: $white;
+    font-size: 16px;
+
+    font-weight: 400;
+    line-height: 140%;
+    margin-top: 0;
+    margin-bottom: 40px;
+
+    @include setting-elements-on-all-grid();
+  }
+
+  &__button {
+    margin-bottom: 80px;
+    grid-column: 1 / 3;
+    @include for-medium {
+      grid-column: 3 / 5;
+    }
+
+    @include for-large {
+      grid-column: 4 / 10;
+    }
+  }
+}

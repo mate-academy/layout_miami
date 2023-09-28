@@ -1,0 +1,129 @@
+@use "../styles/utils/mixins" as *;
+@use "../styles/fonts";
+
+.menu {
+  @include grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.17, 0.89, 0.32, 1.27);
+  margin-top: 0;
+  row-gap: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #c2c2c2;
+  scroll-behavior: unset;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    grid-column: 1 / 3;
+
+    @include for-medium {
+      grid-column: 1 / 7;
+      padding: 36px 0;
+    }
+
+    @include for-large {
+      grid-column: 1 / 13;
+      padding: 36px 0;
+    }
+  }
+
+  &__logo {
+    margin-top: 6px;
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease-in;
+    }
+  }
+
+  &__cross {
+
+    transform: rotate(0);
+
+    &:hover {
+      transform: rotate(2turn);
+      transition: transform 0.5s ease-in;
+    }
+  }
+
+  &__list {
+    height: 290px;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+
+    @include setting-elements-on-all-grid();
+  }
+
+  &__item {
+    padding-bottom: 32px;
+  }
+
+  &__link {
+    color: $border-color;
+    font-size: 22px;
+    margin-top: 32px;
+    padding-bottom: 8px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px solid $border-color;
+      font-size: 23px;
+      transition: font-size 0.3s ease;
+    }
+  }
+
+  &__content {
+
+    @include setting-elements-on-all-grid();
+  }
+
+  &__number--link {
+    text-decoration: none;
+    height: 27px;
+    color: $border-color;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+
+    &:hover {
+      border-bottom: 1px solid $border-color;
+      font-size: 17px;
+      transition: font-size 0.3s ease;
+    }
+  }
+
+  &__test {
+    height: 16px;
+    color: $border-color;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 16px;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    grid-column: 1 / 2;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      color: $border-color;
+      font-size: 13px;
+      transition: font-size 0.3s ease;
+    }
+  }
+}
