@@ -1,0 +1,38 @@
+@mixin forMobile() {
+  @media (max-width: calc(#{$minPx} - 1px)) {
+    @content;
+  }
+}
+@mixin forTablet() {
+  @media (min-width: $minPx) and (max-width: calc(#{$maxPx} - 1px)) {
+    @content;
+  }
+}
+
+@mixin forDesktop() {
+  @media (min-width: $maxPx) {
+    @content;
+  }
+}
+
+@mixin grid {
+  @include forMobile {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    gap: 20px;
+    grid-column: 1 / 3;
+  }
+  @include forTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+    grid-column: 1 / 7;
+  }
+
+  @include forDesktop {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+    grid-column: 1 / 13;
+  }
+}
