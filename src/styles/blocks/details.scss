@@ -1,0 +1,72 @@
+.details {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+      position: relative;
+      z-index: -1;
+    }
+
+    @include onIpad {
+      max-height: 200px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+    transition: scale 0.3s;
+
+    &:hover {
+      scale: 103%;
+    }
+  }
+
+  &__grid {
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: $whiteTextColor;
+    margin-bottom: 8px;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: $yellowHoverColor;
+    }
+  }
+
+  &__desk {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: $whiteTextColor;
+
+    margin-bottom: 48px;
+  }
+}
