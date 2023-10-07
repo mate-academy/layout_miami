@@ -1,0 +1,89 @@
+.page {
+  font-family: "cinzel", serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &--no-scroll {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__container {
+    @extend %container;
+  }
+
+  &__section {
+
+    margin-bottom: 100px;
+
+    @include onTablet {
+      margin-bottom: 140px;
+    }
+
+    &-title {
+
+      margin: 0;
+
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 48px;
+
+      font-size: $bigFontSize;
+      line-height: $lineheightIsFontSize;
+      letter-spacing: -1.5px;
+
+      color: $mainDark;
+
+      @include onTablet {
+        font-size: calc(1.5 * #{$bigFontSize});
+      }
+
+      &--first {
+        margin-bottom: 8px;
+      }
+
+      &--museum-hours {
+        margin: 0 0 32px;
+        text-align: left;
+
+        @include onTablet {
+          font-size: calc(1.5 * #{$bigFontSize});
+          line-height: $lineheightIsFontSize;
+        }
+
+        &::before {
+          display: block;
+          content: "Plan your visit";
+          line-height: 140%;
+
+          font-weight: bold;
+          font-size: 12px;
+          color: $menuColor;
+        }
+      }
+    }
+
+    &-description {
+      text-align: center;
+      margin-bottom: $ContentMarginBig;
+      font-size: $middleFontSize;
+      line-height: $mainLineHeight;
+    }
+  }
+}

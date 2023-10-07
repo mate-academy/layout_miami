@@ -1,6 +1,81 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+
   }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 743.9px) {
+    @content;
+  }
+}
+
+@mixin useGrid ($columnsCount, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columnsCount, 1fr);
+  gap: $gap;
+
+}
+
+@mixin top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $headerTopPadding 0;
+  @include onTablet {
+    padding: 50px 0;
+  }
+}
+
+@mixin menuPhone {
+  width: max-content;
+  font-weight: bold;
+  font-size: $middleFontSize;
+  line-height: $mainLineHeight;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #fff;
+}
+
+@mixin imgDescTitle {
+  display: block;
+  font-weight: bold;
+  font-size: $middleFontSize;
+  line-height: $mainLineHeight;
+
+  color: $menuColor;
+
+}
+@mixin imgDescSchedule {
+  display: block;
+  margin-bottom: 48px;
+  font-size: $middleFontSize;
+  line-height: $mainLineHeight;
+
+  color: $mainDark;
+}
+
+@mixin mainContent {
+  font-weight: bold;
+  font-size: $middleFontSize;
+  line-height: $mainLineHeight;
+
+  color: $mainDark;
+}
+
+@mixin sideContent {
+  font-weight: normal;
+  font-size: $middleFontSize;
+  line-height: $mainLineHeight;
+
+  color: $mainDark;
+
 }

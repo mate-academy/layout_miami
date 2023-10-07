@@ -1,0 +1,110 @@
+.menu {
+  background-color: $menuColor;
+
+  &__container {
+    @extend %container;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+  }
+
+  &__top {
+    @include top-actions;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__link {
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: calc(1.5 * #{$middleFontSize});
+    line-height: $lineheightIsFontSize;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    transition: border-color 0.3s;
+
+    color: #fff;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &__call {
+    @include menuPhone;
+
+    &--fifth-ave {
+      @include menuPhone;
+      margin-bottom: 8px;
+    }
+
+    &--cloisters {
+      @include menuPhone;
+      margin-bottom: 16px;
+    }
+
+    &--action {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #fff;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--addresses {
+      display: flex;
+      position: relative;
+      left: 180px;
+      bottom: 80px;
+      opacity: 0;
+      pointer-events: none;
+
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 10px;
+      text-align: center;
+      gap: 20px;
+      box-sizing: border-box;
+      border: 1px solid #fff;
+
+      transition: opacity 0.6s;
+    }
+
+    &-cbox {
+      display: none;
+
+      &:checked ~ .menu__call--addresses {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    &-to-order {
+      @include menuPhone;
+      width: 100%;
+    }
+  }
+}
