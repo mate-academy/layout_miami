@@ -6,3 +6,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const logo = document.querySelector('.logo');
+
+logo.addEventListener('mouseover', () => {
+  logo.style.transition = 'transform 0.4s ease-in-out';
+  logo.style.transform = 'scale(1.1)';
+});
+
+logo.addEventListener('mouseout', () => {
+  logo.style.transform = 'scale(1)';
+});
+
