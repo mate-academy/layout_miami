@@ -1,0 +1,46 @@
+@mixin visually_hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+}
+
+.form {
+
+  &__item {
+    width: 100%;
+
+    ::placeholder {
+      color: #7e7e83;
+      font-family: Space Mono, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 140%; /* 19.6px */
+
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 48px;
+    background-color: #f8f8fa;
+    border: none;
+    padding-left: 16px;
+
+  }
+
+  &__textarea {
+    width: 300px;
+    height: 300px;
+    padding: 14px 16px;
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually_hidden();
+    }
+  }
+}
