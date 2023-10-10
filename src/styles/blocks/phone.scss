@@ -4,7 +4,19 @@
   text-decoration: none;
   display: flex;
 
+  @include for-desktop() {
+    margin-left: 100px;
+    margin-right: 64px;
+
+    &:hover {
+      padding-left: 100px;
+      margin-left: 0;
+      margin-right: 64px;
+    }
+  }
+
   &__label {
+    opacity: 0;
     color: #fff;
     text-align: right;
     font-family: Poppins;
@@ -18,8 +30,11 @@
     transform: translateX(calc(-100% - 20px));
     display: flex;
     align-self: center;
-    opacity: 1;
     transition: opacity 0.5s linear;
+
+    @include for-desktop() {
+      opacity: 1;
+    }
   }
 
   &:not(:hover) &__label {
