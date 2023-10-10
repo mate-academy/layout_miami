@@ -1,0 +1,144 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header {
+  background-image: url(../images/header360.svg);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    background-image: url(../images/header744.svg);
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/header1260.svg);
+    background-position: top;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 40px 0 53px;
+
+    @include onDesktop {
+      padding: 45px 0 71px;
+    }
+
+  }
+
+  &__nav {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+
+    :first-child {
+      margin-right: auto;
+
+      @include onDesktop {
+        height: 24px;
+        width: 190px;
+      }
+    }
+  }
+
+  &__call {
+    margin-right: 24px;
+    background-image: url(../images/IconPhone.svg);
+
+    @include onTablet {
+      margin-right: 32px;
+    }
+
+    @include onDesktop {
+
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        height: 32px;
+        color: $mainColor;
+        width: max-content;
+        display: block;
+        transform: translateX(-100%);
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        position: relative;
+        top: 10px;
+        transition: opasity $transition-duration;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu-opener {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    transition: background-image $transition-duration;
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $mainColor;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/Vector.svg);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 16px;
+    }
+
+    @include onTablet {
+      font-size: 40px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        background-image: url(../images/SoundWaves.svg);
+        margin-bottom: 40px;
+      }
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
