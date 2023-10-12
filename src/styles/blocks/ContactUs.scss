@@ -1,3 +1,13 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .contactUs {
   margin-top: 80px;
 
@@ -7,6 +17,66 @@
     line-height: 32px;
     letter-spacing: -1.5px;
     text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 48px;
+
+    &-item {
+
+      &-label {
+        &:not(:focus):not(:active) {
+          @include visually-hidden();
+        }
+      }
+
+      &-input {
+        width: 100%;
+        height: 48px;
+        border-radius: 40px;
+        border: 0;
+        line-height: 48px;
+        padding-left: 16px;
+        box-sizing: border-box;
+
+        &::placeholder {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          letter-spacing: 0;
+          text-align: left;
+        }
+      }
+
+      &-textarea {
+        width: 100%;
+        height: 148px;
+        border-radius: 16px;
+        border: 0;
+        line-height: 48px;
+        padding-left: 16px;
+        box-sizing: border-box;
+      }
+    }
+
+    &-button {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      letter-spacing: 0;
+      text-align: center;
+      margin-top: 32px;
+      border: 0;
+      border-radius: 28px;
+      display: block;
+      text-decoration: none;
+      background-color: #fff;
+      color: #1d1d1d;
+      height: 56px;
+    }
   }
 
   &__address {
