@@ -1,27 +1,36 @@
 @mixin forMobile() {
-  @media (max-width: calc(#{$minPx} - 1px)) {
+  @media (max-width: $maxMobileScreen) {
     @content;
   }
 }
+
 @mixin forTablet() {
-  @media (min-width: $minPx) and (max-width: calc(#{$maxPx} - 1px)) {
+  @media (min-width: calc(#{$maxMobileScreen} + 1px))
+    and (max-width: $maxTabletScreen) {
     @content;
   }
 }
 
 @mixin forDesktop() {
-  @media (min-width: $maxPx) {
+  @media (min-width: calc(#{$maxTabletScreen} + 1px)) {
     @content;
   }
 }
 
 @mixin notForMobile() {
-  @media (min-width: $minPx) {
+  @media (min-width:  calc(#{$maxMobileScreen} + 1px)) {
+    @content;
+  }
+}
+
+@mixin notForDesktop() {
+  @media (max-width: $maxTabletScreen) {
     @content;
   }
 }
 
 @mixin grid {
+
   @include forMobile {
     grid-template-columns: repeat(2, 130px);
     column-gap: 20px;
