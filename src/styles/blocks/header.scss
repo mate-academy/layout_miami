@@ -1,17 +1,37 @@
 .header {
-  background-color: black;
-  background-image: url(../images/header-background.jpg);
+  background-color: #1d1d1d;
+  background-image: url(../images/header-small-medium-background.jpg);
+  background-position: 100% center;
   background-repeat: no-repeat;
   background-size: cover;
+
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
   padding: 0 20px;
 
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+
+  @media (min-width: 1020px) {
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+  }
+
   &__nav {
     @include navigation;
+
+    align-self: start;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    @media (min-width: 1020px) {
+      grid-column: 1 / 13;
+    }
 
     &-item {
       &-logo-icon {
@@ -41,5 +61,13 @@
     text-align: center;
     color: white;
     padding-bottom: 88px;
+
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+
+    @media (min-width: 1020px) {
+      grid-column: 1 / 13;
+    }
   }
 }
