@@ -1,30 +1,51 @@
 @mixin forMobile() {
-  @media (max-width: $maxMobileScreen) {
+  @media (max-width: $maxWidthMobileScreen) {
     @content;
   }
 }
 
 @mixin forTablet() {
-  @media (min-width: calc(#{$maxMobileScreen} + 1px))
-    and (max-width: $maxTabletScreen) {
+  @media (min-width: calc(#{$maxWidthMobileScreen} + 1px))
+    and (max-width: $maxWidthTabletScreen) {
     @content;
   }
 }
 
 @mixin forDesktop() {
-  @media (min-width: calc(#{$maxTabletScreen} + 1px)) {
+  @media (min-width: calc(#{$maxWidthTabletScreen} + 1px)) {
+    @content;
+  }
+}
+
+@mixin forPhoneNumberHighlight() {
+  @media (max-height: $maxHeightToHighlightPhoneNo) {
+    @content;
+  }
+}
+
+@mixin forPhoneIconHighlight() {
+  @media (max-height: $maxHeightToHighlightPhone)
+    and (min-width: $maxWidthToHighlightIcones) {
+    @content;
+  }
+}
+
+@mixin forBurgerIconHighlight() {
+  @media (max-height: $maxHeightToHighlightBurger)
+    and (min-width: $maxWidthToHighlightIcones)
+    and (max-width:  $maxWidthTabletScreen) {
     @content;
   }
 }
 
 @mixin notForMobile() {
-  @media (min-width:  calc(#{$maxMobileScreen} + 1px)) {
+  @media (min-width:  calc(#{$maxWidthMobileScreen} + 1px)) {
     @content;
   }
 }
 
 @mixin notForDesktop() {
-  @media (max-width: $maxTabletScreen) {
+  @media (max-width: $maxWidthTabletScreen) {
     @content;
   }
 }

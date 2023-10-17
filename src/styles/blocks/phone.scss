@@ -1,24 +1,27 @@
 .phone {
+  &__label {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: right;
+    color: #292929;
 
-  @include forDesktop {
-    &__label {
-      font-family: Inter, sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-align: right;
-      color: #292929;
+    position: absolute;
+    transform: translateX(calc(-100% - 8px)) translateY(8px);
 
-      position: absolute;
-      transform: translateX(calc(-100% - 8px)) translateY(8px);
+    @include forPhoneNumberHighlight {
+      background-color: rgba(128, 128, 128, 0.3);
+      color: white;
+      border-radius: 3px;
     }
+  }
 
-    &:not(:hover) &__label {
-      @include visually-hidden;
-    }
+  &:not(:hover) &__label {
+    @include visually-hidden;
   }
 
   @include notForDesktop {
@@ -35,6 +38,13 @@
 
     @include notForMobile {
       height: 32px;
+
+      @include forPhoneIconHighlight {
+        &--highlight {
+          background-color: rgba(128, 128, 128, 0.5);
+          border-radius: 10px;
+        }
+      }
     }
   }
 }
