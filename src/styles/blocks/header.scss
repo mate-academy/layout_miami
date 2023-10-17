@@ -25,12 +25,43 @@
     }
 
     &-item {
+      &--burger {
+        &::before {
+          content: "";
+          background-image: url(../images/burger-menu-icon.svg);
+          background-size: cover;
+          display: inline-block;
+          width: 18px;
+          height: 14px;
+        }
+
+        &::after {
+          display: none;
+          content: "";
+          background-image: url(../images/burger-menu-hover-icon.svg);
+          background-size: cover;
+          width: 18px;
+          height: 14px;
+        }
+
+        &:hover {
+          &::before {
+            display: none;
+          }
+
+          &::after {
+            display: inline-block;
+          }
+        }
+      }
+
       &-logo-icon {
         @include logo-small;
       }
 
       &-phone-icon,
-      &-burger-menu-icon {
+      &-burger-label {
+        @include visually-hidden();
         vertical-align: middle;
       }
     }
