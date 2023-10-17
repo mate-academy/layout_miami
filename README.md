@@ -1,13 +1,40 @@
-# Miami landing page
+## Layout Bose
 
-In this task, you will learn how to implement a landing page. To do that:
+## Project Description:
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://HannaVasylieva.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+The project is an HTML webpage designed for promoting and showcasing Bose audio products, which may include headphones, speakers, and other audio accessories.
+It features a responsive design that adapts to different screen sizes.
+The page structure consists of sections.
+There is a navigation menu accessible via a menu icon in the header.
+The design uses a color scheme, as well as iconography and background images to create an attractive and visually appealing layout.
+The web page is designed with a focus on user interaction and engagement, with elements such as hover effects on buttons and images.
+The aim of the project is providing an immersive and user-friendly experience for visitors.
+
+## Techologies and languages:
+HTML
+CSS
+SCSS
+JavaScript
+Responsive Web Design
+Font Integration from Google Fonts by linking to external font resources.
+Linking and Navigation
+SEO
+
+## Code Structure
+
+- `index.html`: Main HTML file.
+
+- `styles/`: This folder contains the stylesheets for the webpage.
+  - `main.scss`: The main stylesheet for project. It imports styles from other files and provides a central point for styling webpage.
+  - `_utils.scss`: A stylesheet containing utility classes and styles that are used throughout the project.
+  - `blocks/`: This folder contains separate stylesheet files for each block or section of webpage. These files help organize and maintain specific styles for different parts of the page.
+  - `utils/`: This folder includes utility files for styling, such as mixins and variables, to maintain consistency and modularity in your stylesheets.
+
+- `scripts/`: This folder contains JavaScript files responsible for the interactivity of the webpage.
+  - `main.js`: The main JavaScript file of the project.
+
+## DEMO Link
+https://hannavasylieva.github.io/layout_miami/
+
+## Figma design
+https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6703%3A88&mode=dev
