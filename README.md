@@ -1,0 +1,1 @@
+This project presents a webpage layout using HTML, SCSS, and following the BEM methodology. The page includes sections with text and images, an expandable menu with the ability to navigate to specific sections, and a functional contact form. Furthermore, the layout is responsive for mobile devices and tablets, achieved by using a grid system.
