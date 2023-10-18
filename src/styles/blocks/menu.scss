@@ -9,30 +9,51 @@
   padding: 0 20px;
   min-height: 100vh;
   text-transform: uppercase;
+  box-sizing: border-box;
+
+  @include grid();
+
+  align-content: start;
 
   &:target {
-    position: fixed;
     transform: translateX(0);
   }
 
   &__nav {
     @include navigation;
-    display: flex;
-    justify-content: space-between;
+
+    grid-column: span 2;
+    @include for-desktop {
+      grid-column: span 12;
+    }
 
     &-item {
       &-logo-icon {
         @include logo-small;
       }
 
+      &--close {
+        display: flex;
+        justify-content: flex-end;
+      }
+
       &-close-icon {
         vertical-align: middle;
       }
+    }
+
+    &-item:nth-child(1) {
+      margin-right: auto;
     }
   }
 
   &__links {
     margin-top: 24px;
+
+    grid-column: span 2;
+    @include for-desktop {
+      grid-column: span 12;
+    }
 
     &-list {
 
@@ -64,23 +85,38 @@
   }
 
   &__phone-number {
+    margin-top: -20px;
     font-size: 16px;
     font-weight: 600;
     line-height: 27px;
     letter-spacing: 0;
     text-align: left;
-    margin-bottom: 16px;
+
+    grid-column: span 2;
+    @include for-desktop {
+      grid-column: span 12;
+    }
   }
 
-  &__call-link {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-align: left;
-    text-decoration: none;
-    border-bottom: 1px solid #1d1d1d;
-    padding-bottom: 8px;
-    color: #1d1d1d;
+  &__container {
+    text-wrap: nowrap;
+    margin-top: -10px;
+
+    &-call-link {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: left;
+      text-decoration: none;
+      padding-bottom: 8px;
+      color: #1d1d1d;
+      border-bottom: 1px solid #1d1d1d;
+
+      grid-column: span 2;
+      @include for-desktop {
+        grid-column: span 12;
+      }
+    }
   }
 }
