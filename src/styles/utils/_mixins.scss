@@ -1,6 +1,78 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: $white-color;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin bg-img($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin button {
+  @include flex-center;
+  height: 56px;
+  padding: 0 48px;
+  font-weight: 700;
+  font-size: 16px;
+  background: $white-color;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 1s;
+
   &:hover {
-    #{$_property}: $_toValue;
+    background: $white-color;
+    box-shadow: 1px 4px 16px $shadow-color;
+    border-radius: 40px;
+  }
+  &:active {
+    background: $white-color;
+    box-shadow: 1px 4px 16px $shadow-color;
+    border-radius: 40px;
+  }
+}
+
+@mixin logo {
+  font-weight: 700;
+  font-size: 38px;
+  color: $white-color;
+  cursor: pointer;
+
+  @include onPortable() {
+    font-size: 54px;
+  }
+  @include onDesktop() {
+    font-size: 80px;
+  }
+
+  &--black {
+    color: #1d1d1d;
+  }
+}
+
+@mixin input($height, $border-radius, $padding-X, $padding-Y, $color) {
+  height: $height;
+  border-radius: $border-radius;
+  padding: $padding-X $padding-Y;
+  color: $color;
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onPortable {
+  @media (min-width: 744px) {
+    @content;
   }
 }

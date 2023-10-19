@@ -1,0 +1,43 @@
+.grid {
+  @include onPortable {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+  }
+  @include onDesktop {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onPortable {
+    @media (max-width: 1260px) {
+      &__item--p {
+        @for $col-start from 1 through 6 {
+          @for $col-end from 1 through 6 {
+            &--#{$col-start}-#{$col-end} {
+              grid-column: #{$col-start} / #{$col-end + 1};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include onDesktop {
+    &__item--d {
+      @for $col-start from 1 through 12 {
+        @for $col-end from 1 through 12 {
+          &--#{$col-start}-#{$col-end} {
+            grid-column: #{$col-start} / #{$col-end + 1};
+          }
+        }
+      }
+    }
+  }
+
+  &__item--flex-end {
+    justify-self: flex-end;
+  }
+}
