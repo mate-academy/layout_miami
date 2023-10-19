@@ -20,7 +20,12 @@
         } else {
           document.body.classList.remove('page__body--with-menu');
         }
-    });
+      });
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        document.getElementById("myForm").reset();
+      };
     </script>
   </head>
   <body>
@@ -265,11 +270,17 @@
         <h3 class="title title--contact">Contact us</h3>
 
         <div class="contact">
-          <form class="form contact__form">
+          <form
+            class="form contact__form"
+            id="myForm"
+            action="#"
+            method="post"
+          >
             <div class="form__item">
               <label for="name" class="form__label">Name</label>
               <input
                 id="name"
+                name="name"
                 class="form__input"
                 type="text"
                 placeholder="Name"
@@ -281,6 +292,7 @@
               <label for="email" class="form__label">Email</label>
               <input
                 id="email"
+                name="email"
                 class="form__input"
                 type="email"
                 placeholder="Email"
@@ -292,6 +304,7 @@
               <label for="message" class="form__label">Message</label>
               <textarea
                 id="message"
+                name="message"
                 class="form__textarea"
                 placeholder="Message"
                 required
@@ -299,7 +312,13 @@
             </div>
 
             <div class="form__button">
-              <button class="button__link button__form" type="reset">Send</button>
+              <button
+                class="button__link button__form"
+                type="submit"
+                id="button"
+              >
+                Send
+              </button>
             </div>
           </form>
 
