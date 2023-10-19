@@ -52,6 +52,10 @@ table {
   border-spacing: 0;
 }
 
+textarea {
+  resize: none;
+}
+
 .header {
   background-color: #1d1d1d;
   background-image: url(./images/background.jpg);
@@ -140,6 +144,19 @@ table {
     letter-spacing: -1.5px;
   }
 }
+.title--contact {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 32px;
+}
+@media (min-width: 1260px) {
+  .title--contact {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+  }
+}
 .title--article {
   font-size: 24px;
   font-weight: 700;
@@ -212,10 +229,10 @@ table {
 .article__picture {
   width: 280px;
   object-fit: cover;
+  transition: transform 0.3s linear;
 }
 .article__picture:hover {
   transform: scale(1.2);
-  transition: transform 0.3s linear;
 }
 .article__content {
   display: grid;
@@ -264,6 +281,7 @@ table {
   width: 100%;
   position: relative;
   padding-top: 100%;
+  overflow: hidden;
 }
 @media (min-width: 1260px) {
   .pictures__item {
@@ -281,17 +299,33 @@ table {
     grid-column: span 8;
   }
 }
+.pictures__wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s linear;
+}
+.pictures__wrapper:hover {
+  transform: scale(1.2);
+}
+@media (min-width: 1260px) {
+  .pictures__rect {
+    position: absolute;
+    bottom: 12px;
+    right: 2px;
+    width: 91px;
+    height: 37px;
+    background: linear-gradient(180deg, #47453E 0%, #45433C 23.13%, #45433B 44.74%, #45423C 65.48%, #44423B 81.03%, #423F3A 100%);
+  }
+}
 .pictures__image {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.pictures__image:hover {
-  transform: scale(1.2);
-  z-index: 1;
-  transition: transform 0.3s linear;
 }
 
 .button {
@@ -356,10 +390,10 @@ table {
   font-weight: 500;
   line-height: 140%;
   text-decoration: none;
-  transition: color 0.3s linear;
+  transition: color 3s linear;
 }
 .address__content:hover {
-  color: bisque;
+  color: blue;
 }
 
 .form {
@@ -367,6 +401,10 @@ table {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+.form__item {
+  width: 100%;
+  display: flex;
 }
 .form__label:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -441,6 +479,7 @@ table {
 @media (min-width: 1260px) {
   .navigation__buttons {
     width: 96px;
+    margin-right: 100px;
   }
 }
 .navigation__button {
@@ -665,7 +704,19 @@ table {
   text-decoration: none;
   display: flex;
 }
+@media (min-width: 1260px) {
+  .phone {
+    margin-left: 100px;
+    margin-right: 64px;
+  }
+  .phone:hover {
+    padding-left: 100px;
+    margin-left: 0;
+    margin-right: 64px;
+  }
+}
 .phone__label {
+  opacity: 0;
   color: #fff;
   text-align: right;
   font-family: Poppins;
@@ -678,8 +729,12 @@ table {
   transform: translateX(calc(-100% - 20px));
   display: flex;
   align-self: center;
-  opacity: 1;
   transition: opacity 0.5s linear;
+}
+@media (min-width: 1260px) {
+  .phone__label {
+    opacity: 1;
+  }
 }
 .phone:not(:hover) .phone__label {
   clip: rect(0 0 0 0);
