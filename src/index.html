@@ -22,10 +22,10 @@
         }
       });
 
-      function handleSubmit(event) {
+      document.addEventListener('submit', function(event) {
         event.preventDefault();
-        document.getElementById("myForm").reset();
-      };
+        event.target.reset();
+      });
     </script>
   </head>
   <body>
@@ -272,7 +272,8 @@
         <div class="contact">
           <form
             class="form contact__form"
-            id="myForm"
+            method="post"
+            onsubmit="return false"
           >
             <div class="form__item">
               <label for="name" class="form__label">Name</label>
@@ -310,11 +311,7 @@
             </div>
 
             <div class="form__button">
-              <button
-                class="button__link button__form"
-                type="submit"
-                id="button"
-              >
+              <button class="button__link button__form" type="submit">
                 Send
               </button>
             </div>
