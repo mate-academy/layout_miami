@@ -1,0 +1,90 @@
+@import "utils/variables.scss";
+@import "utils/mixins.scss";
+
+.header {
+  margin-bottom: 60px;
+  background-image: url("../images/cover_photo.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+
+  @include onIpad {
+    margin-bottom: 120px;
+    background-position: center;
+  }
+
+  @include onDesktop {
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: $header-padding 21px 88px;
+
+    @include onIpad () {
+      padding: 36px 72px;
+    }
+
+    @include onDesktop () {
+      padding: 36px 120px;
+    }
+  }
+
+  &__actions {
+    --icon-width: 16px;
+    display: grid;
+    grid-template-columns: 1fr repeat(2, var(--icon-width));
+    justify-items: left;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translateX(-100% - 5%) translateY(5px);
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 700;
+    size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+
+    @include onIpad {
+      @include title(64px);
+      margin-bottom: 130px;
+    }
+
+    @include onDesktop {
+      @include title(80px);
+      margin-bottom: 203px;
+    }
+  }
+}

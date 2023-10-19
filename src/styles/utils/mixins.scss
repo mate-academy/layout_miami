@@ -1,0 +1,34 @@
+@mixin title ($textSize) {
+  font-size: $textSize;
+  line-height: $textSize;
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onIpad {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin hover ($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin square ($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin useGrid($columnsCount, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columnsCount, 1fr);
+  gap: $gap;
+}
