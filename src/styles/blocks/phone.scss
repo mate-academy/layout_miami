@@ -1,0 +1,59 @@
+@use "../utils/mixins" as *;
+
+.phone {
+  text-decoration: none;
+  display: flex;
+
+  @include for-desktop() {
+    margin-left: 100px;
+    margin-right: 64px;
+
+    &:hover {
+      padding-left: 100px;
+      margin-left: 0;
+      margin-right: 64px;
+    }
+  }
+
+  &__label {
+    opacity: 0;
+    color: #fff;
+    text-align: right;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    position: absolute;
+    transform: translateX(calc(-100% - 20px));
+    display: flex;
+    align-self: center;
+    transition: opacity 0.5s linear;
+
+    @include for-desktop() {
+      opacity: 1;
+    }
+  }
+
+  &:not(:hover) &__label {
+    @include visually-hidden();
+    opacity: 0;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet() {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include for-desktop() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

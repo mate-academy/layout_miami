@@ -1,0 +1,100 @@
+@use "../utils/mixins" as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+  background-color: #c2c2c2;
+  padding: 0 20px 80px;
+  min-height: 100vh;
+  overflow-y: auto;
+
+  @include grid();
+
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    color: #1d1d1d;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 27px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    color: #1d1d1d;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1d1d1d;
+  }
+
+  &__call {
+    color: #1d1d1d;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.4s linear;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
