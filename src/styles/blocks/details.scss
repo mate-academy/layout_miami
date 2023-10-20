@@ -1,5 +1,14 @@
 .details {
   margin-top: 92px;
+  @include grid();
+
+  @include for-tablet() {
+    margin-top: 120px;
+  }
+
+  @include for-desktop() {
+    margin-top: 144px;
+  }
 
   &__title {
     font-size: 32px;
@@ -9,7 +18,20 @@
     text-align: center;
     padding-bottom: 8px;
 
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+    }
+
     @include for-desktop() {
+      grid-column: span 12;
+
       font-size: 64px;
       font-weight: 500;
       line-height: 64px;
@@ -19,6 +41,16 @@
 
   &__item {
     margin-top: 48px;
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
 
     &-pictures {
       @include grid();
@@ -30,12 +62,20 @@
       }
 
       &-item--big {
+        @include for-tablet() {
+          grid-column: span 4;
+        }
+
         @include for-desktop() {
           grid-column: span 8;
         }
       }
 
       &-item--medium {
+        @include for-tablet() {
+          grid-column: span 3;
+        }
+
         @include for-desktop() {
           grid-column: span 6;
           height: 321px;
@@ -43,6 +83,10 @@
       }
 
       &-item--small {
+        @include for-tablet() {
+          grid-column: span 2;
+        }
+
         @include for-desktop() {
           grid-column: span 4;
         }
@@ -70,8 +114,19 @@
   }
 
   &__button {
+
     margin-top: 40px;
 
     @include button-primary();
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: 2 / 6;
+    }
+
+    @include for-desktop() {
+      grid-column: 5 / 9;
+    }
   }
 }
