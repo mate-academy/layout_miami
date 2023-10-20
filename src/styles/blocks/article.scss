@@ -1,0 +1,61 @@
+.article {
+  box-sizing: border-box;
+  padding: 48px 0 0;
+  &__image {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: contain;
+
+    &--details {
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 33.6px */
+    padding-top: 32px;
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    padding-top: 8px;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 33.6px */
+    padding-top: 16px;
+  }
+
+  &__photoholder {
+    --photoSize: 130px;
+    --photoSizeFluid: 1fr;
+    --photoHeight: 130px;
+    --fit: cover;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: var(--photoSizeFluid) var(--photoSize);
+    gap: 20px;
+    @include tablet {
+      --photoSize: 184px;
+      --photoHeight: 187px;
+      --photoSizeFluid: 1fr;
+    }
+    @include desktop {
+      --photoSize: 324px;
+      --photoHeight: 320px;
+    }
+    > img {
+      object-fit: var(--fit);
+      height: var(--photoHeight);
+    }
+  }
+}
