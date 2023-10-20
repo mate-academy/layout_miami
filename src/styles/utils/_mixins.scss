@@ -1,10 +1,46 @@
-@mixin grid($columns: 2, $columnSize: 1fr, $gap: 0 20px, $padding: 20px) {
+@mixin for-tablet() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  --columns: 2;
+  --gap: 0 20px;
+  --padding: 24px;
+  @include for-tablet() {
+    --columns: 6;
+    --gap: 0 24px;
+    --padding: 72px;
+  }
+  @include for-desktop() {
+    --columns: 12;
+    --gap: 0 24px;
+    --padding: 120px;
+  }
   display: grid;
-  grid-template-columns: repeat($columns, $columnSize);
-  gap: $gap;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--gap);
   justify-content: center;
-  padding-right: $padding;
-  padding-left: $padding;
+  padding-right: var(--padding);
+  padding-left: var(--padding);
+}
+
+@mixin full-width() {
+  --end: 3;
+  @include for-tablet() {
+    --end: 7;
+  }
+  @include for-desktop() {
+    --end: 13;
+  }
+  grid-column: 1 / var(--end);
 }
 
 @mixin visually-hidden() {
@@ -18,8 +54,4 @@
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-@mixin full-width($start: 1, $end: 3) {
-  grid-column: #{$start} / #{$end};
 }
