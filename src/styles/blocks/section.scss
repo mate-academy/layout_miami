@@ -1,10 +1,32 @@
 .section {
   display: flex;
   flex-direction: column;
-  @extend %section-padding;
+  padding: $section-padding-mobile;
+
+  @include for-tablet() {
+    padding: $section-padding-tablet;
+  }
+
+  @include for-desktop() {
+    padding: $section-padding-desktop;
+  }
 
   &__title {
     margin-bottom: $margin-48;
+
+    @include for-tablet() {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include for-desktop() {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
   }
 
   &__form {

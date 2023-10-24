@@ -6,10 +6,18 @@
   transform: translateX(-100%);
   @include smooth(transform);
   background-color: $light-beige-bg-color;
-  padding: 0 20px;
+  padding: $section-padding-mobile;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @include for-tablet() {
+    padding: $section-padding-tablet;
+  }
+
+  @include for-desktop() {
+    padding: $section-padding-desktop;
+  }
 
   &:target {
     transform: translateX(0);
@@ -18,6 +26,11 @@
   &__links {
     box-sizing: border-box;
     padding-bottom: 16px;
+
+    &:active,
+    &:focus {
+      @extend %link-no-highlight;
+    }
   }
 
   &__link {
