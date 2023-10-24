@@ -4,12 +4,16 @@
 }
 // changing the height and background color of top-bar
 .menu-checkbox:checked + .top-bar {
-  background-color: $c-gray;
-  height: 100vh;
+  background-color: rgba($c-gray, $alpha: 0.95);
 }
+.menu-checkbox:not(:checked) + .top-bar {
+  transition: background-color 0.5s 0.5s ease;
+}
+
 // hiding the phone icon
 .menu-checkbox:checked + .top-bar .top-bar__link-phone {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 // hiding the menu icon
 .menu-checkbox:checked + .top-bar .top-bar__icon-menu {
@@ -21,5 +25,8 @@
 }
 // showing the navigation
 .menu-checkbox:checked + .top-bar > .nav {
-  display: flex;
+  opacity: 1;
+}
+.menu-checkbox:not(:checked) + .top-bar > .nav {
+  transition: opacity 0.5s ease;
 }

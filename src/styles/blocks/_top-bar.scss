@@ -5,6 +5,8 @@
   justify-content: flex-start;
   align-items: center;
   background-color: transparent;
+  height: 100vh;
+  transition: background-color 0.5s ease;
 
   &__top {
     width: 100%;
@@ -40,19 +42,25 @@
   }
 
   &__number-phone {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    margin-right: $d-margin-1_5;
     color: $c-black;
     font-family: "Space Mono", "Courier New", Courier, monospace;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
   }
 
   &__link-phone {
+    opacity: 1;
+    visibility: visible;
     margin-right: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: opacity 1s ease;
 
     @include tablet {
       margin-right: 2rem;
@@ -60,7 +68,12 @@
 
     @include monitor {
       &:hover > .top-bar__number-phone {
-        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+      &:not(:hover) > .top-bar__number-phone {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
@@ -107,7 +120,9 @@
   }
 
   &__nav {
-    display: none;
+    display: flex;
+    opacity: 0;
     width: 100vw;
+    transition: opacity 0.5s 0.5s ease;
   }
 }
