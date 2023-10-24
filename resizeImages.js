@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('fs-extra');
 const path = require('path');
 
-const imageDirectory = './src/images';
+const imageDirectory = './src/images/photos';
 const outputImageDirectory = './src/assets';
 
 fs.removeSync(outputImageDirectory);
