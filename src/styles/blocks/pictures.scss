@@ -1,27 +1,32 @@
 .pictures {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 130px 130px;
+  grid-template-rows: 130px;
   gap: 20px;
 
   @include for-tablet() {
+    grid-template-columns: 288px 288px;
+    grid-template-rows: 184px;
+    gap: 24px;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: 498px 498px;
+    grid-template-rows: 324px;
     gap: 24px;
   }
 
   &__item {
-    position: relative;
     width: 100%;
-    padding-top: 100%;
     overflow: hidden;
-    @include for-tablet() {
-      padding-top: 56.25%;
-    }
   }
 
   &__image {
-    position: absolute;
-    top: 0;
     width: 100%;
     height: 100%;
+    /* stylelint-disable */
+    aspect-ratio: 16/9;
+    /* stylelint-enable */
     object-position: center;
     object-fit: cover;
     @include smooth(transform);
