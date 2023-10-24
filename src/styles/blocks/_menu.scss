@@ -1,0 +1,39 @@
+.menu {
+  @include grid();
+  grid-template-rows: repeat(3, auto) 1fr;
+  height: 100vh;
+  padding-bottom: 1.5rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform $transition-time ease-in-out;
+  background-color: $color-background-menu;
+  overflow-y: auto;
+  z-index: 1;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    @include full-width();
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    @include for-tablet() {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  &__links {
+    @include full-width();
+    margin-bottom: 2.5rem;
+  }
+
+  &__call-link {
+    @include full-width();
+  }
+}
