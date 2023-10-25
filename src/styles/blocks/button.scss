@@ -1,3 +1,5 @@
+@import "../utils/mixins.scss";
+
 .btn {
   box-sizing: border-box;
   display: flex;
@@ -15,8 +17,23 @@
   text-decoration: none;
   transition: all $transitionduration;
 
+  &__container {
+
+    @include for-desktop() {
+      grid-column: 1 / 5;
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(12, 63px);
+      gap: 0 24px;
+    }
+  }
+
+  @include for-desktop() {
+    grid-column: 1 / 4;
+  }
+
   &--send {
-    margin-top: 32px;
+    margin-top: 16px;
   }
 
   &:hover {
