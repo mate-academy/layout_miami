@@ -35,8 +35,8 @@ function animationOnScroll() {
       animElPoint = window.innerHeight - window.innerHeight / animStart;
     }
 
-    if ((scrollY > animElOffset - animElPoint)
-      && scrollY < (animElOffset + animElHeight)) {
+    if ((window.scrollY > animElOffset - animElPoint)
+      && window.scrollY < (animElOffset + animElHeight)) {
       animEl.classList.add('show');
     } else {
       if (!animEl.classList.contains('animation--no-hide')) {
