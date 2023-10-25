@@ -1,5 +1,6 @@
 .article {
   box-sizing: border-box;
+
   &--details {
     padding-top: 40px;
 
@@ -12,6 +13,10 @@
     box-sizing: border-box;
     width: 100%;
     object-fit: contain;
+    transition: transform 1s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
 
     &--details {
       object-fit: cover;
@@ -62,6 +67,10 @@
     justify-content: center;
     grid-template-columns: var(--photoSizeFluid) var(--photoSize);
     gap: 20px;
+    transition: transform 1s ease;
+    :hover {
+      transform: scale(1.1);
+    }
     @include tablet {
       --photoSize: 184px;
       --photoHeight: 187px;
@@ -70,6 +79,20 @@
     @include desktop {
       --photoSize: 324px;
       --photoHeight: 320px;
+    }
+
+    &--reversed {
+      --photoSize: 1fr;
+      --photoSizeFluid: 130px;
+      @include tablet {
+        --photoSize: 1fr;
+        --photoHeight: 187px;
+        --photoSizeFluid: 184px;
+      }
+      @include desktop {
+        --photoSize: 1fr;
+        --photoSizeFluid: 324px;
+      }
     }
 
     > img {
