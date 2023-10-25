@@ -1,0 +1,98 @@
+@import "../utils/extends";
+
+.menu__top {
+  @extend %flex-space;
+
+}
+
+.top__buttons {
+  @extend %flex-space;
+  gap: 24px;
+
+  @include tablet {
+    gap: 32px;
+  }
+}
+
+.navigation__logo,
+.menu__logo {
+  display: block;
+  height: 16px;
+
+  @include tablet {
+    height: 24px;
+  }
+}
+
+.icon {
+  @extend %background;
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  @include tablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__tooltip {
+    position: relative;
+    display: block;
+    width: max-content;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    color: $color-font;
+    font-weight: $font-weight-medium;
+    font-size: 8px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    padding-right: 8px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+
+    @include tablet {
+      font-size: 14px;
+      letter-spacing: 2px;
+      padding-right: 12px;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &-call {
+    background-image: url("../images/phone.svg");
+
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &-menu {
+    background-image: url("../images/menu.svg");
+    transition: background-image 0.3s;
+
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      background-image: url("../images/menu-hover.svg");
+
+      @include tablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  &-cross {
+    background-image: url("../images/cross.svg");
+  }
+}
