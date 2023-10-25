@@ -1,6 +1,96 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
   &:hover {
-    #{$_property}: $_toValue;
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 32px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+//animation
+@mixin animationDuration {
+  transition: $effectDuration ease;
+}
+
+@mixin animationApperRight {
+  opacity: 0;
+  transform: translateX(150%);
+  @include animationDuration();
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin animationApperLeft {
+  opacity: 0;
+  transform: translateX(-150%);
+  @include animationDuration();
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin animationApperBelow {
+  transform: translateY(120%);
+  opacity: 0;
+  @include animationDuration();
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@mixin animationScale {
+  transform: scale(0);
+  @include animationDuration();
+
+  &.show {
+    transform: scale(1);
   }
 }
