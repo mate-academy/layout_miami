@@ -1,7 +1,119 @@
 @import "utils";
-@import "fonts";
-@import "typography";
+@import "blocks/logo.scss";
+@import "blocks/icon.scss";
+@import "blocks/header.scss";
+@import "blocks/menu.scss";
+@import "blocks/footer.scss";
+@import "blocks/onview.scss";
+@import "blocks/button.scss";
+@import "blocks/grid.scss";
+@import "blocks/explore.scss";
+@import "blocks/contacts.scss";
+@import "blocks/form-field.scss";
 
-body {
-  background: $c-gray;
+.page {
+
+  font-family: "Cinzel", serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: #f8f8fa;
+
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    //con left e right zero copre tutta la pagina,
+    //non solo la dimensione del contenuto
+    right: 0;
+    left: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    &-title { //titolo sezione
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+      color: #161616;
+      margin: 0;
+
+      &-secondary { //titolo altre sezioni
+        text-align: center;
+      }
+
+      @include onTablet {
+        font-size: 48px;
+        line-height: 48px;
+      }
+    }
+
+    &-location { //nome dei due musei
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    &-subtitle--red { //nome mostre
+      @include subTitle;
+      font-weight: 700;
+      color: #d12d35;
+      margin: 24px 0 0;
+    }
+
+    &-subtitle--dark { //giorni e didascalie imgs
+      @include subTitle;
+      margin-top: 8px;
+      display: block;
+      font-weight: 400;
+      color: #161616;
+
+      &-second { //sottotitoli secondario
+        text-align: center;
+        font-weight: 400;
+      }
+
+      &-bold { //ore
+        font-weight: 700;
+      }
+    }
+
+    &-small_title { //plan your visit
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 140%;
+      color: #d12d35;
+      margin: 0;
+    }
+  }
+}
+
+.container {
+  max-width: 1020;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: $headerTopPaddingBig 40px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: $headerTopPaddingBig 120px;
+  }
+}
+
+.page__body--with-menu {
+  overflow: hidden;
 }
