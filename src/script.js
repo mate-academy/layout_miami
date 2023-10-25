@@ -7,3 +7,11 @@ menu.addEventListener('click', () => {
   links.classList.toggle('active');
   logo.classList.toggle('active');
 });
+
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', (event) => {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  event.target.reset();
+});
