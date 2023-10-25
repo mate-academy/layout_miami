@@ -9,7 +9,7 @@
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 
   &:target {
     transform: translateX(0);
@@ -55,9 +55,17 @@
 
   &__item {
     margin: 0;
+    padding-right: 0;
 
     // &--hamburger:hover {
     //   background-image: url("../images/phone.svg");
+    // }
+
+    // &--onhover {
+    //   position: absolute;
+    //   right: 50px;
+    //   top: 0;
+    //   // opacity: 0;
     // }
 
     &--hidden {
@@ -66,9 +74,8 @@
     }
 
     &-tel {
-      text-decoration: none;
       color: #fff;
-      text-align: right;
+      text-align: center;
       font-family: $main-font-family;
       font-size: 12px;
       font-style: normal;
@@ -77,11 +84,15 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       padding-right: 20px;
-      visibility: visible;
+      position: absolute;
+      right: 50px;
+      top: 0;
+      opacity: 0;
+    }
 
-      &--hidden {
-        // opacity: 1;
-        visibility: visible;
+    &--number {
+      span {
+        opacity: 0;
       }
     }
 
@@ -109,10 +120,16 @@
   }
 }
 
-.navigation__item-phone:hover .navigation__item-tel--hidden {
-  // opacity: 0;
-  visibility: hidden;
-}
+// .navigation__item--number {
+//   span {
+//     opacity: 0;
+//   }
+//   &:hover {
+//     span {
+//       opacity: 1;
+//     }
+//   }
+// }
 
 .page-navigation {
 
@@ -136,7 +153,6 @@
       border-bottom: 1px solid #1d1d1d;
     }
   }
-
 }
 
 @media screen and (min-width: 744px) {
@@ -153,13 +169,15 @@
     &__item {
       margin: 0;
 
-      // &--hamburger:hover {
-      //   background-image: url("../images/phone.svg");
-      // }
-
       &--hidden {
         opacity: 0;
         height: 32px;
+      }
+
+      &--number:hover {
+        span {
+          opacity: 1;
+        }
       }
 
       &-logo {
@@ -209,15 +227,10 @@
       padding: 36px 0 0;
     }
   }
-  .navigation__item-tel--hidden {
-    // opacity: 1;
-    // visibility: visible;
-    background-color: blue;
-  }
 
-  .navigation:hover .navigation__item-tel--hidden {
-    // opacity: 0;
-    // visibility: hidden;
-    background-color: black;
+  .naviagtion__icon:hover .navigation__item-tel {
+    opacity: 1;
+    top: 56px;
+    right: 236px;
   }
 }
