@@ -1,0 +1,53 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+@import "../utils/placeholders";
+
+.header {
+  height: 100vh;
+  background-image: url("../images/Header-image.jpg");
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+  padding: 24px 20px 40px;
+  display: grid;
+  column-gap: $grid-gap;
+  @extend %grid-screen;
+  grid-template-rows: 1fr 10fr 1fr;
+  justify-content: center;
+
+  @include for-tablet() {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: $grid-gap-wide;
+    padding: 32px 72px 64px;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: repeat(12, 63px);
+    column-gap: $grid-gap-wide;
+    padding: 32px 120px 64px;
+  }
+
+  &__waves {
+    align-self: end;
+    grid-column: 1 / 3;
+    margin-bottom: 16px;
+
+    @include for-tablet() {
+      width: 63px;
+      height: 76px;
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+
+    @include for-tablet() {
+      grid-column: 1 / 5;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 7;
+    }
+  }
+}

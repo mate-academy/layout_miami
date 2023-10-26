@@ -1,0 +1,37 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 20px 40px;
+  gap: $grid-gap;
+  background-color: #e8eff9;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 1fr 10fr 1fr;
+  transform: translateX(100%);
+  transition: 0.5s;
+
+  @include for-tablet() {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: $grid-gap-wide;
+    padding: 32px 72px 64px;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: repeat(12, 63px);
+    column-gap: $grid-gap-wide;
+    padding: 32px $desktop-margin 64px;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+}

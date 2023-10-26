@@ -1,0 +1,52 @@
+@import "../utils/mixins";
+
+.icon {
+
+  &-waves {
+    @include for-tablet() {
+      width: 63px;
+      height: 76px;
+    }
+  }
+
+  &-phone {
+    @include for-tablet() {
+      width: $icon-size;
+    }
+  }
+
+  &-burger {
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
+    background-size: cover;
+
+    &::before {
+      content: "";
+      background-image: url("../images/Icon-Burger-menu.svg");
+      background-size: cover;
+      display: block;
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    &::after {
+      content: "";
+      background-image: url("../images/Icon-Burger-menu-hover.svg");
+      background-size: cover;
+      display: none;
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    &:hover {
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+}

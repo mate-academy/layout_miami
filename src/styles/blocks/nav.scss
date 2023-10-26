@@ -1,0 +1,50 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.nav {
+  grid-column: 1 / 3;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--tel {
+      display: flex;
+      text-decoration: none;
+      align-items: center;
+      color: $c-primary;
+      font-size: 12px;
+      font-weight: $font-weight-standard;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        opacity: 0;
+        margin-right: 8px;
+        transition: 0.5s all;
+      }
+
+      &:hover::before {
+        @include for-desktop() {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include for-tablet() {
+    grid-column: 1 / 7;
+  }
+
+  @include for-desktop() {
+    grid-column: 1 / 12;
+  }
+}
