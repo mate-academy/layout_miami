@@ -1,11 +1,19 @@
-.grid-container {
-  --columns: 1;
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--columns), 1fr);
+.contact-grid {
+  --columns: ;
+  @include grid;
 }
 
 .contact {
+  &__block {
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include onDesktop {
+      grid-column: span 5;
+    }
+  }
+
   &__form-field {
     box-sizing: border-box;
     width: 100%;
@@ -38,6 +46,14 @@
   }
 
   &__info {
+    @include onTablet {
+      grid-column: span 2;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / 10;
+    }
+
     &-section {
       margin-bottom: 24px;
     }
@@ -49,7 +65,7 @@
       margin: 8px 0;
     }
 
-    &-content {
+    &-link {
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;

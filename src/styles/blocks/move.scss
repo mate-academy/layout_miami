@@ -1,11 +1,16 @@
 .move {
-  --columns: 2;
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  @include grid;
 
   &__title {
     grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 5;
+    }
   }
 
   &__content {
@@ -13,6 +18,14 @@
 
     font-size: 23px;
     line-height: 140%;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
   }
 
   &__descripiton {

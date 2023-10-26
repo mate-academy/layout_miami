@@ -2,23 +2,38 @@
   &__wrapper {
     display: grid;
     row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 48px;
+    }
   }
 }
 
 .detail {
   &__photos {
-    --columns: 2;
-    display: grid;
-    column-gap: 20px;
-    grid-template-columns: repeat(var(--columns), 1fr);
+    @include grid;
     margin-bottom: 16px;
   }
   &__link {
     position: relative;
-
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
     &--square {
       height: 0;
       padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
     }
   }
 
@@ -28,6 +43,7 @@
     height: 100%;
     object-fit: cover;
   }
+
   &__description {
     text-align: start;
     margin: 8px 0 0;
