@@ -1,0 +1,115 @@
+.article {
+  box-sizing: border-box;
+
+  &--details {
+    padding-top: 40px;
+
+    @include tablet {
+      padding-top: 48px;
+    }
+  }
+
+  &__image {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--details {
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 33.6px */
+    padding-top: 32px;
+
+    &--details {
+      padding-top: 16px;
+      color: $c-white;
+      font-family: $font;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 33.6px */
+    }
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    font-style: normal;
+    font-family: $font;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    padding-top: 8px;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 33.6px */
+    padding-top: 16px;
+  }
+
+  &__photoholder {
+    --photoSize: 1fr;
+    --photoSizeFluid: 1fr;
+    --photoHeight: 130px;
+    --fit: cover;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: var(--photoSizeFluid) var(--photoSize);
+    gap: 20px;
+    transition: transform 1s ease;
+    :hover {
+      transform: scale(1.1);
+    }
+    @include tablet {
+      --photoHeight: 187px;
+      --photoSize: 1fr;
+      --photoSizeFluid: 2fr;
+    }
+    @include desktop {
+      --photoHeight: 320px;
+      --photoSize: 1fr;
+      --photoSizeFluid: 2fr;
+    }
+
+    &--reversed {
+      --photoSize: 1fr;
+      --photoSizeFluid: 1fr;
+      @include tablet {
+        --photoSize: 2fr;
+        --photoSizeFluid: 1fr;
+      }
+    }
+
+    > .article__image {
+      /* stylelint-disable */
+      aspect-ratio: 1/1;
+      @include tablet {
+        aspect-ratio: 1/1;
+      }
+      @include desktop {
+        aspect-ratio: 1/1;
+      }
+    }
+
+    > .article__image--details {
+      @include tablet {
+        aspect-ratio: 2/1;
+      }
+      @include desktop {
+        aspect-ratio: 2/1;
+        /* stylelint-enable */
+      }
+    }
+  }
+}

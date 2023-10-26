@@ -1,0 +1,60 @@
+.hamburger-menu {
+  height: 21px;
+  width: 26px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 2s ease, background-color 0.5s ease;
+
+  @include tablet {
+    height: 26px;
+    width: 33px;
+  }
+
+}
+
+.bar {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: $c-white;
+}
+
+.hamburger-menu .bar--1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hamburger-menu .bar--2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hamburger-menu .bar--3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hamburger-menu:hover .bar--1 {
+  transform: scaleX(0.7);
+}
+
+.hamburger-menu:hover .bar--3 {
+  transform: scaleX(0.4);
+}
+
+.hamburger-menu.active .bar--1 {
+  transform: rotate(45deg);
+  background-color: $c-black;
+}
+
+.hamburger-menu.active .bar--2 {
+  transform: scaleY(0);
+}
+
+.hamburger-menu.active .bar--3 {
+  transform: rotate(-45deg);
+  background-color: $c-black;
+}
