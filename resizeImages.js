@@ -20,9 +20,9 @@ fs.readdirSync(imageDirectory).forEach(file => {
       baseName = path.basename(file, '.png');
     }
     const variations = [
-      { format: 'jpeg', quality: 80 },
-      { format: 'webp', quality: 80 },
-      { format: 'png', quality: 80 }
+      { format: 'jpeg', quality: 100 },
+      { format: 'webp', quality: 100 },
+      { format: 'png', quality: 100 }
     ];
     const sizes = [320, 576, 768, 992, 1200];
     variations.forEach(variation => {
