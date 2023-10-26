@@ -12,7 +12,7 @@
   &__image {
     box-sizing: border-box;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     transition: transform 1s ease;
     &:hover {
       transform: scale(1.1);
@@ -59,7 +59,7 @@
   }
 
   &__photoholder {
-    --photoSize: 130px;
+    --photoSize: 1fr;
     --photoSizeFluid: 1fr;
     --photoHeight: 130px;
     --fit: cover;
@@ -72,33 +72,44 @@
       transform: scale(1.1);
     }
     @include tablet {
-      --photoSize: 184px;
       --photoHeight: 187px;
-      --photoSizeFluid: 1fr;
+      --photoSize: 1fr;
+      --photoSizeFluid: 2fr;
     }
     @include desktop {
-      --photoSize: 324px;
       --photoHeight: 320px;
+      --photoSize: 1fr;
+      --photoSizeFluid: 2fr;
     }
 
     &--reversed {
       --photoSize: 1fr;
-      --photoSizeFluid: 130px;
+      --photoSizeFluid: 1fr;
       @include tablet {
-        --photoSize: 1fr;
-        --photoHeight: 187px;
-        --photoSizeFluid: 184px;
-      }
-      @include desktop {
-        --photoSize: 1fr;
-        --photoSizeFluid: 324px;
-        --photoHeight: 320px;
+        --photoSize: 2fr;
+        --photoSizeFluid: 1fr;
       }
     }
 
-    > img {
-      object-fit: var(--fit);
-      height: var(--photoHeight);
+    > .article__image {
+      /* stylelint-disable */
+      aspect-ratio: 1/1;
+      @include tablet {
+        aspect-ratio: 1/1;
+      }
+      @include desktop {
+        aspect-ratio: 1/1;
+      }
+    }
+
+    > .article__image--details {
+      @include tablet {
+        aspect-ratio: 2/1;
+      }
+      @include desktop {
+        aspect-ratio: 2/1;
+        /* stylelint-enable */
+      }
     }
   }
 }
