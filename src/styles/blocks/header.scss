@@ -1,42 +1,50 @@
 @import "../utils/vars";
+@import "../utils/mixins";
 
 .header {
+  @include grid();
+
   background-image: url("../../src/images/background-header.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   background-color: rgba(211, 211, 211, 0.5);
-
-  box-sizing: border-box;
-
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
   grid-template-rows: 1fr 1fr;
-  gap: 20px;
-
-  @media (min-width: 1020px) {
-    grid-template-columns: repeat(12, 63px);
-    grid-template-rows: 1fr 1fr;
-    gap: 24px;
-  }
+  box-sizing: border-box;
 
   &__navigation {
     align-self: start;
-    grid-column: 1 / 3;
+    display: flex;
+    align-items: baseline;
 
-    @media (min-width: 1020px) {
+    @include for-mobile {
+      grid-column: 1 / 3;
+    }
+
+    @include for-tablet {
+      grid-column: 1/-1;
+    }
+
+    @include for-desktop {
       grid-column: 1 / 13;
     }
   }
 
   &__title {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
+
     align-self: flex-end;
 
-    @media (min-width: 1020px) {
+    @include for-mobile {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+    }
+
+    @include for-tablet {
+      grid-column: 1/5;
+    }
+
+    @include for-desktop {
       grid-column: 1 / 13;
     }
   }
