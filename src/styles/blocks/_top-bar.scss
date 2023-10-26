@@ -1,0 +1,128 @@
+.top-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  height: 100vh;
+  transition: background-color 0.5s ease;
+
+  &__top {
+    width: 100%;
+    padding: $d-padding-1_5 $d-padding-1_25;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet {
+      padding: $d-padding-2 $d-padding-4_5;
+    }
+
+    @include monitor {
+      padding: $d-padding-2 $d-padding-7_5;
+    }
+  }
+
+  &__img-logo {
+    object-fit: cover;
+    display: flex;
+    height: 1rem;
+    margin-right: 1.5rem;
+
+    @include tablet {
+      height: 1.5rem;
+    }
+  }
+
+  &__user-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__number-phone {
+    opacity: 0;
+    visibility: hidden;
+    margin-right: $d-margin-1_5;
+    color: $c-black;
+    font-family: "Space Mono", "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+  }
+
+  &__link-phone {
+    opacity: 1;
+    visibility: visible;
+    margin-right: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease;
+
+    @include tablet {
+      margin-right: 2rem;
+    }
+
+    @include monitor {
+      &:hover > .top-bar__number-phone {
+        visibility: visible;
+        opacity: 1;
+      }
+      &:not(:hover) > .top-bar__number-phone {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__icon-phone {
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-self: center;
+
+    @include tablet {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__menu-label {
+    display: flex;
+    cursor: pointer;
+  }
+
+  &__icon-menu {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &:hover {
+      content: url(../images/burger-hover.svg);
+    }
+
+    @include tablet {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__icon-close {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: none;
+
+    @include tablet {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    opacity: 0;
+    width: 100vw;
+    transition: opacity 0.5s 0.5s ease;
+  }
+}
