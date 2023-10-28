@@ -1,0 +1,38 @@
+@media only screen and (max-width: 1260px) {
+  .phone__label {
+    display: none;
+  }
+}
+
+.phone {
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("../pictures/Icon-Phone-call.svg");
+    background-size: cover;
+    display: inline-block;
+    @include for-tablet() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__label {
+    @include for-desktop() {
+      font-family: Inter, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: absolute;
+      color: $color-black;
+      transform: translateX(calc(-100% - 40px)) translateY(10px);
+    }
+  }
+
+  &:not(:hover) .phone__label {
+    @include visually-hidden;
+  }
+}
