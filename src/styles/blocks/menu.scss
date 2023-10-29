@@ -11,15 +11,21 @@
   padding: 0 20px;
 
   min-height: 100vh;
+
+  @include grid();
+  align-content: start;
+
+&__navigation{
   display: flex;
-  flex-direction: column;
+}
 
   &:target {
     transform: translateX(0);
   }
-  // &__links {
+  &__links {
+    grid-column: 1 / -1;
+  }
 
-  // }
   &__paragraph {
     color: $color-article;
     font-family: $font-family;
@@ -31,6 +37,8 @@
     text-transform: uppercase;
     margin-bottom: 16px;
     line-height: 140%; /* 22.4px */
+
+    grid-column: 1 / -1;
   }
 
   &__call-link {
@@ -43,7 +51,11 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    border-bottom: 1px solid $color-article;
+    border-bottom: 1px solid transparent;
     padding-bottom: 4px;
+
+    &:hover {
+      border-bottom: 1px solid $color-article;
+    }
   }
 }

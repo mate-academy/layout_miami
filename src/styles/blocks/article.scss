@@ -1,16 +1,38 @@
 .article {
-  &:first-child {
-    padding-bottom: 47px;
+  @include for-tablet() {
+    padding-left: 72px;
   }
+  @include for-desktop() {
+padding-left: 120px;
+  }
+
   color: $color-article;
   font-family: $font-family;
   font-size: $font-size-3;
   font-style: $font-style;
   font-weight: $font-weight-bold;
   line-height: 140%; /* 25.2px */
+  //display: grid;
+  //@include grid();
 
   &__paragraph {
+    display: grid;
+    @include grid();
+    //grid-column: 1 / 12;
+    //grid-template-columns: repeat(2, 600px);
+
     padding-top: 16px;
     padding-bottom: 40px;
+    @include for-tablet {
+      padding-bottom: 56px;
+    }
+    @include for-desktop {
+      padding-bottom: 56px;
+    }
+  }
+
+  &__highlight {
+    font-weight: $font-weight-bold;
+      grid-column: 1 / -1;
   }
 }
