@@ -2,63 +2,141 @@
 @import "fonts";
 @import "typography";
 
-$titleWidth: 87.5%;
-
 html {
   font-family: Manrope, sans-serif;
+}
+
+* {
+  // box-sizing: border-box;
 }
 
 body {
   margin: 0;
   background: white;
+
+  @media screen and (min-width: 1260px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 1260px;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .header {
+  position: relative;
+
   &__image {
-    width: 320px;
+    background-image: url(../images/speaker11.svg);
+    margin: 0;
+    width: 100%;
+    // max-height: 460px;
+    // aspect-ratio: 320 / 200;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     height: 568px;
+    position: relative;
+
+    @include desktop {
+      max-width: 1260px;
+      height: 720px;
+    }
   }
 
   &__title {
     color: white;
     font-size: 36px;
     font-weight: 700;
-    width: $titleWidth;
     position: absolute;
-    top: 456px;
+    z-index: 3;
+    bottom: 40px;
     left: 20px;
+
+    @include tablet {
+      font-size: 48px;
+      bottom: 64px;
+      left: 72px;
+    }
+
+    @include desktop {
+      font-size: 56px;
+      bottom: 120px;
+    }
   }
 }
 
 .nav {
-  position: absolute;
-  top: 24px;
-  left: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 28px 20px;
+  gap: 24px;
 
-  &__logo {
-    margin-right: 56px;
+  @include tablet {
+    padding: 36px 72px;
   }
 
-  &__phone {
-    margin-right: 24px;
+  @include desktop {
+    padding: 36px 120px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include tablet {
+      gap: 32px;
+    }
   }
 }
 
 .recommended {
   margin-top: 64px;
+  padding: 0 20px;
 
   &__title {
     width: 280px;
     font-size: 32px;
     font-weight: 700;
     margin: 64px 20px 48px;
+
+    @include desktop {
+      margin-left: 100px;
+    }
+  }
+}
+
+.products {
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &-wrapper {
+    @include desktop {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
 .product {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   &__image {
-    width: 280px;
-    margin-left: 20px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 600px;
   }
 
   &__image-1 {
@@ -73,7 +151,7 @@ body {
   }
 
   &__description {
-    width: 280px;
+    // width: 280px;
     margin-left: 20px;
     font-size: 16px;
     font-weight: 400;
@@ -85,80 +163,184 @@ body {
     font-size: 16px;
     font-weight: 700;
   }
+
+  @include desktop {
+    &__image {
+      width: 324px;
+      height: 324px;
+    }
+
+    &__title,
+    &__description,
+    &__price {
+      width: 280px;
+    }
+  }
 }
 
 .showcase {
+  display: flex;
+  justify-content: center;
+
   &__title {
-    width: 280px;
-    margin: 96px 20px 47px;
+    margin: 96px 0 47px;
     font-size: 32px;
     font-weight: 700;
+
+    @include tablet {
+      font-size: 40px;
+    }
+
+    @include desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__image {
+    min-width: 130px;
+    min-height: 130px;
+    // object-fit: contain;
+    background-color: #f9f9f9;
+
+    @include tablet {
+      min-width: 288px;
+      height: 184px;
+    }
+
+    @include desktop {
+      width: 498px;
+      height: 324px;
+    }
   }
 
   &__pair {
-    width: 280px;
-    margin-left: 20px;
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
   }
 
   &__description {
-    width: 280px;
-    margin: 16px 20px 40px;
+    margin: 16px 0 40px;
     font-size: 18px;
     font-weight: 700;
+
+    @include tablet {
+      font-size: 24px;
+    }
   }
 
   &__button {
-    width: 280px;
+    width: 100%;
     height: 56px;
-    margin: 0 20px 96px;
+    margin: 0 0 96px;
     color: white;
     background-color: #f98921;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 700;
+
+    @include desktop {
+      width: 324px;
+    }
   }
 }
 
 .about {
+  width: 100%;
+
   &__image {
     margin: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url("../images/gramophone.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include tablet {
+      height: 400px;
+    }
+
+    @include desktop {
+      height: 460px;
+      background-image: url("../images/gramophoneDesktop.svg");
+    }
   }
 
   &__description {
-    height: 392px;
+    // height: 392px;
     background: #fcfaef;
-    padding-top: 48px;
+    padding: 48px 20px;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      gap: 24px;
+      padding: 120px 72px;
+      box-sizing: border-box;
+      font-size: 40px;
+    }
   }
 
   &__description-title {
-    width: 280px;
+    // width: 280px;
     margin: 0 20px 24px;
     font-size: 32px;
     font-weight: 700;
   }
 
   &__description-info {
-    width: 280px;
-    margin-left: 20px;
+    // width: 280px;
     font-size: 16px;
     font-weight: 400;
+    margin: 0 20px;
+  }
+
+  @include desktop {
+    &__image {
+      // aspect-ratio: 1260 / 460;
+    }
+
+    &__description {
+      gap: 111px;
+    }
+
+    &__description-title {
+      font-size: 48px;
+    }
+
+    &__description-info {
+      width: 411px;
+    }
   }
 }
 
 .footer {
   margin-bottom: 64px;
+  padding: 0 20px;
+
+  @include tablet {
+    padding: 0 72px;
+  }
+
+  @include desktop {
+    padding-left: 120px;
+  }
 
   &__title {
-    margin: 64px 20px 48px;
+    margin: 64px 0 48px;
     font-size: 32px;
     font-weight: 700;
   }
 
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__input {
-    width: 280px;
+    width: 100%;
     height: 48px;
     background: #f9f9f9;
     color: #7e7e83;
@@ -166,13 +348,13 @@ body {
     border-radius: 8px;
     padding: 14px 16px;
     box-sizing: border-box;
-    margin: 0 20px 16px;
+    margin: 0 0 16px;
     font-size: 14px;
     font-weight: 400;
   }
 
   &__message {
-    width: 280px;
+    width: 100%;
     height: 148px;
     padding: 14px 16px;
     box-sizing: border-box;
@@ -183,14 +365,14 @@ body {
     font-size: 14px;
     font-weight: 400;
     font-family: Manrope, sans-serif;
-    margin: 0 20px 32px;
+    margin: 0 0 32px;
     resize: none;
   }
 
   &__button {
-    width: 280px;
+    width: 100%;
     height: 56px;
-    margin: 0 20px 24px;
+    margin: 0 0 24px;
     color: white;
     background-color: #1b2129;
     border: none;
@@ -203,11 +385,10 @@ body {
     color: #9393a3;
     font-size: 14px;
     font-weight: 400;
-    margin: 24px 20px 8px;
+    margin: 24px 0 8px;
   }
 
   &__info {
-    margin-left: 20px;
     font-size: 16px;
     font-weight: 400;
   }
