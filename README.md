@@ -1,10 +1,10 @@
 # Miami landing page
 
 ## Short description:
-It is simple page.
-The page has header, footer and 4 sections. Includes "drop-down" menu, form to sending massage and references to itselfs parts.
-With technically side has semantic tags, file with reset properties, inputs with types and requiring, and hover effects for all interacting elements.
-The project has 3 screen extensions:
+It is a simple page.
+The page has a header, a footer, and four sections. Includes "drop-down" menu, form to sending messages and references to itself parts.
+With technical side has semantic tags, a file with reset properties, inputs with types and requirements, and hover effects for all interacting elements.
+The project has three screen extensions:
   - mobile (to 743px)
   - tablet (744-1259px);
   - desktop (from 1260px).
