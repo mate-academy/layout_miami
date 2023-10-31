@@ -1,0 +1,106 @@
+.header {
+  background-image: url("../images/photos/mainPhone.png");
+  background-size: cover;
+  background-position: top right;
+
+  @include onTablet {
+    background-image: url("../images/photos/mainTablet.png");
+  }
+
+  @include OnDesktop {
+    background-image: url("../images/photos/mainDesktop.png");
+  }
+
+  @media (min-width: 2000px) {
+    background-image: url("../images/photos/mainBig.png");
+    background-position: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0 88px;
+
+    @include onTablet {
+      padding: 34px 0 130px;
+    }
+
+    @include OnDesktop {
+      padding: 36px 0 203px;
+    }
+  }
+
+  &__top {
+    @include topActions;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__call {
+    position: relative;
+    margin-right: 10px;
+    height: 18px;
+
+    text-decoration: none;
+    transition: opacity $transition;
+
+    @include onTablet {
+      margin-right: 20px;
+    }
+    @include OnDesktop {
+      margin-right: 20px;
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-size: calculateRem(12px);
+        line-height: calculateRem(16px);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: white;
+
+        opacity: 0;
+
+        transition: opacity $transition;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: calculateRem(36px) ;
+    line-height: 100%;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include OnDesktop {
+      font-size: 80px;
+    }
+
+    letter-spacing: -1.5px;
+
+    color: #fff;
+  }
+}
