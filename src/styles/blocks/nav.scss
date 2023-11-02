@@ -1,0 +1,120 @@
+.nav {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 16px;
+  }
+
+  &__hamburger {
+    margin-left: 30px;
+    &-hidden {
+      @include visually-hidden();
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    &::before {
+      content: "";
+      background-image: url("./../images/menu.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 18px;
+      height: 12px;
+      display: inline-block;
+    }
+
+    &::after {
+      content: "";
+      background-image: url("./../images/menu_hover.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 20px;
+      height: 24px;
+      display: none;
+    }
+
+  }
+
+  &__phone {
+    &-label {
+      display: none;
+    }
+
+    @include desktop() {
+      &-label {
+        display: inline-block;
+        opacity: 0;
+        color: $color-main;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: opacity 2s;
+        position: absolute;
+        transform: translateX(calc(-100% - 20px)) translateY(5px);
+      }
+
+      &:hover &-label {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  @include tablet() {
+    &__logo {
+      width: 190px;
+      height: 24px;
+    }
+
+    &__hamburger-phone {
+      width: 24px;
+    }
+
+    &__hamburger {
+      &::before {
+        background-image: url("./../images/menu_big.svg");
+        width: 24px;
+        height: 20px;
+      }
+    }
+  }
+
+  @include desktop() {
+    &__hamburger {
+      &::before {
+        width: 24px;
+        height: 20px;
+        background-image: url("./../images/menu_big.svg");
+      }
+
+      &:hover {
+        margin-left: 34px;
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
