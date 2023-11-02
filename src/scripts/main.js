@@ -2,7 +2,7 @@
 
 const form = document.getElementById('form');
 
-form.addEventListener('subbmit', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   form.reset();
 });
