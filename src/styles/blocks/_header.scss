@@ -9,7 +9,7 @@
   grid-template-rows: auto 1fr auto;
   align-items: end;
   position: relative;
-  transition: background-color 1s ease, background-image 1s ease;
+  transition: align-items 5s ease, background-color 1s ease, background-image 1s ease, transform 1s ease;
 
   &:before {
     content: "";
@@ -88,6 +88,7 @@
   display: grid;
   grid-row: 1fr 1fr;
 
+
   & img {
     margin-bottom: 16px;
 
@@ -110,6 +111,14 @@
   background-color: #e8eff9;
   align-items: center;
 }
+
+.hidden-checkbox:not(:checked) ~ .header {
+  background-image: url("../images/image.jpg");
+  background-color: none;
+  align-items: end;
+}
+
+
 
 .burger-icon {
   display: inline-block;
@@ -153,7 +162,8 @@
   visibility: hidden;
   transition: visibility 1s linear 1s, opacity 1s linear;
   opacity: 0s;
-  transition-delay: 0s;
+  transition-delay: 1s;
+
 }
 
 .links-content {
@@ -161,15 +171,20 @@
   opacity: 0;
 
   transition: visibility 0s linear 5s, opaacity 5s linear;
-  font-family: Inter, sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 27px;
-  letter-spacing: 0;
-  text-align: left;
 
   &--number {
     font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #292929;
   }
 
 }
@@ -192,6 +207,15 @@
   visibility: hidden;
   transition: visibility 0s linear 5s, opaacity 5s linear;
   animation: fadeOut 1s linear forwards;
+  transform: translateY(42.5vh);
+
+}
+
+.hidden-checkbox:not(:checked) ~ .header .header__title .original-content {
+animation: fadeIn 1s linear forwards;
+visibility: visible;
+transition: visibility 1s linear 1s, opacity 1s linear;
+opacity: 1;
 
 }
 
@@ -206,6 +230,11 @@
   letter-spacing: 2px;
   text-align: left;
   color: #292929;
+
+}
+
+.hidden-checkbox:not(:checked) ~ .header .header__title .links-content a {
+  transform: translateY(42.5vh);
 }
 
 .hidden-checkbox:checked ~ .header .header__title .links-content a:last-child {
