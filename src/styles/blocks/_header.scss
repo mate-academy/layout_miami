@@ -1,6 +1,6 @@
 .header {
   background-image: url("../images/image.jpg");
-  height: 568px;
+  height: 100vh;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8,22 +8,33 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   align-items: end;
-  transition: transform 1s;
+  position: relative;
+  transition: background-color 1s ease, background-image 1s ease;
 
-  @media (min-width: 744px) {
-    height: 992px;
+  &:before {
+    content: "";
+    background-image: url("../images/image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
   }
 
-  @media (min-width: 1260px) {
-    height: 720px;
+  .hidden-checkbox:checked ~ .header::before {
+    opacity: 0;
   }
-
 
   &__title {
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-size: 32px;
     font-style: italic;
     font-weight: 800;
@@ -43,12 +54,22 @@
   }
 
   &__menu {
-    padding: 12px;
+    padding-right: 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
     cursor: pointer;
     display: grid;
     grid-auto-flow: column;
     gap: 24px;
     justify-self: end;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 744px) {
+      padding-right: 72px;
+      padding-top: 32px;
+      gap: 32px;
+    }
   }
 
   &__logo {
@@ -63,7 +84,6 @@
   }
 }
 
-
 .original-content {
   display: grid;
   grid-row: 1fr 1fr;
@@ -72,114 +92,166 @@
     margin-bottom: 16px;
 
     @media (min-width: 744px) {
-    margin-bottom: 40px;
+      margin-bottom: 40px;
     }
 
     @media (min-width: 1260px) {
       margin-bottom: 32px;
-      }
-  }
-
-
-  }
-  .hidden-checkbox {
-    display: none;
-  }
-
-  .hidden-checkbox:checked~.header {
-    background-image: none;
-    background-color: #E8EFF9;
-  }
-
-  .burger-icon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-image: url("../images/Icon-Burger-menu.svg");
-    background-size: cover;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      background-image: url("../images/Icon-Burger-menu-hover.svg");
     }
   }
+}
 
-  .hidden-checkbox:checked~.header .burger-icon {
-    background-image: url("../images/Icon-Close.svg");
+.hidden-checkbox {
+  display: none;
+}
+
+.hidden-checkbox:checked ~ .header {
+  background-image: none;
+  background-color: #e8eff9;
+  align-items: center;
+}
+
+.burger-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/Icon-Burger-menu.svg");
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-image: url("../images/Icon-Burger-menu-hover.svg");
   }
+}
 
-  .links-content {
-    display: none;
-    font-family: Inter;
+.hidden-checkbox:checked ~ .header .burger-icon {
+  background-image: url("../images/Icon-Close.svg");
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+.hidden-checkbox:not(:checked) ~ .header .header__title .links-content {
+  animation: fadeOut 1s linear forwards;
+  visibility: hidden;
+  transition: visibility 1s linear 1s, opacity 1s linear;
+  opacity: 0s;
+  transition-delay: 0s;
+}
+
+.links-content {
+  display: block;
+  opacity: 0;
+
+  transition: visibility 0s linear 5s, opaacity 5s linear;
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0;
+  text-align: left;
+
+  &--number {
     font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    letter-spacing: 0px;
-    text-align: left;
-
   }
 
-  .hidden-checkbox:checked~.header .header__title .links-content {
-    display: block;
-    justify-self: center;
+}
 
+
+
+.hidden-checkbox:checked ~ .header .header__title .links-content {
+  display: block;
+  animation: fadeIn 1s linear forwards;
+  visibility: visible;
+  transition: visibility 1s linear 1s, opacity 1s linear;
+  opacity: 1;
+  justify-self: center;
+  transition-delay: 0s;
+
+}
+
+.hidden-checkbox:checked ~ .header .header__title .original-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 5s, opaacity 5s linear;
+  animation: fadeOut 1s linear forwards;
+
+}
+
+.hidden-checkbox:checked ~ .header .header__title .links-content a {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+  color: #292929;
+}
+
+.hidden-checkbox:checked ~ .header .header__title .links-content a:last-child {
+  margin-bottom: 0;
+}
+
+.hidden-checkbox:checked ~ .header .header__menu img {
+  display: none;
+}
+
+.phonenumber {
+  display: none;
+
+}
+
+.header__phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-align: right;
+  text-decoration: none;
+  color: #292929;
+}
+
+.header__phone:hover .phonenumber {
+  display: flex;
+}
+
+.hidden-checkbox:checked ~ .header .header__title .links-content .calltoorder {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-align: left;
+  padding-top: 16px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  @media (min-width: 1260px) {
+    font-size: 16px;
   }
-
-  .hidden-checkbox:checked~.header .header__title .original-content {
-    display: none;
-
-  }
-
-  .hidden-checkbox:checked~.header .header__title .links-content a {
-    display: block;
-    margin-bottom: 32px;
-    text-decoration: none;
-    font-family: Inter;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 2px;
-    text-align: left;
-    color: #292929;
-
-
-  }
-
-  .hidden-checkbox:checked~.header .header__title .links-content a:last-child {
-    margin-bottom: 0;
-  }
-
-  .calltoorder {
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-align: left;
-    padding-top: 16px;
-    text-transform: uppercase;
-  }
-
-  .hidden-checkbox:checked~.header {
-    align-items: center;
-  }
-
-  .hidden-checkbox:checked~.header .header__menu img {
-    display: none;
-  }
-
-  .phonenumber {
-    display: none;
-  }
-
-  .phone-icon:hover+.phonenumber {
-    display: block;
-    width: 200px;
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-align: right;
-  }
+}

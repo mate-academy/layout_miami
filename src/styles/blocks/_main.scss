@@ -1,8 +1,6 @@
 @import "../utils/variables";
 @import "../utils/mixins";
 
-
-
 main {
   padding: var(--main-padding-small);
   display: grid;
@@ -24,7 +22,6 @@ main {
     grid-template-columns: 1fr;
     gap: 20px;
 
-
     @media (min-width: 1261px) {
       grid-template-columns: repeat(3, 1fr);
 
@@ -45,11 +42,19 @@ main {
     &__photo {
       width: 100%;
 
-      >img {
+      > img {
         display: block;
         width: 100%;
         height: auto;
       }
+    }
+
+    img {
+      transition: 0.5s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
     }
 
     &__product,
@@ -79,7 +84,6 @@ main {
     }
   }
 
-
   .browse {
     margin-top: 96px;
     display: grid;
@@ -87,8 +91,15 @@ main {
     grid-template-rows: auto;
     width: 100%;
 
-    &__title {
+    img {
+      transition: 0.5s;
+    }
 
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    &__title {
 
       @include title-font-properties;
       margin-right: 20px;
@@ -105,7 +116,6 @@ main {
       height: auto;
     }
 
-
     &__images {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -119,24 +129,22 @@ main {
         margin-top: 64px;
       }
 
-
-      >picture {
+      > picture {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
       }
 
-
       @media (min-width: 744px) {
         grid-template-columns: 2fr 1fr;
 
         img:first-child {
-          height: auto;
+          height: 100vh;
         }
 
         img:last-child {
-          height: auto;
+          height: 100%;
         }
 
         &--reverse {
@@ -173,15 +181,13 @@ main {
       font-size: 16px;
       font-weight: 700;
       line-height: 27px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       text-align: center;
       color: #fff;
       margin-top: 40px;
       justify-self: center;
-      transition: transform 0.3s;
-
-
-
+      transition: 0.3s;
+      border: 3px solid #000;
 
       @media (min-width: 744px) {
         width: 392px;
@@ -197,14 +203,13 @@ main {
     &__button:hover {
       background-color: #fff;
       color: #000;
+
     }
 
     &__button:active {
-      transform: scale(1.05);
+      transform: scale(0.95);
     }
   }
-
-
 
   .why {
     margin-top: 64px;
@@ -212,7 +217,6 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
-
 
     &__title {
       @include title-font-properties;
@@ -226,30 +230,34 @@ main {
       gap: 20px;
       @include text-font-properties;
       font-weight: 700;
+      line-height: 32px;
       height: 136px;
       width: 100%;
     }
 
     &__description {
-      font-family: Inter;
+      font-family: Inter, sans-serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 27px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       text-align: left;
       max-width: 410px;
     }
   }
 
-
   .contact {
     padding-top: 96px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 32px;
+    grid-gap: 16px;
     justify-content: center;
 
-
+    & a {
+      @include text-font-properties;
+      text-decoration: none;
+      color: #3e3e3e;
+    }
 
     &__title {
       font-family: var(--inter-font-family);
@@ -266,65 +274,61 @@ main {
     &__button {
       width: 280px;
       justify-self: center;
-      margin-bottom: 16px;
       box-sizing: border-box;
     }
 
     &__field,
     &__message {
       border-radius: 40px;
-      font-family: Inter;
+      font-family: Inter, sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: 48px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       background-color: #f8f8fa;
       border: none;
       padding-left: 16px;
 
       input::placeholder,
       textarea::placeholder {
-      color: #7e7e83;
-}
+        color: #7e7e83;
+      }
 
+      &__message {
+        height: 148px;
+        border-radius: 16px;
+      }
 
+      &:hover {
+        input::placeholder,
+        textarea::placeholder {
+          color: #000;
+        }
+      }
 
-&:hover {
-  input::placeholder,
-  textarea::placeholder {
-  color: #000;
-}
-}
-
-&:active {
-  input::placeholder,
-  textarea::placeholder {
-  color: #000;
-}
-  border-color: #000;
-}
-     }
-
-    &__message {
-      height: 148px;
-      border-radius: 16px;
+      &:active {
+        input::placeholder,
+        textarea::placeholder {
+          color: #000;
+        }
+        border-color: #000;
+      }
     }
 
     &__button {
       height: var(--button-height);
       border-radius: var(--default-border-radius);
       border: 3px solid #292929;
-      color: #292929;
       font-family: var(--inter-font-family);
       font-size: 16px;
       font-weight: 700;
       line-height: 27px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       text-align: center;
       width: 280px;
       background-color: #000;
       color: #fff;
-      transition: transform 0.3s;
+      transition: 0.3s;
     }
 
     &__button:hover {
@@ -333,16 +337,16 @@ main {
     }
 
     &__button:active {
-      transform: scale(1.05);
+      transform: scale(0.95);
     }
 
     &__category {
       margin-top: 24px;
-      font-family: Inter;
+      font-family: Inter, sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       color: #9fadc2;
     }
 
@@ -358,7 +362,6 @@ main {
 
     @media (min-width: 744px) {
       grid-template-columns: 1fr 1fr;
-
 
       &__title {
         grid-column: 1 / span 2;
@@ -417,12 +420,10 @@ main {
         padding-top: 35px;
       }
 
-
     }
 
   }
 }
-
 
 @media (min-width: 744px) {
   .why {
@@ -430,19 +431,19 @@ main {
     gap: 24px;
   }
 
-  .why> :nth-child(1) {
+  .why > :nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     min-width: 287px;
   }
 
-  .why> :nth-child(2) {
+  .why > :nth-child(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     min-width: 287px;
   }
 
-  .why> :nth-child(3) {
+  .why > :nth-child(3) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     min-width: 287px;
@@ -455,26 +456,24 @@ main {
     gap: 24px;
   }
 
-  .why> :nth-child(1) {
+  .why > :nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     min-width: 411px;
   }
 
-  .why> :nth-child(2) {
+  .why > :nth-child(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     min-width: 411px;
   }
 
-  .why> :nth-child(3) {
+  .why > :nth-child(3) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     min-width: 411px;
   }
 }
-
-
 
 @media (min-width: 1260px) {
   .recomended {
