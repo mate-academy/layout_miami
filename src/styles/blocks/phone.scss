@@ -7,16 +7,19 @@
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    text-wrap: nowrap;
     text-align: right;
     color: #292929;
 
     position: absolute;
     transform: translateX(calc(-100% - 8px)) translateY(8px);
 
-    @include forPhoneNumberHighlight {
-      background-color: rgba(128, 128, 128, 0.3);
-      color: white;
-      border-radius: 3px;
+    @include forDesktop {
+      @include forPhoneNumberHighlight (700px) {
+        background-color: rgba(128, 128, 128, 0.3);
+        color: white;
+        border-radius: 3px;
+      }
     }
   }
 
@@ -34,12 +37,20 @@
   &__icon {
     @include forMobile {
       height: 24px;
+
+      @include forIconHighlight (240px, 300px
+      , calc(#{$maxWidthMobileScreen} - 1px)) {
+        &--highlight {
+          background-color: rgba(128, 128, 128, 0.5);
+          border-radius: 10px;
+        }
+      }
     }
 
     @include notForMobile {
       height: 32px;
 
-      @include forPhoneIconHighlight {
+      @include forIconHighlight (540px, $maxWidthMobileScreen, 1990px) {
         &--highlight {
           background-color: rgba(128, 128, 128, 0.5);
           border-radius: 10px;
