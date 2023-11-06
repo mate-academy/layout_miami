@@ -8,6 +8,10 @@ const messageInput = document.querySelector('textarea[name=message]');
 submitButton.addEventListener('click', e => {
   e.preventDefault();
 
+  if (nameInput.value === '' || emailInput.value === '') {
+    return;
+  }
+
   nameInput.value = '';
   emailInput.value = '';
   messageInput.value = '';
