@@ -1,11 +1,11 @@
 'use strict';
 
-const submitButton = document.querySelector('button[type=submit]');
+const form = document.querySelector('.footer__form');
 const nameInput = document.querySelector('input[name=name]');
 const emailInput = document.querySelector('input[name=email]');
 const messageInput = document.querySelector('textarea[name=message]');
 
-submitButton.addEventListener('click', e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
 
   if (nameInput.value === '' || emailInput.value === '') {
