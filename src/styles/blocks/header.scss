@@ -1,0 +1,139 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 24px 94px;
+
+  background-image: url(../images/header__background-phone.jpg);
+  @extend %backgroundSettings;
+
+  @include onTablet {
+    background-image: url(../images/header__backgroung-tablet.jpg);
+    padding: 56px 76px 40px;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/bose_background.jpg);
+    padding: 53px 125px 64px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+
+    background-image: url(../images/phone__image-black.svg);
+    @extend %backgroundSettings;
+
+    @include onTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #292929;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      &:hover::before {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu__opener-black.svg);
+    @extend %backgroundSettings;
+
+    @include onTablet {
+      width: 24px;
+      height: 20px;
+    }
+
+    &:hover {
+      background-image: url(../images/menu__opener-hovered.svg);
+      @extend %backgroundSettings;
+
+      @include onTablet {
+        width: 24px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #292929;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      background-image: url(../images/sound__waves-small-screen.svg);
+      @extend %backgroundSettings;
+
+      @include onTablet {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+        background-image: url(../images/sound__waves-big-screen.svg);
+      }
+
+      @include onDesktop {
+        margin-bottom: 32px;
+        background-image: url(../images/sound__waves-big-screen.svg);
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.location {
+  &__images {
+    @include useGrid (2, 20px);
+    padding: 0 20px;
+
+    @include onTablet {
+      @include useGrid (6, 24px);
+      padding: 0 72px;
+    }
+
+    @include onDesktop {
+      @include useGrid (12, 24px);
+      padding: 0 120px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    margin-bottom: 16px;
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-container {
+      position: relative;
+      width: 100%;
+
+      max-height: 320px;
+      box-sizing: border-box;
+
+      overflow: hidden;
+
+      &::after {
+        display: block;
+        content: "";
+        padding-bottom: 100%;
+      }
+
+      @include onTablet {
+        height: 188px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        height: 320px;
+      }
+    }
+  }
+
+  &__description {
+    grid-column: 1 / 3;
+    margin-bottom: 40px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: #292929;
+
+    @include onTablet {
+      grid-column: 1 / 5;
+      margin-bottom: 64px;
+      font-size: 24px;
+
+      &:last-child {
+        margin-bottom: 40px;
+      }
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 9;
+    }
+  }
+}
