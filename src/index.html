@@ -192,15 +192,20 @@ speaker II
           A great product is more than what’s in the box. It’s a promise of premium performance, world-class support, and everything you expect from a trusted brand. It’s just one of many reasons why you’ll shop with confidence on Bose.com.
         </div>
       </div>
-      <div class="contact" id="contact">
+      <form class="contact" id="contactForm">
         <div class="contact__title">
           Contact us
         </div>
 
-        <input placeholder="Name" class="contact__field"></textarea>
-        <input placeholder="Email" class="contact__field"></textarea>
-        <textarea placeholder="Message" class="contact__message"></textarea>
-        <button class="contact__button">Send</button>
+        <input placeholder="Name" class="contact__field"
+        id="nameField">
+        <input placeholder="Email" class="contact__field"
+        type="email" id="emailField"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <textarea placeholder="Message" class="contact__message"
+        id="messageField"></textarea>
+        <button class="contact__button" id="submitButton"
+        type="button">Send</button>
         <div class="contact__category">Phone</div>
         <div class="contact__info"><a href="tel:+123455555555">+1 234 5555-55-55</a></div>
         <div class="contact__category">Email</div>
@@ -208,7 +213,7 @@ speaker II
         <div class="contact__category">Address</div>
         <div class="contact__info"><a href="https://maps.app.goo.gl/PcUVV2d1QXttqGBP7">400 first ave.<br>suite 700<br>Minneapolis, MN 55401</a></div>
 
-      </div>
+      </form>
     </main>
     <footer class="footer">
     </footer>
@@ -220,6 +225,30 @@ speaker II
           checkbox.checked = false;
         });
       });
+
+      document.getElementById("submitButton").addEventListener("click", function() {
+    var emailField = document.getElementById("emailField");
+
+    if (emailField.checkValidity()) {
+        localStorage.setItem("formSubmitted", "true");
+        document.getElementById("contactForm").submit();
+    } else {
+        alert("Proszę wprowadzić poprawny adres e-mail.");
+    }
+
+    document.getElementById("nameField").value = '';
+    document.getElementById("emailField").value = '';
+    document.getElementById("messageField").value = '';
+});
+
+window.onload = function() {
+    if (localStorage.getItem("formSubmitted") === "true") {
+        alert("Wiadomość wysłana");
+        localStorage.removeItem("formSubmitted");
+    }
+};
+
     </script>
+
   </body>
 </html>
