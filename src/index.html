@@ -312,7 +312,7 @@
             <button
               class="button button--primary"
               type="button"
-              onclick="submitForm(event)"
+              onclick="submitForm()"
             >
               Send
             </button>
@@ -350,22 +350,11 @@
     <footer class="footer"></footer>
 
     <script>
-      function submitForm(event) {
+      function submitForm() {
         event.preventDefault();
-        clearForm();
-      }
-
-      function clearForm() {
-        var form = document.getElementById("myForm");
-
-        Array.from(form.elements).forEach(function (element) {
-          if (element.tagName.toLowerCase() === "input" || element.tagName.toLowerCase() === "textarea") {
-            element.value = "";
-          }
-        });
+        document.getElementById("myForm").reset();
       }
     </script>
-
 
     <script>
       window.addEventListener('hashchange', () => {
