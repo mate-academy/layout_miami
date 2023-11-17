@@ -2,32 +2,28 @@
   display: block;
 
   @include onTablet {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
-  }
+    @include useGrid (6, 24px);
 
-  @include onDesktop {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-  }
-
-  &__item {
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
-        &--tablet-#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+    &__item--tablet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }
   }
 
-  &__item {
-    @for $start from 1 through 12 {
-      @for $end from $start through 12 {
-        &--desktop-#{$start}-#{$end} {
-          grid-column: #{$start} / #{$end + 1};
+  @include onDesktop {
+    @include useGrid (12, 24px);
+
+    &__item--desktop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
         }
       }
     }

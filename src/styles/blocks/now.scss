@@ -1,37 +1,6 @@
-.now{
-
-  &__content {
-    display: block;
-
-    @include onTablet {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
-    }
-
-    @include onDesktop {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
-    }
-  }
+.now {
 
   &__title {
-    margin-bottom: 32px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    text-align: center;
-    color: $mainDark;
-
-    @include onTablet {
-      font-size: 48px;
-      line-height: 48px;
-    }
-
-    @include onDesktop {
-      font-size: 48px;
-      line-height: 48px;
-    }
 
     &::after {
       display: block;
@@ -46,33 +15,134 @@
     }
   }
 
-  &__images {
+  &__pictures {
+
+    @include useGrid (3, 8px);
+    margin-bottom: 16px;
 
     @include onTablet {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
+      @include useGrid (6, 24px);
+      margin-bottom: 24px;
+
+      #disappear {
+        display: none;
+        visibility: hidden;
+      }
     }
 
     @include onDesktop {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
+      @include useGrid (12, 24px);
+      margin-bottom: 24px;
+
+      #disappear {
+        display: block;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__images {
+
+    @include useGrid (2, 20px);
+    margin-bottom: 16px;
+
+    @include onTablet {
+      @include useGrid (6, 24px);
+      margin-bottom: 24px;
+    }
+
+    @include onDesktop {
+      @include useGrid (12, 24px);
+      margin-bottom: 24px;
     }
   }
 
   &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 
-    @include onTablet {
-      height: 186px;
+    object-fit: cover;
+    object-position: left;
+
+    &--container {
+      position: relative;
+      width: 100%;
+
+      max-height: 130px;
+      box-sizing: border-box;
+
+      overflow: hidden;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onTablet {
+        max-height: 186px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        max-height: 320px;
+        padding-bottom: 0;
+      }
     }
 
-    @include onDesktop {
-      height: 320px;
+    &--container-special {
+
+      position: relative;
+      width: 100%;
+
+      max-height: 87px;
+      // box-sizing: border-box;
+
+      overflow: hidden;
+
+      &::after {
+        padding-bottom: 100%;
+        content: "";
+        display: block;
+      }
+
+      @include onTablet {
+        max-height: 284px;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        max-height: 320px;
+        padding-bottom: 0;
+      }
     }
   }
 
-  // &__description {
+  &__description {
+    display: block;
 
-  // }
+    &--title {
+      font-weight: 700;
+      color: $colourRed;
+      text-decoration: none;
+    }
+
+    &--subtitle {
+      font-weight: 400;
+      color: $mainDark;
+    }
+  }
+
+  &__row {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
 }
