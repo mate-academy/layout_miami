@@ -1,0 +1,66 @@
+
+.menu {
+  display: block;
+  background-color: #c2c2c2;
+  color: $menu-color;
+  fill: $menu-color;
+
+  text-transform: uppercase;
+
+  &__list {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      transform: translateY(8px);
+      height: 2px;
+      display: block;
+      background-color: $menu-color;
+      transition-property: width;
+      transition-duration: $transition-duration;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__phone {
+    display: block;
+    font-size: 16px;
+    font-weight: $font-weight-bold;
+    margin-bottom: 16px;
+  }
+
+  &__footer {
+    position: relative;
+    font-size: 12px;
+    font-weight: $font-weight-bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &::after {
+      @extend %underline;
+    }
+  }
+}
