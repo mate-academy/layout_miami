@@ -1,0 +1,96 @@
+.gallery {
+
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      max-height: 180px;
+      padding-bottom: 0 ;
+    }
+
+    @include onDesktop {
+      max-height: 320px;
+      padding-bottom: 0;
+    }
+
+    &--square {
+      @include onTablet {
+        min-height: 284px;
+      }
+    }
+  }
+  
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+    object-position: center;
+
+    &--position-top {
+      @include onTablet {
+        object-position: top;
+      }
+    }
+
+    &--position-left {
+      object-position: left;
+    }
+
+    &--invisible-on-tablet {
+      @include onTabletGallery {
+        display: none;
+        height: 0;
+      }
+    }
+
+    &--square {
+
+      @media (min-width: 1260px) {
+        object-fit: contain;
+      }
+      @include onTabletGallery {
+        object-fit: contain;
+      }
+    }
+
+  }
+
+  &__description {
+    margin-bottom: 48px;
+
+    &-red {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: $red;
+
+      &--inline {
+        @media (min-width: 744px) {
+          display: inline;;
+        }
+      }
+    }
+
+    &-regular {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 27px;
+      color: $black;
+    }
+  }
+}
