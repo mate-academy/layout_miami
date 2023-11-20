@@ -1,0 +1,210 @@
+.header {
+  background-color: #1d1d1d;
+  background-image: url(../images/header-small-medium-background.jpg);
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  grid-template-rows: 1fr 1fr;
+
+  @include grid();
+
+  @include for-desktop() {
+    background-image: url(../images/header-big-background.jpg);
+    background-position: center;
+  }
+
+  &__nav {
+    @include navigation;
+
+    align-self: start;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    @include for-tablet() {
+      grid-column: 1 / 7;
+      height: 128px;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
+      height: 128px;
+    }
+
+    &-item {
+      text-decoration: none;
+
+      &-logo-icon {
+        @include logo-small;
+
+        width: 130px;
+        height: 38px;
+
+        @include for-tablet() {
+          width: 187px;
+          height: 56px;
+        }
+
+        @include for-desktop() {
+          width: 187px;
+          height: 56px;
+        }
+
+      }
+
+      &--phone {
+        display: flex;
+        gap: 20px;
+      }
+
+      &-phone-label {
+        display: none;
+
+        @include for-tablet() {
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-align: right;
+          color: white;
+          display: flex;
+          transform: translateY(5px);
+          @include hover(opacity, 1);
+        }
+
+        @include for-desktop() {
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-align: right;
+          color: white;
+          display: flex;
+          transform: translateY(5px);
+          @include hover(opacity, 1);
+        }
+      }
+
+      &:not(:hover) &-phone-label {
+        @include visually-hidden();
+        opacity: 0;
+      }
+
+      &-phone-icon {
+        width: 18px;
+        height: 18px;
+
+        @include for-tablet() {
+          width: 24px;
+          height: 24px;
+        }
+
+        @include for-desktop() {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &-burger-label {
+        @include visually-hidden();
+      }
+
+      &--burger {
+        &::before {
+          content: "";
+          background-image: url(../images/burger-menu-icon.svg);
+          background-size: cover;
+          display: inline-block;
+          width: 18px;
+          height: 14px;
+          opacity: 1;
+
+          @include for-tablet() {
+            width: 24px;
+            height: 18px;
+          }
+
+          @include for-desktop() {
+            width: 24px;
+            height: 18px;
+          }
+        }
+
+        &::after {
+          display: none;
+          content: "";
+          background-image: url(../images/burger-menu-hover-icon.svg);
+          background-size: cover;
+          width: 18px;
+          height: 14px;
+
+          @include for-tablet() {
+            width: 24px;
+            height: 18px;
+          }
+
+          @include for-desktop() {
+            width: 24px;
+            height: 18px;
+          }
+        }
+
+        &:hover {
+          &::before {
+            display: none;
+            opacity: 0;
+          }
+
+          &::after {
+            display: inline-block;
+            @include hover(opacity, 1);
+          }
+        }
+      }
+    }
+
+    &-item:nth-child(1) {
+      margin-right: auto;
+    }
+
+    &-item:nth-child(3) {
+      margin-left: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: white;
+    padding-bottom: 88px;
+
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+
+    @include for-tablet() {
+      grid-column: 1 / 7;
+
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 64px;
+      letter-spacing: -1.5px;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
+
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+      transform: translateY(-100px);
+    }
+  }
+}
