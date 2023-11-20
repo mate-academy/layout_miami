@@ -1,0 +1,97 @@
+.category {
+  padding: 0 $desktopPaddingX $paddingY;
+
+  @include forIpad {
+    padding: 0 $ipadPaddingX $paddingY;
+  }
+
+  @include forMobile {
+    padding: 0 $mobilePaddingX $paddingY;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+  }
+
+  &__title {
+    margin-bottom: 64px;
+
+    @include forMobile {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: $colGap;
+    padding-bottom: 16px;
+    position: relative;
+
+    @include forMobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      position: static;
+    }
+  }
+
+  &__photo {
+    // position: relative;
+    height: 100%;
+    width: 100%;
+
+    @for $start from 1 through 7 {
+      @for $end from $start through 7 {
+        &--cols--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+    }
+
+    @include forMobile {
+      grid-column: unset;
+      height: 0;
+      padding-bottom: 100%;
+      position: relative;
+    }
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform $transitionDuration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include forMobile {
+      position: absolute;
+    }
+  }
+
+  &__sub-img {
+    object-position: right center;
+  }
+
+  &__text {
+    @include fontParams(24px, 33px, 700);
+    margin-bottom: 64px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+
+    @include forMobile {
+      margin-bottom: 40px;
+      @include fontParams(16px, 22px, 700);
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,130 @@
+.contact {
+  padding: 0 $desktopPaddingX $paddingY;
+
+  @include forIpad {
+    padding: 0 $ipadPaddingX 96px;
+  }
+
+  @include forMobile {
+    padding: 0 $mobilePaddingX $paddingY;
+  }
+
+  &__content-wrapper {
+    @include limitContentWidth;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: $colGap;
+
+    @include forIpad {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $colGap;
+    }
+
+    @include forMobile {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, auto);
+      row-gap: 56px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__form {
+    width: 100%;
+    grid-column: 1 / 7;
+    flex-basis: 50%;
+
+    @include forIpad {
+      grid-column: 1 / 2;
+    }
+
+    @include forMobile {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+    }
+  }
+
+  .contact__input {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 40px;
+    padding-left: 16px;
+    border: 1px solid transparent;
+    background-color: #f8f8fa;
+    @include fontParams(14px, 20px, 400);
+    font-family: "Inter", sans-serif;
+
+    &:hover {
+      border-color: #d5d7de;
+    }
+
+    &:focus {
+      border-color: #292929;
+      color: #292929;
+      outline: none;
+    }
+  }
+
+  &__name {
+    height: 48px;
+  }
+
+  &__email {
+    height: 48px;
+  }
+
+  &__message {
+    height: 148px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    padding-top: 14px;
+    font-family: "Inter", sans-serif;
+
+    &::placeholder {
+      font-weight: 400;
+      color: $c-placeholder;
+    }
+  }
+  &__button {
+    width: 100%;
+  }
+
+  &__details {
+    display: inline-block;
+    grid-column: 8 / 13;
+
+    @include forIpad {
+      grid-column: 2 / -1;
+    }
+
+    @include forMobile {
+      grid-column: 1 / -1;
+      grid-row: 2 / -1;
+    }
+  }
+
+  &__light-text {
+    margin-bottom: 8px;
+    @include fontParams(14px, 20px, 400);
+    color: #9fadc2;
+  }
+
+  &__dark-text {
+    margin-bottom: 24px;
+    @include fontParams(16px, 22px, 400);
+    color: #3e3e3e;
+    cursor: pointer;
+    transition: color $transitionDuration;
+
+    &:hover {
+      color: rgb(25, 8, 8);
+      font-weight: 600;
+    }
+  }
+}
