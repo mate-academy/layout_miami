@@ -9,16 +9,23 @@
   min-height: 100vh;
 
   box-sizing: border-box;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  grid-template-rows: 1fr 1fr;
-  gap: 24px;
   padding: 20px;
 
-  @include forDesktop () {
-    grid-template-columns: repeat(12, 63px);
-    gap: 24px;
+  @include grid();
+
+  &__title {
+    font-size: 80px;
+    font-weight: 700;
+    color: #{$white};
+    text-align: center;
+
+    align-self: end;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+
+    @include forDesktop () {
+      grid-column: 1/14;
+    }
   }
 
   &__nav {
@@ -29,26 +36,7 @@
     @include forDesktop () {
       grid-column: 1/14;
     }
-  }
 
-  &__title {
-    align-self: end;
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
-
-    @include forDesktop () {
-      grid-column: 1/14;
-    }
-  }
-
-  &__title {
-    font-size: 80px;
-    font-weight: 700;
-    color: #{$white};
-    text-align: center;
-  }
-
-  &__nav {
     width: 90vw;
     text-transform: uppercase;
     font-size: 40px;

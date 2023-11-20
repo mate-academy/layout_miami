@@ -1,5 +1,6 @@
-.main__nowOnView {
+@use "./../utils/mixins.scss" as *;
 
+.main__nowOnView {
   &--title {
     color: #{$black};
     text-align: center;
@@ -23,18 +24,35 @@
     margin-bottom: 48px;
 
     &-pictures2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+
+      @include grid();
       margin-bottom: 24px;
 
       &-item {
         width: 100%;
         position: relative;
         padding-top: 100%;
+        grid-row: 1 / 3;
+
+        @include forDesktop() {
+          grid-column: span 6;
+          padding-top: 320px;
+        }
+
+        &--big {
+          @include forDesktop() {
+            grid-column: span 8;
+          }
+        }
+
+        &--small {
+          @include forDesktop() {
+            grid-column: span 4;
+          }
+        }
       }
       &-picture {
-        top:0;
+        top: 0;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -43,18 +61,23 @@
     }
 
     &-pictures3 {
-      display: grid;
+      @include grid();
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
       margin-bottom: 24px;
 
       &-item {
         width: 100%;
         position: relative;
         padding-top: 100%;
+        grid-row: 1 / 3;
+
+        @include forDesktop() {
+          grid-column: span 4;
+          padding-top: 320px;
+        }
       }
       &-picture {
-        top:0;
+        top: 0;
         width: 100%;
         height: 100%;
         position: absolute;
