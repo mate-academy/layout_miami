@@ -1,8 +1,8 @@
-@import "../styles/utils/mixins.scss";
+@import "../utils/mixins";
 
 .header {
   height: 100vh;
-  background: url(../styles/images/main.png);
+  background: url(../images/main.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@
   }
 
   &__nav-right-menu {
-    display: inline-block;
+    display: flex;
     justify-content: space-between;
   }
 
@@ -31,21 +31,22 @@
       height: 65px;
     }
 
-    background-image: url(../styles/images/logo.png);
+    background-image: url(../images/logo.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   &__phone {
-    display: inline-block;
+    display: flex;
     width: 18px;
     height: 18px;
-    background-image: url(../styles/images/phone-icon.png);
+    background-image: url(../images/phone-icon.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     margin-right: 30px;
+    align-items: center;
 
     @include onDesktop {
       margin-right: 60px;
@@ -54,11 +55,48 @@
     }
   }
 
+  &__contact-block {
+    display: none;
+    color: #fff;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-align: center;
+
+    position: absolute;
+    top: 40px;
+    right: 340px;
+    margin-right: 16px;
+  }
+
+  &__contact-title {
+    margin: 0;
+  }
+
+  &__contact-hover-block:hover &__contact-block {
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__contact-link {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   &__menu-opener {
     display: inline-block;
     width: 18px;
     height: 12px;
-    background-image: url(../styles/images/menu-icon.png);
+    background-image: url(../images/menu-icon.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -76,10 +114,10 @@
     letter-spacing: -1.5px;
     color: #fff;
     text-align: center;
-    margin-top: 130px;
+    margin-top: 200px;
 
     @include onDesktop {
-      margin-top: 80px;
+      margin-top: 130px;
       font-size: 80px;
       line-height: 80px;
     }
