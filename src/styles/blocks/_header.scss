@@ -1,0 +1,327 @@
+.header {
+  background-image: url("../images/image.jpg");
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: end;
+  position: relative;
+  transition: align-items 5s ease, background-color 1s ease, background-image 1s ease, transform 1s ease;
+
+  &:before {
+    content: "";
+    background-image: url("../images/image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+
+  .hidden-checkbox:checked~.header::before {
+    opacity: 0;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: left;
+    width: 320px;
+
+
+    @media (min-width: 744px) {
+      padding-left: 72px;
+      font-size: 40px;
+      line-height: 40px;
+      width: 482px;
+    }
+
+    @media (min-width: 1260px) {
+      padding-left: 120px;
+      font-size: 48px;
+      width: 638px;
+      line-height: 48px;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  &__menu {
+    padding-right: 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    cursor: pointer;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 24px;
+    justify-self: end;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 744px) {
+      padding-right: 72px;
+      padding-top: 32px;
+      gap: 32px;
+    }
+    
+    @media (min-width: 1260px) {
+      padding-right: 120px;
+    }
+  }
+
+  &__logo {
+    padding-left: 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+
+    @media (min-width: 744px) {
+      padding-left: 72px;
+      padding-top: 36px;
+    }
+
+    @media (min-width: 1260px) {
+      padding-left: 120px;
+    }
+  }
+}
+
+.original-content {
+
+  & img {
+    margin-bottom: 16px;
+
+    @media (min-width: 744px) {
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 1260px) {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+.hidden-checkbox:checked~.header {
+  background-image: none;
+  background-color: #e8eff9;
+  align-items: center;
+  transition: background-color 1s ease, background-image 1s ease;
+}
+
+.hidden-checkbox:not(:checked)~.header {
+  background-image: url("../images/image.jpg");
+  background-color: none;
+  align-items: end;
+  transition: background-color 1s ease, background-image 1s ease;
+  animation: fadeIn 1s linear forwards;
+}
+
+
+
+.burger-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/Icon-Burger-menu.svg");
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-image: url("../images/Icon-Burger-menu-hover.svg");
+  }
+}
+
+.hidden-checkbox:checked~.header .burger-icon {
+  background-image: url("../images/Icon-Close.svg");
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+.hidden-checkbox:not(:checked)~.header .header__title .links-content {
+  animation: fadeOut 1s linear forwards;
+  visibility: hidden;
+  transition: visibility 1s linear 1s, opacity 1s linear;
+  opacity: 0;
+  transition-delay: 1s;
+}
+
+
+
+.links-content {
+  display: none;
+  opacity: 0;
+
+  transition: visibility 0s linear 5s, opaacity 5s linear;
+
+  &--number {
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #292929;
+
+    &:active~.header .header__title .links-content {
+      animation: fadeIn 1s linear forwards;
+      visibility: visible;
+      transition: visibility 1s linear 1s, opacity 1s linear;
+      opacity: 1;
+    }
+  }
+}
+
+
+
+.hidden-checkbox:checked~.header .header__title .links-content {
+  display: block;
+  animation: fadeIn 1s linear forwards;
+  visibility: visible;
+  transition: visibility 1s linear 1s, opacity 1s linear;
+  opacity: 1;
+  justify-self: center;
+  transition-delay: 0s;
+
+}
+
+.hidden-checkbox:checked~.header .header__title .original-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 5s, opaacity 5s linear;
+  animation: fadeOut 1s linear forwards;
+  transform: translateY(52.40vh);
+
+
+
+  @media (min-width: 744px) {
+    transform: translateY(49.9vh);
+  }
+
+  @media (min-width: 1260px) {
+    transform: translateY(49.4vh);
+  }
+}
+
+.hidden-checkbox:not(:checked)~.header .header__title .original-content {
+  animation: fadeIn 1s linear forwards;
+  visibility: visible;
+  transition: visibility 1s linear 1s, opacity 1s linear;
+  opacity: 1;
+
+}
+
+.hidden-checkbox:checked~.header .header__title .links-content a {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+  color: #292929;
+
+}
+
+.hidden-checkbox:not(:checked)~.header .header__title .links-content a {
+  transform: translateY(45vh);
+}
+
+.hidden-checkbox:checked~.header .header__title .links-content a:last-child {
+  margin-bottom: 0;
+}
+
+.hidden-checkbox:checked~.header .header__menu img {
+  display: none;
+}
+
+.phonenumber {
+  display: none;
+
+}
+
+.header__phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-align: right;
+  text-decoration: none;
+  color: #292929;
+}
+
+.header__phone:hover .phonenumber {
+  display: flex;
+}
+
+.hidden-checkbox:checked~.header .header__title .links-content .calltoorder {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-align: left;
+  padding-top: 16px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+
+  @media (min-width: 1260px) {
+    font-size: 16px;
+  }
+}
