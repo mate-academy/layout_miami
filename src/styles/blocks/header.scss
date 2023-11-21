@@ -1,0 +1,57 @@
+.header {
+  min-height: 100vh;
+  @include phone-grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: start;
+  align-items: start;
+  background-image: url("../images/photos/header_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__title {
+    grid-column: 1 /3;
+    grid-row: 2 / 3;
+    place-self: end start;
+    margin-bottom: 40px;
+    text-align: left;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 58px;
+      background-image: url("../images/waves.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-bottom: 16px;
+    }
+  }
+
+  @include tablet-screen {
+    @include tablet-grid;
+
+    &__title {
+      grid-column: span 4;
+      margin-bottom: 64px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  @include computer-screen {
+    @include computer-grid;
+
+    &__title {
+      grid-column: span 6;
+
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
