@@ -1,0 +1,38 @@
+.pictures {
+  display: grid;
+  grid-template-columns: $image-mob $image-mob;
+  grid-template-rows: $image-mob;
+  gap: 20px;
+
+  @include for-tablet() {
+    grid-template-columns: $image-tabl $image-tabl;
+    grid-template-rows: 184px;
+    gap: 24px;
+  }
+
+  @include for-desktop() {
+    grid-template-columns: $image-desk $image-desk;
+    grid-template-rows: 324px;
+    gap: 24px;
+  }
+
+  &__item {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    /* stylelint-disable */
+    aspect-ratio: 16/9;
+    /* stylelint-enable */
+    object-position: center;
+    object-fit: cover;
+    @include smooth(transform);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

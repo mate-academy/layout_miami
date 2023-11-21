@@ -1,0 +1,80 @@
+.section {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: $section-padding-mobile;
+  width: $mobile-width;
+
+  @include for-tablet() {
+    width: $tablet-width;
+    padding: $section-padding-tablet;
+  }
+
+  @include for-desktop() {
+    width: $desktop-width;
+    padding: $section-padding-desktop;
+  }
+
+  &__title {
+    margin-bottom: $margin-48;
+
+    @include for-tablet() {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__recommended-container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include for-desktop() {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  &__description {
+    width: $mobile-width;
+
+    @include for-tablet() {
+      width: $tablet-width;
+    }
+
+    @include for-desktop() {
+      width: $desktop-width;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    margin-bottom: 48px;
+
+    @include for-tablet() {
+      margin-bottom: 80px;
+    }
+
+    @include for-desktop() {
+      width: 49%;
+      margin-bottom: 0;
+    }
+  }
+
+  &__address {
+    width: 100%;
+
+    @include for-desktop() {
+      width: 40%;
+    }
+  }
+
+  &__contacts-container {
+    @extend %flex-center;
+
+    @include for-desktop() {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 111px;
+    }
+  }
+}
