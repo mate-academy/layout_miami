@@ -1,0 +1,106 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 40px 20px 94px;
+  margin-bottom: 120px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header.png);
+  
+
+  @include size_744 {
+    background-image: url(../images/header-big.png);
+    padding: 50px 72px 40px;
+  }
+
+  @include size_1024 {
+    background-image: url(../images/header_middle.png);
+    padding: 50px 120px 65px;
+  }
+    
+  &__nav {
+    @extend %container;
+  }
+  
+  &__menu-opener {
+    background-image: url(../images/menu.svg);
+
+    @include size_744 {
+      background-image: url(../images/menu-big.svg);
+    }
+    
+    @include size_1024 {
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+        height: 24;
+      }
+    }
+  }
+
+  &__call {
+    background-image: url(../images/phone.svg);
+    text-decoration: none;
+
+    @include size_1024 {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $main-color;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $main-color;
+
+    @include size_744 {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-image: url(../images/sound-wave.svg);
+      width: 32px;
+      height: 27px;
+      margin-bottom: 16px;
+
+      @include size_744 {
+        background-image: url(../images/sound-waves_big.svg);
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+
+      @include size_1024 {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
