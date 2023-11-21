@@ -1,0 +1,48 @@
+@use "../../styles/utils/mixins" as *;
+
+.pictures {
+  @include grid();
+
+  @include for-tablet();
+
+  &__item {
+    height: 130px;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    padding-bottom: 16px;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include for-tablet() {
+      height: 184px;
+    }
+
+    @include for-desktop() {
+      height: 324px;
+    }
+
+    &--big {
+      @include for-tablet() {
+        grid-column: span 4;
+      }
+
+      @include for-desktop() {
+        grid-column: span 8;
+      }
+    }
+
+    &--small {
+      @include for-tablet() {
+        grid-column: span 2;
+      }
+
+      @include for-desktop() {
+        grid-column: span 4;
+      }
+    }
+  }
+}
