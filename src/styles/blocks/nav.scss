@@ -1,0 +1,35 @@
+.nav {
+  &__list {
+    list-style: none;
+
+    gap: 32px;
+    @include flexbox(flex, column);
+  }
+
+  &__link {
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: -8px;
+      height: 1px;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

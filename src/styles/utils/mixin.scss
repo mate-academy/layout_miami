@@ -1,0 +1,41 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin flexbox($display, $flex-direction, $justify-content: null) {
+  display: $display;
+  flex-direction: $flex-direction;
+
+  @if $justify-content != null {
+    justify-content: $justify-content;
+  }
+}
+
+@mixin background-image($image-url) {
+  background-image: url($image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
