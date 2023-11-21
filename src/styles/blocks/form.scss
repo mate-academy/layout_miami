@@ -1,0 +1,120 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: none;
+
+  &__input {
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    border-radius: 40px;
+    background: #f8f8fa;
+    width: 100%;
+    line-height: 20px;
+    height: 48px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    border: none;
+
+    &::placeholder {
+      flex-shrink: 0;
+      color: #7e7e83;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      border: none;
+    }
+  }
+
+  &__textarea {
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    border-radius: 16px;
+    background: #f8f8fa;
+    display: flex;
+    width: 100%;
+    line-height: 20px;
+    padding-left: 16px;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+    height: 120px;
+    border: none;
+
+    &::placeholder {
+      align-items: flex-start;
+      gap: 10px;
+      color: #7e7e83;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      flex: 1 0 0;
+      border: none;
+    }
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+
+  @include tablet {
+    width: 288px;
+    height: 48px;
+
+    &__button-last {
+      width: 288px;
+      height: 48px;
+    }
+
+    &__textarea {
+      width: 288px;
+      height: 148px;
+    }
+  }
+
+  @include desktop {
+    margin: 0 28px;
+
+    &__textarea {
+      width: 411px;
+    }
+
+    &__input {
+      width: 411px;
+    }
+  }
+}
+
+@include tablet {
+  .one-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    gap: 20px;
+    grid-column: 1 / 2;
+    margin-left: 72px;
+    margin-right: 72px;
+    border: none;
+  }
+}
+
+@include desktop {
+  .one-column {
+    gap: 280px;
+  }
+}
