@@ -1,0 +1,105 @@
+.header {
+  background-image: url(../images/photos/bg3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 24px;
+  transition: padding 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+
+  @include onTablet {
+    background-image: url(../images/photos/bg2.png);
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/bg1.png);
+    padding: 0 120px;
+    height: 100vh;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 24px;
+    @include onTablet {
+      padding-top: $headerTopPadding;
+    }
+  }
+
+  &__image {
+    display: flex;
+    height: 38px;
+    margin: 0;
+    padding-bottom: 0;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+
+  &__active {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+    height: 32px;
+    padding: 0 4px;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: $colorText;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    padding-top: 355px;
+    padding-bottom: 88px;
+    color: $colorText;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+      padding-bottom: 130px;
+      padding-top: 430px;
+    }
+
+    @include onDesktop {
+      padding-top: 440px;
+      font-size: 80px;
+      padding-bottom: 200px;
+    }
+  }
+}
