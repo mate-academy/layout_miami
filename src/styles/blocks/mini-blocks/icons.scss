@@ -1,0 +1,61 @@
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+
+  @include tablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &__tooltip {
+    position: absolute;
+    display: block;
+    width: max-content;
+
+    color: $text-color--white;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 27px;
+    text-align: right;
+
+    transform: translate(-100%, -50%);
+    top: 50%;
+    padding-right: 20px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url("../images/phone.svg");
+    transition: background-image 0.5s;
+
+    &:hover .icon__tooltip {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/menu.svg");
+    margin-left: 24px;
+
+    &:hover {
+      background-image: url("../images/menu_hover.svg");
+    }
+  }
+
+  transition: transform 0.5s;
+  &--cross {
+    background-image: url("../images/cross.svg");
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+}

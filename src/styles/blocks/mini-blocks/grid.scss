@@ -1,0 +1,35 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 24px;
+  }
+
+  @for $start from 1 through 13 {
+    @for $end from $start through 13 {
+      &--#{$start}-#{$end} {
+        grid-column: #{$start} / #{$end};
+      }
+
+      @include tablet {
+        &--tablet--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+
+      @include desktop {
+        &--desktop--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end};
+        }
+      }
+    }
+  }
+}
