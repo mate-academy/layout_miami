@@ -1,0 +1,57 @@
+.gadget {
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    max-height: 321px;
+    overflow: hidden;
+    transition: transform $transition-duration;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 321px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    @include widthHight(100%, 100%);
+
+    object-fit: cover;
+    object-position: center;
+
+    &--position-right {
+      object-position: right center;
+    }
+
+    &--index {
+      z-index: -1;
+    }
+  }
+
+  &__description {
+    font-weight: 700;
+    line-height: 140%;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+  }
+}
