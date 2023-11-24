@@ -1,0 +1,58 @@
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
+
+  transition: all 0.3s;
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    color: $color-white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    transform: rotate(180deg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+      cursor: pointer;
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/cross_black.svg);
+  }
+}
