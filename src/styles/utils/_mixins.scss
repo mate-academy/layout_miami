@@ -1,6 +1,68 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin onDesktopTablet {
+  @media (min-width: 744px) {
+    @content;
   }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin photoPosition {
+  position: absolute;
+  width: $photo-size;
+  height: $photo-size;
+  object-fit: cover;
+}
+
+@mixin  photoContainer {
+  position: relative;
+
+  box-sizing: border-box;
+  width: $photo-size;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+@mixin topActions {
+  display: grid;
+  grid-template-columns: 1fr $icon-width-small $icon-width-small;
+  gap: 30px;
+  align-items: center;
+  height: min-content;
+  box-sizing: border-box;
+
+  @include onDesktopTablet {
+    display: grid;
+    grid-template-columns: 1fr $icon-width-big $icon-width-big;
+    gap: 62px;
+  }
+}
+
+@mixin tooltip {
+  position: absolute;
+
+  display: block;
+  width: max-content;
+
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 0.3s;
 }
