@@ -1,6 +1,29 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin topActions {
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+
+  @include onTablet {
+    padding-top: 50px;
+  }
+}
+
+@mixin photoScale {
+  transition: transform $duration;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: translateZ(1px);
   }
 }
