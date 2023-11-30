@@ -1,6 +1,6 @@
 @import "../utils/mixins";
 
-.gallary {
+.gallery {
   &__title {
     margin: 0 auto 8px;
   }
@@ -14,6 +14,7 @@
     box-sizing: border-box;
     max-height: 320px;
     height: 100%;
+    overflow: hidden;
 
     @include onDesktop {
       height: 320px;
@@ -27,6 +28,12 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
   }
 
@@ -41,9 +48,31 @@
   }
 
   &__description-title {
+    display: block;
     font-size: 16px;
     font-weight: 700;
     color: #d12d35;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      transform-origin: 0 0;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background-color: #d12d35;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    }
+
+    &:hover:after {
+      width: 100%;
+      left: 0;
+    }
   }
 
   &__description-subtitle {
