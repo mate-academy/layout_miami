@@ -1,0 +1,61 @@
+@import "../utils/mixins.scss";
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  width: 100%;
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--tablet-3 {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onDesktop {
+      display: grid;
+    }
+
+  }
+
+  &__item {
+
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end+1};
+        }
+
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end+1};
+          }
+        }
+
+      }
+    }
+
+    &--tablet {
+      width: 100%;
+
+      @include onTablet {
+        width: 50%;
+      }
+
+      @include onDesktop {
+        width: 100%;
+      }
+    }
+  }
+}
