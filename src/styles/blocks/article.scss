@@ -3,9 +3,35 @@
   grid-template-columns: repeat(2, auto);
   column-gap: 20px;
 
+  @include grid-tablet();
+
   &__img {
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 130px;
     padding-bottom: 16px;
+
+    &--poz {
+      @media (max-width: 320px) {
+        object-position: -105px center;
+      }
+
+      &__max {
+        @media (max-width: 320px) {
+          object-position: -130px center;
+        }
+      }
+    }
+
+    @include for-tablet() {
+      grid-column: span 2;
+      height: 184px;
+
+      &--big {
+        grid-column: span 4;
+      }
+    }
   }
 
   &__title {
@@ -15,5 +41,9 @@
     font-weight: 700;
     line-height: 140%; /* 22.4px */
     padding-bottom: 40px;
+
+    @include for-tablet() {
+      font-size: 24px;
+    }
   }
 }
