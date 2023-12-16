@@ -1,0 +1,68 @@
+.exhibition {
+  &__photos {
+    margin-bottom: 24px;
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 320px;
+    overflow: hidden;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.06);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      height: 186px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    &--three-photo {
+      @include onTablet {
+        width: 100%;
+        height: 320px;
+
+        &::after {
+          content: "";
+          padding-bottom: 100%;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+      transform: translateZ(10px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    color: $pinkColor;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}
