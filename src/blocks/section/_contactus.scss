@@ -1,0 +1,143 @@
+@import '../../styles/utils/vars';
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.contactus {
+  display: grid;
+  grid-template-columns: repeat(12, 63px);
+  justify-content: center;
+  gap: 24px;
+  padding-bottom: 120px;
+
+  &__form {
+    grid-column: span 6;
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &--input {
+      border: 0;
+      border-radius: 8px;
+      background: $background-primary-color;
+      height: 48px;
+      padding: 0 16px;
+      width: 100%;
+      box-sizing: border-box;
+      color: $main-color;
+      font-family: Manrope, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.15px;
+
+      &::placeholder {
+        color: $placeholder-color-text;
+        font-family: Manrope, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 0.15px;
+      }
+
+    }
+    &--textarea {
+      border: 0;
+      border-radius: 8px;
+      background: $background-primary-color;
+      padding: 14px 16px;
+      width: 100%;
+      box-sizing: border-box;
+      color: $main--color-text;
+      font-family: Manrope, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.15px;
+      height: 120px;
+      resize: none;
+
+      &::placeholder {
+        color: $placeholder-color-text;
+        font-size: 14px;
+        line-height: 140%;
+      }
+
+    }
+    &--label {
+      &:not(:focus, :active) {
+          @include visually-hidden;
+      }
+    }
+
+    &--button {
+      text-decoration: none;
+      color: $form-button-color-text;
+      text-align: center;
+      font-family: Manrope, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 27px;
+      border: 1px solid transparent;
+      background-color: #1B2129;
+      border-radius: 8px;
+      padding: 0 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 56px;
+      margin-top: 32px;
+      transition: 500ms;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: $form-button-color-text;
+        color: $form-buton-color;
+        border-color: $form-buton-color;
+      }
+    }
+
+  }
+
+  &__address {
+    grid-column: 8 / -1;
+    padding-top: 56px;
+
+    &--label {
+      color: $address-color;
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: 0.15px;
+      padding-top: 24px;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    &--content {
+      color: $main-color-text;
+      font-family: Manrope, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%;
+      letter-spacing: 0.15px;
+    }
+  }
+}
