@@ -1,0 +1,84 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixin';
+
+.aboutus {
+  background: $background-aboutus;
+  margin-top: 120px;
+
+  &::before {
+    content: '';
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url(../images/photo.jpg);
+    background-size: cover;
+    background-position: center 80%;
+    height: 460px;
+    width: 100%;
+
+    @include for-tablet {
+      height: 400px;
+    };
+
+    @include for-mobile {
+      height: 200px;
+    }
+  }
+
+  &__container {
+    padding: 120px;
+
+    @include for-tablet {
+      padding: 120px 72px;
+    };
+
+    @include for-mobile {
+      padding: 48px 20px;
+    }
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+    justify-content: center;
+
+    @include for-tablet {
+      grid-template-columns: repeat(6, 80px);
+    };
+
+    @include for-mobile {
+      grid-template-columns: repeat(2, 130px);
+      gap: 20px;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    grid-column: span 6;
+
+    @include for-tablet {
+      grid-column: span 3;
+    };
+
+    @include for-mobile {
+      grid-column: span 2;
+    }
+  }
+
+  &__description {
+    grid-column: 8 / -1;
+    color: $main-color;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+
+    @include for-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include for-mobile {
+      grid-column: span 2;
+    }
+  }
+}

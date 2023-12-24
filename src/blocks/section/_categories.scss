@@ -1,0 +1,99 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixin';
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(12, 63px);
+  justify-content: center;
+  gap: 24px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 80px);
+  };
+
+  @include for-mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    justify-content: center;
+  };
+
+  &__product {
+    grid-column: span 6;
+    padding-top: 56px;
+    display: flex;
+    flex-direction: column;
+
+    @include for-tablet {
+      grid-column: span 3;
+    };
+
+    @include for-mobile {
+      grid-column: span 1;
+      padding-top: 40px
+    };
+
+    &--picture {
+      transition: 500ms;
+      padding-bottom: 16px;
+      width: 100%;
+      height: auto;
+      align-self: center;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__name {
+    color: $main-color;
+    font-family: Manrope, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include for-mobile {
+      font-size: 19px;
+      width: 100%;
+    }
+  }
+
+  &__button {
+    text-decoration: none;
+    color: $viewall-button-color-text;
+    text-align: center;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    border: 1px solid transparent;
+    background-color: $viewall-button-color;
+    border-radius: 8px;
+    padding: 0 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 324px;
+    height: 56px;
+    margin-top: 56px;
+    transition: 1s;
+
+    @include for-tablet {
+      width: 500px;
+    };
+
+    @include for-mobile {
+      width: 180px;
+      margin-top: 40px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: $viewall-button-color-text;
+      color: $viewall-button-color;
+      border-color: $viewall-button-color;
+    }
+  }
+
+}
