@@ -19,9 +19,13 @@ function submitClick(event) {
 }
 
 window.addEventListener('hashchange', () => {
+  const test = document.querySelector('.menu');
+
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
+    test.classList.add('page__body--with-menu--exception');
   } else {
     document.body.classList.remove('page__body--with-menu');
+    test.classList.remove('page__body--with-menu--exception');
   }
 });
