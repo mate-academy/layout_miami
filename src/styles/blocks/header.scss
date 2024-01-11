@@ -1,72 +1,134 @@
 .header {
-  background-image: url('./images/bang_olufsen_background_image.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: grey;
-  flex-shrink: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+background-image: url('./images/bang_olufsen_background_image.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+background-color: grey;
+height: 100vh;
 
+@include flex-definition;
 
- &__navigation {
-    position: relative;
-    padding: 24px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__icons {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-  }
-
-  &__logo {
-    position: relative;
-    width: 152px;
-    height: 16px;
-  }
-
-  &__phone {
-    position: relative;
-    width: 24px;
-    padding-right: 24px;
-    animation: pulse 2s infinite ease-in-out;
-  }
-
-  &__menu {
-    position: relative;
-    width: 24px;
-    opacity: 0;
-  }
-
-  &__graphic-link:hover {
-    cursor: pointer;
-  }
-
-&__graphic-link--menu {
-  background-image: url('./images/menu.svg');
-  transition: background-image 300ms ease;
+&__navigation {
+display: flex;
+align-items: center;
+justify-content: space-between;
 
 }
 
-&__graphic-link--menu:hover {
-  background-image: url('./images/menu_hover.svg');
+&__icons {
+display: flex;
+justify-content: space-between;
+box-sizing: border-box;
+}
+
+&__icons-space {
+@include mobile {
+padding-right: 24px;
+
+
+}
+
+@include tablet {
+padding-right: 32px;
+
+}
+
+@include desktop {
+padding-right: 32px;
+
+}
+}
+
+&__logo {
+position: relative;
+
+@include responsive-logo;
+
+}
+
+&__phone {
+@include responsive-icon;
+
+opacity: 0;
+
+}
+
+&__menu {
+@include responsive-icon;
+
+opacity: 0;
+
+}
+
+&__graphic-link:hover {
+cursor: pointer;
+
+}
+
+&__graphic-link--menu {
+background-image: url('./images/menu.svg');
+transition: background-image 300ms ease-in-out;
+background-size: cover;
+
+&:hover {
+background-image: url('./images/menu_hover.svg');
+background-size: cover;
+transition: background-image 300ms ease-in-out;
+
+}
+}
+&__graphic-link--phone {
+background-image: url('./images/phone.svg');
+animation: pulse infinite 2s ease-in-out;
+background-size: cover;
+
+@include desktop {
+
+&:hover {
+background-image: url('./images/phone.svg');
+background-size: cover;
+transition: background-image 300ms ease-in-out;
+
+&::before {
+content: "+1 234 5555-55-55";
+color: $font-color;
+text-align: center;
+font-family: $font-type;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: 16px;
+letter-spacing: 2px;
+text-transform: uppercase;
+display: block;
+position: absolute;
+top: 10px;
+right: 40px;
+width: 144px;
+
+}
+}
+}
+
 
 }
 
 &__title {
-  justify-self: flex-end;
-  box-sizing: border-box;
-  padding-left: 20px;
-  padding-bottom: 40px;
+box-sizing: border-box;
 
 @include font-h1;
 
+@include mobile {
+font-size: 36px;
+}
+
+@include tablet {
+font-size: 48px;
+}
+
+@include tablet {
+font-size: 56px;
+}
 }
 }
 
