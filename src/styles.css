@@ -314,6 +314,14 @@ table {
   line-height: 56px;
 }
 
+.button:hover {
+  background-color: #AE1C23;
+}
+
+.button:active {
+  background-color: #EB343D;
+}
+
 .button--primary {
   grid-column: 1/3;
   justify-self: center;
@@ -369,11 +377,15 @@ table {
   font-style: normal;
   font-weight: 400;
   line-height: 27px;
+  margin-bottom: 48px;
 }
 
 @media (min-width: 1020px) {
   .gallery {
-    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    grid-column: 1/13;
+    gap: 24px;
   }
 
   .gallery__picture {
@@ -381,7 +393,7 @@ table {
   }
 
   .gallery__content {
-    height: 100%;
+    grid-column: span 4;
   }
 }
 
@@ -465,6 +477,10 @@ table {
   line-height: 48px; /* 142.857% */
 }
 
+.form__input:hover {
+  border: 1px solid #D5D7DE;
+}
+
 .form__textarea {
   grid-column: 1/3;
   height: 144px;
@@ -484,6 +500,14 @@ table {
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
+}
+
+.form__textarea:hover {
+  border: 1px solid #D5D7DE;
+}
+
+.form__textarea:active {
+  border: 1px solid #161616;
 }
 
 .form__label:not(:focus, :active) {
@@ -516,16 +540,17 @@ table {
 }
 
 .navigation {
-  grid-column: 1/3;
+  grid-column: span 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 46px;
+  height: 56px;
 }
 
 .navigation__icons {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .navigation__item--hidden {
@@ -535,6 +560,9 @@ table {
 @media (min-width: 1020px) {
   .navigation {
     grid-column: 1/13;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
   }
 
   .navigation__icons {
@@ -550,9 +578,13 @@ table {
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   background-color: #D12D35;
-  padding: 20px;
+  padding: 25px 20px;
   box-sizing: border-box;
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  gap: 0 20px;
+  justify-content: center;
 }
 
 .menu:target {
@@ -560,6 +592,8 @@ table {
 }
 
 .menu__paragpraph {
+  grid-column: span 2;
+  gap: 0;
   color: #fff;
   font-size: 16px;
   font-style: normal;
@@ -592,8 +626,28 @@ table {
   border-bottom: 1px solid #fff;
 }
 
+@media (min-width: 1020px) {
+  .menu {
+    padding: 32px 121px;
+    grid-template-columns: repeat(12, 63px);
+    gap: 0 24px;
+    grid-column: span 12;
+    align-items: center;
+    padding-top: 80px;
+  }
+
+  .menu__paragpraph {
+    grid-column: span 12;
+  }
+
+  .menu__call-link {
+    grid-column: span 12;
+  }
+}
+
 .links {
   margin-top: 40px;
+  grid-column: span 2;
 }
 
 .links__item {
@@ -614,6 +668,12 @@ table {
 
 .links__link:hover {
   border-bottom: 1px solid #fff;
+}
+
+@media (min-width: 1020px) {
+  .links {
+    grid-column: span 12;
+  }
 }
 
 .open {
@@ -648,6 +708,88 @@ table {
 
 .open__regular--width {
   grid-column: 1/3;
+}
+
+.burger::before {
+  content: "";
+  background-image: url(./images/moblie/navigation/Burger-menu.svg);
+  background-size: cover;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.burger::after {
+  display: none;
+  content: "";
+  background-image: url(./images/moblie/navigation/Burger-hover.svg);
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+}
+
+.burger:hover::before {
+  display: none;
+}
+
+.burger:hover::after {
+  display: inline-block;
+}
+
+.burger__label {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.phone {
+  opacity: 0;
+}
+
+@media (min-width: 1020px) {
+  .phone {
+    opacity: 1;
+  }
+}
+
+.phone__labels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 27px;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  transform: translate(calc(-100% - 20px), -45%);
+}
+
+.phone__labels--margin {
+  margin-bottom: 8px;
+}
+
+.phone__label {
+  text-align: right;
+}
+
+.phone:not(:hover) .phone__label {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 /*# sourceMappingURL=styles.css.map */
