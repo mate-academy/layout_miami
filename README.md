@@ -17,5 +17,7 @@ I undertook the challenge of developing the **frontend** for the Bang & Olufsen 
 ## Explore the Project:
 
 **Demo Version:** [DEMO LINK](https://meljaszuk.github.io/layout_miami/)
+
 **Code Repository:** [BRANCH LINK](https://github.com/meljaszuk/layout_miami/tree/develop)
+
 **Figma Design:** [FIGMA LINK](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
