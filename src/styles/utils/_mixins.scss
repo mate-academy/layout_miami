@@ -1,6 +1,225 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin mobile {
+  @media (min-width: 320px) {
+    @content;
   }
 }
+
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin font-h1 {
+  color: #FFF;
+  font-family: $font-type;
+  font-weight: 700;
+  line-height: 140%;
+
+  @media (min-width: 280px) {
+    font-size: 36px;
+  }
+
+  @media (min-width: 744px) {
+    font-size: 48px;
+  }
+
+  @media (min-width: 1260px){
+    font-size: 56px;
+  }
+}
+
+@mixin font-h2 {
+  color: $primary;
+  font-family: $font-type;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin: 0;
+
+  @media (min-width: 280px) {
+    font-size: 32px;
+    padding-bottom: 48px;
+  }
+
+  @media (min-width: 744px) {
+    font-size: 40px;
+    padding-bottom: 56px;
+  }
+
+  @media (min-width: 1260px){
+    font-size: 48px;
+    padding-bottom: 56px;
+  }
+
+}
+
+@mixin font-h3 {
+  color: $primary;
+  font-family: $font-type;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  padding-bottom: 8px;
+}
+
+@mixin font-text {
+  font-family: $font-type;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: $primary;
+}
+
+
+@mixin font-price {
+  color: $primary;
+  font-family: $font-type;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+@mixin font-menu {
+  color: $primary;
+  font-family: $font-type;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+@mixin font-form {
+  font-family: $font-type;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+}
+
+@mixin responsive-icon {
+  position: relative;
+  box-sizing: border-box;
+
+  @include mobile {
+    width: 24px;
+  }
+
+  @include tablet {
+    width: 32px;
+  }
+
+  @include desktop {
+    width: 32px;
+  }
+}
+
+@mixin responsive-logo {
+  @include mobile {
+    width: 152px;
+    height: 16px;
+  }
+
+  @include tablet {
+    width: 228px;
+    height: 24px;
+  }
+
+  @include desktop {
+    width: 228px;
+    height: 24px;
+  }
+}
+
+@mixin grid-definition {
+  box-sizing: border-box;
+
+  @include mobile {
+    grid-column: 1 / span 2;
+  }
+
+  @include tablet {
+    grid-column: 1 / span 6;
+  }
+
+  @include desktop {
+    grid-column: 1 / span 12;
+  }
+}
+
+@mixin flex-definition {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @media (min-width: 320px) {
+    padding: 24px 20px 40px;
+  }
+
+  @media (min-width: 744px) {
+    padding: 32px 72px 64px;
+  }
+
+  @media (min-width: 1260px) {
+    padding: 32px 120px 64px;
+  }
+}
+
+@mixin gallery-imgbox-definition {
+  overflow: hidden;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 320px) {
+    width: 130px;
+    height: 130px;
+  }
+
+  @media (min-width: 744px) {
+    width: 288px;
+    height: 184px;
+  }
+
+  @media (min-width: 1260px) {
+    width: 498px;
+    height: 324px;
+  }
+}
+
+@mixin photo-animation {
+  @media (min-width: 1260px) {
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    }
+  }
+}
+
+@mixin cross-animation {
+  @media (min-width: 1260px) {
+    transform: rotate(0);
+    transition: transform 0.5s ease-in-out;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+

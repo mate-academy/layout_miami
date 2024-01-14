@@ -1,0 +1,122 @@
+  .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $dark-bcg;
+  min-height: 100vh;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  @include flex-definition;
+
+  justify-content: start;
+
+  &:target {
+    transform: translateX(0%);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 56px;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  &__list-item {
+    list-style: none;
+    padding-bottom: 32px;
+    display: flex;
+  }
+
+  &__link {
+  padding-bottom: 8px;
+  display: flex;
+  position: relative;
+
+  @include font-menu;
+
+  &::after {
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+    content: "";
+    display: block;
+    border-bottom: 1px solid $primary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30px;
+    }
+
+  &:hover::after {
+    transform: scale(1);
+    }
+  }
+
+  &__number {
+    @include font-price;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 16px;
+  }
+
+  &__logo {
+    @include responsive-logo;
+  }
+
+  &__cross {
+    @include responsive-icon;
+    @include cross-animation;
+  }
+
+  &__cta {
+    padding-top: 8px;
+
+    @include font-price;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    display: flex;
+    position: relative;
+
+    &:link {
+      color: $primary;
+
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid $primary;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      width: 144px;
+      }
+    }
+
+    &:hover {
+      color: $accent;
+      &::after {
+        content: "";
+        display: block;
+        border-bottom: 1px solid $accent;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        width: 144px;
+      }
+    }
+  }
+}

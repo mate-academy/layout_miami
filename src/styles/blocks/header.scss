@@ -1,0 +1,111 @@
+.header {
+  background-image: url('./images/bang_olufsen_background_image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: $primary;
+  height: 100vh;
+
+  @include flex-definition;
+
+  justify-content: space-between;
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  &__icons-space {
+    @include mobile {
+      padding-right: 24px;
+    }
+
+    @include tablet {
+      padding-right: 32px;
+    }
+
+    @include desktop {
+      padding-right: 32px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+
+    @include responsive-logo;
+  }
+
+  &__phone {
+    @include responsive-icon;
+
+    opacity: 0;
+  }
+
+  &__menu {
+    @include responsive-icon;
+
+    opacity: 0;
+  }
+
+  &__graphic-link:hover {
+    cursor: pointer;
+  }
+
+  &__graphic-link--menu {
+    background-image: url('./images/menu.svg');
+    transition: background-image 300ms ease-in-out;
+    background-size: cover;
+
+    &:hover {
+      background-image: url('./images/menu_hover.svg');
+      background-size: cover;
+      transition: background-image 300ms ease-in-out;
+    }
+  }
+
+  &__graphic-link--phone {
+    background-image: url('./images/phone.svg');
+    animation: pulse infinite 2s ease-in-out;
+    background-size: cover;
+
+    @include desktop {
+
+      &:hover {
+        background-image: url('./images/phone.svg');
+        background-size: cover;
+        transition: background-image 300ms ease-in-out;
+
+        &::before {
+          content: "+1 234 5555-55-55";
+          color: $primary;
+          text-align: center;
+          font-family: $font-type;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          display: block;
+          position: absolute;
+          top: 10px;
+          right: 40px;
+          width: 144px;
+        }
+      }
+    }
+  }
+
+  &__title {
+    box-sizing: border-box;
+
+    @include font-h1;
+  }
+}
