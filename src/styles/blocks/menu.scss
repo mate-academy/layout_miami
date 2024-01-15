@@ -1,0 +1,77 @@
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: $red-accent;
+  padding: 25px 20px;
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  gap: 0 20px;
+  justify-content: center;
+
+
+  &:target {
+  transform: translateX(0);
+  }
+
+  &__paragpraph {
+    grid-column: span 2;
+    gap: 0;
+    color: $menu-white;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    &--margin {
+      margin-bottom: 8px;
+    }
+
+    &--bottom {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__call-link {
+    color: $menu-white;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-bottom: 1px solid $menu-white;
+    }
+  }
+
+  @include for-desktop {
+    padding: 32px 121px;
+    grid-template-columns: repeat(12, 63px);
+    gap: 0 24px;
+    grid-column: span 12;
+    align-items: center;
+    padding-top: 80px;
+
+    &__paragpraph {
+      grid-column: span 12;
+    }
+
+    &__call-link {
+      grid-column: span 12;
+      display: inline;
+    }
+  }
+}

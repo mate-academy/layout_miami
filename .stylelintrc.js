@@ -1,10 +1,15 @@
 module.exports = {
-  extends: [
-    "stylelint-config-recommended-scss",
-    "@mate-academy/stylelint-config"
-  ],
+  extends: "@mate-academy/stylelint-config",
   plugins: [
     "stylelint-scss"
   ],
-  rules: {}
+  rules: {
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ]
+  }
 };
