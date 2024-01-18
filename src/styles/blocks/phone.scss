@@ -1,16 +1,7 @@
 .phone {
   &__label {
-    width: max-content;
-    color: $color-text;
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    @include visually-hidden();
 
-    position: absolute;
-    transform: translateX(calc(-100% - 20px)) translateY(10px);
   }
 
   &__icon {
@@ -23,7 +14,19 @@
     }
   }
 
-  &:not(:hover) &__label {
-    @include visually-hidden();
+  &:hover &__label {
+    @include for-tablet() {
+      width: max-content;
+      color: $color-text;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      position: absolute;
+      transform: translateX(calc(-100% - 20px)) translateY(10px);
+    }
   }
 }
