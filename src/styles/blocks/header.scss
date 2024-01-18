@@ -1,0 +1,81 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(../images/header.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    height: 100vh;
+    padding: 25px 0 50vh;
+
+    @include not-mobile {
+      padding: 50px 0 50vh;
+    }
+  }
+
+  &__flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__call {
+    position: relative;
+    text-decoration: none;
+    padding-bottom: 0;
+
+    &--before {
+      position: absolute;
+      top: 50%;
+      transform: translate(-100%, -50%);
+      display: block;
+      padding-right: 20px;
+      text-align: right;
+      font-weight: 700;
+      width: max-content;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      transition: 0.3s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @include desktop {
+      &:hover > .header__call--before {
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: #fff;
+    text-align: center;
+
+    @include ipad {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include desktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
