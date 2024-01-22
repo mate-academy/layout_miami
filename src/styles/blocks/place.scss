@@ -1,0 +1,60 @@
+.place {
+  &__photo-container {
+    position: relative;
+
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @include onLaptop {
+      height: 187px;
+      padding-bottom: 0;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.06);
+    }
+  }
+
+  &__photos {
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__description {
+    @include onLaptop {
+      font-size: 24px;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $fontColor;
+    text-decoration: none;
+
+    &:hover {
+      color: $fontGrey;
+    }
+  }
+}
