@@ -1,0 +1,37 @@
+@mixin tablet {
+  @media (min-width: 525px) {
+    @content;
+  }
+
+  transition-duration: 0.3s;
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+
+  transition-duration: 0.3s;
+}
+
+@mixin top-nav {
+  --icon-width: 18px;
+  --icon-gap: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr var(--icon-width) var(--icon-width);
+  align-items: center;
+  gap: var(--icon-gap);
+  
+  @include tablet {
+    --icon-width: 24px;
+    --icon-gap: 40px;
+  }
+}
+
+@mixin hover-effect {
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+}
