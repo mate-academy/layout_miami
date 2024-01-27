@@ -1,0 +1,53 @@
+$rectangle-width: 3px;
+$sound-wave-heights: (
+  "1": 10px,
+  "2": 20px,
+  "3": 26px,
+  "4": 44px,
+  "5": 32px,
+  "6": 64px,
+  "7": 76px,
+  "8": 44px,
+  "9": 30px,
+  "10": 22px,
+  "11": 10px
+  );
+
+@function smartphone-rectangle-size($size) {
+  @return $size / 1.3;
+}
+
+.sound-wave {
+  display: flex;
+  align-items: center;
+
+  gap: $rectangle-width;
+  padding-bottom: 16px;
+
+  @include for-smartphone {
+    gap: smartphone-rectangle-size($rectangle-width);
+  }
+
+  @include for-tablet {
+    padding-bottom: 40px;
+  }
+
+  @include for-desktop {
+    padding-bottom: 32px;
+  }
+
+  @each $order, $height in $sound-wave-heights {
+    &__rectangle--order--#{$order}{
+      width: $rectangle-width;
+      height: $height;
+
+      @include for-smartphone {
+        width: smartphone-rectangle-size($rectangle-width);
+        height: smartphone-rectangle-size($height);
+      }
+
+      background-color: $text-color;
+      border-radius: 2px;
+    }
+  }
+}
