@@ -1,0 +1,65 @@
+$input-background-color: #F8F8FA;
+
+@mixin input-border($radius) {
+  border: 1px solid $input-background-color;
+  border-radius: $radius;
+
+  &:hover {
+    border-color: #D5D7DE;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $main-accent;
+  }
+}
+
+@mixin input-color {
+  background-color: $input-background-color;
+  color: $main-accent;
+  &::placeholder {
+    color: #7E7E83;
+  }
+}
+
+.message {
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+
+    height: 48px;
+    width: 100%;
+
+    padding: 0 0 0 15px;
+    margin-bottom: 16px;
+
+    @include input-border(40px);
+    @include input-color;
+  }
+
+  &__textarea {
+    box-sizing: border-box;
+
+    height: 148px;
+    min-height: 48px;
+    width: 100%;
+    resize: vertical;
+
+    padding: 14px 0 0 15px;
+    margin-bottom: 32px;
+
+    @include input-border(16px);
+    @include input-color;
+  }
+
+  &__button {
+    @include for-smartphone {
+      margin-bottom: 48px;
+    }
+  }
+}
