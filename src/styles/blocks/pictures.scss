@@ -1,0 +1,48 @@
+.pictures {
+  @include grid;
+
+  &__image {
+    &-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      margin-bottom: 16px;
+
+      grid-column: span 1;
+
+      @include for-tablet {
+        padding-top: 184px;
+        grid-column: span 2;
+      }
+
+      @include for-desktop {
+        padding-top: 324px;
+        grid-column: span 4;
+      }
+
+      &--big {
+        @include for-tablet {
+          grid-column: span 4;
+        }
+
+        @include for-desktop {
+          grid-column: span 8;
+        }
+      }
+
+      @include hover(transform, $hover-transform-scale);
+    }
+
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--show--right {
+      @include for-smartphone {
+        object-position: calc(100% + 10px);
+      }
+    }
+  }
+}
