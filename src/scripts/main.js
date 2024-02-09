@@ -13,7 +13,7 @@ const pageBody = document.querySelector('.page__body');
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    pageBody.classList.add('pagebody--scroll');
+    pageBody.classList.add('page__body--scroll');
   } else {
     pageBody.classList.remove('page__body--scroll');
   }
