@@ -1,8 +1,14 @@
 'use strict';
 
-const checkbox = document.querySelector('.contact-form__button');
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page--menu-visible');
+  } else {
+    document.body.classList.remove('page--menu-visible');
+  }
+});
 
-checkbox.addEventListener(
+document.querySelector('.contact-form__button').addEventListener(
   'click',
   (e) => {
     e.preventDefault();
