@@ -1,20 +1,31 @@
 @use '../utils/mixins' as *;
+@use '../utils/mixins' as *;
 
 .burger {
+  --size: 24px;
+
+  @include for-tablet {
+    --size: 32px;
+  }
+
   &::before {
     content: '';
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: var(--size);
+    height: var(--size);
     background-image: url(../images/menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &::after {
     content: '';
     display: none;
-    width: 24px;
-    height: 24px;
+    width: var(--size);
+    height: var(--size);
     background-image: url(../images/menu_hover.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &__label:not(:focus, :active) {

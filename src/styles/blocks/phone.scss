@@ -1,17 +1,26 @@
 @use '../utils/mixins' as *;
+@use '../utils/variables' as *;
 
 .phone {
   position: relative;
   width: 24px;
   height: 24px;
   background-image: url(../images/phone.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   text-decoration: none;
-  color: #1B2129;
+  color: $black;
+
+  @include for-tablet  {
+    width: 32px;
+    height: 32px;
+  }
 
   &__label {
     position: absolute;
-    right: 8px;
+    right: 36px;
+    top: 4px;
 
     font-family: Inter ,sans-serif;
     font-size: 12px;
@@ -20,9 +29,9 @@
     letter-spacing: 2px;
     text-align: right;
     white-space: nowrap;
+  }
 
-    &:not(:focus, :active) {
-      @include visually-hidden;
-    }
+  &:not(:hover) &__label {
+    @include visually-hidden;
   }
 }
