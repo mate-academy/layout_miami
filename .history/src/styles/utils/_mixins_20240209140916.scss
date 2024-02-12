@@ -1,0 +1,69 @@
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin img-hover {
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.03);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(176, 97, 23, 0.3);
+  }
+}
+
+@mixin button-hover {
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: #1B2129;
+  }
+}
+
+@mixin button-active {
+  &:active {
+    background-color: #010810;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width:1020px) {
+    @content
+  }
+}
+
+@mixin laptop() {
+  @media (min-width:744px) {
+    @content
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  gap: 20px;
+
+  @include laptop {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
+}
+
