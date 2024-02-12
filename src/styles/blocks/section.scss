@@ -1,0 +1,116 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.section {
+  padding: 0 var(--horizontal-padding);
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap) var(--column-gap);
+
+  &__image {
+    --bottom-space: 48px;
+
+    height: 200px;
+    background-image: url(../images/photos/mid-bg-image.jpg);
+    margin-left: calc(var(--horizontal-padding) * -1);
+    margin-right: calc(var(--horizontal-padding) * -1);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: calc(var(--bottom-space) - var(--row-gap));
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--row-gap) var(--column-gap);
+
+    & > * {
+      flex: 1;
+    }
+  }
+
+  &--about {
+    padding-bottom: 48px;
+    background-color: #FCFAEF;
+  }
+}
+
+@include for-tablet {
+  .section {
+    &__image {
+      --bottom-space: 120px;
+
+      height: 400px;
+    }
+
+    &--about {
+      padding-bottom: 120px;
+      display: grid;
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+    }
+
+    &--about &__image {
+      grid-column: 1 / -1;
+    }
+
+    &--about &__title {
+      grid-column: 1 / 4;
+    }
+
+    &--about &__content {
+      grid-column: 4 / -1;
+    }
+  }
+}
+
+@include for-desktop {
+  .section {
+    &__image {
+      height: 460px;
+    }
+
+    &--recommended &__content {
+      flex-direction: row;
+    }
+
+    &--categories {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+    }
+
+    &--categories &__title {
+      grid-column: 1 / -1;
+    }
+
+    &--categories &__content {
+      grid-column: 1 / -1;
+    }
+
+    &--categories &__button {
+      grid-column: 1 / 5;
+    }
+
+    &--about &__title {
+      grid-column: 1 / 7;
+    }
+
+    &--about &__content {
+      grid-column: 8 / -1;
+    }
+
+    &--contact &__content {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+
+      :first-child {
+        grid-column: 1 / 7;
+      }
+
+      :last-child {
+        grid-column: 8 /-1;
+      }
+    }
+  }
+}
