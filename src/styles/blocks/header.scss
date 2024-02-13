@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $c-header-background;
+  background-image: url(../images/photos/header-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  padding: 25px 20px 250px;
+
+  @include for-tablet() {
+    padding: 50px 72px 456px;
+    background-image: url(../images/photos/header-background-tablet.jpg);
+  }
+
+  @include for-desktop() {
+    padding: 50px 120px 482px;
+    background-image: url(../images/photos/header-background-desktop.jpg);
+  }
+}
+
+.burger {
+
+  &::before {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+    content: " ";
+
+    @include for-tablet() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &::after {
+    display: none;
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/menu_hover.svg);
+    background-size: cover;
+    content: " ";
+
+    @include for-tablet() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden();
+  }
+}
+
+.phone {
+  width: 18px;
+  height: 18px;
+
+  @include for-tablet() {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__label {
+    font-family: Cinzel, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-align: left;
+    text-decoration: none;
+    color: $c-white;
+    position: absolute;
+    top: 55px;
+    transform: translateX(calc(-100% - 20px));
+  }
+
+  &:not(:hover) &__label {
+    @include visually-hidden();
+  }
+}
