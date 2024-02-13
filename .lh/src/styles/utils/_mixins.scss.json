@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1707839618874,
@@ -16,6 +16,34 @@
                 {
                     "date": 1707839631756,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,8 @@\n   }\n }\n \n @mixin for-desktop {\n-  @media (min-width)\n+  @media (min-width: 1020px){\n+    @content\n+  }\n }\n"
+                },
+                {
+                    "date": 1707841039222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,11 @@\n }\n \n @mixin for-desktop {\n   @media (min-width: 1020px){\n-    @content\n+    @content;\n   }\n }\n+\n+@mixin grid {\n+  @media\n+}\n"
+                },
+                {
+                    "date": 1707841052171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,7 @@\n   }\n }\n \n @mixin grid {\n-  @media\n+  display: grid;\n+  justify-content: ;\n }\n"
+                },
+                {
+                    "date": 1707841058128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,7 @@\n }\n \n @mixin grid {\n   display: grid;\n-  justify-content: ;\n+  justify-content: center;\n+  grid-template-columns: ;\n }\n"
+                },
+                {
+                    "date": 1707841063626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n \n @mixin grid {\n   display: grid;\n   justify-content: center;\n-  grid-template-columns: ;\n+  grid-template-columns: repeat(2, 130px);\n }\n"
+                },
+                {
+                    "date": 1707841071888,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,8 @@\n @mixin grid {\n   display: grid;\n   justify-content: center;\n   grid-template-columns: repeat(2, 130px);\n+  gap: 20px;\n+\n+  @include for-desktop()\n }\n"
+                },
+                {
+                    "date": 1707841080487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,23 @@\n+@mixin hover($_property, $_toValue) {\n+  transition: #{$_property} 0.3s;\n+  &:hover {\n+    #{$_property}: $_toValue;\n+  }\n+}\n+\n+@mixin for-desktop {\n+  @media (min-width: 1020px){\n+    @content;\n+  }\n+}\n+\n+@mixin grid {\n+  display: grid;\n+  justify-content: center;\n+  grid-template-columns: repeat(2, 130px);\n+  gap: 20px;\n+\n+  @include for-desktop {\n+    grid-template-columns: ;\n+  }\n+}\n"
+                },
+                {
+                    "date": 1707841087492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,28 +17,7 @@\n   grid-template-columns: repeat(2, 130px);\n   gap: 20px;\n \n   @include for-desktop {\n-    grid-template-columns: ;\n+    grid-template-columns: repeat(12, 63px);\n   }\n }\n-@mixin hover($_property, $_toValue) {\n-  transition: #{$_property} 0.3s;\n-  &:hover {\n-    #{$_property}: $_toValue;\n-  }\n-}\n-\n-@mixin for-desktop {\n-  @media (min-width: 1020px){\n-    @content;\n-  }\n-}\n-\n-@mixin grid {\n-  display: grid;\n-  justify-content: center;\n-  grid-template-columns: repeat(2, 130px);\n-  gap: 20px;\n-\n-  @include for-desktop()\n-}\n"
                 }
             ],
             "date": 1707839618874,
