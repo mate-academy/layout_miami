@@ -8,10 +8,6 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-document.querySelector('.contact-form__button').addEventListener(
-  'click',
-  (e) => {
-    e.preventDefault();
-  },
-  false,
-);
+document
+  .querySelector('.contact-form__button')
+  .addEventListener('click', (e) => {}, false);
