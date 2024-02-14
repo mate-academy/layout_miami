@@ -1,11 +1,17 @@
+@use "/src/styles/utils/mixins.scss" as *;
 
 .main {
+  font-family: Poppins, sans-serif;
   background-color: rgba(29, 29, 29, 1);
   padding: 60px 20px 120px;
 
-  // Góra LEWO/PRAWO dół (padding ^^^ dla maina)
-
-  font-family: Poppins, sans-serif;
+  @include for-tablet {
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+    justify-content: center;
+    padding: 120px 72px 102px;
+  }
 
   &__slogan {
     font-size: 23px;
@@ -13,5 +19,32 @@
     color: rgba(255, 255, 255, 1);
     font-weight: 500;
     margin-top: 32px;
+
+    @include for-tablet {
+      grid-column: 4/7;
+      align-self: flex-start;
+      margin-top: 0;
+    }
+  }
+
+  &__section {
+    &--1 {
+      @include for-tablet {
+        grid-column: 2/6;
+      }
+    }
+
+    &--2 {
+      @include for-tablet {
+        grid-column: 1/7;
+      }
+    }
+
+    &--3 {
+      @include for-tablet {
+        grid-column: 1/7;
+
+      }
+    }
   }
 }
