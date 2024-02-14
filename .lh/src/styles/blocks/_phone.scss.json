@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 33,
             "patches": [
                 {
                     "date": 1707914262492,
@@ -92,6 +92,54 @@
                 {
                     "date": 1707916192081,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+@use '../utils/mixins' as *;\n+\n+.phone {\n+  &__label {\n+    font-family: 'Inter';\n+    font-size: 12px;\n+    font-weight: 700;\n+    line-height: 16px;\n+    letter-spacing: 2px;\n+    text-align: right;\n+    padding-top: 4px;\n+    width: 100%;\n+\n+    color: #292929;\n+    position: absolute;\n+    transform: translateX(calc(-100% - 20px));\n+\n+  }\n+  &:not(:hover) &__label {\n+    @include visually-hidden;\n+  }\n+}\n"
+                },
+                {
+                    "date": 1707920514578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,23 @@\n+@use '../utils/mixins' as *;\n+\n+.phone {\n+  &__label {\n+    @\n+    font-family: 'Inter';\n+    font-size: 12px;\n+    font-weight: 700;\n+    line-height: 16px;\n+    letter-spacing: 2px;\n+    text-align: right;\n+    padding-top: 4px;\n+    width: 100%;\n+\n+    color: #292929;\n+    position: absolute;\n+    transform: translateX(calc(-100% - 20px));\n+\n+  }\n+  &:not(:hover) &__label {\n+    @include visually-hidden;\n+  }\n+}\n"
+                },
+                {
+                    "date": 1707920522493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n @use '../utils/mixins' as *;\n \n .phone {\n   &__label {\n-    @\n+    @include for \n     font-family: 'Inter';\n     font-size: 12px;\n     font-weight: 700;\n     line-height: 16px;\n@@ -20,48 +20,4 @@\n   &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n }\n-@use '../utils/mixins' as *;\n-\n-.phone {\n-  &__label {\n-    font-family: 'Inter';\n-    font-size: 12px;\n-    font-weight: 700;\n-    line-height: 16px;\n-    letter-spacing: 2px;\n-    text-align: right;\n-    padding-top: 4px;\n-    width: 100%;\n-\n-    color: #292929;\n-    position: absolute;\n-    transform: translateX(calc(-100% - 20px));\n-\n-  }\n-  &:not(:hover) &__label {\n-    @include visually-hidden;\n-  }\n-}\n-@use '../utils/mixins' as *;\n-\n-.phone {\n-  &__label {\n-    font-family: 'Inter';\n-    font-size: 12px;\n-    font-weight: 700;\n-    line-height: 16px;\n-    letter-spacing: 2px;\n-    text-align: right;\n-    padding-top: 4px;\n-    width: 100%;\n-\n-    color: #292929;\n-    position: absolute;\n-    transform: translateX(calc(-100% - 20px));\n-\n-  }\n-  &:not(:hover) .phone__label {\n-    @include visually-hidden;\n-  }\n-}\n"
+                },
+                {
+                    "date": 1707920529057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n @use '../utils/mixins' as *;\n \n .phone {\n   &__label {\n-    @include for \n+\n     font-family: 'Inter';\n     font-size: 12px;\n     font-weight: 700;\n     line-height: 16px;\n"
+                },
+                {
+                    "date": 1707920537734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n     position: absolute;\n     transform: translateX(calc(-100% - 20px));\n \n   }\n+  @include for-desktop{}\n   &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n }\n"
+                },
+                {
+                    "date": 1707920543597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,11 @@\n     position: absolute;\n     transform: translateX(calc(-100% - 20px));\n \n   }\n-  @include for-desktop{}\n-  &:not(:hover) &__label {\n+  @include for-desktop{\n+      &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n+  }\n+\n }\n"
+                },
+                {
+                    "date": 1707920565894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,11 +16,8 @@\n     position: absolute;\n     transform: translateX(calc(-100% - 20px));\n \n   }\n-  @include for-desktop{\n-      &:not(:hover) &__label {\n+  &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n-  }\n-\n }\n"
+                },
+                {
+                    "date": 1707920586957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n @use '../utils/mixins' as *;\n \n .phone {\n+  @include fordesktop {}\n   &__label {\n \n     font-family: 'Inter';\n     font-size: 12px;\n"
+                },
+                {
+                    "date": 1707920593171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n @use '../utils/mixins' as *;\n \n .phone {\n-  @include fordesktop {}\n-  &__label {\n+  @include fordesktop {\n+&__label {\n \n     font-family: 'Inter';\n     font-size: 12px;\n     font-weight: 700;\n@@ -20,5 +20,7 @@\n   }\n   &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n+  }\n+\n }\n"
+                },
+                {
+                    "date": 1707920601248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n @use '../utils/mixins' as *;\n \n .phone {\n-  @include fordesktop {\n-&__label {\n+  @include for-desktop {\n+  &__label {\n \n     font-family: 'Inter';\n     font-size: 12px;\n     font-weight: 700;\n"
+                },
+                {
+                    "date": 1707920611178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,26 @@\n+@use '../utils/mixins' as *;\n+\n+.phone {\n+  @include fordesktop {\n+\n+  }\n+  &__label {\n+\n+    font-family: 'Inter';\n+    font-size: 12px;\n+    font-weight: 700;\n+    line-height: 16px;\n+    letter-spacing: 2px;\n+    text-align: right;\n+    padding-top: 4px;\n+    width: 100%;\n+\n+    color: #292929;\n+    position: absolute;\n+    transform: translateX(calc(-100% - 20px));\n+\n+  }\n+  &:not(:hover) &__label {\n+    @include visually-hidden;\n+  }\n+}\n"
+                },
+                {
+                    "date": 1707920616303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,23 @@\n+@use '../utils/mixins' as *;\n+\n+.phone {\n+  &__label {\n+\n+    font-family: 'Inter';\n+    font-size: 12px;\n+    font-weight: 700;\n+    line-height: 16px;\n+    letter-spacing: 2px;\n+    text-align: right;\n+    padding-top: 4px;\n+    width: 100%;\n+\n+    color: #292929;\n+    position: absolute;\n+    transform: translateX(calc(-100% - 20px));\n+\n+  }\n+  &:not(:hover) &__label {\n+    @include visually-hidden;\n+  }\n+}\n"
+                },
+                {
+                    "date": 1707920660799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,56 +20,4 @@\n   &:not(:hover) &__label {\n     @include visually-hidden;\n   }\n }\n-@use '../utils/mixins' as *;\n-\n-.phone {\n-  @include fordesktop {\n-\n-  }\n-  &__label {\n-\n-    font-family: 'Inter';\n-    font-size: 12px;\n-    font-weight: 700;\n-    line-height: 16px;\n-    letter-spacing: 2px;\n-    text-align: right;\n-    padding-top: 4px;\n-    width: 100%;\n-\n-    color: #292929;\n-    position: absolute;\n-    transform: translateX(calc(-100% - 20px));\n-\n-  }\n-  &:not(:hover) &__label {\n-    @include visually-hidden;\n-  }\n-}\n-@use '../utils/mixins' as *;\n-\n-.phone {\n-  @include for-desktop {\n-  &__label {\n-\n-    font-family: 'Inter';\n-    font-size: 12px;\n-    font-weight: 700;\n-    line-height: 16px;\n-    letter-spacing: 2px;\n-    text-align: right;\n-    padding-top: 4px;\n-    width: 100%;\n-\n-    color: #292929;\n-    position: absolute;\n-    transform: translateX(calc(-100% - 20px));\n-\n-  }\n-  &:not(:hover) &__label {\n-    @include visually-hidden;\n-  }\n-  }\n-\n-}\n"
                 }
             ],
             "date": 1707914262492,
