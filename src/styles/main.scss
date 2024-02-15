@@ -1,40 +1,340 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
 
 body {
-  background: $c-gray;
-  font-family: "Poppins", sans-serif;
+  background: gray;
+
   margin: 0;
   padding: 0;
 }
 
 .header {
-  margin: 20px;
-  background-image: url("../images/mybike/bike.jpg");
-  background-position: right;
+  background-image: url(../images/mybike/header-background320.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
-  background-repeat: no-repeat;
-  width: 320px;
-  height: 480px;
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20px 88px 21px;
 }
 
-.header__phone {
-  background-image: url("../images/phone.svg");
-  background-repeat: no-repeat;
-  width: 24px;
-  height: 24px;
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    padding-top: 24px;
+  }
+
+  &__buttons {
+    padding-top: 31px;
+    display: grid;
+    grid-template-columns: 24px 24px;
+    grid-template-rows: 24px;
+    gap: 24px;
+    justify-items: center;
+    align-items: center;
+  }
+}
+.links {
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: left;
+    padding-bottom: 8px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1d1d1d;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
 }
 
-.header__menu {
-  background-image: url("../images/menu.svg");
+.nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 130px;
+  height: 38px;
+}
+
+.phone {
+  width: 18px;
+  height: 18px;
+}
+
+.burger {
+  width: 18px;
+  height: 12px;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease;
+  background-color: #c2c2c2;
+  padding: 0 20px;
+  width: 320px;
+  height: 568px;
+  box-sizing: border-box;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__paragraph {
+    padding-bottom: 16px;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #1d1d1d;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #1d1d1d;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+  }
+}
+
+.menu .nav {
+  display: flex;
+  gap: 126px;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 48px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 36px;
+  color: white;
+
+  &--secondary {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: left;
+  }
+
+  &--section {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    padding-bottom: 48px;
+  }
+
+  &--article {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+    padding-bottom: 8px;
+    letter-spacing: 0;
+  }
+}
+
+.main {
+  padding: 60px 20px;
+  background-color: #1d1d1d;
+  color: white;
+
+  &__paragraph {
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 32.2px;
+    letter-spacing: 0px;
+    text-align: left;
+    padding-top: 32px;
+  }
+}
+
+.article {
+  &__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+  }
+
+  &__cost {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+  }
+
+  &--details {
+    padding-bottom: 48px;
+  }
+
+  &--details:last-of-type {
+    padding-bottom: 40px;
+  }
+}
+
+.picture {
+  display: flex;
+  width: 280px;
+  height: 228px;
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 16px;
+
+  &__item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.button {
+  border-radius: 40px;
+  background-color: white;
+  display: block;
+  text-decoration: none;
+  color: #1d1d1d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: center;
+  height: 56px;
+
+  &--primary {
+    border: 0;
+  }
+}
+
+.address {
+  padding-top: 48px;
+  padding-bottom: 120px;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    font-style: normal;
+    padding-bottom: 8px;
+  }
+
+  &__content {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22.4px;
+    font-style: normal;
+  }
+
+  &__content:not(:last-of-type) {
+    padding-bottom: 24px;
+  }
+}
+
+.section {
+  padding-top: 92px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &__item:last-of-type {
+    padding-bottom: 16px;
+  }
+
+  &__input {
+    background-color: #f8f8fa;
+    border-radius: 40px;
+    border: 0;
+    width: 100%;
+    height: 48px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+  }
+
+  &__textarea {
+    background-color: #f8f8fa;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    height: 148px;
+    padding-top: 14px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+  }
+
+  &__label {
+    &:not(:focus):not(:active) {
+      @include visually-hidden();
+    }
+  }
+}
+
+.footer {
+  background-image: url(../images/mybike/footer320.jpg);
   background-repeat: no-repeat;
-  width: 24px;
-  height: 24px;
+  height: 200px;
 }
 
