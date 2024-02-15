@@ -1,14 +1,13 @@
-@mixin visually-hidden() {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+@use '../utils/mixins' as *;
 
 .form {
+  @include for-l-mobile {
+    width: 100%;
+  }
+
+  @include for-desktop {
+    width: 80%;
+  }
   &__input{
     background-color: $input-background;
     border-radius: 8px;
@@ -18,11 +17,11 @@
     margin-bottom: 16px;
     padding-left: 16px;
     &::placeholder {
-      font-family: Space Mono;
+      font-family: "Space Mono", Arial, sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
     }
     &:hover {
       border: 1px solid #D5D7DE;
@@ -44,11 +43,11 @@
     height: 148px;
     padding-top: 14px;
     &::placeholder {
-      font-family: Space Mono;
+      font-family: "Space Mono", Arial, sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
-      letter-spacing: 0px;
+      letter-spacing: 0;
     }
     &:hover {
       border: 1px solid #D5D7DE;
@@ -61,8 +60,8 @@
     }
   }
   &__label{
-    &:not(:focus):not(:active) {
-      @include visually-hidden();
+    &:not(:focus, :active) {
+      @include visually-hidden;
     }
   }
 }
