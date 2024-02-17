@@ -8,9 +8,9 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const preventDefault = document.querySelectorAll(".form__prevent");
+const preventDefault = document.querySelectorAll('.form__prevent');
 
-preventDefault.addEventListener("click", check, false);
+preventDefault.addEventListener('click', check, false);
 
 function check(e) {
   e.preventDefault();
