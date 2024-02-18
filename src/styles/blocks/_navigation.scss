@@ -1,12 +1,84 @@
+@use '../utils/mixins' as *;
+
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  
+  @media (min-width: 744px) {
+    padding-top: 7px;
+  }
 
   &__bar {
     display: flex;
     gap: 23px;
+    align-items: center;
+    justify-content: center;
   }
+
+  &__call {
+    content: "";
+    background-image: url(./images/icon/phone.svg);
+    background-size: cover;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: 744px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__burger {
+    &::before {
+      content: '';
+      background-image: url(./images/icon/menu.svg);
+      background-size: cover;
+      display: inline-block;
+      width: 18px;
+      height: 12px;
+    }
+
+    &::after {
+      display: none;
+      content: '';
+      background-image: url(./images/icon/menu-active.svg);
+      background-size: cover;
+      width: 18px;
+      height: 12px;
+    }
+
+    &:hover {
+      &::before {
+        display: none;
+      }
+      &::after {
+        display: inline-block;
+      }
+    }
+
+    @media (min-width: 744px) {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__close {
+    content: '';
+    background-image: url(./images/icon/close.svg);
+    background-size: cover;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    @media (min-width: 1260px) {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  &__label {
+ @include visually-hidden();
 }
+  }
