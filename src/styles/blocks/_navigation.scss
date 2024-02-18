@@ -1,4 +1,4 @@
-@use '../utils/mixins' as *;
+@use "../utils/mixins" as *;
 
 .navigation {
   display: flex;
@@ -12,8 +12,15 @@
   &__bar {
     display: flex;
     gap: 23px;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+
+    @media (min-width: 744px) {
+      gap: 59px;
+    }
+
+    @media (min-width: 1260px) {
+      gap: 55px;
+    }
   }
 
   &__call {
@@ -32,21 +39,31 @@
 
   &__burger {
     &::before {
-      content: '';
+      content: "";
       background-image: url(./images/icon/menu.svg);
       background-size: cover;
       display: inline-block;
       width: 18px;
       height: 12px;
+
+      @media (min-width: 744px) {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &::after {
       display: none;
-      content: '';
+      content: "";
       background-image: url(./images/icon/menu-active.svg);
       background-size: cover;
       width: 18px;
       height: 12px;
+
+      @media (min-width: 744px) {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &:hover {
@@ -65,7 +82,7 @@
   }
 
   &__close {
-    content: '';
+    content: "";
     background-image: url(./images/icon/close.svg);
     background-size: cover;
     display: inline-block;
@@ -79,6 +96,6 @@
   }
 
   &__label {
- @include visually-hidden;
-}
+    @include visually-hidden;
   }
+}
