@@ -8,10 +8,10 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const preventDefault = document.querySelectorAll('.form__prevent');
-
-preventDefault.addEventListener('click', check, false);
+const preventDefault = document.querySelector('.form__button');
 
 function check(e) {
   e.preventDefault();
 }
+
+preventDefault.addEventListener('click', check, false);
