@@ -1,7 +1,727 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
 
 body {
-  background: $c-gray;
+  background: gray;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-image: url(../images/mybike/header-background320.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20px 88px;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+
+    &__logo {
+      display: flex;
+      width: 130px;
+      height: 38px;
+    }
+
+    &__buttons {
+      display: grid;
+      grid-template-columns: 24px 24px;
+      grid-template-rows: 24px;
+      gap: 24px;
+      place-items: center;
+
+      &__number {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+      }
+
+      &__phone {
+        display: flex;
+        width: 18px;
+        height: 18px;
+      }
+
+      &__burger {
+        display: flex;
+        width: 18px;
+        height: 12px;
+        background-image: url("../images/mybike/burger.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+  @media (min-width: 744px) {
+    display: grid;
+    background-image: url(../images/mybike/bike-background.jpg);
+    background-position: 50%;
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    justify-content: center;
+    padding: 0;
+
+    &__nav {
+      grid-column: 1 / 7;
+      grid-row: 1 / 2;
+      padding-top: 36px;
+      align-self: start;
+
+      &__logo {
+        width: 187px;
+        height: 56px;
+      }
+
+      &__buttons {
+
+        &__phone {
+          width: 24px;
+          height: 24px;
+        }
+
+        &__burger {
+          width: 24px;
+          height: 16px;
+        }
+      }
+    }
+
+    &__title {
+      grid-column: 1 / 7;
+      grid-row: 2 / 3;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    display: grid;
+    background-image: url(../images/mybike/bike-background.jpg);
+    background-position: 50%;
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    justify-content: center;
+    padding: 0;
+
+    &__nav {
+      grid-column: 1 / 13;
+      grid-row: 1 / 2;
+      padding-top: 36px;
+      align-self: start;
+
+      &__logo {
+        width: 187px;
+        height: 56px;
+      }
+
+      &__buttons {
+        display: grid;
+        grid-template-columns: 24px 24px;
+        grid-template-rows: 24px;
+        gap: 24px;
+        place-items: center;
+
+        &__phone {
+          width: 24px;
+          height: 24px;
+          position: relative;
+
+          &::before {
+            content: "+1 234 5555-55-55";
+            position: absolute;
+            color: white;
+            left: -180px;
+            top: 25%;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            letter-spacing: 2px;
+            display: none;
+          }
+
+          &:hover {
+
+            &::before {
+              display: block;
+            }
+          }
+        }
+
+        &__burger {
+          width: 24px;
+          height: 16px;
+
+          &:hover {
+            background-image: url(../images/mybike/burger_hover.svg);
+          }
+        }
+      }
+    }
+
+    &__title {
+      grid-column: 3 / 13;
+      grid-row: 2 / 3;
+    }
+  }
+}
+
+.links {
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: left;
+    padding-bottom: 8px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1d1d1d;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(100vw);
+  transition: transform 1s ease;
+  background-color: #c2c2c2;
+  padding: 0 20px;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__paragraph {
+    padding-bottom: 16px;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #1d1d1d;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #1d1d1d;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+    color: #1d1d1d;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+  }
+}
+
+.menu .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 48px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 36px;
+  color: white;
+  align-self: center;
+
+  &--secondary {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: left;
+  }
+
+  &--section {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    padding-bottom: 48px;
+  }
+
+  &--article {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+    padding-bottom: 8px;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 744px) {
+    font-size: 64px;
+    line-height: 64px;
+
+    &--secondary {
+      font-size: 48px;
+      line-height: 48px;
+      font-weight: 500;
+    }
+
+    &--article {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34px;
+      letter-spacing: 0;
+      text-align: left;
+    }
+
+    &--section {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    font-size: 80px;
+    line-height: 80px;
+
+    &--secondary {
+      font-size: 64px;
+      line-height: 64px;
+      grid-column: 1 / 6;
+    }
+
+    &--article {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34px;
+      letter-spacing: 0;
+      text-align: left;
+    }
+
+    &--section {
+      font-size: 64px;
+      line-height: 64px;
+
+      &:last-of-type {
+        font-size: 48px;
+        line-height: 48px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.main {
+  padding: 60px 20px;
+  background-color: #1d1d1d;
+  color: white;
+
+  &__paragraph {
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 32.2px;
+    text-align: left;
+    padding-top: 32px;
+  }
+
+  &__section {
+    padding-top: 92px;
+  }
+
+  @media (min-width: 744px) {
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+    justify-content: center;
+    padding: 0;
+
+    &__title {
+      grid-column: 1 / 4;
+      padding-top: 120px;
+    }
+
+    &__paragraph {
+      grid-column: 4 / 7;
+      padding-top: 120px;
+    }
+
+    &__article {
+      display: grid;
+      grid-template-columns: repeat(6, 80px);
+      gap: 24px;
+      justify-content: center;
+
+      &__bike1 {
+        grid-column: 2 / 6;
+      }
+
+      &__bike2 {
+        grid-column: 2 / 6;
+      }
+
+      &__bike3 {
+        grid-column: 2 / 6;
+      }
+    }
+
+    &__section {
+      grid-column: 1 / 7;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+    justify-content: center;
+    padding: 0;
+
+    &__title {
+      grid-column: 1 / 6;
+      padding-top: 120px;
+    }
+
+    &__paragraph {
+      grid-column: 6 / 12;
+      padding-top: 120px;
+    }
+
+    &__article {
+      display: grid;
+      grid-template-columns: repeat(12, 63px);
+      justify-content: center;
+      gap: 24px;
+
+      &__bike1 {
+        grid-column: 1 / 5;
+      }
+
+      &__bike2 {
+        grid-column: 5 / 9;
+      }
+
+      &__bike3 {
+        grid-column: 9 / 13;
+      }
+    }
+
+    &__section {
+      grid-column: 1 / 13;
+    }
+  }
+}
+
+.article {
+  @media (min-width: 744px) {
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: left;
+
+    &--details {
+      grid-column: 1 / 7;
+    }
+
+    &__form {
+      grid-column: 1 / 4;
+    }
+
+    &__address {
+      grid-column: 4 / 7;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    display: grid;
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: left;
+
+    &--details {
+      grid-column: 1 / 9;
+    }
+
+    &__form {
+      grid-column: 1 / 6;
+    }
+
+    &__address {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+  }
+
+  &__cost {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+    padding-top: 16px;
+  }
+
+  &--details:last-of-type {
+    padding-bottom: 40px;
+  }
+}
+
+.picture {
+  display: flex;
+  margin: auto;
+  width: 280px;
+  height: 228px;
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 16px;
+
+  &__item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--first {
+    @media (min-width: 744px) {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    @media (min-width: 1260px) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &--second {
+    @media (min-width: 744px) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @media (min-width: 1260px) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+}
+
+.button {
+  border-radius: 40px;
+  background-color: white;
+  display: block;
+  text-decoration: none;
+  color: #1d1d1d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: center;
+  height: 56px;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+
+  @media (min-width: 744px) {
+    grid-column: 2 / 6;
+    margin-bottom: 120px;
+
+    &--primary {
+      grid-column: 1 / 6;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    grid-column: 5 / 9;
+    margin-bottom: 120px;
+
+    &--primary {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &--primary {
+    border: 0;
+  }
+}
+
+.address {
+  padding-top: 48px;
+  padding-bottom: 120px;
+
+  &__link {
+    text-decoration: none;
+    color: white;
+  }
+
+  @media (min-width: 744px) {
+    padding-top: 0;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    font-style: normal;
+    padding-bottom: 8px;
+  }
+
+  &__content {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22.4px;
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  &__content:not(:last-of-type) {
+    padding-bottom: 24px;
+  }
+}
+
+.main .form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item:last-of-type {
+    padding-bottom: 16px;
+  }
+
+  &__input {
+    background-color: #f8f8fa;
+    border-radius: 40px;
+    border: 0;
+    width: 100%;
+    height: 48px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #d5d7de;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+  }
+
+  &__textarea {
+    background-color: #f8f8fa;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    height: 148px;
+    padding-top: 14px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #d5d7de;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+  }
+
+  &__label {
+    &:not(:focus :active) {
+      @include visually-hidden;
+    }
+  }
+}
+
+.footer {
+  background-image: url(../images/mybike/footer.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80%;
+  height: 200px;
+
+  @media (min-width: 744px) {
+    height: 480px;
+  }
+
+  @media (min-width: 1260px) {
+    height: 555px;
+  }
 }
