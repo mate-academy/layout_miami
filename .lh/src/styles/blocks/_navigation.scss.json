@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 23,
+            "activePatchIndex": 25,
             "patches": [
                 {
                     "date": 1707927730182,
@@ -100,6 +100,14 @@
                 {
                     "date": 1707994747827,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n .navigation {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n-  margin-bottom: 40px;\n \n   &__bar {\n     display: flex;\n     gap: 23px;\n"
+                },
+                {
+                    "date": 1708344534013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,100 @@\n+@use \"../utils/mixins\" as *;\n+\n .navigation {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n \n+  @media (min-width: 744px) {\n+    padding-top: 7px;\n+  }\n+\n   &__bar {\n     display: flex;\n     gap: 23px;\n+    align-items: flex-start;\n+\n+    @media (min-width: 744px) {\n+      gap: 59px;\n+    }\n+\n+    @media (min-width: 1260px) {\n+      gap: 55px;\n+    }\n   }\n+\n+  &__call {\n+    background-image: url(./images/icon/phone.svg);\n+    background-size: cover;\n+    display: inline-block;\n+    width: 18px;\n+    height: 18px;\n+\n+    @media (min-width: 744px) {\n+      width: 24px;\n+      height: 24px;\n+    }\n+  }\n+\n+  &__burger {\n+    &::before {\n+      content: \"\";\n+      background-image: url(./images/icon/menu.svg);\n+      background-size: cover;\n+      display: inline-block;\n+      width: 18px;\n+      height: 12px;\n+\n+      @media (min-width: 744px) {\n+        width: 24px;\n+        height: 24px;\n+      }\n+    }\n+\n+    &::after {\n+      display: none;\n+      content: \"\";\n+      background-image: url(./images/icon/menu-active.svg);\n+      background-size: cover;\n+      width: 18px;\n+      height: 12px;\n+\n+      @media (min-width: 744px) {\n+        width: 24px;\n+        height: 24px;\n+      }\n+    }\n+\n+    &:hover {\n+      &::before {\n+        display: none;\n+      }\n+      &::after {\n+        display: inline-block;\n+      }\n+    }\n+\n+    @media (min-width: 744px) {\n+      width: 24px;\n+      height: 16px;\n+    }\n+  }\n+\n+  &__close {\n+    content: \"\";\n+    background-image: url(./images/icon/close.svg);\n+    background-size: cover;\n+    display: inline-block;\n+    width: 16px;\n+    height: 16px;\n+\n+    @media (min-width: 1260px) {\n+      width: 21px;\n+      height: 21px;\n+    }\n+  }\n+\n+  &__label {\n+    @include visually-hidden;\n+  }\n }\n"
+                },
+                {
+                    "date": 1708346832538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   justify-content: space-between;\n   align-items: center;\n \n   @media (min-width: 744px) {\n-    padding-top: 7px;\n+    padding-top: 25px;\n   }\n \n   &__bar {\n     display: flex;\n"
                 }
             ],
             "date": 1707927730181,
