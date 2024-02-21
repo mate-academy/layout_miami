@@ -1,12 +1,34 @@
 .icon {
   display: block;
-  height: 24px;
-  width: 24px;
   background-position: center;
   background-size: cover;
 
   &__tooltip {
     display: none;
+
+    @include on-tablet {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: #fff;
+
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
   }
 
   &:hover &__tooltip {
@@ -15,17 +37,31 @@
   }
 
   &--phone {
+    height: 18px;
+    width: 18px;
     background-image: url("./src/images/phone.svg");
 
     transition: transform $effect-duration;
 
     @include hover(transform, scale(1.2));
 
+    @include on-tablet {
+      height: 24px;
+      width: 24px;
+    }
   }
 
   &--menu {
+    align-items: center;
+    height: 12px;
+    width: 18px;
     background-image: url("./src/images/burger.svg");
     transition: transform $effect-duration;
+
+    @include on-tablet {
+      height: 16px;
+      width: 24px;
+    }
 
     @include hover(transform, scale(1.2));
 
@@ -35,6 +71,13 @@
   }
 
   &--close {
+    height: 16px;
+    width: 16px;
     background-image: url("./src/images/close.svg");
+
+    @include on-tablet {
+      height: 22px;
+      width: 22px;
+    }
   }
 }
