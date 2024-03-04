@@ -1,7 +1,7 @@
 'use strict';
 
-const phoneNumber = document.head.getElementsByClassName('phone-number')[0];
-const phoneIcon = document.getElementsByClassName('icon--phone')[0];
+const phoneNumber = document.querySelector('.top-bar__phone-number');
+const phoneIcon = document.querySelector('.icon--phone');
 
 phoneIcon.addEventListener('mouseover', () => {
   phoneNumber.classList.add('show-phone-number');
