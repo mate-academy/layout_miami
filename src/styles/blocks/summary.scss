@@ -1,0 +1,51 @@
+@use '../utils/mixins' as *;
+
+.summary {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  gap: 20px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+
+  }
+
+  &__title {
+    grid-column: span 2;
+    font-size: 32px;
+
+
+    @include for-tablet {
+      grid-column: span 3;
+      font-size: 40px;
+    }
+
+    @include for-desktop {
+      grid-column: span 6;
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.15px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: -4 / -1;
+    }
+
+    @include for-desktop {
+      grid-column: -6 / -1;
+    }
+  }
+}
