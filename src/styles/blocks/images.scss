@@ -1,14 +1,25 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 .images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  @include grid;
 
   &__item {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
+
+    @include for-desktop {
+      padding-bottom: 320px;
+
+      &--big {
+        grid-column: span 8;
+      }
+
+      &--small {
+        grid-column: span 4;
+      }
+    }
   }
 
   &__image {
