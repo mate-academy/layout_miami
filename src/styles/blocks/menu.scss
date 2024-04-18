@@ -2,34 +2,42 @@
 
 .menu {
   position: fixed;
+  place-content: start center;
+  background-color: #f9f9f9;
+  color: #1b2129;
+  font-family: Manrope, sans-serif;
+  transition: transform 0.3s linear;
   top: 0;
   left: 0;
   right: 0;
   transform: translateX(-100%);
-  transition: transform 0.3s linear;
   min-height: 100vh;
-  background-color: #f9f9f9;
-  color: #1b2129;
-  padding: 0 20px;
-  font-family: Manrope, sans-serif;
-  align-content: start;
-
-  @include grid;
 
   &:target {
     transform: translateX(0);
   }
 
+  @include grid;
+
   &__navigation {
     grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
 
     @include for-desktop {
       grid-column: span 12;
     }
 
     &__item--cross {
-      justify-self: end;
+      place-self: center end;
       grid-column-end: 3;
+
+      @include for-tablet {
+        justify-self: end;
+        grid-column-end: 7;
+      }
 
       @include for-desktop {
         justify-self: end;
@@ -40,6 +48,10 @@
 
   &__links {
     grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
 
     @include for-desktop {
       grid-column: span 12;
@@ -54,6 +66,10 @@
     letter-spacing: 2px;
     grid-column: span 2;
 
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
     @include for-desktop {
       grid-column: span 12;
     }
@@ -64,9 +80,9 @@
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 2px;
+    padding-bottom: 4px;
     color: #1b2129;
     text-decoration: none;
-    padding-bottom: 4px;
     border-bottom: 1px solid transparent;
 
     &:hover {
