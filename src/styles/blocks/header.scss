@@ -1,14 +1,17 @@
 @use '../utils/mixins.scss' as *;
 
 .header {
+  @include grid;
+
   background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
   box-sizing: border-box;
+  background-position: center;
+  place-content: space-between center;
+  background-image: url(images/background-header.jpg);
   min-height: 100vh;
   padding-bottom: 40px;
-  background-image: url(images/background-header.jpg);
 
   @include for-tablet {
     padding-bottom: 64px;
@@ -18,28 +21,8 @@
     padding-bottom: 64px;
   }
 
-  @include grid;
-
-  grid-template-rows: 1fr 1fr;
-
-  &__navigation {
-    grid-column: span 2;
-    grid-row: 1 / 2;
-    align-self: start;
-
-    @include for-tablet {
-      grid-column: span 6;
-    }
-
-    @include for-desktop {
-      grid-column: span 12;
-    }
-  }
-
   &__title {
     grid-column: span 2;
-    grid-row: 2 / 3;
-    align-self: end;
 
     @include for-tablet {
       grid-column: span 6;
