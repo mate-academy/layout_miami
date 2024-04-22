@@ -1,4 +1,5 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 .menu {
   position: fixed;
@@ -8,21 +9,50 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+
   background-color: $menu-gray-color;
   padding: 0 20px;
   color: $dark-nero-color;
 
+  @include grid;
+
+  align-content: start;
+  row-gap: 40px;
+
+  @include for-desktop {
+    row-gap: 50px;
+  }
+
   &:target {
     transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__nav-links {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__call-info {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__paragraph {
