@@ -1,0 +1,39 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.phone {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-decoration: none;
+
+  &__label {
+    display: none;
+  }
+
+  &__icon {
+    width: 24px;
+  }
+
+  @include for-desktop {
+    &__icon {
+      width: 32px;
+    }
+
+    &__label {
+      display: inline;
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      color: white;
+      text-decoration: none;
+    }
+
+    &:not(:hover) &__label {
+      @include visually-hidden;
+    }
+  }
+}
