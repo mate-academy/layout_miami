@@ -1,0 +1,52 @@
+@use '../utils/mixins' as *;
+
+.product {
+  @include grid;
+
+  &__recommend {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 2 / 5;
+    }
+
+    @include for-desktop {
+      grid-column: span 4;
+
+      transition: transform 0.2s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(110%);
+      }
+    }
+  }
+
+  &__paragraph {
+    @include paragraph;
+
+    &--bold {
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__photo {
+    margin-top: 12px;
+    margin-bottom: 32px;
+
+    @include for-tablet {
+      width: 392px;
+      height: 392px;
+    }
+
+    @include for-desktop {
+      width: 324px;
+      height: 324px;
+    }
+
+    &--smart-speaker {
+      margin-top: 48px;
+    }
+  }
+}
