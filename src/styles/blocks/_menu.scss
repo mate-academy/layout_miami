@@ -1,0 +1,104 @@
+@use '../utils/mixins' as *;
+
+.menu {
+  @include grid;
+
+  gap: 0 20px;
+
+  @include for-tablet {
+    gap: 0 20px;
+  }
+
+  @include for-desktop {
+    gap: 0 20px;
+  }
+
+  align-content: start;
+
+  &__links {
+    grid-column: span 2;
+
+    margin-top: 20px;
+
+    @include for-tablet {
+      grid-column: span 6;
+
+      margin-top: 50px;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+
+      margin-top: 50px;
+    }
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+
+      align-items: center;
+    }
+  }
+
+  background-color: #e8eff9;
+  box-sizing: border-box;
+  padding-top: 28px;
+  height: 100vh;
+  overflow-y: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+
+  @include for-tablet {
+    padding-top: 36px;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+    color: $c-font;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin: 0;
+
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: $c-font;
+
+    text-decoration: none;
+    border-bottom: solid 1px $c-font;
+    padding-bottom: 8px;
+  }
+}
