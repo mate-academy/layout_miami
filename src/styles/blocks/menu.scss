@@ -1,0 +1,65 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  position: fixed;
+  place-content: start center;
+  background-color: #f9f9f9;
+  color: #1b2129;
+  font-family: Manrope, sans-serif;
+  transition: transform 0.3s linear;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  min-height: 100vh;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include grid;
+
+  &__links {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    padding-top: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    padding-bottom: 4px;
+    color: #1b2129;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid #1b2129;
+    }
+  }
+}
