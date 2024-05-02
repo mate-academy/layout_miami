@@ -1,20 +1,9 @@
-@mixin visually-hidden() {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+@use "../utils/mixins" as *;
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  // &__item {
-  // }
 
   &__label {
     &:not(:focus, :active) {
@@ -32,6 +21,8 @@
     box-sizing: border-box;
     padding-left: 16px;
 
+    transition: all 0.5s ease-in-out;
+
     &::placeholder {
       color: #7e7e83;
       font-family: Poppins, sans-serif;
@@ -39,6 +30,31 @@
       font-style: normal;
       font-weight: 400;
       line-height: 20px; /* 142.857% */
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+      cursor: pointer;
+
+      &::placeholder {
+        color: #292929;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #292929;
+
+      &::placeholder {
+        color: #292929;
+      }
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      box-shadow: 0 0 0 1000px #f8f8fa inset;
+      -webkit-text-fill-color: #292929;
     }
   }
 
@@ -53,6 +69,10 @@
     padding-left: 16px;
     padding-top: 14px;
 
+    resize: none;
+
+    transition: all 0.5s ease-in-out;
+
     &::placeholder {
       color: #7e7e83;
       font-family: Poppins, sans-serif;
@@ -60,6 +80,31 @@
       font-style: normal;
       font-weight: 400;
       line-height: 20px; /* 142.857% */
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+      cursor: pointer;
+
+      &::placeholder {
+        color: #292929;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #292929;
+
+      &::placeholder {
+        color: #292929;
+      }
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      box-shadow: 0 0 0 1000px #f8f8fa inset;
+      -webkit-text-fill-color: #292929;
     }
   }
 }
