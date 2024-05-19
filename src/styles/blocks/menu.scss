@@ -1,0 +1,110 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  position:fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  background-color: #C2C2C2;
+  min-height: 100vh;
+
+  @include grid;
+
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navi {
+    grid-column: 1 / 3;
+    margin-bottom: 24px;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+      display: block;
+      margin-bottom: 48px;
+    }
+
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+      display: block;
+      margin-bottom: 48px;
+    }
+
+    &__navigation {
+      display: flex;
+      align-items: center;
+      padding: 24px 0 0;
+      justify-content: space-between;
+
+      @include for-desktop {
+        gap: 32px;
+      }
+    }
+  }
+
+  &__paragraph {
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: left;
+    color: #1D1D1D;
+    margin-bottom: 16px;
+
+    grid-column: 1 / 3;
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__call-link {
+    color: #1D1D1D;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    text-decoration: none;
+    border-bottom: transparent 1px solid;
+
+    &:hover {
+      border-bottom: #1D1D1D 1px solid;
+    }
+  }
+
+  &__links {
+    grid-column: 1 / 3;
+
+    @include for-desktop {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__logo {
+      height: 38px;
+      width: 130px;
+
+      @include for-desktop {
+        width: 187px;
+        height: 56px;
+      }
+    }
+
+    &__icons {
+      display: flex;
+      gap: 24px;
+
+
+      @include for-desktop {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
