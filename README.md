@@ -1,5 +1,7 @@
 # Miami landing page
 
+Stylish New York museum THE MET. Responsive, informative. Has a contact form
+
 In this task, you will learn how to implement a landing page. To do that:
 
 - choose a landing page design from the list below;
@@ -22,3 +24,6 @@ The designs to choose from:
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 
+Dependecies:
+
+Node v14
