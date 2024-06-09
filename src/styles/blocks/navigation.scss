@@ -12,12 +12,12 @@
 
   &__list {
     align-items: center;
+    background-color: #ccd9ea47;
+    border-radius: 0 0.5rem 0.5rem 0;
     display: flex;
     gap: 1rem;
     justify-content: center;
     list-style: none;
-    background-color: #ccd9ea47;
-    border-radius: 0 0.5rem 0.5rem 0;
 
     @media screen and (max-width: 1500px) {
       background-color: transparent;
@@ -35,7 +35,6 @@
 
     &--phone {
       &--number {
-        text-align: left;
         height: var(--nav-button-size);
         left: calc(-4 * var(--nav-button-size));
         line-height: var(--nav-button-size);
@@ -44,15 +43,16 @@
         overflow: hidden;
         pointer-events: none;
         position: absolute;
+        text-align: left;
         top: 0;
         width: calc(4 * var(--nav-button-size));
 
         &--on-hover {
-          transform: translateX(110%);
-          transition: 0.5s;
           background-color: #ccd9ea47;
           border-radius: 0.5rem 0 0 0.5rem;
           padding-left: 0.25rem;
+          transform: translateX(110%);
+          transition: 0.5s;
 
           @media screen and (max-width: 1500px) {
             background-color: transparent;
@@ -69,8 +69,36 @@
       z-index: 3;
 
       &--active {
-        position: sticky;
+        position: fixed;
         right: calc((100dvw - var(--container-w)) / 2);
+      }
+
+      &--part {
+        background-color: $natual-black;
+        border-radius: 100dvh;
+        height: $burger-menu-button-height;
+        position: relative;
+        transition: 0.5s ease;
+        width: 1.5rem;
+
+        &::before,
+        &::after {
+          background-color: $natual-black;
+          border-radius: 100dvh;
+          content: '';
+          height: $burger-menu-button-height;
+          position: absolute;
+          transition: 0.5s ease;
+          width: 1.5rem;
+        }
+
+        &::before {
+          top: -0.5rem;
+        }
+
+        &::after {
+          top: 0.5rem;
+        }
       }
 
       &--active & {
@@ -100,34 +128,6 @@
 
         &::after {
           width: 0.75rem;
-        }
-      }
-
-      &--part {
-        background-color: $natual-black;
-        border-radius: 100dvh;
-        height: $burger-menu-button-height;
-        position: relative;
-        width: 1.5rem;
-        transition: 0.5s ease;
-
-        &::before,
-        &::after {
-          background-color: $natual-black;
-          border-radius: 100dvh;
-          content: '';
-          height: $burger-menu-button-height;
-          position: absolute;
-          transition: 0.5s ease;
-          width: 1.5rem;
-        }
-
-        &::before {
-          top: -0.5rem;
-        }
-
-        &::after {
-          top: 0.5rem;
         }
       }
     }

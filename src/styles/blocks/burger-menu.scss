@@ -1,50 +1,59 @@
 @use '../utils/vars' as *;
 
 .burger-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: var(--burger-menu-heigth);
-  background-color: $burger-menu-color;
-  display: none;
-
   @media (max-width: 1259px) {
     --burger-menu-heigth: 100dvh;
   }
 
   @media (max-width: 743px) {
     --burger-menu-pt: 2rem;
+    --nav-logo-size: 1rem;
+    --nav-py: 1.5rem;
+  }
+
+  background-color: $burger-menu-color;
+  display: none;
+  height: var(--burger-menu-heigth);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  &__logo {
+    height: calc(var(--nav-logo-size) + var(--nav-py) * 2);
+    padding-block: var(--nav-py);
+  }
+
+  &__container {
+    margin-inline: auto;
+    width: var(--container-w);
   }
 
   &--active {
     display: inherit;
   }
 
-  &__container {
-    width: var(--container-w);
-    margin-inline: auto;
+  &__options {
+    gap: 2rem;
+    flex-direction: column;
+    display: flex;
     list-style: none;
     padding-top: calc(var(--nav-h) + var(--burger-menu-pt));
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
   }
 
   &__link {
-    text-transform: uppercase;
     font-size: 1.38rem;
     font-weight: bold;
     position: relative;
+    text-transform: uppercase;
 
     &::after {
+      background-color: $natual-black;
       content: '';
-      position: absolute;
       display: block;
       height: 2px;
+      position: absolute;
       width: 0;
-      background-color: $natual-black;
-
       transition: width 0.3s;
     }
 

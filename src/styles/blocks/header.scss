@@ -1,6 +1,21 @@
 @use '../utils/vars' as *;
 
 .header {
+  @media (max-width: 1259px) {
+    --header-height: 48.38rem;
+  }
+
+  @media (max-width: 743px) {
+    --header-height: 35.5rem;
+    --motto-m: 2.5rem;
+    --main-mb: 4rem;
+    --nav-py: 1.75rem;
+  }
+
+  > * {
+    margin-inline: auto;
+  }
+
   align-content: space-between;
   animation: header-animation 1.5s ease;
   background: url('../images/photos/header.png') center no-repeat;
@@ -11,26 +26,12 @@
   margin-bottom: var(--main-mb);
   width: 100dvw;
 
-  > * {
-    margin-inline: auto;
-  }
-
-  @media (max-width: 1259px) {
-    --header-height: 48.38rem;
-  }
-
-  @media (max-width: 743px) {
-    --header-height: 35.5rem;
-    --motto-m: 2.5rem;
-    --main-mb: 4rem;
-  }
-
   &__navigation {
     align-items: center;
     display: flex;
     height: var(--nav-h);
     justify-content: space-between;
-    padding-block: 2rem;
+    padding-block: var(--nav-py);
     width: var(--container-w);
   }
 
@@ -43,8 +44,16 @@
 @keyframes header-animation {
   from {
     background-size: 125%;
+
+    @media (max-width: 743px) {
+      background-size: 175%;
+    }
   }
   to {
     background-size: 100%;
+
+    @media (max-width: 743px) {
+      background-size: 150%;
+    }
   }
 }
