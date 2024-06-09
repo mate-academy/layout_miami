@@ -1,0 +1,55 @@
+@use '../utils/vars' as *;
+
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--burger-menu-heigth);
+  background-color: $burger-menu-color;
+  display: none;
+
+  @media (max-width: 1259px) {
+    --burger-menu-heigth: 100dvh;
+  }
+
+  @media (max-width: 743px) {
+    --burger-menu-pt: 2rem;
+  }
+
+  &--active {
+    display: inherit;
+  }
+
+  &__container {
+    width: var(--container-w);
+    margin-inline: auto;
+    list-style: none;
+    padding-top: calc(var(--nav-h) + var(--burger-menu-pt));
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-size: 1.38rem;
+    font-weight: bold;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: $natual-black;
+
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
