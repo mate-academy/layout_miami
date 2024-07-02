@@ -1,0 +1,72 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.category {
+  @media screen and (max-width: 1259px) {
+    --recommended-gap: 2.5rem;
+    --img-container-h: 11.5rem;
+    --category-button-size: 24.5rem;
+  }
+
+  @media screen and (max-width: 743px) {
+    --title-mb: 3rem;
+    --type-title-size: 1rem;
+    --img-container-h: 8.13rem;
+    --img-container-gap: 1.25rem;
+    --category-type-mb: 2.5rem;
+    --category-button-size: 17.5rem;
+  }
+
+  &__title {
+    margin-bottom: var(--title-mb);
+  }
+
+  &__type {
+    width: 100%;
+  }
+
+  &__type:not(:last-child) {
+    margin-bottom: var(--category-type-mb);
+  }
+
+  &__img-container {
+    display: grid;
+    gap: var(--img-container-gap);
+    height: var(--img-container-h);
+    margin-bottom: 1rem;
+
+    &[position='left'] {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &[position='right'] {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    &[position='left'],
+    &[position='right'] {
+      @media screen and (max-width: 743px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__img {
+    height: var(--img-container-h);
+    object-fit: cover;
+    width: 100%;
+
+    &[src*='Sixth'] {
+      object-position: right;
+    }
+  }
+
+  &__type-title {
+    font-size: var(--type-title-size);
+    font-weight: 700;
+  }
+
+  &__button {
+    @include button(var(--category-button-size));
+  }
+}

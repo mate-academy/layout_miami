@@ -1,0 +1,43 @@
+@use '../utils/vars' as *;
+
+.how-to-buy {
+  &[class^='content'] {
+    align-items: baseline;
+  }
+
+  &__title[data-title] {
+    text-align: left;
+    width: inherit;
+  }
+
+  &__container {
+    display: grid;
+    gap: var(--how-to-buy-g);
+    grid-template-columns: repeat(2, var(--how-to-buy-cell-s));
+
+    @media screen and (max-width: 1259px) {
+      --how-to-buy-cell-s: 1fr;
+    }
+
+    @media screen and (max-width: 743px) {
+      --how-to-buy-g: 2rem;
+
+      flex-direction: column;
+      grid-template-columns: var(--how-to-buy-cell-s);
+      grid-template-rows: auto var(--how-to-buy-cell-s);
+    }
+  }
+
+  &__reasons {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    gap: 1rem;
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  &__text {
+    line-height: 1.75rem;
+  }
+}

@@ -1,0 +1,81 @@
+@use '../utils/vars' as *;
+
+.burger-menu {
+  @media (max-width: 743px) {
+    --burger-menu-pt: 2rem;
+    --nav-logo-size: 1rem;
+    --nav-py: 1.5rem;
+    --burger-menu-logo-mb: 2rem;
+  }
+
+  background-color: $burger-menu-color;
+  display: none;
+  height: 100dvh;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  &__logo {
+    height: calc(var(--nav-logo-size) + var(--nav-py) * 2);
+    margin-bottom: var(--burger-menu-logo-mb);
+    padding-block: var(--nav-py);
+  }
+
+  &__container {
+    margin-inline: auto;
+    padding-inline: var(--container-px);
+    width: min(100%, 63.75rem);
+  }
+
+  &--active {
+    display: inherit;
+  }
+
+  &__options {
+    gap: 2rem;
+    flex-direction: column;
+    display: flex;
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  &__link {
+    font-size: 1.38rem;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+
+    &::after {
+      background-color: $natual-black;
+      content: '';
+      display: block;
+      height: 2px;
+      position: absolute;
+      width: 0;
+      transition: width 0.3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__contact-info {
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tel-num {
+    margin-bottom: 1rem;
+  }
+
+  &__tel-text {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,144 @@
+@use '../utils/vars' as *;
+
+.navigation {
+  @media screen and (max-width: 743px) {
+    --nav-button-size: 1.5rem;
+    --nav-logo-size: 1rem;
+  }
+
+  &__logo {
+    height: var(--nav-logo-size);
+  }
+
+  &__list {
+    align-items: center;
+    background-color: #ccd9ea47;
+    border-radius: 0 0.5rem 0.5rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    list-style: none;
+
+    @media screen and (max-width: 1500px) {
+      background-color: transparent;
+    }
+  }
+
+  &__item {
+    aspect-ratio: 1;
+    cursor: pointer;
+    display: grid;
+    height: var(--nav-button-size);
+    place-items: center;
+    position: relative;
+    transition: 0.5s ease;
+
+    &--phone {
+      &__link {
+        width: 100%;
+      }
+
+      &__logo {
+        width: 100%;
+      }
+
+      &--number {
+        height: var(--nav-button-size);
+        left: calc(-4 * var(--nav-button-size));
+        line-height: var(--nav-button-size);
+        font-size: 0.75rem;
+        font-weight: 700;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        text-align: left;
+        top: 0;
+        width: calc(4 * var(--nav-button-size));
+
+        &--on-hover {
+          background-color: #ccd9ea47;
+          border-radius: 0.5rem 0 0 0.5rem;
+          padding-left: 0.25rem;
+          transform: translateX(110%);
+          transition: 0.5s;
+
+          @media screen and (max-width: 1500px) {
+            background-color: transparent;
+          }
+        }
+      }
+
+      @media screen and (min-width: 743px) {
+        &:hover &--number &--number--on-hover {
+          transform: none;
+        }
+      }
+    }
+
+    &--burger-menu {
+      z-index: 3;
+
+      &--active {
+        position: fixed;
+      }
+
+      &--part {
+        background-color: $natual-black;
+        border-radius: 100dvh;
+        height: $burger-menu-button-height;
+        position: relative;
+        transition: 0.5s ease;
+        width: 1.5rem;
+
+        &::before,
+        &::after {
+          background-color: $natual-black;
+          border-radius: 100dvh;
+          content: '';
+          height: $burger-menu-button-height;
+          position: absolute;
+          transition: 0.5s ease;
+          width: 1.5rem;
+        }
+
+        &::before {
+          top: -0.5rem;
+        }
+
+        &::after {
+          top: 0.5rem;
+        }
+      }
+
+      &--active & {
+        &--part {
+          rotate: 45deg;
+          transition: 0.5s ease;
+
+          &::before,
+          &::after {
+            top: 0;
+          }
+
+          &::before {
+            background-color: transparent;
+          }
+
+          &::after {
+            rotate: -90deg;
+          }
+        }
+      }
+
+      &:not(.navigation__item--burger-menu--active):hover &--part {
+        &::before {
+          width: 1.13rem;
+        }
+
+        &::after {
+          width: 0.75rem;
+        }
+      }
+    }
+  }
+}
