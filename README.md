@@ -1,15 +1,14 @@
-# Miami landing page
+# HTML/CSS Showcase Landing Page Repository
+Welcome to my HTML/CSS Showcase Landing Page Repository! This repository contains the code for a dynamic and visually appealing landing page, designed to highlight my expertise in HTML, CSS, and SASS.
 
-In this task, you will learn how to implement a landing page. To do that:
+## About This Project
+As an enthusiastic web developer, I've developed this landing page to exhibit my proficiency in front-end technologies and my capability to create engaging user experiences. This project features clean and semantic HTML, sophisticated CSS/SASS styling, and demonstrates my commitment to quality and detail.
 
-- choose a landing page design from the list below;
-  - [BOSE landing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-  - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-  - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-  - [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-  - [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
-- watch the lesson videos and implement your page blocks similarly to the videos;
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- when you finish the first block of your page deploy it and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_miami/) 
-- after each next block do the same (add, commit and push the changes, and deploy the updated demo;
-- check yourself using the [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md) when finished;
+## Key Features
+- Semantic HTML Structure: The landing page is constructed with a well-organized and semantic HTML layout, enhancing accessibility and search engine optimization.
+- Responsive Design: With CSS media queries and flexible layouts, the landing page adapts seamlessly to various screen sizes and devices, ensuring a consistent user experience.
+- SASS Styling: Utilizing the SASS preprocessor, the CSS codebase is organized, modular, and maintainable, showcasing my ability to write scalable and efficient stylesheets.
+- Interactive Elements: User engagement is elevated with interactive features such as smooth transitions, hover effects, and animated components that make the landing page vibrant and lively.
+
+## How to Interact
+View the Live Demo: Explore the live demo of my landing page [here](https://weswojciech.github.io/layout_miami/).
