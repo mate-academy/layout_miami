@@ -15,4 +15,4 @@ As an enthusiastic web developer, I've developed this landing page to exhibit my
 
 <h2>How to Interact</h2>
 
-View the Live Demo: Explore the live demo of my landing page <a href="https://etuzimek.github.io/layout_miami/">here</a>.   
+View the Live Demo: Explore the live demo of my landing page <a href="https://etuzimek.github.io/My_Bike/">here</a>.   
