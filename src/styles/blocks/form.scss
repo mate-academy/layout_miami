@@ -1,0 +1,57 @@
+// eslint-disable-next-line
+@mixin visuall-hiden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    background-color: rgba(248, 248, 250, 1);
+    border: 0;
+    height: 48px;
+    line-height: 48px;
+
+    &::placeholder {
+      font-family: Cinzel, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: rgba(126, 126, 131, 1);
+      padding-left: 11px;
+    }
+  }
+
+  &__textarea {
+    background-color: rgba(248, 248, 250, 1);
+    border: 0;
+    line-height: 48px;
+    height: 144px;
+
+    &::placeholder {
+      font-family: Cinzel, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: rgba(126, 126, 131, 1);
+      padding-left: 11px;
+      padding-top: 14px;
+    }
+  }
+
+  &__label {
+    &:not(:focus) {
+      @include visuall-hiden;
+    }
+  }
+}
