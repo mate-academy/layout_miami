@@ -1,5 +1,6 @@
 .section {
   padding: 0 20px;
+  box-sizing: border-box;
 
   &__hours {
     display: grid;
@@ -26,10 +27,27 @@
 
   &__galery {
     display: grid;
-    gap: 48px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 110px 264px 192px 262px;
+    justify-content: center;
+    gap: 24px;
+
+    @media (min-width: 1020px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 121px 235px 192px 262px;
+      justify-content: center;
+      gap: 24px;
+    }
   }
 
   &__wrapper {
+    grid-area: 1 / 1 / 2 / 7;
+
+    @media (min-width: 1020px) {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
     display: flex;
     flex-direction: column;
     gap: 8px;
