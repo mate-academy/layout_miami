@@ -1,0 +1,73 @@
+@use '../utils/mixin.scss' as *;
+
+.picture {
+  display: grid;
+  gap: 20px;
+  align-items: stretch;
+
+  &__item {
+    object-fit: cover;
+    object-position: right;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    transition: transform 0.3s;
+
+    &--wrapper {
+      display: grid;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    &--position {
+      object-position: -65px;
+
+      @include for-tablet {
+        object-position: 0;
+      }
+    }
+  }
+
+  &--1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @include for-tablet {
+      gap: 24px;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+  }
+
+  &--2 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @include for-tablet {
+      gap: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include for-desktop {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .picture__item--wrapper:nth-child(3) {
+      @include for-tablet {
+        display: none;
+      }
+
+      @include for-desktop {
+        display: block;
+      }
+    }
+  }
+
+  &--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @include for-tablet {
+      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    }
+  }
+}
