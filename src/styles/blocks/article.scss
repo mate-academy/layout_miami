@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .article {
   font-family: Poppins, Helvetica, sans-serif;
   text-align: left;
@@ -34,7 +36,20 @@
     margin-bottom: 16px;
   }
 
+  &__item {
+    @include page-grid;
+  }
+
   &__button {
     margin-bottom: 40px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include for-desktop {
+      grid-column: 5 / 9;
+    }
   }
 }
