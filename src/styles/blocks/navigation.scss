@@ -1,23 +1,36 @@
+@use '../utils/mixins' as *;
+
 .navigation {
   display: grid;
   grid-template-columns: auto 48px 24px;
 
+  @include for-tablet {
+    grid-template-columns: auto 64px 32px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: auto 64px 32px;
+  }
+
   &__item {
     align-self: center;
 
-    &--phone {
-      display: inline-block;
-      background-image: url(../images/phone.svg);
-      background-repeat: no-repeat;
-      background-size: 18px;
-      background-position: center;
-      width: 24px;
-      height: 24px;
+    &--logo {
+      display: block;
+      max-width: max-content;
     }
   }
 
   &__logo-image {
     width: 130px;
     vertical-align: bottom;
+
+    @include for-tablet {
+      width: 187px;
+    }
+
+    @include for-desktop {
+      width: 187px;
+    }
   }
 }

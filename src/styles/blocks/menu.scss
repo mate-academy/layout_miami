@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .menu {
   position: fixed;
   inset: 0;
@@ -11,22 +13,91 @@
   color: #1d1d1d;
   background-color: #c2c2c2;
 
+  @include page-grid;
+
+  align-content: start;
+
   &:target {
     transform: translate(0);
   }
 
   &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
     grid-template-columns: auto 24px;
   }
 
+  &__links {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
   &__paragraph {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
     margin-bottom: 14px;
     font-size: 16px;
     font-weight: 600;
     line-height: 27px;
   }
 
+  &__close-icon {
+    display: inline-block;
+    background-image: url(../images/close.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    text-decoration: none;
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet {
+      background-size: 22px;
+      width: 32px;
+      height: 32px;
+    }
+
+    @include for-desktop {
+      background-size: 22px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
   &__call-link {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
     padding-bottom: 7px;
     display: inline-block;
     font-size: 12px;
