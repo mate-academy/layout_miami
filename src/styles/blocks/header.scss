@@ -1,11 +1,18 @@
 @use '../utils/mixins' as *;
 
 .header {
+  box-sizing: border-box;
+  padding: 24px 20px 88px;
+  min-height: 100dvh;
   background-color: #484848;
   background-image: url(../images/photos/header-background.jpg);
   background-position: 86%;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-height: 480px) {
+    height: 480px;
+  }
 
   @include for-tablet {
     background-position: center;
@@ -14,6 +21,16 @@
   @include for-desktop {
     background-position: center;
   }
+
+  @include for-tablet {
+    padding: 36px 20px 130px;
+  }
+
+  @include for-desktop {
+    padding: 36px 20px 203px;
+  }
+
+  @include page-grid;
 
   &__title {
     font-family: Poppins, Helvetica, sans-serif;
@@ -40,20 +57,6 @@
       line-height: 80px;
     }
   }
-
-  box-sizing: border-box;
-  padding: 24px 20px 88px;
-  min-height: 100vh;
-
-  @include for-tablet {
-    padding: 36px 20px 130px;
-  }
-
-  @include for-desktop {
-    padding: 36px 20px 203px;
-  }
-
-  @include page-grid;
 
   &__navigation {
     align-self: start;
