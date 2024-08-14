@@ -1,3 +1,4 @@
+@use '../utils/vars' as *;
 @use '../utils/mixins' as *;
 
 .menu {
@@ -8,17 +9,12 @@
   transition: transform 0.3s ease;
   box-sizing: border-box;
   min-height: 100dvh;
-  padding: 24px 20px 20px;
-  font-family: Poppins, Helvetica, sans-serif;
+  padding: 24px 20px;
+  font-family: $page-font-family;
   text-align: left;
-  color: #1d1d1d;
-  background-color: #c2c2c2;
-
-  @media (max-height: 480px) {
-    height: 480px;
-    position: relative;
-    transform: translateX(0);
-  }
+  color: $menu-color;
+  background-color: $menu-background-color;
+  overflow-y: auto;
 
   @include page-grid;
 
@@ -64,10 +60,6 @@
     width: 24px;
     height: 24px;
 
-    @media (max-height: 480px) {
-      display: none;
-    }
-
     @include for-tablet {
       background-size: 22px;
       width: 32px;
@@ -83,20 +75,21 @@
 
   &__call-link {
     padding-bottom: 7px;
-    display: inline-block;
+    display: block;
+    width: max-content;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
-    color: #1d1d1d;
+    color: $menu-color;
     border-bottom: 1px solid transparent;
-    transition: 0.3s;
+    transition: $page-transition;
 
     &:hover {
-      transition: 0.3s;
-      border-bottom: 1px solid #1d1d1d;
+      transition: $page-transition;
+      border-bottom: 1px solid $menu-color;
     }
   }
 }
