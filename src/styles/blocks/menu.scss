@@ -1,0 +1,103 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding: 24px 20px;
+  font-family: $page-font-family;
+  text-align: left;
+  color: $menu-color;
+  background-color: $menu-background-color;
+  overflow-y: auto;
+
+  @include for-tablet {
+    padding: 36px 20px;
+  }
+
+  @include for-desktop {
+    padding: 36px 20px;
+  }
+
+  @include page-grid;
+
+  align-content: start;
+
+  &:target {
+    transform: translate(0);
+  }
+
+  &__navigation,
+  &__links,
+  &__paragraph,
+  &__call-link {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__navigation {
+    grid-template-columns: auto 24px;
+  }
+
+  &__paragraph {
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  &__close-icon {
+    display: inline-block;
+    background-image: url(../images/close.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    text-decoration: none;
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet {
+      background-size: 22px;
+      width: 32px;
+      height: 32px;
+    }
+
+    @include for-desktop {
+      background-size: 22px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__call-link {
+    padding-bottom: 7px;
+    display: block;
+    width: max-content;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $menu-color;
+    border-bottom: 1px solid transparent;
+    transition: $page-transition;
+
+    &:hover {
+      transition: $page-transition;
+      border-bottom: 1px solid $menu-color;
+    }
+  }
+}
