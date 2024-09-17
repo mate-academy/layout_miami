@@ -8,6 +8,12 @@
   width: 1px;
 }
 
+@mixin for-ipad() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
 @mixin for-desktop() {
   @media (min-width: 1260px) {
     @content;
@@ -19,6 +25,11 @@
   display: grid;
   grid-template-columns: repeat(2, 130px);
   grid-column-gap: 20px;
+
+  @include for-ipad {
+    grid-template-columns: repeat(6, 80px);
+    grid-column-gap: 24px;
+  }
 
   @include for-desktop {
     grid-template-columns: repeat(12, 63px);
