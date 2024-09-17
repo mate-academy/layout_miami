@@ -7,3 +7,21 @@
   white-space: nowrap;
   width: 1px;
 }
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  grid-column-gap: 20px;
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 63px);
+    grid-column-gap: 24px;
+  }
+}
