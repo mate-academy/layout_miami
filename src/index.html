@@ -43,7 +43,7 @@
         <div class="icons">
           <a
             class="phone"
-            href="+48 513 093 342"
+            href="tel:+48513093342"
           >
             <span class="phone__label">+48 513 093 342</span>
             <img
@@ -300,6 +300,7 @@
         <h2 class="title title--secondary title--position">Contact us</h2>
         <div class="forms section__forms">
           <form
+            id="contact-form"
             class="form forms__form"
             action=" "
           >
@@ -309,6 +310,7 @@
               name="name"
               id="name"
               placeholder="Name"
+              required
             />
             <input
               class="form__input"
@@ -316,21 +318,23 @@
               name="Email"
               id="email"
               placeholder="Email"
+              required
             />
             <textarea
               class="form__message"
               placeholder="Message"
+              required
             ></textarea>
-            <a
-              href=" "
-              class="button form__button"
-            ></a>
+            <button
+              type="submit"
+              class="button form__button">
+            </button>
           </form>
           <div class="contact forms__contact">
             <h4 class="title title--fourth">Phone</h4>
             <a
               class="contact__link"
-              href="+48 513 093 342"
+              href="tel:+48513093342"
             >
               <p class="paragraph form__paragraph">+48 513 093 342</p>
             </a>
@@ -345,6 +349,7 @@
             <a
               class="contact__link"
               href="https://www.google.pl/maps/place/400+N+1st+Ave+STE+700,+Minneapolis,+MN+55401,+Stany+Zjednoczone/@44.9813296,-93.275706,17z/data=!3m1!4b1!4m6!3m5!1s0x52b3328fdf233887:0x3348e5113ed2472d!8m2!3d44.9813258!4d-93.2731311!16s%2Fg%2F11nyn_tfyt?entry=ttu&g_ep=EgoyMDI0MDkxOC4xIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
             >
               <p class="paragraph form__paragraph">
                 400 first ave
@@ -360,5 +365,19 @@
     </main>
 
     <footer class="footer"></footer>
+
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      })
+
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#menu') {
+          document.body.classList.add('page__body--with-menu');
+        } else {
+          document.body.classList.remove('page__body--with-menu');
+        }
+      });
+    </script>
   </body>
 </html>
