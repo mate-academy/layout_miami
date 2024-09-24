@@ -1,0 +1,42 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.phone {
+  &__label {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-decoration: none;
+    color: $primary-color;
+
+    position: absolute;
+    transform: translateX(calc(-100% - 20px)) translateY(5px);
+
+    @include for-mobile {
+      display: none;
+    }
+
+    @include for-tablet {
+      display: none;
+    }
+  }
+
+  &__icon {
+    height: 24px;
+
+    @include for-tablet {
+      height: 32px;
+    }
+
+    @include for-dektop {
+      height: 32px;
+    }
+  }
+
+  &:not(:hover) &__label {
+    @include visually-hidden;
+  }
+}
