@@ -1,4 +1,5 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 .header {
   display: flex;
@@ -7,7 +8,7 @@
   background-image: url(/src/styles/images/photos/header-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   padding: 0 20px 40px;
   box-sizing: border-box;
   justify-content: space-between;
@@ -28,12 +29,6 @@
     align-items: center;
   }
 
-  &__icon {
-    width: 48px;
-    height: 58px;
-    position: relative;
-    top: 150px;
-  }
 
   &__title::before {
     content: '';
@@ -43,5 +38,34 @@
     width: 48px;
     position: relative;
     bottom: 16px;
+  }
+}
+
+@include for-tablets {
+  .header {
+    padding: 0 72px 64px;
+
+    &__nav {
+      padding: 36px 0;
+    }
+
+    &__logo {
+      height: 24px;
+    }
+
+    &__buttons {
+
+      &--button {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &__title::before{
+      width: 63px;
+      height: 76px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 }
