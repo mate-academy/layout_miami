@@ -1,17 +1,24 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 .gallery {
   padding-bottom: 40px;
   width: 280px;
 
   &__images {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 
   }
 
   &__image {
     transition: 0.7s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
     &:hover {
       transform: scale(1.2);
     }
@@ -25,5 +32,40 @@
     text-align: left;
     padding-top: 16px;
     color: $black-ascend-color;
+  }
+}
+
+@include for-tablets {
+  .gallery {
+    width: 600px;
+    padding-bottom: 64px;
+
+    &__images {
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
+    }
+
+    &__image--wide {
+
+      &-left {
+        grid-column: 1 / 5
+      }
+
+      &-right {
+        grid-column: 3 / 7;
+      }
+
+    }
+
+
+    &__image--narrow {
+
+      &-right {
+        grid-column: 5 / 7;
+      }
+
+      &-left {
+        grid-column: 1 / 3;
+      }
+    }
   }
 }
