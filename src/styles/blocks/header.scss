@@ -1,0 +1,118 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: url(/src/styles/images/photos/header-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 0;
+  }
+
+  &__logo {
+    height: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    &--button {
+      text-align: center;
+
+      &-label {
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        position: absolute;
+        transform: translateX(calc(-100% - 20px));
+        color: $black-ascend-color;
+        transition: 0.7s ease-in-out;
+
+      }
+
+      &:not(:hover) .header__buttons--button-label {
+        @include visually-hidden;
+      }
+    }
+
+    &--burger {
+      display: inline-block;
+      background-image: url(/src/styles/images/buttons/Icon-Burger-menu.svg);
+      background-size: cover;
+      width: 24px;
+      height: 24px;
+      transition: 0.7s ease-in-out;
+      color: $black-ascend-color;
+
+      &:hover {
+        background-image: url(/src/styles/images/buttons/Icon-Burger-menu-hover.svg)
+      }
+
+      &-label {
+        @include visually-hidden;
+      }
+
+    }
+  }
+
+
+  &__title::before {
+    content: '';
+    display: block;
+    background-image: url(/src/styles/images/photos/sound-waves.png);
+    height: 58px;
+    width: 48px;
+    position: relative;
+    bottom: 16px;
+  }
+}
+
+@include for-tablets {
+  .header {
+    padding: 0 72px 64px;
+
+    &__nav {
+      padding: 36px 0;
+    }
+
+    &__logo {
+      height: 24px;
+    }
+
+    &__buttons {
+
+      &--button,
+      &--burger {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &__title::before{
+      width: 63px;
+      height: 76px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+@include for-desktop {
+  .header {
+    padding: 0 120px 60px;
+  }
+}
