@@ -1,0 +1,138 @@
+@use 'utils' as *;
+
+.main-navigation {
+  height: 72px;
+
+  @include flex-center;
+  @include grid-placement;
+
+  @include responsive-settings($media-medium) {
+    height: 96px;
+  }
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+
+    @include responsive-settings($media-medium) {
+      width: 228px;
+      height: 24px;
+    }
+  }
+
+  &__list {
+    @include flex-center;
+  }
+
+  &__item {
+    padding-right: $s-small-icon;
+
+    @include responsive-settings($media-medium) {
+      padding-right: $s-big-icon;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    background-size: cover;
+
+    @include squared-size($s-small-icon);
+
+    @include responsive-settings($media-medium) {
+      @include squared-size($s-big-icon);
+    }
+
+    &--close {
+      background-image: url(/src/images/Icon-Close.svg);
+
+      &--label {
+        &:not(:focus, :active) {
+          @include visually-hidden;
+        }
+      }
+    }
+
+    &--phone {
+      background-image: url(/src/images/Icon-Phone-call.svg);
+      position: relative;
+
+      &--label {
+        white-space: nowrap;
+        display: inline;
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 8px);
+        transform: translateY(-50%) translateX(10px);
+        transition:
+          opacity $duration,
+          transform $duration;
+
+        @include base-font($f-size-paragraph, $f-bold, $f-height-small);
+
+        opacity: 0;
+      }
+
+      &:hover &--label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+
+      &:not(:hover) &--label {
+        @include visually-hidden;
+      }
+    }
+
+    &--burger {
+      position: relative;
+
+      &--label {
+        &:not(:focus, :active) {
+          @include visually-hidden;
+        }
+      }
+
+      &::before,
+      &::after {
+        content: '';
+
+        @include squared-size($s-small-icon);
+
+        display: inline-block;
+        background-size: cover;
+        transition: clip-path $duration;
+
+        @include responsive-settings($media-medium) {
+          @include squared-size($s-big-icon);
+        }
+      }
+
+      &::before {
+        background-image: url(/src/images/Icon-Burger-menu.svg);
+        z-index: 1;
+        clip-path: inset(0 0 0 0);
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(/src/images/Icon-Burger-menu-hover.svg);
+        clip-path: inset(0);
+      }
+
+      &:hover {
+        &::before {
+          clip-path: inset(0 100% 0 0);
+        }
+
+        &::after {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+    }
+  }
+}
