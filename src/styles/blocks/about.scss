@@ -1,0 +1,65 @@
+@use 'utils' as *;
+
+.section-about {
+  background-color: $c-light-background;
+
+  &__background {
+    background-image: url(../images/photos/footer-photo.png);
+    height: 200px;
+    background-size: cover;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+
+    @include responsive-settings-min($media-medium) {
+      height: 400px;
+    }
+
+    @include responsive-settings-min($media-large) {
+      height: 460px;
+      background-position: center 77.5%;
+    }
+  }
+
+  &__wrapper {
+    @include responsive-grid;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+
+    @include grid-placement;
+    @include base-font($f-size-small-section, $f-bold);
+
+    @include responsive-settings-min($media-medium) {
+      @include grid-placement(1, 2, 1, 4);
+      @include base-font($f-size-middle-section, $f-bold);
+    }
+
+    @include responsive-settings-min($media-large) {
+      @include grid-placement(1, 2, 1, 7);
+      @include base-font($f-size-big-section, $f-bold);
+    }
+  }
+
+  &__paragraph {
+    padding-bottom: 48px;
+
+    @include grid-placement(2, 3);
+    @include base-font(
+      $f-size-paragraph,
+      $f-regular,
+      $f-height-middle,
+      $f-letter-spacing
+    );
+
+    @include responsive-settings-min($media-medium) {
+      padding-bottom: $s-margin-large;
+
+      @include grid-placement(1, 2, 4, 7);
+    }
+
+    @include responsive-settings-min($media-large) {
+      @include grid-placement(1, 2, 8, 13);
+    }
+  }
+}

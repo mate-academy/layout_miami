@@ -1,0 +1,65 @@
+@use 'utils' as *;
+
+.section-sale {
+  @include responsive-grid;
+
+  &__wrapper {
+    @include grid-placement;
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: $s-grid-gap-small;
+    margin-bottom: 40px;
+
+    @include responsive-settings-min($media-medium) {
+      column-gap: $s-grid-gap-big;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__product {
+    @include squared-size(130px);
+
+    border-radius: $s-small-radius;
+    background-color: $c-form-gray;
+    object-fit: contain;
+    margin-bottom: 16px;
+    transition:
+      transform $duration,
+      box-shadow $duration;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 3px 3px 5px $c-button-orange;
+    }
+
+    @include responsive-settings-min($media-medium) {
+      width: 288px;
+      height: 184px;
+    }
+
+    @include responsive-settings-min($media-large) {
+      width: 498px;
+      height: 324px;
+    }
+  }
+
+  &__category {
+    @include base-font($f-size-paragraph-title, $f-bold, $f-height-large);
+
+    @include responsive-settings-min($media-medium) {
+      @include base-font($f-size-bigger-title, $f-bold, $f-height-large);
+    }
+  }
+
+  &__button {
+    @include grid-placement(2, 3);
+
+    @include responsive-settings-min($media-large) {
+      @include grid-placement(2, 3, 1, 5);
+    }
+  }
+}
