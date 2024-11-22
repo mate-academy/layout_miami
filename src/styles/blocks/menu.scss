@@ -1,0 +1,136 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  background-color: #c2c2c2;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  position: fixed;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  @include grid;
+
+  justify-content: space-between;
+
+  &__navi {
+    grid-column: span 2;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    grid-column: span 2;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    grid-column: span 2;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #1d1d1d;
+    padding: 0 20px;
+    margin-bottom: 20px;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    grid-column: span 2;
+    padding: 0 20px;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 86px;
+  }
+}
+
+.burger {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  background-image: url('./images/menu.svg');
+  background-size: cover;
+
+  &:hover {
+    background-image: url('./images/menu_hover.svg');
+  }
+  &__label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+}
+
+.phone {
+  &__label {
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #fff;
+
+    position: absolute;
+    transform: translateX(calc(-100% - 20px));
+  }
+
+  &:not(:hover) .phone__label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+}
