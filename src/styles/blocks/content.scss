@@ -1,207 +1,172 @@
 @use '../utils/mixins.scss' as *;
 
 .content {
-  padding: 20px;
+  &__page {
+    margin-bottom: 120px;
+  }
 
-  @media (min-width: 744px) {
-    .contact-title {
-      grid-column: 1/-1;
+  @include grid;
+
+  &__title {
+    grid-column: 1/-1;
+  }
+
+  &__description {
+    margin-bottom: 90px;
+
+    grid-column: 1/-1;
+
+    @include ipad {
+      @include grid;
     }
 
-    &__button {
-      grid-column: 2/-2;
-    }
+    &--title {
+      grid-column: 1/4;
 
-    &__contact {
-      .title {
-        grid-column: 1/-1;
-      }
-
-      @media (min-width: 320px) {
-        display: grid;
-        grid-template-columns: repeat(2, 130px);
-        gap: 20px;
-        justify-content: center;
-      }
-
-      .form {
-        @media (min-width: 320px) {
-          grid-column: 1/-1;
-        }
-
-        @media (min-width: 744px) {
-          grid-column: 1/4;
-        }
-
-        @media (min-width: 1260px) {
-          grid-column: 1/6;
-        }
-      }
-
-      .adress {
-        @media (min-width: 320px) {
-          grid-column: 1/-1;
-        }
-
-        @media (min-width: 744px) {
-          grid-column: 4/-1;
-        }
-
-        @media (min-width: 1260px) {
-          grid-column: 8/-1;
-        }
-      }
-
-      @media (min-width: 744px) {
-        display: grid;
-        grid-template-columns: repeat(6, 80px);
-        gap: 24px;
-        justify-content: center;
-      }
-
-      @media (min-width: 1260px) {
-        display: grid;
-        grid-template-columns: repeat(12, 63px);
-        gap: 24px;
-        justify-content: center;
+      @include desktop {
+        grid-column: 1/5;
       }
     }
 
-    .content__adress {
-      padding: 0;
+    &--paragraph {
+      grid-column: 4/7;
 
-      .adress__box {
-        padding: 0;
+      @include desktop {
+        grid-column: 5/12;
       }
     }
   }
 
   &__section {
-    padding: 80px 20px 0;
-    box-sizing: border-box;
-  }
+    margin-bottom: 90px;
 
-  &__section--template_small {
-    grid-column: 2/-2;
-  }
-
-  &__section--template {
     grid-column: 1/-1;
-  }
 
-  @media (min-width: 744px) {
-    display: grid;
-    grid-template-columns: repeat(6, 80px);
-    gap: 24px;
-    justify-content: center;
-  }
+    @include grid;
 
-  @media (min-width: 1260px) {
-    display: grid;
-    grid-template-columns: repeat(12, 63px);
-    gap: 24px;
-    justify-content: center;
-
-    .article-bikes {
-      display: grid;
-      grid-template-columns: repeat(12, 63px);
-      gap: 24px;
-      justify-content: center;
-
-      &__item {
-        grid-column: span 4;
-      }
-
-      // &--title {
-      //   grid-column: 1/-1;
-      // }
+    .title {
+      grid-column: 1/-1;
     }
 
-    .content__button {
+    .article-bikes {
+      grid-column: 1/-1;
+
+      @include grid;
+
+      &__item {
+        grid-column: 1/-1;
+
+        @include desktop {
+          grid-column: span 4;
+        }
+      }
+    }
+
+    .article {
+      grid-column: 1/-1;
+
+      &__figure {
+        @include grid;
+
+        &--small {
+          grid-column: span 1;
+
+          @include ipad {
+            grid-column: span 2;
+          }
+
+          @include desktop {
+            grid-column: span 4;
+          }
+        }
+
+        &--big {
+          grid-column: span 1;
+
+          @include ipad {
+            grid-column: span 4;
+          }
+
+          @include desktop {
+            grid-column: span 8;
+          }
+        }
+      }
+
+      &__description {
+        @include grid;
+      }
+
+      &__title {
+        grid-column: 1/-1;
+
+        @include desktop {
+          grid-column: 1/9;
+        }
+      }
+
+      &__paragraph {
+        grid-column: 1/-1;
+
+        @include desktop {
+          grid-column: 1/9;
+        }
+      }
+    }
+    .bike-photo {
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .detail-img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .figure {
+    text-align: center;
+  }
+
+  .content__button {
+    grid-column: 1/-1;
+
+    @include ipad {
+      grid-column: 2/6;
+    }
+
+    @include desktop {
       grid-column: 5/9;
     }
   }
 
-  &__title {
-    grid-column: 1/4;
-  }
-
-  &__description {
-    grid-column: 4/-1;
-  }
-
-  &__template {
-    grid-column: 1/-1;
-  }
-
-  .article {
-    padding: 30px 0;
-
-    &__figure {
-      @include grid;
-
-      &--big {
-        @media (min-width: 320px) {
-          grid-column: span 1;
-        }
-
-        @media (min-width: 744px) {
-          grid-column: span 4;
-        }
-
-        @media (min-width: 1260px) {
-          grid-column: span 8;
-        }
-      }
-
-      &--small {
-        @media (min-width: 320px) {
-          grid-column: span 1;
-        }
-
-        @media (min-width: 744px) {
-          grid-column: span 2;
-        }
-
-        @media (min-width: 1260px) {
-          grid-column: span 4;
-        }
-      }
-    }
-
-    .photo-wrapper {
-      width: 100%;
-
-      .detail-img {
-        width: 100%;
-        box-sizing: border-box;
-        border-radius: 8px;
-      }
-    }
-  }
-}
-
-.figure {
-  text-align: center;
-}
-
-.content-paragraph {
-  font-family: Poppins, sans-serif;
-  font-size: 23px;
-  font-weight: 500;
-  line-height: 32.2px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-
-  &--description {
+  .content-paragraph {
     font-family: Poppins, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22.4px;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 32.2px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    padding: 8px 0;
+
+    &--description {
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22.4px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      padding: 8px 0;
+    }
   }
 }
