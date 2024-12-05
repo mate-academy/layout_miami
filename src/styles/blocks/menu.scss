@@ -1,0 +1,152 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  background-color: #c2c2c2;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  position: fixed;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  justify-content: space-between;
+
+  grid-template-rows: 100px 1fr;
+  row-gap: 40px;
+
+  @include grid;
+
+  &__navi {
+    height: 86px;
+
+    grid-column: 1 / 3;
+
+    @include ipad {
+      grid-column: 1 / 7;
+    }
+
+    @include desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__links {
+    grid-column: 1 / 3;
+
+    @include ipad {
+      grid-column: 1 / 7;
+    }
+
+    @include desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__paragraph {
+    grid-column: span 2;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #1d1d1d;
+    margin-bottom: 20px;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    grid-column: span 2;
+
+    @include ipad {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 94px;
+  }
+}
+
+.burger {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  background-image: url('../images/menu.svg');
+  background-size: cover;
+
+  &:hover {
+    background-image: url('../images/menu_hover.svg');
+  }
+  &__label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+}
+
+.phone {
+  &__label {
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #fff;
+
+    position: absolute;
+    transform: translateX(calc(-100% + 10px));
+  }
+  &-icon-img {
+    border: 2px solid transparent;
+    padding: 5px;
+  }
+
+  &-icon-img:hover {
+    border: 2px solid #fff;
+    border-radius: 5px;
+  }
+
+  &:not(:hover) .phone__label {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+}
+
+.hide-number:hover {
+  color: rgb(0, 151, 189);
+}
