@@ -1,0 +1,38 @@
+@use '../utils/mixins' as *;
+
+.burger {
+  &::before {
+    display: inline-block;
+    content: '';
+    background-image: url('../images/menu.svg');
+    background-size: cover;
+    height: 12px;
+    width: 18px;
+    filter: brightness(0%);
+
+  }
+
+  &::after {
+    display: none;
+    content: '';
+    background-image: url('../images/menu_hover.svg');
+    background-size: cover;
+    height: 12px;
+    width: 18px;
+    filter: brightness(0%);
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}
