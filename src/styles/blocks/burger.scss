@@ -3,23 +3,24 @@
 .burger {
   &::before {
     display: inline-block;
-    content: '';
+    @include burger;
     background-image: url('../images/menu.svg');
-    background-size: cover;
-    height: 12px;
-    width: 18px;
-    filter: brightness(0%);
-
   }
 
   &::after {
     display: none;
-    content: '';
+    @include burger;
     background-image: url('../images/menu_hover.svg');
-    background-size: cover;
-    height: 12px;
-    width: 18px;
-    filter: brightness(0%);
+  }
+
+  @include for-tablet {
+    &::before {
+      @include bigger-burger;
+    }
+
+    &::after {
+      @include bigger-burger;
+    }
   }
 
   &:hover {
@@ -34,17 +35,5 @@
 
   &__label {
     @include visually-hidden;
-  }
-
-  @include for-tablet {
-    &::before {
-      height: 16px;
-      width: 24px;
-    }
-
-    &::after {
-      height: 16px;
-      width: 24px;
-    }
   }
 }

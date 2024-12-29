@@ -1,25 +1,19 @@
 @import '../utils/mixins';
 
 .header {
-  display: grid;
-  grid-template-columns: 130px 130px;
-  column-gap: 20px;
-  padding: 0 20px;
-  box-sizing: border-box;
+  @include grid;
 
   height: 100vh;
 
   background-image: url('../images/photos/header.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include background-image;
 
   &__title {
-    font-family: Inter, sans-serif;
-    font-size: 32px;
+    font-family: $font-family;
+    font-size: $font-size-mobile;
     font-style: italic;
     font-weight: 800;
-    line-height: 32px;
+    line-height: $font-size-mobile;
     letter-spacing: -1.5px;
     text-align: left;
     text-underline-position: from-font;
@@ -34,45 +28,36 @@
       width: 48px;
       height: 58px;
       background-image: url('../images/sound_waves.svg');
-      color: #292929;
       display: block;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
+      @include background-image;
+
       margin-bottom: 16px;
     }
-    }
+  }
 
   @include for-tablet {
-    grid-template-columns: repeat(6, 80px);
-    column-gap: 24px;
-    padding: 0 72px;
-
     &__title {
       grid-column: 1 / 5;
 
-      font-size: 40px;
-      line-height: 40px;
+      font-size: $font-size-tablet;
+      line-height: $font-size-tablet;
 
       padding-bottom: 64px;
 
       &::before {
-        height: 76px;
         width: 63px;
+        height: 76px;
         margin-bottom: 40px;
       }
     }
   }
 
   @include for-desktop {
-    grid-template-columns: repeat(12, 63px);
-    padding: 0 120px;
-
     &__title {
       grid-column: 1 / 6;
 
-      font-size: 48px;
-      line-height: 48px;
+      font-size: $font-size-desktop;
+      line-height: $font-size-desktop;
     }
 
     &::before {
