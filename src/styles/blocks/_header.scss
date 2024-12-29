@@ -1,23 +1,39 @@
+@use '../utils/variables' as *;
+@use '../utils/mixin' as *;
+
 .header {
+  @include responsive-grid;
+  
   background-color: aqua;
   background-image: url(/src/images/header_background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   box-sizing: border-box;
-  padding: 0 20px 40px;
+  padding-bottom: 40px;
+  align-items: end;
 
-  @media (min-width: 1260px) {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  // padding: 0 20px 40px;
+
+  @media (min-width: $page_width_medium) {
+    padding-bottom: 64px;
+  }
+
+  @media (min-width: $page_width_large) {
     background-image: url(/src/images/header_background_full.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100%;
+    padding-bottom: 64px;
+  }
 
+  &__title {
+    grid-column: 1 / -1;
   }
 }
