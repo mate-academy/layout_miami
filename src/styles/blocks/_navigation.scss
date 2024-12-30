@@ -14,10 +14,6 @@
     padding: 36px 0;
   }
 
-  @media (min-width: $page_width_medium) {
-    padding: 36px 0;
-  }
-
   &__logo {
     height: 16px;
     width: 125px;
@@ -36,8 +32,10 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
+    flex-wrap: nowrap;
     width: 72px;
     height: 24px;
+    position: relative;
 
     @media (min-width: $page_width_medium) {
       width: 96px;
@@ -49,9 +47,11 @@
       height: 32px;
     }
 
+
     &--phone {
       height: 24px;
       width: 24px;
+      position: relative;
 
       @media (min-width: $page_width_medium) {
         height: 32px;
@@ -64,10 +64,30 @@
       }
     }
 
+    &--phone-number {
+      font-family: Inter, serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 32px;
+      letter-spacing: 2px;
+      text-align: right;
+      color: $main_color;
+      text-decoration: none;
+      width: fit-content;
+      text-wrap: nowrap;
+      position: absolute;
+      padding: 0 8px;
+      left: -150px;
+      visibility: hidden;
+      opacity: 0;
+      transition: $trans_values;
+    }
+
     &--burger-container {
       position: relative;
       height: 24px;
       width: 24px;
+      transition: $trans_values;
 
       @media (min-width: $page_width_medium) {
         height: 32px;
@@ -78,8 +98,6 @@
         height: 32px;
         width: 32px;
       }
-
-
     }
 
     &--burger {
@@ -100,7 +118,7 @@
       display: none;
     }
 
-    &:hover {
+    &--burger-container:hover {
       .navigation__buttons--burger {
         display: none;
       }
@@ -109,5 +127,17 @@
         display: block;
       }
     }
+
+    &--phone-hover {
+      display: flex;
+
+      &:hover {
+        .navigation__buttons--phone-number {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
   }
 }
+
