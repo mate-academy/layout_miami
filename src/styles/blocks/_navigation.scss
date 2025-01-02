@@ -1,0 +1,153 @@
+@use "../utils/variables" as *;
+
+.navigation {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 28px 0;
+  transition: $trans_values;
+
+  @media (min-width: $page_width_medium) {
+    padding: 36px 0;
+  }
+
+  &__logo {
+    height: 16px;
+    width: 125px;
+
+    @media (min-width: $page_width_medium) {
+      height: 24px;
+      width: 188px;
+    }
+
+    @media (min-width: $page_width_large) {
+      height: 24px;
+      width: 188px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 72px;
+    height: 24px;
+    position: relative;
+
+    @media (min-width: $page_width_medium) {
+      width: 96px;
+      height: 32px;
+    }
+
+    @media (min-width: $page_width_large) {
+      width: 96px;
+      height: 32px;
+    }
+
+
+    &--phone {
+      height: 24px;
+      width: 24px;
+      position: relative;
+
+      @media (min-width: $page_width_medium) {
+        height: 32px;
+        width: 32px;
+      }
+
+      @media (min-width: $page_width_large) {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    &--phone-number {
+      font-family: Inter, serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 32px;
+      letter-spacing: 2px;
+      text-align: right;
+      color: $main_color;
+      text-decoration: none;
+      width: fit-content;
+      text-wrap: nowrap;
+      position: absolute;
+      padding: 0 8px;
+      left: -150px;
+      visibility: hidden;
+      opacity: 0;
+      transition: $trans_values;
+    }
+
+    &--burger-container {
+      position: relative;
+      height: 24px;
+      width: 24px;
+      transition: $trans_values;
+
+      @media (min-width: $page_width_medium) {
+        height: 32px;
+        width: 32px;
+      }
+
+      @media (min-width: $page_width_large) {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    &--burger {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+
+    &--burger-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+
+    &--burger-container:hover {
+      .navigation__buttons--burger {
+        display: none;
+      }
+
+      .navigation__buttons--burger-hover {
+        display: block;
+      }
+    }
+
+    &--phone-hover {
+      display: flex;
+
+      &:hover {
+        visibility: visible;
+        opacity: 1;
+
+        .navigation__buttons--phone-number {
+          @media (min-width: $page_width_medium) {
+            visibility: visible;
+            opacity: 1;
+          }
+
+          @media (min-width: $page_width_large) {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+

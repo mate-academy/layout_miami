@@ -1,0 +1,32 @@
+@use './variables' as *;
+
+@mixin responsive-grid() {
+  display: grid;
+  grid-template-columns: $columns_small;
+  justify-content: center;
+  gap: 0 $gap_small;
+  margin-bottom: $margin_small;
+  transition: grid-template-columns 500ms ease-in-out;
+
+  @media (min-width: $page_width_medium) {
+    grid-template-columns: $columns_medium;
+    gap: 0 $gap_medium;
+    margin-bottom: $margin_medium;
+  }
+
+  @media (min-width: $page_width_large) {
+    grid-template-columns: $columns_large;
+    gap: 0 $gap_large;
+    margin-bottom: $margin_large;
+  }
+}
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
