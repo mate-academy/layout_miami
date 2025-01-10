@@ -6,3 +6,11 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page__body--with-menu');
   }
 });
+
+const send = document.querySelector("#a-button");
+
+send.addEventListener("click", sendClick, false);
+
+function sendClick(event) {
+  event.preventDefault();
+}
