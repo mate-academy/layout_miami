@@ -1,0 +1,80 @@
+@use '../utils/mixins' as *;
+
+.picture{
+  @include grid;
+
+  &__item{
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+
+    @include for-desktop{
+      grid-column: span 6;
+      padding-top: 256px;
+    }
+
+    &--small{
+      @include for-desktop{
+      grid-column: span 4;
+      }
+    }
+
+    &--big{
+      @include for-desktop{
+        grid-column: span 8;
+        }
+    }
+  }
+
+  &__image{
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    &:hover{
+      transform: scaleY(1.2);
+      transition: 0.5s ease-in-out;
+    }
+  }
+
+  &__paragraph{
+      font-family: Poppins, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+
+      grid-column: span 2;
+
+      @include for-desktop{
+        grid-column: span 8;
+      }
+
+  }
+
+  &--title{
+      font-family: Poppins, sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+      letter-spacing: 0;
+
+      grid-column: span 2;
+
+      @include for-desktop{
+        grid-column: span 12;
+      }
+    }
+
+    &__button{
+      margin-top: 48px;
+      grid-column: span 2;
+
+      @include for-desktop{
+        grid-column: 5/9;
+      }
+    }
+}
