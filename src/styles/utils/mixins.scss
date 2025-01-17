@@ -1,0 +1,39 @@
+@mixin for-desktop-full-screen() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-ipad-screen() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin grid() {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include for-desktop-ipad-screen {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include for-desktop-full-screen {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+}
