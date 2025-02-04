@@ -1,65 +1,37 @@
 @import '../utils/mixins';
 
 .category {
-  grid-column: span 2;
-
-  @include grid;
+  display: flex;
+  flex-direction: column;
 
   padding: 0;
 
-  @include for-tablet {
-    grid-column: span 6;
-    padding: 0;
-  }
-
-  @include for-desktop {
-    grid-column: span 12;
-    padding: 0;
+  &__images {
+    display: flex;
+    justify-content: space-around;
   }
 
   &__image {
-    height: 130px;
-    grid-column: span 1;
+    height: 23vh;
     box-sizing: border-box;
     background-size: cover;
+    background-position: center;
     width: 100%;
 
-    @include for-tablet {
-      height: 184px;
-    }
-
-    @include for-desktop {
-      height: 324px;
-    }
-
     &--big {
-      @include for-tablet {
-        grid-column: span 4;
-      }
-
-      @include for-desktop {
-        grid-column: span 8;
-
+      width: 60vw;
         &:hover {
           transform: scale(1.05);
           transition-duration: 0.5s;
         }
-      }
     }
 
     &--small {
-      @include for-tablet {
-        grid-column: span 2;
-      }
-
-      @include for-desktop {
-        grid-column: span 4;
-
+      width: 30vw;
         &:hover {
           transform: scale(1.1, 1.05);
           transition-duration: 0.5s;
         }
-      }
     }
 
     &--1 {
@@ -88,8 +60,6 @@
   }
 
   &__name {
-    grid-column: span 2;
-
     font-family: $font-family;
     font-size: 16px;
     font-weight: 700;
@@ -99,15 +69,11 @@
     text-decoration-skip-ink: none;
 
     margin-top: 16px;
+    margin-left: 2vw;
     margin-bottom: 40px;
 
     @include for-tablet {
-      grid-column: span 6;
       margin-bottom: 64px;
-    }
-
-    @include for-desktop {
-      grid-column: span 12;
     }
   }
 }
