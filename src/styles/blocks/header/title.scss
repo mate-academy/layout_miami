@@ -1,0 +1,54 @@
+@use '../../mixins/media';
+@use '../../mixins/fonts';
+
+.header {
+  &__title {
+    grid-column: span 2;
+
+    align-self: end;
+
+    margin: 16px 0 40px;
+
+    @include fonts.title;
+
+    &::before {
+      content: '';
+      display: block;
+
+      width: 58px;
+      height: 48px;
+
+      margin-bottom: 16px;
+
+      background-image: url('/src/images/sound-waves.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    @include media.for-tablet {
+      grid-column: span 6;
+
+      margin: 40px 0 64px;
+
+      font-size: 40px;
+
+      &::before {
+        width: 76px;
+        height: 63px;
+
+        margin-bottom: 40px;
+      }
+    }
+
+    @include media.for-desktop {
+      grid-column: span 12;
+      margin: 32px 0 64px;
+
+      font-size: 48px;
+
+      &::before {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
