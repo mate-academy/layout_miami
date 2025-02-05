@@ -1,6 +1,91 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin for-tablet() {
+  @media (min-width: 744px) {
+    @content
   }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content
+  }
+}
+
+@mixin title-font() {
+  font-family: $font-family;
+  font-size: $font-size-mobile;
+  font-weight: 700;
+  line-height: $font-size-mobile;
+  letter-spacing: -1.5px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+ @include for-tablet {
+    font-size: $font-size-tablet;
+    line-height: $font-size-tablet;
+  }
+
+  @include for-desktop {
+    font-size: $font-size-desktop;
+    line-height: $font-size-desktop;
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    padding: 0 72px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 120px;
+  }
+}
+
+@mixin burger {
+  content: '';
+  background-size: cover;
+  height: 12px;
+  width: 18px;
+  filter: $brightness;
+}
+
+@mixin bigger-burger {
+  height: 16px;
+  width: 24px;
+}
+
+@mixin background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin icons-positioning {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin placeholder {
+  border: 1px solid;
+  padding: 13px 15px;
+}
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

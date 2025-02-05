@@ -1,0 +1,65 @@
+@import '../utils/mixins';
+
+.header {
+  @include background-image;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
+  background-image: url('../images/photos/header.jpg');
+
+  &__title {
+    font-family: $font-family;
+    font-size: $font-size-mobile;
+    font-style: italic;
+    font-weight: 800;
+    line-height: $font-size-mobile;
+    letter-spacing: -1.5px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    padding-bottom: 40px;
+    margin: 0 20px;
+
+    &::before {
+      @include background-image;
+
+      content: '';
+      width: 48px;
+      height: 58px;
+      background-image: url('../images/sound_waves.svg');
+      display: block;
+
+      margin-bottom: 16px;
+    }
+  }
+
+  @include for-tablet {
+    &__title {
+      font-size: $font-size-tablet;
+      line-height: $font-size-tablet;
+
+      padding-bottom: 64px;
+
+      &::before {
+        width: 63px;
+        height: 76px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  @include for-desktop {
+    &__title {
+      font-size: $font-size-desktop;
+      line-height: $font-size-desktop;
+    }
+
+    &::before {
+      margin-bottom: 32px;
+    }
+  }
+}

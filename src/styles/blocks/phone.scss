@@ -1,0 +1,48 @@
+.phone {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__image {
+    width: $phone-small;
+    height: $phone-small;
+    filter: $brightness;
+  }
+
+  &__label {
+    display: inline-block;
+    color: $black;
+
+    @media (max-width: 1259px) {
+      @include visually-hidden;
+    }
+  }
+
+  @include for-tablet {
+    &__image {
+      width: $phone-big;
+      height: $phone-big;
+    }
+  }
+
+  @include for-desktop {
+    &__label {
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-wrap: nowrap;
+      right: 30px;
+
+      position: absolute;
+    }
+  }
+
+  &:not(:hover) .phone__label {
+    @include visually-hidden;
+  }
+}

@@ -1,0 +1,63 @@
+@import '../utils/mixins';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  background-color: #E8EFF9;
+
+  padding: 0 20px;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    padding-top: 28px;
+
+    @include icons-positioning;
+
+    &--logo {
+      height: $logo-small;
+    }
+
+    &--exit {
+      height: $cross-small;
+      width: $cross-small;
+      filter: $brightness;
+    }
+  }
+
+  @include for-tablet {
+    &__navigation {
+      height: 96px;
+      padding-top: 36px;
+      align-items: flex-start;
+
+      &--logo {
+        height: $logo-big;
+      }
+
+      &--exit {
+        height: $cross-big;
+        width: $cross-big;
+      }
+    }
+  }
+}
+
+.page__body--with-menu {
+  overflow: hidden;
+}
