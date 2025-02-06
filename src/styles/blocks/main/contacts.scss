@@ -1,0 +1,135 @@
+@use '../../mixins/media';
+@use '../../mixins/fonts';
+@use '../../mixins/button';
+@use '../../utils/vars';
+@use '../../mixins/mixins';
+
+.contacts {
+  grid-column: 1 / -1;
+
+  &__title {
+    margin: calc(64px - media.$grid-phone-gap) 0 48px;
+
+    justify-self: center;
+    text-align: center;
+
+    @include fonts.title;
+  }
+
+  &__group {
+    grid-column: 1 / -1;
+
+    @include media.grid;
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+  }
+
+  &__address {
+    grid-column: 1 / -1;
+  }
+
+  @include media.for-tablet {
+    &__title {
+      font-size: 40px;
+    }
+
+    &__form {
+      grid-column: 1 / 4;
+    }
+
+    &__address {
+      grid-column: 4 / -1;
+    }
+  }
+
+  @include media.for-desktop {
+    &__title {
+      font-size: 48px;
+    }
+
+    &__form {
+      grid-column: 1 / 6;
+    }
+
+    &__address {
+      grid-column: 8 / -1;
+    }
+  }
+}
+
+.form {
+  &__label {
+    &:not(:focus, :active) {
+      @include mixins.visually-hidden;
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 48px;
+
+    padding: 14px 16px;
+
+    margin-top: 16px;
+
+    border-radius: 40px;
+    background-color: vars.$color-form-bg;
+    border: none;
+
+    &.touched:invalid {
+      border: 2px solid red;
+    }
+
+    &--name {
+      margin-top: 0;
+    }
+
+    &--textarea {
+      height: 148px;
+      border-radius: 16px;
+
+      &.touched:invalid {
+        border: 2px solid red;
+      }
+    }
+  }
+
+  &__button {
+    margin: 32px 0 calc(48px - media.$grid-phone-gap);
+    width: 100%;
+
+    @include button.button;
+  }
+}
+
+.address {
+  &__label {
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+
+    @include fonts.adress-content;
+  }
+
+  &__content {
+    @include fonts.adress-title;
+
+    text-decoration: none;
+
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      display: block;
+    }
+
+    &:hover {
+      color: vars.$color-text-hover;
+    }
+  }
+}
