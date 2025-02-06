@@ -5,103 +5,103 @@
 @use '../../utils/vars';
 
 .menu {
-   overflow: hidden;
-   overflow-y: auto;
-   position: fixed;
-   left: 0;
-   top: 0;
-   right: 0;
-   transform: translateX(-100%);
-   transition: transform 0.33s ease-in-out;
-   background-color: vars.$color-menu-bg;
-   grid-template-rows: 72px 1fr;
-   grid-column: span 2;
-   height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.33s ease-in-out;
+  background-color: vars.$color-menu-bg;
+  grid-template-rows: 72px 1fr;
+  grid-column: span 2;
+  height: 100vh;
 
-   @include media.grid;
+  @include media.grid;
 
-   &:target {
-      transform: translateX(0);
-   }
+  &:target {
+    transform: translateX(0);
+  }
 
-   &__nav {
-      @include mixins.common-nav;
+  &__nav {
+    @include mixins.common-nav;
 
-      &-icon {
-         width: 24px;
-         height: 24px;
+    &-icon {
+      width: 24px;
+      height: 24px;
 
-         display: inline-block;
-         background-size: cover;
-         background-position: center;
-         cursor: pointer;
+      display: inline-block;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
 
-         &--close {
-            background-image: url('/src/images/icons/close.svg');
-         }
+      &--close {
+        background-image: url('/src/images/icons/close.svg');
       }
-   }
+    }
+  }
 
-   &__group {
-      grid-column: 1 / -1;
+  &__group {
+    grid-column: 1 / -1;
 
-      &-list {
-         &-item {
-            width: max-content;
-            margin-top: 32px;
+    &-list {
+      &-item {
+        width: max-content;
+        margin-top: 32px;
 
-            &:first-child {
-               margin-top: calc(32px - media.$grid-phone-gap);
+        &:first-child {
+          margin-top: calc(32px - media.$grid-phone-gap);
 
-               @include media.for-tablet {
-                  margin-top: calc(32px - media.$grid-tablet-gap);
-               }
-            }
-         }
-
-         &-link {
-            text-decoration: none;
-            width: max-content;
-
-            @include fonts.menu-list;
-
-            &:hover {
-               border-bottom: 1px solid vars.$color-black;
-               padding-bottom: 8px;
-            }
-         }
-      }
-
-      &-phone {
-         margin-top: 40px;
-         margin-bottom: 16px;
-
-         @include fonts.menu-list-phone-number;
+          @include media.for-tablet {
+            margin-top: calc(32px - media.$grid-tablet-gap);
+          }
+        }
       }
 
       &-link {
-         text-decoration: none;
-         border-bottom: 1px solid vars.$color-black;
-         padding-bottom: 8px;
+        text-decoration: none;
+        width: max-content;
 
-         @include fonts.phone-button;
+        @include fonts.menu-list;
+
+        &:hover {
+          border-bottom: 1px solid vars.$color-black;
+          padding-bottom: 8px;
+        }
       }
-   }
+    }
 
-   @include media.for-tablet {
-      grid-template-rows: 96px 1fr;
+    &-phone {
+      margin-top: 40px;
+      margin-bottom: 16px;
+
+      @include fonts.menu-list-phone-number;
+    }
+
+    &-link {
+      text-decoration: none;
+      border-bottom: 1px solid vars.$color-black;
+      padding-bottom: 8px;
+
+      @include fonts.phone-button;
+    }
+  }
+
+  @include media.for-tablet {
+    grid-template-rows: 96px 1fr;
+    grid-column: span 6;
+
+    &__nav {
       grid-column: span 6;
+    }
+  }
 
-      &__nav {
-         grid-column: span 6;
-      }
-   }
+  @include media.for-desktop {
+    grid-column: span 12;
 
-   @include media.for-desktop {
+    &__nav {
       grid-column: span 12;
-
-      &__nav {
-         grid-column: span 12;
-      }
-   }
+    }
+  }
 }

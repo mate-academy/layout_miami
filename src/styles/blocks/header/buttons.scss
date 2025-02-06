@@ -6,73 +6,73 @@
 @use '../../utils/vars';
 
 .header {
-   &__nav {
+  &__nav {
+    &-group {
+      display: flex;
+      gap: 24px;
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+
+      &--phone {
+        position: relative;
+        display: inline;
+        background-image: url('/src/images/icons/phone-call.svg');
+        background-size: cover;
+
+        &:hover .header__nav-icon-text {
+          position: absolute;
+          transform: translateX(calc(-100% - 8px));
+          width: max-content;
+          white-space: nowrap;
+          top: 6px;
+
+          @include fonts.phone-button;
+        }
+
+        &:not(:hover) .header__nav-icon-text {
+          @include mixins.visually-hidden;
+        }
+      }
+
+      &--menu {
+        @include menu-button.menu-button(
+          '/src/images/icons/burger-menu.svg',
+          '/src/images/icons/burger-menu-hover.svg',
+          24px,
+          24px
+        );
+      }
+    }
+  }
+
+  @include media.for-tablet {
+    &__nav {
       &-group {
-         display: flex;
-         gap: 24px;
+        gap: 32px;
       }
 
       &-icon {
-         width: 24px;
-         height: 24px;
+        width: 32px;
+        height: 32px;
 
-         &--phone {
-            position: relative;
-            display: inline;
-            background-image: url('/src/images/icons/phone-call.svg');
-            background-size: cover;
+        &--phone {
+          &-text {
+            top: 12px;
+          }
+        }
 
-            &:hover .header__nav-icon-text {
-               position: absolute;
-               transform: translateX(calc(-100% - 8px));
-               width: max-content;
-               white-space: nowrap;
-               top: 6px;
-
-               @include fonts.phone-button;
-            }
-
-            &:not(:hover) .header__nav-icon-text {
-               @include mixins.visually-hidden;
-            }
-         }
-
-         &--menu {
-            @include menu-button.menu-button(
-               '/src/images/icons/burger-menu.svg',
-               '/src/images/icons/burger-menu-hover.svg',
-               24px,
-               24px
-            );
-         }
+        &--menu {
+          @include menu-button.menu-button(
+            '/src/images/icons/burger-menu.svg',
+            '/src/images/icons/burger-menu-hover.svg',
+            32px,
+            32px
+          );
+        }
       }
-   }
-
-   @include media.for-tablet {
-      &__nav {
-         &-group {
-            gap: 32px;
-         }
-
-         &-icon {
-            width: 32px;
-            height: 32px;
-
-            &--phone {
-               &-text {
-                  top: 12px;
-               }
-            }
-
-            &--menu {
-               @include menu-button.menu-button(
-                  '/src/images/icons/burger-menu.svg',
-                  '/src/images/icons/burger-menu-hover.svg',
-                  32px,
-                  32px
-               );
-            }
-         }
-      }
-   }
+    }
+  }
 }
