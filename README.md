@@ -1,7 +1,3 @@
-# dodac dla czytnikow menu open-close
-
-# w menu - nie dziala logo i HOME
-
 # 🎵 BOSE Landing Page
 
 **A modern, responsive landing page for BOSE audio equipment, built from a Figma design specification.** The implementation focuses on pixel-perfect recreation of the design with full responsiveness.
