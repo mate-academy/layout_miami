@@ -1,18 +1,63 @@
+@use '../utils/mixins' as *;
+
 .form {
-
-  &__item {
-
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   &__input {
+    border-radius: 40px;
+    background: #f8f8fa;
+    border: 0;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    padding-left: 16px;
+    box-sizing: border-box;
 
+    @include for-desktop {
+      border-radius: 40px;
+      background: #f8f8fa;
+      border: 3px;
+      width: 100%;
+      height: 56px;
+      line-height: 56px;
+      box-sizing: border-box;
+    }
+
+    &::placeholder {
+      font-family: Inter, serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7e7e83;
+    }
   }
 
   &__textarea {
+    border-radius: 40px;
+    background: #f8f8fa;
+    border: 0;
+    width: 100%;
+    line-height: 48px;
+    padding-left: 16px;
+    padding-top: 14px;
+    box-sizing: border-box;
 
+    &::placeholder {
+      font-family: Inter, serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7e7e83;
+    }
   }
 
   &__label {
-
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
   }
 }

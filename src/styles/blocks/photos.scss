@@ -1,24 +1,36 @@
+@use '../utils/mixins' as *;
+
 .photos {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr;
-  width: 100vh;
-  gap: 24px;
+  @include grid;
+
+  &__image {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    }
 
   &__item {
-    text-align: left;
-    object-fit: cover;
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
 
-    &__item--1 {
-      width: 100%;
-      height: 100%;
+    @include for-desktop {
+      grid-column: span 6;
+      padding-top: 324px;
     }
 
-    &__item--2 {
-      width: 100%;
-      height: 100%;
+    &--small {
+      @include for-desktop {
+      grid-column: span 4;
+      }
+    }
+
+    &--big {
+      @include for-desktop {
+      grid-column: span 8;
+      }
     }
   }
-
 }
