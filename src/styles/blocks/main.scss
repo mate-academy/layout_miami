@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .main {
   padding: 0 20px;
   font-family: Inter, sans-serif;
@@ -7,11 +9,34 @@
   letter-spacing: 0;
   color: #292929;
 
+  @include grid;
+
   &__title {
     margin-bottom: 32px;
+    grid-column: 1 / 3;
+
+    @include for-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 5;
+    }
 
     &--secondary {
       margin-bottom: 48px;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / 3;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 7 / 13;
     }
   }
 
@@ -26,5 +51,17 @@
 
   &__paragraphs {
     margin-bottom: 40px;
+  }
+
+  &__section {
+    grid-column: 1 / 3;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
   }
 }
