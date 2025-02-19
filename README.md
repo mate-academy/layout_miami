@@ -1,12 +1,31 @@
 # Miami landing page
 
-You have several designs that are very similar to Miami. Choose the most interesting for you. Don't be afraid of another markup. We developed landing pages that in coding will be almost the same as Miami. You still able to chose Miami. 
+This project is a replica of the Miami website layout, developed using HTML, CSS, and SCSS.
 
-- [the BOSE landing page](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?node-id=0%3A1)
-- [the MYBIKE landing page](https://www.figma.com/file/Ic3SlZjkATYaS7uTifZAIk/BIKE?node-id=0%3A1)
-- [the MET landing page](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=0%3A1)  
-- [the Miami landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
+## Technologies Used
 
-Implement selected landing page following the lesson videos.
+- HTML
+- CSS
+- SCSS
 
---> [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md)
+## Links
+
+- [Project repository on GitHub](https://github.com/Pamcik/layout_miami/tree/develop)
+- [Layout design in Figma](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6703-108&t=iilnDgmOM21hB3Gf-0)
+
+## How to Run the Project Locally
+
+1. Clone the repository:
+   `git clone https://github.com/Pamcik/layout_miami.git`
+
+2. Navigate into the project directory:
+   `cd layout_miami`
+
+3. Install dependencies:
+   `npm install` (if applicable)
+
+4. Start the development server:
+   `npm start` (if applicable)
+
+5. Open the site in your browser at: `http://localhost:3000` (or as configured)
+
