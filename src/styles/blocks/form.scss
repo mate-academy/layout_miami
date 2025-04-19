@@ -1,4 +1,68 @@
-.form {
-  height: 1px; // zeby sie system odwalil
+@mixin visually-hidden {
+  position: absolute;
 
+  clip: rect(0 0 0 0);
+
+  clip-path: inset(50%);
+
+  overflow: hidden;
+
+  height: 1px;
+
+  width: 1px;
+
+  white-space: nowrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    width: 100%;
+    padding-left: 11px;
+    border: none;
+    box-sizing: border-box;
+
+    background-color: #F8F8FA;
+
+    line-height: 48px;
+
+    &::placeholder {
+      font-family: Cinzel, serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7E7E83;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding-top: 14px;
+    padding-left: 11px;
+    border: none;
+    box-sizing: border-box;
+
+    background-color: #F8F8FA;
+
+    line-height: 144px;
+
+    &::placeholder {
+      font-family: Cinzel, serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7E7E83;
+    }
+  }
+
+  &__label {
+    &:not(:where(:focus, :active)) {
+      @include visually-hidden;
+    }
+  }
 }
