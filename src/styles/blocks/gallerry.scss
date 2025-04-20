@@ -2,41 +2,32 @@
 
 // Mapa zdjęć: mobile, tablet, desktop
 $gallery-images: (
-  1: (
-    mobile: '../images/photos/gallery1.jpg',
-    tablet: '../images/photos/gallery744-1.jpg',
-    desktop: '../images/photos/gallery1desktop.jpg',
-  ),
-  2: (
-    mobile: '../images/photos/gallery2.jpg',
-    tablet: '../images/photos/gallery744-2.jpg',
-    desktop: '../images/photos/gallery2desktop.jpg',
-  ),
-  3: (
-    mobile: '../images/photos/gallery3.jpg',
-    tablet: '../images/photos/gallery744-3.jpg',
-    desktop: '../images/photos/gallery3desktop.jpg',
-  ),
-  4: (
-    mobile: '../images/photos/gallery4.jpg',
-    tablet: '../images/photos/gallery744-4.jpg',
-    desktop: '../images/photos/gallery4desktop.jpg',
-  ),
-  5: (
-    mobile: '../images/photos/gallery5.jpg',
-    tablet: '../images/photos/gallery744-5.jpg',
-    desktop: '../images/photos/gallery5desktop.jpg',
-  ),
-  6: (
-    mobile: '../images/photos/gallery6.jpg',
-    tablet: '../images/photos/gallery744-6.jpg',
-    desktop: '../images/photos/gallery6desktop.jpg',
-  ),
+  1: ( mobile: '../images/photos/gallery1.jpg', tablet: '../images/photos/gallery744-1.jpg', desktop: '../images/photos/gallery1desktop.jpg' ),
+  2: ( mobile: '../images/photos/gallery2.jpg', tablet: '../images/photos/gallery744-2.jpg', desktop: '../images/photos/gallery2desktop.jpg' ),
+  3: ( mobile: '../images/photos/gallery3.jpg', tablet: '../images/photos/gallery744-3.jpg', desktop: '../images/photos/gallery3desktop.jpg' ),
+  4: ( mobile: '../images/photos/gallery4.jpg', tablet: '../images/photos/gallery744-4.jpg', desktop: '../images/photos/gallery4desktop.jpg' ),
+  5: ( mobile: '../images/photos/gallery5.jpg', tablet: '../images/photos/gallery744-5.jpg', desktop: '../images/photos/gallery5desktop.jpg' ),
+  6: ( mobile: '../images/photos/gallery6.jpg', tablet: '../images/photos/gallery744-6.jpg', desktop: '../images/photos/gallery6desktop.jpg' ),
 );
 
 // Główna galeria
 .gallerry {
-  @include grid;
+  // Mobile: 2 kolumny równej szerokości
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @include for-tablet {
+    // Tablet: 6 kolumn
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    // Desktop: 12 kolumn
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
 
   &__image {
     display: block;
@@ -54,34 +45,24 @@ $gallery-images: (
       height: 324px;
     }
 
+    // Duże kafelki
     &--big {
+      // Mobile: zajmuje połowę szerokości
       grid-column: span 1;
-
-      @include for-tablet {
-        grid-column: span 4;
-      }
-
-      @include for-desktop {
-        grid-column: span 8;
-      }
+      @include for-tablet { grid-column: span 4; }
+      @include for-desktop { grid-column: span 8; }
     }
 
+    // Małe kafelki
     &--small {
       grid-column: span 1;
-
-      @include for-tablet {
-        grid-column: span 2;
-      }
-
-      @include for-desktop {
-        grid-column: span 4;
-      }
+      @include for-tablet { grid-column: span 2; }
+      @include for-desktop { grid-column: span 4; }
     }
   }
 
   &__title {
     grid-column: 1 / 3;
-
     font-family: 'Space Grotesk', sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -99,17 +80,11 @@ $gallery-images: (
   }
 }
 
-// Przypisywanie tła na podstawie rozmiaru
+// Przypisanie tła według rozdzielczości
 @each $index, $images in $gallery-images {
   .gallerry__image--#{$index} {
     background-image: url('#{map-get($images, mobile)}');
-
-    @include for-tablet {
-      background-image: url('#{map-get($images, tablet)}');
-    }
-
-    @include for-desktop {
-      background-image: url('#{map-get($images, desktop)}');
-    }
+    @include for-tablet { background-image: url('#{map-get($images, tablet)}'); }
+    @include for-desktop { background-image: url('#{map-get($images, desktop)}'); }
   }
 }

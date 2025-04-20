@@ -1,3 +1,5 @@
+@use 'utils/vars' as vars;
+
 // ---------------------------
 // BREAKPOINTY
 // ---------------------------
@@ -26,34 +28,20 @@
 
 @mixin grid {
   display: grid;
-  grid-template-columns: repeat(2, 130px);
+  grid-template-columns: 1fr;
   gap: 20px;
-  justify-content: center;
 
   @include for-tablet {
-    display: grid;
-    grid-template-columns: repeat(6, 80px);
+    grid-template-columns: repeat(6, 1fr);
     gap: 24px;
 
-    box-sizing: border-box;
-    width: 100%;
-    padding-inline: 72px;
   }
 
   @include for-desktop {
-    display: grid;
-    grid-template-columns: repeat(12, 63px);
+    grid-template-columns: repeat(12, 1fr);
     gap: 24px;
     padding-inline: 0;
   }
-}
-
-// ---------------------------
-// HELPER: Kolumna z zakresem
-// ---------------------------
-
-@mixin col-span($start, $span) {
-  grid-column: $start / span $span;
 }
 
 // ---------------------------
@@ -62,14 +50,10 @@
 
 @mixin visually-hiden {
   position: absolute;
-
   overflow: hidden;
-
   width: 1px;
   height: 1px;
-
   white-space: nowrap;
-
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
 }

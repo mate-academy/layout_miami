@@ -1,53 +1,71 @@
 @use '../mixins' as *;
+@use '../utils/vars' as vars;
 
 .header {
   @include grid;
-
   grid-template-rows: 1fr 1fr;
-
   min-height: 100vh;
-  padding: 0 0 40px;
+  width: 100%;
+  padding: 0 20px;
 
   background-color: #000;
   background-image: url('../images/photos/header-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-
-  &__navigation {
-    grid-column: 1 / -1;
-    align-self: start;
-
-    @include for-tablet {
-      // Możesz dodać grid-column tutaj w razie potrzeby
-    }
-
-    @include for-desktop {
-      grid-column: 1 / 13;
-    }
-  }
-
-  &__title {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-    align-self: end;
-
-    @include for-tablet {
-      grid-column: 1 / 7;
-    }
-
-    @include for-desktop {
-      grid-column: 1 / 13;
-    }
-  }
+  background-position: center;
 
   @include for-tablet {
+    padding: 0 72px;
     background-image: url('../images/photos/header-744.jpg');
   }
 
   @include for-desktop {
-    padding: 0;
+    padding: 0 120px;
     background-image: url('../images/photos/header-1260.jpg');
-    background-position: center center;
-    background-size: cover;
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
+    align-self: start;
+    padding: 0;
+  }
+
+  &__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    color: #292929;
+
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    align-self: end;
+    margin-bottom: 24px;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+      font-size: 48px;
+      margin-bottom: 65px;
+    }
+
+    @include for-desktop {
+      display: none;
+    }
+  }
+
+  &__title--desktop {
+    display: none;
+
+    @include for-desktop {
+      display: grid;
+      grid-column: 1 / 13;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 92px;
+      color: #292929;
+      align-items: end;
+    }
   }
 }

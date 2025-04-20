@@ -1,22 +1,19 @@
 @use '../mixins' as *;
+@use '../utils/vars' as vars;
 
 .navigation {
   display: flex;
-  grid-column: 1 / -1;
   align-items: center;
   justify-content: space-between;
-
   padding-top: 28px;
 
   @include for-tablet {
-    @include grid;
-
     padding-top: 28px;
   }
 
   &__logo {
     display: flex;
-    align-items: center;
+    padding-top: 1px;
 
     @include for-tablet {
       grid-column: 1 / 2;
@@ -27,20 +24,43 @@
     }
   }
 
+  &__logo--img {
+    margin-top: 1px;
+    width: 125px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+
+    @include for-tablet {
+      width: 272px;
+      height: auto;
+      margin-left: -40px;
+    }
+  }
+
   &__phone {
     display: flex;
     align-items: center;
     margin-left: auto;
+    margin-right: 20px;
 
     @include for-tablet {
-      grid-column: 5 / 6;
-      margin-left: 0;
+      margin-right: 24px;
     }
 
     @include for-desktop {
-      grid-column: 11 / 12;
-      width: 32px;
-      height: 32px;
+      margin-right: 32px;
+    }
+  }
+
+  &__phone--img {
+    width: 18px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+
+    @include for-tablet {
+      width: 24px;
     }
   }
 
@@ -49,10 +69,16 @@
     align-items: center;
     justify-content: flex-end;
     margin-left: 12px;
+    width: 18px;
+    height: 12px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
 
     @include for-tablet {
-      grid-column: 6 / 7;
+      display: grid;
+      grid-column: 7 / 7;
       margin-left: 0;
+      justify-self: start;
     }
 
     @include for-desktop {
