@@ -49,20 +49,25 @@ $gallery-images: (
     &--big {
       // Mobile: zajmuje połowę szerokości
       grid-column: span 1;
+
       @include for-tablet { grid-column: span 4; }
+
       @include for-desktop { grid-column: span 8; }
     }
 
     // Małe kafelki
     &--small {
       grid-column: span 1;
+
       @include for-tablet { grid-column: span 2; }
+
       @include for-desktop { grid-column: span 4; }
     }
   }
 
   &__title {
     grid-column: 1 / 3;
+
     font-family: 'Space Grotesk', sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -84,7 +89,9 @@ $gallery-images: (
 @each $index, $images in $gallery-images {
   .gallerry__image--#{$index} {
     background-image: url('#{map-get($images, mobile)}');
+
     @include for-tablet { background-image: url('#{map-get($images, tablet)}'); }
+
     @include for-desktop { background-image: url('#{map-get($images, desktop)}'); }
   }
 }
