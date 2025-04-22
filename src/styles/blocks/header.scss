@@ -1,0 +1,58 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/typography' as *;
+@use '../utils/colors' as *;
+
+.header {
+  background-color: $color-black-hero;
+  background-image: url(images/photos/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 85% 50%;
+  min-height: 100vh;
+  padding-bottom: 88px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  grid-template-rows: 1fr 1fr;
+
+  &__navigation {
+    grid-column: span 3;
+    grid-row: 1 / 2;
+    align-self: start;
+
+    @include for-tablet {
+      grid-column: span 7;
+      grid-row: 1/2;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__title {
+    grid-column: span 3;
+    grid-row: 2/3;
+    align-self: end;
+
+    @include for-tablet {
+      grid-column: span 7;
+      grid-row: 2/3;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  @include grid;
+
+  @include for-tablet {
+    padding: 0 72px 130px;
+    background-position: center;
+  }
+
+  @include for-desktop {
+    padding: 0 120px 203px;
+  }
+}
