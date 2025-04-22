@@ -16,7 +16,6 @@ The website was designed to adapt to various screen sizes:
 
 - **HTML5** – page structure
 - **CSS / SCSS** – styling and responsiveness
-- **JavaScript** – UI functionality
 - **npm** – dependency management and project launch
 
 ## 🚀 Getting Started
