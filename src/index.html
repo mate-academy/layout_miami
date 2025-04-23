@@ -24,6 +24,8 @@
       src="scripts/main.js"
       defer
     ></script>
+    <link rel="shortcut icon" href="./images/favicon.png"
+    type="image/x-icon">
   </head>
 
   <body>
@@ -41,7 +43,9 @@
             />
           </a>
         </div>
+
         <div class="navigation__phone">
+          <span class="navigation__phone-number">+1 234 555-55-55</span>
           <a href="tel:+123455555555">
             <img
               src="images/phone.svg"
@@ -50,6 +54,7 @@
             />
           </a>
         </div>
+
         <div class="navigation__burger">
           <a
             class="burger navigation__item"
@@ -269,77 +274,95 @@
       <section class="contact">
         <div class="contact__container">
           <!-- Formularz -->
-          <form class="contact__form form">
+          <form class="contact__form form" novalidate>
             <h4 class="title form__title">Contact us</h4>
 
             <div class="form__group">
-              <label
-                for="form__name"
-                class="form__label"
-              ></label>
+              <label for="form__name" class="form__label">Name</label>
               <input
                 type="text"
                 id="form__name"
                 name="name"
                 class="form__input"
                 placeholder="Name"
+                required
               />
             </div>
 
             <div class="form__group">
-              <label
-                for="form__email"
-                class="form__label"
-              ></label>
+              <label for="form__email" class="form__label">Email</label>
               <input
                 type="email"
                 id="form__email"
                 name="email"
                 class="form__input"
                 placeholder="Email"
+                required
               />
             </div>
 
             <div class="form__group">
-              <label
-                for="form__message"
-                class="form__label"
-              ></label>
+              <label for="form__message" class="form__label">Message</label>
               <textarea
                 id="form__message"
                 name="message"
                 class="form__textarea"
                 placeholder="Message"
+                required
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              class="form__button"
-            >
-              Send
-            </button>
+            <button type="submit" class="form__button">Send</button>
           </form>
 
-          <!-- Dane kontaktowe -->
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const form = document.querySelector('.form');
+
+              form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                if (form.checkValidity()) {
+
+                  alert('Formularz poprawnie wypełniony!');
+                } else {
+                  form.reportValidity();
+                }
+              });
+            });
+          </script>
+
           <div class="contact__info">
             <p class="contact__item">Phone</p>
-            <p class="contact__content">+1 234 5555-55-55</p>
+            <p class="contact__content"><a href="tel:+123455555555">+1 234 5555-55-55</a></p>
 
             <p class="contact__item">Email</p>
             <p class="contact__content">hello@nothing.com</p>
 
             <p class="contact__item">Address</p>
             <p class="contact__content">
-              400 first ave.
-              <br />
-              suite 700
-              <br />
-              Minneapolis, MN 55401
+              <a href="https://www.google.com/maps/search/?api=1&query=400+first+ave.+suite+700+Minneapolis%2C+MN+55401"
+              target="_blank" rel="noopener noreferrer">
+                400 first ave.
+                <br />
+                suite 700
+                <br />
+                Minneapolis, MN 55401
+              </a>
             </p>
           </div>
+
+        </div>
         </div>
       </section>
     </main>
+    <script>
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#menu') {
+          document.body.classList.add('page__body--with-menu');
+        } else {
+          document.body.classList.remove('page__body--with-menu');
+        }
+      });
+    </script>
   </body>
 </html>
