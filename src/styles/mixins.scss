@@ -1,0 +1,68 @@
+@use 'utils/vars' as vars;
+
+// ---------------------------
+// BREAKPOINTY
+// ---------------------------
+
+@mixin for-mobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin for-mobile-only {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+// ---------------------------
+// GRID – RESPONSYWNY
+// ---------------------------
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    padding-inline: 0;
+  }
+}
+
+// ---------------------------
+// HELPER: Wizualne ukrycie
+// ---------------------------
+
+@mixin visually-hiden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
