@@ -1,0 +1,98 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/typography' as *;
+@use '../utils/colors' as *;
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform $animation-speed ease-in-out;
+  background-color: $color-main;
+  height: 100vh;
+  padding: 0 20px;
+  min-height: 100vh;
+  overflow-y: auto;
+
+  @include grid;
+
+  align-items: start;
+  grid-template-rows: auto auto 1fr;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include for-tablet {
+    padding: 0 72px;
+  }
+
+  @include for-desktop {
+    padding: 0 120px;
+  }
+
+  &__navigation {
+    grid-column: span 2;
+    grid-row: 1/2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    margin-bottom: 32px;
+    grid-column: span 2;
+    grid-row: 2/3;
+
+    @include for-tablet {
+      grid-column: span 6;
+      margin-bottom: 40px;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+    grid-row: 3 / 4;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraf {
+    @include font-poppins(600, 16px, 27px, 0, $color-main-menu);
+
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    @include font-poppins(600, 16px, 16px, 2px, $color-main-menu);
+
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    align-self: self-start;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-bottom: 1px solid $color-main-menu;
+    }
+  }
+}

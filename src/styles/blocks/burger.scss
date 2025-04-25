@@ -1,0 +1,49 @@
+@use '../utils/mixins.scss' as *;
+
+.burger {
+  &::before {
+    content: '';
+    display: block;
+    background-image: url(images/burger.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: none;
+    background-image: url(images/burger_open.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}

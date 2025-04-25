@@ -1,0 +1,66 @@
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/colors' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+
+  &__input {
+    border-radius: 40px;
+    border: 0;
+    padding: 14px 0 14px 16px;
+    width: 100%;
+    outline: none;
+
+    @include font-poppins(400, 14px, 20px, 0, $color-input);
+
+    &::placeholder {
+      @include font-poppins(400, 14px, 20px, 0, $color-placeholder);
+    }
+  }
+
+  &__textarea {
+    border-radius: 16px;
+    border: 0;
+    display: block;
+    min-height: 148px;
+    max-height: 300px;
+    padding: 14px 16px;
+    resize: vertical;
+    width: 100%;
+
+    @include font-poppins(400, 14px, 20px, 0, $color-input);
+
+    outline: none;
+
+    &::placeholder {
+      @include font-poppins(400, 14px, 20px, 0, $color-placeholder);
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+    width: 280px;
+
+    @include for-tablet {
+      width: 100%;
+    }
+  }
+
+  @include for-tablet {
+    width: 288px;
+  }
+
+  @include for-desktop {
+    width: 411px;
+  }
+}
