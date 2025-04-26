@@ -1,5 +1,6 @@
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
+
   &:hover {
     #{$_property}: $_toValue;
   }
@@ -8,5 +9,21 @@
 @mixin for-desktop() {
   @media (min-width: 1020px) {
     @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+  min-height: 100vh;
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
   }
 }
