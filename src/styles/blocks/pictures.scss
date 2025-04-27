@@ -1,21 +1,62 @@
+@use '../utils/mixins' as *;
+
 .pictures {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
 
-  &--wide {
+  &--two {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  &--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+
+    &--two,
+    &--three {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
   &__item {
-    aspect-ratio: 1 / 1;
+    position: relative;
     width: 100%;
+    padding-top: 100%;
 
+    @include for-desktop {
+      grid-column: span 6;
+      padding-top: 320px;
 
+      &--big {
+        grid-column: span 8;
+      }
+
+      &--small {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &--three &__item {
+    @include for-desktop {
+      grid-column: span 4;
+      padding-top: 100%;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-
-    object-position: center;
-    display: block;
   }
 }
+
