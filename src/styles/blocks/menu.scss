@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .menu {
   position: fixed;
   top: 0;
@@ -5,8 +7,9 @@
   right: 0;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
+
+  @include grid;
+
   min-height: 100vh;
   padding: 0 20px;
 
@@ -17,8 +20,22 @@
     transform: translateX(0);
   }
 
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
   &__paragraph {
     padding-bottom: 8px;
+
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
 
     font-family: Cinzel, serif;
     font-size: 16px;
@@ -34,6 +51,11 @@
 
   &__links {
     margin-bottom: 8px;
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__link {
