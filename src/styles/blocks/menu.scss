@@ -6,19 +6,29 @@
   top: 0;
   right: 0;
   left: 0;
+
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
-
-  @include grid;
-
-  min-height: 100vh;
-  padding: 0 20px;
 
   background-color: $color-red;
   color: $color-white;
 
+  padding: 0 20px;
+
+  @include grid;
+  @include scrollable-viewport;
+
   &:target {
     transform: translateX(0);
+  }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
   }
 
   &__navigation {
@@ -31,25 +41,29 @@
 
   &__paragraph {
     grid-column: span 2;
-    padding-bottom: 8px;
     margin-bottom: 16px;
-
-    @include for-desktop {
-      grid-column: span 12;
-    }
+    padding-bottom: 8px;
 
     font-family: $font-family;
     font-size: 16px;
     font-weight: 700;
     line-height: 27px;
+    letter-spacing: 0;
     text-transform: uppercase;
     vertical-align: middle;
-    letter-spacing: 0;
     color: $color-white;
 
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
     a {
+      color: $color-white;
       text-decoration: none;
-      color: inherit;
+    }
+
+    &--primary a {
+      @include hover(color, $color-black);
     }
   }
 
@@ -69,17 +83,16 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 16px;
+    letter-spacing: 2;
     text-transform: uppercase;
     vertical-align: middle;
-    letter-spacing: 2;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
 
     color: $color-white;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
 
     &:hover {
       border-bottom: 1px solid $color-white;
     }
   }
 }
-

@@ -1,4 +1,3 @@
-
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
 
@@ -15,10 +14,13 @@
 
 @mixin grid {
   display: grid;
-
-  grid-template-columns: repeat(2, 130px);
-  gap: 20px;
   justify-content: center;
+
+  padding-right: 5vw;
+  padding-left: 5vw;
+
+  gap: 5vw;
+  grid-template-columns: repeat(2, 45%);
   min-height: 100vh;
 
   @include for-desktop {
@@ -32,12 +34,25 @@
 
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-
   overflow: hidden;
+
   width: 1px;
   height: 1px;
-
   white-space: nowrap;
 }
 
+@mixin for-mobile {
+  @media (max-width: 629px) {
+    @content;
+  }
+}
 
+@mixin scrollable-viewport($max-height: 100vh) {
+  max-height: $max-height;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include for-mobile {
+    overscroll-behavior: contain;
+  }
+}
