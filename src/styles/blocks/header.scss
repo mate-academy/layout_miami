@@ -1,12 +1,36 @@
 .header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0 21px 88px;
-  background-image: url(../images/photos/cover.png);
+  background-image: url(./cover_mobile.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
+  background-position: right top;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0 21px 88px;
+  grid-template-rows: 1fr 1fr;
+
+  @include grid();
+
+  @include for-tablet() {
+    background-position: center;
+  }
+
+  @include for-desktop() {
+    background-image: url(./cover_desktop.png);
+    background-position: center;
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    align-self: start;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    align-self: end;
+  }
+
 }
+
