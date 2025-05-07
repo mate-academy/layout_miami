@@ -1,7 +1,30 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-  padding-top: 25px;
+  padding-top: 24px;
+
+  @include for-tablet {
+    padding-top: 36px;
+  }
+
+  @include for-desktop {
+    padding-top: 36px;
+  }
+
+  &__logo-image {
+    width: 130px;
+    height: 38px;
+
+    @include for-tablet {
+      width: 187px;
+      height: 56px;
+    }
+
+    @include for-desktop {
+      width: 187px;
+      height: 56px;
+    }
+  }
 
   &__item {
     display: flex;
@@ -9,8 +32,124 @@
     align-items: center;
     width: 72px;
 
-    &-phone--hidden {
-      opacity: 0;
+    &-phone {
+
+      &-label {
+          font-family: Poppins, Arial, Helvetica, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          color: white;
+          text-align: right;
+          vertical-align: middle;
+          text-transform: uppercase;
+
+          position: absolute;
+          transform: translateX(-110%);
+
+
+      }
+
+      &:not(:hover) &-label {
+        @include visualy-hidden;
+      }
+
+      &--hidden {
+        opacity: 0;
+      }
+
+      &-image {
+        width: 18px;
+        height: 18px;
+
+        @include for-tablet {
+          width: 24px;
+          height: 24px;
+        }
+
+        @include for-desktop {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    &-burger {
+      &::before {
+        content: '';
+        display: inline-block;
+        background-image: url(./burger.svg);
+        background-size: cover;
+        width: 18px;
+        height: 12px;
+
+        @include for-tablet {
+          width: 24px;
+          height: 16px;
+        }
+
+        @include for-desktop {
+          width: 24px;
+          height: 16px;
+        }
+      }
+
+      &::after {
+        display: none;
+        content: '';
+        background-image: url(./burger_hover.svg);
+        background-size: cover;
+        width: 18px;
+        height: 12px;
+
+        @include for-tablet {
+          width: 24px;
+          height: 16px;
+        }
+
+        @include for-desktop {
+          width: 24px;
+          height: 16px;
+        }
+      }
+
+      &:hover {
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: inline-block;
+        }
+      }
+
+
+
+      &-label {
+        @include visualy-hidden;
+      }
+    }
+
+
+    &-close {
+      align-items: center;
+
+      &-image {
+        width: 16px;
+        height: 16px;
+
+        @include for-tablet {
+        width: 21px;
+        height: 21px;
+      }
+
+        @include for-desktop {
+        width: 21px;
+        height: 21px;
+      }
+      }
+
     }
   }
 
