@@ -23,7 +23,7 @@
       defer
     ></script>
   </head>
-  <body>
+  <body class="page__body">
     <header class="header" id="home">
       <nav class="navigation header__navigation">
         <a class="navigation__logo" href="#home">
@@ -208,14 +208,20 @@
           Contact us
         </h3>
         <div class="contact">
-          <form class="form contact__form">
+          <form
+            class="form contact__form"
+            action="http://localhost:8080"
+            method="post"
+            name="form">
+
             <div class="form__item">
               <label for="name" class="form__label">Name</label>
               <input
                 type="text"
                 placeholder="Name"
                 class="form__input"
-                id="name">
+                id="name"
+                required>
             </div>
             <div class="form__item">
               <label for="email" class="form__label">Email</label>
@@ -223,16 +229,27 @@
               type="email"
               placeholder="Email"
               class="form__input"
-              id="email">
+              id="email"
+              required>
+
             </div>
             <div class="form__item">
               <label for="message" class="form__label">Message</label>
               <textarea
-              placeholder="Message"
-              class="form__textarea"
-              id="message"></textarea>
+                class="form__textarea"
+                id="message"
+                placeholder="Message"
+                required></textarea>
             </div>
-            <button class="button__item form__button">Send</button>
+            <button
+              type="submit"
+              class="button__item form__button"
+              id="button">Send</button>
+            <script>
+              document.getElementById("button").addEventListener("click", function(event){
+                event.preventDefault()
+              });
+            </script>
           </form>
           <address class="address contact__address">
             <h4 class="address__label">Phone</h4>
