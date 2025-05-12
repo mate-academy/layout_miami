@@ -1,3 +1,5 @@
+@use '../utils/mixins' as *;
+
 .online {
   display: grid;
   grid-template-columns: repeat(12, 63px);
@@ -7,19 +9,24 @@
     display: contents;
   }
 
-  @media (max-width: 744px) {
+  @include for-tablet {
     grid-template-columns: repeat(6, 80px);
   }
 
-  @media (max-width: 320px) {
+  @include for-mobile {
     grid-template-columns: repeat(2, 124px);
   }
 
   &__title {
     padding-top: 140px;
     padding-bottom: 48px;
-    @media (max-width: 744px) {
+
+    @include for-tablet {
       grid-column: span 7;
+    }
+
+    @include for-mobile {
+      grid-column: span 2;
     }
   }
 }
