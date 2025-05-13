@@ -1,0 +1,98 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  @include grid;
+
+  box-sizing: border-box;
+  z-index: 1000;
+  position: fixed;
+  inset: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  padding: 0 20px;
+  min-height: 100vh;
+  align-content: start;
+  background-color: #c2c2c2;
+  overflow: auto;
+
+  @include for-desktop-ipad-screen {
+    padding: 0 10%;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-desktop-ipad-screen {
+      grid-column: span 6;
+    }
+
+    @include for-desktop-full-screen {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    text-align: left;
+    grid-column: span 2;
+    align-self: start;
+
+    @include for-desktop-ipad-screen {
+      grid-column: span 6;
+    }
+
+    @include for-desktop-full-screen {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    font-family: Poppins, serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: left;
+    color: #1d1d1d;
+    grid-column: span 2;
+
+    @include for-desktop-ipad-screen {
+      grid-column: span 6;
+    }
+
+    @include for-desktop-full-screen {
+      grid-column: span 12;
+    }
+  }
+
+  &__book {
+    display: inline;
+    position: relative;
+    font-family: Poppins, serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #1d1d1d;
+    text-decoration: 1px solid transparent;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    grid-column: span 2;
+
+    @include for-desktop-ipad-screen {
+      grid-column: span 6;
+    }
+
+    @include for-desktop-full-screen {
+      grid-column: span 12;
+    }
+
+    &:hover {
+      text-decoration: underline 1px solid #1d1d1d;
+    }
+  }
+}
