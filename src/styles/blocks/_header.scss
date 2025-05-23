@@ -2,22 +2,42 @@
 
 .header {
   min-height: 100vh;
-  background-image: url(/Images/header-bg.jpg);
+  background-image: url(/Images/header-bg-mobile.jpg);
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
   padding-top: 80px;
 
+  grid-template-rows: 1fr 1fr;
+
   @include grid;
 
-  grid-template-rows: 1fr 1fr;
+  @include for-tablet {
+    background-image: url('/Images/header-bg-tablet.jpg');
+  }
+
+  @include for-desktop {
+    background-image: url('/Images/header-bg-desktop.jpg');
+  }
 
   &__navigation {
     position: fixed;
     top: 0;
-    z-index: 500; // WAŻNE: mniejsze niż menu!
-    left: 20px;
-    right: 20px;
+    z-index: 500;
+
+    left: 5.3%;
+    right: 5.3%;
+
+    @include for-tablet {
+      left: 9.6%;
+      right: 9.6%;
+    }
+
+    @include for-desktop {
+      left: 9.5%;
+      right: 9.5%;
+      top: 36px;
+    }
   }
 
   &__title {
@@ -25,5 +45,9 @@
     align-self: end;
     grid-column: 1 / 3;
     grid-row: 2 / 3;
+
+    @include for-tablet {
+      grid-column: 1 /7;
+    }
   }
 }
