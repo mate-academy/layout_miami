@@ -1,12 +1,5 @@
-@mixin visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
 
 .form {
   padding: 48px 0 0;
@@ -24,20 +17,19 @@
     margin-bottom: 16px;
     border-radius: 8px;
     border: none;
-    background-color: #F9F9F9;
+    background-color: $input-bg;
 
     &::placeholder{
-      font-family: Manrope, Arial, Helvetica, sans-serif;
+      @include font (14px, 140%, $input-text);
+
       font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
       letter-spacing: 0.15px;
     }
   }
 
   &__textarea{
     padding: 14px 16px;
-    background-color: #F9F9F9;
+    background-color: $input-bg;
     width: 100%;
     box-sizing: border-box;
     height: 120px;
@@ -46,10 +38,9 @@
     border: none;
 
     &::placeholder{
-      font-family: Manrope, Arial, Helvetica, sans-serif;
+      @include font (14px, 140%, $input-text);
+
       font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
       letter-spacing: 0.15px;
     }
   }
