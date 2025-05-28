@@ -1,6 +1,83 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
+@mixin for-tablet() {
+  @media (min-width: 744px) {
+    @content;
   }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  gap: 20px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 80px);
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
+}
+
+@mixin underline() {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 100%;
+    background-color: #1d1d1d;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@mixin main-title() {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+@mixin main-text() {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+@mixin h3-title() {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+  text-transform: capitalize;
 }

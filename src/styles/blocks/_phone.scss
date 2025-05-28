@@ -1,0 +1,38 @@
+@use '../utils/mixins' as *;
+
+.phone {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+
+  &__icon {
+    height: 18px;
+
+    @include for-tablet {
+      height: 24px;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: -160px; // zależnie od szerokości, by zmieścił się po lewej
+    white-space: nowrap;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover &__label {
+    @include for-desktop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

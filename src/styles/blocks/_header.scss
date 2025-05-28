@@ -1,0 +1,54 @@
+@use '../utils/mixins' as *;
+
+.header {
+  min-height: 100vh;
+  background-image: url(/Images/header-bg-mobile.jpg);
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+
+  grid-template-rows: 1fr 1fr;
+
+  @include grid;
+
+  @include for-tablet {
+    background-image: url('/Images/header-bg-tablet.jpg');
+  }
+
+  @include for-desktop {
+    background-image: url('/Images/header-bg-desktop.jpg');
+  }
+
+  &__navigation {
+    @include grid;
+
+    align-items: start;
+    grid-column: 1/3;
+    grid-row: 1/2;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__title {
+    margin: 0 0 88px;
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+
+    @include for-tablet {
+      grid-column: 1 /7;
+      padding: 0 0 130px;
+    }
+
+    @include for-desktop {
+      grid-column: 1/13;
+      padding: 0 0 203px;
+    }
+  }
+}

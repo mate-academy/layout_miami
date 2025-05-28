@@ -1,0 +1,50 @@
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #c2c2c2;
+  z-index: 1000;
+
+  transform: translate(-100%);
+  transition: transform 0.3s ease-in-out;
+  min-height: 100vh;
+  overflow-y: auto;
+
+  @include grid;
+
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    align-self: start;
+    margin-bottom: 24px;
+    grid-column: 1/3;
+
+    @include for-tablet {
+      grid-column: 1/7;
+      margin-bottom: 8px;
+    }
+
+    @include for-desktop {
+      margin-bottom: 24px;
+      grid-column: 1 / 13;
+    }
+  }
+  &__links {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+}
