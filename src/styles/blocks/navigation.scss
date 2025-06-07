@@ -1,11 +1,20 @@
-@use './container.scss' as *;
-@use './utils/vars' as *;
-@use './utils/mixins' as m;
+@use '../utils/vars' as *;
 
-.header {
-  @include m.full-fill-background(#{$header-height});
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  height: $header-height;
+  width: 100%;
+  background-color: $red;
 
-  grid-area: header;
+  &:target {
+    transform: translateX(0);
+  }
+
   display: grid;
   grid-template:
     'left top-bar right' auto
@@ -25,15 +34,13 @@
       minmax(20px, 1fr);
   }
 
-  background-image: url('../images/decor/header.png');
-
   &__top-bar {
     grid-area: top-bar;
     padding-top: 50px;
+    align-content: center;
   }
 
-  &__page-title {
+  &__nav {
     grid-area: page-title;
-    padding-top: 83px;
   }
 }
