@@ -2,26 +2,35 @@
 
 @mixin img-fill-full {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: top;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
 }
 
 @mixin gap {
-  > * {
-    margin-left: $grid-gap;
+  @media #{$media-desktop}, #{$media-tablet} {
+    gap: $grid-gap;
   }
 
-  :first-child {
-    margin-left: 0;
+  @media #{$media-mobile} {
+    gap: $mobile-gap;
   }
 }
 
-@mixin three-columns {
+@mixin three-columns($columns: 1fr 1fr 1fr) {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: $columns;
   grid-template-areas: 'left center right';
-  @include gap;
+  gap: $grid-gap;
 
   [class$='--left'] {
     grid-column: 1;
@@ -52,26 +61,26 @@
   [class*='__img--right'] {
     @include img-fill-full;
 
-    aspect-ratio: 1 / 1;
+    padding-bottom: 100%;
   }
 
   [class*='__img--left-double'],
   [class*='__img--right-double'] {
     @include img-fill-full;
 
-    aspect-ratio: 2 / 1;
+    padding-bottom: 50%;
   }
 
   [class*='__img--full'] {
     @include img-fill-full;
 
-    aspect-ratio: 3 / 1;
+    padding-bottom: calc(1 / 3);
   }
 }
 
-@mixin two-columns {
+@mixin two-columns($columns: 1fr 1fr) {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: $columns;
   grid-template-areas: 'left right';
   @include gap;
 
@@ -91,12 +100,12 @@
   [class*='__img--right'] {
     @include img-fill-full;
 
-    aspect-ratio: 1 / 1;
+    padding-bottom: 100%;
   }
 
   [class*='__img--full'] {
     @include img-fill-full;
 
-    aspect-ratio: 2 / 1;
+    padding-bottom: 50%;
   }
 }

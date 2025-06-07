@@ -1,5 +1,41 @@
+@use '../utils/vars' as *;
+
 .lead {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $grid-gap;
+
+  &__column {
+    @media #{$media-desktop} {
+      width: calc((100% - 2 * $grid-gap) / 3);
+    }
+
+    @media #{$media-tablet} {
+      width: 66%;
+    }
+
+    @media #{$media-mobile} {
+      width: 100%;
+    }
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+@media #{$media-tablet}, #{$media-mobile} {
+  .lead {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
