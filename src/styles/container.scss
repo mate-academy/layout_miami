@@ -1,0 +1,16 @@
+@use './utils/vars' as *;
+
+.container {
+  display: grid;
+  grid-template:
+    'header header header' #{$header-height}
+    'left content right' auto
+    'footer footer footer' #{$footer-height}
+    / minmax(72px, 1fr) minmax(0, #{$max-content-width}) minmax(72px, 1fr);
+
+  @media #{$media-mobile} {
+    grid-template-columns:
+      minmax($mobile-gap, 1fr) minmax(0, #{$max-content-width})
+      minmax($mobile-gap, 1fr);
+  }
+}

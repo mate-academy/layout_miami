@@ -1,0 +1,22 @@
+@use '../utils/vars' as *;
+@use '../utils/grids' as grid;
+
+.contact-us {
+  @media #{$media-desktop} {
+    @include grid.three-columns(3fr 4fr 5fr);
+  }
+
+  @media #{$media-tablet} {
+    @include grid.two-columns;
+
+    grid-template-rows: auto auto;
+
+    [class$='--center'] {
+      grid-column: 1;
+    }
+
+    [class$='--right'] {
+      grid-row: 1 / 3;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use './container.scss' as *;
+@use './utils/vars' as *;
+@use './utils/mixins' as m;
+
+.header {
+  @include m.full-fill-background(#{$header-height});
+
+  grid-area: header;
+  display: grid;
+  grid-template:
+    'left top-bar right' auto
+    'left page-title right' 1fr;
+
+  @media #{$media-desktop}, #{$media-tablet} {
+    grid-template-columns:
+      minmax(72px, 1fr)
+      minmax(0, #{$max-content-width})
+      minmax(72px, 1fr);
+  }
+
+  @media #{$media-mobile} {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(0, #{$max-content-width})
+      minmax(20px, 1fr);
+  }
+
+  background-image: url('../images/decor/header.png');
+
+  &__top-bar {
+    grid-area: top-bar;
+    padding-top: 50px;
+  }
+
+  &__page-title {
+    grid-area: page-title;
+    padding-top: 83px;
+  }
+}

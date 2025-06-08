@@ -1,0 +1,54 @@
+@use '../utils/vars' as *;
+@use '../utils/grids' as grid;
+
+.exhibition {
+  @include grid.three-columns;
+
+  &--tree-img {
+    @media #{$media-tablet} {
+      @include grid.two-columns;
+
+      .exhibition__img--center {
+        grid-column: 2;
+      }
+
+      .exhibition__img--right {
+        display: none;
+      }
+    }
+  }
+
+  &--two-img {
+    @media #{$media-mobile} {
+      @include grid.two-columns;
+
+      [class*='__img'] {
+        padding-bottom: 100%;
+      }
+
+      [class$='--left-double'] {
+        grid-column: 1;
+      }
+
+      [class$='--right-double'] {
+        grid-column: 2;
+      }
+    }
+  }
+
+  &__ending {
+    margin-top: 24px;
+  }
+
+  &__button {
+    margin: 0 auto;
+
+    @media #{$media-desktop} {
+      width: 33%;
+    }
+
+    @media #{$media-tablet} {
+      width: 66%;
+    }
+  }
+}

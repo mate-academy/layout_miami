@@ -1,0 +1,46 @@
+@use '../utils/vars' as *;
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  height: 100vh;
+  width: 100%;
+  background-color: $red;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  display: grid;
+  grid-template:
+    'left top-bar right' auto
+    'left page-title right' 1fr;
+
+  @media #{$media-desktop}, #{$media-tablet} {
+    grid-template-columns:
+      minmax(72px, 1fr)
+      minmax(0, #{$max-content-width})
+      minmax(72px, 1fr);
+  }
+
+  @media #{$media-mobile} {
+    grid-template-columns:
+      minmax(20px, 1fr)
+      minmax(0, #{$max-content-width})
+      minmax(20px, 1fr);
+  }
+
+  &__top-bar {
+    grid-area: top-bar;
+    padding-top: 50px;
+    align-content: center;
+  }
+
+  &__nav {
+    grid-area: page-title;
+  }
+}
