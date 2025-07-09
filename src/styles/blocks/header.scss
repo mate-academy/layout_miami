@@ -1,24 +1,26 @@
 @use '../utils/mixins' as *;
 
 .header {
+  grid-template-rows: 1fr 2fr 1fr;
+
+  box-sizing: border-box;
+  padding: 0 20px 288px;
+
   background-color: royalblue;
   background-image: url(../../src/images/photos/background.png);
   background-repeat: no-repeat;
   background-position: center;
-
-  box-sizing: border-box;
-
   background-size: cover;
-
-  grid-template-rows: 1fr 2fr 1fr;
-
-  padding: 0 20px 288px;
 
   @include grid;
 
   &__navigation {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
 
     @include for-desktop {
       grid-column: 1 / 13;
@@ -30,6 +32,10 @@
     grid-row: 2 / 3;
     align-self: flex-end;
 
+    @include for-tablet {
+      grid-column: 2 / 6;
+    }
+
     @include for-desktop {
       grid-column: 4 / 10;
       grid-row: 2 / 3;
@@ -37,4 +43,3 @@
     }
   }
 }
-

@@ -6,22 +6,39 @@
   }
 }
 
-@mixin for-desktop() {
+@mixin for-desktop {
   @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 629px) {
     @content;
   }
 }
 
 @mixin grid {
   display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(2, 45%);
+  gap: 5vw;
   justify-content: center;
 
-  padding-right: 5vw;
-  padding-left: 5vw;
-
-  gap: 5vw;
-  grid-template-columns: repeat(2, 45%);
   min-height: 100vh;
+  padding-inline: 5vw;
+
+  @include for-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 32px;
+    padding-inline: 32px;
+  }
 
   @include for-desktop {
     grid-template-columns: repeat(12, 63px);
@@ -32,24 +49,21 @@
 @mixin visually-hidden {
   position: absolute;
 
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
   overflow: hidden;
 
   width: 1px;
   height: 1px;
-  white-space: nowrap;
-}
 
-@mixin for-mobile {
-  @media (max-width: 629px) {
-    @content;
-  }
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
 }
 
 @mixin scrollable-viewport($max-height: 100vh) {
-  max-height: $max-height;
   overflow-y: auto;
+  max-height: $max-height;
+
   -webkit-overflow-scrolling: touch;
 
   @include for-mobile {
