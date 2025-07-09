@@ -1,0 +1,111 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(-100%);
+
+  width: 100vw;
+  height: 100vh;
+  padding: 0 20px;
+
+  color: $color-white;
+
+  background-color: $color-red;
+
+  transition: transform 0.3s ease-in-out;
+
+  @include grid;
+  @include scrollable-viewport;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    grid-column: span 2;
+
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    vertical-align: middle;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
+    a {
+      color: $color-white;
+      text-decoration: none;
+    }
+
+    &--primary a {
+      @include hover(color, $color-black);
+    }
+  }
+
+  &__links {
+    grid-column: span 2;
+    margin-bottom: 8px;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+
+    border-bottom: 1px solid transparent;
+
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2;
+    vertical-align: middle;
+
+    &:hover {
+      border-bottom: 1px solid $color-white;
+    }
+  }
+}
