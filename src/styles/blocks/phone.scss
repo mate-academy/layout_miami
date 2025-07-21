@@ -1,0 +1,43 @@
+@use '../utils/mixins' as *;
+
+.phone {
+  width: 18px;
+  height: 18px;
+
+  @include for-mobile {
+    width: 18px;
+    height: 18px;
+  }
+  &__label {
+    font-family: Cinzel, serif, 'Trajan Pro';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    transform: translate(calc(-100% - 20px), calc(-20px));
+    width: 220px;
+  }
+
+  &__icon {
+    &::before {
+      content: '';
+      background-image: url(/src/images/phone.svg);
+      background-size: cover;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+
+      @include for-mobile {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  &:not(:hover) .phone__label {
+    @include visually-hidden;
+  }
+}
