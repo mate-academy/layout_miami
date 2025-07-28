@@ -286,7 +286,7 @@
       </h2>
 
       <div class="contact">
-        <form class="form">
+        <form id="contact-form" class="form">
           <div class="form__item">
             <label
               for="name"
@@ -298,6 +298,7 @@
               id="name"
               class="form__input"
               type="text"
+              required
               placeholder="Name"
             />
           </div>
@@ -313,6 +314,7 @@
               id="email"
               class="form__input"
               type="email"
+              required
               placeholder="Email"
             />
           </div>
@@ -326,15 +328,16 @@
             <textarea
               id="message"
               class="form__textarea"
+              required
               placeholder="Message"
             ></textarea>
           </div>
-          <a
-            href="#"
+          <button
+            type="submit"
             class="primiery_button"
           >
             Send
-          </a>
+          </button>
         </form>
         <address class="address">
           <h4 class="address__label">Phone</h4>
@@ -378,6 +381,13 @@
       if (window.location.hash === '#menu') {
         document.body.classList.add('page__body--with-menu');
       }
+
+      const form = document.getElementById('contact-form');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log('Formularz został przechwycony');
+      });
     </script>
   </body>
 </html>
