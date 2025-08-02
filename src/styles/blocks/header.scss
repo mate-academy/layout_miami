@@ -1,43 +1,66 @@
+@use '../utils/mixins' as *;
+
 .header {
   height: 480px;
   background-image: url('../images/bike.jpg');
   background-size: cover;
   background-position: right center;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  grid-template-rows: 1fr 1fr;
-  gap: 20px;
   padding: 20px;
+  @include grid-for-small-mobile-devices();
+
+  @media (min-width: 744px) {
+    height: 628px;
+    @include grid-for-big-mobile-devices();
+    background-position: center center;
+  }
 
   &__item {
     grid-column: 1/3;
     display: flex;
     justify-content: space-between;
+    align-items: start;
+    @media (min-width: 720px) {
+      grid-column: 1/7;
+    }
   }
 
   &__navigation {
-    grid-column: 2/3;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     width: 72px;
     height: 24px;
+    @media (min-width: 744px) {
+      width: 96px;
+      height: 32px;
+    }
   }
 
   &__logo {
     width: 130px;
     height: 38px;
+    @media (min-width: 720px) {
+      width: 187px;
+      height: 56px;
+    }
   }
 
   &__phone {
     height: 18px;
     width: 18px;
+    @media (min-width: 720px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__menu {
     width: 18px;
     height: 12px;
+    @media (min-width: 720px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__description {
@@ -52,6 +75,17 @@
     letter-spacing: -1.5px;
     text-align: center;
     vertical-align: middle;
-    color: #FFF;
+    color: #fff;
+    @media (min-width: 744px) {
+      grid-column: span 6;
+      grid-row: 2/3;
+      font-family: Poppins,sans-serif;
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 64px;
+      text-align: center;
+      vertical-align: middle;
+      margin-bottom: 130px;
+    }
   }
 }
