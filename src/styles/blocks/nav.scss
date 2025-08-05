@@ -23,7 +23,8 @@
 
   &__icon {
     display: inline-block;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     width: 24px;
     height: 24px;
 
@@ -33,8 +34,6 @@
     }
 
     &--menu {
-      display: inline-block;
-      background-size: cover;
       background-image: url(../img/icons/menu.svg);
       width: 30px;
       height: 20px;
@@ -60,6 +59,26 @@
 
     &--call {
       background-image: url(../img/icons/phone.svg);
+
+      &:hover {
+        background-image: url(../img/icons/phone_nr.svg);
+        width: 180px;
+        height: 32px;
+
+        @include for-desktop {
+          width: 270px;
+          height: 48px;
+        }
+      }
+
+      &::after {
+        content: '';
+        background-image: url(../img/icons/phone_nr.svg);
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
     }
 
     &--close {
