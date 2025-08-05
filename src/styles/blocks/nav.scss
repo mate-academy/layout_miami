@@ -33,18 +33,53 @@
     }
 
     &--menu {
-      background-image: url(../img/icons/menu.svg);
+
       width: 30px;
       height: 20px;
 
       @include for-tablet {
-        width: 45px;
-        height: 30px;
+          width: 45px;
+          height: 30px;
+      }
+
+      &::before {
+        display: inline-block;
+        background-size: cover;
+        content: '';
+        background-image: url(../img/icons/menu.svg);
+        width: 30px;
+        height: 20px;
+
+        @include for-tablet {
+          width: 45px;
+          height: 30px;
+        }
+      }
+
+      &::after {
+        display: none;
+        background-size: cover;
+        content: '';
+        background-image: url(../img/icons/menu_hover.svg);
+        width: 30px;
+        height: 20px;
+        display: none;
+
+        @include for-tablet {
+          width: 45px;
+          height: 30px;
+        }
       }
 
       &:hover {
-        cursor: pointer;
-        background-image: url(../img/icons/menu_hover.svg);
+
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: inline-block;
+        }
       }
     }
 
