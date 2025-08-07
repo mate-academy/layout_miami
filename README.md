@@ -12,7 +12,8 @@ Flexbox / Grid – responsive layout
 Mobile-first – development approach  
 
 🔗 Live Preview  
-👉 View the website  
+👉 [View the website](https://KrystianWojtiuk.github.io/layout_miami/)
 
 🎨 Figma Layout  
-👉 Open Figma design
+👉 [Open Figma design](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=6103-67)
+
