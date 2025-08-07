@@ -1,4 +1,4 @@
-# Miami landing page  
+# MyBike landing page  
 
 🌐 Project Description  
 A responsive website built based on a design from Figma.  
