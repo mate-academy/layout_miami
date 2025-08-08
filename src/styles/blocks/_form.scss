@@ -1,0 +1,70 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.form {
+  padding: 48px 0 0;
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+
+  &__input {
+    @include hover(border, 1px solid $text-gray);
+    @include focus(outline, 1px solid $button-bg);
+
+    border: 1px solid $input-bg;
+    width: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: $input-bg;
+    cursor: pointer;
+
+    &::placeholder {
+      @include font(14px, 140%, $input-text);
+
+      font-weight: 400;
+      letter-spacing: 0.15px;
+    }
+  }
+
+  &__textarea {
+    @include hover(border, 1px solid $text-gray);
+    @include focus(outline, 1px solid $button-bg);
+
+    border: 1px solid $input-bg;
+    padding: 14px 16px;
+    background-color: $input-bg;
+    width: 100%;
+    box-sizing: border-box;
+    height: 120px;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &::placeholder {
+      @include font(14px, 140%, $input-text);
+
+      font-weight: 400;
+      letter-spacing: 0.15px;
+    }
+  }
+
+  &--contact {
+    grid-column: 1/2;
+  }
+
+  @media (min-width: 1260px) {
+    padding: 0;
+
+    &__input {
+      height: 48px;
+    }
+
+    &__textarea {
+      height: 148px;
+    }
+  }
+}

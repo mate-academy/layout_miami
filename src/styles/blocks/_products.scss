@@ -1,0 +1,53 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.products {
+  padding: 48px 0 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 100vw;
+
+  @media (min-width: 744px) {
+    gap: 56px;
+  }
+
+  @media (min-width: 1260px) {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 24px;
+    flex: 1;
+  }
+
+  &__card {
+    @media (min-width: 1260px) {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+  }
+
+  &__price {
+    @include font(16px, 140%, $primary-color);
+
+    align-self: flex-start;
+  }
+
+  &__card-img {
+    padding-bottom: 24px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: rotate(5deg);
+    }
+  }
+}

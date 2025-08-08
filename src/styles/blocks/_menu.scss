@@ -1,0 +1,41 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  padding: 0 10% 168px;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: $menu-bg;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+
+  @media (min-width: 744px) {
+    padding: 0 10% 544px;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__paragraph {
+    @include font(16px, 140%, $primary-color);
+
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+
+    @media (min-width: 744px) {
+      @include font(22px, 140%, $primary-color);
+    }
+  }
+}
+
+.page__body--with-menu {
+  overflow: hidden;
+}
