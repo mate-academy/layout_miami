@@ -247,10 +247,9 @@
           </div>
         </div>
         <p class="product--title">Smart Home</p>
-
         <a
           href="#"
-          class="primiery_button"
+          class="primiery_button--catalog"
         >
           View all
         </a>
@@ -383,15 +382,15 @@
         }
       });
 
-      if (window.location.hash === '#menu') {
-        document.body.classList.add('page__body--with-menu');
-      }
-
-      const form = document.getElementById('contact-form');
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        console.log('Formularz został przechwycony');
+      document.querySelector('form').addEventListener('submit', function(e) {
+        if (!this.checkValidity()) {
+          e.preventDefault();
+          this.reportValidity();
+        } else {
+          e.preventDefault();
+          alert('Formularz wysłany (symulacja)');
+          this.reset();
+        }
       });
     </script>
   </body>
