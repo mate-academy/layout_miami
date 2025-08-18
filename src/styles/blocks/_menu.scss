@@ -2,14 +2,14 @@
   position: fixed;
   inset: 0;
   background-color: $color-primary;
-  display: none; /* flex */
+  display: none; /* flex/none */
   z-index: 1000;
 }
 
 .menu__container {
   width: 100%;
   max-width: 320px;
-  padding: 25px 20px 40px;
+  padding: 25px $spacing-lx $spacing-xll;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -19,12 +19,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: $spacing-xll;
 }
 
 .menu__logo {
   width: 64px;
   height: 46px;
+}
+
+.menu__logo-text {
+  display: none;
 }
 
 .menu__close {
@@ -36,9 +40,7 @@
 .menu__nav {
   display: flex;
   flex-direction: column;
-
   gap: $spacing-xxl;
-
   margin-bottom: $spacing-xxl;
 
   li a {
@@ -59,18 +61,18 @@
 }
 
 .menu__contact {
-  font-size: 16px;
+  font-size: $font-size-sm;
   color: $color-light;
   font-weight: $font-weight-bold;
   letter-spacing: 0;
   font-family: $font-main;
-  line-height: 27px;
+  line-height: $line-height-md;
 
   .menu__locations {
     display: flex;
     flex-direction: column;
     gap: $spacing-m;
-    margin-bottom: $spacing-xxl;
+    margin-bottom: $spacing-l;
   }
 
   .menu__location {
@@ -84,25 +86,92 @@
     border: none;
     color: $color-light;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: $letter-spacing-big;
     font-family: $font-main;
     font-weight: $font-weight-bold;
     line-height: 16px;
-    font-size: 12px;
+    font-size: $font-size-xs;
     padding: 0;
     margin-bottom: 39px;
     text-decoration: underline;
     cursor: pointer;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #fff;
   }
 }
 
 @media (min-width: 744px) {
   .menu__container {
     width: 100%;
-    max-width: 320px;
-    padding: 32px 72px 40px;
+    max-width: 744px;
+    padding: $spacing-xxl 72px $spacing-xll;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu__container {
+    width: 100%;
+    max-width: 1260px;
+    padding: $spacing-xxl 121px 55px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .menu__logo {
+    display: none;
+    width: 87px;
+    height: 65px;
+  }
+
+  .menu__logo-text {
+    display: flex;
+    flex-direction: column;
+    font-family: $font-main;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    line-height: 0.8;
+    letter-spacing: $letter-spacing-tight;
+    color: $color-light;
+    text-transform: uppercase;
+  }
+
+  .menu__top {
+    margin-bottom: 55px;
+  }
+
+  .menu__close {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    padding-top: $spacing-xxxl;
+  }
+
+  .menu__nav {
+    li a {
+      position: relative;
+      display: inline-block;
+      padding-bottom: $spacing-m;
+    }
+
+    li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid $color-light;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.25s ease;
+    }
+
+    li a:hover::after {
+      transform: scaleX(1);
+    }
   }
 }
