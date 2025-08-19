@@ -105,8 +105,8 @@
   @media (min-width: 1260px) {
     top: 68px;
     left: calc(50% - 630px + 1108px);
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 16px;
   }
 }
 
@@ -129,8 +129,8 @@
   @media (min-width: 1260px) {
     top: 68px;
     left: calc(50% - 630px + 1021px);
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -164,4 +164,113 @@
     text-align: center;
     color: $color-light;
   }
+}
+
+.header__phone {
+  display: inline-block;
+}
+@media (hover: none) {
+  .header__phone-popover {
+    display: none;
+  }
+}
+
+.header__phone-popover {
+  position: absolute;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+
+  .header__phone-popover__title,
+  .header__phone-popover__tel {
+    position: absolute;
+    margin: 0;
+    color: #fff;
+    font:
+      700 16px/27px Cinzel,
+      serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.44));
+  }
+
+  .header__phone-popover__tel:hover,
+  .header__phone-popover__tel:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header__phone:hover ~ .header__phone-popover,
+  .header__phone:focus-visible ~ .header__phone-popover,
+  .header__phone-popover:hover,
+  .header__phone-popover:focus-within {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 1260px) {
+  .header__phone-popover {
+    top: 26px;
+    left: calc(50% - 630px + 804px);
+  }
+
+  .header__phone-popover .t1 {
+    top: 0;
+    left: 0;
+    width: 201px;
+  }
+
+  .header__phone-popover .p1 {
+    top: 27px;
+    left: 85px;
+    width: 116px;
+  }
+
+  .header__phone-popover .t2 {
+    top: 62px;
+    left: 29px;
+    width: 172px;
+  }
+
+  .header__phone-popover .p2 {
+    top: 89px;
+    left: 79px;
+    width: 122px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__phone-popover {
+    transition: none;
+  }
+}
+
+.burger:focus-visible,
+.header__phone:focus-visible,
+.header__phone-popover a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.burger {
+  background: url('images/menu.svg') center / contain no-repeat;
+}
+
+.burger > img {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .burger:hover {
+    background-image: url('images/menu_hover.svg');
+  }
+}
+.burger:focus-visible {
+  background-image: url('images/menu_hover.svg');
 }
