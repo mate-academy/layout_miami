@@ -444,6 +444,50 @@ html {
   background-image: url('images/menu_hover.svg');
 }
 
+:root {
+  --header-pad-inline: 20px;
+  --icon-gap: 88px;
+}
+
+@media (min-width: 744px) and (max-width: 1259px) {
+  :root {
+    --header-pad-inline: 72px;
+  }
+  .burger {
+    position: absolute;
+    top: 66px;
+    left: auto !important;
+    right: var(--header-pad-inline);
+    width: 24px;
+    height: 16px;
+    z-index: 10;
+  }
+  .header__phone-icon {
+    position: absolute;
+    top: 66px;
+    left: auto !important;
+    right: calc(var(--header-pad-inline) + var(--icon-gap));
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+  }
+}
+@media (max-width: 743px) {
+  .burger {
+    top: 36px;
+    left: auto !important;
+    right: var(--header-pad-inline);
+    width: 18px;
+    height: 12px;
+  }
+  .header__phone-icon {
+    top: 36px;
+    left: auto !important;
+    right: calc(var(--header-pad-inline) + 48px);
+    width: 18px;
+    height: 18px;
+  }
+}
 .main > *:not(.contact-image-wrapper) {
   padding: 0 20px;
 }
@@ -1454,8 +1498,8 @@ body:has([id='open-menu']:target) {
 
 .menu__container {
   width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: 25px 20px 40px;
   display: flex;
   flex-direction: column;
@@ -1464,8 +1508,8 @@ body:has([id='open-menu']:target) {
 
 .menu__top {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 40px;
 }
 
@@ -1491,6 +1535,7 @@ body:has([id='open-menu']:target) {
   width: 24px;
   height: 24px;
   text-decoration: none;
+  margin-left: auto;
 }
 
 .menu__nav {
@@ -1553,16 +1598,24 @@ body:has([id='open-menu']:target) {
   text-decoration-color: #fff;
 }
 
-@media (min-width: 744px) {
+@media (min-width: 744px) and (max-width: 1259px) {
   .menu__container {
-    max-width: 744px;
     padding: 32px 72px 40px;
+  }
+  .menu__top {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .menu__close-btn {
+    margin-left: auto;
   }
 }
 @media (min-width: 1260px) {
   .menu__container {
-    max-width: 1260px;
+    max-width: none;
+    width: 100%;
     padding: 0 120px 55px 121px;
+    margin: 0;
   }
   .menu__logo {
     display: none;
