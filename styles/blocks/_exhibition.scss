@@ -1,0 +1,319 @@
+@use 'sass:color';
+
+.exhibition-card {
+  margin-bottom: $spacing-xxxl;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__images {
+    display: grid;
+    margin-bottom: $spacing-xl;
+
+    &--two {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-lx;
+
+      img {
+        aspect-ratio: 1 / 1;
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        display: block;
+      }
+      .exhibition-img-tablet {
+        display: none;
+      }
+    }
+
+    &--three {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-m;
+
+      img {
+        aspect-ratio: 1 / 1;
+        width: 88px;
+        height: 88px;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+
+  &__content {
+    text-align: left;
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-size: $font-size-sm;
+    line-height: $line-height-md;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+  }
+
+  &__date {
+    font-family: $font-main;
+    font-size: $font-size-sm;
+    line-height: $line-height-md;
+    font-weight: $font-weight-regular;
+    color: $color-dark;
+  }
+}
+
+.button-container {
+  margin-top: $spacing-xll;
+  margin-bottom: $spacing-xxxl;
+  text-align: center;
+
+  .exhibition-button {
+    width: auto;
+    height: 56px;
+    padding-left: 65px;
+    padding-right: 38px;
+    margin-bottom: $spacing-section-gap;
+    background-color: $color-primary;
+    color: $color-light;
+    font-family: $font-main;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    line-height: $line-height-md;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+    transition: background 0.2s;
+
+    text-decoration: none;
+    &:visited {
+      color: $color-light;
+    }
+    &:hover {
+      background-color: #ae1c23;
+      text-decoration: none;
+    }
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+      text-decoration: none;
+    }
+  }
+}
+
+.exhibition-card .title-break {
+  display: inline;
+}
+
+@media (min-width: 744px) {
+  .button-container {
+    margin-bottom: $spacing-section-gap-tablet;
+    margin-top: 0;
+
+    .exhibition-button {
+      width: 392px;
+      padding: 0;
+      justify-content: center;
+      margin: 0 auto;
+    }
+  }
+
+  .exhibition-card-1 .exhibition-card__images--two {
+    display: flex;
+    gap: $spacing-xl;
+
+    .exhibition-img-mobile {
+      display: none;
+    }
+
+    .exhibition-img-tablet {
+      display: block;
+      width: 392px;
+      height: 186px;
+      object-fit: cover;
+    }
+
+    img:last-child {
+      width: 184px;
+      height: 186px;
+      object-fit: cover;
+    }
+
+    .exhibition-card__img--conditional {
+      display: none;
+    }
+  }
+
+  .exhibition-card-1 .exhibition-card__content {
+    text-align: left;
+  }
+
+  .exhibition-card-2 {
+    .exhibition-card__images--three {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: $spacing-xl;
+
+      .exhibition-img--first {
+        width: 288px;
+        height: 284px;
+      }
+      .exhibition-img--second {
+        width: 288px;
+        height: 284px;
+      }
+    }
+    .exhibition-img--conditional {
+      display: none;
+    }
+  }
+
+  .exhibition-card-3 {
+    .exhibition-card__images--two {
+      display: flex;
+      gap: $spacing-xl;
+
+      img:first-child {
+        width: 184px;
+        height: 186px;
+        object-fit: cover;
+      }
+
+      .exhibition-img-mobile {
+        display: none;
+      }
+
+      .exhibition-img-tablet {
+        display: block;
+        width: 392px;
+        height: 186px;
+        object-fit: cover;
+      }
+    }
+
+    .exhibition-card__content {
+      margin-top: $spacing-xl;
+      text-align: left;
+    }
+    .exhibition-card__date {
+      margin-bottom: $spacing-xll;
+    }
+  }
+
+  .exhibition-card__title {
+    white-space: nowrap;
+  }
+
+  .exhibition-card .title-break {
+    display: none;
+  }
+}
+
+@media (min-width: 1260px) {
+  .exhibition-card {
+    max-width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exhibition-card-1 .exhibition-card__images--two {
+    display: grid;
+    grid-template-columns: 672px 324px;
+    column-gap: $spacing-xl;
+    .exhibition-img-tablet {
+      display: block;
+      width: 672px;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    img:last-child {
+      width: 324px;
+      height: 320px;
+      object-fit: cover;
+    }
+  }
+
+  .exhibition-card-2 .exhibition-card__images--three {
+    display: grid;
+    grid-template-columns: repeat(3, 324px);
+    column-gap: $spacing-xl;
+    img {
+      width: 324px;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .exhibition-img--conditional {
+      display: block;
+    }
+
+    .exhibition-img--first {
+      width: 324px;
+      height: 320px;
+    }
+
+    .exhibition-img--second {
+      width: 324px;
+      height: 320px;
+    }
+  }
+
+  .exhibition-card-3 .exhibition-card__images--two {
+    display: grid;
+    grid-template-columns: 324px 672px;
+    column-gap: $spacing-xl;
+    img:first-child {
+      width: 324px;
+      height: 320px;
+      object-fit: cover;
+    }
+    .exhibition-img-tablet {
+      display: block;
+      width: 672px;
+      height: 320px;
+      object-fit: cover;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    .button-container {
+      margin-bottom: $spacing-section-gap-tablet;
+      margin-top: 0;
+      text-align: center;
+
+      .exhibition-button {
+        width: 324px;
+        height: 56px;
+        background-color: $color-primary;
+        color: $color-light;
+        font-family: $font-main;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-sm;
+        line-height: $line-height-md;
+        letter-spacing: 0;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background-color: #ae1c23;
+        }
+        &:focus-visible {
+          outline: 2px solid #fff;
+          outline-offset: 3px;
+        }
+
+        text-decoration: none;
+        &:visited {
+          color: $color-light;
+        }
+      }
+    }
+  }
+}

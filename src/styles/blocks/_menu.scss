@@ -1,0 +1,228 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: $color-primary;
+  display: none;
+  z-index: 1000;
+  height: 100dvh;
+  overflow: auto;
+}
+
+[id='open-menu']:target ~ .menu {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+body:has([id='open-menu']:target) {
+  overflow: hidden;
+}
+
+.menu__container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 25px $spacing-lx $spacing-xll;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.menu__top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: $spacing-xll;
+}
+
+.menu__logo {
+  width: 64px;
+  height: 46px;
+}
+.menu__logo-text {
+  display: none;
+}
+
+.menu__close {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.menu__close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxl;
+  margin-bottom: $spacing-xxl;
+
+  li a {
+    font-family: $font-main;
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    color: $color-light;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: $spacing-xs;
+    line-height: 22px;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.menu__contact {
+  font-size: $font-size-sm;
+  color: $color-light;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0;
+  font-family: $font-main;
+  line-height: $line-height-md;
+
+  .menu__locations {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-m;
+    margin-bottom: $spacing-l;
+  }
+  .menu__location {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+  }
+
+  .button--secondary {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: $color-light;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-big;
+    font-family: $font-main;
+    font-weight: $font-weight-bold;
+    line-height: 16px;
+    font-size: $font-size-xs;
+    padding: 0;
+    margin-bottom: 39px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #fff;
+  }
+}
+
+@media (min-width: 744px) and (max-width: 1259px) {
+  .menu__container {
+    padding: $spacing-xxl 72px $spacing-xll;
+  }
+  .menu__top {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .menu__close-btn {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu__container {
+    max-width: none;
+    width: 100%;
+    padding: 0 120px 55px 121px;
+    margin: 0;
+  }
+
+  .menu__logo {
+    display: none;
+    width: 87px;
+    height: 65px;
+  }
+
+  .menu__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 55px;
+    padding-top: 0;
+    height: auto;
+  }
+
+  .menu__top > a {
+    display: inline-flex;
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
+
+  .menu__logo-text {
+    display: flex;
+    flex-direction: column;
+    padding-top: $spacing-xxl;
+    margin: 0;
+    text-align: left;
+    font-family: $font-main;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    line-height: 0.8;
+    letter-spacing: $letter-spacing-tight;
+    color: $color-light;
+    text-transform: uppercase;
+  }
+
+  .menu__close-btn {
+    margin-left: auto;
+    padding-top: 48px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .menu__close {
+    width: 21px;
+    height: 21px;
+    padding-top: 0;
+  }
+
+  .menu__nav {
+    li a {
+      position: relative;
+      display: inline-block;
+      padding-bottom: $spacing-m;
+    }
+    li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid $color-light;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+    li a:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.menu__top a:focus-visible,
+.menu__nav a:focus-visible,
+.menu__close-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.menu__nav a:visited {
+  color: $color-light;
+}
