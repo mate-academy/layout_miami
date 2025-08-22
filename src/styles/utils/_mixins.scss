@@ -4,3 +4,44 @@
     #{$_property}: $_toValue;
   }
 }
+@mixin for-ipad() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  gap: 20px;
+
+  @include for-ipad {
+    grid-template-columns: repeat(6, 80px);
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 24px;
+  }
+}
+
+@mixin visually-hidden() {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
