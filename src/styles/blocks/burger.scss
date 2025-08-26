@@ -1,0 +1,56 @@
+@use '../utils/mixins' as *;
+
+.burger {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu.svg);
+    background-size: cover;
+
+    @include for-ipad {
+      width: 24px;
+      height: 16px;
+    }
+
+    @include for-desktop {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: '';
+    width: 18px;
+    height: 12px;
+
+    background-image: url(../images/menu_hover.svg);
+    background-size: cover;
+
+    @include for-ipad {
+      width: 24px;
+      height: 16px;
+    }
+
+    @include for-desktop {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}
