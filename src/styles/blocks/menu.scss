@@ -1,0 +1,88 @@
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: 0.5s ease-in-out;
+
+  background-color: #c2c2c2;
+
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  min-height: 100vh;
+  padding: 0 10px 20px 20px;
+
+  display: flex;
+  overflow-y: auto;
+
+  @include grid;
+
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    margin-bottom: 30px;
+
+    grid-column: span 2;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+
+    grid-column: span 2;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #1d1d1d;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+}
