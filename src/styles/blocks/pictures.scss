@@ -1,12 +1,25 @@
 @use '../utils/mixins' as *;
+@use '../utils/vars' as *;
 
 .pictures {
-  @include grid-for-mobile;
-
   &__item {
     position: relative;
     width: 100%;
     padding-top: 100%;
+
+    &--small {
+      @media (min-width: $medium-res) {
+        grid-column: span 2;
+        min-height: 187px;
+        padding-top: 0;
+      }
+    }
+
+    @media (min-width: $medium-res) {
+      grid-column: span 4;
+      min-height: 187px;
+      padding-top: 0;
+    }
   }
 
   &__image {
@@ -18,4 +31,10 @@
 
     object-fit: cover;
   }
+
+  @media (min-width: $medium-res) {
+    @include grid-for-medium;
+  }
+
+  @include grid-for-mobile;
 }
