@@ -5,10 +5,16 @@
   padding: 0 20px;
 
   &__section {
-    grid-column: 1 / 7;
+    @include grid-for-mobile;
+
+    @media (min-width: $medium-res) {
+      @include grid-for-medium;
+    }
   }
 
   &__title {
+    grid-column: 1 / 3;
+
     min-height: 32px;
     margin-bottom: 32px;
 
@@ -20,11 +26,15 @@
     letter-spacing: -1.5px;
 
     @media (min-width: $medium-res) {
-      grid-column: 1 / 4;
+      grid-column: span 3;
+      min-height: 48px;
+      font-size: 48px;
     }
   }
 
   &__paragraph {
+    grid-column: 1 / 3;
+
     min-height: 192px;
     margin-bottom: 92px;
 
@@ -36,13 +46,12 @@
     letter-spacing: 0;
 
     @media (min-width: $medium-res) {
-      grid-column: 4 / 7;
+      grid-column: span 3;
+      margin-bottom: 132px;
     }
   }
 
   @media (min-width: $medium-res) {
-    @include grid-for-medium;
+    padding: 0 72px;
   }
-
-  @include grid-for-mobile;
 }
