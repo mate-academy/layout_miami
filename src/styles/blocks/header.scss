@@ -1,0 +1,64 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  justify-content: center;
+
+  min-height: 480px;
+  margin-bottom: 60px;
+  padding: 0 20px;
+
+  background-image: url('/src/images/header-background.jpg');
+  background-repeat: no-repeat;
+  background-position: 85% center;
+  background-size: cover;
+
+  &__navigation {
+    grid-column: -1 / 1;
+    align-self: start;
+  }
+
+  &__title {
+    grid-column: -1 / 1;
+    align-self: end;
+
+    min-height: 36px;
+    padding-bottom: 88px;
+
+    font-family: Poppins, Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $color-white;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @media (min-width: $medium-res) {
+      padding-bottom: 130px;
+      font-size: 64px;
+    }
+
+    @media (min-width: $desktop-res) {
+      padding-bottom: 203px;
+      font-size: 80px;
+    }
+  }
+
+  @media (min-width: $medium-res) {
+    @include grid-for-medium;
+
+    min-height: 628px;
+    margin-bottom: 120px;
+    padding: 0 72px;
+    background-position: center;
+  }
+
+  @media (min-width: $desktop-res) {
+    @include grid-for-desktop;
+
+    min-height: 711px;
+    padding: 0 120px;
+  }
+
+  @include grid-for-mobile;
+}
