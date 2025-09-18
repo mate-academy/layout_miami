@@ -1,14 +1,17 @@
+/* stylelint-disable */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
   height: 96px;
+  font-family: $font-main;
   &__logo {
     width: 188px;
     height: 24px;
     overflow: hidden;
-    margin: 36px 120px;
+    margin: $space-lg 120px;
 
     img {
       width: 100%;
@@ -20,22 +23,22 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    gap: 36px;
-    margin: 40px 120px;
+    gap: $space-md;
+    margin: $space-lg 120px;
     position: relative;
     .number {
-      color: #292929;
-      font-size: 12px;
+      color: $c-black;
+      font-size: $font-size-sm;
       font-weight: 700;
-      font-style: bold;
+      font-weight: bold;
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s ease;
       text-shadow:
-      1px 1px 0 white,
-      -1px -1px 0 white,
-      1px -1px 0 white,
-      -1px  1px 0 white;
+        1px 1px 0 map.get($colors, 'white'),
+        -1px -1px 0 map.get($colors, 'white'),
+        1px -1px 0 map.get($colors, 'white'),
+        -1px 1px 0 map.get($colors, 'white');
     }
     .img-btn.clicked + .number,
     .number.show {
@@ -46,59 +49,66 @@
       filter: brightness(0) invert(0);
     }
     .img-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      padding: 0;
 
-    .icon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transition: opacity 0.5s ease;
-      opacity: 0;
-    }
+      .icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.5s ease;
+        opacity: 0;
+      }
 
-    .default {
-      opacity: 1;
-    }
+      .default {
+        opacity: 1;
+      }
 
-    &:hover:not(.clicked) {
-      .default { opacity: 0; }
-      .hover   { opacity: 1; }
-    }
+      &:hover:not(.clicked) {
+        .default {
+          opacity: 0;
+        }
+        .hover {
+          opacity: 1;
+        }
+      }
 
-    &.clicked {
-      .default { opacity: 0; }
-      .hover   { opacity: 0; }
-      .active  { opacity: 1; }
+      &.clicked {
+        .default {
+          opacity: 0;
+        }
+        .hover {
+          opacity: 0;
+        }
+        .active {
+          opacity: 1;
+        }
+      }
     }
   }
 }
-}
 
-
-@media (min-width: 744px) and (max-width: 1259px) {
-
-}
-
-@media (max-width: 743px) {
+@media (max-width: calc(#{$breakpoint-sm} - 1px)) {
   .header {
     height: 72px;
     overflow: visible;
     &__logo {
       width: 125px;
       height: 16px;
-      margin: 28px 20px;
+      margin: 28px $space-md;
     }
     &__nav {
-      margin: 24px 20px;
+      margin: 24px $space-md;
     }
   }
 }
+
+/* stylelint-enable */
