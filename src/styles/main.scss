@@ -1,7 +1,202 @@
-@import 'utils';
-@import 'fonts';
-@import 'typography';
+@import './utils';
+@import './fonts';
+@import './typography';
+@import './header';
+@import './hero';
+@import './footer';
+@import './contact-us';
+@import './about-us';
+
+::-webkit-scrollbar {
+  display: none;
+}
 
 body {
-  background: $c-gray;
+  margin: 0;
+  background: map.get($colors, 'white');
+  font-family: $font-main;
+}
+
+main {
+  margin: $space-xxl;
+
+  .recommended {
+    margin: $space-xxl 0;
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: $font-size-lg;
+      color: $c-black;
+    }
+    &__items {
+      display: flex;
+      gap: $space-md;
+
+      img {
+        height: 30vw;
+        width: 30vw;
+      }
+      h3 {
+        font-size: $font-size-base;
+        font-weight: bold;
+      }
+      .product-category {
+        font-weight: 400;
+        font-size: $font-size-base;
+      }
+      .product-price {
+        font-weight: bold;
+        font-size: $font-size-base;
+      }
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      height: 30vh;
+      max-width: 53.33vw;
+    }
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: $font-size-lg;
+      color: $c-black;
+      margin-bottom: $space-xl;
+    }
+    &__items {
+      display: flex;
+      flex-direction: column;
+      &-item {
+        h3 {
+          font-weight: 700;
+          font-weight: bold;
+          font-size: 24px;
+        }
+        .images {
+          overflow: hidden;
+          gap: $space-md;
+          display: flex;
+          img {
+            object-fit: cover;
+          }
+        }
+
+        margin-bottom: $space-xl;
+      }
+      &-item:first-child {
+        .images {
+          img:first-child {
+            width: 53.33vw;
+          }
+          img:nth-child(2) {
+            width: 27vw;
+          }
+        }
+      }
+      &-item:nth-child(2) {
+        .images {
+          img:first-child {
+            width: 53.33vw;
+          }
+          img:nth-child(2) {
+            width: 27vw;
+          }
+        }
+      }
+      &-item:nth-child(3) {
+        .images {
+          img:first-child {
+            width: 27vw;
+          }
+          img:nth-child(2) {
+            width: 53.33vw;
+          }
+        }
+      }
+    }
+    button {
+      width: 324px;
+      height: 56px;
+      background-color: $c-black;
+      border-radius: $radius-lg;
+      color: map.get($colors, 'white');
+      font-weight: 700;
+      font-weight: bold;
+      font-size: $font-size-base;
+      transition-duration: 0.1s;
+      transition-timing-function: linear;
+    }
+    button:hover {
+      background-color: map.get($colors, 'white');
+      color: $c-black;
+      border: 3px solid $c-black;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-sm) and (max-width: calc(#{$breakpoint-lg} - 1px)) {
+  .main {
+    margin: $space-lg;
+    .recommended__items {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: calc(#{$breakpoint-sm} - 1px)) {
+  .main {
+    margin: $space-md;
+    .recommended__items {
+      flex-direction: column;
+      align-items: center;
+    }
+    h3,
+    .product-category,
+    .product-price {
+      text-align: left;
+    }
+    .categories {
+      img {
+        height: 40vw;
+        width: 40vw;
+      }
+      &__items {
+        &-item:first-child {
+          .images {
+            img:first-child {
+              width: 40vw;
+            }
+            img:nth-child(2) {
+              width: 40vw;
+            }
+          }
+        }
+        &-item:nth-child(2) {
+          .images {
+            img:first-child {
+              width: 40vw;
+            }
+            img:nth-child(2) {
+              width: 40vw;
+            }
+          }
+        }
+        &-item:nth-child(3) {
+          .images {
+            img:first-child {
+              width: 40vw;
+            }
+            img:nth-child(2) {
+              width: 40vw;
+            }
+          }
+        }
+      }
+    }
+  }
 }
