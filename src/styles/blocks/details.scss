@@ -1,16 +1,11 @@
 .details {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-
   &__item {
     display: contents;
   }
 
   &__image {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 4px;
 
     object-fit: cover;
@@ -24,15 +19,39 @@
 
   &__image--wide {
     grid-column: span 8;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      grid-column: span 1;
+    }
   }
   &__image--narrow {
     grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-mobile {
+      grid-column: span 1;
+    }
   }
 
   &__text {
     display: flex;
     grid-column: 1 / -1;
     flex-direction: column;
-    gap: 0.5rem;
+    width: 80%;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    @include on-mobile {
+      width: 100%;
+    }
   }
 }
