@@ -1,7 +1,21 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin hover {
+  transition: transform 0.3s ease;
+
   &:hover {
-    #{$_property}: $_toValue;
+    transform: scale(1.2);
+  }
+}
+
+@mixin hover-button {
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: inset 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
   }
 }
 
@@ -22,18 +36,23 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
 
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1260px;
-  margin: 0 20px;
+  margin: 0 auto;
+  padding: 48px 120px;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(6, 1fr);
     gap: 24px;
     max-width: 744px;
+    padding: 36px 72px;
   }
 
   @media (max-width: 744px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     max-width: 320px;
+    padding: 20px;
   }
 }
