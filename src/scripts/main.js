@@ -1,13 +1,14 @@
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.classList.add('menu-open');
+    document.body.classList.add('body--with-menu');
     document.body.style.paddingRight = scrollBarWidth + 'px';
   } else {
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('body--with-menu');
     document.body.style.paddingRight = '0';
   }
 });
+
 
 
 const form = document.querySelector(".section__form");
