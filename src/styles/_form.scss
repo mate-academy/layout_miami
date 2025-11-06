@@ -1,0 +1,110 @@
+.form {
+  &.locked {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__label {
+    @extend %transition;
+
+    cursor: text;
+    position: absolute;
+    color: $main-grey;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    visibility: visible;
+    opacity: 1;
+
+    top: 13px;
+    left: 16px;
+  }
+
+  &__error {
+    display: none;
+
+    &-info {
+      @extend %transition;
+
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 16px;
+      color: $main-red;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
+    &-icon {
+      position: absolute;
+      top: 9px;
+      right: 16px;
+      height: 28px;
+      width: 28px;
+
+      &:hover ~ .form__error-info {
+        top: -22px !important;
+      }
+    }
+  }
+
+  &__input {
+    background: $main-white;
+    border-radius: 40px;
+    height: 48px;
+    width: 100%;
+    padding: 0 16px;
+
+    color: $main-black;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  &__textarea {
+    background: $main-white;
+    resize: none;
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+    padding: 13px 16px;
+
+    color: $main-black;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  &__button {
+    @extend %button;
+
+    margin-top: 32px;
+  }
+
+  &__placeholder {
+    &:focus ~ .form__label,
+    &:not(:placeholder-shown) ~ .form__label {
+      left: 100%;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &__group {
+    position: relative;
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+
+    &.error {
+      & .form__error {
+        display: unset;
+      }
+
+      & .form__validate {
+        box-shadow: 0 0 10px 0 $main-red;
+      }
+    }
+  }
+}
