@@ -1,0 +1,49 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.phone {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  &__label {
+    pointer-events: none;
+
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    margin-right: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $c-font;
+    text-align: right;
+    text-shadow: 0 0 4px white;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    @include for-tablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &:hover .phone__label {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

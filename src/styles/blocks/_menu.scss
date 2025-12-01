@@ -1,0 +1,132 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(100%);
+
+  overflow-y: auto;
+
+  /* --- FLEXBOX ZAMIAST GRIDA --- */
+  display: flex;
+  flex-direction: column;
+
+  /* Wyrównanie do lewej i do góry */
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh !important;
+
+  /* --- PADDINGI (Odpowiadają za układ) --- */
+
+  /* Mobile */
+  padding-top: 28px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  background-color: #e8eff9;
+
+  transition: transform 0.4s ease-in-out;
+
+  @include for-tablet {
+    padding-top: 36px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @include for-desktop {
+    padding-top: 48px;
+    padding-right: 48px;
+
+    /* To jest to duże wcięcie na komputerze: */
+    padding-left: 25vw;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  /* --- ELEMENTY WEWNĄTRZ --- */
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 40px; /* Odstęp pod logo */
+  }
+
+  &__links {
+    width: 100%;
+
+    /* Usunięty grid */
+  }
+
+  /* Style dla elementów wewnątrz menu */
+  .links__list {
+    margin: 0;
+    padding-top: 12px;
+    padding-left: 0; /* Równamy do lewej */
+    list-style: none;
+  }
+
+  .links__item {
+    margin-bottom: 32px;
+  }
+
+  .links__link {
+    border-bottom: solid 1px transparent;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    color: $c-font;
+    text-align: left;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    transition:
+      border-bottom 0.15s,
+      padding-bottom 0.15s;
+
+    &:hover {
+      padding-bottom: 4px;
+      border-bottom: solid 1px $c-font;
+    }
+  }
+
+  &__paragraph {
+    width: 100%;
+    margin: 0;
+    padding-top: 16px;
+    padding-left: 0; /* Równamy do lewej */
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $c-font;
+    text-align: left;
+  }
+
+  &__link {
+    display: inline-block; /* Dla poprawnego border-bottom */
+
+    padding-bottom: 8px;
+    border-bottom: solid 1px $c-font;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $c-font;
+    text-align: left;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+}

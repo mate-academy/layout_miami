@@ -1,0 +1,91 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+
+  width: 100%;
+
+  &__recommend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    text-align: center;
+
+    @include for-tablet {
+      width: calc(50% - 12px);
+    }
+
+    @include for-desktop {
+      width: calc(33.33% - 16px);
+      transition: transform 0.2s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.06);
+      }
+    }
+  }
+
+  &__paragraph {
+    @include paragraph;
+
+    width: 100%;
+    text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--bold {
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    &--space {
+      letter-spacing: 0.12px;
+
+      @include for-tablet {
+        letter-spacing: 0;
+      }
+
+      @include for-desktop {
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: auto;
+    margin-top: 12px;
+    margin-bottom: 32px;
+
+    object-fit: contain;
+
+    @include for-tablet {
+      width: 392px;
+      max-width: 100%;
+      height: 392px;
+    }
+
+    @include for-desktop {
+      width: 324px;
+      height: 324px;
+    }
+
+    &--smart-speaker {
+      margin-top: 48px;
+
+      @include for-desktop {
+        margin-top: 12px;
+      }
+    }
+  }
+}
