@@ -1,0 +1,45 @@
+@use '../utils/mixins' as *;
+
+.hover {
+  &::before {
+    content: '';
+    background-image: url(/src/images/icons/Icon-Burger-menu.svg);
+    background-size: cover;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+
+    @media (min-width: 744px) {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: '';
+    background-image: url(/src/images/icons/Icon-Burger-menu-hover.svg);
+    background-size: cover;
+
+    width: 24px;
+    height: 24px;
+
+    @media (min-width: 744px) {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__menu {
+    @include visually-hidden;
+  }
+}
