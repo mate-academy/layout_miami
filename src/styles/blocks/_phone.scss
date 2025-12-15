@@ -1,0 +1,39 @@
+@use '../utils/mixins' as *;
+@use '../base/colors' as *;
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+
+  &__label {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text-primary;
+    position: absolute;
+    transform: translateY(calc(-100% - 10px)) translateX(-65px); // jak ustawić dla 320px?
+
+    @include for-desktop {
+      transform: translateX(calc(-100% - 10px));
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+
+    @include for-desktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &:not(:hover) &__label {
+    @include visually-hidden;
+  }
+}

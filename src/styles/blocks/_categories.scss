@@ -1,0 +1,63 @@
+@use '../utils/mixins' as *;
+
+.categories {
+  @include grid;
+
+  margin-bottom: 96px;
+
+  @include for-desktop {
+    margin-bottom: 120px;
+  }
+
+  &__title {
+    margin-bottom: 47px;
+
+    @include for-desktop {
+      margin-bottom: 32px; // to be combined with grid gap
+    }
+  }
+
+  &__group {
+    @include grid;
+
+    margin-bottom: 40px;
+    grid-column: span 2;
+    gap: 16px 20px;
+
+    @include for-desktop {
+      grid-column: 1 / -1;
+      margin-bottom: 32px; // to be combined with grid gap
+    }
+  }
+
+  &__item {
+    // czy zostawić kwadratowe obrazy dla desktop? Czt zachowają elastyczność?
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+
+    @include for-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__item-picture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    border-radius: 4px;
+
+    @include image-zoom;
+  }
+
+  &__button {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 4;
+    }
+  }
+}

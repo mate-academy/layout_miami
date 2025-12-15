@@ -1,0 +1,70 @@
+@use '../utils/mixins' as *;
+@use '../base/colors' as *;
+
+.about-us {
+  @include grid;
+
+  grid-template-columns: minmax(280px, 1fr);
+  background-color: $floral-white;
+
+  @include for-desktop {
+    grid-template-columns: minmax(280px, 1fr);
+  }
+
+  @include full-width-child;
+
+  // to hide horizontal scrollbar visible when 100vw is being used
+  @container page (min-width: 320px) {
+    width: 100cqw;
+  }
+
+  &__picture {
+    background-image: url('src/images/sections/about-us.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    margin-bottom: 48px;
+
+    @include for-desktop {
+      min-height: 460px;
+      grid-column: 1 / -1;
+      margin-bottom: 96px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include for-desktop {
+      grid-column: span 7;
+    }
+  }
+
+  &__info {
+    padding: 0 20px 48px;
+    box-sizing: border-box;
+
+    @include grid;
+
+    @include for-desktop {
+      grid-column: 1 / -1;
+      padding-bottom: 120px;
+    }
+  }
+
+  &__description {
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: $text-primary;
+    grid-column: 1 / -1;
+
+    @include for-desktop {
+      grid-column: span 5;
+      justify-self: end;
+    }
+  }
+}

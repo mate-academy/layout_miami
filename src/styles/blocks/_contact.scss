@@ -1,0 +1,115 @@
+@use '../utils/mixins' as *;
+@use '../base/colors' as *;
+
+.contact {
+  @include grid;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  @include for-desktop {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+
+    @include for-desktop {
+      margin-bottom: 32px; // to be combined with grid gap
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
+    grid-column: 1 / -1;
+
+    @include for-desktop {
+      grid-column: span 6;
+    }
+
+    &-item {
+      padding-bottom: 16px;
+
+      &--last {
+        padding-bottom: 32px;
+      }
+    }
+
+    &-input {
+      background-color: $form-field-background;
+      height: 48px;
+      border: 0;
+      border-radius: 8px;
+      width: 100%;
+      padding-left: 16px;
+      box-sizing: border-box;
+      font-family: Manrope, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: $text-primary;
+
+      &::placeholder {
+        color: $form-field-placeholder;
+      }
+
+      &:hover {
+        outline: 1px solid #dbdbdb;
+
+        &::placeholder {
+          color: $text-primary;
+        }
+      }
+
+      &:focus {
+        outline: 2px solid $form-focus;
+      }
+    }
+
+    &-textarea {
+      background-color: $form-field-background;
+      height: 148px;
+      border: 0;
+      border-radius: 8px;
+      width: 100%;
+      padding-left: 16px;
+      padding-top: 14px;
+      padding-bottom: 32px;
+      box-sizing: border-box;
+      font-family: Manrope, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: $text-primary;
+
+      &::placeholder {
+        font-family: Manrope, sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 0.15px;
+        color: $form-field-placeholder;
+      }
+
+      &:hover {
+        outline: 1px solid #dbdbdb;
+
+        &::placeholder {
+          color: $text-primary;
+        }
+      }
+
+      &:focus {
+        outline: 2px solid $form-focus;
+      }
+    }
+
+    &-label {
+      &:not(:focus),
+      &:not(:active) {
+        @include visually-hidden;
+      }
+    }
+  }
+}
