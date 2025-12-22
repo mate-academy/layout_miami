@@ -1,0 +1,78 @@
+@use '../utils/vars';
+@use '../utils/mixins' as *;
+
+.main {
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-mobile-wide {
+    padding: 74px;
+
+    @include for-desktop {
+      padding: 120px;
+    }
+  }
+
+  &__section {
+    padding: 50px 0;
+    max-width: 400px;
+    box-sizing: border-box;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--buy {
+      gap: 20px;
+    }
+
+    &--contact {
+      width: 100%;
+
+      @include for-mobile-wide {
+        row-gap: 40px;
+        padding-bottom: 35px;
+      }
+    }
+
+    @include for-mobile-wide {
+      max-width: 600px;
+      gap: 65px;
+
+      &--buy,
+      &--contact {
+        align-items: flex-start;
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(6, 80px);
+        gap: 20px 24px;
+        padding: 55px 0;
+      }
+
+      @include for-desktop {
+        &--recomendet,
+        &--buy,
+        &--contact {
+          max-width: 100%;
+          display: grid;
+          grid-template: repeat(2, auto) / repeat(12, 63px);
+          column-gap: 24px;
+        }
+        &--contact {
+          max-width: 1020px;
+        }
+      }
+    }
+  }
+
+  &__link {
+    color: vars.$main-font;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

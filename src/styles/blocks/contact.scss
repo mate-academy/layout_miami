@@ -1,0 +1,63 @@
+@use '../utils/vars';
+@use '../utils/mixins' as *;
+
+.contact {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  font-size: 14px;
+  align-items: center;
+
+  @include for-mobile-wide {
+    grid-area: 2 / 1 / 2 / 4;
+
+    @include for-desktop {
+      grid-area: 2 / 1 / 2 / 7;
+    }
+  }
+
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    border-radius: 40px;
+    padding-left: 16px;
+    margin: 8px 0;
+    border: 1px solid vars.$form-input;
+    background-color: vars.$form-input;
+
+    &--message {
+      height: 148px;
+      border-radius: 16px;
+      padding-top: 20px;
+    }
+
+    &--button {
+      font-size: 16px;
+      margin: 24px 0 6px;
+    }
+
+    &::placeholder {
+      color: vars.$form-placeholder;
+    }
+
+    &:hover {
+      &::placeholder {
+        color: vars.$main-font;
+      }
+    }
+
+    &:focus {
+      border: 1px solid vars.$main-font;
+      outline: none;
+    }
+  }
+}

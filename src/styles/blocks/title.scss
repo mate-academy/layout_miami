@@ -1,0 +1,62 @@
+@use '../utils/vars';
+@use '../utils/mixins' as *;
+
+.title {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 32px;
+  letter-spacing: -1.5px;
+  line-height: 100%;
+
+  @include for-mobile-wide {
+    font-size: 40px;
+
+    @include for-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__main {
+    display: block;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+
+    &--buy {
+      text-align: left;
+      align-self: flex-start;
+
+      @include for-mobile-wide {
+        margin-top: 15px;
+        grid-area: 1 / 1 / 1 / 4;
+
+        @include for-desktop {
+          grid-area: 1 / 1 / 1 / 6;
+        }
+      }
+    }
+
+    @include for-mobile-wide {
+      &--contact {
+        grid-area: 1 / 1 / 1 / -1;
+      }
+    }
+
+    @include for-desktop {
+      &--recomendet {
+        grid-area: 1 / 1 / 1 / -1;
+      }
+    }
+  }
+
+  &--header {
+    &::before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 58px;
+      margin-bottom: 16px;
+      background-image: url('../images/sound_waves.svg');
+    }
+  }
+}
