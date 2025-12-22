@@ -1,0 +1,105 @@
+@use '../utils/utils' as *;
+
+@mixin form-text() {
+  font-family: Cinzel, sans-serif;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-small;
+  line-height: 20px;
+  color: $dark-color;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    background: $light-grey-color;
+    border: 1px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 11px;
+
+    @include form-text;
+
+    &::placeholder {
+      @include form-text;
+
+      color: $dark-grey-color;
+    }
+
+    &:hover {
+      border: 1px solid $grey-color;
+
+      &::placeholder {
+        color: $dark-color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $dark-color;
+
+      &::placeholder {
+        color: $dark-color;
+      }
+    }
+  }
+
+  &__textarea {
+    background: $light-grey-color;
+    border: 1px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+
+    min-height: 144px;
+
+    padding-left: 11px;
+    padding-top: 14px;
+
+    @include form-text;
+
+    &::placeholder {
+      @include form-text;
+
+      color: $dark-grey-color;
+    }
+
+    &:hover {
+      border: 1px solid $grey-color;
+
+      &::placeholder {
+        color: $dark-color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $dark-color;
+
+      &::placeholder {
+        color: $dark-color;
+      }
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+
+  &__success {
+    margin-top: 12px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-family: Cinzel, sans-serif;
+    font-size: $font-size-small;
+    color: $dark-color;
+    background-color: $light-grey-color;
+  }
+}

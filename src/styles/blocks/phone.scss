@@ -1,0 +1,54 @@
+@use '../utils/utils' as *;
+
+.phone {
+  position: relative;
+
+  &__icon {
+    width: $icon-sm;
+    height: $icon-sm;
+
+    @include for-tablet {
+      width: $icon-lg;
+      height: $icon-lg;
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-100% - 16px), -50%);
+
+    opacity: 0;
+    transition: opacity 0.3 ease-in-out;
+    white-space: nowrap;
+  }
+
+  &:hover &__label {
+    opacity: 1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  &__location,
+  &__number {
+    font-family: Cinzel, sans-serif;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-body;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white-color;
+
+    &:hover {
+      color: $dark-red-color;
+    }
+  }
+}

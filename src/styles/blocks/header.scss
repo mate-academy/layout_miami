@@ -1,0 +1,56 @@
+@use '../utils/utils' as *;
+
+.header {
+  background-color: black;
+  background-image: url(../images/header-background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 25px 20px;
+
+  @include grid;
+
+  grid-template-rows: auto 1fr;
+
+  @include for-tablet {
+    background-image: url(../images/header-background-desktop.jpg);
+    background-position: center;
+
+    padding: 50px 120px;
+  }
+
+  &__navigation {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    align-self: start;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    align-self: start;
+
+    padding-top: 129px;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+
+      padding-top: 83px;
+    }
+  }
+}

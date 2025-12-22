@@ -1,0 +1,45 @@
+@use '../utils/utils' as *;
+
+.burger {
+  &::before {
+    content: '';
+    background-image: url(../images/Icon-Burger-menu.svg);
+    background-size: cover;
+    display: inline-block;
+    width: $icon-sm;
+    height: $icon-sm;
+
+    @include for-tablet {
+      width: $icon-lg;
+      height: $icon-lg;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: '';
+    background-image: url(../images/Icon-Burger-menu-hover.svg);
+    background-size: cover;
+    width: $icon-sm;
+    height: $icon-sm;
+
+    @include for-tablet {
+      width: $icon-lg;
+      height: $icon-lg;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}
