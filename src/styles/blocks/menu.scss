@@ -1,0 +1,92 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform $transition-time ease-in-out;
+  background-color: $accent-color;
+  padding: 0 20px 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 1;
+
+  @include for-tablet {
+    padding: 0 72px 32px;
+  }
+
+  @include for-desktop {
+    padding: 0 120px 32px;
+  }
+
+  @include grid;
+
+  place-content: start space-between;
+  gap: 0;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__links {
+    margin-bottom: 30px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    font-weight: $bold;
+    font-size: $font-small;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: $white;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__call-link {
+    font-weight: $bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $white;
+    text-decoration: none;
+    padding-bottom: 8px;
+
+    &:hover {
+      border-bottom: 1px solid $white;
+      margin-bottom: -1px;
+    }
+  }
+}

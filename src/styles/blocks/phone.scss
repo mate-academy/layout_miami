@@ -1,0 +1,39 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.phone {
+  &__label {
+    text-align: right;
+    font-size: $font-small;
+    line-height: 27px;
+    font-weight: $bold;
+    text-decoration: none;
+    color: $white;
+    text-transform: uppercase;
+    position: absolute;
+    transform: translateX(calc(-100% - 20px)) translateY(-40%);
+    display: none;
+
+    @include for-desktop {
+      display: block;
+    }
+  }
+
+  &:not(:hover) .phone__label {
+    @include visually-hidden;
+  }
+
+  &__icon {
+    display: block;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/icons/phone.svg);
+    background-size: cover;
+
+    @include for-tablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

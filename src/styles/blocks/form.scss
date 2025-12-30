@@ -1,0 +1,59 @@
+@use '../utils/mixins' as *;
+@use '../utils/vars' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
+    height: 48px;
+    border: 0;
+    background-color: $form-bg;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: $main-font;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 11px;
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    &:hover::placeholder {
+      color: $main-dark;
+    }
+
+    &:focus {
+      border: 1px solid $main-dark;
+    }
+  }
+
+  &__textarea {
+    font-family: $main-font;
+    height: 144px;
+    border: 0;
+    background-color: $form-bg;
+    width: 100%;
+    line-height: 20px;
+    padding-left: 11px;
+    padding-top: 14px;
+    box-sizing: border-box;
+    resize: none;
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    &:hover::placeholder {
+      color: $main-dark;
+    }
+  }
+
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+}
