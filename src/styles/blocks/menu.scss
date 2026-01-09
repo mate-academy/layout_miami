@@ -1,0 +1,63 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: $form-bg-color;
+  min-height: 100vh;
+  z-index: 100;
+  overflow-y: hidden;
+
+  @include padding;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  &__img-container {
+    width: 100%;
+  }
+
+  &__paragraph {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+  }
+
+  &__call-link {
+    display: inline-block;
+    color: $button-color-secondary;
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid $button-color-secondary;
+    padding-bottom: 4px;
+  }
+
+  :has(&__call-link:hover) &__paragraph {
+    color: $button-color-primary;
+  }
+}

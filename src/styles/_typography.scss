@@ -1,3 +1,57 @@
+@use './utils/extends' as *;
+@use './utils/vars' as *;
+@use './utils/mixins' as *;
+
+:root {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+}
+
+html {
+  color: $text-color-primary;
+  scroll-behavior: smooth;
+  &:has([id='menu']:target) {
+    overflow: hidden;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 h1 {
   @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+.tablet-break {
+  display: inline;
+
+  @include for-tablets {
+    display: block;
+  }
+
+  @include for-desktop {
+    display: inline;
+  }
+}
+
+.desktop-break {
+  display: inline;
+
+  @include for-desktop {
+    display: block;
+  }
 }
