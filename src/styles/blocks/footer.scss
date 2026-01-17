@@ -1,0 +1,101 @@
+@use '../utils/mixins.scss' as *;
+
+.footer {
+  min-width: 320px;
+  width: 100%;
+
+  background-image: url('/src/images/footer-img.jpg');
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 75% center;
+  height: auto;
+  min-height: 200px;
+  overflow: hidden;
+
+  @include for-desktop {
+    min-height: 555px;
+    background-size: cover;
+    background-position: bottom;
+  }
+
+  @include for-tablet {
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: inherit;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  &__nav {
+    width: 100%;
+    background: #00000080;
+    backdrop-filter: blur(5px);
+    padding: 5px 0;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+
+    &.is-visible {
+      transform: translateY(0);
+    }
+
+    @include for-tablet {
+      padding: 15px 0;
+    }
+
+    @include for-desktop {
+      padding: 20px 0;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 10px;
+
+    @include for-tablet {
+      gap: 30px;
+    }
+
+    @include for-desktop {
+      gap: 40px;
+    }
+  }
+
+  &__link {
+    white-space: nowrap;
+    text-decoration: none;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #fff;
+    border-bottom: 1px solid transparent;
+
+    @include for-tablet {
+      font-size: 22px;
+    }
+
+    @include for-desktop {
+      font-size: 22px;
+    }
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+
+    @include for-tablet {
+      font-size: 16px;
+    }
+  }
+}
