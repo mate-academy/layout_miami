@@ -1,0 +1,91 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: #c2c2c2;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 0 clamp(20px, 5vw, 80px) 88px;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 12px;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__contact-box,
+  &__navigation,
+  &__links,
+  &__paragraph {
+    grid-column: span 2;
+  }
+
+  &__contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__paragraph {
+    white-space: nowrap;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+  }
+
+  &__call-link {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+
+  @include Ipad-744() {
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 16px;
+
+    &__contact-box,
+    &__navigation,
+    &__links,
+    &__paragraph {
+      grid-column: span 6;
+    }
+  }
+
+  @include Desktop-1260() {
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 20px;
+
+    &__contact-box,
+    &__navigation,
+    &__links,
+    &__paragraph {
+      grid-column: span 12;
+    }
+  }
+}
+
+.page__body--with-menu {
+  overflow: hidden;
+}

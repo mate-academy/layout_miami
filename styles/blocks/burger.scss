@@ -1,0 +1,55 @@
+@use '../utils/mixins.scss' as *;
+
+.burger {
+  &::before {
+    content: '';
+    background-image: url('../images/menu-vector.svg');
+    background-size: cover;
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+
+    @include Ipad-744() {
+      width: 24px;
+      height: 16px;
+    }
+
+    @include Desktop-1260() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: '';
+    background-image: url('../images/menu-vector--hover.svg');
+    background-size: cover;
+    width: 18px;
+    height: 12px;
+
+    @include Ipad-744() {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include Desktop-1260() {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden();
+  }
+}
