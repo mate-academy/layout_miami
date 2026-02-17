@@ -1,0 +1,106 @@
+@use '../utils/vars.scss' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: 100vh;
+  background: $color-menu-bg;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  border: $color_black solid 1px;
+  padding: $padding-header-mobile;
+  font-weight: 600;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    width: 187px;
+  }
+
+  &__close {
+    width: 28px;
+    height: 28px;
+    background-image: url('/src/images/photos/Buttons_x.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 48px;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    color: $color_black;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px solid #1d1d1d;
+    }
+  }
+
+  &__footer {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__phone {
+    font-size: 16px;
+    color: $color_black;
+    text-decoration: none;
+    line-height: 27px;
+  }
+
+  &__info {
+    width: 140px;
+    color: $color_black;
+    font-size: 12px;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid $color_black;
+  }
+}
+
+@media screen and (min-width: 744px) {
+  .menu {
+    padding: $padding-header-tablet;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .menu {
+    padding: $padding-header-desktop;
+  }
+}
