@@ -1,0 +1,124 @@
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #e8eff9;
+  z-index: 1000;
+
+  transform: translateX(-100%);
+  transition: $trans_values;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 28px 20px 40px;
+    box-sizing: border-box;
+
+    @media (min-width: $page_width_medium) {
+      padding: 36px 72px;
+    }
+
+    @media (min-width: $page_width_large) {
+      padding: 36px 120px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  &__logo {
+    height: 16px;
+    width: auto;
+
+    @media (min-width: $page_width_medium) {
+      width: 188px;
+      height: 24px;
+    }
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+
+    @media (min-width: $page_width_medium) {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  &__img_close {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: $main_color;
+    text-transform: uppercase;
+    transition: $trans_values;
+
+    &:hover {
+      border-bottom: 2px solid $main_color;
+      padding-bottom: 4px;
+    }
+  }
+
+  &__footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone {
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: #292929;
+  }
+
+  &__call-action {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main_color;
+    text-decoration: none;
+    width: fit-content;
+    border-bottom: 1px solid $main_color;
+    padding-bottom: 4px;
+  }
+}

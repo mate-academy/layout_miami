@@ -1,0 +1,101 @@
+@use '../utils/variables' as *;
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  transition: $trans_values;
+
+  &__logo {
+    display: block;
+    width: 125px;
+    height: 16px;
+
+    @media (min-width: $page_width_medium) {
+      width: 188px;
+      height: 24px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+
+    @media (min-width: $page_width_medium) {
+      width: 24px;
+      height: 24px;
+    }
+
+    &--burger-hover {
+      display: none;
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: $main_color;
+    white-space: nowrap;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: $trans_values;
+    pointer-events: none;
+  }
+
+  &__phone-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @media (min-width: $page_width_medium) {
+      gap: 32px;
+    }
+  }
+
+  &__group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 24px;
+
+    &--phone {
+      &:hover {
+        .navigation__phone-number {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(-50%) translateX(0);
+        }
+      }
+    }
+
+    &--burger {
+      &:hover {
+        .navigation__icon--burger-default {
+          display: none;
+        }
+
+        .navigation__icon--burger-hover {
+          display: block;
+        }
+      }
+    }
+  }
+}
