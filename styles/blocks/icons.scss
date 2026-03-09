@@ -1,0 +1,67 @@
+@use '../utils/mixins.scss' as *;
+
+.icons {
+  display: flex;
+  gap: 24px;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__label {
+      color: #1B2129;
+      font-family: Inter;
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      vertical-align: middle;
+      text-transform: uppercase;
+      padding: 8px;
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+    }
+
+  @include for-tablet {
+    gap: 32px;
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @include for-desktop {
+    gap: 32px;
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+
+      &--call:hover + .icons__label {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &--burger:hover {
+        content: url(../../src/images/burger_icon_hover.svg);
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+    }
+
+    &__label {
+      opacity: 0;
+      visibility: hidden;
+      display: inline;
+      order: -1;
+    }
+  }
+}
