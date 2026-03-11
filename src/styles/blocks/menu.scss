@@ -1,0 +1,69 @@
+@use '../utils/mixins';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #c2c2c2; // Twoje tło
+  z-index: 1000;
+  padding: 0 24px; // Większy margines od krawędzi ekranu
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+
+  @include desktop {
+    padding: 32px 120px;
+  }
+
+  @include tablet {
+    padding: 32px 72px;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    width: 100%; // Musi być na całą szerokość, żeby rozsunąć logo i X
+    display: flex;
+    justify-content: space-between; // Rozsuwa logo i ikonę zamknięcia
+    align-items: center;
+    margin-bottom: 80px;
+
+    @include tablet {
+      padding: 32px 120px;
+    }
+  }
+
+  &__links {
+    margin-bottom: 8px;
+  }
+
+  &__paragraph {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1d1d1d;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1d1d1d;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #1d1d1d; // Podkreślenie Book a test ride
+    display: inline-block;
+  }
+}

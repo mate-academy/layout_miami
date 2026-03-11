@@ -1,0 +1,53 @@
+@use '../utils/mixins';
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  // Ikona słuchawki
+  &_icon {
+    // Poprawiono z &__icon na &_icon (zgodnie z HTML)
+    width: 18px;
+    height: 18px;
+
+    @include desktop {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include tablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Napis z numerem
+  &__label {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-transform: uppercase;
+    color: #fff;
+
+    position: absolute;
+    right: 100%; // Ustawia numer na lewo od słuchawki
+    margin-right: 20px;
+    white-space: nowrap;
+
+    // Domyślnie ukryty
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+
+  // POKAZYWANIE PO NAJECHANIU
+  &:hover &__label {
+    opacity: 1;
+    visibility: visible;
+  }
+}
