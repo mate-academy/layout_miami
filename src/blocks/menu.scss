@@ -1,0 +1,87 @@
+@use '../styles/utils/mixins.scss' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: #e8eff9;
+  padding: 0 20px 20px;
+  min-height: 100vh;
+  overflow-y: hidden;
+  z-index: 1;
+
+  @include grid;
+
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__links {
+    margin-bottom: 40px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    color: var(--main-font-color);
+
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+  &__call-link {
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    color: var(--main-font-color);
+
+    &:hover {
+      border-bottom: 1px solid #292929;
+    }
+  }
+}
