@@ -1,0 +1,129 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translate(100%);
+  transition: transform 0.3s ease-in-out;
+  background-color: $color-bg-menu;
+  padding: $space-sm $gap-s;
+  min-height: 100vh;
+
+  @include grid();
+  row-gap: 0;
+
+  align-content: start;
+
+  box-sizing: border-box;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  &:target {
+    transform: translate(0);
+  }
+
+  &__links {
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__phone {
+    font-family: $font-main;
+    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-m;
+    line-height: 27px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding-bottom: $space-s;
+
+    color: $color-phone-number;
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+
+      font-family: $font-main;
+      font-weight: $font-weight-semi-bold;
+      font-size: $font-size-m;
+      line-height: 27px;
+      letter-spacing: 0px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+
+      font-family: $font-main;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-m;
+      line-height: 27px;
+      letter-spacing: 0px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+  }
+
+  &__call-link {
+    font-family: $font-main;
+
+    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-xs;
+    line-height: 16px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: $space-xs;
+    border-bottom: 1px solid $color-phone-call-link;
+
+    color: $color-phone-call-link;
+
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      text-shadow:
+      0 0 10px $color-phone-shadow-menu;
+    }
+
+    grid-column: span 2;
+
+    @include for-tablet() {
+      grid-column: span 6;
+      font-weight: $font-weight-semi-bold;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+      font-weight: $font-weight-bold;
+    }
+  }
+}

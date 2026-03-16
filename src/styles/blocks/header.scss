@@ -1,0 +1,76 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.header {
+  background-color: $color-bg;
+  background-image: url('src/images/header/header-background.jpg');
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center right;
+
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: auto auto;
+  gap: $gap-s;
+  justify-content: center;
+
+  @include for-tablet() {
+    background-image: url('src/images/header/header-background-desktop.jpg');
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: auto 1fr;
+    gap: $gap-m;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+  @include for-desktop() {
+    background-image: url('src/images/header/header-background-desktop.jpg');
+    grid-template-columns: repeat(12, 63px);
+    grid-template-rows: auto 1fr;
+    gap: $gap-m;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    min-height: 100vh;
+  }
+
+
+  &__nav {
+    align-self: start;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    @include for-tablet() {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
+      }
+    }
+
+  &__title {
+    grid-column: 1 / 3;
+    padding-top: $section-spacer-mobile;
+
+    @include for-tablet() {
+      grid-column: 1 / 7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 13;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    }
+}
