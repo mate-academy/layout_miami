@@ -1,0 +1,96 @@
+@import '../utils/vars';
+
+.categories {
+  padding: 60px 0;
+  @media (min-width: 1200px) { padding: 80px 0; }
+
+  &__label {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    @media (min-width: 1200px) { font-size: 48px; }
+  }
+
+
+&__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.category-item {
+  margin-bottom: 40px;
+  align-items: center;
+  text-align: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__image-container {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      // TABLET: Specyficzne wymiary z Twoich wytycznych
+      gap: 20px;
+      .category-item--layout-1 & { grid-template-columns: 392px 184px; }
+      .category-item--layout-2 & { grid-template-columns: 184px 392px; }
+    }
+
+    @media (min-width: 1200px) {
+      gap: 24px;
+      // DESKTOP: Powrót do oryginalnego układu (nie zmienia się)
+      .category-item--layout-1 & { grid-template-columns: 672px 324px; }
+      .category-item--layout-2 & { grid-template-columns: 324px 672px; }
+    }
+  }
+
+  &__img-wrapper {
+    background-color: #f5f5f7;
+    overflow: hidden;
+
+    // MOBILE: Sztywne 130x130
+    width: 130px;
+    height: 130px;
+    justify-self: center; // Centrowanie, jeśli ekran jest szerszy niż 2x130
+
+    @media (min-width: 768px) {
+      width: 100%; // Na tablecie i desktopie pozwalamy gridowi kontrolować szerokość
+
+      // TABLET: Wysokość 184px dla obu typów zdjęć
+      height: 184px;
+    }
+
+    @media (min-width: 1200px) {
+      // DESKTOP: Oryginalna wysokość 324px
+      height: 324px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__name {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 700;
+
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 20px;
+    }
+  }
+}
