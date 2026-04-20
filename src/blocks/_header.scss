@@ -1,0 +1,113 @@
+@use '../styles/utils/' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 20px;
+
+  &__logo {
+    width: 125px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__phone-number {
+    position: absolute;
+    right: 100%;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(0);
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+
+    font-family: Inter, sans-serif;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xs;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #292929;
+  }
+
+  &__menu-toggle {
+    background: none;
+    padding: 0;
+    border: none;
+
+    &::before,
+    &::after {
+      width: 24px;
+      height: 24px;
+    }
+
+    &::before {
+      content: '';
+      background-image: url(../images/menu-icon.svg);
+      background-size: cover;
+      display: inline-flex;
+    }
+    &::after {
+      content: '';
+      background-image: url(../images/menu-hover-icon.svg);
+      background-size: cover;
+      display: none;
+    }
+  }
+
+  @include respond-up(744px) {
+    padding-block: 36px;
+    padding-inline: 72px;
+
+    &__logo {
+      width: 188px;
+    }
+
+    &__actions {
+      gap: 32px;
+    }
+
+    &__menu-toggle {
+      &::before,
+      &::after {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &__call-icon,
+    &__menu-icon,
+    &__menu-icon-hover {
+      width: 32px;
+    }
+
+    @include respond-up(1260px) {
+      padding-inline: 120px;
+
+      &__call {
+        &:hover .header__phone-number {
+          transform: translateX(-10px);
+          opacity: 1;
+        }
+      }
+
+      &__menu-toggle:hover {
+        &::before {
+          display: none;
+        }
+        &::after {
+          display: inline-flex;
+        }
+      }
+    }
+  }
+}

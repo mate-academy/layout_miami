@@ -1,0 +1,70 @@
+@use '../styles/utils/' as *;
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: #000;
+
+  &__images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &--offset-left .category-card__image:first-child {
+    object-position: 75% 50%;
+  }
+
+  &--offset-right .category-card__image:last-child {
+    object-position: 93% 50%;
+  }
+
+  &__title {
+    font-family: Inter, sans-serif;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base;
+    line-height: 1.4;
+    margin-top: 16px;
+  }
+
+  @include respond-up(744px) {
+    &__images {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &__image:first-child {
+      aspect-ratio: 2 / 1;
+    }
+
+    &__title {
+      font-size: $font-size-lg;
+    }
+
+    &--reverse-grid {
+      .category-card__images {
+        grid-template-columns: 1fr 2fr;
+      }
+
+      .category-card__image:first-child {
+        aspect-ratio: 1 / 1;
+      }
+
+      .category-card__image:last-child {
+        aspect-ratio: 2 / 1;
+      }
+    }
+  }
+}
