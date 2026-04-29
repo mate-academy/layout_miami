@@ -1,0 +1,56 @@
+@use "../utils/mixins.scss" as *;
+
+
+.burger{
+  &::before{
+    display: inline-block;
+    content: '';
+    background-image: url(./src/images/menu.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 18px;
+
+    @include tablet {
+      height: 16px;
+      width: 24px;
+    }
+  }
+
+  &::after{
+    display: none;
+    content: '';
+    background-image: url(./src/images/menu_hover.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 18px;
+    transform: scale(-1, -1);
+
+    @include tablet {
+      height: 16px;
+      width: 24px;
+    }
+  }
+
+  &:hover{
+    &::before{
+      display: none;
+    }
+
+    &::after{
+      display: inline-block;
+    }
+  }
+
+  &__label{
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

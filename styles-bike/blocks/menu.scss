@@ -1,0 +1,148 @@
+@use "../utils/mixins.scss" as *;
+
+
+.menu {
+  height: 100dvh;
+  width: 100%;
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+
+  &:target{
+    transform: translateX(0%);
+  }
+
+
+  &__list{
+    padding: 0 20px;
+
+    @include tablet {
+      padding: 0 72px;
+    }
+
+    @include desktop {
+      padding: 0 120px;
+    }
+  }
+
+
+  &__item{
+    padding-top: 32px;
+
+    &:first-child{
+      padding-top: 24px;
+
+      @include tablet {
+        padding-top: 8px;
+      }
+
+      @include desktop {
+        padding-top: 24px;
+      }
+    }
+  }
+
+
+  &__link{
+    text-decoration: none;
+    color: #1d1d1d;
+    position: relative;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+
+    @include desktop {
+      font-weight: 900;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      border-radius: 45px;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::before{
+      transform: scaleX(1);
+    }
+  }
+
+
+  &__contact{
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+
+    @include tablet {
+      padding: 40px 72px;
+    }
+
+    @include desktop {
+      padding: 40px 120px;
+    }
+
+    &--phone{
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 27px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      color: #1d1d1d;
+
+      @include desktop {
+        font-weight: 900;
+      }
+    }
+
+    &--reservation{
+      position: relative;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      color: #1d1d1d;
+      width: max-content;
+
+      @include desktop {
+        font-weight: 900;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 100%;
+        border-bottom: 1px solid black;
+        border-radius: 45px;
+      }
+    }
+  }
+}
