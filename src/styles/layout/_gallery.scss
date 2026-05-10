@@ -1,0 +1,121 @@
+@use '../abstracts' as *;
+
+.categories {
+  &__row {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+
+    @include mq('md') {
+      margin-bottom: 4rem;
+    }
+
+    // @include mq('lg') {
+    //   grid-column: 1 / -1;
+    // }
+
+    @include mq('xxl') {
+      grid-column: 2 / -2;
+    }
+
+    @media (min-width: 840px) and (max-width: 1024px) and (orientation: portrait) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__images {
+    display: grid;
+    gap: var(--gutter);
+    grid-template-columns: 1fr 1fr;
+
+    @include mq('md') {
+      .categories__row--type-a & {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      .categories__row--type-b & {
+        grid-template-columns: 1fr 2fr;
+      }
+
+      .categories__row--type-c & {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: var(--gallery-border);
+      transition: box-shadow var(--gallery-transition);
+      pointer-events: none;
+    }
+
+    @include mq('md') {
+      height: clamp(200px, 28vw, 250px);
+    }
+
+    @include mq('xl') {
+      height: #{rem(350)};
+    }
+  }
+
+  @media (hover: hover) {
+    &__image-wrapper:hover &__image {
+      transform: scale(1.02);
+    }
+
+    &__image-wrapper:hover::after {
+      box-shadow: var(--gallery-hover);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image {
+      transition: none;
+    }
+
+    &__image-wrapper:hover &__image {
+      transform: none;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform var(--gallery-transition);
+
+    &[data-image='sunglasses-girl-mobile-crop'] {
+      @media (max-width: 820px) {
+        object-position: 75% center;
+      }
+    }
+
+    &[data-image='earbuds-girl-mobile-crop'] {
+      object-position: 60% center;
+    }
+  }
+
+  &__caption {
+    margin-top: clamp(0.5rem, 4vw, 1.3rem);
+    font-weight: var(--wght-medium);
+  }
+
+  &__btn {
+    margin-top: calc(-1 * var(--gutter));
+    max-width: #{rem(350)};
+
+    @include mq('md') {
+      margin-top: calc(-1 * (var(--gutter) * 2.5));
+    }
+  }
+}

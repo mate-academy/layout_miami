@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.grid-container {
+  width: 100%;
+  max-width: var(--page-content-width);
+  padding: 0 var(--page-side-spacing-s);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gutter);
+
+  @include mq('md') {
+    padding: 0 var(--page-side-spacing-md);
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include mq('lg') {
+    padding: 0 var(--page-side-spacing-lg);
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+// -------------------------------------------------
+//    SECTION
+// -------------------------------------------------
+
+.section {
+  padding-top: var(--section-spacing);
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+    line-height: var(--lh-section-title);
+    padding-bottom: var(--page-title-padding);
+  }
+}

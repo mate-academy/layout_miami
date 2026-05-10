@@ -1,0 +1,265 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+.menu {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  height: 100dvh;
+  background-color: var(--nav-bg);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  visibility: hidden;
+  will-change: transform; // Firefox animation hint
+  backface-visibility: hidden; // Firefox animation hint
+  transition:
+    transform var(--nav-transition),
+    visibility var(--nav-transition);
+
+  @include mq('md') {
+    width: 100%;
+    max-width: #{rem(500)};
+  }
+
+  @include mq('lg') {
+    max-width: #{rem(800)};
+  }
+
+  // @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+  //   max-width: #{rem(600)};
+  // }
+
+  &.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  // -------------------------------------------------
+  //      GRID MIRRORING
+  // -------------------------------------------------
+
+  &__container {
+    padding-top: clamp(3rem, 30vw, 7rem);
+    padding-left: var(--page-side-spacing-s);
+
+    @include mq('md') {
+      padding-top: 9rem;
+      padding-left: var(--page-side-spacing-md);
+    }
+
+    @include mq('lg') {
+      padding-top: clamp(7.5rem, 8vw, 10rem);
+      padding-left: var(--dynamic-margin);
+    }
+  }
+
+  // -------------------------------------------------
+  //      MENU LINKS CONTAINER
+  // -------------------------------------------------
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    gap: var(--nav-list-gap);
+
+    // --- focus state (fix with the overflow-y auto) ---
+
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    padding: 0.5rem 0.5rem var(--nav-list-padding) 0.5rem;
+
+    // --- fading edge ---
+
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+
+    // --- custom scrollbar ---
+
+    &::-webkit-scrollbar {
+      width: #{rem(6)};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--nav-scrollbar-clr);
+      border-radius: #{rem(10)};
+    }
+  }
+
+  // ------------------------------------------------------
+  //      ADDITIONAL MENU LINK STYLES (only for menu__list)
+  // ------------------------------------------------------
+
+  &__item {
+    position: relative;
+    width: fit-content;
+    transition:
+      transform var(--nav-link-transition),
+      color var(--nav-link-transition);
+    transform-origin: left bottom;
+    transform: scaleX(1);
+
+    // --- FLOW LINE under MENU LINK ---
+
+    &::after {
+      content: '';
+      opacity: 0.8;
+      position: absolute;
+      bottom: #{rem(-2)};
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--nav-link-hover);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform var(--nav-link-transition);
+    }
+
+    // --- (hover) FLOW LINE under MENU LINK ---
+
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .menu-link {
+        color: var(--nav-link-hover);
+      }
+    }
+  }
+
+  // -------------------------------------------------
+  //      MAIN MENU LINK STYLES
+  // -------------------------------------------------
+
+  &__link {
+    @extend %link-base;
+
+    display: inline-block;
+    width: fit-content;
+    text-transform: uppercase;
+    color: var(--nav-link-color);
+    font-size: var(--nav-link-font-size);
+    font-weight: var(--nav-link-weight);
+    letter-spacing: var(--nav-spacing);
+    transition:
+      color var(--nav-link-transition),
+      transform var(--nav-link-transition);
+
+    // --- RENDERING FIX ---
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+
+    &:hover {
+      color: var(--nav-link-hover);
+    }
+  }
+
+  // -------------------------------------------------
+  //      CONTACT CONTAINER
+  // -------------------------------------------------
+
+  &__contact {
+    transform-origin: left bottom;
+    display: inline-block;
+  }
+
+  // --- PHONE NR STYLES ---
+
+  &__tel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-number {
+      display: inline-block;
+      font-weight: var(--nav-link-weight);
+      font-size: var(--fs-s);
+    }
+
+    // --- CTA ---
+
+    &-label {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: var(--fs-s);
+      position: relative;
+      transition: transform var(--nav-link-transition);
+
+      // --- FLOW LINE under CONTACT ---
+
+      &::after {
+        content: '';
+        opacity: 0.8;
+        position: absolute;
+        bottom: #{rem(-3)};
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--txt-primary);
+        transform: scaleX(1);
+        transform-origin: right;
+        transition:
+          transform var(--nav-link-transition),
+          scale var(--nav-link-transition);
+      }
+    }
+  }
+
+  &__contact:hover {
+    .menu__tel-label::after {
+      transform: scaleX(0);
+    }
+  }
+
+  // -------------------------------------------------
+  //      BLUR & GRADIENT COVER (menu is open)
+  // -------------------------------------------------
+
+  &-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: var(--nav-overlay);
+    transition:
+      opacity var(--nav-transition),
+      visibility var(--nav-transition);
+    pointer-events: none;
+
+    .menu-is-open & {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      @include mq('md') {
+        background: var(--nav-overlay-fallback);
+
+        @supports (backdrop-filter: blur(8px)) {
+          background: var(--nav-overlay-md);
+          backdrop-filter: blur(8px);
+        }
+      }
+
+      @include mq('lg') {
+        @supports (backdrop-filter: blur(8px)) {
+          background: var(--nav-overlay);
+          backdrop-filter: blur(8px);
+        }
+      }
+    }
+  }
+}
+
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden;
+}

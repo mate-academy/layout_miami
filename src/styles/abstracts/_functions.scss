@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+// =================================================
+//    CALCULATE PX to REM
+// =================================================
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+// =================================================
+//    CALCULATE PX to VW
+// =================================================
+
+@function fluid-calc(
+  $min-size,
+  $max-size,
+  $min-width: 320px,
+  $max-width: 1440px
+) {
+  $min-size-val: math.div($min-size, $min-size * 0 + 1);
+  $max-size-val: math.div($max-size, $max-size * 0 + 1);
+  $min-width-val: math.div($min-width, $min-width * 0 + 1);
+  $max-width-val: math.div($max-width, $max-width * 0 + 1);
+  $slope: math.div(
+    $max-size-val - $min-size-val,
+    $max-width-val - $min-width-val
+  );
+  $intercept: $min-size-val - ($min-width-val * $slope);
+
+  @return max(
+    #{$min-size},
+    min(calc(#{$slope * 100}vw + #{$intercept}px), #{$max-size})
+  );
+}

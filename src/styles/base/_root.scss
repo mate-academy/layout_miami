@@ -1,0 +1,262 @@
+@use '../abstracts/vars' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+// =================================================
+//      CSS Custom Properties
+// =================================================
+
+// 1. Status & borders
+// 2. Background & surface
+// 3. Typography
+//      3.1. Font sizes
+//      3.2. Line heights
+//      3.3. Font weights
+//      3.4. Letter spacing
+// 4. Grid container
+// 5. Header
+// 6. Navbar
+//      6.1. Burger
+//      6.1. Menu
+// 7. Hero
+// 8. Form
+// 9. Transitions
+
+:root {
+  section[id] {
+    scroll-margin-top: calc(
+      var(--header-padding) + var(--burger-icon-size)
+    ); // section header visible under the fixed header
+
+    // @include mq('md') {
+    //   scroll-margin-top: calc(
+    //     var(--header-padding-md) + var(--burger-icon-size)
+    //   );
+    // }
+
+    @include mq('lg') {
+      scroll-margin-top: calc(
+        var(--header-padding-lg) + var(--burger-icon-size)
+      );
+    }
+  }
+
+  // -------------------------------------------------
+  //      STATUS & BORDERS
+  // -------------------------------------------------
+
+  --focus-border-clr: #{$clr-gray-800};
+  --status-error: #{$clr-red-500}; // TODO
+  --status-success: #{$clr-green-600}; // TODO
+
+  // -------------------------------------------------
+  //      BACKGROUND & SURFACE
+  // -------------------------------------------------
+
+  --bg-page: #{$clr-white};
+  --bg-section: #{$clr-white};
+
+  // -------------------------------------------------
+  //      TYPOGRAPHY
+  // -------------------------------------------------
+
+  --txt-primary: #{$clr-gray-800}; // headings, body, paragraphs
+  --txt-secondary: #{$clr-gray-500}; // description, metadata
+  --txt-muted: #{$clr-gray-400}; // placeholders
+  --txt-hover: #{$clr-gray-500};
+  --txt-on-dark: #{$clr-white};
+
+  // --- Font sizes ---
+
+  --fs-base: 1rem;
+  --fs-xs: clamp(14px 0.9em 15px);
+  --fs-s: clamp(16px, 1.1em, 18px);
+  --fs-md: clamp(20px, 2vw, 22px);
+  --fs-lg: #{fluid-calc(22px, 30px)};
+  --fs-xl: clamp(28px, 5vw, 40px);
+
+  // --- Line heights ---
+
+  --lh-base: 1.7;
+  --lh-section-title: 1.2;
+  --lh-tight: 1;
+
+  // --- Font weights ---
+
+  --wght-normal: 400;
+  --wght-medium: 500;
+  --wght-bold: 700;
+  --wght-black: 900;
+
+  // --- Letter spacing ---
+
+  --l-spacing-tight: -0.02em;
+  --l-spacing-medium: 0.04em;
+  --l-spacing-wide: 0.09em;
+
+  // -------------------------------------------------
+  //      GRID-CONTAINER
+  // -------------------------------------------------
+
+  --page-content-width: #{rem(1680)};
+  --gutter: #{fluid-calc(12px, 24px)};
+  --page-side-spacing-s: #{rem(24)};
+  --page-side-spacing-md: #{rem(72)};
+  --page-side-spacing-lg: #{rem(120)};
+  --section-spacing: #{fluid-calc(64px, 120px)};
+  --page-title-padding: clamp(1.5rem, 4vh, 4rem);
+  --dynamic-margin: max(
+    var(--page-side-spacing-lg),
+    calc((100vw - var(--page-content-width)) / 2 + var(--page-side-spacing-lg))
+  ); // grid mirroring
+
+  // -------------------------------------------------
+  //      HEADER
+  // -------------------------------------------------
+
+  --header-actions-gap: #{fluid-calc(4px, 20px)};
+  --header-bg-hover: #{$clr-white};
+  --header-bg: transparent;
+  --header-font-size: var(--fs-s);
+  --header-logo-height: #{fluid-calc(120px, 150px)};
+  --header-padding-lg: #{rem(10)} 0 #{rem(10)};
+  --header-padding: #{rem(12)} 0 #{rem(12)};
+  --header-phone-icon-width: #{fluid-calc(20px, 24px)};
+  --header-phone-width: #{fluid-calc(170px, 180px)};
+  --header-shadow-hover: 0 4px 30px rgba(0, 0, 0, 0.05);
+
+  // -------------------------------------------------
+  //    NAVBAR
+  // -------------------------------------------------
+
+  // --- Burger ---
+
+  --burger-before-size: #{rem(44)};
+  --burger-icon-size: #{fluid-calc(18px, 22px)};
+  --burger-touch-target: #{rem(48)};
+  --burger-transition: var(--transition-fast);
+
+  // --- Menu ---
+
+  --nav-bg: #{$clr-slate-100};
+  --nav-link-color: var(--txt-primary);
+  --nav-link-font-size: var(--fs-md);
+  --nav-link-hover: #{$clr-gray-600};
+  --nav-link-transition: var(--duration-fast) var(--easing-ease-in);
+  --nav-link-weight: var(--wght-bold);
+  --nav-list-gap: #{rem(24)};
+  --nav-list-padding: #{fluid-calc(40px, 54px)};
+  --nav-scrollbar-clr: #{$clr-gray-400};
+  --nav-spacing: var(--l-spacing-wide);
+  --nav-transition: var(--transition-normal);
+  --nav-overlay-fallback: #{rgba(#000, 0.7)};
+  --nav-overlay: linear-gradient(
+    to right,
+    #{rgba(#000, 0.65)} 0%,
+    #{rgba(#000, 0.35)} 32%,
+    #{rgba(#000, 0.08)} 66%,
+    transparent 100%
+  );
+  --nav-overlay-md: linear-gradient(
+    to right,
+    #{rgba(#000, 0.5)} 0%,
+    #{rgba(#000, 0.3)} 4%,
+    #{rgba(#000, 0.08)} 60%,
+    transparent 100%
+  );
+
+  // -------------------------------------------------
+  //    HERO
+  // -------------------------------------------------
+
+  --hero-container-padding: 2.5rem;
+  --hero-content-gap: #{fluid-calc(16px, 40px)};
+  --hero-font-size: #{fluid-calc(34px, 60px)};
+  --hero-icon-shift: 0.3rem;
+  --hero-icon-width: #{fluid-calc(54px, 96px)};
+  --hero-gradient-overlay: linear-gradient(
+    to top,
+    #{rgba($clr-white, $alpha: 0.2)} 0%,
+    #{rgba($clr-white, $alpha: 0.1)} 50%,
+    transparent 85%
+  );
+
+  // -------------------------------------------------
+  //    PRODUCTS
+  // -------------------------------------------------
+
+  --card-category-clr: #{$clr-gray-500};
+  --card-img-width: #{fluid-calc(200px, 250px)};
+  --card-shadow-width: #{rem(100)};
+
+  // -------------------------------------------------
+  //    GALLERY
+  // -------------------------------------------------
+
+  --gallery-border: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --gallery-transition: var(--duration-smooth) var(--easing-smooth);
+  --gallery-hover: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.12);
+
+  // -------------------------------------------------
+  //    BUTTON
+  // -------------------------------------------------
+
+  --btn-bg: #{$clr-gray-800};
+  --btn-active: #{$clr-gray-950};
+  --btn-disabled: #{$clr-gray-450};
+  --btn-disabled-txt: #d0d0d0;
+  --btn-radius: #{rem(40)};
+  --btn-hover-bg: #{$clr-white};
+  --btn-hover-txt: #{$clr-gray-800};
+
+  // -------------------------------------------------
+  //    CONTACT
+  // -------------------------------------------------
+
+  --contact-info-gap: #{fluid-calc(1.4rem, 2rem)};
+  --contact-info-label: var(--fs-xs);
+  --form-btn-width: #{rem(600)};
+  --form-input-bg: #{$clr-gray-200};
+  --form-input-border: inset 1 1 0 0px rgba(0, 0, 0, 0.08);
+  --form-input-error: var(--status-error); // TODO/optional
+  --form-input-focus: #{$clr-gray-950}; // form border focus
+  --form-input-hover: #{$clr-gray-250};
+  --form-input-placeholder: var(--txt-muted);
+  --form-input-success: var(--status-success); // TODO/optional
+  --form-input-txt: var(--txt-primary);
+  --form-label: var(--txt-primary);
+  --form-padding-y: calc(var(--form-radius) / 2);
+  --form-radius: #{fluid-calc(28px, 32px)};
+  --padding-block: var(--form-radius);
+  --padding-inline: var(--form-radius);
+
+  // -------------------------------------------------
+  //    TRANSITION TOKENS
+  // -------------------------------------------------
+
+  --transition-fast: var(--duration-fast) var(--easing-linear);
+  --transition-normal: var(--duration-normal) var(--easing-ease-in);
+  --transition-subtle: var(--duration-slow) var(--easing-subtle); // product card img
+  --transition-smooth: var(--duration-smooth) var(--easing-smooth)
+    var(--delay-normal);
+
+  // --- DURATIONS ---
+
+  --duration-fast: 0.25s; // micro-interactions, borders, buttons
+  --duration-normal: 0.35s; // cards, medium elements, menu sidebar
+  --duration-slow: 0.7s; // emphasis (products section)
+  --duration-smooth: 0.5s; // galleries, pictures
+
+  // --- EASINGS ---
+
+  --easing-ease-in: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-linear: ease;
+  --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easing-subtle: cubic-bezier(0.15, 0, 0.3, 1);
+
+  // --- DELAYS ---
+
+  --delay-long: 0.2s;
+  --delay-normal: 0.1s;
+}

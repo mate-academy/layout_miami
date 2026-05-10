@@ -1,0 +1,116 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+.contact {
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: calc(4 * var(--gutter));
+
+    @include mq('md') {
+      grid-template-columns: 2fr 1fr;
+      gap: calc(3 * var(--gutter));
+    }
+
+    @include mq('xl') {
+      grid-column: 1 / -1;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(6 * var(--gutter));
+    }
+
+    @include mq('xxl') {
+      grid-column: 2 / -1;
+    }
+
+    @media (min-width: 1024px) and (orientation: portrait) {
+      grid-column: 1 / -1;
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+  }
+
+  &__input {
+    @extend %paragraph-base;
+
+    width: 100%;
+    padding: var(--form-padding-y) var(--padding-inline);
+    color: var(--form-input-txt);
+    background: var(--form-input-bg);
+    border: 2px solid transparent;
+    border-radius: var(--form-radius);
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-normal);
+
+    &::placeholder {
+      color: var(--form-input-placeholder);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--form-input-hover);
+        box-shadow: var(--form-input-border);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--form-input-focus);
+    }
+
+    @include mq('lg') {
+      padding: var(--form-padding-y) var(--padding-inline);
+    }
+
+    &--textarea {
+      padding: var(--padding-block) var(--padding-inline);
+      resize: vertical;
+      min-height: 10rem;
+      border-radius: var(--form-radius);
+    }
+  }
+
+  &__submit {
+    margin-top: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-info-gap);
+  }
+
+  &__info-item {
+    padding-left: var(--padding-inline);
+
+    @include mq('md') {
+      padding-left: 0;
+    }
+  }
+
+  &__info-label {
+    font-size: var(--contact-info-label);
+    color: var(--form-input-placeholder);
+    margin-bottom: 0.5rem;
+  }
+
+  &__info-value {
+    @extend %paragraph-base;
+
+    color: var(--form-input-txt);
+    text-decoration: none;
+
+    &[href] {
+      transition: color 0.2 ease;
+
+      &:hover {
+        color: var(--nav-link-hover);
+      }
+    }
+  }
+}

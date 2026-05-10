@@ -1,0 +1,19 @@
+@use 'vars' as *;
+@use 'sass:map';
+
+// todo button hover
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} var(--transition-normal);
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+// media queries
+@mixin mq($size) {
+  $width: map.get($breakpoints, $size);
+
+  @media (min-width: $width) {
+    @content;
+  }
+}

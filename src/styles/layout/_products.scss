@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+.products {
+  background: var(--bg-section);
+  min-height: 30vh;
+  position: relative;
+
+  &__grid {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: var(--gutter);
+    grid-template-columns: 1fr;
+
+    @include mq('xl') {
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(var(--gutter) * 2);
+    }
+
+    @include mq('xxl') {
+      grid-column: 2 / -2;
+    }
+
+    @media (min-width: 1024px) and (orientation: portrait) {
+      grid-column: 1 / -1;
+      gap: var(--gutter);
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--hero-container-padding);
+  color: var(--txt-primary);
+  isolation: isolate;
+  overflow: hidden;
+
+  @media (min-width: 512px) {
+    padding-bottom: calc(var(--hero-container-padding) + 4vw);
+  }
+
+  @include mq('lg') {
+    padding-bottom: calc(var(--hero-container-padding) + 6vh);
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+    padding-bottom: calc(var(--hero-container-padding) + 5vw);
+  }
+
+  // --- HERO BG COVER (heading readability) ---
+
+  &::before {
+    position: absolute;
+    content: '';
+    inset: 0;
+    background: var(--hero-gradient-overlay);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+
+    @include mq('md') {
+      scale: 1.1;
+    }
+
+    @include mq('lg') {
+      scale: 1;
+    }
+  }
+
+  // -------------------------------------------------
+  //      H1 + ICON CONTAINER
+  // -------------------------------------------------
+
+  &__container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--hero-content-gap);
+    grid-column: 1 / span 2;
+
+    @include mq('md') {
+      grid-column: 1 / span 5;
+    }
+
+    @include mq('lg') {
+      grid-column: 1 / span 9;
+    }
+  }
+
+  &__display-text {
+    font-size: var(--hero-font-size);
+    font-weight: var(--wght-black);
+    font-style: italic;
+    line-height: var(--lh-tight);
+  }
+
+  &__soundwave {
+    width: var(--hero-icon-width);
+    max-width: 6rem;
+    margin-left: var(--hero-icon-shift);
+  }
+}
+
+// ------------------------------------------------------
+//      SOUNDWAVE ANIMATION
+// ------------------------------------------------------
+
+.wave-bar {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.wave-bar.is-animating {
+  animation: wave-flicker 2s cubic-bezier(0.4, 0, 0.2, 1) var(--delay, 0s)
+    forwards;
+}
+
+@keyframes wave-flicker {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: var(--target-opacity, 0.4);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: var(--target-opacity, 0.7);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-bar {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
