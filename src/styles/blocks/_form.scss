@@ -1,0 +1,88 @@
+@use '../utils/mixins' as *;
+
+.contacts {
+  @include for-medium {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @include for-desktop {
+    display: grid;
+    grid-template-columns: repeat(11, 63px);
+    gap: 30px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+
+  @include for-medium {
+    display: block;
+    grid-column: 1;
+  }
+
+  @include for-desktop {
+    grid-column: 1 / 7;
+  }
+
+  &__adress {
+    grid-column: 9 / 12;
+  }
+
+  &__item {
+    @include for-medium {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__input {
+    background-color: #f8f8fa;
+    border-radius: 40px;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 17px;
+
+    &::placeholder {
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__textarea {
+    background-color: #f8f8fa;
+    border-radius: 16px;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 148px;
+    padding: 16px 13px;
+
+    &::placeholder {
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+}

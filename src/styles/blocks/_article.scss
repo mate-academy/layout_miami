@@ -1,0 +1,209 @@
+@use '../utils/mixins' as *;
+
+.categories {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.article {
+  justify-content: center;
+  .recommended & {
+    margin: 0;
+  }
+
+  &__grid {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    height: 130px;
+    margin-top: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include for-medium {
+      height: 280px;
+      aspect-ratio: auto;
+    }
+
+    @include for-desktop {
+      height: 350px;
+    }
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 20px auto 0;
+    width: fit-content;
+
+    @include for-desktop {
+      margin: 30px 0 0;
+    }
+  }
+
+  &__name {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 140%;
+    margin-top: 15px;
+
+    &--secondary {
+      transform: none;
+      padding-left: 0;
+    }
+  }
+
+  &__product {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    @include for-medium {
+      font-size: 24px;
+    }
+  }
+
+  &__category {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 140%;
+
+    @include for-medium {
+      padding-left: 0;
+    }
+
+    @include for-desktop {
+      padding-left: 0;
+    }
+  }
+
+  &__price {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 140%;
+  }
+
+  &__paragraph {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 27px;
+    margin-top: 50px;
+
+    @include for-medium {
+      grid-column: 5 / 11;
+      margin-top: 30px;
+      padding: 0;
+      text-align: left;
+      justify-self: end;
+      line-height: 27px;
+    }
+
+    @include for-desktop {
+      grid-column: 8 / 13;
+      margin-top: 30px;
+      padding: 0;
+      text-align: left;
+      justify-self: end;
+      line-height: 27px;
+    }
+  }
+
+  &__buy {
+    @include for-medium {
+      display: grid;
+      grid-template-columns: repeat(12, 63px);
+      gap: 24px;
+      align-items: start;
+      margin-top: -160px;
+    }
+
+    &--features-list {
+      @include for-medium {
+        grid-column: 5 / 10;
+        grid-row: 1;
+        align-self: start;
+        transform: translateY(240px);
+      }
+
+      @include for-desktop {
+        grid-column: 8 / 13;
+        grid-row: 1;
+        align-self: start;
+        transform: translateY(240px);
+      }
+    }
+
+    &--title {
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-style: bold;
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+      align-items: center;
+      text-align: left;
+      margin: 90px 20px 30px 0;
+
+      @include for-medium {
+        font-size: 40px;
+        line-height: 100%;
+        grid-column: 1 / 7;
+        align-self: start;
+      }
+
+      @include for-desktop {
+        font-size: 48px;
+        line-height: 100%;
+        margin: 250px 20px 30px 0;
+        grid-column: 2 / 7;
+      }
+    }
+  }
+}
+
+.recommended {
+  display: grid;
+  gap: 10px;
+
+  @include for-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
