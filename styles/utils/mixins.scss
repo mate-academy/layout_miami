@@ -1,0 +1,46 @@
+
+@mixin for-tablet() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+
+@mixin for-desktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin grid() {
+  display: grid;
+  width: 100%;
+
+
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  
+
+  @include for-tablet() {
+    grid-template-columns: repeat(6, 1fr);
+     gap: 20px;
+    
+  }  
+
+ @include for-desktop() {
+   
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    
+     }
+}
+
+@mixin visually-hidden() {
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  
+}

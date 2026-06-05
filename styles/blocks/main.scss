@@ -1,0 +1,79 @@
+
+@use '../utils/mixins.scss' as *;
+
+body {
+  font-family: Inter, sans-serif;
+}
+
+.main {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #292929;
+  align-items: start;
+  display: grid;
+  padding: 20px;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+
+
+  @include for-tablet() {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    padding: 72px;
+   
+    
+  }
+
+
+  @include for-desktop() {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    padding:120px;
+  }
+
+  &__title {
+    grid-column: 1 / -1; 
+
+    @include for-tablet() {
+      grid-column: 1 / 2;
+      padding-top: 0;
+    
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    @include for-tablet() {
+      grid-column: 2 / 3;
+      align-items: start;
+    }
+
+    @include for-desktop() {
+      grid-column: 2 / 3;
+   
+    
+    }
+  }
+
+  &__paragraph {
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: block;
+
+    &--item {
+      margin-bottom: 40px;
+    }
+
+    &--bold {
+      font-weight: 400;
+      max-width: 325px;
+      margin-bottom: 0;
+    }
+  }
+}

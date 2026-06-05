@@ -1,0 +1,115 @@
+
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  background-color: #e8eff9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 28px 20px;
+
+
+
+  @include for-tablet() {
+    padding: 36px 72px;
+  }
+
+  @include for-desktop() {
+    padding: 56px 120px;
+  }
+  &:target {
+    transform: translateX(0);
+  }
+  
+  &__top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    display: block;
+    
+    img {
+      display: block;
+      width: 125px;
+      height: 16px;
+      object-fit: contain;
+    }
+
+    @include for-tablet() {
+      img {
+        width: 191px;
+        height: 24px;
+      }
+    }
+  }
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    @include for-tablet() {
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  
+  &__links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+ 
+  &__paragraph {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #292929;
+    margin-bottom: 32px;
+  }
+
+
+  &__call-link {
+    position: relative;
+    display: inline-block;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #292929;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: #292929;
+    }
+  }
+}
