@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght=400;500;700&display=swap';
 @import 'utils';
 @import 'fonts';
 @import 'typography';
@@ -11,20 +11,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: Poppins, sans-serif;
-  background-color: #fff;
+  background-color: #1d1d1d;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-// --- HEADER ---
 .header {
-  background-color: #1d1d1d;
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: transparent;
 
   &__container {
     width: 100%;
@@ -43,60 +46,99 @@ h1, h2, h3, h4, h5, h6 {
 
   &__logo {
     display: block;
-    height: 24px;
-    width: auto;
+    width: 187px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    gap: 32px;
   }
 
   &__phone {
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 32px;
     transition: color 0.3s ease;
+
+    &-text {
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      transition: max-width 0.4s ease, opacity 0.3s ease, margin-right 0.3s ease;
+    }
 
     &:hover {
       color: #b3b3b3;
+
+      .header__phone-text {
+        max-width: 160px;
+        opacity: 1;
+        margin-right: 12px;
+      }
     }
   }
-}
 
-// --- NAWIGACJA ---
-.nav {
-  &__list {
+  &__menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
-    gap: 32px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
+    justify-content: center;
     transition: opacity 0.3s ease;
 
     &:hover {
       opacity: 0.7;
     }
+  }
 
-    &--active {
-      font-weight: 700;
+  &__menu-lines {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background-color: #fff;
+      left: 0;
+    }
+
+    &::before {
+      top: -6px;
+    }
+
+    &::after {
+      top: 6px;
     }
   }
 }
 
-// --- SEKCJA HERO ---
 .hero {
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px);
-  min-height: 600px;
+  height: 100vh;
+  min-height: 750px;
   display: block;
-  padding-top: 80px;
+  padding-top: 428px;
   background-image: url('../images/photos/Cover_photo.jpg');
   background-size: cover;
   background-position: center;
@@ -104,10 +146,12 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #1d1d1d;
 
   &__container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1260px;
     margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
   }
 
   &__title {
@@ -115,7 +159,41 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Poppins, sans-serif;
     font-size: 80px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
     letter-spacing: -1.5px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    max-width: 672px;
+  }
+}
+
+.about {
+  background-color: #1d1d1d;
+  padding: 120px 0;
+  width: 100%;
+
+  &__container {
+    width: 100%;
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  &__text {
+    color: #c2c2c2;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 440px;
+    margin: 0;
   }
 }
