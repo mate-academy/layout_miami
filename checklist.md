@@ -45,4 +45,4 @@
     });
     ```
 19. Remember to reset default margins for headings (h1, h2, h3, etc.).
-* Only for Miami: Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
+* Only for MyBike: Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
