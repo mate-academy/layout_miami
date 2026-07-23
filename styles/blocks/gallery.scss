@@ -1,0 +1,87 @@
+@use '../utils/mixins.scss' as *;
+
+.gallery {
+	&__element {
+		margin-bottom: 40px;
+
+		@media (min-width: 744px) {
+			display: grid;
+		}
+
+	}
+
+	&__box {
+		display: flex;
+		justify-content: space-between;
+
+		@media (min-width: 744px) {
+			display: grid;
+			// Tworzymy 5 równych kolumn
+			grid-template-columns: repeat(5, 1fr);
+			column-gap: 24px;
+			align-items: stretch; // Rozciąga elementy do tej samej wysokości w rzędzie
+		}
+
+		@media (min-width: 1260px) {
+			grid-template-columns: repeat(12, 1fr);
+			// grid-row: 1 / 13;
+		}
+	}
+
+	&__img {
+		height: 130px;
+		width: 130px;
+		// object-fit: cover;
+		
+
+		@media (min-width: 744px) {
+			width: 184px;
+			height: 184px;
+			// object-fit: cover;
+
+			&--big {
+				grid-column: span 4;
+				width: 100%;
+				height: 184px;
+			}
+		}
+
+			@media (min-width: 1260px) {
+				height: 342px;
+				width: 342px;
+				grid-column: span 4;
+
+
+
+					&--big {
+				grid-column: span 8;
+				width: 100%;
+				height: 342px;
+				object-position: center;
+				// object-fit: fill;
+				
+			
+			}
+	}
+	}
+
+	&__paragraph {
+		margin-top: 16px;
+		font-family: Inter;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 16px;
+		line-height: 140%;
+		letter-spacing: 0px;
+	}
+
+	@media (min-width: 744px) {
+		display: grid;
+		grid-column: 1 / 7;
+		grid-row: 2 / 5;
+	}
+	@media (min-width: 1260px) {
+		grid-row: 2 / 5;
+		grid-column: 1/13;
+	}
+}
