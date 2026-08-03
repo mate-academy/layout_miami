@@ -1,0 +1,51 @@
+@use '../utils/mixins';
+
+.toggle {
+  &__label {
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url(../../src/images/burger.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include for-tablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: none;
+      width: 24px;
+      height: 24px;
+      background-image: url(../../src/images/burger-hover.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include for-tablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &:hover {
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &__caption {
+    @include visually-hidden;
+  }
+}

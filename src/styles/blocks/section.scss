@@ -1,0 +1,141 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.section {
+  @include grid;
+
+  &__content {
+    @include grid;
+
+    row-gap: 40px;
+
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+      row-gap: 64px;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-primary;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: $color-primary;
+    margin-bottom: 48px;
+    grid-column: span 2;
+
+    @include for-tablet {
+      font-size: 40px;
+      line-height: 40px;
+      margin-bottom: 64px;
+      grid-column: 2 / 6;
+    }
+
+    @include for-desktop {
+      font-size: 48px;
+      line-height: 48px;
+      margin-bottom: 64px;
+      grid-column: 4 / 10;
+    }
+
+    &--special {
+      text-align: left;
+      margin-bottom: 32px;
+
+      @include for-tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include for-desktop {
+        grid-column: 1 / 6;
+      }
+    }
+  }
+
+  &__product {
+    @include hover(
+      (
+        scale: 103%,
+        transform-origin: center,
+      )
+    );
+
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 4;
+    }
+  }
+
+  &__category {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__button {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include for-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__quality {
+    grid-column: 1 / 3;
+
+    @include for-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 6 / 11;
+    }
+  }
+
+  &__address {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__form {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+}
