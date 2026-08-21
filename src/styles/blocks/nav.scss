@@ -1,27 +1,43 @@
 .nav {
   position: fixed;
   top: 0;
-  right: 20px;
-  left: 20px;
+  right: 0;
+  left: 0;
+  padding: 24px 20px;
+  z-index: 10;
+  
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
 
-  display: flex;
-  justify-content: space-between;
+    @include for-tablet {
+      max-width: 744px;
+    }
+
+    @include for-desktop {
+      max-width: 1260px;
+    }
+  }
 
   margin: 0 auto;
-  padding-block: 24px;
+
+  background-color: transparent;
+  transition: background-color $animation-duration ease-in-out;
+
+  &--scrolled {
+    background-color: $color-white;
+  }
 
   @include for-tablet {
-    right: 72px;
-    left: 72px;
-    max-width: 744px;
-    padding-block: 32px;
+    padding: 32px 72px;
   }
 
   @include for-desktop {
-    right: 120px;
-    left: 120px;
-    max-width: 1260px;
+    padding: 32px 120px;
   }
+
+  
 
   &__logo {
     width: 125px;

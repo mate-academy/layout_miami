@@ -2,6 +2,11 @@
 
 const contactForm = document.querySelector('.contact__form');
 const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav');
+
+const updateNavBackground = () => {
+	nav.classList.toggle('nav--scrolled', window.scrollY > 200);
+};
 
 const updateMenuScrollLock = () => {
 	document.body.classList.toggle(
@@ -26,9 +31,18 @@ window.addEventListener('hashchange', () => {
 });
 
 updateMenuScrollLock();
+updateNavBackground();
+
+window.addEventListener('scroll', updateNavBackground);
 
 menu.addEventListener('click', (event) => {
-	if (event.target.closest('a')) {
-		document.body.classList.remove('page__body--with-menu');
+	if (!event.target.closest('a')) {
+		return;
+	}
+
+	document.body.classList.remove('page__body--with-menu');
+
+	if (window.location.hash === '#navigation') {
+		history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
 	}
 });
