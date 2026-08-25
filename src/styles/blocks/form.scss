@@ -1,0 +1,59 @@
+@mixin visually-hidden() {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+
+  white-space: nowrap;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input,
+  &__textarea {
+    resize: vertical;
+
+    width: 100%;
+    padding: 14px;
+    border: 1px solid $color-surface;
+    border-radius: 8px;
+
+    font-family: 'Space mono', sans-serif;
+    font-size: 14px;
+    color: $color-primary;
+
+    background-color: $color-surface;
+    outline: none;
+
+    transition: border-color $animation-duration ease-in-out;
+
+    &::placeholder {
+      color: $color-muted;
+    }
+    &:hover {
+      border-color: $color-border-hover;
+    }
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+
+  &__label {
+    &:not(:focus, :active) {
+      @include visually-hidden;
+    }
+  }
+}

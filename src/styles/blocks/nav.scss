@@ -1,0 +1,110 @@
+.nav {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  margin: 0 auto;
+  padding: 24px 20px;
+
+  background-color: transparent;
+
+  transition: background-color $animation-duration ease-in-out;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    @include for-tablet {
+      max-width: 744px;
+    }
+
+    @include for-desktop {
+      max-width: 1260px;
+    }
+  }
+
+  &--scrolled {
+    background-color: $color-white;
+  }
+
+  &__logo {
+    width: 125px;
+
+    @include for-tablet {
+      width: 172px;
+    }
+  }
+
+  &__logo-wraper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__phone-info {
+    display: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $color-primary;
+    letter-spacing: 2px;
+  }
+
+  &__phone,
+  &__hamburger {
+    width: 24px;
+    height: 24px;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__phone {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__phone-info-box {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    color: $color-primary;
+    text-decoration: none;
+
+    transition: color $animation-duration ease-in-out;
+  }
+
+  &__phone-info-box:hover &__phone-info {
+    display: block;
+  }
+
+  &__phone:hover .nav__phone-info {
+    display: block;
+  }
+
+  &__phone-info-box:hover {
+    color: $color-muted;
+  }
+
+  @include for-tablet {
+    padding: 32px 72px;
+  }
+
+  @include for-desktop {
+    padding: 32px 120px;
+  }
+}
