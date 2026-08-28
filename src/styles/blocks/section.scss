@@ -1,0 +1,63 @@
+@use '../utils/mixins.scss' as *;
+
+.section {
+  &__image {
+    display: block;
+    width: 100vw;
+    object-fit: cover;
+    height: 200px;
+    object-position: center;
+    margin-top: 96px;
+    margin-left: calc(50% - 50vw);
+
+    @include for-ipad {
+      height: 400px;
+    }
+
+    @include for-desktop {
+      height: 460px;
+    }
+  }
+
+  &--wrapper {
+    grid-template-rows: repeat(2, auto);
+    padding-top: 48px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-color: #fcfaef;
+    box-sizing: border-box;
+    margin-bottom: 64px;
+
+    @include grid;
+
+    h2 {
+      grid-column: span 2;
+
+      @include for-ipad {
+        grid-column: 1 / -4;
+        padding-top: 0;
+      }
+
+      @include for-desktop {
+        grid-column: 1 / 6;
+        padding-top: 120px;
+        padding-top: 0;
+      }
+    }
+
+    p {
+      grid-column: span 2;
+
+      @include for-ipad {
+        grid-column: 4 / 7;
+        padding-top: 120px;
+        margin-bottom: 120px;
+      }
+
+      @include for-desktop {
+        grid-column: 7 / 12;
+        padding-top: 120px;
+      }
+    }
+  }
+}

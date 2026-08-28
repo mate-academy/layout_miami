@@ -1,0 +1,86 @@
+@use '../utils/mixins.scss' as *;
+
+.menu {
+  background-color: #f9f9f9;
+  padding: 0 20px 20px;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: 0.7s ease-in-out;
+  overflow-y: auto;
+
+  @include grid;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__links {
+    margin-bottom: 40px;
+    grid-column: span 2;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+      align-self: start;
+    }
+  }
+
+  &__paragraph {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__cta {
+    color: #1b2129;
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding-top: 16px;
+    text-decoration: none;
+
+    border-bottom: 1px solid #1b2129;
+    padding-bottom: 8px;
+
+    @include for-ipad {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+  }
+}
+
+body:has(.menu:target) {
+  overflow: hidden;
+}

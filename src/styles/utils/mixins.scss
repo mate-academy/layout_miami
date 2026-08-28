@@ -1,0 +1,44 @@
+@mixin for-desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin for-ipad {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+  // grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  gap: 20px;
+
+  @include for-ipad {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+    // grid-template-rows: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+    // grid-template-rows: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
