@@ -1,0 +1,97 @@
+@use "../utils/mixins" as mixins;
+
+@mixin visually-hidden() {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 100px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 72px;
+  padding-right: 72px;
+
+
+  &__input {
+    border-radius: 8px;
+    background-color: #F9F9F9;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 17px;
+
+  &:hover {
+     border: 1px solid #DBDBDB;
+  }
+
+  &:focus {
+     border: 2px solid orange;
+     outline: none;
+  }
+
+    &::placeholder {
+      font-family: Manrope, sans-serif;
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 0.15px;
+      color: #7E7E83;
+    }
+
+  }
+
+  &__textarea {
+    border-radius: 8px;
+    background-color: #F9F9F9;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 14px;
+    padding-left: 16px;
+    line-height: 48px;
+
+      &:hover {
+     border: 1px solid #DBDBDB;
+     }
+
+      &:focus {
+       border: 2px solid orange;
+       outline: none;
+      }
+
+
+
+    &::placeholder {
+     @include mixins.text-style(14px, 400, 140%, #7E7E83);
+
+     letter-spacing: 0.15px;
+    }
+  }
+
+  &__label {
+  &:not(:focus, :active) {
+    @include visually-hidden;
+  }
+}
+
+@media (max-width: 743px) {
+   padding-left: 20px;
+   padding-right: 20px;
+}
+
+@media (min-width: 1260px) {
+  padding-left: 0;
+
+}
+}

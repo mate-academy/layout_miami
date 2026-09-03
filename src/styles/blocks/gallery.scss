@@ -1,0 +1,68 @@
+@use "../utils/mixins" as mixins;
+
+.gallery {
+  width: 100%;
+  padding-left: 72px;
+  padding-right: 72px;
+
+  &__title {
+    @include mixins.text-style(24px, 700, 140%, #3E3E3E);
+
+    width: 100%;
+    height: 34px;
+    margin-bottom: 56px;
+  }
+
+  &__pictures {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 24px;
+     margin-bottom: 16px;
+  }
+
+  &__image {
+    width: 100%;
+     transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  }
+
+ @media (max-width: 743px) {
+    padding-left: 0;
+    padding-right: 0;
+
+    &__pictures {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+
+    &__image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    &__title {
+      margin-bottom: 40px;
+
+      padding-left: 20px;
+      padding-right: 20px;
+
+    }
+  }
+
+ @media (min-width: 1260px) {
+    padding-left: 120px;
+    padding-right: 120px;
+
+
+
+  }
+}
+

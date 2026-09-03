@@ -1,0 +1,100 @@
+@use "../utils/mixins" as mixins;
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #F9F9F9;
+  padding-top: 24px;
+  padding-left: 72px;
+  padding-right: 77px;
+  height: 100vh;
+  overflow-y: auto;
+
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 36px;
+    padding-top: 36px;
+    gap: 104px
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: 16px;
+    width: 100%;
+  }
+
+  &__icon-image {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__paragraph {
+    @include text-style(16px, 700, 140%, #1B2129);
+
+    display: flex;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 48px;
+    padding-bottom: 16px;
+
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__call-link {
+    @include text-style(16px, 700, 140%, #1B2129);
+
+    padding-bottom: 4px;
+    padding-top: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #1B2129;
+    letter-spacing: 2px;
+    width: 160px;
+    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 743px) {
+    width: 100%;
+    padding: 20px;
+
+    &__navigation {
+      padding-top: 28px;
+    }
+
+    &__logo-image {
+      height: 16px;
+      width: 152px;
+    }
+
+    &__icon-image {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
+}

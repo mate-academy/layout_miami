@@ -1,0 +1,52 @@
+@use "../utils/mixins" as mixins;
+
+.header {
+  background-image: url("/src/images/header.png");
+  background-color: blue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+
+  padding-left: 0;
+
+  height: 100vh;
+  box-sizing: border-box;
+
+  &__title {
+    @include mixins.text-style(48px, 700, 100%, #fff);
+
+    margin-right: auto;
+    padding-bottom: 64px;
+    padding-left: 72px;
+
+  }
+
+
+  @media (max-width: 743px) {
+
+   &__title {
+     @include mixins.text-style(36px, 700, 100%, #fff);
+
+     padding: 40px 20px;
+     grid-column: 1 / 4;
+     align-self: end;
+    }
+   }
+
+  @media (min-width: 1260px) {
+
+    &__title {
+      @include text-style(56px, 700, 100%, #fff);
+
+      grid-column: 1 / 8;
+      align-self: end;
+      padding-left: 120px;
+    }
+  }
+}
+
