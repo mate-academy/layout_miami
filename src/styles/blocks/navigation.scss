@@ -1,0 +1,84 @@
+@use '../utils/mixins.scss' as *;
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__icons {
+    display: inline-block;
+    margin-right: auto;
+  }
+
+  &__box {
+    display: none;
+    transition: background-color 0.3s ease;
+
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+
+    font-size: 16px;
+    line-height: 27px;
+    color: white;
+  }
+
+  &__data {
+    color: white;
+    text-decoration: none;
+  }
+
+  &__name {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    color: white;
+    width: 64px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__icon {
+    height: 24px;
+
+    @media (min-width: 744px) {
+      height: 32px;
+    }
+
+    &--hidden {
+      opacity: 0;
+    }
+    &--margin {
+      margin-left: 24px;
+
+      @media (min-width: 744px) {
+        height: 24px;
+      }
+    }
+  }
+
+  @media (min-width: 744px) {
+    padding: 50px 70px;
+
+
+    &--height {
+      
+ padding-left: 0;
+    padding-right: 0
+    }
+  }
+
+  @media (min-width: 1260px) {
+    padding-left: calc((100vw - 1020px) / 2);
+    padding-right: calc((100vw - 1020px) / 2);
+    height: 165px;
+
+    &--height {
+      height: 110px;
+ padding-left: 0;
+    padding-right: 0
+    }
+
+    &:has(.navigation__icon--number:hover) &__box {
+      display: block;
+    }
+  }
+}
