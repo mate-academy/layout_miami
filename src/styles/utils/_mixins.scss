@@ -1,6 +1,107 @@
+@use '../utils/vars';
+
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+  transition: #{$_property} vars.$transition-speed;
   &:hover {
     #{$_property}: $_toValue;
   }
+}
+
+@mixin tablet() {
+  @media (min-width: vars.$bp-tablet) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: vars.$bp-desktop) {
+    @content;
+  }
+}
+
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: vars.$space-md;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: vars.$space-lg;
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    gap: vars.$space-md;
+  }
+}
+
+
+  @mixin visually-hidden() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+
+@mixin input-states() {
+  background-color: vars.$c-bg-input;
+  border-radius: vars.$border-radius-md;
+  border: 1px solid transparent;
+  width: 100%;
+  height: vars.$input-height;
+  line-height: vars.$input-height;
+  padding-left: vars.$space-md;
+  box-sizing: border-box;
+
+  transition: border-color vars.$transition-speed ease,
+              box-shadow vars.$transition-speed ease;
+
+  &::placeholder{
+      font-family: Manrope, sans-serif;
+      font-weight: vars.$font-weight-normal;
+      font-size: vars.$font-size-xs;
+      line-height: vars.$line-height-normal;
+      letter-spacing: 0.15px;
+    }
+
+  &:hover {
+    @include for-desktop {
+      border: 1px solid vars.$c-border-input;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: vars.$c-accent;
+    box-shadow: 0 0 0 1px vars.$c-accent;
+
+  }
+}
+
+
+
+@mixin heading($size, $letter-spacing) {
+  font-family: Manrope, sans-serif;
+  font-weight: vars.$font-weight-bold;
+  font-size: $size;
+  line-height: 1;
+  letter-spacing: $letter-spacing;
+}
+
+
+@mixin body-text($size, $letter-spacing) {
+  font-family: Manrope, sans-serif;
+  font-weight: vars.$font-weight-normal;
+  font-size: $size;
+  line-height: vars.$line-height-normal;
+  letter-spacing: $letter-spacing;
 }

@@ -1,0 +1,34 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.burger {
+
+  &__label {
+    @include mixins.visually-hidden;
+  }
+
+  &::before {
+    content: '';
+    background-image: url('../images/photos/mobile/burger-mobile.png');
+    background-size: cover;
+    display: inline-block;
+    width: vars.$icon-size-sm;
+    height: vars.$icon-size-sm;
+    transition: background-image vars.$transition-speed ease;
+
+
+    @include mixins.tablet {
+      width: vars.$icon-size-md;
+      height: vars.$icon-size-md;
+    }
+  }
+
+  &:hover {
+    @include mixins.for-desktop {
+      &::before {
+      background-image: url('../images/photos/mobile/hover/burger-hover.png');
+      }
+    }
+
+  }
+}

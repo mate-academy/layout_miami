@@ -1,0 +1,35 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.section {
+  padding-top: vars.$padding-section-top;
+
+  @include mixins.tablet {
+    padding-top: vars.$padding-section-top-tablet-desktop;
+  }
+
+  &--first,
+  &--third {
+    padding-top: vars.$padding-header-bottom-tablet;
+
+    @include mixins.tablet {
+      padding-top: vars.$padding-section-top-tablet-desktop;
+    }
+  }
+
+  &__main {
+    margin-left: -(vars.$padding-mobile-side);
+    margin-right: -(vars.$padding-mobile-side);
+    background-color: vars.$c-bg-cream;
+
+    @include mixins.tablet {
+      margin-left: -(vars.$padding-tablet-side);
+      margin-right: -(vars.$padding-tablet-side);
+    }
+
+    @include mixins.for-desktop {
+      margin-left: -(vars.$padding-desktop-side);
+      margin-right: -(vars.$padding-desktop-side);
+    }
+  }
+}

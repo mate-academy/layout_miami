@@ -1,0 +1,55 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.buttons {
+     @include mixins.for-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: vars.$space-lg;
+    }
+ }
+
+.buttons__button {
+  min-height: vars.$button-height;
+  background-color: vars.$c-accent;
+  border-radius: vars.$border-radius-md;
+  text-decoration: none;
+  color: vars.$c-text-light;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  cursor: pointer;
+
+
+  @include mixins.heading(vars.$font-size-sm, 0);
+
+  transition: background-color vars.$transition-speed ease;
+
+  @include mixins.for-desktop {
+    grid-column: 1 / 5;
+  }
+
+  &:hover {
+    background-color: vars.$c-accent-hover;
+  }
+
+  &:active {
+    background-color: vars.$c-accent-active;
+  }
+
+}
+
+
+.buttons__button--send {
+  @include mixins.tablet {
+    margin-top: vars.$space-md;
+  }
+
+  @include mixins.for-desktop {
+    grid-column: 1 / -1;
+  }
+}

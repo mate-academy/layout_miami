@@ -1,0 +1,52 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.main {
+  max-width: vars.$max-width-content;
+  margin: 0 auto;
+  padding: 0 vars.$padding-mobile-side vars.$padding-main-bottom;
+  box-sizing: border-box;
+
+  @include mixins.tablet {
+    padding: 0 vars.$padding-tablet-side vars.$padding-desktop-side;
+  }
+
+  @include mixins.for-desktop {
+    padding: 0 vars.$padding-desktop-side vars.$padding-main-bottom;
+  }
+
+  &__section {
+    padding-top: vars.$padding-section-top;
+  }
+
+  &__title {
+
+
+    &--first,
+    &--second,
+    &--third  {
+      margin-bottom: vars.$space-2xl;
+
+      @include mixins.tablet {
+        margin-bottom: vars.$margin-bottom-tablet;
+      }
+    }
+  }
+
+  &__content {
+    @include mixins.for-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: vars.$space-lg;
+    }
+  }
+
+  &__product {
+    @include mixins.for-desktop {
+      &--1 { grid-column: 1 / 5; }
+      &--2 { grid-column: 5 / 9; }
+      &--3 { grid-column: 9 / 13; }
+    }
+  }
+}
+

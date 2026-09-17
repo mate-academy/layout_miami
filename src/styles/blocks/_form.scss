@@ -1,0 +1,70 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-md;
+
+  &__item {
+    background-color: vars.$c-bg-input;
+    border-radius: vars.$border-radius-md;
+    border: 0;
+    width: 100%;
+    height: vars.$input-height;
+
+
+
+    &--last {
+      height: vars.$textarea-height;
+    }
+  }
+
+
+  &__input {
+    @include mixins.input-states;
+  }
+
+  &__textarea {
+    background-color: vars.$c-bg-input;
+    border-radius: vars.$border-radius-md;
+    border: 1px solid transparent;
+    width: 100%;
+    height: 100%;
+
+    padding: vars.$space-md;
+    box-sizing: border-box;
+
+    font-family: Manrope, sans-serif; 
+    font-size: vars.$font-size-xs;
+    line-height: vars.$line-height-normal;
+
+    transition: border-color vars.$transition-speed ease,
+              box-shadow vars.$transition-speed ease;
+
+
+    &::placeholder{
+      @include mixins.body-text(vars.$font-size-xs, 0.15px)
+    }
+
+    &:hover{
+      @include mixins.for-desktop {
+        border-color: vars.$c-border-input;
+      }
+    }
+
+    &:focus{
+      outline: none;
+      border-color: vars.$c-accent;
+      box-shadow: 0 0 0 1px vars.$c-accent;
+    }
+  }
+
+  &__label {
+    &:not(:focus, :active) {
+      @include mixins.visually-hidden;
+    }
+
+  }
+}

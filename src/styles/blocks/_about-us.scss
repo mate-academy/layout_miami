@@ -1,0 +1,53 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.about-us {
+  padding: vars.$space-2xl vars.$padding-mobile-side;
+
+  @include mixins.tablet {
+      display: grid;
+      padding: vars.$padding-section-top-tablet-desktop vars.$padding-tablet-side;
+      grid-template-columns: repeat(6, 1fr);
+      gap: vars.$space-lg;
+      height: vars.$about-us-height-tablet;
+      box-sizing: border-box;
+    }
+
+
+  @include mixins.for-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: vars.$space-lg;
+      padding: vars.$padding-desktop-side;
+    }
+
+
+  &__title {
+    @include mixins.heading(vars.$font-size-xl, 0);
+
+    @include mixins.tablet {
+      font-size: vars.$font-size-tablet;
+      grid-column: 1 / 4;
+    }
+
+    @include mixins.for-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__paragraph {
+    @include mixins.body-text(vars.$font-size-sm, 0.15px);
+
+
+    @include mixins.tablet {
+      padding-top: 0;
+      grid-column: 4 / 7;
+    }
+
+    @include mixins.for-desktop {
+      padding-top: 0;
+      grid-column: 7 / -1;
+    }
+
+  }
+}

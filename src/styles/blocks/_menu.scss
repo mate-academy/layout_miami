@@ -1,0 +1,54 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition: transform vars.$transition-speed ease-in-out;
+  background-color: vars.$c-bg-input;
+  padding: 0 vars.$padding-mobile-side vars.$padding-mobile-side;
+  height: 100vh;
+  overflow-y: auto;
+
+  @include mixins.tablet {
+    padding: 0 vars.$padding-tablet-side;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__paragraph {
+    @include mixins.heading(vars.$font-size-sm, 2px);
+
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: vars.$c-text-primary;
+
+    padding-top: vars.$space-xs;
+    padding-bottom: vars.$space-md;
+  }
+
+  &__call-link {
+    font-family: Manrope, sans-serif;
+    font-weight: vars.$font-weight-bold;
+    font-size: vars.$font-size-sm;
+    line-height: vars.$line-height-normal;
+    letter-spacing: 2px;
+
+     @include mixins.heading(vars.$font-size-sm, 2px);
+
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    color: vars.$c-text-primary;
+    text-decoration: none;
+
+    border-bottom: 1px solid vars.$c-text-primary;
+    padding-bottom: vars.$space-xs;
+
+  }
+}

@@ -1,0 +1,55 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.phone {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  text-decoration: none;
+  width: fit-content;
+  gap: 0;
+
+  &::before {
+    content: '';
+    display: block;
+    background-image: url('../images/photos/mobile/phone-mobile.png');
+    background-size: cover;
+    width: vars.$icon-size-sm;
+    height: vars.$icon-size-sm;
+    flex-shrink: 0;
+
+    @include mixins.tablet {
+      width: vars.$icon-size-md;
+      height: vars.$icon-size-md;
+    }
+  }
+
+  &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+
+    max-width: 0;
+    overflow: hidden;
+    transition: all vars.$transition-speed ease;
+
+    color: vars.$c-text-primary;
+    font-family: Manrope, sans-serif;
+    font-weight: vars.$font-weight-bold;
+    white-space: nowrap;
+  }
+
+
+  &:hover {
+    @include mixins.for-desktop {
+      gap: vars.$gap-phone-label-desktop;
+      .phone__label {
+        max-width: vars.$max-width-phone-label;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+
+  }
+}

@@ -1,0 +1,55 @@
+@use '../utils/mixins';
+@use '../utils/vars';
+
+.product {
+  @include mixins.body-text(vars.$font-size-sm, 0.15px);
+
+  color: vars.$c-text-primary;
+
+  &__photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: vars.$c-bg-cream;
+    margin-bottom: vars.$space-lg;
+    display: block;
+    transition: transform vars.$transition-speed ease;
+
+    &:hover {
+      transform: scale(1.05)
+    }
+  }
+
+  &__name {
+    @include mixins.heading(vars.$font-size-md, 0);
+
+    margin-bottom: vars.$space-sm;
+    color: vars.$c-text-primary;
+  }
+
+  &__desc {
+    margin-bottom: vars.$product-desc-margin-bottom;
+
+    @include mixins.body-text(vars.$font-size-sm, 0.15px);
+
+    @include mixins.tablet {
+      margin-bottom: vars.$margin-product-desc-tab;
+    }
+
+    @include mixins.for-desktop {
+      margin-bottom: vars.$product-desc-margin-bottom;
+    }
+  }
+
+  &__price {
+    @include mixins.heading(vars.$font-size-sm, 0);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: vars.$space-2xl;
+
+    @include mixins.tablet {
+      margin-bottom: vars.$margin-bottom-tablet;
+    }
+  }
+}
