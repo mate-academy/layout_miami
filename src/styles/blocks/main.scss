@@ -6,7 +6,47 @@
 
   @include grid;
 
+  @include for-tablet {
+    padding: 120px 72px;
+  }
+
+  @include for-desktop {
+    padding: 120px;
+  }
+
   &__section {
     grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
+    &:first-child {
+      @include grid;
+
+      .section__title {
+        @include for-tablet {
+          grid-column: 1/4;
+        }
+
+        @include for-desktop {
+          grid-column: 1/6;
+        }
+      }
+
+      .section__paragraph {
+        @include for-tablet {
+          grid-column: 4/7;
+        }
+
+        @include for-desktop {
+          grid-column: 6/12;
+        }
+      }
+    }
   }
 }
