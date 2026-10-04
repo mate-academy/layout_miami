@@ -1,11 +1,18 @@
+@use '../utils/mixins.scss' as *;
+
 .pictures {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 20px;
+  &--grid {
+    @include grid;
+  }
 
   &--tight {
-    gap: 8px;
+    grid-template-columns: repeat(3, 88px);
+    column-gap: 8px;
+
+    @include for-desktop {
+      grid-template-columns: repeat(12, 63px);
+      column-gap: 24px;
+    }
   }
 
   &__frame {
@@ -19,6 +26,11 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
 
+    @include for-desktop {
+      grid-column: span 4;
+      height: 320px;
+    }
+
     &--position-left {
       object-position: 18%;
     }
@@ -31,6 +43,17 @@
     // clips the scaled image via overflow: hidden
     &--zoomed {
       transform: scale(1.5);
+
+      @include for-desktop {
+        transform: none;
+      }
+    }
+  }
+
+  &__item--big,
+  &__frame--big {
+    @include for-desktop {
+      grid-column: span 8;
     }
   }
 }
