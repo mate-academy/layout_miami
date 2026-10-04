@@ -1,11 +1,23 @@
-.contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
+@use '../utils/mixins.scss' as *;
 
-.contact {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.contacts {
+  row-gap: 48px;
+
+  @include grid;
+
+  &__address {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: span 3;
+    }
+  }
+
+  &__form {
+    grid-column: span 2;
+
+    @include for-desktop {
+      grid-column: -6 / -1;
+    }
+  }
 }
