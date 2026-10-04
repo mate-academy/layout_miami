@@ -1,0 +1,36 @@
+@use '../utils/mixins.scss' as *;
+
+.phone {
+  position: relative;
+  display: flex;
+
+  &__label {
+    display: none;
+    row-gap: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-100% - 20px), -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  @include for-desktop {
+    &:hover &__label {
+      display: grid;
+    }
+  }
+
+  &__paragraph {
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FFF;
+  }
+
+  &:not(:hover) &__label {
+    @include visually-hidden;
+  }
+}
