@@ -1,3 +1,5 @@
+@use '../utils/mixins.scss' as *;
+
 .section {
   scroll-margin-top: 50px;
 
@@ -20,6 +22,25 @@
 
     &--space-lg {
       margin-bottom: 48px;
+    }
+  }
+
+  &--two-columns {
+    @include for-desktop {
+      display: grid;
+      grid-template-columns: subgrid;
+      align-items: center;
+
+      .section__intro {
+        grid-column: 1 / 6; // 1-5 columns
+        grid-row: 1;
+        margin-bottom: 0;
+      }
+
+      .section__content {
+        grid-column: 6 / 12; // 6-11 columns
+        grid-row: 1;
+      }
     }
   }
 
