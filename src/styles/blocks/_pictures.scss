@@ -9,6 +9,11 @@
     grid-template-columns: repeat(3, 88px);
     column-gap: 8px;
 
+    @include for-tablet {
+      grid-template-columns: repeat(6, 80px);
+      column-gap: 24px;
+    }
+
     @include for-desktop {
       grid-template-columns: repeat(12, 63px);
       column-gap: 24px;
@@ -25,6 +30,10 @@
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+
+    @include for-tablet {
+      grid-column: span 2;
+    }
 
     @include for-desktop {
       grid-column: span 4;
@@ -44,16 +53,40 @@
     &--zoomed {
       transform: scale(1.5);
 
-      @include for-desktop {
+      @include for-tablet {
         transform: none;
+      }
+    }
+
+    &--hide-on-tablet {
+      @include for-tablet {
+        display: none;
+      }
+
+      @include for-desktop {
+        display: block;
       }
     }
   }
 
   &__item--big,
   &__frame--big {
+    @include for-tablet {
+      grid-column: span 4;
+    }
+
     @include for-desktop {
       grid-column: span 8;
+    }
+  }
+
+  &--tight &__item {
+    @include for-tablet {
+      grid-column: span 3;
+    }
+
+    @include for-desktop {
+      grid-column: span 4;
     }
   }
 }
