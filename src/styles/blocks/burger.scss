@@ -1,14 +1,19 @@
 @use '../utils' as *;
 
 .burger {
-  &::before {
+  position: relative;
+
+  &::before,
+  &::after {
     content: '';
-    display: inline-block;
+    position: absolute;
+    left: 0;
     width: 24px;
     height: 24px;
 
-    background-image: url('../images/icons/Icon-Burger-menu.png');
     background-size: cover;
+
+    transition: 0.3s ease-in-out;
 
     // Media foe 1260px is the same as for 744px
 
@@ -18,30 +23,22 @@
     }
   }
 
+  &::before {
+    background-image: url('../images/icons/Icon-Burger-menu.png');
+  }
+
   &::after {
-    content: '';
-    display: none;
-    width: 24px;
-    height: 24px;
-
     background-image: url('../images/icons/Icon-Burger-menu-hover.png');
-    background-size: cover;
-
-    // Media foe 1260px is the same as for 744px
-
-    @include for-tablet {
-      width: 32px;
-      height: 32px;
-    }
+    opacity: 0;
   }
 
   &:hover {
     &::before {
-      display: none;
+      opacity: 0;
     }
 
     &::after {
-      display: inline-block;
+      opacity: 1;
     }
   }
 
