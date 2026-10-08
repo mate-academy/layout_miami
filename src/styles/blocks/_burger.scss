@@ -1,12 +1,11 @@
 @use '../utils/mixins.scss' as *;
 
 .burger {
-  &::before {
-    display: inline-block;
+  &::before,
+  &::after {
     content: '';
     width: 18px;
     height: 12px;
-    background-image: url('src/images/icons/burger.svg');
     background-size: cover;
 
     @include for-tablet {
@@ -15,24 +14,21 @@
     }
   }
 
+  &::before {
+    display: inline-block;
+    background-image: url('src/images/icons/burger.svg');
+  }
+
   &::after {
     display: none;
-    content: '';
-    width: 18px;
-    height: 12px;
     background-image: url('src/images/icons/burger-hover.svg');
-    background-size: cover;
-
-    @include for-tablet {
-      width: 24px;
-      height: 16px;
-    }
   }
 
   &:hover {
     &::before {
       display: none;
     }
+
     &::after {
       display: inline-block;
     }
@@ -40,15 +36,5 @@
 
   &__label {
     @include visually-hidden;
-  }
-
-  &__icon {
-    width: 18px;
-    height: 18px;
-
-    @include for-tablet {
-      width: 24px;
-      height: 24px;
-    }
   }
 }
