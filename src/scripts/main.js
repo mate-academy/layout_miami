@@ -21,3 +21,9 @@ const toggleMenuLock = () => {
 
 window.addEventListener('hashchange', toggleMenuLock);
 toggleMenuLock();
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && window.location.hash === '#menu') {
+    window.location.hash = '#home';
+  }
+});
