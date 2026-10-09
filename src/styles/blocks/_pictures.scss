@@ -11,6 +11,7 @@
     column-gap: 8px;
 
     @include for-tablet {
+      // repeats the grid mixin: this rule comes later and would override it
       grid-template-columns: repeat(6, 80px);
       column-gap: 24px;
     }
@@ -66,7 +67,7 @@
       transform: scale(1.5);
 
       &:hover {
-        scale: 1; // unify zoom effect to match the rest of the images
+        scale: 1; // the frame scales on hover, avoid scaling twice
       }
 
       @include for-tablet {
@@ -102,6 +103,7 @@
       height: 284px;
     }
 
+    // repeats __item: the tablet rule above has higher specificity
     @include for-desktop {
       grid-column: span 4;
       height: 320px;
@@ -113,6 +115,7 @@
       height: 186px;
     }
 
+    // same reason as above
     @include for-desktop {
       height: 320px;
     }
