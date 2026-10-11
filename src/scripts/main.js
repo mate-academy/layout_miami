@@ -7,3 +7,15 @@ window.addEventListener('hashchange', () => {
     document.body.classList.remove('page-body--with-menu');
   }
 });
+
+const form = document.querySelector('.form');
+
+function StopReloaded(e) {
+  e.preventDefault();
+
+  alert('Your message has been sent successfully!');
+
+  form.reset();
+}
+
+form.addEventListener('submit', StopReloaded);
