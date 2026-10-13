@@ -1,0 +1,45 @@
+@use '../utils/mixins.scss' as *;
+
+.header {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 25px 20px;
+  box-sizing: border-box;
+  background: #000;
+  background-image: url('src/images/backgrounds/header-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  grid-template-rows: auto 1fr;
+  row-gap: 130px;
+
+  @include grid;
+
+  @include for-tablet {
+    padding: 50px 72px;
+    row-gap: 140px;
+  }
+
+  @include for-desktop {
+    padding: 50px 120px;
+    row-gap: 80px;
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    @include for-tablet {
+      grid-column: 2 / 6; // 2-5 columns
+    }
+
+    @include for-desktop {
+      grid-column: 4 / 10; // 4-9 columns
+    }
+  }
+}

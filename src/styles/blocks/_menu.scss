@@ -1,0 +1,91 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/vars' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  visibility: hidden; // prevents keyboard focus when the menu is closed
+  transform: translateX(-100%);
+  transition:
+    transform $transition,
+    visibility $transition;
+  height: 100vh; // Fallback for browsers without dynamic viewport units
+  height: 100dvh;
+  padding: 25px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  align-content: start;
+  background-color: $color-primary;
+  color: $color-text-light;
+
+  @include grid;
+
+  @include for-tablet {
+    padding: 50px 72px;
+  }
+
+  @include for-desktop {
+    padding: 50px 120px;
+  }
+
+  &:target {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
+  }
+
+  &__links {
+    margin-top: 40px;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+
+    @include for-desktop {
+      margin-top: 55px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__paragraph {
+    grid-column: 1 / -1;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+  }
+
+  &__phone-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: #ffd700;
+    }
+  }
+
+  &__call-link {
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-text-light;
+
+    &:hover {
+      border-bottom: 1px solid $color-text-light;
+    }
+  }
+}
