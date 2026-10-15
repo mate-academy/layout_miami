@@ -1,0 +1,48 @@
+@use '../utils' as *;
+
+.burger {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 24px;
+
+    background-size: cover;
+
+    transition: 0.3s ease-in-out;
+
+    // Media foe 1260px is the same as for 744px
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &::before {
+    background-image: url('../images/icons/Icon-Burger-menu.png');
+  }
+
+  &::after {
+    background-image: url('../images/icons/Icon-Burger-menu-hover.png');
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}

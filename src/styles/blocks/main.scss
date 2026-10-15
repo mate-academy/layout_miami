@@ -1,0 +1,56 @@
+@use '../utils' as *;
+
+.main {
+  padding: 40px 20px 120px;
+  color: $color-white;
+
+  @include grid;
+
+  @include for-tablet {
+    padding: 90px 72px 102px;
+  }
+
+  @include for-desktop {
+    padding: 120px 120px 164px;
+  }
+
+  &__section {
+    grid-column: span 2;
+
+    @include for-tablet {
+      grid-column: span 6;
+    }
+
+    @include for-desktop {
+      grid-column: span 12;
+    }
+
+    &:first-child {
+      @include grid;
+
+      .section__title {
+        grid-column: span 2;
+
+        @include for-tablet {
+          grid-column: 1/4;
+        }
+
+        @include for-desktop {
+          grid-column: 1/6;
+        }
+      }
+
+      .section__paragraph {
+        grid-column: span 2;
+
+        @include for-tablet {
+          grid-column: 4/7;
+        }
+
+        @include for-desktop {
+          grid-column: 6/12;
+        }
+      }
+    }
+  }
+}
