@@ -1,0 +1,23 @@
+@use '../utils/mixins.scss' as *;
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  &--columns {
+    @include grid;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include for-tablet {
+      grid-column: 2 / 6; // 2-5 columns
+    }
+
+    @include for-desktop {
+      grid-column: span 4;
+    }
+  }
+}
