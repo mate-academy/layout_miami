@@ -11,7 +11,6 @@ if (form) {
   });
 }
 
-// BLOKADA SCROLLA POD MENU
 function toggleMenuScroll() {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
