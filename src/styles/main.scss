@@ -262,27 +262,45 @@
     text-align: center;
   }
 
-  // GRID FEATURES
+  // FEATURE
   &__feature {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 20px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
 
     & + & {
       margin-top: 40px;
     }
+  }
+
+  // GALLERY
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    align-items: stretch;
+    margin-bottom: 16px;
 
     @media (min-width: 744px) {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 0 24px;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 16px;
     }
 
     @media (min-width: 1260px) {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 24px;
     }
   }
 
-  // WSPÓLNE USTAWIENIA ZDJĘĆ
+  // REVERSED GALLERY
+  &__gallery--reverse {
+    @media (min-width: 744px) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  // PICTURES
   &__picture1,
   &__picture2,
   &__picture3,
@@ -290,9 +308,9 @@
   &__picture5,
   &__picture6 {
     min-width: 0;
+    width: 100%;
     aspect-ratio: 1 / 1;
-    grid-column: span 1;
-    overflow: visible;
+    overflow: hidden;
     transition: transform $transition-speed ease;
 
     img {
@@ -302,14 +320,33 @@
       object-fit: cover;
       object-position: center;
     }
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
-  // ZDJĘCIE 5 - POZYCJA
+  // TABLET AND DESKTOP
+  @media (min-width: 744px) {
+    &__picture1,
+    &__picture2,
+    &__picture3,
+    &__picture4,
+    &__picture5,
+    &__picture6 {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 0;
+      align-self: stretch;
+    }
+  }
+
+  // PICTURE 5 - POSITION
   &__picture5 img {
     object-position: 70% center;
   }
 
-  // ODBICIE LUSTRZANE ZDJĘCIA 4
+  // MIRROR IMAGE 4
   &__picture4 img {
     transform: scaleX(-1);
   }
@@ -320,7 +357,6 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-    grid-column: 1 / -1;
     margin: 0;
     margin-top: 16px;
     margin-bottom: 8px;
@@ -332,108 +368,15 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    grid-column: 1 / -1;
     margin: 0;
     margin-bottom: 40px;
-  }
 
-  // TABLET - 744px
-  @media (min-width: 744px) {
-    // PROPORCJE ZDJĘĆ
-    &__picture1,
-    &__picture3,
-    &__picture4,
-    &__picture6 {
-      aspect-ratio: 2.1 / 1;
-    }
-
-    &__picture2,
-    &__picture5 {
-      aspect-ratio: 1 / 1;
-    }
-
-    // PIERWSZA PARA - 4 + 2
-    &__picture1 {
-      grid-column: span 4;
-    }
-
-    &__picture2 {
-      grid-column: span 2;
-    }
-
-    // DRUGA PARA - 4 + 2
-    &__picture3 {
-      grid-column: span 4;
-    }
-
-    &__picture4 {
-      grid-column: span 2;
-      aspect-ratio: auto;
-      align-self: stretch;
-    }
-
-    // TRZECIA PARA - 2 + 4
-    &__picture5 {
-      grid-column: span 2;
-    }
-
-    &__picture6 {
-      grid-column: span 4;
-    }
-
-    // H3
-    &__font--h3 {
-      grid-column: 1 / -1;
-    }
-
-    // P
-    &__font--p {
-      grid-column: 1 / -1;
+    @media (min-width: 744px) {
       margin-bottom: 48px;
     }
   }
 
-  // DESKTOP - 1260px
-  @media (min-width: 1260px) {
-    // PIERWSZA PARA - 8 + 4
-    &__picture1 {
-      grid-column: span 8;
-    }
-
-    &__picture2 {
-      grid-column: span 4;
-    }
-
-    // DRUGA PARA - 8 + 4
-    &__picture3 {
-      grid-column: span 8;
-    }
-
-    &__picture4 {
-      grid-column: span 4;
-    }
-
-    // TRZECIA PARA - 4 + 8
-    &__picture5 {
-      grid-column: span 4;
-    }
-
-    &__picture6 {
-      grid-column: span 8;
-    }
-
-    // H3 - PIERWSZE 8 KOLUMN
-    &__font--h3 {
-      grid-column: span 8;
-    }
-
-    // P - PIERWSZE 8 KOLUMN
-    &__font--p {
-      grid-column: span 8;
-    }
-  }
-
-  // BUTTON EXPLORE - ORYGINALNE USTAWIENIA
+  // BUTTON EXPLORE
   &__button {
     display: block;
     width: 278px;
@@ -468,16 +411,6 @@
     line-height: 27px;
     text-align: center;
     color: $background-color;
-  }
-
-  // HOVER
-  &__picture1:hover,
-  &__picture2:hover,
-  &__picture3:hover,
-  &__picture4:hover,
-  &__picture5:hover,
-  &__picture6:hover {
-    transform: scale(1.05);
   }
 }
 
