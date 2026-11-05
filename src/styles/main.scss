@@ -96,7 +96,6 @@
     letter-spacing: -1.5px;
     text-align: center;
     text-transform: capitalize;
-
     grid-column: 1 / -1;
     margin: 0;
     margin-bottom: 48px;
@@ -115,7 +114,6 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-
     grid-column: 1 / -1;
     min-width: 0;
 
@@ -130,49 +128,45 @@
     }
   }
 
-  &__picture {
-    grid-column: 1 / -1;
+&__picture {
+  --picture-scale: 1;
 
-    width: 100%;
-    height: 228px;
-    min-width: 0;
+  width: 100%;
+  height: 228px;
+  min-width: 0;
+  padding-bottom: 32px;
+  overflow: hidden;
 
-    padding-bottom: 32px;
-
-    overflow: hidden;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-
-      transition: transform $transition-speed ease;
-    }
-
-    &:hover {
-    transform: scale(1.05);
-    }
-
-    @media (min-width: 744px) {
-      grid-column: 2 / 6;
-      height: 316px;
-    }
-
-    @media (min-width: 1260px) {
-      grid-column: 1 / -1;
-      height: 256px;
-    }
+  &:hover {
+    --picture-scale: 1.05;
   }
 
+  @media (min-width: 744px) {
+    grid-column: 2 / 6;
+    height: 316px;
+  }
+
+  @media (min-width: 1260px) {
+    grid-column: 1 / -1;
+    height: 256px;
+  }
+}
+
+&__picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(var(--picture-scale));
+  transition: transform $transition-speed ease;
+}
+
+  // HEADINGS
   &__font--h3 {
     font-family: Poppins, sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-
-
-
     grid-column: 1 / 3;
     margin: 0;
 
@@ -185,12 +179,12 @@
     }
   }
 
+  // DESCRIPTION
   &__font--p {
     font-family: Poppins, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-
     grid-column: 1 / -1;
     margin: 0;
 
@@ -203,12 +197,12 @@
     }
   }
 
+  // PRICE
   &__font--M {
     font-family: Poppins, sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-
     grid-column: 1 / 2;
     margin: 0;
 
