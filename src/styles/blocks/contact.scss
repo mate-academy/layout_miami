@@ -1,13 +1,21 @@
 .contact {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 20px;
   justify-content: start;
-  gap: 198px;
-  box-sizing: border-box;
+  gap: 40px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(2, minmax(0, 1 fr));
+    gap: 24px;
+  }
+
+  @include for-desktop {
+    grid-template-columns: 410px auto;
+    gap: 200px;
+  }
 
   &__form {
     display: grid;
@@ -16,6 +24,7 @@
 
   &__details {
     display: grid;
+    align-content: start;
     gap: 10px;
   }
 }
