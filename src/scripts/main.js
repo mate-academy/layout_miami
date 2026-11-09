@@ -12,6 +12,5 @@ if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
     contactForm.reset();
-    console.log('Wiadomość została wysłana.');
   });
 }
