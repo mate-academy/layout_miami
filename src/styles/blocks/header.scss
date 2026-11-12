@@ -1,0 +1,65 @@
+@use '../utils/mixins.scss';
+
+.header {
+  background-color: black;
+  background-image: url(../images/photos/bike.jpg);
+  min-height: 480px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-position: 85%;
+
+  box-sizing: border-box;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+
+  @include mixins.for-tablet {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    min-height: 625px;
+    padding: 32px 72px;
+    gap: 24px;
+    background-position: center;
+  }
+
+  @include mixins.for-desktop {
+    min-height: 100vh;
+    padding: 28px 120px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    background-position: center right;
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
+    grid-row: 1 /2;
+    align-self: start;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    align-self: end;
+    margin: 0 0 60px;
+    text-align: center;
+    font-size: 36px;
+
+    @include mixins.for-tablet {
+      margin-bottom: 48px;
+      font-size: 64px;
+    }
+
+    @include mixins.for-desktop {
+      margin-bottom: 52px;
+      font-size: 80px;
+    }
+  }
+}
