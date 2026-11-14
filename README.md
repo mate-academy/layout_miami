@@ -1,22 +1,27 @@
-# Miami landing page
-- Implement [the landing page](https://www.figma.com/file/nHz8bflIwJaWP3P99vKTH5/miami_home_new?node-id=16033%3A3)
-- Read [CHECKLIST](https://github.com/mate-academy/layout_miami/blob/master/checklist.md). You can find a lot of useful information there.
+# Miami Landing Page
 
-## Instructions
-1. **Fork** the repo.
-2. **Clone** the forked one. (The project link should have your name but not `mate-academy`)
-3. Run `npm install` (or just `npm i`)
-4. Run `npm start`.
-5. Open one more terminal window for the next steps
-6. `git checkout -b develop` - to create new branch and switch on it
-7. Write you code in `src` folder
-8. Run `npm run lint` and fix code style errors.
-9. Run `npm run deploy` to deploy your solution to `gh-pages`
-10. `git add . && git commit -m 'solution'` to save your changes
-11. `git push origin develop` - to send you code for PR
-12. Create a Pull Request (PR) from your branch `develop` to branch `master` of original repo.
-13. Replace `<your_account>` with your Github username in the
-  [DEMO LINK](https://YurchykD.github.io/layout_miami/)
-14. Copy `DEMO LINK` to the PR description
+A responsive travel-style landing page about Miami, built as a frontend practice project.
 
-> To update you PR repeat steps 7-11
+**Live demo:** https://yurchykd.github.io/miami-landing-page/
+
+## Overview
+
+A one-page website that showcases Miami with large visuals and clear sections. The focus was on responsive layout and a clean, modern look.
+
+## Tech stack
+
+- HTML5
+- SCSS / CSS
+- GitHub Pages (hosting)
+
+## Run locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YurchykD/miami-landing-page.git
+   ```
+2. Open `index.html` in your browser.
+
+## Notes
+
+This is a practice project. My current focus is QA and test automation (Python, Playwright, API testing).
