@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
     });
   }
-  const burgerButton = document.querySelector('.navigation__icon--menu').closest('a');
-  const body = document.body;
 
-  if (burgerButton) {
-    burgerButton.addEventListener('click', (e) => {
-      body.classList.toggle('page__body--with-menu');
-    });
+  window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('page__body--with-menu');
+  } else {
+    document.body.classList.remove('page__body--with-menu');
   }
+});
 });
